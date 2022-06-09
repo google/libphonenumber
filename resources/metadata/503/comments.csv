@@ -1,0 +1,9 @@
+Region ; Label               ; Comment
+SV     ; SC                  ; "http://www.itu.int/oth/T020200003F/en"
+SV     ; SC_CARRIER_SPECIFIC ; "https://support.twitter.com/articles/20170024"
+SV     ; SC_SMS_SERVICES     ; "https://support.twitter.com/articles/20170024"
+SV     ; XML                 ; "http://www.itu.int/oth/T020200003F/en"
+SV     ; XML                 ; "http://www.siget.gob.sv/BusquedaPublica.aspx?pagina=3&tipo=27&titulo=t8&sector=2&ordenar=&dir=DESC"
+SV     ; XML_FIXED_LINE      ; "Numbers starting with 20, 27, 28 and 29 are reserved but not yet used."
+SV     ; XML_PREMIUM_RATE    ; "Premium rate numbers are either 900 NNNN or 900 NNNN NNNN."
+SV     ; XML_TOLL_FREE       ; "Toll free numbers are either 800 NNNN or 800 NNNN NNNN."

@@ -1,0 +1,5 @@
+Id         ; National       ; International ; Comment
+fmt1_2/3/4 ; "#XX XXX XXXX" ; "XX XXX XXXX"
+fmt2_2/4   ; "#XX XXXX"     ; "XX XXXX"
+fmt3_3/3/3 ; "#XXX XXX XXX" ; "XXX XXX XXX" ; "We format mobile numbers like this, even though ITU and wikipedia hint at\n\\d{2}\\d{3}\\d{4} grouping, since the yellow pages (http://en.paginiaurii.ro/) and the\nmajority of numbers found online follow this convention."
+fmt4_3/3   ; "#XXX XXX"     ; "XXX XXX"

@@ -1,0 +1,6 @@
+Region ; Type         ; Number
+AW     ; FIXED_LINE   ; "5212345"
+AW     ; MOBILE       ; "5601234"
+AW     ; TOLL_FREE    ; "8001234"
+AW     ; PREMIUM_RATE ; "9001234"
+AW     ; VOIP         ; "5011234"

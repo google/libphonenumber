@@ -1,0 +1,23 @@
+Region ; Prefix    ; Length ; Type       ; Tariff        ; Provenance
+TW     ; 10[04]    ; 3      ; COMMERCIAL ;               ; WEB
+TW     ; 10[56]    ; 3      ; COMMERCIAL ; PREMIUM_RATE
+TW     ; 11[029]   ; 3      ; EMERGENCY  ; TOLL_FREE
+TW     ; 113       ; 3      ; COMMERCIAL
+TW     ; 117       ; 3      ; COMMERCIAL ;               ; WEB
+TW     ; 118       ; 3      ; COMMERCIAL ; TOLL_FREE
+TW     ; 13[389]   ; 3      ; COMMERCIAL ;               ; GOVERNMENT
+TW     ; 1[68]0    ; 3      ; COMMERCIAL ;               ; GOVERNMENT
+TW     ; 165       ; 3      ; COMMERCIAL ; STANDARD_RATE
+TW     ; 166       ; 3      ; COMMERCIAL ;               ; WEB
+TW     ; 16[78]    ; 3      ; COMMERCIAL
+TW     ; 17[07]    ; 3      ; COMMERCIAL ;               ; GOVERNMENT
+TW     ; 1811      ; 4      ; COMMERCIAL ; TOLL_FREE     ; GOVERNMENT
+TW     ; 1919      ; 4      ; COMMERCIAL ; STANDARD_RATE
+TW     ; 1922      ; 4      ; COMMERCIAL ; TOLL_FREE
+TW     ; 1950      ; 4      ; COMMERCIAL ; STANDARD_RATE
+TW     ; 195[57]   ; 4      ; COMMERCIAL
+TW     ; 1968      ; 4      ; COMMERCIAL
+TW     ; 1980      ; 4      ; COMMERCIAL
+TW     ; 1985      ; 4      ; COMMERCIAL ; STANDARD_RATE
+TW     ; 199[1569] ; 4      ; COMMERCIAL
+TW     ; 1998      ; 4      ; COMMERCIAL ; STANDARD_RATE

@@ -1,0 +1,4 @@
+Id           ; National          ; International ; Comment
+fmt1_2/2/2/2 ; "(# XX) XX-XX-XX" ; "XX XX-XX-XX" ; "There doesn't seem to be a standardized format. The format below is based on the\nTurkmenistan embassy at\nhttp://www.turkmenistanembassy.org/turkmen/info/contact.html"
+fmt2_2/6     ; "# XX XXXXXX"     ; "XX XXXXXX"
+fmt3_3/1/2/2 ; "(# XXX) X-XX-XX" ; "XXX X-XX-XX"

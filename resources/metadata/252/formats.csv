@@ -1,0 +1,7 @@
+Id           ; National      ; International ; Comment
+fixed_1/6    ; "X XXXXXX"    ; "X XXXXXX"    ; "These follow formats online,  such as http://www.hortel.net/contact_us.html"
+fixed_2/4    ; "XX XXXX"     ; "XX XXXX"
+fixed_6      ; "XXXXXX"      ; "XXXXXX"
+mobile_1/7   ; "X XXXXXXX"   ; "X XXXXXXX"
+mobile_2/5-7 ; "XX XXXXX**"  ; "XX XXXXX**"
+mobile_3/3/3 ; "XXX XXX XXX" ; "XXX XXX XXX"

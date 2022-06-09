@@ -1,0 +1,10 @@
+Region ; Prefix     ; Length ; Type       ; Tariff    ; Sms  ; Format          ; Provenance
+SG     ; 1[01368]   ; 4      ; COMMERCIAL ;           ;      ; "shortcode_4-5"
+SG     ; 100        ; 3      ; COMMERCIAL ;           ;      ;                 ; GOVERNMENT
+SG     ; 144        ; 4      ; COMMERCIAL ;           ;      ; "shortcode_4-5" ; GOVERNMENT
+SG     ; 1[57]      ; 4,5    ; COMMERCIAL ;           ;      ; "shortcode_4-5"
+SG     ; 190[1-9]   ; 4      ; COMMERCIAL ;           ;      ; "shortcode_4-5"
+SG     ; 19[1-9]    ; 4      ; COMMERCIAL ;           ;      ; "shortcode_4-5"
+SG     ; 77222      ; 5      ; COMMERCIAL ;           ; true ; "shortcode_4-5"
+SG     ; 99[0246-8] ; 3      ; COMMERCIAL
+SG     ; 99[359]    ; 3      ; EMERGENCY  ; TOLL_FREE

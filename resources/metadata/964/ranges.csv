@@ -1,0 +1,24 @@
+Prefix      ; Length ; Type       ; Tariff        ; Area Code Length ; Operator                   ; Format          ; Regions ; Provenance
+1           ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                            ; "fixed_1/3/4"   ; "IQ"    ; ITU
+2[13-5]     ; 8,9    ; FIXED_LINE ; STANDARD_RATE ; 2                ;                            ; "fixed_2/3/3-4" ; "IQ"    ; ITU
+3[02367]    ; 8,9    ; FIXED_LINE ; STANDARD_RATE ; 2                ;                            ; "fixed_2/3/3-4" ; "IQ"    ; ITU
+4[023]      ; 8,9    ; FIXED_LINE ; STANDARD_RATE ; 2                ;                            ; "fixed_2/3/3-4" ; "IQ"    ; ITU
+5[03]       ; 8,9    ; FIXED_LINE ; STANDARD_RATE ; 2                ;                            ; "fixed_2/3/3-4" ; "IQ"    ; ITU
+6[026]      ; 8,9    ; FIXED_LINE ; STANDARD_RATE ; 2                ;                            ; "fixed_2/3/3-4" ; "IQ"    ; ITU
+73          ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "itpc"                     ; "mobile_3/3/4"  ; "IQ"    ; ITU
+740[01]     ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "itisaluna"                ; "mobile_3/3/4"  ; "IQ"    ; ITU
+74[08][2-9] ; 10     ; MOBILE     ; STANDARD_RATE ;                  ;                            ; "mobile_3/3/4"  ; "IQ"
+74[125-7]   ; 10     ; MOBILE     ; STANDARD_RATE ;                  ;                            ; "mobile_3/3/4"  ; "IQ"
+743[0-47-9] ; 10     ; MOBILE     ; STANDARD_RATE ;                  ;                            ; "mobile_3/3/4"  ; "IQ"
+743[56]     ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "kalimat"                  ; "mobile_3/3/4"  ; "IQ"    ; ITU
+744[0-35-9] ; 10     ; MOBILE     ; STANDARD_RATE ;                  ;                            ; "mobile_3/3/4"  ; "IQ"
+7444        ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "mobitel"                  ; "mobile_3/3/4"  ; "IQ"    ; ITU
+748[01]     ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "itc_fanoos"               ; "mobile_3/3/4"  ; "IQ"    ; ITU
+749[0237-9] ; 10     ; MOBILE     ; STANDARD_RATE ;                  ;                            ; "mobile_3/3/4"  ; "IQ"
+7491        ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "itpc"                     ; "mobile_3/3/4"  ; "IQ"    ; ITU
+7494        ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "imam_hussien_holy_shrine" ; "mobile_3/3/4"  ; "IQ"    ; ITU
+749[56]     ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "iraqtel"                  ; "mobile_3/3/4"  ; "IQ"    ; ITU
+75          ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "korek"                    ; "mobile_3/3/4"  ; "IQ"    ; IR21
+76          ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "omnnea"                   ; "mobile_3/3/4"  ; "IQ"
+77          ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "asiacell"                 ; "mobile_3/3/4"  ; "IQ"    ; ITU
+7[89]       ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "zain"                     ; "mobile_3/3/4"  ; "IQ"    ; IR21

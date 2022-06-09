@@ -1,0 +1,5 @@
+Region ; Type         ; Number
+EG     ; FIXED_LINE   ; "234567890"
+EG     ; MOBILE       ; "1001234567"
+EG     ; TOLL_FREE    ; "8001234567"
+EG     ; PREMIUM_RATE ; "9001234567"

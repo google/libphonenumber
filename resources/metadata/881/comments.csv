@@ -1,0 +1,5 @@
+Region ; Label ; Comment
+001    ; XML   ; "Iridium"
+001    ; XML   ; "Globalstar also reports using this prefix, but we cannot find any online numbers with the\nGlobalstar prefixes, so are not sure how exactly these work, and what length the numbers\nare. For this reason, we only support Iridium numbers at the moment."
+001    ; XML   ; "http://www.iridium.com"
+001    ; XML   ; "http://www.itu.int/oth/T0202000069/en"

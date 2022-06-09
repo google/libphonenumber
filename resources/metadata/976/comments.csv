@@ -1,0 +1,7 @@
+Region ; Label          ; Comment
+MN     ; SC             ; "http://www.itu.int/oth/T020200008E/en"
+MN     ; XML            ; "http://www.itu.int/oth/T020200008E/en"
+MN     ; XML            ; "http://www.crc.gov.mn/k/4L/36"
+MN     ; XML_FIXED_LINE ; "Note the leading digit is the access code: 1 is used by Mongolia Telecom subscribers\nand 2 is used by Mongolian Railway subscribers. The area code then follows the access\ncode, and could be 1 to 4 digits long. We also cover wireless local loop numbers here\nas well, even though we are not certain whether they are in fact fixed or mobile in\nthis country. 5-digit subscriber numbers for 4-digit area codes have been added due to\nonline numbers being found."
+MN     ; XML_VOIP       ; "No tollFree or premiumRate information can be found."
+MN     ; XML_VOIP       ; "According to the document this could be stricter, but there are counter examples\nonline."

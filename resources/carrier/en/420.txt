@@ -30,6 +30,7 @@
 4207036|T-Mobile
 42070370|FAYN Telecommunications
 42070373|COMA
+42070376|BSG
 4207038|T-Mobile
 4207039|T-Mobile
 4207040|SAZKA sazkova kancelar, a.s
@@ -93,14 +94,12 @@
 42077072|Cesky bezdrat
 42077073|T-Mobile
 42077077|T-Mobile
-42077080|Vodafone
-42077081|Vodafone
-42077082|Vodafone
-42077083|Vodafone
-42077084|Vodafone
+4207708|Vodafone
+4207709|Vodafone
 42077100|TT Quality s.r.o.
 42077111|miniTEL
 42077177|MONTYHO TECHNOLOGY s.r.o. (CANISTEC)
+4207718|Vodafone
 42077200|TT Quality s.r.o.
 42077272|IPEX
 42077273|IPEX

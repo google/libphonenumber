@@ -1,0 +1,100 @@
+Prefix      ; Length ; Type       ; Tariff        ; Area Code Length ; Operator    ; Format        ; Regions ; Geocode:en          ; Provenance
+[09]0       ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "megafon"   ; "fmt_2/3/4"   ; "TJ"
+10          ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "o_mobile"  ; "fmt_2/3/4"   ; "TJ"
+11          ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "tcell"     ; "fmt_2/3/4"   ; "TJ"    ;                     ; IR21
+17          ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "babilon_m" ; "fmt_2/3/4"   ; "TJ"    ;                     ; IR21
+2[02]       ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "o_mobile"  ; "fmt_2/3/4"   ; "TJ"    ;                     ; IR21
+30          ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "o_mobile"  ; "fmt_2/3/4"   ; "TJ"    ;                     ; IR21
+3130        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;             ; "fixed_4/1/4" ; "TJ"    ; "Tursun-Zade"       ; ITU
+3131        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;             ; "fixed_4/1/4" ; "TJ"    ; "Rasht"             ; ITU
+3132        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;             ; "fixed_4/1/4" ; "TJ"    ; "Jirgital"          ; ITU
+3133        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;             ; "fixed_4/1/4" ; "TJ"    ; "Nurobod"           ; ITU
+3134        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;             ; "fixed_4/1/4" ; "TJ"    ; "Rogun"             ; ITU
+3135        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;             ; "fixed_4/1/4" ; "TJ"    ; "Fayzabad"          ; ITU
+3136        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;             ; "fixed_4/1/4" ; "TJ"    ; "Vakhdat"           ; ITU
+3137        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;             ; "fixed_4/1/4" ; "TJ"    ; "Rudaki"            ; ITU
+3138        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;             ; "fixed_4/1/4" ; "TJ"    ; "Nurek"             ; ITU
+3139        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;             ; "fixed_4/1/4" ; "TJ"    ; "Hissar"            ; ITU
+314[02-9]   ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;             ; "fixed_4/1/4" ; "TJ"
+3141        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;             ; "fixed_4/1/4" ; "TJ"    ; "Yavan"             ; ITU
+315[0-27-9] ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;             ; "fixed_4/1/4" ; "TJ"
+3153        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;             ; "fixed_4/1/4" ; "TJ"    ; "Varzob"            ; ITU
+3154        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;             ; "fixed_4/1/4" ; "TJ"    ; "Tadjikabad"        ; ITU
+3155        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;             ; "fixed_4/1/4" ; "TJ"    ; "Shakhrinav"        ; ITU
+3156        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;             ; "fixed_4/1/4" ; "TJ"    ; "Tavildara"         ; ITU
+322[013-9]  ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;             ; "fixed_4/1/4" ; "TJ"
+3222        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;             ; "fixed_4/1/4" ; "TJ"    ; "Kurgan-Tube"       ; ITU
+3240        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;             ; "fixed_4/1/4" ; "TJ"    ; "Shaartuz"          ; ITU
+324[14]     ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;             ; "fixed_4/1/4" ; "TJ"
+3242        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;             ; "fixed_4/1/4" ; "TJ"    ; "Khuroson"          ; ITU
+3243        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;             ; "fixed_4/1/4" ; "TJ"    ; "Abdurakhmana Jami" ; ITU
+3245        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;             ; "fixed_4/1/4" ; "TJ"    ; "Bokhtar"           ; ITU
+3246        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;             ; "fixed_4/1/4" ; "TJ"    ; "Vakhsh"            ; ITU
+3247        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;             ; "fixed_4/1/4" ; "TJ"    ; "Kolkhozabad"       ; ITU
+3248        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;             ; "fixed_4/1/4" ; "TJ"    ; "Djilikul"          ; ITU
+3249        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;             ; "fixed_4/1/4" ; "TJ"    ; "Kumsangir"         ; ITU
+3250        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;             ; "fixed_4/1/4" ; "TJ"    ; "Sarband"           ; ITU
+3251        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;             ; "fixed_4/1/4" ; "TJ"    ; "Kabodion"          ; ITU
+3252        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;             ; "fixed_4/1/4" ; "TJ"    ; "Panj"              ; ITU
+325[3-9]    ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;             ; "fixed_4/1/4" ; "TJ"
+331[039]    ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;             ; "fixed_4/1/4" ; "TJ"
+3311        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;             ; "fixed_4/1/4" ; "TJ"    ; "Vose"              ; ITU
+3312        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;             ; "fixed_4/1/4" ; "TJ"    ; "Dangara"           ; ITU
+3314        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;             ; "fixed_4/1/4" ; "TJ"    ; "Temurmalik"        ; ITU
+3315        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;             ; "fixed_4/1/4" ; "TJ"    ; "M. Khamadoni"      ; ITU
+3316        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;             ; "fixed_4/1/4" ; "TJ"    ; "Parkhar"           ; ITU
+331700      ; 9      ; FIXED_LINE ; STANDARD_RATE ; 6                ;             ; "fixed_6/1/2" ; "TJ"    ; "Khovaling"         ; ITU
+33170[1-9]  ; 9      ; FIXED_LINE ; STANDARD_RATE ; 6                ;             ; "fixed_6/1/2" ; "TJ"
+3317[1-9]   ; 9      ; FIXED_LINE ; STANDARD_RATE ; 6                ;             ; "fixed_6/1/2" ; "TJ"
+3318        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;             ; "fixed_4/1/4" ; "TJ"    ; "Muminobod"         ; ITU
+332[013-9]  ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;             ; "fixed_4/1/4" ; "TJ"
+3322        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;             ; "fixed_4/1/4" ; "TJ"    ; "Kulyab"            ; ITU
+342[013-9]  ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;             ; "fixed_4/1/4" ; "TJ"
+3422        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;             ; "fixed_4/1/4" ; "TJ"    ; "Khujand"           ; ITU
+344[046-9]  ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;             ; "fixed_4/1/4" ; "TJ"
+3441        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;             ; "fixed_4/1/4" ; "TJ"    ; "Spitamen"          ; ITU
+3442        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;             ; "fixed_4/1/4" ; "TJ"    ; "Gafurov"           ; ITU
+3443        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;             ; "fixed_4/1/4" ; "TJ"    ; "Kayrakum"          ; ITU
+3445        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;             ; "fixed_4/1/4" ; "TJ"    ; "Matchinskiy"       ; ITU
+345[07-9]   ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;             ; "fixed_4/1/4" ; "TJ"
+3451        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;             ; "fixed_4/1/4" ; "TJ"    ; "Chkalovsk"         ; ITU
+3452        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;             ; "fixed_4/1/4" ; "TJ"    ; "Zafarabad"         ; ITU
+3453        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;             ; "fixed_4/1/4" ; "TJ"    ; "Asht"              ; ITU
+3454        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;             ; "fixed_4/1/4" ; "TJ"    ; "Istravshan"        ; ITU
+3455        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;             ; "fixed_4/1/4" ; "TJ"    ; "Jabarrasulov"      ; ITU
+3456        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;             ; "fixed_4/1/4" ; "TJ"    ; "Shakhristan"       ; ITU
+346[013689] ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;             ; "fixed_4/1/4" ; "TJ"
+3462        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;             ; "fixed_4/1/4" ; "TJ"    ; "Isfara"            ; ITU
+3464        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;             ; "fixed_4/1/4" ; "TJ"    ; "Ganchi"            ; ITU
+3465        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;             ; "fixed_4/1/4" ; "TJ"    ; "Taboshar"          ; ITU
+3467        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;             ; "fixed_4/1/4" ; "TJ"    ; "Kanibadam"         ; ITU
+347[0-46-8] ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;             ; "fixed_4/1/4" ; "TJ"
+3475        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;             ; "fixed_4/1/4" ; "TJ"    ; "Pendjikent"        ; ITU
+3479        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;             ; "fixed_4/1/4" ; "TJ"    ; "Ayni"              ; ITU
+352[013-9]  ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;             ; "fixed_4/1/4" ; "TJ"
+3522        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;             ; "fixed_4/1/4" ; "TJ"    ; "Khorog"            ; ITU
+355[07-9]   ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;             ; "fixed_4/1/4" ; "TJ"
+3551        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;             ; "fixed_4/1/4" ; "TJ"    ; "Vanj"              ; ITU
+3552        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;             ; "fixed_4/1/4" ; "TJ"    ; "Darvaz"            ; ITU
+3553        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;             ; "fixed_4/1/4" ; "TJ"    ; "Ishkashim"         ; ITU
+3554        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;             ; "fixed_4/1/4" ; "TJ"    ; "Murgab"            ; ITU
+3555        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;             ; "fixed_4/1/4" ; "TJ"    ; "Roshtkala"         ; ITU
+3556        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;             ; "fixed_4/1/4" ; "TJ"    ; "Rushan"            ; ITU
+372         ; 9      ; FIXED_LINE ; STANDARD_RATE ; 3                ;             ; "fmt_3/2/4"   ; "TJ"    ; "Dushanbe"          ; ITU
+[48]0       ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "tacom"     ; "fmt_2/3/4"   ; "TJ"    ;                     ; IR21
+41[18]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "megafon"   ; "fmt_2/3/4"   ; "TJ"
+446         ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt_2/3/4"   ; "TJ"    ;                     ; ITU
+474         ; 9      ; FIXED_LINE ; STANDARD_RATE ; 3                ;             ; "fmt_3/2/4"   ; "TJ"    ;                     ; ITU
+487         ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt_2/3/4"   ; "TJ"    ;                     ; ITU
+50          ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "tcell"     ; "fmt_2/3/4"   ; "TJ"    ;                     ; IR21
+55          ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "megafon"   ; "fmt_2/3/4"   ; "TJ"
+7[07]       ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "tcell"     ; "fmt_2/3/4"   ; "TJ"    ;                     ; IR21
+71          ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "babilon_m" ; "fmt_2/3/4"   ; "TJ"    ;                     ; IR21
+88          ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "megafon"   ; "fmt_2/3/4"   ; "TJ"
+91[02-46]   ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;             ; "fmt_2/3/4"   ; "TJ"
+91[159]     ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "tacom"     ; "fmt_2/3/4"   ; "TJ"    ;                     ; IR21
+917         ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "tacom"     ; "fmt_3/2/4"   ; "TJ"    ;                     ; IR21
+918         ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "babilon_m" ; "fmt_3/2/4"   ; "TJ"    ;                     ; IR21
+9[239]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "tcell"     ; "fmt_2/3/4"   ; "TJ"    ;                     ; IR21
+9[48]       ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "babilon_m" ; "fmt_2/3/4"   ; "TJ"    ;                     ; IR21
+9[5-7]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;             ; "fmt_2/3/4"   ; "TJ"    ;                     ; ITU

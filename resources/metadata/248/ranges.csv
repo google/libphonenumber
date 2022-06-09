@@ -1,0 +1,10 @@
+Prefix  ; Length ; Type       ; Tariff        ; Operator      ; Format       ; Regions ; Provenance
+2[12]   ; 7      ; MOBILE     ; STANDARD_RATE ; "intelvision" ; "fmt1_1/3/3" ; "SC"    ; ITU
+2[56]   ; 7      ; MOBILE     ; STANDARD_RATE ; "cws"         ; "fmt1_1/3/3" ; "SC"    ; IR21
+2[78]   ; 7      ; MOBILE     ; STANDARD_RATE ; "airtel"      ; "fmt1_1/3/3" ; "SC"    ; GOVERNMENT
+4[2-46] ; 7      ; FIXED_LINE ; STANDARD_RATE ;               ; "fmt1_1/3/3" ; "SC"    ; GOVERNMENT
+64      ; 7      ; VOIP       ; STANDARD_RATE ;               ; "fmt1_1/3/3" ; "SC"    ; GOVERNMENT
+8000    ; 7      ; FIXED_LINE ; TOLL_FREE     ;               ;              ; "SC"    ; GOVERNMENT
+8008    ; 7      ; FIXED_LINE ; TOLL_FREE     ;               ;              ; "SC"    ; ITU
+95      ; 7      ; VOIP       ; STANDARD_RATE ;               ; "fmt1_1/3/3" ; "SC"    ; GOVERNMENT
+971     ; 7      ; VOIP       ; STANDARD_RATE ;               ; "fmt1_1/3/3" ; "SC"    ; GOVERNMENT

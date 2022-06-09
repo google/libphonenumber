@@ -1,0 +1,5 @@
+Region ; Type        ; Number
+CU     ; FIXED_LINE  ; "71234567"
+CU     ; MOBILE      ; "51234567"
+CU     ; TOLL_FREE   ; "8001234567"
+CU     ; SHARED_COST ; "8071234567"

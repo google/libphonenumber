@@ -1,0 +1,5 @@
+Prefix ; Length ; Type       ; Tariff        ; Operator  ; Regions ; Geocode:en       ; Provenance
+2[2-4] ; 4-7    ; FIXED_LINE ; STANDARD_RATE ;           ; "TK"    ; "Atafu Atoll"    ; GOVERNMENT
+3      ; 4-7    ; FIXED_LINE ; STANDARD_RATE ;           ; "TK"    ; "Fakaofo Atoll"  ; GOVERNMENT
+4      ; 4-7    ; FIXED_LINE ; STANDARD_RATE ;           ; "TK"    ; "Nakunonu Atoll" ; GOVERNMENT
+7[2-4] ; 4-7    ; MOBILE     ; STANDARD_RATE ; "teletok" ; "TK"    ;                  ; GOVERNMENT

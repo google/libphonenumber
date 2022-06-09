@@ -1,0 +1,5 @@
+Region ; Type       ; Number
+NG     ; FIXED_LINE ; "18040123"
+NG     ; MOBILE     ; "8021234567"
+NG     ; TOLL_FREE  ; "80017591759"
+NG     ; UAN        ; "7001234567"

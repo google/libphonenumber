@@ -1,0 +1,7 @@
+Region ; Prefix  ; Length ; Type               ; Tariff
+CU     ; 10[4-6] ; 3      ; EMERGENCY          ; TOLL_FREE
+CU     ; 107     ; 3      ; EXPANDED_EMERGENCY ; TOLL_FREE
+CU     ; 116111  ; 6      ; EXPANDED_EMERGENCY ; TOLL_FREE
+CU     ; 118     ; 3      ; COMMERCIAL
+CU     ; 140     ; 3      ; COMMERCIAL
+CU     ; 2045252 ; 7      ; EXPANDED_EMERGENCY ; TOLL_FREE

@@ -1,0 +1,4 @@
+Format       ; Parent Format ; Comment
+XXX XX XXXX  ; varrate_3/3/3 ; "Toll-free, premium-rate and UAN numbers"
+XXX XX XX XX ; varrate_3/3/3
+XXX XXXX XX  ; varrate_3/3/3

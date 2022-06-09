@@ -1,0 +1,9 @@
+Region ; Type         ; Number
+SK     ; FIXED_LINE   ; "221234567"
+SK     ; MOBILE       ; "912123456"
+SK     ; PAGER        ; "9090123"
+SK     ; TOLL_FREE    ; "800123456"
+SK     ; PREMIUM_RATE ; "900123456"
+SK     ; SHARED_COST  ; "850123456"
+SK     ; VOIP         ; "690123456"
+SK     ; UAN          ; "961234567"
