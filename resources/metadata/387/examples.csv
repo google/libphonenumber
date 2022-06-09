@@ -1,0 +1,7 @@
+Region ; Type         ; Number
+BA     ; FIXED_LINE   ; "30212345"
+BA     ; MOBILE       ; "61123456"
+BA     ; TOLL_FREE    ; "80123456"
+BA     ; PREMIUM_RATE ; "90123456"
+BA     ; SHARED_COST  ; "82123456"
+BA     ; UAN          ; "70341234"

@@ -1,3 +1,16 @@
+Jun 09, 2022: v8.12.50
+Metadata changes:
+ - Updated alternate formatting data for country calling code(s): 380, 49
+ - Updated phone metadata for region code(s):
+   AR, CL, DE, EH, GB, HK, HR, IR, IT, MA, MH, TT, UA, US
+ - New geocoding data for country calling code(s): 1826 (en)
+ - Updated geocoding data for country calling code(s):
+   34 (en, es), 54 (en), 61 (en)
+ - Updated carrier data for country calling code(s):
+   44 (en), 98 (en, fa), 212 (en), 380 (en, uk), 385 (en), 420 (en),
+   852 (en, zh)
+ - Updated / refreshed time zone meta data.
+
 May 25, 2022: v8.12.49
 Metadata changes:
  - Updated phone metadata for region code(s):

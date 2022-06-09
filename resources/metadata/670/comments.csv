@@ -1,0 +1,4 @@
+Region ; Label               ; Comment
+TL     ; XML                 ; "http://www.itu.int/oth/T02020000D0/en"
+TL     ; XML_PERSONAL_NUMBER ; "We don't include paging or voicemail because the identified paging range was used by\nmobile previously, and for voicemail, it is unclear if the 2012 change affected these\nnumbers, or if the range was indeed previously used for voicemail at all."
+TL     ; XML_PERSONAL_NUMBER ; "We presume this wasn't affected by the numbering plan update."

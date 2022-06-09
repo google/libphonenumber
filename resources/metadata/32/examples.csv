@@ -1,0 +1,7 @@
+Region ; Type         ; Number
+BE     ; FIXED_LINE   ; "12345678"
+BE     ; MOBILE       ; "470123456"
+BE     ; TOLL_FREE    ; "80012345"
+BE     ; PREMIUM_RATE ; "90012345"
+BE     ; SHARED_COST  ; "78791234"
+BE     ; UAN          ; "78102345"

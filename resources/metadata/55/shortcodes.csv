@@ -1,0 +1,57 @@
+Region ; Prefix       ; Length ; Type               ; Tariff        ; Sms  ; Carrier Specific ; Format
+BR     ; 100          ; 3      ; COMMERCIAL         ; TOLL_FREE
+BR     ; 102          ; 3      ; COMMERCIAL         ; STANDARD_RATE
+BR     ; 1031[2-579]  ; 5      ; COMMERCIAL
+BR     ; 1032[13-9]   ; 5      ; COMMERCIAL
+BR     ; 1033[124-9]  ; 5      ; COMMERCIAL
+BR     ; 1034[1-3578] ; 5      ; COMMERCIAL
+BR     ; 1035[1-468]  ; 5      ; COMMERCIAL
+BR     ; 1036[139]    ; 5      ; COMMERCIAL
+BR     ; 1038[149]    ; 5      ; COMMERCIAL
+BR     ; 1039[168]    ; 5      ; COMMERCIAL
+BR     ; 105[0-35-9]  ; 4      ; COMMERCIAL
+BR     ; 1060         ; 4      ; COMMERCIAL
+BR     ; 1061         ; 4      ; COMMERCIAL
+BR     ; 1061[0-35-8] ; 5      ; COMMERCIAL
+BR     ; 1062[0145]   ; 5      ; COMMERCIAL
+BR     ; 1063         ; 4      ; COMMERCIAL
+BR     ; 1063[0137]   ; 5      ; COMMERCIAL
+BR     ; 1064         ; 4      ; COMMERCIAL
+BR     ; 1064[37-9]   ; 5      ; COMMERCIAL
+BR     ; 1065[0-35]   ; 5      ; COMMERCIAL
+BR     ; 1066         ; 4      ; COMMERCIAL
+BR     ; 1066[016]    ; 5      ; COMMERCIAL
+BR     ; 1067         ; 4      ; COMMERCIAL
+BR     ; 1067[137]    ; 5      ; COMMERCIAL
+BR     ; 1068[5-8]    ; 5      ; COMMERCIAL
+BR     ; 1069[1359]   ; 5      ; COMMERCIAL
+BR     ; 112          ; 3      ; EMERGENCY          ; TOLL_FREE     ;      ;                  ; "shortcode_3-6"
+BR     ; 11[578]      ; 3      ; COMMERCIAL         ;               ;      ;                  ; "shortcode_3-6"
+BR     ; 116          ; 3      ; EXPANDED_EMERGENCY ;               ;      ;                  ; "shortcode_3-6"
+BR     ; 123          ; 3      ; EXPANDED_EMERGENCY ;               ;      ;                  ; "shortcode_3-6"
+BR     ; 12[579]      ; 3      ; COMMERCIAL         ;               ;      ;                  ; "shortcode_3-6"
+BR     ; 128          ; 3      ; EMERGENCY          ; TOLL_FREE     ;      ;                  ; "shortcode_3-6"
+BR     ; 13[024-68]   ; 3      ; COMMERCIAL         ;               ;      ;                  ; "shortcode_3-6"
+BR     ; 133[12]      ; 4      ; COMMERCIAL         ;               ;      ;                  ; "shortcode_3-6"
+BR     ; 14[12568]    ; 3      ; COMMERCIAL         ;               ;      ;                  ; "shortcode_3-6"
+BR     ; 15[02-9]     ; 3      ; COMMERCIAL         ;               ;      ;                  ; "shortcode_3-6"
+BR     ; 151          ; 3      ; COMMERCIAL         ;               ;      ; true             ; "shortcode_3-6"
+BR     ; 16[0-7]      ; 3      ; COMMERCIAL         ;               ;      ;                  ; "shortcode_3-6"
+BR     ; 168          ; 3      ; EXPANDED_EMERGENCY ;               ;      ;                  ; "shortcode_3-6"
+BR     ; 18[015]      ; 3      ; EXPANDED_EMERGENCY ; TOLL_FREE     ;      ;                  ; "shortcode_3-6"
+BR     ; 19[023]      ; 3      ; EMERGENCY          ; TOLL_FREE     ;      ;                  ; "shortcode_3-6"
+BR     ; 19[147-9]    ; 3      ; EXPANDED_EMERGENCY ; TOLL_FREE     ;      ;                  ; "shortcode_3-6"
+BR     ; 27330        ; 5      ; COMMERCIAL         ; STANDARD_RATE ; true
+BR     ; 27878        ; 5      ; COMMERCIAL         ;               ; true ; true
+BR     ; 28595        ; 5      ; COMMERCIAL         ;               ; true
+BR     ; 285959       ; 6      ; COMMERCIAL         ;               ; true
+BR     ; 321          ; 3      ; COMMERCIAL         ; STANDARD_RATE ; true ;                  ; "shortcode_3-6"
+BR     ; 4040         ; 4      ; COMMERCIAL         ;               ;      ; true
+BR     ; 40404        ; 5      ; COMMERCIAL         ;               ; true ; true
+BR     ; 411[12]      ; 4      ; COMMERCIAL         ;               ;      ; true
+BR     ; 457          ; 3      ; COMMERCIAL         ; TOLL_FREE     ;      ; true
+BR     ; 4828         ; 4      ; COMMERCIAL         ; TOLL_FREE     ; true
+BR     ; 55555        ; 5      ; COMMERCIAL         ;               ;      ; true
+BR     ; 60           ; 6      ; COMMERCIAL         ;               ; true
+BR     ; 610000       ; 6      ; COMMERCIAL         ;               ; true ;                  ; "shortcode_3-6"
+BR     ; 911          ; 3      ; EMERGENCY          ; TOLL_FREE

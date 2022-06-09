@@ -1,0 +1,12 @@
+Id                 ; National            ; Carrier            ; International   ; Comment
+fixed_line_1/3-4/4 ; "#X-XXX*-XXXX"      ; "#@-X-XXX*-XXXX"   ; "X-XXX*-XXXX"   ; "Fixed-line number ranges with 8-9 digits."
+fixed_line_2/3-4   ; "#XX-XXX*"          ; "#@-XX-XXX*"       ; "XX-XXX*"       ; "Fixed-line number ranges with 5-6 digits."
+fmt_2/3-4/4        ; "#XX-XXX*-XXXX"     ; "#@-XX-XXX*-XXXX"  ; "XX-XXX*-XXXX"  ; "Mobile, pager, and fixed-line number ranges with 9-10 digits."
+fmt_2/3/4          ; "#XX-XXX-XXXX"      ; "#@-XX-XXX-XXXX"   ; "XX-XXX-XXXX"   ; "Premium-rate and 9-digit toll-free numbers."
+fmt_2/4/4          ; "#XX-XXXX-XXXX"     ; "#@-XX-XXXX-XXXX"  ; "XX-XXXX-XXXX"  ; "10 digit personal and VOIP numbers."
+personal_2/5/4     ; "#XX-XXXXX-XXXX"    ; "#@-XX-XXXXX-XXXX" ; "XX-XXXXX-XXXX" ; "11 digit personal numbers."
+short_code_5       ; "#XXXXX"            ;                    ;                 ; "Format for 5 digit short codes."
+toll_free_5/2/3/4  ; "XXXXX XX XXX XXXX" ;                    ;                 ; "Toll-free numbers with 14 digits."
+toll_free_5/3-4/4  ; "XXXXX XXX* XXXX"   ;                    ;                 ; "Toll-free numbers with 12-13 digits."
+toll_free_5/3/3    ; "XXXXX XXX XXX"     ;                    ;                 ; "Toll-free numbers with 11 digits."
+uan_4/4            ; "XXXX-XXXX"         ;                    ; "XXXX-XXXX"     ; "UAN numbers."

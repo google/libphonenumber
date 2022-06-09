@@ -1,0 +1,54 @@
+Prefix          ; Length ; Type       ; Tariff        ; National Only ; Operator       ; Format     ; Regions ; Geocode:en                        ; Provenance
+0800            ; 8      ; FIXED_LINE ; TOLL_FREE     ; true          ;                ; "fmt1_4/4" ; "SZ"    ;                                   ; ITU
+22[0-3][0-689]  ; 8      ; FIXED_LINE ; STANDARD_RATE ; false         ;                ; "fmt1_4/4" ; "SZ"    ;                                   ; ITU
+2207            ; 8      ; FIXED_LINE ; STANDARD_RATE ; false         ;                ; "fmt1_4/4" ; "SZ"    ; "Nhlangano, Shiselweni district"  ; ITU
+2217            ; 8      ; FIXED_LINE ; STANDARD_RATE ; false         ;                ; "fmt1_4/4" ; "SZ"    ; "Hlathikulu, Shiselweni district" ; ITU
+2227            ; 8      ; FIXED_LINE ; STANDARD_RATE ; false         ;                ; "fmt1_4/4" ; "SZ"    ; "Hluthi, Shiselweni district"     ; ITU
+2237            ; 8      ; FIXED_LINE ; STANDARD_RATE ; false         ;                ; "fmt1_4/4" ; "SZ"    ; "Mahamba, Shiselweni district"    ; ITU
+22[4-9]         ; 8      ; FIXED_LINE ; STANDARD_RATE ; false         ;                ; "fmt1_4/4" ; "SZ"    ;                                   ; ITU
+23[037][0-24-9] ; 8      ; FIXED_LINE ; STANDARD_RATE ; false         ;                ; "fmt1_4/4" ; "SZ"    ;                                   ; ITU
+2303            ; 8      ; FIXED_LINE ; STANDARD_RATE ; false         ;                ; "fmt1_4/4" ; "SZ"    ; "Nsoko, Lubombo district"         ; ITU
+23[128][014-9]  ; 8      ; FIXED_LINE ; STANDARD_RATE ; false         ;                ; "fmt1_4/4" ; "SZ"    ;                                   ; ITU
+231[23]         ; 8      ; FIXED_LINE ; STANDARD_RATE ; false         ;                ; "fmt1_4/4" ; "SZ"    ; "Mhlume, Lubombo district"        ; ITU
+232[23]         ; 8      ; FIXED_LINE ; STANDARD_RATE ; false         ;                ; "fmt1_4/4" ; "SZ"    ; "Tshaneni, Lubombo district"      ; ITU
+2333            ; 8      ; FIXED_LINE ; STANDARD_RATE ; false         ;                ; "fmt1_4/4" ; "SZ"    ; "Mpaka, Lubombo district"         ; ITU
+23[46][0-25-9]  ; 8      ; FIXED_LINE ; STANDARD_RATE ; false         ;                ; "fmt1_4/4" ; "SZ"    ;                                   ; ITU
+2343            ; 8      ; FIXED_LINE ; STANDARD_RATE ; false         ;                ; "fmt1_4/4" ; "SZ"    ; "Siteki, Lubombo district"        ; ITU
+2344            ; 8      ; FIXED_LINE ; STANDARD_RATE ; false         ;                ; "fmt1_4/4" ; "SZ"    ; "Siphofaneni, Lubombo district"   ; ITU
+23[59]          ; 8      ; FIXED_LINE ; STANDARD_RATE ; false         ;                ; "fmt1_4/4" ; "SZ"    ;                                   ; ITU
+236[34]         ; 8      ; FIXED_LINE ; STANDARD_RATE ; false         ;                ; "fmt1_4/4" ; "SZ"    ; "Big Bend, Lubombo district"      ; ITU
+2373            ; 8      ; FIXED_LINE ; STANDARD_RATE ; false         ;                ; "fmt1_4/4" ; "SZ"    ; "Maphiveni, Lubombo district"     ; ITU
+238[23]         ; 8      ; FIXED_LINE ; STANDARD_RATE ; false         ;                ; "fmt1_4/4" ; "SZ"    ; "Simunye, Lubombo district"       ; ITU
+240[0-37-9]     ; 8      ; FIXED_LINE ; STANDARD_RATE ; false         ;                ; "fmt1_4/4" ; "SZ"    ;                                   ; ITU
+240[4-6]        ; 8      ; FIXED_LINE ; STANDARD_RATE ; false         ;                ; "fmt1_4/4" ; "SZ"    ; "Mbabane, Hhohho district"        ; ITU
+241[0-57-9]     ; 8      ; FIXED_LINE ; STANDARD_RATE ; false         ;                ; "fmt1_4/4" ; "SZ"    ;                                   ; ITU
+2416            ; 8      ; FIXED_LINE ; STANDARD_RATE ; false         ;                ; "fmt1_4/4" ; "SZ"    ; "Lobamba, Hhohho district"        ; ITU
+24[2478][013-9] ; 8      ; FIXED_LINE ; STANDARD_RATE ; false         ;                ; "fmt1_4/4" ; "SZ"    ;                                   ; ITU
+2422            ; 8      ; FIXED_LINE ; STANDARD_RATE ; false         ;                ; "fmt1_4/4" ; "SZ"    ; "Sidwashini, Hhohho district"     ; ITU
+24[36][0-689]   ; 8      ; FIXED_LINE ; STANDARD_RATE ; false         ;                ; "fmt1_4/4" ; "SZ"    ;                                   ; ITU
+2437            ; 8      ; FIXED_LINE ; STANDARD_RATE ; false         ;                ; "fmt1_4/4" ; "SZ"    ; "Pigg's Peak, Hhohho district"    ; ITU
+2442            ; 8      ; FIXED_LINE ; STANDARD_RATE ; false         ;                ; "fmt1_4/4" ; "SZ"    ; "Ngwenya, Hhohho district"        ; ITU
+245[014-9]      ; 8      ; FIXED_LINE ; STANDARD_RATE ; false         ;                ; "fmt1_4/4" ; "SZ"    ;                                   ; ITU
+245[23]         ; 8      ; FIXED_LINE ; STANDARD_RATE ; false         ;                ; "fmt1_4/4" ; "SZ"    ; "Bhunya, Hhohho district"         ; ITU
+2467            ; 8      ; FIXED_LINE ; STANDARD_RATE ; false         ;                ; "fmt1_4/4" ; "SZ"    ; "Mhlambanyatsi, Hhohho district"  ; ITU
+2472            ; 8      ; FIXED_LINE ; STANDARD_RATE ; false         ;                ; "fmt1_4/4" ; "SZ"    ; "Mahwalala, Hhohho district"      ; ITU
+2482            ; 8      ; FIXED_LINE ; STANDARD_RATE ; false         ;                ; "fmt1_4/4" ; "SZ"    ; "Siphocosini, Hhohho district"    ; ITU
+249             ; 8      ; FIXED_LINE ; STANDARD_RATE ; false         ;                ; "fmt1_4/4" ; "SZ"    ;                                   ; ITU
+250[0-47-9]     ; 8      ; FIXED_LINE ; STANDARD_RATE ; false         ;                ; "fmt1_4/4" ; "SZ"    ;                                   ; ITU
+250[56]         ; 8      ; FIXED_LINE ; STANDARD_RATE ; false         ;                ; "fmt1_4/4" ; "SZ"    ; "Manzini"                         ; ITU
+251[0-69]       ; 8      ; FIXED_LINE ; STANDARD_RATE ; false         ;                ; "fmt1_4/4" ; "SZ"    ;                                   ; ITU
+251[78]         ; 8      ; FIXED_LINE ; STANDARD_RATE ; false         ;                ; "fmt1_4/4" ; "SZ"    ; "Matsapha, Manzini district"      ; ITU
+25[2-4][0-79]   ; 8      ; FIXED_LINE ; STANDARD_RATE ; false         ;                ; "fmt1_4/4" ; "SZ"    ;                                   ; ITU
+2528            ; 8      ; FIXED_LINE ; STANDARD_RATE ; false         ;                ; "fmt1_4/4" ; "SZ"    ; "Malkerns, Manzini district"      ; ITU
+2538            ; 8      ; FIXED_LINE ; STANDARD_RATE ; false         ;                ; "fmt1_4/4" ; "SZ"    ; "Mankayane, Manzini district"     ; ITU
+2548            ; 8      ; FIXED_LINE ; STANDARD_RATE ; false         ;                ; "fmt1_4/4" ; "SZ"    ; "Ludzeludze, Manzini district"    ; ITU
+25[5-9]         ; 8      ; FIXED_LINE ; STANDARD_RATE ; false         ;                ; "fmt1_4/4" ; "SZ"    ;                                   ; ITU
+32              ; 8      ; FIXED_LINE ; STANDARD_RATE ; false         ;                ; "fmt1_4/4" ; "SZ"    ; "Shiselweni"                      ; ITU
+33              ; 8      ; FIXED_LINE ; STANDARD_RATE ; false         ;                ; "fmt1_4/4" ; "SZ"    ; "Lubombo"                         ; ITU
+34              ; 8      ; FIXED_LINE ; STANDARD_RATE ; false         ;                ; "fmt1_4/4" ; "SZ"    ; "Hhohho"                          ; ITU
+35              ; 8      ; FIXED_LINE ; STANDARD_RATE ; false         ;                ; "fmt1_4/4" ; "SZ"    ; "Manzini"                         ; ITU
+70              ; 8      ; VOIP       ; STANDARD_RATE ; false         ;                ; "fmt1_4/4" ; "SZ"    ;                                   ; ITU
+7[68]           ; 8      ; MOBILE     ; STANDARD_RATE ; false         ; "swazi_mtn"    ; "fmt1_4/4" ; "SZ"    ;                                   ; IR21
+77              ; 8      ; MOBILE     ; STANDARD_RATE ; false         ; "sptc"         ; "fmt1_4/4" ; "SZ"    ;                                   ; ITU
+79              ; 8      ; MOBILE     ; STANDARD_RATE ; false         ; "swazi_mobile" ; "fmt1_4/4" ; "SZ"    ;                                   ; IR21
+900             ; 9      ; FIXED_LINE ; PREMIUM_RATE  ; false         ;                ; "fmt2_5/4" ; "SZ"    ;                                   ; ITU

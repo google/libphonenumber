@@ -1,0 +1,17 @@
+Region ; Prefix       ; Length ; Type       ; Tariff
+ME     ; 1[02-4]      ; 4      ; COMMERCIAL
+ME     ; 11[013-57-9] ; 4      ; COMMERCIAL
+ME     ; 112          ; 3      ; EMERGENCY  ; TOLL_FREE
+ME     ; 116          ; 6      ; COMMERCIAL
+ME     ; 1[249]       ; 5      ; COMMERCIAL
+ME     ; 12[015-9]    ; 3      ; COMMERCIAL
+ME     ; 12[2-4]      ; 3      ; EMERGENCY  ; TOLL_FREE
+ME     ; 15[0-8]      ; 4      ; COMMERCIAL
+ME     ; 159[0-8]     ; 4      ; COMMERCIAL
+ME     ; 1599         ; 4      ; COMMERCIAL
+ME     ; 15999        ; 5      ; COMMERCIAL
+ME     ; 160[06]      ; 4      ; COMMERCIAL
+ME     ; 1700         ; 4      ; COMMERCIAL
+ME     ; 180[089]     ; 4      ; COMMERCIAL
+ME     ; 181[0-8]     ; 4      ; COMMERCIAL
+ME     ; 18888        ; 5      ; COMMERCIAL

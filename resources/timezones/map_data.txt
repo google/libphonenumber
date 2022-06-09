@@ -1621,6 +1621,7 @@
 1819|America/Toronto
 1820|America/Los_Angeles
 1825|America/Edmonton
+1826|America/New_York
 1828|America/New_York
 1829|America/Santo_Domingo
 1830|America/Chicago
@@ -2183,6 +2184,7 @@
 391|Europe/Rome&Europe/Vatican
 393|Europe/Rome&Europe/Vatican
 395|Europe/Rome&Europe/Vatican
+397|Europe/Rome
 398|Europe/Rome&Europe/Vatican
 40|Europe/Bucharest
 41|Europe/Zurich

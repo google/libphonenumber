@@ -1,0 +1,40 @@
+Prefix     ; Length ; Type       ; Tariff        ; Operator                ; Format              ; Regions ; Provenance ; Comment
+201        ; 7      ; FIXED_LINE ; STANDARD_RATE ;                         ; "fmt_3/2/2"         ; "LI"
+21[27]     ; 7      ; FIXED_LINE ; STANDARD_RATE ;                         ; "fmt_3/2/2"         ; "LI"    ; GOVERNMENT ; "Regulator File dated 4/1/2019"
+[23]20     ; 7      ; FIXED_LINE ; STANDARD_RATE ;                         ; "fmt_3/2/2"         ; "LI"    ; GOVERNMENT ; "Regulator File dated 29/4/2020"
+222        ; 7      ; FIXED_LINE ; STANDARD_RATE ;                         ; "fmt_3/2/2"         ; "LI"    ; GOVERNMENT ; "Regulator File dated 4/1/2019"
+23         ; 7      ; FIXED_LINE ; STANDARD_RATE ;                         ; "fmt_3/2/2"         ; "LI"    ; GOVERNMENT ; "Regulator File dated 4/1/2019"
+26[02-578] ; 7      ; FIXED_LINE ; STANDARD_RATE ;                         ; "fmt_3/2/2"         ; "LI"    ; GOVERNMENT ; "Regulator File dated 4/1/2019"
+296        ; 7      ; FIXED_LINE ; STANDARD_RATE ;                         ; "fmt_3/2/2"         ; "LI"    ; GOVERNMENT ; "Regulator File dated 4/1/2019"
+333        ; 7      ; FIXED_LINE ; STANDARD_RATE ;                         ; "fmt_3/2/2"         ; "LI"    ; GOVERNMENT ; "Regulator File dated 4/1/2019"
+340        ; 7      ; FIXED_LINE ; STANDARD_RATE ;                         ; "fmt_3/2/2"         ; "LI"    ; GOVERNMENT ; "Regulator File dated 4/1/2019"
+37[0135-7] ; 7      ; FIXED_LINE ; STANDARD_RATE ;                         ; "fmt_3/2/2"         ; "LI"    ; GOVERNMENT ; "Regulator File dated 4/1/2019"
+38[048]    ; 7      ; FIXED_LINE ; STANDARD_RATE ;                         ; "fmt_3/2/2"         ; "LI"    ; GOVERNMENT ; "Regulator File dated 4/1/2019"
+39[0269]   ; 7      ; FIXED_LINE ; STANDARD_RATE ;                         ; "fmt_3/2/2"         ; "LI"    ; GOVERNMENT ; "Regulator File dated 4/1/2019"
+64[56]     ; 9      ; MOBILE     ; STANDARD_RATE ; "soracom"               ; "intl_mobile_3/3/3" ; "LI"    ; GOVERNMENT
+64[7-9]    ; 9      ; MOBILE     ; STANDARD_RATE ; "soracom"               ; "intl_mobile_3/3/3" ; "LI"    ; IR21
+650        ; 9      ; MOBILE     ; STANDARD_RATE ; "telecom_liechtenstein" ; "intl_mobile_3/3/3" ; "LI"    ; GOVERNMENT ; "Regulator File dated 4/1/2019"
+65[1-3]    ; 9      ; MOBILE     ; STANDARD_RATE ; "cubic"                 ; "intl_mobile_3/3/3" ; "LI"    ; GOVERNMENT ; "Regulator File dated 4/1/2019"
+654        ; 9      ; MOBILE     ; STANDARD_RATE ; "cubic"                 ; "intl_mobile_3/3/3" ; "LI"    ; GOVERNMENT
+66[024]    ; 9      ; MOBILE     ; STANDARD_RATE ; "telecom_liechtenstein" ; "intl_mobile_3/3/3" ; "LI"    ; IR21
+6610       ; 9      ; MOBILE     ; STANDARD_RATE ; "dimoco"                ; "intl_mobile_3/3/3" ; "LI"    ; GOVERNMENT ; "Regulator File dated 4/1/2019"
+663[7-9]   ; 9      ; MOBILE     ; STANDARD_RATE ; "telecom_liechtenstein" ; "intl_mobile_3/3/3" ; "LI"    ; IR21
+665        ; 9      ; MOBILE     ; STANDARD_RATE ; "telecom_liechtenstein" ; "intl_mobile_3/3/3" ; "LI"    ; GOVERNMENT
+6670       ; 9      ; MOBILE     ; STANDARD_RATE ; "telecom_liechtenstein" ; "intl_mobile_3/3/3" ; "LI"    ; IR21
+69742      ; 9      ; VOICEMAIL  ; STANDARD_RATE ;                         ; "voicemail_2/3/4"   ; "LI"
+69756      ; 9      ; VOICEMAIL  ; STANDARD_RATE ;                         ; "voicemail_2/3/4"   ; "LI"
+697[78]    ; 9      ; VOICEMAIL  ; STANDARD_RATE ;                         ; "voicemail_2/3/4"   ; "LI"
+7[39]      ; 7      ; MOBILE     ; STANDARD_RATE ; "telecom_liechtenstein" ; "fmt_3/2/2"         ; "LI"
+742        ; 7      ; MOBILE     ; STANDARD_RATE ; "first_mobile"          ; "fmt_3/2/2"         ; "LI"
+756        ; 7      ; MOBILE     ; STANDARD_RATE ;                         ; "fmt_3/2/2"         ; "LI"
+77         ; 7      ; MOBILE     ; STANDARD_RATE ; "swisscom"              ; "fmt_3/2/2"         ; "LI"    ; GOVERNMENT ; "Regulator File dated 4/1/2019"
+78         ; 7      ; MOBILE     ; STANDARD_RATE ; "salt"                  ; "fmt_3/2/2"         ; "LI"    ; GOVERNMENT ; "Regulator File dated 4/1/2019"
+8002[28]   ; 7      ; FIXED_LINE ; TOLL_FREE     ;                         ; "fmt_3/2/2"         ; "LI"
+8005       ; 9      ; FIXED_LINE ; TOLL_FREE     ;                         ; "fmt_3/3/3"         ; "LI"
+809        ; 7      ; FIXED_LINE ; TOLL_FREE     ;                         ; "fmt_3/2/2"         ; "LI"
+87028      ; 7      ; UAN        ; STANDARD_RATE ;                         ; "fmt_3/2/2"         ; "LI"
+87087      ; 7      ; UAN        ; STANDARD_RATE ;                         ; "fmt_3/2/2"         ; "LI"
+9002[258]  ; 7      ; FIXED_LINE ; PREMIUM_RATE  ;                         ; "fmt_3/2/2"         ; "LI"
+90123      ; 7      ; FIXED_LINE ; PREMIUM_RATE  ;                         ; "fmt_3/2/2"         ; "LI"
+9013[14]   ; 7      ; FIXED_LINE ; PREMIUM_RATE  ;                         ; "fmt_3/2/2"         ; "LI"
+9066[136]  ; 7      ; FIXED_LINE ; PREMIUM_RATE  ;                         ; "fmt_3/2/2"         ; "LI"

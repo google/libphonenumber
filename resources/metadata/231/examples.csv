@@ -1,0 +1,4 @@
+Region ; Type         ; Number
+LR     ; FIXED_LINE   ; "21234567"
+LR     ; MOBILE       ; "770123456"
+LR     ; PREMIUM_RATE ; "332021234"

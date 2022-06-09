@@ -1,0 +1,14 @@
+Prefix ; Length ; Type       ; Tariff        ; Operator  ; Format     ; Regions ; Geocode:en   ; Provenance ; Comment
+2      ; 5      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_2/3" ; "CK"    ; "Rarotonga"  ; ITU
+31     ; 5      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_2/3" ; "CK"    ; "Aitutaki"
+33     ; 5      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_2/3" ; "CK"    ; "Atiu"       ; ITU
+34     ; 5      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_2/3" ; "CK"    ; "Mangaia"    ; ITU
+35     ; 5      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_2/3" ; "CK"    ; "Mauke"      ; ITU
+36     ; 5      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_2/3" ; "CK"    ; "Mitiaro"    ; ITU
+37     ; 5      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_2/3" ; "CK"    ; "Palmerston" ; ITU
+41     ; 5      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_2/3" ; "CK"    ; "Pukapuka"   ; ITU
+42     ; 5      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_2/3" ; "CK"    ; "Penrhyn"    ; ITU
+43     ; 5      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_2/3" ; "CK"    ; "Manihiki"   ; ITU
+44     ; 5      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_2/3" ; "CK"    ; "Rakahanga"  ; ITU
+45     ; 5      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_2/3" ; "CK"    ; "Nassau"     ; ITU
+[578]  ; 5      ; MOBILE     ; STANDARD_RATE ; "bluesky" ; "fmt1_2/3" ; "CK"    ;              ; IR21       ; "IR21 Dated 5/31/2018"

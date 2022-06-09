@@ -1,0 +1,6 @@
+Region ; Label        ; Comment
+BF     ; SC           ; "http://www.itu.int/oth/T0202000021/en"
+BF     ; SC           ; "http://www.onatel.bf/onatelsa/plandenumerotation_burkina.pdf"
+BF     ; SC_EMERGENCY ; "http://www.diplomatie.gouv.fr/fr/conseils-aux-voyageurs_909/conseils-par-pays_12191/burkina-faso_12217/index.html"
+BF     ; XML          ; "http://www.itu.int/oth/T0202000021/en"
+BF     ; XML          ; "http://www.onatel.bf/plan-national-de-numerotation.aspx"

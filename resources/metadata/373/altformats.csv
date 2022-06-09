@@ -1,0 +1,4 @@
+Format         ; Parent Format ; Comment
+XX XX XX XX    ; fmt1_2/3/3    ; "Alternate format for two-digit prefixes"
+[67]X XX XX XX ; fmt2_3/2/3    ; "Alternate mobile format"
+[67]X XXX XXX  ; fmt2_3/2/3    ; "Alternate format for three-digit prefixes"

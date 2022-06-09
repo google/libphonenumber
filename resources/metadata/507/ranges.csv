@@ -1,0 +1,97 @@
+Prefix       ; Length ; Type       ; Tariff        ; Operator             ; Format           ; Regions ; Provenance
+00800        ; 11     ; FIXED_LINE ; TOLL_FREE     ;                      ;                  ; "PA"
+10           ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
+111          ; 7      ; MOBILE     ; STANDARD_RATE ; "claro"              ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
+11[479]      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
+123          ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
+1[23]7       ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"
+13[013]      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
+14[17]       ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
+15[05]       ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
+161          ; 7      ; MOBILE     ; STANDARD_RATE ; "cable_wireless"     ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
+16[58]       ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
+17[017]      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
+176          ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"
+18[258]      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
+19[1389]     ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
+2[0235-79]   ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
+21[0-7]      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
+21[89]       ; 7      ; MOBILE     ; STANDARD_RATE ; "telefonica_moviles" ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
+24[013-9]    ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
+28[02-9]     ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
+3[089]       ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
+31[0-7]      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
+32[0-4]      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
+325          ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"
+333          ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
+34[0-79]     ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
+35[0-35]     ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
+36[068]      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
+37[0-8]      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
+400          ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
+43[0-579]    ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
+44           ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
+47[0-57-9]   ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
+5[01]        ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
+52[0-7]      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
+5[56]0       ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
+579          ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
+60           ; 8      ; MOBILE     ; STANDARD_RATE ; "digicel"            ; "fmt2_4/4"       ; "PA"    ; IR21
+61[0-5]      ; 8      ; MOBILE     ; STANDARD_RATE ; "digicel"            ; "fmt2_4/4"       ; "PA"    ; IR21
+616          ; 8      ; MOBILE     ; STANDARD_RATE ; "telefonica_moviles" ; "fmt2_4/4"       ; "PA"    ; IR21
+61[78]       ; 8      ; MOBILE     ; STANDARD_RATE ; "claro"              ; "fmt2_4/4"       ; "PA"    ; IR21
+619          ; 8      ; MOBILE     ; STANDARD_RATE ; "telefonica_moviles" ; "fmt2_4/4"       ; "PA"    ; GOVERNMENT
+62           ; 8      ; MOBILE     ; STANDARD_RATE ; "claro"              ; "fmt2_4/4"       ; "PA"    ; IR21
+63[0-2]      ; 8      ; MOBILE     ; STANDARD_RATE ; "claro"              ; "fmt2_4/4"       ; "PA"    ; IR21
+63[347]      ; 8      ; MOBILE     ; STANDARD_RATE ; "cable_wireless"     ; "fmt2_4/4"       ; "PA"    ; IR21
+63[5689]     ; 8      ; MOBILE     ; STANDARD_RATE ; "telefonica_moviles" ; "fmt2_4/4"       ; "PA"    ; IR21
+64           ; 8      ; MOBILE     ; STANDARD_RATE ; "telefonica_moviles" ; "fmt2_4/4"       ; "PA"    ; IR21
+65[0-5]      ; 8      ; MOBILE     ; STANDARD_RATE ; "cable_wireless"     ; "fmt2_4/4"       ; "PA"    ; IR21
+65[6-9]      ; 8      ; MOBILE     ; STANDARD_RATE ; "telefonica_moviles" ; "fmt2_4/4"       ; "PA"    ; IR21
+66[0-4]      ; 8      ; MOBILE     ; STANDARD_RATE ; "telefonica_moviles" ; "fmt2_4/4"       ; "PA"    ; IR21
+66[5-9]      ; 8      ; MOBILE     ; STANDARD_RATE ; "cable_wireless"     ; "fmt2_4/4"       ; "PA"    ; IR21
+67           ; 8      ; MOBILE     ; STANDARD_RATE ; "cable_wireless"     ; "fmt2_4/4"       ; "PA"    ; IR21
+68[0478]     ; 8      ; MOBILE     ; STANDARD_RATE ; "cable_wireless"     ; "fmt2_4/4"       ; "PA"    ; IR21
+68[1-3569]   ; 8      ; MOBILE     ; STANDARD_RATE ; "telefonica_moviles" ; "fmt2_4/4"       ; "PA"    ; IR21
+69[014-689]  ; 8      ; MOBILE     ; STANDARD_RATE ; "cable_wireless"     ; "fmt2_4/4"       ; "PA"    ; IR21
+69[237]      ; 8      ; MOBILE     ; STANDARD_RATE ; "telefonica_moviles" ; "fmt2_4/4"       ; "PA"    ; IR21
+70[09]       ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
+72[0-26-8]   ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
+73[03]       ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
+7[49]0       ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
+744          ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"
+75[06-9]     ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
+755          ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"
+76[056]      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
+77[0-24-9]   ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
+78[5-9]      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
+800          ; 7      ; FIXED_LINE ; TOLL_FREE     ;                      ; "fmt1_3/4"       ; "PA"
+800          ; 8      ; FIXED_LINE ; TOLL_FREE     ;                      ; "fmt2_4/4"       ; "PA"
+800          ; 10     ; FIXED_LINE ; TOLL_FREE     ;                      ; "tollfree_3/3/4" ; "PA"
+809          ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
+81[01]       ; 7      ; MOBILE     ; STANDARD_RATE ; "mobilphone"         ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
+822          ; 7      ; FIXED_LINE ; PREMIUM_RATE  ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
+82[89]       ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
+83           ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
+84[0-24-689] ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
+85[014]      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
+855          ; 7      ; FIXED_LINE ; PREMIUM_RATE  ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
+860          ; 7      ; FIXED_LINE ; PREMIUM_RATE  ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
+87[23]       ; 7      ; MOBILE     ; STANDARD_RATE ; "cable_wireless"     ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
+87[78]       ; 7      ; FIXED_LINE ; PREMIUM_RATE  ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
+88[02]       ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
+886          ; 7      ; FIXED_LINE ; PREMIUM_RATE  ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
+900          ; 7      ; FIXED_LINE ; PREMIUM_RATE  ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
+90[5-9]      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
+91[03578]    ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
+91[16]       ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"
+92[036-9]    ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
+93[3579]     ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
+936          ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"
+940          ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
+95[0457-9]   ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
+96[05-9]     ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
+97[04-9]     ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
+981          ; 7      ; FIXED_LINE ; PREMIUM_RATE  ;                      ; "fmt1_3/4"       ; "PA"
+98[35-8]     ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
+99           ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT

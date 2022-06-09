@@ -1,0 +1,10 @@
+Id           ; National         ; International   ; Comment
+fixed_2/3/4  ; "#XX XXX XXXX"   ; "XX XXX XXXX"
+fixed_3/3/3  ; "#XXX XXX XXX"   ; "XXX XXX XXX"
+fmt_3/4-7    ; "#XXX XXXX***"   ; "XXX XXXX***"   ; "Toll free & premium rate."
+mobile_1/8   ; "#X XXXXXXXX"    ; "X XXXXXXXX"
+mobile_3/3/5 ; "#XXX XXX XXXXX" ; "XXX XXX XXXXX" ; "For M2M numbers that are used for mobile purposes."
+pager_2/7    ; "#XX XXXXXXX"    ; "XX XXXXXXX"
+shortcode_4  ; "XXXX"           ;                 ; "Shortcodes (4 digits)."
+shortcode_6  ; "XXXXXX"         ;                 ; "Shortcodes (6 digits)."
+uan_2/3-4    ; "XX XXX*"        ;                 ; "National only numbers (no national prefix)."

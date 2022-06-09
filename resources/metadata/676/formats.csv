@@ -1,0 +1,4 @@
+Id           ; National   ; International ; Comment
+fixed_2/3    ; "XX-XXX"   ; "XX-XXX"
+fmt_3/4      ; "XXX XXXX" ; "XXX XXXX"    ; "Format for mobile and premium rate numbers."
+tollfree_4/3 ; "XXXX XXX" ; "XXXX XXX"

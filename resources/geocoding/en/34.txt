@@ -55,7 +55,7 @@
 34868|Murcia
 34869|Cuenca
 34871|Balearic Islands
-34872|Gerona
+34872|Girona
 34873|Lleida
 34874|Huesca
 34875|Soria
@@ -156,7 +156,7 @@
 349698|Cuenca
 349699|Cuenca
 34971|Balearic Islands
-34972|Gerona
+34972|Girona
 349730|Lleida
 349731|Lleida
 349732|Lleida

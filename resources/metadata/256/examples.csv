@@ -1,0 +1,5 @@
+Region ; Type         ; Number
+UG     ; FIXED_LINE   ; "312345678"
+UG     ; MOBILE       ; "712345678"
+UG     ; TOLL_FREE    ; "800123456"
+UG     ; PREMIUM_RATE ; "901123456"

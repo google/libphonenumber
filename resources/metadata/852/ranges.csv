@@ -1,0 +1,228 @@
+Prefix       ; Length ; Type            ; Tariff        ; Operator                 ; Format         ; Regions ; Provenance
+21           ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fmt1_4/4"     ; "HK"
+22[013-9]    ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+2[3-9]       ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+300[1-9]     ; 8      ; UAN             ; STANDARD_RATE ;                          ; "fmt1_4/4"     ; "HK"
+30[15-7]     ; 8      ; UAN             ; STANDARD_RATE ;                          ; "fmt1_4/4"     ; "HK"
+302[047]     ; 8      ; UAN             ; STANDARD_RATE ;                          ; "fmt1_4/4"     ; "HK"
+3089         ; 8      ; UAN             ; STANDARD_RATE ;                          ; "fmt1_4/4"     ; "HK"
+31[0-24-9]   ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+34[0-247-9]  ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+346          ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fmt1_4/4"     ; "HK"
+350          ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fmt1_4/4"     ; "HK"
+35[124-9]    ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+36[0-24-79]  ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+368          ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fmt1_4/4"     ; "HK"
+37[02]       ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fmt1_4/4"     ; "HK"
+37[14-69]    ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+384[0-8]     ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+385[0-5]     ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+389          ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fmt1_4/4"     ; "HK"
+39[0-246-9]  ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+395          ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fmt1_4/4"     ; "HK"
+440          ; 8      ; MOBILE          ; STANDARD_RATE ; "china_mobile"           ; "fmt1_4/4"     ; "HK"    ; IR21
+444[5-9]     ; 8      ; MOBILE          ; STANDARD_RATE ; "hkt"                    ; "fmt1_4/4"     ; "HK"    ; IR21
+460[0-6]     ; 8      ; MOBILE          ; STANDARD_RATE ; "china_unicom"           ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+4607         ; 8      ; MOBILE          ; STANDARD_RATE ; "multibyte"              ; "fmt1_4/4"     ; "HK"    ; IR21
+461[0-24]    ; 8      ; MOBILE          ; STANDARD_RATE ; "sun_mobile"             ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+4613         ; 8      ; MOBILE          ; STANDARD_RATE ; "hkt"                    ; "fmt1_4/4"     ; "HK"    ; IR21
+461[56]      ; 8      ; MOBILE          ; STANDARD_RATE ; "china_unicom"           ; "fmt1_4/4"     ; "HK"
+462[0-4]     ; 8      ; MOBILE          ; STANDARD_RATE ; "china_mobile"           ; "fmt1_4/4"     ; "HK"
+462[5-9]     ; 8      ; MOBILE          ; STANDARD_RATE ; "smartone"               ; "fmt1_4/4"     ; "HK"    ; IR21
+463          ; 8      ; MOBILE          ; STANDARD_RATE ; "china_mobile"           ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+4640         ; 8      ; MOBILE          ; STANDARD_RATE ; "china_mobile"           ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+464[1-5]     ; 8      ; MOBILE          ; STANDARD_RATE ; "smartone"               ; "fmt1_4/4"     ; "HK"    ; IR21
+4647         ; 8      ; MOBILE          ; STANDARD_RATE ; "sun_mobile"             ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+4648         ; 8      ; MOBILE          ; STANDARD_RATE ; "multibyte"              ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+4649         ; 8      ; MOBILE          ; STANDARD_RATE ; "citic"                  ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+465[0-3]     ; 8      ; MOBILE          ; STANDARD_RATE ; "china_unicom"           ; "fmt1_4/4"     ; "HK"
+465[4-8]     ; 8      ; MOBILE          ; STANDARD_RATE ; "hkt"                    ; "fmt1_4/4"     ; "HK"
+4659         ; 8      ; MOBILE          ; STANDARD_RATE ; "china_mobile"           ; "fmt1_4/4"     ; "HK"    ; IR21
+466[0-4]     ; 8      ; MOBILE          ; STANDARD_RATE ; "china_mobile"           ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+467[0-7]     ; 8      ; MOBILE          ; STANDARD_RATE ; "china_mobile"           ; "fmt1_4/4"     ; "HK"    ; IR21
+4678         ; 8      ; MOBILE          ; STANDARD_RATE ; "sun_mobile"             ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+468          ; 8      ; MOBILE          ; STANDARD_RATE ; "china_mobile"           ; "fmt1_4/4"     ; "HK"    ; IR21
+51[02367]    ; 8      ; MOBILE          ; STANDARD_RATE ; "china_mobile"           ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+511          ; 8      ; MOBILE          ; STANDARD_RATE ; "sun_mobile"             ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+514[0-8]     ; 8      ; MOBILE          ; STANDARD_RATE ; "hkt"                    ; "fmt1_4/4"     ; "HK"    ; IR21
+5149         ; 8      ; MOBILE          ; STANDARD_RATE ; "truphone"               ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+518          ; 8      ; MOBILE          ; STANDARD_RATE ; "hkt"                    ; "fmt1_4/4"     ; "HK"    ; IR21
+519          ; 8      ; MOBILE          ; STANDARD_RATE ; "3"                      ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+52[01479]    ; 8      ; MOBILE          ; STANDARD_RATE ; "hkt"                    ; "fmt1_4/4"     ; "HK"    ; IR21
+52[26]       ; 8      ; MOBILE          ; STANDARD_RATE ; "china_mobile"           ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+523[0-3]     ; 8      ; MOBILE          ; STANDARD_RATE ; "hkt"                    ; "fmt1_4/4"     ; "HK"    ; IR21
+5234         ; 8      ; MOBILE          ; STANDARD_RATE ; "lycamobile"             ; "fmt1_4/4"     ; "HK"
+5235         ; 8      ; MOBILE          ; STANDARD_RATE ; "21vianet"               ; "fmt1_4/4"     ; "HK"
+523[6-9]     ; 8      ; MOBILE          ; STANDARD_RATE ; "smartone"               ; "fmt1_4/4"     ; "HK"    ; IR21
+5280         ; 8      ; MOBILE          ; STANDARD_RATE ; "truphone"               ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+528[12]      ; 8      ; MOBILE          ; STANDARD_RATE ; "sun_mobile"             ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+5283         ; 8      ; MOBILE          ; STANDARD_RATE ; "multibyte"              ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+528[4-8]     ; 8      ; MOBILE          ; STANDARD_RATE ; "smartone"               ; "fmt1_4/4"     ; "HK"    ; IR21
+5289         ; 8      ; MOBILE          ; STANDARD_RATE ; "3"                      ; "fmt1_4/4"     ; "HK"    ; IR21
+53[01479]    ; 8      ; MOBILE          ; STANDARD_RATE ; "china_mobile"           ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+53[26]       ; 8      ; MOBILE          ; STANDARD_RATE ; "hkt"                    ; "fmt1_4/4"     ; "HK"    ; IR21
+533          ; 8      ; MOBILE          ; STANDARD_RATE ; "3"                      ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+538          ; 8      ; MOBILE          ; STANDARD_RATE ; "china_unicom"           ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+540          ; 8      ; MOBILE          ; STANDARD_RATE ; "sun_mobile"             ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+54[137]      ; 8      ; MOBILE          ; STANDARD_RATE ; "hkt"                    ; "fmt1_4/4"     ; "HK"    ; IR21
+54[2489]     ; 8      ; MOBILE          ; STANDARD_RATE ; "china_mobile"           ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+5[45]6       ; 8      ; MOBILE          ; STANDARD_RATE ; "3"                      ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+55[09]       ; 8      ; MOBILE          ; STANDARD_RATE ; "smartone"               ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+55[137]      ; 8      ; MOBILE          ; STANDARD_RATE ; "china_mobile"           ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+55[28]       ; 8      ; MOBILE          ; STANDARD_RATE ; "hkt"                    ; "fmt1_4/4"     ; "HK"    ; IR21
+554[0-8]     ; 8      ; MOBILE          ; STANDARD_RATE ; "sun_mobile"             ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+5549         ; 8      ; MOBILE          ; STANDARD_RATE ;                          ; "fmt1_4/4"     ; "HK"
+56[0-24]     ; 8      ; MOBILE          ; STANDARD_RATE ; "china_mobile"           ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+56[369]      ; 8      ; MOBILE          ; STANDARD_RATE ; "3"                      ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+568          ; 8      ; MOBILE          ; STANDARD_RATE ; "hkt"                    ; "fmt1_4/4"     ; "HK"    ; IR21
+570[0145]    ; 8      ; MOBILE          ; STANDARD_RATE ; "multibyte"              ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+570[23]      ; 8      ; MOBILE          ; STANDARD_RATE ; "sun_mobile"             ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+5706         ; 8      ; MOBILE          ; STANDARD_RATE ; "hkbn"                   ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+570[78]      ; 8      ; MOBILE          ; STANDARD_RATE ; "china_mobile"           ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+5709         ; 8      ; MOBILE          ; STANDARD_RATE ; "citic"                  ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+571[0-7]     ; 8      ; MOBILE          ; STANDARD_RATE ; "hkt"                    ; "fmt1_4/4"     ; "HK"    ; IR21
+57[16][89]   ; 8      ; MOBILE          ; STANDARD_RATE ; "lycamobile"             ; "fmt1_4/4"     ; "HK"
+572          ; 8      ; MOBILE          ; STANDARD_RATE ; "smartone"               ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+573[0-6]     ; 8      ; MOBILE          ; STANDARD_RATE ; "china_mobile"           ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+574[0-4]     ; 8      ; MOBILE          ; STANDARD_RATE ; "smartone"               ; "fmt1_4/4"     ; "HK"    ; IR21
+574[5-8]     ; 8      ; MOBILE          ; STANDARD_RATE ; "multibyte"              ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+5749         ; 8      ; MOBILE          ; STANDARD_RATE ; "china_mobile"           ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+576[0-7]     ; 8      ; MOBILE          ; STANDARD_RATE ; "china_mobile"           ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+577          ; 8      ; MOBILE          ; STANDARD_RATE ; "china_mobile"           ; "fmt1_4/4"     ; "HK"    ; IR21
+579          ; 8      ; MOBILE          ; STANDARD_RATE ; "hkt"                    ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+580[135-8]   ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+580[24]      ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fmt1_4/4"     ; "HK"
+5812         ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fmt1_4/4"     ; "HK"
+581[3-9]     ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+590[0-5]     ; 8      ; MOBILE          ; STANDARD_RATE ; "hkt"                    ; "fmt1_4/4"     ; "HK"    ; IR21
+590[67]      ; 8      ; MOBILE          ; STANDARD_RATE ; "21vianet"               ; "fmt1_4/4"     ; "HK"
+590[89]      ; 8      ; MOBILE          ; STANDARD_RATE ; "lycamobile"             ; "fmt1_4/4"     ; "HK"
+59[1249]     ; 8      ; MOBILE          ; STANDARD_RATE ; "hkt"                    ; "fmt1_4/4"     ; "HK"    ; IR21
+59[38]       ; 8      ; MOBILE          ; STANDARD_RATE ; "china_mobile"           ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+59[67]       ; 8      ; MOBILE          ; STANDARD_RATE ; "3"                      ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+6[01]1       ; 8      ; MOBILE          ; STANDARD_RATE ; "smartone"               ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+60[235]      ; 8      ; MOBILE          ; STANDARD_RATE ; "hkt"                    ; "fmt1_4/4"     ; "HK"    ; IR21
+60[478]      ; 8      ; MOBILE          ; STANDARD_RATE ; "3"                      ; "fmt1_4/4"     ; "HK"    ; IR21
+60[69]       ; 8      ; MOBILE          ; STANDARD_RATE ; "china_mobile"           ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+61[09]       ; 8      ; MOBILE          ; STANDARD_RATE ; "3"                      ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+61[2-46-8]   ; 8      ; MOBILE          ; STANDARD_RATE ; "hkt"                    ; "fmt1_4/4"     ; "HK"    ; IR21
+6[13]5       ; 8      ; MOBILE          ; STANDARD_RATE ; "china_mobile"           ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+6[24][07]    ; 8      ; MOBILE          ; STANDARD_RATE ; "3"                      ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+62[1-3]      ; 8      ; MOBILE          ; STANDARD_RATE ; "china_mobile"           ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+624          ; 8      ; MOBILE          ; STANDARD_RATE ;                          ; "fmt1_4/4"     ; "HK"
+62[589]      ; 8      ; MOBILE          ; STANDARD_RATE ; "hkt"                    ; "fmt1_4/4"     ; "HK"    ; IR21
+6260         ; 8      ; MOBILE          ; STANDARD_RATE ; "3"                      ; "fmt1_4/4"     ; "HK"    ; IR21
+6261         ; 8      ; MOBILE          ; STANDARD_RATE ; "webbing"                ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+626[3-8]     ; 8      ; MOBILE          ; STANDARD_RATE ; "china_mobile"           ; "fmt1_4/4"     ; "HK"    ; IR21
+63[07-9]     ; 8      ; MOBILE          ; STANDARD_RATE ; "hkt"                    ; "fmt1_4/4"     ; "HK"    ; IR21
+63[134]      ; 8      ; MOBILE          ; STANDARD_RATE ; "3"                      ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+632          ; 8      ; MOBILE          ; STANDARD_RATE ; "smartone"               ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+6360         ; 8      ; MOBILE          ; STANDARD_RATE ; "sun_mobile"             ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+6361         ; 8      ; MOBILE          ; STANDARD_RATE ; "china_unicom"           ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+6362         ; 8      ; MOBILE          ; STANDARD_RATE ; "ctg"                    ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+636[3-9]     ; 8      ; MOBILE          ; STANDARD_RATE ;                          ; "fmt1_4/4"     ; "HK"
+64[1249]     ; 8      ; MOBILE          ; STANDARD_RATE ; "hkt"                    ; "fmt1_4/4"     ; "HK"    ; IR21
+64[358]      ; 8      ; MOBILE          ; STANDARD_RATE ; "china_mobile"           ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+646          ; 8      ; MOBILE          ; STANDARD_RATE ; "smartone"               ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+6[59]0       ; 8      ; MOBILE          ; STANDARD_RATE ; "3"                      ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+651          ; 8      ; MOBILE          ; STANDARD_RATE ; "china_hongkong_telecom" ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+65[256]      ; 8      ; MOBILE          ; STANDARD_RATE ; "china_unicom"           ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+65[349]      ; 8      ; MOBILE          ; STANDARD_RATE ; "hkt"                    ; "fmt1_4/4"     ; "HK"    ; IR21
+65[78]       ; 8      ; MOBILE          ; STANDARD_RATE ; "china_mobile"           ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+66[0259]     ; 8      ; MOBILE          ; STANDARD_RATE ; "hkt"                    ; "fmt1_4/4"     ; "HK"    ; IR21
+66[13]       ; 8      ; MOBILE          ; STANDARD_RATE ; "china_unicom"           ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+66[47]       ; 8      ; MOBILE          ; STANDARD_RATE ; "china_mobile"           ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+666[0-3]     ; 8      ; MOBILE          ; STANDARD_RATE ; "china_unicom"           ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+668          ; 8      ; MOBILE          ; STANDARD_RATE ; "3"                      ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+67[0346]     ; 8      ; MOBILE          ; STANDARD_RATE ; "china_mobile"           ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+67[157]      ; 8      ; MOBILE          ; STANDARD_RATE ; "hkt"                    ; "fmt1_4/4"     ; "HK"    ; IR21
+672          ; 8      ; MOBILE          ; STANDARD_RATE ; "china_unicom"           ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+679          ; 8      ; MOBILE          ; STANDARD_RATE ; "3"                      ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+68[029]      ; 8      ; MOBILE          ; STANDARD_RATE ; "hkt"                    ; "fmt1_4/4"     ; "HK"    ; IR21
+68[18]       ; 8      ; MOBILE          ; STANDARD_RATE ; "china_unicom"           ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+683          ; 8      ; MOBILE          ; STANDARD_RATE ;                          ; "fmt1_4/4"     ; "HK"
+68[457]      ; 8      ; MOBILE          ; STANDARD_RATE ; "china_mobile"           ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+69[13-59]    ; 8      ; MOBILE          ; STANDARD_RATE ; "china_mobile"           ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+69[27]       ; 8      ; MOBILE          ; STANDARD_RATE ; "hkt"                    ; "fmt1_4/4"     ; "HK"    ; IR21
+69[68]       ; 8      ; MOBILE          ; STANDARD_RATE ;                          ; "fmt1_4/4"     ; "HK"
+707[1-5]     ; 8      ; MOBILE          ; STANDARD_RATE ; "smartone"               ; "fmt1_4/4"     ; "HK"    ; IR21
+708[0-4]     ; 8      ; MOBILE          ; STANDARD_RATE ; "hkt"                    ; "fmt1_4/4"     ; "HK"    ; IR21
+710[0-38]    ; 8      ; PAGER           ; STANDARD_RATE ;                          ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+711[0-3679]  ; 8      ; PAGER           ; STANDARD_RATE ;                          ; "fmt1_4/4"     ; "HK"
+713[013]     ; 8      ; PAGER           ; STANDARD_RATE ;                          ; "fmt1_4/4"     ; "HK"
+7169         ; 8      ; PAGER           ; STANDARD_RATE ;                          ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+719[0136]    ; 8      ; PAGER           ; STANDARD_RATE ;                          ; "fmt1_4/4"     ; "HK"
+72[02389]    ; 8      ; PAGER           ; STANDARD_RATE ;                          ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+721[18]      ; 8      ; PAGER           ; STANDARD_RATE ;                          ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+727[27-9]    ; 8      ; PAGER           ; STANDARD_RATE ;                          ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+73[0-38]     ; 8      ; PAGER           ; STANDARD_RATE ;                          ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+737[0-369]   ; 8      ; PAGER           ; STANDARD_RATE ;                          ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+739[2357-9]  ; 8      ; PAGER           ; STANDARD_RATE ;                          ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+747          ; 8      ; PAGER           ; STANDARD_RATE ;                          ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+75[178]      ; 8      ; PAGER           ; STANDARD_RATE ;                          ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+755[0-5]     ; 8      ; PAGER           ; STANDARD_RATE ;                          ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+760[0-7]     ; 8      ; PAGER           ; STANDARD_RATE ;                          ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+762[236-9]   ; 8      ; PAGER           ; STANDARD_RATE ;                          ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+76[35]       ; 8      ; PAGER           ; STANDARD_RATE ;                          ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+77[27]       ; 8      ; PAGER           ; STANDARD_RATE ;                          ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+778[7-9]     ; 8      ; PAGER           ; STANDARD_RATE ;                          ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+78[23689]    ; 8      ; PAGER           ; STANDARD_RATE ;                          ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+787[1-9]     ; 8      ; PAGER           ; STANDARD_RATE ;                          ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+79[02]       ; 8      ; PAGER           ; STANDARD_RATE ;                          ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+795          ; 8      ; PAGER           ; STANDARD_RATE ;                          ; "fmt1_4/4"     ; "HK"
+796[0-246-8] ; 8      ; PAGER           ; STANDARD_RATE ;                          ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+797[0-36-9]  ; 8      ; PAGER           ; STANDARD_RATE ;                          ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+798[238]     ; 8      ; PAGER           ; STANDARD_RATE ;                          ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+800          ; 9      ; FIXED_LINE      ; TOLL_FREE     ;                          ; "fmt2_3/3/3"   ; "HK"
+81[0-4679]   ; 8      ; PERSONAL_NUMBER ; STANDARD_RATE ;                          ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+82[0-36]     ; 8      ; PERSONAL_NUMBER ; STANDARD_RATE ;                          ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+827[0-4]     ; 8      ; PERSONAL_NUMBER ; STANDARD_RATE ;                          ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+83[034]      ; 8      ; PERSONAL_NUMBER ; STANDARD_RATE ;                          ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+83[27]0      ; 8      ; PERSONAL_NUMBER ; STANDARD_RATE ;                          ; "fmt1_4/4"     ; "HK"
+8329         ; 8      ; PERSONAL_NUMBER ; STANDARD_RATE ;                          ; "fmt1_4/4"     ; "HK"    ; IR21
+84[09]       ; 8      ; MOBILE          ; STANDARD_RATE ; "china_mobile"           ; "fmt1_4/4"     ; "HK"    ; IR21
+8480         ; 8      ; MOBILE          ; STANDARD_RATE ; "handy"                  ; "fmt1_4/4"     ; "HK"
+8481         ; 8      ; MOBILE          ; STANDARD_RATE ; "sun_mobile"             ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+848[5-9]     ; 8      ; MOBILE          ; STANDARD_RATE ; "smartone"               ; "fmt1_4/4"     ; "HK"    ; IR21
+900[0-24-9]  ; 11     ; FIXED_LINE      ; PREMIUM_RATE  ;                          ; "fmt3_3/2/3/3" ; "HK"
+9003         ; 5-8    ; FIXED_LINE      ; PREMIUM_RATE  ;                          ; "fmt4_3/2-5"   ; "HK"
+901          ; 8      ; MOBILE          ; STANDARD_RATE ; "smartone"               ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+90[237-9]    ; 8      ; MOBILE          ; STANDARD_RATE ; "hkt"                    ; "fmt1_4/4"     ; "HK"    ; IR21
+904          ; 8      ; MOBILE          ; STANDARD_RATE ; "3"                      ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+905[0-689]   ; 8      ; MOBILE          ; STANDARD_RATE ;                          ; "fmt1_4/4"     ; "HK"
+9057         ; 8      ; MOBILE          ; STANDARD_RATE ; "hkt"                    ; "fmt1_4/4"     ; "HK"
+906          ; 8      ; MOBILE          ; STANDARD_RATE ; "china_mobile"           ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+91[0589]     ; 8      ; MOBILE          ; STANDARD_RATE ; "hkt"                    ; "fmt1_4/4"     ; "HK"    ; IR21
+912          ; 8      ; MOBILE          ; STANDARD_RATE ; "3"                      ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+91[367]      ; 8      ; MOBILE          ; STANDARD_RATE ; "smartone"               ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+9[13]4       ; 8      ; MOBILE          ; STANDARD_RATE ; "china_mobile"           ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+9[26]0       ; 8      ; MOBILE          ; STANDARD_RATE ; "china_mobile"           ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+92[135-7]    ; 8      ; MOBILE          ; STANDARD_RATE ; "hkt"                    ; "fmt1_4/4"     ; "HK"    ; IR21
+92[24]       ; 8      ; MOBILE          ; STANDARD_RATE ; "smartone"               ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+928          ; 8      ; MOBILE          ; STANDARD_RATE ; "3"                      ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+9290         ; 8      ; MOBILE          ; STANDARD_RATE ; "multibyte"              ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+9291         ; 8      ; MOBILE          ; STANDARD_RATE ; "sun_mobile"             ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+929[3-9]     ; 8      ; MOBILE          ; STANDARD_RATE ; "china_unicom"           ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+93[03]       ; 8      ; MOBILE          ; STANDARD_RATE ; "hkt"                    ; "fmt1_4/4"     ; "HK"    ; IR21
+93[18]       ; 8      ; MOBILE          ; STANDARD_RATE ; "smartone"               ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+93[25-7]     ; 8      ; MOBILE          ; STANDARD_RATE ; "3"                      ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+94[06]       ; 8      ; MOBILE          ; STANDARD_RATE ; "hkt"                    ; "fmt1_4/4"     ; "HK"    ; IR21
+94[127-9]    ; 8      ; MOBILE          ; STANDARD_RATE ; "3"                      ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+94[3-5]      ; 8      ; MOBILE          ; STANDARD_RATE ; "smartone"               ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+95[07]       ; 8      ; MOBILE          ; STANDARD_RATE ; "3"                      ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+95[18]       ; 8      ; MOBILE          ; STANDARD_RATE ; "china_mobile"           ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+95[235]      ; 8      ; MOBILE          ; STANDARD_RATE ; "hkt"                    ; "fmt1_4/4"     ; "HK"    ; IR21
+954          ; 8      ; MOBILE          ; STANDARD_RATE ; "smartone"               ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+956          ; 8      ; MOBILE          ; STANDARD_RATE ; "china_unicom"           ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+959[0-4]     ; 8      ; MOBILE          ; STANDARD_RATE ; "hkt"                    ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+96[1245]     ; 8      ; MOBILE          ; STANDARD_RATE ; "hkt"                    ; "fmt1_4/4"     ; "HK"    ; IR21
+96[37]       ; 8      ; MOBILE          ; STANDARD_RATE ; "3"                      ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+96[68]       ; 8      ; MOBILE          ; STANDARD_RATE ; "smartone"               ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+969          ; 8      ; MOBILE          ; STANDARD_RATE ; "china_hongkong_telecom" ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+97[045]      ; 8      ; MOBILE          ; STANDARD_RATE ; "3"                      ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+97[19]       ; 8      ; MOBILE          ; STANDARD_RATE ; "china_mobile"           ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+97[23]       ; 8      ; MOBILE          ; STANDARD_RATE ; "smartone"               ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+97[6-8]      ; 8      ; MOBILE          ; STANDARD_RATE ; "hkt"                    ; "fmt1_4/4"     ; "HK"    ; IR21
+98[078]      ; 8      ; MOBILE          ; STANDARD_RATE ; "hkt"                    ; "fmt1_4/4"     ; "HK"    ; IR21
+98[1-3]      ; 8      ; MOBILE          ; STANDARD_RATE ; "3"                      ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+98[4-6]      ; 8      ; MOBILE          ; STANDARD_RATE ; "smartone"               ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT

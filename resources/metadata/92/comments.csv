@@ -1,0 +1,11 @@
+Region ; Label               ; Comment
+PK     ; SC                  ; "http://www.itu.int/oth/T02020000A1/en"
+PK     ; SC                  ; "http://en.wikipedia.org/wiki/%2B92"
+PK     ; XML                 ; "http://www.itu.int/oth/T02020000A1/en"
+PK     ; XML                 ; "http://en.wikipedia.org/wiki/%2B92"
+PK     ; XML_FIXED_LINE      ; "The subscriber number length is not well defined for some area codes. From online\nexamples, we have come up with a heuristic that for 3-digit area codes, the subscriber\nnumber will be 6 or 7 digits - for 2-digit area codes it will be 7, with the exceptions\nof Karachi and Lahore (both 8)."
+PK     ; XML_MOBILE          ; "Adding 325 and 320 as SMSs have been successfully sent to these numbers and numbers\ncan be found online with these prefixes. Added 348 based on information found\nonline."
+PK     ; XML_PERSONAL_NUMBER ; "These are referred to as UPT numbers in the plan."
+PK     ; XML_PERSONAL_NUMBER ; "The example number here is the test number from the plan."
+PK     ; XML_TOLL_FREE       ; "Prefix 800 (11 digits) added based on user report."
+PK     ; XML_UAN             ; "Data on what a UAN is is hard to come by. http://www.ptcl.com.pk has information under\nhttp://www.ptcl.com.pk/contentb.php?NID=143#uan - which defines their format - but not\nwhat type of number they are. We exclude Azad Jammu, Kashmir and Northern Areas here\nsince no online example UANs can be found, and they have an ""access code"" at the start,\nmaking it difficult to guess what a UAN in these areas would look like."

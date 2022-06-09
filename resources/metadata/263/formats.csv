@@ -1,0 +1,11 @@
+Id            ; National        ; International  ; Comment
+fixed_1/3/2-4 ; "#X XXX XX**"   ; "X XXX XX**"   ; "One-digit area codes"
+fixed_2/3-5   ; "#XX XXX**"     ; "XX XXX**"     ; "Two-digit area codes (short format)"
+fixed_2/3/3-4 ; "#XX XXX XXX*"  ; "XX XXX XXX*"  ; "Two-digit area codes (long format)"
+fixed_2/7     ; "(#XX) XXXXXXX" ; "XX XXXXXXX"   ; "Format of new fixed-line ranges after renumbering."
+fixed_3/3-5   ; "#XXX XXX**"    ; "XXX XXX**"    ; "Three-digit area codes (short format)"
+fixed_3/3/3-4 ; "#XXX XXX XXX*" ; "XXX XXX XXX*" ; "Three-digit area codes (long format)"
+fixed_4/3-5   ; "#XXXX XXX**"   ; "XXXX XXX**"   ; "Four-digit area codes (short format)"
+mobile_2/3/4  ; "#XX XXX XXXX"  ; "XX XXX XXXX"  ; "Mobile numbers"
+tollfree_3/4  ; "#XXX XXXX"     ; "XXX XXXX"     ; "Tollfree Numbers"
+voip_4/6      ; "#XXXX XXXXXX"  ; "XXXX XXXXXX"  ; "VOIP numbers"

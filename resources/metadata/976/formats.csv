@@ -1,0 +1,6 @@
+Id               ; National       ; International ; Comment
+fixed_line_2/2/4 ; "#XX XX XXXX"  ; "XX XX XXXX"  ; "For fixed-line single digit area code numbers. We have only ""1"" as single digit\narea code until now. Grouping access code and area code, this is why first two\ndigits are grouped."
+fixed_line_3/5-6 ; "#XXX XXXXX*"  ; "XXX XXXXX*"  ; "For fixed-line two digit area code numbers."
+fixed_line_4/5-6 ; "#XXXX XXXXX*" ; "XXXX XXXXX*" ; "For fixed-line three digit area code numbers."
+fixed_line_5/4-5 ; "#XXXXX XXXX*" ; "XXXXX XXXX*" ; "For fixed-line four digit area code numbers."
+fmt1_4/4         ; "XXXX XXXX"    ; "XXXX XXXX"   ; "Format for 5X wireless local loop numbers (that are supported in fixed-line)\nwhich do not need national prefix as per online results."

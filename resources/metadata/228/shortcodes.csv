@@ -1,0 +1,5 @@
+Region ; Prefix  ; Length ; Type               ; Tariff
+TG     ; 1011    ; 4      ; EXPANDED_EMERGENCY
+TG     ; 110     ; 3      ; EXPANDED_EMERGENCY
+TG     ; 11[78]  ; 3      ; EMERGENCY          ; TOLL_FREE
+TG     ; 17[127] ; 3      ; EMERGENCY          ; TOLL_FREE

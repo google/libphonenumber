@@ -1,0 +1,5 @@
+Region ; Type         ; Number
+UY     ; FIXED_LINE   ; "21231234"
+UY     ; MOBILE       ; "94231234"
+UY     ; TOLL_FREE    ; "8001234"
+UY     ; PREMIUM_RATE ; "9001234"
