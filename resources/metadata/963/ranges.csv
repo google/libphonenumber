@@ -1,0 +1,25 @@
+Prefix    ; Length ; Type       ; Tariff        ; Area Code Length ; Operator   ; Format          ; Regions ; Geocode:en                 ; Provenance
+11        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fixed_2/3/3-4" ; "SY"    ; "Damascus and rural areas" ; ITU
+12        ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fixed_2/3/3-4" ; "SY"    ; "Al-Nebek"                 ; ITU
+13        ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fixed_2/3/3-4" ; "SY"    ; "Al-Zabadani"              ; ITU
+14        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fixed_2/3/3-4" ; "SY"    ; "Al-Quneitra"              ; ITU
+15        ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fixed_2/3/3-4" ; "SY"    ; "Dara"                     ; ITU
+16        ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fixed_2/3/3-4" ; "SY"    ; "Al-Swedaa"                ; ITU
+21        ; 8,9    ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fixed_2/3/3-4" ; "SY"    ; "Aleppo"                   ; ITU
+22        ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fixed_2/3/3-4" ; "SY"    ; "Al-Rakkah"                ; ITU
+23        ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fixed_2/3/3-4" ; "SY"    ; "Edleb"                    ; ITU
+25        ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fixed_2/3/3-4" ; "SY"    ; "Menbej"                   ; ITU
+31        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fixed_2/3/3-4" ; "SY"    ; "Homs"                     ; ITU
+33        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fixed_2/3/3-4" ; "SY"    ; "Hamah"                    ; ITU
+34        ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fixed_2/3/3-4" ; "SY"    ; "Palmyra"                  ; ITU
+41        ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fixed_2/3/3-4" ; "SY"    ; "Lattakia"                 ; ITU
+43        ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fixed_2/3/3-4" ; "SY"    ; "Tartous"                  ; ITU
+44        ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fixed_2/3/3-4" ; "SY"    ; "Hamah"                    ; ITU
+51        ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fixed_2/3/3-4" ; "SY"    ; "Deir Ezzour"              ; ITU
+52        ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fixed_2/3/3-4" ; "SY"    ; "Alhasakah"                ; ITU
+53        ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fixed_2/3/3-4" ; "SY"    ; "Al-Kameshli"              ; ITU
+9[12]     ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "wafa"     ; "mobile_3/3/3"  ; "SY"    ;                            ; ITU
+9[389]    ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "syriatel" ; "mobile_3/3/3"  ; "SY"    ;                            ; IR21
+9[46]     ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "mtn"      ; "mobile_3/3/3"  ; "SY"
+95[024-9] ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "mtn"      ; "mobile_3/3/3"  ; "SY"
+95[13]    ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;            ; "mobile_3/3/3"  ; "SY"

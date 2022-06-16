@@ -1,0 +1,6 @@
+Region ; Label   ; Comment
+LT     ; SC      ; "http://www.itu.int/oth/T020200007C/en"
+LT     ; XML     ; "Note that Lithuania is switching to a national prefix of 0. We support\nboth 0 and 8 when parsing until this switch is complete."
+LT     ; XML     ; "http://www.itu.int/oth/T020200007C/en"
+LT     ; XML     ; "National Prefix formatting rule from http://www.yellowpages.lt"
+LT     ; XML_UAN ; "Including government service numbers here too."

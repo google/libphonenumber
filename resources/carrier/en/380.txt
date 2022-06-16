@@ -16,6 +16,7 @@
 
 # Telesystems of Ukraine is commonly known as PEOPLEnet.
 
+38039|Kyivstar
 38050|Vodafone
 38063|lifecell
 38066|Vodafone

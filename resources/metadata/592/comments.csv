@@ -1,0 +1,6 @@
+Region ; Label               ; Comment
+GY     ; SC                  ; "http://www.itu.int/oth/T020200005D/en"
+GY     ; SC_CARRIER_SPECIFIC ; "https://support.twitter.com/articles/20170024"
+GY     ; SC_SMS_SERVICES     ; "https://support.twitter.com/articles/20170024"
+GY     ; XML                 ; "http://www.itu.int/oth/T020200005D/en"
+GY     ; XML_MOBILE          ; "Although the ITU document would allow for a stricter pattern, the country has a track\nrecord of underreporting valid mobile ranges and 6XXXXXX is almost fully assigned.\nA more lenient pattern is better here."

@@ -1,0 +1,4 @@
+Region ; Type       ; Number
+FJ     ; FIXED_LINE ; "3212345"
+FJ     ; MOBILE     ; "7012345"
+FJ     ; TOLL_FREE  ; "08001234567"

@@ -1,0 +1,95 @@
+Prefix        ; Length ; Type       ; Tariff        ; Area Code Length ; National Only ; Operator         ; Format        ; Regions ; Geocode:en          ; Geocode:hu          ; Provenance
+1             ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ; false         ;                  ; "fixed_1/3/4" ; "HU"    ; "Budapest"          ; "Budapest"
+20            ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ; "yettel"         ; "fmt_2/3/3-4" ; "HU"    ;                     ;                     ; IR21
+21            ; 9      ; VOIP       ; STANDARD_RATE ;                  ; false         ;                  ; "fmt_2/3/3-4" ; "HU"
+22            ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                  ; "fixed_2/3/3" ; "HU"    ; "Székesfehérvár"    ; "Székesfehérvár"
+23            ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                  ; "fixed_2/3/3" ; "HU"    ; "Biatorbágy"        ; "Biatorbágy"
+24            ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                  ; "fixed_2/3/3" ; "HU"    ; "Szigetszentmiklós" ; "Szigetszentmiklós"
+25            ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                  ; "fixed_2/3/3" ; "HU"    ; "Dunaujvaros"       ; "Dunaújváros"
+26            ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                  ; "fixed_2/3/3" ; "HU"    ; "Szentendre"        ; "Szentendre"
+27            ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                  ; "fixed_2/3/3" ; "HU"    ; "Vac"               ; "Vác"
+28            ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                  ; "fixed_2/3/3" ; "HU"    ; "Godollo"           ; "Gödöllő"
+29            ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                  ; "fixed_2/3/3" ; "HU"    ; "Monor"             ; "Monor"
+30            ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "magyar_telekom" ; "fmt_2/3/3-4" ; "HU"    ;                     ;                     ; IR21
+31[014-689]   ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ;                  ; "fmt_2/3/3-4" ; "HU"    ;                     ;                     ; UNKNOWN
+31200[01]     ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ; "netfone"        ; "fmt_2/3/3-4" ; "HU"    ;                     ;                     ; GOVERNMENT
+31200[2-9]    ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ;                  ; "fmt_2/3/3-4" ; "HU"    ;                     ;                     ; UNKNOWN
+3120[1-9]     ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ;                  ; "fmt_2/3/3-4" ; "HU"    ;                     ;                     ; UNKNOWN
+312[1-9]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ;                  ; "fmt_2/3/3-4" ; "HU"    ;                     ;                     ; UNKNOWN
+313[0457-9]   ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ;                  ; "fmt_2/3/3-4" ; "HU"    ;                     ;                     ; UNKNOWN
+3131[0-8]     ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ; "vodafone"       ; "fmt_2/3/3-4" ; "HU"    ;                     ;                     ; IR21
+31319[0-79]   ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ; "vodafone"       ; "fmt_2/3/3-4" ; "HU"    ;                     ;                     ; IR21
+313198        ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ;                  ; "fmt_2/3/3-4" ; "HU"    ;                     ;                     ; UNKNOWN
+3132[0-8]     ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ; "vodafone"       ; "fmt_2/3/3-4" ; "HU"    ;                     ;                     ; IR21
+31329[0-2]    ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ; "vodafone"       ; "fmt_2/3/3-4" ; "HU"    ;                     ;                     ; IR21
+31329[3-9]    ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ;                  ; "fmt_2/3/3-4" ; "HU"    ;                     ;                     ; UNKNOWN
+3133[0-2]     ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ; "vodafone"       ; "fmt_2/3/3-4" ; "HU"    ;                     ;                     ; IR21
+31333[01]     ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ; "vidanet"        ; "fmt_2/3/3-4" ; "HU"    ;                     ;                     ; GOVERNMENT
+31333[2-9]    ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ;                  ; "fmt_2/3/3-4" ; "HU"    ;                     ;                     ; UNKNOWN
+3133[4-9]     ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ;                  ; "fmt_2/3/3-4" ; "HU"    ;                     ;                     ; UNKNOWN
+3136[0-57-9]  ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ;                  ; "fmt_2/3/3-4" ; "HU"    ;                     ;                     ; UNKNOWN
+31366[0-57-9] ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ;                  ; "fmt_2/3/3-4" ; "HU"    ;                     ;                     ; UNKNOWN
+313666        ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ; "vodafone"       ; "fmt_2/3/3-4" ; "HU"    ;                     ;                     ; IR21
+31700[0-4]    ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ; "tarr"           ; "fmt_2/3/3-4" ; "HU"    ;                     ;                     ; IR21
+31700[5-9]    ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ;                  ; "fmt_2/3/3-4" ; "HU"    ;                     ;                     ; UNKNOWN
+3170[1-9]     ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ;                  ; "fmt_2/3/3-4" ; "HU"    ;                     ;                     ; UNKNOWN
+317[1-6]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ;                  ; "fmt_2/3/3-4" ; "HU"    ;                     ;                     ; UNKNOWN
+3177[01]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ; "upc"            ; "fmt_2/3/3-4" ; "HU"    ;                     ;                     ; GOVERNMENT
+3177[2-9]     ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ;                  ; "fmt_2/3/3-4" ; "HU"    ;                     ;                     ; UNKNOWN
+3178          ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ; "upc"            ; "fmt_2/3/3-4" ; "HU"    ;                     ;                     ; GOVERNMENT
+31790         ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ; "upc"            ; "fmt_2/3/3-4" ; "HU"    ;                     ;                     ; GOVERNMENT
+3179[1-9]     ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ;                  ; "fmt_2/3/3-4" ; "HU"    ;                     ;                     ; UNKNOWN
+32            ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                  ; "fixed_2/3/3" ; "HU"    ; "Salgotarjan"       ; "Salgótarján"
+33            ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                  ; "fixed_2/3/3" ; "HU"    ; "Esztergom"         ; "Esztergom"
+34            ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                  ; "fixed_2/3/3" ; "HU"    ; "Tatabanya"         ; "Tatabánya"
+35            ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                  ; "fixed_2/3/3" ; "HU"    ; "Balassagyarmat"    ; "Balassagyarmat"
+36            ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                  ; "fixed_2/3/3" ; "HU"    ; "Eger"              ; "Eger"
+37            ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                  ; "fixed_2/3/3" ; "HU"    ; "Gyongyos"          ; "Gyöngyös"
+38            ; 9      ; UAN        ; STANDARD_RATE ;                  ; false         ;                  ; "fmt_2/3/3-4" ; "HU"
+[48]0         ; 8      ; FIXED_LINE ; TOLL_FREE     ;                  ; true          ;                  ; "fmt_2/3/3-4" ; "HU"
+42            ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                  ; "fixed_2/3/3" ; "HU"    ; "Nyiregyhaza"       ; "Nyíregyháza"
+44            ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                  ; "fixed_2/3/3" ; "HU"    ; "Mátészalka"        ; "Mátészalka"
+45            ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                  ; "fixed_2/3/3" ; "HU"    ; "Kisvarda"          ; "Kisvárda"
+46            ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                  ; "fixed_2/3/3" ; "HU"    ; "Miskolc"           ; "Miskolc"
+47            ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                  ; "fixed_2/3/3" ; "HU"    ; "Szerencs"          ; "Szerencs"
+48            ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                  ; "fixed_2/3/3" ; "HU"    ; "Ozd"               ; "Ózd"
+49            ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                  ; "fixed_2/3/3" ; "HU"    ; "Mezokovesd"        ; "Mezőkövesd"
+50[03-7]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ;                  ; "fmt_2/3/3-4" ; "HU"    ;                     ;                     ; UNKNOWN
+50[12]        ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ; "digi"           ; "fmt_2/3/3-4" ; "HU"    ;                     ;                     ; IR21
+50[89]        ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ; "mvm_net"        ; "fmt_2/3/3-4" ; "HU"
+52            ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                  ; "fixed_2/3/3" ; "HU"    ; "Debrecen"          ; "Debrecen"
+53            ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                  ; "fixed_2/3/3" ; "HU"    ; "Cegled"            ; "Cegléd"
+54            ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                  ; "fixed_2/3/3" ; "HU"    ; "Berettyoujfalu"    ; "Berettyóújfalu"
+55            ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                  ; "fixed_2/3/3" ; "HU"
+56            ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                  ; "fixed_2/3/3" ; "HU"    ; "Szolnok"           ; "Szolnok"
+57            ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                  ; "fixed_2/3/3" ; "HU"    ; "Jaszbereny"        ; "Jászberény"
+59            ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                  ; "fixed_2/3/3" ; "HU"    ; "Karcag"            ; "Karcag"
+62            ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                  ; "fixed_2/3/3" ; "HU"    ; "Szeged"            ; "Szeged"
+63            ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                  ; "fixed_2/3/3" ; "HU"    ; "Szentes"           ; "Szentes"
+66            ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                  ; "fixed_2/3/3" ; "HU"    ; "Bekescsaba"        ; "Békéscsaba"
+68            ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                  ; "fixed_2/3/3" ; "HU"    ; "Oroshaza"          ; "Orosháza"
+680[29]       ; 9      ; FIXED_LINE ; TOLL_FREE     ;                  ; true          ;                  ; "fmt_2/3/3-4" ; "HU"
+69            ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                  ; "fixed_2/3/3" ; "HU"    ; "Mohacs"            ; "Mohács"
+70            ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ; "vodafone"       ; "fmt_2/3/3-4" ; "HU"    ;                     ;                     ; GOVERNMENT
+72            ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                  ; "fixed_2/3/3" ; "HU"    ; "Pecs"              ; "Pécs"
+73            ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                  ; "fixed_2/3/3" ; "HU"    ; "Szigetvar"         ; "Szigetvár"
+74            ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                  ; "fixed_2/3/3" ; "HU"    ; "Szekszard"         ; "Szekszárd"
+75            ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                  ; "fixed_2/3/3" ; "HU"    ; "Paks"              ; "Paks"
+76            ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                  ; "fixed_2/3/3" ; "HU"    ; "Kecskemet"         ; "Kecskemét"
+77            ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                  ; "fixed_2/3/3" ; "HU"    ; "Kiskunhalas"       ; "Kiskunhalas"
+78            ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                  ; "fixed_2/3/3" ; "HU"    ; "Kiskoros"          ; "Kiskőrös"
+79            ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                  ; "fixed_2/3/3" ; "HU"    ; "Baja"              ; "Baja"
+82            ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                  ; "fixed_2/3/3" ; "HU"    ; "Kaposvar"          ; "Kaposvár"
+83            ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                  ; "fixed_2/3/3" ; "HU"    ; "Keszthely"         ; "Keszthely"
+84            ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                  ; "fixed_2/3/3" ; "HU"    ; "Siofok"            ; "Siófok"
+85            ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                  ; "fixed_2/3/3" ; "HU"    ; "Marcali"           ; "Marcali"
+87            ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                  ; "fixed_2/3/3" ; "HU"    ; "Tapolca"           ; "Tapolca"
+88            ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                  ; "fixed_2/3/3" ; "HU"    ; "Veszprem"          ; "Veszprém"
+89            ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                  ; "fixed_2/3/3" ; "HU"    ; "Papa"              ; "Pápa"
+9[01]         ; 8      ; FIXED_LINE ; PREMIUM_RATE  ;                  ; false         ;                  ; "fmt_2/3/3-4" ; "HU"
+92            ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                  ; "fixed_2/3/3" ; "HU"    ; "Zalaegerszeg"      ; "Zalaegerszeg"
+93            ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                  ; "fixed_2/3/3" ; "HU"    ; "Nagykanizsa"       ; "Nagykanizsa"
+94            ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                  ; "fixed_2/3/3" ; "HU"    ; "Szombathely"       ; "Szombathely"
+95            ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                  ; "fixed_2/3/3" ; "HU"    ; "Sarvar"            ; "Sárvár"
+96            ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                  ; "fixed_2/3/3" ; "HU"    ; "Gyor"              ; "Győr"
+99            ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                  ; "fixed_2/3/3" ; "HU"    ; "Sopron"            ; "Sopron"

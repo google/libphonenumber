@@ -181,8 +181,10 @@ message PhoneMetadata {
   // matching the international prefixes will be stored in this field.
   optional string international_prefix = 11;
 
-  // If more than one international prefix is present, a preferred prefix can
-  // be specified here for out-of-country formatting purposes. If this field is
+  // If the international prefix that we want to use when formatting the number
+  // for out-of-country dialling contains non-digit symbols, or there is more
+  // than one international prefix is present, a preferred prefix can be
+  // specified here for out-of-country formatting purposes. If this field is
   // not present, and multiple international prefixes are present, then "+"
   // will be used instead.
   optional string preferred_international_prefix = 17;

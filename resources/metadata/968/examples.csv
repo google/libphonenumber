@@ -1,0 +1,5 @@
+Region ; Type         ; Number
+OM     ; FIXED_LINE   ; "23123456"
+OM     ; MOBILE       ; "92123456"
+OM     ; TOLL_FREE    ; "80071234"
+OM     ; PREMIUM_RATE ; "90012345"

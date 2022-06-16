@@ -30,6 +30,9 @@
 #include "phonenumbers/base/memory/singleton.h"
 #include "phonenumbers/phonenumber.pb.h"
 
+#include "absl/container/node_hash_set.h"
+#include "absl/container/node_hash_map.h"
+
 class TelephoneNumber;
 
 namespace i18n {
@@ -805,17 +808,17 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
       country_calling_code_to_region_code_map_;
 
   // The set of regions that share country calling code 1.
-  scoped_ptr<std::set<string> > nanpa_regions_;
+  scoped_ptr<absl::node_hash_set<string> > nanpa_regions_;
   static const int kNanpaCountryCode = 1;
 
   // A mapping from a region code to a PhoneMetadata for that region.
-  scoped_ptr<std::map<string, PhoneMetadata> > region_to_metadata_map_;
+  scoped_ptr<absl::node_hash_map<string, PhoneMetadata> > region_to_metadata_map_;
 
   // A mapping from a country calling code for a non-geographical entity to the
   // PhoneMetadata for that country calling code. Examples of the country
   // calling codes include 800 (International Toll Free Service) and 808
   // (International Shared Cost Service).
-  scoped_ptr<std::map<int, PhoneMetadata> >
+  scoped_ptr<absl::node_hash_map<int, PhoneMetadata> >
       country_code_to_non_geographical_metadata_map_;
 
   PhoneNumberUtil();

@@ -1,0 +1,5 @@
+Region ; Label      ; Comment
+CY     ; SC         ; "http://www.itu.int/oth/T0202000034/en"
+CY     ; XML        ; "http://www.itu.int/oth/T0202000034/en"
+CY     ; XML_MOBILE ; "Includes paging numbers (they are mixed into the same block)."
+CY     ; XML_UAN    ; "Using for Corporate Network numbers and Universal Service numbers."

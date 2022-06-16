@@ -1,0 +1,15 @@
+Region ; Prefix      ; Length ; Type               ; Tariff       ; Carrier Specific ; Format
+MX     ; 0[17]       ; 3      ; COMMERCIAL
+MX     ; 0[249]0     ; 3      ; COMMERCIAL         ;              ; true
+MX     ; 0[249][1-9] ; 3      ; COMMERCIAL
+MX     ; 0[35][01]   ; 3      ; COMMERCIAL         ;              ; true
+MX     ; 0[35][2-9]  ; 3      ; COMMERCIAL
+MX     ; 06[0568]    ; 3      ; EMERGENCY          ; TOLL_FREE
+MX     ; 061         ; 3      ; EXPANDED_EMERGENCY
+MX     ; 06[2-479]   ; 3      ; COMMERCIAL
+MX     ; 080         ; 3      ; EMERGENCY          ; TOLL_FREE
+MX     ; 08[1-7]     ; 3      ; COMMERCIAL
+MX     ; 08[89]      ; 3      ; EXPANDED_EMERGENCY
+MX     ; 53053       ; 5      ; COMMERCIAL         ; PREMIUM_RATE ;                  ; "shortcode_5"
+MX     ; 7766        ; 4      ; COMMERCIAL         ; PREMIUM_RATE
+MX     ; 911         ; 3      ; EMERGENCY          ; TOLL_FREE

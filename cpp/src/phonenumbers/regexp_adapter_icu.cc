@@ -46,8 +46,7 @@ namespace {
 // Converts UnicodeString 'source' to a UTF8-formatted std::string.
 string UnicodeStringToUtf8String(const UnicodeString& source) {
   string data;
-  StringByteSink sink(&data);
-  source.toUTF8(sink);
+  source.toUTF8String(data);
   return data;
 }
 
@@ -55,7 +54,7 @@ string UnicodeStringToUtf8String(const UnicodeString& source) {
 UnicodeString Utf8StringToUnicodeString(const string& source) {
   // Note that we don't use icu::StringPiece(const string&).
   return UnicodeString::fromUTF8(
-      icu::StringPiece(source.c_str(), source.size()));
+      icu::StringPiece(source.c_str(), static_cast<int>(source.size())));
 }
 
 }  // namespace
@@ -120,7 +119,10 @@ class IcuRegExp : public RegExp {
                        bool anchor_at_start,
                        string* matched_string1,
                        string* matched_string2,
-                       string* matched_string3) const {
+                       string* matched_string3,
+                       string* matched_string4,
+                       string* matched_string5,
+                       string* matched_string6) const {
     DCHECK(input_string);
     if (!utf8_regexp_.get()) {
       return false;
@@ -135,14 +137,14 @@ class IcuRegExp : public RegExp {
     if (!match_succeeded || U_FAILURE(status)) {
       return false;
     }
-    string* const matched_strings[] = {
-      matched_string1, matched_string2, matched_string3
-    };
+    string* const matched_strings[] = {matched_string1, matched_string2,
+                                       matched_string3, matched_string4,
+                                       matched_string5, matched_string6};
     // If less matches than expected - fail.
     for (size_t i = 0; i < arraysize(matched_strings); ++i) {
       if (matched_strings[i]) {
         // Groups are counted from 1 rather than 0.
-        const int group_index = i + 1;
+        const int group_index = static_cast<int>(i + 1);
         if (group_index > matcher->groupCount()) {
           return false;
         }

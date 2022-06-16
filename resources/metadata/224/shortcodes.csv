@@ -1,0 +1,3 @@
+Region ; Prefix ; Length ; Type       ; Sms  ; Carrier Specific ; Provenance
+GN     ; 12     ; 3      ; COMMERCIAL ;      ;                  ; ITU
+GN     ; 40404  ; 5      ; COMMERCIAL ; true ; true

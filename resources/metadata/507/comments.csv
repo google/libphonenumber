@@ -1,0 +1,12 @@
+Region ; Label            ; Comment
+PA     ; SC               ; "http://en.wikipedia.org/wiki/%2B507"
+PA     ; XML              ; "Last read July 9, 2014."
+PA     ; XML              ; "Omits the fact that mobile phones are 8 digits long."
+PA     ; XML              ; "http://www.asep.gob.pa/telecom/pnn/default.asp"
+PA     ; XML              ; "http://en.wikipedia.org/wiki/%2B507"
+PA     ; XML_FIXED_LINE   ; "Note that numbers starting with 101, 106, 131, 151, 156 and 168 have not been assigned\nto any rule below since we are not sure what the ""servicios 102/103"" refer to here."
+PA     ; XML_FIXED_LINE   ; "Note that ""servicios 101/104"" in the plan refer to ""Local Basic Communications Service""\nand ""Public and Semipublic Terminal Service"", represented here as fixed-line."
+PA     ; XML_FIXED_LINE   ; "The range 194-XXXX has been added since a number was found online with this prefix and\nproved to be diallable."
+PA     ; XML_MOBILE       ; "Note that ""servicios 106/107"" in the plan refer to mobile services. We also include\nservice ""210"", ""Servicio de Busca Personas""."
+PA     ; XML_PREMIUM_RATE ; "Value-added services are represented as ""400"" in the plan."
+PA     ; XML_TOLL_FREE    ; "Prefix 800 and 00800 of length 9-digit and 11-digit is added based on user\nreport. "

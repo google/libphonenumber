@@ -1,0 +1,5 @@
+Region ; Label            ; Comment
+EE     ; SC               ; "http://www.itu.int/oth/T0202000043/en"
+EE     ; XML              ; "http://www.itu.int/oth/T0202000043/en"
+EE     ; XML_MOBILE       ; "7 digit mobile numbers currently in use with special prefixes are preserved - new\nnumbers are 8 digits."
+EE     ; XML_PREMIUM_RATE ; "Supporting eFax numbers here as well. We aren't sure the exact cost, but have\nhad user reports that they are expensive to dial."

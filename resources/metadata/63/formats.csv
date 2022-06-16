@@ -1,0 +1,9 @@
+Id                 ; National           ; International      ; Comment
+fixed_1/4/4        ; "(#X) XXXX XXXX"   ; "X XXXX XXXX"
+fixed_1/5          ; "(#X) XXXXX"       ; "X XXXXX"
+fixed_2/3/4        ; "(#XX) XXX XXXX"   ; "XX XXX XXXX"
+fixed_4/4-6        ; "(#XXXX) XXXX**"   ; "XXXX XXXX**"
+fixed_5/4          ; "(#XXXXX) XXXX"    ; "XXXXX XXXX"
+mobile_3/3/4       ; "#XXX XXX XXXX"    ; "XXX XXX XXXX"
+tollfree_4/1-2/3/4 ; "XXXX X* XXX XXXX" ; "XXXX X* XXX XXXX"
+tollfree_4/3/4     ; "XXXX XXX XXXX"    ; "XXXX XXX XXXX"    ; "Formatting from http://www.uniontelecard.com/calling-guides/philippines/guide1.aspx"

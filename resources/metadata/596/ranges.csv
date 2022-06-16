@@ -1,0 +1,29 @@
+Prefix       ; Length ; Type       ; Tariff        ; Operator       ; Format            ; Regions ; Provenance ; Comment
+596[05-7]    ; 9      ; FIXED_LINE ; STANDARD_RATE ;                ; "fmt1_3/2/2/2"    ; "MQ"
+59610        ; 9      ; FIXED_LINE ; STANDARD_RATE ;                ; "fmt1_3/2/2/2"    ; "MQ"
+5962[7-9]    ; 9      ; FIXED_LINE ; STANDARD_RATE ;                ; "fmt1_3/2/2/2"    ; "MQ"
+5963[04-9]   ; 9      ; FIXED_LINE ; STANDARD_RATE ;                ; "fmt1_3/2/2/2"    ; "MQ"
+59631        ; 9      ; FIXED_LINE ; STANDARD_RATE ;                ; "fmt1_3/2/2/2"    ; "MQ"    ; GOVERNMENT
+5964[0-46-8] ; 9      ; FIXED_LINE ; STANDARD_RATE ;                ; "fmt1_3/2/2/2"    ; "MQ"
+5964[59]     ; 9      ; FIXED_LINE ; STANDARD_RATE ;                ; "fmt1_3/2/2/2"    ; "MQ"    ; GOVERNMENT
+5968[09]     ; 9      ; FIXED_LINE ; STANDARD_RATE ;                ; "fmt1_3/2/2/2"    ; "MQ"
+5969[4-8]    ; 9      ; FIXED_LINE ; STANDARD_RATE ;                ; "fmt1_3/2/2/2"    ; "MQ"
+59699        ; 9      ; FIXED_LINE ; STANDARD_RATE ;                ; "fmt1_3/2/2/2"    ; "MQ"    ; GOVERNMENT
+6960         ; 9      ; MOBILE     ; STANDARD_RATE ; "sfr_rife"     ; "fmt1_3/2/2/2"    ; "MQ"
+6961[016-9]  ; 9      ; MOBILE     ; STANDARD_RATE ; "digicel"      ; "fmt1_3/2/2/2"    ; "MQ"
+6961[2-5]    ; 9      ; MOBILE     ; STANDARD_RATE ;                ; "fmt1_3/2/2/2"    ; "MQ"
+696[2-4]     ; 9      ; MOBILE     ; STANDARD_RATE ; "orange"       ; "fmt1_3/2/2/2"    ; "MQ"
+6965[0-4]    ; 9      ; MOBILE     ; STANDARD_RATE ; "digicel"      ; "fmt1_3/2/2/2"    ; "MQ"
+6965[56]     ; 9      ; MOBILE     ; STANDARD_RATE ; "orange"       ; "fmt1_3/2/2/2"    ; "MQ"
+6966[0-4]    ; 9      ; MOBILE     ; STANDARD_RATE ; "sfr_rife"     ; "fmt1_3/2/2/2"    ; "MQ"
+6966[5-9]    ; 9      ; MOBILE     ; STANDARD_RATE ; "free_caraïbe" ; "fmt1_3/2/2/2"    ; "MQ"    ; IR21
+6967         ; 9      ; MOBILE     ; STANDARD_RATE ; "digicel"      ; "fmt1_3/2/2/2"    ; "MQ"
+6968[0-6]    ; 9      ; MOBILE     ; STANDARD_RATE ; "orange"       ; "fmt1_3/2/2/2"    ; "MQ"
+6968[7-9]    ; 9      ; MOBILE     ; STANDARD_RATE ; "sfr_rife"     ; "fmt1_3/2/2/2"    ; "MQ"
+6969[0-8]    ; 9      ; MOBILE     ; STANDARD_RATE ; "digicel"      ; "fmt1_3/2/2/2"    ; "MQ"
+69699        ; 9      ; MOBILE     ; STANDARD_RATE ; "orange"       ; "fmt1_3/2/2/2"    ; "MQ"
+69727        ; 9      ; MOBILE     ; STANDARD_RATE ; "digicel"      ; "fmt1_3/2/2/2"    ; "MQ"
+80[0-5]      ; 9      ; FIXED_LINE ; TOLL_FREE     ;                ; "varcost_3/2/2/2" ; "MQ"    ;            ; "ARCEP"
+97660        ; 9      ; VOIP       ; STANDARD_RATE ;                ; "fmt1_3/2/2/2"    ; "MQ"    ; GOVERNMENT
+9766[1-9]    ; 9      ; VOIP       ; STANDARD_RATE ;                ; "fmt1_3/2/2/2"    ; "MQ"    ; GOVERNMENT ; "ARCEP Monthly Report"
+9767[0-367]  ; 9      ; VOIP       ; STANDARD_RATE ;                ; "fmt1_3/2/2/2"    ; "MQ"    ; GOVERNMENT ; "ARCEP Monthly Report"

@@ -196,12 +196,9 @@
 3742355|Artashat, Ararat
 3742356|Artashat, Ararat
 3742357|Artashat, Ararat
-37423572|Arevshat, Ararat
 3742358|Artashat/Aygezard/Dalar/Kaghtsrashen/Mkhchyan/Shahumyan, Ararat
 37423581|Artashat/Norashen, Ararat
 3742359|Artashat/Norashen, Ararat
-37423592|Norashen, Ararat
-37423593|Norashen, Ararat
 3742360|Ayntap/Masis/Nor Kharberd/Norabats, Ararat
 3742361|Ayntap/Masis/Nor Kharberd/Norabats, Ararat
 3742362|Masis, Ararat
@@ -272,11 +269,9 @@
 37424981|Talin/Aragats/Katnaghbyur/Mastara, Aragatsotn
 3742499|Aragatsavan/Talin, Aragatsotn
 37424995|Aragats, Aragatsotn
-37424996|Nerkin Bazmaberd, Aragatsotn
 37424997|Mastara, Aragatsotn
 374252|Aparan, Aragatsotn
 3742524|Aparan/Artavan/Kuchak, Aragatsotn
-37425251|Kuchak, Aragatsotn
 37425281|Aparan/Artavan/Kuchak, Aragatsotn
 37425291|Kuchak, Aragatsotn
 37425295|Artavan, Aragatsotn

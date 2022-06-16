@@ -1,0 +1,9 @@
+Region ; Label               ; Comment
+GT     ; SC                  ; "http://www.itu.int/oth/T020200005A/en"
+GT     ; SC                  ; "http://www.sit.gob.gt/index.php?page=plan-de-numeracion"
+GT     ; SC                  ; "http://en.wikipedia.org/wiki/Telephone_numbers_in_Guatemala"
+GT     ; SC_CARRIER_SPECIFIC ; "https://support.twitter.com/articles/20170024"
+GT     ; SC_SMS_SERVICES     ; "https://support.twitter.com/articles/20170024"
+GT     ; XML                 ; "http://www.itu.int/oth/T020200005A/en"
+GT     ; XML                 ; "http://www.sit.gob.gt/index.php?page=plan-de-numeracion"
+GT     ; XML                 ; "http://en.wikipedia.org/wiki/Telephone_numbers_in_Guatemala"

@@ -1,0 +1,8 @@
+Region ; Type            ; Number
+TW     ; FIXED_LINE      ; "221234567"
+TW     ; MOBILE          ; "912345678"
+TW     ; TOLL_FREE       ; "800123456"
+TW     ; PREMIUM_RATE    ; "203123456"
+TW     ; PERSONAL_NUMBER ; "990123456"
+TW     ; VOIP            ; "7012345678"
+TW     ; UAN             ; "500123456"

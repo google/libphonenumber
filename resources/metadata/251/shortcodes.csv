@@ -1,0 +1,9 @@
+Region ; Prefix ; Length ; Type               ; Tariff
+ET     ; 907    ; 3      ; EXPANDED_EMERGENCY ; TOLL_FREE
+ET     ; 91     ; 2      ; EMERGENCY          ; TOLL_FREE
+ET     ; 911    ; 3      ; EMERGENCY          ; TOLL_FREE
+ET     ; 92     ; 2      ; EMERGENCY          ; TOLL_FREE
+ET     ; 93     ; 2      ; EMERGENCY          ; TOLL_FREE
+ET     ; 939    ; 3      ; EMERGENCY          ; TOLL_FREE
+ET     ; 945    ; 3      ; EXPANDED_EMERGENCY
+ET     ; 99[17] ; 3      ; EMERGENCY          ; TOLL_FREE

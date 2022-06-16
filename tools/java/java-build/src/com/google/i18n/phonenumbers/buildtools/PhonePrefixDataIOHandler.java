@@ -20,10 +20,11 @@ import java.io.File;
 import java.io.IOException;
 
 /**
- * Implementation of the IOHandler required by the GeneratePhonePrefixData class used here to create
- * the output files.
+ * Implementation of the AbstractPhonePrefixDataIOHandler required by the GeneratePhonePrefixData
+ * class used here to create the output files.
  */
 class PhonePrefixDataIOHandler extends AbstractPhonePrefixDataIOHandler {
+
   // The path to the output directory.
   private final File outputPath;
 
@@ -40,11 +41,14 @@ class PhonePrefixDataIOHandler extends AbstractPhonePrefixDataIOHandler {
     this.outputPath = outputPath;
   }
 
+  /**
+   * This is a <b>no-op</b>.
+   *
+   * <p>This would be the place dealing with the addition of the provided file to the resulting JAR
+   * if the global output was a JAR instead of a directory containing the binary files.
+   */
   @Override
-  public void addFileToOutput(File file) throws IOException {
-    // Do nothing. This would be the place dealing with the addition of the provided file to the
-    // resulting JAR if the global output was a JAR instead of a directory containing the binary
-    // files.
+  public void addFileToOutput(File file) {
   }
 
   @Override
@@ -52,8 +56,10 @@ class PhonePrefixDataIOHandler extends AbstractPhonePrefixDataIOHandler {
     return new File(outputPath, path);
   }
 
+  /**
+   * This is a <b>no-op</b>, as no resource needs to be released.
+   */
   @Override
   public void close() {
-    // Do nothing as no resource needs to be released.
   }
 }

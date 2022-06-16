@@ -1,0 +1,10 @@
+Region ; Label               ; Comment
+AM     ; SC                  ; "http://www.itu.int/oth/T020200000A/en"
+AM     ; SC_CARRIER_SPECIFIC ; "https://support.twitter.com/articles/20170024"
+AM     ; SC_SMS_SERVICES     ; "https://support.twitter.com/articles/20170024"
+AM     ; XML                 ; "We think the national dialling prefix is 0 - it seems this was a change in 2005 (or 2008)\nalong with the new city codes. However, their official document makes no mention of it,\nwebsites disagree, and we are not sure if the change has actually been made."
+AM     ; XML                 ; "http://www.itu.int/oth/T020200000A/en"
+AM     ; XML                 ; "http://en.wikipedia.org/wiki/%2B374"
+AM     ; XML                 ; "http://en.wikipedia.org/wiki/Telephone_numbers_in_Nagorno-Karabakh_Republic"
+AM     ; XML_FIXED_LINE      ; "Includes telephone numbers in Nagorno-Karabakh Republic, physically located inside\nAzerbaijan, which use prefix 47."
+AM     ; XML_MOBILE          ; "Part of the range 97 is used by Nagorno-Karabakh Republic."

@@ -30,7 +30,6 @@
 
 goog.provide('i18n.phonenumbers.ShortNumberInfo');
 
-goog.require('goog.array');
 goog.require('goog.proto2.PbLiteSerializer');
 goog.require('i18n.phonenumbers.PhoneMetadata');
 goog.require('i18n.phonenumbers.PhoneNumber');
@@ -110,7 +109,7 @@ i18n.phonenumbers.ShortNumberInfo.prototype.regionDialingFromMatchesNumber_ =
     function(number, regionDialingFrom) {
   var regionCodes = this.getRegionCodesForCountryCode_(
       number.getCountryCodeOrDefault());
-  return goog.array.contains(regionCodes, regionDialingFrom);
+  return regionDialingFrom != null && regionCodes.includes(regionDialingFrom);
 };
 
 
@@ -133,8 +132,8 @@ i18n.phonenumbers.ShortNumberInfo.prototype.isPossibleShortNumberForRegion =
     return false;
   }
   var numberLength = this.getNationalSignificantNumber_(number).length;
-  return goog.array.contains(
-      phoneMetadata.getGeneralDesc().possibleLengthArray(), numberLength);
+  return phoneMetadata.getGeneralDesc().possibleLengthArray().includes(
+      numberLength);
 };
 
 
@@ -159,7 +158,7 @@ i18n.phonenumbers.ShortNumberInfo.prototype.isPossibleShortNumber =
       continue;
     }
     var possibleLengths = phoneMetadata.getGeneralDesc().possibleLengthArray();
-    if (goog.array.contains(possibleLengths, shortNumberLength)) {
+    if (possibleLengths.includes(shortNumberLength)) {
       return true;
     }
   }
@@ -266,8 +265,8 @@ i18n.phonenumbers.ShortNumberInfo.prototype.getExpectedCostForRegion =
   }
   var shortNumber = this.getNationalSignificantNumber_(number);
 
-  if (!goog.array.contains(phoneMetadata.getGeneralDesc().possibleLengthArray(),
-                           shortNumber.length)) {
+  if (!phoneMetadata.getGeneralDesc().possibleLengthArray().includes(
+          shortNumber.length)) {
     return ShortNumberCost.UNKNOWN_COST;
   }
   if (this.matchesPossibleNumberAndNationalNumber_(
@@ -385,13 +384,12 @@ i18n.phonenumbers.ShortNumberInfo.prototype.getRegionCodeForShortNumberFromRegio
 
 /**
  * Convenience method to get a list of what regions the library has metadata for
- * @return {Array<string>} the list of region codes
+ * @return {!Array<string>} the list of region codes
  * @package
  */
 i18n.phonenumbers.ShortNumberInfo.prototype.getSupportedRegions = function() {
-  return goog.array.filter(
-      Object.keys(i18n.phonenumbers.shortnumbermetadata.countryToMetadata),
-      function(regionCode) {
+  return Object.keys(i18n.phonenumbers.shortnumbermetadata.countryToMetadata)
+      .filter(function(regionCode) {
         return isNaN(regionCode);
       });
 };
@@ -559,10 +557,9 @@ i18n.phonenumbers.ShortNumberInfo.prototype.matchesEmergencyNumberHelper_ =
 
   var normalizedNumber = i18n.phonenumbers.PhoneNumberUtil
       .normalizeDigitsOnly(possibleNumber);
-  var allowPrefixMatchForRegion = allowPrefixMatch && !goog.array.contains(
-      i18n.phonenumbers.ShortNumberInfo.
-          REGIONS_WHERE_EMERGENCY_NUMBERS_MUST_BE_EXACT_,
-      regionCode);
+  var allowPrefixMatchForRegion = allowPrefixMatch &&
+      !i18n.phonenumbers.ShortNumberInfo
+           .REGIONS_WHERE_EMERGENCY_NUMBERS_MUST_BE_EXACT_.includes(regionCode);
   var emergencyNumberPattern = metadata.getEmergency()
       .getNationalNumberPatternOrDefault();
   var result = i18n.phonenumbers.PhoneNumberUtil.matchesEntirely(
@@ -700,10 +697,10 @@ i18n.phonenumbers.ShortNumberInfo.prototype.getNationalSignificantNumber_ =
  * @return {boolean}
  * @private
  */
-i18n.phonenumbers.ShortNumberInfo.prototype.matchesPossibleNumberAndNationalNumber_ =
-    function(number, numberDesc) {
-  if (numberDesc.possibleLengthArray().length > 0 && !goog.array.contains(
-      numberDesc.possibleLengthArray(), number.length)) {
+i18n.phonenumbers.ShortNumberInfo.prototype
+    .matchesPossibleNumberAndNationalNumber_ = function(number, numberDesc) {
+  if (numberDesc.possibleLengthArray().length > 0 &&
+      !numberDesc.possibleLengthArray().includes(number.length)) {
     return false;
   }
   return i18n.phonenumbers.PhoneNumberUtil.matchesEntirely(

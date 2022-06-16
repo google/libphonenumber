@@ -1,0 +1,6 @@
+Region ; Type         ; Number
+SZ     ; FIXED_LINE   ; "22171234"
+SZ     ; MOBILE       ; "76123456"
+SZ     ; TOLL_FREE    ; "08001234"
+SZ     ; PREMIUM_RATE ; "900012345"
+SZ     ; VOIP         ; "70012345"

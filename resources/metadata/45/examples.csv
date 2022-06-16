@@ -1,0 +1,4 @@
+Region ; Type                 ; Number
+DK     ; FIXED_LINE_OR_MOBILE ; "32123456"
+DK     ; TOLL_FREE            ; "80123456"
+DK     ; PREMIUM_RATE         ; "90123456"

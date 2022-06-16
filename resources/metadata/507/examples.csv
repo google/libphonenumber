@@ -1,0 +1,5 @@
+Region ; Type         ; Number
+PA     ; FIXED_LINE   ; "2001234"
+PA     ; MOBILE       ; "61234567"
+PA     ; TOLL_FREE    ; "8001234"
+PA     ; PREMIUM_RATE ; "8601234"

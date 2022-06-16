@@ -1,0 +1,4 @@
+Region ; Label          ; Comment
+DJ     ; SC             ; "http://www.itu.int/oth/T020200003A/en"
+DJ     ; XML            ; "http://www.itu.int/oth/T020200003A/en"
+DJ     ; XML_FIXED_LINE ; "Includes ""Numéro long CDMA fixe"" numbers."

@@ -561,19 +561,6 @@
       </fixedLine>
     </territory>
 
-    <!-- Hungary -->
-    <!-- This country has special logic in formatNumberForMobileDialing which must be tested. -->
-    <territory id="HU" countryCode="36" internationalPrefix="00" nationalPrefix="06">
-      <generalDesc>
-        <nationalNumberPattern>30\d{7}</nationalNumberPattern>
-      </generalDesc>
-      <mobile>
-        <nationalNumberPattern>30\d{7}</nationalNumberPattern>
-        <possibleLengths national="9"/>
-        <exampleNumber>301234567</exampleNumber>
-      </mobile>
-    </territory>
-
     <!-- Italy -->
     <!-- http://en.wikipedia.org/wiki/%2B39 -->
     <territory id="IT" countryCode="39" internationalPrefix="00">
@@ -803,6 +790,13 @@
         <numberFormat pattern="(\d{3})(\d{3})(\d{4})">
           <leadingDigits>[89]00</leadingDigits>
           <format>$1 $2 $3</format>
+        </numberFormat>
+        <!-- This formatting pattern is added to test that the AYTF should return unformatted
+             results when the first group is dropped in the output. -->
+        <numberFormat pattern="(\d{3})(\d{2})(\d{5})">
+          <leadingDigits>901</leadingDigits>
+          <format>$2 $3</format>
+          <intlFormat>$2 $3</intlFormat>
         </numberFormat>
         <numberFormat pattern="(\d{2})(\d{4})(\d{4})">
           <leadingDigits>33|55|81</leadingDigits>

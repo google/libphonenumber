@@ -1,0 +1,3 @@
+Id            ; National       ; International ; National Prefix Optional
+fixed_2/3/3-4 ; "#XX XXX XXX*" ; "XX XXX XXX*" ; true
+mobile_3/3/3  ; "#XXX XXX XXX" ; "XXX XXX XXX" ; true

@@ -4,7 +4,7 @@
   <property name="closure-compiler.dir"
             value="${basedir}/../../closure-compiler" />
   <property name="closure-compiler.jar"
-            value="${closure-compiler.dir}/target/closure-compiler-1.0-SNAPSHOT.jar" />
+            value="${closure-compiler.dir}/bazel-bin/compiler_unshaded_deploy.jar" />
   <property name="closure-library.dir"
             value="${basedir}/../../closure-library" />
   <property name="closure-linter.dir"
@@ -13,54 +13,48 @@
             value="${basedir}/../../python-gflags" />
 
   <macrodef name="closure-compile">
-    <attribute name="inputfile" />
+    <attribute name="entrypoint" />
     <attribute name="outputfile" />
     <attribute name="compilationlevel" default="ADVANCED_OPTIMIZATIONS" />
-    <attribute name="outputmode" default="compiled" />
     <attribute name="outputwrapper" default="(function(){%output%})();" />
     <element name="extraflags" optional="yes" />
     <sequential>
-      <exec executable="python" failonerror="true" logError="true">
-        <arg value="${closure-library.dir}/closure/bin/calcdeps.py" />
-        <arg line='-i "@{inputfile}"' />
-        <arg line='--output_file "@{outputfile}"' />
-        <arg line='-p "${closure-library.dir}"' />
-        <arg line="-o @{outputmode}" />
-        <arg line='-c "${closure-compiler.jar}"' />
-        <arg line='-f "--output_wrapper=@{outputwrapper}"' />
-        <arg line='-f "--compilation_level=@{compilationlevel}"' />
-        <arg line='-f "--warning_level=VERBOSE"' />
-        <arg line='-f "--jscomp_error=accessControls"' />
-        <arg line='-f "--jscomp_error=ambiguousFunctionDecl"' />
-        <arg line='-f "--jscomp_error=checkDebuggerStatement"' />
-        <arg line='-f "--jscomp_error=checkRegExp"' />
-        <arg line='-f "--jscomp_error=checkTypes"' />
-        <arg line='-f "--jscomp_error=checkVars"' />
-        <arg line='-f "--jscomp_error=const"' />
-        <arg line='-f "--jscomp_error=constantProperty"' />
-        <arg line='-f "--jscomp_error=deprecated"' />
-        <arg line='-f "--jscomp_error=duplicate"' />
-        <arg line='-f "--jscomp_error=duplicateMessage"' />
-        <arg line='-f "--jscomp_error=es5Strict"' />
-        <arg line='-f "--jscomp_error=externsValidation"' />
-        <arg line='-f "--jscomp_error=extraRequire"' />
-        <arg line='-f "--jscomp_error=fileoverviewTags"' />
-        <arg line='-f "--jscomp_error=globalThis"' />
-        <arg line='-f "--jscomp_error=internetExplorerChecks"' />
-        <arg line='-f "--jscomp_error=invalidCasts"' />
-        <arg line='-f "--jscomp_error=misplacedTypeAnnotation"' />
-        <arg line='-f "--jscomp_error=missingProperties"' />
-        <arg line='-f "--jscomp_error=missingRequire"' />
-        <arg line='-f "--jscomp_error=strictMissingRequire"' />
-        <arg line='-f "--jscomp_error=nonStandardJsDocs"' />
-        <arg line='-f "--jscomp_error=strictModuleDepCheck"' />
-        <arg line='-f "--jscomp_error=suspiciousCode"' />
-        <arg line='-f "--jscomp_error=typeInvalidation"' />
-        <arg line='-f "--jscomp_error=undefinedNames"' />
-        <arg line='-f "--jscomp_error=undefinedVars"' />
-        <arg line='-f "--jscomp_error=unknownDefines"' />
-        <arg line='-f "--jscomp_error=uselessCode"' />
-        <arg line='-f "--jscomp_error=visibility"' />
+      <exec executable="java" failonerror="true" logError="true">
+        <arg value="-jar" />
+        <arg value="${closure-compiler.jar}" />
+        <arg line='--entry_point="@{entrypoint}"' />
+        <arg line='--js_output_file="@{outputfile}"' />
+        <arg line='--js="${closure-library.dir}/closure/goog/**.js"' />
+        <arg line='--js="${closure-library.dir}/third_party/closure/goog/**.js"' />
+        <arg line="--output_wrapper=@{outputwrapper}" />
+        <arg line="--compilation_level=@{compilationlevel}" />
+        <arg line="--warning_level=VERBOSE" />
+        <arg line="--jscomp_error=accessControls" />
+        <arg line="--jscomp_error=checkDebuggerStatement" />
+        <arg line="--jscomp_error=checkRegExp" />
+        <arg line="--jscomp_error=checkTypes" />
+        <arg line="--jscomp_error=checkVars" />
+        <arg line="--jscomp_error=const" />
+        <arg line="--jscomp_error=constantProperty" />
+        <arg line="--jscomp_error=duplicate" />
+        <arg line="--jscomp_error=duplicateMessage" />
+        <arg line="--jscomp_error=es5Strict" />
+        <arg line="--jscomp_error=externsValidation" />
+        <arg line="--jscomp_error=extraRequire" />
+        <arg line="--jscomp_error=globalThis" />
+        <arg line="--jscomp_error=invalidCasts" />
+        <arg line="--jscomp_error=misplacedTypeAnnotation" />
+        <arg line="--jscomp_error=missingProperties" />
+        <arg line="--jscomp_error=missingRequire" />
+        <arg line="--jscomp_error=nonStandardJsDocs" />
+        <arg line="--jscomp_error=strictModuleDepCheck" />
+        <arg line="--jscomp_error=suspiciousCode" />
+        <arg line="--jscomp_error=typeInvalidation" />
+        <arg line="--jscomp_error=undefinedNames" />
+        <arg line="--jscomp_error=undefinedVars" />
+        <arg line="--jscomp_error=unknownDefines" />
+        <arg line="--jscomp_error=uselessCode" />
+        <arg line="--jscomp_error=visibility" />
         <extraflags />
       </exec>
     </sequential>
@@ -99,40 +93,44 @@
 
   <target name="compile-demo"
           description="generates demo-compiled.js">
-    <closure-compile inputfile="i18n/phonenumbers/demo.js"
+    <closure-compile entrypoint="goog:i18n.phonenumbers.demo"
                      outputfile="i18n/phonenumbers/demo-compiled.js">
       <extraflags>
-        <arg line='-p "i18n/phonenumbers"' />
-        <arg line='-e "i18n/phonenumbers/metadatafortesting.js"' />
-        <arg line='-e "i18n/phonenumbers/metadatalite.js"' />
-        <arg line='-e "i18n/phonenumbers/regioncodefortesting.js"' />
+        <arg line='--js="i18n/phonenumbers/**.js"' />
+        <arg line='--js="!i18n/phonenumbers/demo-compiled.js"' />
+        <arg line='--js="!i18n/phonenumbers/metadatafortesting.js"' />
+        <arg line='--js="!i18n/phonenumbers/metadatalite.js"' />
+        <arg line='--js="!i18n/phonenumbers/regioncodefortesting.js"' />
       </extraflags>
     </closure-compile>
   </target>
 
   <target name="compile-tests" depends="setnulldevice">
-    <closure-compile inputfile="i18n/phonenumbers/asyoutypeformatter_test.js"
+    <closure-compile entrypoint="goog:i18n.phonenumbers.AsYouTypeFormatterTest"
                      outputfile="${null.device}">
       <extraflags>
-        <arg line='-p "i18n/phonenumbers"' />
-        <arg line='-e "i18n/phonenumbers/metadata.js"' />
-        <arg line='-e "i18n/phonenumbers/metadatalite.js"' />
+        <arg line='--js="i18n/phonenumbers/**.js"' />
+        <arg line='--js="!i18n/phonenumbers/demo-compiled.js"' />
+        <arg line='--js="!i18n/phonenumbers/metadata.js"' />
+        <arg line='--js="!i18n/phonenumbers/metadatalite.js"' />
       </extraflags>
     </closure-compile>
-    <closure-compile inputfile="i18n/phonenumbers/phonenumberutil_test.js"
+    <closure-compile entrypoint="goog:i18n.phonenumbers.PhoneNumberUtilTest"
                      outputfile="${null.device}">
       <extraflags>
-        <arg line='-p "i18n/phonenumbers"' />
-        <arg line='-e "i18n/phonenumbers/metadata.js"' />
-        <arg line='-e "i18n/phonenumbers/metadatalite.js"' />
+        <arg line='--js="i18n/phonenumbers/**.js"' />
+        <arg line='--js="!i18n/phonenumbers/demo-compiled.js"' />
+        <arg line='--js="!i18n/phonenumbers/metadata.js"' />
+        <arg line='--js="!i18n/phonenumbers/metadatalite.js"' />
       </extraflags>
     </closure-compile>
-    <closure-compile inputfile="i18n/phonenumbers/shortnumberinfo_test.js"
+    <closure-compile entrypoint="goog:i18n.phonenumbers.ShortNumberInfoTest"
                      outputfile="${null.device}">
       <extraflags>
-        <arg line='-p "i18n/phonenumbers"' />
-        <arg line='-e "i18n/phonenumbers/metadata.js"' />
-        <arg line='-e "i18n/phonenumbers/metadatalite.js"' />
+        <arg line='--js="i18n/phonenumbers/**.js"' />
+        <arg line='--js="!i18n/phonenumbers/demo-compiled.js"' />
+        <arg line='--js="!i18n/phonenumbers/metadata.js"' />
+        <arg line='--js="!i18n/phonenumbers/metadatalite.js"' />
       </extraflags>
     </closure-compile>
   </target>

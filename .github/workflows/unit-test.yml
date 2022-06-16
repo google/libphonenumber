@@ -1,0 +1,37 @@
+# This workflow builds and unit tests both main Java API and also build/data tools for metadata generation.
+
+name: Testing Java API
+on: pull_request
+jobs:
+  java-test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up JDK 8 and Maven
+      uses: actions/setup-java@v2
+      with:
+        java-version: '8'
+        distribution: 'adopt'
+# Invoke the "github-actions" profile during Maven steps; see <profile> in pom.xml
+# files. This is configured not to build the "cpp-build" module.
+# The "mvn install" command will run by default during the "install" phase by
+# Github Actions, without the profile flag. Here we customize the install phase to
+# use the relevant profile. If we want to build "cpp-build" with Github Action CI
+# it's safe to remove the first line entirely.
+    - name: Test Build Tools with Maven
+      run: |
+        mvn install -P github-actions -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+        mvn -P github-actions test
+    - name: Test Java API with Ant
+      run: |
+        ant clean -f java/build.xml
+        ant jar -f java/build.xml
+        ant junit -f java/build.xml
+  js-files-ascii-check:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install ascii-safe-cli
+      run: npm install -g is-ascii-safe-cli
+    - name: Check whether .js api files are ascii safe or not.
+      run: find . -name '*.js' ! -name '*_test.js' | xargs is-ascii-safe

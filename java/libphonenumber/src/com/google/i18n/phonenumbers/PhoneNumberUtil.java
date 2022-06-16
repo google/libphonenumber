@@ -24,11 +24,12 @@ import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber.CountryCodeSource;
 import com.google.i18n.phonenumbers.internal.MatcherApi;
 import com.google.i18n.phonenumbers.internal.RegexBasedMatcher;
 import com.google.i18n.phonenumbers.internal.RegexCache;
-
+import com.google.i18n.phonenumbers.metadata.DefaultMetadataDependenciesProvider;
+import com.google.i18n.phonenumbers.metadata.source.MetadataSource;
+import com.google.i18n.phonenumbers.metadata.source.MetadataSourceImpl;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -121,17 +122,16 @@ public class PhoneNumberUtil {
   private static final Map<Character, Character> ALL_PLUS_NUMBER_GROUPING_SYMBOLS;
 
   static {
-    HashMap<Integer, String> mobileTokenMap = new HashMap<Integer, String>();
-    mobileTokenMap.put(52, "1");
+    HashMap<Integer, String> mobileTokenMap = new HashMap<>();
     mobileTokenMap.put(54, "9");
     MOBILE_TOKEN_MAPPINGS = Collections.unmodifiableMap(mobileTokenMap);
 
-    HashSet<Integer> geoMobileCountriesWithoutMobileAreaCodes = new HashSet<Integer>();
+    HashSet<Integer> geoMobileCountriesWithoutMobileAreaCodes = new HashSet<>();
     geoMobileCountriesWithoutMobileAreaCodes.add(86);  // China
     GEO_MOBILE_COUNTRIES_WITHOUT_MOBILE_AREA_CODES =
         Collections.unmodifiableSet(geoMobileCountriesWithoutMobileAreaCodes);
 
-    HashSet<Integer> geoMobileCountries = new HashSet<Integer>();
+    HashSet<Integer> geoMobileCountries = new HashSet<>();
     geoMobileCountries.add(52);  // Mexico
     geoMobileCountries.add(54);  // Argentina
     geoMobileCountries.add(55);  // Brazil
@@ -141,7 +141,7 @@ public class PhoneNumberUtil {
 
     // Simple ASCII digits map used to populate ALPHA_PHONE_MAPPINGS and
     // ALL_PLUS_NUMBER_GROUPING_SYMBOLS.
-    HashMap<Character, Character> asciiDigitMappings = new HashMap<Character, Character>();
+    HashMap<Character, Character> asciiDigitMappings = new HashMap<>();
     asciiDigitMappings.put('0', '0');
     asciiDigitMappings.put('1', '1');
     asciiDigitMappings.put('2', '2');
@@ -153,7 +153,7 @@ public class PhoneNumberUtil {
     asciiDigitMappings.put('8', '8');
     asciiDigitMappings.put('9', '9');
 
-    HashMap<Character, Character> alphaMap = new HashMap<Character, Character>(40);
+    HashMap<Character, Character> alphaMap = new HashMap<>(40);
     alphaMap.put('A', '2');
     alphaMap.put('B', '2');
     alphaMap.put('C', '2');
@@ -182,19 +182,19 @@ public class PhoneNumberUtil {
     alphaMap.put('Z', '9');
     ALPHA_MAPPINGS = Collections.unmodifiableMap(alphaMap);
 
-    HashMap<Character, Character> combinedMap = new HashMap<Character, Character>(100);
+    HashMap<Character, Character> combinedMap = new HashMap<>(100);
     combinedMap.putAll(ALPHA_MAPPINGS);
     combinedMap.putAll(asciiDigitMappings);
     ALPHA_PHONE_MAPPINGS = Collections.unmodifiableMap(combinedMap);
 
-    HashMap<Character, Character> diallableCharMap = new HashMap<Character, Character>();
+    HashMap<Character, Character> diallableCharMap = new HashMap<>();
     diallableCharMap.putAll(asciiDigitMappings);
     diallableCharMap.put(PLUS_SIGN, PLUS_SIGN);
     diallableCharMap.put('*', '*');
     diallableCharMap.put('#', '#');
     DIALLABLE_CHAR_MAPPINGS = Collections.unmodifiableMap(diallableCharMap);
 
-    HashMap<Character, Character> allPlusNumberGroupings = new HashMap<Character, Character>();
+    HashMap<Character, Character> allPlusNumberGroupings = new HashMap<>();
     // Put (lower letter -> upper letter) and (upper letter -> upper letter) mappings.
     for (char c : ALPHA_MAPPINGS.keySet()) {
       allPlusNumberGroupings.put(Character.toLowerCase(c), c);
@@ -304,46 +304,98 @@ public class PhoneNumberUtil {
   // as the default extension prefix. This can be overridden by region-specific preferences.
   private static final String DEFAULT_EXTN_PREFIX = " ext. ";
 
-  // Pattern to capture digits used in an extension. Places a maximum length of "7" for an
-  // extension.
-  private static final String CAPTURING_EXTN_DIGITS = "(" + DIGITS + "{1,7})";
   // Regexp of all possible ways to write extensions, for use when parsing. This will be run as a
   // case-insensitive regexp match. Wide character versions are also provided after each ASCII
   // version.
-  private static final String EXTN_PATTERNS_FOR_PARSING;
-  static final String EXTN_PATTERNS_FOR_MATCHING;
-  static {
-    // One-character symbols that can be used to indicate an extension.
-    String singleExtnSymbolsForMatching = "x\uFF58#\uFF03~\uFF5E";
-    // For parsing, we are slightly more lenient in our interpretation than for matching. Here we
-    // allow "comma" and "semicolon" as possible extension indicators. When matching, these are
-    // hardly ever used to indicate this.
-    String singleExtnSymbolsForParsing = ",;" + singleExtnSymbolsForMatching;
+  private static final String EXTN_PATTERNS_FOR_PARSING = createExtnPattern(true);
+  static final String EXTN_PATTERNS_FOR_MATCHING = createExtnPattern(false);
 
-    EXTN_PATTERNS_FOR_PARSING = createExtnPattern(singleExtnSymbolsForParsing);
-    EXTN_PATTERNS_FOR_MATCHING = createExtnPattern(singleExtnSymbolsForMatching);
+  /**
+   * Helper method for constructing regular expressions for parsing. Creates an expression that
+   * captures up to maxLength digits.
+   */
+  private static String extnDigits(int maxLength) {
+    return "(" + DIGITS + "{1," + maxLength + "})";
   }
 
   /**
-   * Helper initialiser method to create the regular-expression pattern to match extensions,
-   * allowing the one-char extension symbols provided by {@code singleExtnSymbols}.
+   * Helper initialiser method to create the regular-expression pattern to match extensions.
+   * Note that there are currently six capturing groups for the extension itself. If this number is
+   * changed, MaybeStripExtension needs to be updated.
    */
-  private static String createExtnPattern(String singleExtnSymbols) {
-    // There are three regular expressions here. The first covers RFC 3966 format, where the
-    // extension is added using ";ext=". The second more generic one starts with optional white
-    // space and ends with an optional full stop (.), followed by zero or more spaces/tabs/commas
-    // and then the numbers themselves. The other one covers the special case of American numbers
-    // where the extension is written with a hash at the end, such as "- 503#"
-    // Note that the only capturing groups should be around the digits that you want to capture as
-    // part of the extension, or else parsing will fail!
-    // Canonical-equivalence doesn't seem to be an option with Android java, so we allow two options
-    // for representing the accented o - the character itself, and one in the unicode decomposed
-    // form with the combining acute accent.
-    return (RFC3966_EXTN_PREFIX + CAPTURING_EXTN_DIGITS + "|" + "[ \u00A0\\t,]*"
-        + "(?:e?xt(?:ensi(?:o\u0301?|\u00F3))?n?|\uFF45?\uFF58\uFF54\uFF4E?|"
-        + "\u0434\u043E\u0431|" + "[" + singleExtnSymbols + "]|int|anexo|\uFF49\uFF4E\uFF54)"
-        + "[:\\.\uFF0E]?[ \u00A0\\t,-]*" + CAPTURING_EXTN_DIGITS + "#?|"
-        + "[- ]+(" + DIGITS + "{1,5})#");
+  private static String createExtnPattern(boolean forParsing) {
+    // We cap the maximum length of an extension based on the ambiguity of the way the extension is
+    // prefixed. As per ITU, the officially allowed length for extensions is actually 40, but we
+    // don't support this since we haven't seen real examples and this introduces many false
+    // interpretations as the extension labels are not standardized.
+    int extLimitAfterExplicitLabel = 20;
+    int extLimitAfterLikelyLabel = 15;
+    int extLimitAfterAmbiguousChar = 9;
+    int extLimitWhenNotSure = 6;
+
+    String possibleSeparatorsBetweenNumberAndExtLabel = "[ \u00A0\\t,]*";
+    // Optional full stop (.) or colon, followed by zero or more spaces/tabs/commas.
+    String possibleCharsAfterExtLabel = "[:\\.\uFF0E]?[ \u00A0\\t,-]*";
+    String optionalExtnSuffix = "#?";
+
+    // Here the extension is called out in more explicit way, i.e mentioning it obvious patterns
+    // like "ext.". Canonical-equivalence doesn't seem to be an option with Android java, so we
+    // allow two options for representing the accented o - the character itself, and one in the
+    // unicode decomposed form with the combining acute accent.
+    String explicitExtLabels =
+        "(?:e?xt(?:ensi(?:o\u0301?|\u00F3))?n?|\uFF45?\uFF58\uFF54\uFF4E?|\u0434\u043E\u0431|anexo)";
+    // One-character symbols that can be used to indicate an extension, and less commonly used
+    // or more ambiguous extension labels.
+    String ambiguousExtLabels = "(?:[x\uFF58#\uFF03~\uFF5E]|int|\uFF49\uFF4E\uFF54)";
+    // When extension is not separated clearly.
+    String ambiguousSeparator = "[- ]+";
+
+    String rfcExtn = RFC3966_EXTN_PREFIX + extnDigits(extLimitAfterExplicitLabel);
+    String explicitExtn = possibleSeparatorsBetweenNumberAndExtLabel + explicitExtLabels
+        + possibleCharsAfterExtLabel + extnDigits(extLimitAfterExplicitLabel)
+        + optionalExtnSuffix;
+    String ambiguousExtn = possibleSeparatorsBetweenNumberAndExtLabel + ambiguousExtLabels
+        + possibleCharsAfterExtLabel + extnDigits(extLimitAfterAmbiguousChar) + optionalExtnSuffix;
+    String americanStyleExtnWithSuffix = ambiguousSeparator + extnDigits(extLimitWhenNotSure) + "#";
+
+    // The first regular expression covers RFC 3966 format, where the extension is added using
+    // ";ext=". The second more generic where extension is mentioned with explicit labels like
+    // "ext:". In both the above cases we allow more numbers in extension than any other extension
+    // labels. The third one captures when single character extension labels or less commonly used
+    // labels are used. In such cases we capture fewer extension digits in order to reduce the
+    // chance of falsely interpreting two numbers beside each other as a number + extension. The
+    // fourth one covers the special case of American numbers where the extension is written with a
+    // hash at the end, such as "- 503#".
+    String extensionPattern =
+        rfcExtn + "|"
+        + explicitExtn + "|"
+        + ambiguousExtn + "|"
+        + americanStyleExtnWithSuffix;
+    // Additional pattern that is supported when parsing extensions, not when matching.
+    if (forParsing) {
+      // This is same as possibleSeparatorsBetweenNumberAndExtLabel, but not matching comma as
+      // extension label may have it.
+      String possibleSeparatorsNumberExtLabelNoComma = "[ \u00A0\\t]*";
+      // ",," is commonly used for auto dialling the extension when connected. First comma is matched
+      // through possibleSeparatorsBetweenNumberAndExtLabel, so we do not repeat it here. Semi-colon
+      // works in Iphone and Android also to pop up a button with the extension number following.
+      String autoDiallingAndExtLabelsFound = "(?:,{2}|;)";
+
+      String autoDiallingExtn = possibleSeparatorsNumberExtLabelNoComma
+          + autoDiallingAndExtLabelsFound + possibleCharsAfterExtLabel
+          + extnDigits(extLimitAfterLikelyLabel) +  optionalExtnSuffix;
+      String onlyCommasExtn = possibleSeparatorsNumberExtLabelNoComma
+        + "(?:,)+" + possibleCharsAfterExtLabel + extnDigits(extLimitAfterAmbiguousChar)
+        + optionalExtnSuffix;
+      // Here the first pattern is exclusively for extension autodialling formats which are used
+      // when dialling and in this case we accept longer extensions. However, the second pattern
+      // is more liberal on the number of commas that acts as extension labels, so we have a strict
+      // cap on the number of digits in such extensions.
+      return extensionPattern + "|"
+          + autoDiallingExtn + "|"
+          + onlyCommasExtn;
+    }
+    return extensionPattern;
   }
 
   // Regexp of all known extension prefixes used by different regions followed by 1 or more valid
@@ -608,7 +660,7 @@ public class PhoneNumberUtil {
   // The set of regions that share country calling code 1.
   // There are roughly 26 regions.
   // We set the initial capacity of the HashSet to 35 to offer a load factor of roughly 0.75.
-  private final Set<String> nanpaRegions = new HashSet<String>(35);
+  private final Set<String> nanpaRegions = new HashSet<>(35);
 
   // A cache for frequently used region-specific regular expressions.
   // The initial capacity is set to 100 as this seems to be an optimal value for Android, based on
@@ -618,11 +670,11 @@ public class PhoneNumberUtil {
   // The set of regions the library supports.
   // There are roughly 240 of them and we set the initial capacity of the HashSet to 320 to offer a
   // load factor of roughly 0.75.
-  private final Set<String> supportedRegions = new HashSet<String>(320);
+  private final Set<String> supportedRegions = new HashSet<>(320);
 
   // The set of country calling codes that map to the non-geo entity region ("001"). This set
   // currently contains < 12 elements so the default capacity of 16 (load factor=0.75) is fine.
-  private final Set<Integer> countryCodesForNonGeographicalRegion = new HashSet<Integer>();
+  private final Set<Integer> countryCodesForNonGeographicalRegion = new HashSet<>();
 
   /**
    * This class implements a singleton, the constructor is only visible to facilitate testing.
@@ -1038,7 +1090,7 @@ public class PhoneNumberUtil {
    * be non-null.
    */
   private Set<PhoneNumberType> getSupportedTypesForMetadata(PhoneMetadata metadata) {
-    Set<PhoneNumberType> types = new TreeSet<PhoneNumberType>();
+    Set<PhoneNumberType> types = new TreeSet<>();
     for (PhoneNumberType type : PhoneNumberType.values()) {
       if (type == PhoneNumberType.FIXED_LINE_OR_MOBILE || type == PhoneNumberType.UNKNOWN) {
         // Never return FIXED_LINE_OR_MOBILE (it is a convenience type, and represents that a
@@ -1098,7 +1150,9 @@ public class PhoneNumberUtil {
    */
   public static synchronized PhoneNumberUtil getInstance() {
     if (instance == null) {
-      setInstance(createInstance(MetadataManager.DEFAULT_METADATA_LOADER));
+      MetadataLoader metadataLoader = DefaultMetadataDependenciesProvider.getInstance()
+          .getMetadataLoader();
+      setInstance(createInstance(metadataLoader));
     }
     return instance;
   }
@@ -1119,7 +1173,11 @@ public class PhoneNumberUtil {
     if (metadataLoader == null) {
       throw new IllegalArgumentException("metadataLoader could not be null.");
     }
-    return createInstance(new MultiFileMetadataSourceImpl(metadataLoader));
+    return createInstance(new MetadataSourceImpl(
+        DefaultMetadataDependenciesProvider.getInstance().getPhoneNumberMetadataFileNameProvider(),
+        metadataLoader,
+        DefaultMetadataDependenciesProvider.getInstance().getMetadataParser()
+    ));
   }
 
   /**
@@ -1307,7 +1365,7 @@ public class PhoneNumberUtil {
         }
       }
       formattedNumber.append(
-          formatNsnUsingPattern(nationalSignificantNumber, numFormatCopy, numberFormat));
+          formatNsnUsingPattern(nationalSignificantNumber, numFormatCopy.build(), numberFormat));
     }
     maybeAppendFormattedExtension(number, metadata, numberFormat, formattedNumber);
     prefixNumberWithCountryCallingCode(countryCallingCode, numberFormat, formattedNumber);
@@ -1426,14 +1484,6 @@ public class PhoneNumberUtil {
             // called within Brazil. Without that, most of the carriers won't connect the call.
             // Because of that, we return an empty string here.
             : "";
-      } else if (isValidNumber && regionCode.equals("HU")) {
-        // The national format for HU numbers doesn't contain the national prefix, because that is
-        // how numbers are normally written down. However, the national prefix is obligatory when
-        // dialing from a mobile phone, except for short numbers. As a result, we add it back here
-        // if it is a valid regular length phone number.
-        formattedNumber =
-            getNddPrefixForRegion(regionCode, true /* strip non-digits */) + " "
-            + format(numberNoExt, PhoneNumberFormat.NATIONAL);
       } else if (countryCallingCode == NANPA_COUNTRY_CODE) {
         // For NANPA countries, we output international format for numbers that can be dialed
         // internationally, since that always works, except for numbers which might potentially be
@@ -1533,14 +1583,15 @@ public class PhoneNumberUtil {
     PhoneMetadata metadataForRegionCallingFrom = getMetadataForRegion(regionCallingFrom);
     String internationalPrefix = metadataForRegionCallingFrom.getInternationalPrefix();
 
-    // For regions that have multiple international prefixes, the international format of the
-    // number is returned, unless there is a preferred international prefix.
+    // In general, if there is a preferred international prefix, use that. Otherwise, for regions
+    // that have multiple international prefixes, the international format of the number is
+    // returned since we would not know which one to use.
     String internationalPrefixForFormatting = "";
-    if (SINGLE_INTERNATIONAL_PREFIX.matcher(internationalPrefix).matches()) {
-      internationalPrefixForFormatting = internationalPrefix;
-    } else if (metadataForRegionCallingFrom.hasPreferredInternationalPrefix()) {
+    if (metadataForRegionCallingFrom.hasPreferredInternationalPrefix()) {
       internationalPrefixForFormatting =
           metadataForRegionCallingFrom.getPreferredInternationalPrefix();
+    } else if (SINGLE_INTERNATIONAL_PREFIX.matcher(internationalPrefix).matches()) {
+      internationalPrefixForFormatting = internationalPrefix;
     }
 
     String regionCode = getRegionCodeForCountryCode(countryCallingCode);
@@ -1624,7 +1675,7 @@ public class PhoneNumberUtil {
         PhoneMetadata metadata = getMetadataForRegion(regionCode);
         String nationalNumber = getNationalSignificantNumber(number);
         NumberFormat formatRule =
-            chooseFormattingPatternForNumber(metadata.numberFormats(), nationalNumber);
+            chooseFormattingPatternForNumber(metadata.getNumberFormatList(), nationalNumber);
         // The format rule could still be null here if the national number was 0 and there was no
         // raw input (this should not be possible for numbers generated by the phonenumber library
         // as they would also not have a country calling code and we would have exited earlier).
@@ -1655,8 +1706,8 @@ public class PhoneNumberUtil {
         NumberFormat.Builder numFormatCopy =  NumberFormat.newBuilder();
         numFormatCopy.mergeFrom(formatRule);
         numFormatCopy.clearNationalPrefixFormattingRule();
-        List<NumberFormat> numberFormats = new ArrayList<NumberFormat>(1);
-        numberFormats.add(numFormatCopy);
+        List<NumberFormat> numberFormats = new ArrayList<>(1);
+        numberFormats.add(numFormatCopy.build());
         formattedNumber = formatByPattern(number, PhoneNumberFormat.NATIONAL, numberFormats);
         break;
     }
@@ -1703,7 +1754,7 @@ public class PhoneNumberUtil {
     }
     String nationalNumber = getNationalSignificantNumber(number);
     NumberFormat formatRule =
-        chooseFormattingPatternForNumber(metadata.numberFormats(), nationalNumber);
+        chooseFormattingPatternForNumber(metadata.getNumberFormatList(), nationalNumber);
     return formatRule != null;
   }
 
@@ -1767,7 +1818,7 @@ public class PhoneNumberUtil {
     } else if (metadataForRegionCallingFrom != null
         && countryCode == getCountryCodeForValidRegion(regionCallingFrom)) {
       NumberFormat formattingPattern =
-          chooseFormattingPatternForNumber(metadataForRegionCallingFrom.numberFormats(),
+          chooseFormattingPatternForNumber(metadataForRegionCallingFrom.getNumberFormatList(),
                                            nationalNumber);
       if (formattingPattern == null) {
         // If no pattern above is matched, we format the original input.
@@ -1784,7 +1835,7 @@ public class PhoneNumberUtil {
       // This will not work in the cases where the pattern (and not the leading digits) decide
       // whether a national prefix needs to be used, since we have overridden the pattern to match
       // anything, but that is not the case in the metadata to date.
-      return formatNsnUsingPattern(rawInput, newFormat, PhoneNumberFormat.NATIONAL);
+      return formatNsnUsingPattern(rawInput, newFormat.build(), PhoneNumberFormat.NATIONAL);
     }
     String internationalPrefixForFormatting = "";
     // If an unsupported region-calling-from is entered, or a country with multiple international
@@ -1877,13 +1928,13 @@ public class PhoneNumberUtil {
                            PhoneMetadata metadata,
                            PhoneNumberFormat numberFormat,
                            CharSequence carrierCode) {
-    List<NumberFormat> intlNumberFormats = metadata.intlNumberFormats();
+    List<NumberFormat> intlNumberFormats = metadata.getIntlNumberFormatList();
     // When the intlNumberFormats exists, we use that to format national number for the
     // INTERNATIONAL format instead of using the numberDesc.numberFormats.
     List<NumberFormat> availableFormats =
         (intlNumberFormats.size() == 0 || numberFormat == PhoneNumberFormat.NATIONAL)
-        ? metadata.numberFormats()
-        : metadata.intlNumberFormats();
+        ? metadata.getNumberFormatList()
+        : metadata.getIntlNumberFormatList();
     NumberFormat formattingPattern = chooseFormattingPatternForNumber(availableFormats, number);
     return (formattingPattern == null)
         ? number
@@ -1893,7 +1944,7 @@ public class PhoneNumberUtil {
   NumberFormat chooseFormattingPatternForNumber(List<NumberFormat> availableFormats,
                                                 String nationalNumber) {
     for (NumberFormat numFormat : availableFormats) {
-      int size = numFormat.leadingDigitsPatternSize();
+      int size = numFormat.getLeadingDigitsPatternCount();
       if (size == 0 || regexCache.getPatternForRegex(
               // We always use the last leading_digits_pattern, as it is the most detailed.
               numFormat.getLeadingDigitsPattern(size - 1)).matcher(nationalNumber).lookingAt()) {
@@ -2231,21 +2282,42 @@ public class PhoneNumberUtil {
   }
 
   /**
-   * Returns the metadata for the given region code or {@code null} if the region code is invalid
-   * or unknown.
+   * Returns the metadata for the given region code or {@code null} if the region code is invalid or
+   * unknown.
+   *
+   * @throws MissingMetadataException if the region code is valid, but metadata cannot be found.
    */
   PhoneMetadata getMetadataForRegion(String regionCode) {
     if (!isValidRegionCode(regionCode)) {
       return null;
     }
-    return metadataSource.getMetadataForRegion(regionCode);
+    PhoneMetadata phoneMetadata = metadataSource.getMetadataForRegion(regionCode);
+    ensureMetadataIsNonNull(phoneMetadata, "Missing metadata for region code " + regionCode);
+    return phoneMetadata;
   }
 
+  /**
+   * Returns the metadata for the given country calling code or {@code null} if the country calling
+   * code is invalid or unknown.
+   *
+   * @throws MissingMetadataException if the country calling code is valid, but metadata cannot be
+   *     found.
+   */
   PhoneMetadata getMetadataForNonGeographicalRegion(int countryCallingCode) {
-    if (!countryCallingCodeToRegionCodeMap.containsKey(countryCallingCode)) {
+    if (!countryCodesForNonGeographicalRegion.contains(countryCallingCode)) {
       return null;
     }
-    return metadataSource.getMetadataForNonGeographicalRegion(countryCallingCode);
+    PhoneMetadata phoneMetadata = metadataSource.getMetadataForNonGeographicalRegion(
+        countryCallingCode);
+    ensureMetadataIsNonNull(phoneMetadata,
+        "Missing metadata for country code " + countryCallingCode);
+    return phoneMetadata;
+  }
+
+  private static void ensureMetadataIsNonNull(PhoneMetadata phoneMetadata, String message) {
+    if (phoneMetadata == null) {
+      throw new MissingMetadataException(message);
+    }
   }
 
   boolean isNumberMatchingDesc(String nationalNumber, PhoneNumberDesc numberDesc) {
@@ -2541,11 +2613,11 @@ public class PhoneNumberUtil {
         PhoneNumberDesc mobileDesc = getNumberDescByType(metadata, PhoneNumberType.MOBILE);
         if (descHasPossibleNumberData(mobileDesc)) {
           // Merge the mobile data in if there was any. We have to make a copy to do this.
-          possibleLengths = new ArrayList<Integer>(possibleLengths);
+          possibleLengths = new ArrayList<>(possibleLengths);
           // Note that when adding the possible lengths from mobile, we have to again check they
           // aren't empty since if they are this indicates they are the same as the general desc and
           // should be obtained from there.
-          possibleLengths.addAll(mobileDesc.getPossibleLengthList().size() == 0
+          possibleLengths.addAll(mobileDesc.getPossibleLengthCount() == 0
               ? metadata.getGeneralDesc().getPossibleLengthList()
               : mobileDesc.getPossibleLengthList());
           // The current list is sorted; we need to merge in the new list and re-sort (duplicates
@@ -2555,7 +2627,7 @@ public class PhoneNumberUtil {
           if (localLengths.isEmpty()) {
             localLengths = mobileDesc.getPossibleLengthLocalOnlyList();
           } else {
-            localLengths = new ArrayList<Integer>(localLengths);
+            localLengths = new ArrayList<>(localLengths);
             localLengths.addAll(mobileDesc.getPossibleLengthLocalOnlyList());
             Collections.sort(localLengths);
           }
@@ -3527,6 +3599,6 @@ public class PhoneNumberUtil {
       logger.log(Level.WARNING, "Invalid or unknown region code provided: " + regionCode);
       return false;
     }
-    return metadata.isMobileNumberPortableRegion();
+    return metadata.getMobileNumberPortableRegion();
   }
 }

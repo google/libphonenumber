@@ -14,6 +14,7 @@
 
 # Source: https://en.wikipedia.org/wiki/Telephone_numbers_in_Tanzania
 
+25561|Viettel
 25562|Viettel
 25563|MTC
 25564|Cootel
@@ -23,6 +24,7 @@
 25568|Airtel
 25569|Airtel
 25571|tiGO
+25572|MO Mobile Holding Limited
 25573|Tanzania Telecom
 25574|Vodacom
 25575|Vodacom
