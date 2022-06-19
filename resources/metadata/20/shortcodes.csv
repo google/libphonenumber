@@ -1,0 +1,5 @@
+Region ; Prefix ; Length ; Type       ; Tariff    ; Sms  ; Carrier Specific
+EG     ; 12[23] ; 3      ; EMERGENCY  ; TOLL_FREE
+EG     ; 1[69]  ; 5      ; COMMERCIAL
+EG     ; 180    ; 3      ; EMERGENCY  ; TOLL_FREE
+EG     ; 34400  ; 5      ; COMMERCIAL ;           ; true ; true

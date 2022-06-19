@@ -1,0 +1,7 @@
+Region ; Label         ; Comment
+WS     ; SC            ; "http://www.itu.int/oth/T02020000B4/en"
+WS     ; SC_EMERGENCY  ; "911 and 99[4-6] numbers re-route to 999. Also 999 will be the only emergency numbers\nafter 2 years."
+WS     ; SC_SHORT_CODE ; "608 is assigned to Adaway Publication centre, but it seems to be expired\nhttp://www.adaway.ws/"
+WS     ; XML           ; "http://www.itu.int/oth/T02020000B4/en"
+WS     ; XML_MOBILE    ; "Under 89, only 8900000[0-2]xx + 8900000300 are assigned, and the operator seems to be\nthe government."
+WS     ; XML_TOLL_FREE ; "The 800 number series is new, and is used by companies such as the ANZ bank in Samoa to\nprovide 24 hour eMerchant support. It is marked as ""Customized Services"" in the plan\nfor now, so may be also used for other purposes than toll free, but until we have\nfurther evidence of these we will keep it as toll free."

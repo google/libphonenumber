@@ -1,0 +1,4 @@
+Region ; Prefix  ; Length ; Type       ; Tariff    ; Sms  ; Carrier Specific
+KH     ; 11[7-9] ; 3      ; EMERGENCY  ; TOLL_FREE
+KH     ; 40404   ; 5      ; COMMERCIAL ;           ; true ; true
+KH     ; 666     ; 3      ; EMERGENCY  ; TOLL_FREE

@@ -1,0 +1,13 @@
+Region ; Label           ; Comment
+MX     ; SC              ; "http://en.wikipedia.org/wiki/%2B52"
+MX     ; SC_EMERGENCY    ; "http://en.wikipedia.org/wiki/%2B52#Other_service_numbers"
+MX     ; SC_EMERGENCY    ; "http://en.wikipedia.org/wiki/Emergency_telephone_number"
+MX     ; SC_PREMIUM_RATE ; "We have received information that 7766 is a premium rate number used to buy various\ntypes of services or media."
+MX     ; XML             ; "http://www.itu.int/oth/T020200008A/en"
+MX     ; XML             ; "http://en.wikipedia.org/wiki/%2B52"
+MX     ; XML             ; "http://en.wikipedia.org/wiki/Premium-rate_telephone_number#Mexico"
+MX     ; XML             ; "http://en.wikipedia.org/wiki/Toll-free_telephone_number"
+MX     ; XML             ; "When a number starts with 01 or 02, we remove the prefixes; when a number starts with 044\nor 045 followed by 10 digits, we replace the prefixes with 1. This way all the mobile\nnumbers, regardless of whether they are written in international format (leading 1) or\nnational format (leading 044/045), will be parsed into the same form."
+MX     ; XML_FIXED_LINE  ; "http://en.wikipedia.org/wiki/Area_codes_in_Mexico_by_code"
+MX     ; XML_FIXED_LINE  ; "Also covering fixed satellite service numbers (prefixes: 200 and 201)."
+MX     ; XML_MOBILE      ; "Fixed satellite service numbers are not included here, although many other prefixes from\nthe fixedLine pattern are."

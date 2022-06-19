@@ -1,0 +1,10 @@
+Prefix ; Length ; Type       ; Tariff        ; Operator  ; Format       ; Regions ; Provenance ; Comment
+12     ; 9      ; MOBILE     ; STANDARD_RATE ; "sudani"  ; "fmt1_3/3/3" ; "SS"    ; ITU
+18     ; 9      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_3/3/3" ; "SS"    ; ITU
+19     ; 9      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_3/3/3" ; "SS"    ; TELECOMS   ; "Confirmed with Carrier"
+91     ; 9      ; MOBILE     ; STANDARD_RATE ; "zain"    ; "fmt1_3/3/3" ; "SS"
+92     ; 9      ; MOBILE     ; STANDARD_RATE ; "mtn"     ; "fmt1_3/3/3" ; "SS"
+95     ; 9      ; MOBILE     ; STANDARD_RATE ; "now"     ; "fmt1_3/3/3" ; "SS"
+97     ; 9      ; MOBILE     ; STANDARD_RATE ; "gemtel"  ; "fmt1_3/3/3" ; "SS"
+98     ; 9      ; MOBILE     ; STANDARD_RATE ; "digitel" ; "fmt1_3/3/3" ; "SS"    ; IR21
+99     ; 9      ; MOBILE     ; STANDARD_RATE ; "mtn"     ; "fmt1_3/3/3" ; "SS"    ; INTERNAL   ; "3rd party carrier partner"

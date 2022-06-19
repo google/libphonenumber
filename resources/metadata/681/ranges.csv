@@ -1,0 +1,5 @@
+Prefix  ; Length ; Type                 ; Tariff        ; Operator ; Format            ; Regions ; Provenance ; Comment
+[48]0   ; 6      ; VOICEMAIL            ; STANDARD_RATE ;          ; "fmt1_2/2/2"      ; "WF"    ; ITU
+72      ; 6      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "spt"    ; "fmt1_2/2/2"      ; "WF"    ; ITU
+80[0-5] ; 9      ; FIXED_LINE           ; TOLL_FREE     ;          ; "varcost_3/2/2/2" ; "WF"    ;            ; "ARCEP"
+8[23]   ; 6      ; MOBILE               ; STANDARD_RATE ; "spt"    ; "fmt1_2/2/2"      ; "WF"    ; ITU        ; "GOVERNMENT"

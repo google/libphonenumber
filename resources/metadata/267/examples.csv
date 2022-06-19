@@ -1,0 +1,6 @@
+Region ; Type         ; Number
+BW     ; FIXED_LINE   ; "2401234"
+BW     ; MOBILE       ; "71123456"
+BW     ; TOLL_FREE    ; "0800012345"
+BW     ; PREMIUM_RATE ; "9012345"
+BW     ; VOIP         ; "79101234"

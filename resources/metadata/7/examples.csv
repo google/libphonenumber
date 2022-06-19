@@ -1,0 +1,12 @@
+Region ; Type            ; Number
+KZ     ; FIXED_LINE      ; "7123456789"
+KZ     ; MOBILE          ; "7710009998"
+KZ     ; TOLL_FREE       ; "8001234567"
+KZ     ; PREMIUM_RATE    ; "8091234567"
+KZ     ; PERSONAL_NUMBER ; "8081234567"
+KZ     ; VOIP            ; "7511234567"
+RU     ; FIXED_LINE      ; "3011234567"
+RU     ; MOBILE          ; "9123456789"
+RU     ; TOLL_FREE       ; "8001234567"
+RU     ; PREMIUM_RATE    ; "8091234567"
+RU     ; PERSONAL_NUMBER ; "8081234567"

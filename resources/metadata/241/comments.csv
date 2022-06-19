@@ -1,0 +1,11 @@
+Region ; Label          ; Comment
+GA     ; SC             ; "http://www.itu.int/oth/T020200004E/en"
+GA     ; SC             ; "www.arcep.ga"
+GA     ; XML            ; "Note: We cannot set nationalPrefix=""0"" while fixed line numbers can start with a zero\nas this breaks parsing (it treats all leading zeros as national prefixes."
+GA     ; XML            ; "http://www.itu.int/oth/T020200004E/en"
+GA     ; XML            ; "http://www.arcep.ga"
+GA     ; XML_FIXED_LINE ; "Gabon has undergone renumbering in November 2019 where the prefix 01 is changed to 011;\nand intial ""0"" is no more needed when dialled internationally. Thus they become 7 digit\nto 8 digit excluding 0."
+GA     ; XML_FIXED_LINE ; "About numbers in older version, which may soon get invalid:\nA 7-digit fixed-line plan was scheduled to be implemented on June 17, 2012 to unify fixed\nline and mobile numbering. However, this has only partially happened; mobile numbers can\nnow be dialed without a leading zero, but fixed line numbers still require it. Their own\nwebsite still lists fixed line numbers as ""+241 01 44 68 11"" and upon ringing they will\nnot connect from outside the country without the 0. This was last tested March 2014."
+GA     ; XML_MOBILE     ; "Gabon has undergone renumbering in November 2019 where the prefixes 0[256] are changed\nto 6[256] respectively and similarly 0[47] changed to 7[47]. The intial ""0"" is no more\nneeded when dialled internationally. Thus they become 7 digit to 8 digit excluding 0."
+GA     ; XML_MOBILE     ; "About old numbers, which may soon get invalid: Mobile numbers can be 7 or 8 digits\n(with or without a leading zero)."
+GA     ; XML_MOBILE     ; "Prefix 7658 is added based on user report."

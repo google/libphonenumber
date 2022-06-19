@@ -1,0 +1,7 @@
+Region ; Type         ; Number
+DZ     ; FIXED_LINE   ; "12345678"
+DZ     ; MOBILE       ; "551234567"
+DZ     ; TOLL_FREE    ; "800123456"
+DZ     ; PREMIUM_RATE ; "808123456"
+DZ     ; SHARED_COST  ; "801123456"
+DZ     ; VOIP         ; "983123456"

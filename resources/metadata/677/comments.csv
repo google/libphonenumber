@@ -1,0 +1,4 @@
+Region ; Label          ; Comment
+SB     ; XML            ; "http://www.itu.int/oth/T02020000BF/en"
+SB     ; XML            ; "A single group is used to format 5-digit numbers. This formatting pattern follows\nthe guidelines in the ITU document."
+SB     ; XML_FIXED_LINE ; "Although not mentioned in the 2011 update, it seems likely that the range 67300-67699\nis still used for Sasamunga, Shortland, Poitete and Ringgi as per the 2010 plan."

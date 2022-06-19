@@ -75,7 +75,7 @@
 2125378|Salé
 2125379|Souk Larbaa
 2125380|Rabat area
-21253880|Tangier area
+2125388|Tangier area
 21253890|Fès/Meknès areas
 2125393|Tangier
 2125394|Asilah
