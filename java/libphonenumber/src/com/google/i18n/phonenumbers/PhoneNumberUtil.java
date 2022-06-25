@@ -74,10 +74,6 @@ public class PhoneNumberUtil {
 
   private static final int NANPA_COUNTRY_CODE = 1;
 
-  // The prefix that needs to be inserted in front of a Colombian landline number when dialed from
-  // a mobile phone in Colombia.
-  private static final String COLOMBIA_MOBILE_TO_FIXED_LINE_PREFIX = "3";
-
   // Map of country calling codes that use a mobile token before the area code. One example of when
   // this is relevant is when determining the length of the national destination code, which should
   // be the length of the area code plus the length of the mobile token.
@@ -1471,10 +1467,7 @@ public class PhoneNumberUtil {
           (numberType == PhoneNumberType.FIXED_LINE) || (numberType == PhoneNumberType.MOBILE)
           || (numberType == PhoneNumberType.FIXED_LINE_OR_MOBILE);
       // Carrier codes may be needed in some countries. We handle this here.
-      if (regionCode.equals("CO") && numberType == PhoneNumberType.FIXED_LINE) {
-        formattedNumber =
-            formatNationalNumberWithCarrierCode(numberNoExt, COLOMBIA_MOBILE_TO_FIXED_LINE_PREFIX);
-      } else if (regionCode.equals("BR") && isFixedLineOrMobile) {
+      if (regionCode.equals("BR") && isFixedLineOrMobile) {
         // Historically, we set this to an empty string when parsing with raw input if none was
         // found in the input string. However, this doesn't result in a number we can dial. For this
         // reason, we treat the empty string the same as if it isn't set at all.
