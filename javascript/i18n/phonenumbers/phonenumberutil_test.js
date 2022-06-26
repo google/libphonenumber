@@ -89,6 +89,10 @@ var BS_NUMBER = new i18n.phonenumbers.PhoneNumber();
 BS_NUMBER.setCountryCode(1);
 BS_NUMBER.setNationalNumber(2423651234);
 
+/** @type {!i18n.phonenumbers.PhoneNumber} */
+var CO_FIXED_LINE = new i18n.phonenumbers.PhoneNumber();
+CO_FIXED_LINE.setCountryCode(57);
+CO_FIXED_LINE.setNationalNumber(6012345678);
 
 // Note that this is the same as the example number for DE in the metadata.
 /** @type {!i18n.phonenumbers.PhoneNumber} */
@@ -1103,6 +1107,9 @@ function testFormatWithPreferredCarrierCode() {
 function testFormatNumberForMobileDialing() {
   // Numbers are normally dialed in national format in-country, and
   // international format from outside the country.
+  assertEquals(
+      '6012345678',
+      phoneUtil.formatNumberForMobileDialing(CO_FIXED_LINE, RegionCode.CO, false));
   assertEquals(
       '030123456',
       phoneUtil.formatNumberForMobileDialing(DE_NUMBER, RegionCode.DE, false));
