@@ -1608,19 +1608,21 @@ public class PhoneNumberUtil {
   }
 
   /**
-   * Formats a phone number using the original phone number format that the number is parsed from.
-   * The original format is embedded in the country_code_source field of the PhoneNumber object
-   * passed in. If such information is missing, the number will be formatted into the NATIONAL
-   * format by default. When we don't have a formatting pattern for the number, the method returns
-   * the raw input when it is available.
+   * Formats a phone number using the original phone number format (e.g. INTERNATIONAL or NATIONAL)
+   * that the number is parsed from, provided that the number has been parsed with {@link
+   * parseAndKeepRawInput}. Otherwise the number will be formatted in NATIONAL format.
    *
-   * Note this method guarantees no digit will be inserted, removed or modified as a result of
+   * <p>The original format is embedded in the country_code_source field of the PhoneNumber object
+   * passed in, which is only set when parsing keeps the raw input. When we don't have a formatting
+   * pattern for the number, the method falls back to returning the raw input.
+   *
+   * <p>Note this method guarantees no digit will be inserted, removed or modified as a result of
    * formatting.
    *
-   * @param number  the phone number that needs to be formatted in its original number format
-   * @param regionCallingFrom  the region whose IDD needs to be prefixed if the original number
-   *     has one
-   * @return  the formatted phone number in its original number format
+   * @param number the phone number that needs to be formatted in its original number format
+   * @param regionCallingFrom the region whose IDD needs to be prefixed if the original number has
+   *     one
+   * @return the formatted phone number in its original number format
    */
   public String formatInOriginalFormat(PhoneNumber number, String regionCallingFrom) {
     if (number.hasRawInput() && !hasFormattingPatternForNumber(number)) {
