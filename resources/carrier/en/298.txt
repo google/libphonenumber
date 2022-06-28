@@ -26,3 +26,4 @@
 29878|Faroese Telecom
 29879|Faroese Telecom
 29891|Tosa
+29896|Faroese Telecom

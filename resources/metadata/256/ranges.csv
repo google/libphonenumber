@@ -9,7 +9,6 @@ Prefix      ; Length ; Type       ; Tariff        ; Area Code Length ; Operator 
 2061        ; 9      ; FIXED_LINE ; STANDARD_RATE ;                  ;                ; "fmt_3/6"   ; "UG"    ;                           ; ITU
 20630[0-4]  ; 9      ; FIXED_LINE ; STANDARD_RATE ; 3                ;                ; "fmt_3/6"   ; "UG"    ;                           ; ITU
 206[5-9]    ; 9      ; FIXED_LINE ; STANDARD_RATE ; 3                ;                ; "fmt_3/6"   ; "UG"    ;                           ; IR21
-20810       ; 9      ; FIXED_LINE ; STANDARD_RATE ; 3                ;                ; "fmt_3/6"   ; "UG"    ;                           ; ITU
 3           ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;                ; "fixed_2/7" ; "UG"    ;                           ; ITU
 4[024]      ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;                ; "fixed_2/7" ; "UG"    ;                           ; ITU
 41          ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;                ; "fixed_2/7" ; "UG"    ; "Kampala"                 ; ITU

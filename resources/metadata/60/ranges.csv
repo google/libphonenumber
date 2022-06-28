@@ -1,6 +1,6 @@
 Prefix         ; Length ; Type       ; Tariff        ; Area Code Length ; Operator        ; Format            ; Regions ; Geocode:en                ; Provenance
 102            ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "digi"          ; "fmt_2/3/3-4"     ; "MY"    ;                           ; GOVERNMENT
-103[0-4]       ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "celcom"        ; "fmt_2/3/3-4"     ; "MY"    ;                           ; GOVERNMENT
+103[0-4]       ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "xox"           ; "fmt_2/3/3-4"     ; "MY"    ;                           ; GOVERNMENT
 10[35]5        ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "webe"          ; "fmt_2/3/3-4"     ; "MY"    ;                           ; GOVERNMENT
 103[6-9]       ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "digi"          ; "fmt_2/3/3-4"     ; "MY"    ;                           ; GOVERNMENT
 104[01]        ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "celcom"        ; "fmt_2/3/3-4"     ; "MY"    ;                           ; GOVERNMENT
@@ -61,11 +61,8 @@ Prefix         ; Length ; Type       ; Tariff        ; Area Code Length ; Operat
 1154           ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "celcom"        ; "mobile_2/4/4"    ; "MY"    ;                           ; IR21
 1155           ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "red_one"       ; "mobile_2/4/4"    ; "MY"    ;                           ; IR21
 1156[0-4]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "celcom"        ; "mobile_2/4/4"    ; "MY"    ;                           ; IR21
-1156[56]       ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "xox"           ; "mobile_2/4/4"    ; "MY"    ;                           ; IR21
-1156[7-9]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "xox"           ; "mobile_2/4/4"    ; "MY"
+115[6-9][5-9]  ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "xox"           ; "mobile_2/4/4"    ; "MY"    ;                           ; GOVERNMENT
 115[78][0-4]   ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "ytl"           ; "mobile_2/4/4"    ; "MY"    ;                           ; IR21
-115[7-9]5      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "xox"           ; "mobile_2/4/4"    ; "MY"    ;                           ; IR21
-115[7-9][6-9]  ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "xox"           ; "mobile_2/4/4"    ; "MY"
 11590          ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "digi"          ; "mobile_2/4/4"    ; "MY"    ;                           ; IR21
 1159[1-4]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "webe"          ; "mobile_2/4/4"    ; "MY"    ;                           ; IR21
 1160[5-9]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "u_mobile"      ; "mobile_2/4/4"    ; "MY"    ;                           ; IR21
@@ -92,6 +89,7 @@ Prefix         ; Length ; Type       ; Tariff        ; Area Code Length ; Operat
 117[34]        ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "ytl"           ; "mobile_2/4/4"    ; "MY"    ;                           ; IR21
 1175[0-6]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "ytl"           ; "mobile_2/4/4"    ; "MY"    ;                           ; IR21
 11888[69]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "u_mobile"      ; "mobile_2/4/4"    ; "MY"    ;                           ; IR21
+118888         ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "red_one"       ; "mobile_2/4/4"    ; "MY"    ;                           ; GOVERNMENT
 12             ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "maxis"         ; "fmt_2/3/3-4"     ; "MY"    ;                           ; IR21
 1[378]00       ; 10     ; FIXED_LINE ; TOLL_FREE     ;                  ;                 ; "varcost_1/3/2/4" ; "MY"
 13[1-9]        ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "celcom"        ; "fmt_2/3/3-4"     ; "MY"    ;                           ; IR21
@@ -99,6 +97,7 @@ Prefix         ; Length ; Type       ; Tariff        ; Area Code Length ; Operat
 14[369]        ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "digi"          ; "fmt_2/3/3-4"     ; "MY"    ;                           ; GOVERNMENT
 14400          ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "tune_talk"     ; "fmt_2/3/3-4"     ; "MY"    ;                           ; GOVERNMENT
 14[58]         ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "celcom"        ; "fmt_2/3/3-4"     ; "MY"    ;                           ; GOVERNMENT
+1531           ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "tune_talk"     ; "fmt_2/3/3-4"     ; "MY"    ;                           ; GOVERNMENT
 1546[0-4]      ; 10     ; VOIP       ; STANDARD_RATE ;                  ;                 ; "fmt_3/3/4"       ; "MY"    ;                           ; GOVERNMENT
 15480[125]     ; 10     ; VOIP       ; STANDARD_RATE ;                  ;                 ; "fmt_3/3/4"       ; "MY"    ;                           ; GOVERNMENT
 1548[17]       ; 10     ; VOIP       ; STANDARD_RATE ;                  ;                 ; "fmt_3/3/4"       ; "MY"    ;                           ; GOVERNMENT
@@ -126,6 +125,7 @@ Prefix         ; Length ; Type       ; Tariff        ; Area Code Length ; Operat
 1840           ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "u_mobile"      ; "fmt_2/3/3-4"     ; "MY"    ;                           ; GOVERNMENT
 1846           ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "u_mobile"      ; "fmt_2/3/3-4"     ; "MY"    ;                           ; IR21
 1847[0-4]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "u_mobile"      ; "fmt_2/3/3-4"     ; "MY"    ;                           ; GOVERNMENT
+18546          ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "xox"           ; "mobile_2/4/4"    ; "MY"    ;                           ; GOVERNMENT
 1857           ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "u_mobile"      ; "fmt_2/3/3-4"     ; "MY"    ;                           ; GOVERNMENT
 185[89]        ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "ytl"           ; "fmt_2/3/3-4"     ; "MY"    ;                           ; GOVERNMENT
 186[0-57-9]    ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "ytl"           ; "fmt_2/3/3-4"     ; "MY"    ;                           ; GOVERNMENT

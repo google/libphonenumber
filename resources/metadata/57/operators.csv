@@ -1,6 +1,5 @@
-Id            ; Domestic Selection Codes ; International Dialling Codes ; Name:en                     ; Comment
+Id            ; Domestic Selection Codes ; International Dialling Codes ; Name:en
 __etb         ; "7"                      ; "007"                        ; "ETB"
-__mobile      ; "3"                      ;                              ;                             ; "For calling mobile from a landline (https://en.wikipedia.org/wiki/Telephone_numbers_in_Colombia)."
 __une         ; "5"                      ; "005"                        ; "Une"
 avantel       ;                          ;                              ; "Avantel"
 claro         ; "456, 444"               ; "00456, 00444"               ; "Claro"

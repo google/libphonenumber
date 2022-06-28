@@ -5,6 +5,7 @@ Prefix      ; Length ; Type       ; Tariff        ; Operator         ; Format   
 120         ; 9      ; MOBILE     ; STANDARD_RATE ; "telkom"         ; "mobile_3/6"  ; "KE"    ;                                         ; IR21
 121         ; 9      ; MOBILE     ; STANDARD_RATE ; "infura"         ; "mobile_3/6"  ; "KE"    ;                                         ; ITU
 124         ; 9      ; MOBILE     ; STANDARD_RATE ; "finserve"       ; "mobile_3/6"  ; "KE"    ;                                         ; ITU
+130         ; 9      ; MOBILE     ; STANDARD_RATE ; "nrg_media"      ; "mobile_3/6"  ; "KE"    ;                                         ; GOVERNMENT
 20          ; 8,9    ; FIXED_LINE ; STANDARD_RATE ;                  ; "fixed_2/5-7" ; "KE"    ; "Nairobi"                               ; GOVERNMENT
 40          ; 8,9    ; FIXED_LINE ; STANDARD_RATE ;                  ; "fixed_2/5-7" ; "KE"    ; "Kwale/Ukunda/Msambweni/Lungalunga"     ; GOVERNMENT
 41          ; 9      ; FIXED_LINE ; STANDARD_RATE ;                  ; "fixed_2/5-7" ; "KE"    ; "Mombasa/Mariakani/Kilifi"              ; GOVERNMENT
