@@ -16,11 +16,11 @@
 # https://www.mcmc.gov.my/sectors/celco/numbering-management/numbering-management/numbers-assignment
 
 60102|DiGi
-601030|Celcom
-601031|Celcom
-601032|Celcom
-601033|Celcom
-601034|Celcom
+601030|XOX
+601031|XOX
+601032|XOX
+601033|XOX
+601034|XOX
 601035|Webe
 601036|DiGi
 601037|DiGi
@@ -277,7 +277,9 @@
 601173|YTL
 601174|YTL
 601175|YTL
-60118|U Mobile
+60118886|U Mobile
+60118888|red ONE
+60118889|U Mobile
 6012|Maxis
 60131|Celcom
 60132|Celcom
@@ -296,6 +298,7 @@
 60147|Maxis
 60148|Celcom
 60149|DiGi
+60153|Tune Talk
 601591|DiGi
 601592|Celcom
 601596|DiGi
@@ -317,6 +320,7 @@
 601833|YTL
 601834|YTL
 60184|U Mobile
+601854|XOX
 601857|U Mobile
 601858|YTL
 601859|YTL

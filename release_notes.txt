@@ -1,3 +1,13 @@
+Jun 28, 2022: v8.12.51
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   800, BJ, BR, CO, EH, FO, GE, GP, KE, KG, MA, MM, MN, MY, NZ, RE, SI, UG, VN
+ - Updated geocoding data for country calling code(s): 57 (en), 61 (en)
+ - Updated carrier data for country calling code(s):
+   60 (en), 254 (en), 262 (en), 298 (en), 386 (en), 421 (en), 976 (en),
+   995 (en), 996 (en)
+ - Updated / refreshed time zone meta data.
+
 Jun 09, 2022: v8.12.50
 Metadata changes:
  - Updated alternate formatting data for country calling code(s): 380, 49

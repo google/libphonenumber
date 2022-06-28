@@ -402,19 +402,20 @@ Prefix            ; Length ; Type       ; Tariff        ; Area Code Length ; Ope
 25849             ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Choibalsan"                  ; "MN"    ; "Khalkhgol, Dornod"               ; GOVERNMENT
 2592              ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 4                ;            ; "fixed_line_4/5-6" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Mandalgovi city, Dundgovi"       ; GOVERNMENT
 25953             ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Khuld, Dundgovi"                 ; GOVERNMENT
-5[05]             ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "unitel"   ; "fmt1_4/4"         ;                                    ; "MN"    ;                                   ; ITU
-53                ; 8      ; FIXED_LINE ; STANDARD_RATE ; 4                ;            ; "fmt1_4/4"         ;                                    ; "MN"    ;                                   ; IR21
-5[68]             ; 8      ; FIXED_LINE ; STANDARD_RATE ; 4                ;            ; "fmt1_4/4"         ;                                    ; "MN"
-70[0-5]           ; 8      ; FIXED_LINE ; STANDARD_RATE ; 4                ;            ; "fmt1_4/4"         ;                                    ; "MN"    ;                                   ; ITU
-71[013-9]         ; 8      ; VOIP       ; STANDARD_RATE ;                  ;            ; "fmt1_4/4"         ;                                    ; "MN"
-712[0-79]         ; 8      ; VOIP       ; STANDARD_RATE ;                  ;            ; "fmt1_4/4"         ;                                    ; "MN"
-7128              ; 8      ; FIXED_LINE ; STANDARD_RATE ;                  ;            ; "fmt1_4/4"         ;                                    ; "MN"    ;                                   ; ITU
-72                ; 8      ; VOIP       ; STANDARD_RATE ;                  ;            ; "fmt1_4/4"         ;                                    ; "MN"
-7[5-8]            ; 8      ; VOIP       ; STANDARD_RATE ;                  ;            ; "fmt1_4/4"         ;                                    ; "MN"    ;                                   ; ITU
-8[0689]           ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "unitel"   ; "fmt1_4/4"         ;                                    ; "MN"    ;                                   ; IR21
-83[01]            ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "g_mobile" ; "fmt1_4/4"         ;                                    ; "MN"    ;                                   ; ITU
-85                ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "mobicom"  ; "fmt1_4/4"         ;                                    ; "MN"    ;                                   ; IR21
-9[016]            ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "skytel"   ; "fmt1_4/4"         ;                                    ; "MN"    ;                                   ; IR21
-920               ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "skytel"   ; "fmt1_4/4"         ;                                    ; "MN"    ;                                   ; IR21
-9[378]            ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "g_mobile" ; "fmt1_4/4"         ;                                    ; "MN"    ;                                   ; IR21
-9[459]            ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "mobicom"  ; "fmt1_4/4"         ;                                    ; "MN"    ;                                   ; IR21
+5[05]             ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "unitel"   ; "fmt1_4/4"         ; "Asia/Ulaanbaatar"                 ; "MN"    ;                                   ; ITU
+53                ; 8      ; FIXED_LINE ; STANDARD_RATE ; 4                ;            ; "fmt1_4/4"         ; "Asia/Ulaanbaatar"                 ; "MN"    ;                                   ; IR21
+5[68]             ; 8      ; FIXED_LINE ; STANDARD_RATE ; 4                ;            ; "fmt1_4/4"         ; "Asia/Ulaanbaatar"                 ; "MN"
+70[0-5]           ; 8      ; FIXED_LINE ; STANDARD_RATE ; 4                ;            ; "fmt1_4/4"         ; "Asia/Ulaanbaatar"                 ; "MN"    ;                                   ; ITU
+71[013-9]         ; 8      ; VOIP       ; STANDARD_RATE ;                  ;            ; "fmt1_4/4"         ; "Asia/Ulaanbaatar"                 ; "MN"
+712[0-79]         ; 8      ; VOIP       ; STANDARD_RATE ;                  ;            ; "fmt1_4/4"         ; "Asia/Ulaanbaatar"                 ; "MN"
+7128              ; 8      ; FIXED_LINE ; STANDARD_RATE ;                  ;            ; "fmt1_4/4"         ; "Asia/Ulaanbaatar"                 ; "MN"    ;                                   ; ITU
+72                ; 8      ; VOIP       ; STANDARD_RATE ;                  ;            ; "fmt1_4/4"         ; "Asia/Ulaanbaatar"                 ; "MN"
+7[5-8]            ; 8      ; VOIP       ; STANDARD_RATE ;                  ;            ; "fmt1_4/4"         ; "Asia/Ulaanbaatar"                 ; "MN"    ;                                   ; ITU
+8[0689]           ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "unitel"   ; "fmt1_4/4"         ; "Asia/Ulaanbaatar"                 ; "MN"    ;                                   ; IR21
+81                ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "ondo"     ; "fmt1_4/4"         ; "Asia/Ulaanbaatar"                 ; "MN"
+83[01]            ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "g_mobile" ; "fmt1_4/4"         ; "Asia/Ulaanbaatar"                 ; "MN"    ;                                   ; ITU
+85                ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "mobicom"  ; "fmt1_4/4"         ; "Asia/Ulaanbaatar"                 ; "MN"    ;                                   ; IR21
+9[016]            ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "skytel"   ; "fmt1_4/4"         ; "Asia/Ulaanbaatar"                 ; "MN"    ;                                   ; IR21
+920               ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "skytel"   ; "fmt1_4/4"         ; "Asia/Ulaanbaatar"                 ; "MN"    ;                                   ; IR21
+9[378]            ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "g_mobile" ; "fmt1_4/4"         ; "Asia/Ulaanbaatar"                 ; "MN"    ;                                   ; IR21
+9[459]            ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "mobicom"  ; "fmt1_4/4"         ; "Asia/Ulaanbaatar"                 ; "MN"    ;                                   ; IR21
