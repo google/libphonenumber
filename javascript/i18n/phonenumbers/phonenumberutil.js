@@ -145,17 +145,6 @@ i18n.phonenumbers.PhoneNumberUtil.UNKNOWN_REGION_ = 'ZZ';
 
 
 /**
- * The prefix that needs to be inserted in front of a Colombian landline number
- * when dialed from a mobile phone in Colombia.
- *
- * @const
- * @type {string}
- * @private
- */
-i18n.phonenumbers.PhoneNumberUtil.COLOMBIA_MOBILE_TO_FIXED_LINE_PREFIX_ = '3';
-
-
-/**
  * Map of country calling codes that use a mobile token before the area code.
  * One example of when this is relevant is when determining the length of the
  * national destination code, which should be the length of the area code plus
@@ -1985,13 +1974,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.formatNumberForMobileDialing =
         (numberType == i18n.phonenumbers.PhoneNumberType.MOBILE) ||
         (numberType == i18n.phonenumbers.PhoneNumberType.FIXED_LINE_OR_MOBILE);
     // Carrier codes may be needed in some countries. We handle this here.
-    if (regionCode == 'CO' &&
-        numberType == i18n.phonenumbers.PhoneNumberType.FIXED_LINE) {
-      formattedNumber = this.formatNationalNumberWithCarrierCode(
-          numberNoExt,
-          i18n.phonenumbers.PhoneNumberUtil
-              .COLOMBIA_MOBILE_TO_FIXED_LINE_PREFIX_);
-    } else if (regionCode == 'BR' && isFixedLineOrMobile) {
+    if (regionCode == 'BR' && isFixedLineOrMobile) {
       formattedNumber =
           // Historically, we set this to an empty string when parsing with raw
           // input if none was found in the input string. However, this doesn't

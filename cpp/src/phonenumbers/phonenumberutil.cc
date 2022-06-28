@@ -88,10 +88,6 @@ const char PhoneNumberUtil::kRegionCodeForNonGeoEntity[] = "001";
 
 namespace {
 
-// The prefix that needs to be inserted in front of a Colombian landline
-// number when dialed from a mobile phone in Colombia.
-const char kColombiaMobileToFixedLinePrefix[] = "3";
-
 // The kPlusSign signifies the international prefix.
 const char kPlusSign[] = "+";
 
@@ -1269,11 +1265,7 @@ void PhoneNumberUtil::FormatNumberForMobileDialing(
         (number_type == FIXED_LINE) || (number_type == MOBILE) ||
         (number_type == FIXED_LINE_OR_MOBILE);
     // Carrier codes may be needed in some countries. We handle this here.
-    if ((region_code == "CO") && (number_type == FIXED_LINE)) {
-      FormatNationalNumberWithCarrierCode(
-          number_no_extension, kColombiaMobileToFixedLinePrefix,
-          formatted_number);
-    } else if ((region_code == "BR") && (is_fixed_line_or_mobile)) {
+    if ((region_code == "BR") && (is_fixed_line_or_mobile)) {
       // Historically, we set this to an empty string when parsing with raw
       // input if none was found in the input string. However, this doesn't
       // result in a number we can dial. For this reason, we treat the empty
