@@ -1102,6 +1102,12 @@ TEST_F(PhoneNumberUtilTest, FormatNumberForMobileDialing) {
 
   // Numbers are normally dialed in national format in-country, and
   // international format from outside the country.
+  test_number.set_country_code(57);
+  test_number.set_national_number(uint64{6012345678});
+  phone_util_.FormatNumberForMobileDialing(
+      test_number, RegionCode::CO(), false, /* remove formatting */
+      &formatted_number);
+  EXPECT_EQ("6012345678", formatted_number);
   test_number.set_country_code(49);
   test_number.set_national_number(uint64{30123456});
   phone_util_.FormatNumberForMobileDialing(
