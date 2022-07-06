@@ -24,7 +24,7 @@
   </path>
   <path id="test.classpath">
     <pathelement location="${classes.dir}"/>
-    <pathelement location="${lib.dir}/junit/junit-4.8.1.jar"/>
+    <pathelement location="${lib.dir}/junit/junit-4.13.1.jar"/>
     <pathelement location="${jar.dir}/${ant.project.name}-test.jar"/>
     <fileset dir="${lib.dir}">
       <include name="**/*.jar"/>

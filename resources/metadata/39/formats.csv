@@ -1,0 +1,13 @@
+Id            ; National         ; International    ; Comment
+fmt10_3/4/4-5 ; "XXX XXXX XXXX*" ; "XXX XXXX XXXX*"
+fmt1_2/3-4/4  ; "XX XXX* XXXX"   ; "XX XXX* XXXX"   ; "The leading zero for fixed numbers will be prepended before the matching of these\nregular expressions."
+fmt2_2/4/5    ; "XX XXXX XXXXX"  ; "XX XXXX XXXXX"
+fmt3_2/4-6    ; "XX XXXX**"      ; "XX XXXX**"
+fmt4_3/3-4/4  ; "XXX XXX* XXXX"  ; "XXX XXX* XXXX"
+fmt5_3/3-6    ; "XXX XXX***"     ; "XXX XXX***"
+fmt6_4/3/4    ; "XXXX XXX XXXX"  ; "XXXX XXX XXXX"
+fmt7_4/2-6    ; "XXXX XX****"    ; "XXXX XX****"
+fmt8_3/3/3-4  ; "XXX XXX XXX*"   ; "XXX XXX XXX*"
+fmt9_4/4      ; "XXXX XXXX"      ; "XXXX XXXX"
+shortcode_4-5 ; "XXXX*"          ;                  ; "Shortcodes (4-5 digits)."
+shortcode_6   ; "XXXXXX"         ;                  ; "Shortcodes (6 digits)."

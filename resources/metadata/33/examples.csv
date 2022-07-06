@@ -1,0 +1,8 @@
+Region ; Type         ; Number
+FR     ; FIXED_LINE   ; "123456789"
+FR     ; MOBILE       ; "612345678"
+FR     ; TOLL_FREE    ; "801234567"
+FR     ; PREMIUM_RATE ; "891123456"
+FR     ; SHARED_COST  ; "884012345"
+FR     ; VOIP         ; "912345678"
+FR     ; UAN          ; "806123456"

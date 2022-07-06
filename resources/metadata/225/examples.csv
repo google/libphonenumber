@@ -1,0 +1,3 @@
+Region ; Type       ; Number
+CI     ; FIXED_LINE ; "2123456789"
+CI     ; MOBILE     ; "0123456789"

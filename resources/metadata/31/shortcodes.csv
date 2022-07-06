@@ -1,0 +1,14 @@
+Region ; Prefix    ; Length ; Type               ; Tariff    ; Sms  ; Carrier Specific ; Format
+NL     ; 112       ; 3      ; EMERGENCY          ; TOLL_FREE
+NL     ; 11600[06] ; 6      ; EXPANDED_EMERGENCY ; TOLL_FREE ;      ;                  ; "shortcode_6"
+NL     ; 116111    ; 6      ; EXPANDED_EMERGENCY ; TOLL_FREE ;      ;                  ; "shortcode_6"
+NL     ; 116123    ; 6      ; EXPANDED_EMERGENCY ; TOLL_FREE ;      ;                  ; "shortcode_6"
+NL     ; 120[0-4]  ; 4      ; COMMERCIAL         ;           ;      ; true             ; "shortcode_4"
+NL     ; 123[34]   ; 4      ; COMMERCIAL         ;           ;      ;                  ; "shortcode_4"
+NL     ; 1244      ; 4      ; COMMERCIAL         ;           ;      ;                  ; "shortcode_4"
+NL     ; 13[03-9]  ; 4      ; COMMERCIAL         ;           ;      ;                  ; "shortcode_4"
+NL     ; 1400      ; 4      ; COMMERCIAL
+NL     ; 18[02-9]  ; 4      ; COMMERCIAL         ;           ;      ;                  ; "shortcode_4"
+NL     ; 181[0-79] ; 4      ; COMMERCIAL         ;           ;      ;                  ; "shortcode_4"
+NL     ; [34]000   ; 4      ; COMMERCIAL         ;           ; true ;                  ; "shortcode_4"
+NL     ; 911       ; 3      ; EMERGENCY          ; TOLL_FREE

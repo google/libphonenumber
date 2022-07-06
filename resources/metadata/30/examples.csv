@@ -1,0 +1,8 @@
+Region ; Type            ; Number
+GR     ; FIXED_LINE      ; "2123456789"
+GR     ; MOBILE          ; "6912345678"
+GR     ; TOLL_FREE       ; "8001234567"
+GR     ; PREMIUM_RATE    ; "9091234567"
+GR     ; SHARED_COST     ; "8011234567"
+GR     ; PERSONAL_NUMBER ; "7012345678"
+GR     ; UAN             ; "5005000123"

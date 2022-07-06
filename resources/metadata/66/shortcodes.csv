@@ -1,0 +1,67 @@
+Region ; Prefix       ; Length ; Type               ; Tariff        ; Carrier Specific
+TH     ; 10[0-2]      ; 3      ; COMMERCIAL
+TH     ; 1100         ; 4      ; COMMERCIAL         ; TOLL_FREE
+TH     ; 1103         ; 4      ; COMMERCIAL         ; STANDARD_RATE
+TH     ; 111[15]      ; 4      ; COMMERCIAL         ; STANDARD_RATE
+TH     ; 1112         ; 4      ; COMMERCIAL
+TH     ; 1113         ; 4      ; COMMERCIAL         ; PREMIUM_RATE
+TH     ; 112[03]      ; 4      ; COMMERCIAL         ; TOLL_FREE
+TH     ; 112[58]      ; 4      ; COMMERCIAL         ; STANDARD_RATE
+TH     ; 113[056]     ; 4      ; COMMERCIAL         ; STANDARD_RATE
+TH     ; 113[3479]    ; 4      ; COMMERCIAL         ; TOLL_FREE
+TH     ; 114[02-4]    ; 4      ; COMMERCIAL         ; STANDARD_RATE
+TH     ; 1148         ; 4      ; COMMERCIAL         ;               ; true
+TH     ; 1149         ; 4      ; COMMERCIAL         ; STANDARD_RATE ; true
+TH     ; 115[046-9]   ; 4      ; COMMERCIAL         ; STANDARD_RATE
+TH     ; 1155         ; 4      ; COMMERCIAL         ; TOLL_FREE
+TH     ; 116[04-79]   ; 4      ; COMMERCIAL         ; STANDARD_RATE
+TH     ; 117[03-589]  ; 4      ; COMMERCIAL         ; STANDARD_RATE
+TH     ; 117[67]      ; 4      ; COMMERCIAL         ; TOLL_FREE
+TH     ; 118[027-9]   ; 4      ; COMMERCIAL         ; STANDARD_RATE
+TH     ; 119[0246]    ; 4      ; COMMERCIAL         ; TOLL_FREE
+TH     ; 1193         ; 4      ; EXPANDED_EMERGENCY
+TH     ; 119[57-9]    ; 4      ; COMMERCIAL         ; STANDARD_RATE
+TH     ; 1222         ; 4      ; COMMERCIAL         ; PREMIUM_RATE
+TH     ; 123[89]      ; 4      ; COMMERCIAL         ; PREMIUM_RATE
+TH     ; 1266         ; 4      ; COMMERCIAL         ; STANDARD_RATE
+TH     ; 1318         ; 4      ; COMMERCIAL         ; STANDARD_RATE
+TH     ; 132[23]      ; 4      ; COMMERCIAL         ; STANDARD_RATE
+TH     ; 133[013]     ; 4      ; COMMERCIAL         ; STANDARD_RATE
+TH     ; 135[56]      ; 4      ; COMMERCIAL         ; STANDARD_RATE
+TH     ; 136[45]      ; 4      ; COMMERCIAL
+TH     ; 1373         ; 4      ; COMMERCIAL
+TH     ; 1477         ; 4      ; COMMERCIAL
+TH     ; 150[0-8]     ; 4      ; COMMERCIAL         ; STANDARD_RATE
+TH     ; 1509         ; 4      ; COMMERCIAL         ; PREMIUM_RATE
+TH     ; 154[0-378]   ; 4      ; COMMERCIAL         ; STANDARD_RATE
+TH     ; 1549         ; 4      ; COMMERCIAL
+TH     ; 155[1-478]   ; 4      ; COMMERCIAL         ; STANDARD_RATE
+TH     ; 1555         ; 4      ; COMMERCIAL         ; TOLL_FREE
+TH     ; 1556         ; 4      ; COMMERCIAL         ; PREMIUM_RATE
+TH     ; 156[01679]   ; 4      ; COMMERCIAL         ; STANDARD_RATE
+TH     ; 157[156]     ; 4      ; COMMERCIAL         ; STANDARD_RATE
+TH     ; 1572         ; 4      ; COMMERCIAL
+TH     ; 1578         ; 4      ; COMMERCIAL         ; TOLL_FREE
+TH     ; 158[0-24589] ; 4      ; COMMERCIAL         ; STANDARD_RATE
+TH     ; 159[013589]  ; 4      ; COMMERCIAL         ; STANDARD_RATE
+TH     ; 160[0-29]    ; 4      ; COMMERCIAL         ; STANDARD_RATE
+TH     ; 1620         ; 4      ; COMMERCIAL         ; STANDARD_RATE
+TH     ; 1623         ; 4      ; COMMERCIAL
+TH     ; 164[356]     ; 4      ; COMMERCIAL         ; STANDARD_RATE
+TH     ; 1644         ; 4      ; COMMERCIAL         ; TOLL_FREE
+TH     ; 166[1-68]    ; 4      ; COMMERCIAL         ; STANDARD_RATE
+TH     ; 1667         ; 4      ; COMMERCIAL         ; TOLL_FREE
+TH     ; 1669         ; 4      ; EMERGENCY          ; TOLL_FREE
+TH     ; 167[057-9]   ; 4      ; COMMERCIAL         ; STANDARD_RATE
+TH     ; 1672         ; 4      ; COMMERCIAL
+TH     ; 168[015]     ; 4      ; COMMERCIAL         ; STANDARD_RATE
+TH     ; 1688         ; 4      ; COMMERCIAL         ; TOLL_FREE
+TH     ; 169[0457-9]  ; 4      ; COMMERCIAL         ; STANDARD_RATE
+TH     ; 1691         ; 4      ; EXPANDED_EMERGENCY ; TOLL_FREE
+TH     ; 1696         ; 4      ; COMMERCIAL         ; TOLL_FREE
+TH     ; 1719         ; 4      ; COMMERCIAL         ; STANDARD_RATE
+TH     ; 1749         ; 4      ; COMMERCIAL
+TH     ; 177[27]      ; 4      ; COMMERCIAL         ; STANDARD_RATE
+TH     ; 1790         ; 4      ; COMMERCIAL
+TH     ; 1888         ; 4      ; COMMERCIAL         ; TOLL_FREE
+TH     ; 19[19]       ; 3      ; EMERGENCY          ; TOLL_FREE

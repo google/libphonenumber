@@ -1,0 +1,10 @@
+Id             ; National       ; International ; Comment
+fixed_1/1/2/2  ; "#X X XX XX"   ; "X X XX XX"   ; "Formatting rules follow the conventions seen in web-search results. A space has been\nused to separate the area code from the rest of the number, based on sites like\nhttp://www.goldenpages.bg."
+fixed_1/3/3-4  ; "#X XXX XXX*"  ; "X XXX XXX*"
+fixed_2/3/2-3  ; "#XX XXX XX*"  ; "XX XXX XX*"
+fixed_3/3/2    ; "#XXX XXX XX"  ; "XXX XXX XX"
+fixed_3/4      ; "#XXX XXXX"    ; "XXX XXXX"
+fmt_3/2/3      ; "#XXX XX XXX"  ; "XXX XX XXX"  ; "Personal numbers & toll free."
+mobile_2/3/3-4 ; "#XX XXX XXX*" ; "XX XXX XXX*" ; "Mobile and premium rate."
+mobile_3/3/3   ; "#XXX XXX XXX" ; "XXX XXX XXX"
+shortcode_6    ; "XXXXXX"       ;               ; "6-digit shortcodes."

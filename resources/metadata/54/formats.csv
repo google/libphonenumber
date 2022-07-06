@@ -1,0 +1,7 @@
+Id          ; National         ; International   ; Local       ; National Prefix Optional ; Comment
+fmt_3/3/4   ; "#XXX-XXX-XXXX"  ; "XXX-XXX-XXXX"  ;             ;                          ; "Various non-geographic numbers, including UAN, premium rate but also some mobile\nranges. We assume no local dialling is possible for these ranges."
+fmt_3/3/5   ; "#XXX-XXX-XXXXX" ; "XXX-XXX-XXXXX"
+geo_2/4/4   ; "#XX XXXX-XXXX"  ; "XX XXXX-XXXX"  ; "XXXX-XXXX" ; true                     ; "Formatting for geographic numbers (including those which can be dialled with a mobile token)."
+geo_3/3/4   ; "#XXX XXX-XXXX"  ; "XXX XXX-XXXX"  ; "XXX-XXXX"  ; true
+geo_4/2/4   ; "#XXXX XX-XXXX"  ; "XXXX XX-XXXX"  ; "XX-XXXX"   ; true
+shortcode_3 ; "XXX"            ;                 ;             ;                          ; "Format short numbers as a block."

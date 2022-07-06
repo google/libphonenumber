@@ -1,0 +1,6 @@
+Region ; Label          ; Comment
+WF     ; SC             ; "http://www.itu.int/oth/T02020000E6/en"
+WF     ; SC_EMERGENCY   ; "http://lannuaire.service-public.fr/navigation/wallis-et-futuna-wallis-futuna-alofi.html"
+WF     ; XML            ; "http://www.itu.int/oth/T02020000E6/en"
+WF     ; XML_FIXED_LINE ; "Web searching only finds examples with the 72 prefix but the ITU document states that\n50 and 68 are possible, so they are included here."
+WF     ; XML_TOLL_FREE  ; "As per ARCEP, mainland France and overseas territories use 0800 to 0805 as Toll-free\nnumbers."

@@ -1,0 +1,14 @@
+Prefix  ; Length ; Type       ; Tariff        ; Operator                   ; Format       ; Timezone                            ; Regions ; Geocode:en                             ; Geocode:fr                              ; Provenance ; Comment
+1       ; 7      ; FIXED_LINE ; STANDARD_RATE ;                            ; "fmt4_2/5"   ; "Africa/Kinshasa"                   ; "CD"    ; "Kinshasa"                             ; "Kinshasa"
+12      ; 9      ; FIXED_LINE ; STANDARD_RATE ;                            ; "fmt1_2/3/4" ; "Africa/Kinshasa"                   ; "CD"    ; "Kinshasa"                             ; "Kinshasa"
+2       ; 7      ; FIXED_LINE ; STANDARD_RATE ;                            ; "fmt4_2/5"   ; "Africa/Lubumbashi"                 ; "CD"    ; "Katanga"                              ; "Katanga"
+3       ; 7      ; FIXED_LINE ; STANDARD_RATE ;                            ; "fmt4_2/5"   ; "Africa/Kinshasa"                   ; "CD"    ; "Bas-Congo/Bandundu"                   ; "Bas-Congo/Bandundu"
+4       ; 7      ; FIXED_LINE ; STANDARD_RATE ;                            ; "fmt4_2/5"   ; "Africa/Kinshasa"                   ; "CD"    ; "Kasai-Oriental/Kasai-Occidental"      ; "Kasai-Oriental/Kasai-Occidental"       ; GOVERNMENT ; "Confimed with SCPT"
+5       ; 7      ; FIXED_LINE ; STANDARD_RATE ;                            ; "fmt4_2/5"   ; "Africa/Kinshasa"                   ; "CD"    ; "Oriental Province (Kisanga/Mbandaka)" ; "Province Orientale (Kisanga/Mbandaka)"
+6       ; 7      ; FIXED_LINE ; STANDARD_RATE ;                            ; "fmt4_2/5"   ; "Africa/Kinshasa"                   ; "CD"    ; "North Kivu/South Kivu/Maniema"        ; "Nord-Kivu/Sud-Kivu/Maniema"
+8[0459] ; 9      ; MOBILE     ; STANDARD_RATE ; "orange"                   ; "fmt2_3/3/3" ; "Africa/Kinshasa&Africa/Lubumbashi" ; "CD"
+8[12]   ; 9      ; MOBILE     ; STANDARD_RATE ; "vodacom"                  ; "fmt2_3/3/3" ; "Africa/Kinshasa&Africa/Lubumbashi" ; "CD"    ;                                        ;                                         ; IR21       ; "IR21 Date: 12/03/2018"
+83      ; 9      ; MOBILE     ; STANDARD_RATE ; "vodacom"                  ; "fmt2_3/3/3" ; "Africa/Kinshasa&Africa/Lubumbashi" ; "CD"    ;                                        ;                                         ; IR21
+88      ; 7      ; MOBILE     ; STANDARD_RATE ; "yozma_timeturns_sprl_ytt" ; "fmt3_2/2/3" ; "Africa/Kinshasa&Africa/Lubumbashi" ; "CD"    ;                                        ;                                         ; WEB
+9[01]   ; 9      ; MOBILE     ; STANDARD_RATE ; "africell"                 ; "fmt2_3/3/3" ; "Africa/Kinshasa&Africa/Lubumbashi" ; "CD"    ;                                        ;                                         ; IR21       ; "IR21 Date: 12/18/2018"
+9[7-9]  ; 9      ; MOBILE     ; STANDARD_RATE ; "airtel"                   ; "fmt2_3/3/3" ; "Africa/Kinshasa&Africa/Lubumbashi" ; "CD"

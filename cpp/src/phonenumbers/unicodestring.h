@@ -92,6 +92,9 @@ class UnicodeString {
     text_.CopyUTF8(s, static_cast<int>(len));
   }
 
+  // Was this UnicodeString created from valid UTF-8?
+  bool UTF8WasValid() const { return text_.UTF8WasValid(); }
+
   // Returns the substring located at [ start, start + length - 1 ] without
   // copying the underlying C string. If one of the provided parameters is out
   // of range, the function returns an empty unicode string.

@@ -1,0 +1,14 @@
+Region ; Prefix   ; Length ; Type               ; Tariff        ; Carrier Specific
+LV     ; 0[1-3]   ; 2      ; EMERGENCY          ; TOLL_FREE
+LV     ; 04       ; 2      ; COMMERCIAL
+LV     ; 11[023]  ; 3      ; EMERGENCY          ; TOLL_FREE
+LV     ; 114      ; 3      ; COMMERCIAL
+LV     ; 116000   ; 6      ; EXPANDED_EMERGENCY ; TOLL_FREE
+LV     ; 116111   ; 6      ; EXPANDED_EMERGENCY ; TOLL_FREE
+LV     ; 1180     ; 4      ; COMMERCIAL         ; PREMIUM_RATE
+LV     ; 1181     ; 4      ; COMMERCIAL         ; STANDARD_RATE
+LV     ; 118[89]  ; 4      ; COMMERCIAL
+LV     ; 155      ; 3      ; EXPANDED_EMERGENCY
+LV     ; 1655     ; 4      ; COMMERCIAL         ;               ; true
+LV     ; 177      ; 3      ; COMMERCIAL
+LV     ; 821[57]4 ; 5      ; COMMERCIAL         ; PREMIUM_RATE

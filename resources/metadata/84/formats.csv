@@ -1,0 +1,9 @@
+Id             ; National        ; International  ; National Prefix Optional ; Comment
+fixed_2/4/4    ; "#XX XXXX XXXX" ; "XX XXXX XXXX" ; true                     ; "2-digit area codes (big cities)"
+fixed_3/4/3    ; "#XXX XXXX XXX" ; "XXX XXXX XXX" ; true                     ; "3-digit area codes"
+fixed_4/4-6    ; "XXXX XXXX**"   ; "XXXX XXXX**"  ; true                     ; "Non-geographic fixed line (toll free / standard rate)"
+mobile_2/3/2/2 ; "#XX XXX XX XX" ; "XX XXX XX XX" ; true                     ; "Format for old mobile ranges and VOIP."
+mobile_3/3/3   ; "#XXX XXX XXX"  ; "XXX XXX XXX"  ; true
+uan_2/5        ; "#XX XXXXX"     ; "XX XXXXX"     ; true                     ; "UAN, but not marked as national only (there are instance of numbers in these ranges\nformatted for international dialling online, but they could be auto-generated)."
+uan_3/4        ; "#XXX XXXX"     ;                ; true                     ; "National only UAN"
+uan_3/4-5      ; "#XXX XXXX*"    ;                ; true                     ; "National only UAN"

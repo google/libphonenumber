@@ -1,0 +1,6 @@
+Id        ; Domestic Selection Codes             ; Name:en
+__omv     ;                                      ; "OMV"
+__unknown ; "190[0-2468],191[09],1920,1977,1999"
+claro     ;                                      ; "Claro"
+kolbi_ice ;                                      ; "Kolbi ICE"
+movistar  ; "1966"                               ; "Movistar"

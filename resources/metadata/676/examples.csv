@@ -1,0 +1,5 @@
+Region ; Type       ; Number
+TO     ; FIXED_LINE ; "20123"
+TO     ; MOBILE     ; "7715123"
+TO     ; TOLL_FREE  ; "0800222"
+TO     ; VOIP       ; "5510123"

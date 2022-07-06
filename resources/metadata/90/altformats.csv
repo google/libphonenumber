@@ -1,0 +1,4 @@
+Format        ; Parent Format  ; Comment
+XXX XXX XXXX  ; fixed_3/3/2/2  ; "Alternate format for fixed & mobile"
+XXX XXX XXXX  ; mobile_3/3/2/2 ; "Alternate format for fixed & mobile"
+XXX XXX XX XX ; fixed_3/3/4    ; "Alternate format for special-rate"

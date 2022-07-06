@@ -1,0 +1,6 @@
+Id            ; National         ; International   ; Comment
+fixed_1/3-4/4 ; "#X XXX* XXXX"   ; "X XXX* XXXX"   ; "Fixed line."
+fixed_2/3/3-4 ; "#XX XXX XXX*"   ; "XX XXX XXX*"   ; "Fixed line and UAN."
+mobile_3/3/3  ; "#XXX XXX XXX"   ; "XXX XXX XXX"   ; "Mobile and personal numbers."
+premium_2/1/4 ; "#XX X XXXX"     ; "XX X XXXX"     ; "Premium rate."
+voip_2/4/4-5  ; "#XX XXXX XXXX*" ; "XX XXXX XXXX*" ; "VOIP."

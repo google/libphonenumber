@@ -1,0 +1,7 @@
+Region ; Type            ; Number
+PK     ; FIXED_LINE      ; "2123456789"
+PK     ; MOBILE          ; "3012345678"
+PK     ; TOLL_FREE       ; "80012345"
+PK     ; PREMIUM_RATE    ; "90012345"
+PK     ; PERSONAL_NUMBER ; "122044444"
+PK     ; UAN             ; "21111825888"

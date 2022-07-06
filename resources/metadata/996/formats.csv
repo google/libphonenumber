@@ -1,0 +1,4 @@
+Id             ; National         ; International
+fixed_4/5      ; "#XXXX XXXXX"    ; "XXXX XXXXX"
+fmt_3/3/3      ; "#XXX XXX XXX"   ; "XXX XXX XXX"
+toll_3/3/1/2-3 ; "#XXX XXX X XX*" ; "XXX XXX X XX*"

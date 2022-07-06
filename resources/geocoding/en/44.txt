@@ -17,12 +17,7 @@
 # with multiple corrections and fixes applied (see previous commits).
 
 44113|Leeds
-441140|Sheffield
-441141|Sheffield
-441142|Sheffield
-441143|Sheffield
-441144|Sheffield
-441145|Sheffield
+44114|Sheffield
 44115|Nottingham
 44116|Leicester
 44117|Bristol
@@ -35,15 +30,7 @@
 441207|Consett
 441208|Bodmin
 441209|Redruth
-441210|Birmingham
-441211|Birmingham
-441212|Birmingham
-441213|Birmingham
-441214|Birmingham
-441215|Birmingham
-441216|Birmingham
-441217|Birmingham
-4412180|Birmingham
+44121|Birmingham
 441223|Cambridge
 441224|Aberdeen
 441225|Bath
@@ -306,12 +293,6 @@
 441477|Holmes Chapel
 441478|Isle of Skye - Portree
 441479|Grantown-on-Spey
-44147981|Aviemore
-44147982|Nethy Bridge
-44147983|Boat of Garten
-44147984|Carrbridge
-44147985|Dulnain Bridge
-44147986|Cairngorm
 441480|Huntingdon
 441481|Guernsey
 441482|Kingston-upon-Hull
@@ -777,13 +758,19 @@
 44239|Portsmouth
 44241|Coventry
 44247|Coventry
+44280|Northern Ireland
 44281|Northern Ireland
 442820|Ballycastle
 442821|Martinstown
+442822|Northern Ireland
+442823|Northern Ireland
+442824|Northern Ireland
 442825|Ballymena
+442826|Northern Ireland
 442827|Ballymoney
 442828|Larne
 442829|Kilrea
+44283|Northern Ireland
 442830|Newry
 442837|Armagh
 442838|Portadown
@@ -792,9 +779,16 @@
 442842|Kircubbin
 442843|Newcastle (Co. Down)
 442844|Downpatrick
+442845|Northern Ireland
+442846|Northern Ireland
+442847|Northern Ireland
+442848|Northern Ireland
+442849|Northern Ireland
+44286|Northern Ireland
 442866|Enniskillen
 442867|Lisnaskea
 442868|Kesh
+44287|Northern Ireland
 442870|Coleraine
 442871|Londonderry
 442877|Limavady
@@ -802,9 +796,12 @@
 442880|Carrickmore
 442881|Newtownstewart
 442882|Omagh
+442883|Northern Ireland
+442884|Northern Ireland
 442885|Ballygawley
 442886|Cookstown
 442887|Dungannon
+442888|Northern Ireland
 442889|Fivemiletown
 442890|Belfast
 442891|Bangor (Co. Down)
@@ -815,5 +812,6 @@
 442896|Belfast
 442897|Saintfield
 442898|Belfast
+442899|Northern Ireland
 44291|Cardiff
 44292|Cardiff

@@ -1,0 +1,17 @@
+Prefix   ; Length ; Type       ; Tariff        ; Operator  ; Format    ; Regions ; Geocode:en         ; Provenance ; Comment
+20       ; 5      ; FIXED_LINE ; STANDARD_RATE ;           ;           ; "VU"
+2[2-9]   ; 5      ; FIXED_LINE ; STANDARD_RATE ;           ;           ; "VU"    ; "Port Vila, Shefa" ; ITU
+3[03]    ; 5      ; UAN        ; STANDARD_RATE ;           ;           ; "VU"
+3[45]    ; 5      ; FIXED_LINE ; STANDARD_RATE ;           ;           ; "VU"
+36       ; 5      ; FIXED_LINE ; STANDARD_RATE ;           ;           ; "VU"    ; "Sanma"            ; ITU
+37       ; 5      ; FIXED_LINE ; STANDARD_RATE ;           ;           ; "VU"    ; "Luganville"       ; ITU
+38[0-8]  ; 5      ; FIXED_LINE ; STANDARD_RATE ;           ;           ; "VU"    ; "Penama/Torba"     ; ITU
+48[4-9]  ; 5      ; FIXED_LINE ; STANDARD_RATE ;           ;           ; "VU"    ; "Malampa"          ; ITU
+5        ; 7      ; MOBILE     ; STANDARD_RATE ; "digicel" ; "fmt_3/4" ; "VU"    ;                    ; IR21       ; "IR21 dated 5/13/2019"
+7[013-7] ; 7      ; MOBILE     ; STANDARD_RATE ; "tvl"     ; "fmt_3/4" ; "VU"    ;                    ; IR21       ; "IR21 dated 3/29/2018"
+8        ; 7      ; MOBILE     ; STANDARD_RATE ; "wan_tok" ; "fmt_3/4" ; "VU"    ;                    ; ITU
+81[18]   ; 5      ; FIXED_LINE ; TOLL_FREE     ;           ;           ; "VU"    ;                    ; ITU
+88       ; 5      ; FIXED_LINE ; STANDARD_RATE ;           ;           ; "VU"    ; "Tafea"            ; ITU
+900      ; 7      ; UAN        ; STANDARD_RATE ;           ; "fmt_3/4" ; "VU"
+90[1-9]  ; 7      ; VOIP       ; STANDARD_RATE ;           ; "fmt_3/4" ; "VU"
+91[01]   ; 7      ; VOIP       ; STANDARD_RATE ;           ; "fmt_3/4" ; "VU"

@@ -1,0 +1,4 @@
+Region ; Type       ; Number
+IR     ; FIXED_LINE ; "2123456789"
+IR     ; MOBILE     ; "9123456789"
+IR     ; UAN        ; "9601"

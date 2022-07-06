@@ -1,0 +1,11 @@
+Region ; Label               ; Comment
+KH     ; SC                  ; "http://www.itu.int/oth/T0202000023/en"
+KH     ; SC                  ; "http://en.wikipedia.org/wiki/+855"
+KH     ; SC_CARRIER_SPECIFIC ; "https://support.twitter.com/articles/20170024"
+KH     ; SC_EMERGENCY        ; "http://www.phnompenh.gov.kh/phnom-penh-city-emergency-numbers-24-hrs-169.html"
+KH     ; SC_SMS_SERVICES     ; "https://support.twitter.com/articles/20170024"
+KH     ; XML                 ; "http://www.itu.int/oth/T0202000023/en"
+KH     ; XML                 ; "http://en.wikipedia.org/wiki/+855"
+KH     ; XML_FIXED_LINE      ; "Allowing subscriber numbers beginning with 5 since Mobitel have informed us they have\nstarted issuing fixed-line numbers like this. Apparently, mobile-company-issued\nfixed-line numbers are one digit longer than government-issued numbers. Moreover, the\nrange beginning with 6 seems to include some numbers that are one digit longer as well.\nAllowing 238\\d{6} and 234[234]\\d{4} based on information from Cambodia Yellow Pages.\nNote that numbers beginning with 234 are split across two patterns."
+KH     ; XML_MOBILE          ; "SMART uses prefixes 01[056], 070, 08[167] and 09[368].\nBeeline uses 060.\nMobitel uses 01[1247].\nCellcard uses 0857 and 061.\nExtra prefixes found online: 088, 097.\nAllowing 9-digit 1[28], 31, 38 and 76 numbers based on information from Cambodia Yellow\nPages and online search. Allowing 71 based on open-source report and online search."
+KH     ; XML_TOLL_FREE       ; "Adding extra prefix 180021 used by tollfreetc.com.kh."

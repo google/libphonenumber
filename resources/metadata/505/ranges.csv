@@ -1,0 +1,28 @@
+Prefix      ; Length ; Type       ; Tariff        ; Operator   ; Format     ; Regions ; Provenance
+1800        ; 8      ; FIXED_LINE ; TOLL_FREE     ;            ; "fmt1_4/4" ; "NI"
+2           ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4" ; "NI"
+55[0-7]     ; 8      ; MOBILE     ; STANDARD_RATE ; "claro"    ; "fmt1_4/4" ; "NI"    ; ITU
+5[78]       ; 8      ; MOBILE     ; STANDARD_RATE ; "claro"    ; "fmt1_4/4" ; "NI"    ; ITU
+620         ; 8      ; MOBILE     ; STANDARD_RATE ; "cootel"   ; "fmt1_4/4" ; "NI"
+63[035]     ; 8      ; MOBILE     ; STANDARD_RATE ; "cootel"   ; "fmt1_4/4" ; "NI"
+64[045]     ; 8      ; MOBILE     ; STANDARD_RATE ; "cootel"   ; "fmt1_4/4" ; "NI"
+65[05]      ; 8      ; MOBILE     ; STANDARD_RATE ; "cootel"   ; "fmt1_4/4" ; "NI"
+677         ; 8      ; MOBILE     ; STANDARD_RATE ; "cootel"   ; "fmt1_4/4" ; "NI"
+68[1-9]     ; 8      ; MOBILE     ; STANDARD_RATE ; "cootel"   ; "fmt1_4/4" ; "NI"
+69[059]     ; 8      ; MOBILE     ; STANDARD_RATE ; "cootel"   ; "fmt1_4/4" ; "NI"
+7[5-8]      ; 8      ; MOBILE     ; STANDARD_RATE ; "movistar" ; "fmt1_4/4" ; "NI"    ; IR21
+80          ; 8      ; MOBILE     ; STANDARD_RATE ;            ; "fmt1_4/4" ; "NI"
+81          ; 8      ; MOBILE     ; STANDARD_RATE ; "movistar" ; "fmt1_4/4" ; "NI"    ; IR21
+82[0-3]     ; 8      ; MOBILE     ; STANDARD_RATE ; "claro"    ; "fmt1_4/4" ; "NI"    ; IR21
+82[4-9]     ; 8      ; MOBILE     ; STANDARD_RATE ; "movistar" ; "fmt1_4/4" ; "NI"    ; IR21
+83[014]     ; 8      ; MOBILE     ; STANDARD_RATE ;            ; "fmt1_4/4" ; "NI"
+83[27-9]    ; 8      ; MOBILE     ; STANDARD_RATE ; "movistar" ; "fmt1_4/4" ; "NI"    ; IR21
+83[356]     ; 8      ; MOBILE     ; STANDARD_RATE ; "claro"    ; "fmt1_4/4" ; "NI"    ; IR21
+84[0-49]    ; 8      ; MOBILE     ; STANDARD_RATE ; "claro"    ; "fmt1_4/4" ; "NI"    ; IR21
+84[5-8]     ; 8      ; MOBILE     ; STANDARD_RATE ; "movistar" ; "fmt1_4/4" ; "NI"    ; IR21
+8[579][0-4] ; 8      ; MOBILE     ; STANDARD_RATE ; "claro"    ; "fmt1_4/4" ; "NI"    ; IR21
+8[579][5-9] ; 8      ; MOBILE     ; STANDARD_RATE ; "movistar" ; "fmt1_4/4" ; "NI"    ; IR21
+86[0-69]    ; 8      ; MOBILE     ; STANDARD_RATE ; "claro"    ; "fmt1_4/4" ; "NI"    ; IR21
+86[78]      ; 8      ; MOBILE     ; STANDARD_RATE ; "movistar" ; "fmt1_4/4" ; "NI"    ; IR21
+88[016-9]   ; 8      ; MOBILE     ; STANDARD_RATE ; "movistar" ; "fmt1_4/4" ; "NI"    ; IR21
+88[2-5]     ; 8      ; MOBILE     ; STANDARD_RATE ; "claro"    ; "fmt1_4/4" ; "NI"    ; IR21

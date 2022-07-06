@@ -1,0 +1,6 @@
+Region ; Prefix    ; Length ; Type       ; Tariff    ; Sms  ; Carrier Specific
+ID     ; 11[02389] ; 3      ; EMERGENCY  ; TOLL_FREE
+ID     ; 140       ; 5      ; COMMERCIAL
+ID     ; 150264    ; 6      ; COMMERCIAL
+ID     ; 71400     ; 5      ; COMMERCIAL ;           ; true ; true
+ID     ; 89887     ; 5      ; COMMERCIAL ;           ;      ; true

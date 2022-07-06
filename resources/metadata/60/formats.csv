@@ -1,0 +1,7 @@
+Id              ; National        ; International   ; Comment
+fixed_1/3/4     ; "#X-XXX XXXX"   ; "X-XXX XXXX"    ; "8-digit fixed line ranges"
+fixed_1/4/4     ; "#X-XXXX XXXX"  ; "X-XXXX XXXX"   ; "9-digit fixed line ranges"
+fmt_2/3/3-4     ; "#XX-XXX XXX*"  ; "XX-XXX XXX*"   ; "8/9-digit fixed line or mobile ranges"
+fmt_3/3/4       ; "#XXX-XXX XXXX" ; "XXX-XXX XXXX"  ; "10 digit mobile or voip ranges"
+mobile_2/4/4    ; "#XX-XXXX XXXX" ; "XX-XXXX XXXX"  ; "10 digit mobile ranges"
+varcost_1/3/2/4 ; "X-XXX-XX-XXXX" ; "X-XXX-XX-XXXX" ; "Variable cost (premium rate, toll free etc.)"

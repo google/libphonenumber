@@ -1,0 +1,7 @@
+Region ; Label          ; Comment
+BJ     ; SC             ; "http://www.itu.int/oth/T0202000017/en"
+BJ     ; XML            ; "http://www.itu.int/oth/T0202000017/en"
+BJ     ; XML            ; "http://arcep.bj/textes-juridiques/nos-decisions/"
+BJ     ; XML_FIXED_LINE ; "These come from the national numbering plan, but have been widened to include other\nprefixes found in the yellow pages - specifically 21 0."
+BJ     ; XML_MOBILE     ; "We have restricted the pattern here to the first two digits, as beyond this the data\nseems to be no longer accurate. The latest ITU doc (2005) lists 9[0357] and lists\nother 9x and the complete 6x range as reserved. The prefixes 96 have also been added,\nalong with 6[1267] (seemingly prefixes for Mobile MTN)."
+BJ     ; XML_UAN        ; "Numbers beginning with 81 are reserved for _either_ free phone or shared-cost (same cost\nas a local-call.) We model these as UAN since we have no more detailed information."

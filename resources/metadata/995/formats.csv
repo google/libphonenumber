@@ -1,0 +1,5 @@
+Id             ; National        ; International  ; Comment
+fmt_3/2/2/2    ; "#XXX XX XX XX" ; "XXX XX XX XX" ; "Format isn't very strictly defined - the yellow pages omits area code and does 2 2 2\nthe communications commission uses 2 3 3. Wikipedia says 3 2 3. Some use 2 6."
+mobile_3/2/2/2 ; "XXX XX XX XX"  ; "XXX XX XX XX"
+tblisi_2/3/2/2 ; "#XX XXX XX XX" ; "XX XXX XX XX" ; "This format is for two digit area code fixed line range of Tblisi(32)."
+voip_3/3/3     ; "#XXX XXX XXX"  ; "XXX XXX XXX"
