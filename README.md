@@ -228,6 +228,7 @@ maintenance processes.
 *   Erlang: https://github.com/marinakr/libphonenumber_erlang
 *   Clojure: https://github.com/randomseed-io/phone-number
 *   R: https://github.com/socialresearchcentre/dialr/
+*   Elixir: https://github.com/socialpaymentsbv/ex_phone_number
 
 Alternatives to our own versions:
 
