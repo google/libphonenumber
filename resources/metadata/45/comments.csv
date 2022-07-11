@@ -1,0 +1,6 @@
+Region ; Label          ; Comment
+DK     ; SC             ; "http://www.dba.erhvervsstyrelsen.dk/numbering-lists"
+DK     ; XML            ; "http://www.dba.erhvervsstyrelsen.dk/numbering-lists"
+DK     ; XML            ; "https://en.wikipedia.org/wiki/Telephone_numbers_in_Denmark"
+DK     ; XML            ; "https://www.itu.int/oth/T0202000038/en"
+DK     ; XML_FIXED_LINE ; "Note that ""mainly mobile"" and ""mainly fixed-line"" are put under both number types to be\nsafe."

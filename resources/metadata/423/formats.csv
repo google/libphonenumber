@@ -1,0 +1,5 @@
+Id                ; National      ; Carrier         ; International ; Comment
+fmt_3/2/2         ; "XXX XX XX"   ; "@ XXX XX XX"   ; "XXX XX XX"   ; "Number format for national mobile services, fixed-line, toll-free, UAN and premium rate services.\nSome different patterns for tollfree and shared cost numbers may be found by searching\nfor Mehrwertnummer at http://www.telecom.li."
+fmt_3/3/3         ; "XXX XXX XXX" ;                 ; "XXX XXX XXX"
+intl_mobile_3/3/3 ; "XXX XXX XXX" ; "@ XXX XXX XXX" ; "XXX XXX XXX" ; "Number format for international mobile services."
+voicemail_2/3/4   ; "XX XXX XXXX" ; "@ XX XXX XXXX" ; "XX XXX XXXX" ; "Number format for voicemail services."

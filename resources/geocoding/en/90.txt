@@ -69,6 +69,7 @@
 90384|Nevsehir
 90386|Kirsehir
 90388|Nigde
+9039|Northern Cyprus
 90412|Diyarbakir
 90414|Sanliurfa
 90416|Adiyaman

@@ -34,6 +34,7 @@
 7351|Chelyabinsk
 7352|Kurgan
 7353|Orenburg
+736|Simferopol
 7381|Omsk
 7382|Tomsk
 7383|Novosibirsk
@@ -43,6 +44,7 @@
 7390|Republic of Khakassia
 7391|Krasnoyarsk Territory
 7394|Republic of Tuva
+7395|Irkutsk
 740|Kaliningrad
 7411|Republic of Sakha
 7413|Magadan
@@ -391,6 +393,7 @@
 7865|Stavropol territory
 7866|Kabardino-Balkarian Republic
 7867|Republic of North Ossetia
+7869|Sevastopol
 7871|Chechen Republic
 7872|Republic of Daghestan
 7873|Ingushi Republic

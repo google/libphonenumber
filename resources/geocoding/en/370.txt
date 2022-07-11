@@ -60,5 +60,12 @@
 37046|Klaipėda
 370460|Palanga
 370469|Neringa
-3705|Vilnius
-370528|Elektrėnai/Trakai
+370520|Vilnius
+370521|Vilnius
+370522|Vilnius
+370523|Vilnius
+370524|Vilnius
+370525|Vilnius
+370526|Vilnius
+370527|Vilnius
+370528|Trakai

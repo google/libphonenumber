@@ -1,0 +1,4 @@
+Region ; Label          ; Comment
+TK     ; XML            ; "http://www.itu.int/oth/T02020000D2/en"
+TK     ; XML_FIXED_LINE ; "The example number is the contact number from the ITU document."
+TK     ; XML_MOBILE     ; "No evidence has been found for prefixes 5, 6, 8, and 9 which are\ndescribed as non-geographic service numbers, so these prefixes are\nexcluded until more information is found."

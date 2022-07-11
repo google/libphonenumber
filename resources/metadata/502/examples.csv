@@ -1,0 +1,5 @@
+Region ; Type         ; Number
+GT     ; FIXED_LINE   ; "22456789"
+GT     ; MOBILE       ; "51234567"
+GT     ; TOLL_FREE    ; "18001112222"
+GT     ; PREMIUM_RATE ; "19001112222"

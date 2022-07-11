@@ -1,0 +1,8 @@
+Id              ; National       ; International ; Comment
+fixed_1/4/3     ; "#X XXXX XXX"  ; "X XXXX XXX"  ; "The plan says 1 XXX XXXX but the government and local telecom websites are formatted 1\nXXXX XXX, so we prefer that formatting here. These same sources prefer XXX XXX to XX\nXXXX as well."
+fixed_2/3/3-4   ; "#XX XXX XXX*" ; "XX XXX XXX*"
+fmt_2/3/3-4     ; "#XX XXX XXX*" ; "XX XXX XXX*" ; "For 8 and 9 digit numbers of premium, personal and UAN numbers."
+mobile_2/3/3-4  ; "#XX XXX XXX*" ; "XX XXX XXX*" ; "For 8 and 9 digit numbers of mobile."
+premium_2/2/2-3 ; "#XX XX XX*"   ; "XX XX XX*"   ; "For 6 and 7 digit numbers of premium rate."
+toll_3/2/2-3    ; "#XXX XX XX*"  ; "XXX XX XX*"
+toll_3/3/3      ; "#XXX XXX XXX" ; "XXX XXX XXX"

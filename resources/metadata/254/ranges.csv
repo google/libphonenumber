@@ -1,0 +1,50 @@
+Prefix      ; Length ; Type       ; Tariff        ; Operator         ; Format        ; Regions ; Geocode:en                              ; Provenance
+10[0-2]     ; 9      ; MOBILE     ; STANDARD_RATE ; "airtel"         ; "mobile_3/6"  ; "KE"    ;                                         ; IR21
+10[3-6]     ; 9      ; MOBILE     ; STANDARD_RATE ; "airtel"         ; "mobile_3/6"  ; "KE"
+11[0-5]     ; 9      ; MOBILE     ; STANDARD_RATE ; "safaricom"      ; "mobile_3/6"  ; "KE"    ;                                         ; IR21
+120         ; 9      ; MOBILE     ; STANDARD_RATE ; "telkom"         ; "mobile_3/6"  ; "KE"    ;                                         ; IR21
+121         ; 9      ; MOBILE     ; STANDARD_RATE ; "infura"         ; "mobile_3/6"  ; "KE"    ;                                         ; ITU
+124         ; 9      ; MOBILE     ; STANDARD_RATE ; "finserve"       ; "mobile_3/6"  ; "KE"    ;                                         ; ITU
+130         ; 9      ; MOBILE     ; STANDARD_RATE ; "nrg_media"      ; "mobile_3/6"  ; "KE"    ;                                         ; GOVERNMENT
+20          ; 8,9    ; FIXED_LINE ; STANDARD_RATE ;                  ; "fixed_2/5-7" ; "KE"    ; "Nairobi"                               ; GOVERNMENT
+40          ; 8,9    ; FIXED_LINE ; STANDARD_RATE ;                  ; "fixed_2/5-7" ; "KE"    ; "Kwale/Ukunda/Msambweni/Lungalunga"     ; GOVERNMENT
+41          ; 9      ; FIXED_LINE ; STANDARD_RATE ;                  ; "fixed_2/5-7" ; "KE"    ; "Mombasa/Mariakani/Kilifi"              ; GOVERNMENT
+42          ; 7-9    ; FIXED_LINE ; STANDARD_RATE ;                  ; "fixed_2/5-7" ; "KE"    ; "Malindi/Lamu/Garsen"                   ; GOVERNMENT
+43          ; 9      ; FIXED_LINE ; STANDARD_RATE ;                  ; "fixed_2/5-7" ; "KE"    ; "Voi/Wundanyi/Mwatate/Taveta"           ; GOVERNMENT
+44          ; 7-9    ; FIXED_LINE ; STANDARD_RATE ;                  ; "fixed_2/5-7" ; "KE"    ; "Machakos/Makueni/Mwingi/Kitui"         ; GOVERNMENT
+45          ; 7-9    ; FIXED_LINE ; STANDARD_RATE ;                  ; "fixed_2/5-7" ; "KE"    ; "Kajiado/Ngong/Loitokitok/Athi River"   ; GOVERNMENT
+46          ; 9      ; FIXED_LINE ; STANDARD_RATE ;                  ; "fixed_2/5-7" ; "KE"    ; "Garissa/Hola/Wajir/Mandera"            ; GOVERNMENT
+50          ; 9      ; FIXED_LINE ; STANDARD_RATE ;                  ; "fixed_2/5-7" ; "KE"    ; "Naivasha/Narok/Gilgil"                 ; GOVERNMENT
+51          ; 7-9    ; FIXED_LINE ; STANDARD_RATE ;                  ; "fixed_2/5-7" ; "KE"    ; "Nakuru/Njoro/Molo"                     ; GOVERNMENT
+52          ; 7-9    ; FIXED_LINE ; STANDARD_RATE ;                  ; "fixed_2/5-7" ; "KE"    ; "Kericho/Bomet"                         ; GOVERNMENT
+53          ; 7-9    ; FIXED_LINE ; STANDARD_RATE ;                  ; "fixed_2/5-7" ; "KE"    ; "Eldoret/Turbo/Kapsabet/Iten/Kabarnet"  ; GOVERNMENT
+54          ; 7-9    ; FIXED_LINE ; STANDARD_RATE ;                  ; "fixed_2/5-7" ; "KE"    ; "Kitale/Moi's Bridge/Kapenguria/Lodwar" ; GOVERNMENT
+55          ; 7-9    ; FIXED_LINE ; STANDARD_RATE ;                  ; "fixed_2/5-7" ; "KE"    ; "Bungoma/Busia"                         ; GOVERNMENT
+56          ; 7-9    ; FIXED_LINE ; STANDARD_RATE ;                  ; "fixed_2/5-7" ; "KE"    ; "Kakamega/Mbale/Butere/Mumias/Vihiga"   ; GOVERNMENT
+57          ; 7-9    ; FIXED_LINE ; STANDARD_RATE ;                  ; "fixed_2/5-7" ; "KE"    ; "Kisumu/Siaya/Maseno"                   ; GOVERNMENT
+58          ; 9      ; FIXED_LINE ; STANDARD_RATE ;                  ; "fixed_2/5-7" ; "KE"    ; "Kisii/Kilgoris/Oyugis/Nyamira"         ; GOVERNMENT
+59          ; 7-9    ; FIXED_LINE ; STANDARD_RATE ;                  ; "fixed_2/5-7" ; "KE"    ; "Homabay/Migori"                        ; GOVERNMENT
+60          ; 7-9    ; FIXED_LINE ; STANDARD_RATE ;                  ; "fixed_2/5-7" ; "KE"    ; "Muranga/Kerugoya"                      ; GOVERNMENT
+61          ; 7-9    ; FIXED_LINE ; STANDARD_RATE ;                  ; "fixed_2/5-7" ; "KE"    ; "Nyeri/Karatina"                        ; GOVERNMENT
+62          ; 9      ; FIXED_LINE ; STANDARD_RATE ;                  ; "fixed_2/5-7" ; "KE"    ; "Nanyuki"                               ; GOVERNMENT
+64          ; 7-9    ; FIXED_LINE ; STANDARD_RATE ;                  ; "fixed_2/5-7" ; "KE"    ; "Meru/Maua/Chuka"                       ; GOVERNMENT
+65          ; 7-9    ; FIXED_LINE ; STANDARD_RATE ;                  ; "fixed_2/5-7" ; "KE"    ; "Nyahururu/Maralal"                     ; GOVERNMENT
+66          ; 8,9    ; FIXED_LINE ; STANDARD_RATE ;                  ; "fixed_2/5-7" ; "KE"    ; "Thika/Ruiru"                           ; GOVERNMENT
+67          ; 7-9    ; FIXED_LINE ; STANDARD_RATE ;                  ; "fixed_2/5-7" ; "KE"    ; "Kiambu/Kikuyu"                         ; GOVERNMENT
+68          ; 7-9    ; FIXED_LINE ; STANDARD_RATE ;                  ; "fixed_2/5-7" ; "KE"    ; "Embu"                                  ; GOVERNMENT
+69          ; 7-9    ; FIXED_LINE ; STANDARD_RATE ;                  ; "fixed_2/5-7" ; "KE"    ; "Marsabit/Moyale"                       ; GOVERNMENT
+7[0-29]     ; 9      ; MOBILE     ; STANDARD_RATE ; "safaricom"      ; "mobile_3/6"  ; "KE"    ;                                         ; IR21
+7[38]       ; 9      ; MOBILE     ; STANDARD_RATE ; "airtel"         ; "mobile_3/6"  ; "KE"    ;                                         ; IR21
+74[0-35689] ; 9      ; MOBILE     ; STANDARD_RATE ; "safaricom"      ; "mobile_3/6"  ; "KE"    ;                                         ; IR21
+744         ; 9      ; MOBILE     ; STANDARD_RATE ; "homeland_media" ; "mobile_3/6"  ; "KE"    ;                                         ; GOVERNMENT
+747         ; 9      ; MOBILE     ; STANDARD_RATE ; "jtl"            ; "mobile_3/6"  ; "KE"    ;                                         ; GOVERNMENT
+75[0-6]     ; 9      ; MOBILE     ; STANDARD_RATE ; "airtel"         ; "mobile_3/6"  ; "KE"    ;                                         ; IR21
+75[7-9]     ; 9      ; MOBILE     ; STANDARD_RATE ; "safaricom"      ; "mobile_3/6"  ; "KE"    ;                                         ; IR21
+760         ; 9      ; MOBILE     ; STANDARD_RATE ; "mobile_pay"     ; "mobile_3/6"  ; "KE"
+76[12]      ; 9      ; MOBILE     ; STANDARD_RATE ; "airtel"         ; "mobile_3/6"  ; "KE"    ;                                         ; IR21
+76[3-6]     ; 9      ; MOBILE     ; STANDARD_RATE ; "finserve"       ; "mobile_3/6"  ; "KE"    ;                                         ; IR21
+767         ; 9      ; MOBILE     ; STANDARD_RATE ; "sema_mobile"    ; "mobile_3/6"  ; "KE"
+76[89]      ; 9      ; MOBILE     ; STANDARD_RATE ; "safaricom"      ; "mobile_3/6"  ; "KE"    ;                                         ; GOVERNMENT
+77          ; 9      ; MOBILE     ; STANDARD_RATE ; "telkom"         ; "mobile_3/6"  ; "KE"    ;                                         ; IR21
+800[2-8]    ; 9,10   ; FIXED_LINE ; TOLL_FREE     ;                  ; "fmt_3/3/3-4" ; "KE"    ;                                         ; GOVERNMENT
+900[02-9]   ; 9      ; FIXED_LINE ; PREMIUM_RATE  ;                  ; "fmt_3/3/3-4" ; "KE"    ;                                         ; GOVERNMENT

@@ -1,0 +1,5 @@
+Id             ; National        ; International  ; Comment
+fixed_2/4-5    ; "#XX XXXX*"     ; "XX XXXX*"     ; "Older 6-7 length fixed line ranges."
+fixed_2/4/4    ; "#XX XXXX XXXX" ; "XX XXXX XXXX" ; "10-digit fixed line (formatting follows wikipedia)."
+nongeo_3/3/3-4 ; "#XXX XXX XXX*" ; "XXX XXX XXX*" ; "Non-geographical number (mobile and some fixed line ranges)."
+uan_4-5        ; "#XXXX*"        ; "XXXX*"        ; "Format for short UAN numbers 096XX and 096XXX (we only need this format so the\nnational prefix formatting rule is inherited properly)."

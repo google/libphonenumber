@@ -1,0 +1,4 @@
+Region ; Type       ; Number
+GH     ; FIXED_LINE ; "302345678"
+GH     ; MOBILE     ; "231234567"
+GH     ; TOLL_FREE  ; "80012345"

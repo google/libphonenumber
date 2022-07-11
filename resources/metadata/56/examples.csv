@@ -1,0 +1,5 @@
+Region ; Type                 ; Number
+CL     ; FIXED_LINE_OR_MOBILE ; "221234567"
+CL     ; TOLL_FREE            ; "800123456"
+CL     ; SHARED_COST          ; "6001234567"
+CL     ; VOIP                 ; "441234567"

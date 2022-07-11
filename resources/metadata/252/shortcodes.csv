@@ -1,0 +1,5 @@
+Region ; Prefix ; Length ; Type               ; Tariff
+SO     ; 555    ; 3      ; EMERGENCY          ; TOLL_FREE
+SO     ; 777    ; 3      ; EXPANDED_EMERGENCY
+SO     ; 888    ; 3      ; EMERGENCY          ; TOLL_FREE
+SO     ; 999    ; 3      ; EMERGENCY          ; TOLL_FREE

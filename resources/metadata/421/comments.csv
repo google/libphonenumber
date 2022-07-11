@@ -1,0 +1,8 @@
+Region ; Label          ; Comment
+SK     ; SC             ; "http://www.itu.int/oth/T02020000BD/en"
+SK     ; SC             ; "http://www.teleoff.gov.sk/data/files/25211.pdf"
+SK     ; SC_SHORT_CODE  ; "As per online evidence 16xxx and 17xxx short codes cannot be dailled without area code,\nso it is not included here."
+SK     ; XML            ; "http://www.itu.int/oth/T02020000BD/en"
+SK     ; XML            ; "http://www.teleoff.gov.sk/data/files/25211.pdf"
+SK     ; XML_FIXED_LINE ; "Added range 16 as per pattern [areacode] + 16 + SN(\\d{2,4})"
+SK     ; XML_MOBILE     ; "948 isn't in the number pattern, but many examples using this have been found, so\ndeeming it valid for now. 909[1-9] is assigned to carrier Juro as per online\nreferences found. 945 is assigned to Orange as per its carrier doc."

@@ -1,0 +1,6 @@
+Region ; Label          ; Comment
+SC     ; XML            ; "http://www.itu.int/oth/T02020000BA/en"
+SC     ; XML            ; "http://en.wikipedia.org/wiki/Telephone_numbers_in_Seychelles"
+SC     ; XML_FIXED_LINE ; "We are putting Fixed Services numbers here for now, as we cannot find any evidence that\nthey are more expensive to call than other Fixed Line services. ISDN and DID services\nare here too, since they seem to be also fixed-line phone numbers."
+SC     ; XML_MOBILE     ; "Includes Fixed Cellular."
+SC     ; XML_VOIP       ; "Includes prefix 971,95[0-9] which is assigned to Audiotext ,International Audiotext\nServices."

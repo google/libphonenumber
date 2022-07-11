@@ -67,13 +67,28 @@
 1246258|Digicel
 1246259|Digicel
 124626|Digicel
-124628|LIME
+124628|Cable & Wireless
+124635|LIME
+1246360|LIME
+1246361|LIME
+1246362|LIME
+1246363|LIME
+1246364|LIME
+1246365|LIME
+1246366|LIME
+1246446|Neptune Communications
 124645|Sunbeach Communications
+12465211|Digicel
+12465214|LIME
+12465217|KW Telecommunications
+1246522|Ozone
 124669|Ozone
 12468|Digicel
+1264469|Cable & Wireless
 126453|Weblinks Limited
 126458|Digicel
-12647|Cable & Wireless
+1264729|Cable & Wireless
+126477|Cable & Wireless
 126871|Digicel
 1268720|Digicel
 1268721|Digicel
@@ -83,7 +98,10 @@
 1268726|Digicel
 1268727|APUA
 1268729|APUA
-126873|Digicel
+1268730|APUA
+1268732|Digicel
+1268734|Digicel
+1268736|Digicel
 1268773|APUA
 1268774|APUA
 1268775|APUA
@@ -91,7 +109,9 @@
 1268781|APUA
 1268783|Digicel
 1268785|Digicel
+1268787|Cable & Wireless
 1268788|Digicel
+128424|Cable & Wireless
 1284300|Digicel
 128434|Digicel
 128436|Digicel
@@ -103,12 +123,28 @@
 12844968|CCT
 12844969|CCT
 1284499|CCT
-13453|Digicel
+1284546|Cable & Wireless
+128456|Cable & Wireless
+128459|Cable & Wireless
+1340423|Vitelcom Cellular
+134044|GIGSKY Mobile
+1340725|Vitelcom Cellular
+134532|Digicel
+134542|Digicel
 134551|Digicel
 134552|Digicel
 134554|Digicel
 134555|Digicel
 1345649|Digicel
+134582|Logic Communications
+1345919|Cable & Wireless
+1345930|LIME
+1345936|Cable & Wireless
+1345937|Cable & Wireless
+1345938|Cable & Wireless
+1345939|Cable & Wireless
+134599|Cable & Wireless
+14412|Cellular One
 14413|Mobility
 144150|Digicel Bermuda
 144151|Digicel Bermuda
@@ -116,15 +152,36 @@
 144153|Digicel Bermuda
 144159|Digicel Bermuda
 14417|Cellular One
+14418|Cellular One
 1473402|Affordable Island Communications
 147341|Digicel Grenada
 147342|Digicel Grenada
 147352|Affordable Island Communications
 147353|AWS Grenada
 147390|Affordable Island Communications
-16492|C&W
+164923|C&W
+164924|Cable & Wireless
 16493|Digicel
 164943|Islandcom
+1658295|Cable & Wireless
+1659200|Onvoy
+1659222|Onvoy
+1659300|Onvoy
+1659400|Onvoy
+1659444|Onvoy
+1659500|Onvoy
+1659529|Fractel
+1659600|Onvoy
+1659666|Onvoy
+1659766|Fractel
+1659777|Onvoy
+1659800|Onvoy
+1659888|Fractel
+1659900|Onvoy
+1659999|Onvoy
+166434|Cable & Wireless
+166439|Digicel
+1670284|PTI PACIFICA
 167148|GTA
 167174|PTI PACIFICA
 167183|i CAN_GSM
@@ -135,9 +192,11 @@
 167187|Choice Phone
 167188|Choice Phone
 167189|Choice Phone
-16842|Blue Sky
+168424|ASTCA
+168425|Blue Sky
+168427|Blue Sky
 16847|ASTCA
-17582|Cable & Wireless
+175828|Cable & Wireless
 17583|Cable & Wireless
 1758460|Cable & Wireless
 1758461|Cable & Wireless
@@ -150,7 +209,10 @@
 175851|Digicel
 175852|Digicel
 175858|Cable & Wireless
-17587|Digicel
+175871|Digicel
+175872|Digicel
+175873|Digicel
+17588|Digicel
 176722|Cable & Wireless
 176723|Cable & Wireless
 176724|Cable & Wireless
@@ -160,6 +222,9 @@
 176729|Cable & Wireless
 17673|Digicel
 17676|Digicel
+1767704|Digicel
+1767705|Digicel
+1767706|Digicel
 1784430|AT&T
 1784431|AT&T
 1784432|AT&T
@@ -177,6 +242,7 @@
 1784495|Cable & Wireless
 178452|Digicel
 178453|Digicel
+178472|Digicel
 1787203|Claro
 1787210|SunCom Wireless Puerto Rico
 1787212|Claro
@@ -432,16 +498,27 @@
 180997|Orange
 180998|Orange
 180999|Tricom
-186826|bmobile
+186825|Digicel
+186826|Digicel
+1868266|bmobile
+1868267|bmobile
+1868268|bmobile
+1868269|bmobile
 186827|bmobile
 186828|bmobile
 186829|bmobile
 18683|Digicel
-18684|bmobile
-18686|bmobile
+186843|Digicel
+186846|bmobile
+186847|bmobile
+186848|bmobile
+186849|bmobile
+1868620|bmobile
+1868678|bmobile
+186868|bmobile
 18687|bmobile
+186948|Cable & Wireless
 186955|CariGlobe St. Kitts
-186956|The Cable St. Kitts
 1869660|Cable & Wireless
 1869661|Cable & Wireless
 1869662|Cable & Wireless
@@ -457,6 +534,10 @@
 1869764|Digicel
 1869765|Digicel
 1869766|Digicel
+187620|Cable & Wireless
+1876210|Cable & Wireless
+187622|Cable & Wireless
+187623|Cable & Wireless
 187624|Digicel
 187625|Digicel
 187626|Digicel
@@ -468,6 +549,18 @@
 187628|Digicel
 187629|Digicel
 187630|Digicel
+1876310|Cable & Wireless
+1876312|Cable & Wireless
+1876313|Cable & Wireless
+1876314|Cable & Wireless
+1876315|Cable & Wireless
+1876316|Cable & Wireless
+1876317|Cable & Wireless
+1876318|Cable & Wireless
+1876319|Cable & Wireless
+187632|Cable & Wireless
+187633|Cable & Wireless
+187634|Cable & Wireless
 187635|Digicel
 187636|Digicel
 187637|Digicel
@@ -491,14 +584,16 @@
 187647|Digicel
 187648|Digicel
 187649|Digicel
-1876503|Digicel
-1876504|Digicel
-1876505|Digicel
-1876506|Digicel
-1876507|Digicel
-1876508|Digicel
-1876509|Digicel
+187650|Digicel
+1876501|Cable & Wireless
+1876502|C&W
+187651|C&W
+1876515|Cable & Wireless
+1876517|Cable & Wireless
+1876519|Cable & Wireless
 187652|Digicel
+187653|Cable & Wireless
+187654|Cable & Wireless
 1876550|Digicel
 1876551|Digicel
 1876552|Digicel
@@ -508,24 +603,57 @@
 1876557|Digicel
 1876558|Digicel
 1876559|Digicel
-1876560|Digicel
-1876561|Digicel
-1876562|Digicel
-1876564|Digicel
-1876565|Digicel
-1876566|Digicel
-1876567|Digicel
-1876568|Digicel
-1876569|Digicel
+187656|Digicel
+1876563|C&W
 187657|Digicel
 187658|Digicel
 187659|Digicel
+1876648|Digicel
+1876649|Digicel
+1876666|Digicel
+1876667|Digicel
+1876700|Cable & Wireless
+1876707|Cable & Wireless
+187677|Cable & Wireless
+1876781|Cable & Wireless
+1876782|Cable & Wireless
+1876783|Cable & Wireless
+1876784|Cable & Wireless
+1876787|Cable & Wireless
+1876788|Cable & Wireless
+1876789|Cable & Wireless
+1876790|Cable & Wireless
+1876791|Cable & Wireless
+1876792|Cable & Wireless
+1876793|Cable & Wireless
+1876796|Cable & Wireless
+1876797|Cable & Wireless
+1876798|Cable & Wireless
+1876799|Cable & Wireless
+187680|Cable & Wireless
+1876810|Cable & Wireless
+1876812|Cable & Wireless
+1876813|Cable & Wireless
+1876814|Cable & Wireless
+1876815|Cable & Wireless
+1876816|Cable & Wireless
+1876817|Cable & Wireless
+1876818|Cable & Wireless
+1876819|Cable & Wireless
+187682|Cable & Wireless
+187683|Cable & Wireless
 187684|Digicel
 187685|Digicel
 187686|Digicel
 187687|Digicel
 187688|Digicel
 187689|Digicel
+1876909|Cable & Wireless
+1876919|Cable & Wireless
+1876990|Cable & Wireless
+1876995|Cable & Wireless
+1876997|Cable & Wireless
+1876999|Cable & Wireless
 1939201|CENTENNIAL
 1939212|CENTENNIAL
 1939214|CENTENNIAL

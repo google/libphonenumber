@@ -2350,7 +2350,7 @@
 494643|Gelting Angeln
 494644|Karby
 494646|Mohrkirch
-494651|Sylt
+49465|Sylt
 494661|Niebüll
 494662|Leck
 494663|Süderlügum
@@ -4038,7 +4038,7 @@
 497585|Ostrach
 497586|Herbertingen
 497587|Hosskirch
-497602|Oberried Breisgau
+49760|Oberried Breisgau
 49761|Freiburg im Breisgau
 497620|Schopfheim-Gersbach
 497621|Lörrach
@@ -4700,14 +4700,14 @@
 499122|Schwabach
 499123|Lauf an der Pegnitz
 499126|Eckental
-499127|Rosstal Mittelfrankenanken
+499127|Rosstal Mittelfranken
 499128|Feucht
 499129|Wendelstein
 499131|Erlangen
 499132|Herzogenaurach
-499133|Baiersdorf Mittelfrankenanken
+499133|Baiersdorf Mittelfranken
 499134|Neunkirchen am Brand
-499135|Hessdorf Mittelfrankenanken
+499135|Hessdorf Mittelfranken
 499141|Weissenburg in Bayern
 499142|Treuchtlingen
 499143|Pappenheim Mittelfranken

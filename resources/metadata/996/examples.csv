@@ -1,0 +1,4 @@
+Region ; Type       ; Number
+KG     ; FIXED_LINE ; "312123456"
+KG     ; MOBILE     ; "700123456"
+KG     ; TOLL_FREE  ; "800123456"

@@ -1,0 +1,3 @@
+Format           ; Parent Format ; Comment
+[34679] XXXX XXX ; fixed_1/3/4   ; "Pattern for fixed-line formats excluding the Ross Dependency"
+XXX XXX XX       ; fmt_3/2/2-3   ; "Pattern for short premium-rate & toll-free numbers."

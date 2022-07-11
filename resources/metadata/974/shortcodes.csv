@@ -1,0 +1,5 @@
+Region ; Prefix ; Length ; Type       ; Tariff
+QA     ; 1      ; 3      ; COMMERCIAL
+QA     ; 20     ; 4      ; COMMERCIAL
+QA     ; 9[27]  ; 5      ; COMMERCIAL
+QA     ; 999    ; 3      ; EMERGENCY  ; TOLL_FREE

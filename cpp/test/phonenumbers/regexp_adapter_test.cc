@@ -47,7 +47,9 @@ struct RegExpTestContext {
         digits(factory->CreateRegExp("\\d+")),
         parentheses_digits(factory->CreateRegExp("\\((\\d+)\\)")),
         single_digit(factory->CreateRegExp("\\d")),
-        two_digit_groups(factory->CreateRegExp("(\\d+)-(\\d+)")) {}
+        two_digit_groups(factory->CreateRegExp("(\\d+)-(\\d+)")),
+        six_digit_groups(factory->CreateRegExp(
+            "(\\d+)-(\\d+)-(\\d+)-(\\d+)-(\\d+)-(\\d+)")) {}
 
   const string name;
   const scoped_ptr<const AbstractRegExpFactory> factory;
@@ -55,6 +57,7 @@ struct RegExpTestContext {
   const scoped_ptr<const RegExp> parentheses_digits;
   const scoped_ptr<const RegExp> single_digit;
   const scoped_ptr<const RegExp> two_digit_groups;
+  const scoped_ptr<const RegExp> six_digit_groups;
 };
 
 class RegExpAdapterTest : public testing::Test {
@@ -89,17 +92,20 @@ TEST_F(RegExpAdapterTest, TestConsumeNoMatch) {
 
     // When 'true' is passed to Consume(), the match occurs from the beginning
     // of the input.
-    ASSERT_FALSE(context.digits->Consume(input.get(), true, NULL, NULL, NULL))
-        << ErrorMessage(context);
+    ASSERT_FALSE(context.digits->Consume(
+         input.get(), true, NULL, NULL, NULL, NULL, NULL, NULL))
+         << ErrorMessage(context);
     ASSERT_EQ("+1-123-456-789", input->ToString()) << ErrorMessage(context);
 
     string res1;
     ASSERT_FALSE(context.parentheses_digits->Consume(
-        input.get(), true, &res1, NULL, NULL)) << ErrorMessage(context);
+        input.get(), true, &res1, NULL, NULL, NULL, NULL, NULL))
+        << ErrorMessage(context);
     ASSERT_EQ("+1-123-456-789", input->ToString()) << ErrorMessage(context);
     ASSERT_EQ("", res1) << ErrorMessage(context);
   }
 }
+
 
 TEST_F(RegExpAdapterTest, TestConsumeWithNull) {
   for (TestContextIterator it = contexts_.begin(); it != contexts_.end();
@@ -109,7 +115,8 @@ TEST_F(RegExpAdapterTest, TestConsumeWithNull) {
     const scoped_ptr<RegExpInput> input(factory.CreateInput("+123"));
     const scoped_ptr<const RegExp> plus_sign(factory.CreateRegExp("(\\+)"));
 
-    ASSERT_TRUE(plus_sign->Consume(input.get(), true, NULL, NULL, NULL))
+    ASSERT_TRUE(plus_sign->Consume(input.get(), true, NULL, NULL, NULL, NULL,
+                                   NULL, NULL))
         << ErrorMessage(context);
     ASSERT_EQ("123", input->ToString()) << ErrorMessage(context);
   }
@@ -124,7 +131,8 @@ TEST_F(RegExpAdapterTest, TestConsumeRetainsMatches) {
 
     string res1, res2;
     ASSERT_TRUE(context.two_digit_groups->Consume(
-        input.get(), true, &res1, &res2, NULL)) << ErrorMessage(context);
+        input.get(), true, &res1, &res2, NULL, NULL, NULL, NULL))
+        << ErrorMessage(context);
     ASSERT_EQ("-456-789", input->ToString()) << ErrorMessage(context);
     ASSERT_EQ("1", res1) << ErrorMessage(context);
     ASSERT_EQ("123", res2) << ErrorMessage(context);
@@ -137,27 +145,51 @@ TEST_F(RegExpAdapterTest, TestFindAndConsume) {
     const RegExpTestContext& context = **it;
     const scoped_ptr<RegExpInput> input(
         context.factory->CreateInput("+1-123-456-789"));
+    const scoped_ptr<RegExpInput> input_with_six_digit_groups(
+        context.factory->CreateInput("111-222-333-444-555-666"));
 
     // When 'false' is passed to Consume(), the match can occur from any place
     // in the input.
-    ASSERT_TRUE(context.digits->Consume(input.get(), false, NULL, NULL, NULL))
+    ASSERT_TRUE(context.digits->Consume(input.get(), false, NULL, NULL, NULL,
+                                        NULL, NULL, NULL))
         << ErrorMessage(context);
     ASSERT_EQ("-123-456-789", input->ToString()) << ErrorMessage(context);
 
-    ASSERT_TRUE(context.digits->Consume(input.get(), false, NULL, NULL, NULL))
+    ASSERT_TRUE(context.digits->Consume(input.get(), false, NULL, NULL, NULL,
+                                        NULL, NULL, NULL))
         << ErrorMessage(context);
     ASSERT_EQ("-456-789", input->ToString()) << ErrorMessage(context);
 
     ASSERT_FALSE(context.parentheses_digits->Consume(
-        input.get(), false, NULL, NULL, NULL)) << ErrorMessage(context);
+        input.get(), false, NULL, NULL, NULL, NULL, NULL, NULL))
+        << ErrorMessage(context);
     ASSERT_EQ("-456-789", input->ToString()) << ErrorMessage(context);
 
     string res1, res2;
     ASSERT_TRUE(context.two_digit_groups->Consume(
-        input.get(), false, &res1, &res2, NULL)) << ErrorMessage(context);
+        input.get(), false, &res1, &res2, NULL, NULL, NULL, NULL))
+        << ErrorMessage(context);
+    printf("previous input: %s", input.get()->ToString().c_str());
     ASSERT_EQ("", input->ToString()) << ErrorMessage(context);
     ASSERT_EQ("456", res1) << ErrorMessage(context);
     ASSERT_EQ("789", res2) << ErrorMessage(context);
+
+    // Testing maximum no of substrings that can be matched presently, six.
+    string mat1, mat2, res3, res4, res5, res6;
+    ASSERT_TRUE(context.six_digit_groups->Consume(
+        input_with_six_digit_groups.get(), false, &mat1, &mat2, &res3, &res4,
+        &res5, &res6))
+        << ErrorMessage(context);
+    printf("Present input: %s",
+           input_with_six_digit_groups.get()->ToString().c_str());
+    ASSERT_EQ("", input_with_six_digit_groups->ToString())
+        << ErrorMessage(context);
+    ASSERT_EQ("111", mat1) << ErrorMessage(context);
+    ASSERT_EQ("222", mat2) << ErrorMessage(context);
+    ASSERT_EQ("333", res3) << ErrorMessage(context);
+    ASSERT_EQ("444", res4) << ErrorMessage(context);
+    ASSERT_EQ("555", res5) << ErrorMessage(context);
+    ASSERT_EQ("666", res6) << ErrorMessage(context);
   }
 }
 

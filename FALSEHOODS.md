@@ -9,8 +9,20 @@ surprising how many false assumptions programmers continue to make about them.
 
     Some people do not own phones, or do not wish to provide you with their
     telephone number when asked. Do not require a user to provide a phone number
-    unless it is essential, and whenever possible try and provide a fallback
+    unless it is essential, and whenever possible try to provide a fallback
     to accommodate these users.
+
+1. **You can make a call to any phone number**
+  
+    Some devices such as EFTPOS terminals, fax machines and mobile internet
+    dongles may not support receiving calls. In addition, some people can not
+    use their phones for phone calls. This may be permanent (such as a hearing
+    disability), temporary (temporary hearing loss) or situational (when the
+    user is in a noisy environment).
+  
+    **Tip:** Make how you use phone numbers apparent to the user and give them
+    the option to set their preference. Ensure that you look up this preference
+    before attempting to communicate with the user.
 
 1.  **An individual has only one phone number**
 
@@ -69,7 +81,7 @@ surprising how many false assumptions programmers continue to make about them.
     A lot of people still only have a fixed-line telephone, which typically cannot
     send or receive text messages.
 
-    **Tip:** Whenever possible, try and accommodate these users by calling them
+    **Tip:** Whenever possible, try to accommodate these users by calling them
     with a voice message or voice prompts. Alternatively, if your service
     requires sending text messages, verify that the number can receive text
     messages after the user provides it.
@@ -169,7 +181,7 @@ surprising how many false assumptions programmers continue to make about them.
 
     In some countries, people write the national prefix in brackets (typically
     `(0)`) after the country calling code to indicate that it should be
-    discarded when dialing internationally. In Italy, since 1988, the prefix was
+    discarded when dialing internationally. In Italy, since 1998, the prefix was
     "fixed" to the phone numbers, so that `(01) 2345` became `012345` and should
     be dialed (internationally) as `+39012345` (including the leading zero).
 

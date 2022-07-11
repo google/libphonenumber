@@ -1,0 +1,8 @@
+Region ; Label          ; Comment
+NA     ; SC             ; "http://www.itu.int/oth/T0202000093/en"
+NA     ; SC_EMERGENCY   ; "ITU doc reserves 9XX for emergency numbers. No examples found."
+NA     ; SC_EMERGENCY   ; "http://www.namibia-1on1.com/information/a-emergencynos.html"
+NA     ; XML            ; "http://www.itu.int/oth/T0202000093/en"
+NA     ; XML_FIXED_LINE ; "Includes VSAT service. Added 6768 and 64426 prefix based on user\nreport."
+NA     ; XML_MOBILE     ; "Includes the Switch CDMA Service."
+NA     ; XML_VOIP       ; "Including virtual telephone and VOIP services."

@@ -3,9 +3,9 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.googlecode.libphonenumber</groupId>
   <artifactId>libphonenumber-parent</artifactId>
-  <version>8.10.1-SNAPSHOT</version>
+  <version>8.12.52-SNAPSHOT</version>
   <packaging>pom</packaging>
-  <url>https://github.com/googlei18n/libphonenumber/</url>
+  <url>https://github.com/google/libphonenumber/</url>
 
   <parent>
     <groupId>org.sonatype.oss</groupId>
@@ -31,9 +31,9 @@
   </licenses>
 
   <scm>
-    <connection>scm:git:https://github.com/googlei18n/libphonenumber.git</connection>
+    <connection>scm:git:https://github.com/google/libphonenumber.git</connection>
     <developerConnection>scm:git:git@github.com:googlei18n/libphonenumber.git</developerConnection>
-    <url>https://github.com/googlei18n/libphonenumber/</url>
+    <url>https://github.com/google/libphonenumber/</url>
     <tag>HEAD</tag>
   </scm>
 
@@ -103,6 +103,11 @@
             </execution>
           </executions>
         </plugin>
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>animal-sniffer-maven-plugin</artifactId>
+          <version>1.15</version>
+        </plugin>
       </plugins>
     </pluginManagement>
     <plugins>
@@ -156,8 +161,9 @@
         <artifactId>maven-compiler-plugin</artifactId>
         <version>2.3.2</version>
         <configuration>
-          <source>1.5</source>
-          <target>1.5</target>
+          <source>1.7</source>
+	  <target>1.7</target>
+	  <encoding>UTF-8</encoding>
         </configuration>
       </plugin>
       <plugin>
@@ -226,7 +232,13 @@
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>4.8.1</version>
+      <version>4.13.1</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-all</artifactId>
+      <version>1.10.19</version>
       <scope>test</scope>
     </dependency>
   </dependencies>

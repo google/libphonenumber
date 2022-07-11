@@ -14,7 +14,41 @@
 
 # Generated from: https://www.itu.int/oth/T0202000074/en
 
-996312|Bishkek, Chuy region
+9963120|Bishkek, Chuy region
+9963121|Bishkek, Chuy region
+9963122|Bishkek, Chuy region
+9963123|Bishkek, Chuy region
+9963124|Bishkek, Chuy region
+99631250|Bishkek, Chuy region
+99631251|Bishkek, Chuy region
+99631252|Bishkek, Chuy region
+99631253|Bishkek, Chuy region
+99631254|Bishkek, Chuy region
+99631255|Bishkek, Chuy region
+99631256|Bishkek, Chuy region
+99631257|Bishkek, Chuy region
+99631259|Bishkek, Chuy region
+9963126|Bishkek, Chuy region
+9963127|Bishkek, Chuy region
+9963128|Bishkek, Chuy region
+99631290|Bishkek, Chuy region
+99631291|Bishkek, Chuy region
+99631292|Bishkek, Chuy region
+99631293|Bishkek, Chuy region
+99631294|Bishkek, Chuy region
+99631295|Bishkek, Chuy region
+99631296|Bishkek, Chuy region
+996312970|Bishkek, Chuy region
+996312971|Bishkek, Chuy region
+996312972|Bishkek, Chuy region
+996312974|Bishkek, Chuy region
+996312975|Bishkek, Chuy region
+996312976|Bishkek, Chuy region
+996312977|Bishkek, Chuy region
+996312978|Bishkek, Chuy region
+996312979|Bishkek, Chuy region
+99631298|Bishkek, Chuy region
+99631299|Bishkek, Chuy region
 9963131|Belovodskoe, Chuy region
 9963132|Kant, Chuy region
 9963133|Kara-Balta, Chuy region

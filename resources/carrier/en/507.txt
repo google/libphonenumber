@@ -15,12 +15,16 @@
 # Prefixes are from La Autoridad Nacional de los Servicios Públicos (ASEP):
 # http://www.asep.gob.pa/telecom/pnn/default.asp
 
-507111|Digicel
+507111|Claro
 507161|Cable & Wireless
 507218|Telefónica Móviles
 507219|Telefónica Móviles
 50760|Digicel
 50761|Digicel
+507616|Telefónica Móviles
+507617|Claro
+507618|Claro
+507619|Telefónica Móviles
 50762|Claro
 507630|Claro
 507631|Claro

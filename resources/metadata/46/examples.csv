@@ -1,0 +1,10 @@
+Region ; Type            ; Number
+SE     ; FIXED_LINE      ; "8123456"
+SE     ; MOBILE          ; "701234567"
+SE     ; PAGER           ; "740123456"
+SE     ; TOLL_FREE       ; "20123456"
+SE     ; PREMIUM_RATE    ; "9001234567"
+SE     ; SHARED_COST     ; "771234567"
+SE     ; PERSONAL_NUMBER ; "751234567"
+SE     ; UAN             ; "102345678"
+SE     ; VOICEMAIL       ; "254123456789"

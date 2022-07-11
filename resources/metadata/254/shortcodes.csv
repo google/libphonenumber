@@ -1,0 +1,45 @@
+Region ; Prefix       ; Length ; Type               ; Tariff       ; Sms  ; Carrier Specific
+KE     ; 10[07-9]     ; 3      ; COMMERCIAL
+KE     ; 101[0-25]    ; 4      ; COMMERCIAL
+KE     ; 10400        ; 5      ; COMMERCIAL         ;              ; true ; true
+KE     ; 110          ; 3      ; EXPANDED_EMERGENCY
+KE     ; 11[24]       ; 3      ; EMERGENCY          ; TOLL_FREE
+KE     ; 115          ; 3      ; COMMERCIAL
+KE     ; 116          ; 3      ; EXPANDED_EMERGENCY ; TOLL_FREE
+KE     ; 119[0-579]   ; 4      ; EXPANDED_EMERGENCY ; TOLL_FREE
+KE     ; 12[1-3]      ; 3      ; COMMERCIAL
+KE     ; 13[01]       ; 3      ; COMMERCIAL         ;              ;      ; true
+KE     ; 14[14]       ; 3      ; COMMERCIAL         ;              ; true ; true
+KE     ; 1500         ; 4      ; COMMERCIAL
+KE     ; 1501         ; 4      ; COMMERCIAL         ; TOLL_FREE    ; true
+KE     ; 151[01]      ; 4      ; COMMERCIAL         ;              ;      ; true
+KE     ; 152[0469]    ; 4      ; COMMERCIAL
+KE     ; 152[17]      ; 4      ; COMMERCIAL         ; TOLL_FREE
+KE     ; 1522         ; 4      ; COMMERCIAL         ; TOLL_FREE    ;      ; true
+KE     ; 1525         ; 4      ; COMMERCIAL         ;              ;      ; true
+KE     ; 1533         ; 4      ; COMMERCIAL
+KE     ; 154[05]      ; 4      ; COMMERCIAL
+KE     ; 1555         ; 4      ; COMMERCIAL         ;              ; true
+KE     ; 1559         ; 4      ; COMMERCIAL
+KE     ; 15600        ; 5      ; COMMERCIAL
+KE     ; 15629        ; 5      ; COMMERCIAL         ; TOLL_FREE    ; true
+KE     ; 1566[67]     ; 5      ; COMMERCIAL         ; TOLL_FREE    ; true
+KE     ; 160          ; 5      ; COMMERCIAL         ;              ; true
+KE     ; 16[35]       ; 5      ; COMMERCIAL         ;              ; true ; true
+KE     ; 1[78]        ; 3      ; COMMERCIAL
+KE     ; 19[02-9]     ; 5      ; COMMERCIAL
+KE     ; 1919         ; 4      ; COMMERCIAL
+KE     ; 2[0-79]      ; 5      ; COMMERCIAL         ;              ;      ; true
+KE     ; [37][0-29]   ; 5      ; COMMERCIAL         ;              ;      ; true
+KE     ; 40[0-35-9]   ; 5      ; COMMERCIAL         ;              ;      ; true
+KE     ; 4040[0-35-9] ; 5      ; COMMERCIAL         ;              ;      ; true
+KE     ; 40404        ; 5      ; COMMERCIAL         ;              ; true ; true
+KE     ; 404[1-9]     ; 5      ; COMMERCIAL         ;              ;      ; true
+KE     ; 4[1-4]       ; 5      ; COMMERCIAL         ;              ;      ; true
+KE     ; 5[0-7]       ; 5      ; COMMERCIAL         ;              ;      ; true
+KE     ; 599          ; 5      ; COMMERCIAL         ;              ;      ; true
+KE     ; 6[2357]      ; 5      ; COMMERCIAL         ;              ;      ; true
+KE     ; 8            ; 5      ; COMMERCIAL         ;              ;      ; true
+KE     ; 8988         ; 4      ; COMMERCIAL         ;              ; true ; true
+KE     ; 909          ; 5      ; COMMERCIAL         ; PREMIUM_RATE ; true ; true
+KE     ; 999          ; 3      ; EMERGENCY          ; TOLL_FREE

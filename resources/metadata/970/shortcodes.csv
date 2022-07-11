@@ -1,0 +1,6 @@
+Region ; Prefix  ; Length ; Type       ; Tariff    ; Carrier Specific
+PS     ; 10[0-2] ; 3      ; EMERGENCY  ; TOLL_FREE
+PS     ; 1122    ; 4      ; COMMERCIAL ;           ; true
+PS     ; 144     ; 3      ; COMMERCIAL
+PS     ; 166     ; 3      ; COMMERCIAL ; TOLL_FREE
+PS     ; 199     ; 3      ; COMMERCIAL

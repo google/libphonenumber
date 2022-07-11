@@ -63,11 +63,4 @@
 35886|Uleåborg
 35887|Uleåborg
 35888|Uleåborg
-35891|Helsingfors
-35892|Helsingfors
-35893|Helsingfors
-35894|Helsingfors
-35895|Helsingfors
-35896|Helsingfors
-35897|Helsingfors
-35898|Helsingfors
+3589|Helsingfors

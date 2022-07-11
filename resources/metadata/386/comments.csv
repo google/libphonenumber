@@ -1,0 +1,7 @@
+Region ; Label            ; Comment
+SI     ; SC               ; "http://www.itu.int/oth/T02020000BE/en"
+SI     ; XML              ; "http://www.itu.int/oth/T02020000BE/en"
+SI     ; XML              ; "http://www.akos-rs.si/numbering-space"
+SI     ; XML_FIXED_LINE   ; "Prefix 32 added after a user report."
+SI     ; XML_MOBILE       ; "43 range is mentioned as geographic number in 18.VII.2018 ITU doc where as previous\nITU doc (15.III.2017) says it is MVNO. Supporting it under mobile as we found the\nnumbers does not belong to same area. We include 049 here - it is VoIP in the plan,\nbut is actually used to provide mobile coverage to Kosovo. Supporting all 69X numbers\nbased on Wikipedia and some sub ranges being present in IR 21 doc."
+SI     ; XML_PREMIUM_RATE ; "Includes televoting, mass calling"

@@ -24,5 +24,6 @@
 21644|Tunisie Telecom
 21645|Watany Ettisalat
 21646|Ooredoo
+21647|Tunisie Telecom
 2165|Orange
 2169|Tunisie Telecom

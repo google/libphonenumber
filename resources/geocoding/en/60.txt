@@ -640,16 +640,7 @@
 6037717|Kuala Lumpur
 6037718|Kuala Lumpur
 6037719|Kuala Lumpur
-6037720|Kuala Lumpur
-6037721|Kuala Lumpur
-6037722|Kuala Lumpur
-6037723|Kuala Lumpur
-6037724|Kuala Lumpur
-6037725|Kuala Lumpur
-6037726|Kuala Lumpur
-6037727|Kuala Lumpur
-6037728|Kuala Lumpur
-6037729|Kuala Lumpur
+603772|Kuala Lumpur
 6037731|Kuala Lumpur
 6037732|Kuala Lumpur
 6037733|Kuala Lumpur
@@ -1030,12 +1021,16 @@
 604397|Penang
 604398|Penang
 604399|Penang
-60440|Kulim
 604400|Padang Serai
+604401|Kulim
+604402|Kulim
+604403|Kulim
 604404|Mahang
 604405|Padang Serai
 604406|Padang Serai
 604407|Serdang
+604408|Kulim
+604409|Kulim
 604410|Kulim
 6044110|Serdang
 604412|Penang
@@ -1053,7 +1048,6 @@
 604434|Padang Serai
 60444|Sungai Petani
 604447|Bedong
-604448|Sungai Petani
 604449|Baling
 60445|Bedong
 604451|Jeniang
@@ -1070,16 +1064,10 @@
 604467|Jeniang
 604468|Bedong
 604469|Jeniang
-604470|Baling
+60447|Baling
 604471|Sungai Bakap
-604472|Baling
-604473|Baling
-604474|Baling
 604475|Kupang
 604476|Kupang
-604477|Baling
-604478|Baling
-604479|Baling
 60448|Kulim
 604483|Baling
 604485|Padang Serai
@@ -1535,13 +1523,16 @@
 605667|Bruas
 605668|Sitiawan
 605669|Sitiawan
-60567|Sitiawan
+605670|Sitiawan
+605671|Sitiawan
+605672|Sitiawan
 605673|Bruas
 605674|Bruas
 605675|Changkat Keruing
 605676|Changkat Keruing
 605677|Bruas
 605678|Bruas
+605679|Sitiawan
 605680|Sitiawan
 605681|Sitiawan
 605682|Changkat Keruing
@@ -1769,15 +1760,9 @@
 606476|Ladang Geddes
 606477|Palong
 606479|Ayer Hitam
+60648|Kuala Pilah
 606480|Ayer Hitam
-606481|Kuala Pilah
-606482|Kuala Pilah
-606483|Kuala Pilah
-606484|Kuala Pilah
-606485|Kuala Pilah
 606486|Simpang Durian
-606487|Kuala Pilah
-606488|Kuala Pilah
 606489|Kuala Klawang
 606490|Rembau
 606491|Simpang Durian
@@ -1818,16 +1803,11 @@
 606546|Durian Tunggal
 606547|Durian Tunggal
 606549|Durian Tunggal
+60655|Durian Tunggal
 606550|Tampin
 606551|Simpang Empat
 606552|Simpang Empat
-606553|Durian Tunggal
 606554|Tampin
-606555|Durian Tunggal
-606556|Durian Tunggal
-606557|Durian Tunggal
-606558|Durian Tunggal
-606559|Durian Tunggal
 606560|Simpang Empat
 606601|Seremban
 606603|Seremban
@@ -1942,6 +1922,11 @@
 606981|Bakri
 606983|Bakri
 606984|Bukit Gambir
+606985|Muar
+606986|Bakri
+606987|Bakri
+606988|Bakri
+606989|Bakri
 607207|Johor Bahru
 607208|Johor Bahru
 607209|Johor Bahru
@@ -2024,13 +2009,16 @@
 607413|Batu Pahat
 607414|Rengit
 607415|Batu Pahat
-60742|Senggarang
+607420|Senggarang
 607421|Kampung Parit Tengah
 607422|Kampung Parit Tengah
 607423|Rengit
 607424|Rengit
 607425|Parit Betak
 607426|Parit Betak
+607427|Senggarang
+607428|Senggarang
+607429|Senggarang
 60743|Batu Pahat
 607440|Batu Pahat
 607441|Senggarang
@@ -2176,23 +2164,21 @@
 607768|Paloh
 6077690|Paloh
 60777|Keluang
-60778|Keluang
 607780|Kahang
 607781|Paloh
 607782|Paloh
+607783|Keluang
 607784|Kahang
+607785|Keluang
 607786|Felda Kahang Timur
+607787|Keluang
 607788|Kahang
-607790|Mersing
+607789|Keluang
+60779|Mersing
 607791|Felda Tenggaroh
-607792|Mersing
 607793|Endau
 607794|Endau
 607795|Felda Tenggaroh
-607796|Mersing
-607797|Mersing
-607798|Mersing
-607799|Mersing
 6078010|Mersing
 6078011|Mersing
 607810|Paloh
@@ -2224,8 +2210,11 @@
 607886|Penawar
 607887|Kota Tinggi
 607889|Kota Tinggi
-60789|Kota Tinggi
 607890|Linggiu
+607891|Kota Tinggi
+607892|Kota Tinggi
+607893|Kota Tinggi
+607894|Kota Tinggi
 607895|Air Tawar
 607896|Tenggara
 607897|Tiram
@@ -2238,8 +2227,9 @@
 607906|Segamat
 607907|Labis
 607908|Bekok
-60791|Aver Panas
 607910|Tenang
+607911|Aver Panas
+607912|Aver Panas
 607913|Labis
 607914|Tenang
 607915|Bukit Kepong
@@ -2247,10 +2237,13 @@
 607917|Tenang
 607918|Aver Panas
 607919|Labis
-60792|Labis
 607920|Segamat
+607921|Labis
 607922|Bekok
 607923|Bukit Kepong
+607924|Labis
+607925|Labis
+607926|Labis
 607927|Tenang
 607928|Aver Panas
 607929|Aver Panas
@@ -2663,6 +2656,7 @@
 6084610|Rejang
 6084612|Rejang
 6084613|Selalang
+6084614|Rejang
 6084620|Sarikei
 6084631|Selalang
 6084632|Selalang
@@ -3174,6 +3168,7 @@
 6087885|Kuala Penyu
 6087887|Membakut
 6087888|Membakut
+6087889|Membakut
 6088201|Kota Kinabalu
 6088203|Kota Kinabalu
 6088204|Kota Kinabalu
@@ -3716,15 +3711,8 @@
 609417|Nenasi
 609418|Nenasi
 609419|Kuala Rompin
-609421|Pekan
-609422|Pekan
+60942|Pekan
 609423|Chini
-609424|Pekan
-609425|Pekan
-609426|Pekan
-609427|Pekan
-609428|Pekan
-609429|Pekan
 609430|Pekan
 6094310|Pekan
 6094311|Pekan
@@ -3930,6 +3918,7 @@
 609821|Sri Gading
 609822|Al Muktafi Billa H Shah
 609823|Al Muktafi Billa H Shah
+609824|Kerteh
 609825|Kerteh
 609826|Kerteh
 609827|Paka

@@ -87,7 +87,8 @@ class PhoneNumberMatcher {
 
   ~PhoneNumberMatcher();
 
-  // Returns true if the text sequence has another match.
+  // Returns true if the text sequence has another match. Return false if not.
+  // Always returns false when input contains non UTF-8 characters.
   bool HasNext();
 
   // Gets next match from text sequence.
@@ -100,6 +101,9 @@ class PhoneNumberMatcher {
     READY,
     DONE,
   };
+
+  // Checks if the to check if the provided text_ is in UTF-8 or not.
+  bool IsInputUtf8();
 
   // Attempts to extract a match from a candidate string. Returns true if a
   // match is found, otherwise returns false. The value "offset" refers to the
@@ -135,7 +139,17 @@ class PhoneNumberMatcher {
     ResultCallback4<bool, const PhoneNumberUtil&, const PhoneNumber&,
                     const string&, const vector<string>&>* checker) const;
 
+  // Helper method to get the national-number part of a number, formatted
+  // without any national prefix, and return it as a set of digit blocks that
+  // would be formatted together following standard formatting rules.
   void GetNationalNumberGroups(
+      const PhoneNumber& number,
+      vector<string>* digit_blocks) const;
+
+  // Helper method to get the national-number part of a number, formatted
+  // without any national prefix, and return it as a set of digit blocks that
+  // should be formatted together according to the formatting pattern passed in.
+  void GetNationalNumberGroupsForPattern(
       const PhoneNumber& number,
       const NumberFormat* formatting_pattern,
       vector<string>* digit_blocks) const;
@@ -191,6 +205,9 @@ class PhoneNumberMatcher {
 
   // The next index to start searching at. Undefined in State.DONE.
   int search_index_;
+
+  // Flag to set or check if input text is in UTF-8 or not.
+  bool is_input_valid_utf8_;
 
   DISALLOW_COPY_AND_ASSIGN(PhoneNumberMatcher);
 };

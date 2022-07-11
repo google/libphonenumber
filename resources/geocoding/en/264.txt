@@ -850,6 +850,7 @@
 264662600|Mpungu
 26466261|Katima-Mulilo
 264662627|Katima-Mulilo
+26466263|Katima-Mulilo
 264662640|Nyangana
 26466265|Rundu
 26466266|Rundu
@@ -858,6 +859,7 @@
 264662672|Rundu
 264662673|Rundu
 264662674|Rundu
+26466268|Katima-Mulilo
 26466269|Rundu
 26466381|Maltahohe
 26466385|Namgorab

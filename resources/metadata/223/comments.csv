@@ -1,0 +1,12 @@
+Region ; Label               ; Comment
+ML     ; SC                  ; "http://crt-mali.org/pdf/plan_num"
+ML     ; SC                  ; "http://www.orangemali.com/mobile/offrespostpayees.php"
+ML     ; SC                  ; "http://www.orangemali.com/service-clients/service-clients-orange.php"
+ML     ; SC_CARRIER_SPECIFIC ; "35035 found on http://www.malitel.ml/Pages/News.aspx?IdNews=4"
+ML     ; SC_PREMIUM_RATE     ; "Adding the codes to ""services à valeur ajoutée"" from http://crt-mali.org/pdf/plan_num,\nplus any other numbers found online where the prices are really high."
+ML     ; SC_SHORT_CODE       ; "Numbers have come from the pages listed above, along with the short-codes to find your\nvoting location published in Mali newspapers such as www.malijet.com. These begin with\n36."
+ML     ; SC_STANDARD_RATE    ; "7400 is listed by Orange as costing half the price of a normal SMS. 37433 is cheaper\nthan other voice calls, with the exception of Orange network off-peak calls; it is\nroughly the same price as that. 37575 is similar to normal SMSs."
+ML     ; SC_TOLL_FREE        ; "http://www.malitel.ml/Particuliers/Mobile/Pages/Waatibe.aspx says 6700 is free,\nhttp://www.malitel.ml/Particuliers/Mobile/Pages/MessagerieVocale.aspx says 6777 is\nfree."
+ML     ; XML                 ; "http://www.itu.int/oth/T0202000083/en"
+ML     ; XML                 ; "http://crt-mali.org/pdf/plan_num"
+ML     ; XML_TOLL_FREE       ; "Online examples have not been found, but this seems to follow the prescriptions in the\nplan."

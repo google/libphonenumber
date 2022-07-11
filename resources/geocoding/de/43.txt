@@ -15,7 +15,14 @@
 # Generated from:
 # http://www.rtr.at/en/tk/E129/Austrian_Numbering_Plan_2011-03-30.pdf [2011-03-30]
 
-431|Wien
+4312|Wien
+4313|Wien
+4314|Wien
+4315|Wien
+4316|Wien
+4317|Wien
+4318|Wien
+4319|Wien
 432142|Gattendorf
 432143|Kittsee
 432144|Deutsch Jahrndorf
@@ -243,6 +250,8 @@
 432841|Vitis
 432842|Waidhofen an der Thaya
 432843|Dobersberg
+432844|Karlstein an der Thaya
+432845|Weikertschlag an der Thaya
 432846|Raabs an der Thaya
 432847|Groß-Siegharts
 432848|Pfaffenschlag bei Waidhofen
@@ -564,7 +573,7 @@
 434357|Sankt Paul im Lavanttal
 434358|Sankt Andrä
 434359|Reichenfels
-43463|Klagenfurt
+4346|Klagenfurt
 434710|Oberdrauburg
 434712|Greifenburg
 434713|Techendorf

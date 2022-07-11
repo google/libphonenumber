@@ -1,0 +1,5 @@
+Region ; Label          ; Comment
+ZM     ; SC             ; "http://www.itu.int/oth/T02020000E8/en"
+ZM     ; XML            ; "http://www.itu.int/oth/T02020000E8/en"
+ZM     ; XML            ; "https://www.zicta.zm/Downloads/Numbering%20Plan.pdf (2014, possibly out of date)"
+ZM     ; XML_FIXED_LINE ; "Zambia has deprecated the ""intra-network"" dialling system as described in\nhttps://www.zicta.zm/Downloads/Numbering%20Plan.pdf (section 2.2.3). This means that\nlocal numbers can only be 6 digits long (and not 6 or 7 as previously modelled).\nThis information was provided directly by a contact in Zambia."

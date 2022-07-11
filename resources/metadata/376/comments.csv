@@ -1,0 +1,6 @@
+Region ; Label            ; Comment
+AD     ; SC               ; "http://www.itu.int/oth/T0202000005/en"
+AD     ; SC_EMERGENCY     ; "http://www.fco.gov.uk/en/travel-and-living-abroad/travel-advice-by-country/europe/andorra"
+AD     ; XML              ; "http://www.itu.int/oth/T0202000005/en"
+AD     ; XML_PREMIUM_RATE ; "The national numbering plan says that 6-digit numbers beginning with 1 and 9 are reserved\nfor special services, so we assume they are premium rate here, although we cannot find\nexamples online."
+AD     ; XML_TOLL_FREE    ; "Note that the definitions of 1800 and 1802 numbers differ in the plan and on the\nAndorran http://www.sta.ad website, but we consider both to be freephone here."
