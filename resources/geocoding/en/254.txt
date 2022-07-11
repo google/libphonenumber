@@ -17,7 +17,7 @@
 # Where the geocoding conflicts between sections 1 and 6 we've chosen the
 # best names based on online research.
 
-25420|Nairobi
+2542|Nairobi
 25440|Kwale/Ukunda/Msambweni/Lungalunga
 25441|Mombasa/Mariakani/Kilifi
 25442|Malindi/Lamu/Garsen

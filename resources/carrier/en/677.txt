@@ -14,31 +14,9 @@
 
 # Data from ITU: http://www.itu.int/oth/T02020000BF/en
 
-67773|Solomon Telekom
-67774|Solomon Telekom
-67775|Solomon Telekom
-67776|Solomon Telekom
-67777|Solomon Telekom
-67778|Solomon Telekom
-677790|Solomon Telekom
-677791|Solomon Telekom
-677792|Solomon Telekom
-677793|Solomon Telekom
-677794|Solomon Telekom
-67784|BMobile
-67785|BMobile
-67786|BMobile
-67787|BMobile
-67788|BMobile
-67789|BMobile
+6777|Solomon Telekom
+6778|BMobile
+6779|Smile
 67791|Satsol
 67792|Satsol
-677930|Satsol
-677931|Satsol
-677932|Satsol
-67794|Smile
-67795|Smile
-67796|Smile
-67797|Smile
-67798|Smile
-67799|Smile
+67793|Satsol

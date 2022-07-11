@@ -1,7 +1,7 @@
 Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: libphonenumber
 Upstream-Contact: Fredrik Roubert <roubert@google.com>
-Source: https://github.com/googlei18n/libphonenumber/
+Source: https://github.com/google/libphonenumber/
 
 Files: * cpp/src/phonenumbers/base/logging.h
  cpp/src/phonenumbers/base/thread_checker.h

@@ -37,6 +37,7 @@ final class RegionCode {
   static final String CH = "CH";
   static final String CL = "CL";
   static final String CN = "CN";
+  static final String CO = "CO";
   static final String CS = "CS";
   static final String CX = "CX";
   static final String DE = "DE";
@@ -51,9 +52,11 @@ final class RegionCode {
   static final String PG = "PG";
   static final String PL = "PL";
   static final String RE = "RE";
+  static final String RU = "RU";
   static final String SE = "SE";
   static final String SG = "SG";
   static final String US = "US";
+  static final String UZ = "UZ";
   static final String YT = "YT";
   static final String ZW = "ZW";
   // Official code for the unknown region.

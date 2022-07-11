@@ -56,7 +56,7 @@
 373297|Basarabeasca
 373298|Comrat
 373299|Cahul
-373533|Tiraspol
+37353|Tiraspol
 373552|Bender
 373555|Ribnita
 373557|Slobozia

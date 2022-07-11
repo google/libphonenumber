@@ -207,44 +207,22 @@ i18n.phonenumbers.AsYouTypeFormatter.EMPTY_METADATA_
 
 
 /**
- * A pattern that is used to match character classes in regular expressions.
- * An example of a character class is [1-4].
- * @const
- * @type {RegExp}
- * @private
- */
-i18n.phonenumbers.AsYouTypeFormatter.CHARACTER_CLASS_PATTERN_ =
-    /\[([^\[\]])*\]/g;
-
-
-/**
- * Any digit in a regular expression that actually denotes a digit. For
- * example, in the regular expression 80[0-2]\d{6,10}, the first 2 digits
- * (8 and 0) are standalone digits, but the rest are not.
- * Two look-aheads are needed because the number following \\d could be a
- * two-digit number, since the phone number can be as long as 15 digits.
- * @const
- * @type {RegExp}
- * @private
- */
-i18n.phonenumbers.AsYouTypeFormatter.STANDALONE_DIGIT_PATTERN_ =
-    /\d(?=[^,}][^,}])/g;
-
-
-/**
  * A pattern that is used to determine if a numberFormat under availableFormats
  * is eligible to be used by the AYTF. It is eligible when the format element
  * under numberFormat contains groups of the dollar sign followed by a single
  * digit, separated by valid phone number punctuation. This prevents invalid
  * punctuation (such as the star sign in Israeli star numbers) getting into the
- * output of the AYTF.
+ * output of the AYTF. We require that the first group is present in the output
+ * pattern to ensure no data is lost while formatting; when we format as you
+ * type, this should always be the case.
  * @const
  * @type {RegExp}
  * @private
  */
 i18n.phonenumbers.AsYouTypeFormatter.ELIGIBLE_FORMAT_PATTERN_ = new RegExp(
-    '^[' + i18n.phonenumbers.PhoneNumberUtil.VALID_PUNCTUATION + ']*' +
-    '(\\$\\d[' + i18n.phonenumbers.PhoneNumberUtil.VALID_PUNCTUATION + ']*)+$');
+    '^[' + i18n.phonenumbers.PhoneNumberUtil.VALID_PUNCTUATION + ']*' + '\\$1'
+    + '[' + i18n.phonenumbers.PhoneNumberUtil.VALID_PUNCTUATION + ']*(\\$\\d'
+    + '[' + i18n.phonenumbers.PhoneNumberUtil.VALID_PUNCTUATION + ']*)*$');
 
 
 /**
@@ -343,9 +321,13 @@ i18n.phonenumbers.AsYouTypeFormatter.prototype.maybeCreateNewTemplate_ =
 i18n.phonenumbers.AsYouTypeFormatter.prototype.getAvailableFormats_ =
     function(leadingDigits) {
 
+  // First decide whether we should use international or national number rules.
+  /** @type {boolean} */
+  var isInternationalNumber = this.isCompleteNumber_ &&
+      this.extractedNationalPrefix_.length == 0;
   /** @type {Array.<i18n.phonenumbers.NumberFormat>} */
   var formatList =
-      (this.isCompleteNumber_ &&
+      (isInternationalNumber &&
            this.currentMetadata_.intlNumberFormatCount() > 0) ?
       this.currentMetadata_.intlNumberFormatArray() :
       this.currentMetadata_.numberFormatArray();
@@ -354,31 +336,34 @@ i18n.phonenumbers.AsYouTypeFormatter.prototype.getAvailableFormats_ =
   for (var i = 0; i < formatListLength; ++i) {
     /** @type {i18n.phonenumbers.NumberFormat} */
     var format = formatList[i];
-    /** @type {boolean} */
-    var nationalPrefixIsUsedByCountry =
-        this.currentMetadata_.hasNationalPrefix();
-    if (!nationalPrefixIsUsedByCountry || this.isCompleteNumber_ ||
-        format.getNationalPrefixOptionalWhenFormatting() ||
+    // Discard a few formats that we know are not relevant based on the
+    // presence of the national prefix.
+    if (this.extractedNationalPrefix_.length > 0 &&
         this.phoneUtil_.formattingRuleHasFirstGroupOnly(
-            format.getNationalPrefixFormattingRuleOrDefault())) {
-      if (this.isFormatEligible_(format.getFormatOrDefault())) {
-        this.possibleFormats_.push(format);
-      }
+            format.getNationalPrefixFormattingRuleOrDefault()) &&
+        !format.getNationalPrefixOptionalWhenFormatting() &&
+        !format.hasDomesticCarrierCodeFormattingRule()) {
+      // If it is a national number that had a national prefix, any rules that
+      // aren't valid with a national prefix should be excluded. A rule that
+      // has a carrier-code formatting rule is kept since the national prefix
+      // might actually be an extracted carrier code - we don't distinguish
+      // between these when extracting it in the AYTF.
+      continue;
+    } else if (this.extractedNationalPrefix_.length == 0 &&
+        !this.isCompleteNumber_ &&
+        !this.phoneUtil_.formattingRuleHasFirstGroupOnly(
+            format.getNationalPrefixFormattingRuleOrDefault()) &&
+        !format.getNationalPrefixOptionalWhenFormatting()) {
+      // This number was entered without a national prefix, and this formatting
+      // rule requires one, so we discard it.
+      continue;
+    }
+    if (i18n.phonenumbers.AsYouTypeFormatter.ELIGIBLE_FORMAT_PATTERN_.test(
+            format.getFormatOrDefault())) {
+      this.possibleFormats_.push(format);
     }
   }
   this.narrowDownPossibleFormats_(leadingDigits);
-};
-
-
-/**
- * @param {string} format
- * @return {boolean}
- * @private
- */
-i18n.phonenumbers.AsYouTypeFormatter.prototype.isFormatEligible_ =
-    function(format) {
-  return i18n.phonenumbers.AsYouTypeFormatter.ELIGIBLE_FORMAT_PATTERN_
-      .test(format);
 };
 
 
@@ -430,19 +415,6 @@ i18n.phonenumbers.AsYouTypeFormatter.prototype.createFormattingTemplate_ =
   /** @type {string} */
   var numberPattern = format.getPatternOrDefault();
 
-  // The formatter doesn't format numbers when numberPattern contains '|', e.g.
-  // (20|3)\d{4}. In those cases we quickly return.
-  if (numberPattern.indexOf('|') != -1) {
-    return false;
-  }
-
-  // Replace anything in the form of [..] with \d
-  numberPattern = numberPattern.replace(
-      i18n.phonenumbers.AsYouTypeFormatter.CHARACTER_CLASS_PATTERN_, '\\d');
-
-  // Replace any standalone digit (not the one in d{}) with \d
-  numberPattern = numberPattern.replace(
-      i18n.phonenumbers.AsYouTypeFormatter.STANDALONE_DIGIT_PATTERN_, '\\d');
   this.formattingTemplate_.clear();
   /** @type {string} */
   var tempTemplate = this.getFormattingTemplate_(numberPattern,
@@ -757,7 +729,21 @@ i18n.phonenumbers.AsYouTypeFormatter.prototype.attemptToFormatAccruedDigits_ =
       /** @type {string} */
       var formattedNumber = nationalNumber.replace(new RegExp(pattern, 'g'),
                                                    numberFormat.getFormat());
-      return this.appendNationalNumber_(formattedNumber);
+      // Check that we didn't remove nor add any extra digits when we matched
+      // this formatting pattern. This usually happens after we entered the last
+      // digit during AYTF. Eg: In case of MX, we swallow mobile token (1) when
+      // formatted but AYTF should retain all the number entered and not change
+      // in order to match a format (of same leading digits and length) display
+      // in that way.
+      var fullOutput = this.appendNationalNumber_(formattedNumber);
+      var formattedNumberDigitsOnly =
+          i18n.phonenumbers.PhoneNumberUtil.normalizeDiallableCharsOnly(
+              fullOutput);
+      if (formattedNumberDigitsOnly == this.accruedInputWithoutFormatting_) {
+          // If it's the same (i.e entered number and format is same), then it's
+          // safe to return this in formatted number as nothing is lost / added.
+          return fullOutput;
+      }
     }
   }
   return '';

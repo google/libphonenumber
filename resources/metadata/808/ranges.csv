@@ -1,0 +1,2 @@
+Prefix ; Length ; Type       ; Tariff      ; Format     ; Regions
+[1-9]  ; 8      ; FIXED_LINE ; SHARED_COST ; "fmt1_4/4" ; "001"

@@ -1,0 +1,9 @@
+Region ; Prefix      ; Length ; Type               ; Tariff       ; Carrier Specific
+ZW     ; 112         ; 3      ; EMERGENCY          ; TOLL_FREE
+ZW     ; 114         ; 3      ; EXPANDED_EMERGENCY ;              ; true
+ZW     ; 11[69]      ; 3      ; COMMERCIAL
+ZW     ; 3[013-57-9] ; 5      ; COMMERCIAL         ; PREMIUM_RATE
+ZW     ; 95[023]     ; 3      ; COMMERCIAL         ; TOLL_FREE    ; true
+ZW     ; 96[025]     ; 3      ; COMMERCIAL         ;              ; true
+ZW     ; 961         ; 3      ; COMMERCIAL         ; TOLL_FREE    ; true
+ZW     ; 99[3-59]    ; 3      ; EMERGENCY          ; TOLL_FREE

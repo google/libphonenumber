@@ -1,4 +1,4 @@
-# Copyright (C) 2013 The Libphonenumber Authors
+# Copyright (C) 2020 The Libphonenumber Authors
 
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,28 +12,22 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-67615|U-Call
-67616|U-Call
-67617|U-Call
-67618|U-Call
-67619|U-Call
-67646|U-Call
-67649|U-Call
-67653|U-Call
-67654|U-Call
-67655|U-Call
-67656|U-Call
-67657|U-Call
-67658|U-Call
-67659|U-Call
-67663|U-Call
-67664|U-Call
-67665|U-Call
-67666|U-Call
-67667|U-Call
-67668|U-Call
-67669|U-Call
-67675|U-Call
-67676|U-Call
-67677|U-Call
-67678|U-Call
+676554|Toko Wireless
+676555|Toko Wireless
+676556|Toko Wireless
+67668|Digicel
+67670|Digicel
+67672|U-Call Tonga
+67673|U-Call Tonga
+67674|U-Call Tonga
+67675|U-Call Tonga
+67676|U-Call Tonga
+67677|U-Call Tonga
+67678|U-Call Tonga
+67679|U-Call Tonga
+67684|Digicel
+67686|Digicel
+67687|Digicel
+67688|Digicel
+67689|Digicel
+6769|Digicel

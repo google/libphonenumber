@@ -12,26 +12,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# Source: https://e-agencija.aek.mk/aek-crm-portal/Pages/Public/PublicFreeSeries/PublicFreeSeries
+# Mapped ranges at 3-4 digit granularity level for easier maintenance. Added
+# some additional ranges based on respective IR.21 docs.
+
+3897|A1
 38970|T-Mobile
 38971|T-Mobile
 38972|T-Mobile
-389732|Albafone
-3897421|Mobik Telekomunikacii
-38975|one.Vip
-38976|one.Vip
-38977|one.Vip
-38978|one.Vip
-389792|one.Vip
-3897930|one.Vip
-3897931|one.Vip
-3897932|one.Vip
-3897933|one.Vip
-3897934|one.Vip
-3897935|one.Vip
-3897936|one.Vip
-38979370|one.Vip
-38979371|one.Vip
-38979372|one.Vip
-38979373|one.Vip
-38979374|one.Vip
-38979375|one.Vip
+389742|T-Mobile
+3897421|Mobik
+389746|T-Mobile
+389747|T-Mobile

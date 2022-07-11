@@ -1,0 +1,3 @@
+Prefix ; Length ; Type       ; Tariff        ; Operator ; Format     ; Regions ; Provenance
+37     ; 7      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt1_3/4" ; "IO"    ; WEB
+38     ; 7      ; MOBILE     ; STANDARD_RATE ; "sure"   ; "fmt1_3/4" ; "IO"    ; WEB

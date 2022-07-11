@@ -1,5 +1,5 @@
 <p align="right">
-<img src="https://travis-ci.org/googlei18n/libphonenumber.svg?branch=master">
+<img src="https://travis-ci.org/google/libphonenumber.svg?branch=master">
 </p>
 
 # What is it?
@@ -11,12 +11,12 @@ Cream Sandwich).
 
 # Quick links
 
-*   Reporting an issue? Want to send a pull request? See the [contribution
+*   **Reporting an issue?** Want to send a pull request? See the [contribution
     guidelines](CONTRIBUTING.md)
 *   Check the [frequently asked questions](FAQ.md)
 *   Fun! [Falsehoods Programmers Believe About Phone Numbers](FALSEHOODS.md)
 *   Look for
-    [`README`s](http://github.com/googlei18n/libphonenumber/find/master) in
+    [`README`s](https://github.com/google/libphonenumber/find/master) in
     directories relevant to the code you're interested in.
 *   For contributors and porters: [How to run the Java demo](run-java-demo.md)
 *   For porters: [How to make metadata changes](making-metadata-changes.md)
@@ -30,7 +30,7 @@ Cream Sandwich).
     Cost, VoIP, Personal Numbers, UAN, Pager, and Voicemail (whenever feasible).
 *   `isNumberMatch` - gets a confidence level on whether two numbers could be
     the same.
-*   `getExampleNumber` and `getExampleNumberByType` - provide valid example
+*   `getExampleNumber` and `getExampleNumberForType` - provide valid example
     numbers for all countries/regions, with the option of specifying which type
     of example phone number is needed.
 *   `isPossibleNumber` - quickly guesses whether a number is a possible
@@ -52,32 +52,32 @@ Cream Sandwich).
 
 ## Java
 
-The [Java demo](http://libphonenumber.appspot.com/) is updated with a slight
+The [Java demo](https://libphonenumber.appspot.com/) is updated with a slight
 delay after the GitHub release.
 
-Last demo update: v8.7.0.
+Last demo update: v8.12.51.
 
 If this number is lower than the [latest release's version
-number](http://github.com/googlei18n/libphonenumber/releases), we are between
+number](https://github.com/google/libphonenumber/releases), we are between
 releases and the demo may be at either version.
 
 ## JavaScript
 
 The [JavaScript
-demo](http://rawgit.com/googlei18n/libphonenumber/master/javascript/i18n/phonenumbers/demo-compiled.html)
+demo](https://htmlpreview.github.io/?https://github.com/google/libphonenumber/blob/master/javascript/i18n/phonenumbers/demo-compiled.html)
 may be run at various tags; this link will take you to `master`.
 
 # Java code
 
 To include the Java code in your application, either integrate with Maven (see
-[wiki](http://github.com/googlei18n/libphonenumber/wiki)) or download the latest
+[wiki](https://github.com/google/libphonenumber/wiki)) or download the latest
 jars from the [Maven
-repository](http://repo1.maven.org/maven2/com/googlecode/libphonenumber/libphonenumber/).
+repository](https://repo1.maven.org/maven2/com/googlecode/libphonenumber/libphonenumber/).
 
 # Javadoc
 
 Javadoc is automatically updated to reflect the latest release at
-http://javadoc.io/doc/com.googlecode.libphonenumber/libphonenumber/.
+https://javadoc.io/doc/com.googlecode.libphonenumber/libphonenumber/.
 
 # Versioning and Announcements
 
@@ -102,17 +102,17 @@ Sometimes we make internal changes to the code or metadata that, while not
 affecting compatibility for clients, could affect compatibility for **porters**
 of the library. For such changes we make announcements to
 [libphonenumber-discuss](
-http://groups.google.com/forum/#!forum/libphonenumber-discuss). Such changes
+https://groups.google.com/forum/#!forum/libphonenumber-discuss). Such changes
 are not reflected in the version number, and we would publish a sub-minor
 release if there were no other changes.
 
 Want to get notified of new releases? During most of the year, excepting
 holidays and extenuating circumstances, we release fortnightly. We update
-[release tags](http://github.com/googlei18n/libphonenumber/releases) and
+[release tags](https://github.com/google/libphonenumber/releases) and
 document detailed [release notes](
-http://github.com/googlei18n/libphonenumber/blob/master/release_notes.txt).
+https://github.com/google/libphonenumber/blob/master/release_notes.txt).
 We also send an announcement to [libphonenumber-discuss](
-http://groups.google.com/forum/#!forum/libphonenumber-discuss) for every
+https://groups.google.com/forum/#!forum/libphonenumber-discuss) for every
 release.
 
 # Quick Examples
@@ -206,7 +206,7 @@ System.out.println(carrierMapper.getNameForNumber(swissMobileNumber, Locale.ENGL
 ```
 
 More examples on how to use the library can be found in the [unit
-tests](http://github.com/googlei18n/libphonenumber/tree/master/java/libphonenumber/test/com/google/i18n/phonenumbers).
+tests](https://github.com/google/libphonenumber/tree/master/java/libphonenumber/test/com/google/i18n/phonenumbers).
 
 # Third-party Ports
 
@@ -217,15 +217,36 @@ However, we emphasize that these ports are by developers outside the
 libphonenumber project. We do not evaluate their quality or influence their
 maintenance processes.
 
-*   C#: https://github.com/aidanbebbington/libphonenumber-csharp
-*   Javascript: If you don't want to use our version, which depends on Closure,
-    there are several other options, including
-    https://github.com/halt-hammerzeit/libphonenumber-js (a stripped-down
-    rewrite, about 110 KB in size) and https://github.com/seegno/google-libphonenumber
-    (a browserify-compatible wrapper around the original unmodified library
-    installable via npm, packs Google Closure library, about 420 KB in size)
+*   C#: https://github.com/twcclegg/libphonenumber-csharp
+*   Go: https://github.com/nyaruka/phonenumbers
 *   Objective-c: https://github.com/iziz/libPhoneNumber-iOS
 *   PHP: https://github.com/giggsey/libphonenumber-for-php
 *   PostgreSQL in-database types: https://github.com/blm768/pg-libphonenumber
 *   Python: https://github.com/daviddrysdale/python-phonenumbers
 *   Ruby: https://github.com/mobi/telephone_number
+*   Rust: https://github.com/1aim/rust-phonenumber
+*   Erlang: https://github.com/marinakr/libphonenumber_erlang
+*   Clojure: https://github.com/randomseed-io/phone-number
+*   R: https://github.com/socialresearchcentre/dialr/
+*   Elixir: https://github.com/socialpaymentsbv/ex_phone_number
+
+Alternatives to our own versions:
+
+*   Android-optimized: Our Java version loads the metadata from
+    `Class#getResourcesAsStream` and asks that Android apps follow the Android
+    loading best practices of repackaging the metadata and loading from
+    `AssetManager#open()` themselves
+    ([FAQ](https://github.com/google/libphonenumber/blob/master/FAQ.md#optimize-loads)).
+    If you don't want to do this, check out the port at
+    https://github.com/MichaelRocks/libphonenumber-android, which does repackage
+    the metadata and use `AssetManager#open()`, and may be depended on without
+    needing those specific loading optimizations from clients. You should also check
+    out the port at https://github.com/lionscribe/libphonenumber-android which also
+    supports geocoding, and only requires a one line code change.
+*   Javascript: If you don't want to use our version, which depends on Closure,
+    there are several other options, including
+    https://github.com/catamphetamine/libphonenumber-js - a stripped-down
+    rewrite, about 110 KB in size - and
+    https://github.com/seegno/google-libphonenumber - a browserify-compatible
+    wrapper around the original unmodified library installable via npm, which
+    packs the Google Closure library, about 420 KB in size.

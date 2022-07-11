@@ -1,0 +1,6 @@
+Region ; Label      ; Comment
+LB     ; SC         ; "http://www.itu.int/oth/T0202000077/en"
+LB     ; SC         ; "http://en.wikipedia.org/wiki/%2B961"
+LB     ; XML        ; "http://www.itu.int/oth/T0202000077/en"
+LB     ; XML        ; "http://en.wikipedia.org/wiki/%2B961"
+LB     ; XML_MOBILE ; "We only validate the first three digits here, since the ranges are growing rapidly.\nThe 79[02-9] prefixes were added from bug reports and numbers found online."

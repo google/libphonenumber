@@ -17,6 +17,7 @@
 #include "cpp-build/generate_geocoding_data.h"
 
 #include <dirent.h>
+#include <errno.h>
 #include <locale>
 #include <sys/stat.h>
 #include <algorithm>
@@ -34,6 +35,9 @@
 #include <vector>
 
 #include "base/basictypes.h"
+
+#include "absl/container/btree_map.h"
+#include "absl/container/btree_set.h"
 
 namespace i18n {
 namespace phonenumbers {
@@ -102,20 +106,24 @@ bool ListDirectory(const string& path, vector<DirEntry>* entries) {
     return false;
   }
   AutoCloser<DIR> dir_closer(&dir, closedir);
-  struct dirent entry, *dir_result;
+  struct dirent *entry;
   struct stat entry_stat;
   while (true) {
-    const int res = readdir_r(dir, &entry, &dir_result);
-    if (res) {
-      return false;
+    // Set errno to 0 to be able to check if an error occurs during the
+    // readdir() call. NULL is the return value when the end of the directory
+    // stream is reached or when an error occurs, and the errno check is the
+    // only thing that helps us distinguish between the two cases. See
+    // documentation at
+    // http://pubs.opengroup.org/onlinepubs/9699919799/functions/readdir.html
+    errno = 0;
+    entry = readdir(dir);
+    if (entry == NULL) {
+      return errno == 0;
     }
-    if (dir_result == NULL) {
-      return true;
-    }
-    if (strcmp(entry.d_name, ".") == 0 || strcmp(entry.d_name, "..") == 0) {
+    if (strcmp(entry->d_name, ".") == 0 || strcmp(entry->d_name, "..") == 0) {
        continue;
     }
-    const string entry_path = path + "/" + entry.d_name;
+    const string entry_path = path + "/" + entry->d_name;
     if (stat(entry_path.c_str(), &entry_stat)) {
       return false;
     }
@@ -125,7 +133,7 @@ bool ListDirectory(const string& path, vector<DirEntry>* entries) {
     } else if (!S_ISREG(entry_stat.st_mode)) {
       continue;
     }
-    entries->push_back(DirEntry(entry.d_name, kind));
+    entries->push_back(DirEntry(entry->d_name, kind));
   }
 }
 
@@ -156,7 +164,8 @@ bool IntToStr(int32 n, string* s) {
 // Parses the prefix descriptions file at path, clears and fills the output
 // prefixes phone number prefix to description mapping.
 // Returns true on success.
-bool ParsePrefixes(const string& path, map<int32, string>* prefixes) {
+bool ParsePrefixes(const string& path,
+                   absl::btree_map<int32, string>* prefixes) {
   prefixes->clear();
   FILE* input = fopen(path.c_str(), "r");
   if (!input) {
@@ -333,12 +342,13 @@ void WritePrefixDescriptionsDefinition(
 //   ...
 // };
 //
-void WritePrefixDescriptions(const string& var_name, const map<int, string>&
-                             prefixes, FILE* output) {
-  set<int> possible_lengths;
+void WritePrefixDescriptions(const string& var_name,
+                             const absl::btree_map<int, string>& prefixes,
+                             FILE* output) {
+  absl::btree_set<int> possible_lengths;
   const string prefixes_name = var_name + "_prefixes";
   fprintf(output, "const int32 %s[] = {\n", prefixes_name.c_str());
-  for (map<int, string>::const_iterator it = prefixes.begin();
+  for (absl::btree_map<int, string>::const_iterator it = prefixes.begin();
        it != prefixes.end(); ++it) {
     fprintf(output, "  %d,\n", it->first);
     possible_lengths.insert(static_cast<int>(log10(it->first) + 1));
@@ -349,7 +359,7 @@ void WritePrefixDescriptions(const string& var_name, const map<int, string>&
 
   const string desc_name = var_name + "_descriptions";
   fprintf(output, "const char* %s[] = {\n", desc_name.c_str());
-  for (map<int, string>::const_iterator it = prefixes.begin();
+  for (absl::btree_map<int, string>::const_iterator it = prefixes.begin();
        it != prefixes.end(); ++it) {
     fprintf(output, "  ");
     WriteStringLiteral(it->second, output);
@@ -361,7 +371,7 @@ void WritePrefixDescriptions(const string& var_name, const map<int, string>&
 
   const string possible_lengths_name = var_name + "_possible_lengths";
   fprintf(output, "const int32 %s[] = {\n ", possible_lengths_name.c_str());
-  for (set<int>::const_iterator it = possible_lengths.begin();
+  for (absl::btree_set<int>::const_iterator it = possible_lengths.begin();
        it != possible_lengths.end(); ++it) {
     fprintf(output, " %d,", *it);
   }
@@ -389,10 +399,10 @@ void WritePrefixDescriptions(const string& var_name, const map<int, string>&
 //   &prefix_1_en,
 // };
 //
-void WritePrefixesDescriptions(const map<string, string>& prefix_var_names,
-                               FILE* output) {
+void WritePrefixesDescriptions(
+    const absl::btree_map<string, string>& prefix_var_names, FILE* output) {
   fprintf(output, "const char* prefix_language_code_pairs[] = {\n");
-  for (map<string, string>::const_iterator it = prefix_var_names.begin();
+  for (absl::btree_map<string, string>::const_iterator it = prefix_var_names.begin();
        it != prefix_var_names.end(); ++it) {
     fprintf(output, "  \"%s\",\n", it->first.c_str());
   }
@@ -400,7 +410,7 @@ void WritePrefixesDescriptions(const map<string, string>& prefix_var_names,
           "};\n"
           "\n"
           "const PrefixDescriptions* prefixes_descriptions[] = {\n");
-  for (map<string, string>::const_iterator it = prefix_var_names.begin();
+  for (absl::btree_map<string, string>::const_iterator it = prefix_var_names.begin();
        it != prefix_var_names.end(); ++it) {
     fprintf(output, "  &%s,\n", it->second.c_str());
   }
@@ -558,7 +568,7 @@ bool WriteSource(const string& data_path, const string& base_name,
           "\n");
 
   // Enumerate language/script directories.
-  map<string, string> prefix_vars;
+  absl::btree_map<string, string> prefix_vars;
   map<int32, set<string> > country_languages;
   vector<DirEntry> entries;
   if (!ListDirectory(data_path, &entries)) {
@@ -590,7 +600,7 @@ bool WriteSource(const string& data_path, const string& base_name,
       }
       const string path = dir_path + "/" + fname;
 
-      map<int32, string> prefixes;
+      absl::btree_map<int32, string> prefixes;
       if (!ParsePrefixes(path, &prefixes)) {
         return false;
       }

@@ -12,11 +12,31 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-64204|Skinny
+64201|Callplus
+64202|Callplus
+64203|Voyager Internet Limted
+64204|Sure (Guernsey) New Zealand Limited
+64205|Vodafone
+64206|Voyager Internet Limted
 6421|Vodafone
 6422|2degrees
-6425|Telecom
-6426|Vodafone
-6427|Telecom
-6428|Vodafone
-6429|TelstraClear
+6427|Spark
+64280|Vodafone
+64281|Sure (Guernsey) New Zealand Limited
+642820|Voxbone
+642824|Vodafone
+642825|Vodafone
+642829|Callplus
+64284|2degrees
+64287|Link Telecom
+642880|Symbio Networks PTY
+642881|Symbio Networks PTY
+642882|Symbio Networks PTY
+642885|Vodafone
+642886|Vodafone
+642887|Callplus
+642888|Callplus
+642889|Callplus
+642896|Airnet New Zealand NOW
+642899|Devoli
+6429|Vodafone

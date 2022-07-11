@@ -30,6 +30,9 @@
 #include "phonenumbers/base/memory/singleton.h"
 #include "phonenumbers/phonenumber.pb.h"
 
+#include "absl/container/node_hash_set.h"
+#include "absl/container/node_hash_map.h"
+
 class TelephoneNumber;
 
 namespace i18n {
@@ -69,20 +72,23 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   static const char kRegionCodeForNonGeoEntity[];
 
   // INTERNATIONAL and NATIONAL formats are consistent with the definition
-  // in ITU-T Recommendation E. 123. For example, the number of the Google
-  // Zürich office will be written as "+41 44 668 1800" in INTERNATIONAL
-  // format, and as "044 668 1800" in NATIONAL format. E164 format is as per
-  // INTERNATIONAL format but with no formatting applied e.g. "+41446681800".
-  // RFC3966 is as per INTERNATIONAL format, but with all spaces and other
-  // separating symbols replaced with a hyphen, and with any phone number
-  // extension appended with ";ext=". It also will have a prefix of "tel:"
-  // added, e.g. "tel:+41-44-668-1800".
+  // in ITU-T Recommendation E.123. However we follow local conventions such as
+  // using '-' instead of whitespace as separators. For example, the number of
+  // the Google Switzerland office will be written as "+41 44 668 1800" in
+  // INTERNATIONAL format, and as "044 668 1800" in NATIONAL format. E164
+  // format is as per INTERNATIONAL format but with no formatting applied e.g.
+  // "+41446681800". RFC3966 is as per INTERNATIONAL format, but with all spaces
+  // and other separating symbols replaced with a hyphen, and with any phone
+  // number extension appended with ";ext=". It also will have a prefix of
+  // "tel:" added, e.g. "tel:+41-44-668-1800".
   enum PhoneNumberFormat {
     E164,
     INTERNATIONAL,
     NATIONAL,
     RFC3966
   };
+
+  static const PhoneNumberFormat kMaxNumberFormat = RFC3966;
 
   // Type of phone numbers.
   enum PhoneNumberType {
@@ -116,6 +122,8 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
     UNKNOWN
   };
 
+  static const PhoneNumberType kMaxNumberType = UNKNOWN;
+
   // Types of phone number matches. See detailed description beside the
   // IsNumberMatch() method.
   enum MatchType {
@@ -126,6 +134,8 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
     EXACT_MATCH,
   };
 
+  static const MatchType kMaxMatchType = EXACT_MATCH;
+
   enum ErrorType {
     NO_PARSING_ERROR,
     INVALID_COUNTRY_CODE_ERROR,  // INVALID_COUNTRY_CODE in the java version.
@@ -134,6 +144,8 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
     TOO_SHORT_NSN,
     TOO_LONG_NSN,  // TOO_LONG in the java version.
   };
+
+  static const ErrorType kMaxErrorType = TOO_LONG_NSN;
 
   // Possible outcomes when testing if a PhoneNumber is possible.
   enum ValidationResult {
@@ -158,6 +170,8 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
     // The number is longer than all valid numbers for this region.
     TOO_LONG,
   };
+
+  static const ValidationResult kMaxValidationResult = TOO_LONG;
 
   // Returns all regions the library has metadata for.
   // @returns an unordered set of the two-letter region codes for every
@@ -281,8 +295,11 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   // significant number into NDC and subscriber number. The NDC of a phone
   // number is normally the first group of digit(s) right after the country
   // calling code when the number is formatted in the international format, if
-  // there is a subscriber number part that follows. An example of how this
-  // could be used:
+  // there is a subscriber number part that follows.
+  //
+  // N.B.: similar to an area code, not all numbers have an NDC!
+  //
+  // An example of how this could be used:
   //
   // const PhoneNumberUtil& phone_util(*PhoneNumberUtil::GetInstance());
   // PhoneNumber number;
@@ -380,15 +397,15 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
       const string& calling_from,
       string* formatted_number) const;
 
-  // Formats a phone number using the original phone number format that the
-  // number is parsed from. The original format is embedded in the
-  // country_code_source field of the PhoneNumber object passed in. If such
-  // information is missing, the number will be formatted into the NATIONAL
-  // format by default. When we don't have a formatting pattern for the number,
-  // the method returns the raw input when it is available.
-  //
-  // Note this method guarantees no digit will be inserted, removed or modified
-  // as a result of formatting.
+  // Formats a phone number using the original phone number format (e.g.
+  // INTERNATIONAL or NATIONAL) that the number is parsed from, provided that
+  // the number has been parsed with ParseAndKeepRawInput. Otherwise the number
+  // will be formatted in NATIONAL format. The original format is embedded in
+  // the country_code_source field of the PhoneNumber object passed in, which is
+  // only set when parsing keeps the raw input. When we don't have a formatting
+  // pattern for the number, the method falls back to returning the raw input.
+  // When the number is an invalid number, the method returns the raw input when
+  // it is available.
   void FormatInOriginalFormat(const PhoneNumber& number,
                               const string& region_calling_from,
                               string* formatted_number) const;
@@ -791,17 +808,17 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
       country_calling_code_to_region_code_map_;
 
   // The set of regions that share country calling code 1.
-  scoped_ptr<std::set<string> > nanpa_regions_;
+  scoped_ptr<absl::node_hash_set<string> > nanpa_regions_;
   static const int kNanpaCountryCode = 1;
 
   // A mapping from a region code to a PhoneMetadata for that region.
-  scoped_ptr<std::map<string, PhoneMetadata> > region_to_metadata_map_;
+  scoped_ptr<absl::node_hash_map<string, PhoneMetadata> > region_to_metadata_map_;
 
   // A mapping from a country calling code for a non-geographical entity to the
   // PhoneMetadata for that country calling code. Examples of the country
   // calling codes include 800 (International Toll Free Service) and 808
   // (International Shared Cost Service).
-  scoped_ptr<std::map<int, PhoneMetadata> >
+  scoped_ptr<absl::node_hash_map<int, PhoneMetadata> >
       country_code_to_non_geographical_metadata_map_;
 
   PhoneNumberUtil();

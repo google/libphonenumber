@@ -1,0 +1,14 @@
+Prefix  ; Length ; Type       ; Tariff        ; Area Code Length ; Operator   ; Format         ; Regions ; Geocode:en                       ; Provenance ; Comment
+2[2-8]  ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;            ; "fmt1_1/3/4"   ; "AE"    ; "Abu dhabi"                      ; ITU
+3[2-8]  ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;            ; "fmt1_1/3/4"   ; "AE"    ; "Al Ain"                         ; ITU
+400     ; 9      ; FIXED_LINE ; TOLL_FREE     ;                  ;            ; "fmt3_3/1/5"   ; "AE"
+4[2-8]  ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;            ; "fmt1_1/3/4"   ; "AE"    ; "Dubai"                          ; ITU
+5[046]  ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "etisalat" ; "mobile_2/3/4" ; "AE"    ;                                  ; IR21       ; "IR21 dated 4/9/2019"
+5[258]  ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "du"       ; "mobile_2/3/4" ; "AE"    ;                                  ; IR21       ; "IR21 dated 2/25/2019"
+600[25] ; 9      ; UAN        ; STANDARD_RATE ;                  ;            ; "fmt4_3/2-9"   ; "AE"
+6[2-8]  ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;            ; "fmt1_1/3/4"   ; "AE"    ; "Sharjah, Ajman, Umm Al-Qaiwain" ; ITU
+700[05] ; 9      ; FIXED_LINE ; SHARED_COST   ;                  ;            ; "fmt3_3/1/5"   ; "AE"
+7[2-8]  ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;            ; "fmt1_1/3/4"   ; "AE"    ; "Ras Alkhaimah"                  ; ITU
+800     ; 5-12   ; FIXED_LINE ; TOLL_FREE     ;                  ;            ; "fmt4_3/2-9"   ; "AE"
+900[02] ; 9      ; FIXED_LINE ; PREMIUM_RATE  ;                  ;            ; "fmt3_3/1/5"   ; "AE"
+9[2-8]  ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;            ; "fmt1_1/3/4"   ; "AE"    ; "Fujairah"                       ; ITU

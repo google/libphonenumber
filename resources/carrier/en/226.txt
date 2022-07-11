@@ -13,30 +13,39 @@
 # limitations under the License.
 
 # http://www.itu.int/oth/T0202000021/en
-# ITU doc has Telemob, but their home-page refers to them as Telmob
-# (www.telmob.bf)
+# ITU doc has Telemob, but it is mentioned as Telmob in ONATEL's home page.
+# Telmob operates as a subsidiary of ONATEL (http://www.onatel.bf/)
 
-22651|Telmob
-22655|Airtel
-22656|Airtel
+22601|Onatel
+22602|Onatel
+22605|Orange
+22606|Orange
+22607|Orange
+22651|Onatel
+22652|Onatel
+22653|Onatel
+22654|Orange
+22655|Orange
+22656|Orange
+22657|Orange
 22658|Telecel Faso
-22660|Telmob
-22661|Telmob
-22662|Telmob
-22663|Telmob
-22664|Airtel
-22665|Airtel
-22666|Airtel
-22667|Airtel
+22660|Onatel
+22661|Onatel
+22662|Onatel
+22663|Onatel
+22664|Orange
+22665|Orange
+22666|Orange
+22667|Orange
 22668|Telecel Faso
 22669|Telecel Faso
-22670|Telmob
-22671|Telmob
-22672|Telmob
-22673|Telmob
-22674|Airtel
-22675|Airtel
-22676|Airtel
-22677|Airtel
+22670|Onatel
+22671|Onatel
+22672|Onatel
+22673|Onatel
+22674|Orange
+22675|Orange
+22676|Orange
+22677|Orange
 22678|Telecel Faso
 22679|Telecel Faso

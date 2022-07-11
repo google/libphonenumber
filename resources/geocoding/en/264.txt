@@ -141,9 +141,9 @@
 264625721|Friedental
 264625722|Hochland
 264625723|Many Hills
+26462573|Dordabis
 264625731|Nina
 264625733|Nouas
-26462573|Dordabis
 26462577|Gobabis
 264625800|Epukiro
 264625801|Epukiro
@@ -470,8 +470,8 @@
 264645317|Usakos
 264645318|Usakos
 264645319|Usakos
-264645508|Tsaobis/Karibib
 26464550|Karibib
+264645508|Tsaobis/Karibib
 26464551|Otjimbingwe
 264645520|Karibib
 264645521|Karibib
@@ -571,16 +571,8 @@
 264651781|Tsandi
 264651782|Tsandi
 264651783|Warmquelle
+2646520|Oshakati
 26465200|Ombalantu
-26465201|Oshakati
-26465202|Oshakati
-26465203|Oshakati
-26465204|Oshakati
-26465205|Oshakati
-26465206|Oshakati
-26465207|Oshakati
-26465208|Oshakati
-26465209|Oshakati
 26465220|Oshakati
 26465221|Oshakati
 26465222|Oshakati
@@ -741,16 +733,8 @@
 264652725|Oshifo
 264652728|Opuwo
 264652729|Opuwo
-264652730|Opuwo
-264652731|Opuwo
-264652732|Opuwo
-264652733|Opuwo
-264652734|Opuwo
-264652735|Opuwo
-264652737|Opuwo
-264652738|Opuwo
-264652739|Opuwo
-26465273|Otjerunda
+26465273|Opuwo
+264652736|Otjerunda
 264652740|Ehomba
 264652741|Sodalite
 264652742|Panosa
@@ -866,6 +850,7 @@
 264662600|Mpungu
 26466261|Katima-Mulilo
 264662627|Katima-Mulilo
+26466263|Katima-Mulilo
 264662640|Nyangana
 26466265|Rundu
 26466266|Rundu
@@ -874,6 +859,7 @@
 264662672|Rundu
 264662673|Rundu
 264662674|Rundu
+26466268|Katima-Mulilo
 26466269|Rundu
 26466381|Maltahohe
 26466385|Namgorab
@@ -945,7 +931,7 @@
 264672296|Etosha Rurtel/Ongava
 264672297|Etosha Rurtel
 264672298|Etosha Rurtel/Okaukuejo
-26467229|Mokuti
+264672299|Mokuti
 26467230|Oshivello
 264672310|Kombat
 264672311|Kombat
@@ -1025,13 +1011,20 @@
 264673323|Sorris-Sorris
 264673324|Sorris-Sorris
 264673325|Sorris-Sorris
-26467332|Kamanjab
+264673326|Kamanjab
+264673327|Kamanjab
+264673328|Kamanjab
+264673329|Kamanjab
 264673330|Anker
+264673331|Kamanjab
 264673332|Biermanskool
 264673333|Biermanskool
 264673334|Toshari
 264673335|Toshari
-26467333|Kamanjab
+264673336|Kamanjab
+264673337|Kamanjab
+264673338|Kamanjab
+264673339|Kamanjab
 26467334|Kamanjab
 26467335|Kamanjab/Khorixas
 26467697|North

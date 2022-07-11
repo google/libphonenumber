@@ -12,6 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-2405|Orange GQ
-2406|Orange GQ
-2407|Orange GQ
+# Source: https://www.itu.int/oth/T0202000041/en and Muni's IR.21 doc.
+
+2402|GETESA
+2405|Muni

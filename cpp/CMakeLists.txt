@@ -14,15 +14,29 @@
 
 # Author: Philippe Liard
 
-cmake_minimum_required (VERSION 2.8)
+cmake_minimum_required (VERSION 3.11)
+
+# Pick the C++ standard to compile with.
+# Abseil currently supports C++11, C++14, and C++17.
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 project (libphonenumber)
 set (libphonenumber_VERSION_MAJOR 8)
-set (libphonenumber_VERSION_MINOR 7)
+set (libphonenumber_VERSION_MINOR 12)
+set (libphonenumber_VERSION_PATCH 0)
+
+if (32BIT)
+  set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -m32")
+  set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -m32")
+  set (CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -m32")
+  set (CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -m32")
+endif ()
 
 # Helper functions dealing with finding libraries and programs this library
 # depends on.
 
+include (GNUInstallDirs)
 include (../tools/cpp/gtest.cmake)
 
 function (print_error DESCRIPTION FILE)
@@ -70,12 +84,17 @@ endfunction (find_required_program)
 
 # Options that can be passed to CMake using 'cmake -DKEY=VALUE'.
 option ("BUILD_GEOCODER" "Build the offline phone number geocoder" "ON")
+option ("REGENERATE_METADATA" "Regenerate metadata instead of using it from the source tree" "ON")
 option ("USE_ALTERNATE_FORMATS" "Use alternate formats" "ON")
+option ("USE_PROTOBUF_LITE" "Link to protobuf-lite" "OFF")
 option ("USE_BOOST" "Use Boost" "ON")
 option ("USE_ICU_REGEXP" "Use ICU regexp engine" "ON")
 option ("USE_LITE_METADATA" "Use lite metadata" "OFF")
 option ("USE_RE2" "Use RE2" "OFF")
 option ("USE_STD_MAP" "Force the use of std::map" "OFF")
+option ("BUILD_STATIC_LIB" "Build static libraries" "ON")
+option ("USE_STDMUTEX" "Use C++ 2011 std::mutex for multi-threading" "OFF")
+option ("USE_POSIX_THREAD" "Use Posix api for multi-threading" "OFF")
 
 if (${USE_ALTERNATE_FORMATS} STREQUAL "ON")
   add_definitions ("-DI18N_PHONENUMBERS_USE_ALTERNATE_FORMATS")
@@ -94,15 +113,34 @@ if (${USE_BOOST} STREQUAL "ON")
   include_directories (${Boost_INCLUDE_DIRS})
 endif ()
 
+if (${USE_STDMUTEX} STREQUAL "ON")
+  add_definitions ("-DI18N_PHONENUMBERS_USE_STDMUTEX")
+endif ()
+
+if (${USE_POSIX_THREAD} STREQUAL "ON")
+  add_definitions ("-DI18N_PHONENUMBERS_HAVE_POSIX_THREAD")
+  find_package (Threads REQUIRED)
+endif ()
+
+if (${USE_BOOST} STREQUAL "OFF" AND ${USE_STDMUTEX} STREQUAL "OFF")
+  find_package (Threads)
+endif()
+
 find_or_build_gtest ()
 
 if (${USE_RE2} STREQUAL "ON")
   find_required_library (RE2 re2/re2.h re2 "Google RE2")
 endif ()
 
-find_required_library (PROTOBUF google/protobuf/message_lite.h protobuf
-                       "Google Protocol Buffers")
-check_library_version (PC_PROTOBUF protobuf>=2.4)
+if (${USE_PROTOBUF_LITE} STREQUAL "ON")
+  find_required_library (PROTOBUF google/protobuf/message_lite.h protobuf-lite
+                         "Google Protocol Buffers")
+  check_library_version (PC_PROTOBUF protobuf-lite>=2.4)
+else ()
+  find_required_library (PROTOBUF google/protobuf/message_lite.h protobuf
+                         "Google Protocol Buffers")
+  check_library_version (PC_PROTOBUF protobuf>=2.4)
+endif ()
 
 find_required_library (ICU_UC unicode/uchar.h icuuc "ICU")
 check_library_version (PC_ICU_UC icu-uc>=4.4)
@@ -120,8 +158,10 @@ endif ()
 find_required_program (PROTOC protoc
                        "Google Protocol Buffers compiler (protoc)")
 
-find_required_program (JAVA java
-                       "Java Runtime Environment")
+if (${REGENERATE_METADATA} STREQUAL "ON")
+  find_required_program (JAVA java
+                         "Java Runtime Environment")
+endif ()
 
 if (APPLE)
   FIND_LIBRARY (COREFOUNDATION_LIB CoreFoundation)
@@ -140,7 +180,7 @@ if (${USE_STD_MAP} STREQUAL "OFF")
 endif ()
 
 # Add protoc (Protocol Buffers compiler) target.
-set (RESOURCES_DIR "${CMAKE_SOURCE_DIR}/../resources")
+set (RESOURCES_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../resources")
 
 set (
   PROTOBUF_SOURCES "${RESOURCES_DIR}/phonemetadata.proto"
@@ -148,14 +188,14 @@ set (
 )
 
 set (
-  PROTOBUF_OUTPUT "${CMAKE_SOURCE_DIR}/src/phonenumbers/phonemetadata.pb.cc"
-                  "${CMAKE_SOURCE_DIR}/src/phonenumbers/phonemetadata.pb.h"
-                  "${CMAKE_SOURCE_DIR}/src/phonenumbers/phonenumber.pb.cc"
-                  "${CMAKE_SOURCE_DIR}/src/phonenumbers/phonenumber.pb.h"
+  PROTOBUF_OUTPUT "${CMAKE_CURRENT_SOURCE_DIR}/src/phonenumbers/phonemetadata.pb.cc"
+                  "${CMAKE_CURRENT_SOURCE_DIR}/src/phonenumbers/phonemetadata.pb.h"
+                  "${CMAKE_CURRENT_SOURCE_DIR}/src/phonenumbers/phonenumber.pb.cc"
+                  "${CMAKE_CURRENT_SOURCE_DIR}/src/phonenumbers/phonenumber.pb.h"
 )
 
 add_custom_command (
-  COMMAND ${PROTOC_BIN} --cpp_out=${CMAKE_SOURCE_DIR}/src/phonenumbers/
+  COMMAND ${PROTOC_BIN} --cpp_out=${CMAKE_CURRENT_SOURCE_DIR}/src/phonenumbers/
     --proto_path=${RESOURCES_DIR} ${PROTOBUF_SOURCES}
 
   OUTPUT ${PROTOBUF_OUTPUT}
@@ -165,13 +205,13 @@ add_custom_command (
 if (${BUILD_GEOCODER} STREQUAL "ON")
   # Geocoding data cpp file generation
   set (TOOLS_DIR "${CMAKE_CURRENT_BINARY_DIR}/tools")
-  add_subdirectory("${CMAKE_SOURCE_DIR}/../tools/cpp" "${TOOLS_DIR}")
+  add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/../tools/cpp" "${TOOLS_DIR}")
 
   set (GEOCODING_DIR "${RESOURCES_DIR}/geocoding")
   file (GLOB_RECURSE GEOCODING_SOURCES "${GEOCODING_DIR}/*.txt")
 
   set (GEOCODING_DATA_OUTPUT
-    "${CMAKE_SOURCE_DIR}/src/phonenumbers/geocoding/geocoding_data.cc"
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/phonenumbers/geocoding/geocoding_data.cc"
   )
 
   add_custom_command (
@@ -255,20 +295,32 @@ function (add_metadata_gen_target TARGET_NAME
                                   XML_FILE
                                   METADATA_TYPE
                                   METADATA_HEADER)
-  set (METADATA_SOURCE_DIR "${CMAKE_SOURCE_DIR}/src/phonenumbers")
+  set (METADATA_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/src/phonenumbers")
   set (GEN_OUTPUT "${METADATA_SOURCE_DIR}/${METADATA_TYPE}.cc"
                   "${METADATA_SOURCE_DIR}/${METADATA_HEADER}.h")
-  set (JAR_PATH "${CMAKE_SOURCE_DIR}/../tools/java/cpp-build/target")
+  set (JAR_PATH "${CMAKE_CURRENT_SOURCE_DIR}/../tools/java/cpp-build/target")
   set (JAR_PATH "${JAR_PATH}/cpp-build-1.0-SNAPSHOT-jar-with-dependencies.jar")
 
-  add_custom_command (
-    COMMAND ${JAVA_BIN} -jar
-      ${JAR_PATH} BuildMetadataCppFromXml ${XML_FILE}
-      ${CMAKE_SOURCE_DIR}/src/phonenumbers ${METADATA_TYPE}
+  if (${REGENERATE_METADATA} STREQUAL "ON")
+    add_custom_command (
+      COMMAND ${JAVA_BIN} -jar
+        ${JAR_PATH} BuildMetadataCppFromXml ${XML_FILE}
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/phonenumbers ${METADATA_TYPE}
 
-    OUTPUT ${GEN_OUTPUT}
-    DEPENDS ${XML_FILE}
-  )
+      OUTPUT ${GEN_OUTPUT}
+      DEPENDS ${XML_FILE}
+    )
+  else ()
+    add_custom_command (
+      COMMAND echo "skip metadata generation from"
+        ${XML_FILE} "to"
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/phonenumbers ${METADATA_TYPE}
+
+      OUTPUT ${GEN_OUTPUT}
+      DEPENDS ${XML_FILE}
+    )
+  endif ()
+
   add_custom_target (
     ${TARGET_NAME}
     DEPENDS ${GEN_OUTPUT}
@@ -339,20 +391,24 @@ endif ()
 
 include_directories ("src")
 
-# Build a static library (without -fPIC).
-add_library (phonenumber STATIC ${SOURCES})
-if (${BUILD_GEOCODER} STREQUAL "ON")
-  add_dependencies (phonenumber generate_geocoding_data)
-endif ()
-if (${USE_ICU_REGEXP} STREQUAL "ON")
-  if (${USE_ALTERNATE_FORMATS} STREQUAL "ON")
-    add_dependencies (phonenumber ${ALT_FORMAT_METADATA_TARGET})
+if (${BUILD_STATIC_LIB} STREQUAL "ON")
+  # Build a static library (without -fPIC).
+  add_library (phonenumber STATIC ${SOURCES})
+  if (${BUILD_GEOCODER} STREQUAL "ON")
+    add_dependencies (phonenumber generate_geocoding_data)
+  endif ()
+  if (${USE_ICU_REGEXP} STREQUAL "ON")
+    if (${USE_ALTERNATE_FORMATS} STREQUAL "ON")
+      add_dependencies (phonenumber ${ALT_FORMAT_METADATA_TARGET})
+    endif ()
   endif ()
 endif ()
 
 if (${BUILD_GEOCODER} STREQUAL "ON")
-  add_library (geocoding STATIC ${GEOCODING_SOURCES})
-  add_dependencies (geocoding generate_geocoding_data)
+  if (${BUILD_STATIC_LIB} STREQUAL "ON")
+    add_library (geocoding STATIC ${GEOCODING_SOURCES})
+    add_dependencies (geocoding generate_geocoding_data)
+  endif ()
   # The geocoder doesn't use RE2 so there is no reason not to build a shared
   # library for it.
   add_library (geocoding-shared SHARED ${GEOCODING_SOURCES})
@@ -385,7 +441,7 @@ if (BUILD_SHARED_LIB)
   endif ()
   if (${USE_ICU_REGEXP} STREQUAL "ON")
     if (${USE_ALTERNATE_FORMATS} STREQUAL "ON")
-      add_dependencies (phonenumber ${ALT_FORMAT_METADATA_TARGET})
+      add_dependencies (phonenumber-shared ${ALT_FORMAT_METADATA_TARGET})
     endif ()
   endif ()
   set_target_properties (phonenumber-shared
@@ -409,13 +465,29 @@ if (${USE_RE2} STREQUAL "ON")
   list (APPEND LIBRARY_DEPS ${RE2_LIB})
 endif ()
 
+if (${USE_POSIX_THREAD} STREQUAL "ON" OR ((APPLE OR UNIX) AND ${USE_BOOST} STREQUAL "OFF" AND ${USE_STDMUTEX} STREQUAL "OFF"))
+  if(CMAKE_USE_PTHREADS_INIT)
+    set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -pthread")
+  endif()
+  if(CMAKE_THREAD_LIBS_INIT)
+    list (APPEND LIBRARY_DEPS ${CMAKE_THREAD_LIBS_INIT})
+  endif()
+endif ()
+
+# Safeguarding against any potential link errors as mentioned in
+# https://github.com/abseil/abseil-cpp/issues/225
+set(CMAKE_POSITION_INDEPENDENT_CODE TRUE)
+list (APPEND LIBRARY_DEPS absl::node_hash_set absl::strings absl::synchronization)
+
 if (APPLE)
   list (APPEND COMMON_DEPS ${COREFOUNDATION_LIB} ${FOUNDATION_LIB})
 endif ()
 
 list (APPEND LIBRARY_DEPS ${COMMON_DEPS})
 
-target_link_libraries (phonenumber ${LIBRARY_DEPS})
+if (${BUILD_STATIC_LIB} STREQUAL "ON")
+  target_link_libraries (phonenumber ${LIBRARY_DEPS})
+endif ()
 
 if (BUILD_SHARED_LIB)
   target_link_libraries (phonenumber-shared ${LIBRARY_DEPS})
@@ -442,7 +514,7 @@ if (${BUILD_GEOCODER} STREQUAL "ON")
   file (GLOB_RECURSE GEOCODING_TEST_SOURCES "${GEOCODING_TEST_DIR}/*.txt")
 
   set (GEOCODING_TEST_DATA_OUTPUT
-    "${CMAKE_SOURCE_DIR}/test/phonenumbers/geocoding/geocoding_test_data.cc"
+    "${CMAKE_CURRENT_SOURCE_DIR}/test/phonenumbers/geocoding/geocoding_test_data.cc"
   )
 
   add_custom_command (
@@ -563,25 +635,38 @@ install (
 install (FILES
   "src/phonenumbers/base/memory/scoped_ptr.h"
   "src/phonenumbers/base/memory/singleton.h"
+  "src/phonenumbers/base/memory/singleton_boost.h"
   "src/phonenumbers/base/memory/singleton_posix.h"
+  "src/phonenumbers/base/memory/singleton_stdmutex.h"
+  "src/phonenumbers/base/memory/singleton_unsafe.h"
+  "src/phonenumbers/base/memory/singleton_win32.h"
   DESTINATION include/phonenumbers/base/memory/
 )
 
-install (FILES "src/phonenumbers/base/synchronization/lock.h"
-         "src/phonenumbers/base/synchronization/lock_posix.h"
-         DESTINATION include/phonenumbers/base/synchronization/)
+install (FILES
+  "src/phonenumbers/base/synchronization/lock.h"
+  "src/phonenumbers/base/synchronization/lock_boost.h"
+  "src/phonenumbers/base/synchronization/lock_posix.h"
+  "src/phonenumbers/base/synchronization/lock_stdmutex.h"
+  "src/phonenumbers/base/synchronization/lock_unsafe.h"
+  "src/phonenumbers/base/synchronization/lock_win32.h"
+  DESTINATION include/phonenumbers/base/synchronization/)
 
-install (TARGETS phonenumber LIBRARY DESTINATION lib/ ARCHIVE DESTINATION lib/)
+set (LIBDIR ${CMAKE_INSTALL_LIBDIR})
+
+if (${BUILD_STATIC_LIB} STREQUAL "ON")
+  install (TARGETS phonenumber LIBRARY DESTINATION ${LIBDIR} ARCHIVE DESTINATION ${LIBDIR})
+endif ()
 
 if (BUILD_SHARED_LIB)
-  install (TARGETS phonenumber-shared LIBRARY DESTINATION lib/ ARCHIVE
-           DESTINATION lib/)
+  install (TARGETS phonenumber-shared LIBRARY DESTINATION ${LIBDIR} ARCHIVE
+           DESTINATION ${LIBDIR})
 endif ()
 
 if (${BUILD_GEOCODER} STREQUAL "ON")
-  install (TARGETS geocoding LIBRARY DESTINATION lib/ ARCHIVE DESTINATION lib/)
-  install (TARGETS geocoding-shared LIBRARY DESTINATION lib/ ARCHIVE
-           DESTINATION lib/)
+  install (TARGETS geocoding LIBRARY DESTINATION ${LIBDIR} ARCHIVE DESTINATION ${LIBDIR})
+  install (TARGETS geocoding-shared LIBRARY DESTINATION ${LIBDIR} ARCHIVE
+           DESTINATION ${LIBDIR})
 endif ()
 
 # Build an example program using geocoding, mainly to make sure that both
@@ -593,3 +678,17 @@ if (${BUILD_GEOCODER} STREQUAL "ON")
   )
   target_link_libraries (geocoding_test_program geocoding phonenumber)
 endif ()
+
+# Build an RPM
+set (CPACK_PACKAGE_VERSION ${libphonenumber_VERSION_MAJOR}.${libphonenumber_VERSION_MINOR}.${libphonenumber_VERSION_PATCH})
+set (CPACK_GENERATOR "RPM")
+set (CPACK_PACKAGE_NAME "libphonenumber")
+set (CPACK_RPM_PACKAGE_RELEASE 1)
+set (CPACK_PACKAGE_DESCRIPTION_SUMMARY "Google's phone number handling library")
+if (32BIT)
+  set (CPACK_RPM_PACKAGE_ARCHITECTURE i686)
+else ()
+  set (CPACK_RPM_PACKAGE_ARCHITECTURE x86_64)
+endif ()
+set (CPACK_PACKAGE_FILE_NAME "${CPACK_PACKAGE_NAME}-${CPACK_PACKAGE_VERSION}-${CPACK_RPM_PACKAGE_RELEASE}.${CPACK_RPM_PACKAGE_ARCHITECTURE}")
+include (CPack)

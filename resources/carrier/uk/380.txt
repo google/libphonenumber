@@ -1,0 +1,35 @@
+# Copyright (C) 2018 The Libphonenumber Authors
+
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+
+# http://www.apache.org/licenses/LICENSE-2.0
+
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# Data taken from: https://www.itu.int/oth/T02020000DB/en
+# Translation taken from https://uk.wikipedia.org/wiki/%D0%9A%D0%BE%D0%B4%D0%B8_%D0%BC%D0%BE%D0%B1%D1%96%D0%BB%D1%8C%D0%BD%D0%B8%D1%85_%D0%BE%D0%BF%D0%B5%D1%80%D0%B0%D1%82%D0%BE%D1%80%D1%96%D0%B2_%D0%A3%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D0%B8
+
+# Telesystems of Ukraine is commonly known as PEOPLEnet.
+
+38039|Київстар
+38050|Vodafone Україна
+38063|lifecell
+38066|Vodafone Україна
+38067|Київстар
+38068|Київстар
+38073|lifecell
+38091|ТриМоб
+38092|PEOPLEnet
+38093|lifecell
+38094|Інтертелеком
+38095|Vodafone Україна
+38096|Київстар
+38097|Київстар
+38098|Київстар
+38099|Vodafone Україна

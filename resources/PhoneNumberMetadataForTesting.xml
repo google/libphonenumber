@@ -108,12 +108,12 @@
           <leadingDigits>1[02-9]|[23]</leadingDigits>
           <format>$1 $2-$3</format>
         </numberFormat>
-        <numberFormat pattern="(9)(11)(\d{4})(\d{4})">
+        <numberFormat pattern="(\d)(\d{2})(\d{4})(\d{4})">
           <leadingDigits>911</leadingDigits>
           <format>$2 15 $3-$4</format>
           <intlFormat>$1 $2 $3 $4</intlFormat>
         </numberFormat>
-        <numberFormat pattern="(9)(\d{4})(\d{2})(\d{4})"
+        <numberFormat pattern="(\d)(\d{4})(\d{2})(\d{4})"
           carrierCodeFormattingRule="$NP$FG $CC">
           <leadingDigits>9(?:1[02-9]|[23])</leadingDigits>
           <format>$2 $3-$4</format>
@@ -160,7 +160,7 @@
           <leadingDigits>1</leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
-        <numberFormat pattern="(\d{1})(\d{4})(\d{4})">
+        <numberFormat pattern="(\d)(\d{4})(\d{4})">
           <leadingDigits>[2-478]</leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
@@ -375,6 +375,50 @@
       </mobile>
     </territory>
 
+    <!-- Colombia (CO) -->
+    <!-- Data is here to check formatForMobileDialling() API is no more considering CO as special
+         i.e it returns regular E.164 format rather than using the 03 carrier code. -->
+    <territory id="CO" countryCode="57" nationalPrefix="0"
+               nationalPrefixForParsing="0(4(?:[14]4|56)|[579])?" mobileNumberPortableRegion="true">
+      <availableFormats>
+        <numberFormat pattern="(\d{3})(\d{7})" nationalPrefixFormattingRule="($FG)"
+                      carrierCodeFormattingRule="$NP$CC $FG">
+          <leadingDigits>6</leadingDigits>
+          <format>$1 $2</format>
+        </numberFormat>
+        <numberFormat pattern="(\d{3})(\d{7})" carrierCodeFormattingRule="$NP$CC $FG">
+          <leadingDigits>3</leadingDigits>
+          <format>$1 $2</format>
+        </numberFormat>
+      </availableFormats>
+      <generalDesc>
+        <nationalNumberPattern>
+          (?:
+            60|
+            3\d
+          )\d{8}
+        </nationalNumberPattern>
+      </generalDesc>
+      <fixedLine>
+        <possibleLengths national="10"/>
+        <exampleNumber>6012345678</exampleNumber>
+        <nationalNumberPattern>60\d{8}</nationalNumberPattern>
+      </fixedLine>
+      <mobile>
+        <possibleLengths national="10"/>
+        <exampleNumber>3211234567</exampleNumber>
+        <nationalNumberPattern>
+          3(?:
+            0[0-5]|
+            1\d|
+            2[0-3]|
+            5[01]|
+            70
+          )\d{7}
+        </nationalNumberPattern>
+      </mobile>
+    </territory>
+
     <!-- Christmas Islands -->
     <!-- Country calling code shared with Australia. -->
     <!-- This country is used to test ShortNumberInfo, so at least the country calling code must be
@@ -405,12 +449,12 @@
         <!-- Extra fictional pattern for shorter numbers with the same prefixes as the following
              pattern, to illustrate the problem the AYTF has with real patterns that share this
              property. -->
-        <numberFormat pattern="([4-9]\d)(\d{2})">
+        <numberFormat pattern="(\d{2})(\d{2})">
           <leadingDigits>[4-9]</leadingDigits>
           <leadingDigits>[4-6]|[7-9](?:\d[1-9]|[1-9]\d)</leadingDigits>
           <format>$1 $2</format>
         </numberFormat>
-        <numberFormat pattern="([4-9]\d{3})(\d{2,7})">
+        <numberFormat pattern="(\d{4})(\d{2,7})">
           <leadingDigits>[4-9]</leadingDigits>
           <leadingDigits>[4-6]|[7-9](?:\d[1-9]|[1-9]\d)</leadingDigits>
           <format>$1 $2</format>
@@ -559,19 +603,6 @@
         <possibleLengths national="10" localOnly="6"/>
         <exampleNumber>7033456789</exampleNumber>
       </fixedLine>
-    </territory>
-
-    <!-- Hungary -->
-    <!-- This country has special logic in formatNumberForMobileDialing which must be tested. -->
-    <territory id="HU" countryCode="36" internationalPrefix="00" nationalPrefix="06">
-      <generalDesc>
-        <nationalNumberPattern>30\d{7}</nationalNumberPattern>
-      </generalDesc>
-      <mobile>
-        <nationalNumberPattern>30\d{7}</nationalNumberPattern>
-        <possibleLengths national="9"/>
-        <exampleNumber>301234567</exampleNumber>
-      </mobile>
     </territory>
 
     <!-- Italy -->
@@ -804,6 +835,13 @@
           <leadingDigits>[89]00</leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
+        <!-- This formatting pattern is added to test that the AYTF should return unformatted
+             results when the first group is dropped in the output. -->
+        <numberFormat pattern="(\d{3})(\d{2})(\d{5})">
+          <leadingDigits>901</leadingDigits>
+          <format>$2 $3</format>
+          <intlFormat>$2 $3</intlFormat>
+        </numberFormat>
         <numberFormat pattern="(\d{2})(\d{4})(\d{4})">
           <leadingDigits>33|55|81</leadingDigits>
           <format>$1 $2 $3</format>
@@ -812,12 +850,12 @@
           <leadingDigits>[2467]|3[0-24-9]|5[0-46-9]|8[2-9]|9[1-9]</leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
-        <numberFormat nationalPrefixFormattingRule="$FG" pattern="(1)(\d{2})(\d{4})(\d{4})">
+        <numberFormat nationalPrefixFormattingRule="$FG" pattern="(\d)(\d{2})(\d{4})(\d{4})">
           <leadingDigits>1(?:33|55|81)</leadingDigits>
           <format>045 $2 $3 $4</format>
           <intlFormat>$1 $2 $3 $4</intlFormat>
         </numberFormat>
-        <numberFormat nationalPrefixFormattingRule="$FG" pattern="(1)(\d{3})(\d{3})(\d{4})">
+        <numberFormat nationalPrefixFormattingRule="$FG" pattern="(\d)(\d{3})(\d{3})(\d{4})">
           <leadingDigits>1(?:[124579]|3[0-24-9]|5[0-46-9]|8[02-9])</leadingDigits>
           <format>045 $2 $3 $4</format>
           <intlFormat>$1 $2 $3 $4</intlFormat>
@@ -929,7 +967,7 @@
     <territory id="RE" countryCode="262" leadingDigits="262|6(?:9[23]|47)|8"
                internationalPrefix="00" nationalPrefix="0" nationalPrefixFormattingRule="$NP$FG">
       <availableFormats>
-        <numberFormat pattern="([268]\d{2})(\d{2})(\d{2})(\d{2})">
+        <numberFormat pattern="(\d{3})(\d{2})(\d{2})(\d{2})">
           <format>$1 $2 $3 $4</format>
         </numberFormat>
       </availableFormats>
@@ -959,6 +997,24 @@
         <possibleLengths national="9"/>
         <exampleNumber>810123456</exampleNumber>
       </premiumRate>
+    </territory>
+
+    <!-- Russian Federation -->
+    <territory id="RU" countryCode="7" internationalPrefix="810" nationalPrefix="8"
+               nationalPrefixFormattingRule="$NP ($FG)" nationalPrefixOptionalWhenFormatting="true">
+      <generalDesc>
+        <nationalNumberPattern>[347-9]\d{9}</nationalNumberPattern>
+      </generalDesc>
+      <fixedLine>
+        <possibleLengths national="10"/>
+        <exampleNumber>3011234567</exampleNumber>
+        <nationalNumberPattern>[348]\d{9}</nationalNumberPattern>
+      </fixedLine>
+      <mobile>
+        <possibleLengths national="10"/>
+        <exampleNumber>9123456789</exampleNumber>
+        <nationalNumberPattern>9\d{9}</nationalNumberPattern>
+      </mobile>
     </territory>
 
     <!-- Sweden -->
@@ -1047,14 +1103,13 @@
     <!-- For testing purposes, numbers starting with 24 are not considered US numbers.-->
     <territory id="US" countryCode="1" internationalPrefix="011"
                preferredExtnPrefix=" extn. " nationalPrefix="1"
-               mainCountryForCode="true" nationalPrefixOptionalWhenFormatting="true"
-               mobileNumberPortableRegion="true">
+               mainCountryForCode="true" mobileNumberPortableRegion="true">
       <availableFormats>
         <numberFormat pattern="(\d{3})(\d{4})">
           <format>$1 $2</format>
           <intlFormat>NA</intlFormat>
        </numberFormat>
-        <numberFormat pattern="(\d{3})(\d{3})(\d{4})">
+        <numberFormat pattern="(\d{3})(\d{3})(\d{4})" nationalPrefixOptionalWhenFormatting="true">
           <format>$1 $2 $3</format>
         </numberFormat>
       </availableFormats>
@@ -1088,6 +1143,30 @@
         <possibleLengths national="10"/>
         <exampleNumber>9004567890</exampleNumber>
       </premiumRate>
+    </territory>
+
+    <!-- Uzbekistan -->
+    <territory id="UZ" countryCode="998" preferredInternationalPrefix="8~10"
+               internationalPrefix="810" nationalPrefix="8" nationalPrefixFormattingRule="$NP $FG">
+      <availableFormats>
+        <numberFormat pattern="(\d{2})(\d{3})(\d{2})(\d{2})">
+          <leadingDigits>[679]</leadingDigits>
+          <format>$1 $2 $3 $4</format>
+        </numberFormat>
+      </availableFormats>
+      <generalDesc>
+        <nationalNumberPattern>[69]\d{8}</nationalNumberPattern>
+      </generalDesc>
+      <fixedLine>
+        <possibleLengths national="9" localOnly="7"/>
+        <exampleNumber>662345678</exampleNumber>
+        <nationalNumberPattern>6122\d{5}</nationalNumberPattern>
+      </fixedLine>
+      <mobile>
+        <possibleLengths national="9"/>
+        <exampleNumber>912345678</exampleNumber>
+        <nationalNumberPattern>9[0-57-9]\d{7}</nationalNumberPattern>
+      </mobile>
     </territory>
 
     <!-- Mayotte -->

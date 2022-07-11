@@ -18,6 +18,7 @@
 namespace i18n {
 namespace phonenumbers {
 
+namespace gtl {
 // Compares the first attribute of two pairs.
 struct OrderByFirst {
   template <typename T>
@@ -44,7 +45,7 @@ void STLDeleteElements(T* container) {
     delete *it;
   }
 }
-
+}  // namespace gtl
 }  // namespace phonenumbers
 }  // namespace i18n
 

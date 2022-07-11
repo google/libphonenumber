@@ -1,0 +1,4 @@
+Region ; Prefix  ; Length ; Type       ; Tariff    ; Sms  ; Carrier Specific
+MW     ; 199     ; 3      ; EMERGENCY  ; TOLL_FREE
+MW     ; 80400   ; 5      ; COMMERCIAL ;           ; true ; true
+MW     ; 99[7-9] ; 3      ; EMERGENCY  ; TOLL_FREE

@@ -1,0 +1,5 @@
+Region ; Type       ; Number
+BJ     ; FIXED_LINE ; "20211234"
+BJ     ; MOBILE     ; "90011234"
+BJ     ; VOIP       ; "85751234"
+BJ     ; UAN        ; "81123456"

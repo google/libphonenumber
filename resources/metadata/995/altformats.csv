@@ -1,0 +1,9 @@
+Format        ; Parent Format  ; Comment
+XXX XX XX XX  ; tblisi_2/3/2/2 ; "Sometimes Tblisi numbers are formatted in a way to match formatting elsewhere in the country (3-digit first group)"
+XX X XX XX XX ; tblisi_2/3/2/2 ; "Variant for Tblisi formatting"
+XXX XXXXXX    ; tblisi_2/3/2/2 ; "Sometimes Tblisi numbers are formatted in a way to match formatting elsewhere in the country (3-digit first group)"
+XXX XXX XXX   ; tblisi_2/3/2/2 ; "Sometimes Tblisi numbers are formatted in a way to match formatting elsewhere in the country (3-digit first group)"
+XX XX XXX XX  ; tblisi_2/3/2/2 ; "Wikipedia variant for Tblisi formatting"
+XXXXX XX XX   ; tblisi_2/3/2/2 ; "Sometimes the area code is merged with the first group for Tblisi numbers"
+XXX XXX XXX   ; fmt_3/2/2/2    ; "Sometimes the subscriber number is formatted in two groups of three digits"
+XXX XXXXXX    ; fmt_3/2/2/2    ; "Sometimes the subscriber number is formatted in one groups of six digits"

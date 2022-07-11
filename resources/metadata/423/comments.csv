@@ -1,0 +1,7 @@
+Region ; Label         ; Comment
+LI     ; SC            ; "http://www.llv.li/amtsstellen/llv-ak-nummerierung.htm"
+LI     ; SC            ; "http://www.llv.li/pdf-llv-ak-shortnumbers_20110331.pdf"
+LI     ; XML           ; "The national prefix of ""0"" is only used for 0800 and 0900 numbers. Three carrier-selection\ncodes are in use."
+LI     ; XML           ; "http://www.llv.li/#/11193"
+LI     ; XML           ; "https://www.itu.int/oth/T020200007B/en"
+LI     ; XML_TOLL_FREE ; "The prefix 809 seems to be used for AT&T and Verizon access lines from Liechtenstein,\neven though it doesn't appear in the plan. Prefix 8005 of length 9-digit added on user report."

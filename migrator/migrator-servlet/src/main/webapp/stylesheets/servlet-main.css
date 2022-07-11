@@ -1,0 +1,138 @@
+.page-heading {
+    margin: 1rem;
+    max-width: 75rem;
+    min-width: 25rem;
+    font-family: 'Roboto', Arial, sans-serif;
+}
+
+.page-heading h1 {
+    color: #1a73e8;
+}
+
+.page-heading li {
+    font-size: 14px;
+}
+
+.migration-forms {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.migration-form {
+    border: 1px solid #dfdfdf;
+    padding-left: 1rem;
+    border-radius: 4px;
+    margin: 1rem;
+    max-width: 35rem;
+    font-family: 'Roboto', Arial, sans-serif;
+}
+
+.migration-form form {
+    display: flex;
+    flex-direction: column;
+    min-width: 25rem;
+}
+
+.migration-form input {
+    width: 12rem;
+    margin-bottom: 2rem;
+}
+
+.migration-form p {
+    font-size: 12px;
+    color: grey;
+    width: 95%;
+}
+
+.button {
+    cursor: pointer;
+    color: white;
+    background-color: #1a73e8;
+    border: none;
+    padding: 0.5rem;
+    border-radius: 4px;
+    font-family: 'Roboto', Arial, sans-serif;
+}
+
+.migration-result {
+    margin: 1rem;
+    border-radius: 4px;
+    border: 1px solid #dfdfdf;
+    padding: 0 1rem;
+    max-width: 72rem;
+    min-width: 25rem;
+    font-family: 'Roboto', Arial, sans-serif;
+}
+
+.migration-result .valid {
+    color: green;
+}
+
+.migration-result .invalid-migration {
+    color: orange;
+}
+
+.migration-result .invalid-number {
+    color: red;
+}
+
+.error-message {
+    font-family: 'Roboto', Arial, sans-serif;
+    word-break: break-word;
+    margin-top: -0.5rem;
+    margin-bottom: 1rem;
+    font-size: 12px;
+    color: red;
+    width: 90%;
+}
+
+.chart-wrap {
+    position: relative;
+    overflow: hidden;
+    height: 300px;
+}
+
+.chart {
+    width: 450px;
+    height: 300px;
+    margin: auto;
+    cursor: pointer;
+}
+
+.modal-backdrop {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    font-family: 'Roboto', Arial, sans-serif;
+    position: relative;
+    border: 1px solid #dfdfdf;
+    border-radius: 4px;
+    background-color: #fefefe;
+    margin: 2% auto;
+    padding: 0 1rem 1rem;
+    width: 20rem;
+    height: 25rem;
+}
+
+.modal-content .body {
+    height: 16rem;
+    overflow: auto;
+}
+
+.modal-content li {
+    margin-bottom: 0.5rem;
+}
+
+.modal-content button {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+}

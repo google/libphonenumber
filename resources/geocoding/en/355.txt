@@ -104,7 +104,11 @@
 355396|Shushicë/Armen, Vlorë
 355397|Vllahinë/Kote, Vlorë
 355398|Sevaster/Brataj/Hore-Vranisht, Vlorë
-3554|Tirana
+35542|Tirana
+35543|Tirana
+35544|Tirana
+35545|Tirana
+35546|Tirana
 35547|Kamëz/Vorë/Paskuqan/Zall-Herr/Burxullë/Prezë, Tiranë
 35548|Kashar/Vaqar/Ndroq/Pezë/Farkë/Dajt, Tiranë
 35549|Petrelë/Baldushk/Bërzhitë/Krrabë/Shengjergj/Zall-Bastar, Tiranë

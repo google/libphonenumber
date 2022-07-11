@@ -1,0 +1,26 @@
+# Copyright (C) 2017 The Libphonenumber Authors
+
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+
+# http://www.apache.org/licenses/LICENSE-2.0
+
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# Source: Digicel's IR 21 doc https://drive.google.com/open?id=1Xog5KczfMREzSHfiAj-6az5Hpd1t8ltH
+# Federated States of Micronesia Telecommunications Corporation brand name is
+# FSM Telecom.
+
+674553|Digicel
+674554|Digicel
+674556|Digicel
+674557|Digicel
+674558|Digicel
+674559|Digicel
+6746|Digicel
+6748|FSM Telecom

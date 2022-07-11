@@ -16,14 +16,17 @@
 # Internal statistics data (2014-04-10). Extra prefixes added from
 # http://en.wikipedia.org/wiki/+352
 
-35221|Weicherdange
 35222|Luxembourg-Ville
 35223|Mondorf-les-Bains/Bascharage/Noerdange/Remich
-35224|Luxembourg
+352240|Luxembourg
+352241|Luxembourg
+3522420|Luxembourg
 3522421|Weicherdange
 3522422|Luxembourg-Ville
 3522423|Mondorf-les-Bains/Bascharage/Noerdange/Remich
+3522424|Luxembourg
 3522425|Luxembourg
+3522426|Luxembourg
 3522427|Belair, Luxembourg
 3522428|Luxembourg-Ville
 3522429|Luxembourg/Kockelscheuer
@@ -35,11 +38,15 @@
 3522435|Sandweiler/Moutfort/Roodt-sur-Syre
 3522436|Hesperange/Kockelscheuer/Roeser
 3522437|Leudelange/Ehlange/Mondercange
+3522438|Luxembourg
 3522439|Windhof/Steinfort
 3522440|Howald
+3522441|Luxembourg
 3522442|Plateau de Kirchberg
 3522443|Findel/Kirchberg
+3522444|Luxembourg
 3522445|Diedrich
+3522446|Luxembourg
 3522447|Lintgen
 3522448|Contern/Foetz
 3522449|Howald
@@ -53,22 +60,29 @@
 3522457|Esch-sur-Alzette/Schifflange
 3522458|Soleuvre/Differdange
 3522459|Soleuvre
+352246|Luxembourg
 3522467|Dudelange
+3522470|Luxembourg
 3522471|Betzdorf
 3522472|Echternach
 3522473|Rosport
 3522474|Wasserbillig
 3522475|Grevenmacher-sur-Moselle
 3522476|Wormeldange
+3522477|Luxembourg
 3522478|Junglinster
 3522479|Berdorf/Consdorf
 3522480|Diekirch
 3522481|Ettelbruck/Reckange-sur-Mess
+3522482|Luxembourg
 3522483|Vianden
 3522484|Han/Lesse
 3522485|Bissen/Roost
+3522486|Luxembourg
 3522487|Larochette
 3522488|Mertzig/Wahl
+3522489|Luxembourg
+352249|Luxembourg
 3522492|Clervaux/Fischbach/Hosingen
 3522495|Wiltz
 3522497|Huldange
@@ -191,11 +205,13 @@
 35236|Hesperange/Kockelscheuer/Roeser
 35237|Leudelange/Ehlange/Mondercange
 35239|Windhof/Steinfort
-3524|Luxembourg-Ville
 35240|Howald
+35241|Luxembourg-Ville
 35242|Plateau de Kirchberg
 35243|Findel/Kirchberg
+35244|Luxembourg-Ville
 35245|Diedrich
+35246|Luxembourg-Ville
 35247|Lintgen
 35248|Contern/Foetz
 35249|Howald
@@ -209,7 +225,6 @@
 35257|Esch-sur-Alzette/Schifflange
 35258|Differdange
 35259|Soleuvre
-35267|Dudelange
 35271|Betzdorf
 35272|Echternach
 35273|Rosport

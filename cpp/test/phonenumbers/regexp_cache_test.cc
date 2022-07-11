@@ -30,7 +30,7 @@ using std::string;
 
 class RegExpCacheTest : public testing::Test {
  protected:
-  static const size_t min_items_ = 2;
+  static constexpr size_t min_items_ = 2;
 
   RegExpCacheTest() : cache_(regexp_factory_, min_items_) {}
   virtual ~RegExpCacheTest() {}

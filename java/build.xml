@@ -24,7 +24,7 @@
   </path>
   <path id="test.classpath">
     <pathelement location="${classes.dir}"/>
-    <pathelement location="${lib.dir}/junit/junit-4.8.1.jar"/>
+    <pathelement location="${lib.dir}/junit/junit-4.13.1.jar"/>
     <pathelement location="${jar.dir}/${ant.project.name}-test.jar"/>
     <fileset dir="${lib.dir}">
       <include name="**/*.jar"/>
@@ -166,6 +166,15 @@
       <arg value="${resources.dir}/PhoneNumberMetadata.xml"/>
       <arg value="${javascript.dir}/i18n/phonenumbers/metadatalite.js"/>
       <arg value="true"/> <!-- Lite metadata. -->
+    </exec>
+    <exec executable="java">
+      <arg value="-jar" />
+      <arg value="${build.tools.jar}"/>
+      <arg value="BuildMetadataJsonFromXml"/>
+      <arg value="${resources.dir}/ShortNumberMetadata.xml"/>
+      <arg value="${javascript.dir}/i18n/phonenumbers/shortnumbermetadata.js"/>
+      <arg value="false"/> <!-- Lite metadata. -->
+      <arg value="i18n.phonenumbers.shortnumbermetadata" /> <!-- namespace to provide -->
     </exec>
     <exec executable="java">
       <arg value="-jar" />

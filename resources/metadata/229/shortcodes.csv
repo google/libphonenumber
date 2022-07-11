@@ -1,0 +1,6 @@
+Region ; Prefix   ; Length ; Type       ; Tariff    ; Carrier Specific
+BJ     ; 11[78]   ; 3      ; EMERGENCY  ; TOLL_FREE
+BJ     ; 12[02-5] ; 3      ; COMMERCIAL ;           ; true
+BJ     ; 160      ; 3      ; COMMERCIAL
+BJ     ; 7[0-2]   ; 4      ; COMMERCIAL
+BJ     ; 7[3-5]   ; 4      ; COMMERCIAL ; TOLL_FREE

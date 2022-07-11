@@ -23,7 +23,7 @@ SDK of Google App Engine. This document assumes it is named as
 Check out the Java code:
 
 ```
-git clone https://github.com/googlei18n/libphonenumber.git
+git clone https://github.com/google/libphonenumber.git
 ```
 
 Create a symlink to your unpacked appengine sdk directory at the same level as

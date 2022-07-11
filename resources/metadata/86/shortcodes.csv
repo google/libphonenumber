@@ -1,0 +1,6 @@
+Region ; Prefix ; Length ; Type       ; Tariff        ; Provenance ; Comment
+CN     ; 100    ; 5      ; COMMERCIAL ; STANDARD_RATE
+CN     ; 11[09] ; 3      ; EMERGENCY  ; TOLL_FREE
+CN     ; 112    ; 3      ; COMMERCIAL ; STANDARD_RATE ; TELECOMS   ; "As of 2017"
+CN     ; 120    ; 3      ; EMERGENCY  ; TOLL_FREE
+CN     ; 95     ; 5,6    ; COMMERCIAL ; STANDARD_RATE
