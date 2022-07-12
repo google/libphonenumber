@@ -1,0 +1,4 @@
+Region ; Type         ; Number
+KM     ; FIXED_LINE   ; "7712345"
+KM     ; MOBILE       ; "3212345"
+KM     ; PREMIUM_RATE ; "8001234"

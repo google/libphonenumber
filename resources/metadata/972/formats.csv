@@ -1,0 +1,9 @@
+Id                  ; National          ; International     ; Comment
+fixed_1/3/4         ; "#X-XXX-XXXX"     ; "X-XXX-XXXX"      ; "Fixed line."
+mobile_2/3/4        ; "#XX-XXX-XXXX"    ; "XX-XXX-XXXX"     ; "Mobile and VOIP."
+premium_4/2/2       ; "XXXX-XX-XX"      ; "XXXX-XX-XX"      ; "8-digit premium rate."
+premium_4/3/3       ; "XXXX-XXX-XXX"    ; "XXXX-XXX-XXX"    ; "10-digit premium rate."
+tollfree_4/3        ; "XXXX-XXX"        ; "XXXX-XXX"        ; "Short toll-free numbers (for hospitals)."
+uan_4/6             ; "XXXX-XXXXXX"     ; "XXXX-XXXXXX"     ; "Universal access (UAN)."
+varcost_1/3/3/3     ; "X-XXX-XXX-XXX"   ; "X-XXX-XXX-XXX"   ; "Variable cost (premium rate, toll free etc.)"
+voicemail_3/1-2/3/4 ; "XXX-X* XXX-XXXX" ; "XXX-X* XXX-XXXX" ; "Format is from http://everything.explained.today/Telephone_numbers_in_Israel/\nThese seem to be ""mailbox"" services where you dial ""service prefix"" + ""personal ID""\n(maybe a phone number) which is why they are formatted as two separate numbers.\nNote that 153 prefix might be an M2M number (it's listed as a ""fax box"" service)."

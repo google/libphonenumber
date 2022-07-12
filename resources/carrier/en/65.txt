@@ -39,6 +39,7 @@
 658045|SingTel
 658048|myrepublic
 658049|SingTel
+65805|Changi Travel Services Pte Ltd
 6581|StarHub
 65810|M1
 65812|SingTel

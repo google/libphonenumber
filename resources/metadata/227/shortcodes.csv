@@ -1,0 +1,14 @@
+Region ; Prefix  ; Length ; Type       ; Tariff    ; Carrier Specific
+NE     ; 10[01]  ; 3      ; COMMERCIAL ;           ; true
+NE     ; 11[12]  ; 3      ; COMMERCIAL ;           ; true
+NE     ; 118     ; 3      ; EMERGENCY  ; TOLL_FREE
+NE     ; 12[034] ; 3      ; COMMERCIAL ;           ; true
+NE     ; 13[013] ; 3      ; COMMERCIAL ;           ; true
+NE     ; 1[46]0  ; 3      ; COMMERCIAL ;           ; true
+NE     ; 1[578]  ; 2      ; EMERGENCY  ; TOLL_FREE
+NE     ; 155     ; 3      ; COMMERCIAL ;           ; true
+NE     ; 222     ; 3      ; COMMERCIAL ;           ; true
+NE     ; 333     ; 3      ; COMMERCIAL ;           ; true
+NE     ; 555     ; 3      ; COMMERCIAL ;           ; true
+NE     ; 723141  ; 6      ; EMERGENCY  ; TOLL_FREE
+NE     ; 888     ; 3      ; COMMERCIAL ;           ; true

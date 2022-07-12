@@ -16,6 +16,12 @@
 417507|Swisscom
 417508|Swisscom
 417509|Swisscom
+417519|Swisscom
+417520|Swisscom
+417521|Swisscom
+417522|Swisscom
+417523|Swisscom
+417524|Swisscom
 41754|Swisscom
 417550|Swisscom
 417551|Swisscom

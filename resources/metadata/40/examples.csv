@@ -1,0 +1,7 @@
+Region ; Type         ; Number
+RO     ; FIXED_LINE   ; "211234567"
+RO     ; MOBILE       ; "712034567"
+RO     ; TOLL_FREE    ; "800123456"
+RO     ; PREMIUM_RATE ; "900123456"
+RO     ; SHARED_COST  ; "801123456"
+RO     ; UAN          ; "372123456"

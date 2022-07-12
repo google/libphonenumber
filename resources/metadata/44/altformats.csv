@@ -1,0 +1,10 @@
+Format        ; Parent Format ; Comment
+20X XXX XXXX  ; fixed_2/4/4   ; "Historical London format before it moved to a two-digit area code"
+20X XXXX XXX  ; fixed_2/4/4   ; "Historical London format before it moved to a two-digit area code"
+20 XXXX XX XX ; fixed_2/4/4   ; "Commonly used London format"
+XXXX XXX XXX  ; fixed_4/5-6
+XXXX XXX XXX  ; mobile_4/6
+XXX XXXX XXX  ; mobile_4/6
+XXX XXXX XXX  ; fixed_3/3/4
+XXX XXX XXX   ; tollfree_3/6
+3XXX XXX XXX  ; fixed_3/3/4   ; "UAN numbers beginning with 3 are also often formatted with a 4-digit first group (many search results)"

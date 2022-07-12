@@ -55,7 +55,7 @@ Cream Sandwich).
 The [Java demo](https://libphonenumber.appspot.com/) is updated with a slight
 delay after the GitHub release.
 
-Last demo update: v8.12.38.
+Last demo update: v8.12.51.
 
 If this number is lower than the [latest release's version
 number](https://github.com/google/libphonenumber/releases), we are between
@@ -228,6 +228,7 @@ maintenance processes.
 *   Erlang: https://github.com/marinakr/libphonenumber_erlang
 *   Clojure: https://github.com/randomseed-io/phone-number
 *   R: https://github.com/socialresearchcentre/dialr/
+*   Elixir: https://github.com/socialpaymentsbv/ex_phone_number
 
 Alternatives to our own versions:
 

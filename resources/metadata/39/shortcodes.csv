@@ -1,0 +1,34 @@
+Region ; Prefix      ; Length ; Type               ; Tariff       ; Sms  ; Format
+IT     ; 10          ; 4,5    ; COMMERCIAL         ;              ;      ; "shortcode_4-5"
+IT     ; 11[2358]    ; 3      ; EMERGENCY          ; TOLL_FREE
+IT     ; 11[47]      ; 3      ; EXPANDED_EMERGENCY
+IT     ; 116000      ; 6      ; EXPANDED_EMERGENCY ; TOLL_FREE    ;      ; "shortcode_6"
+IT     ; 116111      ; 6      ; EXPANDED_EMERGENCY ; TOLL_FREE    ;      ; "shortcode_6"
+IT     ; 119         ; 3      ; COMMERCIAL
+IT     ; 12          ; 4      ; COMMERCIAL         ; PREMIUM_RATE
+IT     ; 13[39]      ; 3      ; COMMERCIAL
+IT     ; 1482        ; 4      ; COMMERCIAL
+IT     ; 149         ; 4-6    ; COMMERCIAL
+IT     ; 1500        ; 4      ; COMMERCIAL
+IT     ; 1515        ; 4      ; EXPANDED_EMERGENCY
+IT     ; 1518        ; 4      ; COMMERCIAL
+IT     ; 152[25]     ; 4      ; EXPANDED_EMERGENCY
+IT     ; 153[03]     ; 4      ; EXPANDED_EMERGENCY
+IT     ; 1544        ; 4      ; EXPANDED_EMERGENCY
+IT     ; 15[59]      ; 3      ; COMMERCIAL
+IT     ; 160         ; 3      ; COMMERCIAL
+IT     ; 186         ; 3      ; COMMERCIAL
+IT     ; 187         ; 3      ; COMMERCIAL         ; TOLL_FREE
+IT     ; 19[01]      ; 3      ; COMMERCIAL
+IT     ; 192[01]     ; 6      ; COMMERCIAL         ;              ;      ; "shortcode_6"
+IT     ; 192[2-9]    ; 4      ; COMMERCIAL         ;              ;      ; "shortcode_4-5"
+IT     ; 194         ; 4      ; COMMERCIAL         ;              ;      ; "shortcode_4-5"
+IT     ; 19696       ; 5      ; EXPANDED_EMERGENCY ;              ;      ; "shortcode_4-5"
+IT     ; 42323       ; 5      ; COMMERCIAL
+IT     ; 43[01]      ; 5      ; COMMERCIAL         ;              ; true
+IT     ; 43[45]      ; 7      ; COMMERCIAL         ;              ; true
+IT     ; 4[478][0-4] ; 5      ; COMMERCIAL         ; PREMIUM_RATE ; true
+IT     ; 4[478][5-9] ; 7      ; COMMERCIAL         ; PREMIUM_RATE ; true
+IT     ; 45045       ; 5      ; COMMERCIAL         ;              ; true
+IT     ; 455         ; 5      ; COMMERCIAL         ; PREMIUM_RATE ; true
+VA     ; 11[2358]    ; 3      ; EMERGENCY          ; TOLL_FREE

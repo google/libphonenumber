@@ -1,0 +1,6 @@
+Id             ; National           ; International      ; National Prefix Optional ; Comment
+fixed_2/4/4    ; "XX XXXX XXXX"     ; "XX XXXX XXXX"     ; true                     ; "Fixed line (2-digit area codes)."
+fixed_3/3/4    ; "XXX XXX XXXX"     ; "XXX XXX XXXX"     ; true                     ; "Fixed line (3-digit area codes) and other non-mobile numbers."
+mobile_1/2/4/4 ; "{X>}XX XXXX XXXX" ; "{X>}XX XXXX XXXX" ; true                     ; "Mobile version of fixed line 2-digit area codes and removing former mobile token 1."
+mobile_1/3/3/4 ; "{X>}XXX XXX XXXX" ; "{X>}XXX XXX XXXX" ; true                     ; "Mobile version of fixed line 3-digit area codes and removing former mobile token 1."
+shortcode_5    ; "XXXXX"            ;                    ;                          ; "5-digit shortcodes (very rare)."

@@ -1,0 +1,7 @@
+Id             ; National        ; International  ; Comment
+fixed_1/3/4    ; "#X XXX XXXX"   ; "X XXX XXXX"   ; "Pattern for fixed-line formats, including Ross Dependency."
+fmt_3/2/2-3    ; "#XXX XX XX*"   ; "XXX XX XX*"   ; "7, 8-digit variable cost (premium rate/toll free)."
+fmt_3/3/3-4    ; "#XXX XXX XXX*" ; "XXX XXX XXX*" ; "0274, 0210 and toll-free/premium-rate prefixes 0508/0800/0900."
+mobile_2/3-4/4 ; "#XX XXX* XXXX" ; "XX XXX* XXXX" ; "2Degrees numbers are formatted with 022 separated, since this seems to be more common\nthan writing the first group as 022X based on Google web searches, and is used by\n2Degrees themselves. See formatting on http://www.2degreesmobile.co.nz for an example\nof the latter. We follow the same pattern for 020 (Orcon) and 028 (mixed) numbers."
+mobile_2/3/3-5 ; "#XX XXX XXX**" ; "XX XXX XXX**" ; "Mobile numbers do not have exclusive leading digits - formatting depends on number length.\nVodafone numbers can be 8 digits (without leading 0).""\nPaging numbers and some mobile numbers (Telecom/Vodafone/TelstraClear)."
+uan_2/3-8      ; "#XX XXX*****"  ; "XX XXX*****"  ; "Enhanced voice services"

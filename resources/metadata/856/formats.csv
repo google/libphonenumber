@@ -1,0 +1,4 @@
+Id               ; National         ; International   ; Comment
+fixed_line_2/3/3 ; "#XX XXX XXX"    ; "XX XXX XXX"    ; "Format for fixed-line numbers."
+mobile_2/2/3/3   ; "#XX XX XXX XXX" ; "XX XX XXX XXX" ; "Format for mobile numbers."
+uan_2/2/2/3      ; "#XX XX XX XXX"  ; "XX XX XX XXX"  ; "Format for UAN numbers."

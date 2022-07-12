@@ -5,13 +5,12 @@
 These steps outline how to edit the metadata for the phone number library to fix
 problems with validation or formatting.
 
-Note that we are currently not accepting validation, formatting, or timezone
-metadata pull requests, but you may use these guidelines to create changes in
-your own fork until we fix issues upstream. Please [file a corresponding
-issue](CONTRIBUTING.md#checklist-before-filing-an-issue) with us.
+Note that we cannot accept pull requests to modify metadata directly, but you may
+use these guidelines to create changes in your own fork until we fix issues
+upstream. Please [file a corresponding issue](CONTRIBUTING.md#checklist-before-filing-an-issue)
+with us.
 
-You can read more about the pull request [contribution
-guidelines](CONTRIBUTING.md#pull-requests).
+You can read more about the pull request [contribution guidelines](CONTRIBUTING.md#pull-requests).
 
 ## Details
 

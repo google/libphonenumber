@@ -1,0 +1,7 @@
+Region ; Prefix   ; Length ; Type       ; Tariff    ; Carrier Specific ; Provenance
+WS     ; 11[12]   ; 3      ; COMMERCIAL
+WS     ; 12[0-6]  ; 3      ; COMMERCIAL ;           ; true
+WS     ; 1[39]0   ; 3      ; COMMERCIAL ;           ;                  ; ITU
+WS     ; 911      ; 3      ; EMERGENCY  ; TOLL_FREE
+WS     ; 99[4-69] ; 3      ; EMERGENCY  ; TOLL_FREE
+WS     ; 997      ; 3      ; COMMERCIAL

@@ -1,0 +1,11 @@
+Region ; Label                 ; Comment
+SA     ; SC                    ; "http://www.itu.int/oth/T02020000B7/en"
+SA     ; SC                    ; "http://en.wikipedia.org/wiki/Telephone_numbers_in_Saudi_Arabia"
+SA     ; SC_CARRIER_SPECIFIC   ; "1410 is the Mobily voicemail number."
+SA     ; SC_EXPANDED_EMERGENCY ; "116 111 is set up for counselling and referral services in Saudi Arabia, not emergency\ncases."
+SA     ; SC_STANDARD_RATE      ; "This is listed on\nhttp://www.mobily.com.sa/portalu/wps/portal/personal/services/video-and-voice-calls/voice-mail/?lang=en\nas costing 25 per minute. The normal mobile rate for calls is 10-30."
+SA     ; SC_TOLL_FREE          ; "http://www.childhelplineinternational.org/media/40652/speaker_3_-_saudi_arabia__2_.pdf\nsays that 116111 is free. http://www.arabnews.com/news/451698 talks about 937 being\ntoll free."
+SA     ; XML                   ; "http://en.wikipedia.org/wiki/Telephone_numbers_in_Saudi_Arabia"
+SA     ; XML                   ; "http://www.itu.int/oth/T02020000B7/en"
+SA     ; XML_PREMIUM_RATE      ; "Contains shared revenue range 925, as calling these numbers involve charges from carrier\nand the organization that you are calling."
+SA     ; XML_UAN               ; "Including ""Nomadic"" numbers from the Telecom Company ""Go"". ""Go"" says these are fixed-line\nthat can be moved with no further setup. As these are mobile in nature and UAN is the\nclosest match, adding it here."

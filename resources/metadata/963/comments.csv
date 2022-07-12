@@ -1,0 +1,8 @@
+Region ; Label          ; Comment
+SY     ; SC             ; "http://www.itu.int/oth/T02020000C9/en"
+SY     ; SC             ; "http://en.wikipedia.org/wiki/%2B963"
+SY     ; XML            ; "No tollFree or premiumRate information can be found."
+SY     ; XML            ; "http://www.itu.int/oth/T02020000C9/en"
+SY     ; XML            ; "http://en.wikipedia.org/wiki/%2B963"
+SY     ; XML_FIXED_LINE ; "Numbers with the 21 prefix are made optionally 1-digit longer based on numbers found on\nthe Internet."
+SY     ; XML_MOBILE     ; "Numbers have been found online for the prefixes 922, 95[138], and 96[05]."

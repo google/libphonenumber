@@ -1,0 +1,11 @@
+Region ; Label                 ; Comment
+KI     ; SC                    ; "http://www.itu.int/oth/T0202000071/en"
+KI     ; SC                    ; "http://tskl.net.ki/services has others."
+KI     ; SC_EXPANDED_EMERGENCY ; "See comment for emergency section."
+KI     ; SC_SHORT_CODE         ; "http://tskl.net.ki/services/3g-4g-rates-offpeaks/quick-dial-credit-checking-codes/\nlists 777 as voicemail access."
+KI     ; SC_STANDARD_RATE      ; "http://www.tskl.net.ki/910_operator.php - charged at $0.20 per call."
+KI     ; XML                   ; "We include the national prefix for parsing here just in case numbers can be dialled with a\nleading 0 - no numbers online have been found formatted this way, but the ITU document\nlists it as a national dialling prefix."
+KI     ; XML                   ; "http://www.itu.int/oth/T0202000071/en"
+KI     ; XML_FIXED_LINE        ; "The 5-digit numbers are in a parallel running period where they transition to 8-digit\nnumbers beginning with 7. This period was stated to run between July 1 2016 and July 1\n2018 in the ITU communication of 27.VI.2017, although some numbers may have ended\ntransition in 2017, such as 75381xxx which is not present in the communication of\n27.VI.2017, whereas it was in the communication of 1.VIII.2016 where the period was\nstated to end in 2017."
+KI     ; XML_FIXED_LINE        ; "Granularity for fixedLine numbers prefixed by 6 and 7 is high, to disambiguate between\nthem and mobile ranges with equal shorter prefixes."
+KI     ; XML_VOIP              ; "ITU refers to these as ""Overseas Operator"" (used to call Phone Group's usage\n""Telemedia and audiotext"")."

@@ -1,0 +1,15 @@
+Notes for Argentina metadata.
+
+This metadata is heavily processed by code before being exported as XML. This
+is because the XML doesn't actually reflect the truth about the Argentinian
+phone number plan.
+
+In the Argentinian numbering plan, all phone numbers are 10-digits long,
+whereas the XML uses 11-digit numbers to represent mobile ranges (by adding the
+dialing prefix 9 to indicate a mobile number). See go/dial-right-number for
+some background on this. This applies to "geographic" numbers (those prefixed
+by 1, 2 or 3) which are represented in the CSV as fixed-or-mobile and then
+processed into two separate ranges.
+
+The aim of this is to keep the CSV data as close to what would be seen in a
+numbering plan as possible.

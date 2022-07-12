@@ -1,0 +1,5 @@
+Region ; Type       ; Number
+CV     ; FIXED_LINE ; "2211234"
+CV     ; MOBILE     ; "9911234"
+CV     ; TOLL_FREE  ; "8001234"
+CV     ; VOIP       ; "3401234"

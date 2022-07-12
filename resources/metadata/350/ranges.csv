@@ -1,0 +1,7 @@
+Prefix    ; Length ; Type       ; Tariff        ; Operator ; Format      ; Regions ; Provenance ; Comment
+200       ; 8      ; FIXED_LINE ; STANDARD_RATE ;          ; "fixed_3/5" ; "GI"    ; INTERNAL   ; "Carrier Partner Confimation"
+216[24-7] ; 8      ; FIXED_LINE ; STANDARD_RATE ;          ; "fixed_3/5" ; "GI"    ; INTERNAL   ; "Carrier Partner Confimation"
+2190[0-2] ; 8      ; FIXED_LINE ; STANDARD_RATE ;          ; "fixed_3/5" ; "GI"
+22[25]    ; 8      ; FIXED_LINE ; STANDARD_RATE ;          ; "fixed_3/5" ; "GI"    ; INTERNAL   ; "Carrier Partner Confimation"
+5[146-8]  ; 8      ; MOBILE     ; STANDARD_RATE ; "gibtel" ;             ; "GI"    ; ITU        ; "Client asked to add based on ITU. T#04478053"
+606       ; 8      ; MOBILE     ; STANDARD_RATE ; "gibtel" ;             ; "GI"    ; IR21       ; "IR21 dated 1/17/2019"

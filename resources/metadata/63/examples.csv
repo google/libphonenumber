@@ -1,0 +1,4 @@
+Region ; Type       ; Number
+PH     ; FIXED_LINE ; "232345678"
+PH     ; MOBILE     ; "9051234567"
+PH     ; TOLL_FREE  ; "180012345678"

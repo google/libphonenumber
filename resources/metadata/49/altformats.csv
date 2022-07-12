@@ -1,0 +1,47 @@
+Format             ; Parent Format    ; Comment
+XX XXX XXX*        ; fixed_2/3-13
+XX XX XX XX XX     ; fixed_2/3-13
+XX XXXX XXX*       ; fixed_2/3-13
+XX XXX XX X*       ; fixed_2/3-13
+XX XXX XXX XX*     ; fixed_2/3-13
+XX XX XX X XX XX   ; fixed_2/3-13
+XXX XXX XX**       ; fixed_3/3-12
+XXX XXXX XXX*      ; fixed_3/3-12
+XXX XX XX X*       ; fixed_3/3-12
+XXX XX XX XX XX    ; fixed_3/3-12
+XXX XXX XX XX      ; fixed_3/3-12
+XXX XXX XX XX X    ; fixed_3/3-12
+XXX XXX XXX XX*    ; fixed_3/3-12
+XXXX XXX X***      ; fixed_4/2-11
+XX XX XX XX        ; fixed_4/2-11     ; "Sometimes four-digit area codes are split into two groups of two."
+XX XX X XX XX      ; fixed_4/2-11     ; "Sometimes four-digit area codes are split into two groups of two."
+XX XX XX XX XX     ; fixed_4/2-11     ; "Sometimes four-digit area codes are split into two groups of two."
+XX XX X XX XX XX   ; fixed_4/2-11     ; "Sometimes four-digit area codes are split into two groups of two."
+XX XX XX XX XX XX  ; fixed_4/2-11     ; "Sometimes four-digit area codes are split into two groups of two."
+XXXX XXXX X***     ; fixed_4/2-11
+XXXX XXX XXX XXX   ; fixed_4/2-11
+XXXX XX XXX XX     ; fixed_4/2-11
+XXXX XXX XX XX     ; fixed_4/2-11
+XXXX XX XX XX*     ; fixed_4/2-11
+XXXXX XXX XXX*     ; fixed_5/2-10
+XXXXX XXXX XXX*    ; fixed_5/2-10
+XXXXX XXX XXX XXX  ; fixed_5/2-10
+XXXX XX XXX XX     ; mobile_4/7
+XXXX XXX XXXX      ; mobile_4/7
+XXXX XXXX XXX      ; mobile_4/7
+XXX XXXXXXXX       ; mobile_4/7
+XXX XXX XXX XX     ; mobile_4/7
+XXX XXX XXX X      ; mobile_3/7-8
+XXX XX* XXX XX     ; mobile_3/7-8
+XXX XXX XXX X      ; mobile_3/7-8
+XXX XX* XXX XX     ; tollfree_3/7-12
+XXX XXX XXX X      ; tollfree_3/7-12
+XXX XXXX XXX       ; tollfree_3/7-12
+XXX XXX XX XX*     ; tollfree_3/7-12
+XXX XXXXXX XX X*** ; tollfree_3/7-12
+900 X XXX XXX*     ; varcost_3/1/4-10 ; "Alternate format for premium rate numbers."
+900 X XXXX XXX*    ; varcost_3/1/4-10 ; "Alternate format for premium rate numbers."
+180 X XXX XXX      ; varcost_3/1/4-10
+180X XXXX**        ; varcost_3/1/4-10 ; "Medium rate numbers often have the first group with four digits (180X)"
+180X XX XX XX      ; varcost_3/1/4-10
+900X XXXX******    ; varcost_3/1/4-10 ; "Alternate format for premium rate numbers."
