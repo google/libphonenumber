@@ -1,0 +1,6 @@
+Region ; Type         ; Number
+TH     ; FIXED_LINE   ; "21234567"
+TH     ; MOBILE       ; "812345678"
+TH     ; TOLL_FREE    ; "1800123456"
+TH     ; PREMIUM_RATE ; "1900123456"
+TH     ; VOIP         ; "601234567"

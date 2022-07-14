@@ -16,6 +16,7 @@
 
 5042200|Polo Paz
 5042201|Polo Paz
+5042202|Tegucigalpa
 5042203|Polo Paz
 5042209|Res. Centro América, Tegucigalpa
 5042211|El Picacho
@@ -90,7 +91,7 @@
 5042564|San Pedro Sula, Cortés
 5042565|Chamelecón
 5042566|Jardines Del Valle
-504257|Búfalo
+5042574|Búfalo
 504261|Choloma, Cortés
 5042640|C. Comunitarios
 5042641|C. Comunitarios

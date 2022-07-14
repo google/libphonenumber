@@ -1,0 +1,14 @@
+Region ; Prefix  ; Length ; Type               ; Tariff    ; Provenance
+LT     ; 01      ; 2      ; EMERGENCY          ; TOLL_FREE
+LT     ; 011     ; 3      ; EMERGENCY          ; TOLL_FREE
+LT     ; 02      ; 2      ; EMERGENCY          ; TOLL_FREE
+LT     ; 022     ; 3      ; EMERGENCY          ; TOLL_FREE
+LT     ; 03      ; 2      ; EMERGENCY          ; TOLL_FREE
+LT     ; 033     ; 3      ; EMERGENCY          ; TOLL_FREE
+LT     ; 10[1-3] ; 3      ; EMERGENCY          ; TOLL_FREE
+LT     ; 112     ; 3      ; EMERGENCY          ; TOLL_FREE
+LT     ; 116000  ; 6      ; EXPANDED_EMERGENCY ; TOLL_FREE
+LT     ; 116111  ; 6      ; EXPANDED_EMERGENCY ; TOLL_FREE
+LT     ; 116117  ; 6      ; EXPANDED_EMERGENCY ;           ; ITU
+LT     ; 116123  ; 6      ; EXPANDED_EMERGENCY ; TOLL_FREE
+LT     ; 11[7-9] ; 3      ; COMMERCIAL         ;           ; ITU

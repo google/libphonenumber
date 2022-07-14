@@ -1,0 +1,4 @@
+Region ; Prefix ; Length ; Type       ; Tariff    ; Sms  ; Carrier Specific
+CM     ; 11[37] ; 3      ; EMERGENCY  ; TOLL_FREE
+CM     ; 1[37]  ; 2      ; EMERGENCY  ; TOLL_FREE
+CM     ; 8711   ; 4      ; COMMERCIAL ;           ; true ; true

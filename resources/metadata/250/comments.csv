@@ -1,0 +1,7 @@
+Region ; Label          ; Comment
+RW     ; SC             ; "http://en.wikipedia.org/wiki/+250"
+RW     ; XML            ; "According to ITU, there is no national prefix. However, this is still used. As of June 3rd\n2011, this was confirmed by a Rwandan local. It is also shown in this format on pages such\nas http://www.tigo.co.rw ""Choose Your Number"" service."
+RW     ; XML            ; "http://www.rura.gov.rw/docs/RWANDA_NATIONAL_NUMBERING_PLAN.pdf"
+RW     ; XML            ; "http://en.wikipedia.org/wiki/+250"
+RW     ; XML_FIXED_LINE ; "We support satellite numbers here, since they are in the plan, although no recent\nonline examples can be found. We also support fixed-line ranges that have been reserved\nand paid for, even where no online numbers can be found."
+RW     ; XML_MOBILE     ; "Removing 75 - that was Rwandatel but they had their license revoked."

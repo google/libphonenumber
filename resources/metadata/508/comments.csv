@@ -1,0 +1,6 @@
+Region ; Label          ; Comment
+PM     ; SC             ; "http://www.itu.int/oth/T02020000B2/en"
+PM     ; XML            ; "http://www.itu.int/oth/T02020000B2/en"
+PM     ; XML_FIXED_LINE ; "Fixed-line and mobile numbers do not include any main prefix (like country code)\nbefore subscriber number unlike other French territories as they can be dialled\ndirectly using subscriber number after country code in E.164 format. 4[23] and 50\nranges are added to both fixed-line and mobile categories as it is not clear in ITU\ndoc."
+PM     ; XML_MOBILE     ; "44 XXXX might be a mobile range as it is assigned to Globaltel. Category is not\nmentioned in the ITU doc."
+PM     ; XML_TOLL_FREE  ; "As per ARCEP, mainland France and overseas territories use 0800 to 0805 as Toll-free\nnumbers."

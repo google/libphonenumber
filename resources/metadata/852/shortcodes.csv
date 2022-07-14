@@ -1,0 +1,33 @@
+Region ; Prefix       ; Length ; Type               ; Tariff    ; Sms  ; Carrier Specific
+HK     ; 10[013]      ; 3      ; COMMERCIAL
+HK     ; 10[0136]     ; 4-7    ; COMMERCIAL
+HK     ; 102[14]      ; 4-7    ; COMMERCIAL
+HK     ; 108[138]     ; 4      ; COMMERCIAL         ;           ;      ; true
+HK     ; 109          ; 3      ; COMMERCIAL         ;           ;      ; true
+HK     ; 112          ; 3      ; EMERGENCY          ; TOLL_FREE
+HK     ; 12[0-3]      ; 3-7    ; COMMERCIAL
+HK     ; 1258         ; 4-7    ; COMMERCIAL
+HK     ; 128[13]      ; 4-7    ; COMMERCIAL
+HK     ; 17[135-9]    ; 3-7    ; COMMERCIAL
+HK     ; 17219        ; 5-7    ; COMMERCIAL
+HK     ; 180[13]      ; 5      ; COMMERCIAL
+HK     ; 18060        ; 7      ; COMMERCIAL
+HK     ; 1808         ; 4      ; COMMERCIAL
+HK     ; 1810         ; 5      ; COMMERCIAL
+HK     ; 181[2-8]     ; 4      ; COMMERCIAL
+HK     ; 1820[5-9]    ; 5      ; EXPANDED_EMERGENCY
+HK     ; 182182       ; 6      ; COMMERCIAL
+HK     ; 18222        ; 5      ; COMMERCIAL
+HK     ; 1823         ; 4      ; COMMERCIAL
+HK     ; 1828[128]    ; 5      ; COMMERCIAL
+HK     ; 183[0-689]   ; 7      ; COMMERCIAL
+HK     ; 1850[138]    ; 5      ; COMMERCIAL         ;           ;      ; true
+HK     ; 186111       ; 6      ; COMMERCIAL
+HK     ; 186186       ; 6      ; COMMERCIAL
+HK     ; 1868         ; 4      ; COMMERCIAL
+HK     ; 1872[1-389]  ; 7      ; COMMERCIAL
+HK     ; 1878[0235-9] ; 7      ; COMMERCIAL
+HK     ; 18793        ; 7      ; COMMERCIAL
+HK     ; 188          ; 4      ; COMMERCIAL
+HK     ; 992          ; 3      ; EMERGENCY          ; TOLL_FREE ; true
+HK     ; 999          ; 3      ; EMERGENCY          ; TOLL_FREE

@@ -638,6 +638,20 @@ public class AsYouTypeFormatterTest extends TestMetadataTestCase {
     assertEquals("+52 800 123 45", formatter.inputDigit('5'));
     assertEquals("+52 800 123 456", formatter.inputDigit('6'));
     assertEquals("+52 800 123 4567", formatter.inputDigit('7'));
+    
+    // +529011234567, proactively ensuring that no formatting is applied, where a format is chosen
+    // that would otherwise have led to some digits being dropped.
+    formatter.clear();
+    assertEquals("9", formatter.inputDigit('9'));
+    assertEquals("90", formatter.inputDigit('0'));
+    assertEquals("901", formatter.inputDigit('1'));
+    assertEquals("9011", formatter.inputDigit('1'));
+    assertEquals("90112", formatter.inputDigit('2'));
+    assertEquals("901123", formatter.inputDigit('3'));
+    assertEquals("9011234", formatter.inputDigit('4'));
+    assertEquals("90112345", formatter.inputDigit('5'));
+    assertEquals("901123456", formatter.inputDigit('6'));
+    assertEquals("9011234567", formatter.inputDigit('7'));
 
     // +52 55 1234 5678
     formatter.clear();

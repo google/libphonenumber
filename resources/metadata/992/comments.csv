@@ -1,0 +1,6 @@
+Region ; Label      ; Comment
+TJ     ; SC         ; "http://www.itu.int/oth/T02020000CA/en"
+TJ     ; XML        ; "No tollFree or premiumRate information can be found."
+TJ     ; XML        ; "http://www.itu.int/oth/T02020000CA/en"
+TJ     ; XML        ; "Based on details from vendors and online investigation results, 8 is no more considered\nas national dialling code. Originally added based on Wikipedia. It cannot coexits when\n810 is considered as international exit code and 10 as one of mobile ranges."
+TJ     ; XML_MOBILE ; "Adding 90 prefix as SMS messages could be successfully delivered to these mobile\nnumbers and 55 for Megafon from bug reports. 00 mobile range is assigned to\nMegafon as per their confirmation."

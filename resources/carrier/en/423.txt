@@ -20,18 +20,8 @@
 423652|Cubic
 423653|Cubic
 423654|Cubic
-423660|Telecom Liechtenstein
+42366|Telecom Liechtenstein
 423661|Dimoco
-4236620|Telecom Liechtenstein
-4236621|Telecom Liechtenstein
-4236622|Telecom Liechtenstein
-4236626|Datamobile
-4236627|Datamobile
-4236628|Datamobile
-4236629|Datamobile
-4236637|Telecom Liechtenstein
-4236638|Telecom Liechtenstein
-4236639|Emnify
 42373|Telecom Liechtenstein
 42374|First Mobile
 42377|Swisscom

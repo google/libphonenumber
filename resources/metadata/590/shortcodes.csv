@@ -1,0 +1,4 @@
+Region ; Prefix ; Length ; Type      ; Tariff
+BL     ; 18     ; 2      ; EMERGENCY ; TOLL_FREE
+GP     ; 1[578] ; 2      ; EMERGENCY ; TOLL_FREE
+MF     ; 1[578] ; 2      ; EMERGENCY ; TOLL_FREE

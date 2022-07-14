@@ -69,15 +69,10 @@
 33609|SFR
 3361|SFR
 3362|SFR
-33630|Orange France
-33631|Orange France
-33632|Orange France
-33633|Orange France
+3363|Orange France
 33634|SFR
 33635|SFR
 33636|Euroinformation Telecom
-33637|Orange France
-33638|Orange France
 3363800|Globalstar Europe
 3363801|Prixtel
 3363802|Prixtel
@@ -175,9 +170,6 @@
 3366|Bouygues
 3367|Orange France
 3368|Orange France
-33692|Bouygues
-33693|Bouygues
-33696|Bouygues
 33698|Bouygues
 33699|Bouygues
 33700000|Orange France
@@ -278,6 +270,8 @@
 3375632|Euroinformation Telecom
 3375633|Euroinformation Telecom
 3375634|Euroinformation Telecom
+3375644|SFR
+3375645|SFR
 337565|Transatel
 337566|Transatel
 337567|Transatel
@@ -295,17 +289,18 @@
 337572|Mobiquithings
 337573|Mobiquithings
 337574|Coriolis Telecom
-3375750|Coriolis Telecom
-3375751|Coriolis Telecom
-3375752|Coriolis Telecom
-3375753|Coriolis Telecom
-3375754|Coriolis Telecom
-3375755|Coriolis Telecom
-3375756|Coriolis Telecom
+337575|Coriolis Telecom
 3375757|Euroinformation Telecom
 3375758|Euroinformation Telecom
+3375759|Twilio Ireland Limited
+3375760|Twilio Ireland Limited
 3375763|Euroinformation Telecom
 3375767|Euroinformation Telecom
+3375770|SFR
+3375771|SFR
+3375772|SFR
+3375773|SFR
+3375774|SFR
 3375777|Euroinformation Telecom
 3375779|Halys
 3375787|Euroinformation Telecom

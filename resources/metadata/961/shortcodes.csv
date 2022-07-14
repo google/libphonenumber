@@ -1,0 +1,5 @@
+Region ; Prefix ; Length ; Type      ; Tariff
+LB     ; 112    ; 3      ; EMERGENCY ; TOLL_FREE
+LB     ; 140    ; 3      ; EMERGENCY ; TOLL_FREE
+LB     ; 175    ; 3      ; EMERGENCY ; TOLL_FREE
+LB     ; 999    ; 3      ; EMERGENCY ; TOLL_FREE

@@ -16,6 +16,7 @@
 package com.google.i18n.phonenumbers.metadata.table;
 
 import static com.google.common.base.Preconditions.checkArgument;
+import static com.google.common.base.StandardSystemProperty.LINE_SEPARATOR;
 import static com.google.common.truth.Truth.assertThat;
 import static com.google.i18n.phonenumbers.metadata.model.RangesTableSchema.AREA_CODE_LENGTH;
 import static com.google.i18n.phonenumbers.metadata.model.RangesTableSchema.COMMENT;
@@ -64,6 +65,8 @@ public class CsvTableTest {
   private static final Column<Boolean> REGION_CA = REGIONS.getColumn(PhoneRegion.of("CA"));
   private static final Column<Boolean> REGION_US = REGIONS.getColumn(PhoneRegion.of("US"));
 
+  private static final String NEW_LINE = LINE_SEPARATOR.value();
+
   @Test
   public void testRangeTableExport() throws IOException {
     ImmutableList<Column<?>> columns =
@@ -91,7 +94,6 @@ public class CsvTableTest {
     table.put(PhoneRegion.of("US"), ValidNumberType.PREMIUM_RATE, DigitSequence.of("945123456"));
     table.put(PhoneRegion.of("CA"), ValidNumberType.MOBILE, DigitSequence.of("555123456"));
     // Ordering is well defined in the CSV output.
-    // TODO: Consider making columns able to identify if their values need CSV escaping.
     CsvTable<ExampleNumberKey> csv = ExamplesTableSchema.toCsv(table);
     assertCsv(csv,
         "Region ; Type         ; Number",
@@ -264,7 +266,7 @@ public class CsvTableTest {
   }
 
   private static String join(String... lines) {
-    return String.join("\n", lines) + "\n";
+    return String.join(NEW_LINE, lines) + NEW_LINE;
   }
 
   private static RangeKey key(String spec, Integer... lengths) {
@@ -273,3 +275,4 @@ public class CsvTableTest {
     return RangeKey.create(prefix, ImmutableSet.copyOf(lengths));
   }
 }
+

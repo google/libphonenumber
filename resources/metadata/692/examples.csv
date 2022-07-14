@@ -1,0 +1,4 @@
+Region ; Type       ; Number
+MH     ; FIXED_LINE ; "2471234"
+MH     ; MOBILE     ; "2351234"
+MH     ; VOIP       ; "6351234"

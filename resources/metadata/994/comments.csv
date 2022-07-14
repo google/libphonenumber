@@ -1,0 +1,10 @@
+Region ; Label               ; Comment
+AZ     ; SC                  ; "http://www.itu.int/oth/T020200000F/en"
+AZ     ; SC_CARRIER_SPECIFIC ; "https://support.twitter.com/articles/20170024"
+AZ     ; SC_EMERGENCY        ; "http://travel.state.gov/travel/cis_pa_tw/cis/cis_978.html\nhttp://wikitravel.org/en/Azerbaijan#Emergency_contact_numbers"
+AZ     ; SC_SMS_SERVICES     ; "https://support.twitter.com/articles/20170024"
+AZ     ; XML                 ; "http://www.itu.int/oth/T020200000F/en"
+AZ     ; XML_FIXED_LINE      ; "12109 fixed line numbers are mentioned as ""Information Operator Assistance""\nby ITU. Added it to fixedline numbers as whole 12 range numbers are fixedline\nnumbers in Baku."
+AZ     ; XML_MOBILE          ; "Prefix 36554 is added to mobile as per confirmation from Ministry of\nCommunications in Azerbaijan."
+AZ     ; XML_PREMIUM_RATE    ; "These are marked as Interactive Calls in the ITU document."
+AZ     ; XML_TOLL_FREE       ; "88 is listed as fixed-line for Baku in the ITU document, but online numbers seem to\nsuggest they are in fact national toll-free numbers."

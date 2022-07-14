@@ -19,27 +19,11 @@
 # The ITU document also refers to Telikom as trading under Citifon, but it seems
 # to use Telikom Mobile at least on the internet.
 
-67570|Digicel
-67571|Digicel
-67572|Digicel
-67573|Digicel
-67574|Digicel
+6757|Digicel
 67575|bmobile
 67576|bmobile
-6757731|Telikom
-6757732|Telikom
-6757733|Telikom
-6757734|Telikom
-6757735|Telikom
-6757736|Telikom
-6757737|Telikom
-6757738|Telikom
-6757739|Telikom
-675775|Telikom
-675776|Telikom
-675777|Telikom
-675778|Telikom
-675779|Telikom
-67578|Telikom
-67579|Digicel
+67577|bmobile
+67578|bmobile
 67581|DIGIVOIP
+67582|Digicel
+67588|Digicel

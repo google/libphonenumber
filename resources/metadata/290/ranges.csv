@@ -1,0 +1,9 @@
+Prefix    ; Length ; Type       ; Tariff        ; Operator ; Regions ; Geocode:en         ; Geocode:fr         ; Provenance ; Comment
+2[01589]  ; 5      ; FIXED_LINE ; STANDARD_RATE ;          ; "SH"
+22        ; 5      ; FIXED_LINE ; STANDARD_RATE ;          ; "SH"    ; "Jamestown"        ; "Jamestown"
+2[347]    ; 5      ; FIXED_LINE ; STANDARD_RATE ;          ; "SH"    ; "St. Helena"       ; "Sainte-Hélène"
+262       ; 5      ; VOIP       ; STANDARD_RATE ;          ; "SH"
+26[4-9]   ; 5      ; FIXED_LINE ; STANDARD_RATE ;          ; "SH"    ; "St. Helena"       ; "Sainte-Hélène"
+[56][09]  ; 5      ; MOBILE     ; STANDARD_RATE ;          ; "SH"    ;                    ;                    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+[56][1-8] ; 5      ; MOBILE     ; STANDARD_RATE ; "sure"   ; "SH"    ;                    ;                    ; IR21
+8         ; 4      ; FIXED_LINE ; STANDARD_RATE ;          ; "TA"    ; "Tristan da Cunha" ; "Tristan da Cunha"

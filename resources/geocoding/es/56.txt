@@ -23,6 +23,7 @@
 562198|Santiago, Región Metropolitana
 5622|Santiago, Región Metropolitana
 5623|Santiago, Región Metropolitana
+5626|Santiago, Región Metropolitana
 5632|Valparaíso
 5633|Quillota, Valparaíso
 5634|San Felipe, Valparaíso

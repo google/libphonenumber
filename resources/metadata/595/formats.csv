@@ -1,0 +1,9 @@
+Id             ; National         ; International   ; Comment
+fixed_2/3/3-4  ; "(#XX) XXX XXX*" ; "XX XXX XXX*"   ; "8 or 9-digit fixed line numbers where a 7-digit variant exists"
+fixed_2/5      ; "(#XX) XXXXX"    ; "XX XXXXX"      ; "7-digit fixed line"
+fixed_3/3/3    ; "#XXX XXX XXX"   ; "XXX XXX XXX"
+fixed_3/4-5    ; "(#XXX) XXXX*"   ; "XXX XXXX*"     ; "7 or 8-digit fixed line numbers (without a 9-digit variant)"
+mobile_3/6     ; "#XXX XXXXXX"    ; "XXX XXXXXX"
+tollfree_3/3/4 ; "XXXX XXX XXXX"  ; "XXXX XXX XXXX" ; "11 digit toll free numbers"
+uan_3/3-6      ; "#XXX XXX***"    ; "XXX XXX***"
+voip_2/3/4     ; "XX XXX XXXX"    ; "XX XXX XXXX"   ; "Format seen in examples found online."

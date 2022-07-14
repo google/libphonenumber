@@ -1,0 +1,7 @@
+Region ; Label          ; Comment
+NF     ; SC             ; "http://www.itu.int/oth/T020200009D/en"
+NF     ; SC_EMERGENCY   ; "http://www.discovernorfolkisland.com/norfolk/"
+NF     ; XML            ; "Including numbers for Australian Antarctic stations."
+NF     ; XML            ; "http://www.itu.int/oth/T020200009D/en"
+NF     ; XML_FIXED_LINE ; "ITU says all 3X numbers except 38 are fixed-line, but 3[34679] numbers don't seem to\nconnect after we tried calling them."
+NF     ; XML_MOBILE     ; "Numbers found online with prefix 35."

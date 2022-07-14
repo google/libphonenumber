@@ -1,0 +1,10 @@
+Region ; Label            ; Comment
+MY     ; SC               ; "http://en.wikipedia.org/wiki/%2B60"
+MY     ; SC               ; "http://www.skmm.gov.my"
+MY     ; SC_SMS_SERVICES  ; "http://www.skmm.gov.my/FAQs/Mobile-Content-Services/What-is-a-common-short-code.aspx\n66628: https://www.maybank2u.com.my/iwov-resources/pdf/personal/promotions/MUCards_TnC.pdf"
+MY     ; SC_STANDARD_RATE ; "Maybank mentions end user pays standard SMS charges for messaging 66628:\nhttps://www.maybank2u.com.my/iwov-resources/pdf/personal/promotions/MUCards_TnC.pdf"
+MY     ; XML              ; "http://en.wikipedia.org/wiki/%2B60"
+MY     ; XML              ; "https://www.mcmc.gov.my/sectors/celco/numbering-management/numbering-management/numbers-assignment"
+MY     ; XML_FIXED_LINE   ; "Prefixes 32778, 39108, 6795, 82266, 905[79], 9075, 9132 and 9206 are added based on user\nreports. Maintaining prefix data at 3 digit granularity as the new fixed-line ranges are\nbeing added frequently in mcmc.gov.my docs. This avoids false negatives and eases up the\nmaintenance."
+MY     ; XML_MOBILE       ; "Although the plan lists the prefix 159 as broadband services (data only), apparently it\nis possible to send SMSs (and receive them) from numbers in this block, so we are\nlisting them as mobile. 11[4-6] was added based on numbers found online."
+MY     ; XML_TOLL_FREE    ; "http://www.skmm.gov.my/skmmgovmy/media/General/pdf/Special_Service_Number.pdf"

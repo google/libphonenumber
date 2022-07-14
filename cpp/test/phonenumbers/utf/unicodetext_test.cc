@@ -36,6 +36,7 @@ TEST(UnicodeTextTest, Iterator) {
     string number(values[i].utf8);
     UnicodeText number_as_unicode;
     number_as_unicode.PointToUTF8(number.data(), number.size());
+    EXPECT_TRUE(number_as_unicode.UTF8WasValid());
     UnicodeText::const_iterator it = number_as_unicode.begin();
     EXPECT_EQ(values[i].code_point, *it);
   }

@@ -1,0 +1,42 @@
+Prefix   ; Length ; Type       ; Tariff        ; Area Code Length ; Operator   ; Format             ; Regions ; Geocode:en             ; Provenance
+11[2-57] ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fixed_line_3/3/3" ; "LK"    ; "Colombo"
+12[2-9]  ; 9      ; FIXED_LINE ; STANDARD_RATE ;                  ;            ; "fixed_line_3/3/3" ; "LK"    ;                        ; ITU
+1973     ; 9      ; UAN        ; STANDARD_RATE ;                  ;            ; "fixed_line_3/3/3" ; "LK"
+21[2-57] ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fixed_line_3/3/3" ; "LK"    ; "Jaffna"
+23[2-57] ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fixed_line_3/3/3" ; "LK"    ; "Mannar"
+24[2-57] ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fixed_line_3/3/3" ; "LK"    ; "Vavuniya"
+25[2-57] ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fixed_line_3/3/3" ; "LK"    ; "Anuradhapura"
+26[2-57] ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fixed_line_3/3/3" ; "LK"    ; "Trincomalee"
+27[2-57] ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fixed_line_3/3/3" ; "LK"    ; "Polonnaruwa"
+31[2-57] ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fixed_line_3/3/3" ; "LK"    ; "Negombo, Gampaha"
+32[2-57] ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fixed_line_3/3/3" ; "LK"    ; "Chilaw, Puttalam"
+33[2-57] ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fixed_line_3/3/3" ; "LK"    ; "Gampaha"
+34[2-57] ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fixed_line_3/3/3" ; "LK"    ; "Kalutara"
+35[2-57] ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fixed_line_3/3/3" ; "LK"    ; "Kegalle"
+36[2-57] ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fixed_line_3/3/3" ; "LK"    ; "Avissawella, Colombo"
+37[2-57] ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fixed_line_3/3/3" ; "LK"    ; "Kurunegala"
+38[2-57] ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fixed_line_3/3/3" ; "LK"    ; "Panadura, Kalutara"
+41[2-57] ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fixed_line_3/3/3" ; "LK"    ; "Matara"
+45[2-57] ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fixed_line_3/3/3" ; "LK"    ; "Ratnapura"
+47[2-57] ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fixed_line_3/3/3" ; "LK"    ; "Hambantota"
+51[2-57] ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fixed_line_3/3/3" ; "LK"    ; "Hatton, Nuwara Eliya"
+52[2-57] ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fixed_line_3/3/3" ; "LK"    ; "Nuwara Eliya"
+54[2-57] ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fixed_line_3/3/3" ; "LK"    ; "Nawalapitiya, Kandy"
+55[2-57] ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fixed_line_3/3/3" ; "LK"    ; "Badulla"
+57[2-57] ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fixed_line_3/3/3" ; "LK"    ; "Bandarawela, Badulla"
+602      ; 9      ; FIXED_LINE ; STANDARD_RATE ;                  ;            ; "fixed_line_3/3/3" ; "LK"    ;                        ; ITU
+63[2-57] ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fixed_line_3/3/3" ; "LK"    ; "Ampara"
+65[2-57] ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fixed_line_3/3/3" ; "LK"    ; "Batticaloa"
+66[2-57] ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fixed_line_3/3/3" ; "LK"    ; "Matale"
+67[2-57] ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fixed_line_3/3/3" ; "LK"    ; "Kalmunai, Ampara"
+7[01]    ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "mobitel"  ; "mobile_2/3/4"     ; "LK"    ;                        ; IR21
+72       ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "etisalat" ; "mobile_2/3/4"     ; "LK"    ;                        ; IR21
+74[0-4]  ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "dialog"   ; "mobile_2/3/4"     ; "LK"    ;                        ; IR21
+75       ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "airtel"   ; "mobile_2/3/4"     ; "LK"    ;                        ; IR21
+7[67]    ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "dialog"   ; "mobile_2/3/4"     ; "LK"    ;                        ; IR21
+78       ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "hutch"    ; "mobile_2/3/4"     ; "LK"    ;                        ; IR21
+81       ; 9      ; FIXED_LINE ; STANDARD_RATE ;                  ;            ; "fixed_line_3/3/3" ; "LK"    ;                        ; ITU
+82       ; 9      ; FIXED_LINE ; STANDARD_RATE ;                  ;            ; "fixed_line_3/3/3" ; "LK"    ; "Kandy"                ; ITU
+91       ; 9      ; FIXED_LINE ; STANDARD_RATE ;                  ;            ; "fixed_line_3/3/3" ; "LK"    ; "Galle"                ; ITU
+922      ; 9      ; FIXED_LINE ; STANDARD_RATE ;                  ;            ; "fixed_line_3/3/3" ; "LK"    ;                        ; ITU
+99[245]  ; 9      ; FIXED_LINE ; STANDARD_RATE ;                  ;            ; "fixed_line_3/3/3" ; "LK"    ;                        ; ITU

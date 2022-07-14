@@ -25,6 +25,8 @@
  *
  * @author James Wright
  */
+goog.provide('i18n.phonenumbers.ShortNumberInfoTest');
+goog.setTestOnly();
 
 goog.require('goog.testing.jsunit');
 goog.require('i18n.phonenumbers.PhoneNumber');

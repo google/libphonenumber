@@ -24,6 +24,8 @@
  *
  * @author Nikolaos Trogkanis
  */
+goog.provide('i18n.phonenumbers.AsYouTypeFormatterTest');
+goog.setTestOnly();
 
 goog.require('goog.testing.jsunit');
 goog.require('i18n.phonenumbers.AsYouTypeFormatter');
@@ -663,6 +665,21 @@ function testAYTF_MX() {
   assertEquals('+52 800 123 45', f.inputDigit('5'));
   assertEquals('+52 800 123 456', f.inputDigit('6'));
   assertEquals('+52 800 123 4567', f.inputDigit('7'));
+  
+  // +529011234567, proactively ensuring that no formatting is applied, where a format is chosen
+  // that would otherwise have led to some digits being dropped.
+  f.clear();
+  assertEquals('9', f.inputDigit('9'));
+  assertEquals('90', f.inputDigit('0'));
+  assertEquals('901', f.inputDigit('1'));
+  assertEquals('9011', f.inputDigit('1'));
+  assertEquals('90112', f.inputDigit('2'));
+  assertEquals('901123', f.inputDigit('3'));
+  assertEquals('9011234', f.inputDigit('4'));
+  assertEquals('90112345', f.inputDigit('5'));
+  assertEquals('901123456', f.inputDigit('6'));
+  assertEquals('9011234567', f.inputDigit('7'));
+
 
   // +52 55 1234 5678
   f.clear();

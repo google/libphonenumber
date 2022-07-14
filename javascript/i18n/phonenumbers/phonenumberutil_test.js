@@ -24,8 +24,9 @@
  *
  * @author Nikolaos Trogkanis
  */
+goog.provide('i18n.phonenumbers.PhoneNumberUtilTest');
+goog.setTestOnly();
 
-goog.require('goog.array');
 goog.require('goog.string.StringBuffer');
 goog.require('goog.testing.jsunit');
 goog.require('i18n.phonenumbers.Error');
@@ -33,6 +34,8 @@ goog.require('i18n.phonenumbers.NumberFormat');
 goog.require('i18n.phonenumbers.PhoneMetadata');
 goog.require('i18n.phonenumbers.PhoneNumber');
 goog.require('i18n.phonenumbers.PhoneNumberDesc');
+goog.require('i18n.phonenumbers.PhoneNumberFormat');
+goog.require('i18n.phonenumbers.PhoneNumberType');
 goog.require('i18n.phonenumbers.PhoneNumberUtil');
 goog.require('i18n.phonenumbers.RegionCode');
 
@@ -86,6 +89,10 @@ var BS_NUMBER = new i18n.phonenumbers.PhoneNumber();
 BS_NUMBER.setCountryCode(1);
 BS_NUMBER.setNationalNumber(2423651234);
 
+/** @type {!i18n.phonenumbers.PhoneNumber} */
+var CO_FIXED_LINE = new i18n.phonenumbers.PhoneNumber();
+CO_FIXED_LINE.setCountryCode(57);
+CO_FIXED_LINE.setNationalNumber(6012345678);
 
 // Note that this is the same as the example number for DE in the metadata.
 /** @type {!i18n.phonenumbers.PhoneNumber} */
@@ -445,63 +452,55 @@ function testGetCountryMobileToken() {
 
 function testGetSupportedRegions() {
   assertTrue(phoneUtil.getSupportedRegions().length > 0);
-  assertTrue(
-      goog.array.contains(phoneUtil.getSupportedRegions(), RegionCode.US));
-  assertFalse(
-      goog.array.contains(phoneUtil.getSupportedRegions(), RegionCode.UN001));
-  assertFalse(goog.array.contains(phoneUtil.getSupportedRegions(), '800'));
+  assertTrue(phoneUtil.getSupportedRegions().includes(RegionCode.US));
+  assertFalse(phoneUtil.getSupportedRegions().includes(RegionCode.UN001));
+  assertFalse(phoneUtil.getSupportedRegions().includes('800'));
 }
 
 function testGetSupportedGlobalNetworkCallingCodes() {
   assertTrue(phoneUtil.getSupportedGlobalNetworkCallingCodes().length > 0);
-  assertFalse(goog.array.contains(
-      phoneUtil.getSupportedGlobalNetworkCallingCodes(), RegionCode.US));
-  assertTrue(goog.array.contains(
-      phoneUtil.getSupportedGlobalNetworkCallingCodes(), 800));
-  goog.array.forEach(
-      phoneUtil.getSupportedGlobalNetworkCallingCodes(),
-      function(countryCallingCode) {
-        assertEquals(
-            RegionCode.UN001,
-            phoneUtil.getRegionCodeForCountryCode(countryCallingCode));
-      });
+  assertFalse(phoneUtil.getSupportedGlobalNetworkCallingCodes().includes(1));
+  assertTrue(phoneUtil.getSupportedGlobalNetworkCallingCodes().includes(800));
+  phoneUtil.getSupportedGlobalNetworkCallingCodes().forEach(function(
+      countryCallingCode) {
+    assertEquals(
+        RegionCode.UN001,
+        phoneUtil.getRegionCodeForCountryCode(countryCallingCode));
+  });
 }
 
 function testGetSupportedCallingCodes() {
   assertTrue(phoneUtil.getSupportedCallingCodes().length > 0);
-  goog.array.forEach(
-      phoneUtil.getSupportedCallingCodes(), function(callingCode) {
-        assertTrue(callingCode > 0);
-        assertFalse(
-            phoneUtil.getRegionCodeForCountryCode(callingCode) ==
-            RegionCode.ZZ);
-      });
+  phoneUtil.getSupportedCallingCodes().forEach(function(callingCode) {
+    assertTrue(callingCode > 0);
+    assertFalse(
+        phoneUtil.getRegionCodeForCountryCode(callingCode) == RegionCode.ZZ);
+  });
   // There should be more than just the global network calling codes in this
   // set.
   assertTrue(
       phoneUtil.getSupportedCallingCodes().length >
       phoneUtil.getSupportedGlobalNetworkCallingCodes().length);
   // But they should be included. Testing one of them.
-  assertTrue(goog.array.contains(
-      phoneUtil.getSupportedGlobalNetworkCallingCodes(), 979));
+  assertTrue(phoneUtil.getSupportedGlobalNetworkCallingCodes().includes(979));
 }
 
 function testGetSupportedTypesForRegion() {
   var PNT = i18n.phonenumbers.PhoneNumberType;
   var types = phoneUtil.getSupportedTypesForRegion(RegionCode.BR);
-  assertTrue(goog.array.contains(types, PNT.FIXED_LINE));
+  assertTrue(types.includes(PNT.FIXED_LINE));
   // Our test data has no mobile numbers for Brazil.
-  assertFalse(goog.array.contains(types, PNT.MOBILE));
+  assertFalse(types.includes(PNT.MOBILE));
   // UNKNOWN should never be returned.
-  assertFalse(goog.array.contains(types, PNT.UNKNOWN));
+  assertFalse(types.includes(PNT.UNKNOWN));
 
   // In the US, many numbers are classified as FIXED_LINE_OR_MOBILE; but we
   // don't want to expose this as a supported type, instead we say FIXED_LINE
   // and MOBILE are both present.
   types = phoneUtil.getSupportedTypesForRegion(RegionCode.US);
-  assertTrue(goog.array.contains(types, PNT.FIXED_LINE));
-  assertTrue(goog.array.contains(types, PNT.MOBILE));
-  assertFalse(goog.array.contains(types, PNT.FIXED_LINE_OR_MOBILE));
+  assertTrue(types.includes(PNT.FIXED_LINE));
+  assertTrue(types.includes(PNT.MOBILE));
+  assertFalse(types.includes(PNT.FIXED_LINE_OR_MOBILE));
 
   types = phoneUtil.getSupportedTypesForRegion(RegionCode.ZZ);
   assertTrue(types.length == 0);
@@ -514,11 +513,11 @@ function testGetSupportedTypesForNonGeoEntity() {
   assertTrue(types.length == 0);
 
   types = phoneUtil.getSupportedTypesForNonGeoEntity(979);
-  assertTrue(goog.array.contains(types, PNT.PREMIUM_RATE));
+  assertTrue(types.includes(PNT.PREMIUM_RATE));
   // Our test data has no mobile numbers for Brazil.
-  assertFalse(goog.array.contains(types, PNT.MOBILE));
+  assertFalse(types.includes(PNT.MOBILE));
   // UNKNOWN should never be returned.
-  assertFalse(goog.array.contains(types, PNT.UNKNOWN));
+  assertFalse(types.includes(PNT.UNKNOWN));
 }
 
 function testGetNationalSignificantNumber() {
@@ -897,6 +896,12 @@ function testFormatOutOfCountryWithPreferredIntlPrefix() {
   assertEquals(
       '0011 39 02 3661 8300',
       phoneUtil.formatOutOfCountryCallingNumber(IT_NUMBER, RegionCode.AU));
+      
+  // Testing preferred international prefixes with ~ are supported (designates
+  // waiting).
+  assertEquals(
+      '8~10 39 02 3661 8300',
+      phoneUtil.formatOutOfCountryCallingNumber(IT_NUMBER, RegionCode.UZ))
 }
 
 function testFormatOutOfCountryKeepingAlphaChars() {
@@ -1102,6 +1107,9 @@ function testFormatWithPreferredCarrierCode() {
 function testFormatNumberForMobileDialing() {
   // Numbers are normally dialed in national format in-country, and
   // international format from outside the country.
+  assertEquals(
+      '6012345678',
+      phoneUtil.formatNumberForMobileDialing(CO_FIXED_LINE, RegionCode.CO, false));
   assertEquals(
       '030123456',
       phoneUtil.formatNumberForMobileDialing(DE_NUMBER, RegionCode.DE, false));
@@ -1823,16 +1831,16 @@ function testGetRegionCodeForNumber() {
 function testGetRegionCodesForCountryCode() {
   /** @type {!Array.<string>} */
   var regionCodesForNANPA = phoneUtil.getRegionCodesForCountryCode(1);
-  assertTrue(goog.array.contains(regionCodesForNANPA, RegionCode.US));
-  assertTrue(goog.array.contains(regionCodesForNANPA, RegionCode.BS));
-  assertTrue(goog.array.contains(
-      phoneUtil.getRegionCodesForCountryCode(44), RegionCode.GB));
-  assertTrue(goog.array.contains(
-      phoneUtil.getRegionCodesForCountryCode(49), RegionCode.DE));
-  assertTrue(goog.array.contains(
-      phoneUtil.getRegionCodesForCountryCode(800), RegionCode.UN001));
+  assertTrue(regionCodesForNANPA.includes(RegionCode.US));
+  assertTrue(regionCodesForNANPA.includes(RegionCode.BS));
+  assertTrue(
+      phoneUtil.getRegionCodesForCountryCode(44).includes(RegionCode.GB));
+  assertTrue(
+      phoneUtil.getRegionCodesForCountryCode(49).includes(RegionCode.DE));
+  assertTrue(
+      phoneUtil.getRegionCodesForCountryCode(800).includes(RegionCode.UN001));
   // Test with invalid country calling code.
-  assertTrue(goog.array.isEmpty(phoneUtil.getRegionCodesForCountryCode(-1)));
+  assertTrue((phoneUtil.getRegionCodesForCountryCode(-1).length === 0));
 }
 
 function testGetCountryCodeForRegion() {
@@ -3548,6 +3556,151 @@ function testParseExtensions() {
   // Retry with the same number in a slightly different format.
   assertTrue(usWithExtension.equals(
       phoneUtil.parse('+1 (645) 123 1234 ext. 910#', RegionCode.US)));
+}
+
+function testParseHandlesLongExtensionsWithExplicitLabels() {
+  // Test lower and upper limits of extension lengths for each type of label.
+  /** @type {!i18n.phonenumbers.PhoneNumber} */
+  var nzNumber = new i18n.phonenumbers.PhoneNumber();
+  nzNumber.setCountryCode(64);
+  nzNumber.setNationalNumber(33316005);
+
+  // Firstly, when in RFC format: PhoneNumberUtil.extLimitAfterExplicitLabel
+  nzNumber.setExtension('0');
+  assertTrue(nzNumber.equals(
+      phoneUtil.parse('tel:+6433316005;ext=0', RegionCode.NZ)));
+  nzNumber.setExtension('01234567890123456789');
+  assertTrue(nzNumber.equals(
+      phoneUtil.parse('tel:+6433316005;ext=01234567890123456789', RegionCode.NZ)));
+  // Extension too long.
+  try {
+      phoneUtil.parse('tel:+6433316005;ext=012345678901234567890', RegionCode.NZ);
+      fail(
+          'This should not parse as length of extension is higher than allowed: '
+          + 'tel:+6433316005;ext=012345678901234567890');
+  } catch (e) {
+    // Expected this exception.
+    assertEquals(
+        'Wrong error type stored in exception.',
+        i18n.phonenumbers.Error.NOT_A_NUMBER, e.message);
+  }
+
+  // Explicit extension label: PhoneNumberUtil.extLimitAfterExplicitLabel
+  nzNumber.setExtension('1');
+  assertTrue(nzNumber.equals(
+      phoneUtil.parse('03 3316005ext:1', RegionCode.NZ)));
+  nzNumber.setExtension('12345678901234567890');
+  assertTrue(nzNumber.equals(
+      phoneUtil.parse('03 3316005 xtn:12345678901234567890', RegionCode.NZ)));
+  assertTrue(nzNumber.equals(
+      phoneUtil.parse('03 3316005 extension\t12345678901234567890', RegionCode.NZ)));
+  assertTrue(nzNumber.equals(
+      phoneUtil.parse('03 3316005 xtensio:12345678901234567890', RegionCode.NZ)));
+  assertTrue(nzNumber.equals(
+      phoneUtil.parse('03 3316005 xtensión, 12345678901234567890#', RegionCode.NZ)));
+  assertTrue(nzNumber.equals(
+      phoneUtil.parse('03 3316005extension.12345678901234567890', RegionCode.NZ)));
+  assertTrue(nzNumber.equals(
+      phoneUtil.parse('03 3316005 доб:12345678901234567890', RegionCode.NZ)));
+  // Extension too long.
+  try {
+    phoneUtil.parse('03 3316005 extension 123456789012345678901', RegionCode.NZ);
+    fail(
+        'This should not parse as length of extension is higher than allowed: '
+        + '03 3316005 extension 123456789012345678901');
+  } catch (e) {
+    // Expected this exception.
+    assertEquals(
+        'Wrong error type stored in exception.',
+        i18n.phonenumbers.Error.TOO_LONG, e.message);
+  }
+}
+
+function testParseHandlesLongExtensionsWithAutoDiallingLabels() {
+  // Lastly, cases of auto-dialling and other standard extension labels,
+  // PhoneNumberUtil.extLimitAfterLikelyLabel
+  var usNumberUserInput = new i18n.phonenumbers.PhoneNumber();
+  usNumberUserInput.setCountryCode(1);
+  usNumberUserInput.setNationalNumber(2679000000);
+  usNumberUserInput.setExtension('123456789012345');
+  assertTrue(usNumberUserInput.equals(
+      phoneUtil.parse('+12679000000,,123456789012345#', RegionCode.US)));
+  assertTrue(usNumberUserInput.equals(
+      phoneUtil.parse('+12679000000;123456789012345#', RegionCode.US)));
+  var ukNumberUserInput = new i18n.phonenumbers.PhoneNumber();
+  ukNumberUserInput.setCountryCode(44);
+  ukNumberUserInput.setNationalNumber(2034000000);
+  ukNumberUserInput.setExtension('123456789');
+  assertTrue(ukNumberUserInput.equals(
+      phoneUtil.parse('+442034000000,,123456789#', RegionCode.GB)));
+  // Extension too long.
+  try {
+    phoneUtil.parse('+12679000000,,1234567890123456#', RegionCode.US);
+    fail(
+        'This should not parse as length of extension is higher than allowed: '
+        + '+12679000000,,1234567890123456#');
+  } catch (e) {
+    // Expected this exception.
+    assertEquals(
+        'Wrong error type stored in exception.',
+        i18n.phonenumbers.Error.NOT_A_NUMBER, e.message);
+  }
+}
+
+function testParseHandlesShortExtensionsWithAmbiguousChar() {
+  var nzNumber = new i18n.phonenumbers.PhoneNumber();
+  nzNumber.setCountryCode(64);
+  nzNumber.setNationalNumber(33316005);
+
+  // Secondly, for single and non-standard cases:
+  // PhoneNumberUtil.extLimitAfterAmbiguousChar
+  nzNumber.setExtension("123456789");
+  assertTrue(nzNumber.equals(
+      phoneUtil.parse('03 3316005 x 123456789', RegionCode.NZ)));
+  assertTrue(nzNumber.equals(
+      phoneUtil.parse('03 3316005 x. 123456789', RegionCode.NZ)));
+  assertTrue(nzNumber.equals(
+      phoneUtil.parse('03 3316005 #123456789#', RegionCode.NZ)));
+  assertTrue(nzNumber.equals(
+      phoneUtil.parse('03 3316005 ~ 123456789', RegionCode.NZ)));
+  // Extension too long.
+  try {
+    phoneUtil.parse("03 3316005 ~ 1234567890", RegionCode.NZ);
+    fail(
+        "This should not parse as length of extension is higher than allowed: "
+        + "03 3316005 ~ 1234567890");
+  } catch (e) {
+    // Expected this exception.
+    assertEquals(
+        'Wrong error type stored in exception.',
+        i18n.phonenumbers.Error.TOO_LONG, e.message);
+  }
+}
+
+function testParseHandlesShortExtensionsWhenNotSureOfLabel() {
+  // Thirdly, when no explicit extension label present, but denoted by tailing #:
+  // PhoneNumberUtil.extLimitWhenNotSure
+  var usNumber = new i18n.phonenumbers.PhoneNumber();
+  usNumber.setCountryCode(1);
+  usNumber.setNationalNumber(1234567890);
+  usNumber.setExtension('666666');
+  assertTrue(usNumber.equals(
+      phoneUtil.parse('+1123-456-7890 666666#', RegionCode.US)));
+  usNumber.setExtension('6');
+  assertTrue(usNumber.equals(
+      phoneUtil.parse('+11234567890-6#', RegionCode.US)));
+  // Extension too long.
+  try {
+    phoneUtil.parse('+1123-456-7890 7777777#', RegionCode.US);
+    fail(
+        'This should not parse as length of extension is higher than allowed: '
+        + '+1123-456-7890 7777777#');
+  } catch (e) {
+    // Expected this exception.
+    assertEquals(
+        'Wrong error type stored in exception.',
+        i18n.phonenumbers.Error.NOT_A_NUMBER, e.message);
+  }
 }
 
 function testParseAndKeepRaw() {

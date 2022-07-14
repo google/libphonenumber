@@ -109,6 +109,10 @@ class RegionCode {
     return "CN";
   }
 
+  static const char* CO() {
+    return "CO";
+  }
+
   static const char* CS() {
     return "CS";
   }

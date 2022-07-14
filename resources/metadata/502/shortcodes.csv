@@ -1,0 +1,6 @@
+Region ; Prefix    ; Length ; Type       ; Tariff    ; Sms  ; Carrier Specific
+GT     ; 110       ; 3      ; EMERGENCY  ; TOLL_FREE
+GT     ; 12[03]    ; 3      ; EMERGENCY  ; TOLL_FREE
+GT     ; 12[124-9] ; 3      ; COMMERCIAL
+GT     ; 1[57]     ; 4      ; COMMERCIAL
+GT     ; 40404     ; 5      ; COMMERCIAL ;           ; true ; true
