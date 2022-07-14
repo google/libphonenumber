@@ -1,0 +1,4 @@
+Id            ; National       ; International  ; Comment
+fixed_1/3/4   ; "#X XXX XXXX"  ; "X XXX XXXX"   ; "Formatting patterns from wikipedia and the document itself -\nhttp://en.wikipedia.org/wiki/%2B66"
+fmt2_2/3/3-4  ; "#XX XXX XXX*" ; "XX XXX XXX*"
+varcost_4/3/3 ; "XXXX XXX XXX" ; "XXXX XXX XXX"

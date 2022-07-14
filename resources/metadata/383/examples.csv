@@ -1,0 +1,5 @@
+Region ; Type         ; Number
+XK     ; FIXED_LINE   ; "28012345"
+XK     ; MOBILE       ; "43201234"
+XK     ; TOLL_FREE    ; "80001234"
+XK     ; PREMIUM_RATE ; "90001234"

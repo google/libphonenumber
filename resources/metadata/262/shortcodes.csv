@@ -1,0 +1,5 @@
+Region ; Prefix ; Length ; Type      ; Tariff
+RE     ; 112    ; 3      ; EMERGENCY ; TOLL_FREE
+RE     ; 1[578] ; 2      ; EMERGENCY ; TOLL_FREE
+YT     ; 112    ; 3      ; EMERGENCY ; TOLL_FREE
+YT     ; 15     ; 2      ; EMERGENCY ; TOLL_FREE

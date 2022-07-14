@@ -1,0 +1,7 @@
+Region ; Prefix    ; Length ; Type               ; Tariff    ; Format
+AT     ; 1[12]2    ; 3      ; EMERGENCY          ; TOLL_FREE
+AT     ; 11600[06] ; 6      ; EXPANDED_EMERGENCY ; TOLL_FREE ; "shortcode_6"
+AT     ; 116117    ; 6      ; EXPANDED_EMERGENCY ; TOLL_FREE ; "shortcode_6"
+AT     ; 116123    ; 6      ; EXPANDED_EMERGENCY ; TOLL_FREE ; "shortcode_6"
+AT     ; 133       ; 3      ; EMERGENCY          ; TOLL_FREE
+AT     ; 144       ; 3      ; EMERGENCY          ; TOLL_FREE

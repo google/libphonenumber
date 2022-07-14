@@ -1,0 +1,8 @@
+Region ; Type         ; Number
+NL     ; FIXED_LINE   ; "101234567"
+NL     ; MOBILE       ; "612345678"
+NL     ; PAGER        ; "662345678"
+NL     ; TOLL_FREE    ; "8001234"
+NL     ; PREMIUM_RATE ; "9061234"
+NL     ; VOIP         ; "851234567"
+NL     ; UAN          ; "14020"

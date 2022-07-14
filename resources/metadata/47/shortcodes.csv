@@ -1,0 +1,12 @@
+Region ; Prefix    ; Length ; Type               ; Tariff    ; Provenance
+NO     ; 11[023]   ; 3      ; EMERGENCY          ; TOLL_FREE
+NO     ; 11611[17] ; 6      ; EXPANDED_EMERGENCY ; TOLL_FREE
+NO     ; 116123    ; 6      ; EXPANDED_EMERGENCY ; TOLL_FREE
+NO     ; 119       ; 3      ; COMMERCIAL
+NO     ; 12[048]   ; 3      ; COMMERCIAL
+NO     ; 1412      ; 4      ; EXPANDED_EMERGENCY
+NO     ; 14[59]    ; 3      ; COMMERCIAL
+NO     ; 17[57]    ; 3      ; COMMERCIAL
+NO     ; 18[5-9]   ; 4      ; COMMERCIAL         ;           ; GOVERNMENT
+NO     ; 190       ; 3      ; COMMERCIAL
+SJ     ; 11[023]   ; 3      ; EMERGENCY          ; TOLL_FREE

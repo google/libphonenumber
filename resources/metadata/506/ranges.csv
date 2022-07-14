@@ -1,0 +1,23 @@
+Prefix    ; Length ; Type       ; Tariff        ; Operator    ; Format       ; Regions ; Provenance
+2[024-7]  ; 8      ; FIXED_LINE ; STANDARD_RATE ;             ; "fmt1_4/4"   ; "CR"    ; GOVERNMENT
+210[0-6]  ; 8      ; VOIP       ; STANDARD_RATE ;             ; "fmt1_4/4"   ; "CR"    ; GOVERNMENT
+210[7-9]  ; 8      ; FIXED_LINE ; STANDARD_RATE ;             ; "fmt1_4/4"   ; "CR"
+21[1-9]   ; 8      ; FIXED_LINE ; STANDARD_RATE ;             ; "fmt1_4/4"   ; "CR"
+3005      ; 8      ; MOBILE     ; STANDARD_RATE ; "kolbi_ice" ; "fmt1_4/4"   ; "CR"    ; GOVERNMENT
+4         ; 8      ; VOIP       ; STANDARD_RATE ;             ; "fmt1_4/4"   ; "CR"    ; GOVERNMENT
+5[07]     ; 8      ; MOBILE     ; STANDARD_RATE ; "kolbi_ice" ; "fmt1_4/4"   ; "CR"    ; IR21
+5100      ; 8      ; VOIP       ; STANDARD_RATE ;             ; "fmt1_4/4"   ; "CR"
+6[0-4]    ; 8      ; MOBILE     ; STANDARD_RATE ; "movistar"  ; "fmt1_4/4"   ; "CR"    ; IR21
+6500[01]  ; 8      ; MOBILE     ; STANDARD_RATE ; "movistar"  ; "fmt1_4/4"   ; "CR"    ; IR21
+7000      ; 8      ; MOBILE     ; STANDARD_RATE ; "claro"     ; "fmt1_4/4"   ; "CR"    ; GOVERNMENT
+7001[0-4] ; 8      ; MOBILE     ; STANDARD_RATE ; "claro"     ; "fmt1_4/4"   ; "CR"    ; GOVERNMENT
+7001[5-9] ; 8      ; MOBILE     ; STANDARD_RATE ;             ; "fmt1_4/4"   ; "CR"
+700[2-9]  ; 8      ; MOBILE     ; STANDARD_RATE ; "claro"     ; "fmt1_4/4"   ; "CR"    ; IR21
+70[1-9]   ; 8      ; MOBILE     ; STANDARD_RATE ; "claro"     ; "fmt1_4/4"   ; "CR"    ; IR21
+7[12]     ; 8      ; MOBILE     ; STANDARD_RATE ; "claro"     ; "fmt1_4/4"   ; "CR"    ; IR21
+730[01]   ; 8      ; MOBILE     ; STANDARD_RATE ; "claro"     ; "fmt1_4/4"   ; "CR"    ; IR21
+730[2-9]  ; 8      ; MOBILE     ; STANDARD_RATE ;             ; "fmt1_4/4"   ; "CR"
+73[1-9]   ; 8      ; MOBILE     ; STANDARD_RATE ;             ; "fmt1_4/4"   ; "CR"
+800       ; 10     ; FIXED_LINE ; TOLL_FREE     ;             ; "fmt2_3/3/4" ; "CR"
+8[3-9]    ; 8      ; MOBILE     ; STANDARD_RATE ; "kolbi_ice" ; "fmt1_4/4"   ; "CR"    ; IR21
+90[059]   ; 10     ; FIXED_LINE ; PREMIUM_RATE  ;             ; "fmt2_3/3/4" ; "CR"

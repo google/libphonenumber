@@ -16,7 +16,7 @@
 # Mapped ranges at 3-4 digit granularity level for easier maintenance. Added
 # some additional ranges based on respective IR.21 docs.
 
-3897|Vip
+3897|A1
 38970|T-Mobile
 38971|T-Mobile
 38972|T-Mobile

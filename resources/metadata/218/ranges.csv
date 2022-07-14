@@ -1,0 +1,102 @@
+Prefix     ; Length ; Type       ; Tariff        ; Area Code Length ; Operator  ; Format     ; Regions ; Geocode:en           ; Provenance ; Comment
+205        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/7" ; "LY"    ; "Sidiessaiah"        ; ITU
+206        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/7" ; "LY"    ; "Suk Elkhamis"       ; ITU
+21         ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/7" ; "LY"    ; "Tripoli"            ; ITU
+22[0-35-9] ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/7" ; "LY"    ; "Ben Gashir"         ; ITU
+224        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/7" ; "LY"    ; "Swajni"             ; ITU
+23         ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/7" ; "LY"    ; "Zawia"              ; ITU
+24         ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/7" ; "LY"    ; "Sabratha"           ; ITU
+25[013-9]  ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/7" ; "LY"    ; "Zuara"              ; ITU
+252        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/7" ; "LY"    ; "Zahra"              ; ITU
+26         ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/7" ; "LY"    ; "Taigura"            ; ITU
+271        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/7" ; "LY"    ; "Hashan"             ; ITU
+272        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/7" ; "LY"    ; "Azizia"             ; ITU
+274        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/7" ; "LY"    ; "Abu Issa"           ; ITU
+275        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/7" ; "LY"    ; "Matred"             ; ITU
+277        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/7" ; "LY"    ; "Mamura"             ; ITU
+279        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/7" ; "LY"    ; "Elmaya"             ; ITU
+281        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/7" ; "LY"    ; "Jmail"              ; ITU
+282        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/7" ; "LY"    ; "Agelat, Ajalat"     ; ITU
+284        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/7" ; "LY"    ; "Hugialin"           ; ITU
+31         ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/7" ; "LY"    ; "Khums"              ; ITU
+322        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/7" ; "LY"    ; "Bani Walid"         ; ITU
+323        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/7" ; "LY"    ; "Wadi Keam"          ; ITU
+325        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/7" ; "LY"    ; "Tarhuna"            ; ITU
+326        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/7" ; "LY"    ; "Kussabat"           ; ITU
+41         ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/7" ; "LY"    ; "Garian"             ; ITU
+421        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/7" ; "LY"    ; "Yefren"             ; ITU
+422        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/7" ; "LY"    ; "Mizda"              ; ITU
+423        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/7" ; "LY"    ; "Guassem"            ; ITU
+425        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/7" ; "LY"    ; "Buzayan"            ; ITU
+427        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/7" ; "LY"    ; "Kikla"              ; ITU
+452        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/7" ; "LY"    ; "Rujban"             ; ITU
+453        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/7" ; "LY"    ; "Reyana"             ; ITU
+454        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/7" ; "LY"    ; "Al Josh"            ; ITU
+47         ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/7" ; "LY"    ; "Nalut"              ; ITU
+481        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/7" ; "LY"    ; "Kabaw"              ; ITU
+482        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/7" ; "LY"    ; "Tigi"               ; ITU
+484        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/7" ; "LY"    ; "Ghadames"           ; ITU
+51         ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/7" ; "LY"    ; "Misratah"           ; ITU
+521        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/7" ; "LY"    ; "Zliten"             ; ITU
+522        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/7" ; "LY"    ; "Tawergha"           ; ITU
+523        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/7" ; "LY"    ; "Dafnia"             ; ITU
+524        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/7" ; "LY"    ; "Kasarahmad"         ; ITU
+526        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/7" ; "LY"    ; "Zawyat Elmahjub"    ; ITU
+529        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/7" ; "LY"    ; "Bugrain"            ; ITU
+53         ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/7" ; "LY"    ;                      ; ITU
+54         ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/7" ; "LY"    ; "Sirt"               ; ITU
+551        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/7" ; "LY"    ; "Sirt"               ; ITU
+553        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/7" ; "LY"    ; "Abuhadi"            ; ITU
+554        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/7" ; "LY"    ; "Wadi Jeref"         ; ITU
+555        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/7" ; "LY"    ; "Noflia"             ; ITU
+57         ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/7" ; "LY"    ; "Hun"                ; ITU
+581        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/7" ; "LY"    ; "Wodan"              ; ITU
+582        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/7" ; "LY"    ; "Sokna"              ; ITU
+583        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/7" ; "LY"    ; "Soussa"             ; ITU
+584        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/7" ; "LY"    ; "Zella"              ; ITU
+61         ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/7" ; "LY"    ; "Benghazi"           ; ITU
+62[0-2]    ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/7" ; "LY"    ;                      ; ITU
+623        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/7" ; "LY"    ; "Gmines"             ; ITU
+624        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/7" ; "LY"    ; "Elkuwaifia"         ; ITU
+625        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/7" ; "LY"    ; "Deriana"            ; ITU
+626        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/7" ; "LY"    ; "Kaalifa"            ; ITU
+627        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/7" ; "LY"    ; "Jerdina"            ; ITU
+628        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/7" ; "LY"    ; "Seluk"              ; ITU
+629        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/7" ; "LY"    ; "Elmagrun"           ; ITU
+63         ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/7" ; "LY"    ; "Benina"             ; ITU
+6[49]      ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/7" ; "LY"    ;                      ; ITU
+652        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/7" ; "LY"    ; "Kofra"              ; ITU
+653        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/7" ; "LY"    ; "Ojla"               ; ITU
+654        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/7" ; "LY"    ; "Sidi Sultan Sultan" ; ITU
+655        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/7" ; "LY"    ; "Bisher"             ; ITU
+657        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/7" ; "LY"    ; "Jalo"               ; ITU
+67         ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/7" ; "LY"    ; "Elmareg"            ; ITU
+681        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/7" ; "LY"    ; "Tolmitha"           ; ITU
+682        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/7" ; "LY"    ; "Jardas"             ; ITU
+683        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/7" ; "LY"    ; "Taknes"             ; ITU
+684        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/7" ; "LY"    ; "Elbayada"           ; ITU
+685        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/7" ; "LY"    ; "Tomina"             ; ITU
+71         ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/7" ; "LY"    ; "Sebha"              ; ITU
+721        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/7" ; "LY"    ; "Brak"               ; ITU
+723        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/7" ; "LY"    ; "Edry"               ; ITU
+724        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/7" ; "LY"    ; "Ghat"               ; ITU
+725        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/7" ; "LY"    ; "Murzuk"             ; ITU
+726        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/7" ; "LY"    ; "Um Laranib"         ; ITU
+727        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/7" ; "LY"    ; "Zawaya"             ; ITU
+729        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/7" ; "LY"    ; "Ghrefa"             ; ITU
+73[05-9]   ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/7" ; "LY"    ; "Ubary"              ; ITU
+731        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/7" ; "LY"    ; "Wadi Atba"          ; ITU
+732        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/7" ; "LY"    ; "Bergen"             ; ITU
+733        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/7" ; "LY"    ; "Garda"              ; ITU
+734        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/7" ; "LY"    ; "Traghen"            ; ITU
+81         ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/7" ; "LY"    ; "Derna"              ; ITU
+82[02-9]   ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/7" ; "LY"    ; "Haraua"             ; ITU
+821        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/7" ; "LY"    ; "Gubba"              ; ITU
+84         ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/7" ; "LY"    ; "El Beida"           ; ITU
+851        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/7" ; "LY"    ; "Shahat"             ; ITU
+852        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/7" ; "LY"    ; "Massa"              ; ITU
+854        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/7" ; "LY"    ; "Slenta"             ; ITU
+884        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/7" ; "LY"    ; "Jaghbub"            ; ITU
+9[13]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "almadar" ; "fmt1_2/7" ; "LY"    ;                      ; IR21       ; "IR21 dated 3/22/2017"
+9[24]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "libyana" ; "fmt1_2/7" ; "LY"    ;                      ; IR21       ; "IR21 dated 5/2/2019"
+9[56]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "ltt"     ; "fmt1_2/7" ; "LY"    ;                      ; TELECOMS   ; "Confirmed with the carrier of record 3/25/2019"

@@ -1,0 +1,4 @@
+Region ; Type       ; Number
+GW     ; FIXED_LINE ; "443201234"
+GW     ; MOBILE     ; "955012345"
+GW     ; VOIP       ; "4012345"

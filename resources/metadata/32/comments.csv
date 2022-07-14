@@ -1,0 +1,10 @@
+Region ; Label                 ; Comment
+BE     ; SC                    ; "http://www.bipt.be/en/161/ShowContent/502/Database/Databases.aspx"
+BE     ; SC                    ; "http://www.mobileweb.be/en/mobileweb/sms-numberplan.asp"
+BE     ; SC_EXPANDED_EMERGENCY ; "http://www.childfocus.be/fr/accueil/ lists this as being an emergency number."
+BE     ; SC_PREMIUM_RATE       ; "For the numbers starting with 2-7 or 9, in practice, there is a range of rates; but the\nmaximum is at least half a Euro, and in some cases 31 Euros (for mobile payments) so we\nconsider them all premium rate for now. Other numbers have been assigned here because\noperators have listed them as being more expensive than normal numbers, e.g.\nhttp://www.voo.be/fr/telephone/tarifs-speciaux/"
+BE     ; SC_TOLL_FREE          ; "Documentation from www.childfocus.be says that 110 and 116000 are both free. Other\ninformation comes from the website of each number."
+BE     ; XML                   ; "http://www.bipt.be/en/operators/telecommunication/Numbering/Database"
+BE     ; XML                   ; "http://www.bipt.be/public/files/en/474/20140829153659_Belgian_numbering_plan"
+BE     ; XML                   ; "http://en.wikipedia.org/wiki/Telephone_numbers_in_Belgium"
+BE     ; XML_UAN               ; "78X numbers are nomadic and standard rate as per voipgate.com and Wikipedia. And these\nare customer care numbers as per online results. Supporting here as UAN is closest\nmatch. http://www.voipgate.com/site/news/newsflash/new-numbers-available-the-netherlands-and-austria.html"

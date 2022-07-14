@@ -16,6 +16,8 @@
 
 package com.google.i18n.phonenumbers;
 
+import static org.junit.Assert.assertThrows;
+
 import com.google.i18n.phonenumbers.PhoneNumberUtil.PhoneNumberFormat;
 import com.google.i18n.phonenumbers.PhoneNumberUtil.PhoneNumberType;
 import com.google.i18n.phonenumbers.PhoneNumberUtil.ValidationResult;
@@ -25,9 +27,13 @@ import com.google.i18n.phonenumbers.Phonemetadata.PhoneNumberDesc;
 import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber;
 import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber.CountryCodeSource;
 
+import com.google.i18n.phonenumbers.metadata.source.MetadataSource;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+import org.junit.Assert;
+import org.junit.function.ThrowingRunnable;
+import org.mockito.Mockito;
 
 /**
  * Unit tests for PhoneNumberUtil.java
@@ -55,6 +61,8 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
       new PhoneNumber().setCountryCode(1).setNationalNumber(2423570000L);
   private static final PhoneNumber BS_NUMBER =
       new PhoneNumber().setCountryCode(1).setNationalNumber(2423651234L);
+  private static final PhoneNumber CO_FIXED_LINE =
+      new PhoneNumber().setCountryCode(57).setNationalNumber(6012345678L);
   // Note that this is the same as the example number for DE in the metadata.
   private static final PhoneNumber DE_NUMBER =
       new PhoneNumber().setCountryCode(49).setNationalNumber(30123456L);
@@ -118,6 +126,11 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
       new PhoneNumber().setCountryCode(979).setNationalNumber(123456789L);
   private static final PhoneNumber UNKNOWN_COUNTRY_CODE_NO_RAW_INPUT =
       new PhoneNumber().setCountryCode(2).setNationalNumber(12345L);
+
+  private final MetadataSource mockedMetadataSource = Mockito.mock(MetadataSource.class);
+  private final PhoneNumberUtil phoneNumberUtilWithMissingMetadata =
+      new PhoneNumberUtil(mockedMetadataSource,
+          CountryCodeToRegionCodeMapForTesting.getCountryCodeToRegionCodeMap());
 
   public void testGetSupportedRegions() {
     assertTrue(phoneUtil.getSupportedRegions().size() > 0);
@@ -653,6 +666,10 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
     // are accepted as possible international prefixes in our test metadta.)
     assertEquals("0011 39 02 3661 8300",
                  phoneUtil.formatOutOfCountryCallingNumber(IT_NUMBER, RegionCode.AU));
+
+    // Testing preferred international prefixes with ~ are supported (designates waiting).
+    assertEquals("8~10 39 02 3661 8300",
+                 phoneUtil.formatOutOfCountryCallingNumber(IT_NUMBER, RegionCode.UZ));
   }
 
   public void testFormatOutOfCountryKeepingAlphaChars() {
@@ -795,6 +812,8 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
   public void testFormatNumberForMobileDialing() {
     // Numbers are normally dialed in national format in-country, and international format from
     // outside the country.
+    assertEquals("6012345678",
+        phoneUtil.formatNumberForMobileDialing(CO_FIXED_LINE, RegionCode.CO, false));
     assertEquals("030123456",
         phoneUtil.formatNumberForMobileDialing(DE_NUMBER, RegionCode.DE, false));
     assertEquals("+4930123456",
@@ -3155,5 +3174,39 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
     assertTrue(phoneUtil.isMobileNumberPortableRegion(RegionCode.GB));
     assertFalse(phoneUtil.isMobileNumberPortableRegion(RegionCode.AE));
     assertFalse(phoneUtil.isMobileNumberPortableRegion(RegionCode.BS));
+  }
+
+  public void testGetMetadataForRegionForNonGeoEntity_shouldBeNull() {
+    assertNull(phoneUtil.getMetadataForRegion(RegionCode.UN001));
+  }
+
+  public void testGetMetadataForRegionForUnknownRegion_shouldBeNull() {
+    assertNull(phoneUtil.getMetadataForRegion(RegionCode.ZZ));
+  }
+
+  public void testGetMetadataForNonGeographicalRegionForGeoRegion_shouldBeNull() {
+    assertNull(phoneUtil.getMetadataForNonGeographicalRegion(/* countryCallingCode = */ 1));
+  }
+
+  public void testGetMetadataForRegionForMissingMetadata() {
+    assertThrows(
+        MissingMetadataException.class,
+        new ThrowingRunnable() {
+          @Override
+          public void run() {
+            phoneNumberUtilWithMissingMetadata.getMetadataForRegion(RegionCode.US);
+          }
+        });
+  }
+
+  public void testGetMetadataForNonGeographicalRegionForMissingMetadata() {
+    assertThrows(
+        MissingMetadataException.class,
+        new ThrowingRunnable() {
+          @Override
+          public void run() {
+            phoneNumberUtilWithMissingMetadata.getMetadataForNonGeographicalRegion(800);
+          }
+        });
   }
 }

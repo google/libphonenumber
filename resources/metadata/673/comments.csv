@@ -1,0 +1,5 @@
+Region ; Label        ; Comment
+BN     ; SC           ; "http://www.itu.int/oth/T020200001F/en"
+BN     ; SC_EMERGENCY ; "http://www.information.gov.bn/VER2/content/view/52/62/"
+BN     ; XML          ; "http://www.itu.int/oth/T020200001F/en"
+BN     ; XML          ; "Format is from http://aiti.gov.bn/contact.html"

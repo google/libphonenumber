@@ -113,7 +113,7 @@ public class BuildMetadataFromXmlTest extends TestCase {
       throws ParserConfigurationException, SAXException, IOException {
     String xmlInput = "<territory"
         + "  countryCode='33' leadingDigits='2' internationalPrefix='00'"
-        + "  preferredInternationalPrefix='0011' nationalPrefixForParsing='0'"
+        + "  preferredInternationalPrefix='00~11' nationalPrefixForParsing='0'"
         + "  nationalPrefixTransformRule='9$1'"  // nationalPrefix manually injected.
         + "  preferredExtnPrefix=' x' mainCountryForCode='true'"
         + "  leadingZeroPossible='true' mobileNumberPortableRegion='true'>"
@@ -124,7 +124,7 @@ public class BuildMetadataFromXmlTest extends TestCase {
     assertEquals(33, phoneMetadata.getCountryCode());
     assertEquals("2", phoneMetadata.getLeadingDigits());
     assertEquals("00", phoneMetadata.getInternationalPrefix());
-    assertEquals("0011", phoneMetadata.getPreferredInternationalPrefix());
+    assertEquals("00~11", phoneMetadata.getPreferredInternationalPrefix());
     assertEquals("0", phoneMetadata.getNationalPrefixForParsing());
     assertEquals("9$1", phoneMetadata.getNationalPrefixTransformRule());
     assertEquals("0", phoneMetadata.getNationalPrefix());

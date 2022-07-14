@@ -1,0 +1,12 @@
+Prefix ; Length ; Type       ; Tariff        ; Operator  ; Format       ; Regions ; Geocode:en    ; Provenance
+[23]   ; 5      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt3_5"     ; "WS"    ; "Apia"        ; ITU
+4      ; 5      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt3_5"     ; "WS"    ; "Upolu Rural" ; ITU
+5      ; 5      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt3_5"     ; "WS"    ; "Savaii"      ; ITU
+60     ; 6      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_3/3-7" ; "WS"    ;               ; ITU
+6[1-9] ; 5      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt3_5"     ; "WS"    ; "Apia"        ; ITU
+71     ; 7      ; MOBILE     ; STANDARD_RATE ; "bluesky" ; "fmt2_2/5"   ; "WS"
+7[237] ; 7      ; MOBILE     ; STANDARD_RATE ; "digicel" ; "fmt2_2/5"   ; "WS"    ;               ; IR21
+7[56]  ; 7      ; MOBILE     ; STANDARD_RATE ; "bluesky" ; "fmt2_2/5"   ; "WS"    ;               ; ITU
+800    ; 6      ; FIXED_LINE ; TOLL_FREE     ;           ; "fmt1_3/3-7" ; "WS"    ;               ; ITU
+8[3-7] ; 7      ; MOBILE     ; STANDARD_RATE ; "digicel" ; "fmt1_3/3-7" ; "WS"    ;               ; IR21
+89     ; 10     ; MOBILE     ; STANDARD_RATE ;           ; "fmt1_3/3-7" ; "WS"

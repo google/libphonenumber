@@ -1,0 +1,6 @@
+Region ; Type         ; Number
+MV     ; FIXED_LINE   ; "6701234"
+MV     ; MOBILE       ; "7712345"
+MV     ; TOLL_FREE    ; "8001234567"
+MV     ; PREMIUM_RATE ; "9001234567"
+MV     ; UAN          ; "4001234"

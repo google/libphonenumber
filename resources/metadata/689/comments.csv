@@ -1,0 +1,6 @@
+Region ; Label          ; Comment
+PF     ; SC             ; "http://www.itu.int/oth/T020200004D/en"
+PF     ; SC_EMERGENCY   ; "http://studentsabroad.state.gov/content/pdfs/911_ABROAD.pdf"
+PF     ; XML            ; "http://www.itu.int/oth/T020200004D/en"
+PF     ; XML_FIXED_LINE ; "Includes payphone prefixes."
+PF     ; XML_TOLL_FREE  ; "As per ARCEP, mainland France and overseas territories use 0800 to 0805 as Toll-free\nnumbers."

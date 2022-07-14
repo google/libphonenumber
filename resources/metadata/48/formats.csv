@@ -1,0 +1,8 @@
+Id                ; National       ; International  ; Comment
+fixed_2/2/3       ; "XX XX XXX"    ; "XX XX XXX"    ; "7-digit fixed-line numbers."
+fixed_2/3/2/2     ; "XX XXX XX XX" ; "XX XXX XX XX" ; "9-digit fixed-line numbers."
+mobile_3/3/3      ; "XXX XXX XXX"  ; "XXX XXX XXX"  ; "Mobile, pager and a few fixed-line numbers.\n(70 numbers are formatted as per mobile numbers, based on information from some Polish people)."
+pager_3/2/2-3     ; "XXX XX XX*"   ; "XXX XX XX*"   ; "7-8 digit pager numbers."
+shortcode_3/3     ; "XXX XXX"      ; "XXX XXX"      ; "6-digit shortcodes and other ranges (e.g. pager)."
+shortcode_5       ; "XXXXX"        ; "XXXXX"        ; "5-digit shortcodes."
+toll_free_3/3/3-4 ; "XXX XXX XXX*" ; "XXX XXX XXX*" ; "9-10 digit toll free numbers."

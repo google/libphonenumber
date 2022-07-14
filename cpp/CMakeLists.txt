@@ -14,7 +14,12 @@
 
 # Author: Philippe Liard
 
-cmake_minimum_required (VERSION 2.8.5)
+cmake_minimum_required (VERSION 3.11)
+
+# Pick the C++ standard to compile with.
+# Abseil currently supports C++11, C++14, and C++17.
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 project (libphonenumber)
 set (libphonenumber_VERSION_MAJOR 8)
@@ -175,7 +180,7 @@ if (${USE_STD_MAP} STREQUAL "OFF")
 endif ()
 
 # Add protoc (Protocol Buffers compiler) target.
-set (RESOURCES_DIR "${CMAKE_SOURCE_DIR}/../resources")
+set (RESOURCES_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../resources")
 
 set (
   PROTOBUF_SOURCES "${RESOURCES_DIR}/phonemetadata.proto"
@@ -183,14 +188,14 @@ set (
 )
 
 set (
-  PROTOBUF_OUTPUT "${CMAKE_SOURCE_DIR}/src/phonenumbers/phonemetadata.pb.cc"
-                  "${CMAKE_SOURCE_DIR}/src/phonenumbers/phonemetadata.pb.h"
-                  "${CMAKE_SOURCE_DIR}/src/phonenumbers/phonenumber.pb.cc"
-                  "${CMAKE_SOURCE_DIR}/src/phonenumbers/phonenumber.pb.h"
+  PROTOBUF_OUTPUT "${CMAKE_CURRENT_SOURCE_DIR}/src/phonenumbers/phonemetadata.pb.cc"
+                  "${CMAKE_CURRENT_SOURCE_DIR}/src/phonenumbers/phonemetadata.pb.h"
+                  "${CMAKE_CURRENT_SOURCE_DIR}/src/phonenumbers/phonenumber.pb.cc"
+                  "${CMAKE_CURRENT_SOURCE_DIR}/src/phonenumbers/phonenumber.pb.h"
 )
 
 add_custom_command (
-  COMMAND ${PROTOC_BIN} --cpp_out=${CMAKE_SOURCE_DIR}/src/phonenumbers/
+  COMMAND ${PROTOC_BIN} --cpp_out=${CMAKE_CURRENT_SOURCE_DIR}/src/phonenumbers/
     --proto_path=${RESOURCES_DIR} ${PROTOBUF_SOURCES}
 
   OUTPUT ${PROTOBUF_OUTPUT}
@@ -200,13 +205,13 @@ add_custom_command (
 if (${BUILD_GEOCODER} STREQUAL "ON")
   # Geocoding data cpp file generation
   set (TOOLS_DIR "${CMAKE_CURRENT_BINARY_DIR}/tools")
-  add_subdirectory("${CMAKE_SOURCE_DIR}/../tools/cpp" "${TOOLS_DIR}")
+  add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/../tools/cpp" "${TOOLS_DIR}")
 
   set (GEOCODING_DIR "${RESOURCES_DIR}/geocoding")
   file (GLOB_RECURSE GEOCODING_SOURCES "${GEOCODING_DIR}/*.txt")
 
   set (GEOCODING_DATA_OUTPUT
-    "${CMAKE_SOURCE_DIR}/src/phonenumbers/geocoding/geocoding_data.cc"
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/phonenumbers/geocoding/geocoding_data.cc"
   )
 
   add_custom_command (
@@ -290,17 +295,17 @@ function (add_metadata_gen_target TARGET_NAME
                                   XML_FILE
                                   METADATA_TYPE
                                   METADATA_HEADER)
-  set (METADATA_SOURCE_DIR "${CMAKE_SOURCE_DIR}/src/phonenumbers")
+  set (METADATA_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/src/phonenumbers")
   set (GEN_OUTPUT "${METADATA_SOURCE_DIR}/${METADATA_TYPE}.cc"
                   "${METADATA_SOURCE_DIR}/${METADATA_HEADER}.h")
-  set (JAR_PATH "${CMAKE_SOURCE_DIR}/../tools/java/cpp-build/target")
+  set (JAR_PATH "${CMAKE_CURRENT_SOURCE_DIR}/../tools/java/cpp-build/target")
   set (JAR_PATH "${JAR_PATH}/cpp-build-1.0-SNAPSHOT-jar-with-dependencies.jar")
 
   if (${REGENERATE_METADATA} STREQUAL "ON")
     add_custom_command (
       COMMAND ${JAVA_BIN} -jar
         ${JAR_PATH} BuildMetadataCppFromXml ${XML_FILE}
-        ${CMAKE_SOURCE_DIR}/src/phonenumbers ${METADATA_TYPE}
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/phonenumbers ${METADATA_TYPE}
 
       OUTPUT ${GEN_OUTPUT}
       DEPENDS ${XML_FILE}
@@ -309,7 +314,7 @@ function (add_metadata_gen_target TARGET_NAME
     add_custom_command (
       COMMAND echo "skip metadata generation from"
         ${XML_FILE} "to"
-        ${CMAKE_SOURCE_DIR}/src/phonenumbers ${METADATA_TYPE}
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/phonenumbers ${METADATA_TYPE}
 
       OUTPUT ${GEN_OUTPUT}
       DEPENDS ${XML_FILE}
@@ -462,12 +467,17 @@ endif ()
 
 if (${USE_POSIX_THREAD} STREQUAL "ON" OR ((APPLE OR UNIX) AND ${USE_BOOST} STREQUAL "OFF" AND ${USE_STDMUTEX} STREQUAL "OFF"))
   if(CMAKE_USE_PTHREADS_INIT)
-    list (APPEND CMAKE_C_FLAGS "-pthread")
+    set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -pthread")
   endif()
   if(CMAKE_THREAD_LIBS_INIT)
     list (APPEND LIBRARY_DEPS ${CMAKE_THREAD_LIBS_INIT})
   endif()
 endif ()
+
+# Safeguarding against any potential link errors as mentioned in
+# https://github.com/abseil/abseil-cpp/issues/225
+set(CMAKE_POSITION_INDEPENDENT_CODE TRUE)
+list (APPEND LIBRARY_DEPS absl::node_hash_set absl::strings absl::synchronization)
 
 if (APPLE)
   list (APPEND COMMON_DEPS ${COREFOUNDATION_LIB} ${FOUNDATION_LIB})
@@ -504,7 +514,7 @@ if (${BUILD_GEOCODER} STREQUAL "ON")
   file (GLOB_RECURSE GEOCODING_TEST_SOURCES "${GEOCODING_TEST_DIR}/*.txt")
 
   set (GEOCODING_TEST_DATA_OUTPUT
-    "${CMAKE_SOURCE_DIR}/test/phonenumbers/geocoding/geocoding_test_data.cc"
+    "${CMAKE_CURRENT_SOURCE_DIR}/test/phonenumbers/geocoding/geocoding_test_data.cc"
   )
 
   add_custom_command (

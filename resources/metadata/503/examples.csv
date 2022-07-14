@@ -1,0 +1,5 @@
+Region ; Type         ; Number
+SV     ; FIXED_LINE   ; "21234567"
+SV     ; MOBILE       ; "70123456"
+SV     ; TOLL_FREE    ; "8001234"
+SV     ; PREMIUM_RATE ; "9001234"

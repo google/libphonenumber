@@ -60,19 +60,13 @@ TEST(StringUtilTest, FindNth) {
 
 TEST(StringUtilTest, SplitStringUsingWithEmptyString) {
   vector<string> result;
-  SplitStringUsing("", ":", &result);
-  EXPECT_EQ(0U, result.size());
-}
-
-TEST(StringUtilTest, SplitStringUsingWithEmptyDelimiter) {
-  vector<string> result;
-  SplitStringUsing("hello", "", &result);
+  SplitStringUsing("", ':', &result);
   EXPECT_EQ(0U, result.size());
 }
 
 TEST(StringUtilTest, SplitStringUsing) {
   vector<string> result;
-  SplitStringUsing(":hello:world:", ":", &result);
+  SplitStringUsing(":hello:world:", ':', &result);
   EXPECT_EQ(2U, result.size());
   EXPECT_EQ("hello", result[0]);
   EXPECT_EQ("world", result[1]);
@@ -80,7 +74,7 @@ TEST(StringUtilTest, SplitStringUsing) {
 
 TEST(StringUtilTest, SplitStringUsingIgnoresEmptyToken) {
   vector<string> result;
-  SplitStringUsing("hello::world", ":", &result);
+  SplitStringUsing("hello::world", ':', &result);
   EXPECT_EQ(2U, result.size());
   EXPECT_EQ("hello", result[0]);
   EXPECT_EQ("world", result[1]);
@@ -141,7 +135,7 @@ TEST(StringUtilTest, safe_strtou64) {
   safe_strtou64("16", &n);
   EXPECT_EQ(16U, n);
 
-  safe_strtou64("18446744073709551615UL", &n);
+  safe_strtou64("18446744073709551615", &n);
   EXPECT_EQ(18446744073709551615ULL, n);
 }
 
@@ -195,13 +189,11 @@ TEST(StringUtilTest, StringHolder) {
   static const char cstring[] = "aaa";
   StringHolder sh1(cstring);
   EXPECT_EQ(cstring, sh1.GetCString());
-  EXPECT_EQ(NULL, sh1.GetString());
 
-  // Test with std::string.
-  string s = "bbb";
+  // Test with absl::string_view.
+  string s = "aaa";
   StringHolder sh2(s);
-  EXPECT_EQ(NULL, sh2.GetCString());
-  EXPECT_EQ(&s, sh2.GetString());
+  EXPECT_EQ(cstring, sh2.GetString());
 
   // Test GetLength().
   string s2 = "hello";
@@ -210,9 +202,8 @@ TEST(StringUtilTest, StringHolder) {
 
   // Test with uint64.
   StringHolder sh4(42);
-  EXPECT_TRUE(sh4.GetCString() == NULL);
-  EXPECT_EQ(2U, sh4.Length());
-  EXPECT_EQ("42", *sh4.GetString());
+  static const char cstring2[] = "42";;
+  EXPECT_EQ(cstring2, sh4.GetString());
 }
 
 // Test the operator+=(string& lhs, const StringHolder& rhs) implementation.

@@ -1,0 +1,8 @@
+Region ; Label               ; Comment
+KW     ; SC                  ; "http://www.itu.int/oth/T0202000073/en"
+KW     ; SC_CARRIER_SPECIFIC ; "https://support.twitter.com/articles/20170024"
+KW     ; XML                 ; "No tollFree or premiumRate information can be found."
+KW     ; XML                 ; "http://www.itu.int/oth/T0202000073/en"
+KW     ; XML_MOBILE          ; "Supported 966[1-9] range based on numbers found online."
+KW     ; XML_MOBILE          ; "989X range is mentioned in older (15.IV.2014) ITU doc but it is not mentioned in\nITU doc dated 5.V.2017. As valid numbers are found online, supporting the range."
+KW     ; XML_TOLL_FREE       ; "18XX XXX was earlier assigned to Fixedline but the latest ITU Doc and also citra.gov.kw\nconfirmed that these are Toll Free numbers."

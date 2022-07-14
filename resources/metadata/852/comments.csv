@@ -1,0 +1,8 @@
+Region ; Label           ; Comment
+HK     ; SC              ; "http://www.ofca.gov.hk/en/industry_focus/telecommunications/portability/index.html"
+HK     ; SC              ; "http://www.ofca.gov.hk/filemanager/ofca/tc/content_311/no_plan.pdf"
+HK     ; SC_SHORT_CODE   ; "Short number ranges in the doc which have categories but have no assigned to/allocated\ninformation have not been included here, such as 1819 and 1820[0-4]. 189 is assigned to\n'Disaster recovery' and it is in the format 189+prefix\nhttps://zh.wikipedia.org/wiki/%E9%A6%99%E6%B8%AF%E9%9B%BB%E8%A9%B1%E8%99%9F%E7%A2%BC%E5%88%86%E9%A1%9Eas\nAs we do not have much information on the prefix that needs to be used we have not\nincluded it. Generally all withdrawn short codes mentioned in 'Change History' section of\nca.gov.hk's doc are not supported unless the range is is mentiond as assigned in main\ntable."
+HK     ; SC_SMS_SERVICES ; "992 is an SMS service short code for emergency."
+HK     ; XML             ; "http://www.ofca.gov.hk/en/industry_focus/telecommunications/portability/index.html"
+HK     ; XML_MOBILE      ; "Prefixes assigned to 'CMMobile Global Communications Ltd' are on hold as per Ofcom\n24 Nov 2017 update, but we continue to support them as there is no much information\nwhen these numbers will be reactivated again."
+HK     ; XML_UAN         ; "These are mentioned as Access Codes in the ITU doc however UAN seems to be the best\nsince they seem to cost the same as fixed-line based on our correspondence with ofca,\nand are used by businesses to forward to a local number."

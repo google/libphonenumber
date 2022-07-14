@@ -101,6 +101,7 @@
 614800|Pivotel Satellite
 614801|Telstra
 614803|Telstra
+614804|Telstra
 614808|Pivotel Satellite
 61481|Optus
 61482|Optus

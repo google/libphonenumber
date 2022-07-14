@@ -1,0 +1,6 @@
+Region ; Type            ; Number
+TL     ; FIXED_LINE      ; "2112345"
+TL     ; MOBILE          ; "77212345"
+TL     ; TOLL_FREE       ; "8012345"
+TL     ; PREMIUM_RATE    ; "9012345"
+TL     ; PERSONAL_NUMBER ; "7012345"

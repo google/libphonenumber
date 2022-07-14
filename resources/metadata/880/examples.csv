@@ -1,0 +1,6 @@
+Region ; Type                 ; Number
+BD     ; FIXED_LINE           ; "27111234"
+BD     ; MOBILE               ; "1812345678"
+BD     ; FIXED_LINE_OR_MOBILE ; "6662300000"
+BD     ; TOLL_FREE            ; "8001234567"
+BD     ; VOIP                 ; "9604123456"

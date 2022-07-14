@@ -1,0 +1,24 @@
+Prefix     ; Length ; Type       ; Tariff        ; Operator   ; Format     ; Regions ; Geocode:en                           ; Provenance
+255        ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/4" ; "PW"    ; "Sonsorol State and Hatohobei State"
+277        ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/4" ; "PW"    ; "Angaur State"
+345        ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/4" ; "PW"    ; "Peleliu State"
+45[0-5]    ; 7      ; MOBILE     ; STANDARD_RATE ; "pmci"     ; "fmt1_3/4" ; "PW"
+45[6-9]    ; 7      ; MOBILE     ; STANDARD_RATE ; "pmci"     ; "fmt1_3/4" ; "PW"    ;                                      ; ITU
+46[0-5]    ; 7      ; MOBILE     ; STANDARD_RATE ; "pmci"     ; "fmt1_3/4" ; "PW"    ;                                      ; ITU
+488        ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/4" ; "PW"    ; "Koror State"
+535        ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/4" ; "PW"    ; "Ngatpang State"
+544        ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/4" ; "PW"    ; "Aimeliik State"
+587        ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/4" ; "PW"    ; "Airai State"
+6[2-4689]0 ; 7      ; MOBILE     ; STANDARD_RATE ;            ; "fmt1_3/4" ; "PW"
+622        ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/4" ; "PW"    ; "Ngchesar State"
+654        ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/4" ; "PW"    ; "Melekeok State"
+679        ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/4" ; "PW"    ; "Ngiwal State"
+733        ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/4" ; "PW"    ; "Ngaremlengui State"
+747        ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/4" ; "PW"    ; "Ngardmau State"
+77         ; 7      ; MOBILE     ; STANDARD_RATE ; "palaucel" ; "fmt1_3/4" ; "PW"
+824        ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/4" ; "PW"    ; "Ngaraard State"
+83[0-5]    ; 7      ; MOBILE     ; STANDARD_RATE ; "pmci"     ; "fmt1_3/4" ; "PW"    ;                                      ; IR21
+855        ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/4" ; "PW"    ; "Ngarchelong State"
+876        ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/4" ; "PW"    ; "Kayangel State"
+88         ; 7      ; MOBILE     ; STANDARD_RATE ; "palautel" ; "fmt1_3/4" ; "PW"
+900        ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/4" ; "PW"

@@ -1,0 +1,33 @@
+Region ; Prefix       ; Length ; Type               ; Tariff    ; Sms  ; Carrier Specific
+HU     ; 10[457]      ; 3      ; EMERGENCY          ; TOLL_FREE
+HU     ; 112          ; 3      ; EMERGENCY          ; TOLL_FREE
+HU     ; 116000       ; 6      ; EXPANDED_EMERGENCY ; TOLL_FREE
+HU     ; 116111       ; 6      ; EXPANDED_EMERGENCY ; TOLL_FREE
+HU     ; 116123       ; 6      ; EXPANDED_EMERGENCY ; TOLL_FREE
+HU     ; 11800        ; 5      ; COMMERCIAL         ;           ;      ; true
+HU     ; 120[0-4]     ; 4      ; COMMERCIAL         ;           ;      ; true
+HU     ; 121[013489]  ; 4      ; COMMERCIAL         ;           ;      ; true
+HU     ; 122[0-5]     ; 4      ; COMMERCIAL         ;           ;      ; true
+HU     ; 123[0-46]    ; 4      ; COMMERCIAL         ;           ;      ; true
+HU     ; 124[0-24-68] ; 4      ; COMMERCIAL         ;           ;      ; true
+HU     ; 125[0-2568]  ; 4      ; COMMERCIAL         ;           ;      ; true
+HU     ; 126[06]      ; 4      ; COMMERCIAL         ;           ;      ; true
+HU     ; 127[0-25-7]  ; 4      ; COMMERCIAL         ;           ;      ; true
+HU     ; 128[028]     ; 4      ; COMMERCIAL         ;           ;      ; true
+HU     ; 129[08]      ; 4      ; COMMERCIAL         ;           ;      ; true
+HU     ; 13700        ; 5      ; COMMERCIAL         ; TOLL_FREE
+HU     ; 13737        ; 5      ; COMMERCIAL         ; TOLL_FREE
+HU     ; 1377[07]     ; 5      ; COMMERCIAL         ; TOLL_FREE
+HU     ; 140[0-5]     ; 4      ; COMMERCIAL         ; TOLL_FREE ;      ; true
+HU     ; 141[013-8]   ; 4      ; COMMERCIAL         ; TOLL_FREE ;      ; true
+HU     ; 142[034]     ; 4      ; COMMERCIAL         ; TOLL_FREE ;      ; true
+HU     ; 143[23]      ; 4      ; COMMERCIAL         ; TOLL_FREE ;      ; true
+HU     ; 144[02-9]    ; 4      ; COMMERCIAL         ; TOLL_FREE ;      ; true
+HU     ; 14500        ; 5      ; COMMERCIAL         ; TOLL_FREE ;      ; true
+HU     ; 14541        ; 5      ; COMMERCIAL         ; TOLL_FREE ;      ; true
+HU     ; 14567        ; 5      ; COMMERCIAL         ; TOLL_FREE ;      ; true
+HU     ; 1777         ; 4      ; COMMERCIAL         ;           ;      ; true
+HU     ; 181[27-9]    ; 4      ; COMMERCIAL
+HU     ; 182[04]      ; 4      ; COMMERCIAL
+HU     ; 1840         ; 4      ; COMMERCIAL         ;           ; true
+HU     ; 18[589]      ; 3      ; COMMERCIAL

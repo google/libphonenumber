@@ -1,0 +1,4 @@
+Region ; Prefix   ; Length ; Type       ; Tariff    ; Sms
+BT     ; 11[023]  ; 3      ; EMERGENCY  ; TOLL_FREE
+BT     ; 11[14-6] ; 3      ; COMMERCIAL
+BT     ; 40404    ; 5      ; COMMERCIAL ;           ; true

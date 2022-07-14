@@ -1,0 +1,5 @@
+Region ; Type         ; Number
+AD     ; FIXED_LINE   ; "712345"
+AD     ; MOBILE       ; "312345"
+AD     ; TOLL_FREE    ; "18001234"
+AD     ; PREMIUM_RATE ; "912345"

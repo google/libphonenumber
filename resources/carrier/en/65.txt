@@ -12,8 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Liberty wireless (Circle.Life) signed an agreement with M1 Limited to
-# deliver voice, messaging and data services.
+# Liberty wireless (Circle.Life) and Geenet signed an agreement with M1 Limited
+# to deliver voice, messaging and data services.
 # https://en.wikipedia.org/wiki/Circles.Life#Singapore
 
 65801|TPG
@@ -21,17 +21,25 @@
 658019|SingTel
 658020|SingTel
 658021|SingTel
+658022|M1
+658023|M1
 658024|TPG
+658025|M1
+658026|M1
 658027|SingTel
 658028|SingTel
 658029|SingTel
-658030|SingTel
-658031|SingTel
+65803|SingTel
+658032|Changi Travel Services Pte Ltd
 658033|TPG
 658034|TPG
 658035|TPG
-658036|SingTel
-658037|SingTel
+65804|M1
+658040|SingTel
+658045|SingTel
+658048|myrepublic
+658049|SingTel
+65805|Changi Travel Services Pte Ltd
 6581|StarHub
 65810|M1
 65812|SingTel
