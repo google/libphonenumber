@@ -223,6 +223,7 @@ maintenance processes.
 *   PHP: https://github.com/giggsey/libphonenumber-for-php
 *   PostgreSQL in-database types: https://github.com/blm768/pg-libphonenumber
 *   Python: https://github.com/daviddrysdale/python-phonenumbers
+*   Ruby: https://github.com/ianks/mini_phone
 *   Ruby: https://github.com/mobi/telephone_number
 *   Rust: https://github.com/1aim/rust-phonenumber
 *   Erlang: https://github.com/marinakr/libphonenumber_erlang
