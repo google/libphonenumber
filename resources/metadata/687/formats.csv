@@ -1,0 +1,3 @@
+Id          ; National   ; International ; Comment
+fmt_2/2/2   ; "XX.XX.XX" ; "XX.XX.XX"    ; "From http://www.1012.nc, the local yellow pages."
+shortcode_3 ; "XXX"      ;               ; "3-digit Shortcodes which would otherwise be formatted as 'XX.X'"

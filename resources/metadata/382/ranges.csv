@@ -1,0 +1,22 @@
+Prefix     ; Length ; Type       ; Tariff        ; Area Code Length ; Operator  ; Format         ; Regions ; Geocode:en                                        ; Provenance
+20[2-8]    ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/3/3-4" ; "ME"    ; "Danilovgad/Kolasin/Podgorica"                    ; GOVERNMENT
+30[2-7]    ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/3/3-4" ; "ME"    ; "Bar/Ulcinj"                                      ; GOVERNMENT
+31[2-7]    ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/3/3-4" ; "ME"    ; "Herceg Novi"                                     ; GOVERNMENT
+32[2-7]    ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/3/3-4" ; "ME"    ; "Kotor/Tivat"                                     ; GOVERNMENT
+33[24-7]   ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/3/3-4" ; "ME"    ; "Budva"                                           ; GOVERNMENT
+40[2-467]  ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/3/3-4" ; "ME"    ; "Niksic/Pluzine/Savnik"                           ; GOVERNMENT
+41[2467]   ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/3/3-4" ; "ME"    ; "Cetinje"                                         ; GOVERNMENT
+50[2467]   ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/3/3-4" ; "ME"    ; "Bijelo Polje/Mojkovac"                           ; GOVERNMENT
+51[24-7]   ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/3/3-4" ; "ME"    ; "Andrijevica/Berane/Blue/Gusinje/Petnitsa/Rožaje" ; GOVERNMENT
+52[2-467]  ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fmt1_2/3/3-4" ; "ME"    ; "Pljevlja/Zabljak"                                ; GOVERNMENT
+6[08]      ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "mtel"    ; "fmt1_2/3/3-4" ; "ME"    ;                                                   ; IR21
+63[024]    ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "telenor" ; "fmt1_2/3/3-4" ; "ME"    ;                                                   ; IR21
+66[0-25]   ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "telekom" ; "fmt1_2/3/3-4" ; "ME"    ;                                                   ; IR21
+67         ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "telekom" ; "fmt1_2/3/3-4" ; "ME"    ;                                                   ; IR21
+69         ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "telenor" ; "fmt1_2/3/3-4" ; "ME"    ;                                                   ; IR21
+77[1-9]    ; 8      ; UAN        ; STANDARD_RATE ;                  ;           ; "fmt1_2/3/3-4" ; "ME"    ;                                                   ; GOVERNMENT
+78[1-49]   ; 8      ; VOIP       ; STANDARD_RATE ;                  ;           ; "fmt1_2/3/3-4" ; "ME"    ;                                                   ; GOVERNMENT
+80[0-2578] ; 8      ; FIXED_LINE ; TOLL_FREE     ;                  ;           ; "fmt1_2/3/3-4" ; "ME"    ;                                                   ; GOVERNMENT
+809        ; 9      ; FIXED_LINE ; TOLL_FREE     ;                  ;           ; "fmt1_2/3/3-4" ; "ME"    ;                                                   ; GOVERNMENT
+94[1568]   ; 8      ; FIXED_LINE ; PREMIUM_RATE  ;                  ;           ; "fmt1_2/3/3-4" ; "ME"    ;                                                   ; GOVERNMENT
+95[178]    ; 8      ; FIXED_LINE ; PREMIUM_RATE  ;                  ;           ; "fmt1_2/3/3-4" ; "ME"    ;                                                   ; GOVERNMENT

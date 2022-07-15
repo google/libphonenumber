@@ -1,0 +1,9 @@
+Region ; Prefix      ; Length ; Type               ; Tariff
+KI     ; 10[0-246-8] ; 3      ; COMMERCIAL
+KI     ; 103         ; 3      ; COMMERCIAL         ; STANDARD_RATE
+KI     ; 105         ; 3      ; COMMERCIAL
+KI     ; 105[0-259]  ; 4      ; COMMERCIAL
+KI     ; 188         ; 3      ; EXPANDED_EMERGENCY
+KI     ; 19[2-5]     ; 3      ; EMERGENCY          ; TOLL_FREE
+KI     ; 777         ; 3      ; COMMERCIAL
+KI     ; 99[2-4]     ; 3      ; EMERGENCY          ; TOLL_FREE

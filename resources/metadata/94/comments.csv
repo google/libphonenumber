@@ -1,0 +1,9 @@
+Region ; Label          ; Comment
+LK     ; SC             ; "http://en.wikipedia.org/wiki/%2B94"
+LK     ; SC             ; "http://www.itu.int/oth/T02020000C3/en"
+LK     ; XML            ; "http://en.wikipedia.org/wiki/%2B94"
+LK     ; XML            ; "http://www.itu.int/oth/T02020000C3/en"
+LK     ; XML_FIXED_LINE ; "The first two digits are area codes followed by single digit operator codes ([2-57]).\nThere is evidence that local dialling is supported by removing the area code, but\nnot the operator code. This results in the area code length not matching the first\ngroup of the format (which is very unusual). As there is no evidence for how local\nnumbers would be formatted, that has been omitted for now."
+LK     ; XML_MOBILE     ; "Adding the prefix 76 for Dialog, based on information from open-source users."
+LK     ; XML_MOBILE     ; "Adding Prefix 702 and 703 based on update from Mobitel which has verified these\nprefixes to be correct."
+LK     ; XML_UAN        ; "Prefix 1973 is assigned to SriLankan Airlines in various locations."

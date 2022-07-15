@@ -1,0 +1,6 @@
+Id           ; National       ; International ; Comment
+fixed_1/3/4  ; "#X XXX XXXX"  ; "X XXX XXXX"  ; "Formats mostly follow http://tirana.usembassy.gov/list_of_doctors.html"
+fixed_2/3/3  ; "#XX XXX XXX"  ; "XX XXX XXX"
+fixed_3/5    ; "#XXX XXXXX"   ; "XXX XXXXX"
+fmt_3/3-4    ; "#XXX XXX*"    ; "XXX XXX*"    ; "Premium rate or toll free formats"
+mobile_2/3/4 ; "#XX XXX XXXX" ; "XX XXX XXXX"

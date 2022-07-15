@@ -1,0 +1,9 @@
+Region ; Label               ; Comment
+MW     ; SC                  ; "http://www.itu.int/oth/T0202000080/en"
+MW     ; SC_CARRIER_SPECIFIC ; "https://support.google.com/plus/answer/1304917"
+MW     ; SC_EMERGENCY        ; "http://www.malawiembassy.org/visit/contact.html"
+MW     ; SC_EMERGENCY        ; "http://travel.state.gov/travel/cis_pa_tw/cis/cis_959.html"
+MW     ; SC_SMS_SERVICES     ; "https://support.google.com/plus/answer/1304917"
+MW     ; XML                 ; "The plan doesn't state that a national prefix exists, but numbers found on the internet are\nconsistent in having one."
+MW     ; XML                 ; "http://www.itu.int/oth/T0202000080/en"
+MW     ; XML_FIXED_LINE      ; "14 is no longer mentioned in the plan as a prefix, but plenty of online numbers have\nbeen found so this is being retained for now. It is possible however that these may be\nold-format mobile numbers."

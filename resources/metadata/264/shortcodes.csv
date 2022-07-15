@@ -1,0 +1,7 @@
+Region ; Prefix    ; Length ; Type       ; Tariff
+NA     ; 1         ; 4      ; COMMERCIAL
+NA     ; 10111     ; 5      ; EMERGENCY  ; TOLL_FREE
+NA     ; 9[0-24-9] ; 3      ; COMMERCIAL
+NA     ; 93[02-9]  ; 3      ; COMMERCIAL
+NA     ; 931       ; 3      ; COMMERCIAL
+NA     ; 93111     ; 5      ; COMMERCIAL

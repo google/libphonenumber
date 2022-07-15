@@ -1,0 +1,7 @@
+Region ; Prefix    ; Length ; Type       ; Tariff
+UY     ; 10[4-9]   ; 3      ; COMMERCIAL
+UY     ; 11[2368]  ; 3      ; COMMERCIAL
+UY     ; 12[0-356] ; 3      ; COMMERCIAL
+UY     ; 128       ; 3      ; EMERGENCY  ; TOLL_FREE
+UY     ; 1787      ; 4      ; COMMERCIAL ; STANDARD_RATE
+UY     ; 911       ; 3      ; EMERGENCY  ; TOLL_FREE

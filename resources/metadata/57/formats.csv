@@ -1,0 +1,4 @@
+Id            ; National         ; Carrier          ; International
+fixed_3/7     ; "(XXX) XXXXXXX"  ; "#@ XXX XXXXXXX" ; "XXX XXXXXXX"
+mobile_3/7    ; "XXX XXXXXXX"    ; "#@ XXX XXXXXXX" ; "XXX XXXXXXX"
+varcost_1/3/7 ; "#X-XXX-XXXXXXX" ;                  ; "X XXX XXXXXXX"

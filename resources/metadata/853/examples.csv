@@ -1,0 +1,4 @@
+Region ; Type       ; Number
+MO     ; FIXED_LINE ; "28212345"
+MO     ; MOBILE     ; "66123456"
+MO     ; TOLL_FREE  ; "0800501"

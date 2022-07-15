@@ -1,0 +1,9 @@
+Region ; Type            ; Number
+JO     ; FIXED_LINE      ; "62001234"
+JO     ; MOBILE          ; "790123456"
+JO     ; PAGER           ; "746612345"
+JO     ; TOLL_FREE       ; "80012345"
+JO     ; PREMIUM_RATE    ; "90012345"
+JO     ; SHARED_COST     ; "85012345"
+JO     ; PERSONAL_NUMBER ; "700123456"
+JO     ; UAN             ; "88101234"

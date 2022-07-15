@@ -2857,6 +2857,11 @@
 3318856|Paris
 3318857|Paris
 3318858|Paris
+3318859|Nanterre
+331886|Paris
+331887|Paris
+331888|Paris
+331889|Paris
 33190|Ile de France
 33191|Ile de France
 3321400|Alençon
@@ -3068,6 +3073,11 @@
 3321906|Vierzon
 3321907|Issoudun
 3321908|Châteauroux
+3322000|Saint-Brieuc
+3322001|Brest
+3322002|Rennes
+3322003|Vannes
+3322004|Brest
 3322100|Rennes
 3322101|Saint-Malo
 3322102|Vannes
@@ -5347,8 +5357,16 @@
 3325824|Carentan-les-Marais
 3325825|Vire
 3325826|Bayeux
+332590|Nantes
 3325900|La Roche-sur-Yon
-3325901|Nantes
+3325902|Luçon
+3325904|Angers
+3325905|La Roche-sur-Yon
+3325940|Laval
+3325941|Le Mans
+3325942|Segré
+3325943|Nord Ouest
+3325944|La Roche-sur-Yon
 3326100|Deauville
 3326101|Mortagne-au-Perche
 3326102|Flers
@@ -5448,6 +5466,24 @@
 3326197|Avranches
 3326198|Carentan-les-Marais
 3326199|Coutances
+3326201|Saint-Denis
+3326202|Saint-Denis
+3326203|Saint-Denis
+3326204|Saint-Denis
+3326205|Saint-Denis
+3326206|Saint-Denis
+3326207|Saint-Denis
+3326208|Saint-Denis
+3326209|Saint-Denis
+332621|Saint-Denis
+332622|Saint-Denis
+332623|Saint-Denis
+332624|Saint-Denis
+332625|Saint-Denis
+332626|Saint-Denis
+332627|Saint-Denis
+332628|Saint-Denis
+332629|Saint-Denis
 3326300|Saint-Denis
 3327202|Nantes
 3327210|Cholet
@@ -7393,6 +7429,8 @@
 3335348|Reims
 3335349|Reims
 3335350|Troyes
+3335370|Troyes
+3335371|Reims
 3335400|Nancy
 3335401|Saint-Avold
 3335402|Bar-le-Duc
@@ -7626,6 +7664,8 @@
 3335657|Nancy
 3335658|Nancy
 3335660|Nancy
+3335680|Nancy
+3335681|Metz
 3335700|Remiremont
 3335701|Saint-Avold
 3335702|Saint-Dié-des-Vosges
@@ -9341,6 +9381,17 @@
 3337604|Lille
 3337605|Lille
 3337606|Lens
+3337610|Hazebrouck
+3337611|Lille
+3337612|Calais
+3337613|Béthune
+3337614|Dunkerque
+3337615|Lille
+3337616|Béthune
+3337617|Béthune
+3337618|Béthune
+3337619|Lille
+3337630|Calais
 3337900|Autun
 3337901|Louhans
 3337902|Montceau-les-Mines
@@ -10165,6 +10216,7 @@
 3342088|Corse
 3342094|Corse
 3342095|Corse
+3342096|Corse
 3342200|Cannes
 3342201|Grasse
 3342202|Nice
@@ -10266,7 +10318,14 @@
 3342318|Saint-Raphael
 3342319|Cannes
 3342320|Nice
+3342321|Cannes
+3342322|Draguignan
 3342323|Nice
+3342324|Nice
+3342326|Toulon
+3342327|Nice
+3342328|Brignoles
+3342329|Nice
 3342610|Lyon
 3342611|Bourg-en-Bresse
 3342612|Nantua
@@ -10732,6 +10791,8 @@
 3344404|Le Puy-en-Velay
 3344405|Clermont-Ferrand
 3344406|Clermont-Ferrand
+3344407|Montluçon
+3344408|Clermont-Ferrand
 3344437|Ambert
 3344438|Clermont-Ferrand
 3344439|Issoire
@@ -11903,6 +11964,19 @@
 3348545|Aix-les-Bains
 3348546|Annecy
 3348547|Annemasse
+3348550|Voiron
+3348551|Grenoble
+3348552|Annecy
+3348553|Annecy
+3348554|Bellegarde-sur-Valserine
+3348555|Belley
+3348556|Grenoble
+3348557|Saint-Marcellin
+3348558|Grenoble
+3348559|Grenoble
+3348560|Chambéry
+3348561|Annecy
+3348562|Annecy
 3348571|Saint-Jean-de-Maurienne
 3348572|Annecy
 3348573|Annemasse
@@ -12404,6 +12478,12 @@
 3351805|Limoges
 3351806|Limoges
 3351807|Limoges
+3351820|Limoges
+3351821|Tulle
+3351822|Limoges
+3351823|Limoges
+3351824|Tulle
+3351825|Limoges
 3351900|Boussac
 3351901|Gueret
 3351902|La Souterraine
@@ -12895,6 +12975,7 @@
 3353607|Saint-Gaudens
 3353608|Figeac
 3353609|Toulouse
+3353610|Toulouse
 3353611|Toulouse
 3353612|Pamiers
 3353613|Decazeville
@@ -12932,6 +13013,10 @@
 3353647|Toulouse
 3353648|Montauban
 3353653|Toulouse
+3353700|Albi
+3353701|Montauban
+3353702|Sud Ouest
+3353703|Decazeville
 3354010|Blaye
 3354011|Langon
 3354012|Bordeaux
@@ -13059,6 +13144,35 @@
 3354787|Mont-de-Marsan
 3354788|Mussidan
 3354789|Nerac
+3354800|Cognac
+3354801|Confolens
+3354802|Jonzac
+3354803|La Rochelle
+3354804|Saintes
+3354805|Saint-Jean-d'Angély
+3354806|Bressuire
+3354807|Melle
+3354808|Niort
+3354809|Parthenay
+3354810|Châtellerault
+3354811|Civray
+3354812|Loudun
+3354813|Montmorillon
+3354814|Cognac
+3354815|Montmorillon
+3354816|Poitiers
+3354817|Poitiers
+3354818|Poitiers
+3354819|La Rochelle
+3354820|Niort
+3354821|Barbezieux-Saint-Hilaire
+3354822|Poitiers
+3354823|Rochefort
+3354824|Angoulême
+3354825|La Rochelle
+3354826|Niort
+3354827|Poitiers
+3354828|Poitiers
 335495|Poitiers
 3355400|Dax
 3355401|Marmande

@@ -1,0 +1,3 @@
+Id          ; National      ; International ; Comment
+fmt_2/2/2/2 ; "XX XX XX XX" ; "XX XX XX XX"
+shortcode_4 ; "XXXX"        ;               ; "Explicitly block-format some shortcodes where prefixes overlap ""normal"" numbers.\nThis is needed since there's no national prefix to distinguish national numbers."

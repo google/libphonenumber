@@ -15,7 +15,8 @@
 # Translations of en/852.txt from each carrier's wikipedia page and in
 # some cases the carrier's own home page.
 
-85244|中国移动
+852440|中国移动
+852444|香港移动通讯
 852460|中国联通
 8524607|Multibyte
 8524610|新移动通讯
@@ -343,6 +344,7 @@
 852956|中国联通
 852957|3
 852958|中国移动
+852959|香港移动通讯
 852960|中国移动
 852961|香港移动通讯
 852962|香港移动通讯

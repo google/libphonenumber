@@ -1,0 +1,135 @@
+Prefix        ; Length ; Type            ; Tariff        ; Area Code Length ; Operator     ; Format            ; Regions ; Geocode:en             ; Provenance
+122           ; 9      ; PERSONAL_NUMBER ; STANDARD_RATE ;                  ;              ; "personal_4/5"    ; "PK"
+2[125]111     ; 11     ; UAN             ; STANDARD_RATE ;                  ;              ; "uan_2/3/3/3"     ; "PK"
+21[2-9]       ; 10     ; FIXED_LINE      ; STANDARD_RATE ; 2                ;              ; "fixed_2/7-8"     ; "PK"    ; "Karachi"              ; ITU
+22[2-9]       ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 2                ;              ; "fixed_2/7-8"     ; "PK"    ; "Hyderabad"            ; ITU
+23[2358]111   ; 12     ; UAN             ; STANDARD_RATE ;                  ;              ; "uan_3/3/3/3"     ; "PK"
+232[2-9]      ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 3                ;              ; "fixed_3/6-7"     ; "PK"    ; "Tharparkar"           ; ITU
+233[2-9]      ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 3                ;              ; "fixed_3/6-7"     ; "PK"    ; "Mirpur Khas"          ; ITU
+235[2-9]      ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 3                ;              ; "fixed_3/6-7"     ; "PK"    ; "Sanghar"              ; ITU
+238[2-9]      ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 3                ;              ; "fixed_3/6-7"     ; "PK"    ; "Umerkot"              ; ITU
+24[2-4]111    ; 12     ; UAN             ; STANDARD_RATE ;                  ;              ; "uan_3/3/3/3"     ; "PK"
+242[2-9]      ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 3                ;              ; "fixed_3/6-7"     ; "PK"    ; "Naushero Feroze"      ; ITU
+243[2-9]      ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 3                ;              ; "fixed_3/6-7"     ; "PK"    ; "Khairpur"             ; ITU
+244[2-9]      ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 3                ;              ; "fixed_3/6-7"     ; "PK"    ; "Nawabshah"            ; ITU
+25[2-9]       ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 2                ;              ; "fixed_2/7-8"     ; "PK"    ; "Dadu"                 ; ITU
+29[2-8]111    ; 12     ; UAN             ; STANDARD_RATE ;                  ;              ; "uan_3/3/3/3"     ; "PK"
+29[2-6][2-9]  ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 3                ;              ; "fixed_3/6-7"     ; "PK"
+297[2-9]      ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 3                ;              ; "fixed_3/6-7"     ; "PK"    ; "Badin"                ; ITU
+298[2-9]      ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 3                ;              ; "fixed_3/6-7"     ; "PK"    ; "Thatta"               ; ITU
+30            ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "mobilink"   ; "mobile_3/7"      ; "PK"
+31            ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "zong"       ; "mobile_3/7"      ; "PK"
+32            ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "warid"      ; "mobile_3/7"      ; "PK"    ;                        ; IR21
+33[0-7]       ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "ufone"      ; "mobile_3/7"      ; "PK"
+34            ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "telenor"    ; "mobile_3/7"      ; "PK"
+355           ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "sco"        ; "mobile_3/7"      ; "PK"
+364           ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "instaphone" ; "mobile_3/7"      ; "PK"
+4[0-246-9]111 ; 11     ; UAN             ; STANDARD_RATE ;                  ;              ; "uan_2/3/3/3"     ; "PK"
+40[2-9]       ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 2                ;              ; "fixed_2/7-8"     ; "PK"    ; "Sahiwal"              ; ITU
+41[2-9]       ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 2                ;              ; "fixed_2/7-8"     ; "PK"    ; "Faisalabad"           ; ITU
+42[2-9]       ; 10     ; FIXED_LINE      ; STANDARD_RATE ; 2                ;              ; "fixed_2/7-8"     ; "PK"    ; "Lahore"               ; ITU
+44[2-9]       ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 2                ;              ; "fixed_2/7-8"     ; "PK"    ; "Okara"                ; ITU
+45[3479]111   ; 12     ; UAN             ; STANDARD_RATE ;                  ;              ; "uan_3/3/3/3"     ; "PK"
+453[2-9]      ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 3                ;              ; "fixed_3/6-7"     ; "PK"    ; "Bhakkar"              ; ITU
+454[2-9]      ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 3                ;              ; "fixed_3/6-7"     ; "PK"    ; "Khushab"              ; ITU
+457[2-9]      ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 3                ;              ; "fixed_3/6-7"     ; "PK"    ; "Pakpattan"            ; ITU
+459[2-9]      ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 3                ;              ; "fixed_3/6-7"     ; "PK"    ; "Mianwali"             ; ITU
+46[2-9]       ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 2                ;              ; "fixed_2/7-8"     ; "PK"    ; "Toba Tek Singh"       ; ITU
+47[2-9]       ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 2                ;              ; "fixed_2/7-8"     ; "PK"    ; "Jhang"                ; ITU
+48[2-9]       ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 2                ;              ; "fixed_2/7-8"     ; "PK"    ; "Sargodha"             ; ITU
+49[2-9]       ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 2                ;              ; "fixed_2/7-8"     ; "PK"    ; "Kasur"                ; ITU
+5[1-35-7]111  ; 11     ; UAN             ; STANDARD_RATE ;                  ;              ; "uan_2/3/3/3"     ; "PK"
+51[2-9]       ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 2                ;              ; "fixed_2/7-8"     ; "PK"    ; "Islamabad/Rawalpindi" ; ITU
+52[2-9]       ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 2                ;              ; "fixed_2/7-8"     ; "PK"    ; "Sialkot"              ; ITU
+53[2-9]       ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 2                ;              ; "fixed_2/7-8"     ; "PK"    ; "Gujrat"               ; ITU
+54[2-467]111  ; 12     ; UAN             ; STANDARD_RATE ;                  ;              ; "uan_3/3/3/3"     ; "PK"
+542[2-9]      ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 3                ;              ; "fixed_3/6-7"     ; "PK"    ; "Narowal"              ; ITU
+543[2-9]      ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 3                ;              ; "fixed_3/6-7"     ; "PK"    ; "Chakwal"              ; ITU
+544[2-9]      ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 3                ;              ; "fixed_3/6-7"     ; "PK"    ; "Jhelum"               ; ITU
+546[2-9]      ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 3                ;              ; "fixed_3/6-7"     ; "PK"    ; "Mandi Bahauddin"      ; ITU
+547[2-9]      ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 3                ;              ; "fixed_3/6-7"     ; "PK"    ; "Hafizabad"            ; ITU
+55[2-9]       ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 2                ;              ; "fixed_2/7-8"     ; "PK"    ; "Gujranwala"           ; ITU
+56[2-9]       ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 2                ;              ; "fixed_2/7-8"     ; "PK"    ; "Sheikhupura"          ; ITU
+57[2-9]       ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 2                ;              ; "fixed_2/7-8"     ; "PK"    ; "Attock"               ; ITU
+58[126]       ; 10     ; FIXED_LINE      ; STANDARD_RATE ; 5                ;              ; "fixed_5/5"       ; "PK"    ; "AJK/FATA"             ; ITU
+60[468]111    ; 12     ; UAN             ; STANDARD_RATE ;                  ;              ; "uan_3/3/3/3"     ; "PK"
+604[2-9]      ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 3                ;              ; "fixed_3/6-7"     ; "PK"    ; "Rajanpur"             ; ITU
+606[2-9]      ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 3                ;              ; "fixed_3/6-7"     ; "PK"    ; "Layyah"               ; ITU
+608[2-9]      ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 3                ;              ; "fixed_3/6-7"     ; "PK"    ; "Lodhran"              ; ITU
+6[1-8]111     ; 11     ; UAN             ; STANDARD_RATE ;                  ;              ; "uan_2/3/3/3"     ; "PK"
+61[2-9]       ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 2                ;              ; "fixed_2/7-8"     ; "PK"    ; "Multan"               ; ITU
+62[2-9]       ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 2                ;              ; "fixed_2/7-8"     ; "PK"    ; "Bahawalpur"           ; ITU
+63[2-9]       ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 2                ;              ; "fixed_2/7-8"     ; "PK"    ; "Bahawalnagar"         ; ITU
+64[2-9]       ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 2                ;              ; "fixed_2/7-8"     ; "PK"    ; "Dera Ghazi Khan"      ; ITU
+65[2-9]       ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 2                ;              ; "fixed_2/7-8"     ; "PK"    ; "Khanewal"             ; ITU
+66[2-9]       ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 2                ;              ; "fixed_2/7-8"     ; "PK"    ; "Muzaffargarh"         ; ITU
+67[2-9]       ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 2                ;              ; "fixed_2/7-8"     ; "PK"    ; "Vehari"               ; ITU
+68[2-9]       ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 2                ;              ; "fixed_2/7-8"     ; "PK"    ; "Rahim Yar Khan"       ; ITU
+7[14]111      ; 11     ; UAN             ; STANDARD_RATE ;                  ;              ; "uan_2/3/3/3"     ; "PK"
+71[2-9]       ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 2                ;              ; "fixed_2/7-8"     ; "PK"    ; "Sukkur"               ; ITU
+72[236]111    ; 12     ; UAN             ; STANDARD_RATE ;                  ;              ; "uan_3/3/3/3"     ; "PK"
+722[2-9]      ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 3                ;              ; "fixed_3/6-7"     ; "PK"    ; "Jacobabad"            ; ITU
+723[2-9]      ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 3                ;              ; "fixed_3/6-7"     ; "PK"    ; "Ghotki"               ; ITU
+726[2-9]      ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 3                ;              ; "fixed_3/6-7"     ; "PK"    ; "Shikarpur"            ; ITU
+74[2-9]       ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 2                ;              ; "fixed_2/7-8"     ; "PK"    ; "Larkana"              ; ITU
+800           ; 8,11   ; FIXED_LINE      ; TOLL_FREE     ;                  ;              ; "varcost_3/3/2-5" ; "PK"
+8[16]111      ; 11     ; UAN             ; STANDARD_RATE ;                  ;              ; "uan_2/3/3/3"     ; "PK"
+81[2-9]       ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 2                ;              ; "fixed_2/7-8"     ; "PK"    ; "Quetta"               ; ITU
+82[2-689]111  ; 12     ; UAN             ; STANDARD_RATE ;                  ;              ; "uan_3/3/3/3"     ; "PK"
+822[2-9]      ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 3                ;              ; "fixed_3/6-7"     ; "PK"    ; "Zhob"                 ; ITU
+823[2-9]      ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 3                ;              ; "fixed_3/6-7"     ; "PK"    ; "Killa Saifullah"      ; ITU
+824[2-9]      ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 3                ;              ; "fixed_3/6-7"     ; "PK"    ; "Loralai"              ; ITU
+825[2-9]      ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 3                ;              ; "fixed_3/6-7"     ; "PK"    ; "Chagai"               ; ITU
+826[2-9]      ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 3                ;              ; "fixed_3/6-7"     ; "PK"    ; "K.Abdullah/Pishin"    ; ITU
+828[2-9]      ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 3                ;              ; "fixed_3/6-7"     ; "PK"    ; "Musakhel"             ; ITU
+829[2-9]      ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 3                ;              ; "fixed_3/6-7"     ; "PK"    ; "Barkhan/Kohlu"        ; ITU
+83[23578]111  ; 12     ; UAN             ; STANDARD_RATE ;                  ;              ; "uan_3/3/3/3"     ; "PK"
+832[2-9]      ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 3                ;              ; "fixed_3/6-7"     ; "PK"    ; "Bolan"                ; ITU
+833[2-9]      ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 3                ;              ; "fixed_3/6-7"     ; "PK"    ; "Sibi/Ziarat"          ; ITU
+835[2-9]      ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 3                ;              ; "fixed_3/6-7"     ; "PK"    ; "Dera Bugti"           ; ITU
+837[2-9]      ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 3                ;              ; "fixed_3/6-7"     ; "PK"    ; "Jhal Magsi"           ; ITU
+838[2-9]      ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 3                ;              ; "fixed_3/6-7"     ; "PK"    ; "Jaffarabad/Nasirabad" ; ITU
+84[3478]111   ; 12     ; UAN             ; STANDARD_RATE ;                  ;              ; "uan_3/3/3/3"     ; "PK"
+843[2-9]      ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 3                ;              ; "fixed_3/6-7"     ; "PK"    ; "Mastung"              ; ITU
+844[2-9]      ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 3                ;              ; "fixed_3/6-7"     ; "PK"    ; "Kalat"                ; ITU
+847[2-9]      ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 3                ;              ; "fixed_3/6-7"     ; "PK"    ; "Kharan"               ; ITU
+848[2-9]      ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 3                ;              ; "fixed_3/6-7"     ; "PK"    ; "Khuzdar"              ; ITU
+85[2356]111   ; 12     ; UAN             ; STANDARD_RATE ;                  ;              ; "uan_3/3/3/3"     ; "PK"
+852[2-9]      ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 3                ;              ; "fixed_3/6-7"     ; "PK"    ; "Kech"                 ; ITU
+853[2-9]      ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 3                ;              ; "fixed_3/6-7"     ; "PK"    ; "Lasbela"              ; ITU
+855[2-9]      ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 3                ;              ; "fixed_3/6-7"     ; "PK"    ; "Panjgur"              ; ITU
+856[2-9]      ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 3                ;              ; "fixed_3/6-7"     ; "PK"    ; "Awaran"               ; ITU
+86[2-9]       ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 2                ;              ; "fixed_2/7-8"     ; "PK"    ; "Gwadar"               ; ITU
+900           ; 8      ; FIXED_LINE      ; PREMIUM_RATE  ;                  ;              ; "varcost_3/3/2-5" ; "PK"
+91111         ; 11     ; UAN             ; STANDARD_RATE ;                  ;              ; "uan_2/3/3/3"     ; "PK"
+91[2-9]       ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 2                ;              ; "fixed_2/7-8"     ; "PK"    ; "Peshawar/Charsadda"   ; ITU
+922111        ; 12     ; UAN             ; STANDARD_RATE ;                  ;              ; "uan_3/3/3/3"     ; "PK"
+922[2-9]      ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 3                ;              ; "fixed_3/6-7"     ; "PK"    ; "Kohat"                ; ITU
+923[2-9]      ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 3                ;              ; "fixed_3/6-7"     ; "PK"    ; "Nowshera"             ; ITU
+924[2-9]      ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 3                ;              ; "fixed_3/6-7"     ; "PK"    ; "Khyber/Mohmand Agy"   ; ITU
+925[2-9]      ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 3                ;              ; "fixed_3/6-7"     ; "PK"    ; "Hangu/Orakzai Agy"    ; ITU
+926[2-9]      ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 3                ;              ; "fixed_3/6-7"     ; "PK"    ; "Kurram Agency"        ; ITU
+927[2-9]      ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 3                ;              ; "fixed_3/6-7"     ; "PK"    ; "Karak"                ; ITU
+928[2-9]      ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 3                ;              ; "fixed_3/6-7"     ; "PK"    ; "Bannu/N. Waziristan"  ; ITU
+93[27-9]111   ; 12     ; UAN             ; STANDARD_RATE ;                  ;              ; "uan_3/3/3/3"     ; "PK"
+932[2-9]      ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 3                ;              ; "fixed_3/6-7"     ; "PK"    ; "Malakand"             ; ITU
+937[2-9]      ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 3                ;              ; "fixed_3/6-7"     ; "PK"    ; "Mardan"               ; ITU
+938[2-9]      ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 3                ;              ; "fixed_3/6-7"     ; "PK"    ; "Swabi"                ; ITU
+939[2-9]      ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 3                ;              ; "fixed_3/6-7"     ; "PK"    ; "Buner"                ; ITU
+94[2-6]111    ; 12     ; UAN             ; STANDARD_RATE ;                  ;              ; "uan_3/3/3/3"     ; "PK"
+942[2-9]      ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 3                ;              ; "fixed_3/6-7"     ; "PK"    ; "Bajaur Agency"        ; ITU
+943[2-9]      ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 3                ;              ; "fixed_3/6-7"     ; "PK"    ; "Chitral"              ; ITU
+944[2-9]      ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 3                ;              ; "fixed_3/6-7"     ; "PK"    ; "Upper Dir"            ; ITU
+945[2-9]      ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 3                ;              ; "fixed_3/6-7"     ; "PK"    ; "Lower Dir"            ; ITU
+946[2-9]      ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 3                ;              ; "fixed_3/6-7"     ; "PK"    ; "Swat"                 ; ITU
+96[3569]111   ; 12     ; UAN             ; STANDARD_RATE ;                  ;              ; "uan_3/3/3/3"     ; "PK"
+963[2-9]      ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 3                ;              ; "fixed_3/6-7"     ; "PK"    ; "Tank"                 ; ITU
+965[2-9]      ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 3                ;              ; "fixed_3/6-7"     ; "PK"    ; "South Waziristan"     ; ITU
+966[2-9]      ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 3                ;              ; "fixed_3/6-7"     ; "PK"    ; "D.I. Khan"            ; ITU
+969[2-9]      ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 3                ;              ; "fixed_3/6-7"     ; "PK"    ; "Lakki Marwat"         ; ITU
+99[2-7]111    ; 12     ; UAN             ; STANDARD_RATE ;                  ;              ; "uan_3/3/3/3"     ; "PK"
+992[2-9]      ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 3                ;              ; "fixed_3/6-7"     ; "PK"    ; "Abottabad"            ; ITU
+995[2-9]      ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 3                ;              ; "fixed_3/6-7"     ; "PK"    ; "Haripur"              ; ITU
+996[2-9]      ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 3                ;              ; "fixed_3/6-7"     ; "PK"    ; "Shangla"              ; ITU
+997[2-9]      ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 3                ;              ; "fixed_3/6-7"     ; "PK"    ; "Mansehra/Batagram"    ; ITU
+998[2-9]      ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 3                ;              ; "fixed_3/6-7"     ; "PK"    ; "Kohistan"             ; ITU

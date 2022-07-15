@@ -1,0 +1,7 @@
+Region ; Type            ; Number
+AL     ; FIXED_LINE      ; "22345678"
+AL     ; MOBILE          ; "672123456"
+AL     ; TOLL_FREE       ; "8001234"
+AL     ; PREMIUM_RATE    ; "900123"
+AL     ; SHARED_COST     ; "808123"
+AL     ; PERSONAL_NUMBER ; "70021234"

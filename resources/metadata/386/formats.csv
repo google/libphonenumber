@@ -1,0 +1,5 @@
+Id            ; National         ; International
+fixed_1/3/2/2 ; "(#X) XXX XX XX" ; "X XXX XX XX"
+mobile_2/3/3  ; "#XX XXX XXX"    ; "XX XXX XXX"
+varcost_2/3-6 ; "#XX XXX***"     ; "XX XXX***"
+voip_3/5      ; "#XXX XXXXX"     ; "XXX XXXXX"

@@ -1,0 +1,13 @@
+Id                     ; National            ; International      ; Comment
+fixed_1/2-3/2/2        ; "#X-XX* XX XX"      ; "X XX* XX XX"      ; "Fixed line numbers in Stockholm (1 digit area code)"
+fixed_1/3/3/2          ; "#X-XXX XXX XX"     ; "X XXX XXX XX"     ; "Fixed line numbers in Stockholm (1 digit area code)"
+fixed_2/2-3/2/2        ; "#XX-XX* XX XX"     ; "XX XX* XX XX"     ; "Fixed line numbers (2 digit area code) and ""long"" toll free numbers."
+fixed_3/2/2/2          ; "#XXX-XX XX XX"     ; "XXX XX XX XX"     ; "Fixed line numbers (3 digit area code)"
+mobile_etc_2/3/2/2     ; "#XX-XXX XX XX"     ; "XX XXX XX XX"     ; "Mobile numbers and other 9 digit numbers starting with 7 (pager, shared cost etc.)\nAlso for UAN numbers starting with 10."
+premium_rate_3/2-3/3   ; "#XXX-XX* XXX"      ; "XXX XX* XXX"      ; "8-9 digit premium rate numbers."
+premium_rate_3/2/2/3   ; "#XXX-XX XX XXX"    ; "XXX XX XX XXX"    ; "10 digit premium rate numbers."
+short_fixed_2/3/2      ; "#XX-XXX XX"        ; "XX XXX XX"        ; "Short fixed line numbers (2 digit area code)"
+short_fixed_3/2-3/2    ; "#XXX-XX* XX"       ; "XXX XX* XX"       ; "Short fixed line numbers (3 digit area code)"
+short_premium_rate_3/4 ; "#XXX-XXXX"         ; "XXX XXXX"         ; "7 digit premium rate numbers."
+toll_free_2/2-3/2      ; "#XX-XX* XX"        ; "XX XX* XX"        ; "Short toll-free numbers."
+voicemail_3/2/3/2/2    ; "#XXX-XX XXX XX XX" ; "XXX XX XXX XX XX" ; "Voicemail"

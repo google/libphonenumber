@@ -1,0 +1,8 @@
+Region ; Label               ; Comment
+PS     ; SC                  ; "http://en.wikipedia.org/wiki/%2B970"
+PS     ; SC                  ; "http://www.paltel.ps/"
+PS     ; SC_CARRIER_SPECIFIC ; "1122 is Jawwal's customer service number"
+PS     ; XML                 ; "Palestinian phone numbers can be reached through the Israeli country code (972) in addition\nto the Palestinian country code (970) and so Palestinian landlines and mobile lines are a\nsubset of the Israeli formats."
+PS     ; XML                 ; "http://en.wikipedia.org/wiki/%2B970"
+PS     ; XML                 ; "http://www.wtng.info/wtng-970-ps.html"
+PS     ; XML                 ; "http://www.paltel.ps"

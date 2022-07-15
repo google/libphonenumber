@@ -1,0 +1,5 @@
+Id             ; National        ; International ; Comment
+fixed_line_1/7 ; "#X-XXXXXXX"    ; "X-XXXXXXX"   ; "Formatting patterns taken from pages like http://www.nepalgov.gov.np"
+fixed_line_2/6 ; "#XX-XXXXXX"    ; "XX-XXXXXX"
+mobile_3/7     ; "XXX-XXXXXXX"   ; "XXX-XXXXXXX"
+tollfree_4/2/5 ; "XXXX-XX-XXXXX" ;               ; "11 digit toll free number"

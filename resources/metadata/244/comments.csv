@@ -1,0 +1,6 @@
+Region ; Label          ; Comment
+AO     ; SC             ; "http://www.itu.int/oth/T0202000006/en"
+AO     ; SC_EMERGENCY   ; "http://travel.state.gov/travel/cis_pa_tw/cis/cis_1096.html"
+AO     ; XML            ; "http://www.itu.int/oth/T0202000006/en"
+AO     ; XML_FIXED_LINE ; "Supporting 2Y5 and 2YY5 ranges (where Y and YY represent one and two digit area code)\nbased on user report and format followed in ITU doc. Wikipedia also mentions that\n""Fixed-line numbers start with digit 2, followed by 1 or 2 digits area code. After the\narea code, there is one digit telecoms operator code. So now we are adding 5 as telecom\noperator code now."""
+AO     ; XML_MOBILE     ; "Expanded the 92 prefix possibilities to match numbers found online. Unitel\napparently launched the prefix 94 on 25th April 2012, and Movicel has 99."
