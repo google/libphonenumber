@@ -80,6 +80,7 @@ Prefix   ; Length ; Type       ; Tariff        ; National Only ; Operator       
 8[1-578] ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "vinaphone"         ; "mobile_3/3/3"   ; "VN"    ;                            ;                         ; IR21
 86       ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "viettel_mobile"    ; "mobile_3/3/3"   ; "VN"    ;                            ;                         ; IR21
 89[689]  ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "mobifone"          ; "mobile_3/3/3"   ; "VN"    ;                            ;                         ; IR21
+897      ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "mobifone"          ; "mobile_3/3/3"   ; "VN"
 9[03]    ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "mobifone"          ; "mobile_2/3/2/2" ; "VN"    ;                            ;                         ; IR21
 9[14]    ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "vinaphone"         ; "mobile_2/3/2/2" ; "VN"    ;                            ;                         ; IR21
 92       ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "vietnamobile"      ; "mobile_2/3/2/2" ; "VN"    ;                            ;                         ; IR21

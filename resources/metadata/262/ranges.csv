@@ -61,4 +61,6 @@ Prefix       ; Length ; Type       ; Tariff        ; Operator ; Format         ;
 884          ; 9      ; FIXED_LINE ; SHARED_COST   ;          ; "fmt1_3/2/2/2" ; "Indian/Reunion"                ; "RE"
 890          ; 9      ; FIXED_LINE ; SHARED_COST   ;          ; "fmt1_3/2/2/2" ; "Indian/Reunion"                ; "RE"
 89[1-37-9]   ; 9      ; FIXED_LINE ; PREMIUM_RATE  ;          ; "fmt1_3/2/2/2" ; "Indian/Reunion"                ; "RE"
-9769         ; 9      ; MOBILE     ; STANDARD_RATE ; "orange" ; "fmt1_3/2/2/2" ; "Indian/Reunion"                ; "RE"    ; GOVERNMENT ; "ARCEP 4/9/2019"
+9762[27]     ; 9      ; MOBILE     ; STANDARD_RATE ;          ; "fmt1_3/2/2/2" ; "Indian/Reunion"                ; "RE"    ; GOVERNMENT
+9763[0-37]   ; 9      ; MOBILE     ; STANDARD_RATE ;          ; "fmt1_3/2/2/2" ; "Indian/Reunion"                ; "RE"    ; GOVERNMENT
+9769         ; 9      ; MOBILE     ; STANDARD_RATE ; "orange" ; "fmt1_3/2/2/2" ; "Indian/Reunion"                ; "RE"    ; GOVERNMENT

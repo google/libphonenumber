@@ -1,8 +1,7 @@
 Prefix             ; Length ; Type       ; Tariff        ; National Only ; Operator                   ; Format          ; Regions ; Geocode:en          ; Provenance ; Comment
 216                ; 6,7    ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_1/2/3-4" ; "SK"    ; "Bratislava"        ; GOVERNMENT
 217                ; 6      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_1/2/3-4" ; "SK"    ; "Bratislava"        ; GOVERNMENT
-220[03-9]          ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_1/3/3/2" ; "SK"    ; "Bratislava"        ; GOVERNMENT
-2201               ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_1/3/3/2" ; "SK"    ; "Bratislava"        ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+220[013-9]         ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_1/3/3/2" ; "SK"    ; "Bratislava"        ; GOVERNMENT
 2202[04-9]         ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_1/3/3/2" ; "SK"    ; "Bratislava"        ; GOVERNMENT
 2202[1-3]          ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_1/3/3/2" ; "SK"    ; "Bratislava"        ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 2210[0-2]          ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_1/3/3/2" ; "SK"    ; "Bratislava"        ; GOVERNMENT
@@ -25,8 +24,8 @@ Prefix             ; Length ; Type       ; Tariff        ; National Only ; Opera
 226226             ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_1/3/3/2" ; "SK"    ; "Bratislava"        ; GOVERNMENT
 229[013-9]         ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_1/3/3/2" ; "SK"    ; "Bratislava"        ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 2292               ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_1/3/3/2" ; "SK"    ; "Bratislava"        ; GOVERNMENT
-23[06]0            ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_1/3/3/2" ; "SK"    ; "Bratislava"        ; GOVERNMENT
-23[06][1-9]        ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_1/3/3/2" ; "SK"    ; "Bratislava"        ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+230[02]            ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_1/3/3/2" ; "SK"    ; "Bratislava"        ; GOVERNMENT
+230[13-9]          ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_1/3/3/2" ; "SK"    ; "Bratislava"        ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 23[17]             ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_1/3/3/2" ; "SK"    ; "Bratislava"        ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 23[2389]           ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_1/3/3/2" ; "SK"    ; "Bratislava"        ; GOVERNMENT
 234[0-35-9]        ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_1/3/3/2" ; "SK"    ; "Bratislava"        ;            ; "FILLUP TO SUPPORT MASTER RANGE"
@@ -70,6 +69,8 @@ Prefix             ; Length ; Type       ; Tariff        ; National Only ; Opera
 235803             ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_1/3/3/2" ; "SK"    ; "Bratislava"        ; GOVERNMENT
 2358[1-9]          ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_1/3/3/2" ; "SK"    ; "Bratislava"        ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 2359               ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_1/3/3/2" ; "SK"    ; "Bratislava"        ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+2360               ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_1/3/3/2" ; "SK"    ; "Bratislava"        ; GOVERNMENT
+236[1-9]           ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_1/3/3/2" ; "SK"    ; "Bratislava"        ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 240[025]           ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_1/3/3/2" ; "SK"    ; "Bratislava"        ; GOVERNMENT
 240100             ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_1/3/3/2" ; "SK"    ; "Bratislava"        ; GOVERNMENT
 24010[1-9]         ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_1/3/3/2" ; "SK"    ; "Bratislava"        ;            ; "FILLUP TO SUPPORT MASTER RANGE"
@@ -1987,7 +1988,8 @@ Prefix             ; Length ; Type       ; Tariff        ; National Only ; Opera
 94333              ; 9      ; MOBILE     ; STANDARD_RATE ;               ; "ipfon"                    ; "fmt_3/3/3"     ; "SK"    ;                     ; GOVERNMENT
 945                ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "orange"                   ; "fmt_3/3/3"     ; "SK"    ;                     ; GOVERNMENT
 95[01]             ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "4ka_of_swan"              ; "fmt_3/3/3"     ; "SK"    ;                     ; IR21
-95[2-8]            ; 9      ; MOBILE     ; STANDARD_RATE ; false         ;                            ; "fmt_3/3/3"     ; "SK"    ;                     ;            ; "Added per client's request."
+952                ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "4ka_of_swan"              ; "fmt_3/3/3"     ; "SK"    ;                     ; GOVERNMENT
+95[3-8]            ; 9      ; MOBILE     ; STANDARD_RATE ; false         ;                            ; "fmt_3/3/3"     ; "SK"    ;                     ;            ; "Added per client's request."
 959[0-79]          ; 9      ; MOBILE     ; STANDARD_RATE ;               ;                            ; "fmt_3/3/3"     ; "SK"    ;                     ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 9598               ; 9      ; MOBILE     ; STANDARD_RATE ;               ; "slovak_republic_railways" ; "fmt_3/3/3"     ; "SK"    ;                     ; GOVERNMENT
 96                 ; 9      ; UAN        ; STANDARD_RATE ; false         ;                            ; "fmt_3/3/3"     ; "SK"

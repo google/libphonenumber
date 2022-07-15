@@ -25,7 +25,7 @@ Prefix         ; Length ; Type       ; Tariff        ; Area Code Length ; Operat
 168[0-8]       ; 7      ; FIXED_LINE ; STANDARD_RATE ; 1                ;           ; "fixed_1/3/3-4"   ; "MM"    ; "Bayintnaung"
 1689           ; 6      ; FIXED_LINE ; STANDARD_RATE ; 1                ;           ; "fixed_1/2/3"     ; "MM"
 1689           ; 7      ; FIXED_LINE ; STANDARD_RATE ; 1                ;           ; "fixed_1/3/3-4"   ; "MM"
-17[01]         ; 7      ; MOBILE     ; STANDARD_RATE ;                  ;           ; "fixed_1/3/3-4"   ; "MM"    ;                           ;            ; "Added per client's request."
+17[01]         ; 7      ; MOBILE     ; STANDARD_RATE ;                  ;           ; "fixed_1/3/3-4"   ; "MM"    ;                           ;            ; "Added Per client's request."
 1[89][0-6]     ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;           ; "fixed_1/3/3-4"   ; "MM"
 22000          ; 6      ; FIXED_LINE ; STANDARD_RATE ; 1                ;           ; "fixed_1/2/3"     ; "MM"    ; "Mingalar Mandalay"
 22000          ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;           ; "fixed_1/3/3-4"   ; "MM"    ; "Mingalar Mandalay"
@@ -316,7 +316,9 @@ Prefix         ; Length ; Type       ; Tariff        ; Area Code Length ; Operat
 9740           ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "telenor" ; "mobile_1/3/4-6"  ; "MM"    ;                           ; IR21
 97[5-9]        ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "telenor" ; "mobile_1/3/4-6"  ; "MM"
 98[028]        ; 8      ; MOBILE     ; STANDARD_RATE ;                  ;           ; "mobile_1/3/4-6"  ; "MM"
-98[13-7]       ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "mpt"     ; "mobile_1/3/4-6"  ; "MM"
+98[13-6]       ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "mpt"     ; "mobile_1/3/4-6"  ; "MM"
+987[0-79]      ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "mpt"     ; "mobile_1/3/4-6"  ; "MM"
+9878           ; 8,10   ; MOBILE     ; STANDARD_RATE ;                  ; "mpt"     ; "mobile_1/3/4-6"  ; "MM"
 988[0-3]       ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "mpt"     ; "mobile_1/3/4-6"  ; "MM"    ;                           ; IR21
 988[4-6]       ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "mpt"     ; "mobile_1/3/4-6"  ; "MM"    ;                           ;            ; "Added per client's request."
 988[7-9]       ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "mpt"     ; "mobile_1/3/4-6"  ; "MM"
