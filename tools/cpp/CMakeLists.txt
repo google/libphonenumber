@@ -34,7 +34,7 @@ if(NOT absl_FOUND)
   FetchContent_Declare(
       abseil-cpp
       GIT_REPOSITORY  https://github.com/abseil/abseil-cpp.git
-      GIT_TAG         273292d1cfc0a94a65082ee350509af1d113344d
+      GIT_TAG         273292d
   )
 
   # Building the abseil binaries

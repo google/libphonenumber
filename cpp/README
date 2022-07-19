@@ -145,8 +145,7 @@ Requirements:
     Installation:
     - Official [installation guide](https://abseil.io/docs/cpp/tools/cmake-installs).
       Something that we followed in Linux system.
-      $ git clone https://github.com/abseil/abseil-cpp.git --branch
-      273292d1cfc0a94a65082ee350509af1d113344d --single-branch
+      $ git clone https://github.com/abseil/abseil-cpp.git --branch 273292d --single-branch
       $ cd abseil-cpp
       $ cmake . -DCMAKE_INSTALL_PREFIX="$HOME/lpn-deps" -DCMAKE_POSITION_INDEPENDENT_CODE=ON
       $ cmake --build . --target install
