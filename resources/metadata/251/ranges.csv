@@ -370,5 +370,11 @@ Prefix          ; Length ; Type       ; Tariff        ; Area Code Length ; Opera
 58777           ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;                 ; "fmt_2/3/4" ; "ET"    ; "Amanuel, North-West Region"             ; ITU        ; "ITU Date: 09/12/2005"
 58778           ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;                 ; "fmt_2/3/4" ; "ET"    ; "Debre Markos II, North-West Region"     ; ITU        ; "ITU Date: 09/12/2005"
 58779           ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;                 ; "fmt_2/3/4" ; "ET"    ; "Jiga, North-West Region"                ; ITU        ; "ITU Date: 09/12/2005"
+7001            ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "safaricom"     ; "fmt_2/3/4" ; "ET"    ;                                          ; IR21
+70[1-9]         ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "safaricom"     ; "fmt_2/3/4" ; "ET"    ;                                          ; IR21
+71[01]          ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "safaricom"     ; "fmt_2/3/4" ; "ET"    ;                                          ; IR21
+777             ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "safaricom"     ; "fmt_2/3/4" ; "ET"    ;                                          ; IR21
+786             ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "safaricom"     ; "fmt_2/3/4" ; "ET"    ;                                          ; IR21
+799             ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "safaricom"     ; "fmt_2/3/4" ; "ET"    ;                                          ; IR21
 9[02-8]         ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "ethio_telecom" ; "fmt_2/3/4" ; "ET"    ;                                          ; IR21       ; "IR21 11/21/2018"
 9[19]           ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "ethio_telecom" ; "fmt_2/3/4" ; "ET"
