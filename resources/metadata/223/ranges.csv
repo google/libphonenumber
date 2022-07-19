@@ -17,7 +17,7 @@ Prefix   ; Length ; Type       ; Tariff        ; National Only ; Operator  ; For
 6        ; 8      ; MOBILE     ; STANDARD_RATE ; false         ; "sotelma" ; "fmt_2/2/2/2" ; "ML"
 7        ; 8      ; MOBILE     ; STANDARD_RATE ; false         ; "orange"  ; "fmt_2/2/2/2" ; "ML"
 80       ; 8      ; FIXED_LINE ; TOLL_FREE     ; true          ;           ; "fmt_2/2/2/2" ; "ML"
-8[23]    ; 8      ; MOBILE     ; STANDARD_RATE ; false         ; "orange"  ; "fmt_2/2/2/2" ; "ML"
+8[2-4]   ; 8      ; MOBILE     ; STANDARD_RATE ; false         ; "orange"  ; "fmt_2/2/2/2" ; "ML"
 89       ; 8      ; MOBILE     ; STANDARD_RATE ; false         ; "sotelma" ; "fmt_2/2/2/2" ; "ML"
 9[0-4]   ; 8      ; MOBILE     ; STANDARD_RATE ; false         ; "orange"  ; "fmt_2/2/2/2" ; "ML"
 9[5-9]   ; 8      ; MOBILE     ; STANDARD_RATE ; false         ; "sotelma" ; "fmt_2/2/2/2" ; "ML"

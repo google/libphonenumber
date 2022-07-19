@@ -5020,9 +5020,9 @@
           79(?:
             1(?:
               [01]\d|
-              20
+              2[0-7]
             )|
-            2[0-25-7]\d
+            2[0-7]\d
           )\d{3}
         </nationalNumberPattern>
       </voip>
@@ -8271,7 +8271,6 @@
             9\d
           )\d{1,3}|
           49(?:
-            1\d|
             2[02-9]|
             3[2-689]|
             7[1-7]
@@ -8282,7 +8281,7 @@
             4[0-8]
           )\d{3,13}|
           49(?:
-            [05]\d|
+            [015]\d|
             [23]1|
             [46][1-8]
           )\d{1,9}
@@ -8306,7 +8305,7 @@
         <exampleNumber>30123456</exampleNumber>
         <nationalNumberPattern>
           32\d{9,11}|
-          49[2-6]\d{10}|
+          49[1-6]\d{10}|
           322\d{6}|
           49[0-7]\d{3,9}|
           (?:
@@ -9473,7 +9472,7 @@
     <territory id="ET" countryCode="251" internationalPrefix="00" nationalPrefix="0">
       <availableFormats>
         <numberFormat pattern="(\d{2})(\d{3})(\d{4})" nationalPrefixFormattingRule="$NP$FG">
-          <leadingDigits>[1-59]</leadingDigits>
+          <leadingDigits>[1-579]</leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
       </availableFormats>
@@ -9481,7 +9480,7 @@
         <nationalNumberPattern>
           (?:
             11|
-            [2-59]\d
+            [2-579]\d
           )\d{7}
         </nationalNumberPattern>
       </generalDesc>
@@ -9620,7 +9619,19 @@
       <mobile>
         <possibleLengths national="9"/>
         <exampleNumber>911234567</exampleNumber>
-        <nationalNumberPattern>9\d{8}</nationalNumberPattern>
+        <nationalNumberPattern>
+          7001\d{5}|
+          (?:
+            7(?:
+              0[1-9]|
+              1[01]|
+              77|
+              86|
+              99
+            )|
+            9\d\d
+          )\d{6}
+        </nationalNumberPattern>
       </mobile>
     </territory>
 
@@ -12243,13 +12254,13 @@
           )\d{4}|
           (?:
             4(?:
-              40|
+              4[01]|
               6[2358]
             )|
             5(?:
               [1-59][0-46-9]|
               6[0-4689]|
-              7[0-24679]
+              7[0-246-9]
             )|
             6(?:
               0[1-9]|
@@ -19751,7 +19762,7 @@
           (?:
             5[01]|
             [679]\d|
-            8[239]
+            8[2-49]
           )\d{6}
         </nationalNumberPattern>
       </mobile>
@@ -20158,7 +20169,7 @@
         <!-- Format for 5X wireless local loop numbers (that are supported in fixed-line)
              which do not need national prefix as per online results. -->
         <numberFormat pattern="(\d{4})(\d{4})">
-          <leadingDigits>[57-9]</leadingDigits>
+          <leadingDigits>[5-9]</leadingDigits>
           <format>$1 $2</format>
         </numberFormat>
         <!-- For fixed-line two digit area code numbers. -->
@@ -20195,7 +20206,7 @@
       <generalDesc>
         <nationalNumberPattern>
           [12]\d{7,9}|
-          [57-9]\d{7}
+          [5-9]\d{7}
         </nationalNumberPattern>
       </generalDesc>
       <!-- Note the leading digit is the access code: 1 is used by Mongolia Telecom subscribers
@@ -20237,6 +20248,7 @@
           )\d{5}|
           (?:
             5[05]|
+            6[06]|
             8[015689]|
             9[013-9]
           )\d{6}
@@ -20506,10 +20518,9 @@
         <exampleNumber>596301234</exampleNumber>
         <nationalNumberPattern>
           596(?:
-            [04-7]\d|
+            [03-7]\d|
             10|
             2[7-9]|
-            3[014-9]|
             8[09]|
             9[4-9]
           )\d{4}
@@ -22487,8 +22498,8 @@
             1[01]|
             [2-8]|
             9(?:
-              [1-579]|
-              6[2-6]
+              [1-59]|
+              [67][2-6]
             )
           </leadingDigits>
           <format>$1-$2</format>
@@ -22542,7 +22553,7 @@
         <nationalNumberPattern>
           9(?:
             6[0-3]|
-            7[24-6]|
+            7[024-6]|
             8[0-24-68]
           )\d{7}
         </nationalNumberPattern>
@@ -23047,8 +23058,9 @@
     <!-- http://www.itu.int/oth/T02020000A6/en -->
     <!-- http://en.wikipedia.org/wiki/+51 -->
     <!-- http://www.assistbook.com/South%20America/Peru/widecodes -->
-    <territory id="PE" countryCode="51" internationalPrefix="19(?:1[124]|77|90)00"
-               nationalPrefix="0" preferredExtnPrefix=" Anexo " mobileNumberPortableRegion="true">
+    <territory id="PE" countryCode="51" preferredInternationalPrefix="00"
+               internationalPrefix="00|19(?:1[124]|77|90)00" nationalPrefix="0"
+               preferredExtnPrefix=" Anexo " mobileNumberPortableRegion="true">
       <availableFormats>
         <numberFormat pattern="(\d{3})(\d{5})" nationalPrefixFormattingRule="($NP$FG)">
           <leadingDigits>80</leadingDigits>
@@ -24556,12 +24568,13 @@
           2\d{6}
         </nationalNumberPattern>
       </generalDesc>
-      <!-- The prefix 40 has now been allocated, based on numbers seen online. -->
+      <!-- The prefix 40 has now been allocated, based on numbers seen online.
+           Prefix 414[1-4] is added based on user report and online numbers. -->
       <fixedLine>
         <possibleLengths national="8"/>
         <exampleNumber>44123456</exampleNumber>
         <nationalNumberPattern>
-          4141\d{4}|
+          414[1-4]\d{4}|
           (?:
             23|
             4[04]
@@ -25808,7 +25821,7 @@
         <exampleNumber>81234567</exampleNumber>
         <nationalNumberPattern>
           8(?:
-            051|
+            05[0-3]|
             95[0-2]
           )\d{4}|
           (?:
