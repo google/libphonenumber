@@ -405,6 +405,7 @@ Prefix            ; Length ; Type       ; Tariff        ; Area Code Length ; Ope
 5[05]             ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "unitel"   ; "fmt1_4/4"         ; "Asia/Ulaanbaatar"                 ; "MN"    ;                                   ; ITU
 53                ; 8      ; FIXED_LINE ; STANDARD_RATE ; 4                ;            ; "fmt1_4/4"         ; "Asia/Ulaanbaatar"                 ; "MN"    ;                                   ; IR21
 5[68]             ; 8      ; FIXED_LINE ; STANDARD_RATE ; 4                ;            ; "fmt1_4/4"         ; "Asia/Ulaanbaatar"                 ; "MN"
+6[06]             ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "ondo"     ; "fmt1_4/4"         ; "Asia/Ulaanbaatar"                 ; "MN"
 70[0-5]           ; 8      ; FIXED_LINE ; STANDARD_RATE ; 4                ;            ; "fmt1_4/4"         ; "Asia/Ulaanbaatar"                 ; "MN"    ;                                   ; ITU
 71[013-9]         ; 8      ; VOIP       ; STANDARD_RATE ;                  ;            ; "fmt1_4/4"         ; "Asia/Ulaanbaatar"                 ; "MN"
 712[0-79]         ; 8      ; VOIP       ; STANDARD_RATE ;                  ;            ; "fmt1_4/4"         ; "Asia/Ulaanbaatar"                 ; "MN"
