@@ -135,6 +135,31 @@ Requirements:
     Note: Boost Thread is the only library needed at link time.
 
 
+  - abseil-cpp
+    As this dependency package might not be very common, we are downloading,
+    building and linking this library as part of the regular build process i.e
+    part of CMake/Make instructions. If you wish to install this C++ developer
+    library at your system level and avoid building every time, you can try
+    below instruction set.
+
+    Installation:
+    - Official [installation guide](https://abseil.io/docs/cpp/tools/cmake-installs).
+      Something that we followed in Linux system.
+      $ git clone https://github.com/abseil/abseil-cpp.git --branch
+      273292d1cfc0a94a65082ee350509af1d113344d --single-branch
+      $ cd abseil-cpp
+      $ cmake . -DCMAKE_INSTALL_PREFIX="$HOME/lpn-deps" -DCMAKE_POSITION_INDEPENDENT_CODE=ON
+      $ cmake --build . --target install
+    - When building libphonenumber library, if abseil-cpp is still getting downloaded and
+      built, use flags like ```CMAKE_PREFIX_PATH="$HOME/lpn-deps"```
+    - Notes:
+      - We are cloning only a particular version of the abseil-cpp so that we
+	are not commiting to catch up with new build requirements of that
+	library. Eg: After the above tag version C++14 is made as minimum
+	version to build abseil-cpp library.
+      - libphonenumber is presently using C++11 by default, you can always
+	change it by passing ```CMAKE_CXX_STANDARD``` flag.
+
 Building and testing the library
 --------------------------------
   $ cd libphonenumber/cpp
