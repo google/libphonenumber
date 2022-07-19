@@ -2,8 +2,8 @@ Prefix       ; Length ; Type       ; Tariff        ; Operator       ; Format    
 596[05-7]    ; 9      ; FIXED_LINE ; STANDARD_RATE ;                ; "fmt1_3/2/2/2"    ; "MQ"
 59610        ; 9      ; FIXED_LINE ; STANDARD_RATE ;                ; "fmt1_3/2/2/2"    ; "MQ"
 5962[7-9]    ; 9      ; FIXED_LINE ; STANDARD_RATE ;                ; "fmt1_3/2/2/2"    ; "MQ"
-5963[04-9]   ; 9      ; FIXED_LINE ; STANDARD_RATE ;                ; "fmt1_3/2/2/2"    ; "MQ"
-59631        ; 9      ; FIXED_LINE ; STANDARD_RATE ;                ; "fmt1_3/2/2/2"    ; "MQ"    ; GOVERNMENT
+5963[0-3]    ; 9      ; FIXED_LINE ; STANDARD_RATE ;                ; "fmt1_3/2/2/2"    ; "MQ"    ; GOVERNMENT
+5963[4-9]    ; 9      ; FIXED_LINE ; STANDARD_RATE ;                ; "fmt1_3/2/2/2"    ; "MQ"
 5964[0-46-8] ; 9      ; FIXED_LINE ; STANDARD_RATE ;                ; "fmt1_3/2/2/2"    ; "MQ"
 5964[59]     ; 9      ; FIXED_LINE ; STANDARD_RATE ;                ; "fmt1_3/2/2/2"    ; "MQ"    ; GOVERNMENT
 5968[09]     ; 9      ; FIXED_LINE ; STANDARD_RATE ;                ; "fmt1_3/2/2/2"    ; "MQ"

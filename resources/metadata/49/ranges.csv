@@ -2541,7 +2541,7 @@ Prefix        ; Length    ; Type            ; Tariff        ; Area Code Length ;
 4893          ; 6-15      ; FIXED_LINE      ; STANDARD_RATE ; 4                ;                             ; "fixed_4/2-11"      ; "DE"    ; "Hohenaspe"                          ; "Hohenaspe"
 4902          ; 6-12      ; FIXED_LINE      ; STANDARD_RATE ; 4                ;                             ; "fixed_4/2-11"      ; "DE"    ; "Jemgum-Ditzum"                      ; "Jemgum-Ditzum"
 4903          ; 6-12      ; FIXED_LINE      ; STANDARD_RATE ; 4                ;                             ; "fixed_4/2-11"      ; "DE"    ; "Wymeer"                             ; "Wymeer"
-491           ; 6-12      ; FIXED_LINE      ; STANDARD_RATE ; 3                ;                             ; "fixed_3/3-12"      ; "DE"    ; "Leer Ostfriesland"                  ; "Leer Ostfriesland"
+491           ; 6-13      ; FIXED_LINE      ; STANDARD_RATE ; 3                ;                             ; "fixed_3/3-12"      ; "DE"    ; "Leer Ostfriesland"                  ; "Leer Ostfriesland"
 4920          ; 6-12      ; FIXED_LINE      ; STANDARD_RATE ; 4                ;                             ; "fixed_4/2-11"      ; "DE"    ; "Wirdum"                             ; "Wirdum"
 4921          ; 6-12      ; FIXED_LINE      ; STANDARD_RATE ; 4                ;                             ; "fixed_4/2-11"      ; "DE"    ; "Emden Stadt"                        ; "Emden Stadt"
 4921          ; 13        ; FIXED_LINE      ; STANDARD_RATE ;                  ;                             ; "fixed_4/2-11"      ; "DE"

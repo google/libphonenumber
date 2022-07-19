@@ -117,7 +117,7 @@ Calling Code ; Main Region ; Extra Regions                                      
 507          ; "PA"        ;                                                                           ;                   ; "00"       ; "America/Panama"                                      ; "PA"
 508          ; "PM"        ;                                                                           ; "0"               ; "00"       ; "America/Miquelon"
 509          ; "HT"        ;                                                                           ;                   ; "00"       ; "America/Port-au-Prince"
-51           ; "PE"        ;                                                                           ; "0"               ;            ; "America/Lima"                                        ; "PE"                                                             ; """ Anexo """
+51           ; "PE"        ;                                                                           ; "0"               ; "00"       ; "America/Lima"                                        ; "PE"                                                             ; """ Anexo """
 52           ; "MX"        ;                                                                           ; "01,02,044,045,1" ; "00"       ;                                                       ; "MX"
 53           ; "CU"        ;                                                                           ; "0"               ; "119"      ; "America/Havana"
 54           ; "AR"        ;                                                                           ; "0"               ; "00"       ; "America/Buenos_Aires"                                ; "AR"
