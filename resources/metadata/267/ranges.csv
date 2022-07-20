@@ -1,0 +1,51 @@
+Prefix     ; Length ; Type       ; Tariff        ; Operator     ; Format            ; Regions ; Geocode:en           ; Provenance ; Comment
+0800       ; 10     ; FIXED_LINE ; TOLL_FREE     ;              ; "toll_free_4/3/3" ; "BW"    ;                      ; GOVERNMENT
+24[0-48]   ; 7      ; FIXED_LINE ; STANDARD_RATE ;              ; "fixed_3/4"       ; "BW"    ; "Francistown"        ; ITU
+26[0-24]   ; 7      ; FIXED_LINE ; STANDARD_RATE ;              ; "fixed_3/4"       ; "BW"    ; "Selebi-Phikwe"      ; ITU
+29[0578]   ; 7      ; FIXED_LINE ; STANDARD_RATE ;              ; "fixed_3/4"       ; "BW"    ; "Letlhakane/Orapa"   ; ITU
+310        ; 7      ; FIXED_LINE ; STANDARD_RATE ;              ; "fixed_3/4"       ; "BW"    ; "Gaborone (outer)"   ; ITU
+311        ; 7      ; FIXED_LINE ; STANDARD_RATE ;              ; "fixed_3/4"       ; "BW"
+31[235-9]  ; 7      ; FIXED_LINE ; STANDARD_RATE ;              ; "fixed_3/4"       ; "BW"    ; "Gaborone"           ; ITU
+321        ; 8      ; MOBILE     ; STANDARD_RATE ; "mascom"     ; "fmt_2/3/3"       ; "BW"    ;                      ; IR21
+355        ; 7      ; FIXED_LINE ; STANDARD_RATE ;              ; "fixed_3/4"       ; "BW"    ; "Gaborone"           ; ITU
+36         ; 7      ; FIXED_LINE ; STANDARD_RATE ;              ; "fixed_3/4"       ; "BW"    ; "Gaborone"           ; ITU
+37[01]     ; 7      ; FIXED_LINE ; STANDARD_RATE ;              ; "fixed_3/4"       ; "BW"    ; "Gaborone"           ; ITU
+373        ; 7      ; FIXED_LINE ; STANDARD_RATE ;              ; "fixed_3/4"       ; "BW"
+39[0-57]   ; 7      ; FIXED_LINE ; STANDARD_RATE ;              ; "fixed_3/4"       ; "BW"    ; "Gaborone"           ; ITU
+39[689]    ; 7      ; FIXED_LINE ; STANDARD_RATE ;              ; "fixed_3/4"       ; "BW"
+46[03]     ; 7      ; FIXED_LINE ; STANDARD_RATE ;              ; "fixed_3/4"       ; "BW"    ; "Serowe"             ; ITU
+47[1267]   ; 7      ; FIXED_LINE ; STANDARD_RATE ;              ; "fixed_3/4"       ; "BW"    ; "Mahalapye"          ; ITU
+49[0-5]    ; 7      ; FIXED_LINE ; STANDARD_RATE ;              ; "fixed_3/4"       ; "BW"    ; "Palapye"            ; ITU
+53[03]     ; 7      ; FIXED_LINE ; STANDARD_RATE ;              ; "fixed_3/4"       ; "BW"    ; "Lobatse"            ; ITU
+534        ; 7      ; FIXED_LINE ; STANDARD_RATE ;              ; "fixed_3/4"       ; "BW"    ; "Lobatse"            ;            ; "User report"
+53[89]     ; 7      ; FIXED_LINE ; STANDARD_RATE ;              ; "fixed_3/4"       ; "BW"    ; "Ramotswa"           ; ITU
+54[0489]   ; 7      ; FIXED_LINE ; STANDARD_RATE ;              ; "fixed_3/4"       ; "BW"    ; "Barolong/Ngwaketse" ; ITU
+57[1-47]   ; 7      ; FIXED_LINE ; STANDARD_RATE ;              ; "fixed_3/4"       ; "BW"    ; "Mochudi"            ; ITU
+588        ; 7      ; FIXED_LINE ; STANDARD_RATE ;              ; "fixed_3/4"       ; "BW"    ; "Jwaneng"            ; ITU
+59[0-49]   ; 7      ; FIXED_LINE ; STANDARD_RATE ;              ; "fixed_3/4"       ; "BW"    ; "Molepolole"         ; ITU
+62[1-35]   ; 7      ; FIXED_LINE ; STANDARD_RATE ;              ; "fixed_3/4"       ; "BW"    ; "Kasane"             ; ITU
+65[14]     ; 7      ; FIXED_LINE ; STANDARD_RATE ;              ; "fixed_3/4"       ; "BW"    ; "Kgalagadi"          ; ITU
+659        ; 7      ; FIXED_LINE ; STANDARD_RATE ;              ; "fixed_3/4"       ; "BW"    ; "Gantsi"             ; ITU
+68[067]    ; 7      ; FIXED_LINE ; STANDARD_RATE ;              ; "fixed_3/4"       ; "BW"    ; "Maun"               ; ITU
+71         ; 8      ; MOBILE     ; STANDARD_RATE ; "mascom"     ; "fmt_2/3/3"       ; "BW"    ;                      ; ITU
+72         ; 8      ; MOBILE     ; STANDARD_RATE ; "orange"     ; "fmt_2/3/3"       ; "BW"    ;                      ; ITU
+73         ; 8      ; MOBILE     ; STANDARD_RATE ; "btc_mobile" ; "fmt_2/3/3"       ; "BW"    ;                      ; IR21
+74[0-25-7] ; 8      ; MOBILE     ; STANDARD_RATE ; "mascom"     ; "fmt_2/3/3"       ; "BW"    ;                      ; IR21
+74[348]    ; 8      ; MOBILE     ; STANDARD_RATE ; "orange"     ; "fmt_2/3/3"       ; "BW"    ;                      ; ITU
+749        ; 8      ; MOBILE     ; STANDARD_RATE ; "btc_mobile" ; "fmt_2/3/3"       ; "BW"    ;                      ; IR21
+75[0-37]   ; 8      ; MOBILE     ; STANDARD_RATE ; "orange"     ; "fmt_2/3/3"       ; "BW"    ;                      ; ITU
+75[4-69]   ; 8      ; MOBILE     ; STANDARD_RATE ; "mascom"     ; "fmt_2/3/3"       ; "BW"    ;                      ; IR21
+7[56]8     ; 8      ; MOBILE     ; STANDARD_RATE ; "btc_mobile" ; "fmt_2/3/3"       ; "BW"    ;                      ; IR21
+76[0-267]  ; 8      ; MOBILE     ; STANDARD_RATE ; "mascom"     ; "fmt_2/3/3"       ; "BW"    ;                      ; IR21
+76[3-59]   ; 8      ; MOBILE     ; STANDARD_RATE ; "orange"     ; "fmt_2/3/3"       ; "BW"    ;                      ; ITU
+77[016-8]  ; 8      ; MOBILE     ; STANDARD_RATE ; "mascom"     ; "fmt_2/3/3"       ; "BW"    ;                      ; IR21
+772        ; 8      ; MOBILE     ; STANDARD_RATE ; "btc_mobile" ; "fmt_2/3/3"       ; "BW"    ;                      ; ITU
+77[39]     ; 8      ; MOBILE     ; STANDARD_RATE ; "orange"     ; "fmt_2/3/3"       ; "BW"    ;                      ;            ; "Added per client's request."
+77[45]     ; 8      ; MOBILE     ; STANDARD_RATE ; "orange"     ; "fmt_2/3/3"       ; "BW"    ;                      ; ITU
+78[01]     ; 8      ; MOBILE     ; STANDARD_RATE ; "orange"     ; "fmt_2/3/3"       ; "BW"    ;                      ; ITU
+791[01]    ; 8      ; VOIP       ; STANDARD_RATE ;              ; "fmt_2/3/3"       ; "BW"    ;                      ; ITU
+7912[0-7]  ; 8      ; VOIP       ; STANDARD_RATE ;              ; "fmt_2/3/3"       ; "BW"    ;                      ; ITU
+792[0-4]   ; 8      ; VOIP       ; STANDARD_RATE ;              ; "fmt_2/3/3"       ; "BW"    ;                      ; ITU
+792[5-7]   ; 8      ; VOIP       ; STANDARD_RATE ;              ; "fmt_2/3/3"       ; "BW"    ;                      ; IR21
+800        ; 10     ; FIXED_LINE ; TOLL_FREE     ;              ; "toll_free_3/4/3" ; "BW"    ;                      ;            ; "User report"
+90         ; 7      ; FIXED_LINE ; PREMIUM_RATE  ;              ; "premium_2/5"     ; "BW"

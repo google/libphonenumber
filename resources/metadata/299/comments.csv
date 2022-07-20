@@ -1,0 +1,4 @@
+Region ; Label          ; Comment
+GL     ; SC             ; "http://www.itu.int/oth/T0202000056/en"
+GL     ; XML            ; "http://www.itu.int/oth/T0202000056/en"
+GL     ; XML_FIXED_LINE ; "Including VSAT numbers here."

@@ -22,10 +22,6 @@
 597772|Telesur
 597773|Telesur
 597774|Telesur
+5978|Telesur
 59781|Digicel
 59782|Digicel
-59785|Telesur
-59786|Telesur
-59787|Telesur
-59788|Telesur
-59789|Telesur

@@ -1,0 +1,9 @@
+Region ; Type            ; Number
+TR     ; FIXED_LINE      ; "2123456789"
+TR     ; MOBILE          ; "5012345678"
+TR     ; PAGER           ; "5123456789"
+TR     ; TOLL_FREE       ; "8001234567"
+TR     ; PREMIUM_RATE    ; "9001234567"
+TR     ; PERSONAL_NUMBER ; "5922121234"
+TR     ; VOIP            ; "8500123456"
+TR     ; UAN             ; "4441444"

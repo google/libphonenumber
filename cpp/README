@@ -14,7 +14,7 @@ libphonenumber library directly.
 
 Installing the binary packages:
   - Use this if you just need to use or link against the library:
-    $ sudo apt-get install libphonenumber6 libphonenumber6-dev
+    $ sudo apt-get install libphonenumber8 libphonenumber-dev
 
 Installing the source package:
   - Use this if you wish to develop or debug the library:
@@ -53,14 +53,14 @@ Requirements:
 
   - Protocol Buffers
     http://github.com/google/protobuf/
-    Version 2.4 or more recent is required (this is available by default for
+    Version 3.6.1 or more recent is required (this is available by default for
     recent Debian-based GNU/Linux distributions).
 
     You can check which version is available:
     $ apt-cache show libprotobuf-dev
     Package: libprotobuf-dev
     Source: protobuf
-    Version: 2.5.0-9ubuntu1   <-- This must be >= 2.4.0
+    Version: 3.6.1-9ubuntu1   <-- This must be >= 3.6.1
     ...
 
     Installation:
@@ -68,9 +68,8 @@ Requirements:
 
     Note: if your GNU/Linux distribution doesn't provide the needed package,
           please download and install it manually:
-    $ tar xjf protobuf-2.4.tar.bz2
-    $ cd protobuf-2.4
-    $ ./configure && make && sudo make install
+    More details can be found at its official page:
+    https://github.com/protocolbuffers/protobuf
 
   - Google Test
     http://github.com/google/googletest
@@ -118,17 +117,47 @@ Requirements:
     $ cd icu/source
     $ ./configure && make && sudo make install
 
-  - Boost
-    Version 1.40 or more recent is required if you need libphonenumber to be
-    thread-safe. If you access libphonenumber from a single thread, you can
-    avoid the Boost dependency by disabling the USE_BOOST CMake option (see
-    Troubleshooting section below for information about ccmake).
+  - A thread synchronization solution or more recent is required if you need
+    libphonenumber to be thread-safe. Supported solution are:
+	- Boost Version 1.40 or more recent
+	- Posix Thread. Linux or Apple (ios/mac) detection is automatic. On other
+        Posix environnement, uses -DUSE_POSIX_THREAD = ON
+    - C++ 2011 (and later) std::mutex. Uses -DUSE_STDMUTEX = ON to enable
+        automatic C++ 2011 detection (if you prefer Posix or Win32 solution).
+    - Windows Win32 synchronization API.		
+
+	If you access libphonenumber from a single thread, you don't need one of
+    these solution.
 
     You can install it very easily on a Debian-based GNU/Linux distribution:
     $ sudo apt-get install libboost-dev libboost-thread-dev libboost-system-dev
 
     Note: Boost Thread is the only library needed at link time.
 
+
+  - abseil-cpp
+    As this dependency package might not be very common, we are downloading,
+    building and linking this library as part of the regular build process i.e
+    part of CMake/Make instructions. If you wish to install this C++ developer
+    library at your system level and avoid building every time, you can try
+    below instruction set.
+
+    Installation:
+    - Official [installation guide](https://abseil.io/docs/cpp/tools/cmake-installs).
+      Something that we followed in Linux system.
+      $ git clone https://github.com/abseil/abseil-cpp.git --branch 273292d --single-branch
+      $ cd abseil-cpp
+      $ cmake . -DCMAKE_INSTALL_PREFIX="$HOME/lpn-deps" -DCMAKE_POSITION_INDEPENDENT_CODE=ON
+      $ cmake --build . --target install
+    - When building libphonenumber library, if abseil-cpp is still getting downloaded and
+      built, use flags like ```CMAKE_PREFIX_PATH="$HOME/lpn-deps"```
+    - Notes:
+      - We are cloning only a particular version of the abseil-cpp so that we
+	are not commiting to catch up with new build requirements of that
+	library. Eg: After the above tag version C++14 is made as minimum
+	version to build abseil-cpp library.
+      - libphonenumber is presently using C++11 by default, you can always
+	change it by passing ```CMAKE_CXX_STANDARD``` flag.
 
 Building and testing the library
 --------------------------------
@@ -160,7 +189,7 @@ gtest. We don't need to install gtest, we only copy sources. For example:
 Get the libphonenumber source. For example:
   $ mkdir ~/libphonenumber_clone
   $ cd ~/libphonenumber_clone
-  $ git clone https://github.com/googlei18n/libphonenumber.git
+  $ git clone https://github.com/google/libphonenumber.git
 
 Build and test the library:
   $ cd libphonenumber/cpp
@@ -324,9 +353,9 @@ ICU_I18N_LIB              C:/icu/lib/icuin.lib
 ICU_UC_INCLUDE_DIR        C:/icu/include
 ICU_UC_LIB                C:/icu/lib/icuuc.lib
 
-PROTOBUF_INCLUDE_DIR      C:/protobuf-2.4.1/src
-PROTOBUF_LIB              C:/protobuf-2.4.1/vsprojects/Release/libprotobuf.lib
-PROTOC_BIN                C:/protobuf-2.4.1/vsprojects/Release/protoc.exe
+PROTOBUF_INCLUDE_DIR      C:/protobuf-3.6.1/src
+PROTOBUF_LIB              C:/protobuf-3.6.1/vsprojects/Release/libprotobuf.lib
+PROTOC_BIN                C:/protobuf-3.6.1/vsprojects/Release/protoc.exe
 
 Then you can click on "Configure" again. CMake should have located all the
 dependencies.
@@ -351,10 +380,21 @@ Supported build parameters
                                             multi-threaded environments that
                                             are not Linux and Mac.
                                             Libphonenumber relies on Boost for
-                                            non-POSIX (e.g. Windows)
+                                            non-POSIX, non-Windows and non-C++ 2011
                                             multi-threading.
   USE_ICU_REGEXP        = ON | OFF [ON]  -- Use ICU regexp engine.
   USE_LITE_METADATA     = ON | OFF [OFF] -- Generates smaller metadata that
                                             doesn't include example numbers.
+  USE_POSIX_THREAD      = ON | OFF [OFF] -- Use Posix thread for multi-threading.
   USE_RE2               = ON | OFF [OFF] -- Use RE2.
   USE_STD_MAP           = ON | OFF [OFF] -- Force the use of std::map.
+  USE_STDMUTEX          = ON | OFF [OFF] -- Detect and use C++2011 for multi-threading.
+  REGENERATE_METADATA   = ON | OFF [ON]  -- When this is set to OFF it will skip
+                                            regenerating the metadata with
+                                            BuildMetadataCppFromXml. Since the
+                                            metadata is included in the source
+                                            tree anyway, it is beneficial for
+                                            packagers to turn this OFF: it saves
+                                            some time, and it also makes it
+                                            unnecessary to have java in the build
+                                            environment. 

@@ -19,6 +19,7 @@
 #include <cassert>
 #include <cstdio>
 
+#include "phonenumbers/default_logger.h"
 #include "phonenumbers/utf/unicodetext.h"
 #include "phonenumbers/utf/stringpiece.h"
 #include "phonenumbers/utf/utf.h"
@@ -27,6 +28,7 @@
 namespace i18n {
 namespace phonenumbers {
 
+using std::string;
 using std::stringstream;
 using std::max;
 using std::hex;
@@ -72,7 +74,7 @@ static int ConvertToInterchangeValid(char* start, int len) {
   char* out = start;
   char* const end = start + len;
   while (start < end) {
-    int good = UniLib::SpanInterchangeValid(start, end - start);
+    int good = UniLib::SpanInterchangeValid(start, static_cast<int>(end - start));
     if (good > 0) {
       if (out != start) {
         memmove(out, start, good);
@@ -86,7 +88,7 @@ static int ConvertToInterchangeValid(char* start, int len) {
     // Is the current string invalid UTF8 or just non-interchange UTF8?
     Rune rune;
     int n;
-    if (isvalidcharntorune(start, end - start, &rune, &n)) {
+    if (isvalidcharntorune(start, static_cast<int>(end - start), &rune, &n)) {
       // structurally valid UTF8, but not interchange valid
       start += n;  // Skip over the whole character.
     } else {  // bad UTF8
@@ -94,7 +96,7 @@ static int ConvertToInterchangeValid(char* start, int len) {
     }
     *out++ = ' ';
   }
-  return out - in;
+  return static_cast<int>(out - in);
 }
 
 
@@ -203,7 +205,7 @@ UnicodeText::UnicodeText(const UnicodeText& src) {
 UnicodeText::UnicodeText(const UnicodeText::const_iterator& first,
                          const UnicodeText::const_iterator& last) {
   assert(first <= last && "Incompatible iterators");
-  repr_.append(first.it_, last.it_ - first.it_);
+  repr_.append(first.it_, static_cast<int>(last.it_ - first.it_));
 }
 
 string UnicodeText::UTF8Substring(const const_iterator& first,
@@ -229,8 +231,9 @@ UnicodeText& UnicodeText::Copy(const UnicodeText& src) {
 
 UnicodeText& UnicodeText::CopyUTF8(const char* buffer, int byte_length) {
   repr_.Copy(buffer, byte_length);
-  if (!UniLib:: IsInterchangeValid(buffer, byte_length)) {
-    fprintf(stderr, "UTF-8 buffer is not interchange-valid.\n");
+  repr_.utf8_was_valid_ = UniLib:: IsInterchangeValid(buffer, byte_length);
+  if (!repr_.utf8_was_valid_) {
+    LOG(WARNING) << "UTF-8 buffer is not interchange-valid.";
     repr_.size_ = ConvertToInterchangeValid(repr_.data_, byte_length);
   }
   return *this;
@@ -248,8 +251,9 @@ UnicodeText& UnicodeText::TakeOwnershipOfUTF8(char* buffer,
                                               int byte_length,
                                               int byte_capacity) {
   repr_.TakeOwnershipOf(buffer, byte_length, byte_capacity);
-  if (!UniLib:: IsInterchangeValid(buffer, byte_length)) {
-    fprintf(stderr, "UTF-8 buffer is not interchange-valid.\n");
+  repr_.utf8_was_valid_ = UniLib:: IsInterchangeValid(buffer, byte_length);
+  if (!repr_.utf8_was_valid_) {
+    LOG(WARNING) << "UTF-8 buffer is not interchange-valid.";
     repr_.size_ = ConvertToInterchangeValid(repr_.data_, byte_length);
   }
   return *this;
@@ -265,10 +269,11 @@ UnicodeText& UnicodeText::UnsafeTakeOwnershipOfUTF8(char* buffer,
 // ----- PointTo -----
 
 UnicodeText& UnicodeText::PointToUTF8(const char* buffer, int byte_length) {
-  if (UniLib:: IsInterchangeValid(buffer, byte_length)) {
+  repr_.utf8_was_valid_ = UniLib:: IsInterchangeValid(buffer, byte_length);
+  if (repr_.utf8_was_valid_) {
     repr_.PointTo(buffer, byte_length);
   } else {
-    fprintf(stderr, "UTF-8 buffer is not interchange-valid.");
+    LOG(WARNING) << "UTF-8 buffer is not interchange-valid.";
     repr_.Copy(buffer, byte_length);
     repr_.size_ = ConvertToInterchangeValid(repr_.data_, byte_length);
   }
@@ -289,7 +294,7 @@ UnicodeText& UnicodeText::PointTo(const UnicodeText& src) {
 UnicodeText& UnicodeText::PointTo(const const_iterator &first,
                                   const const_iterator &last) {
   assert(first <= last && " Incompatible iterators");
-  repr_.PointTo(first.utf8_data(), last.utf8_data() - first.utf8_data());
+  repr_.PointTo(first.utf8_data(), static_cast<int>(last.utf8_data() - first.utf8_data()));
   return *this;
 }
 
@@ -303,7 +308,7 @@ UnicodeText& UnicodeText::append(const UnicodeText& u) {
 UnicodeText& UnicodeText::append(const const_iterator& first,
                                  const const_iterator& last) {
   assert(first <= last && "Incompatible iterators");
-  repr_.append(first.it_, last.it_ - first.it_);
+  repr_.append(first.it_, static_cast<int>(last.it_ - first.it_));
   return *this;
 }
 

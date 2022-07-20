@@ -1,5 +1,5 @@
 <p align="right">
-<img src="https://travis-ci.org/googlei18n/libphonenumber.svg?branch=master">
+<img src="https://travis-ci.org/google/libphonenumber.svg?branch=master">
 </p>
 
 # What is it?
@@ -16,7 +16,7 @@ Cream Sandwich).
 *   Check the [frequently asked questions](FAQ.md)
 *   Fun! [Falsehoods Programmers Believe About Phone Numbers](FALSEHOODS.md)
 *   Look for
-    [`README`s](https://github.com/googlei18n/libphonenumber/find/master) in
+    [`README`s](https://github.com/google/libphonenumber/find/master) in
     directories relevant to the code you're interested in.
 *   For contributors and porters: [How to run the Java demo](run-java-demo.md)
 *   For porters: [How to make metadata changes](making-metadata-changes.md)
@@ -55,22 +55,22 @@ Cream Sandwich).
 The [Java demo](https://libphonenumber.appspot.com/) is updated with a slight
 delay after the GitHub release.
 
-Last demo update: v8.10.6.
+Last demo update: v8.12.52.
 
 If this number is lower than the [latest release's version
-number](https://github.com/googlei18n/libphonenumber/releases), we are between
+number](https://github.com/google/libphonenumber/releases), we are between
 releases and the demo may be at either version.
 
 ## JavaScript
 
 The [JavaScript
-demo](https://rawgit.com/googlei18n/libphonenumber/master/javascript/i18n/phonenumbers/demo-compiled.html)
+demo](https://htmlpreview.github.io/?https://github.com/google/libphonenumber/blob/master/javascript/i18n/phonenumbers/demo-compiled.html)
 may be run at various tags; this link will take you to `master`.
 
 # Java code
 
 To include the Java code in your application, either integrate with Maven (see
-[wiki](https://github.com/googlei18n/libphonenumber/wiki)) or download the latest
+[wiki](https://github.com/google/libphonenumber/wiki)) or download the latest
 jars from the [Maven
 repository](https://repo1.maven.org/maven2/com/googlecode/libphonenumber/libphonenumber/).
 
@@ -108,9 +108,9 @@ release if there were no other changes.
 
 Want to get notified of new releases? During most of the year, excepting
 holidays and extenuating circumstances, we release fortnightly. We update
-[release tags](https://github.com/googlei18n/libphonenumber/releases) and
+[release tags](https://github.com/google/libphonenumber/releases) and
 document detailed [release notes](
-https://github.com/googlei18n/libphonenumber/blob/master/release_notes.txt).
+https://github.com/google/libphonenumber/blob/master/release_notes.txt).
 We also send an announcement to [libphonenumber-discuss](
 https://groups.google.com/forum/#!forum/libphonenumber-discuss) for every
 release.
@@ -206,7 +206,7 @@ System.out.println(carrierMapper.getNameForNumber(swissMobileNumber, Locale.ENGL
 ```
 
 More examples on how to use the library can be found in the [unit
-tests](https://github.com/googlei18n/libphonenumber/tree/master/java/libphonenumber/test/com/google/i18n/phonenumbers).
+tests](https://github.com/google/libphonenumber/tree/master/java/libphonenumber/test/com/google/i18n/phonenumbers).
 
 # Third-party Ports
 
@@ -223,9 +223,14 @@ maintenance processes.
 *   PHP: https://github.com/giggsey/libphonenumber-for-php
 *   PostgreSQL in-database types: https://github.com/blm768/pg-libphonenumber
 *   Python: https://github.com/daviddrysdale/python-phonenumbers
+*   Ruby: https://github.com/ianks/mini_phone
 *   Ruby: https://github.com/mobi/telephone_number
 *   Rust: https://github.com/1aim/rust-phonenumber
 *   Erlang: https://github.com/marinakr/libphonenumber_erlang
+*   Clojure: https://github.com/randomseed-io/phone-number
+*   R: https://github.com/socialresearchcentre/dialr/
+*   Elixir: https://github.com/socialpaymentsbv/ex_phone_number
+*   Salesforce: https://appexchange.salesforce.com/appxListingDetail?listingId=a0N3A00000G12oJUAR
 
 Alternatives to our own versions:
 
@@ -233,11 +238,13 @@ Alternatives to our own versions:
     `Class#getResourcesAsStream` and asks that Android apps follow the Android
     loading best practices of repackaging the metadata and loading from
     `AssetManager#open()` themselves
-    ([FAQ](https://github.com/googlei18n/libphonenumber/blob/master/FAQ.md#optimize-loads)).
+    ([FAQ](https://github.com/google/libphonenumber/blob/master/FAQ.md#optimize-loads)).
     If you don't want to do this, check out the port at
     https://github.com/MichaelRocks/libphonenumber-android, which does repackage
     the metadata and use `AssetManager#open()`, and may be depended on without
-    needing those specific loading optimizations from clients.
+    needing those specific loading optimizations from clients. You should also check
+    out the port at https://github.com/lionscribe/libphonenumber-android which also
+    supports geocoding, and only requires a one line code change.
 *   Javascript: If you don't want to use our version, which depends on Closure,
     there are several other options, including
     https://github.com/catamphetamine/libphonenumber-js - a stripped-down

@@ -1,0 +1,5 @@
+Region ; Label                         ; Comment
+KP     ; SC                            ; "http://north-korea.emergencynumbers.org/"
+KP     ; XML                           ; "http://en.wikipedia.org/wiki/%2B850"
+KP     ; XML_FIXED_LINE                ; "Covers only numbers from Pyongyang and Rason Economic Special Zone. According to\nwikipedia, other ranges of phone numbers are top secret, unpublished, and not dialable\nfrom overseas. Also, there is conflicting information about the length of fixed-line\nnumbers, so here we are following Wikipedia."
+KP     ; XML_NO_INTERNATIONAL_DIALLING ; "For numbers starting with 2, only the 2381 range can be dialed internationally."

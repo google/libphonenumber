@@ -15,7 +15,7 @@ Please check the following:
     *   Your issue may be resolved by upgrading to the latest version of the
         library. (Reach out to the product/app team if you're not the developer!)
     *   If you are using a
-        [port](http://github.com/googlei18n/libphonenumber#third-party-ports),
+        [port](http://github.com/google/libphonenumber#third-party-ports),
         issues should be reported against that project.
     *   If you are using the library through a front-end or wrapper, issues
         should be reported against that project.
@@ -68,7 +68,7 @@ sign a Corporate or Individual CLA.
 **By signing the CLA, you confirm that you have the rights to share the
 information with us, and that we may use, modify, reproduce, publicly display,
 and distribute the information in accordance with the library's [open source
-license](http://github.com/googlei18n/libphonenumber/blob/master/LICENSE).**
+license](http://github.com/google/libphonenumber/blob/master/LICENSE).**
 
 *   [Corporate CLA](http://developers.google.com/open-source/cla/corporate?csw=1):
     *   See https://cla.developers.google.com/about and follow the instructions.
@@ -96,8 +96,10 @@ license](http://github.com/googlei18n/libphonenumber/blob/master/LICENSE).**
 
 ## Pull requests
 
-We do not accept pull requests for validation, formatting, or timezone metadata
-updates.
+Since all metadata (XML and mapping files) is generated automatically from other
+sources, we cannot accept pull requests to edit these files directly. This includes
+validation, formatting, geocoding, operator or timezone metadata. However this does
+not mean you cannot raise issues for this data.
 
 For changes specific to windows builds, see [Filing a code
 issue](#filing-a-code-issue) and make sure you have found a reviewer and tester
@@ -107,8 +109,6 @@ specific to your build/setup, please prefer [creating a code bug](#filing-a-code
 
 We are happy to review and accept pull requests for the following:
 
-*   Carrier updates
-*   Geocoding updates
 *   Bug fixes
 *   Documentation and code hygiene cleanups
 

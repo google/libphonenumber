@@ -3,14 +3,14 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.googlecode.libphonenumber</groupId>
   <artifactId>libphonenumber</artifactId>
-  <version>8.10.7-SNAPSHOT</version>
+  <version>8.12.53-SNAPSHOT</version>
   <packaging>jar</packaging>
-  <url>https://github.com/googlei18n/libphonenumber/</url>
+  <url>https://github.com/google/libphonenumber/</url>
 
   <parent>
     <groupId>com.googlecode.libphonenumber</groupId>
     <artifactId>libphonenumber-parent</artifactId>
-    <version>8.10.7-SNAPSHOT</version>
+    <version>8.12.53-SNAPSHOT</version>
   </parent>
 
   <build>
@@ -72,7 +72,6 @@
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>animal-sniffer-maven-plugin</artifactId>
-        <version>1.15</version>
         <executions>
           <execution>
             <phase>test</phase>

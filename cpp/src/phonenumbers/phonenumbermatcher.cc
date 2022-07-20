@@ -29,10 +29,10 @@
 #include <stddef.h>
 #include <limits>
 #include <map>
+#include <memory>
 #include <string>
 #include <utility>
 #include <vector>
-
 #include <unicode/uchar.h>
 
 #include "phonenumbers/alternate_format.h"
@@ -49,7 +49,9 @@
 #include "phonenumbers/phonenumberutil.h"
 #include "phonenumbers/regexp_adapter.h"
 #include "phonenumbers/regexp_adapter_icu.h"
+#include "phonenumbers/regexp_cache.h"
 #include "phonenumbers/stringutil.h"
+#include "phonenumbers/utf/unicodetext.h"
 
 #ifdef I18N_PHONENUMBERS_USE_RE2
 #include "phonenumbers/regexp_adapter_re2.h"
@@ -58,7 +60,6 @@
 using std::map;
 using std::numeric_limits;
 using std::string;
-using std::vector;
 
 namespace i18n {
 namespace phonenumbers {
@@ -117,7 +118,7 @@ bool AllNumberGroupsRemainGrouped(
     const PhoneNumberUtil& util,
     const PhoneNumber& number,
     const string& normalized_candidate,
-    const vector<string>& formatted_number_groups) {
+    const std::vector<string>& formatted_number_groups) {
   size_t from_index = 0;
   if (number.country_code_source() != PhoneNumber::FROM_DEFAULT_COUNTRY) {
     // First skip the country code if the normalized candidate contained it.
@@ -227,6 +228,10 @@ class PhoneNumberMatcherRegExps : public Singleton<PhoneNumberMatcherRegExps> {
   scoped_ptr<const AbstractRegExpFactory> regexp_factory_for_pattern_;
   scoped_ptr<const AbstractRegExpFactory> regexp_factory_;
 
+  // A cache for popular reg-exps of leading digits used to match formatting
+  // patterns and the factory used to create it.
+  mutable RegExpCache regexp_cache_;
+
   // Matches strings that look like publication pages. Example:
   // Computing Complete Answers to Queries in the Presence of Limited Access
   // Patterns. Chen Li. VLDB J. 12(3): 211-227 (2003).
@@ -254,7 +259,7 @@ class PhoneNumberMatcherRegExps : public Singleton<PhoneNumberMatcherRegExps> {
   //
   // Note that if there is a match, we will always check any text found up to
   // the first match as well.
-  scoped_ptr<vector<const RegExp*> > inner_matches_;
+  scoped_ptr<std::vector<const RegExp*> > inner_matches_;
   scoped_ptr<const RegExp> capture_up_to_second_number_start_pattern_;
   scoped_ptr<const RegExp> capturing_ascii_digits_pattern_;
   // Compiled reg-ex representing lead_class_;
@@ -289,6 +294,12 @@ class PhoneNumberMatcherRegExps : public Singleton<PhoneNumberMatcherRegExps> {
 #else
         regexp_factory_(new ICURegExpFactory()),
 #endif  // I18N_PHONENUMBERS_USE_RE2
+        // A cache for frequently used country-specific regular expressions. Set
+        // to 32 to cover ~2-3 countries being used for the same doc with ~10
+        // patterns for each country. Some pages will have a lot more countries
+        // in use, but typically fewer numbers for each so expanding the cache
+        // for that use-case won't have a lot of benefit.
+        regexp_cache_(*regexp_factory_, 32),
         pub_pages_(regexp_factory_->CreateRegExp(
             "\\d{1,5}-+\\d{1,5}\\s{0,4}\\(\\d{1,4}")),
         slash_separated_dates_(regexp_factory_->CreateRegExp(
@@ -300,19 +311,19 @@ class PhoneNumberMatcherRegExps : public Singleton<PhoneNumberMatcherRegExps> {
         matching_brackets_(regexp_factory_->CreateRegExp(
             StrCat(leading_maybe_matched_bracket_, non_parens_, "+",
                    bracket_pairs_, non_parens_, "*"))),
-        inner_matches_(new vector<const RegExp*>()),
+        inner_matches_(new std::vector<const RegExp*>()),
         capture_up_to_second_number_start_pattern_(
             regexp_factory_->CreateRegExp(
                 PhoneNumberUtil::kCaptureUpToSecondNumberStart)),
         capturing_ascii_digits_pattern_(
             regexp_factory_->CreateRegExp("(\\d+)")),
         lead_class_pattern_(regexp_factory_->CreateRegExp(lead_class_)),
-        pattern_(regexp_factory_for_pattern_->CreateRegExp(
-            StrCat("((?:", lead_class_, punctuation_, ")", lead_limit_,
-                   digit_sequence_, "(?:", punctuation_, digit_sequence_, ")",
-                   block_limit_, "(?i)(?:",
-                   PhoneNumberUtil::GetInstance()->GetExtnPatternsForMatching(),
-                   ")?)"))) {
+        pattern_(regexp_factory_for_pattern_->CreateRegExp(StrCat(
+            "((?:", lead_class_, punctuation_, ")", lead_limit_,
+            digit_sequence_, "(?:", punctuation_, digit_sequence_, ")",
+            block_limit_, "(?i)(?:",
+            PhoneNumberUtil::GetInstance()->GetExtnPatternsForMatching(),
+            ")?)"))) {
     inner_matches_->push_back(
         // Breaks on the slash - e.g. "651-234-2345/332-445-1234"
         regexp_factory_->CreateRegExp("/+(.*)"));
@@ -396,7 +407,9 @@ PhoneNumberMatcher::PhoneNumberMatcher(const PhoneNumberUtil& util,
       max_tries_(max_tries),
       state_(NOT_READY),
       last_match_(NULL),
-      search_index_(0) {
+      search_index_(0),
+      is_input_valid_utf8_(true) {
+  is_input_valid_utf8_ = IsInputUtf8(); 
 }
 
 PhoneNumberMatcher::PhoneNumberMatcher(const string& text,
@@ -410,10 +423,18 @@ PhoneNumberMatcher::PhoneNumberMatcher(const string& text,
       max_tries_(numeric_limits<int>::max()),
       state_(NOT_READY),
       last_match_(NULL),
-      search_index_(0) {
+      search_index_(0),
+      is_input_valid_utf8_(true) {
+  is_input_valid_utf8_ =  IsInputUtf8();
 }
 
 PhoneNumberMatcher::~PhoneNumberMatcher() {
+}
+
+bool PhoneNumberMatcher::IsInputUtf8() {
+  UnicodeText number_as_unicode;
+  number_as_unicode.PointToUTF8(text_.c_str(), text_.size());
+  return number_as_unicode.UTF8WasValid();
 }
 
 // static
@@ -521,7 +542,7 @@ bool PhoneNumberMatcher::VerifyAccordingToLeniency(
         return false;
       }
       ResultCallback4<bool, const PhoneNumberUtil&, const PhoneNumber&,
-                      const string&, const vector<string>&>* callback =
+                      const string&, const std::vector<string>&>* callback =
           NewPermanentCallback(&AllNumberGroupsRemainGrouped);
       bool is_valid = CheckNumberGroupingIsValid(number, candidate, callback);
       delete(callback);
@@ -536,7 +557,7 @@ bool PhoneNumberMatcher::VerifyAccordingToLeniency(
         return false;
       }
       ResultCallback4<bool, const PhoneNumberUtil&, const PhoneNumber&,
-                      const string&, const vector<string>&>* callback =
+                      const string&, const std::vector<string>&>* callback =
           NewPermanentCallback(
               this, &PhoneNumberMatcher::AllNumberGroupsAreExactlyPresent);
       bool is_valid = CheckNumberGroupingIsValid(number, candidate, callback);
@@ -553,7 +574,7 @@ bool PhoneNumberMatcher::VerifyAccordingToLeniency(
 bool PhoneNumberMatcher::ExtractInnerMatch(const string& candidate, int offset,
                                            PhoneNumberMatch* match) {
   DCHECK(match);
-  for (vector<const RegExp*>::const_iterator regex =
+  for (std::vector<const RegExp*>::const_iterator regex =
            reg_exps_->inner_matches_->begin();
            regex != reg_exps_->inner_matches_->end(); regex++) {
     scoped_ptr<RegExpInput> candidate_input(
@@ -562,8 +583,8 @@ bool PhoneNumberMatcher::ExtractInnerMatch(const string& candidate, int offset,
     string group;
     while ((*regex)->FindAndConsume(candidate_input.get(), &group) &&
            max_tries_ > 0) {
-      int group_start_index = candidate.length() -
-          candidate_input->ToString().length() - group.length();
+      int group_start_index = static_cast<int>(candidate.length() -
+          candidate_input->ToString().length() - group.length());
       if (is_first_match) {
         // We should handle any group before this one too.
         string first_group_only = candidate.substr(0, group_start_index);
@@ -615,6 +636,11 @@ bool PhoneNumberMatcher::ExtractMatch(const string& candidate, int offset,
 }
 
 bool PhoneNumberMatcher::HasNext() {
+  // Input should contain only UTF-8 characters.
+  if (!is_input_valid_utf8_) {
+    state_ = DONE;
+    return false;
+  }
   if (state_ == NOT_READY) {
     PhoneNumberMatch temp_match;
     if (!Find(search_index_, &temp_match)) {
@@ -650,7 +676,7 @@ bool PhoneNumberMatcher::Find(int index, PhoneNumberMatch* match) {
   string candidate;
   while ((max_tries_ > 0) &&
          reg_exps_->pattern_->FindAndConsume(text.get(), &candidate)) {
-    int start = text_.length() - text->ToString().length() - candidate.length();
+    int start = static_cast<int>(text_.length() - text->ToString().length() - candidate.length());
     // Check for extra numbers at the end.
     reg_exps_->capture_up_to_second_number_start_pattern_->
         PartialMatch(candidate, &candidate);
@@ -658,7 +684,7 @@ bool PhoneNumberMatcher::Find(int index, PhoneNumberMatch* match) {
       return true;
     }
 
-    index = start + candidate.length();
+    index = static_cast<int>(start + candidate.length());
     --max_tries_;
   }
   return false;
@@ -668,30 +694,42 @@ bool PhoneNumberMatcher::CheckNumberGroupingIsValid(
     const PhoneNumber& phone_number,
     const string& candidate,
     ResultCallback4<bool, const PhoneNumberUtil&, const PhoneNumber&,
-                    const string&, const vector<string>&>* checker) const {
+                    const string&, const std::vector<string>&>* checker) const {
   DCHECK(checker);
-  // TODO: Evaluate how this works for other locales (testing has been limited
-  // to NANPA regions) and optimise if necessary.
   string normalized_candidate =
       NormalizeUTF8::NormalizeDecimalDigits(candidate);
-  vector<string> formatted_number_groups;
-  GetNationalNumberGroups(phone_number, NULL,  // Use default formatting pattern
-                          &formatted_number_groups);
+  std::vector<string> formatted_number_groups;
+  GetNationalNumberGroups(phone_number, &formatted_number_groups);
   if (checker->Run(phone_util_, phone_number, normalized_candidate,
                    formatted_number_groups)) {
     return true;
   }
-  // If this didn't pass, see if there are any alternate formats, and try them
-  // instead.
+  // If this didn't pass, see if there are any alternate formats that match, and
+  // try them instead.
   const PhoneMetadata* alternate_formats =
     alternate_formats_->GetAlternateFormatsForCountry(
         phone_number.country_code());
   if (alternate_formats) {
+    string national_significant_number;
+    phone_util_.GetNationalSignificantNumber(phone_number,
+                                             &national_significant_number);
     for (RepeatedPtrField<NumberFormat>::const_iterator it =
              alternate_formats->number_format().begin();
          it != alternate_formats->number_format().end(); ++it) {
+      if (it->leading_digits_pattern_size() > 0) {
+        std::unique_ptr<RegExpInput> nsn_input(
+            reg_exps_->regexp_factory_->CreateInput(
+                national_significant_number));
+        // There is only one leading digits pattern for alternate formats.
+        if (!reg_exps_->regexp_cache_.GetRegExp(
+                it->leading_digits_pattern(0)).Consume(nsn_input.get())) {
+          // Leading digits don't match; try another one.
+          continue;
+        }
+      }
       formatted_number_groups.clear();
-      GetNationalNumberGroups(phone_number, &*it, &formatted_number_groups);
+      GetNationalNumberGroupsForPattern(phone_number, &*it,
+                                        &formatted_number_groups);
       if (checker->Run(phone_util_, phone_number, normalized_candidate,
                        formatted_number_groups)) {
         return true;
@@ -701,40 +739,40 @@ bool PhoneNumberMatcher::CheckNumberGroupingIsValid(
   return false;
 }
 
-// Helper method to get the national-number part of a number, formatted without
-// any national prefix, and return it as a set of digit blocks that would be
-// formatted together.
 void PhoneNumberMatcher::GetNationalNumberGroups(
     const PhoneNumber& number,
-    const NumberFormat* formatting_pattern,
-    vector<string>* digit_blocks) const {
+    std::vector<string>* digit_blocks) const {
   string rfc3966_format;
-  if (!formatting_pattern) {
-    // This will be in the format +CC-DG;ext=EXT where DG represents groups of
-    // digits.
-    phone_util_.Format(number, PhoneNumberUtil::RFC3966, &rfc3966_format);
-    // We remove the extension part from the formatted string before splitting
-    // it into different groups.
-    size_t end_index = rfc3966_format.find(';');
-    if (end_index == string::npos) {
-      end_index = rfc3966_format.length();
-    }
-    // The country-code will have a '-' following it.
-    size_t start_index = rfc3966_format.find('-') + 1;
-    SplitStringUsing(rfc3966_format.substr(start_index,
-                                           end_index - start_index),
-                     "-", digit_blocks);
-  } else {
-    // We format the NSN only, and split that according to the separator.
-    string national_significant_number;
-    phone_util_.GetNationalSignificantNumber(number,
-                                             &national_significant_number);
-    phone_util_.FormatNsnUsingPattern(national_significant_number,
-                                      *formatting_pattern,
-                                      PhoneNumberUtil::RFC3966,
-                                      &rfc3966_format);
-    SplitStringUsing(rfc3966_format, "-", digit_blocks);
+  // This will be in the format +CC-DG1-DG2-DGX;ext=EXT where DG1..DGX
+  // represents groups of digits.
+  phone_util_.Format(number, PhoneNumberUtil::RFC3966, &rfc3966_format);
+  // We remove the extension part from the formatted string before splitting
+  // it into different groups.
+  size_t end_index = rfc3966_format.find(';');
+  if (end_index == string::npos) {
+    end_index = rfc3966_format.length();
   }
+  // The country-code will have a '-' following it.
+  size_t start_index = rfc3966_format.find('-') + 1;
+  SplitStringUsing(rfc3966_format.substr(start_index,
+                                         end_index - start_index),
+                   '-', digit_blocks);
+}
+
+void PhoneNumberMatcher::GetNationalNumberGroupsForPattern(
+    const PhoneNumber& number,
+    const NumberFormat* formatting_pattern,
+    std::vector<string>* digit_blocks) const {
+  string rfc3966_format;
+  // We format the NSN only, and split that according to the separator.
+  string national_significant_number;
+  phone_util_.GetNationalSignificantNumber(number,
+                                           &national_significant_number);
+  phone_util_.FormatNsnUsingPattern(national_significant_number,
+                                    *formatting_pattern,
+                                    PhoneNumberUtil::RFC3966,
+                                    &rfc3966_format);
+  SplitStringUsing(rfc3966_format, '-', digit_blocks);
 }
 
 bool PhoneNumberMatcher::IsNationalPrefixPresentIfRequired(
@@ -788,10 +826,10 @@ bool PhoneNumberMatcher::AllNumberGroupsAreExactlyPresent(
     const PhoneNumberUtil& util,
     const PhoneNumber& phone_number,
     const string& normalized_candidate,
-    const vector<string>& formatted_number_groups) const {
+    const std::vector<string>& formatted_number_groups) const {
   const scoped_ptr<RegExpInput> candidate_number(
       reg_exps_->regexp_factory_->CreateInput(normalized_candidate));
-  vector<string> candidate_groups;
+  std::vector<string> candidate_groups;
   string digit_block;
   while (reg_exps_->capturing_ascii_digits_pattern_->FindAndConsume(
              candidate_number.get(),
@@ -800,9 +838,9 @@ bool PhoneNumberMatcher::AllNumberGroupsAreExactlyPresent(
   }
 
   // Set this to the last group, skipping it if the number has an extension.
-  int candidate_number_group_index =
+  int candidate_number_group_index = static_cast<int>(
       phone_number.has_extension() ? candidate_groups.size() - 2
-                                   : candidate_groups.size() - 1;
+                                   : candidate_groups.size() - 1);
   // First we check if the national significant number is formatted as a block.
   // We use find and not equals, since the national significant number may be
   // present with a prefix such as a national number prefix, or the country code
@@ -818,7 +856,7 @@ bool PhoneNumberMatcher::AllNumberGroupsAreExactlyPresent(
   // Starting from the end, go through in reverse, excluding the first group,
   // and check the candidate and number groups are the same.
   for (int formatted_number_group_index =
-           (formatted_number_groups.size() - 1);
+           static_cast<int>(formatted_number_groups.size() - 1);
        formatted_number_group_index > 0 &&
        candidate_number_group_index >= 0;
        --formatted_number_group_index, --candidate_number_group_index) {

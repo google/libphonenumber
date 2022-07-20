@@ -15,9 +15,9 @@
 # Prefix 988 is assigned to Bob which is a subsidiary of Mtel.
 
 35987|Vivacom
-35988|Mtel
+35988|A1
 35989|Telenor
 359988|Bob
-359989|Mtel
+359989|A1
 359996|Bulsatcom
 359999|MAX

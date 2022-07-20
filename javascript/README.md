@@ -8,7 +8,7 @@ How to setup:
 =============
 1.  Checkout closure-library, closure-compiler, closure-linter and python-gflags next to libphonenumber:
 
-* `git clone https://github.com/googlei18n/libphonenumber/`
+* `git clone https://github.com/google/libphonenumber/`
 
 * `git clone https://github.com/google/closure-library/`
 
@@ -17,6 +17,20 @@ How to setup:
 * `git clone https://github.com/google/closure-linter.git`
 
 * `git clone https://github.com/google/python-gflags.git`
+
+1.  We officially support only these versions of these dependencies:
+
+* Closure library: v20190415
+
+* Closure compiler: v20140407
+
+* Closure linter: v2.3.19
+
+* Python gflags: 3.1.2
+
+Note: We were to build at latest versions of these dependencies, however, we cannot promise that
+we continue to support newer version of these dependencies. We learned that newer Closure binaries
+deprecate older apis earlier, leading to build breakages.
 
 If you don't checkout the dependencies next to libphonenumber:
 
@@ -32,8 +46,10 @@ If you don't checkout the dependencies next to libphonenumber:
 
 How to compile:
 ===============
-1. Build Closure's compiler.jar:
-  `mvn -DskipTests`
+1. Build the Closure Compiler JAR file by following the directions on the
+   [Closure Compiler README](https://github.com/google/closure-compiler/tree/master/README.md).
+   If this step doesn't work, try updating your local copy of each of the
+   repositories listed above before filing an issue.
 
 2. Compile the demo.js and all its dependencies to one file: `demo-compiled.js`:
   `ant -f javascript/build.xml compile-demo`
@@ -76,9 +92,8 @@ project:
   `ant -f javascript/build.xml lint`
 
 
-TODO:
+Missing functionality:
 =====
-1. Port functionality to extract phone-numbers from text (findNumbers).
-2. Port offline phone number geocoder.
-3. Enable PhoneNumberUtil to handle all digits, rather than a subset (JavaScript has no equivalent to the Java Character.digit).
-4. Port ShortNumberInfo.
+1. JS port does not support extracting phone-numbers from text (findNumbers).
+2. JS port does not have an offline phone number geocoder.
+3. JS port of PhoneNumberUtil does not handle all digits, only a subset (JavaScript has no equivalent to the Java Character.digit).

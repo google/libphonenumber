@@ -64,7 +64,7 @@
 
 <phoneNumberMetadata>
   <territories>
-    <!-- Ascension Island -->
+    <!-- Ascension Island (AC) -->
     <!-- www.itu.int/oth/T02020000AF -->
     <territory id="AC">
       <generalDesc>
@@ -73,12 +73,22 @@
       <shortCode>
         <possibleLengths national="3"/>
         <exampleNumber>911</exampleNumber>
-        <nationalNumberPattern>911</nationalNumberPattern>
+        <nationalNumberPattern>
+          9(?:
+            11|
+            99
+          )
+        </nationalNumberPattern>
       </shortCode>
       <tollFree>
         <possibleLengths national="3"/>
         <exampleNumber>911</exampleNumber>
-        <nationalNumberPattern>911</nationalNumberPattern>
+        <nationalNumberPattern>
+          9(?:
+            11|
+            99
+          )
+        </nationalNumberPattern>
       </tollFree>
       <!-- http://studentsabroad.state.gov/content/pdfs/911_ABROAD.pdf
            http://www.noonsite.com/Countries/AscensionIsland/?rc=GeneralInfo
@@ -87,11 +97,16 @@
       <emergency>
         <possibleLengths national="3"/>
         <exampleNumber>911</exampleNumber>
-        <nationalNumberPattern>911</nationalNumberPattern>
+        <nationalNumberPattern>
+          9(?:
+            11|
+            99
+          )
+        </nationalNumberPattern>
       </emergency>
     </territory>
 
-    <!-- Andorra -->
+    <!-- Andorra (AD) -->
     <!-- http://www.itu.int/oth/T0202000005/en -->
     <territory id="AD">
       <generalDesc>
@@ -115,7 +130,7 @@
       </emergency>
     </territory>
 
-    <!-- United Arab Emirates -->
+    <!-- United Arab Emirates (AE) -->
     <!-- http://www.itu.int/oth/T02020000DC/en -->
     <territory id="AE">
       <generalDesc>
@@ -154,7 +169,7 @@
       </smsServices>
     </territory>
 
-    <!-- Afghanistan -->
+    <!-- Afghanistan (AF) -->
     <!-- http://www.itu.int/oth/T0202000001/en -->
     <territory id="AF">
       <generalDesc>
@@ -166,10 +181,10 @@
       </generalDesc>
       <shortCode>
         <possibleLengths national="3,5"/>
-        <exampleNumber>102</exampleNumber>
+        <exampleNumber>100</exampleNumber>
         <nationalNumberPattern>
           1(?:
-            02|
+            0[02]|
             19
           )|
           40404
@@ -177,10 +192,10 @@
       </shortCode>
       <tollFree>
         <possibleLengths national="3"/>
-        <exampleNumber>102</exampleNumber>
+        <exampleNumber>100</exampleNumber>
         <nationalNumberPattern>
           1(?:
-            02|
+            0[02]|
             19
           )
         </nationalNumberPattern>
@@ -193,10 +208,10 @@
       </carrierSpecific>
       <emergency>
         <possibleLengths national="3"/>
-        <exampleNumber>102</exampleNumber>
+        <exampleNumber>100</exampleNumber>
         <nationalNumberPattern>
           1(?:
-            02|
+            0[02]|
             19
           )
         </nationalNumberPattern>
@@ -209,7 +224,7 @@
       </smsServices>
     </territory>
 
-    <!-- Antigua and Barbuda -->
+    <!-- Antigua & Barbuda (AG) -->
     <!-- http://www.itu.int/oth/T0202000008/en -->
     <territory id="AG">
       <generalDesc>
@@ -222,6 +237,7 @@
           176|
           9(?:
             11|
+            88|
             99
           )
         </nationalNumberPattern>
@@ -232,6 +248,7 @@
         <nationalNumberPattern>
           9(?:
             11|
+            88|
             99
           )
         </nationalNumberPattern>
@@ -253,6 +270,11 @@
           )
         </nationalNumberPattern>
       </emergency>
+      <expandedEmergency>
+        <possibleLengths national="3"/>
+        <exampleNumber>988</exampleNumber>
+        <nationalNumberPattern>988</nationalNumberPattern>
+      </expandedEmergency>
       <!-- https://support.twitter.com/articles/20170024 -->
       <smsServices>
         <possibleLengths national="3"/>
@@ -261,7 +283,7 @@
       </smsServices>
     </territory>
 
-    <!-- Anguilla -->
+    <!-- Anguilla (AI) -->
     <!-- http://www.itu.int/oth/T0202000007/en -->
     <territory id="AI">
       <generalDesc>
@@ -272,13 +294,21 @@
         <exampleNumber>176</exampleNumber>
         <nationalNumberPattern>
           176|
-          911
+          9(?:
+            11|
+            88
+          )
         </nationalNumberPattern>
       </shortCode>
       <tollFree>
         <possibleLengths national="3"/>
         <exampleNumber>911</exampleNumber>
-        <nationalNumberPattern>911</nationalNumberPattern>
+        <nationalNumberPattern>
+          9(?:
+            11|
+            88
+          )
+        </nationalNumberPattern>
       </tollFree>
       <!-- https://support.twitter.com/articles/20170024 -->
       <carrierSpecific>
@@ -292,6 +322,11 @@
         <exampleNumber>911</exampleNumber>
         <nationalNumberPattern>911</nationalNumberPattern>
       </emergency>
+      <expandedEmergency>
+        <possibleLengths national="3"/>
+        <exampleNumber>988</exampleNumber>
+        <nationalNumberPattern>988</nationalNumberPattern>
+      </expandedEmergency>
       <!-- https://support.twitter.com/articles/20170024 -->
       <smsServices>
         <possibleLengths national="3"/>
@@ -300,7 +335,7 @@
       </smsServices>
     </territory>
 
-    <!-- Albania -->
+    <!-- Albania (AL) -->
     <!-- http://www.itu.int/oth/T0202000002/en -->
     <territory id="AL">
       <generalDesc>
@@ -399,7 +434,7 @@
       </smsServices>
     </territory>
 
-    <!-- Armenia -->
+    <!-- Armenia (AM) -->
     <!-- http://www.itu.int/oth/T020200000A/en -->
     <territory id="AM">
       <generalDesc>
@@ -440,7 +475,7 @@
       </smsServices>
     </territory>
 
-    <!-- Angola -->
+    <!-- Angola (AO) -->
     <!-- http://www.itu.int/oth/T0202000006/en -->
     <territory id="AO">
       <generalDesc>
@@ -464,7 +499,7 @@
       </emergency>
     </territory>
 
-    <!-- Argentina -->
+    <!-- Argentina (AR) -->
     <!-- http://www.itu.int/oth/T0202000009/en -->
     <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_Argentina#Public_utility_numbers -->
     <territory id="AR">
@@ -479,7 +514,9 @@
           1(?:
             0[0-35-7]|
             1[02-5]|
-            2[15]|
+            2[015]|
+            3[47]|
+            4[478]|
             9
           )|
           3372|
@@ -497,7 +534,9 @@
           1(?:
             0[0-35-7]|
             1[0245]|
-            2[15]|
+            2[015]|
+            3[47]|
+            4[478]|
             9
           )|
           911
@@ -522,7 +561,14 @@
       <expandedEmergency>
         <possibleLengths national="3"/>
         <exampleNumber>103</exampleNumber>
-        <nationalNumberPattern>10[356]</nationalNumberPattern>
+        <nationalNumberPattern>
+          1(?:
+            0[356]|
+            20|
+            3[47]|
+            4[478]
+          )
+        </nationalNumberPattern>
       </expandedEmergency>
       <!-- https://support.twitter.com/articles/20170024 -->
       <smsServices>
@@ -537,7 +583,7 @@
       </smsServices>
     </territory>
 
-    <!-- American Samoa -->
+    <!-- American Samoa (AS) -->
     <!-- http://www.itu.int/oth/T0202000004/en -->
     <territory id="AS">
       <generalDesc>
@@ -552,13 +598,21 @@
         <exampleNumber>911</exampleNumber>
         <nationalNumberPattern>
           40404|
-          911
+          9(?:
+            11|
+            88
+          )
         </nationalNumberPattern>
       </shortCode>
       <tollFree>
         <possibleLengths national="3"/>
         <exampleNumber>911</exampleNumber>
-        <nationalNumberPattern>911</nationalNumberPattern>
+        <nationalNumberPattern>
+          9(?:
+            11|
+            88
+          )
+        </nationalNumberPattern>
       </tollFree>
       <!-- http://studentsabroad.state.gov/content/pdfs/911_ABROAD.pdf
            http://www.airportairport.com/American-Samoa.html
@@ -568,6 +622,11 @@
         <exampleNumber>911</exampleNumber>
         <nationalNumberPattern>911</nationalNumberPattern>
       </emergency>
+      <expandedEmergency>
+        <possibleLengths national="3"/>
+        <exampleNumber>988</exampleNumber>
+        <nationalNumberPattern>988</nationalNumberPattern>
+      </expandedEmergency>
       <!-- https://support.twitter.com/articles/20170024 -->
       <smsServices>
         <possibleLengths national="5"/>
@@ -576,7 +635,7 @@
       </smsServices>
     </territory>
 
-    <!-- Austria -->
+    <!-- Austria (AT) -->
     <!-- http://www.rtr.at/en/tk/E129 -->
     <territory id="AT">
       <generalDesc>
@@ -634,8 +693,7 @@
       </expandedEmergency>
     </territory>
 
-    <!-- Australia -->
-    <!-- Country calling code shared with Cocos Islands (CC) and Christmas Islands (CX) -->
+    <!-- Australia (AU) -->
     <!-- http://www.itu.int/oth/T020200000D/en -->
     <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_Australia -->
     <!-- Note 200[1-3] are ignored, despite being mentioned in the ITU document, because no
@@ -658,11 +716,17 @@
               9[46]
             )|
             2(?:
+              014[1-3]|
               [23]\d|
               (?:
                 4|
                 5\d
               )\d{2,3}|
+              68[689]|
+              72(?:
+                20|
+                3\d\d
+              )|
               8(?:
                 [013-9]\d|
                 2
@@ -747,7 +811,7 @@
       </smsServices>
     </territory>
 
-    <!-- Aruba -->
+    <!-- Aruba (AW) -->
     <!-- http://www.itu.int/oth/T020200000B/en -->
     <territory id="AW">
       <generalDesc>
@@ -759,9 +823,10 @@
         <nationalNumberPattern>
           1(?:
             00|
+            18|
             76
           )|
-          911
+          91[13]
         </nationalNumberPattern>
       </shortCode>
       <tollFree>
@@ -795,8 +860,7 @@
       </smsServices>
     </territory>
 
-    <!-- Åland Islands. -->
-    <!-- Country calling code shared with Finland. -->
+    <!-- Åland Islands (AX) -->
     <territory id="AX">
       <generalDesc>
         <nationalNumberPattern>
@@ -829,7 +893,7 @@
       </emergency>
     </territory>
 
-    <!-- Azerbaijan -->
+    <!-- Azerbaijan (AZ) -->
     <!-- http://www.itu.int/oth/T020200000F/en -->
     <territory id="AZ">
       <generalDesc>
@@ -895,7 +959,7 @@
       </smsServices>
     </territory>
 
-    <!-- Bosnia and Herzegovina -->
+    <!-- Bosnia & Herzegovina (BA) -->
     <!-- https://www.itu.int/dms_pub/itu-t/oth/02/02/T020200001B0001PDFE.pdf -->
     <!-- http://www.rak.ba/eng/index.php?uid=1272016657 (accessible from
          http://www.cra.ba/en/telecom/numbering/) -->
@@ -951,7 +1015,7 @@
       </emergency>
     </territory>
 
-    <!-- Barbados -->
+    <!-- Barbados (BB) -->
     <!-- http://www.itu.int/oth/T0202000013/en -->
     <territory id="BB">
       <generalDesc>
@@ -960,12 +1024,18 @@
       <shortCode>
         <possibleLengths national="3"/>
         <exampleNumber>211</exampleNumber>
-        <nationalNumberPattern>[2-689]11</nationalNumberPattern>
+        <nationalNumberPattern>
+          988|
+          [2-689]11
+        </nationalNumberPattern>
       </shortCode>
       <tollFree>
         <possibleLengths national="3"/>
         <exampleNumber>211</exampleNumber>
-        <nationalNumberPattern>[2359]11</nationalNumberPattern>
+        <nationalNumberPattern>
+          988|
+          [2359]11
+        </nationalNumberPattern>
       </tollFree>
       <carrierSpecific>
         <possibleLengths national="3"/>
@@ -977,9 +1047,14 @@
         <exampleNumber>211</exampleNumber>
         <nationalNumberPattern>[2359]11</nationalNumberPattern>
       </emergency>
+      <expandedEmergency>
+        <possibleLengths national="3"/>
+        <exampleNumber>988</exampleNumber>
+        <nationalNumberPattern>988</nationalNumberPattern>
+      </expandedEmergency>
     </territory>
 
-    <!-- Bangladesh -->
+    <!-- Bangladesh (BD) -->
     <!-- http://www.itu.int/oth/T0202000012/en -->
     <territory id="BD">
       <generalDesc>
@@ -1064,7 +1139,7 @@
       </smsServices>
     </territory>
 
-    <!-- Belgium -->
+    <!-- Belgium (BE) -->
     <!-- http://www.bipt.be/en/161/ShowContent/502/Database/Databases.aspx -->
     <!-- http://www.mobileweb.be/en/mobileweb/sms-numberplan.asp -->
     <territory id="BE">
@@ -1105,12 +1180,11 @@
               6[16]
             )|
             7(?:
-              0[07]|
+              [07][017]|
               1[27-9]|
               22|
               33|
-              65|
-              7[017]
+              65
             )|
             81[39]
           )|
@@ -1133,7 +1207,7 @@
         <exampleNumber>100</exampleNumber>
         <nationalNumberPattern>
           1(?:
-            0[0-25-8]|
+            0[0-35-8]|
             1[02]|
             7(?:
               12|
@@ -1182,11 +1256,14 @@
       <!-- http://www.childfocus.be/fr/accueil/ lists this as being an emergency number. -->
       <expandedEmergency>
         <possibleLengths national="3,6"/>
-        <exampleNumber>110</exampleNumber>
+        <exampleNumber>102</exampleNumber>
         <nationalNumberPattern>
-          11(?:
-            0|
-            60\d\d
+          1(?:
+            0[235-8]|
+            1(?:
+              0|
+              60\d\d
+            )
           )
         </nationalNumberPattern>
       </expandedEmergency>
@@ -1197,7 +1274,7 @@
       </smsServices>
     </territory>
 
-    <!-- Burkina Faso -->
+    <!-- Burkina Faso (BF) -->
     <!-- http://www.itu.int/oth/T0202000021/en -->
     <!-- http://www.onatel.bf/onatelsa/plandenumerotation_burkina.pdf -->
     <territory id="BF">
@@ -1222,7 +1299,7 @@
       </emergency>
     </territory>
 
-    <!-- Bulgaria -->
+    <!-- Bulgaria (BG) -->
     <!-- http://www.itu.int/oth/T0202000020/en -->
     <territory id="BG">
       <generalDesc>
@@ -1281,7 +1358,7 @@
       </expandedEmergency>
     </territory>
 
-    <!-- Bahrain -->
+    <!-- Bahrain (BH) -->
     <!-- http://www.itu.int/oth/T0202000011/en -->
     <!-- http://www.tra.org.bh/media/document/National%20Numbering%20Plan.pdf -->
     <territory id="BH">
@@ -1364,7 +1441,7 @@
       </smsServices>
     </territory>
 
-    <!-- Burundi -->
+    <!-- Burundi (BI) -->
     <!-- http://www.itu.int/oth/T0202000022/en -->
     <territory id="BI">
       <generalDesc>
@@ -1434,7 +1511,7 @@
       </smsServices>
     </territory>
 
-    <!-- Benin -->
+    <!-- Benin (BJ) -->
     <!-- http://www.itu.int/oth/T0202000017/en -->
     <territory id="BJ">
       <generalDesc>
@@ -1472,7 +1549,7 @@
       </emergency>
     </territory>
 
-    <!-- Saint Barthélemy, French Antilles -->
+    <!-- St. Barthélemy (BL) -->
     <!-- http://www.itu.int/oth/T0202000058/en -->
     <territory id="BL">
       <generalDesc>
@@ -1496,7 +1573,7 @@
       </emergency>
     </territory>
 
-    <!-- Bermuda -->
+    <!-- Bermuda (BM) -->
     <!-- http://www.itu.int/oth/T0202000018/en -->
     <territory id="BM">
       <generalDesc>
@@ -1507,13 +1584,21 @@
         <exampleNumber>176</exampleNumber>
         <nationalNumberPattern>
           176|
-          911
+          9(?:
+            11|
+            88
+          )
         </nationalNumberPattern>
       </shortCode>
       <tollFree>
         <possibleLengths national="3"/>
         <exampleNumber>911</exampleNumber>
-        <nationalNumberPattern>911</nationalNumberPattern>
+        <nationalNumberPattern>
+          9(?:
+            11|
+            88
+          )
+        </nationalNumberPattern>
       </tollFree>
       <!-- https://support.twitter.com/articles/20170024 -->
       <carrierSpecific>
@@ -1527,6 +1612,11 @@
         <exampleNumber>911</exampleNumber>
         <nationalNumberPattern>911</nationalNumberPattern>
       </emergency>
+      <expandedEmergency>
+        <possibleLengths national="3"/>
+        <exampleNumber>988</exampleNumber>
+        <nationalNumberPattern>988</nationalNumberPattern>
+      </expandedEmergency>
       <!-- https://support.twitter.com/articles/20170024 -->
       <smsServices>
         <possibleLengths national="3"/>
@@ -1535,7 +1625,7 @@
       </smsServices>
     </territory>
 
-    <!-- Brunei Darussalam -->
+    <!-- Brunei (BN) -->
     <!-- http://www.itu.int/oth/T020200001F/en -->
     <territory id="BN">
       <generalDesc>
@@ -1559,7 +1649,7 @@
       </emergency>
     </territory>
 
-    <!-- Bolivia -->
+    <!-- Bolivia (BO) -->
     <!-- http://www.itu.int/oth/T020200001A/en -->
     <!-- http://www.bolivia.com/Servicios/Plandenumeracion.pdf -->
     <territory id="BO">
@@ -1596,7 +1686,7 @@
       </smsServices>
     </territory>
 
-    <!-- Bonaire, Sint Eustatius and Saba -->
+    <!-- Caribbean Netherlands (BQ) -->
     <!-- http://www.itu.int/oth/T02020000F8/en -->
     <territory id="BQ">
       <generalDesc>
@@ -1644,13 +1734,13 @@
       </smsServices>
     </territory>
 
-    <!-- Brazil -->
+    <!-- Brazil (BR) -->
     <!-- http://en.wikipedia.org/wiki/%2B55#Public_utility -->
     <!-- http://www.itu.int/net/itu-t/inrdb/e129_important_numbers.aspx?country=32 -->
     <!-- http://www.anatel.gov.br/Portal/exibirPortalPaginaEspecial.do?codItemCanal=746&codCanal=277 -->
     <territory id="BR">
       <generalDesc>
-        <nationalNumberPattern>[124-69]\d{2,5}</nationalNumberPattern>
+        <nationalNumberPattern>[1-69]\d{2,5}</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="[3-6]"/>
@@ -1699,6 +1789,10 @@
             )|
             85959?
           )|
+          (?:
+            32|
+            91
+          )1|
           4(?:
             0404?|
             57|
@@ -1709,7 +1803,6 @@
             0\d{4}|
             10000
           )|
-          911|
           (?:
             133|
             411
@@ -1742,7 +1835,8 @@
         <exampleNumber>102</exampleNumber>
         <nationalNumberPattern>
           102|
-          273\d\d
+          273\d\d|
+          321
         </nationalNumberPattern>
       </standardRate>
       <!-- https://support.twitter.com/articles/20170024 -->
@@ -1799,10 +1893,11 @@
       <!-- Added short codes 28595, 285959 and 4828 after a report that it is used for SMS
            services. We can't find range-related information, despite emailing Anatel. -->
       <smsServices>
-        <possibleLengths national="[4-6]"/>
-        <exampleNumber>4820</exampleNumber>
+        <possibleLengths national="[3-6]"/>
+        <exampleNumber>321</exampleNumber>
         <nationalNumberPattern>
           285\d{2,3}|
+          321|
           40404|
           (?:
             27[38]\d|
@@ -1816,7 +1911,7 @@
       </smsServices>
     </territory>
 
-    <!-- Bahamas -->
+    <!-- Bahamas (BS) -->
     <!-- http://www.itu.int/oth/T0202000010/en -->
     <territory id="BS">
       <generalDesc>
@@ -1825,12 +1920,22 @@
       <shortCode>
         <possibleLengths national="3"/>
         <exampleNumber>911</exampleNumber>
-        <nationalNumberPattern>91[19]</nationalNumberPattern>
+        <nationalNumberPattern>
+          9(?:
+            1[19]|
+            88
+          )
+        </nationalNumberPattern>
       </shortCode>
       <tollFree>
         <possibleLengths national="3"/>
         <exampleNumber>911</exampleNumber>
-        <nationalNumberPattern>91[19]</nationalNumberPattern>
+        <nationalNumberPattern>
+          9(?:
+            1[19]|
+            88
+          )
+        </nationalNumberPattern>
       </tollFree>
       <!-- http://travel.state.gov/travel/cis_pa_tw/cis/cis_989.html -->
       <emergency>
@@ -1838,9 +1943,14 @@
         <exampleNumber>911</exampleNumber>
         <nationalNumberPattern>91[19]</nationalNumberPattern>
       </emergency>
+      <expandedEmergency>
+        <possibleLengths national="3"/>
+        <exampleNumber>988</exampleNumber>
+        <nationalNumberPattern>988</nationalNumberPattern>
+      </expandedEmergency>
     </territory>
 
-    <!-- Bhutan -->
+    <!-- Bhutan (BT) -->
     <!-- http://www.itu.int/oth/T0202000019/en -->
     <territory id="BT">
       <generalDesc>
@@ -1878,7 +1988,7 @@
       </smsServices>
     </territory>
 
-    <!-- Botswana -->
+    <!-- Botswana (BW) -->
     <!-- http://www.itu.int/oth/T020200001C/en -->
     <territory id="BW">
       <generalDesc>
@@ -1890,16 +2000,27 @@
       </generalDesc>
       <shortCode>
         <possibleLengths national="3,5"/>
-        <exampleNumber>997</exampleNumber>
+        <exampleNumber>112</exampleNumber>
         <nationalNumberPattern>
-          13123|
-          99[7-9]
+          1(?:
+            1[26]|
+            3123
+          )|
+          9(?:
+            1[14]|
+            9[1-57-9]
+          )
         </nationalNumberPattern>
       </shortCode>
       <tollFree>
         <possibleLengths national="3"/>
-        <exampleNumber>997</exampleNumber>
-        <nationalNumberPattern>99[7-9]</nationalNumberPattern>
+        <exampleNumber>911</exampleNumber>
+        <nationalNumberPattern>
+          9(?:
+            11|
+            9[7-9]
+          )
+        </nationalNumberPattern>
       </tollFree>
       <!-- https://support.twitter.com/articles/20170024 -->
       <carrierSpecific>
@@ -1911,8 +2032,13 @@
       <!-- http://travel.state.gov/travel/cis_pa_tw/cis/cis_1071.html -->
       <emergency>
         <possibleLengths national="3"/>
-        <exampleNumber>997</exampleNumber>
-        <nationalNumberPattern>99[7-9]</nationalNumberPattern>
+        <exampleNumber>911</exampleNumber>
+        <nationalNumberPattern>
+          9(?:
+            11|
+            9[7-9]
+          )
+        </nationalNumberPattern>
       </emergency>
       <!-- https://support.twitter.com/articles/20170024 -->
       <smsServices>
@@ -1922,7 +2048,7 @@
       </smsServices>
     </territory>
 
-    <!-- Belarus -->
+    <!-- Belarus (BY) -->
     <!-- http://www.eng.beltelecom.by/en/subscribers/phone-codes -->
     <territory id="BY">
       <generalDesc>
@@ -1967,7 +2093,7 @@
       </emergency>
     </territory>
 
-    <!-- Belize -->
+    <!-- Belize (BZ) -->
     <!-- http://www.itu.int/oth/T0202000016/en -->
     <territory id="BZ">
       <generalDesc>
@@ -2006,7 +2132,7 @@
       </emergency>
     </territory>
 
-    <!-- Canada -->
+    <!-- Canada (CA) -->
     <!-- http://www.cnac.ca/canadian_dial_plan/canadian_dial_plan.htm -->
     <!-- Excluding local normal numbers from the general description (and indeed from being possible
          short numbers, since they definitely are not). -->
@@ -2029,7 +2155,11 @@
           112|
           30000\d{3}|
           [1-35-9]\d{4,5}|
-          [2-9]11
+          [2-8]11|
+          9(?:
+            11|
+            88
+          )
         </nationalNumberPattern>
       </shortCode>
       <tollFree>
@@ -2037,6 +2167,7 @@
         <exampleNumber>112</exampleNumber>
         <nationalNumberPattern>
           112|
+          988|
           [29]11
         </nationalNumberPattern>
       </tollFree>
@@ -2056,6 +2187,11 @@
           911
         </nationalNumberPattern>
       </emergency>
+      <expandedEmergency>
+        <possibleLengths national="3"/>
+        <exampleNumber>988</exampleNumber>
+        <nationalNumberPattern>988</nationalNumberPattern>
+      </expandedEmergency>
       <!-- https://support.twitter.com/articles/20170024 -->
       <!-- http://www.txt.ca/en/shortcode-search/ -->
       <!-- We also support so-called "long codes" (8 digits). Technically we know that 30000 is
@@ -2070,8 +2206,7 @@
       </smsServices>
     </territory>
 
-    <!-- Cocos Islands -->
-    <!-- Country calling code shared with Australia. -->
+    <!-- Cocos (Keeling) Islands (CC) -->
     <territory id="CC">
       <generalDesc>
         <nationalNumberPattern>[01]\d\d</nationalNumberPattern>
@@ -2104,7 +2239,7 @@
       </emergency>
     </territory>
 
-    <!-- Congo, Dem. Rep. of the (formerly Zaire) -->
+    <!-- Congo - Kinshasa (CD) -->
     <!-- http://www.itu.int/net/itu-t/inrdb/e129_important_numbers.aspx?country=47&pg_size=50 -->
     <territory id="CD">
       <generalDesc>
@@ -2169,7 +2304,7 @@
       </smsServices>
     </territory>
 
-    <!-- Central African Republic -->
+    <!-- Central African Republic (CF) -->
     <!-- http://www.itu.int/net/itu-t/inrdb/e129_important_numbers.aspx?country=37&pg_size=50 -->
     <territory id="CF">
       <generalDesc>
@@ -2212,7 +2347,7 @@
       </expandedEmergency>
     </territory>
 
-    <!-- Congo (Rep. of the) (Brazzaville) -->
+    <!-- Congo - Brazzaville (CG) -->
     <territory id="CG">
       <generalDesc>
         <nationalNumberPattern>1\d\d</nationalNumberPattern>
@@ -2239,7 +2374,7 @@
       </expandedEmergency>
     </territory>
 
-    <!-- Switzerland -->
+    <!-- Switzerland (CH) -->
     <!-- http://www.bakom.admin.ch/themen/telekom/00479/00604/index.html?lang=en -->
     <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_Switzerland#Short_numbers -->
     <!-- http://csi.sunrise.ch/smartzone/_privat -->
@@ -2354,7 +2489,7 @@
         <possibleLengths national="3,4,6"/>
         <exampleNumber>140</exampleNumber>
         <nationalNumberPattern>
-          14[035]|
+          14[0357]|
           1(?:
             161\d|
             41
@@ -2368,7 +2503,7 @@
       </smsServices>
     </territory>
 
-    <!-- Côte d'Ivoire -->
+    <!-- Côte d’Ivoire (CI) -->
     <!-- http://www.itu.int/oth/T0202000031/en -->
     <territory id="CI">
       <generalDesc>
@@ -2420,7 +2555,7 @@
       </smsServices>
     </territory>
 
-    <!-- Cook Islands -->
+    <!-- Cook Islands (CK) -->
     <!-- http://www.itu.int/oth/T020200002F/en -->
     <territory id="CK">
       <generalDesc>
@@ -2445,7 +2580,7 @@
       </emergency>
     </territory>
 
-    <!-- Chile -->
+    <!-- Chile (CL) -->
     <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_Chile -->
     <!-- http://www.clarochile.cl/wps/portal/cl/pc/personas/movil/sms-premium -->
     <territory id="CL">
@@ -2729,7 +2864,7 @@
       </smsServices>
     </territory>
 
-    <!-- Cameroon -->
+    <!-- Cameroon (CM) -->
     <!-- http://www.itu.int/oth/T0202000024/en -->
     <territory id="CM">
       <generalDesc>
@@ -2782,7 +2917,7 @@
       </smsServices>
     </territory>
 
-    <!-- China -->
+    <!-- China (CN) -->
     <!-- http://www.itu.int/oth/T020200002B/en -->
     <territory id="CN">
       <generalDesc>
@@ -2803,7 +2938,7 @@
         <nationalNumberPattern>
           1(?:
             00\d\d|
-            1[09]|
+            1[029]|
             20
           )|
           95\d{3,4}
@@ -2827,10 +2962,13 @@
            specifically wants to reach an operator in a different region. That case is more like
            fixed-line and is covered under the fixed-line pattern in PhoneNumberMetadata.xml. -->
       <standardRate>
-        <possibleLengths national="5,6"/>
-        <exampleNumber>10000</exampleNumber>
+        <possibleLengths national="3,5,6"/>
+        <exampleNumber>112</exampleNumber>
         <nationalNumberPattern>
-          100\d\d|
+          1(?:
+            00\d\d|
+            12
+          )|
           95\d{3,4}
         </nationalNumberPattern>
       </standardRate>
@@ -2846,7 +2984,7 @@
       </emergency>
     </territory>
 
-    <!-- Colombia -->
+    <!-- Colombia (CO) -->
     <!-- Information primarily obtained from:
            http://en.wikipedia.org/wiki/Telephone_numbers_in_Colombia
          and:
@@ -2889,12 +3027,12 @@
         <nationalNumberPattern>
           1(?:
             06|
-            1[2569]|
-            2[357]|
+            1[2-9]|
+            2[35-7]|
             3[27]|
             4[467]|
             5[36]|
-            6[45]|
+            6[4-7]|
             95
           )|
           40404|
@@ -2945,10 +3083,11 @@
         <exampleNumber>106</exampleNumber>
         <nationalNumberPattern>
           1(?:
-            [01]6|
+            06|
+            1[467]|
             [23]7|
             4[47]|
-            6[45]
+            6[4-6]
           )
         </nationalNumberPattern>
       </expandedEmergency>
@@ -2965,7 +3104,7 @@
       </smsServices>
     </territory>
 
-    <!-- Costa Rica -->
+    <!-- Costa Rica (CR) -->
     <!-- http://www.itu.int/oth/T0202000030/en -->
     <territory id="CR">
       <generalDesc>
@@ -3060,43 +3199,61 @@
       </smsServices>
     </territory>
 
-    <!-- Cuba -->
+    <!-- Cuba (CU) -->
     <!-- www.itu.int/oth/T0202000033/en -->
     <territory id="CU">
       <generalDesc>
         <nationalNumberPattern>
-          1\d\d(?:
-            \d{3}
+          [12]\d\d(?:
+            \d{3,4}
           )?
         </nationalNumberPattern>
       </generalDesc>
       <shortCode>
-        <possibleLengths national="3,6"/>
+        <possibleLengths national="3,6,7"/>
         <exampleNumber>104</exampleNumber>
         <nationalNumberPattern>
           1(?:
-            0[4-6]|
+            0[4-7]|
             1(?:
               6111|
               8
             )|
             40
-          )
+          )|
+          2045252
         </nationalNumberPattern>
       </shortCode>
       <tollFree>
-        <possibleLengths national="3"/>
+        <possibleLengths national="3,6,7"/>
         <exampleNumber>104</exampleNumber>
-        <nationalNumberPattern>10[4-6]</nationalNumberPattern>
+        <nationalNumberPattern>
+          10[4-7]|
+          (?:
+            116|
+            204\d
+          )\d{3}
+        </nationalNumberPattern>
       </tollFree>
       <emergency>
         <possibleLengths national="3"/>
         <exampleNumber>104</exampleNumber>
         <nationalNumberPattern>10[4-6]</nationalNumberPattern>
       </emergency>
+      <expandedEmergency>
+        <possibleLengths national="3,6,7"/>
+        <exampleNumber>107</exampleNumber>
+        <nationalNumberPattern>
+          107|
+          (?:
+            116|
+            204\d
+          )\d{3}
+        </nationalNumberPattern>
+      </expandedEmergency>
     </territory>
 
-    <!-- Cape Verde -->
+    <!-- Cape Verde (CV) -->
     <!-- http://www.itu.int/oth/T0202000026/en -->
     <territory id="CV">
       <generalDesc>
@@ -3120,7 +3277,7 @@
       </emergency>
     </territory>
 
-    <!-- Curaçao -->
+    <!-- Curaçao (CW) -->
     <!-- http://www.itu.int/oth/T02020000F5/en -->
     <territory id="CW">
       <generalDesc>
@@ -3168,8 +3325,7 @@
       </smsServices>
     </territory>
 
-    <!-- Christmas Islands -->
-    <!-- Country calling code shared with Australia. -->
+    <!-- Christmas Island (CX) -->
     <territory id="CX">
       <generalDesc>
         <nationalNumberPattern>[01]\d\d</nationalNumberPattern>
@@ -3202,7 +3358,7 @@
       </emergency>
     </territory>
 
-    <!-- Cyprus -->
+    <!-- Cyprus (CY) -->
     <!-- http://www.itu.int/oth/T0202000034/en -->
     <territory id="CY">
       <generalDesc>
@@ -3258,7 +3414,7 @@
       </expandedEmergency>
     </territory>
 
-    <!-- Czech Rep. -->
+    <!-- Czechia (CZ) -->
     <!-- http://www.itu.int/oth/T0202000035/en -->
     <!-- http://en.wikipedia.org/wiki/%2B420 -->
     <territory id="CZ">
@@ -3331,19 +3487,21 @@
       </expandedEmergency>
     </territory>
 
-    <!-- Germany -->
+    <!-- Germany (DE) -->
     <!-- http://www.itu.int/oth/T0202000051/en -->
     <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_germany -->
     <territory id="DE">
       <generalDesc>
         <nationalNumberPattern>
           1\d\d(?:
-            \d{3}
+            \d{2,3}
           )?
         </nationalNumberPattern>
       </generalDesc>
+      <!-- 118xx short numbers are used for directory services and 1180xx are used for call
+           connect services. -->
       <shortCode>
-        <possibleLengths national="3,6"/>
+        <possibleLengths national="3,5,6"/>
         <exampleNumber>110</exampleNumber>
         <nationalNumberPattern>
           11(?:
@@ -3351,11 +3509,13 @@
             6(?:
               00[06]|
               1(?:
-                1[17]|
+                1[167]|
                 23
               )
-            )
-          )
+            )|
+            800\d
+          )|
+          118\d\d
         </nationalNumberPattern>
       </shortCode>
       <tollFree>
@@ -3380,7 +3540,7 @@
       </expandedEmergency>
     </territory>
 
-    <!-- Djibouti -->
+    <!-- Djibouti (DJ) -->
     <!-- http://www.itu.int/oth/T020200003A/en -->
     <territory id="DJ">
       <generalDesc>
@@ -3403,7 +3563,7 @@
       </emergency>
     </territory>
 
-    <!-- Denmark -->
+    <!-- Denmark (DK) -->
     <!-- http://www.dba.erhvervsstyrelsen.dk/numbering-lists -->
     <territory id="DK">
       <generalDesc>
@@ -3459,7 +3619,7 @@
       </expandedEmergency>
     </territory>
 
-    <!-- Dominica -->
+    <!-- Dominica (DM) -->
     <!-- http://www.itu.int/oth/T020200003B/en -->
     <territory id="DM">
       <generalDesc>
@@ -3472,6 +3632,7 @@
           333|
           9(?:
             11|
+            88|
             99
           )
         </nationalNumberPattern>
@@ -3483,6 +3644,7 @@
           333|
           9(?:
             11|
+            88|
             99
           )
         </nationalNumberPattern>
@@ -3500,9 +3662,14 @@
           )
         </nationalNumberPattern>
       </emergency>
+      <expandedEmergency>
+        <possibleLengths national="3"/>
+        <exampleNumber>988</exampleNumber>
+        <nationalNumberPattern>988</nationalNumberPattern>
+      </expandedEmergency>
     </territory>
 
-    <!-- Dominican Rep. -->
+    <!-- Dominican Republic (DO) -->
     <!-- http://www.itu.int/oth/T020200003C/en -->
     <territory id="DO">
       <generalDesc>
@@ -3513,7 +3680,10 @@
         <exampleNumber>112</exampleNumber>
         <nationalNumberPattern>
           112|
-          911
+          9(?:
+            11|
+            88
+          )
         </nationalNumberPattern>
       </shortCode>
       <tollFree>
@@ -3521,7 +3691,10 @@
         <exampleNumber>112</exampleNumber>
         <nationalNumberPattern>
           112|
-          911
+          9(?:
+            11|
+            88
+          )
         </nationalNumberPattern>
       </tollFree>
       <emergency>
@@ -3532,27 +3705,43 @@
           911
         </nationalNumberPattern>
       </emergency>
+      <expandedEmergency>
+        <possibleLengths national="3"/>
+        <exampleNumber>988</exampleNumber>
+        <nationalNumberPattern>988</nationalNumberPattern>
+      </expandedEmergency>
     </territory>
 
-    <!-- Algeria -->
+    <!-- Algeria (DZ) -->
     <!-- http://www.itu.int/oth/T0202000003/en -->
     <!-- www.arpt.dz -->
     <territory id="DZ">
       <generalDesc>
-        <nationalNumberPattern>[17]\d\d?</nationalNumberPattern>
+        <nationalNumberPattern>[17]\d{1,3}</nationalNumberPattern>
       </generalDesc>
       <shortCode>
-        <possibleLengths national="2,3"/>
+        <possibleLengths national="[2-4]"/>
         <exampleNumber>14</exampleNumber>
         <nationalNumberPattern>
-          1[47]|
+          1(?:
+            055|
+            12|
+            [47]|
+            548
+          )|
           730
         </nationalNumberPattern>
       </shortCode>
       <tollFree>
-        <possibleLengths national="2"/>
+        <possibleLengths national="[2-4]"/>
         <exampleNumber>14</exampleNumber>
-        <nationalNumberPattern>1[47]</nationalNumberPattern>
+        <nationalNumberPattern>
+          1(?:
+            12|
+            [47]|
+            54\d
+          )
+        </nationalNumberPattern>
       </tollFree>
       <!-- https://support.twitter.com/articles/20170024 -->
       <carrierSpecific>
@@ -3561,10 +3750,25 @@
         <nationalNumberPattern>730</nationalNumberPattern>
       </carrierSpecific>
       <emergency>
-        <possibleLengths national="2"/>
+        <possibleLengths national="2,3"/>
         <exampleNumber>14</exampleNumber>
-        <nationalNumberPattern>1[47]</nationalNumberPattern>
+        <nationalNumberPattern>
+          1(?:
+            12|
+            [47]
+          )
+        </nationalNumberPattern>
       </emergency>
+      <expandedEmergency>
+        <possibleLengths national="4"/>
+        <exampleNumber>1050</exampleNumber>
+        <nationalNumberPattern>
+          1(?:
+            05|
+            54
+          )\d
+        </nationalNumberPattern>
+      </expandedEmergency>
       <!-- https://support.twitter.com/articles/20170024 -->
       <smsServices>
         <possibleLengths national="3"/>
@@ -3573,7 +3777,7 @@
       </smsServices>
     </territory>
 
-    <!-- Ecuador -->
+    <!-- Ecuador (EC) -->
     <!-- http://en.wikipedia.org/wiki/+593 -->
     <!-- http://www.conatel.gob.ec/site_conatel/index.php?option=com_content&view=category&layout=blog&id=52&Itemid=153 -->
     <!-- http://www.itu.int/oth/T020200003D/en -->
@@ -3616,7 +3820,7 @@
       </emergency>
     </territory>
 
-    <!-- Estonia -->
+    <!-- Estonia (EE) -->
     <!-- http://www.itu.int/oth/T0202000043/en -->
     <territory id="EE">
       <generalDesc>
@@ -4012,7 +4216,7 @@
       </smsServices>
     </territory>
 
-    <!-- Egypt -->
+    <!-- Egypt (EG) -->
     <!-- http://www.itu.int/oth/T020200003E/en -->
     <territory id="EG">
       <generalDesc>
@@ -4068,8 +4272,7 @@
       </smsServices>
     </territory>
 
-    <!-- Western Sahara -->
-    <!-- Country calling code shared with Morocco (MA). -->
+    <!-- Western Sahara (EH) -->
     <!-- http://www.itu.int/oth/T0202000090/en -->
     <territory id="EH">
       <generalDesc>
@@ -4107,7 +4310,7 @@
       </emergency>
     </territory>
 
-    <!-- Eritrea -->
+    <!-- Eritrea (ER) -->
     <territory id="ER">
       <generalDesc>
         <nationalNumberPattern>
@@ -4176,7 +4379,7 @@
       </expandedEmergency>
     </territory>
 
-    <!-- Spain -->
+    <!-- Spain (ES) -->
     <!-- http://www.minetur.gob.es/telecomunicaciones/es-ES/Servicios/Numeracion/Documents/2012_09_10_Presentation_E164_Numbering_plan_Spain.pdf -->
     <!-- http://www.minetur.gob.es/telecomunicaciones/es-ES/Servicios/Numeracion/Documents/Descripcion_plan_20101216.pdf -->
     <!-- http://www.minetur.gob.es/telecomunicaciones/es-ES/Servicios/Numeracion/Documents/13-01-11_Gu%C3%ADa_Numeracion.pdf -->
@@ -4341,7 +4544,7 @@
       </smsServices>
     </territory>
 
-    <!-- Ethiopia -->
+    <!-- Ethiopia (ET) -->
     <!-- http://www.itu.int/oth/T0202000044/en -->
     <territory id="ET">
       <generalDesc>
@@ -4352,8 +4555,11 @@
         <exampleNumber>91</exampleNumber>
         <nationalNumberPattern>
           9(?:
+            07|
             11?|
-            [23]|
+            2|
+            39?|
+            45|
             9[17]
           )
         </nationalNumberPattern>
@@ -4363,8 +4569,10 @@
         <exampleNumber>91</exampleNumber>
         <nationalNumberPattern>
           9(?:
+            07|
             11?|
-            [23]|
+            2|
+            39?|
             9[17]
           )
         </nationalNumberPattern>
@@ -4380,15 +4588,25 @@
         <nationalNumberPattern>
           9(?:
             11?|
-            [23]|
+            2|
+            39?|
             9[17]
           )
         </nationalNumberPattern>
       </emergency>
+      <expandedEmergency>
+        <possibleLengths national="3"/>
+        <exampleNumber>907</exampleNumber>
+        <nationalNumberPattern>
+          9(?:
+            07|
+            45
+          )
+        </nationalNumberPattern>
+      </expandedEmergency>
     </territory>
 
-    <!-- Finland -->
-    <!-- Country calling code shared with Åland (AX) -->
+    <!-- Finland (FI) -->
     <!-- https://www.viestintavirasto.fi/internetpuhelin/puhelinverkonnumerointi.html -->
     <territory id="FI">
       <generalDesc>
@@ -4407,7 +4625,10 @@
         <nationalNumberPattern>
           11(?:
             2|
-            6111
+            6(?:
+              00[06]|
+              11[17]
+            )
           )|
           75[12]\d\d
         </nationalNumberPattern>
@@ -4434,7 +4655,7 @@
       </expandedEmergency>
     </territory>
 
-    <!-- Fiji -->
+    <!-- Fiji (FJ) -->
     <!-- http://www.itu.int/oth/T0202000048/en -->
     <!-- www.tfl.com.fj -->
     <territory id="FJ">
@@ -4487,7 +4708,7 @@
       </smsServices>
     </territory>
 
-    <!-- Falkland Islands (Malvinas) -->
+    <!-- Falkland Islands (Islas Malvinas) (FK) -->
     <!-- http://www.itu.int/oth/T0202000046/en -->
     <territory id="FK">
       <generalDesc>
@@ -4515,7 +4736,7 @@
       </emergency>
     </territory>
 
-    <!-- Micronesia, Federated States of -->
+    <!-- Micronesia (FM) -->
     <!-- http://www.itu.int/oth/T020200008B/en -->
     <territory id="FM">
       <generalDesc>
@@ -4556,7 +4777,7 @@
       </emergency>
     </territory>
 
-    <!-- Faroe Islands -->
+    <!-- Faroe Islands (FO) -->
     <!-- http://www.itu.int/oth/T0202000047/en -->
     <territory id="FO">
       <generalDesc>
@@ -4587,7 +4808,7 @@
       </emergency>
     </territory>
 
-    <!-- France -->
+    <!-- France (FR) -->
     <!-- http://www.arcep.fr/index.php?id=8146 -->
     <!-- http://fr.wikipedia.org/wiki/Num%C3%A9ro_d'appel_d'urgence -->
     <territory id="FR">
@@ -4643,7 +4864,7 @@
           1(?:
             0(?:
               07|
-              13
+              [13]3
             )|
             1[02459]|
             [578]|
@@ -4666,8 +4887,9 @@
         <exampleNumber>611</exampleNumber>
         <nationalNumberPattern>
           10(?:
-            [13]4|
+            [134]4|
             2[23]|
+            5\d|
             99
           )|
           202\d|
@@ -4755,7 +4977,7 @@
       </smsServices>
     </territory>
 
-    <!-- Gabon -->
+    <!-- Gabon (GA) -->
     <!-- http://www.itu.int/oth/T020200004E/en -->
     <!-- www.arcep.ga -->
     <territory id="GA">
@@ -4801,7 +5023,7 @@
       </emergency>
     </territory>
 
-    <!-- United Kingdom -->
+    <!-- United Kingdom (GB) -->
     <territory id="GB">
       <generalDesc>
         <nationalNumberPattern>[1-46-9]\d{2,5}</nationalNumberPattern>
@@ -4813,7 +5035,7 @@
           1(?:
             0[015]|
             1(?:
-              [12]|
+              [129]|
               6(?:
                 000|
                 1(?:
@@ -4885,7 +5107,7 @@
           1(?:
             05|
             1(?:
-              2|
+              [29]|
               6\d{3}
             )|
             7[56]\d|
@@ -4936,7 +5158,10 @@
         <nationalNumberPattern>
           1(?:
             01|
-            16\d{3}
+            1(?:
+              6\d{3}|
+              9
+            )
           )
         </nationalNumberPattern>
       </expandedEmergency>
@@ -4963,7 +5188,7 @@
       </smsServices>
     </territory>
 
-    <!-- Grenada -->
+    <!-- Grenada (GD) -->
     <!-- http://www.itu.int/oth/T0202000057/en -->
     <territory id="GD">
       <generalDesc>
@@ -4974,13 +5199,21 @@
         <exampleNumber>176</exampleNumber>
         <nationalNumberPattern>
           176|
-          911
+          9(?:
+            11|
+            88
+          )
         </nationalNumberPattern>
       </shortCode>
       <tollFree>
         <possibleLengths national="3"/>
         <exampleNumber>911</exampleNumber>
-        <nationalNumberPattern>911</nationalNumberPattern>
+        <nationalNumberPattern>
+          9(?:
+            11|
+            88
+          )
+        </nationalNumberPattern>
       </tollFree>
       <!-- https://support.twitter.com/articles/20170024 -->
       <carrierSpecific>
@@ -4994,6 +5227,11 @@
         <exampleNumber>911</exampleNumber>
         <nationalNumberPattern>911</nationalNumberPattern>
       </emergency>
+      <expandedEmergency>
+        <possibleLengths national="3"/>
+        <exampleNumber>988</exampleNumber>
+        <nationalNumberPattern>988</nationalNumberPattern>
+      </expandedEmergency>
       <!-- https://support.twitter.com/articles/20170024 -->
       <smsServices>
         <possibleLengths national="3"/>
@@ -5002,7 +5240,7 @@
       </smsServices>
     </territory>
 
-    <!-- Georgia -->
+    <!-- Georgia (GE) -->
     <!-- http://www.itu.int/oth/T0202000050/en -->
     <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_Georgia. -->
     <territory id="GE">
@@ -5066,7 +5304,7 @@
       </smsServices>
     </territory>
 
-    <!-- French Guiana (French Dept. of) -->
+    <!-- French Guiana (GF) -->
     <!-- http://www.itu.int/oth/T020200004C/en -->
     <!-- http://www.arcep.fr/index.php?id=2137&bloc=0594&CMD=RESULTS_NUMEROTATION -->
     <!-- http://www.arcep.fr/uploads/tx_gsavis/11-1297.pdf -->
@@ -5091,8 +5329,7 @@
       </emergency>
     </territory>
 
-    <!-- Guernsey -->
-    <!-- Country calling code shared with the UK. -->
+    <!-- Guernsey (GG) -->
     <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_the_United_Kingdom -->
     <territory id="GG">
       <generalDesc>
@@ -5139,7 +5376,7 @@
       </emergency>
     </territory>
 
-    <!-- Ghana -->
+    <!-- Ghana (GH) -->
     <!-- http://www.itu.int/oth/T0202000052/en -->
     <!-- http://www.nca.org.gh/index.php?option=com_content&view=article&id=90&Itemid=65 -->
     <territory id="GH">
@@ -5202,7 +5439,7 @@
       </smsServices>
     </territory>
 
-    <!-- Gibraltar -->
+    <!-- Gibraltar (GI) -->
     <!-- http://www.gra.gi/communications/numbering-plan -->
     <territory id="GI">
       <generalDesc>
@@ -5324,7 +5561,7 @@
       </expandedEmergency>
     </territory>
 
-    <!-- Greenland -->
+    <!-- Greenland (GL) -->
     <!-- http://www.itu.int/oth/T0202000056/en -->
     <territory id="GL">
       <generalDesc>
@@ -5347,7 +5584,7 @@
       </emergency>
     </territory>
 
-    <!-- Gambia -->
+    <!-- Gambia (GM) -->
     <!-- http://www.itu.int/oth/T020200004F/en -->
     <territory id="GM">
       <generalDesc>
@@ -5387,15 +5624,22 @@
       </emergency>
     </territory>
 
-    <!-- Guinea -->
+    <!-- Guinea (GN) -->
     <territory id="GN">
       <generalDesc>
-        <nationalNumberPattern>4\d{4}</nationalNumberPattern>
+        <nationalNumberPattern>
+          [14]\d\d(?:
+            \d{2}
+          )?
+        </nationalNumberPattern>
       </generalDesc>
       <shortCode>
-        <possibleLengths national="5"/>
-        <exampleNumber>40404</exampleNumber>
-        <nationalNumberPattern>40404</nationalNumberPattern>
+        <possibleLengths national="3,5"/>
+        <exampleNumber>120</exampleNumber>
+        <nationalNumberPattern>
+          12\d|
+          40404
+        </nationalNumberPattern>
       </shortCode>
       <!-- https://support.twitter.com/articles/20170024 -->
       <carrierSpecific>
@@ -5412,7 +5656,7 @@
       </smsServices>
     </territory>
 
-    <!-- Guadeloupe -->
+    <!-- Guadeloupe (GP) -->
     <!-- http://www.itu.int/oth/T0202000058/en -->
     <!-- http://www.guadeloupe.franceantilles.fr/pratique/urgences/numeros-urgence-guadeloupe-14950.php -->
     <territory id="GP">
@@ -5436,35 +5680,39 @@
       </emergency>
     </territory>
 
-    <!-- Greece -->
+    <!-- Greece (GR) -->
     <!-- http://www.itu.int/oth/T0202000055/en -->
     <!-- http://en.wikipedia.org/wiki/%2B30 -->
     <territory id="GR">
       <generalDesc>
         <nationalNumberPattern>
           1\d\d(?:
-            \d{3}
+            \d{2,3}
           )?
         </nationalNumberPattern>
       </generalDesc>
       <shortCode>
-        <possibleLengths national="3,6"/>
+        <possibleLengths national="3,5,6"/>
         <exampleNumber>100</exampleNumber>
         <nationalNumberPattern>
           1(?:
-            00|
+            0[089]|
             1(?:
               2|
+              320|
               6(?:
                 000|
                 1(?:
-                  11|
+                  1[17]|
                   23
                 )
               )
             )|
-            66|
-            99
+            (?:
+              389|
+              9
+            )9|
+            66
           )
         </nationalNumberPattern>
       </shortCode>
@@ -5473,7 +5721,7 @@
         <exampleNumber>100</exampleNumber>
         <nationalNumberPattern>
           1(?:
-            00|
+            0[089]|
             1(?:
               2|
               6\d{3}
@@ -5483,6 +5731,11 @@
           )
         </nationalNumberPattern>
       </tollFree>
+      <standardRate>
+        <possibleLengths national="5"/>
+        <exampleNumber>11300</exampleNumber>
+        <nationalNumberPattern>113\d\d</nationalNumberPattern>
+      </standardRate>
       <emergency>
         <possibleLengths national="3"/>
         <exampleNumber>100</exampleNumber>
@@ -5496,13 +5749,18 @@
         </nationalNumberPattern>
       </emergency>
       <expandedEmergency>
-        <possibleLengths national="6"/>
-        <exampleNumber>116000</exampleNumber>
-        <nationalNumberPattern>116\d{3}</nationalNumberPattern>
+        <possibleLengths national="3,6"/>
+        <exampleNumber>108</exampleNumber>
+        <nationalNumberPattern>
+          1(?:
+            0[89]|
+            16\d{3}
+          )
+        </nationalNumberPattern>
       </expandedEmergency>
     </territory>
 
-    <!-- Guatemala -->
+    <!-- Guatemala (GT) -->
     <!-- http://www.itu.int/oth/T020200005A/en -->
     <!-- http://www.sit.gob.gt/index.php?page=plan-de-numeracion -->
     <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_Guatemala -->
@@ -5556,7 +5814,7 @@
       </smsServices>
     </territory>
 
-    <!-- Guam -->
+    <!-- Guam (GU) -->
     <!-- http://www.nationalnanpa.com/nas/public/assigned_code_query_step1.do?method=resetCodeQueryModel -->
     <territory id="GU">
       <generalDesc>
@@ -5565,12 +5823,22 @@
       <shortCode>
         <possibleLengths national="3"/>
         <exampleNumber>911</exampleNumber>
-        <nationalNumberPattern>911</nationalNumberPattern>
+        <nationalNumberPattern>
+          9(?:
+            11|
+            88
+          )
+        </nationalNumberPattern>
       </shortCode>
       <tollFree>
         <possibleLengths national="3"/>
         <exampleNumber>911</exampleNumber>
-        <nationalNumberPattern>911</nationalNumberPattern>
+        <nationalNumberPattern>
+          9(?:
+            11|
+            88
+          )
+        </nationalNumberPattern>
       </tollFree>
       <!-- http://www.justice.gov.gu/compileroflaws/gca/10gca/10gc084.PDF -->
       <emergency>
@@ -5578,9 +5846,14 @@
         <exampleNumber>911</exampleNumber>
         <nationalNumberPattern>911</nationalNumberPattern>
       </emergency>
+      <expandedEmergency>
+        <possibleLengths national="3"/>
+        <exampleNumber>988</exampleNumber>
+        <nationalNumberPattern>988</nationalNumberPattern>
+      </expandedEmergency>
     </territory>
 
-    <!-- Guinea-Bissau -->
+    <!-- Guinea-Bissau (GW) -->
     <!-- http://www.itu.int/oth/T020200005C/en -->
     <territory id="GW">
       <generalDesc>
@@ -5604,7 +5877,7 @@
       </emergency>
     </territory>
 
-    <!-- Guyana -->
+    <!-- Guyana (GY) -->
     <!-- http://www.itu.int/oth/T020200005D/en -->
     <territory id="GY">
       <generalDesc>
@@ -5661,7 +5934,7 @@
       </smsServices>
     </territory>
 
-    <!-- Hong Kong -->
+    <!-- Hong Kong (HK) -->
     <!-- http://www.ofca.gov.hk/en/industry_focus/telecommunications/portability/index.html -->
     <!-- http://www.ofca.gov.hk/filemanager/ofca/tc/content_311/no_plan.pdf -->
     <territory id="HK">
@@ -5786,7 +6059,7 @@
       </smsServices>
     </territory>
 
-    <!-- Honduras -->
+    <!-- Honduras (HN) -->
     <!-- http://www.itu.int/oth/T020200005F/en -->
     <territory id="HN">
       <generalDesc>
@@ -5828,7 +6101,7 @@
       </smsServices>
     </territory>
 
-    <!-- Croatia -->
+    <!-- Croatia (HR) -->
     <!-- http://www.itu.int/oth/T0202000032/en -->
     <!-- http://en.wikipedia.org/wiki/%2B385 -->
     <territory id="HR">
@@ -5921,7 +6194,7 @@
       </smsServices>
     </territory>
 
-    <!-- Haiti -->
+    <!-- Haiti (HT) -->
     <!-- http://www.itu.int/oth/T020200005E/en -->
     <territory id="HT">
       <generalDesc>
@@ -5964,18 +6237,14 @@
       </smsServices>
     </territory>
 
-    <!-- Hungary -->
+    <!-- Hungary (HU) -->
     <!-- http://www.itu.int/oth/T0202000061/en -->
     <territory id="HU">
       <generalDesc>
-        <nationalNumberPattern>
-          1\d\d(?:
-            \d{3}
-          )?
-        </nationalNumberPattern>
+        <nationalNumberPattern>1\d{2,5}</nationalNumberPattern>
       </generalDesc>
       <shortCode>
-        <possibleLengths national="3,6"/>
+        <possibleLengths national="[3-6]"/>
         <exampleNumber>104</exampleNumber>
         <nationalNumberPattern>
           1(?:
@@ -5988,24 +6257,79 @@
                   11|
                   23
                 )
+              )|
+              800
+            )|
+            2(?:
+              0[0-4]|
+              1[013489]|
+              2[0-5]|
+              3[0-46]|
+              4[0-24-68]|
+              5[0-2568]|
+              6[06]|
+              7[0-25-7]|
+              8[028]|
+              9[08]
+            )|
+            37(?:
+              00|
+              37|
+              7[07]
+            )|
+            4(?:
+              0[0-5]|
+              1[013-8]|
+              2[034]|
+              3[23]|
+              4[02-9]|
+              5(?:
+                00|
+                41|
+                67
               )
+            )|
+            777|
+            8(?:
+              1[27-9]|
+              2[04]|
+              40|
+              [589]
             )
           )
         </nationalNumberPattern>
       </shortCode>
       <tollFree>
-        <possibleLengths national="3,6"/>
+        <possibleLengths national="[3-6]"/>
         <exampleNumber>104</exampleNumber>
         <nationalNumberPattern>
           1(?:
             0[457]|
-            1(?:
-              2|
-              6\d{3}
-            )
-          )
+            12|
+            4[0-4]\d
+          )|
+          1(?:
+            16\d|
+            37|
+            45
+          )\d\d
         </nationalNumberPattern>
       </tollFree>
+      <carrierSpecific>
+        <possibleLengths national="4,5"/>
+        <exampleNumber>1200</exampleNumber>
+        <nationalNumberPattern>
+          1(?:
+            4[0-4]|
+            77
+          )\d|
+          1(?:
+            18|
+            2|
+            45
+          )\d\d
+        </nationalNumberPattern>
+      </carrierSpecific>
       <emergency>
         <possibleLengths national="3"/>
         <exampleNumber>104</exampleNumber>
@@ -6021,25 +6345,31 @@
         <exampleNumber>116000</exampleNumber>
         <nationalNumberPattern>116\d{3}</nationalNumberPattern>
       </expandedEmergency>
+      <smsServices>
+        <possibleLengths national="4"/>
+        <exampleNumber>1840</exampleNumber>
+        <nationalNumberPattern>184\d</nationalNumberPattern>
+      </smsServices>
     </territory>
 
-    <!-- Indonesia -->
+    <!-- Indonesia (ID) -->
     <!-- http://en.wikipedia.org/wiki/%2B62 -->
     <territory id="ID">
       <generalDesc>
         <nationalNumberPattern>
           [178]\d\d(?:
-            \d{2}
+            \d{2,3}
           )?
         </nationalNumberPattern>
       </generalDesc>
       <shortCode>
-        <possibleLengths national="3,5"/>
+        <possibleLengths national="3,5,6"/>
         <exampleNumber>110</exampleNumber>
         <nationalNumberPattern>
           1(?:
             1[02389]|
-            40\d\d
+            40\d\d|
+            50264
           )|
           71400|
           89887
@@ -6075,7 +6405,7 @@
       </smsServices>
     </territory>
 
-    <!-- Ireland -->
+    <!-- Ireland (IE) -->
     <!-- https://www.comreg.ie/csv/downloads/ComReg15136.pdf -->
     <territory id="IE">
       <generalDesc>
@@ -6159,28 +6489,30 @@
       </smsServices>
     </territory>
 
-    <!-- Israel -->
+    <!-- Israel (IL) -->
     <!-- http://www.itu.int/oth/T020200006A/en -->
     <!-- http://en.wikipedia.org/wiki/%2B972 -->
     <territory id="IL">
       <generalDesc>
-        <nationalNumberPattern>1\d{2,4}</nationalNumberPattern>
+        <nationalNumberPattern>[12]\d{2,4}</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="[3-5]"/>
         <exampleNumber>100</exampleNumber>
         <nationalNumberPattern>
           1(?:
-            0(?:
-              [0-2]|
-              400
-            )|
+            0[0-2]|
             1(?:
               [013-9]\d|
               2
             )|
             [2-9]\d\d
-          )
+          )|
+          2407|
+          (?:
+            104|
+            27
+          )00
         </nationalNumberPattern>
       </shortCode>
       <tollFree>
@@ -6217,8 +6549,7 @@
       </smsServices>
     </territory>
 
-    <!-- Isle of Man -->
-    <!-- Country calling code shared with the UK. -->
+    <!-- Isle of Man (IM) -->
     <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_the_United_Kingdom -->
     <territory id="IM">
       <generalDesc>
@@ -6266,7 +6597,7 @@
       </smsServices>
     </territory>
 
-    <!-- India -->
+    <!-- India (IN) -->
     <!-- http://www.itu.int/oth/T0202000063/en -->
     <!-- http://en.wikipedia.org/wiki/%2B91 -->
     <!-- http://www.dot.gov.in/access-services/national-numbering-plan-2003 -->
@@ -6658,7 +6989,7 @@
       </smsServices>
     </territory>
 
-    <!-- Iraq -->
+    <!-- Iraq (IQ) -->
     <territory id="IQ">
       <generalDesc>
         <nationalNumberPattern>[1479]\d{2,4}</nationalNumberPattern>
@@ -6726,7 +7057,7 @@
       </smsServices>
     </territory>
 
-    <!-- Iran, Islamic Republic of -->
+    <!-- Iran (IR) -->
     <!-- http://www.itu.int/oth/T0202000066/en -->
     <!-- https://www.itu.int/net/itu-t/inrdb/e129_important_numbers.aspx?country=111 -->
     <!-- http://118.tct.ir/necnum.htm -->
@@ -6866,7 +7197,7 @@
       </smsServices>
     </territory>
 
-    <!-- Iceland -->
+    <!-- Iceland (IS) -->
     <!-- https://www.pfs.is/english/telecom-affairs/numbering/ -->
     <territory id="IS">
       <generalDesc>
@@ -6957,7 +7288,7 @@
       </smsServices>
     </territory>
 
-    <!-- Italy -->
+    <!-- Italy (IT) -->
     <!-- http://www.itu.int/oth/T020200006B/en -->
     <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_Italy -->
     <territory id="IT">
@@ -7093,8 +7424,7 @@
       </smsServices>
     </territory>
 
-    <!-- Jersey -->
-    <!-- Country calling code shared with the UK. -->
+    <!-- Jersey (JE) -->
     <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_the_United_Kingdom -->
     <territory id="JE">
       <generalDesc>
@@ -7155,7 +7485,7 @@
       </emergency>
     </territory>
 
-    <!-- Jamaica -->
+    <!-- Jamaica (JM) -->
     <!-- http://www.itu.int/oth/T020200006C/en -->
     <territory id="JM">
       <generalDesc>
@@ -7169,7 +7499,10 @@
             1[029]|
             76
           )|
-          911
+          9(?:
+            11|
+            88
+          )
         </nationalNumberPattern>
       </shortCode>
       <tollFree>
@@ -7177,7 +7510,10 @@
         <exampleNumber>110</exampleNumber>
         <nationalNumberPattern>
           11[029]|
-          911
+          9(?:
+            11|
+            88
+          )
         </nationalNumberPattern>
       </tollFree>
       <!-- https://support.twitter.com/articles/20170024 -->
@@ -7195,6 +7531,11 @@
           911
         </nationalNumberPattern>
       </emergency>
+      <expandedEmergency>
+        <possibleLengths national="3"/>
+        <exampleNumber>988</exampleNumber>
+        <nationalNumberPattern>988</nationalNumberPattern>
+      </expandedEmergency>
       <!-- https://support.twitter.com/articles/20170024 -->
       <smsServices>
         <possibleLengths national="3"/>
@@ -7203,7 +7544,7 @@
       </smsServices>
     </territory>
 
-    <!-- Jordan -->
+    <!-- Jordan (JO) -->
     <!-- http://www.trc.gov.jo/images/stories/pdf/NNP_ver200[1].pdf?lang=english -->
     <!-- http://www.itu.int/oth/T020200006E/en -->
     <!-- http://en.wikipedia.org/wiki/%2B962 -->
@@ -7221,7 +7562,7 @@
         <nationalNumberPattern>
           1(?:
             09|
-            1[0-2]|
+            1[0-248]|
             9[0-24-79]
           )|
           9(?:
@@ -7236,7 +7577,7 @@
         <exampleNumber>112</exampleNumber>
         <nationalNumberPattern>
           1(?:
-            12|
+            1[24]|
             9[127]
           )|
           911
@@ -7267,8 +7608,13 @@
       </emergency>
       <expandedEmergency>
         <possibleLengths national="3"/>
-        <exampleNumber>190</exampleNumber>
-        <nationalNumberPattern>190</nationalNumberPattern>
+        <exampleNumber>114</exampleNumber>
+        <nationalNumberPattern>
+          1(?:
+            14|
+            90
+          )
+        </nationalNumberPattern>
       </expandedEmergency>
       <!-- https://support.twitter.com/articles/20170024 -->
       <smsServices>
@@ -7283,7 +7629,7 @@
       </smsServices>
     </territory>
 
-    <!-- Japan -->
+    <!-- Japan (JP) -->
     <!-- http://www.soumu.go.jp/main_sosiki/joho_tsusin/top/tel_number/number_shitei.html -->
     <!-- http://www.numberingplans.com/?page=dialling&sub=areacodes&ac=JP -->
     <territory id="JP">
@@ -7292,13 +7638,20 @@
       </generalDesc>
       <shortCode>
         <possibleLengths national="3"/>
-        <exampleNumber>110</exampleNumber>
-        <nationalNumberPattern>11[09]</nationalNumberPattern>
+        <exampleNumber>102</exampleNumber>
+        <nationalNumberPattern>
+          1(?:
+            0[24]|
+            1[089]|
+            44|
+            89
+          )
+        </nationalNumberPattern>
       </shortCode>
       <tollFree>
         <possibleLengths national="3"/>
         <exampleNumber>110</exampleNumber>
-        <nationalNumberPattern>11[09]</nationalNumberPattern>
+        <nationalNumberPattern>11[089]</nationalNumberPattern>
       </tollFree>
       <emergency>
         <possibleLengths national="3"/>
@@ -7307,7 +7660,7 @@
       </emergency>
     </territory>
 
-    <!-- Kenya -->
+    <!-- Kenya (KE) -->
     <!-- http://www.ca.go.ke/images/downloads/NUMBERING/Telecommunication%20Numbering%20Plan%20For%20Kenya%20Feb%202016.Pdf -->
     <!-- http://en.wikipedia.org/wiki/+254 -->
     <territory id="KE">
@@ -7473,7 +7826,7 @@
       </smsServices>
     </territory>
 
-    <!-- Kyrgyzstan -->
+    <!-- Kyrgyzstan (KG) -->
     <!-- http://www.itu.int/oth/T0202000074/en -->
     <!-- http://www.iru-nelti.org/index/info-app/id.216 -->
     <territory id="KG">
@@ -7512,7 +7865,7 @@
       </smsServices>
     </territory>
 
-    <!-- Cambodia -->
+    <!-- Cambodia (KH) -->
     <!-- http://www.itu.int/oth/T0202000023/en -->
     <!-- http://en.wikipedia.org/wiki/+855 -->
     <territory id="KH">
@@ -7563,7 +7916,7 @@
       </smsServices>
     </territory>
 
-    <!-- Kiribati -->
+    <!-- Kiribati (KI) -->
     <!-- http://www.itu.int/oth/T0202000071/en -->
     <!-- http://tskl.net.ki/services has others. -->
     <territory id="KI">
@@ -7582,7 +7935,7 @@
             9[2-5]
           )|
           777|
-          99[2-49]|
+          99[2-4]|
           10[0-8]
         </nationalNumberPattern>
       </shortCode>
@@ -7591,7 +7944,7 @@
         <exampleNumber>192</exampleNumber>
         <nationalNumberPattern>
           19[2-5]|
-          99[2-49]
+          99[2-4]
         </nationalNumberPattern>
       </tollFree>
       <!-- http://www.tskl.net.ki/910_operator.php - charged at $0.20 per call. -->
@@ -7600,17 +7953,12 @@
         <exampleNumber>103</exampleNumber>
         <nationalNumberPattern>103</nationalNumberPattern>
       </standardRate>
-      <!-- ITU 30.VIII.2013 still listed 9XX emergency numbers (not yet 1XX).
-           Newer ITU updates (2016) no longer mention 9XX but list 1XX.
-           9XX might no longer be in use, but some websites (Wikipedia) still
-           list them.
-           TODO(b/33193822): Remove after confirming with government. -->
       <emergency>
         <possibleLengths national="3"/>
         <exampleNumber>192</exampleNumber>
         <nationalNumberPattern>
           19[2-5]|
-          99[2-49]
+          99[2-4]
         </nationalNumberPattern>
       </emergency>
       <!-- See comment for emergency section. -->
@@ -7621,7 +7969,7 @@
       </expandedEmergency>
     </territory>
 
-    <!-- Comoros -->
+    <!-- Comoros (KM) -->
     <!-- http://www.itu.int/oth/T020200002D/en -->
     <territory id="KM">
       <generalDesc>
@@ -7645,7 +7993,7 @@
       </emergency>
     </territory>
 
-    <!-- Saint Kitts and Nevis -->
+    <!-- St. Kitts & Nevis (KN) -->
     <!-- http://www.itu.int/oth/T02020000B0/en -->
     <territory id="KN">
       <generalDesc>
@@ -7658,6 +8006,7 @@
           333|
           9(?:
             11|
+            88|
             99
           )
         </nationalNumberPattern>
@@ -7669,6 +8018,7 @@
           333|
           9(?:
             11|
+            88|
             99
           )
         </nationalNumberPattern>
@@ -7686,9 +8036,14 @@
           )
         </nationalNumberPattern>
       </emergency>
+      <expandedEmergency>
+        <possibleLengths national="3"/>
+        <exampleNumber>988</exampleNumber>
+        <nationalNumberPattern>988</nationalNumberPattern>
+      </expandedEmergency>
     </territory>
 
-    <!-- Korea, Dem. People's Rep. of -->
+    <!-- North Korea (KP) -->
     <!-- http://north-korea.emergencynumbers.org/ -->
     <territory id="KP">
       <generalDesc>
@@ -7720,7 +8075,7 @@
       </emergency>
     </territory>
 
-    <!-- Korea (Rep. of) -->
+    <!-- South Korea (KR) -->
     <!-- http://www.itu.int/oth/T0202000072/en -->
     <!-- http://en.wikipedia.org/wiki/%2B82 -->
     <territory id="KR">
@@ -7734,19 +8089,23 @@
           1(?:
             [016-9]114|
             3(?:
+              0[01]|
               2|
-              3[039]|
-              45|
-              66|
-              88|
-              9[18]
+              3[0-35-9]|
+              45?|
+              5[057]|
+              6[569]|
+              7[79]|
+              8[2589]|
+              9[0189]
             )
           )|
           1(?:
-            0[01]|
-            1[0247-9]|
-            2[01389]|
-            82
+            0[015]|
+            1\d|
+            2[01357-9]|
+            41|
+            8[28]
           )
         </nationalNumberPattern>
       </shortCode>
@@ -7769,11 +8128,15 @@
         <possibleLengths national="3,5"/>
         <exampleNumber>100</exampleNumber>
         <nationalNumberPattern>
-          1[016-9]1\d\d|
           1(?:
             0[01]|
-            14
-          )
+            1[4-6]|
+            41
+          )|
+          1(?:
+            [06-9]1\d|
+            111
+          )\d
         </nationalNumberPattern>
       </carrierSpecific>
       <emergency>
@@ -7785,14 +8148,16 @@
            https://en.wikipedia.org/wiki/Telephone_numbers_in_South_Korea -->
       <expandedEmergency>
         <possibleLengths national="3,4"/>
-        <exampleNumber>117</exampleNumber>
+        <exampleNumber>111</exampleNumber>
         <nationalNumberPattern>
           1(?:
-            17|
+            1[137]|
             2[139]|
             3(?:
-              3[09]|
-              [689]\d
+              3[019]|
+              66|
+              8[89]|
+              9[018]
             )|
             82
           )
@@ -7800,7 +8165,7 @@
       </expandedEmergency>
     </territory>
 
-    <!-- Kuwait -->
+    <!-- Kuwait (KW) -->
     <!-- http://www.itu.int/oth/T0202000073/en -->
     <territory id="KW">
       <generalDesc>
@@ -7836,7 +8201,7 @@
       </emergency>
     </territory>
 
-    <!-- Cayman Islands -->
+    <!-- Cayman Islands (KY) -->
     <!-- http://www.itu.int/oth/T0202000027/en -->
     <territory id="KY">
       <generalDesc>
@@ -7845,21 +8210,36 @@
       <shortCode>
         <possibleLengths national="3"/>
         <exampleNumber>911</exampleNumber>
-        <nationalNumberPattern>911</nationalNumberPattern>
+        <nationalNumberPattern>
+          9(?:
+            11|
+            88
+          )
+        </nationalNumberPattern>
       </shortCode>
       <tollFree>
         <possibleLengths national="3"/>
         <exampleNumber>911</exampleNumber>
-        <nationalNumberPattern>911</nationalNumberPattern>
+        <nationalNumberPattern>
+          9(?:
+            11|
+            88
+          )
+        </nationalNumberPattern>
       </tollFree>
       <emergency>
         <possibleLengths national="3"/>
         <exampleNumber>911</exampleNumber>
         <nationalNumberPattern>911</nationalNumberPattern>
       </emergency>
+      <expandedEmergency>
+        <possibleLengths national="3"/>
+        <exampleNumber>988</exampleNumber>
+        <nationalNumberPattern>988</nationalNumberPattern>
+      </expandedEmergency>
     </territory>
 
-    <!-- Kazakhstan -->
+    <!-- Kazakhstan (KZ) -->
     <!-- http://www.itu.int/oth/T020200006F/en -->
     <territory id="KZ">
       <generalDesc>
@@ -7925,7 +8305,7 @@
       </smsServices>
     </territory>
 
-    <!-- Lao People's Dem. Rep. -->
+    <!-- Laos (LA) -->
     <!-- http://www.itu.int/oth/T0202000075/en (Seems incomplete) -->
     <!-- http://en.wikipedia.org/wiki/+856 -->
     <territory id="LA">
@@ -7950,7 +8330,7 @@
       </emergency>
     </territory>
 
-    <!-- Lebanon -->
+    <!-- Lebanon (LB) -->
     <!-- http://www.itu.int/oth/T0202000077/en -->
     <!-- http://en.wikipedia.org/wiki/%2B961 -->
     <territory id="LB">
@@ -7995,7 +8375,7 @@
       </emergency>
     </territory>
 
-    <!-- Saint Lucia -->
+    <!-- St. Lucia (LC) -->
     <!-- http://www.itu.int/oth/T02020000B1/en -->
     <territory id="LC">
       <generalDesc>
@@ -8007,6 +8387,7 @@
         <nationalNumberPattern>
           9(?:
             11|
+            88|
             99
           )
         </nationalNumberPattern>
@@ -8017,6 +8398,7 @@
         <nationalNumberPattern>
           9(?:
             11|
+            88|
             99
           )
         </nationalNumberPattern>
@@ -8035,9 +8417,14 @@
           )
         </nationalNumberPattern>
       </emergency>
+      <expandedEmergency>
+        <possibleLengths national="3"/>
+        <exampleNumber>988</exampleNumber>
+        <nationalNumberPattern>988</nationalNumberPattern>
+      </expandedEmergency>
     </territory>
 
-    <!-- Liechtenstein -->
+    <!-- Liechtenstein (LI) -->
     <!-- http://www.llv.li/amtsstellen/llv-ak-nummerierung.htm -->
     <!-- http://www.llv.li/pdf-llv-ak-shortnumbers_20110331.pdf -->
     <territory id="LI">
@@ -8082,17 +8469,44 @@
       </emergency>
     </territory>
 
-    <!-- Sri Lanka -->
+    <!-- Sri Lanka (LK) -->
     <!-- http://en.wikipedia.org/wiki/%2B94 -->
     <!-- http://www.itu.int/oth/T02020000C3/en -->
     <territory id="LK">
       <generalDesc>
-        <nationalNumberPattern>1\d\d</nationalNumberPattern>
+        <nationalNumberPattern>1\d{2,3}</nationalNumberPattern>
       </generalDesc>
       <shortCode>
-        <possibleLengths national="3"/>
+        <possibleLengths national="3,4"/>
         <exampleNumber>110</exampleNumber>
-        <nationalNumberPattern>11[024-9]</nationalNumberPattern>
+        <nationalNumberPattern>
+          1(?:
+            1[024-9]|
+            3(?:
+              00|
+              1[2-49]|
+              2[23]|
+              3[1-3]|
+              44|
+              5[07]|
+              [67]9|
+              88|
+              9[039]
+            )|
+            9(?:
+              0[0-2589]|
+              1[0-357-9]|
+              2[0-25689]|
+              3[0389]|
+              4[0489]|
+              5[014-69]|
+              6[0-2689]|
+              7[03579]|
+              8[02457-9]|
+              9[0-2569]
+            )
+          )
+        </nationalNumberPattern>
       </shortCode>
       <tollFree>
         <possibleLengths national="3"/>
@@ -8106,7 +8520,7 @@
       </emergency>
     </territory>
 
-    <!-- Liberia -->
+    <!-- Liberia (LR) -->
     <!-- http://www.itu.int/oth/T0202000079/en -->
     <territory id="LR">
       <generalDesc>
@@ -8173,7 +8587,7 @@
       </smsServices>
     </territory>
 
-    <!-- Lesotho -->
+    <!-- Lesotho (LS) -->
     <!-- http://www.itu.int/oth/T0202000078/en -->
     <territory id="LS">
       <generalDesc>
@@ -8198,7 +8612,7 @@
       </emergency>
     </territory>
 
-    <!-- Lithuania -->
+    <!-- Lithuania (LT) -->
     <!-- http://www.itu.int/oth/T020200007C/en -->
     <territory id="LT">
       <generalDesc>
@@ -8222,11 +8636,11 @@
           1(?:
             0[1-3]|
             1(?:
-              2|
+              [27-9]|
               6(?:
                 000|
                 1(?:
-                  11|
+                  1[17]|
                   23
                 )
               )
@@ -8247,9 +8661,13 @@
             0[1-3]|
             1(?:
               2|
-              6\d{3}
+              6111
             )
-          )
+          )|
+          116(?:
+            0\d|
+            12
+          )\d
         </nationalNumberPattern>
       </tollFree>
       <emergency>
@@ -8274,7 +8692,7 @@
       </expandedEmergency>
     </territory>
 
-    <!-- Luxembourg -->
+    <!-- Luxembourg (LU) -->
     <!-- http://www.ilr.public.lu/communications_electroniques/numerotation/index.html -->
     <territory id="LU">
       <generalDesc>
@@ -8320,7 +8738,7 @@
       </expandedEmergency>
     </territory>
 
-    <!-- Latvia -->
+    <!-- Latvia (LV) -->
     <!-- http://en.wikipedia.org/wiki/+371 -->
     <territory id="LV">
       <generalDesc>
@@ -8400,7 +8818,7 @@
       </expandedEmergency>
     </territory>
 
-    <!-- Libya (Soc. People’s Libyan Arab Jamahiriya) -->
+    <!-- Libya (LY) -->
     <territory id="LY">
       <generalDesc>
         <nationalNumberPattern>1\d\d</nationalNumberPattern>
@@ -8426,7 +8844,7 @@
       </emergency>
     </territory>
 
-    <!-- Morocco -->
+    <!-- Morocco (MA) -->
     <!-- Shares formatting and some metadata with Western Sahara. -->
     <!-- http://www.itu.int/oth/T0202000090/en -->
     <!-- http://en.wikipedia.org/wiki/+212 -->
@@ -8466,7 +8884,7 @@
       </emergency>
     </territory>
 
-    <!-- Monaco -->
+    <!-- Monaco (MC) -->
     <!-- http://www.itu.int/oth/T020200008D/en -->
     <territory id="MC">
       <generalDesc>
@@ -8505,7 +8923,7 @@
       </emergency>
     </territory>
 
-    <!-- Moldova, Rep. of -->
+    <!-- Moldova (MD) -->
     <!-- http://www.itu.int/oth/T020200008C/en -->
     <!-- http://en.anrceti.md -->
     <territory id="MD">
@@ -8524,9 +8942,9 @@
             1(?:
               2|
               6(?:
-                000|
+                00[06]|
                 1(?:
-                  11|
+                  1[17]|
                   23
                 )
               )|
@@ -8549,7 +8967,13 @@
         <nationalNumberPattern>
           11(?:
             2|
-            6\d{3}
+            6(?:
+              000|
+              1(?:
+                11|
+                2\d
+              )
+            )
           )|
           90[1-3]
         </nationalNumberPattern>
@@ -8562,9 +8986,19 @@
           90[1-3]
         </nationalNumberPattern>
       </emergency>
+      <expandedEmergency>
+        <possibleLengths national="6"/>
+        <exampleNumber>116006</exampleNumber>
+        <nationalNumberPattern>
+          116(?:
+            006|
+            117
+          )
+        </nationalNumberPattern>
+      </expandedEmergency>
     </territory>
 
-    <!-- Montenegro -->
+    <!-- Montenegro (ME) -->
     <!-- http://www.itu.int/oth/T02020000DA/en -->
     <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_Montenegro -->
     <!-- http://www.ekip.me/numeracija/dodijeljena.php -->
@@ -8622,7 +9056,7 @@
       </emergency>
     </territory>
 
-    <!-- Saint-Martin, French Antilles -->
+    <!-- St. Martin (MF) -->
     <!-- http://www.itu.int/oth/T0202000058/en -->
     <!-- http://www.arcep.fr/index.php?id=interactivenumeros - ZABPQ-ZNE.xls -->
     <territory id="MF">
@@ -8647,7 +9081,7 @@
       </emergency>
     </territory>
 
-    <!-- Madagascar -->
+    <!-- Madagascar (MG) -->
     <!-- http://www.itu.int/oth/T020200007F/en -->
     <territory id="MG">
       <generalDesc>
@@ -8686,7 +9120,7 @@
       </emergency>
     </territory>
 
-    <!-- Marshall Islands -->
+    <!-- Marshall Islands (MH) -->
     <!-- http://travel.state.gov/travel/cis_pa_tw/cis/cis_964.html -->
     <territory id="MH">
       <generalDesc>
@@ -8712,28 +9146,45 @@
       </emergency>
     </territory>
 
-    <!-- Macedonia, Former Yugoslav Rep. of -->
+    <!-- North Macedonia (MK) -->
     <!-- http://www.itu.int/oth/T02020000CE/en -->
     <territory id="MK">
       <generalDesc>
-        <nationalNumberPattern>1\d\d</nationalNumberPattern>
+        <nationalNumberPattern>
+          1\d\d(?:
+            \d(?:
+              \d{2}
+            )?
+          )?
+        </nationalNumberPattern>
       </generalDesc>
       <shortCode>
-        <possibleLengths national="3"/>
+        <possibleLengths national="3,4,6"/>
         <exampleNumber>112</exampleNumber>
         <nationalNumberPattern>
           1(?:
-            12|
+            1(?:
+              2|
+              8\d
+            )|
+            3\d|
             9[2-4]
-          )
+          )|
+          1(?:
+            16|
+            2\d
+          )\d{3}
         </nationalNumberPattern>
       </shortCode>
       <tollFree>
-        <possibleLengths national="3"/>
+        <possibleLengths national="3,6"/>
         <exampleNumber>112</exampleNumber>
         <nationalNumberPattern>
           1(?:
-            12|
+            1(?:
+              2|
+              6\d{3}
+            )|
             9[2-4]
           )
         </nationalNumberPattern>
@@ -8748,9 +9199,14 @@
           )
         </nationalNumberPattern>
       </emergency>
+      <expandedEmergency>
+        <possibleLengths national="6"/>
+        <exampleNumber>116000</exampleNumber>
+        <nationalNumberPattern>116\d{3}</nationalNumberPattern>
+      </expandedEmergency>
     </territory>
 
-    <!-- Mali -->
+    <!-- Mali (ML) -->
     <!-- http://crt-mali.org/pdf/plan_num -->
     <!-- http://www.orangemali.com/mobile/offrespostpayees.php -->
     <!-- http://www.orangemali.com/service-clients/service-clients-orange.php -->
@@ -8888,7 +9344,7 @@
       </smsServices>
     </territory>
 
-    <!-- Myanmar -->
+    <!-- Myanmar (Burma) (MM) -->
     <!-- http://www.itu.int/oth/T0202000092/en -->
     <territory id="MM">
       <generalDesc>
@@ -8911,7 +9367,7 @@
       </emergency>
     </territory>
 
-    <!-- Mongolia -->
+    <!-- Mongolia (MN) -->
     <!-- http://www.itu.int/oth/T020200008E/en -->
     <territory id="MN">
       <generalDesc>
@@ -8920,21 +9376,21 @@
       <shortCode>
         <possibleLengths national="3"/>
         <exampleNumber>100</exampleNumber>
-        <nationalNumberPattern>10[0-3]</nationalNumberPattern>
+        <nationalNumberPattern>10[0-35]</nationalNumberPattern>
       </shortCode>
       <tollFree>
         <possibleLengths national="3"/>
         <exampleNumber>100</exampleNumber>
-        <nationalNumberPattern>10[0-3]</nationalNumberPattern>
+        <nationalNumberPattern>10[0-35]</nationalNumberPattern>
       </tollFree>
       <emergency>
         <possibleLengths national="3"/>
         <exampleNumber>100</exampleNumber>
-        <nationalNumberPattern>10[0-3]</nationalNumberPattern>
+        <nationalNumberPattern>10[0-35]</nationalNumberPattern>
       </emergency>
     </territory>
 
-    <!-- Macao, China -->
+    <!-- Macao (MO) -->
     <!-- http://www.itu.int/oth/T020200007E/en -->
     <territory id="MO">
       <generalDesc>
@@ -8957,7 +9413,7 @@
       </emergency>
     </territory>
 
-    <!-- Northern Mariana Islands -->
+    <!-- Northern Mariana Islands (MP) -->
     <!-- http://www.itu.int/oth/T02020000EE/en -->
     <!-- www.cnmiphonebook.com/ -->
     <territory id="MP">
@@ -8967,12 +9423,22 @@
       <shortCode>
         <possibleLengths national="3"/>
         <exampleNumber>911</exampleNumber>
-        <nationalNumberPattern>911</nationalNumberPattern>
+        <nationalNumberPattern>
+          9(?:
+            11|
+            88
+          )
+        </nationalNumberPattern>
       </shortCode>
       <tollFree>
         <possibleLengths national="3"/>
         <exampleNumber>911</exampleNumber>
-        <nationalNumberPattern>911</nationalNumberPattern>
+        <nationalNumberPattern>
+          9(?:
+            11|
+            88
+          )
+        </nationalNumberPattern>
       </tollFree>
       <!-- http://www.dps.gov.mp/ -->
       <emergency>
@@ -8980,9 +9446,14 @@
         <exampleNumber>911</exampleNumber>
         <nationalNumberPattern>911</nationalNumberPattern>
       </emergency>
+      <expandedEmergency>
+        <possibleLengths national="3"/>
+        <exampleNumber>988</exampleNumber>
+        <nationalNumberPattern>988</nationalNumberPattern>
+      </expandedEmergency>
     </territory>
 
-    <!-- Martinique (French Dept. of) -->
+    <!-- Martinique (MQ) -->
     <!-- http://www.itu.int/oth/T0202000086/en -->
     <!-- http://www.arcep.fr/index.php?id=2137&bloc=0596&CMD=RESULTS_NUMEROTATION -->
     <territory id="MQ">
@@ -9022,7 +9493,7 @@
       </emergency>
     </territory>
 
-    <!-- Mauritania -->
+    <!-- Mauritania (MR) -->
     <!-- http://www.itu.int/oth/T0202000087/en -->
     <!-- http://www.are.mr/com-1-4-1.html -->
     <territory id="MR">
@@ -9047,18 +9518,20 @@
       </emergency>
     </territory>
 
-    <!-- Montserrat -->
+    <!-- Montserrat (MS) -->
     <!-- http://www.itu.int/oth/T020200008F/en -->
     <territory id="MS">
       <generalDesc>
-        <nationalNumberPattern>9\d\d</nationalNumberPattern>
+        <nationalNumberPattern>[29]\d\d</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3"/>
-        <exampleNumber>911</exampleNumber>
+        <exampleNumber>211</exampleNumber>
         <nationalNumberPattern>
+          211|
           9(?:
             11|
+            88|
             99
           )
         </nationalNumberPattern>
@@ -9069,6 +9542,7 @@
         <nationalNumberPattern>
           9(?:
             11|
+            88|
             99
           )
         </nationalNumberPattern>
@@ -9084,9 +9558,14 @@
           )
         </nationalNumberPattern>
       </emergency>
+      <expandedEmergency>
+        <possibleLengths national="3"/>
+        <exampleNumber>988</exampleNumber>
+        <nationalNumberPattern>988</nationalNumberPattern>
+      </expandedEmergency>
     </territory>
 
-    <!-- Malta -->
+    <!-- Malta (MT) -->
     <!-- www.itu.int/oth/T0202000084/en -->
     <territory id="MT">
       <generalDesc>
@@ -9134,7 +9613,7 @@
       </expandedEmergency>
     </territory>
 
-    <!-- Mauritius -->
+    <!-- Mauritius (MU) -->
     <!-- http://www.icta.mu/telecommunications/numbering.htm -->
     <territory id="MU">
       <generalDesc>
@@ -9169,7 +9648,7 @@
       </emergency>
     </territory>
 
-    <!-- Maldives -->
+    <!-- Maldives (MV) -->
     <territory id="MV">
       <generalDesc>
         <nationalNumberPattern>[14]\d{2,3}</nationalNumberPattern>
@@ -9226,7 +9705,7 @@
       </expandedEmergency>
     </territory>
 
-    <!-- Malawi -->
+    <!-- Malawi (MW) -->
     <!-- http://www.itu.int/oth/T0202000080/en -->
     <territory id="MW">
       <generalDesc>
@@ -9277,7 +9756,7 @@
       </smsServices>
     </territory>
 
-    <!-- Mexico -->
+    <!-- Mexico (MX) -->
     <!-- http://en.wikipedia.org/wiki/%2B52 -->
     <territory id="MX">
       <generalDesc>
@@ -9351,7 +9830,7 @@
       </expandedEmergency>
     </territory>
 
-    <!-- Malaysia -->
+    <!-- Malaysia (MY) -->
     <!-- http://en.wikipedia.org/wiki/%2B60 -->
     <!-- http://www.skmm.gov.my -->
     <territory id="MY">
@@ -9454,7 +9933,7 @@
       </smsServices>
     </territory>
 
-    <!-- Mozambique -->
+    <!-- Mozambique (MZ) -->
     <!-- http://www.itu.int/oth/T0202000091/en -->
     <territory id="MZ">
       <generalDesc>
@@ -9496,7 +9975,7 @@
       </emergency>
     </territory>
 
-    <!-- Namibia -->
+    <!-- Namibia (NA) -->
     <!-- http://www.itu.int/oth/T0202000093/en -->
     <territory id="NA">
       <generalDesc>
@@ -9530,7 +10009,7 @@
       </emergency>
     </territory>
 
-    <!-- New Caledonia (Territoire français d'outre-mer) -->
+    <!-- New Caledonia (NC) -->
     <!-- As there seems to be only one carrier (OPT) in New Caledonia so for now we are not
          distinguishing carrier specific numbers. -->
     <!-- http://www.itu.int/oth/T0202000098/en -->
@@ -9613,7 +10092,7 @@
       </emergency>
     </territory>
 
-    <!-- Niger -->
+    <!-- Niger (NE) -->
     <territory id="NE">
       <generalDesc>
         <nationalNumberPattern>
@@ -9630,7 +10109,7 @@
         <nationalNumberPattern>
           1(?:
             0[01]|
-            1[12]|
+            1[128]|
             2[034]|
             3[013]|
             [46]0|
@@ -9645,10 +10124,13 @@
         </nationalNumberPattern>
       </shortCode>
       <tollFree>
-        <possibleLengths national="2,6"/>
+        <possibleLengths national="2,3,6"/>
         <exampleNumber>15</exampleNumber>
         <nationalNumberPattern>
-          1[578]|
+          1(?:
+            18|
+            [578]
+          )|
           723\d{3}
         </nationalNumberPattern>
       </tollFree>
@@ -9671,16 +10153,19 @@
         </nationalNumberPattern>
       </carrierSpecific>
       <emergency>
-        <possibleLengths national="2,6"/>
+        <possibleLengths national="2,3,6"/>
         <exampleNumber>15</exampleNumber>
         <nationalNumberPattern>
-          1[578]|
+          1(?:
+            18|
+            [578]
+          )|
           723141
         </nationalNumberPattern>
       </emergency>
     </territory>
 
-    <!-- Norfolk Island -->
+    <!-- Norfolk Island (NF) -->
     <!-- http://www.itu.int/oth/T020200009D/en -->
     <territory id="NF">
       <generalDesc>
@@ -9722,7 +10207,7 @@
       </emergency>
     </territory>
 
-    <!-- Nigeria -->
+    <!-- Nigeria (NG) -->
     <!-- http://www.itu.int/oth/T020200009C/en -->
     <territory id="NG">
       <generalDesc>
@@ -9764,7 +10249,7 @@
       </smsServices>
     </territory>
 
-    <!-- Nicaragua -->
+    <!-- Nicaragua (NI) -->
     <!-- http://www.itu.int/oth/T020200009A/en -->
     <territory id="NI">
       <generalDesc>
@@ -9813,7 +10298,7 @@
       </emergency>
     </territory>
 
-    <!-- Netherlands -->
+    <!-- Netherlands (NL) -->
     <!-- http://en.wikipedia.org/wiki/%2B31 -->
     <!-- http://wetten.overheid.nl/BWBR0010198 -->
     <territory id="NL">
@@ -9894,8 +10379,7 @@
       </smsServices>
     </territory>
 
-    <!-- Norway -->
-    <!-- Country calling code shared with Svalbard. -->
+    <!-- Norway (NO) -->
     <!-- http://www.npt.no/npt/numsys/E.164.pdf -->
     <!-- http://www.nkom.no/npt/numsys/E.1643sifret_en.pdf -->
     <territory id="NO">
@@ -9928,6 +10412,7 @@
               [59]
             )|
             7[57]|
+            8[5-9]\d|
             90
           )
         </nationalNumberPattern>
@@ -9959,31 +10444,41 @@
       </expandedEmergency>
     </territory>
 
-    <!-- Nepal -->
+    <!-- Nepal (NP) -->
     <!-- http://www.itu.int/oth/T0202000095/en -->
     <!-- http://www.ntc.net.np/mobile/mob_postpaid_number_scheme.php -->
     <territory id="NP">
       <generalDesc>
-        <nationalNumberPattern>1\d\d</nationalNumberPattern>
+        <nationalNumberPattern>1\d{2,3}</nationalNumberPattern>
       </generalDesc>
       <shortCode>
-        <possibleLengths national="3"/>
+        <possibleLengths national="3,4"/>
         <exampleNumber>100</exampleNumber>
         <nationalNumberPattern>
           1(?:
-            0[0-3]|
-            12
+            0(?:
+              [0-36]|
+              98
+            )|
+            1(?:
+              1[1-4]|
+              2
+            )
           )
         </nationalNumberPattern>
       </shortCode>
       <tollFree>
-        <possibleLengths national="3"/>
+        <possibleLengths national="3,4"/>
         <exampleNumber>100</exampleNumber>
         <nationalNumberPattern>
           1(?:
-            0[0-3]|
+            0[0-36]|
             12
-          )
+          )|
+          1(?:
+            09|
+            11
+          )\d
         </nationalNumberPattern>
       </tollFree>
       <emergency>
@@ -9996,9 +10491,20 @@
           )
         </nationalNumberPattern>
       </emergency>
+      <expandedEmergency>
+        <possibleLengths national="3,4"/>
+        <exampleNumber>106</exampleNumber>
+        <nationalNumberPattern>
+          106|
+          1(?:
+            09|
+            11
+          )\d
+        </nationalNumberPattern>
+      </expandedEmergency>
     </territory>
 
-    <!-- Nauru -->
+    <!-- Nauru (NR) -->
     <!-- http://www.itu.int/oth/T0202000094/en -->
     <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_Nauru -->
     <territory id="NR">
@@ -10028,7 +10534,7 @@
       </emergency>
     </territory>
 
-    <!-- Niue -->
+    <!-- Niue (NU) -->
     <!-- http://www.itu.int/oth/T02020000EC/en -->
     <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_Niue -->
     <territory id="NU">
@@ -10061,7 +10567,7 @@
       </emergency>
     </territory>
 
-    <!-- New Zealand -->
+    <!-- New Zealand (NZ) -->
     <!-- http://www.itu.int/oth/T0202000099/en -->
     <!-- Includes Ross Dependency, Antarctica -->
     <!-- https://www.skinny.co.nz/assets/pdf/skinny-premium-SMS-prices-Sheet14.pdf -->
@@ -10131,30 +10637,54 @@
       </smsServices>
     </territory>
 
-    <!-- Oman -->
+    <!-- Oman (OM) -->
     <!-- http://www.itu.int/oth/T020200009F/en -->
     <territory id="OM">
       <generalDesc>
-        <nationalNumberPattern>9\d{3}</nationalNumberPattern>
+        <nationalNumberPattern>[19]\d{3}</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="4"/>
-        <exampleNumber>9999</exampleNumber>
-        <nationalNumberPattern>9999</nationalNumberPattern>
+        <exampleNumber>1111</exampleNumber>
+        <nationalNumberPattern>
+          1(?:
+            111|
+            222|
+            4(?:
+              4[0-5]|
+              50|
+              66|
+              7[7-9]
+            )|
+            51[0-8]
+          )|
+          9999|
+          1(?:
+            2[3-5]|
+            3[0-2]|
+            50
+          )\d
+        </nationalNumberPattern>
       </shortCode>
       <tollFree>
         <possibleLengths national="4"/>
-        <exampleNumber>9990</exampleNumber>
-        <nationalNumberPattern>999\d</nationalNumberPattern>
+        <exampleNumber>1444</exampleNumber>
+        <nationalNumberPattern>
+          1444|
+          999\d
+        </nationalNumberPattern>
       </tollFree>
       <emergency>
         <possibleLengths national="4"/>
-        <exampleNumber>9999</exampleNumber>
-        <nationalNumberPattern>9999</nationalNumberPattern>
+        <exampleNumber>1444</exampleNumber>
+        <nationalNumberPattern>
+          1444|
+          9999
+        </nationalNumberPattern>
       </emergency>
     </territory>
 
-    <!-- Panama -->
+    <!-- Panama (PA) -->
     <!-- http://en.wikipedia.org/wiki/%2B507 -->
     <territory id="PA">
       <generalDesc>
@@ -10180,7 +10710,7 @@
       </emergency>
     </territory>
 
-    <!-- Peru -->
+    <!-- Peru (PE) -->
     <!-- http://www.itu.int/oth/T02020000A6/en -->
     <!-- http://en.wikipedia.org/wiki/+51 -->
     <territory id="PE">
@@ -10219,7 +10749,7 @@
       </emergency>
     </territory>
 
-    <!-- French Polynesia (Tahiti) (Territoire français d'outre-mer) -->
+    <!-- French Polynesia (PF) -->
     <!-- http://www.itu.int/oth/T020200004D/en -->
     <territory id="PF">
       <generalDesc>
@@ -10243,7 +10773,7 @@
       </emergency>
     </territory>
 
-    <!-- Papua New Guinea -->
+    <!-- Papua New Guinea (PG) -->
     <!-- http://www.itu.int/oth/T02020000A4/en -->
     <!-- http://en.wikipedia.org/wiki/%2B675 -->
     <territory id="PG">
@@ -10286,7 +10816,7 @@
       </smsServices>
     </territory>
 
-    <!-- Philippines -->
+    <!-- Philippines (PH) -->
     <!-- http://en.wikipedia.org/wiki/%2B63 -->
     <territory id="PH">
       <generalDesc>
@@ -10318,7 +10848,7 @@
       </emergency>
     </territory>
 
-    <!-- Pakistan -->
+    <!-- Pakistan (PK) -->
     <!-- http://www.itu.int/oth/T02020000A1/en -->
     <!-- http://en.wikipedia.org/wiki/%2B92 -->
     <territory id="PK">
@@ -10330,12 +10860,11 @@
         <exampleNumber>15</exampleNumber>
         <nationalNumberPattern>
           1(?:
-            1(?:
-              22?|
-              5
-            )|
+            122|
+            3[014]|
             [56]
-          )
+          )|
+          11[2457-9]
         </nationalNumberPattern>
       </shortCode>
       <tollFree>
@@ -10366,7 +10895,7 @@
       </emergency>
     </territory>
 
-    <!-- Poland -->
+    <!-- Poland (PL) -->
     <!-- http://en.wikipedia.org/wiki/%2B48 -->
     <!-- http://www.itu.int/oth/T02020000A8/en -->
     <!-- http://www.uke.gov.pl/tablice/home.do?execution=e1s1 -->
@@ -10438,7 +10967,7 @@
       </expandedEmergency>
     </territory>
 
-    <!-- Saint Pierre and Miquelon (Collectivité territoriale de la République française) -->
+    <!-- St. Pierre & Miquelon (PM) -->
     <!-- http://www.itu.int/oth/T02020000B2/en -->
     <territory id="PM">
       <generalDesc>
@@ -10473,7 +11002,7 @@
       </emergency>
     </territory>
 
-    <!-- Puerto Rico -->
+    <!-- Puerto Rico (PR) -->
     <!-- http://www.itu.int/oth/T02020000AA/en -->
     <territory id="PR">
       <generalDesc>
@@ -10482,12 +11011,22 @@
       <shortCode>
         <possibleLengths national="3"/>
         <exampleNumber>911</exampleNumber>
-        <nationalNumberPattern>911</nationalNumberPattern>
+        <nationalNumberPattern>
+          9(?:
+            11|
+            88
+          )
+        </nationalNumberPattern>
       </shortCode>
       <tollFree>
         <possibleLengths national="3"/>
         <exampleNumber>911</exampleNumber>
-        <nationalNumberPattern>911</nationalNumberPattern>
+        <nationalNumberPattern>
+          9(?:
+            11|
+            88
+          )
+        </nationalNumberPattern>
       </tollFree>
       <!-- http://www.frommers.com/destinations/puertorico/0094020157.html
            http://studentsabroad.state.gov/content/pdfs/911_ABROAD.pdf -->
@@ -10496,21 +11035,27 @@
         <exampleNumber>911</exampleNumber>
         <nationalNumberPattern>911</nationalNumberPattern>
       </emergency>
+      <expandedEmergency>
+        <possibleLengths national="3"/>
+        <exampleNumber>988</exampleNumber>
+        <nationalNumberPattern>988</nationalNumberPattern>
+      </expandedEmergency>
     </territory>
 
-    <!-- Palestinian Authority -->
+    <!-- Palestine (PS) -->
     <!-- http://en.wikipedia.org/wiki/%2B970 -->
     <!-- http://www.paltel.ps/ -->
     <territory id="PS">
       <generalDesc>
-        <nationalNumberPattern>1\d\d</nationalNumberPattern>
+        <nationalNumberPattern>1\d{2,3}</nationalNumberPattern>
       </generalDesc>
       <shortCode>
-        <possibleLengths national="3"/>
+        <possibleLengths national="3,4"/>
         <exampleNumber>100</exampleNumber>
         <nationalNumberPattern>
           1(?:
             0[0-2]|
+            122|
             44|
             66|
             99
@@ -10527,6 +11072,12 @@
           )
         </nationalNumberPattern>
       </tollFree>
+      <!-- 1122 is Jawwal's customer service number -->
+      <carrierSpecific>
+        <possibleLengths national="4"/>
+        <exampleNumber>1120</exampleNumber>
+        <nationalNumberPattern>112\d</nationalNumberPattern>
+      </carrierSpecific>
       <emergency>
         <possibleLengths national="3"/>
         <exampleNumber>100</exampleNumber>
@@ -10534,37 +11085,67 @@
       </emergency>
     </territory>
 
-    <!-- Portugal -->
+    <!-- Portugal (PT) -->
     <!-- http://www.anacom.pt/render.jsp?categoryId=279098 -->
     <territory id="PT">
       <generalDesc>
         <nationalNumberPattern>
           1\d\d(?:
-            \d{3}
+            \d(?:
+              \d{2}
+            )?
           )?
         </nationalNumberPattern>
       </generalDesc>
       <shortCode>
-        <possibleLengths national="3,6"/>
+        <possibleLengths national="3,4,6"/>
         <exampleNumber>112</exampleNumber>
         <nationalNumberPattern>
-          11(?:
-            [2578]|
+          1(?:
+            0(?:
+              45|
+              5[01]
+            )|
+            1(?:
+              [2578]|
+              600[06]
+            )|
+            4(?:
+              1[45]|
+              4
+            )|
+            583|
             6(?:
-              000|
-              111
+              1[0236]|
+              3[02]|
+              9[169]
             )
-          )
+          )|
+          1(?:
+            1611|
+            59
+          )1|
+          1[068]78|
+          1[08]9[16]|
+          1(?:
+            0[1-38]|
+            40|
+            5[15]|
+            6[258]|
+            82
+          )0
         </nationalNumberPattern>
       </shortCode>
       <tollFree>
-        <possibleLengths national="3,6"/>
+        <possibleLengths national="3,4,6"/>
         <exampleNumber>112</exampleNumber>
         <nationalNumberPattern>
-          11(?:
-            [25]|
-            6\d{3}
-          )
+          11[257]|
+          1(?:
+            16\d\d|
+            5[1589]|
+            8[279]
+          )\d
         </nationalNumberPattern>
       </tollFree>
       <emergency>
@@ -10573,13 +11154,18 @@
         <nationalNumberPattern>11[25]</nationalNumberPattern>
       </emergency>
       <expandedEmergency>
-        <possibleLengths national="6"/>
-        <exampleNumber>116000</exampleNumber>
-        <nationalNumberPattern>116\d{3}</nationalNumberPattern>
+        <possibleLengths national="3,6"/>
+        <exampleNumber>117</exampleNumber>
+        <nationalNumberPattern>
+          11(?:
+            6\d{3}|
+            7
+          )
+        </nationalNumberPattern>
       </expandedEmergency>
     </territory>
 
-    <!-- Palau -->
+    <!-- Palau (PW) -->
     <!-- http://www.itu.int/oth/T02020000A2/en -->
     <territory id="PW">
       <generalDesc>
@@ -10602,7 +11188,7 @@
       </emergency>
     </territory>
 
-    <!-- Paraguay -->
+    <!-- Paraguay (PY) -->
     <territory id="PY">
       <generalDesc>
         <nationalNumberPattern>[19]\d\d</nationalNumberPattern>
@@ -10611,7 +11197,7 @@
         <possibleLengths national="3"/>
         <exampleNumber>110</exampleNumber>
         <nationalNumberPattern>
-          1[1-4]\d|
+          1[1-9]\d|
           911
         </nationalNumberPattern>
       </shortCode>
@@ -10633,7 +11219,7 @@
       </emergency>
     </territory>
 
-    <!-- Qatar -->
+    <!-- Qatar (QA) -->
     <territory id="QA">
       <generalDesc>
         <nationalNumberPattern>[129]\d{2,4}</nationalNumberPattern>
@@ -10662,7 +11248,7 @@
       </emergency>
     </territory>
 
-    <!-- Réunion (French Departments and Territories in the Indian Ocean) -->
+    <!-- Réunion (RE) -->
     <!-- http://www.itu.int/oth/T020200004B/en -->
     <territory id="RE">
       <generalDesc>
@@ -10701,41 +11287,50 @@
       </emergency>
     </territory>
 
-    <!-- Romania -->
+    <!-- Romania (RO) -->
     <!-- http://www.itu.int/oth/T02020000AC/en -->
     <!-- https://en.wikipedia.org/wiki/Telephone_numbers_in_Romania -->
     <territory id="RO">
       <generalDesc>
-        <nationalNumberPattern>
-          [18]\d\d(?:
-            \d(?:
-              \d{2}
-            )?
-          )?
-        </nationalNumberPattern>
+        <nationalNumberPattern>[18]\d{2,5}</nationalNumberPattern>
       </generalDesc>
       <shortCode>
-        <possibleLengths national="3,4,6"/>
+        <possibleLengths national="[3-6]"/>
         <exampleNumber>112</exampleNumber>
         <nationalNumberPattern>
           1(?:
             1(?:
               2|
-              6111|
-              8932
+              6(?:
+                000|
+                1(?:
+                  11|
+                  23
+                )
+              )|
+              8(?:
+                (?:
+                  01|
+                  8[18]
+                )1|
+                119|
+                [23]00|
+                932
+              )
             )|
             [24]\d\d|
             9(?:
+              0(?:
+                00|
+                19
+              )|
+              1[19]|
               21|
               3[02]|
               5[178]
             )
           )|
-          8[48]\d\d|
-          11(?:
-            60|
-            83
-          )00
+          8[48]\d\d
         </nationalNumberPattern>
       </shortCode>
       <tollFree>
@@ -10754,7 +11349,7 @@
         <nationalNumberPattern>
           (?:
             1(?:
-              18\d|
+              18[39]|
               [24]
             )|
             8[48]
@@ -10783,7 +11378,7 @@
       </smsServices>
     </territory>
 
-    <!-- Serbia -->
+    <!-- Serbia (RS) -->
     <territory id="RS">
       <generalDesc>
         <nationalNumberPattern>[19]\d{1,5}</nationalNumberPattern>
@@ -10814,7 +11409,7 @@
       </emergency>
     </territory>
 
-    <!-- Russian Federation -->
+    <!-- Russia (RU) -->
     <!-- http://www.itu.int/oth/T02020000AD/en -->
     <!-- http://en.wikipedia.org/wiki/%2B7 -->
     <territory id="RU">
@@ -10856,30 +11451,44 @@
       </emergency>
     </territory>
 
-    <!-- Rwanda -->
+    <!-- Rwanda (RW) -->
     <!-- http://en.wikipedia.org/wiki/+250 -->
     <territory id="RW">
       <generalDesc>
-        <nationalNumberPattern>1\d\d</nationalNumberPattern>
+        <nationalNumberPattern>[14]\d\d</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="3"/>
-        <exampleNumber>112</exampleNumber>
-        <nationalNumberPattern>112</nationalNumberPattern>
+        <exampleNumber>100</exampleNumber>
+        <nationalNumberPattern>
+          1(?:
+            0[0-2]|
+            1[0-24-6]|
+            2[13]|
+            70|
+            99
+          )|
+          456
+        </nationalNumberPattern>
       </shortCode>
       <tollFree>
         <possibleLengths national="3"/>
-        <exampleNumber>112</exampleNumber>
-        <nationalNumberPattern>112</nationalNumberPattern>
+        <exampleNumber>111</exampleNumber>
+        <nationalNumberPattern>11[1245]</nationalNumberPattern>
       </tollFree>
       <emergency>
         <possibleLengths national="3"/>
-        <exampleNumber>112</exampleNumber>
-        <nationalNumberPattern>112</nationalNumberPattern>
+        <exampleNumber>111</exampleNumber>
+        <nationalNumberPattern>11[12]</nationalNumberPattern>
       </emergency>
+      <expandedEmergency>
+        <possibleLengths national="3"/>
+        <exampleNumber>114</exampleNumber>
+        <nationalNumberPattern>11[45]</nationalNumberPattern>
+      </expandedEmergency>
     </territory>
 
-    <!-- Saudi Arabia -->
+    <!-- Saudi Arabia (SA) -->
     <!-- http://www.itu.int/oth/T02020000B7/en -->
     <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_Saudi_Arabia -->
     <territory id="SA">
@@ -10903,7 +11512,7 @@
               9(?:
                 099|
                 22|
-                91
+                9[0-3]
               )
             )
           )|
@@ -10982,7 +11591,7 @@
       </expandedEmergency>
     </territory>
 
-    <!-- Solomon Islands -->
+    <!-- Solomon Islands (SB) -->
     <territory id="SB">
       <generalDesc>
         <nationalNumberPattern>[127-9]\d\d</nationalNumberPattern>
@@ -11026,7 +11635,7 @@
       </emergency>
     </territory>
 
-    <!-- Seychelles -->
+    <!-- Seychelles (SC) -->
     <territory id="SC">
       <generalDesc>
         <nationalNumberPattern>[19]\d{2,3}</nationalNumberPattern>
@@ -11036,13 +11645,12 @@
         <exampleNumber>100</exampleNumber>
         <nationalNumberPattern>
           1(?:
-            0\d|
-            1[027]|
+            [06]\d|
+            1[0-2467]|
             2[0-8]|
             3[13]|
             4[0-2]|
             [59][15]|
-            6[1-9]|
             7[124-6]|
             8[158]
           )|
@@ -11054,17 +11662,33 @@
       </shortCode>
       <tollFree>
         <possibleLengths national="3"/>
-        <exampleNumber>999</exampleNumber>
-        <nationalNumberPattern>999</nationalNumberPattern>
+        <exampleNumber>111</exampleNumber>
+        <nationalNumberPattern>
+          1(?:
+            1[146]|
+            60
+          )|
+          999
+        </nationalNumberPattern>
       </tollFree>
       <emergency>
         <possibleLengths national="3"/>
         <exampleNumber>999</exampleNumber>
         <nationalNumberPattern>999</nationalNumberPattern>
       </emergency>
+      <expandedEmergency>
+        <possibleLengths national="3"/>
+        <exampleNumber>111</exampleNumber>
+        <nationalNumberPattern>
+          1(?:
+            1[146]|
+            60
+          )
+        </nationalNumberPattern>
+      </expandedEmergency>
     </territory>
 
-    <!-- Sudan -->
+    <!-- Sudan (SD) -->
     <!-- http://www.itu.int/oth/T02020000C4/en -->
     <territory id="SD">
       <generalDesc>
@@ -11087,7 +11711,7 @@
       </emergency>
     </territory>
 
-    <!-- Sweden -->
+    <!-- Sweden (SE) -->
     <!-- http://www.pts.se/upload/Ovrigt/Tele/Nummerfragor/Nrplansammanst%C3%A4llning-2013-07-05.pdf -->
     <!-- http://www.etiskaradet.se/sidor/om-sms-tjanster.aspx -->
     <territory id="SE">
@@ -11147,14 +11771,19 @@
         </nationalNumberPattern>
       </shortCode>
       <tollFree>
-        <possibleLengths national="3,5,6"/>
+        <possibleLengths national="[3-6]"/>
         <exampleNumber>112</exampleNumber>
         <nationalNumberPattern>
-          112|
-          (?:
-            116\d|
-            900
-          )\d\d
+          11(?:
+            2|
+            (?:
+              3|
+              6\d
+            )\d\d|
+            414|
+            77
+          )|
+          900\d\d
         </nationalNumberPattern>
       </tollFree>
       <premiumRate>
@@ -11197,15 +11826,20 @@
         </nationalNumberPattern>
       </emergency>
       <expandedEmergency>
-        <possibleLengths national="6"/>
-        <exampleNumber>116000</exampleNumber>
+        <possibleLengths national="[4-6]"/>
+        <exampleNumber>1177</exampleNumber>
         <nationalNumberPattern>
-          116(?:
-            000|
-            1(?:
-              11|
-              2\d
-            )
+          11(?:
+            3\d\d|
+            414|
+            6(?:
+              000|
+              1(?:
+                11|
+                2\d
+              )
+            )|
+            77
           )
         </nationalNumberPattern>
       </expandedEmergency>
@@ -11217,25 +11851,29 @@
       </smsServices>
     </territory>
 
-    <!-- Singapore -->
+    <!-- Singapore (SG) -->
     <territory id="SG">
       <generalDesc>
         <nationalNumberPattern>[179]\d{2,4}</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="[3-5]"/>
-        <exampleNumber>990</exampleNumber>
+        <exampleNumber>100</exampleNumber>
         <nationalNumberPattern>
           1(?:
-            [0136]\d\d|
+            (?:
+              [01368]\d|
+              44
+            )\d|
             [57]\d{2,3}|
-            [89](?:
+            9(?:
               0[1-9]|
               [1-9]\d
             )
           )|
           77222|
-          99[02-9]
+          99[02-9]|
+          100
         </nationalNumberPattern>
       </shortCode>
       <tollFree>
@@ -11256,16 +11894,17 @@
       </smsServices>
     </territory>
 
-    <!-- Saint Helena and Tristan da Cunha -->
+    <!-- St. Helena (SH) -->
     <territory id="SH">
       <generalDesc>
-        <nationalNumberPattern>[19]\d{2,3}</nationalNumberPattern>
+        <nationalNumberPattern>[129]\d{2,4}</nationalNumberPattern>
       </generalDesc>
       <shortCode>
-        <possibleLengths national="3,4"/>
+        <possibleLengths national="[3-5]"/>
         <exampleNumber>100</exampleNumber>
         <nationalNumberPattern>
           1\d{2,3}|
+          26[01]\d\d|
           9(?:
             11|
             99
@@ -11295,7 +11934,7 @@
       </emergency>
     </territory>
 
-    <!-- Slovenia -->
+    <!-- Slovenia (SI) -->
     <!-- http://www.itu.int/oth/T02020000BE/en -->
     <territory id="SI">
       <generalDesc>
@@ -11374,8 +12013,7 @@
       </expandedEmergency>
     </territory>
 
-    <!-- Svalbard -->
-    <!-- Country calling code shared with Norway. -->
+    <!-- Svalbard & Jan Mayen (SJ) -->
     <!-- http://www.npt.no/pt_internet/numsys/E.164.pdf -->
     <territory id="SJ">
       <generalDesc>
@@ -11399,7 +12037,7 @@
       </emergency>
     </territory>
 
-    <!-- Slovakia -->
+    <!-- Slovakia (SK) -->
     <!-- http://www.itu.int/oth/T02020000BD/en -->
     <!-- http://www.teleoff.gov.sk/data/files/25211.pdf -->
     <territory id="SK">
@@ -11461,7 +12099,7 @@
       </expandedEmergency>
     </territory>
 
-    <!-- Sierra Leone -->
+    <!-- Sierra Leone (SL) -->
     <!-- http://www.itu.int/oth/T02020000BB/en -->
     <territory id="SL">
       <generalDesc>
@@ -11516,7 +12154,7 @@
       </smsServices>
     </territory>
 
-    <!-- San Marino -->
+    <!-- San Marino (SM) -->
     <!-- http://www.itu.int/oth/T02020000B5/en -->
     <territory id="SM">
       <generalDesc>
@@ -11539,7 +12177,7 @@
       </emergency>
     </territory>
 
-    <!-- Senegal -->
+    <!-- Senegal (SN) -->
     <!-- http://www.itu.int/dms_pub/itu-t/oth/02/02/T02020000B80001PDFE.pdf -->
     <!-- http://www.artpsenegal.net/images/documents/document_Structure_plan_national_de_numerotation_PNN_2012_231.pdf -->
     <territory id="SN">
@@ -11628,7 +12266,7 @@
       </smsServices>
     </territory>
 
-    <!-- Somalia -->
+    <!-- Somalia (SO) -->
     <territory id="SO">
       <generalDesc>
         <nationalNumberPattern>[57-9]\d\d</nationalNumberPattern>
@@ -11668,7 +12306,7 @@
       </expandedEmergency>
     </territory>
 
-    <!-- Suriname -->
+    <!-- Suriname (SR) -->
     <territory id="SR">
       <generalDesc>
         <nationalNumberPattern>1\d{2,3}</nationalNumberPattern>
@@ -11690,7 +12328,29 @@
       </emergency>
     </territory>
 
-    <!-- Sao Tome and Principe -->
+    <!-- South Sudan (SS) -->
+    <territory id="SS">
+      <generalDesc>
+        <nationalNumberPattern>9\d\d</nationalNumberPattern>
+      </generalDesc>
+      <shortCode>
+        <possibleLengths national="3"/>
+        <exampleNumber>999</exampleNumber>
+        <nationalNumberPattern>999</nationalNumberPattern>
+      </shortCode>
+      <tollFree>
+        <possibleLengths national="3"/>
+        <exampleNumber>999</exampleNumber>
+        <nationalNumberPattern>999</nationalNumberPattern>
+      </tollFree>
+      <emergency>
+        <possibleLengths national="3"/>
+        <exampleNumber>999</exampleNumber>
+        <nationalNumberPattern>999</nationalNumberPattern>
+      </emergency>
+    </territory>
+
+    <!-- São Tomé & Príncipe (ST) -->
     <!-- http://www.itu.int/oth/T02020000B6/en -->
     <territory id="ST">
       <generalDesc>
@@ -11717,28 +12377,43 @@
       </emergency>
     </territory>
 
-    <!-- El Salvador -->
+    <!-- El Salvador (SV) -->
     <!-- http://www.itu.int/oth/T020200003F/en -->
     <territory id="SV">
       <generalDesc>
         <nationalNumberPattern>
-          [49]\d\d(?:
-            \d{2}
+          [149]\d\d(?:
+            \d{2,3}
           )?
         </nationalNumberPattern>
       </generalDesc>
       <shortCode>
-        <possibleLengths national="3,5"/>
-        <exampleNumber>911</exampleNumber>
+        <possibleLengths national="3,5,6"/>
+        <exampleNumber>112</exampleNumber>
         <nationalNumberPattern>
+          1(?:
+            1(?:
+              2|
+              6111
+            )|
+            2[136-8]|
+            3[0-6]|
+            9[05]
+          )|
           40404|
-          911
+          9(?:
+            1\d|
+            29
+          )
         </nationalNumberPattern>
       </shortCode>
       <tollFree>
-        <possibleLengths national="3"/>
+        <possibleLengths national="3,6"/>
         <exampleNumber>911</exampleNumber>
-        <nationalNumberPattern>911</nationalNumberPattern>
+        <nationalNumberPattern>
+          116\d{3}|
+          911
+        </nationalNumberPattern>
       </tollFree>
       <!-- https://support.twitter.com/articles/20170024 -->
       <carrierSpecific>
@@ -11749,8 +12424,13 @@
       <emergency>
         <possibleLengths national="3"/>
         <exampleNumber>911</exampleNumber>
-        <nationalNumberPattern>911</nationalNumberPattern>
+        <nationalNumberPattern>91[13]</nationalNumberPattern>
       </emergency>
+      <expandedEmergency>
+        <possibleLengths national="6"/>
+        <exampleNumber>116000</exampleNumber>
+        <nationalNumberPattern>116\d{3}</nationalNumberPattern>
+      </expandedEmergency>
       <!-- https://support.twitter.com/articles/20170024 -->
       <smsServices>
         <possibleLengths national="5"/>
@@ -11759,7 +12439,7 @@
       </smsServices>
     </territory>
 
-    <!-- Sint Maarten -->
+    <!-- Sint Maarten (SX) -->
     <!-- http://www.nanpa.com/pdf/PL_429.pdf -->
     <!-- http://www.itu.int/oth/T02020000F7/en -->
     <territory id="SX">
@@ -11769,12 +12449,22 @@
       <shortCode>
         <possibleLengths national="3"/>
         <exampleNumber>919</exampleNumber>
-        <nationalNumberPattern>919</nationalNumberPattern>
+        <nationalNumberPattern>
+          9(?:
+            19|
+            88
+          )
+        </nationalNumberPattern>
       </shortCode>
       <tollFree>
         <possibleLengths national="3"/>
         <exampleNumber>919</exampleNumber>
-        <nationalNumberPattern>919</nationalNumberPattern>
+        <nationalNumberPattern>
+          9(?:
+            19|
+            88
+          )
+        </nationalNumberPattern>
       </tollFree>
       <!-- http://experiencestmartin.com/islandfacts/telephones.html -->
       <emergency>
@@ -11782,9 +12472,14 @@
         <exampleNumber>919</exampleNumber>
         <nationalNumberPattern>919</nationalNumberPattern>
       </emergency>
+      <expandedEmergency>
+        <possibleLengths national="3"/>
+        <exampleNumber>988</exampleNumber>
+        <nationalNumberPattern>988</nationalNumberPattern>
+      </expandedEmergency>
     </territory>
 
-    <!-- Syrian Arab Republic -->
+    <!-- Syria (SY) -->
     <!-- http://www.itu.int/oth/T02020000C9/en -->
     <!-- http://en.wikipedia.org/wiki/%2B963 -->
     <territory id="SY">
@@ -11808,7 +12503,7 @@
       </emergency>
     </territory>
 
-    <!-- Swaziland -->
+    <!-- Eswatini (SZ) -->
     <!-- http://www.itu.int/oth/T02020000C6/en -->
     <territory id="SZ">
       <generalDesc>
@@ -11833,7 +12528,7 @@
       </emergency>
     </territory>
 
-    <!-- Turks and Caicos Islands -->
+    <!-- Turks & Caicos Islands (TC) -->
     <!-- http://www.itu.int/oth/T02020000D8/en -->
     <territory id="TC">
       <generalDesc>
@@ -11845,6 +12540,7 @@
         <nationalNumberPattern>
           9(?:
             11|
+            88|
             99
           )
         </nationalNumberPattern>
@@ -11855,6 +12551,7 @@
         <nationalNumberPattern>
           9(?:
             11|
+            88|
             99
           )
         </nationalNumberPattern>
@@ -11871,9 +12568,14 @@
           )
         </nationalNumberPattern>
       </emergency>
+      <expandedEmergency>
+        <possibleLengths national="3"/>
+        <exampleNumber>988</exampleNumber>
+        <nationalNumberPattern>988</nationalNumberPattern>
+      </expandedEmergency>
     </territory>
 
-    <!-- Chad -->
+    <!-- Chad (TD) -->
     <!-- http://www.itu.int/oth/T0202000029/en -->
     <territory id="TD">
       <generalDesc>
@@ -11896,7 +12598,7 @@
       </emergency>
     </territory>
 
-    <!-- Togo -->
+    <!-- Togo (TG) -->
     <!-- http://www.itu.int/oth/T02020000D1/en -->
     <!-- https://www.itu.int/net/itu-t/inrdb/e129_important_numbers.aspx?country=212 -->
     <territory id="TG">
@@ -11946,7 +12648,7 @@
       </expandedEmergency>
     </territory>
 
-    <!-- Thailand -->
+    <!-- Thailand (TH) -->
     <!-- http://www.itu.int/oth/T02020000CD/en -->
     <!-- http://www.barascientific.com/bscnews/variety/emergency/Tel-4Digi.pdf -->
     <!-- http://en.wikipedia.org/wiki/+66 -->
@@ -11971,11 +12673,12 @@
               6[04-79]|
               7[03-9]|
               8[027-9]|
-              9[02-79]
+              9[02-9]
             )|
             2(?:
               22|
-              3[89]
+              3[89]|
+              66
             )|
             3(?:
               18|
@@ -12052,7 +12755,7 @@
               4[02-49]|
               5[046-9]|
               7[03-589]|
-              9[579]
+              9[57-9]
             )|
             5(?:
               0[0-8]|
@@ -12071,6 +12774,7 @@
           )|
           1(?:
             1[68]|
+            26|
             3[1-35]|
             5[689]|
             60|
@@ -12119,7 +12823,7 @@
       </expandedEmergency>
     </territory>
 
-    <!-- Tajikistan -->
+    <!-- Tajikistan (TJ) -->
     <!-- http://www.itu.int/oth/T02020000CA/en -->
     <territory id="TJ">
       <generalDesc>
@@ -12157,7 +12861,7 @@
       </emergency>
     </territory>
 
-    <!-- Timor-Leste (East Timor) -->
+    <!-- Timor-Leste (TL) -->
     <territory id="TL">
       <generalDesc>
         <nationalNumberPattern>1\d\d</nationalNumberPattern>
@@ -12187,7 +12891,7 @@
       </emergency>
     </territory>
 
-    <!-- Turkmenistan -->
+    <!-- Turkmenistan (TM) -->
     <!-- http://www.itu.int/oth/T02020000D7/en -->
     <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_Turkmenistan -->
     <territory id="TM">
@@ -12197,12 +12901,12 @@
       <shortCode>
         <possibleLengths national="2"/>
         <exampleNumber>01</exampleNumber>
-        <nationalNumberPattern>0[1-3]</nationalNumberPattern>
+        <nationalNumberPattern>0[1-49]</nationalNumberPattern>
       </shortCode>
       <tollFree>
         <possibleLengths national="2"/>
         <exampleNumber>01</exampleNumber>
-        <nationalNumberPattern>0[1-3]</nationalNumberPattern>
+        <nationalNumberPattern>0[1-49]</nationalNumberPattern>
       </tollFree>
       <!-- http://www.netglobers.com/asia/turkmenistan-emergency-numbers-in-turkmenistan.html
            http://www.voyage.gc.ca/countries_pays/report_rapport-eng.asp?id=301000 -->
@@ -12213,7 +12917,7 @@
       </emergency>
     </territory>
 
-    <!-- Tunisia -->
+    <!-- Tunisia (TN) -->
     <!-- http://www.itu.int/oth/T02020000D5/en -->
     <!-- http://www.tunisietelecom.tn/tt/wcm/connect/?MOD=PDMProxy&TYPE=personalization&ID=NONE&KEY=NONE&LIBRARY=%2FcontentRoot%2Ficm%3Alibraries%5B16%5D&FOLDER=%2F&DOC_NAME=%2FcontentRoot%2Ficm%3Alibraries%5B16%5D%2FOTTI+2011.pdf -->
     <territory id="TN">
@@ -12237,7 +12941,7 @@
       </emergency>
     </territory>
 
-    <!-- Tonga -->
+    <!-- Tonga (TO) -->
     <!-- http://www.itu.int/oth/T02020000D3/en -->
     <!-- http://www.wtng.info/wtng-676-to.html -->
     <territory id="TO">
@@ -12283,7 +12987,7 @@
       </emergency>
     </territory>
 
-    <!-- Turkey -->
+    <!-- Turkey (TR) -->
     <territory id="TR">
       <generalDesc>
         <nationalNumberPattern>[1-9]\d{2,4}</nationalNumberPattern>
@@ -12299,35 +13003,36 @@
         <nationalNumberPattern>
           1(?:
             1(?:
-              [0239]|
-              811
+              [02-79]|
+              8(?:
+                1[018]|
+                2[0245]|
+                3[2-4]|
+                42|
+                5[058]|
+                6[06]|
+                7[07]|
+                8[01389]|
+                9[089]
+              )
             )|
-            2[126]|
             3(?:
-              [12]|
-              37?|
+              37|
               [58]6|
-              65?
+              65
             )|
-            4(?:
-              [014]|
-              71
-            )|
+            471|
             5(?:
               07|
-              [135689]|
-              78?
+              78
             )|
             6(?:
               [02]6|
-              [138]|
-              99?
+              99
             )|
-            7[0-79]|
             8(?:
-              [0-578]|
-              63?|
-              95?
+              63|
+              95
             )
           )|
           2(?:
@@ -12418,7 +13123,8 @@
           9(?:
             159|
             290
-          )
+          )|
+          1[2-9]\d
         </nationalNumberPattern>
       </shortCode>
       <tollFree>
@@ -12482,11 +13188,21 @@
           1(?:
             3(?:
               37|
+              [58]6|
               65
             )|
-            44|
-            578|
-            699|
+            4(?:
+              4|
+              71
+            )|
+            5(?:
+              07|
+              78
+            )|
+            6(?:
+              [02]6|
+              99
+            )|
             8(?:
               3|
               63|
@@ -12494,12 +13210,6 @@
             )
           )|
           (?:
-            1(?:
-              3[58]|
-              47|
-              50|
-              6[02]
-            )|
             2(?:
               07|
               26|
@@ -12553,7 +13263,7 @@
       </smsServices>
     </territory>
 
-    <!-- Trinidad and Tobago -->
+    <!-- Trinidad & Tobago (TT) -->
     <!-- http://www.itu.int/oth/T02020000D4/en -->
     <territory id="TT">
       <generalDesc>
@@ -12561,22 +13271,37 @@
       </generalDesc>
       <shortCode>
         <possibleLengths national="3"/>
-        <exampleNumber>990</exampleNumber>
-        <nationalNumberPattern>99[09]</nationalNumberPattern>
+        <exampleNumber>988</exampleNumber>
+        <nationalNumberPattern>
+          9(?:
+            88|
+            9[09]
+          )
+        </nationalNumberPattern>
       </shortCode>
       <tollFree>
         <possibleLengths national="3"/>
-        <exampleNumber>990</exampleNumber>
-        <nationalNumberPattern>99[09]</nationalNumberPattern>
+        <exampleNumber>988</exampleNumber>
+        <nationalNumberPattern>
+          9(?:
+            88|
+            9[09]
+          )
+        </nationalNumberPattern>
       </tollFree>
       <emergency>
         <possibleLengths national="3"/>
         <exampleNumber>990</exampleNumber>
         <nationalNumberPattern>99[09]</nationalNumberPattern>
       </emergency>
+      <expandedEmergency>
+        <possibleLengths national="3"/>
+        <exampleNumber>988</exampleNumber>
+        <nationalNumberPattern>988</nationalNumberPattern>
+      </expandedEmergency>
     </territory>
 
-    <!-- Tuvalu -->
+    <!-- Tuvalu (TV) -->
     <!-- http://www.itu.int/oth/T02020000D9/en -->
     <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_Tuvalu -->
     <territory id="TV">
@@ -12603,24 +13328,70 @@
       </emergency>
     </territory>
 
-    <!-- Taiwan, China -->
+    <!-- Taiwan (TW) -->
     <!-- http://www.itu.int/oth/T02020000EB/en -->
     <!-- Extension symbols found on the internet so far have been #, X and Ext - so # has been
          chosen as the preferred extension prefix. -->
     <territory id="TW">
       <generalDesc>
-        <nationalNumberPattern>1\d\d</nationalNumberPattern>
+        <nationalNumberPattern>1\d{2,3}</nationalNumberPattern>
       </generalDesc>
       <shortCode>
-        <possibleLengths national="3"/>
-        <exampleNumber>110</exampleNumber>
-        <nationalNumberPattern>11[029]</nationalNumberPattern>
+        <possibleLengths national="3,4"/>
+        <exampleNumber>100</exampleNumber>
+        <nationalNumberPattern>
+          1(?:
+            0[04-6]|
+            1[0237-9]|
+            3[389]|
+            6[05-8]|
+            7[07]|
+            8(?:
+              0|
+              11
+            )|
+            9(?:
+              19|
+              22|
+              5[057]|
+              68|
+              8[05]|
+              9[15689]
+            )
+          )
+        </nationalNumberPattern>
       </shortCode>
       <tollFree>
-        <possibleLengths national="3"/>
+        <possibleLengths national="3,4"/>
         <exampleNumber>110</exampleNumber>
-        <nationalNumberPattern>11[029]</nationalNumberPattern>
+        <nationalNumberPattern>
+          11[0289]|
+          1(?:
+            81|
+            92
+          )\d
+        </nationalNumberPattern>
       </tollFree>
+      <standardRate>
+        <possibleLengths national="3,4"/>
+        <exampleNumber>165</exampleNumber>
+        <nationalNumberPattern>
+          1(?:
+            65|
+            9(?:
+              1\d|
+              50|
+              85|
+              98
+            )
+          )
+        </nationalNumberPattern>
+      </standardRate>
+      <premiumRate>
+        <possibleLengths national="3"/>
+        <exampleNumber>105</exampleNumber>
+        <nationalNumberPattern>10[56]</nationalNumberPattern>
+      </premiumRate>
       <emergency>
         <possibleLengths national="3"/>
         <exampleNumber>110</exampleNumber>
@@ -12628,7 +13399,7 @@
       </emergency>
     </territory>
 
-    <!-- Tanzania -->
+    <!-- Tanzania (TZ) -->
     <!-- http://www.itu.int/oth/T02020000CB/en -->
     <territory id="TZ">
       <generalDesc>
@@ -12642,7 +13413,7 @@
         <possibleLengths national="3,5"/>
         <exampleNumber>111</exampleNumber>
         <nationalNumberPattern>
-          11[12]|
+          11[128]|
           46400|
           999
         </nationalNumberPattern>
@@ -12655,7 +13426,6 @@
           999
         </nationalNumberPattern>
       </tollFree>
-      <!-- https://support.google.com/plus/answer/1304917 -->
       <carrierSpecific>
         <possibleLengths national="5"/>
         <exampleNumber>46400</exampleNumber>
@@ -12671,7 +13441,6 @@
           999
         </nationalNumberPattern>
       </emergency>
-      <!-- https://support.google.com/plus/answer/1304917 -->
       <smsServices>
         <possibleLengths national="5"/>
         <exampleNumber>46400</exampleNumber>
@@ -12679,7 +13448,7 @@
       </smsServices>
     </territory>
 
-    <!-- Ukraine -->
+    <!-- Ukraine (UA) -->
     <!-- http://www.itu.int/oth/T02020000DB/en -->
     <!-- http://en.wikipedia.org/wiki/%2B380 -->
     <territory id="UA">
@@ -12752,9 +13521,8 @@
       </emergency>
     </territory>
 
-    <!-- Uganda -->
+    <!-- Uganda (UG) -->
     <!-- http://www.itu.int/oth/T02020000F1/en -->
-    <!-- http://www.ucc.co.ug/licensing/ugandaNumberingPlan.pdf -->
     <territory id="UG">
       <generalDesc>
         <nationalNumberPattern>9\d\d</nationalNumberPattern>
@@ -12776,7 +13544,7 @@
       </emergency>
     </territory>
 
-    <!-- United States -->
+    <!-- United States (US) -->
     <!-- http://en.wikipedia.org/wiki/North_American_Numbering_Plan#Special_numbers_and_codes -->
     <!-- http://en.wikipedia.org/wiki/Vertical_service_code -->
     <!-- http://www.call811.com/how-811-works/default.aspx -->
@@ -12796,7 +13564,12 @@
             98
           )|
           [2-9]\d{3,5}|
-          [2-9]11
+          [2-8]11|
+          9(?:
+            11|
+            33|
+            88
+          )
         </nationalNumberPattern>
       </shortCode>
       <tollFree>
@@ -12804,7 +13577,12 @@
         <exampleNumber>112</exampleNumber>
         <nationalNumberPattern>
           112|
-          [69]11
+          611|
+          9(?:
+            11|
+            33|
+            88
+          )
         </nationalNumberPattern>
       </tollFree>
       <!-- 29002 is standard rate as per test results. -->
@@ -12945,6 +13723,16 @@
           911
         </nationalNumberPattern>
       </emergency>
+      <expandedEmergency>
+        <possibleLengths national="3"/>
+        <exampleNumber>933</exampleNumber>
+        <nationalNumberPattern>
+          9(?:
+            33|
+            88
+          )
+        </nationalNumberPattern>
+      </expandedEmergency>
       <smsServices>
         <possibleLengths national="5,6"/>
         <exampleNumber>20000</exampleNumber>
@@ -12952,7 +13740,7 @@
       </smsServices>
     </territory>
 
-    <!-- Uruguay -->
+    <!-- Uruguay (UY) -->
     <!-- http://www.itu.int/oth/T02020000E0/en -->
     <!-- http://www.ursec.gub.uy -->
     <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_Uruguay -->
@@ -12996,7 +13784,7 @@
       </emergency>
     </territory>
 
-    <!-- Uzbekistan -->
+    <!-- Uzbekistan (UZ) -->
     <!-- http://www.ttts.uz/eng/telephone_codes/codes_uzb_eng -->
     <!-- http://www.itu.int/oth/T02020000E1/en -->
     <territory id="UZ">
@@ -13063,7 +13851,7 @@
       </smsServices>
     </territory>
 
-    <!-- Vatican City -->
+    <!-- Vatican City (VA) -->
     <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_Vatican_City -->
     <territory id="VA">
       <generalDesc>
@@ -13086,7 +13874,7 @@
       </emergency>
     </territory>
 
-    <!-- Saint Vincent and the Grenadines -->
+    <!-- St. Vincent & Grenadines (VC) -->
     <!-- http://www.itu.int/oth/T02020000B3/en -->
     <territory id="VC">
       <generalDesc>
@@ -13098,6 +13886,7 @@
         <nationalNumberPattern>
           9(?:
             11|
+            88|
             99
           )
         </nationalNumberPattern>
@@ -13108,6 +13897,7 @@
         <nationalNumberPattern>
           9(?:
             11|
+            88|
             99
           )
         </nationalNumberPattern>
@@ -13124,9 +13914,14 @@
           )
         </nationalNumberPattern>
       </emergency>
+      <expandedEmergency>
+        <possibleLengths national="3"/>
+        <exampleNumber>988</exampleNumber>
+        <nationalNumberPattern>988</nationalNumberPattern>
+      </expandedEmergency>
     </territory>
 
-    <!-- Venezuela -->
+    <!-- Venezuela (VE) -->
     <!-- http://www.itu.int/oth/T02020000E3/en -->
     <!-- http://en.wikipedia.org/wiki/+58 -->
     <!-- http://wikitravel.org/en/Venezuela -->
@@ -13169,7 +13964,7 @@
       </emergency>
     </territory>
 
-    <!-- Virgin Islands, British -->
+    <!-- British Virgin Islands (VG) -->
     <!-- http://www.itu.int/oth/T020200001E/en -->
     <territory id="VG">
       <generalDesc>
@@ -13181,6 +13976,7 @@
         <nationalNumberPattern>
           9(?:
             11|
+            88|
             99
           )
         </nationalNumberPattern>
@@ -13191,6 +13987,7 @@
         <nationalNumberPattern>
           9(?:
             11|
+            88|
             99
           )
         </nationalNumberPattern>
@@ -13207,9 +14004,14 @@
           )
         </nationalNumberPattern>
       </emergency>
+      <expandedEmergency>
+        <possibleLengths national="3"/>
+        <exampleNumber>988</exampleNumber>
+        <nationalNumberPattern>988</nationalNumberPattern>
+      </expandedEmergency>
     </territory>
 
-    <!-- Virgin Islands, United States -->
+    <!-- U.S. Virgin Islands (VI) -->
     <!-- http://www.itu.int/oth/T02020000DF/en -->
     <territory id="VI">
       <generalDesc>
@@ -13218,12 +14020,22 @@
       <shortCode>
         <possibleLengths national="3"/>
         <exampleNumber>911</exampleNumber>
-        <nationalNumberPattern>911</nationalNumberPattern>
+        <nationalNumberPattern>
+          9(?:
+            11|
+            88
+          )
+        </nationalNumberPattern>
       </shortCode>
       <tollFree>
         <possibleLengths national="3"/>
         <exampleNumber>911</exampleNumber>
-        <nationalNumberPattern>911</nationalNumberPattern>
+        <nationalNumberPattern>
+          9(?:
+            11|
+            88
+          )
+        </nationalNumberPattern>
       </tollFree>
       <!-- http://studentsabroad.state.gov/content/pdfs/911_ABROAD.pdf -->
       <emergency>
@@ -13231,9 +14043,14 @@
         <exampleNumber>911</exampleNumber>
         <nationalNumberPattern>911</nationalNumberPattern>
       </emergency>
+      <expandedEmergency>
+        <possibleLengths national="3"/>
+        <exampleNumber>988</exampleNumber>
+        <nationalNumberPattern>988</nationalNumberPattern>
+      </expandedEmergency>
     </territory>
 
-    <!-- Viet Nam (Vietnam) -->
+    <!-- Vietnam (VN) -->
     <!-- http://www.itu.int/oth/T02020000E4/en -->
     <!-- http://en.wikipedia.org/wiki/%2B84 -->
     <territory id="VN">
@@ -13257,7 +14074,7 @@
       </emergency>
     </territory>
 
-    <!-- Vanuatu -->
+    <!-- Vanuatu (VU) -->
     <!-- http://www.itu.int/oth/T02020000E2/en -->
     <territory id="VU">
       <generalDesc>
@@ -13280,7 +14097,7 @@
       </emergency>
     </territory>
 
-    <!-- Wallis and Futuna (Territoire français d'outre-mer) -->
+    <!-- Wallis & Futuna (WF) -->
     <!-- http://www.itu.int/oth/T02020000E6/en -->
     <territory id="WF">
       <generalDesc>
@@ -13304,7 +14121,7 @@
       </emergency>
     </territory>
 
-    <!-- Samoa -->
+    <!-- Samoa (WS) -->
     <!-- http://www.itu.int/oth/T02020000B4/en -->
     <territory id="WS">
       <generalDesc>
@@ -13318,7 +14135,8 @@
         <nationalNumberPattern>
           1(?:
             1[12]|
-            2[0-6]
+            2[0-6]|
+            [39]0
           )|
           9(?:
             11|
@@ -13355,7 +14173,7 @@
       </emergency>
     </territory>
 
-    <!-- Kosovo -->
+    <!-- Kosovo (XK) -->
     <!-- https://www.itu.int/oth/T02020000FD/en -->
     <territory id="XK">
       <generalDesc>
@@ -13393,7 +14211,7 @@
       </emergency>
     </territory>
 
-    <!-- Yemen -->
+    <!-- Yemen (YE) -->
     <!-- http://www.itu.int/oth/T02020000E7/en -->
     <territory id="YE">
       <generalDesc>
@@ -13419,7 +14237,7 @@
       </emergency>
     </territory>
 
-    <!-- Mayotte -->
+    <!-- Mayotte (YT) -->
     <territory id="YT">
       <generalDesc>
         <nationalNumberPattern>1\d\d?</nationalNumberPattern>
@@ -13458,7 +14276,7 @@
       </emergency>
     </territory>
 
-    <!-- South Africa -->
+    <!-- South Africa (ZA) -->
     <!-- http://www.itu.int/dms_pub/itu-t/oth/02/02/T02020000C10001PDFE.pdf -->
     <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_South_Africa -->
     <!-- https://www.icasa.org.za/Portals/0/Regulations/Regulations/NumberingPlanReg.pdf -->
@@ -13568,7 +14386,7 @@
       </smsServices>
     </territory>
 
-    <!-- Zambia -->
+    <!-- Zambia (ZM) -->
     <!-- http://www.itu.int/oth/T02020000E8/en -->
     <territory id="ZM">
       <generalDesc>
@@ -13600,7 +14418,7 @@
       </emergency>
     </territory>
 
-    <!-- Zimbabwe -->
+    <!-- Zimbabwe (ZW) -->
     <!-- http://www.itu.int/oth/T02020000E9/en -->
     <territory id="ZW">
       <generalDesc>

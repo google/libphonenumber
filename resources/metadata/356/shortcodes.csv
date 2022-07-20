@@ -1,0 +1,5 @@
+Region ; Prefix ; Length ; Type               ; Tariff
+MT     ; 112    ; 3      ; EMERGENCY          ; TOLL_FREE
+MT     ; 116000 ; 6      ; EXPANDED_EMERGENCY ; TOLL_FREE
+MT     ; 116111 ; 6      ; EXPANDED_EMERGENCY ; TOLL_FREE
+MT     ; 116123 ; 6      ; EXPANDED_EMERGENCY ; TOLL_FREE

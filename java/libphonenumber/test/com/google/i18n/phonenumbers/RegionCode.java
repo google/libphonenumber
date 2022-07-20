@@ -37,6 +37,7 @@ final class RegionCode {
   static final String CH = "CH";
   static final String CL = "CL";
   static final String CN = "CN";
+  static final String CO = "CO";
   static final String CS = "CS";
   static final String CX = "CX";
   static final String DE = "DE";

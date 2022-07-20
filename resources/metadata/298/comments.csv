@@ -1,0 +1,5 @@
+Region ; Label         ; Comment
+FO     ; SC            ; "http://www.itu.int/oth/T0202000047/en"
+FO     ; SC_SHORT_CODE ; "Includes special numbers, special services and universal services."
+FO     ; XML           ; "http://www.itu.int/oth/T0202000047/en"
+FO     ; XML           ; "All numbers are formatted together, as a block."

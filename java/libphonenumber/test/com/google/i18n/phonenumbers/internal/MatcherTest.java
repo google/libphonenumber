@@ -29,9 +29,7 @@ public class MatcherTest extends TestCase {
   }
 
   private void checkMatcherBehavesAsExpected(MatcherApi matcher) {
-    PhoneNumberDesc desc = new PhoneNumberDesc();
-
-    desc = createDesc("");
+    PhoneNumberDesc desc = createDesc("");
     // Test if there is no matcher data.
     assertInvalid(matcher, "1", desc);
 
@@ -60,11 +58,11 @@ public class MatcherTest extends TestCase {
   // Helper method to set national number fields in the PhoneNumberDesc proto. Empty fields won't be
   // set.
   private PhoneNumberDesc createDesc(String nationalNumberPattern) {
-    PhoneNumberDesc desc = new PhoneNumberDesc();
+    PhoneNumberDesc.Builder desc = PhoneNumberDesc.newBuilder();
     if (nationalNumberPattern.length() > 0) {
       desc.setNationalNumberPattern(nationalNumberPattern);
     }
-    return desc;
+    return desc.build();
   }
 
   private void assertMatched(MatcherApi matcher, String number, PhoneNumberDesc desc) {

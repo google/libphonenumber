@@ -17,7 +17,15 @@
 
 212520|Casablanca
 212521|Casablanca/Maroc Central
-212522|Casablanca
+2125220|Casablanca
+2125222|Casablanca
+2125223|Casablanca
+2125224|Casablanca
+2125225|Casablanca
+2125226|Casablanca
+2125227|Casablanca
+2125228|Casablanca
+2125229|Casablanca
 2125232|Mohammedia
 2125233|Mohammedia/El Jadida
 2125234|Settat
@@ -66,7 +74,7 @@
 2125378|Salé
 2125379|Souk Larbaa
 2125380|Rabat et alentours
-21253880|Tanger et alentours
+2125388|Tanger et alentours
 21253890|Fès/Maknès et alentours
 2125393|Tanger
 2125394|Asilah

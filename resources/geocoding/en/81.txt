@@ -693,7 +693,15 @@
 815997|Ago, Mie
 815998|Ago, Mie
 815999|Tsu, Mie
-816|Osaka, Osaka
+8161|Osaka, Osaka
+8162|Osaka, Osaka
+8163|Osaka, Osaka
+8164|Osaka, Osaka
+8165|Osaka, Osaka
+8166|Osaka, Osaka
+8167|Osaka, Osaka
+8168|Osaka, Osaka
+8169|Osaka, Osaka
 81721|Tondabayashi, Osaka
 81722|Sakai, Osaka
 81723|Sakai, Osaka
@@ -1126,7 +1134,7 @@
 819556|Karatsu, Saga
 819557|Karatsu, Saga
 819558|Karatsu, Saga
-81956|Sasebo, Japan
+81956|Sasebo, Nagasaki
 819572|Isahaya, Nagasaki
 819573|Isahaya, Nagasaki
 819574|Isahaya, Nagasaki

@@ -1,0 +1,15 @@
+Prefix    ; Length ; Type       ; Tariff        ; Operator   ; Format       ; Regions ; Geocode:en                             ; Provenance
+0800      ; 11     ; FIXED_LINE ; TOLL_FREE     ;            ; "fmt2_4/3/4" ; "FJ"
+[29]      ; 7      ; MOBILE     ; STANDARD_RATE ; "vodafone" ; "fmt1_3/4"   ; "FJ"
+3[0-5]    ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/4"   ; "FJ"    ; "Suva City/Nausori/Korovou"            ; ITU
+45        ; 7      ; MOBILE     ; STANDARD_RATE ; "vodafone" ; "fmt1_3/4"   ; "FJ"
+5[0156]   ; 7      ; MOBILE     ; STANDARD_RATE ; "digicel"  ; "fmt1_3/4"   ; "FJ"
+58        ; 7      ; MOBILE     ; STANDARD_RATE ; "vodafone" ; "fmt1_3/4"   ; "FJ"
+603       ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/4"   ; "FJ"    ;                                        ; ITU
+62        ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/4"   ; "FJ"    ;                                        ; ITU
+65        ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/4"   ; "FJ"    ; "Coral Coast/Sigatoka"                 ; ITU
+66        ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/4"   ; "FJ"    ; "Lautoka/Ba/Vatukoula/Tavua/Rakiraki" ; ITU
+67        ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/4"   ; "FJ"    ; "Nadi"                                 ; ITU
+7         ; 7      ; MOBILE     ; STANDARD_RATE ; "digicel"  ; "fmt1_3/4"   ; "FJ"
+8[034679] ; 7      ; MOBILE     ; STANDARD_RATE ; "vodafone" ; "fmt1_3/4"   ; "FJ"
+8[58]     ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/4"   ; "FJ"    ; "Vanua Levu"                           ; ITU

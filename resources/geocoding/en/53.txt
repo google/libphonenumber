@@ -28,6 +28,6 @@
 5343|Cienfuegos Province
 5345|Matanzas Province
 5346|Isle of Youth
-5347|Havana Province
+5347|Mayabeque and Artemisa
 5348|Pinar del Río Province
 537|Havana City

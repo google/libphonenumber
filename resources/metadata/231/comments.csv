@@ -1,0 +1,8 @@
+Region ; Label               ; Comment
+LR     ; SC                  ; "http://www.itu.int/oth/T0202000079/en"
+LR     ; SC_CARRIER_SPECIFIC ; "https://support.google.com/plus/answer/1304917"
+LR     ; SC_CARRIER_SPECIFIC ; "https://support.twitter.com/articles/20170024"
+LR     ; SC_EMERGENCY        ; "http://travel.state.gov/travel/cis_pa_tw/cis/cis_950.html"
+LR     ; SC_SMS_SERVICES     ; "https://support.twitter.com/articles/20170024"
+LR     ; XML                 ; "http://www.itu.int/oth/T0202000079/en"
+LR     ; XML_MOBILE          ; "West Africa Telecom seems to be a mobile company from their website."

@@ -66,7 +66,7 @@ public class AsYouTypeFormatterTest extends TestMetadataTestCase {
   }
 
   public void testTooLongNumberMatchingMultipleLeadingDigits() {
-    // See https://github.com/googlei18n/libphonenumber/issues/36
+    // See https://github.com/google/libphonenumber/issues/36
     // The bug occurred last time for countries which have two formatting rules with exactly the
     // same leading digits pattern but differ in length.
     AsYouTypeFormatter formatter = phoneUtil.getAsYouTypeFormatter(RegionCode.ZZ);
@@ -638,6 +638,20 @@ public class AsYouTypeFormatterTest extends TestMetadataTestCase {
     assertEquals("+52 800 123 45", formatter.inputDigit('5'));
     assertEquals("+52 800 123 456", formatter.inputDigit('6'));
     assertEquals("+52 800 123 4567", formatter.inputDigit('7'));
+    
+    // +529011234567, proactively ensuring that no formatting is applied, where a format is chosen
+    // that would otherwise have led to some digits being dropped.
+    formatter.clear();
+    assertEquals("9", formatter.inputDigit('9'));
+    assertEquals("90", formatter.inputDigit('0'));
+    assertEquals("901", formatter.inputDigit('1'));
+    assertEquals("9011", formatter.inputDigit('1'));
+    assertEquals("90112", formatter.inputDigit('2'));
+    assertEquals("901123", formatter.inputDigit('3'));
+    assertEquals("9011234", formatter.inputDigit('4'));
+    assertEquals("90112345", formatter.inputDigit('5'));
+    assertEquals("901123456", formatter.inputDigit('6'));
+    assertEquals("9011234567", formatter.inputDigit('7'));
 
     // +52 55 1234 5678
     formatter.clear();
@@ -1164,7 +1178,7 @@ public class AsYouTypeFormatterTest extends TestMetadataTestCase {
     // when we try again to extract a country code we should ensure we use the last leading digit
     // pattern, rather than the first one such that it *thinks* it's found a valid formatting rule
     // again.
-    // https://github.com/googlei18n/libphonenumber/issues/437
+    // https://github.com/google/libphonenumber/issues/437
     assertEquals("+8698812", formatter.inputDigit('2'));
     assertEquals("+86988123", formatter.inputDigit('3'));
     assertEquals("+869881234", formatter.inputDigit('4'));

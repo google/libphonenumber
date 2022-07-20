@@ -1,0 +1,12 @@
+Prefix ; Length ; Type       ; Tariff        ; Operator         ; Format    ; Regions ; Geocode:en
+20     ; 5      ; FIXED_LINE ; STANDARD_RATE ;                  ; "fmt_2/3" ; "TV"    ; "Funafuti"
+22     ; 5      ; FIXED_LINE ; STANDARD_RATE ;                  ; "fmt_2/3" ; "TV"    ; "Niulakita"
+23     ; 5      ; FIXED_LINE ; STANDARD_RATE ;                  ; "fmt_2/3" ; "TV"    ; "Nui"
+24     ; 5      ; FIXED_LINE ; STANDARD_RATE ;                  ; "fmt_2/3" ; "TV"    ; "Nukufetau"
+25     ; 5      ; FIXED_LINE ; STANDARD_RATE ;                  ; "fmt_2/3" ; "TV"    ; "Nukulaelae"
+26     ; 5      ; FIXED_LINE ; STANDARD_RATE ;                  ; "fmt_2/3" ; "TV"    ; "Nanumea"
+27     ; 5      ; FIXED_LINE ; STANDARD_RATE ;                  ; "fmt_2/3" ; "TV"    ; "Nanumaga"
+28     ; 5      ; FIXED_LINE ; STANDARD_RATE ;                  ; "fmt_2/3" ; "TV"    ; "Niutao"
+29     ; 5      ; FIXED_LINE ; STANDARD_RATE ;                  ; "fmt_2/3" ; "TV"    ; "Vaitupu"
+7[01]  ; 7      ; MOBILE     ; STANDARD_RATE ; "tuvalu_telecom" ; "fmt_2/5" ; "TV"
+90     ; 6      ; MOBILE     ; STANDARD_RATE ; "tuvalu_telecom" ; "fmt_2/4" ; "TV"

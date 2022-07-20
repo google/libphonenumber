@@ -47,11 +47,11 @@ int PhoneNumberMatch::start() const {
 }
 
 int PhoneNumberMatch::end() const {
-  return start_ + raw_string_.length();
+  return static_cast<int>(start_ + raw_string_.length());
 }
 
 int PhoneNumberMatch::length() const {
-  return raw_string_.length();
+  return static_cast<int>(raw_string_.length());
 }
 
 const string& PhoneNumberMatch::raw_string() const {

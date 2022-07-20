@@ -30,7 +30,7 @@ Build-Depends: cdbs,
                libservlet2.5-java-doc
 Standards-Version: 3.9.6
 Section: libs
-Homepage: https://github.com/googlei18n/libphonenumber/
+Homepage: https://github.com/google/libphonenumber/
 Vcs-Browser: https://anonscm.debian.org/cgit/collab-maint/libphonenumber.git/
 Vcs-Git: git://anonscm.debian.org/collab-maint/libphonenumber.git
 
