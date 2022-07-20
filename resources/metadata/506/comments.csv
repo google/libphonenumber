@@ -1,0 +1,10 @@
+Region ; Label            ; Comment
+CR     ; SC               ; "http://www.itu.int/oth/T0202000030/en"
+CR     ; SC_SHORT_CODE    ; "This pattern excludes 4-digit SMS content numbers for now."
+CR     ; XML              ; "http://www.itu.int/oth/T0202000030/en"
+CR     ; XML              ; "http://en.wikipedia.org/wiki/Telephone_numbers_in_Costa_Rica"
+CR     ; XML_FIXED_LINE   ; "Added prefix 20 and 21 found online. Care must be taken to avoid overlapping with\n210[0-6]xxxx, which is clearly marked as VOIP in the ITU document."
+CR     ; XML_PREMIUM_RATE ; "Includes ""mass calls"" numbers with prefix 905."
+CR     ; XML_VOIP         ; "Including trunking service numbers starting with 5100."
+CR     ; XML_VOIP         ; "Prefixes for VOIP simplified from wikipedia 4xxx xxxx"
+CR     ; XML_VOIP         ; "Prefix 210x xxxx present before, taken from ITU doc"

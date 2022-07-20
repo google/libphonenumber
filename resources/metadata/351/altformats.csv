@@ -1,0 +1,5 @@
+Format       ; Parent Format      ; Comment
+XXX XXX XXX  ; porto_lisbon_2/3/4 ; "Lisbon/Porto numbers are usually formatted with the 21 or 22 separated - but sometimes they are formatted as 21X or 22X instead."
+XX XXX XX XX ; porto_lisbon_2/3/4 ; "Lisbon/Porto numbers."
+9X XXX XX XX ; all_3/3/3          ; "Commonly used mobile formatting pattern."
+9X XXX XXXX  ; all_3/3/3          ; "Commonly used mobile formatting pattern."

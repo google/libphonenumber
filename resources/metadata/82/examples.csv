@@ -1,0 +1,9 @@
+Region ; Type            ; Number
+KR     ; FIXED_LINE      ; "22123456"
+KR     ; MOBILE          ; "1020000000"
+KR     ; PAGER           ; "1523456789"
+KR     ; TOLL_FREE       ; "801234567"
+KR     ; PREMIUM_RATE    ; "602345678"
+KR     ; PERSONAL_NUMBER ; "5012345678"
+KR     ; VOIP            ; "7012345678"
+KR     ; UAN             ; "15441234"

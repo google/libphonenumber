@@ -1,0 +1,13 @@
+Region ; Type       ; Number
+BL     ; FIXED_LINE ; "590271234"
+BL     ; MOBILE     ; "690001234"
+BL     ; TOLL_FREE  ; "800012345"
+BL     ; VOIP       ; "976012345"
+GP     ; FIXED_LINE ; "590201234"
+GP     ; MOBILE     ; "690001234"
+GP     ; TOLL_FREE  ; "800012345"
+GP     ; VOIP       ; "976012345"
+MF     ; FIXED_LINE ; "590271234"
+MF     ; MOBILE     ; "690001234"
+MF     ; TOLL_FREE  ; "800012345"
+MF     ; VOIP       ; "976012345"

@@ -1,0 +1,4 @@
+Id               ; National       ; International ; Comment
+fixed_line_1/3/4 ; "#X XXX XXXX"  ; "X XXX XXXX"  ; "Formats follow wikipedia. For fixed-line numbers with single digit area codes."
+fmt1_2/3/3       ; "#XX XXX XXX"  ; "XX XXX XXX"  ; "For fixed-line numbers with two digit area codes and mobile numbers"
+var_cost_3/1/2/2 ; "#XXX X XX XX" ; "XXX X XX XX" ; "For variable cost ranges. Eg: toll-free, premium-rate"

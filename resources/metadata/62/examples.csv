@@ -1,0 +1,7 @@
+Region ; Type         ; Number
+ID     ; FIXED_LINE   ; "218350123"
+ID     ; MOBILE       ; "812345678"
+ID     ; TOLL_FREE    ; "8001234567"
+ID     ; PREMIUM_RATE ; "8091234567"
+ID     ; SHARED_COST  ; "8041234567"
+ID     ; UAN          ; "8071123456"

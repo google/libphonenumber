@@ -1,0 +1,6 @@
+Region ; Label        ; Comment
+MH     ; SC           ; "http://travel.state.gov/travel/cis_pa_tw/cis/cis_964.html"
+MH     ; SC_EMERGENCY ; "http://travel.state.gov/travel/cis_pa_tw/cis/cis_964.html"
+MH     ; SC_EMERGENCY ; "Two fixed-line numbers (625 4111 and 625 8666) serve as emergency numbers in addition\nto the following short number."
+MH     ; XML          ; "http://www.itu.int/oth/T0202000085/en"
+MH     ; XML_VOIP     ; "VSAT prefixes are here."

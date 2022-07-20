@@ -20,7 +20,6 @@ import static com.google.common.base.Preconditions.checkState;
 
 import com.google.auto.value.AutoValue;
 import com.google.common.base.CharMatcher;
-import com.google.common.base.Strings;
 import com.google.common.collect.ImmutableList;
 import com.google.i18n.phonenumbers.metadata.RangeSpecification;
 import com.google.i18n.phonenumbers.metadata.RangeTree;
@@ -621,7 +620,7 @@ public abstract class FormatSpec {
     @Override
     public final String toString() {
       String group =
-          Strings.repeat("X", minLength()) + Strings.repeat("*", maxLength() - minLength());
+          "X".repeat(minLength()) + "*".repeat(maxLength() - minLength());
       return replacement().map(r -> String.format("{%s>%s}", group, r)).orElse(group);
     }
   }

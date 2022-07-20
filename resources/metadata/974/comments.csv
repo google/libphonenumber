@@ -1,0 +1,6 @@
+Region ; Label          ; Comment
+QA     ; XML            ; "No premiumRate information can be found."
+QA     ; XML            ; "http://www.itu.int/oth/T02020000AB/en"
+QA     ; XML            ; "http://wtng.info/wtng-qq.html"
+QA     ; XML_FIXED_LINE ; "The prefix 40 has now been allocated, based on numbers seen online.\nPrefix 414[1-4] is added based on user report and online numbers."
+QA     ; XML_TOLL_FREE  ; "Prefix 800 with 9 digit length is added based on user report."

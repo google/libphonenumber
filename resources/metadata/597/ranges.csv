@@ -1,0 +1,13 @@
+Prefix  ; Length ; Type       ; Tariff        ; Operator  ; Format       ; Regions
+2[1-3]  ; 6      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_3/3"   ; "SR"
+3[0-7]  ; 6      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_3/3"   ; "SR"
+4       ; 6      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_3/3"   ; "SR"
+5[2-58] ; 6      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_3/3"   ; "SR"
+56      ; 6      ; VOIP       ; STANDARD_RATE ;           ; "fmt2_2/2/2" ; "SR"
+68      ; 7      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt3_3/4"   ; "SR"
+7[1246] ; 7      ; MOBILE     ; STANDARD_RATE ; "digicel" ; "fmt3_3/4"   ; "SR"
+75      ; 7      ; MOBILE     ; STANDARD_RATE ; "telesur" ; "fmt3_3/4"   ; "SR"
+77[0-4] ; 7      ; MOBILE     ; STANDARD_RATE ; "telesur" ; "fmt3_3/4"   ; "SR"
+77[5-9] ; 7      ; MOBILE     ; STANDARD_RATE ;           ; "fmt3_3/4"   ; "SR"
+8[12]   ; 7      ; MOBILE     ; STANDARD_RATE ; "digicel" ; "fmt3_3/4"   ; "SR"
+8[4-9]  ; 7      ; MOBILE     ; STANDARD_RATE ; "telesur" ; "fmt3_3/4"   ; "SR"

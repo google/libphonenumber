@@ -1,0 +1,5 @@
+Region ; Type       ; Number
+MQ     ; FIXED_LINE ; "596301234"
+MQ     ; MOBILE     ; "696201234"
+MQ     ; TOLL_FREE  ; "800012345"
+MQ     ; VOIP       ; "976612345"

@@ -1,0 +1,7 @@
+Region ; Type                 ; Number
+MU     ; FIXED_LINE           ; "54480123"
+MU     ; MOBILE               ; "52512345"
+MU     ; FIXED_LINE_OR_MOBILE ; "54480123"
+MU     ; TOLL_FREE            ; "8001234"
+MU     ; PREMIUM_RATE         ; "3012345"
+MU     ; VOIP                 ; "3201234"

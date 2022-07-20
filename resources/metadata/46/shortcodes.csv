@@ -1,0 +1,34 @@
+Region ; Prefix       ; Length ; Type               ; Tariff       ; Sms  ; Carrier Specific
+SE     ; 112          ; 3      ; EMERGENCY          ; TOLL_FREE
+SE     ; 11313        ; 5      ; EXPANDED_EMERGENCY ; TOLL_FREE
+SE     ; 114[02-9]    ; 5      ; COMMERCIAL
+SE     ; 1141[0-35-9] ; 5      ; COMMERCIAL
+SE     ; 11414        ; 5      ; EXPANDED_EMERGENCY ; TOLL_FREE
+SE     ; 115          ; 3      ; COMMERCIAL
+SE     ; 116000       ; 6      ; EXPANDED_EMERGENCY ; TOLL_FREE
+SE     ; 116006       ; 6      ; COMMERCIAL         ; TOLL_FREE
+SE     ; 116111       ; 6      ; EXPANDED_EMERGENCY ; TOLL_FREE
+SE     ; 116117       ; 6      ; COMMERCIAL         ; TOLL_FREE
+SE     ; 116123       ; 6      ; EXPANDED_EMERGENCY ; TOLL_FREE
+SE     ; 117[0-68]    ; 4      ; COMMERCIAL
+SE     ; 1177         ; 4      ; EXPANDED_EMERGENCY ; TOLL_FREE
+SE     ; 118[02-46-9] ; 6      ; COMMERCIAL
+SE     ; 1181[02-9]   ; 6      ; COMMERCIAL
+SE     ; 11811[013-7] ; 6      ; COMMERCIAL
+SE     ; 11811[89]    ; 6      ; COMMERCIAL         ; PREMIUM_RATE
+SE     ; 22[02358]    ; 3      ; COMMERCIAL         ;              ;      ; true
+SE     ; 233          ; 3      ; COMMERCIAL         ;              ;      ; true
+SE     ; 24[01]       ; 3      ; COMMERCIAL         ;              ;      ; true
+SE     ; 250          ; 3      ; COMMERCIAL         ;              ;      ; true
+SE     ; 26[1-4]      ; 3      ; COMMERCIAL         ;              ;      ; true
+SE     ; 32[13]       ; 3      ; COMMERCIAL         ;              ;      ; true
+SE     ; 7[013-9]     ; 5      ; COMMERCIAL         ;              ; true
+SE     ; 72           ; 5      ; COMMERCIAL         ; PREMIUM_RATE ; true
+SE     ; 822          ; 3      ; COMMERCIAL         ;              ;      ; true
+SE     ; 888          ; 3      ; COMMERCIAL         ;              ;      ; true
+SE     ; 90000        ; 5      ; EMERGENCY          ; TOLL_FREE
+SE     ; 901[02-9]    ; 5      ; COMMERCIAL
+SE     ; 9011[013-9]  ; 5      ; COMMERCIAL
+SE     ; 90[2-4]      ; 5      ; COMMERCIAL
+SE     ; 90510        ; 5      ; COMMERCIAL
+SE     ; 912          ; 3      ; COMMERCIAL         ;              ;      ; true

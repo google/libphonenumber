@@ -1,0 +1,4 @@
+Region ; Type       ; Number
+CM     ; FIXED_LINE ; "222123456"
+CM     ; MOBILE     ; "671234567"
+CM     ; TOLL_FREE  ; "88012345"

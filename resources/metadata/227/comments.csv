@@ -1,0 +1,4 @@
+Region ; Label          ; Comment
+NE     ; XML            ; "http://www.itu.int/oth/T020200009B/en"
+NE     ; XML_FIXED_LINE ; "Adding 20 61 from online numbers."
+NE     ; XML_MOBILE     ; "Added 84, 85, 88, 90, 91, 92, 98 and 99 from online data. Airtel have confirmed that\nthey use the 89 and 97 prefixes, and Orange use 92. MOOV started using 95 in Jan\n2014."

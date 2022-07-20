@@ -1,0 +1,7 @@
+Old Prefix; Old Length; Country Code; Old Format; New Format; Is Final Migration; Description
+12; 5; 44; 12xxx; 21xxx6; true; add and replace digits -- valid
+99; 3; 84; 9xx; 3xx1; true; add 1 to end of numbers -- valid
+13; 5; 44; 12xxx; xxx6; false; Old Format not in key range -- invalid
+11; 5; 44; 1xxxx; xx0xx1; true; add and subtract digits -- valid
+10; 5; 44; 10xxx; xxx77; false; non final migration with no next recipe -- invalid
+15; 5; 44; x5xxx; x1xxx; false; multiple migration linking to (11, 5) -- valid

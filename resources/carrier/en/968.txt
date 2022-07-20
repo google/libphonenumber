@@ -15,6 +15,7 @@
 9681|Ooredoo
 96871|Omantel
 96872|Omantel
+96877|Vodafone Oman
 96878|Ooredoo
 968790|Ooredoo
 968791|Ooredoo

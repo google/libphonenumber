@@ -306,6 +306,7 @@
 543832|Recreo, Catamarca
 543834|San Fernando del Valle de Catamarca, Catamarca
 543835|Andalgalá, Catamarca
+543836|Andalgalá, Catamarca
 543837|Tinogasta, Catamarca
 543838|Santa María, Catamarca
 543841|Monte Quemado, Santiago del Estero

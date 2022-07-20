@@ -13,7 +13,7 @@
 # limitations under the License.
 
 9983|Uzbektelecom
-9985|Uzbektelecom
+998555|Uzbektelecom
 99861220|MobiUZ
 99861221|MobiUZ
 9986129|MobiUZ

@@ -16,6 +16,9 @@
 
 package com.google.i18n.phonenumbers;
 
+import com.google.i18n.phonenumbers.metadata.DefaultMetadataDependenciesProvider;
+import com.google.i18n.phonenumbers.metadata.source.MetadataSourceImpl;
+import com.google.i18n.phonenumbers.metadata.source.MultiFileModeFileNameProvider;
 import junit.framework.TestCase;
 
 /**
@@ -33,15 +36,20 @@ import junit.framework.TestCase;
  * @author Shaopeng Jia
  */
 public class TestMetadataTestCase extends TestCase {
+
   private static final String TEST_METADATA_FILE_PREFIX =
       "/com/google/i18n/phonenumbers/data/PhoneNumberMetadataProtoForTesting";
 
-  /** An instance of PhoneNumberUtil that uses test metadata. */
+  /**
+   * An instance of PhoneNumberUtil that uses test metadata.
+   */
   protected final PhoneNumberUtil phoneUtil;
 
   public TestMetadataTestCase() {
-    phoneUtil = new PhoneNumberUtil(new MultiFileMetadataSourceImpl(TEST_METADATA_FILE_PREFIX,
-        MetadataManager.DEFAULT_METADATA_LOADER),
+    phoneUtil = new PhoneNumberUtil(
+        new MetadataSourceImpl(new MultiFileModeFileNameProvider(TEST_METADATA_FILE_PREFIX),
+            DefaultMetadataDependenciesProvider.getInstance().getMetadataLoader(),
+            DefaultMetadataDependenciesProvider.getInstance().getMetadataParser()),
         CountryCodeToRegionCodeMapForTesting.getCountryCodeToRegionCodeMap());
   }
 

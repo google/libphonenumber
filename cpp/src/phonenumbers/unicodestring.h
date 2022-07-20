@@ -34,7 +34,7 @@ class UnicodeString {
 
   // Constructs a new unicode string copying the provided C string.
   explicit UnicodeString(const char* utf8)
-      : text_(UTF8ToUnicodeText(utf8, std::strlen(utf8))),
+      : text_(UTF8ToUnicodeText(utf8, static_cast<int>(std::strlen(utf8)))),
         cached_index_(-1) {}
 
   // Constructs a new unicode string containing the provided codepoint.
@@ -89,8 +89,11 @@ class UnicodeString {
   // Copies the provided C string.
   inline void setTo(const char* s, size_t len) {
     invalidateCachedIndex();
-    text_.CopyUTF8(s, len);
+    text_.CopyUTF8(s, static_cast<int>(len));
   }
+
+  // Was this UnicodeString created from valid UTF-8?
+  bool UTF8WasValid() const { return text_.UTF8WasValid(); }
 
   // Returns the substring located at [ start, start + length - 1 ] without
   // copying the underlying C string. If one of the provided parameters is out

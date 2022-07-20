@@ -1,0 +1,4 @@
+Region ; Prefix ; Length ; Type       ; Tariff
+MC     ; 112    ; 3      ; EMERGENCY  ; TOLL_FREE
+MC     ; 141    ; 3      ; COMMERCIAL
+MC     ; 1[578] ; 2      ; EMERGENCY  ; TOLL_FREE

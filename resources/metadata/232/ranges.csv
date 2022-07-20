@@ -1,0 +1,11 @@
+Prefix       ; Length ; Type       ; Tariff        ; Area Code Length ; Operator    ; Format    ; Regions ; Geocode:en ; Provenance
+22[2-4][2-9] ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt_2/6" ; "SL"    ; "Freetown" ; ITU
+25           ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "sierratel" ; "fmt_2/6" ; "SL"
+3[03]        ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "africell"  ; "fmt_2/6" ; "SL"    ;            ; IR21
+3[124]       ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "qcell"     ; "fmt_2/6" ; "SL"    ;            ; IR21
+35           ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "iptel"     ; "fmt_2/6" ; "SL"    ;            ; ITU
+66           ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "onlime"    ; "fmt_2/6" ; "SL"    ;            ; ITU
+7[2-689]     ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "orange"    ; "fmt_2/6" ; "SL"    ;            ; IR21
+77           ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "africell"  ; "fmt_2/6" ; "SL"    ;            ; IR21
+8[08]        ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "africell"  ; "fmt_2/6" ; "SL"    ;            ; IR21
+9[09]        ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "africell"  ; "fmt_2/6" ; "SL"    ;            ; IR21

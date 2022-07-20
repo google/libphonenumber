@@ -1,0 +1,3 @@
+Region ; Type       ; Number
+IQ     ; FIXED_LINE ; "12345678"
+IQ     ; MOBILE     ; "7912345678"
