@@ -1,0 +1,5 @@
+Region ; Label   ; Comment
+VU     ; SC      ; "http://www.itu.int/oth/T02020000E2/en"
+VU     ; XML     ; "http://www.itu.int/oth/T02020000E2/en"
+VU     ; XML     ; "Should be formatted in one block, apart from the mobile numbers."
+VU     ; XML_UAN ; "Using this for non-geographical numbers, since they have not been clearly defined, and\nfor government fixed-line numbers."

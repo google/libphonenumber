@@ -1,0 +1,2 @@
+Id           ; National      ; International ; Comment
+fmt1_2/2/2/2 ; "XX XX XX XX" ; "XX XX XX XX" ; "Added leading digits so that the shortcodes do not pick this format during AYTF."

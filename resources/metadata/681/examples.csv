@@ -1,0 +1,5 @@
+Region ; Type                 ; Number
+WF     ; MOBILE               ; "821234"
+WF     ; FIXED_LINE_OR_MOBILE ; "721234"
+WF     ; TOLL_FREE            ; "800012345"
+WF     ; VOICEMAIL            ; "401234"

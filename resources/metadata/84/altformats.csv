@@ -1,0 +1,4 @@
+Format        ; Parent Format  ; Comment
+XXX XXX XXX   ; mobile_2/3/2/2 ; "Alternate mobile format"
+XX XX XXX XXX ; fixed_2/4/4    ; "Alternate format for big cities."
+XXXX XXX XXX  ; fixed_4/4-6    ; "Non-geographic numbers follow less rigid formatting patterns."

@@ -18,6 +18,20 @@ How to setup:
 
 * `git clone https://github.com/google/python-gflags.git`
 
+1.  We officially support only these versions of these dependencies:
+
+* Closure library: v20190415
+
+* Closure compiler: v20140407
+
+* Closure linter: v2.3.19
+
+* Python gflags: 3.1.2
+
+Note: We were to build at latest versions of these dependencies, however, we cannot promise that
+we continue to support newer version of these dependencies. We learned that newer Closure binaries
+deprecate older apis earlier, leading to build breakages.
+
 If you don't checkout the dependencies next to libphonenumber:
 
 1. Change the path of the `<script src="">` in the html pages to point to wherever base.js is located

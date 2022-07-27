@@ -1,0 +1,6 @@
+Region ; Label          ; Comment
+MU     ; SC             ; "http://www.icta.mu/telecommunications/numbering.htm"
+MU     ; XML            ; "Preferred international prefix is expected to standardize on just '00'"
+MU     ; XML            ; "http://www.icta.mu/telecommunications/numbering.htm"
+MU     ; XML_FIXED_LINE ; "See also: http://www.wtng.info/wtng-230-mu.html for additional detail. Prefix 267 is\nadded based on user report."
+MU     ; XML_TOLL_FREE  ; "Prefix 802 is added based on user report."

@@ -1,0 +1,3 @@
+Id          ; National       ; International ; Local     ; Comment
+fixed_3/3/3 ; "#XXX XXX XXX" ; "XXX XXX XXX" ; "XXX XXX" ; "Format for geographic fixed-line numbers and other non-mobile ranges."
+mobile_2/7  ; "#XX XXXXXXX"  ; "XX XXXXXXX"  ;           ; "Format for mobile numbers."

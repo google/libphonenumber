@@ -1,0 +1,9 @@
+Region ; Type            ; Number     ; Comment
+LT     ; FIXED_LINE      ; "31234567"
+LT     ; MOBILE          ; "61234567"
+LT     ; TOLL_FREE       ; "80012345"
+LT     ; PREMIUM_RATE    ; "90012345"
+LT     ; SHARED_COST     ; "80812345"
+LT     ; PERSONAL_NUMBER ; "70012345"
+LT     ; VOIP            ; "80123456" ; "."
+LT     ; UAN             ; "70712345"

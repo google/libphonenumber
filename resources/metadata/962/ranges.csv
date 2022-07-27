@@ -1,0 +1,72 @@
+Prefix       ; Length ; Type            ; Tariff        ; Operator  ; Format       ; Regions ; Geocode:en        ; Provenance
+262[0-35-9]  ; 8      ; FIXED_LINE      ; STANDARD_RATE ;           ; "fmt1_1/3/4" ; "JO"    ; "Mafraq"          ; GOVERNMENT
+263[0-578]   ; 8      ; FIXED_LINE      ; STANDARD_RATE ;           ; "fmt1_1/3/4" ; "JO"    ; "Jarash"          ; GOVERNMENT
+264[24-7]    ; 8      ; FIXED_LINE      ; STANDARD_RATE ;           ; "fmt1_1/3/4" ; "JO"    ; "Ajloun"          ; GOVERNMENT
+265[0-24-8]  ; 8      ; FIXED_LINE      ; STANDARD_RATE ;           ; "fmt1_1/3/4" ; "JO"    ; "Irbid"           ; GOVERNMENT
+266[023]     ; 8      ; FIXED_LINE      ; STANDARD_RATE ;           ; "fmt1_1/3/4" ; "JO"    ; "Mafraq"          ; GOVERNMENT
+267[023]     ; 8      ; FIXED_LINE      ; STANDARD_RATE ;           ; "fmt1_1/3/4" ; "JO"    ; "Jarash"          ; GOVERNMENT
+268[023]     ; 8      ; FIXED_LINE      ; STANDARD_RATE ;           ; "fmt1_1/3/4" ; "JO"    ; "Ajloun"          ; GOVERNMENT
+269[0-3]     ; 8      ; FIXED_LINE      ; STANDARD_RATE ;           ; "fmt1_1/3/4" ; "JO"    ; "Irbid"           ; GOVERNMENT
+270[1-79]    ; 8      ; FIXED_LINE      ; STANDARD_RATE ;           ; "fmt1_1/3/4" ; "JO"    ; "Irbid"           ; GOVERNMENT
+2710         ; 8      ; FIXED_LINE      ; STANDARD_RATE ;           ; "fmt1_1/3/4" ; "JO"    ; "Irbid"           ; GOVERNMENT
+272[014-7]   ; 8      ; FIXED_LINE      ; STANDARD_RATE ;           ; "fmt1_1/3/4" ; "JO"    ; "Irbid"           ; GOVERNMENT
+273[0-689]   ; 8      ; FIXED_LINE      ; STANDARD_RATE ;           ; "fmt1_1/3/4" ; "JO"    ; "Irbid"           ; GOVERNMENT
+274[019]     ; 8      ; FIXED_LINE      ; STANDARD_RATE ;           ; "fmt1_1/3/4" ; "JO"    ; "Irbid"           ; GOVERNMENT
+275[0-3578]  ; 8      ; FIXED_LINE      ; STANDARD_RATE ;           ; "fmt1_1/3/4" ; "JO"    ; "Irbid"           ; GOVERNMENT
+320[1-69]    ; 8      ; FIXED_LINE      ; STANDARD_RATE ;           ; "fmt1_1/3/4" ; "JO"    ; "Aqaba"           ; GOVERNMENT
+321[1-35-7]  ; 8      ; FIXED_LINE      ; STANDARD_RATE ;           ; "fmt1_1/3/4" ; "JO"    ; "Ma’an"           ; GOVERNMENT
+322[024-7]   ; 8      ; FIXED_LINE      ; STANDARD_RATE ;           ; "fmt1_1/3/4" ; "JO"    ; "Tafileh"         ; GOVERNMENT
+323          ; 8      ; FIXED_LINE      ; STANDARD_RATE ;           ; "fmt1_1/3/4" ; "JO"    ; "Karak"           ; GOVERNMENT
+324[0-3]     ; 8      ; FIXED_LINE      ; STANDARD_RATE ;           ; "fmt1_1/3/4" ; "JO"    ; "Aqaba"           ; GOVERNMENT
+325[023]     ; 8      ; FIXED_LINE      ; STANDARD_RATE ;           ; "fmt1_1/3/4" ; "JO"    ; "Maan"            ; GOVERNMENT
+3260         ; 8      ; FIXED_LINE      ; STANDARD_RATE ;           ; "fmt1_1/3/4" ; "JO"    ; "Tafileh"         ; GOVERNMENT
+3262         ; 8      ; FIXED_LINE      ; STANDARD_RATE ;           ; "fmt1_1/3/4" ; "JO"    ; "Southern Region" ; GOVERNMENT
+3263         ; 8      ; FIXED_LINE      ; STANDARD_RATE ;           ; "fmt1_1/3/4" ; "JO"    ;                   ; GOVERNMENT
+327[023]     ; 8      ; FIXED_LINE      ; STANDARD_RATE ;           ; "fmt1_1/3/4" ; "JO"    ; "Karak"           ; GOVERNMENT
+530[0-3]     ; 8      ; FIXED_LINE      ; STANDARD_RATE ;           ; "fmt1_1/3/4" ; "JO"    ; "Zarqa"           ; GOVERNMENT
+531[023]     ; 8      ; FIXED_LINE      ; STANDARD_RATE ;           ; "fmt1_1/3/4" ; "JO"    ; "Madaba"          ; GOVERNMENT
+532[0-59]    ; 8      ; FIXED_LINE      ; STANDARD_RATE ;           ; "fmt1_1/3/4" ; "JO"    ; "Madaba"          ; GOVERNMENT
+533[023]     ; 8      ; FIXED_LINE      ; STANDARD_RATE ;           ; "fmt1_1/3/4" ; "JO"    ; "Balqa"           ; GOVERNMENT
+5349         ; 8      ; FIXED_LINE      ; STANDARD_RATE ;           ; "fmt1_1/3/4" ; "JO"    ; "Balqa"           ; GOVERNMENT
+535[0-35-9]  ; 8      ; FIXED_LINE      ; STANDARD_RATE ;           ; "fmt1_1/3/4" ; "JO"    ; "Balqa"           ; GOVERNMENT
+536[15]      ; 8      ; FIXED_LINE      ; STANDARD_RATE ;           ; "fmt1_1/3/4" ; "JO"    ; "Zarqa"           ; GOVERNMENT
+537[45]      ; 8      ; FIXED_LINE      ; STANDARD_RATE ;           ; "fmt1_1/3/4" ; "JO"    ; "Zarqa"           ; GOVERNMENT
+538[1-6]     ; 8      ; FIXED_LINE      ; STANDARD_RATE ;           ; "fmt1_1/3/4" ; "JO"    ; "Zarqa"           ; GOVERNMENT
+539[0-36-9]  ; 8      ; FIXED_LINE      ; STANDARD_RATE ;           ; "fmt1_1/3/4" ; "JO"    ; "Zarqa"           ; GOVERNMENT
+62[05]0      ; 8      ; FIXED_LINE      ; STANDARD_RATE ;           ; "fmt1_1/3/4" ; "JO"    ; "Amman"           ; GOVERNMENT
+6222         ; 8      ; FIXED_LINE      ; STANDARD_RATE ;           ; "fmt1_1/3/4" ; "JO"    ; "Greater Amman"   ; GOVERNMENT
+6300         ; 8      ; FIXED_LINE      ; STANDARD_RATE ;           ; "fmt1_1/3/4" ; "JO"    ; "Amman"           ; GOVERNMENT
+6333         ; 8      ; FIXED_LINE      ; STANDARD_RATE ;           ; "fmt1_1/3/4" ; "JO"    ; "Amman"           ; GOVERNMENT
+640[0-25]    ; 8      ; FIXED_LINE      ; STANDARD_RATE ;           ; "fmt1_1/3/4" ; "JO"    ; "Amman"           ; GOVERNMENT
+641[2-7]     ; 8      ; FIXED_LINE      ; STANDARD_RATE ;           ; "fmt1_1/3/4" ; "JO"    ; "Amman"           ; GOVERNMENT
+642[0569]    ; 8      ; FIXED_LINE      ; STANDARD_RATE ;           ; "fmt1_1/3/4" ; "JO"    ; "Amman"           ; GOVERNMENT
+64[38][07-9] ; 8      ; FIXED_LINE      ; STANDARD_RATE ;           ; "fmt1_1/3/4" ; "JO"    ; "Amman"           ; GOVERNMENT
+644[025689]  ; 8      ; FIXED_LINE      ; STANDARD_RATE ;           ; "fmt1_1/3/4" ; "JO"    ; "Amman"           ; GOVERNMENT
+646[0-589]   ; 8      ; FIXED_LINE      ; STANDARD_RATE ;           ; "fmt1_1/3/4" ; "JO"    ; "Amman"           ; GOVERNMENT
+647          ; 8      ; FIXED_LINE      ; STANDARD_RATE ;           ; "fmt1_1/3/4" ; "JO"    ; "Greater Amman"   ; GOVERNMENT
+649[0-2]     ; 8      ; FIXED_LINE      ; STANDARD_RATE ;           ; "fmt1_1/3/4" ; "JO"    ; "Amman"           ; GOVERNMENT
+65[01][056]  ; 8      ; FIXED_LINE      ; STANDARD_RATE ;           ; "fmt1_1/3/4" ; "JO"    ; "Amman"           ; GOVERNMENT
+652[034]     ; 8      ; FIXED_LINE      ; STANDARD_RATE ;           ; "fmt1_1/3/4" ; "JO"    ; "Amman"           ; GOVERNMENT
+653[0-57-9]  ; 8      ; FIXED_LINE      ; STANDARD_RATE ;           ; "fmt1_1/3/4" ; "JO"    ; "Amman"           ; GOVERNMENT
+654[178]     ; 8      ; FIXED_LINE      ; STANDARD_RATE ;           ; "fmt1_1/3/4" ; "JO"    ; "Amman"           ; GOVERNMENT
+655[0-69]    ; 8      ; FIXED_LINE      ; STANDARD_RATE ;           ; "fmt1_1/3/4" ; "JO"    ; "Amman"           ; GOVERNMENT
+656[0-35-9]  ; 8      ; FIXED_LINE      ; STANDARD_RATE ;           ; "fmt1_1/3/4" ; "JO"    ; "Amman"           ; GOVERNMENT
+657[1-379]   ; 8      ; FIXED_LINE      ; STANDARD_RATE ;           ; "fmt1_1/3/4" ; "JO"    ; "Amman"           ; GOVERNMENT
+658[0-68]    ; 8      ; FIXED_LINE      ; STANDARD_RATE ;           ; "fmt1_1/3/4" ; "JO"    ; "Amman"           ; GOVERNMENT
+659[0239]    ; 8      ; FIXED_LINE      ; STANDARD_RATE ;           ; "fmt1_1/3/4" ; "JO"    ; "Amman"           ; GOVERNMENT
+70           ; 9      ; PERSONAL_NUMBER ; STANDARD_RATE ;           ; "fmt3_2/7"   ; "JO"    ;                   ; GOVERNMENT
+7466         ; 9      ; PAGER           ; STANDARD_RATE ;           ; "fmt2_1/4/4" ; "JO"    ;                   ; GOVERNMENT
+7477         ; 9      ; PAGER           ; STANDARD_RATE ;           ; "fmt2_1/4/4" ; "JO"    ;                   ; GOVERNMENT
+77[0-25-9]   ; 9      ; MOBILE          ; STANDARD_RATE ; "orange"  ; "fmt2_1/4/4" ; "JO"    ;                   ; IR21
+78[0-25-9]   ; 9      ; MOBILE          ; STANDARD_RATE ; "umniah"  ; "fmt2_1/4/4" ; "JO"    ;                   ; IR21
+79           ; 9      ; MOBILE          ; STANDARD_RATE ; "zain_jo" ; "fmt2_1/4/4" ; "JO"    ;                   ; IR21
+80           ; 8      ; FIXED_LINE      ; TOLL_FREE     ;           ; "fmt4_3/5-6" ; "JO"    ;                   ; GOVERNMENT
+810          ; 8      ; UAN             ; STANDARD_RATE ;           ; "fmt4_3/5-6" ; "JO"    ;                   ; GOVERNMENT
+85           ; 8      ; FIXED_LINE      ; SHARED_COST   ;           ; "fmt4_3/5-6" ; "JO"    ;                   ; GOVERNMENT
+87000        ; 8      ; FIXED_LINE      ; STANDARD_RATE ;           ; "fmt1_1/3/4" ; "JO"    ;                   ; GOVERNMENT
+8720         ; 8      ; FIXED_LINE      ; STANDARD_RATE ;           ; "fmt1_1/3/4" ; "JO"    ;                   ; GOVERNMENT
+877[078]     ; 8      ; FIXED_LINE      ; STANDARD_RATE ;           ; "fmt1_1/3/4" ; "JO"    ;                   ; GOVERNMENT
+8790[01]     ; 8      ; FIXED_LINE      ; STANDARD_RATE ;           ; "fmt1_1/3/4" ; "JO"    ;                   ; GOVERNMENT
+8799         ; 8      ; FIXED_LINE      ; STANDARD_RATE ;           ; "fmt1_1/3/4" ; "JO"    ;                   ; GOVERNMENT
+88           ; 8      ; UAN             ; STANDARD_RATE ;           ; "fmt4_3/5-6" ; "JO"    ;                   ; GOVERNMENT
+9            ; 8      ; FIXED_LINE      ; PREMIUM_RATE  ;           ; "fmt4_3/5-6" ; "JO"    ;                   ; GOVERNMENT

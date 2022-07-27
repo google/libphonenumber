@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.googlecode.libphonenumber</groupId>
   <artifactId>libphonenumber-parent</artifactId>
-  <version>8.12.17-SNAPSHOT</version>
+  <version>8.12.53-SNAPSHOT</version>
   <packaging>pom</packaging>
   <url>https://github.com/google/libphonenumber/</url>
 
@@ -161,8 +161,8 @@
         <artifactId>maven-compiler-plugin</artifactId>
         <version>2.3.2</version>
         <configuration>
-          <source>1.6</source>
-	  <target>1.6</target>
+          <source>1.7</source>
+	  <target>1.7</target>
 	  <encoding>UTF-8</encoding>
         </configuration>
       </plugin>
@@ -232,7 +232,13 @@
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>4.8.1</version>
+      <version>4.13.1</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-all</artifactId>
+      <version>1.10.19</version>
       <scope>test</scope>
     </dependency>
   </dependencies>

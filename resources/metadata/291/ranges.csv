@@ -1,0 +1,8 @@
+Prefix    ; Length ; Type       ; Tariff        ; Area Code Length ; Operator ; Format      ; Regions
+11[12568] ; 7      ; FIXED_LINE ; STANDARD_RATE ; 1                ;          ; "fmt_1/3/3" ; "ER"
+1[24]0    ; 7      ; FIXED_LINE ; STANDARD_RATE ; 1                ;          ; "fmt_1/3/3" ; "ER"
+155       ; 7      ; FIXED_LINE ; STANDARD_RATE ; 1                ;          ; "fmt_1/3/3" ; "ER"
+16[146]   ; 7      ; FIXED_LINE ; STANDARD_RATE ; 1                ;          ; "fmt_1/3/3" ; "ER"
+17[1-3]   ; 7      ; MOBILE     ; STANDARD_RATE ;                  ; "eritel" ; "fmt_1/3/3" ; "ER"
+7         ; 7      ; MOBILE     ; STANDARD_RATE ;                  ; "eritel" ; "fmt_1/3/3" ; "ER"
+8         ; 7      ; FIXED_LINE ; STANDARD_RATE ; 1                ;          ; "fmt_1/3/3" ; "ER"

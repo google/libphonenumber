@@ -1,0 +1,11 @@
+Region ; Label           ; Comment
+BA     ; SC              ; "https://www.itu.int/dms_pub/itu-t/oth/02/02/T020200001B0001PDFE.pdf"
+BA     ; SC              ; "http://www.rak.ba/eng/index.php?uid=1272016657 (accessible from\nhttp://www.cra.ba/en/telecom/numbering/)"
+BA     ; SC              ; "http://en.wikipedia.org/wiki/+387"
+BA     ; SC_TOLL_FREE    ; "All 116XXX, ""European harmonized services of social"" value are toll-free.\nSee: https://ec.europa.eu/digital-single-market/116-helplines."
+BA     ; XML             ; "accessible from http://www.cra.ba/en/telecom/numbering/"
+BA     ; XML             ; "http://www.rak.ba/eng/index.php?uid=1272016657"
+BA     ; XML             ; "http://en.wikipedia.org/wiki/+387"
+BA     ; XML_FIXED_LINE  ; "For easier maintenance, supporting ranges at 3 digit granularity vs 4 digit granular\nranges mentioned in RAK's doc."
+BA     ; XML_SHARED_COST ; "Using this category to model national tariff numbers - these are under Shared Cost in\nthe plan."
+BA     ; XML_UAN         ; "Using this to classify nomad numbers. 702[0-4] ranges are no longer mentioned in\nofficial RAK's doc (Dated 21-11-2017). For easier maintenance, supporting ranges at 4\ndigit granularity vs 4 and 5 digit granular ranges mentioned in RAK's doc."

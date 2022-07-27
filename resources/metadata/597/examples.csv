@@ -1,0 +1,4 @@
+Region ; Type       ; Number
+SR     ; FIXED_LINE ; "211234"
+SR     ; MOBILE     ; "7412345"
+SR     ; VOIP       ; "561234"

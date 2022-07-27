@@ -1,0 +1,9 @@
+Region ; Label               ; Comment
+SE     ; SC                  ; "http://www.pts.se/upload/Ovrigt/Tele/Nummerfragor/Nrplansammanst%C3%A4llning-2013-07-05.pdf"
+SE     ; SC                  ; "http://www.etiskaradet.se/sidor/om-sms-tjanster.aspx"
+SE     ; SC_CARRIER_SPECIFIC ; "None of the numbers are specified in the numbering plan, they\nhave been found on operator homepages."
+SE     ; SC_CARRIER_SPECIFIC ; "http://www.bth.se/for/telefoni.nsf/bilagor/Lathund_Telenor_One_2_0_pdf/$file/Lathund_Telenor_One_2.0.pdf"
+SE     ; SC_CARRIER_SPECIFIC ; "http://www.tele2.se/foretag/files/manual_tele2mobil_mini.pdf"
+SE     ; SC_SMS_SERVICES     ; "http://www.etiskaradet.se/sidor/om-sms-tjanster.aspx"
+SE     ; XML                 ; "https://www.pts.se/en/english-b/telephony/national-numbering-and-addressing-plans/"
+SE     ; XML                 ; "Formatting patterns are from the numbering plan and from the Swedish yellow pages\nhttp://gulasidorna.eniro.se"

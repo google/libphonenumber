@@ -29,10 +29,10 @@
 #include <stddef.h>
 #include <limits>
 #include <map>
+#include <memory>
 #include <string>
 #include <utility>
 #include <vector>
-
 #include <unicode/uchar.h>
 
 #include "phonenumbers/alternate_format.h"
@@ -51,6 +51,7 @@
 #include "phonenumbers/regexp_adapter_icu.h"
 #include "phonenumbers/regexp_cache.h"
 #include "phonenumbers/stringutil.h"
+#include "phonenumbers/utf/unicodetext.h"
 
 #ifdef I18N_PHONENUMBERS_USE_RE2
 #include "phonenumbers/regexp_adapter_re2.h"
@@ -406,7 +407,9 @@ PhoneNumberMatcher::PhoneNumberMatcher(const PhoneNumberUtil& util,
       max_tries_(max_tries),
       state_(NOT_READY),
       last_match_(NULL),
-      search_index_(0) {
+      search_index_(0),
+      is_input_valid_utf8_(true) {
+  is_input_valid_utf8_ = IsInputUtf8(); 
 }
 
 PhoneNumberMatcher::PhoneNumberMatcher(const string& text,
@@ -420,10 +423,18 @@ PhoneNumberMatcher::PhoneNumberMatcher(const string& text,
       max_tries_(numeric_limits<int>::max()),
       state_(NOT_READY),
       last_match_(NULL),
-      search_index_(0) {
+      search_index_(0),
+      is_input_valid_utf8_(true) {
+  is_input_valid_utf8_ =  IsInputUtf8();
 }
 
 PhoneNumberMatcher::~PhoneNumberMatcher() {
+}
+
+bool PhoneNumberMatcher::IsInputUtf8() {
+  UnicodeText number_as_unicode;
+  number_as_unicode.PointToUTF8(text_.c_str(), text_.size());
+  return number_as_unicode.UTF8WasValid();
 }
 
 // static
@@ -625,6 +636,11 @@ bool PhoneNumberMatcher::ExtractMatch(const string& candidate, int offset,
 }
 
 bool PhoneNumberMatcher::HasNext() {
+  // Input should contain only UTF-8 characters.
+  if (!is_input_valid_utf8_) {
+    state_ = DONE;
+    return false;
+  }
   if (state_ == NOT_READY) {
     PhoneNumberMatch temp_match;
     if (!Find(search_index_, &temp_match)) {
@@ -740,7 +756,7 @@ void PhoneNumberMatcher::GetNationalNumberGroups(
   size_t start_index = rfc3966_format.find('-') + 1;
   SplitStringUsing(rfc3966_format.substr(start_index,
                                          end_index - start_index),
-                   "-", digit_blocks);
+                   '-', digit_blocks);
 }
 
 void PhoneNumberMatcher::GetNationalNumberGroupsForPattern(
@@ -756,7 +772,7 @@ void PhoneNumberMatcher::GetNationalNumberGroupsForPattern(
                                     *formatting_pattern,
                                     PhoneNumberUtil::RFC3966,
                                     &rfc3966_format);
-  SplitStringUsing(rfc3966_format, "-", digit_blocks);
+  SplitStringUsing(rfc3966_format, '-', digit_blocks);
 }
 
 bool PhoneNumberMatcher::IsNationalPrefixPresentIfRequired(

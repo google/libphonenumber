@@ -1,0 +1,6 @@
+Id              ; National          ; Carrier               ; International   ; Local        ; Comment
+fixed_2/4/4     ; "(XX) XXXX-XXXX"  ; "# @ (XX) XXXX-XXXX"  ; "XX XXXX-XXXX"  ; "XXXX-XXXX"  ; "Fixed-line and pre-transition mobile numbers and mobile radio services dialled with an\narea code."
+mobile_2/5/4    ; "(XX) XXXXX-XXXX" ; "# @ (XX) XXXXX-XXXX" ; "XX XXXXX-XXXX" ; "XXXXX-XXXX" ; "Mobile numbers (post transition, 11 digits)."
+sharedcost_4/4  ; "XXXX-XXXX"       ;                       ; "XXXX-XXXX"     ;              ; "8-digit shared cost numbers (mostly national only)."
+shortcode_3-6   ; "XXX***"          ;                       ;                 ;              ; "Format short numbers as a block."
+varcost_3/2-3/4 ; "#XXX XX* XXXX"   ;                       ; "XXX XX* XXXX"  ;              ; "Variable cost numbers (9 - 10 digits)."

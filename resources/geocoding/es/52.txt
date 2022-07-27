@@ -178,14 +178,14 @@
 52498|Zacatecas
 52499|Jalisco/Zacatecas
 5255|Ciudad de México, CDMX
-5258|Estado de Mexico
-52591|Estado de Mexico
-52592|Estado de Mexico
-52593|Estado de Mexico
-52594|Estado de Mexico
-52595|Estado de Mexico
-52596|Estado de Mexico
-52599|Estado de Mexico
+5258|Estado de México
+52591|Estado de México
+52592|Estado de México
+52593|Estado de México
+52594|Estado de México
+52595|Estado de México
+52596|Estado de México
+52599|Estado de México
 52612|La Paz/Todos Santos, BCS
 52613|Baja California Sur
 52614|Chihuahua
@@ -223,6 +223,7 @@
 52652|Chihuahua
 52653|Luis B. Sánchez/San Luis Río Colorado, SON
 52656|Chihuahua
+52657|Chihuahua
 52658|Baja California
 52659|Chihuahua
 52661|Primo Tapia/Rosarito, BCN
@@ -242,23 +243,23 @@
 52687|Sinaloa
 5269|Sinaloa
 52711|México/Michoacán
-52712|Estado de Mexico
+52712|Estado de México
 52713|Santiago Tianguistenco, MEX
-52714|Estado de Mexico
+52714|Estado de México
 52715|Michoacán
-52716|Estado de Mexico
-52717|Estado de Mexico
-52718|Estado de Mexico
+52716|Estado de México
+52717|Estado de México
+52718|Estado de México
 52719|San Francisco Xonacatlán/Temoaya, MEX
 52721|Ixtapan de la Sal, MEX
-52722|Estado de Mexico
+52722|Estado de México
 52723|Coatepec Harinas, MEX
 52724|Luvianos/Tejupilco de Hidalgo, MEX
 52725|Almoloya de Juárez/Santa María del Monte, MEX
-52726|Estado de Mexico
+52726|Estado de México
 52727|Guerrero
 52728|Lerma/Santa María Atarasquillo, MEX
-52729|Estado de Mexico
+52729|Estado de México
 52731|Morelos
 52732|Guerrero
 52733|Iguala, GRO
@@ -378,6 +379,7 @@
 52986|Yucatán
 52987|Cozumel, QRO
 52988|Yucatán
+52990|Merida
 52991|Yucatán
 52992|Chiapas
 52993|Tabasco

@@ -1,0 +1,19 @@
+Region ; Prefix    ; Length ; Type               ; Tariff       ; Sms
+RO     ; 112       ; 3      ; EMERGENCY          ; TOLL_FREE
+RO     ; 116000    ; 6      ; EXPANDED_EMERGENCY ; TOLL_FREE
+RO     ; 116111    ; 6      ; EXPANDED_EMERGENCY ; TOLL_FREE
+RO     ; 116123    ; 6      ; EXPANDED_EMERGENCY ; TOLL_FREE
+RO     ; 118011    ; 6      ; COMMERCIAL
+RO     ; 118119    ; 6      ; COMMERCIAL
+RO     ; 118200    ; 6      ; COMMERCIAL
+RO     ; 118300    ; 6      ; COMMERCIAL         ; PREMIUM_RATE
+RO     ; 1188[18]1 ; 6      ; COMMERCIAL
+RO     ; 118932    ; 6      ; COMMERCIAL         ; PREMIUM_RATE
+RO     ; 1[24]     ; 4      ; COMMERCIAL         ; PREMIUM_RATE ; true
+RO     ; 19000     ; 5      ; COMMERCIAL
+RO     ; 19019     ; 5      ; COMMERCIAL
+RO     ; 191[19]   ; 4      ; COMMERCIAL
+RO     ; 1921      ; 4      ; COMMERCIAL
+RO     ; 193[02]   ; 4      ; COMMERCIAL
+RO     ; 195[178]  ; 4      ; COMMERCIAL
+RO     ; 8[48]     ; 4      ; COMMERCIAL         ; PREMIUM_RATE ; true

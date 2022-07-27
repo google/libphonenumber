@@ -1,0 +1,14 @@
+Prefix     ; Length ; Type       ; Tariff        ; Operator                   ; Format      ; Regions ; Geocode:en       ; Provenance
+1[0-2]     ; 9      ; MOBILE     ; STANDARD_RATE ; "sudatel"                  ; "fmt_2/3/4" ; "SD"    ;                  ; IR21
+15[0-2489] ; 9      ; FIXED_LINE ; STANDARD_RATE ;                            ; "fmt_2/3/4" ; "SD"    ;                  ; ITU
+153        ; 9      ; FIXED_LINE ; STANDARD_RATE ;                            ; "fmt_2/3/4" ; "SD"    ; "Khartoum"       ; ITU
+155        ; 9      ; FIXED_LINE ; STANDARD_RATE ;                            ; "fmt_2/3/4" ; "SD"    ; "Khartoum North" ; ITU
+156        ; 9      ; FIXED_LINE ; STANDARD_RATE ;                            ; "fmt_2/3/4" ; "SD"    ; "Khartoum Rural" ; ITU
+157        ; 9      ; FIXED_LINE ; STANDARD_RATE ;                            ; "fmt_2/3/4" ; "SD"    ; "Omdurman"       ; ITU
+183        ; 9      ; FIXED_LINE ; STANDARD_RATE ;                            ; "fmt_2/3/4" ; "SD"    ; "Khartoum"
+185        ; 9      ; FIXED_LINE ; STANDARD_RATE ;                            ; "fmt_2/3/4" ; "SD"    ; "Khartoum North"
+186        ; 9      ; FIXED_LINE ; STANDARD_RATE ;                            ; "fmt_2/3/4" ; "SD"    ; "Khartoum Rural"
+187        ; 9      ; FIXED_LINE ; STANDARD_RATE ;                            ; "fmt_2/3/4" ; "SD"    ; "Omdurman"
+9[016]     ; 9      ; MOBILE     ; STANDARD_RATE ; "zain"                     ; "fmt_2/3/4" ; "SD"    ;                  ; IR21
+9[239]     ; 9      ; MOBILE     ; STANDARD_RATE ; "mtn"                      ; "fmt_2/3/4" ; "SD"    ;                  ; IR21
+95         ; 9      ; MOBILE     ; STANDARD_RATE ; "network_of_the_world_ltd" ; "fmt_2/3/4" ; "SD"    ;                  ; ITU

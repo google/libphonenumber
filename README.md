@@ -55,7 +55,7 @@ Cream Sandwich).
 The [Java demo](https://libphonenumber.appspot.com/) is updated with a slight
 delay after the GitHub release.
 
-Last demo update: v8.12.16.
+Last demo update: v8.12.52.
 
 If this number is lower than the [latest release's version
 number](https://github.com/google/libphonenumber/releases), we are between
@@ -223,10 +223,14 @@ maintenance processes.
 *   PHP: https://github.com/giggsey/libphonenumber-for-php
 *   PostgreSQL in-database types: https://github.com/blm768/pg-libphonenumber
 *   Python: https://github.com/daviddrysdale/python-phonenumbers
+*   Ruby: https://github.com/ianks/mini_phone
 *   Ruby: https://github.com/mobi/telephone_number
 *   Rust: https://github.com/1aim/rust-phonenumber
 *   Erlang: https://github.com/marinakr/libphonenumber_erlang
 *   Clojure: https://github.com/randomseed-io/phone-number
+*   R: https://github.com/socialresearchcentre/dialr/
+*   Elixir: https://github.com/socialpaymentsbv/ex_phone_number
+*   Salesforce: https://appexchange.salesforce.com/appxListingDetail?listingId=a0N3A00000G12oJUAR
 
 Alternatives to our own versions:
 
@@ -238,7 +242,9 @@ Alternatives to our own versions:
     If you don't want to do this, check out the port at
     https://github.com/MichaelRocks/libphonenumber-android, which does repackage
     the metadata and use `AssetManager#open()`, and may be depended on without
-    needing those specific loading optimizations from clients.
+    needing those specific loading optimizations from clients. You should also check
+    out the port at https://github.com/lionscribe/libphonenumber-android which also
+    supports geocoding, and only requires a one line code change.
 *   Javascript: If you don't want to use our version, which depends on Closure,
     there are several other options, including
     https://github.com/catamphetamine/libphonenumber-js - a stripped-down

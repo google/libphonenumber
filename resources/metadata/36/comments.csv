@@ -1,0 +1,7 @@
+Region ; Label         ; Comment
+HU     ; SC            ; "http://www.itu.int/oth/T0202000061/en"
+HU     ; XML           ; "http://www.itu.int/oth/T0202000061/en"
+HU     ; XML           ; "As per Wikipedia https://en.wikipedia.org/wiki/Telephone_numbers_in_Hungary format\nfor both fixed line and mobile number should be preceded with national prefix ""06""."
+HU     ; XML_TOLL_FREE ; "The prefix 40 which was earlier sharedcost is changed to toll free as of Jul. 2016.\nToll free prefix 6802 supported based on user report."
+HU     ; XML_UAN       ; "Includes numbers for corporate networks."
+HU     ; XML_VOIP      ; "Includes non-geographic nomadic numbers."

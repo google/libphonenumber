@@ -1,0 +1,8 @@
+Region ; Type         ; Number
+MT     ; FIXED_LINE   ; "21001234"
+MT     ; MOBILE       ; "96961234"
+MT     ; PAGER        ; "71171234"
+MT     ; TOLL_FREE    ; "80071234"
+MT     ; PREMIUM_RATE ; "50037123"
+MT     ; VOIP         ; "35501234"
+MT     ; UAN          ; "50112345"

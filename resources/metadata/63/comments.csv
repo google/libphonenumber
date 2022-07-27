@@ -1,0 +1,6 @@
+Region ; Label          ; Comment
+PH     ; SC             ; "http://en.wikipedia.org/wiki/%2B63"
+PH     ; XML            ; "http://en.wikipedia.org/wiki/%2B63"
+PH     ; XML_FIXED_LINE ; "Evidence on number length is hard to come by. We have found diallable numbers in Manila\nthat have only 5 digits after the area code; plus it seems the 8822 area code is\nfollowed by 6 digits, and 8842 by only 4. Subscriber number of area code 02 are migrated\nfrom 7 digit to 8 digit since 6th October 2019."
+PH     ; XML_MOBILE     ; "950 added based on info received from Smart. 96[5-7] added based on user report."
+PH     ; XML_TOLL_FREE  ; "Information on toll-free numbers collected from searching the internet"

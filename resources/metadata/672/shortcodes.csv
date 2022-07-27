@@ -1,0 +1,4 @@
+Region ; Prefix ; Length ; Type      ; Tariff
+NF     ; 911    ; 3      ; EMERGENCY ; TOLL_FREE
+NF     ; 955    ; 3      ; EMERGENCY ; TOLL_FREE
+NF     ; 977    ; 3      ; EMERGENCY ; TOLL_FREE

@@ -1,0 +1,4 @@
+Region ; Type         ; Number
+CG     ; FIXED_LINE   ; "222123456"
+CG     ; MOBILE       ; "061234567"
+CG     ; PREMIUM_RATE ; "800123456"

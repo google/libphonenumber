@@ -27,6 +27,7 @@
 #include "phonenumbers/base/logging.h"
 #include "phonenumbers/stringutil.h"
 
+#include "absl/strings/string_view.h"
 namespace i18n {
 namespace phonenumbers {
 

@@ -24,6 +24,8 @@
 #include "phonenumbers/geocoding/geocoding_data.h"
 #include "phonenumbers/geocoding/geocoding_test_data.h"
 
+#include "absl/container/btree_set.h"
+
 namespace i18n {
 namespace phonenumbers {
 
@@ -63,7 +65,7 @@ void TestCountryCallingCodeLanguages(
 
 void TestPrefixDescriptions(const PrefixDescriptions* descriptions) {
   EXPECT_GT(descriptions->prefixes_size, 0);
-  set<int> possible_lengths;
+  absl::btree_set<int> possible_lengths;
   for (int i = 0; i < descriptions->prefixes_size; ++i) {
     int prefix = descriptions->prefixes[i];
     EXPECT_GT(prefix, 0);
