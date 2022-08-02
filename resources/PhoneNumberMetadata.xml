@@ -3577,6 +3577,7 @@
     <!-- Belgium (BE) -->
     <!-- http://www.bipt.be/en/operators/telecommunication/Numbering/Database -->
     <!-- http://www.bipt.be/public/files/en/474/20140829153659_Belgian_numbering_plan -->
+    <!-- https://www.bipt.be/index.php/operators/publication/database-with-reserved-and-allocated-numbers -->
     <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_Belgium -->
     <territory id="BE" countryCode="32" internationalPrefix="00" nationalPrefix="0"
                mobileNumberPortableRegion="true">
@@ -3678,7 +3679,7 @@
         <nationalNumberPattern>
           78(?:
             0[57]|
-            1[0458]|
+            1[04578]|
             2[25]|
             3[15-8]|
             48|
