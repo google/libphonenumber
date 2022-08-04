@@ -640,7 +640,7 @@
     <territory id="AT">
       <generalDesc>
         <nationalNumberPattern>
-          1\d\d(?:
+          [168]\d\d(?:
             \d{3}
           )?
         </nationalNumberPattern>
@@ -656,6 +656,10 @@
               23
             )
           )|
+          (?:
+            61|
+            8108[1-3]
+          )0|
           1(?:
             [12]2|
             33|
@@ -675,6 +679,16 @@
           )
         </nationalNumberPattern>
       </tollFree>
+      <!-- Added yesss! numbers 810810 , 810820 and 810830 based on their website. 
+           Added Georg number 610 based on their website. -->
+      <carrierSpecific>
+        <possibleLengths national="3,6"/>
+        <exampleNumber>610</exampleNumber>
+        <nationalNumberPattern>
+          610|
+          810\d{3}
+        </nationalNumberPattern>
+      </carrierSpecific>
       <emergency>
         <possibleLengths national="3"/>
         <exampleNumber>112</exampleNumber>

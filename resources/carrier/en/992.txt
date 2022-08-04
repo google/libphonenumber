@@ -28,6 +28,7 @@
 99280|Tacom
 99288|Megafon
 99290|Megafon
+992910|Tacom
 992911|Tacom
 992915|Tacom
 992917|Tacom

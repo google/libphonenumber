@@ -1,4 +1,5 @@
 Id               ; International Dialling Codes ; Name:en
+019mobile        ;                              ; "019mobile"
 __unknown        ; "00,01[2-9]"
 annatel          ;                              ; "Annatel"
 beezz            ;                              ; "Beezz"
@@ -14,6 +15,5 @@ maskyoo          ;                              ; "Maskyoo"
 orange           ;                              ; "Orange"
 pelephone        ;                              ; "Pelephone"
 rami_levy        ;                              ; "Rami Levy"
-telzar           ;                              ; "Telzar"
 wataniya         ;                              ; "Wataniya"
 xphone           ;                              ; "Xphone"
