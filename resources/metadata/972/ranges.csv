@@ -59,12 +59,10 @@ Prefix     ; Length ; Type       ; Tariff        ; Area Code Length ; National O
 54[1-9]    ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "orange"           ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; IR21
 5501       ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "beezz"            ; "mobile_2/3/4"        ; "IL"
 5517       ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "cellact"          ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; GOVERNMENT
-5519       ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "telzar"           ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; GOVERNMENT
+5519       ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "019mobile"        ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; GOVERNMENT
 552[23]    ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "home_cellular"    ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; IR21
-552[45]    ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "telzar"           ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; GOVERNMENT
-552[6-8]   ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "telzar"           ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ;            ; "Added per client's request."
-5529       ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "telzar"           ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; IR21
-553[01]    ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "telzar"           ; "mobile_2/3/4"        ; "IL"
+552[4-9]   ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "019mobile"        ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; IR21
+553[01]    ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "019mobile"        ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; IR21
 553[23]    ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "free_telecom"     ; "mobile_2/3/4"        ; "IL"
 5543       ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "maskyoo"          ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; ITU
 5544       ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "cellran_cellular" ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; GOVERNMENT
@@ -73,9 +71,10 @@ Prefix     ; Length ; Type       ; Tariff        ; Area Code Length ; National O
 555[689]   ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ;                    ; "mobile_2/3/4"        ; "IL"
 556[6-8]   ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "rami_levy"        ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; GOVERNMENT
 557[0-2]   ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "cellact"          ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; GOVERNMENT
-557[67]    ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ;                    ; "mobile_2/3/4"        ; "IL"
+5576       ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ;                    ; "mobile_2/3/4"        ; "IL"
+5577       ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "019mobile"        ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; IR21
 558[7-9]   ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "pelephone"        ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; GOVERNMENT
-559[1-9]   ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "telzar"           ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; GOVERNMENT
+559[1-9]   ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "019mobile"        ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; GOVERNMENT
 56         ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "wataniya"         ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; GOVERNMENT
 58         ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "golan_telecom"    ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; IR21
 59[2-9]    ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "jawwal"           ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; GOVERNMENT

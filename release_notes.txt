@@ -1,3 +1,13 @@
+Aug 04, 2022: v8.12.53
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   AT, BE, CL, CN, GE, GF, GH, HK, JM, PG, RE, US
+ - Updated short number metadata for region code(s): AT
+ - New geocoding data for country calling code(s): 1943 (en)
+ - Updated carrier data for country calling code(s):
+   34 (en), 56 (en), 57 (en), 86 (en), 233 (en), 972 (en), 992 (en)
+ - Updated / refreshed time zone meta data.
+
 Jul 19, 2022: v8.12.52
 Metadata changes:
  - Updated alternate formatting data for country calling code(s): 49
