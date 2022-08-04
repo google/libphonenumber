@@ -243,7 +243,7 @@ set (
   "src/phonenumbers/string_byte_sink.cc"
   "src/phonenumbers/stringutil.cc"
   "src/phonenumbers/unicodestring.cc"
-  "src/phonenumbers/utf/rune.c"
+  "src/phonenumbers/utf/rune.cc"
   "src/phonenumbers/utf/unicodetext.cc"
   "src/phonenumbers/utf/unilib.cc"
 )
