@@ -1,3 +1,11 @@
+Aug 18, 2022: v8.12.54
+Metadata changes:
+ - Updated phone metadata for region code(s): BE, BF, GE, HN, MX, PT, US
+ - Updated geocoding data for country calling code(s):
+   52 (en), 61 (en), 351 (en)
+ - Updated carrier data for country calling code(s):
+   226 (en), 351 (en), 420 (en), 992 (en), 995 (en)
+
 Aug 04, 2022: v8.12.53
 Metadata changes:
  - Updated phone metadata for region code(s):

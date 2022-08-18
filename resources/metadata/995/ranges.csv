@@ -81,7 +81,7 @@ Prefix          ; Length ; Type       ; Tariff        ; Area Code Length ; Natio
 50070[0-4]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "myphone"          ; "mobile_3/2/2/2" ; "GE"    ;                         ; ITU
 50555[5-9]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "magticom"         ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21       ; "IR21 dated 3/1/2019"
 51100           ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "magticom"         ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
-511[12]         ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "magticom"         ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
+511[124]        ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "magticom"         ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
 5113[01]        ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "magticom"         ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
 51133[0-4]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "magticom"         ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
 51151[0-4]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "silknet"          ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
