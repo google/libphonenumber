@@ -27,10 +27,9 @@ Prefix        ; Length ; Type            ; Tariff        ; Operator             
 70376         ; 9      ; MOBILE          ; STANDARD_RATE ; "bsg"                      ; "fmt1_3/3/3"   ; "CZ"    ;                            ; GOVERNMENT
 704[0-57]     ; 9      ; MOBILE          ; STANDARD_RATE ; "sazka_sazkova_kancelar"   ; "fmt1_3/3/3"   ; "CZ"    ;                            ; GOVERNMENT
 704[689]      ; 9      ; MOBILE          ; STANDARD_RATE ;                            ; "fmt1_3/3/3"   ; "CZ"    ;                            ;            ; "Fillup To Support Master Range"
-705[0-4]      ; 9      ; MOBILE          ; STANDARD_RATE ; "o2"                       ; "fmt1_3/3/3"   ; "CZ"    ;                            ; IR21
-705[5689]     ; 9      ; MOBILE          ; STANDARD_RATE ;                            ; "fmt1_3/3/3"   ; "CZ"    ;                            ;            ; "Fillup To Support Master Range"
-70570         ; 9      ; MOBILE          ; STANDARD_RATE ; "t_mobile"                 ; "fmt1_3/3/3"   ; "CZ"    ;                            ; IR21
-7057[1-9]     ; 9      ; MOBILE          ; STANDARD_RATE ;                            ; "fmt1_3/3/3"   ; "CZ"    ;                            ;            ; "Fillup To Support Master Range"
+705[0-4]      ; 9      ; MOBILE          ; STANDARD_RATE ; "cez"                      ; "fmt1_3/3/3"   ; "CZ"    ;                            ; GOVERNMENT
+7055          ; 9      ; MOBILE          ; STANDARD_RATE ;                            ; "fmt1_3/3/3"   ; "CZ"    ;                            ;            ; "Fillup To Support Master Range"
+705[6-9]      ; 9      ; MOBILE          ; STANDARD_RATE ; "t_mobile"                 ; "fmt1_3/3/3"   ; "CZ"    ;                            ; GOVERNMENT
 72            ; 9      ; MOBILE          ; STANDARD_RATE ; "o2"                       ; "fmt1_3/3/3"   ; "CZ"    ;                            ; IR21
 730[0-25689]  ; 9      ; MOBILE          ; STANDARD_RATE ; "t_mobile"                 ; "fmt1_3/3/3"   ; "CZ"    ;                            ; IR21
 73030         ; 9      ; MOBILE          ; STANDARD_RATE ; "t_mobile"                 ; "fmt1_3/3/3"   ; "CZ"    ;                            ; IR21
@@ -125,15 +124,16 @@ Prefix        ; Length ; Type            ; Tariff        ; Operator             
 7979[79]      ; 9      ; MOBILE          ; STANDARD_RATE ; "t_mobile"                 ; "fmt1_3/3/3"   ; "CZ"    ;                            ; IR21
 79900         ; 9      ; MOBILE          ; STANDARD_RATE ; "maxprogres"               ; "fmt1_3/3/3"   ; "CZ"    ;                            ; GOVERNMENT
 799[02][1-9]  ; 9      ; MOBILE          ; STANDARD_RATE ;                            ; "fmt1_3/3/3"   ; "CZ"    ;                            ;            ; "Fillup To Support Master Range"
-7991[01]      ; 9      ; MOBILE          ; STANDARD_RATE ; "newtel"                   ; "fmt1_3/3/3"   ; "CZ"    ;                            ; GOVERNMENT
-7991[2-9]     ; 9      ; MOBILE          ; STANDARD_RATE ;                            ; "fmt1_3/3/3"   ; "CZ"    ;                            ;            ; "Fillup To Support Master Range"
+7991          ; 9      ; MOBILE          ; STANDARD_RATE ; "t_mobile"                 ; "fmt1_3/3/3"   ; "CZ"    ;                            ; GOVERNMENT
 79920         ; 9      ; MOBILE          ; STANDARD_RATE ; "metronet"                 ; "fmt1_3/3/3"   ; "CZ"    ;                            ; GOVERNMENT
 799[3468]     ; 9      ; MOBILE          ; STANDARD_RATE ;                            ; "fmt1_3/3/3"   ; "CZ"    ;                            ;            ; "Fillup To Support Master Range"
-7995[0-2]     ; 9      ; MOBILE          ; STANDARD_RATE ; "terms"                    ; "fmt1_3/3/3"   ; "CZ"    ;                            ; GOVERNMENT
-7995[3-9]     ; 9      ; MOBILE          ; STANDARD_RATE ;                            ; "fmt1_3/3/3"   ; "CZ"    ;                            ;            ; "Fillup To Support Master Range"
+7995[0-3]     ; 9      ; MOBILE          ; STANDARD_RATE ; "terms"                    ; "fmt1_3/3/3"   ; "CZ"    ;                            ; GOVERNMENT
+79954         ; 9      ; MOBILE          ; STANDARD_RATE ; "t_mobile"                 ; "fmt1_3/3/3"   ; "CZ"    ;                            ; GOVERNMENT
+7995[56]      ; 9      ; MOBILE          ; STANDARD_RATE ; "gomobil"                  ; "fmt1_3/3/3"   ; "CZ"    ;                            ; GOVERNMENT
+7995[7-9]     ; 9      ; MOBILE          ; STANDARD_RATE ;                            ; "fmt1_3/3/3"   ; "CZ"    ;                            ;            ; "Fillup To Support Master Range"
 799[79][0-8]  ; 9      ; MOBILE          ; STANDARD_RATE ;                            ; "fmt1_3/3/3"   ; "CZ"    ;                            ;            ; "Fillup To Support Master Range"
 79979         ; 9      ; MOBILE          ; STANDARD_RATE ; "minitel"                  ; "fmt1_3/3/3"   ; "CZ"    ;                            ; GOVERNMENT
-79999         ; 9      ; MOBILE          ; STANDARD_RATE ; "maxprogres"               ; "fmt1_3/3/3"   ; "CZ"    ;                            ; GOVERNMENT
+79999         ; 9      ; MOBILE          ; STANDARD_RATE ; "t_mobile"                 ; "fmt1_3/3/3"   ; "CZ"    ;                            ; GOVERNMENT
 800           ; 9      ; FIXED_LINE      ; TOLL_FREE     ;                            ; "fmt1_3/3/3"   ; "CZ"    ;                            ; GOVERNMENT
 8[134]        ; 9      ; FIXED_LINE      ; SHARED_COST   ;                            ; "fmt1_3/3/3"   ; "CZ"    ;                            ; GOVERNMENT
 90[05689]     ; 9      ; FIXED_LINE      ; PREMIUM_RATE  ;                            ; "fmt1_3/3/3"   ; "CZ"    ;                            ; GOVERNMENT

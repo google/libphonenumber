@@ -28,12 +28,8 @@
 99280|Tacom
 99288|Megafon
 99290|Megafon
-992910|Tacom
-992911|Tacom
-992915|Tacom
-992917|Tacom
+99291|Tacom
 992918|Babilon-M
-992919|Tacom
 99292|Tcell
 99293|Tcell
 99294|Babilon-M

@@ -77,7 +77,7 @@ Prefix        ; Length ; Type       ; Tariff        ; Operator                  
 707[0579]     ; 8      ; FIXED_LINE ; PREMIUM_RATE  ;                                  ; "fmt3_2/2/2/2" ; "BE"
 71            ; 8      ; FIXED_LINE ; STANDARD_RATE ;                                  ; "fmt3_2/2/2/2" ; "BE"    ; "Charleroi"          ; "Charleroi"          ; "Charleroi"          ; "Charleroi"
 780[57]       ; 8      ; UAN        ; STANDARD_RATE ;                                  ; "fmt3_2/2/2/2" ; "BE"
-781[0458]     ; 8      ; UAN        ; STANDARD_RATE ;                                  ; "fmt3_2/2/2/2" ; "BE"
+781[014-8]    ; 8      ; UAN        ; STANDARD_RATE ;                                  ; "fmt3_2/2/2/2" ; "BE"
 782[25]       ; 8      ; UAN        ; STANDARD_RATE ;                                  ; "fmt3_2/2/2/2" ; "BE"
 783[15-8]     ; 8      ; UAN        ; STANDARD_RATE ;                                  ; "fmt3_2/2/2/2" ; "BE"
 7848          ; 8      ; UAN        ; STANDARD_RATE ;                                  ; "fmt3_2/2/2/2" ; "BE"

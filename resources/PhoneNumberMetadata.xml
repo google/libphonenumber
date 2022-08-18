@@ -3678,7 +3678,7 @@
         <nationalNumberPattern>
           78(?:
             0[57]|
-            1[0458]|
+            1[014-8]|
             2[25]|
             3[15-8]|
             48|
@@ -3735,7 +3735,7 @@
         <exampleNumber>70123456</exampleNumber>
         <nationalNumberPattern>
           (?:
-            0[125-7]|
+            0[1-35-7]|
             5[1-8]|
             [67]\d
           )\d{6}
@@ -10963,7 +10963,7 @@
             )|
             11(?:
               00|
-              [12]\d|
+              [124]\d|
               3[01]
             )|
             5200|
@@ -12410,7 +12410,7 @@
         <nationalNumberPattern>
           2(?:
             2(?:
-              0[0-39]|
+              0[0-359]|
               1[1-367]|
               [23]\d|
               4[03-6]|
@@ -21138,7 +21138,7 @@
         <possibleLengths national="10" localOnly="7,8"/>
         <exampleNumber>2001234567</exampleNumber>
         <nationalNumberPattern>
-          6571\d{6}|
+          657[12]\d{6}|
           (?:
             2(?:
               0[01]|
@@ -21212,7 +21212,7 @@
         <possibleLengths national="10,11" localOnly="7,8"/>
         <exampleNumber>12221234567</exampleNumber>
         <nationalNumberPattern>
-          6571\d{6}|
+          657[12]\d{6}|
           (?:
             1(?:
               2(?:
@@ -24205,10 +24205,10 @@
         <nationalNumberPattern>
           2(?:
             [12]\d|
-            [35][1-689]|
+            3[1-689]|
             4[1-59]|
+            [57][1-9]|
             6[1-35689]|
-            7[1-9]|
             8[1-69]|
             9[1256]
           )\d{6}
@@ -24218,9 +24218,15 @@
         <possibleLengths national="9"/>
         <exampleNumber>912345678</exampleNumber>
         <nationalNumberPattern>
-          6[0356]92(?:
-            30|
-            9\d
+          6(?:
+            [06]92(?:
+              30|
+              9\d
+            )|
+            [35]92(?:
+              3[03]|
+              9\d
+            )
           )\d{3}|
           (?:
             (?:
@@ -24292,7 +24298,10 @@
       <voicemail>
         <possibleLengths national="9"/>
         <exampleNumber>600110000</exampleNumber>
-        <nationalNumberPattern>600\d{6}</nationalNumberPattern>
+        <nationalNumberPattern>
+          600\d{6}|
+          6[06]9233\d{3}
+        </nationalNumberPattern>
       </voicemail>
     </territory>
 
@@ -28724,6 +28733,7 @@
               8(?:
                 00|
                 42|
+                5[25]|
                 88
               )|
               9(?:
@@ -28866,6 +28876,7 @@
               8(?:
                 00|
                 42|
+                5[25]|
                 88
               )|
               9(?:
