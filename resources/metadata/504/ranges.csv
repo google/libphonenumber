@@ -1,6 +1,7 @@
 Prefix       ; Length ; Type       ; Tariff        ; National Only ; Operator   ; Format            ; Regions ; Geocode:en                         ; Provenance
 220[013]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Polo Paz"                         ; ITU
 2202         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Tegucigalpa"                      ; WEB
+2205         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"
 2209         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Res. Centro América, Tegucigalpa" ; ITU
 2211         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "El Picacho"                       ; ITU
 221[26]      ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Rdsi Tegucigalpa (Pri3)"          ; ITU
