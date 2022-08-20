@@ -76,6 +76,7 @@
 2125380|Rabat et alentours
 2125388|Tanger et alentours
 21253890|Fès/Maknès et alentours
+21253899|Tangier-Tetouan/Chefchaouen
 2125393|Tanger
 2125394|Asilah
 2125395|Larache
