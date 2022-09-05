@@ -20,8 +20,8 @@ import static com.google.common.truth.Truth.assertThat;
 import static com.google.i18n.phonenumbers.metadata.DigitSequence.domain;
 import static com.google.i18n.phonenumbers.metadata.RangeSpecification.ALL_DIGITS_MASK;
 import static com.google.i18n.phonenumbers.metadata.RangeSpecification.parse;
-import static java.util.Arrays.asList;
 import static com.google.i18n.phonenumbers.metadata.testing.AssertUtil.assertThrows;
+import static java.util.Arrays.asList;
 
 import com.google.common.collect.ImmutableRangeSet;
 import com.google.common.collect.Range;
