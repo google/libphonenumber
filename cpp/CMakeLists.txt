@@ -36,6 +36,7 @@ endif ()
 # Helper functions dealing with finding libraries and programs this library
 # depends on.
 
+include (FetchContent)
 include (GNUInstallDirs)
 include (../tools/cpp/gtest.cmake)
 
@@ -101,6 +102,33 @@ if (${USE_ALTERNATE_FORMATS} STREQUAL "ON")
 endif ()
 
 # Find all the required libraries and programs.
+find_package(absl)
+
+if(NOT absl_FOUND)
+  # Downloading the abseil sources at particular version to not catch up
+  # with its new build requirements like min C++14 is mandated in that lib.
+  FetchContent_Declare(
+      abseil-cpp
+      GIT_REPOSITORY  https://github.com/abseil/abseil-cpp.git
+      GIT_TAG         273292d
+  )
+
+  # Building the abseil binaries
+  FetchContent_GetProperties(abseil-cpp)
+  if (NOT abseil-cpp_POPULATED)
+      FetchContent_Populate(abseil-cpp)
+  endif ()
+
+  if (NOT abseil-cpp_POPULATED)
+     message (FATAL_ERROR "Could not build abseil-cpp binaries.")
+  endif ()
+
+  # Safeguarding against any potential link errors as mentioned in
+  # https://github.com/abseil/abseil-cpp/issues/225
+  set(CMAKE_POSITION_INDEPENDENT_CODE TRUE)
+  add_subdirectory(${abseil-cpp_SOURCE_DIR} ${abseil-cpp_BINARY_DIR})
+endif()
+
 if (${USE_BOOST} STREQUAL "ON")
   add_definitions ("-DI18N_PHONENUMBERS_USE_BOOST")
   if (WIN32)
@@ -203,8 +231,6 @@ add_custom_command (
 )
 
 if (${BUILD_GEOCODER} STREQUAL "ON")
-  find_package(absl)
-
   # Geocoding data cpp file generation
   set (TOOLS_DIR "${CMAKE_CURRENT_BINARY_DIR}/tools")
   add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/../tools/cpp" "${TOOLS_DIR}")
