@@ -86,12 +86,16 @@ Prefix         ; Length ; Type       ; Tariff        ; Area Code Length ; Operat
 3334[0-4]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "dime"          ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; GOVERNMENT
 3334[5-9]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "tigo"          ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; GOVERNMENT
 333[57-9]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ;                 ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; GOVERNMENT
-3336[0-4]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "suma"          ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; GOVERNMENT
-3336[5-9]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ;                 ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; GOVERNMENT
+3336[0-7]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "suma"          ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; GOVERNMENT
+3336[89]       ; 10     ; MOBILE     ; STANDARD_RATE ;                  ;                 ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; GOVERNMENT
 350[019]       ; 10     ; MOBILE     ; STANDARD_RATE ;                  ;                 ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; GOVERNMENT
 350[2-8]       ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "avantel"       ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; GOVERNMENT
 351            ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "avantel"       ; "mobile_3/7"    ; "CO"
 370            ; 10     ; MOBILE     ; STANDARD_RATE ;                  ;                 ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; GOVERNMENT
+6010[0-4]      ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "Cundinamarca"                     ; "Cundinamarca"                     ; GOVERNMENT
+60105[0-4]     ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "Cundinamarca"                     ; "Cundinamarca"                     ; GOVERNMENT
+601055[0-4]    ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "Cundinamarca"                     ; "Cundinamarca"                     ; GOVERNMENT
+60105550       ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "Cundinamarca"                     ; "Cundinamarca"                     ; GOVERNMENT
 601[2-7]       ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "Bogotá"                           ; "Bogotá"
 6018[015-9]    ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"
 601820         ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "Madrid"                           ; "Madrid"

@@ -50,6 +50,7 @@ Prefix        ; Length ; Type       ; Tariff        ; Operator ; Format         
 253[7-9]      ; 10     ; FIXED_LINE ; STANDARD_RATE ;          ; "fixed_2/2/1/5"  ; "CI"    ;                    ;                    ; IR21
 2720[23]      ; 10     ; FIXED_LINE ; STANDARD_RATE ;          ; "fixed_2/2/1/5"  ; "CI"    ; "Plateau, Abidjan" ; "Plateau, Abidjan" ; ITU
 2721[2357]    ; 10     ; FIXED_LINE ; STANDARD_RATE ;          ; "fixed_2/2/1/5"  ; "CI"    ; "Abidjan-sud"      ; "Abidjan-sud"      ; ITU
+27222         ; 10     ; FIXED_LINE ; STANDARD_RATE ;          ; "fixed_2/2/1/5"  ; "CI"    ; "Abidjan-sud"      ; "Abidjan-sud"
 2722[45]      ; 10     ; FIXED_LINE ; STANDARD_RATE ;          ; "fixed_2/2/1/5"  ; "CI"    ; "Cocody, Abidjan"  ; "Cocody, Abidjan"  ; ITU
 2723[45]      ; 10     ; FIXED_LINE ; STANDARD_RATE ;          ; "fixed_2/2/1/5"  ; "CI"    ; "Banco, Abidjan"   ; "Banco, Abidjan"   ; ITU
 2724[3-5]     ; 10     ; FIXED_LINE ; STANDARD_RATE ;          ; "fixed_2/2/1/5"  ; "CI"    ; "Abobo, Abidjan"   ; "Abobo, Abidjan"   ; ITU

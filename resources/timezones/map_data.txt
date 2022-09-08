@@ -1424,8 +1424,10 @@
 1734|America/New_York
 1737|America/Chicago
 1740|America/New_York
+1742|America/Toronto
 1743|America/New_York
 1747|America/Los_Angeles
+1753|America/Toronto
 1754|America/New_York
 1757|America/New_York
 1758|America/St_Lucia

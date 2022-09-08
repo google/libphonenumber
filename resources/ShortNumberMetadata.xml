@@ -3030,13 +3030,13 @@
     <territory id="CO">
       <generalDesc>
         <nationalNumberPattern>
-          [148]\d\d(?:
-            \d{2}
+          [1-589]\d\d(?:
+            \d{2,3}
           )?
         </nationalNumberPattern>
       </generalDesc>
       <shortCode>
-        <possibleLengths national="3,5"/>
+        <possibleLengths national="3,5,6"/>
         <exampleNumber>106</exampleNumber>
         <nationalNumberPattern>
           1(?:
@@ -3049,8 +3049,20 @@
             6[4-7]|
             95
           )|
+          (?:
+            29002|
+            39003
+          )9|
           40404|
-          85432
+          5930\d\d|
+          85432|
+          (?:
+            [2359][57]|
+            8(?:
+              7|
+              9\d
+            )
+          )\d{3}
         </nationalNumberPattern>
       </shortCode>
       <tollFree>
@@ -13425,18 +13437,24 @@
       </generalDesc>
       <shortCode>
         <possibleLengths national="3,5"/>
-        <exampleNumber>111</exampleNumber>
+        <exampleNumber>110</exampleNumber>
         <nationalNumberPattern>
-          11[128]|
+          1(?:
+            1\d|
+            9[09]
+          )|
           46400|
           999
         </nationalNumberPattern>
       </shortCode>
       <tollFree>
         <possibleLengths national="3"/>
-        <exampleNumber>111</exampleNumber>
+        <exampleNumber>110</exampleNumber>
         <nationalNumberPattern>
-          11[12]|
+          1(?:
+            1[0-79]|
+            9[09]
+          )|
           999
         </nationalNumberPattern>
       </tollFree>
@@ -13449,12 +13467,22 @@
            http://in2eastafrica.net/emergency-numbers-in-tanzania -->
       <emergency>
         <possibleLengths national="3"/>
-        <exampleNumber>111</exampleNumber>
+        <exampleNumber>110</exampleNumber>
         <nationalNumberPattern>
-          11[12]|
+          11[0-245]|
           999
         </nationalNumberPattern>
       </emergency>
+      <expandedEmergency>
+        <possibleLengths national="3"/>
+        <exampleNumber>116</exampleNumber>
+        <nationalNumberPattern>
+          1(?:
+            1[67]|
+            99
+          )
+        </nationalNumberPattern>
+      </expandedEmergency>
       <smsServices>
         <possibleLengths national="5"/>
         <exampleNumber>46400</exampleNumber>

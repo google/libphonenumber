@@ -25,9 +25,15 @@
 97433|ooredoo
 974399|ooredoo
 97450|ooredoo
-974510|ooredoo
-974511|ooredoo
+97451|ooredoo
 974520|ooredoo
+974521|ooredoo
+974522|ooredoo
+974523|ooredoo
+974524|ooredoo
+974525|ooredoo
+974526|ooredoo
+974527|ooredoo
 97455|ooredoo
 974599|ooredoo
 974600|ooredoo
