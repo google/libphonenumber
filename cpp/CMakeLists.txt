@@ -95,6 +95,7 @@ option (USE_RE2 "Use RE2" OFF)
 option (USE_STD_MAP "Force the use of std::map" OFF)
 option (BUILD_STATIC_LIB "Build static libraries" ON)
 option (BUILD_SHARED_LIBS "Build shared libraries" ON)
+option (BUILD_TESTING "Build testing" ON)
 option (USE_STDMUTEX "Use C++ 2011 std::mutex for multi-threading" OFF)
 option (USE_POSIX_THREAD "Use Posix api for multi-threading" OFF)
 
@@ -320,13 +321,9 @@ endif ()
 
 # This function is invoked to create metadata, test metadata and lite metadata
 # code generation targets.
-function (add_metadata_gen_target TARGET_NAME
-                                  XML_FILE
-                                  METADATA_TYPE
-                                  METADATA_HEADER)
+function (add_metadata_gen_target TARGET_NAME XML_FILE METADATA_TYPE METADATA_HEADER)
   set (METADATA_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/src/phonenumbers")
-  set (GEN_OUTPUT "${METADATA_SOURCE_DIR}/${METADATA_TYPE}.cc"
-                  "${METADATA_SOURCE_DIR}/${METADATA_HEADER}.h")
+  set (GEN_OUTPUT "${METADATA_SOURCE_DIR}/${METADATA_TYPE}.cc" "${METADATA_SOURCE_DIR}/${METADATA_HEADER}.h")
   set (JAR_PATH "${CMAKE_CURRENT_SOURCE_DIR}/../tools/java/cpp-build/target")
   set (JAR_PATH "${JAR_PATH}/cpp-build-1.0-SNAPSHOT-jar-with-dependencies.jar")
 
@@ -527,90 +524,95 @@ if (BUILD_GEOCODER)
   target_link_libraries (geocoding-shared ${LIBRARY_DEPS})
 endif ()
 
-# Build a specific library for testing purposes.
-add_library (phonenumber_testing STATIC ${TESTING_LIBRARY_SOURCES})
-if (BUILD_GEOCODER)
-  add_dependencies (phonenumber_testing generate_geocoding_data)
-endif ()
-target_link_libraries (phonenumber_testing ${LIBRARY_DEPS})
+#----------------------------------------------------------------
+# Build testing library
+#----------------------------------------------------------------
 
-if (BUILD_GEOCODER)
-  # Test geocoding data cpp files generation.
-  set (GEOCODING_TEST_DIR "${RESOURCES_DIR}/test/geocoding")
-  file (GLOB_RECURSE GEOCODING_TEST_SOURCES "${GEOCODING_TEST_DIR}/*.txt")
+if(BUILD_TESTING)
+  add_library (phonenumber_testing STATIC ${TESTING_LIBRARY_SOURCES})
+  if (BUILD_GEOCODER)
+    add_dependencies (phonenumber_testing generate_geocoding_data)
+  endif ()
+  target_link_libraries (phonenumber_testing ${LIBRARY_DEPS})
 
-  set (GEOCODING_TEST_DATA_OUTPUT
-    "${CMAKE_CURRENT_SOURCE_DIR}/test/phonenumbers/geocoding/geocoding_test_data.cc"
-  )
+  if (BUILD_GEOCODER)
+    # Test geocoding data cpp files generation.
+    set (GEOCODING_TEST_DIR "${RESOURCES_DIR}/test/geocoding")
+    file (GLOB_RECURSE GEOCODING_TEST_SOURCES "${GEOCODING_TEST_DIR}/*.txt")
 
-  add_custom_command (
-    COMMAND generate_geocoding_data "${GEOCODING_TEST_DIR}"
-      "${GEOCODING_TEST_DATA_OUTPUT}" "_test"
+    set (GEOCODING_TEST_DATA_OUTPUT "${CMAKE_CURRENT_SOURCE_DIR}/test/phonenumbers/geocoding/geocoding_test_data.cc")
 
-    OUTPUT ${GEOCODING_TEST_DATA_OUTPUT}
-    DEPENDS ${GEOCODING_TEST_SOURCES} generate_geocoding_data
-    COMMENT "Generating geocoding test data code"
-  )
-endif ()
+    add_custom_command (
+      COMMAND generate_geocoding_data "${GEOCODING_TEST_DIR}" "${GEOCODING_TEST_DATA_OUTPUT}" "_test"
+      OUTPUT ${GEOCODING_TEST_DATA_OUTPUT}
+      DEPENDS ${GEOCODING_TEST_SOURCES} generate_geocoding_data
+      COMMENT "Generating geocoding test data code"
+    )
+  endif ()
 
+  set (TEST_SOURCES
+      "test/phonenumbers/asyoutypeformatter_test.cc"
+      "test/phonenumbers/logger_test.cc"
+      "test/phonenumbers/matcher_test.cc"
+      "test/phonenumbers/phonenumberutil_test.cc"
+      "test/phonenumbers/regexp_adapter_test.cc"
+      "test/phonenumbers/regexp_cache_test.cc"
+      "test/phonenumbers/run_tests.cc"
+      "test/phonenumbers/shortnumberinfo_test.cc"
+      "test/phonenumbers/stringutil_test.cc"
+      "test/phonenumbers/test_util.cc"
+      "test/phonenumbers/unicodestring_test.cc"
+      "test/phonenumbers/utf/unicodetext_test.cc")
 
-set (TEST_SOURCES
-  "test/phonenumbers/asyoutypeformatter_test.cc"
-  "test/phonenumbers/logger_test.cc"
-  "test/phonenumbers/matcher_test.cc"
-  "test/phonenumbers/phonenumberutil_test.cc"
-  "test/phonenumbers/regexp_adapter_test.cc"
-  "test/phonenumbers/regexp_cache_test.cc"
-  "test/phonenumbers/run_tests.cc"
-  "test/phonenumbers/shortnumberinfo_test.cc"
-  "test/phonenumbers/stringutil_test.cc"
-  "test/phonenumbers/test_util.cc"
-  "test/phonenumbers/unicodestring_test.cc"
-  "test/phonenumbers/utf/unicodetext_test.cc"
-)
+  if (BUILD_GEOCODER)
+    set (GEOCODING_TEST_SOURCES
+        "test/phonenumbers/geocoding/area_code_map_test.cc"
+        "test/phonenumbers/geocoding/geocoding_data_test.cc"
+        "test/phonenumbers/geocoding/geocoding_test_data.cc"
+        "test/phonenumbers/geocoding/mapping_file_provider_test.cc"
+        "test/phonenumbers/geocoding/phonenumber_offline_geocoder_test.cc")
+    list (APPEND TEST_SOURCES ${GEOCODING_TEST_SOURCES})
+  endif ()
 
-if (BUILD_GEOCODER)
-  set (GEOCODING_TEST_SOURCES
-    "test/phonenumbers/geocoding/area_code_map_test.cc"
-    "test/phonenumbers/geocoding/geocoding_data_test.cc"
-    "test/phonenumbers/geocoding/geocoding_test_data.cc"
-    "test/phonenumbers/geocoding/mapping_file_provider_test.cc"
-    "test/phonenumbers/geocoding/phonenumber_offline_geocoder_test.cc"
-  )
-  list (APPEND TEST_SOURCES ${GEOCODING_TEST_SOURCES})
-endif ()
+  if (USE_ICU_REGEXP)
+    # Add the phone number matcher tests.
+    list (APPEND TEST_SOURCES "test/phonenumbers/phonenumbermatch_test.cc")
+    list (APPEND TEST_SOURCES "test/phonenumbers/phonenumbermatcher_test.cc")
+  endif ()
 
-if (USE_ICU_REGEXP)
-  # Add the phone number matcher tests.
-  list (APPEND TEST_SOURCES "test/phonenumbers/phonenumbermatch_test.cc")
-  list (APPEND TEST_SOURCES "test/phonenumbers/phonenumbermatcher_test.cc")
-endif ()
+  # Build the testing binary.
+  include_directories ("test")
+  add_executable (libphonenumber_test ${TEST_SOURCES})
+  set (TEST_LIBS phonenumber_testing ${GTEST_LIB})
 
-# Build the testing binary.
-include_directories ("test")
-add_executable (libphonenumber_test ${TEST_SOURCES})
-set (TEST_LIBS phonenumber_testing ${GTEST_LIB})
+  if (NOT WIN32)
+    list (APPEND TEST_LIBS pthread)
+  endif ()
 
-if (NOT WIN32)
-  list (APPEND TEST_LIBS pthread)
-endif ()
+  target_link_libraries (libphonenumber_test ${TEST_LIBS})
 
-target_link_libraries (libphonenumber_test ${TEST_LIBS})
+  # Unfortunately add_custom_target() can't accept a single command provided as a
+  # list of commands.
+  if (BUILD_GEOCODER)
+    add_custom_target (tests
+      COMMAND generate_geocoding_data_test
+      COMMAND libphonenumber_test
+      DEPENDS generate_geocoding_data_test libphonenumber_test
+    )
+  else ()
+    add_custom_target (tests
+      COMMAND libphonenumber_test
+      DEPENDS libphonenumber_test
+    )
+  endif ()
 
-# Unfortunately add_custom_target() can't accept a single command provided as a
-# list of commands.
-if (BUILD_GEOCODER)
-  add_custom_target (tests
-    COMMAND generate_geocoding_data_test
-    COMMAND libphonenumber_test
-    DEPENDS generate_geocoding_data_test libphonenumber_test
-  )
-else ()
-  add_custom_target (tests
-    COMMAND libphonenumber_test
-    DEPENDS libphonenumber_test
-  )
-endif ()
+  # Build an example program using geocoding, mainly to make sure that both
+  # libraries are built properly.
+  if (BUILD_GEOCODER)
+    add_executable (geocoding_test_program "test/phonenumbers/geocoding/geocoding_test_program.cc")
+    target_link_libraries (geocoding_test_program geocoding phonenumber)
+  endif ()
+endif()
 
 # Install rules.
 install (FILES
@@ -691,18 +693,7 @@ endif ()
 
 if (BUILD_GEOCODER)
   install (TARGETS geocoding LIBRARY DESTINATION ${LIBDIR} ARCHIVE DESTINATION ${LIBDIR})
-  install (TARGETS geocoding-shared LIBRARY DESTINATION ${LIBDIR} ARCHIVE
-           DESTINATION ${LIBDIR})
-endif ()
-
-# Build an example program using geocoding, mainly to make sure that both
-# libraries are built properly.
-if (BUILD_GEOCODER)
-  add_executable (
-    geocoding_test_program
-    "test/phonenumbers/geocoding/geocoding_test_program.cc"
-  )
-  target_link_libraries (geocoding_test_program geocoding phonenumber)
+  install (TARGETS geocoding-shared LIBRARY DESTINATION ${LIBDIR} ARCHIVE DESTINATION ${LIBDIR})
 endif ()
 
 # Build an RPM
