@@ -12,7 +12,7 @@ Prefix       ; Length ; Type       ; Tariff        ; Operator             ; Form
 16[58]       ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
 17[017]      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
 176          ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"
-18[258]      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
+18[2358]     ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
 19[1389]     ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
 2[0235-79]   ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
 21[0-7]      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT

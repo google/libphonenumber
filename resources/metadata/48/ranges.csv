@@ -13,6 +13,7 @@ Prefix       ; Length ; Type       ; Tariff        ; Operator                   
 1719         ; 7      ; FIXED_LINE ; STANDARD_RATE ;                             ; "fixed_2/2/3"       ; "PL"    ; "Rzeszów"              ; "Rzeszów"
 18           ; 9      ; FIXED_LINE ; STANDARD_RATE ;                             ; "fixed_2/3/2/2"     ; "PL"    ; "Nowy Sącz"            ; "Nowy Sącz"
 1819         ; 7      ; FIXED_LINE ; STANDARD_RATE ;                             ; "fixed_2/2/3"       ; "PL"    ; "Nowy Sącz"            ; "Nowy Sącz"
+20           ; 6      ; ISP        ; STANDARD_RATE ;                             ; "shortcode_3/3"     ; "PL"    ;                        ;                        ; GOVERNMENT
 2111         ; 9      ; MOBILE     ; STANDARD_RATE ; "polska"                    ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; GOVERNMENT
 2113[1-5]    ; 9      ; MOBILE     ; STANDARD_RATE ; "polska"                    ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; GOVERNMENT
 211[45]      ; 9      ; MOBILE     ; STANDARD_RATE ; "plus"                      ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; IR21

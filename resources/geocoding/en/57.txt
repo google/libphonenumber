@@ -16,6 +16,7 @@
 #
 # http://www.itu.int/oth/T020200002C/en [2006-07-20]
 
+576010|Cundinamarca
 576012|Bogotá
 576013|Bogotá
 576014|Bogotá
