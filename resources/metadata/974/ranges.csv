@@ -14,10 +14,7 @@ Prefix    ; Length ; Type       ; Tariff        ; Operator   ; Format     ; Regi
 4[04]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt2_4/4" ; "QA"
 414[1-4]  ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt2_4/4" ; "QA"    ;            ; "User report"
 5[05]     ; 8      ; MOBILE     ; STANDARD_RATE ; "ooredoo"  ; "fmt2_4/4" ; "QA"    ; IR21       ; "IR21 dated 2/2/2018"
-51[01]    ; 8      ; MOBILE     ; STANDARD_RATE ; "ooredoo"  ; "fmt2_4/4" ; "QA"    ; IR21
-51[2-9]   ; 8      ; MOBILE     ; STANDARD_RATE ;            ; "fmt2_4/4" ; "QA"
-520       ; 8      ; MOBILE     ; STANDARD_RATE ; "ooredoo"  ; "fmt2_4/4" ; "QA"    ; IR21
-52[1-9]   ; 8      ; MOBILE     ; STANDARD_RATE ;            ; "fmt2_4/4" ; "QA"
+5[12]     ; 8      ; MOBILE     ; STANDARD_RATE ; "ooredoo"  ; "fmt2_4/4" ; "QA"    ; IR21
 5[346-8]  ; 8      ; MOBILE     ; STANDARD_RATE ;            ; "fmt2_4/4" ; "QA"
 59[0-8]   ; 8      ; MOBILE     ; STANDARD_RATE ;            ; "fmt2_4/4" ; "QA"
 599       ; 8      ; MOBILE     ; STANDARD_RATE ; "ooredoo"  ; "fmt2_4/4" ; "QA"    ; IR21       ; "IR21 dated 2/2/2018"

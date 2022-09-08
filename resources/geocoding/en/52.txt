@@ -223,7 +223,8 @@
 52652|Chihuahua
 52653|Luis B. Sanchez/San Luis Rio Colorado, SON
 52656|Chihuahua
-52657|Chihuahua
+526571|Chihuahua
+526572|Juarez/Chihuahua
 52658|Baja California
 52659|Chihuahua
 52661|Primo Tapia/Rosarito, BCN

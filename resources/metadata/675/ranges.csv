@@ -1,6 +1,6 @@
 Prefix      ; Length ; Type       ; Tariff        ; Operator   ; Format    ; Regions ; Geocode:en               ; Provenance ; Comment
 180         ; 7      ; FIXED_LINE ; TOLL_FREE     ;            ; "fmt_3/4" ; "PG"
-20[0-47]    ; 7      ; VOIP       ; STANDARD_RATE ;            ; "fmt_3/4" ; "PG"    ;                          ; ITU
+20[0-57]    ; 7      ; VOIP       ; STANDARD_RATE ;            ; "fmt_3/4" ; "PG"    ;                          ; ITU
 27[01]      ; 7      ; PAGER      ; STANDARD_RATE ;            ; "fmt_3/4" ; "PG"    ;                          ; ITU
 27[568]     ; 7      ; VOIP       ; STANDARD_RATE ;            ; "fmt_3/4" ; "PG"    ;                          ; ITU
 3[0-2]      ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt_3/4" ; "PG"    ; "NCD"                    ; ITU

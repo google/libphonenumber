@@ -17,9 +17,11 @@ Prefix     ; Length ; Type       ; Tariff        ; Operator        ; Format     
 5777       ; 8      ; MOBILE     ; STANDARD_RATE ; "viva"          ; "fmt2_3/5"   ; "KW"    ; IR21
 588[58]    ; 8      ; MOBILE     ; STANDARD_RATE ; "viva"          ; "fmt2_3/5"   ; "KW"    ; IR21       ; "IR21 dated 12/27/2018"
 60[034679] ; 8      ; MOBILE     ; STANDARD_RATE ; "ooredoo"       ; "fmt1_4/3-4" ; "KW"    ; IR21       ; "IR21 dated 3/28/2019"
+6100       ; 8      ; MOBILE     ; STANDARD_RATE ; "ooredoo"       ; "fmt1_4/3-4" ; "KW"    ; IR21
 6111       ; 8      ; MOBILE     ; STANDARD_RATE ; "ooredoo"       ; "fmt1_4/3-4" ; "KW"    ; IR21
+6166       ; 8      ; MOBILE     ; STANDARD_RATE ; "ooredoo"       ; "fmt1_4/3-4" ; "KW"    ; IR21
 6222       ; 8      ; MOBILE     ; STANDARD_RATE ; "ooredoo"       ; "fmt1_4/3-4" ; "KW"    ;            ; "Remove"
-6333       ; 8      ; MOBILE     ; STANDARD_RATE ; "ooredoo"       ; "fmt1_4/3-4" ; "KW"    ; IR21
+63[36]3    ; 8      ; MOBILE     ; STANDARD_RATE ; "ooredoo"       ; "fmt1_4/3-4" ; "KW"    ; IR21
 6444       ; 8      ; MOBILE     ; STANDARD_RATE ; "ooredoo"       ; "fmt1_4/3-4" ; "KW"    ; IR21       ; "IR21 dated 9/29/2019"
 65[015-9]  ; 8      ; MOBILE     ; STANDARD_RATE ; "ooredoo"       ; "fmt1_4/3-4" ; "KW"    ; IR21       ; "IR21 dated 3/28/2019"
 66         ; 8      ; MOBILE     ; STANDARD_RATE ; "ooredoo"       ; "fmt1_4/3-4" ; "KW"    ; IR21       ; "IR21 dated 3/28/2019"

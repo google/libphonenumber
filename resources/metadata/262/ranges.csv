@@ -1,7 +1,7 @@
 Prefix       ; Length ; Type       ; Tariff        ; Operator ; Format         ; Timezone                        ; Regions ; Provenance ; Comment
 262          ; 9      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt1_3/2/2/2" ; "Indian/Reunion"                ; "RE"
-2630[01]     ; 9      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt1_3/2/2/2" ; "Indian/Reunion"                ; "RE"    ; GOVERNMENT ; "ARCEP 4/9/2019"
-2630[2-5]    ; 9      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt1_3/2/2/2" ; "Indian/Reunion"                ; "RE"    ; GOVERNMENT
+2630         ; 9      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt1_3/2/2/2" ; "Indian/Reunion"                ; "RE"    ; GOVERNMENT
+2631[01]     ; 9      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt1_3/2/2/2" ; "Indian/Reunion"                ; "RE"    ; GOVERNMENT
 2690[0-3]    ; 9      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt1_3/2/2/2" ; "Indian/Mayotte"                ; "YT"    ; GOVERNMENT
 2690[67]     ; 9      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt1_3/2/2/2" ; "Indian/Mayotte"                ; "YT"
 2695[0-2]    ; 9      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt1_3/2/2/2" ; "Indian/Mayotte"                ; "YT"    ; GOVERNMENT ; "ARCEP 4/9/2019"
