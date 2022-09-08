@@ -94,6 +94,7 @@ option (USE_LITE_METADATA "Use lite metadata" OFF)
 option (USE_RE2 "Use RE2" OFF)
 option (USE_STD_MAP "Force the use of std::map" OFF)
 option (BUILD_STATIC_LIB "Build static libraries" ON)
+option (BUILD_SHARED_LIBS "Build shared libraries" ON)
 option (USE_STDMUTEX "Use C++ 2011 std::mutex for multi-threading" OFF)
 option (USE_POSIX_THREAD "Use Posix api for multi-threading" OFF)
 
@@ -449,20 +450,17 @@ if (BUILD_GEOCODER)
       VERSION ${libphonenumber_VERSION_MAJOR}.${libphonenumber_VERSION_MINOR})
 endif ()
 
-# Build a shared library (with -fPIC).
-set (BUILD_SHARED_LIB true)
-
 if (USE_RE2)
   # RE2 is not always available as a shared library (e.g: package provided by
   # Ubuntu) therefore disable the shared library build in this case.
   if (${RE2_LIB} MATCHES ".*\\.a")
-    message (WARNING
-      "RE2 not available as a shared library, shared library build disabled")
-    set (BUILD_SHARED_LIB false)
+    message (WARNING "RE2 not available as a shared library, shared library build disabled")
+    set (BUILD_SHARED_LIBS OFF)
   endif ()
 endif ()
 
-if (BUILD_SHARED_LIB)
+if (BUILD_SHARED_LIBS)
+  # Build a shared library (with -fPIC).
   add_library (phonenumber-shared SHARED ${SOURCES})
   if (BUILD_GEOCODER)
     add_dependencies (phonenumber-shared generate_geocoding_data)
@@ -517,7 +515,7 @@ if (BUILD_STATIC_LIB)
   target_link_libraries (phonenumber ${LIBRARY_DEPS})
 endif ()
 
-if (BUILD_SHARED_LIB)
+if (BUILD_SHARED_LIBS)
   target_link_libraries (phonenumber-shared ${LIBRARY_DEPS})
 endif ()
 
@@ -686,7 +684,7 @@ if (BUILD_STATIC_LIB)
   install (TARGETS phonenumber LIBRARY DESTINATION ${LIBDIR} ARCHIVE DESTINATION ${LIBDIR})
 endif ()
 
-if (BUILD_SHARED_LIB)
+if (BUILD_SHARED_LIBS)
   install (TARGETS phonenumber-shared LIBRARY DESTINATION ${LIBDIR} ARCHIVE
            DESTINATION ${LIBDIR})
 endif ()
