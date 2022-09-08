@@ -11,7 +11,7 @@ Prefix  ; Length ; Type       ; Tariff        ; Operator   ; Format       ; Regi
 652     ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/4"   ; "MV"    ; "Haa Dhaalu"         ; GOVERNMENT
 654     ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/4"   ; "MV"    ; "Shaviyani"          ; GOVERNMENT
 656     ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/4"   ; "MV"    ; "Noonu"              ; GOVERNMENT
-658     ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/4"   ; "MV"    ; "Raa"                ; GOVERNMENT
+65[89]  ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/4"   ; "MV"    ; "Raa"                ; GOVERNMENT
 660     ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/4"   ; "MV"    ; "Baa"                ; GOVERNMENT
 662     ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/4"   ; "MV"    ; "Lhaviyani"          ; GOVERNMENT
 66[45]  ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/4"   ; "MV"    ; "Kaafu"              ; GOVERNMENT

@@ -276,6 +276,9 @@
 5733362|Suma Movil
 5733363|Suma Movil
 5733364|Suma Movil
+5733365|Suma Movil
+5733366|Suma Movil
+5733367|Suma Movil
 573502|Avantel
 573503|Avantel
 573504|Avantel
