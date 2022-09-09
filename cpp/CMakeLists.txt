@@ -16,16 +16,13 @@
 
 cmake_minimum_required (VERSION 3.11)
 
+project (libphonenumber VERSION 8.12.0)
+
 # Pick the C++ standard to compile with.
 # Abseil currently supports C++11, C++14, and C++17.
 set(CMAKE_CXX_STANDARD 11 CACHE STRING "C++ standard used to compile this project")
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_POSITION_INDEPENDENT_CODE TRUE)
-
-project (libphonenumber)
-set (libphonenumber_VERSION_MAJOR 8)
-set (libphonenumber_VERSION_MINOR 12)
-set (libphonenumber_VERSION_PATCH 0)
 
 if (32BIT)
   set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -m32")
@@ -598,19 +595,28 @@ endif()
 # Install built libraries
 #----------------------------------------------------------------
 
+set (BUILT_LIBS)
+set(targets_export_name "${PROJECT_NAME}-targets")
+
 if (BUILD_STATIC_LIB)
-  install (TARGETS phonenumber LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR} ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
+  list (APPEND BUILT_LIBS phonenumber)
   if (BUILD_GEOCODER)
-    install (TARGETS geocoding LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR} ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
-  endif ()
-endif ()
+    list (APPEND BUILT_LIBS geocoding)
+  endif()
+endif()
 
 if (BUILD_SHARED_LIBS)
-  install (TARGETS phonenumber-shared LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR} ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
+  list (APPEND BUILT_LIBS phonenumber-shared)
   if (BUILD_GEOCODER)
-    install (TARGETS geocoding-shared LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR} ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
-  endif ()
-endif ()
+    list (APPEND BUILT_LIBS geocoding-shared)
+  endif()
+endif()
+
+install (
+  TARGETS ${BUILT_LIBS}
+  EXPORT "${targets_export_name}"
+  LIBRARY DESTINATION "${CMAKE_INSTALL_LIBDIR}"
+  ARCHIVE DESTINATION "${CMAKE_INSTALL_LIBDIR}")
 
 #----------------------------------------------------------------
 # Install headers
@@ -680,6 +686,25 @@ install (FILES
   "src/phonenumbers/base/synchronization/lock_unsafe.h"
   "src/phonenumbers/base/synchronization/lock_win32.h"
   DESTINATION include/phonenumbers/base/synchronization/)
+
+#----------------------------------------------------------------
+# Build and install cmake config files
+#----------------------------------------------------------------
+
+include(CMakePackageConfigHelpers)
+
+set(config_install_dir "${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME}")
+set(version_config "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}-config-version.cmake")
+set(project_config "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}-config.cmake")
+
+# libphonenumber-config-version.cmake
+write_basic_package_version_file("${version_config}" COMPATIBILITY SameMajorVersion)
+
+# libphonenumber-config.cmake
+configure_package_config_file("cmake/config.cmake.in" "${project_config}" INSTALL_DESTINATION "${config_install_dir}")
+
+install(FILES "${project_config}" "${version_config}" DESTINATION "${config_install_dir}")
+install(EXPORT "${targets_export_name}" NAMESPACE ${PROJECT_NAME}:: DESTINATION "${config_install_dir}")
 
 #----------------------------------------------------------------
 # Build an RPM
