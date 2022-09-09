@@ -38,7 +38,6 @@ endif ()
 
 include (FetchContent)
 include (GNUInstallDirs)
-include (../tools/cpp/gtest.cmake)
 
 function (print_error DESCRIPTION FILE)
   message (FATAL_ERROR
@@ -156,7 +155,10 @@ if ((NOT USE_BOOST) AND (NOT USE_STDMUTEX))
   find_package (Threads)
 endif()
 
-find_or_build_gtest ()
+if (BUILD_TESTING)
+  include (../tools/cpp/gtest.cmake)
+  find_or_build_gtest ()
+endif()
 
 if (USE_RE2)
   find_required_library (RE2 re2/re2.h re2 "Google RE2")
