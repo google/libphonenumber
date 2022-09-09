@@ -20,6 +20,7 @@ cmake_minimum_required (VERSION 3.11)
 # Abseil currently supports C++11, C++14, and C++17.
 set(CMAKE_CXX_STANDARD 11 CACHE STRING "C++ standard used to compile this project")
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_POSITION_INDEPENDENT_CODE TRUE)
 
 project (libphonenumber)
 set (libphonenumber_VERSION_MAJOR 8)
@@ -419,68 +420,11 @@ endif ()
 
 include_directories ("src")
 
-if (BUILD_STATIC_LIB)
-  # Build a static library (without -fPIC).
-  add_library (phonenumber STATIC ${SOURCES})
-  if (BUILD_GEOCODER)
-    add_dependencies (phonenumber generate_geocoding_data)
-  endif ()
-  if (USE_ICU_REGEXP)
-    if (USE_ALTERNATE_FORMATS)
-      add_dependencies (phonenumber ${ALT_FORMAT_METADATA_TARGET})
-    endif ()
-  endif ()
-endif ()
+#----------------------------------------------------------------
+# Collate dependencies
+#----------------------------------------------------------------
 
-if (BUILD_GEOCODER)
-  if (BUILD_STATIC_LIB)
-    add_library (geocoding STATIC ${GEOCODING_SOURCES})
-    add_dependencies (geocoding generate_geocoding_data)
-  endif ()
-  # The geocoder doesn't use RE2 so there is no reason not to build a shared
-  # library for it.
-  add_library (geocoding-shared SHARED ${GEOCODING_SOURCES})
-  add_dependencies (geocoding-shared generate_geocoding_data)
-  set_target_properties (geocoding-shared
-    PROPERTIES
-      OUTPUT_NAME "geocoding"
-      PREFIX "lib"
-      SOVERSION ${libphonenumber_VERSION_MAJOR}
-      VERSION ${libphonenumber_VERSION_MAJOR}.${libphonenumber_VERSION_MINOR})
-endif ()
-
-if (USE_RE2)
-  # RE2 is not always available as a shared library (e.g: package provided by
-  # Ubuntu) therefore disable the shared library build in this case.
-  if (${RE2_LIB} MATCHES ".*\\.a")
-    message (WARNING "RE2 not available as a shared library, shared library build disabled")
-    set (BUILD_SHARED_LIBS OFF)
-  endif ()
-endif ()
-
-if (BUILD_SHARED_LIBS)
-  # Build a shared library (with -fPIC).
-  add_library (phonenumber-shared SHARED ${SOURCES})
-  if (BUILD_GEOCODER)
-    add_dependencies (phonenumber-shared generate_geocoding_data)
-  endif ()
-  if (USE_ICU_REGEXP)
-    if (USE_ALTERNATE_FORMATS)
-      add_dependencies (phonenumber-shared ${ALT_FORMAT_METADATA_TARGET})
-    endif ()
-  endif ()
-  set_target_properties (phonenumber-shared
-    PROPERTIES
-      OUTPUT_NAME "phonenumber"
-      PREFIX "lib"
-      SOVERSION ${libphonenumber_VERSION_MAJOR}
-      VERSION ${libphonenumber_VERSION_MAJOR}.${libphonenumber_VERSION_MINOR})
-endif ()
-
-# Libraries used by both libphonenumber and libgeocoding.
-set (COMMON_DEPS ${ICU_LIB})
-
-set (LIBRARY_DEPS ${PROTOBUF_LIB})
+set (LIBRARY_DEPS ${ICU_LIB} ${PROTOBUF_LIB} absl::node_hash_set absl::strings absl::synchronization)
 
 if (USE_BOOST)
   list (APPEND LIBRARY_DEPS ${Boost_LIBRARIES})
@@ -490,7 +434,7 @@ if (USE_RE2)
   list (APPEND LIBRARY_DEPS ${RE2_LIB})
 endif ()
 
-if (USE_POSIX_THREAD OR ((APPLE OR UNIX) AND (NOT USE_BOOST) AND (NOT USE_STDMUTEX)))
+if (USE_POSIX_THREAD OR ((APPLE OR UNIX) AND (NOT (USE_BOOST OR USE_STDMUTEX))))
   if(CMAKE_USE_PTHREADS_INIT)
     set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -pthread")
   endif()
@@ -499,31 +443,65 @@ if (USE_POSIX_THREAD OR ((APPLE OR UNIX) AND (NOT USE_BOOST) AND (NOT USE_STDMUT
   endif()
 endif ()
 
-# Safeguarding against any potential link errors as mentioned in
-# https://github.com/abseil/abseil-cpp/issues/225
-set(CMAKE_POSITION_INDEPENDENT_CODE TRUE)
-list (APPEND LIBRARY_DEPS absl::node_hash_set absl::strings absl::synchronization)
-
 if (APPLE)
-  list (APPEND COMMON_DEPS ${COREFOUNDATION_LIB} ${FOUNDATION_LIB})
+  list (APPEND LIBRARY_DEPS ${COREFOUNDATION_LIB} ${FOUNDATION_LIB})
 endif ()
 
-list (APPEND LIBRARY_DEPS ${COMMON_DEPS})
+#----------------------------------------------------------------
+# Build libraries
+#----------------------------------------------------------------
 
 if (BUILD_STATIC_LIB)
+  # Build a static library (without -fPIC).
+  add_library (phonenumber STATIC ${SOURCES})
   target_link_libraries (phonenumber ${LIBRARY_DEPS})
+  target_include_directories(phonenumber PUBLIC $<INSTALL_INTERFACE:include>)
+
+  if (BUILD_GEOCODER)
+    add_library (geocoding STATIC ${GEOCODING_SOURCES})
+    target_link_libraries (geocoding ${LIBRARY_DEPS})
+    target_include_directories(geocoding PUBLIC $<INSTALL_INTERFACE:include>)
+    add_dependencies (geocoding generate_geocoding_data)
+    add_dependencies (phonenumber generate_geocoding_data)
+  endif ()
+
+  if (USE_ICU_REGEXP AND USE_ALTERNATE_FORMATS)
+    add_dependencies (phonenumber ${ALT_FORMAT_METADATA_TARGET})
+  endif ()
 endif ()
+
 
 if (BUILD_SHARED_LIBS)
+  # Build a shared library (with -fPIC).
+  add_library (phonenumber-shared SHARED ${SOURCES})
   target_link_libraries (phonenumber-shared ${LIBRARY_DEPS})
-endif ()
+  target_include_directories(phonenumber-shared PUBLIC $<INSTALL_INTERFACE:include>)
 
-if (BUILD_GEOCODER)
-  list (APPEND GEOCODER_DEPS ${COMMON_DEPS})
-  # Note that the subset of base/ on which the geocoder relies is implemented
-  # on top of Boost header-only libraries (e.g. scoped_ptr.hpp).
-  target_link_libraries (geocoding ${LIBRARY_DEPS})
-  target_link_libraries (geocoding-shared ${LIBRARY_DEPS})
+  set_target_properties (phonenumber-shared
+    PROPERTIES
+      OUTPUT_NAME "phonenumber"
+      PREFIX "lib"
+      SOVERSION ${libphonenumber_VERSION_MAJOR}
+      VERSION ${libphonenumber_VERSION_MAJOR}.${libphonenumber_VERSION_MINOR})
+
+  if (USE_ICU_REGEXP AND USE_ALTERNATE_FORMATS)
+   add_dependencies (phonenumber-shared ${ALT_FORMAT_METADATA_TARGET})
+  endif ()
+
+  if (BUILD_GEOCODER)
+    add_library (geocoding-shared SHARED ${GEOCODING_SOURCES})
+    target_link_libraries (geocoding-shared ${LIBRARY_DEPS})
+    target_include_directories(geocoding-shared PUBLIC $<INSTALL_INTERFACE:include>)
+    add_dependencies (geocoding-shared generate_geocoding_data)
+    add_dependencies (phonenumber-shared generate_geocoding_data)
+
+    set_target_properties (geocoding-shared
+      PROPERTIES
+        OUTPUT_NAME "geocoding"
+        PREFIX "lib"
+        SOVERSION ${libphonenumber_VERSION_MAJOR}
+        VERSION ${libphonenumber_VERSION_MAJOR}.${libphonenumber_VERSION_MINOR})
+  endif ()
 endif ()
 
 #----------------------------------------------------------------
@@ -616,7 +594,28 @@ if(BUILD_TESTING)
   endif ()
 endif()
 
-# Install rules.
+#----------------------------------------------------------------
+# Install built libraries
+#----------------------------------------------------------------
+
+if (BUILD_STATIC_LIB)
+  install (TARGETS phonenumber LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR} ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
+  if (BUILD_GEOCODER)
+    install (TARGETS geocoding LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR} ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
+  endif ()
+endif ()
+
+if (BUILD_SHARED_LIBS)
+  install (TARGETS phonenumber-shared LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR} ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
+  if (BUILD_GEOCODER)
+    install (TARGETS geocoding-shared LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR} ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
+  endif ()
+endif ()
+
+#----------------------------------------------------------------
+# Install headers
+#----------------------------------------------------------------
+
 install (FILES
   "src/phonenumbers/asyoutypeformatter.h"
   "src/phonenumbers/callback.h"
@@ -682,23 +681,10 @@ install (FILES
   "src/phonenumbers/base/synchronization/lock_win32.h"
   DESTINATION include/phonenumbers/base/synchronization/)
 
-set (LIBDIR ${CMAKE_INSTALL_LIBDIR})
-
-if (BUILD_STATIC_LIB)
-  install (TARGETS phonenumber LIBRARY DESTINATION ${LIBDIR} ARCHIVE DESTINATION ${LIBDIR})
-endif ()
-
-if (BUILD_SHARED_LIBS)
-  install (TARGETS phonenumber-shared LIBRARY DESTINATION ${LIBDIR} ARCHIVE
-           DESTINATION ${LIBDIR})
-endif ()
-
-if (BUILD_GEOCODER)
-  install (TARGETS geocoding LIBRARY DESTINATION ${LIBDIR} ARCHIVE DESTINATION ${LIBDIR})
-  install (TARGETS geocoding-shared LIBRARY DESTINATION ${LIBDIR} ARCHIVE DESTINATION ${LIBDIR})
-endif ()
-
+#----------------------------------------------------------------
 # Build an RPM
+#----------------------------------------------------------------
+
 set (CPACK_PACKAGE_VERSION ${libphonenumber_VERSION_MAJOR}.${libphonenumber_VERSION_MINOR}.${libphonenumber_VERSION_PATCH})
 set (CPACK_GENERATOR "RPM")
 set (CPACK_PACKAGE_NAME "libphonenumber")
