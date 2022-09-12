@@ -72,10 +72,10 @@ Prefix     ; Length ; Type       ; Tariff        ; Area Code Length ; National O
 556[6-8]   ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "rami_levy"        ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; GOVERNMENT
 557[0-2]   ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "cellact"          ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; GOVERNMENT
 5576       ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ;                    ; "mobile_2/3/4"        ; "IL"
-5577       ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "019mobile"        ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; IR21
+5577       ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "019mobile"        ; "mobile_2/3/4"        ; "IL"
 558[7-9]   ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "pelephone"        ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; GOVERNMENT
 559[1-9]   ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "019mobile"        ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; GOVERNMENT
-56         ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "wataniya"         ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; GOVERNMENT
+56         ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "ooredoo"          ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; IR21
 58         ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "golan_telecom"    ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; IR21
 59[2-9]    ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "jawwal"           ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; GOVERNMENT
 718        ; 9      ; VOIP       ; STANDARD_RATE ;                  ; false         ;                    ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; GOVERNMENT

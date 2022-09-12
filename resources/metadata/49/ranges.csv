@@ -2546,7 +2546,7 @@ Prefix        ; Length    ; Type            ; Tariff        ; Area Code Length ;
 4921          ; 6-12      ; FIXED_LINE      ; STANDARD_RATE ; 4                ;                             ; "fixed_4/2-11"      ; "DE"    ; "Emden Stadt"                        ; "Emden Stadt"
 4921          ; 13        ; FIXED_LINE      ; STANDARD_RATE ;                  ;                             ; "fixed_4/2-11"      ; "DE"
 4922          ; 6-12      ; FIXED_LINE      ; STANDARD_RATE ; 4                ;                             ; "fixed_4/2-11"      ; "DE"    ; "Borkum"                             ; "Borkum"
-4923          ; 6-12      ; FIXED_LINE      ; STANDARD_RATE ; 4                ;                             ; "fixed_4/2-11"      ; "DE"    ; "Krummhörn-Pewsum"                   ; "Krummhörn-Pewsum"
+4923          ; 6-13      ; FIXED_LINE      ; STANDARD_RATE ; 4                ;                             ; "fixed_4/2-11"      ; "DE"    ; "Krummhörn-Pewsum"                   ; "Krummhörn-Pewsum"                   ; GOVERNMENT
 4924          ; 6-12      ; FIXED_LINE      ; STANDARD_RATE ; 4                ;                             ; "fixed_4/2-11"      ; "DE"    ; "Moormerland-Oldersum"               ; "Moormerland-Oldersum"
 4925          ; 6-12      ; FIXED_LINE      ; STANDARD_RATE ; 4                ;                             ; "fixed_4/2-11"      ; "DE"    ; "Hinte"                              ; "Hinte"
 4926          ; 6-12      ; FIXED_LINE      ; STANDARD_RATE ; 4                ;                             ; "fixed_4/2-11"      ; "DE"    ; "Krummhörn-Greetsiel"                ; "Krummhörn-Greetsiel"

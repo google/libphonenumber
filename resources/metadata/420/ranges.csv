@@ -1,5 +1,5 @@
 Prefix        ; Length ; Type            ; Tariff        ; Operator                   ; Format         ; Regions ; Geocode:en                 ; Provenance ; Comment
-2             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                            ; "fmt1_3/3/3"   ; "CZ"    ; "Prague"                   ;            ; "Fillup To support Master Range"
+2             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                            ; "fmt1_3/3/3"   ; "CZ"    ; "Prague"                   ; GOVERNMENT
 3[12]         ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                            ; "fmt1_3/3/3"   ; "CZ"    ; "Central Bohemian Region"  ; GOVERNMENT
 35            ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                            ; "fmt1_3/3/3"   ; "CZ"    ; "Karlovy Vary Region"      ; GOVERNMENT
 37            ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                            ; "fmt1_3/3/3"   ; "CZ"    ; "Plzeň Region"             ; GOVERNMENT
@@ -105,12 +105,12 @@ Prefix        ; Length ; Type            ; Tariff        ; Operator             
 79260         ; 9      ; MOBILE          ; STANDARD_RATE ; "sia_net_balt"             ; "fmt1_3/3/3"   ; "CZ"    ;                            ; GOVERNMENT
 7926[1-9]     ; 9      ; MOBILE          ; STANDARD_RATE ; "o2"                       ; "fmt1_3/3/3"   ; "CZ"
 7927          ; 9      ; MOBILE          ; STANDARD_RATE ; "o2"                       ; "fmt1_3/3/3"   ; "CZ"    ;                            ; GOVERNMENT
-7928          ; 9      ; MOBILE          ; STANDARD_RATE ; "tesco_mobile"             ; "fmt1_3/3/3"   ; "CZ"    ;                            ; GOVERNMENT
-79[24]9       ; 9      ; MOBILE          ; STANDARD_RATE ;                            ; "fmt1_3/3/3"   ; "CZ"    ;                            ;            ; "Fillup To Support Master Range"
+792[89]       ; 9      ; MOBILE          ; STANDARD_RATE ; "tesco_mobile"             ; "fmt1_3/3/3"   ; "CZ"    ;                            ; GOVERNMENT
 793[0-8]      ; 9      ; MOBILE          ; STANDARD_RATE ;                            ; "fmt1_3/3/3"   ; "CZ"    ;                            ;            ; "Fillup To Support Master Range"
 79390         ; 9      ; MOBILE          ; STANDARD_RATE ; "t_mobile"                 ; "fmt1_3/3/3"   ; "CZ"    ;                            ; IR21
 7939[1-9]     ; 9      ; MOBILE          ; STANDARD_RATE ;                            ; "fmt1_3/3/3"   ; "CZ"    ;                            ;            ; "Fillup To Support Master Range"
 794[0-8]      ; 9      ; MOBILE          ; STANDARD_RATE ; "o2"                       ; "fmt1_3/3/3"   ; "CZ"    ;                            ; IR21
+7949          ; 9      ; MOBILE          ; STANDARD_RATE ;                            ; "fmt1_3/3/3"   ; "CZ"    ;                            ;            ; "Fillup To Support Master Range"
 795[01]       ; 9      ; MOBILE          ; STANDARD_RATE ; "vectone"                  ; "fmt1_3/3/3"   ; "CZ"    ;                            ; GOVERNMENT
 795[2-9]      ; 9      ; MOBILE          ; STANDARD_RATE ;                            ; "fmt1_3/3/3"   ; "CZ"    ;                            ;            ; "Fillup To Support Master Range"
 79[68]        ; 9      ; MOBILE          ; STANDARD_RATE ;                            ; "fmt1_3/3/3"   ; "CZ"    ;                            ;            ; "Fillup To Support Master Range"
