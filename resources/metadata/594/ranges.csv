@@ -1,6 +1,7 @@
 Prefix      ; Length ; Type       ; Tariff        ; Operator  ; Format            ; Regions ; Provenance ; Comment
 594[023]    ; 9      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_3/2/2/2"    ; "GF"
 5941[01]    ; 9      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_3/2/2/2"    ; "GF"
+59412       ; 9      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_3/2/2/2"    ; "GF"    ; GOVERNMENT
 5944[03-9]  ; 9      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_3/2/2/2"    ; "GF"
 5945[6-9]   ; 9      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_3/2/2/2"    ; "GF"
 5946[0-3]   ; 9      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_3/2/2/2"    ; "GF"

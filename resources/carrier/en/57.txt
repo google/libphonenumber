@@ -22,9 +22,7 @@
 573006|Tigo
 573007|Tigo
 573008|Tigo
-5730091|Tigo
-5730092|Tigo
-5730093|Tigo
+573009|Tigo
 573012|Tigo
 573013|Tigo
 573014|Tigo
@@ -278,6 +276,9 @@
 5733362|Suma Movil
 5733363|Suma Movil
 5733364|Suma Movil
+5733365|Suma Movil
+5733366|Suma Movil
+5733367|Suma Movil
 573502|Avantel
 573503|Avantel
 573504|Avantel

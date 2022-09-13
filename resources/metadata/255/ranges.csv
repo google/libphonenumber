@@ -7,15 +7,13 @@ Prefix  ; Length ; Type       ; Tariff        ; National Only ; Operator        
 27      ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                      ; "fixed_2/3/4"   ; "TZ"    ; "Arusha/Manyara/Kilimanjaro/Tanga"
 28      ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                      ; "fixed_2/3/4"   ; "TZ"    ; "Mwanza/Shinyanga/Mara/Geita/Simiyu/Kagera/Kigoma"
 41      ; 9      ; VOIP       ; STANDARD_RATE ; false         ;                      ; "fixed_2/3/4"   ; "TZ"
-61      ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "viettel"            ; "mobile_3/3/3"  ; "TZ"    ;                                                    ; ITU
+5       ; 9      ; ISP        ; STANDARD_RATE ; false         ;                      ; "fmt_2/7"       ; "TZ"    ;                                                    ; ITU
+61      ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "viettel"            ; "mobile_3/3/3"  ; "TZ"    ;                                                    ; ITU        ; "."
 62      ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "viettel"            ; "mobile_3/3/3"  ; "TZ"
-63      ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "mtc"                ; "mobile_3/3/3"  ; "TZ"
-64      ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "cootel"             ; "mobile_3/3/3"  ; "TZ"
 6[57]   ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "tigo"               ; "mobile_3/3/3"  ; "TZ"
 66      ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "smile"              ; "mobile_3/3/3"  ; "TZ"
 6[89]   ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "airtel"             ; "mobile_3/3/3"  ; "TZ"
 71      ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "tigo"               ; "mobile_3/3/3"  ; "TZ"
-72      ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "mo_mobile"          ; "mobile_3/3/3"  ; "TZ"    ;                                                    ; ITU
 73      ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "tanzania_telecom"   ; "mobile_3/3/3"  ; "TZ"
 7[4-6]  ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "vodacom"            ; "mobile_3/3/3"  ; "TZ"
 77[2-9] ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "zantel"             ; "mobile_3/3/3"  ; "TZ"    ;                                                    ; IR21       ; "IR21 dated4/12/2019"

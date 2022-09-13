@@ -20,7 +20,7 @@
 47401|telenor norge
 474010|telia
 474011|telia
-474014|nextgentel
+474014|telia
 474020|telia
 474021|telia
 474022|telenor norge
@@ -195,7 +195,7 @@
 474848|erate
 474849|erate
 474850|telia
-474851|nextgentel
+474851|telia
 474858|telenor norge
 474859|erate
 474860|telia
@@ -248,6 +248,9 @@
 479259|telenor norge
 47927|telenor norge
 47929|telenor norge
+479297|ice norge
+479298|ice norge
+479299|ice norge
 47930|telia
 479310|telenor norge
 479311|telenor norge
@@ -300,8 +303,8 @@
 479403|telenor norge
 479404|com4
 479405|telenor norge
-479406|telenor norge
-479407|telenor norge
+479406|ice norge
+479407|ice norge
 479408|ice norge
 479409|ice norge
 47941|telenor norge
@@ -377,6 +380,9 @@
 4797|telenor norge
 479730|ice norge
 479731|ice norge
+479732|ice norge
+479733|ice norge
+479734|ice norge
 479735|lyca mobile
 479736|lyca mobile
 479737|lyca mobile
