@@ -21,7 +21,6 @@ import com.google.auto.value.AutoValue;
 import com.google.common.collect.ImmutableTable;
 import com.google.common.collect.Table;
 import com.google.common.collect.Table.Cell;
-import com.google.i18n.phonenumbers.metadata.DigitSequence;
 import com.google.i18n.phonenumbers.metadata.i18n.PhoneRegion;
 import com.google.i18n.phonenumbers.metadata.proto.Types.ValidNumberType;
 import com.google.i18n.phonenumbers.metadata.table.Column;
@@ -64,8 +63,7 @@ public final class ExamplesTableSchema {
   }
 
   /** A number column containing the digit sequence of a national number. */
-  public static final Column<DigitSequence> NUMBER = Column.create(
-      DigitSequence.class, "Number", DigitSequence.empty(), DigitSequence::of);
+  public static final Column<String> NUMBER = Column.ofString("Number");
 
   /** A general comment field, usually describing how an example number was determined. */
   public static final Column<String> COMMENT = Column.ofString("Comment");
@@ -90,10 +88,10 @@ public final class ExamplesTableSchema {
    * {@link ExampleNumberKey}s as row keys.
    */
   public static CsvTable<ExampleNumberKey> toCsv(
-      Table<PhoneRegion, ValidNumberType, DigitSequence> table) {
+      Table<PhoneRegion, ValidNumberType, String> table) {
     ImmutableTable.Builder<ExampleNumberKey, Column<?>, Object> out = ImmutableTable.builder();
     out.orderRowsBy(ORDERING).orderColumnsBy(COLUMNS.ordering());
-    for (Cell<PhoneRegion, ValidNumberType, DigitSequence> c : table.cellSet()) {
+    for (Cell<PhoneRegion, ValidNumberType, String> c : table.cellSet()) {
       out.put(ExampleNumberKey.of(c.getRowKey(), c.getColumnKey()), NUMBER, c.getValue());
     }
     return CsvTable.from(SCHEMA, out.build());
@@ -103,9 +101,9 @@ public final class ExamplesTableSchema {
    * Converts a {@link Table} of example numbers into a {@link CsvTable}, using
    * {@link ExampleNumberKey}s as row keys.
    */
-  public static ImmutableTable<PhoneRegion, ValidNumberType, DigitSequence>
+  public static ImmutableTable<PhoneRegion, ValidNumberType, String>
       toExampleTable(CsvTable<ExampleNumberKey> csv) {
-    ImmutableTable.Builder<PhoneRegion, ValidNumberType, DigitSequence> out =
+    ImmutableTable.Builder<PhoneRegion, ValidNumberType, String> out =
         ImmutableTable.builder();
     for (ExampleNumberKey k : csv.getKeys()) {
       out.put(k.getRegion(), k.getType(), csv.getOrDefault(k, NUMBER));
