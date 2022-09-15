@@ -1,6 +1,0 @@
-Prerequisite:
-  Install the Appengine SDK.
-  $ sudo apt-get install google-cloud-sdk-app-engine-java
-
-How to regenreate the WAR, deploy and run in appengine?
-  $ mvn appengine:run
