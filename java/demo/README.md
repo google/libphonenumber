@@ -11,5 +11,5 @@
 #### Use GCloud CLI to install the Java Appengine
 `$ gcloud components install app-engine-java`
 
-## How to regenreate the WAR, deploy and run in appengine?
+## How to regenerate the WAR, deploy and run in appengine?
 `$ mvn appengine:run`
