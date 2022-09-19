@@ -21,6 +21,6 @@
     <url-pattern>/inputform</url-pattern>
   </servlet-mapping>
   <welcome-file-list>
-    <welcome-file>phonenumberparser.jsp</welcome-file>
+    <welcome-file>InputForm</welcome-file>
   </welcome-file-list>
 </web-app>
