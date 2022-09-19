@@ -6,7 +6,7 @@
   http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
   <servlet>
     <servlet-name>PhoneNumberParser</servlet-name>
-    <servlet-class>com.google.phonenumbers.PhoneNumberParserServlet</servlet-class>
+    <servlet-class>example.Results</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>PhoneNumberParser</servlet-name>

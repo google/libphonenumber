@@ -1,0 +1,250 @@
+{namespace examples.simple}
+{template result}
+<!DOCTYPE html>
+<HTML lang="en">
+<HEAD>
+  <LINK type="text/css" rel="stylesheet" href="/stylesheets/main.css"/>
+  <title>Results for </title>
+</HEAD>
+<BODY>Phone Number entered: +32471234567;phone-context=&lt;script&gt;alert('Inti phone home')&lt;/script&gt;<BR>defaultCountry
+entered: SCHWEIZ<BR>Language entered: en<BR>
+<DIV>
+  <TABLE border=1>
+    <TR>
+      <TD colspan=2>Parsing Result (parseAndKeepRawInput())</TD>
+    </TR>
+    <TR>
+      <TH>country_code</TH>
+      <TD>32</TD>
+    </TR>
+    <TR>
+      <TH>national_number</TH>
+      <TD>471234567</TD>
+    </TR>
+    <TR>
+      <TH>extension</TH>
+      <TD>&nbsp;</TD>
+    </TR>
+    <TR>
+      <TH>country_code_source</TH>
+      <TD>FROM_NUMBER_WITH_PLUS_SIGN</TD>
+    </TR>
+    <TR>
+      <TH>italian_leading_zero</TH>
+      <TD>false</TD>
+    </TR>
+    <TR>
+      <TH>raw_input</TH>
+      <TD>+32471234567;phone-context=
+        <script>alert('Inti phone home')</script>
+      </TD>
+    </TR>
+  </TABLE>
+</DIV>
+<DIV>
+  <TABLE border=1>
+    <TR>
+      <TD colspan=2>Validation Results</TD>
+    </TR>
+    <TR>
+      <TH>Result from isPossibleNumber()</TH>
+      <TD>true</TD>
+    </TR>
+    <TR>
+      <TH>Result from isValidNumber()</TH>
+      <TD>true</TD>
+    </TR>
+    <TR>
+      <TH>Result from isValidNumberForRegion()</TH>
+      <TD>false</TD>
+    </TR>
+    <TR>
+      <TH>Phone Number region</TH>
+      <TD>BE</TD>
+    </TR>
+    <TR>
+      <TH>Result from getNumberType()</TH>
+      <TD>MOBILE</TD>
+    </TR>
+  </TABLE>
+</DIV>
+<DIV>
+  <TABLE border=1>
+    <TR>
+      <TD colspan=2>Formatting Results</TD>
+    </TR>
+    <TR>
+      <TH>E164 format</TH>
+      <TD>+32471234567</TD>
+    </TR>
+    <TR>
+      <TH>Original format</TH>
+      <TD>+32 471 23 45 67</TD>
+    </TR>
+    <TR>
+      <TH>National format</TH>
+      <TD>0471 23 45 67</TD>
+    </TR>
+    <TR>
+      <TH>International format</TH>
+      <TD>+32 471 23 45 67</TD>
+    </TR>
+    <TR>
+      <TH>Out-of-country format from US</TH>
+      <TD>011 32 471 23 45 67</TD>
+    </TR>
+    <TR>
+      <TH>Out-of-country format from CH</TH>
+      <TD>00 32 471 23 45 67</TD>
+    </TR>
+  </TABLE>
+</DIV>
+<DIV>
+  <TABLE border=1>
+    <TR>
+      <TD colspan=2>AsYouTypeFormatter Results</TD>
+    </TR>
+    <TR>
+      <TH>Char entered: '+' Output:</TH>
+      <TD>+</TD>
+    </TR>
+    <TR>
+      <TH>Char entered: '3' Output:</TH>
+      <TD>+3</TD>
+    </TR>
+    <TR>
+      <TH>Char entered: '2' Output:</TH>
+      <TD>+32</TD>
+    </TR>
+    <TR>
+      <TH>Char entered: '4' Output:</TH>
+      <TD>+32 4</TD>
+    </TR>
+    <TR>
+      <TH>Char entered: '7' Output:</TH>
+      <TD>+32 47</TD>
+    </TR>
+    <TR>
+      <TH>Char entered: '1' Output:</TH>
+      <TD>+32 471</TD>
+    </TR>
+    <TR>
+      <TH>Char entered: '2' Output:</TH>
+      <TD>+32 471 2</TD>
+    </TR>
+    <TR>
+      <TH>Char entered: '3' Output:</TH>
+      <TD>+32 471 23</TD>
+    </TR>
+    <TR>
+      <TH>Char entered: '4' Output:</TH>
+      <TD>+32 471 23 4</TD>
+    </TR>
+    <TR>
+      <TH>Char entered: '5' Output:</TH>
+      <TD>+32 471 23 45</TD>
+    </TR>
+    <TR>
+      <TH>Char entered: '6' Output:</TH>
+      <TD>+32 471 23 45 6</TD>
+    </TR>
+    <TR>
+      <TH>Char entered: '7' Output:</TH>
+      <TD>+32 471 23 45 67</TD>
+    </TR>
+    <TR>
+      <TH>Char entered: ';' Output:</TH>
+      <TD>+32471234567;</TD>
+    </TR>
+    <TR>
+      <TH>Char entered: 'p' Output:</TH>
+      <TD>+32471234567;p</TD>
+    </TR>
+    <TR>
+      <TH>Char entered: 'h' Output:</TH>
+      <TD>+32471234567;ph</TD>
+    </TR>
+    <TR>
+      <TH>Char entered: 'o' Output:</TH>
+      <TD>+32471234567;pho</TD>
+    </TR>
+    <TR>
+      <TH>Char entered: 'n' Output:</TH>
+      <TD>+32471234567;phon</TD>
+    </TR>
+    <TR>
+      <TH>Char entered: 'e' Output:</TH>
+      <TD>+32471234567;phone</TD>
+    </TR>
+    <TR>
+      <TH>Char entered: '-' Output:</TH>
+      <TD>+32471234567;phone-</TD>
+    </TR>
+    <TR>
+      <TH>Char entered: 'c' Output:</TH>
+      <TD>+32471234567;phone-c</TD>
+    </TR>
+    <TR>
+      <TH>Char entered: 'o' Output:</TH>
+      <TD>+32471234567;phone-co</TD>
+    </TR>
+    <TR>
+      <TH>Char entered: 'n' Output:</TH>
+      <TD>+32471234567;phone-con</TD>
+    </TR>
+    <TR>
+      <TH>Char entered: 't' Output:</TH>
+      <TD>+32471234567;phone-cont</TD>
+    </TR>
+    <TR>
+      <TH>Char entered: 'e' Output:</TH>
+      <TD>+32471234567;phone-conte</TD>
+    </TR>
+    <TR>
+      <TH>Char entered: 'x' Output:</TH>
+      <TD>+32471234567;phone-contex</TD>
+    </TR>
+
+  </TABLE>
+</DIV>
+<DIV>
+  <TABLE border=1>
+    <TR>
+      <TD colspan=2>PhoneNumberOfflineGeocoder Results</TD>
+    </TR>
+    <TR>
+      <TH>Location</TH>
+      <TD>Belgium</TD>
+    </TR>
+  </TABLE>
+</DIV>
+<DIV>
+  <TABLE border=1>
+    <TR>
+      <TD colspan=2>PhoneNumberToTimeZonesMapper Results</TD>
+    </TR>
+    <TR>
+      <TH>Time zone(s)</TH>
+      <TD>[Europe/Brussels]</TD>
+    </TR>
+  </TABLE>
+</DIV>
+<DIV>
+  <TABLE border=1>
+    <TR>
+      <TD colspan=2>PhoneNumberToCarrierMapper Results</TD>
+    </TR>
+    <TR>
+      <TH>Carrier</TH>
+      <TD>Proximus</TD>
+    </TR>
+  </TABLE>
+</DIV>
+<b style="color:red">File an issue</b>: by clicking on <a target="_blank"
+                                                          href="https://issuetracker.google.com/issues/new?component=192347&title=Validation+issue+with+%2B32471234567%3Bphone-context%3D%3Cscript%3Ealert%28%27Inti+phone+home%27%29%3C%2Fscript%3E+%28SCHWEIZ%29">this
+  link</a>, I confirm that I have read the <a target="_blank"
+                                              href="https://github.com/google/libphonenumber/blob/master/CONTRIBUTING.md">contributor's
+  guidelines</a>.
+</BODY>
+</HTML>
+{/template}
