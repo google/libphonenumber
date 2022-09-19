@@ -66,21 +66,6 @@ public class InputForm extends HttpServlet {
 
   /** Handle the get request to get information about a number based on query parameters. */
   public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-    String phoneNumber = req.getParameter("number");
-    if (phoneNumber == null) {
-      phoneNumber = "";
-    }
-    String defaultCountry = req.getParameter("country");
-    if (defaultCountry == null) {
-      defaultCountry = "";
-    }
-    String geocodingParam = req.getParameter("geocodingLocale");
-    Locale geocodingLocale;
-    if (geocodingParam == null) {
-      geocodingLocale = ENGLISH; // Default languageCode to English if nothing is entered.
-    } else {
-      geocodingLocale = Locale.forLanguageTag(geocodingParam);
-    }
     resp.setContentType("text/html");
     resp.setCharacterEncoding(UTF_8.name());
     SoyFileSet sfs = SoyFileSet
@@ -92,63 +77,5 @@ public class InputForm extends HttpServlet {
         .println(
             tofu.newRenderer("examples.simple.helloWorld").render());
   }
-
-
-  private void appendLine(String title, String data, StringBuilder output) {
-    output.append("<TR>");
-    output.append("<TH>").append(title).append("</TH>");
-    output.append("<TD>").append(data.length() > 0 ? data : "&nbsp;").append("</TD>");
-    output.append("</TR>");
-  }
-
-  /** Returns a stable URL pointing to the result page for the given input. */
-  private String getPermaLinkURL(
-      String phoneNumber, String defaultCountry, Locale geocodingLocale, boolean absoluteURL) {
-    // If absoluteURL is false, generate a relative path. Otherwise, produce an absolute URL.
-    StringBuilder permaLink =
-        new StringBuilder(
-            absoluteURL
-                ? "http://libphonenumber.appspot.com/phonenumberparser"
-                : "/phonenumberparser");
-    try {
-      permaLink.append(
-          "?number=" + URLEncoder.encode(phoneNumber != null ? phoneNumber : "", UTF_8.name()));
-      if (defaultCountry != null && !defaultCountry.isEmpty()) {
-        permaLink.append("&country=" + URLEncoder.encode(defaultCountry, UTF_8.name()));
-      }
-      if (!geocodingLocale.getLanguage().equals(ENGLISH.getLanguage())
-          || !geocodingLocale.getCountry().isEmpty()) {
-        permaLink.append(
-            "&geocodingLocale=" + URLEncoder.encode(geocodingLocale.toLanguageTag(), UTF_8.name()));
-      }
-    } catch (UnsupportedEncodingException e) {
-      // UTF-8 is guaranteed in Java, so this should be impossible.
-      throw new AssertionError(e);
-    }
-    return permaLink.toString();
-  }
-
-  private static final String NEW_ISSUE_BASE_URL =
-      "https://issuetracker.google.com/issues/new?component=192347&title=";
-
-  /** Returns a link to create a new github issue with the relevant information. */
-  private String getNewIssueLink(
-      String phoneNumber, String defaultCountry, Locale geocodingLocale) {
-    boolean hasDefaultCountry = !defaultCountry.isEmpty() && defaultCountry != "ZZ";
-    String issueTitle =
-        "Validation issue with "
-            + phoneNumber
-            + (hasDefaultCountry ? " (" + defaultCountry + ")" : "");
-
-    String newIssueLink = NEW_ISSUE_BASE_URL;
-    try {
-      newIssueLink += URLEncoder.encode(issueTitle, UTF_8.name());
-    } catch (UnsupportedEncodingException e) {
-      // UTF-8 is guaranteed in Java, so this should be impossible.
-      throw new AssertionError(e);
-    }
-    return newIssueLink;
-  }
-
 
 }
