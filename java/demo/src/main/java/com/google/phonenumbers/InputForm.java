@@ -70,7 +70,7 @@ public class InputForm extends HttpServlet {
     resp.setCharacterEncoding(UTF_8.name());
     SoyFileSet sfs = SoyFileSet
         .builder()
-        .add(HelloWorld.class.getResource("simple.soy"))
+        .add(HelloWorld.class.getResource("inputform.soy"))
         .build();
     SoyTofu tofu = sfs.compileToTofu();
     resp.getWriter()
