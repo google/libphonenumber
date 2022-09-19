@@ -13,3 +13,10 @@
 
 ## How to regenerate the WAR, deploy and run in appengine?
 `$ mvn appengine:run`
+
+
+
+Intellij
+
+https://plugins.jetbrains.com/plugin/9841-bamboo-soy
+

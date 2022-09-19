@@ -12,6 +12,14 @@
     <servlet-name>PhoneNumberParser</servlet-name>
     <url-pattern>/phonenumberparser</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>InputForm</servlet-name>
+    <servlet-class>com.google.phonenumbers.InputForm</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>InputForm</servlet-name>
+    <url-pattern>/inputform</url-pattern>
+  </servlet-mapping>
   <welcome-file-list>
     <welcome-file>phonenumberparser.jsp</welcome-file>
   </welcome-file-list>
