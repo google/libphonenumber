@@ -16,41 +16,18 @@
  * @author Shaopeng Jia
  */
 
-package com.google.phonenumbers;
+package example;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
-import static java.util.Locale.ENGLISH;
 
-import com.google.i18n.phonenumbers.AsYouTypeFormatter;
-import com.google.i18n.phonenumbers.NumberParseException;
-import com.google.i18n.phonenumbers.PhoneNumberToCarrierMapper;
-import com.google.i18n.phonenumbers.PhoneNumberToTimeZonesMapper;
 import com.google.i18n.phonenumbers.PhoneNumberUtil;
-import com.google.i18n.phonenumbers.PhoneNumberUtil.PhoneNumberFormat;
-import com.google.i18n.phonenumbers.PhoneNumberUtil.PhoneNumberType;
-import com.google.i18n.phonenumbers.PhoneNumberUtil.ValidationResult;
-import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber;
 import com.google.i18n.phonenumbers.ShortNumberInfo;
-import com.google.i18n.phonenumbers.geocoding.PhoneNumberOfflineGeocoder;
 import com.google.template.soy.SoyFileSet;
 import com.google.template.soy.tofu.SoyTofu;
-import example.HelloWorld;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
-import java.util.Locale;
-import java.util.StringTokenizer;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.apache.commons.fileupload.FileItemIterator;
-import org.apache.commons.fileupload.FileItemStream;
-import org.apache.commons.fileupload.FileUploadException;
-import org.apache.commons.fileupload.servlet.ServletFileUpload;
-import org.apache.commons.fileupload.util.Streams;
-import org.apache.commons.io.IOUtils;
-import org.apache.commons.lang.StringEscapeUtils;
 
 /**
  * A servlet that accepts requests that contain strings representing a phone number and a default
@@ -60,8 +37,6 @@ import org.apache.commons.lang.StringEscapeUtils;
  */
 @SuppressWarnings("serial")
 public class InputForm extends HttpServlet {
-  private PhoneNumberUtil phoneUtil = PhoneNumberUtil.getInstance();
-  private ShortNumberInfo shortInfo = ShortNumberInfo.getInstance();
 
 
   /** Handle the get request to get information about a number based on query parameters. */
@@ -70,7 +45,7 @@ public class InputForm extends HttpServlet {
     resp.setCharacterEncoding(UTF_8.name());
     SoyFileSet sfs = SoyFileSet
         .builder()
-        .add(HelloWorld.class.getResource("simple.soy"))
+        .add(InputForm.class.getResource("simple.soy"))
         .build();
     SoyTofu tofu = sfs.compileToTofu();
     resp.getWriter()

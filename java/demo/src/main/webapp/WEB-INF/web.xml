@@ -14,7 +14,7 @@
   </servlet-mapping>
   <servlet>
     <servlet-name>InputForm</servlet-name>
-    <servlet-class>com.google.phonenumbers.InputForm</servlet-class>
+    <servlet-class>example.InputForm</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>InputForm</servlet-name>
