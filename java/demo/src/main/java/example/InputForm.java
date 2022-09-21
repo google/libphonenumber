@@ -20,11 +20,11 @@ package example;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
 
-import com.google.i18n.phonenumbers.PhoneNumberUtil;
-import com.google.i18n.phonenumbers.ShortNumberInfo;
 import com.google.template.soy.SoyFileSet;
 import com.google.template.soy.tofu.SoyTofu;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -39,7 +39,9 @@ import javax.servlet.http.HttpServletResponse;
 public class InputForm extends HttpServlet {
 
 
-  /** Handle the get request to get information about a number based on query parameters. */
+  /**
+   * Handle the get request to get information about a number based on query parameters.
+   */
   public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
     resp.setContentType("text/html");
     resp.setCharacterEncoding(UTF_8.name());
@@ -47,10 +49,18 @@ public class InputForm extends HttpServlet {
         .builder()
         .add(InputForm.class.getResource("simple.soy"))
         .build();
+
+    // helloWorld
     SoyTofu tofu = sfs.compileToTofu();
-    resp.getWriter()
-        .println(
-            tofu.newRenderer("examples.simple.helloWorld").render());
+    // For convenience, create another SoyTofu object that has a
+    // namespace specified, so you can pass partial template names to
+    // the newRenderer() method.
+    SoyTofu simpleTofu = tofu.forNamespace("examples.simple");
+    // helloName
+    Map<String, Object> data = new HashMap<>();
+    data.put("name", "Phone Number Parser Demo");
+    resp.getWriter().println(
+        simpleTofu.newRenderer(".helloWorld").setData(data).render());
   }
 
 }
