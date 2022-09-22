@@ -2119,7 +2119,11 @@
         <nationalNumberPattern>
           9(?:
             0|
-            11
+            11|
+            22|
+            66|
+            77|
+            9[09]
           )
         </nationalNumberPattern>
       </shortCode>
@@ -2129,7 +2133,11 @@
         <nationalNumberPattern>
           9(?:
             0|
-            11
+            11|
+            22|
+            66|
+            77|
+            9[09]
           )
         </nationalNumberPattern>
       </tollFree>
@@ -2140,10 +2148,23 @@
         <nationalNumberPattern>
           9(?:
             0|
-            11
+            11|
+            90
           )
         </nationalNumberPattern>
       </emergency>
+      <expandedEmergency>
+        <possibleLengths national="3"/>
+        <exampleNumber>922</exampleNumber>
+        <nationalNumberPattern>
+          9(?:
+            22|
+            66|
+            77|
+            99
+          )
+        </nationalNumberPattern>
+      </expandedEmergency>
     </territory>
 
     <!-- Canada (CA) -->
