@@ -12565,6 +12565,7 @@
           98\d{6,7}|
           975(?:
             1\d|
+            77|
             9[67]
           )\d{4}|
           9(?:
@@ -19656,7 +19657,7 @@
           )700\d{3}|
           (?:
             2(?:
-              [23]\d|
+              [0-3]\d|
               5[0-578]|
               6[01]|
               82
@@ -19686,21 +19687,29 @@
         <nationalNumberPattern>
           7(?:
             3555|
-            4(?:
-              60\d|
-              747
-            )|
-            94(?:
-              [01]\d|
-              2[0-4]
+            4747|
+            9(?:
+              [019]77|
+              42[0-4]
             )
           )\d{3}|
           7(?:
-            [0-25-8]\d|
-            3[1-4]|
-            42|
-            9[23]
-          )\d{5}
+            [0-25-8]\d\d|
+            3(?:
+              [1-4]\d|
+              7[01578]
+            )|
+            4(?:
+              2\d|
+              60|
+              7[01578]
+            )|
+            9(?:
+              [23]\d|
+              4[01]|
+              7[015]
+            )
+          )\d{4}
         </nationalNumberPattern>
       </mobile>
       <tollFree>
@@ -19711,7 +19720,7 @@
       <premiumRate>
         <possibleLengths national="8"/>
         <exampleNumber>50012345</exampleNumber>
-        <nationalNumberPattern>5[02-9]\d{6}</nationalNumberPattern>
+        <nationalNumberPattern>5\d{7}</nationalNumberPattern>
       </premiumRate>
       <sharedCost>
         <possibleLengths national="8"/>
@@ -24282,6 +24291,11 @@
           )\d{5}
         </nationalNumberPattern>
       </mobile>
+      <pager>
+        <possibleLengths national="9"/>
+        <exampleNumber>622212345</exampleNumber>
+        <nationalNumberPattern>6222\d{5}</nationalNumberPattern>
+      </pager>
       <tollFree>
         <possibleLengths national="9"/>
         <exampleNumber>800123456</exampleNumber>
@@ -25872,7 +25886,7 @@
         <exampleNumber>81234567</exampleNumber>
         <nationalNumberPattern>
           8(?:
-            05[0-3]|
+            05[0-367]|
             95[0-2]
           )\d{4}|
           (?:
@@ -27966,7 +27980,7 @@
         <nationalNumberPattern>
           868(?:
             2(?:
-              0[13]|
+              01|
               1[5-9]|
               [23]\d|
               4[0-2]

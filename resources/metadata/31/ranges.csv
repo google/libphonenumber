@@ -145,15 +145,15 @@ Prefix       ; Length ; Type       ; Tariff        ; National Only ; Operator   
 61[0239]     ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "kpn"                            ; "mobile_1/8"   ; "NL"    ;                         ;                         ; IR21
 61[15]       ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "vodafone_libertel_bv"           ; "mobile_1/8"   ; "NL"    ;                         ;                         ; IR21
 6[1-3]4      ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "t_mobile"                       ; "mobile_1/8"   ; "NL"    ;                         ;                         ; IR21
-61[67]       ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "telfort"                        ; "mobile_1/8"   ; "NL"    ;                         ;                         ; IR21
+61[67]       ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "kpn"                            ; "mobile_1/8"   ; "NL"    ;                         ;                         ; GOVERNMENT
 6[124]8      ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "t-mobile"                       ; "mobile_1/8"   ; "NL"    ;                         ;                         ; IR21
 62[023]      ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "kpn"                            ; "mobile_1/8"   ; "NL"    ;                         ;                         ; IR21
 62[1579]     ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "vodafone_libertel_bv"           ; "mobile_1/8"   ; "NL"    ;                         ;                         ; IR21
-626          ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "telfort"                        ; "mobile_1/8"   ; "NL"    ;                         ;                         ; IR21
+626          ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "kpn"                            ; "mobile_1/8"   ; "NL"    ;                         ;                         ; GOVERNMENT
 630          ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "kpn"                            ; "mobile_1/8"   ; "NL"    ;                         ;                         ; IR21
 631          ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "vodafone_libertel_bv"           ; "mobile_1/8"   ; "NL"    ;                         ;                         ; IR21
 632          ; 9      ; MOBILE     ; STANDARD_RATE ; false         ;                                  ; "mobile_1/8"   ; "NL"    ;                         ;                         ; GOVERNMENT
-633          ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "telfort"                        ; "mobile_1/8"   ; "NL"    ;                         ;                         ; IR21
+633          ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "kpn"                            ; "mobile_1/8"   ; "NL"    ;                         ;                         ; GOVERNMENT
 635[045]     ; 9      ; MOBILE     ; STANDARD_RATE ; false         ;                                  ; "mobile_1/8"   ; "NL"
 6351         ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "v_tell"                         ; "mobile_1/8"   ; "NL"    ;                         ;                         ; GOVERNMENT
 6352         ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "lancelot_telecom"               ; "mobile_1/8"   ; "NL"    ;                         ;                         ; IR21
@@ -164,13 +164,15 @@ Prefix       ; Length ; Type       ; Tariff        ; National Only ; Operator   
 63[89]       ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "t-mobile"                       ; "mobile_1/8"   ; "NL"    ;                         ;                         ; IR21
 640          ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "tele2"                          ; "mobile_1/8"   ; "NL"    ;                         ;                         ; IR21
 64[1-3]      ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "t_mobile"                       ; "mobile_1/8"   ; "NL"    ;                         ;                         ; IR21
-64[4579]     ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "telfort"                        ; "mobile_1/8"   ; "NL"    ;                         ;                         ; IR21
+64[479]      ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "kpn"                            ; "mobile_1/8"   ; "NL"    ;                         ;                         ; GOVERNMENT
+645          ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "telfort"                        ; "mobile_1/8"   ; "NL"    ;                         ;                         ; IR21
 646          ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "vodafone_libertel_bv"           ; "mobile_1/8"   ; "NL"    ;                         ;                         ; IR21
 65[0245]     ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "vodafone_libertel_bv"           ; "mobile_1/8"   ; "NL"    ;                         ;                         ; IR21
 65[137]      ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "kpn"                            ; "mobile_1/8"   ; "NL"    ;                         ;                         ; IR21
 656          ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "t_mobile"                       ; "mobile_1/8"   ; "NL"    ;                         ;                         ; GOVERNMENT
 6580         ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "privatemobility"                ; "mobile_1/8"   ; "NL"    ;                         ;                         ; GOVERNMENT
-658[1-9]     ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "telfort"                        ; "mobile_1/8"   ; "NL"    ;                         ;                         ; IR21
+658[1-6]     ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "lebara"                         ; "mobile_1/8"   ; "NL"    ;                         ;                         ; GOVERNMENT
+658[7-9]     ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "kpn"                            ; "mobile_1/8"   ; "NL"    ;                         ;                         ; GOVERNMENT
 659[0-8]     ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "vectone_mobile_delight_mobile"  ; "mobile_1/8"   ; "NL"    ;                         ;                         ; GOVERNMENT
 6599         ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "motto"                          ; "mobile_1/8"   ; "NL"    ;                         ;                         ; GOVERNMENT
 66[0-46-9]   ; 9      ; PAGER      ; STANDARD_RATE ; false         ;                                  ; "pager_2/7"    ; "NL"

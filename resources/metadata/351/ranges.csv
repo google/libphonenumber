@@ -59,6 +59,7 @@ Prefix      ; Length ; Type            ; Tariff        ; Operator     ; Format  
 6[06]9233   ; 9      ; VOICEMAIL       ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; GOVERNMENT
 60929       ; 9      ; MOBILE          ; STANDARD_RATE ; "nos"        ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; IR21
 6093        ; 9      ; MOBILE          ; STANDARD_RATE ; "nos"        ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; IR21       ; "IR21 dated 2/27/2019"
+6222        ; 9      ; PAGER           ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; GOVERNMENT
 6[36]9230   ; 9      ; MOBILE          ; STANDARD_RATE ; "nos"        ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; IR21       ; "IR21 dated 2/27/2019"
 6[35]9233   ; 9      ; MOBILE          ; STANDARD_RATE ; "digi"       ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; GOVERNMENT
 6[36]929    ; 9      ; MOBILE          ; STANDARD_RATE ; "nos"        ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; IR21
