@@ -1,13 +1,18 @@
 {namespace examples.simple}
 {template result}
+{@param phoneNumber: string}
+{@param defaultCountry: string}
+{@param geocodingLocale: string}
 <!DOCTYPE html>
 <HTML lang="en">
 <HEAD>
   <LINK type="text/css" rel="stylesheet" href="/stylesheets/main.css"/>
   <title>Results for </title>
 </HEAD>
-<BODY>Phone Number entered: +32471234567;phone-context=&lt;script&gt;alert('Inti phone home')&lt;/script&gt;<BR>defaultCountry
-entered: SCHWEIZ<BR>Language entered: en<BR>
+<BODY>
+<p>Phone Number entered: {$phoneNumber}</p>
+<p>Default Country entered: {$defaultCountry}</p>
+<p>Phone Number entered: {$geocodingLocale}</p>
 <DIV>
   <TABLE border=1>
     <TR>

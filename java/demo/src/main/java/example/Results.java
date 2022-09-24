@@ -24,7 +24,6 @@ import com.google.template.soy.SoyFileSet;
 import com.google.template.soy.tofu.SoyTofu;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Locale;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -45,7 +44,9 @@ import org.apache.commons.io.IOUtils;
 public class Results extends HttpServlet {
 
 
-  /** Handle the get request to get information about a number based on query parameters. */
+  /**
+   * Handle the get request to get information about a number based on query parameters.
+   */
   public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
     resp.setContentType("text/html");
     resp.setCharacterEncoding(UTF_8.name());
@@ -103,7 +104,6 @@ public class Results extends HttpServlet {
     resp.setContentType("text/html");
     resp.setCharacterEncoding(UTF_8.name());
 
-
     resp.setContentType("text/html");
     resp.setCharacterEncoding(UTF_8.name());
     SoyFileSet sfs = SoyFileSet
@@ -111,9 +111,16 @@ public class Results extends HttpServlet {
         .add(Results.class.getResource("result.soy"))
         .build();
     SoyTofu tofu = sfs.compileToTofu();
-    resp.getWriter()
-        .println(
-            tofu.newRenderer("examples.simple.result").render());
+
+    SoyTofu simpleTofu = tofu.forNamespace("examples.result");
+
+    resp.getWriter().println(
+        simpleTofu.newRenderer(
+            ResultTemplates.Result.builder()
+                .setPhoneNumber(phoneNumber)
+                .setDefaultCountry(defaultCountry)
+                .setGeocodingLocale(languageCode)
+                .build()).render());
   }
 
 }
