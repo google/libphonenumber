@@ -119,7 +119,7 @@ public class Results extends HttpServlet {
             ResultTemplates.Result.builder()
                 .setPhoneNumber(phoneNumber)
                 .setDefaultCountry(defaultCountry)
-                .setGeocodingLocale(languageCode)
+                .setGeocodingLocale(languageCode) // TODO: Wrong, fix!
                 .build()).render());
   }
 
