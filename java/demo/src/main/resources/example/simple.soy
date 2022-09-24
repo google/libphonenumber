@@ -1,12 +1,12 @@
 {namespace examples.simple}
 {template helloWorld}
-{@param name: string}
+{@param welcomeTitle: string}
 <html>
   <head>
     <link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
   </head>
   <body>
-    <h2>{$name}</h2>
+    <h2>{$welcomeTitle}</h2>
     <form action="/phonenumberparser" method="post" accept-charset="UTF-8"
           enctype="multipart/form-data">
       <h2>Step 1</h2>

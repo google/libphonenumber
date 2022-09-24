@@ -23,11 +23,10 @@ import static java.nio.charset.StandardCharsets.UTF_8;
 import com.google.template.soy.SoyFileSet;
 import com.google.template.soy.tofu.SoyTofu;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 
 /**
  * A servlet that accepts requests that contain strings representing a phone number and a default
@@ -57,10 +56,11 @@ public class InputForm extends HttpServlet {
     // the newRenderer() method.
     SoyTofu simpleTofu = tofu.forNamespace("examples.simple");
     // helloName
-    Map<String, Object> data = new HashMap<>();
-    data.put("name", "Phone Number Parser Demo");
     resp.getWriter().println(
-        simpleTofu.newRenderer(".helloWorld").setData(data).render());
+        simpleTofu.newRenderer(
+            SimpleTemplates.HelloWorld.builder()
+                .setWelcomeTitle("Phone Number Parser Demo for LibPhoneNumber")
+                .build()).render());
   }
 
 }
