@@ -19,11 +19,21 @@
 package example;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
+import static java.util.Locale.ENGLISH;
 
+import com.google.i18n.phonenumbers.NumberParseException;
+import com.google.i18n.phonenumbers.PhoneNumberUtil;
+import com.google.i18n.phonenumbers.PhoneNumberUtil.PhoneNumberFormat;
+import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber;
+import com.google.i18n.phonenumbers.ShortNumberInfo;
 import com.google.template.soy.SoyFileSet;
 import com.google.template.soy.tofu.SoyTofu;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.Locale;
+import java.util.StringTokenizer;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -33,6 +43,7 @@ import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.fileupload.util.Streams;
 import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang.StringEscapeUtils;
 
 /**
  * A servlet that accepts requests that contain strings representing a phone number and a default
@@ -44,22 +55,10 @@ import org.apache.commons.io.IOUtils;
 public class Results extends HttpServlet {
 
 
-  /**
-   * Handle the get request to get information about a number based on query parameters.
-   */
-  public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-    resp.setContentType("text/html");
-    resp.setCharacterEncoding(UTF_8.name());
-    SoyFileSet sfs = SoyFileSet
-        .builder()
-        .add(Results.class.getResource("results.soy"))
-        .build();
-    SoyTofu tofu = sfs.compileToTofu();
-    resp.getWriter()
-        .println(
-            tofu.newRenderer("examples.simple.results").render());
-  }
-
+  private static final String NEW_ISSUE_BASE_URL =
+      "https://issuetracker.google.com/issues/new?component=192347&title=";
+  private final PhoneNumberUtil phoneUtil = PhoneNumberUtil.getInstance();
+  private final ShortNumberInfo shortInfo = ShortNumberInfo.getInstance();
 
   public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
     String phoneNumber = null;
@@ -103,9 +102,154 @@ public class Results extends HttpServlet {
     StringBuilder output;
     resp.setContentType("text/html");
     resp.setCharacterEncoding(UTF_8.name());
+    if (fileContents == null || fileContents.length() == 0) {
+      // Redirect to a URL with the given input encoded in the query parameters.
+      Locale geocodingLocale = new Locale(languageCode, regionCode);
+      resp.sendRedirect(
+          getPermaLinkURL(phoneNumber, defaultCountry, geocodingLocale, false /* absoluteURL */));
+    } else {
+      resp.getWriter().println(getOutputForFile(defaultCountry, fileContents));
+    }
+  }
 
+  /**
+   * Handle the get request to get information about a number based on query parameters.
+   */
+  public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    String phoneNumber = req.getParameter("number");
+    if (phoneNumber == null) {
+      phoneNumber = "";
+    }
+    String defaultCountry = req.getParameter("country");
+    if (defaultCountry == null) {
+      defaultCountry = "";
+    }
+    String geocodingParam = req.getParameter("geocodingLocale");
+    Locale geocodingLocale;
+    if (geocodingParam == null) {
+      geocodingLocale = ENGLISH; // Default languageCode to English if nothing is entered.
+    } else {
+      geocodingLocale = Locale.forLanguageTag(geocodingParam);
+    }
     resp.setContentType("text/html");
     resp.setCharacterEncoding(UTF_8.name());
+    resp.getWriter()
+        .println(getOutputForSingleNumber(phoneNumber, defaultCountry, geocodingLocale));
+  }
+
+  private StringBuilder getOutputForFile(String defaultCountry, String fileContents) {
+    StringBuilder output =
+        new StringBuilder(
+            "<HTML><HEAD><TITLE>Results generated from phone numbers in the file provided:"
+                + "</TITLE></HEAD><BODY>");
+    output.append("<TABLE align=center border=1>");
+    output.append("<TH align=center>ID</TH>");
+    output.append("<TH align=center>Raw phone number</TH>");
+    output.append("<TH align=center>Pretty formatting</TH>");
+    output.append("<TH align=center>International format</TH>");
+
+    int phoneNumberId = 0;
+    StringTokenizer tokenizer = new StringTokenizer(fileContents, ",");
+    while (tokenizer.hasMoreTokens()) {
+      String numberStr = tokenizer.nextToken();
+      phoneNumberId++;
+      output.append("<TR>");
+      output.append("<TD align=center>").append(phoneNumberId).append(" </TD> \n");
+      output
+          .append("<TD align=center>")
+          .append(StringEscapeUtils.escapeHtml(numberStr))
+          .append(" </TD> \n");
+      try {
+        PhoneNumber number = phoneUtil.parseAndKeepRawInput(numberStr, defaultCountry);
+        boolean isNumberValid = phoneUtil.isValidNumber(number);
+        String prettyFormat =
+            isNumberValid ? phoneUtil.formatInOriginalFormat(number, defaultCountry) : "invalid";
+        String internationalFormat =
+            isNumberValid ? phoneUtil.format(number, PhoneNumberFormat.INTERNATIONAL) : "invalid";
+
+        output
+            .append("<TD align=center>")
+            .append(StringEscapeUtils.escapeHtml(prettyFormat))
+            .append(" </TD> \n");
+        output
+            .append("<TD align=center>")
+            .append(StringEscapeUtils.escapeHtml(internationalFormat))
+            .append(" </TD> \n");
+      } catch (NumberParseException e) {
+        output
+            .append("<TD align=center colspan=2>")
+            .append(StringEscapeUtils.escapeHtml(e.toString()))
+            .append(" </TD> \n");
+      }
+      output.append("</TR>");
+    }
+    output.append("</BODY></HTML>");
+    return output;
+  }
+
+  private void appendLine(String title, String data, StringBuilder output) {
+    output.append("<TR>");
+    output.append("<TH>").append(title).append("</TH>");
+    output.append("<TD>").append(data.length() > 0 ? data : "&nbsp;").append("</TD>");
+    output.append("</TR>");
+  }
+
+  /**
+   * Returns a stable URL pointing to the result page for the given input.
+   */
+  private String getPermaLinkURL(
+      String phoneNumber, String defaultCountry, Locale geocodingLocale, boolean absoluteURL) {
+    // If absoluteURL is false, generate a relative path. Otherwise, produce an absolute URL.
+    StringBuilder permaLink =
+        new StringBuilder(
+            absoluteURL
+                ? "http://libphonenumber.appspot.com/phonenumberparser"
+                : "/phonenumberparser");
+    try {
+      permaLink.append(
+          "?number=" + URLEncoder.encode(phoneNumber != null ? phoneNumber : "", UTF_8.name()));
+      if (defaultCountry != null && !defaultCountry.isEmpty()) {
+        permaLink.append("&country=" + URLEncoder.encode(defaultCountry, UTF_8.name()));
+      }
+      if (!geocodingLocale.getLanguage().equals(ENGLISH.getLanguage())
+          || !geocodingLocale.getCountry().isEmpty()) {
+        permaLink.append(
+            "&geocodingLocale=" + URLEncoder.encode(geocodingLocale.toLanguageTag(), UTF_8.name()));
+      }
+    } catch (UnsupportedEncodingException e) {
+      // UTF-8 is guaranteed in Java, so this should be impossible.
+      throw new AssertionError(e);
+    }
+    return permaLink.toString();
+  }
+
+  /**
+   * Returns a link to create a new github issue with the relevant information.
+   */
+  private String getNewIssueLink(
+      String phoneNumber, String defaultCountry, Locale geocodingLocale) {
+    boolean hasDefaultCountry = !defaultCountry.isEmpty() && defaultCountry != "ZZ";
+    String issueTitle =
+        "Validation issue with "
+            + phoneNumber
+            + (hasDefaultCountry ? " (" + defaultCountry + ")" : "");
+
+    String newIssueLink = NEW_ISSUE_BASE_URL;
+    try {
+      newIssueLink += URLEncoder.encode(issueTitle, UTF_8.name());
+    } catch (UnsupportedEncodingException e) {
+      // UTF-8 is guaranteed in Java, so this should be impossible.
+      throw new AssertionError(e);
+    }
+    return newIssueLink;
+  }
+
+  /**
+   * The defaultCountry here is used for parsing phoneNumber. The geocodingLocale is used to specify
+   * the language used for displaying the area descriptions generated from phone number geocoding.
+   */
+  private String getOutputForSingleNumber(
+      String phoneNumber, String defaultCountry, Locale geocodingLocale) {
     SoyFileSet sfs = SoyFileSet
         .builder()
         .add(Results.class.getResource("result.soy"))
@@ -114,13 +258,12 @@ public class Results extends HttpServlet {
 
     SoyTofu simpleTofu = tofu.forNamespace("examples.result");
 
-    resp.getWriter().println(
+    return
         simpleTofu.newRenderer(
             ResultTemplates.Result.builder()
                 .setPhoneNumber(phoneNumber)
                 .setDefaultCountry(defaultCountry)
-                .setGeocodingLocale(languageCode) // TODO: Wrong, fix!
-                .build()).render());
+                .setGeocodingLocale(geocodingLocale.toLanguageTag())
+                .build()).render();
   }
-
 }
