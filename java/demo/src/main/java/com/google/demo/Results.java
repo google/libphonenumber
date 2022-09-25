@@ -313,8 +313,7 @@ public class Results extends HttpServlet {
         // Note this doesn't handle supplementary characters, but it shouldn't be a big deal as
         // there are no dial-pad characters in the supplementary range.
         char inputChar = phoneNumber.charAt(i);
-        rows.add(
-            List.of("Char entered: '" + inputChar + "' Output: ", formatter.inputDigit(inputChar)));
+        rows.add(List.of(String.valueOf(inputChar), formatter.inputDigit(inputChar)));
       }
 
       soyTemplate.setRows(rows);
