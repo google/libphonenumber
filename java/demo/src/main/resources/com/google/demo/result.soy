@@ -32,6 +32,12 @@
 
 {@param rows: list<list<string>>}
 
+{@param descriptionForNumber: string}
+{@param timeZonesForNumber: string}
+{@param nameForNumber: string}
+{@param newIssueLink: string}
+{@param guidelinesLink: string}
+
 
 <!DOCTYPE html>
 <HTML lang="en">
@@ -200,6 +206,10 @@
 
   </TABLE>
 </DIV>
+
+
+{if $isValidNumber}
+
 <DIV>
   <TABLE border=1>
     <TR>
@@ -207,7 +217,7 @@
     </TR>
     <TR>
       <TH>Location</TH>
-      <TD>Belgium</TD>
+      <TD>{$descriptionForNumber}</TD>
     </TR>
   </TABLE>
 </DIV>
@@ -218,10 +228,11 @@
     </TR>
     <TR>
       <TH>Time zone(s)</TH>
-      <TD>[Europe/Brussels]</TD>
+      <TD>{$timeZonesForNumber}</TD>
     </TR>
   </TABLE>
 </DIV>
+  {if ['MOBILE', 'FIXED_LINE_OR_MOBILE', 'PAGER'].contains($numberType)}
 <DIV>
   <TABLE border=1>
     <TR>
@@ -229,15 +240,14 @@
     </TR>
     <TR>
       <TH>Carrier</TH>
-      <TD>Proximus</TD>
+      <TD>{$nameForNumber}</TD>
     </TR>
   </TABLE>
 </DIV>
-<b style="color:red">File an issue</b>: by clicking on <a target="_blank"
-                                                          href="https://issuetracker.google.com/issues/new?component=192347&title=Validation+issue+with+%2B32471234567%3Bphone-context%3D%3Cscript%3Ealert%28%27Inti+phone+home%27%29%3C%2Fscript%3E+%28SCHWEIZ%29">this
-  link</a>, I confirm that I have read the <a target="_blank"
-                                              href="https://github.com/google/libphonenumber/blob/master/CONTRIBUTING.md">contributor's
-  guidelines</a>.
+  {/if}
+{/if}
+
+<b style="color:red">File an issue</b>: by clicking on <a target="_blank" href="{$newIssueLink}">this link</a>, I confirm that I have read the <a target="_blank" href="{$guidelinesLink}">contributor's guidelines</a>.
 </BODY>
 </HTML>
 {/template}

@@ -26,10 +26,13 @@ import com.google.demo.template.ResultErrorTemplates;
 import com.google.demo.template.ResultTemplates.SingleNumber;
 import com.google.i18n.phonenumbers.AsYouTypeFormatter;
 import com.google.i18n.phonenumbers.NumberParseException;
+import com.google.i18n.phonenumbers.PhoneNumberToCarrierMapper;
+import com.google.i18n.phonenumbers.PhoneNumberToTimeZonesMapper;
 import com.google.i18n.phonenumbers.PhoneNumberUtil;
 import com.google.i18n.phonenumbers.PhoneNumberUtil.PhoneNumberFormat;
 import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber;
 import com.google.i18n.phonenumbers.ShortNumberInfo;
+import com.google.i18n.phonenumbers.geocoding.PhoneNumberOfflineGeocoder;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
@@ -305,18 +308,32 @@ public class Results extends HttpServlet {
           .setOutOfCountryFormatFromCh(
               isNumberValid ? phoneUtil.formatOutOfCountryCallingNumber(number, "CH") : "invalid");
 
+      // Get As You Type Formatter Table
       List<List<String>> rows = new ArrayList<>();
       AsYouTypeFormatter formatter = phoneUtil.getAsYouTypeFormatter(defaultCountry);
       int rawNumberLength = phoneNumber.length();
-
       for (int i = 0; i < rawNumberLength; i++) {
         // Note this doesn't handle supplementary characters, but it shouldn't be a big deal as
         // there are no dial-pad characters in the supplementary range.
         char inputChar = phoneNumber.charAt(i);
         rows.add(List.of(String.valueOf(inputChar), formatter.inputDigit(inputChar)));
       }
-
       soyTemplate.setRows(rows);
+
+      // Geo Info Tables
+
+      String guidelinesLink =
+          "https://github.com/google/libphonenumber/blob/master/CONTRIBUTING.md";
+      soyTemplate
+          .setDescriptionForNumber(
+              PhoneNumberOfflineGeocoder.getInstance()
+                  .getDescriptionForNumber(number, geocodingLocale))
+          .setTimeZonesForNumber(
+              PhoneNumberToTimeZonesMapper.getInstance().getTimeZonesForNumber(number).toString())
+          .setNameForNumber(
+              PhoneNumberToCarrierMapper.getInstance().getNameForNumber(number, geocodingLocale))
+          .setNewIssueLink(getNewIssueLink(phoneNumber, defaultCountry, geocodingLocale))
+          .setGuidelinesLink(guidelinesLink);
 
     } catch (NumberParseException e) {
       return TemplateHelper.templateToString(

@@ -176,6 +176,36 @@ public final class ResultTemplates {
                 /* required= */ true,
                 new com.google.common.reflect.TypeToken<
                     java.lang.Iterable<? extends java.util.Collection<java.lang.String>>>() {});
+    public static final com.google.template.soy.data.SoyTemplateParam<java.lang.String>
+        DESCRIPTION_FOR_NUMBER =
+            com.google.template.soy.data.SoyTemplateParam.standard(
+                "descriptionForNumber",
+                /* required= */ true,
+                com.google.common.reflect.TypeToken.of(java.lang.String.class));
+    public static final com.google.template.soy.data.SoyTemplateParam<java.lang.String>
+        TIME_ZONES_FOR_NUMBER =
+            com.google.template.soy.data.SoyTemplateParam.standard(
+                "timeZonesForNumber",
+                /* required= */ true,
+                com.google.common.reflect.TypeToken.of(java.lang.String.class));
+    public static final com.google.template.soy.data.SoyTemplateParam<java.lang.String>
+        NAME_FOR_NUMBER =
+            com.google.template.soy.data.SoyTemplateParam.standard(
+                "nameForNumber",
+                /* required= */ true,
+                com.google.common.reflect.TypeToken.of(java.lang.String.class));
+    public static final com.google.template.soy.data.SoyTemplateParam<java.lang.String>
+        NEW_ISSUE_LINK =
+            com.google.template.soy.data.SoyTemplateParam.standard(
+                "newIssueLink",
+                /* required= */ true,
+                com.google.common.reflect.TypeToken.of(java.lang.String.class));
+    public static final com.google.template.soy.data.SoyTemplateParam<java.lang.String>
+        GUIDELINES_LINK =
+            com.google.template.soy.data.SoyTemplateParam.standard(
+                "guidelinesLink",
+                /* required= */ true,
+                com.google.common.reflect.TypeToken.of(java.lang.String.class));
     public static final com.google.template.soy.data.SoyTemplateParam<java.lang.Object>
         CSP_STYLE_NONCE =
             com.google.template.soy.data.SoyTemplateParam.injected(
@@ -212,7 +242,12 @@ public final class ResultTemplates {
                 INTERNATIONAL_FORMAT,
                 OUT_OF_COUNTRY_FORMAT_FROM_US,
                 OUT_OF_COUNTRY_FORMAT_FROM_CH,
-                ROWS);
+                ROWS,
+                DESCRIPTION_FOR_NUMBER,
+                TIME_ZONES_FOR_NUMBER,
+                NAME_FOR_NUMBER,
+                NEW_ISSUE_LINK,
+                GUIDELINES_LINK);
 
     private SingleNumber(
         com.google.common.collect.ImmutableMap<
@@ -240,7 +275,7 @@ public final class ResultTemplates {
             Builder, SingleNumber> {
 
       private Builder() {
-        super(26);
+        super(31);
       }
 
       @java.lang.Override
@@ -552,6 +587,59 @@ public final class ResultTemplates {
               future) {
         return setParamInternal(
             ROWS, asFuture(future, v -> asList(v, v1 -> asList(v1, AbstractBuilder::asString))));
+      }
+
+      @com.google.errorprone.annotations.CanIgnoreReturnValue
+      public Builder setDescriptionForNumber(java.lang.String value) {
+        return setParamInternal(DESCRIPTION_FOR_NUMBER, asString(value));
+      }
+
+      @com.google.errorprone.annotations.CanIgnoreReturnValue
+      public Builder setDescriptionForNumberFuture(
+          java.util.concurrent.Future<java.lang.String> future) {
+        return setParamInternal(
+            DESCRIPTION_FOR_NUMBER, asFuture(future, AbstractBuilder::asString));
+      }
+
+      @com.google.errorprone.annotations.CanIgnoreReturnValue
+      public Builder setTimeZonesForNumber(java.lang.String value) {
+        return setParamInternal(TIME_ZONES_FOR_NUMBER, asString(value));
+      }
+
+      @com.google.errorprone.annotations.CanIgnoreReturnValue
+      public Builder setTimeZonesForNumberFuture(
+          java.util.concurrent.Future<java.lang.String> future) {
+        return setParamInternal(TIME_ZONES_FOR_NUMBER, asFuture(future, AbstractBuilder::asString));
+      }
+
+      @com.google.errorprone.annotations.CanIgnoreReturnValue
+      public Builder setNameForNumber(java.lang.String value) {
+        return setParamInternal(NAME_FOR_NUMBER, asString(value));
+      }
+
+      @com.google.errorprone.annotations.CanIgnoreReturnValue
+      public Builder setNameForNumberFuture(java.util.concurrent.Future<java.lang.String> future) {
+        return setParamInternal(NAME_FOR_NUMBER, asFuture(future, AbstractBuilder::asString));
+      }
+
+      @com.google.errorprone.annotations.CanIgnoreReturnValue
+      public Builder setNewIssueLink(java.lang.String value) {
+        return setParamInternal(NEW_ISSUE_LINK, asString(value));
+      }
+
+      @com.google.errorprone.annotations.CanIgnoreReturnValue
+      public Builder setNewIssueLinkFuture(java.util.concurrent.Future<java.lang.String> future) {
+        return setParamInternal(NEW_ISSUE_LINK, asFuture(future, AbstractBuilder::asString));
+      }
+
+      @com.google.errorprone.annotations.CanIgnoreReturnValue
+      public Builder setGuidelinesLink(java.lang.String value) {
+        return setParamInternal(GUIDELINES_LINK, asString(value));
+      }
+
+      @com.google.errorprone.annotations.CanIgnoreReturnValue
+      public Builder setGuidelinesLinkFuture(java.util.concurrent.Future<java.lang.String> future) {
+        return setParamInternal(GUIDELINES_LINK, asFuture(future, AbstractBuilder::asString));
       }
     }
   }
