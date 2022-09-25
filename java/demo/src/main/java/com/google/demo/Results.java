@@ -24,6 +24,7 @@ import static java.util.Locale.ENGLISH;
 import com.google.demo.helper.TemplateHelper;
 import com.google.demo.helper.WebHelper;
 import com.google.demo.template.ResultErrorTemplates;
+import com.google.demo.template.ResultFileTemplates.File;
 import com.google.demo.template.ResultTemplates.SingleNumber;
 import com.google.i18n.phonenumbers.AsYouTypeFormatter;
 import com.google.i18n.phonenumbers.NumberParseException;
@@ -49,7 +50,6 @@ import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.fileupload.util.Streams;
 import org.apache.commons.io.IOUtils;
-import org.apache.commons.lang.StringEscapeUtils;
 
 /**
  * A servlet that accepts requests that contain strings representing a phone number and a default
@@ -138,54 +138,30 @@ public class Results extends HttpServlet {
         .println(getOutputForSingleNumber(phoneNumber, defaultCountry, geocodingLocale));
   }
 
-  private StringBuilder getOutputForFile(String defaultCountry, String fileContents) {
-    StringBuilder output =
-        new StringBuilder(
-            "<HTML><HEAD><TITLE>Results generated from phone numbers in the file provided:"
-                + "</TITLE></HEAD><BODY>");
-    output.append("<TABLE align=center border=1>");
-    output.append("<TH align=center>ID</TH>");
-    output.append("<TH align=center>Raw phone number</TH>");
-    output.append("<TH align=center>Pretty formatting</TH>");
-    output.append("<TH align=center>International format</TH>");
+  private String getOutputForFile(String defaultCountry, String fileContents) {
+
+    File.Builder soyTemplate = File.builder();
 
     int phoneNumberId = 0;
     StringTokenizer tokenizer = new StringTokenizer(fileContents, ",");
     while (tokenizer.hasMoreTokens()) {
       String numberStr = tokenizer.nextToken();
       phoneNumberId++;
-      output.append("<TR>");
-      output.append("<TD align=center>").append(phoneNumberId).append(" </TD> \n");
-      output
-          .append("<TD align=center>")
-          .append(StringEscapeUtils.escapeHtml(numberStr))
-          .append(" </TD> \n");
+
       try {
         PhoneNumber number = phoneUtil.parseAndKeepRawInput(numberStr, defaultCountry);
         boolean isNumberValid = phoneUtil.isValidNumber(number);
-        String prettyFormat =
-            isNumberValid ? phoneUtil.formatInOriginalFormat(number, defaultCountry) : "invalid";
-        String internationalFormat =
-            isNumberValid ? phoneUtil.format(number, PhoneNumberFormat.INTERNATIONAL) : "invalid";
-
-        output
-            .append("<TD align=center>")
-            .append(StringEscapeUtils.escapeHtml(prettyFormat))
-            .append(" </TD> \n");
-        output
-            .append("<TD align=center>")
-            .append(StringEscapeUtils.escapeHtml(internationalFormat))
-            .append(" </TD> \n");
+        soyTemplate.addRows(
+            phoneNumberId,
+            numberStr,
+            isNumberValid ? phoneUtil.formatInOriginalFormat(number, defaultCountry) : "invalid",
+            isNumberValid ? phoneUtil.format(number, PhoneNumberFormat.INTERNATIONAL) : "invalid",
+            null);
       } catch (NumberParseException e) {
-        output
-            .append("<TD align=center colspan=2>")
-            .append(StringEscapeUtils.escapeHtml(e.toString()))
-            .append(" </TD> \n");
+        soyTemplate.addRows(phoneNumberId, numberStr, null, null, e.toString());
       }
-      output.append("</TR>");
     }
-    output.append("</BODY></HTML>");
-    return output;
+    return TemplateHelper.templateToString("result_file.soy", "demo.output", soyTemplate.build());
   }
 
   /**
