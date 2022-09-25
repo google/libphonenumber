@@ -22,7 +22,7 @@ import static java.nio.charset.StandardCharsets.UTF_8;
 import static java.util.Locale.ENGLISH;
 
 import com.google.demo.helper.TemplateHelper;
-import com.google.demo.template.ResultTemplates;
+import com.google.demo.template.ResultTemplates.SingleNumber;
 import com.google.i18n.phonenumbers.NumberParseException;
 import com.google.i18n.phonenumbers.PhoneNumberUtil;
 import com.google.i18n.phonenumbers.PhoneNumberUtil.PhoneNumberFormat;
@@ -243,13 +243,17 @@ public class Results extends HttpServlet {
    */
   private String getOutputForSingleNumber(
       String phoneNumber, String defaultCountry, Locale geocodingLocale) {
-    return TemplateHelper.templateToString(
-        "result.soy",
-        "demo.output",
-        ResultTemplates.SingleNumber.builder()
+
+    SingleNumber.Builder soyTemplate =
+        SingleNumber.builder()
             .setPhoneNumber(phoneNumber)
             .setDefaultCountry(defaultCountry)
-            .setGeocodingLocale(geocodingLocale.toLanguageTag())
-            .build());
+            .setGeocodingLocale(geocodingLocale.toLanguageTag());
+    try {
+      PhoneNumber number = phoneUtil.parseAndKeepRawInput(phoneNumber, defaultCountry);
+    } catch (NumberParseException e) {
+      soyTemplate.setError(e.toString());
+    }
+    return TemplateHelper.templateToString("result.soy", "demo.output", soyTemplate.build());
   }
 }

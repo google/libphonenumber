@@ -3,6 +3,8 @@
 {@param phoneNumber: string}
 {@param defaultCountry: string}
 {@param geocodingLocale: string}
+{@param error: string|null}
+
 <!DOCTYPE html>
 <HTML lang="en">
 <HEAD>
@@ -13,6 +15,7 @@
 <p>Phone Number entered: {$phoneNumber}</p>
 <p>Default Country entered: {$defaultCountry}</p>
 <p>Phone Number entered: {$geocodingLocale}</p>
+{if $error == null}
 <DIV>
   <TABLE border=1>
     <TR>
@@ -250,6 +253,9 @@
   link</a>, I confirm that I have read the <a target="_blank"
                                               href="https://github.com/google/libphonenumber/blob/master/CONTRIBUTING.md">contributor's
   guidelines</a>.
+{else}
+<p> An error occured while parsing the input: {$error}
+{/if}
 </BODY>
 </HTML>
 {/template}
