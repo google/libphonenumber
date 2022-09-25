@@ -77,6 +77,42 @@ public final class ResultTemplates {
             "rawInput",
             /* required= */ true,
             com.google.common.reflect.TypeToken.of(java.lang.String.class));
+    public static final com.google.template.soy.data.SoyTemplateParam<java.lang.Boolean>
+        IS_POSSIBLE_NUMBER =
+            com.google.template.soy.data.SoyTemplateParam.standard(
+                "isPossibleNumber",
+                /* required= */ true,
+                com.google.common.reflect.TypeToken.of(java.lang.Boolean.class));
+    public static final com.google.template.soy.data.SoyTemplateParam<java.lang.Boolean>
+        IS_VALID_NUMBER =
+            com.google.template.soy.data.SoyTemplateParam.standard(
+                "isValidNumber",
+                /* required= */ true,
+                com.google.common.reflect.TypeToken.of(java.lang.Boolean.class));
+    public static final com.google.template.soy.data.SoyTemplateParam<java.lang.Boolean>
+        IS_VALID_NUMBER_FOR_REGION =
+            com.google.template.soy.data.SoyTemplateParam.standard(
+                "isValidNumberForRegion",
+                /* required= */ false,
+                com.google.common.reflect.TypeToken.of(java.lang.Boolean.class));
+    public static final com.google.template.soy.data.SoyTemplateParam<java.lang.String>
+        PHONE_NUMBER_REGION =
+            com.google.template.soy.data.SoyTemplateParam.standard(
+                "phoneNumberRegion",
+                /* required= */ false,
+                com.google.common.reflect.TypeToken.of(java.lang.String.class));
+    public static final com.google.template.soy.data.SoyTemplateParam<java.lang.String>
+        NUMBER_TYPE =
+            com.google.template.soy.data.SoyTemplateParam.standard(
+                "numberType",
+                /* required= */ true,
+                com.google.common.reflect.TypeToken.of(java.lang.String.class));
+    public static final com.google.template.soy.data.SoyTemplateParam<java.lang.String>
+        VALIDATION_RESULT =
+            com.google.template.soy.data.SoyTemplateParam.standard(
+                "validationResult",
+                /* required= */ true,
+                com.google.common.reflect.TypeToken.of(java.lang.String.class));
     public static final com.google.template.soy.data.SoyTemplateParam<java.lang.Object>
         CSP_STYLE_NONCE =
             com.google.template.soy.data.SoyTemplateParam.injected(
@@ -97,7 +133,13 @@ public final class ResultTemplates {
                 EXTENSION,
                 COUNTRY_CODE_SOURCE,
                 ITALIAN_LEADING_ZERO,
-                RAW_INPUT);
+                RAW_INPUT,
+                IS_POSSIBLE_NUMBER,
+                IS_VALID_NUMBER,
+                IS_VALID_NUMBER_FOR_REGION,
+                PHONE_NUMBER_REGION,
+                NUMBER_TYPE,
+                VALIDATION_RESULT);
 
     private SingleNumber(
         com.google.common.collect.ImmutableMap<
@@ -125,7 +167,7 @@ public final class ResultTemplates {
             Builder, SingleNumber> {
 
       private Builder() {
-        super(10);
+        super(16);
       }
 
       @java.lang.Override
@@ -246,6 +288,72 @@ public final class ResultTemplates {
       @com.google.errorprone.annotations.CanIgnoreReturnValue
       public Builder setRawInputFuture(java.util.concurrent.Future<java.lang.String> future) {
         return setParamInternal(RAW_INPUT, asFuture(future, AbstractBuilder::asString));
+      }
+
+      @com.google.errorprone.annotations.CanIgnoreReturnValue
+      public Builder setIsPossibleNumber(boolean value) {
+        return setParamInternal(IS_POSSIBLE_NUMBER, asBool(value));
+      }
+
+      @com.google.errorprone.annotations.CanIgnoreReturnValue
+      public Builder setIsPossibleNumberFuture(
+          java.util.concurrent.Future<java.lang.Boolean> future) {
+        return setParamInternal(IS_POSSIBLE_NUMBER, asFuture(future, AbstractBuilder::asBool));
+      }
+
+      @com.google.errorprone.annotations.CanIgnoreReturnValue
+      public Builder setIsValidNumber(boolean value) {
+        return setParamInternal(IS_VALID_NUMBER, asBool(value));
+      }
+
+      @com.google.errorprone.annotations.CanIgnoreReturnValue
+      public Builder setIsValidNumberFuture(java.util.concurrent.Future<java.lang.Boolean> future) {
+        return setParamInternal(IS_VALID_NUMBER, asFuture(future, AbstractBuilder::asBool));
+      }
+
+      @com.google.errorprone.annotations.CanIgnoreReturnValue
+      public Builder setIsValidNumberForRegion(@javax.annotation.Nullable java.lang.Boolean value) {
+        return setParamInternal(IS_VALID_NUMBER_FOR_REGION, asNullableBool(value));
+      }
+
+      @com.google.errorprone.annotations.CanIgnoreReturnValue
+      public Builder setIsValidNumberForRegionFuture(
+          java.util.concurrent.Future<java.lang.Boolean> future) {
+        return setParamInternal(
+            IS_VALID_NUMBER_FOR_REGION, asFuture(future, AbstractBuilder::asNullableBool));
+      }
+
+      @com.google.errorprone.annotations.CanIgnoreReturnValue
+      public Builder setPhoneNumberRegion(@javax.annotation.Nullable java.lang.String value) {
+        return setParamInternal(PHONE_NUMBER_REGION, asNullableString(value));
+      }
+
+      @com.google.errorprone.annotations.CanIgnoreReturnValue
+      public Builder setPhoneNumberRegionFuture(
+          java.util.concurrent.Future<java.lang.String> future) {
+        return setParamInternal(
+            PHONE_NUMBER_REGION, asFuture(future, AbstractBuilder::asNullableString));
+      }
+
+      @com.google.errorprone.annotations.CanIgnoreReturnValue
+      public Builder setNumberType(java.lang.String value) {
+        return setParamInternal(NUMBER_TYPE, asString(value));
+      }
+
+      @com.google.errorprone.annotations.CanIgnoreReturnValue
+      public Builder setNumberTypeFuture(java.util.concurrent.Future<java.lang.String> future) {
+        return setParamInternal(NUMBER_TYPE, asFuture(future, AbstractBuilder::asString));
+      }
+
+      @com.google.errorprone.annotations.CanIgnoreReturnValue
+      public Builder setValidationResult(java.lang.String value) {
+        return setParamInternal(VALIDATION_RESULT, asString(value));
+      }
+
+      @com.google.errorprone.annotations.CanIgnoreReturnValue
+      public Builder setValidationResultFuture(
+          java.util.concurrent.Future<java.lang.String> future) {
+        return setParamInternal(VALIDATION_RESULT, asFuture(future, AbstractBuilder::asString));
       }
     }
   }

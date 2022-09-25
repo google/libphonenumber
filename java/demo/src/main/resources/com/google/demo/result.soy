@@ -13,11 +13,20 @@
 {@param italianLeadingZero: bool}
 {@param rawInput: string}
 
+
+{@param isPossibleNumber: bool}
+{@param isValidNumber: bool}
+{@param isValidNumberForRegion: bool|null}
+{@param phoneNumberRegion: string|null}
+{@param numberType: string}
+{@param validationResult: string}
+
+
 <!DOCTYPE html>
 <HTML lang="en">
 <HEAD>
   <LINK type="text/css" rel="stylesheet" href="/stylesheets/main.css"/>
-  <title>Results for </title>
+  <title>Results for {$phoneNumber}</title>
 </HEAD>
 <BODY>
 <p>Phone Number entered: {$phoneNumber}</p>
@@ -62,24 +71,47 @@
     </TR>
     <TR>
       <TH>Result from isPossibleNumber()</TH>
-      <TD>true</TD>
+      <TD>{$isPossibleNumber}</TD>
     </TR>
+{if $isPossibleNumber}
+  {if $validationResult == "IS_POSSIBLE_LOCAL_ONLY"}
+    <TR>
+      <TH>Result from isPossibleNumberWithReason()</TH>
+      <TD>$validationResult</TD>
+    </TR>
+    <TR>
+      <TD colspan=2>Number is considered invalid as it is not a possible national number.</TD>
+    </TR>
+  {else}
     <TR>
       <TH>Result from isValidNumber()</TH>
-      <TD>true</TD>
+      <TD>{$isValidNumber}</TD>
     </TR>
+    {if $isValidNumberForRegion != null}
     <TR>
       <TH>Result from isValidNumberForRegion()</TH>
-      <TD>false</TD>
+      <TD>{$isValidNumberForRegion}</TD>
     </TR>
+    {/if}
     <TR>
       <TH>Phone Number region</TH>
-      <TD>BE</TD>
+      <TD>{$phoneNumberRegion ?: ""}</TD>
     </TR>
     <TR>
       <TH>Result from getNumberType()</TH>
-      <TD>MOBILE</TD>
+      <TD>{$numberType}</TD>
     </TR>
+  {/if}
+{else}
+    <TR>
+      <TH>Result from isPossibleNumberWithReason()</TH>
+      <TD>$validationResult</TD>
+    </TR>
+    <TR>
+      <TD colspan=2>Note: Numbers that are not possible have type UNKNOWN, an unknown region, and are considered invalid.</TD>
+    </TR>
+{/if}
+
   </TABLE>
 </DIV>
 <DIV>

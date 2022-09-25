@@ -258,6 +258,21 @@ public class Results extends HttpServlet {
           .setCountryCodeSource(number.getCountryCodeSource().toString())
           .setItalianLeadingZero(number.isItalianLeadingZero())
           .setRawInput(number.getRawInput());
+
+      boolean isNumberValid = phoneUtil.isValidNumber(number);
+      boolean hasDefaultCountry = !defaultCountry.isEmpty() && !defaultCountry.equals("ZZ");
+
+      soyTemplate
+          .setIsPossibleNumber(phoneUtil.isPossibleNumber(number))
+          .setIsValidNumber(isNumberValid)
+          .setIsValidNumberForRegion(
+              isNumberValid && hasDefaultCountry
+                  ? phoneUtil.isValidNumberForRegion(number, defaultCountry)
+                  : null)
+          .setPhoneNumberRegion(phoneUtil.getRegionCodeForNumber(number))
+          .setNumberType(phoneUtil.getNumberType(number).toString())
+          .setValidationResult(phoneUtil.isPossibleNumberWithReason(number).toString());
+
     } catch (NumberParseException e) {
       soyTemplate.setError(e.toString());
     }
