@@ -23,7 +23,7 @@
   <tr>
       <td>{$row.id}</td>
       <td>{$row.numberStr}</td>
-    if $row.error == null}
+    {if $row.error == null}
       <td>{$row.prettyFormat}</td>
       <td>{$row.internationalFormat}</td>
     {else}

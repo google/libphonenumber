@@ -104,7 +104,7 @@ public class Results extends HttpServlet {
 
     resp.setContentType("text/html");
     resp.setCharacterEncoding(UTF_8.name());
-    if (fileContents == null || fileContents.length() == 0) {
+    if (fileContents == null) {
       // Redirect to a URL with the given input encoded in the query parameters.
       Locale geocodingLocale = new Locale(languageCode, regionCode);
       resp.sendRedirect(
