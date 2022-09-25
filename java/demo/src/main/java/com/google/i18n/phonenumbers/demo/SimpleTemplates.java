@@ -1,4 +1,4 @@
-package example;
+package com.google.i18n.phonenumbers.demo;
 
 
 @javax.annotation.Generated("com.google.template.soy.SoyParseInfoGenerator")
