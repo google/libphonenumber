@@ -27,6 +27,13 @@
 {@param isValidShortNumberForRegion: bool|null}
 
 
+{@param e164Format: string}
+{@param originalFormat: string}
+{@param nationalFormat: string}
+{@param internationalFormat: string}
+{@param outOfCountryFormatFromUs: string}
+{@param outOfCountryFormatFromCh: string}
+
 <!DOCTYPE html>
 <HTML lang="en">
 <HEAD>
@@ -36,7 +43,7 @@
 <BODY>
 <p>Phone Number entered: {$phoneNumber}</p>
 <p>Default Country entered: {$defaultCountry}</p>
-<p>Phone Number entered: {$geocodingLocale}</p>
+<p>Language entered: {$geocodingLocale}</p>
 {if $error == null}
 <DIV>
   <TABLE border=1>
@@ -82,7 +89,7 @@
   {if $validationResult == "IS_POSSIBLE_LOCAL_ONLY"}
     <TR>
       <TH>Result from isPossibleNumberWithReason()</TH>
-      <TD>$validationResult</TD>
+      <TD>{$validationResult}</TD>
     </TR>
     <TR>
       <TD colspan=2>Number is considered invalid as it is not a possible national number.</TD>
@@ -110,7 +117,7 @@
 {else}
     <TR>
       <TH>Result from isPossibleNumberWithReason()</TH>
-      <TD>$validationResult</TD>
+      <TD>{$validationResult}</TD>
     </TR>
     <TR>
       <TD colspan=2>Note: Numbers that are not possible have type UNKNOWN, an unknown region, and are considered invalid.</TD>
@@ -125,23 +132,23 @@
   <TR><TD colspan=2>Short Number Results</TD></TR>
     <TR>
       <TH>Result from isPossibleShortNumber()</TH>
-      <TD>$isPossibleShortNumber</TD>
+      <TD>{$isPossibleShortNumber}</TD>
     </TR>
   {if $isPossibleShortNumber}
     <TR>
       <TH>Result from isValidShortNumber()</TH>
-      <TD>$isValidShortNumber</TD>
+      <TD>{$isValidShortNumber}</TD>
     </TR>
   {/if}
   {if $isPossibleShortNumberForRegion != null}
     <TR>
       <TH>Result from isPossibleShortNumberForRegion()</TH>
-      <TD>$isPossibleShortNumberForRegion</TD>
+      <TD>{$isPossibleShortNumberForRegion}</TD>
     </TR>
     {if $isPossibleShortNumberForRegion and $isValidShortNumberForRegion != null}
       <TR>
         <TH>Result from isValidShortNumberForRegion()</TH>
-        <TD>$isValidShortNumberForRegion</TD>
+        <TD>{$isValidShortNumberForRegion}</TD>
       </TR>
     {/if}
   {/if}
@@ -156,30 +163,31 @@
     </TR>
     <TR>
       <TH>E164 format</TH>
-      <TD>+32471234567</TD>
+      <TD>{$e164Format}</TD>
     </TR>
     <TR>
       <TH>Original format</TH>
-      <TD>+32 471 23 45 67</TD>
+      <TD>{$originalFormat}</TD>
     </TR>
     <TR>
       <TH>National format</TH>
-      <TD>0471 23 45 67</TD>
+      <TD>{$nationalFormat}</TD>
     </TR>
     <TR>
       <TH>International format</TH>
-      <TD>+32 471 23 45 67</TD>
+      <TD>{$internationalFormat}</TD>
     </TR>
     <TR>
       <TH>Out-of-country format from US</TH>
-      <TD>011 32 471 23 45 67</TD>
+      <TD>{$outOfCountryFormatFromUs}</TD>
     </TR>
     <TR>
       <TH>Out-of-country format from CH</TH>
-      <TD>00 32 471 23 45 67</TD>
+      <TD>{$outOfCountryFormatFromCh}</TD>
     </TR>
   </TABLE>
 </DIV>
+
 <DIV>
   <TABLE border=1>
     <TR>

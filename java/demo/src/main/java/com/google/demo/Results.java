@@ -244,6 +244,7 @@ public class Results extends HttpServlet {
   private String getOutputForSingleNumber(
       String phoneNumber, String defaultCountry, Locale geocodingLocale) {
 
+    // Header info at Start of Page
     SingleNumber.Builder soyTemplate =
         SingleNumber.builder()
             .setPhoneNumber(phoneNumber)
@@ -262,6 +263,7 @@ public class Results extends HttpServlet {
       boolean isNumberValid = phoneUtil.isValidNumber(number);
       boolean hasDefaultCountry = !defaultCountry.isEmpty() && !defaultCountry.equals("ZZ");
 
+      // Validation Results Table
       soyTemplate
           .setIsPossibleNumber(phoneUtil.isPossibleNumber(number))
           .setIsValidNumber(isNumberValid)
@@ -271,7 +273,10 @@ public class Results extends HttpServlet {
                   : null)
           .setPhoneNumberRegion(phoneUtil.getRegionCodeForNumber(number))
           .setNumberType(phoneUtil.getNumberType(number).toString())
-          .setValidationResult(phoneUtil.isPossibleNumberWithReason(number).toString())
+          .setValidationResult(phoneUtil.isPossibleNumberWithReason(number).toString());
+
+      // Short Number Results Table
+      soyTemplate
           .setIsPossibleShortNumber(shortInfo.isPossibleShortNumber(number))
           .setIsValidShortNumber(shortInfo.isValidShortNumber(number))
           .setIsPossibleShortNumberForRegion(
@@ -282,6 +287,23 @@ public class Results extends HttpServlet {
               hasDefaultCountry
                   ? shortInfo.isValidShortNumberForRegion(number, defaultCountry)
                   : null);
+
+      // Formatting Results Table
+      soyTemplate
+          .setE164Format(
+              isNumberValid ? phoneUtil.format(number, PhoneNumberFormat.E164) : "invalid")
+          .setOriginalFormat(phoneUtil.formatInOriginalFormat(number, defaultCountry))
+          .setNationalFormat(phoneUtil.format(number, PhoneNumberFormat.NATIONAL))
+          .setInternationalFormat(
+              isNumberValid ? phoneUtil.format(number, PhoneNumberFormat.INTERNATIONAL) : "invalid")
+          .setOutOfCountryFormatFromUs(
+              isNumberValid
+                  ? phoneUtil.formatOutOfCountryCallingNumber(number, "US")
+                  : "invalid")
+          .setOutOfCountryFormatFromCh(
+              isNumberValid
+                  ? phoneUtil.formatOutOfCountryCallingNumber(number, "CH")
+                  : "invalid");
 
     } catch (NumberParseException e) {
       soyTemplate.setError(e.toString());

@@ -137,6 +137,42 @@ public final class ResultTemplates {
                 "isValidShortNumberForRegion",
                 /* required= */ false,
                 com.google.common.reflect.TypeToken.of(java.lang.Boolean.class));
+    public static final com.google.template.soy.data.SoyTemplateParam<java.lang.String>
+        E_164_FORMAT =
+            com.google.template.soy.data.SoyTemplateParam.standard(
+                "e164Format",
+                /* required= */ true,
+                com.google.common.reflect.TypeToken.of(java.lang.String.class));
+    public static final com.google.template.soy.data.SoyTemplateParam<java.lang.String>
+        ORIGINAL_FORMAT =
+            com.google.template.soy.data.SoyTemplateParam.standard(
+                "originalFormat",
+                /* required= */ true,
+                com.google.common.reflect.TypeToken.of(java.lang.String.class));
+    public static final com.google.template.soy.data.SoyTemplateParam<java.lang.String>
+        NATIONAL_FORMAT =
+            com.google.template.soy.data.SoyTemplateParam.standard(
+                "nationalFormat",
+                /* required= */ true,
+                com.google.common.reflect.TypeToken.of(java.lang.String.class));
+    public static final com.google.template.soy.data.SoyTemplateParam<java.lang.String>
+        INTERNATIONAL_FORMAT =
+            com.google.template.soy.data.SoyTemplateParam.standard(
+                "internationalFormat",
+                /* required= */ true,
+                com.google.common.reflect.TypeToken.of(java.lang.String.class));
+    public static final com.google.template.soy.data.SoyTemplateParam<java.lang.String>
+        OUT_OF_COUNTRY_FORMAT_FROM_US =
+            com.google.template.soy.data.SoyTemplateParam.standard(
+                "outOfCountryFormatFromUs",
+                /* required= */ true,
+                com.google.common.reflect.TypeToken.of(java.lang.String.class));
+    public static final com.google.template.soy.data.SoyTemplateParam<java.lang.String>
+        OUT_OF_COUNTRY_FORMAT_FROM_CH =
+            com.google.template.soy.data.SoyTemplateParam.standard(
+                "outOfCountryFormatFromCh",
+                /* required= */ true,
+                com.google.common.reflect.TypeToken.of(java.lang.String.class));
     public static final com.google.template.soy.data.SoyTemplateParam<java.lang.Object>
         CSP_STYLE_NONCE =
             com.google.template.soy.data.SoyTemplateParam.injected(
@@ -167,7 +203,13 @@ public final class ResultTemplates {
                 IS_POSSIBLE_SHORT_NUMBER,
                 IS_VALID_SHORT_NUMBER,
                 IS_POSSIBLE_SHORT_NUMBER_FOR_REGION,
-                IS_VALID_SHORT_NUMBER_FOR_REGION);
+                IS_VALID_SHORT_NUMBER_FOR_REGION,
+                E_164_FORMAT,
+                ORIGINAL_FORMAT,
+                NATIONAL_FORMAT,
+                INTERNATIONAL_FORMAT,
+                OUT_OF_COUNTRY_FORMAT_FROM_US,
+                OUT_OF_COUNTRY_FORMAT_FROM_CH);
 
     private SingleNumber(
         com.google.common.collect.ImmutableMap<
@@ -195,7 +237,7 @@ public final class ResultTemplates {
             Builder, SingleNumber> {
 
       private Builder() {
-        super(20);
+        super(26);
       }
 
       @java.lang.Override
@@ -437,6 +479,71 @@ public final class ResultTemplates {
           java.util.concurrent.Future<java.lang.Boolean> future) {
         return setParamInternal(
             IS_VALID_SHORT_NUMBER_FOR_REGION, asFuture(future, AbstractBuilder::asNullableBool));
+      }
+
+      @com.google.errorprone.annotations.CanIgnoreReturnValue
+      public Builder setE164Format(java.lang.String value) {
+        return setParamInternal(E_164_FORMAT, asString(value));
+      }
+
+      @com.google.errorprone.annotations.CanIgnoreReturnValue
+      public Builder setE164FormatFuture(java.util.concurrent.Future<java.lang.String> future) {
+        return setParamInternal(E_164_FORMAT, asFuture(future, AbstractBuilder::asString));
+      }
+
+      @com.google.errorprone.annotations.CanIgnoreReturnValue
+      public Builder setOriginalFormat(java.lang.String value) {
+        return setParamInternal(ORIGINAL_FORMAT, asString(value));
+      }
+
+      @com.google.errorprone.annotations.CanIgnoreReturnValue
+      public Builder setOriginalFormatFuture(java.util.concurrent.Future<java.lang.String> future) {
+        return setParamInternal(ORIGINAL_FORMAT, asFuture(future, AbstractBuilder::asString));
+      }
+
+      @com.google.errorprone.annotations.CanIgnoreReturnValue
+      public Builder setNationalFormat(java.lang.String value) {
+        return setParamInternal(NATIONAL_FORMAT, asString(value));
+      }
+
+      @com.google.errorprone.annotations.CanIgnoreReturnValue
+      public Builder setNationalFormatFuture(java.util.concurrent.Future<java.lang.String> future) {
+        return setParamInternal(NATIONAL_FORMAT, asFuture(future, AbstractBuilder::asString));
+      }
+
+      @com.google.errorprone.annotations.CanIgnoreReturnValue
+      public Builder setInternationalFormat(java.lang.String value) {
+        return setParamInternal(INTERNATIONAL_FORMAT, asString(value));
+      }
+
+      @com.google.errorprone.annotations.CanIgnoreReturnValue
+      public Builder setInternationalFormatFuture(
+          java.util.concurrent.Future<java.lang.String> future) {
+        return setParamInternal(INTERNATIONAL_FORMAT, asFuture(future, AbstractBuilder::asString));
+      }
+
+      @com.google.errorprone.annotations.CanIgnoreReturnValue
+      public Builder setOutOfCountryFormatFromUs(java.lang.String value) {
+        return setParamInternal(OUT_OF_COUNTRY_FORMAT_FROM_US, asString(value));
+      }
+
+      @com.google.errorprone.annotations.CanIgnoreReturnValue
+      public Builder setOutOfCountryFormatFromUsFuture(
+          java.util.concurrent.Future<java.lang.String> future) {
+        return setParamInternal(
+            OUT_OF_COUNTRY_FORMAT_FROM_US, asFuture(future, AbstractBuilder::asString));
+      }
+
+      @com.google.errorprone.annotations.CanIgnoreReturnValue
+      public Builder setOutOfCountryFormatFromCh(java.lang.String value) {
+        return setParamInternal(OUT_OF_COUNTRY_FORMAT_FROM_CH, asString(value));
+      }
+
+      @com.google.errorprone.annotations.CanIgnoreReturnValue
+      public Builder setOutOfCountryFormatFromChFuture(
+          java.util.concurrent.Future<java.lang.String> future) {
+        return setParamInternal(
+            OUT_OF_COUNTRY_FORMAT_FROM_CH, asFuture(future, AbstractBuilder::asString));
       }
     }
   }
