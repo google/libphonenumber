@@ -271,7 +271,17 @@ public class Results extends HttpServlet {
                   : null)
           .setPhoneNumberRegion(phoneUtil.getRegionCodeForNumber(number))
           .setNumberType(phoneUtil.getNumberType(number).toString())
-          .setValidationResult(phoneUtil.isPossibleNumberWithReason(number).toString());
+          .setValidationResult(phoneUtil.isPossibleNumberWithReason(number).toString())
+          .setIsPossibleShortNumber(shortInfo.isPossibleShortNumber(number))
+          .setIsValidShortNumber(shortInfo.isValidShortNumber(number))
+          .setIsPossibleShortNumberForRegion(
+              hasDefaultCountry
+                  ? shortInfo.isPossibleShortNumberForRegion(number, defaultCountry)
+                  : null)
+          .setIsValidShortNumberForRegion(
+              hasDefaultCountry
+                  ? shortInfo.isValidShortNumberForRegion(number, defaultCountry)
+                  : null);
 
     } catch (NumberParseException e) {
       soyTemplate.setError(e.toString());

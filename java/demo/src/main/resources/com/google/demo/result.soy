@@ -21,6 +21,11 @@
 {@param numberType: string}
 {@param validationResult: string}
 
+{@param isPossibleShortNumber: bool}
+{@param isValidShortNumber: bool}
+{@param isPossibleShortNumberForRegion: bool|null}
+{@param isValidShortNumberForRegion: bool|null}
+
 
 <!DOCTYPE html>
 <HTML lang="en">
@@ -111,9 +116,39 @@
       <TD colspan=2>Note: Numbers that are not possible have type UNKNOWN, an unknown region, and are considered invalid.</TD>
     </TR>
 {/if}
-
   </TABLE>
 </DIV>
+
+{if not $isValidNumber}
+<DIV>
+  <TABLE border=1>
+  <TR><TD colspan=2>Short Number Results</TD></TR>
+    <TR>
+      <TH>Result from isPossibleShortNumber()</TH>
+      <TD>$isPossibleShortNumber</TD>
+    </TR>
+  {if $isPossibleShortNumber}
+    <TR>
+      <TH>Result from isValidShortNumber()</TH>
+      <TD>$isValidShortNumber</TD>
+    </TR>
+  {/if}
+  {if $isPossibleShortNumberForRegion != null}
+    <TR>
+      <TH>Result from isPossibleShortNumberForRegion()</TH>
+      <TD>$isPossibleShortNumberForRegion</TD>
+    </TR>
+    {if $isPossibleShortNumberForRegion and $isValidShortNumberForRegion != null}
+      <TR>
+        <TH>Result from isValidShortNumberForRegion()</TH>
+        <TD>$isValidShortNumberForRegion</TD>
+      </TR>
+    {/if}
+  {/if}
+  </TABLE>
+</DIV>
+{/if}
+
 <DIV>
   <TABLE border=1>
     <TR>

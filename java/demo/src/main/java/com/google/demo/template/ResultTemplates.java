@@ -113,6 +113,30 @@ public final class ResultTemplates {
                 "validationResult",
                 /* required= */ true,
                 com.google.common.reflect.TypeToken.of(java.lang.String.class));
+    public static final com.google.template.soy.data.SoyTemplateParam<java.lang.Boolean>
+        IS_POSSIBLE_SHORT_NUMBER =
+            com.google.template.soy.data.SoyTemplateParam.standard(
+                "isPossibleShortNumber",
+                /* required= */ true,
+                com.google.common.reflect.TypeToken.of(java.lang.Boolean.class));
+    public static final com.google.template.soy.data.SoyTemplateParam<java.lang.Boolean>
+        IS_VALID_SHORT_NUMBER =
+            com.google.template.soy.data.SoyTemplateParam.standard(
+                "isValidShortNumber",
+                /* required= */ true,
+                com.google.common.reflect.TypeToken.of(java.lang.Boolean.class));
+    public static final com.google.template.soy.data.SoyTemplateParam<java.lang.Boolean>
+        IS_POSSIBLE_SHORT_NUMBER_FOR_REGION =
+            com.google.template.soy.data.SoyTemplateParam.standard(
+                "isPossibleShortNumberForRegion",
+                /* required= */ false,
+                com.google.common.reflect.TypeToken.of(java.lang.Boolean.class));
+    public static final com.google.template.soy.data.SoyTemplateParam<java.lang.Boolean>
+        IS_VALID_SHORT_NUMBER_FOR_REGION =
+            com.google.template.soy.data.SoyTemplateParam.standard(
+                "isValidShortNumberForRegion",
+                /* required= */ false,
+                com.google.common.reflect.TypeToken.of(java.lang.Boolean.class));
     public static final com.google.template.soy.data.SoyTemplateParam<java.lang.Object>
         CSP_STYLE_NONCE =
             com.google.template.soy.data.SoyTemplateParam.injected(
@@ -139,7 +163,11 @@ public final class ResultTemplates {
                 IS_VALID_NUMBER_FOR_REGION,
                 PHONE_NUMBER_REGION,
                 NUMBER_TYPE,
-                VALIDATION_RESULT);
+                VALIDATION_RESULT,
+                IS_POSSIBLE_SHORT_NUMBER,
+                IS_VALID_SHORT_NUMBER,
+                IS_POSSIBLE_SHORT_NUMBER_FOR_REGION,
+                IS_VALID_SHORT_NUMBER_FOR_REGION);
 
     private SingleNumber(
         com.google.common.collect.ImmutableMap<
@@ -167,7 +195,7 @@ public final class ResultTemplates {
             Builder, SingleNumber> {
 
       private Builder() {
-        super(16);
+        super(20);
       }
 
       @java.lang.Override
@@ -354,6 +382,61 @@ public final class ResultTemplates {
       public Builder setValidationResultFuture(
           java.util.concurrent.Future<java.lang.String> future) {
         return setParamInternal(VALIDATION_RESULT, asFuture(future, AbstractBuilder::asString));
+      }
+
+      @com.google.errorprone.annotations.CanIgnoreReturnValue
+      public Builder setIsPossibleShortNumber(boolean value) {
+        return setParamInternal(IS_POSSIBLE_SHORT_NUMBER, asBool(value));
+      }
+
+      @com.google.errorprone.annotations.CanIgnoreReturnValue
+      public Builder setIsPossibleShortNumberFuture(
+          java.util.concurrent.Future<java.lang.Boolean> future) {
+        return setParamInternal(
+            IS_POSSIBLE_SHORT_NUMBER, asFuture(future, AbstractBuilder::asBool));
+      }
+
+      @com.google.errorprone.annotations.CanIgnoreReturnValue
+      public Builder setIsValidShortNumber(boolean value) {
+        return setParamInternal(IS_VALID_SHORT_NUMBER, asBool(value));
+      }
+
+      @com.google.errorprone.annotations.CanIgnoreReturnValue
+      public Builder setIsValidShortNumberFuture(
+          java.util.concurrent.Future<java.lang.Boolean> future) {
+        return setParamInternal(IS_VALID_SHORT_NUMBER, asFuture(future, AbstractBuilder::asBool));
+      }
+
+      @com.google.errorprone.annotations.CanIgnoreReturnValue
+      public Builder setIsPossibleShortNumberForRegion(
+          @javax.annotation.Nullable java.lang.Boolean value) {
+        return setParamInternal(IS_POSSIBLE_SHORT_NUMBER_FOR_REGION, asNullableBool(value));
+      }
+
+      /**
+       * Future compatible version of {@link #setIsPossibleShortNumberForRegion(java.lang.Boolean)}.
+       */
+      @com.google.errorprone.annotations.CanIgnoreReturnValue
+      public Builder setIsPossibleShortNumberForRegionFuture(
+          java.util.concurrent.Future<java.lang.Boolean> future) {
+        return setParamInternal(
+            IS_POSSIBLE_SHORT_NUMBER_FOR_REGION, asFuture(future, AbstractBuilder::asNullableBool));
+      }
+
+      @com.google.errorprone.annotations.CanIgnoreReturnValue
+      public Builder setIsValidShortNumberForRegion(
+          @javax.annotation.Nullable java.lang.Boolean value) {
+        return setParamInternal(IS_VALID_SHORT_NUMBER_FOR_REGION, asNullableBool(value));
+      }
+
+      /**
+       * Future compatible version of {@link #setIsValidShortNumberForRegion(java.lang.Boolean)}.
+       */
+      @com.google.errorprone.annotations.CanIgnoreReturnValue
+      public Builder setIsValidShortNumberForRegionFuture(
+          java.util.concurrent.Future<java.lang.Boolean> future) {
+        return setParamInternal(
+            IS_VALID_SHORT_NUMBER_FOR_REGION, asFuture(future, AbstractBuilder::asNullableBool));
       }
     }
   }
