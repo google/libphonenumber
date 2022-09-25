@@ -256,11 +256,11 @@ public class Results extends HttpServlet {
         .build();
     SoyTofu tofu = sfs.compileToTofu();
 
-    SoyTofu simpleTofu = tofu.forNamespace("examples.result");
+    SoyTofu simpleTofu = tofu.forNamespace("demo.input");
 
     return
         simpleTofu.newRenderer(
-            ResultTemplates.Result.builder()
+            ResultTemplates.SingleNumber.builder()
                 .setPhoneNumber(phoneNumber)
                 .setDefaultCountry(defaultCountry)
                 .setGeocodingLocale(geocodingLocale.toLanguageTag())

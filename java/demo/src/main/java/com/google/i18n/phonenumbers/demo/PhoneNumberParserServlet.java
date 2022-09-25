@@ -16,7 +16,7 @@
  * @author Shaopeng Jia
  */
 
-package com.google.phonenumbers;
+package com.google.i18n.phonenumbers.demo;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
 import static java.util.Locale.ENGLISH;
@@ -57,8 +57,11 @@ import org.apache.commons.lang.StringEscapeUtils;
  */
 @SuppressWarnings("serial")
 public class PhoneNumberParserServlet extends HttpServlet {
-  private PhoneNumberUtil phoneUtil = PhoneNumberUtil.getInstance();
-  private ShortNumberInfo shortInfo = ShortNumberInfo.getInstance();
+
+  private static final String NEW_ISSUE_BASE_URL =
+      "https://issuetracker.google.com/issues/new?component=192347&title=";
+  private final PhoneNumberUtil phoneUtil = PhoneNumberUtil.getInstance();
+  private final ShortNumberInfo shortInfo = ShortNumberInfo.getInstance();
 
   public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
     String phoneNumber = null;
@@ -112,7 +115,9 @@ public class PhoneNumberParserServlet extends HttpServlet {
     }
   }
 
-  /** Handle the get request to get information about a number based on query parameters. */
+  /**
+   * Handle the get request to get information about a number based on query parameters.
+   */
   public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
     String phoneNumber = req.getParameter("number");
     if (phoneNumber == null) {
@@ -192,7 +197,9 @@ public class PhoneNumberParserServlet extends HttpServlet {
     output.append("</TR>");
   }
 
-  /** Returns a stable URL pointing to the result page for the given input. */
+  /**
+   * Returns a stable URL pointing to the result page for the given input.
+   */
   private String getPermaLinkURL(
       String phoneNumber, String defaultCountry, Locale geocodingLocale, boolean absoluteURL) {
     // If absoluteURL is false, generate a relative path. Otherwise, produce an absolute URL.
@@ -219,10 +226,9 @@ public class PhoneNumberParserServlet extends HttpServlet {
     return permaLink.toString();
   }
 
-  private static final String NEW_ISSUE_BASE_URL =
-      "https://issuetracker.google.com/issues/new?component=192347&title=";
-
-  /** Returns a link to create a new github issue with the relevant information. */
+  /**
+   * Returns a link to create a new github issue with the relevant information.
+   */
   private String getNewIssueLink(
       String phoneNumber, String defaultCountry, Locale geocodingLocale) {
     boolean hasDefaultCountry = !defaultCountry.isEmpty() && defaultCountry != "ZZ";
@@ -292,10 +298,10 @@ public class PhoneNumberParserServlet extends HttpServlet {
         } else {
           appendLine("Result from isValidNumber()", Boolean.toString(isNumberValid), output);
           if (isNumberValid && hasDefaultCountry) {
-              appendLine(
-                  "Result from isValidNumberForRegion()",
-                  Boolean.toString(phoneUtil.isValidNumberForRegion(number, defaultCountry)),
-                  output);
+            appendLine(
+                "Result from isValidNumberForRegion()",
+                Boolean.toString(phoneUtil.isValidNumberForRegion(number, defaultCountry)),
+                output);
           }
           String region = phoneUtil.getRegionCodeForNumber(number);
           appendLine("Phone Number region", region == null ? "" : region, output);

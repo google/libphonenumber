@@ -46,7 +46,7 @@ public class InputForm extends HttpServlet {
     resp.setCharacterEncoding(UTF_8.name());
     SoyFileSet sfs = SoyFileSet
         .builder()
-        .add(InputForm.class.getResource("simple.soy"))
+        .add(InputForm.class.getResource("input_form.soy"))
         .build();
 
     // helloWorld
@@ -54,11 +54,11 @@ public class InputForm extends HttpServlet {
     // For convenience, create another SoyTofu object that has a
     // namespace specified, so you can pass partial template names to
     // the newRenderer() method.
-    SoyTofu simpleTofu = tofu.forNamespace("examples.simple");
+    SoyTofu simpleTofu = tofu.forNamespace("demo.input");
     // helloName
     resp.getWriter().println(
         simpleTofu.newRenderer(
-            SimpleTemplates.HelloWorld.builder()
+            InputFormTemplates.InputForm.builder()
                 .setWelcomeTitle("Phone Number Parser Demo for LibPhoneNumber")
                 .build()).render());
   }
