@@ -21,14 +21,13 @@ package com.google.demo;
 import static java.nio.charset.StandardCharsets.UTF_8;
 import static java.util.Locale.ENGLISH;
 
+import com.google.demo.helper.TemplateHelper;
 import com.google.demo.template.ResultTemplates;
 import com.google.i18n.phonenumbers.NumberParseException;
 import com.google.i18n.phonenumbers.PhoneNumberUtil;
 import com.google.i18n.phonenumbers.PhoneNumberUtil.PhoneNumberFormat;
 import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber;
 import com.google.i18n.phonenumbers.ShortNumberInfo;
-import com.google.template.soy.SoyFileSet;
-import com.google.template.soy.tofu.SoyTofu;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
@@ -54,7 +53,6 @@ import org.apache.commons.lang.StringEscapeUtils;
  */
 @SuppressWarnings("serial")
 public class Results extends HttpServlet {
-
 
   private static final String NEW_ISSUE_BASE_URL =
       "https://issuetracker.google.com/issues/new?component=192347&title=";
@@ -113,9 +111,7 @@ public class Results extends HttpServlet {
     }
   }
 
-  /**
-   * Handle the get request to get information about a number based on query parameters.
-   */
+  /** Handle the get request to get information about a number based on query parameters. */
   public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
     String phoneNumber = req.getParameter("number");
     if (phoneNumber == null) {
@@ -195,9 +191,7 @@ public class Results extends HttpServlet {
     output.append("</TR>");
   }
 
-  /**
-   * Returns a stable URL pointing to the result page for the given input.
-   */
+  /** Returns a stable URL pointing to the result page for the given input. */
   private String getPermaLinkURL(
       String phoneNumber, String defaultCountry, Locale geocodingLocale, boolean absoluteURL) {
     // If absoluteURL is false, generate a relative path. Otherwise, produce an absolute URL.
@@ -224,9 +218,7 @@ public class Results extends HttpServlet {
     return permaLink.toString();
   }
 
-  /**
-   * Returns a link to create a new github issue with the relevant information.
-   */
+  /** Returns a link to create a new github issue with the relevant information. */
   private String getNewIssueLink(
       String phoneNumber, String defaultCountry, Locale geocodingLocale) {
     boolean hasDefaultCountry = !defaultCountry.isEmpty() && defaultCountry != "ZZ";
@@ -251,20 +243,13 @@ public class Results extends HttpServlet {
    */
   private String getOutputForSingleNumber(
       String phoneNumber, String defaultCountry, Locale geocodingLocale) {
-    SoyFileSet sfs = SoyFileSet
-        .builder()
-        .add(Results.class.getResource("result.soy"))
-        .build();
-    SoyTofu tofu = sfs.compileToTofu();
-
-    SoyTofu simpleTofu = tofu.forNamespace("demo.output");
-
-    return
-        simpleTofu.newRenderer(
-            ResultTemplates.SingleNumber.builder()
-                .setPhoneNumber(phoneNumber)
-                .setDefaultCountry(defaultCountry)
-                .setGeocodingLocale(geocodingLocale.toLanguageTag())
-                .build()).render();
+    return TemplateHelper.templateToString(
+        "result.soy",
+        "demo.output",
+        ResultTemplates.SingleNumber.builder()
+            .setPhoneNumber(phoneNumber)
+            .setDefaultCountry(defaultCountry)
+            .setGeocodingLocale(geocodingLocale.toLanguageTag())
+            .build());
   }
 }
