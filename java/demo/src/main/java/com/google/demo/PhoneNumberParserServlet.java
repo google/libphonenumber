@@ -16,7 +16,7 @@
  * @author Shaopeng Jia
  */
 
-package com.google.i18n.phonenumbers.demo;
+package com.google.demo;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
 import static java.util.Locale.ENGLISH;

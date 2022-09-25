@@ -16,7 +16,7 @@
  * @author Shaopeng Jia
  */
 
-package com.google.i18n.phonenumbers.demo;
+package com.google.demo;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
 
@@ -35,7 +35,7 @@ import javax.servlet.http.HttpServletResponse;
  * number to be from.
  */
 @SuppressWarnings("serial")
-public class InputForm extends HttpServlet {
+public class Input extends HttpServlet {
 
 
   /**
@@ -46,7 +46,7 @@ public class InputForm extends HttpServlet {
     resp.setCharacterEncoding(UTF_8.name());
     SoyFileSet sfs = SoyFileSet
         .builder()
-        .add(InputForm.class.getResource("input_form.soy"))
+        .add(Input.class.getResource("input.soy"))
         .build();
 
     // helloWorld
