@@ -1,3 +1,10 @@
+Sep 22, 2022: v8.12.56
+Metadata changes:
+ - Updated phone metadata for region code(s): HR, MK, PT, SG, TT
+ - Updated short number metadata for region code(s): BZ
+ - Updated carrier data for country calling code(s):
+   31 (en), 65 (en), 385 (en), 389 (en)
+
 Sep 08, 2022: v8.12.55
 Metadata changes:
  - Updated phone metadata for region code(s):
