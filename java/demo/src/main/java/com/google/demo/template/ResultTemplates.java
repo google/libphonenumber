@@ -168,6 +168,14 @@ public final class ResultTemplates {
                 "outOfCountryFormatFromCh",
                 /* required= */ true,
                 com.google.common.reflect.TypeToken.of(java.lang.String.class));
+    public static final com.google.template.soy.data.SoyTemplateParam<
+            java.lang.Iterable<? extends java.util.Collection<java.lang.String>>>
+        ROWS =
+            com.google.template.soy.data.SoyTemplateParam.standard(
+                "rows",
+                /* required= */ true,
+                new com.google.common.reflect.TypeToken<
+                    java.lang.Iterable<? extends java.util.Collection<java.lang.String>>>() {});
     public static final com.google.template.soy.data.SoyTemplateParam<java.lang.Object>
         CSP_STYLE_NONCE =
             com.google.template.soy.data.SoyTemplateParam.injected(
@@ -203,7 +211,8 @@ public final class ResultTemplates {
                 NATIONAL_FORMAT,
                 INTERNATIONAL_FORMAT,
                 OUT_OF_COUNTRY_FORMAT_FROM_US,
-                OUT_OF_COUNTRY_FORMAT_FROM_CH);
+                OUT_OF_COUNTRY_FORMAT_FROM_CH,
+                ROWS);
 
     private SingleNumber(
         com.google.common.collect.ImmutableMap<
@@ -231,7 +240,7 @@ public final class ResultTemplates {
             Builder, SingleNumber> {
 
       private Builder() {
-        super(25);
+        super(26);
       }
 
       @java.lang.Override
@@ -528,6 +537,21 @@ public final class ResultTemplates {
           java.util.concurrent.Future<java.lang.String> future) {
         return setParamInternal(
             OUT_OF_COUNTRY_FORMAT_FROM_CH, asFuture(future, AbstractBuilder::asString));
+      }
+
+      @com.google.errorprone.annotations.CanIgnoreReturnValue
+      public Builder setRows(
+          java.lang.Iterable<? extends java.util.Collection<java.lang.String>> value) {
+        return setParamInternal(ROWS, asList(value, v -> asList(v, AbstractBuilder::asString)));
+      }
+
+      @com.google.errorprone.annotations.CanIgnoreReturnValue
+      public Builder setRowsFuture(
+          java.util.concurrent.Future<
+                  ? extends java.util.Collection<? extends java.util.Collection<java.lang.String>>>
+              future) {
+        return setParamInternal(
+            ROWS, asFuture(future, v -> asList(v, v1 -> asList(v1, AbstractBuilder::asString))));
       }
     }
   }

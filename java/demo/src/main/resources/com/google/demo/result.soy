@@ -30,6 +30,9 @@
 {@param outOfCountryFormatFromUs: string}
 {@param outOfCountryFormatFromCh: string}
 
+{@param rows: list<list<string>>}
+
+
 <!DOCTYPE html>
 <HTML lang="en">
 <HEAD>
@@ -188,106 +191,12 @@
     <TR>
       <TD colspan=2>AsYouTypeFormatter Results</TD>
     </TR>
+    {for $row in $rows}
     <TR>
-      <TH>Char entered: '+' Output:</TH>
-      <TD>+</TD>
+      <TH>{$row[0]}</TH>
+      <TD>{$row[1]}</TD>
     </TR>
-    <TR>
-      <TH>Char entered: '3' Output:</TH>
-      <TD>+3</TD>
-    </TR>
-    <TR>
-      <TH>Char entered: '2' Output:</TH>
-      <TD>+32</TD>
-    </TR>
-    <TR>
-      <TH>Char entered: '4' Output:</TH>
-      <TD>+32 4</TD>
-    </TR>
-    <TR>
-      <TH>Char entered: '7' Output:</TH>
-      <TD>+32 47</TD>
-    </TR>
-    <TR>
-      <TH>Char entered: '1' Output:</TH>
-      <TD>+32 471</TD>
-    </TR>
-    <TR>
-      <TH>Char entered: '2' Output:</TH>
-      <TD>+32 471 2</TD>
-    </TR>
-    <TR>
-      <TH>Char entered: '3' Output:</TH>
-      <TD>+32 471 23</TD>
-    </TR>
-    <TR>
-      <TH>Char entered: '4' Output:</TH>
-      <TD>+32 471 23 4</TD>
-    </TR>
-    <TR>
-      <TH>Char entered: '5' Output:</TH>
-      <TD>+32 471 23 45</TD>
-    </TR>
-    <TR>
-      <TH>Char entered: '6' Output:</TH>
-      <TD>+32 471 23 45 6</TD>
-    </TR>
-    <TR>
-      <TH>Char entered: '7' Output:</TH>
-      <TD>+32 471 23 45 67</TD>
-    </TR>
-    <TR>
-      <TH>Char entered: ';' Output:</TH>
-      <TD>+32471234567;</TD>
-    </TR>
-    <TR>
-      <TH>Char entered: 'p' Output:</TH>
-      <TD>+32471234567;p</TD>
-    </TR>
-    <TR>
-      <TH>Char entered: 'h' Output:</TH>
-      <TD>+32471234567;ph</TD>
-    </TR>
-    <TR>
-      <TH>Char entered: 'o' Output:</TH>
-      <TD>+32471234567;pho</TD>
-    </TR>
-    <TR>
-      <TH>Char entered: 'n' Output:</TH>
-      <TD>+32471234567;phon</TD>
-    </TR>
-    <TR>
-      <TH>Char entered: 'e' Output:</TH>
-      <TD>+32471234567;phone</TD>
-    </TR>
-    <TR>
-      <TH>Char entered: '-' Output:</TH>
-      <TD>+32471234567;phone-</TD>
-    </TR>
-    <TR>
-      <TH>Char entered: 'c' Output:</TH>
-      <TD>+32471234567;phone-c</TD>
-    </TR>
-    <TR>
-      <TH>Char entered: 'o' Output:</TH>
-      <TD>+32471234567;phone-co</TD>
-    </TR>
-    <TR>
-      <TH>Char entered: 'n' Output:</TH>
-      <TD>+32471234567;phone-con</TD>
-    </TR>
-    <TR>
-      <TH>Char entered: 't' Output:</TH>
-      <TD>+32471234567;phone-cont</TD>
-    </TR>
-    <TR>
-      <TH>Char entered: 'e' Output:</TH>
-      <TD>+32471234567;phone-conte</TD>
-    </TR>
-    <TR>
-      <TH>Char entered: 'x' Output:</TH>
-      <TD>+32471234567;phone-contex</TD>
-    </TR>
+    {/for}
 
   </TABLE>
 </DIV>

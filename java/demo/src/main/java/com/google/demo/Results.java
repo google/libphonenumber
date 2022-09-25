@@ -24,6 +24,7 @@ import static java.util.Locale.ENGLISH;
 import com.google.demo.helper.TemplateHelper;
 import com.google.demo.template.ResultErrorTemplates;
 import com.google.demo.template.ResultTemplates.SingleNumber;
+import com.google.i18n.phonenumbers.AsYouTypeFormatter;
 import com.google.i18n.phonenumbers.NumberParseException;
 import com.google.i18n.phonenumbers.PhoneNumberUtil;
 import com.google.i18n.phonenumbers.PhoneNumberUtil.PhoneNumberFormat;
@@ -33,6 +34,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 import java.util.StringTokenizer;
 import javax.servlet.http.HttpServlet;
@@ -301,6 +304,20 @@ public class Results extends HttpServlet {
               isNumberValid ? phoneUtil.formatOutOfCountryCallingNumber(number, "US") : "invalid")
           .setOutOfCountryFormatFromCh(
               isNumberValid ? phoneUtil.formatOutOfCountryCallingNumber(number, "CH") : "invalid");
+
+      List<List<String>> rows = new ArrayList<>();
+      AsYouTypeFormatter formatter = phoneUtil.getAsYouTypeFormatter(defaultCountry);
+      int rawNumberLength = phoneNumber.length();
+
+      for (int i = 0; i < rawNumberLength; i++) {
+        // Note this doesn't handle supplementary characters, but it shouldn't be a big deal as
+        // there are no dial-pad characters in the supplementary range.
+        char inputChar = phoneNumber.charAt(i);
+        rows.add(
+            List.of("Char entered: '" + inputChar + "' Output: ", formatter.inputDigit(inputChar)));
+      }
+
+      soyTemplate.setRows(rows);
 
     } catch (NumberParseException e) {
       return TemplateHelper.templateToString(
