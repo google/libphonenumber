@@ -139,15 +139,12 @@ public class Results extends HttpServlet {
   }
 
   private String getOutputForFile(String defaultCountry, String fileContents) {
-
     File.Builder soyTemplate = File.builder();
-
     int phoneNumberId = 0;
     StringTokenizer tokenizer = new StringTokenizer(fileContents, ",");
     while (tokenizer.hasMoreTokens()) {
       String numberStr = tokenizer.nextToken();
       phoneNumberId++;
-
       try {
         PhoneNumber number = phoneUtil.parseAndKeepRawInput(numberStr, defaultCountry);
         boolean isNumberValid = phoneUtil.isValidNumber(number);
