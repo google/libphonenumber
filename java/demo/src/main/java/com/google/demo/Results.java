@@ -22,6 +22,7 @@ import static java.nio.charset.StandardCharsets.UTF_8;
 import static java.util.Locale.ENGLISH;
 
 import com.google.demo.helper.TemplateHelper;
+import com.google.demo.template.ResultErrorTemplates;
 import com.google.demo.template.ResultTemplates.SingleNumber;
 import com.google.i18n.phonenumbers.NumberParseException;
 import com.google.i18n.phonenumbers.PhoneNumberUtil;
@@ -297,16 +298,20 @@ public class Results extends HttpServlet {
           .setInternationalFormat(
               isNumberValid ? phoneUtil.format(number, PhoneNumberFormat.INTERNATIONAL) : "invalid")
           .setOutOfCountryFormatFromUs(
-              isNumberValid
-                  ? phoneUtil.formatOutOfCountryCallingNumber(number, "US")
-                  : "invalid")
+              isNumberValid ? phoneUtil.formatOutOfCountryCallingNumber(number, "US") : "invalid")
           .setOutOfCountryFormatFromCh(
-              isNumberValid
-                  ? phoneUtil.formatOutOfCountryCallingNumber(number, "CH")
-                  : "invalid");
+              isNumberValid ? phoneUtil.formatOutOfCountryCallingNumber(number, "CH") : "invalid");
 
     } catch (NumberParseException e) {
-      soyTemplate.setError(e.toString());
+      return TemplateHelper.templateToString(
+          "result_error.soy",
+          "demo.output",
+          ResultErrorTemplates.SingleNumber.builder()
+              .setPhoneNumber(phoneNumber)
+              .setDefaultCountry(defaultCountry)
+              .setGeocodingLocale(geocodingLocale.toLanguageTag())
+              .setError(e.toString())
+              .build());
     }
     return TemplateHelper.templateToString("result.soy", "demo.output", soyTemplate.build());
   }

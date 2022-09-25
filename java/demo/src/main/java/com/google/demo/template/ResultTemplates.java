@@ -39,11 +39,6 @@ public final class ResultTemplates {
                 "geocodingLocale",
                 /* required= */ true,
                 com.google.common.reflect.TypeToken.of(java.lang.String.class));
-    public static final com.google.template.soy.data.SoyTemplateParam<java.lang.String> ERROR =
-        com.google.template.soy.data.SoyTemplateParam.standard(
-            "error",
-            /* required= */ false,
-            com.google.common.reflect.TypeToken.of(java.lang.String.class));
     public static final com.google.template.soy.data.SoyTemplateParam<java.lang.Long> COUNTRY_CODE =
         com.google.template.soy.data.SoyTemplateParam.standard(
             "countryCode",
@@ -187,7 +182,6 @@ public final class ResultTemplates {
                 PHONE_NUMBER,
                 DEFAULT_COUNTRY,
                 GEOCODING_LOCALE,
-                ERROR,
                 COUNTRY_CODE,
                 NATIONAL_NUMBER,
                 EXTENSION,
@@ -237,7 +231,7 @@ public final class ResultTemplates {
             Builder, SingleNumber> {
 
       private Builder() {
-        super(26);
+        super(25);
       }
 
       @java.lang.Override
@@ -284,16 +278,6 @@ public final class ResultTemplates {
       public Builder setGeocodingLocaleFuture(
           java.util.concurrent.Future<java.lang.String> future) {
         return setParamInternal(GEOCODING_LOCALE, asFuture(future, AbstractBuilder::asString));
-      }
-
-      @com.google.errorprone.annotations.CanIgnoreReturnValue
-      public Builder setError(@javax.annotation.Nullable java.lang.String value) {
-        return setParamInternal(ERROR, asNullableString(value));
-      }
-
-      @com.google.errorprone.annotations.CanIgnoreReturnValue
-      public Builder setErrorFuture(java.util.concurrent.Future<java.lang.String> future) {
-        return setParamInternal(ERROR, asFuture(future, AbstractBuilder::asNullableString));
       }
 
       @com.google.errorprone.annotations.CanIgnoreReturnValue
