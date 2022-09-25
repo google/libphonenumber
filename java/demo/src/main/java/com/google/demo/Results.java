@@ -36,8 +36,6 @@ import com.google.i18n.phonenumbers.ShortNumberInfo;
 import com.google.i18n.phonenumbers.geocoding.PhoneNumberOfflineGeocoder;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -62,8 +60,6 @@ import org.apache.commons.lang.StringEscapeUtils;
 @SuppressWarnings("serial")
 public class Results extends HttpServlet {
 
-  private static final String NEW_ISSUE_BASE_URL =
-      "https://issuetracker.google.com/issues/new?component=192347&title=";
   private final PhoneNumberUtil phoneUtil = PhoneNumberUtil.getInstance();
   private final ShortNumberInfo shortInfo = ShortNumberInfo.getInstance();
 
@@ -106,7 +102,6 @@ public class Results extends HttpServlet {
       e1.printStackTrace();
     }
 
-    StringBuilder output;
     resp.setContentType("text/html");
     resp.setCharacterEncoding(UTF_8.name());
     if (fileContents == null || fileContents.length() == 0) {
@@ -191,25 +186,6 @@ public class Results extends HttpServlet {
     }
     output.append("</BODY></HTML>");
     return output;
-  }
-
-  /** Returns a link to create a new github issue with the relevant information. */
-  private String getNewIssueLink(
-      String phoneNumber, String defaultCountry, Locale geocodingLocale) {
-    boolean hasDefaultCountry = !defaultCountry.isEmpty() && defaultCountry != "ZZ";
-    String issueTitle =
-        "Validation issue with "
-            + phoneNumber
-            + (hasDefaultCountry ? " (" + defaultCountry + ")" : "");
-
-    String newIssueLink = NEW_ISSUE_BASE_URL;
-    try {
-      newIssueLink += URLEncoder.encode(issueTitle, UTF_8.name());
-    } catch (UnsupportedEncodingException e) {
-      // UTF-8 is guaranteed in Java, so this should be impossible.
-      throw new AssertionError(e);
-    }
-    return newIssueLink;
   }
 
   /**
@@ -300,7 +276,7 @@ public class Results extends HttpServlet {
               PhoneNumberToTimeZonesMapper.getInstance().getTimeZonesForNumber(number).toString())
           .setNameForNumber(
               PhoneNumberToCarrierMapper.getInstance().getNameForNumber(number, geocodingLocale))
-          .setNewIssueLink(getNewIssueLink(phoneNumber, defaultCountry, geocodingLocale))
+          .setNewIssueLink(WebHelper.getNewIssueLink(phoneNumber, defaultCountry, geocodingLocale))
           .setGuidelinesLink(guidelinesLink);
 
     } catch (NumberParseException e) {
