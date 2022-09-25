@@ -1,4 +1,4 @@
-package com.google.demo;
+package com.google.demo.template;
 
 
 @javax.annotation.Generated("com.google.template.soy.SoyParseInfoGenerator")

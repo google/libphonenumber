@@ -20,6 +20,7 @@ package com.google.demo;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
 
+import com.google.demo.template.InputFormTemplates;
 import com.google.template.soy.SoyFileSet;
 import com.google.template.soy.tofu.SoyTofu;
 import java.io.IOException;
