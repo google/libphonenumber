@@ -5,6 +5,14 @@
 {@param geocodingLocale: string}
 {@param error: string|null}
 
+
+{@param countryCode: int}
+{@param nationalNumber: int}
+{@param extension: string}
+{@param countryCodeSource: string}
+{@param italianLeadingZero: bool}
+{@param rawInput: string}
+
 <!DOCTYPE html>
 <HTML lang="en">
 <HEAD>
@@ -23,29 +31,27 @@
     </TR>
     <TR>
       <TH>country_code</TH>
-      <TD>32</TD>
+      <TD>{$countryCode}</TD>
     </TR>
     <TR>
       <TH>national_number</TH>
-      <TD>471234567</TD>
+      <TD>{$nationalNumber}</TD>
     </TR>
     <TR>
       <TH>extension</TH>
-      <TD>&nbsp;</TD>
+      <TD>{$extension}</TD>
     </TR>
     <TR>
       <TH>country_code_source</TH>
-      <TD>FROM_NUMBER_WITH_PLUS_SIGN</TD>
+      <TD>{$countryCodeSource}</TD>
     </TR>
     <TR>
       <TH>italian_leading_zero</TH>
-      <TD>false</TD>
+      <TD>{$italianLeadingZero}</TD>
     </TR>
     <TR>
       <TH>raw_input</TH>
-      <TD>+32471234567;phone-context=
-        <script>alert('Inti phone home')</script>
-      </TD>
+      <TD>{$rawInput}</TD>
     </TR>
   </TABLE>
 </DIV>

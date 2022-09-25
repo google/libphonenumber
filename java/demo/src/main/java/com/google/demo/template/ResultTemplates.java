@@ -12,16 +12,13 @@ package com.google.demo.template;
 @javax.annotation.Generated("com.google.template.soy.SoyParseInfoGenerator")
 public final class ResultTemplates {
 
-  /** A map of filepath to symbol used for CSS resolution on server edit-refresh. */
   private static final com.google.common.collect.ImmutableMap<java.lang.String, java.lang.String>
       __PROVIDED_CSS_MAP__ =
           com.google.common.collect.ImmutableMap.<java.lang.String, java.lang.String>of();
 
-  /** A list of provided symbols used for css validation on edit refresh. */
   private static final com.google.common.collect.ImmutableList<java.lang.String> __PROVIDED_CSS__ =
       com.google.common.collect.ImmutableList.<java.lang.String>of();
 
-  /** Template params for demo.output.singleNumber. */
   public static final class SingleNumber extends com.google.template.soy.data.BaseSoyTemplateImpl {
 
     public static final com.google.template.soy.data.SoyTemplateParam<java.lang.String>
@@ -47,23 +44,60 @@ public final class ResultTemplates {
             "error",
             /* required= */ false,
             com.google.common.reflect.TypeToken.of(java.lang.String.class));
+    public static final com.google.template.soy.data.SoyTemplateParam<java.lang.Long> COUNTRY_CODE =
+        com.google.template.soy.data.SoyTemplateParam.standard(
+            "countryCode",
+            /* required= */ true,
+            com.google.common.reflect.TypeToken.of(java.lang.Long.class));
+    public static final com.google.template.soy.data.SoyTemplateParam<java.lang.Long>
+        NATIONAL_NUMBER =
+            com.google.template.soy.data.SoyTemplateParam.standard(
+                "nationalNumber",
+                /* required= */ true,
+                com.google.common.reflect.TypeToken.of(java.lang.Long.class));
+    public static final com.google.template.soy.data.SoyTemplateParam<java.lang.String> EXTENSION =
+        com.google.template.soy.data.SoyTemplateParam.standard(
+            "extension",
+            /* required= */ true,
+            com.google.common.reflect.TypeToken.of(java.lang.String.class));
+    public static final com.google.template.soy.data.SoyTemplateParam<java.lang.String>
+        COUNTRY_CODE_SOURCE =
+            com.google.template.soy.data.SoyTemplateParam.standard(
+                "countryCodeSource",
+                /* required= */ true,
+                com.google.common.reflect.TypeToken.of(java.lang.String.class));
+    public static final com.google.template.soy.data.SoyTemplateParam<java.lang.Boolean>
+        ITALIAN_LEADING_ZERO =
+            com.google.template.soy.data.SoyTemplateParam.standard(
+                "italianLeadingZero",
+                /* required= */ true,
+                com.google.common.reflect.TypeToken.of(java.lang.Boolean.class));
+    public static final com.google.template.soy.data.SoyTemplateParam<java.lang.String> RAW_INPUT =
+        com.google.template.soy.data.SoyTemplateParam.standard(
+            "rawInput",
+            /* required= */ true,
+            com.google.common.reflect.TypeToken.of(java.lang.String.class));
     public static final com.google.template.soy.data.SoyTemplateParam<java.lang.Object>
         CSP_STYLE_NONCE =
             com.google.template.soy.data.SoyTemplateParam.injected(
                 "csp_style_nonce",
                 /* required= */ false,
                 com.google.common.reflect.TypeToken.of(java.lang.Object.class));
-    public static final com.google.template.soy.data.SoyTemplateParam<java.lang.Object> CSP_NONCE =
-        com.google.template.soy.data.SoyTemplateParam.injected(
-            "csp_nonce",
-            /* required= */ false,
-            com.google.common.reflect.TypeToken.of(java.lang.Object.class));
     private static final java.lang.String __NAME__ = "demo.output.singleNumber";
     private static final com.google.common.collect.ImmutableSet<
             com.google.template.soy.data.SoyTemplateParam<?>>
         __PARAMS__ =
             com.google.common.collect.ImmutableSet.of(
-                PHONE_NUMBER, DEFAULT_COUNTRY, GEOCODING_LOCALE, ERROR);
+                PHONE_NUMBER,
+                DEFAULT_COUNTRY,
+                GEOCODING_LOCALE,
+                ERROR,
+                COUNTRY_CODE,
+                NATIONAL_NUMBER,
+                EXTENSION,
+                COUNTRY_CODE_SOURCE,
+                ITALIAN_LEADING_ZERO,
+                RAW_INPUT);
 
     private SingleNumber(
         com.google.common.collect.ImmutableMap<
@@ -91,7 +125,7 @@ public final class ResultTemplates {
             Builder, SingleNumber> {
 
       private Builder() {
-        super(4);
+        super(10);
       }
 
       @java.lang.Override
@@ -148,6 +182,70 @@ public final class ResultTemplates {
       @com.google.errorprone.annotations.CanIgnoreReturnValue
       public Builder setErrorFuture(java.util.concurrent.Future<java.lang.String> future) {
         return setParamInternal(ERROR, asFuture(future, AbstractBuilder::asNullableString));
+      }
+
+      @com.google.errorprone.annotations.CanIgnoreReturnValue
+      public Builder setCountryCode(long value) {
+        return setParamInternal(COUNTRY_CODE, asInt(value));
+      }
+
+      @com.google.errorprone.annotations.CanIgnoreReturnValue
+      public Builder setCountryCodeFuture(
+          java.util.concurrent.Future<? extends java.lang.Number> future) {
+        return setParamInternal(COUNTRY_CODE, asFuture(future, AbstractBuilder::asBoxedInt));
+      }
+
+      @com.google.errorprone.annotations.CanIgnoreReturnValue
+      public Builder setNationalNumber(long value) {
+        return setParamInternal(NATIONAL_NUMBER, asInt(value));
+      }
+
+      @com.google.errorprone.annotations.CanIgnoreReturnValue
+      public Builder setNationalNumberFuture(
+          java.util.concurrent.Future<? extends java.lang.Number> future) {
+        return setParamInternal(NATIONAL_NUMBER, asFuture(future, AbstractBuilder::asBoxedInt));
+      }
+
+      @com.google.errorprone.annotations.CanIgnoreReturnValue
+      public Builder setExtension(java.lang.String value) {
+        return setParamInternal(EXTENSION, asString(value));
+      }
+
+      @com.google.errorprone.annotations.CanIgnoreReturnValue
+      public Builder setExtensionFuture(java.util.concurrent.Future<java.lang.String> future) {
+        return setParamInternal(EXTENSION, asFuture(future, AbstractBuilder::asString));
+      }
+
+      @com.google.errorprone.annotations.CanIgnoreReturnValue
+      public Builder setCountryCodeSource(java.lang.String value) {
+        return setParamInternal(COUNTRY_CODE_SOURCE, asString(value));
+      }
+
+      @com.google.errorprone.annotations.CanIgnoreReturnValue
+      public Builder setCountryCodeSourceFuture(
+          java.util.concurrent.Future<java.lang.String> future) {
+        return setParamInternal(COUNTRY_CODE_SOURCE, asFuture(future, AbstractBuilder::asString));
+      }
+
+      @com.google.errorprone.annotations.CanIgnoreReturnValue
+      public Builder setItalianLeadingZero(boolean value) {
+        return setParamInternal(ITALIAN_LEADING_ZERO, asBool(value));
+      }
+
+      @com.google.errorprone.annotations.CanIgnoreReturnValue
+      public Builder setItalianLeadingZeroFuture(
+          java.util.concurrent.Future<java.lang.Boolean> future) {
+        return setParamInternal(ITALIAN_LEADING_ZERO, asFuture(future, AbstractBuilder::asBool));
+      }
+
+      @com.google.errorprone.annotations.CanIgnoreReturnValue
+      public Builder setRawInput(java.lang.String value) {
+        return setParamInternal(RAW_INPUT, asString(value));
+      }
+
+      @com.google.errorprone.annotations.CanIgnoreReturnValue
+      public Builder setRawInputFuture(java.util.concurrent.Future<java.lang.String> future) {
+        return setParamInternal(RAW_INPUT, asFuture(future, AbstractBuilder::asString));
       }
     }
   }

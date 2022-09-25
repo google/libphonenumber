@@ -251,6 +251,13 @@ public class Results extends HttpServlet {
             .setGeocodingLocale(geocodingLocale.toLanguageTag());
     try {
       PhoneNumber number = phoneUtil.parseAndKeepRawInput(phoneNumber, defaultCountry);
+      soyTemplate
+          .setCountryCode(number.getCountryCode())
+          .setNationalNumber(number.getNationalNumber())
+          .setExtension(number.getExtension())
+          .setCountryCodeSource(number.getCountryCodeSource().toString())
+          .setItalianLeadingZero(number.isItalianLeadingZero())
+          .setRawInput(number.getRawInput());
     } catch (NumberParseException e) {
       soyTemplate.setError(e.toString());
     }
