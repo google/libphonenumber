@@ -22,6 +22,7 @@ import static java.nio.charset.StandardCharsets.UTF_8;
 import static java.util.Locale.ENGLISH;
 
 import com.google.demo.helper.TemplateHelper;
+import com.google.demo.helper.WebHelper;
 import com.google.demo.template.ResultErrorTemplates;
 import com.google.demo.template.ResultTemplates.SingleNumber;
 import com.google.i18n.phonenumbers.AsYouTypeFormatter;
@@ -112,7 +113,8 @@ public class Results extends HttpServlet {
       // Redirect to a URL with the given input encoded in the query parameters.
       Locale geocodingLocale = new Locale(languageCode, regionCode);
       resp.sendRedirect(
-          getPermaLinkURL(phoneNumber, defaultCountry, geocodingLocale, false /* absoluteURL */));
+          WebHelper.getPermaLinkURL(
+              phoneNumber, defaultCountry, geocodingLocale, false /* absoluteURL */));
     } else {
       resp.getWriter().println(getOutputForFile(defaultCountry, fileContents));
     }
@@ -189,40 +191,6 @@ public class Results extends HttpServlet {
     }
     output.append("</BODY></HTML>");
     return output;
-  }
-
-  private void appendLine(String title, String data, StringBuilder output) {
-    output.append("<TR>");
-    output.append("<TH>").append(title).append("</TH>");
-    output.append("<TD>").append(data.length() > 0 ? data : "&nbsp;").append("</TD>");
-    output.append("</TR>");
-  }
-
-  /** Returns a stable URL pointing to the result page for the given input. */
-  private String getPermaLinkURL(
-      String phoneNumber, String defaultCountry, Locale geocodingLocale, boolean absoluteURL) {
-    // If absoluteURL is false, generate a relative path. Otherwise, produce an absolute URL.
-    StringBuilder permaLink =
-        new StringBuilder(
-            absoluteURL
-                ? "http://libphonenumber.appspot.com/phonenumberparser"
-                : "/phonenumberparser");
-    try {
-      permaLink.append(
-          "?number=" + URLEncoder.encode(phoneNumber != null ? phoneNumber : "", UTF_8.name()));
-      if (defaultCountry != null && !defaultCountry.isEmpty()) {
-        permaLink.append("&country=" + URLEncoder.encode(defaultCountry, UTF_8.name()));
-      }
-      if (!geocodingLocale.getLanguage().equals(ENGLISH.getLanguage())
-          || !geocodingLocale.getCountry().isEmpty()) {
-        permaLink.append(
-            "&geocodingLocale=" + URLEncoder.encode(geocodingLocale.toLanguageTag(), UTF_8.name()));
-      }
-    } catch (UnsupportedEncodingException e) {
-      // UTF-8 is guaranteed in Java, so this should be impossible.
-      throw new AssertionError(e);
-    }
-    return permaLink.toString();
   }
 
   /** Returns a link to create a new github issue with the relevant information. */
