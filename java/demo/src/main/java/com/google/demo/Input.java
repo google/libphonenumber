@@ -20,14 +20,12 @@ package com.google.demo;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
 
+import com.google.demo.helper.TemplateHelper;
 import com.google.demo.template.InputFormTemplates;
-import com.google.template.soy.SoyFileSet;
-import com.google.template.soy.tofu.SoyTofu;
 import java.io.IOException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 
 /**
  * A servlet that accepts requests that contain strings representing a phone number and a default
@@ -38,30 +36,17 @@ import javax.servlet.http.HttpServletResponse;
 @SuppressWarnings("serial")
 public class Input extends HttpServlet {
 
-
-  /**
-   * Handle the get request to get information about a number based on query parameters.
-   */
+  /** Handle the get request to get information about a number based on query parameters. */
   public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
     resp.setContentType("text/html");
     resp.setCharacterEncoding(UTF_8.name());
-    SoyFileSet sfs = SoyFileSet
-        .builder()
-        .add(Input.class.getResource("input.soy"))
-        .build();
-
-    // helloWorld
-    SoyTofu tofu = sfs.compileToTofu();
-    // For convenience, create another SoyTofu object that has a
-    // namespace specified, so you can pass partial template names to
-    // the newRenderer() method.
-    SoyTofu simpleTofu = tofu.forNamespace("demo.input");
-    // helloName
-    resp.getWriter().println(
-        simpleTofu.newRenderer(
-            InputFormTemplates.InputForm.builder()
-                .setWelcomeTitle("Phone Number Parser Demo for LibPhoneNumber")
-                .build()).render());
+    resp.getWriter()
+        .println(
+            TemplateHelper.templateToString(
+                "input.soy",
+                "demo.input",
+                InputFormTemplates.InputForm.builder()
+                    .setWelcomeTitle("Phone Number Parser Demo for LibPhoneNumber")
+                    .build()));
   }
-
 }
