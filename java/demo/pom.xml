@@ -1,34 +1,33 @@
 <?xml version="1.0"?>
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns="http://maven.apache.org/POM/4.0.0"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.googlecode.libphonenumber</groupId>
   <artifactId>demo</artifactId>
-  <build>
-    <!-- for hot reload of the web application-->
-    <outputDirectory>
-      ${project.build.directory}/${project.build.finalName}/WEB-INF/classes
-    </outputDirectory>
-    <plugins>
-      <plugin>
-        <artifactId>appengine-maven-plugin</artifactId>
-        <configuration>
-        </configuration>
-        <groupId>com.google.cloud.tools</groupId>
-        <version>2.4.4</version>
-      </plugin>
-      <plugin>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <configuration>
-          <source>8</source>
-          <target>8</target>
-        </configuration>
-        <groupId>org.apache.maven.plugins</groupId>
-      </plugin>
-    </plugins>
-  </build>
+  <version>8.12.57-SNAPSHOT</version>
+  <packaging>war</packaging>
+  <url>https://github.com/google/libphonenumber/</url>
+  <parent>
+    <groupId>com.googlecode.libphonenumber</groupId>
+    <artifactId>libphonenumber-parent</artifactId>
+    <version>8.12.57-SNAPSHOT</version>
+  </parent>
+
+  <properties>
+    <app.deploy.project>libphonenumber-hrd</app.deploy.project>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+    <maven.compiler.showDeprecation>true</maven.compiler.showDeprecation>
+    <archiveClasses>true</archiveClasses>
+  </properties>
+
+  <prerequisites>
+    <maven>3.5</maven>
+  </prerequisites>
+
   <dependencies>
     <!-- Compile/runtime dependencies -->
-
     <dependency>
       <artifactId>soy</artifactId>
       <groupId>com.google.template</groupId>
@@ -43,8 +42,8 @@
       <groupId>javax.servlet</groupId>
       <artifactId>servlet-api</artifactId>
       <version>2.5</version>
-      <scope>provided</scope>
       <type>jar</type>
+      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>commons-io</groupId>
@@ -77,30 +76,26 @@
       <version>1.183-SNAPSHOT</version>
     </dependency>
   </dependencies>
-  <groupId>com.googlecode.libphonenumber</groupId>
-  <modelVersion>4.0.0</modelVersion>
-  <packaging>war</packaging>
-  <parent>
-    <artifactId>libphonenumber-parent</artifactId>
-    <groupId>com.googlecode.libphonenumber</groupId>
-    <version>8.12.57-SNAPSHOT</version>
-  </parent>
 
-  <prerequisites>
-    <maven>3.5</maven>
-  </prerequisites>
-
-  <properties>
-    <app.deploy.project>libphonenumber-hrd</app.deploy.project>
-    <archiveClasses>true</archiveClasses>
-    <maven.compiler.showDeprecation>true</maven.compiler.showDeprecation>
-    <maven.compiler.source>1.8</maven.compiler.source>
-    <maven.compiler.target>1.8</maven.compiler.target>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-  </properties>
-
-  <url>https://github.com/google/libphonenumber/</url>
-
-  <version>8.12.57-SNAPSHOT</version>
+  <build>
+    <!-- for hot reload of the web application-->
+    <outputDirectory>${project.build.directory}/${project.build.finalName}/WEB-INF/classes</outputDirectory>
+    <plugins>
+      <plugin>
+        <groupId>com.google.cloud.tools</groupId>
+        <artifactId>appengine-maven-plugin</artifactId>
+        <version>2.4.4</version>
+        <configuration>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>8</source>
+          <target>8</target>
+        </configuration>
+        <groupId>org.apache.maven.plugins</groupId>
+      </plugin>
+    </plugins>
+  </build>
 </project>
