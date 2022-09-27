@@ -1,4 +1,4 @@
-package com.google.demo.template;
+package com.google.phonenumbers.demo.template;
 
 /**
  * Wrapper class containing {@link com.google.template.soy.data.SoyTemplate} builders for each
@@ -22,7 +22,7 @@ public final class ResultFileTemplates {
                 "csp_style_nonce",
                 /* required= */ false,
                 com.google.common.reflect.TypeToken.of(java.lang.Object.class));
-    private static final java.lang.String __NAME__ = "demo.output.file";
+    private static final java.lang.String __NAME__ = "com.google.phonenumbers.demo.file";
     private static final com.google.template.soy.data.SoyTemplateParam<?> ROWS =
         com.google.template.soy.data.SoyTemplateParam.standard(
             "rows",

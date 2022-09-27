@@ -1,5 +1,4 @@
-package com.google.demo.template;
-
+package com.google.phonenumbers.demo.template;
 
 @javax.annotation.Generated("com.google.template.soy.SoyParseInfoGenerator")
 public final class InputFormTemplates {
@@ -22,7 +21,7 @@ public final class InputFormTemplates {
             "csp_style_nonce",
             /* required= */ false,
             com.google.common.reflect.TypeToken.of(java.lang.Object.class));
-    private static final java.lang.String __NAME__ = "demo.input.inputForm";
+    private static final java.lang.String __NAME__ = "com.google.phonenumbers.demo.inputForm";
     private static final com.google.common.collect.ImmutableSet<com.google.template.soy.data.SoyTemplateParam<?>> __PARAMS__ = com.google.common.collect.ImmutableSet.of(
         WELCOME_TITLE);
 

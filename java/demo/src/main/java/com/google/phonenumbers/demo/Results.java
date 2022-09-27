@@ -16,17 +16,12 @@
  * @author Shaopeng Jia
  */
 
-package com.google.demo;
+package com.google.phonenumbers.demo;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
 import static java.util.Locale.ENGLISH;
 
 import com.google.common.collect.ImmutableList;
-import com.google.demo.helper.LibPhoneNumberTemplate;
-import com.google.demo.helper.WebHelper;
-import com.google.demo.template.ResultErrorTemplates;
-import com.google.demo.template.ResultFileTemplates.File;
-import com.google.demo.template.ResultTemplates.SingleNumber;
 import com.google.i18n.phonenumbers.AsYouTypeFormatter;
 import com.google.i18n.phonenumbers.NumberParseException;
 import com.google.i18n.phonenumbers.PhoneNumberToCarrierMapper;
@@ -36,6 +31,11 @@ import com.google.i18n.phonenumbers.PhoneNumberUtil.PhoneNumberFormat;
 import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber;
 import com.google.i18n.phonenumbers.ShortNumberInfo;
 import com.google.i18n.phonenumbers.geocoding.PhoneNumberOfflineGeocoder;
+import com.google.phonenumbers.demo.helper.LibPhoneNumberTemplate;
+import com.google.phonenumbers.demo.helper.WebHelper;
+import com.google.phonenumbers.demo.template.ResultErrorTemplates;
+import com.google.phonenumbers.demo.template.ResultFileTemplates.File;
+import com.google.phonenumbers.demo.template.ResultTemplates.SingleNumber;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -159,7 +159,8 @@ public class Results extends HttpServlet {
         soyTemplate.addRows(phoneNumberId, numberStr, null, null, e.toString());
       }
     }
-    return new LibPhoneNumberTemplate("result_file.soy", "demo.output", soyTemplate.build())
+    return new LibPhoneNumberTemplate(
+            "result_file.soy", "com.google.phonenumbers.demo", soyTemplate.build())
         .render();
   }
 
@@ -257,7 +258,7 @@ public class Results extends HttpServlet {
     } catch (NumberParseException e) {
       return new LibPhoneNumberTemplate(
               "result_error.soy",
-              "demo.output",
+              "com.google.phonenumbers.demo",
               ResultErrorTemplates.SingleNumber.builder()
                   .setPhoneNumber(phoneNumber)
                   .setDefaultCountry(defaultCountry)
@@ -266,6 +267,8 @@ public class Results extends HttpServlet {
                   .build())
           .render();
     }
-    return new LibPhoneNumberTemplate("result.soy", "demo.output", soyTemplate.build()).render();
+    return new LibPhoneNumberTemplate(
+            "result.soy", "com.google.phonenumbers.demo", soyTemplate.build())
+        .render();
   }
 }

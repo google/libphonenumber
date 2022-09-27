@@ -15,12 +15,12 @@
  *
  */
 
-package com.google.demo;
+package com.google.phonenumbers.demo;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
 
-import com.google.demo.helper.LibPhoneNumberTemplate;
-import com.google.demo.template.InputFormTemplates;
+import com.google.phonenumbers.demo.helper.LibPhoneNumberTemplate;
+import com.google.phonenumbers.demo.template.InputFormTemplates;
 import java.io.IOException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -43,7 +43,7 @@ public class Input extends HttpServlet {
         .println(
             new LibPhoneNumberTemplate(
                     "input_form.soy",
-                    "demo.input",
+                    "com.google.phonenumbers.demo",
                     InputFormTemplates.InputForm.builder()
                         .setWelcomeTitle("Phone Number Parser Demo for LibPhoneNumber")
                         .build())
