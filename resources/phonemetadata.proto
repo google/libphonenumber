@@ -290,6 +290,9 @@ message PhoneMetadata {
   // is allowed. A consequence of this is that phone prefix to carrier mapping
   // is less reliable.
   optional bool mobile_number_portable_region = 32 [default=false];
+
+  reserved 26;
+  reserved "leading_zero_possible";
 }
 
 message PhoneMetadataCollection {
