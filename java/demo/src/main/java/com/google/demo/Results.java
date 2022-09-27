@@ -21,6 +21,7 @@ package com.google.demo;
 import static java.nio.charset.StandardCharsets.UTF_8;
 import static java.util.Locale.ENGLISH;
 
+import com.google.common.collect.ImmutableList;
 import com.google.demo.helper.TemplateHelper;
 import com.google.demo.helper.WebHelper;
 import com.google.demo.template.ResultErrorTemplates;
@@ -233,7 +234,7 @@ public class Results extends HttpServlet {
         // Note this doesn't handle supplementary characters, but it shouldn't be a big deal as
         // there are no dial-pad characters in the supplementary range.
         char inputChar = phoneNumber.charAt(i);
-        rows.add(List.of(String.valueOf(inputChar), formatter.inputDigit(inputChar)));
+        rows.add(ImmutableList.of(String.valueOf(inputChar), formatter.inputDigit(inputChar)));
       }
       soyTemplate.setRows(rows);
 
