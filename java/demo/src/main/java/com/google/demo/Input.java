@@ -19,7 +19,7 @@ package com.google.demo;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
 
-import com.google.demo.helper.TemplateHelper;
+import com.google.demo.helper.LibPhoneNumberTemplate;
 import com.google.demo.template.InputFormTemplates;
 import java.io.IOException;
 import javax.servlet.http.HttpServlet;
@@ -41,11 +41,12 @@ public class Input extends HttpServlet {
     resp.setCharacterEncoding(UTF_8.name());
     resp.getWriter()
         .println(
-            TemplateHelper.templateToString(
-                "input_form.soy",
-                "demo.input",
-                InputFormTemplates.InputForm.builder()
-                    .setWelcomeTitle("Phone Number Parser Demo for LibPhoneNumber")
-                    .build()));
+            new LibPhoneNumberTemplate(
+                    "input_form.soy",
+                    "demo.input",
+                    InputFormTemplates.InputForm.builder()
+                        .setWelcomeTitle("Phone Number Parser Demo for LibPhoneNumber")
+                        .build())
+                .render());
   }
 }

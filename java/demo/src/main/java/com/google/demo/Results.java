@@ -22,7 +22,7 @@ import static java.nio.charset.StandardCharsets.UTF_8;
 import static java.util.Locale.ENGLISH;
 
 import com.google.common.collect.ImmutableList;
-import com.google.demo.helper.TemplateHelper;
+import com.google.demo.helper.LibPhoneNumberTemplate;
 import com.google.demo.helper.WebHelper;
 import com.google.demo.template.ResultErrorTemplates;
 import com.google.demo.template.ResultFileTemplates.File;
@@ -159,7 +159,8 @@ public class Results extends HttpServlet {
         soyTemplate.addRows(phoneNumberId, numberStr, null, null, e.toString());
       }
     }
-    return TemplateHelper.templateToString("result_file.soy", "demo.output", soyTemplate.build());
+    return new LibPhoneNumberTemplate("result_file.soy", "demo.output", soyTemplate.build())
+        .render();
   }
 
   /**
@@ -254,16 +255,17 @@ public class Results extends HttpServlet {
           .setGuidelinesLink(guidelinesLink);
 
     } catch (NumberParseException e) {
-      return TemplateHelper.templateToString(
-          "result_error.soy",
-          "demo.output",
-          ResultErrorTemplates.SingleNumber.builder()
-              .setPhoneNumber(phoneNumber)
-              .setDefaultCountry(defaultCountry)
-              .setGeocodingLocale(geocodingLocale.toLanguageTag())
-              .setError(e.toString())
-              .build());
+      return new LibPhoneNumberTemplate(
+              "result_error.soy",
+              "demo.output",
+              ResultErrorTemplates.SingleNumber.builder()
+                  .setPhoneNumber(phoneNumber)
+                  .setDefaultCountry(defaultCountry)
+                  .setGeocodingLocale(geocodingLocale.toLanguageTag())
+                  .setError(e.toString())
+                  .build())
+          .render();
     }
-    return TemplateHelper.templateToString("result.soy", "demo.output", soyTemplate.build());
+    return new LibPhoneNumberTemplate("result.soy", "demo.output", soyTemplate.build()).render();
   }
 }
