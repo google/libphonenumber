@@ -160,7 +160,7 @@ public class Results extends HttpServlet {
       }
     }
     return new LibPhoneNumberTemplate(
-            "result_file.soy", "com.google.phonenumbers.demo", soyTemplate.build())
+            "result_file.soy", "com.google.phonenumbers.demo.file", soyTemplate.build())
         .render();
   }
 
@@ -258,8 +258,8 @@ public class Results extends HttpServlet {
     } catch (NumberParseException e) {
       return new LibPhoneNumberTemplate(
               "result_error.soy",
-              "com.google.phonenumbers.demo",
-              ResultErrorTemplates.SingleNumber.builder()
+              "com.google.phonenumbers.demo.error",
+              ResultErrorTemplates.Error.builder()
                   .setPhoneNumber(phoneNumber)
                   .setDefaultCountry(defaultCountry)
                   .setGeocodingLocale(geocodingLocale.toLanguageTag())
@@ -268,7 +268,7 @@ public class Results extends HttpServlet {
           .render();
     }
     return new LibPhoneNumberTemplate(
-            "result.soy", "com.google.phonenumbers.demo", soyTemplate.build())
+            "result.soy", "com.google.phonenumbers.demo.singleNumber", soyTemplate.build())
         .render();
   }
 }

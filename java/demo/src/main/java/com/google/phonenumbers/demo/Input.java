@@ -43,7 +43,7 @@ public class Input extends HttpServlet {
         .println(
             new LibPhoneNumberTemplate(
                     "input_form.soy",
-                    "com.google.phonenumbers.demo",
+                    "com.google.phonenumbers.demo.inputForm",
                     InputFormTemplates.InputForm.builder()
                         .setWelcomeTitle("Phone Number Parser Demo for LibPhoneNumber")
                         .build())
