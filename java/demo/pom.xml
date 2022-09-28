@@ -96,6 +96,22 @@
         </configuration>
         <groupId>org.apache.maven.plugins</groupId>
       </plugin>
+    <plugin>
+      <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-javadoc-plugin</artifactId>
+      <version>2.7</version>
+      <executions>
+        <execution>
+          <id>attach-javadocs</id>
+          <goals>
+            <goal>jar</goal>
+          </goals>
+          <configuration>
+            <failOnError>false</failOnError> <!-- SoyParseInfoGenerator.jar does not seem to create valid javadoc which requires failOnError false to compile -->
+          </configuration>
+        </execution>
+      </executions>
+    </plugin>
     </plugins>
   </build>
 </project>
