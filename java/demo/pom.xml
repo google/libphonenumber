@@ -82,6 +82,48 @@
     <outputDirectory>${project.build.directory}/${project.build.finalName}/WEB-INF/classes</outputDirectory>
     <plugins>
       <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>2.7</version>
+        <executions>
+          <execution>
+            <id>attach-javadocs</id>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+            <configuration>
+              <failOnError>false</failOnError> <!-- SoyParseInfoGenerator.jar does not seem to create valid javadoc which requires failOnError false to compile -->
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>3.1.0</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>java</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <mainClass>com.google.template.soy.SoyParseInfoGenerator</mainClass>
+                    <arguments>
+                      <argument>--generateInvocationBuilders</argument>
+                      <argument>--javaPackage</argument>
+                      <argument>com.google.phonenumbers.demo.template</argument>
+                      <argument>--javaClassNameSource</argument>
+                      <argument>filename</argument>
+                      <argument>--srcs</argument>
+                      <argument>src/main/resources/com/google/phonenumbers/demo/input_form.soy</argument>
+                      <argument>--outputDirectory</argument>
+                      <argument>src/main/java/com/google/phonenumbers/demo/template/</argument>
+                    </arguments>
+        </configuration>
+      </plugin>
+      <plugin>
         <groupId>com.google.cloud.tools</groupId>
         <artifactId>appengine-maven-plugin</artifactId>
         <version>2.4.4</version>
@@ -96,22 +138,8 @@
         </configuration>
         <groupId>org.apache.maven.plugins</groupId>
       </plugin>
-    <plugin>
-      <groupId>org.apache.maven.plugins</groupId>
-      <artifactId>maven-javadoc-plugin</artifactId>
-      <version>2.7</version>
-      <executions>
-        <execution>
-          <id>attach-javadocs</id>
-          <goals>
-            <goal>jar</goal>
-          </goals>
-          <configuration>
-            <failOnError>false</failOnError> <!-- SoyParseInfoGenerator.jar does not seem to create valid javadoc which requires failOnError false to compile -->
-          </configuration>
-        </execution>
-      </executions>
-    </plugin>
+
     </plugins>
   </build>
 </project>
+
