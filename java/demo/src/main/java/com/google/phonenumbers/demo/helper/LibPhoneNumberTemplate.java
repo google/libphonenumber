@@ -16,12 +16,12 @@ public class LibPhoneNumberTemplate {
     this.soyTemplate = soyTemplate;
   }
 
-  private static URL getResource(String template) {
+  private URL getResource() {
     return LibPhoneNumberTemplate.class.getResource("../" + template);
   }
 
   public String render() {
-    SoyFileSet sfs = SoyFileSet.builder().add(getResource(template)).build();
+    SoyFileSet sfs = SoyFileSet.builder().add(getResource()).build();
     SoyTofu tofu = sfs.compileToTofu();
     // For convenience, create another SoyTofu object that has a
     // namespace specified, so you can pass partial template names to
