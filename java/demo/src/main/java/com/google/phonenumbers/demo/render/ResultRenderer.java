@@ -120,7 +120,6 @@ public class ResultRenderer extends LibPhoneNumberRenderer<SingleNumber> {
     soyTemplate.setRows(rows);
 
     // Geo Info Tables
-
     String guidelinesLink = "https://github.com/google/libphonenumber/blob/master/CONTRIBUTING.md";
     soyTemplate
         .setDescriptionForNumber(

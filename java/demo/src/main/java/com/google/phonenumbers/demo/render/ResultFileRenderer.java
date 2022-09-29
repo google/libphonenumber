@@ -38,7 +38,6 @@ public class ResultFileRenderer extends LibPhoneNumberRenderer<File> {
 
   @Override
   public String genHtml() {
-
     File.Builder soyTemplate = File.builder();
     int phoneNumberId = 0;
     StringTokenizer tokenizer = new StringTokenizer(fileContents, ",");

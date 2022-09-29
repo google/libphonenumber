@@ -29,7 +29,6 @@ public class InputFormRenderer extends LibPhoneNumberRenderer<InputForm> {
 
   @Override
   public String genHtml() {
-
     return super.render(
         InputFormTemplates.InputForm.builder()
             .setWelcomeTitle("Phone Number Parser Demo for LibPhoneNumber")
