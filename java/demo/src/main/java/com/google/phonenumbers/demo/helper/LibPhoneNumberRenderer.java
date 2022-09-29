@@ -5,22 +5,20 @@ import com.google.template.soy.data.SoyTemplate;
 import com.google.template.soy.tofu.SoyTofu;
 import java.net.URL;
 
-public class LibPhoneNumberTemplate {
+public abstract class LibPhoneNumberRenderer<T extends SoyTemplate> {
   private final String template;
   private final String namespace;
-  private final SoyTemplate soyTemplate;
 
-  public LibPhoneNumberTemplate(String template, String namespace, SoyTemplate soyTemplate) {
+  public LibPhoneNumberRenderer(String template, String namespace) {
     this.template = template;
     this.namespace = namespace;
-    this.soyTemplate = soyTemplate;
   }
 
   private URL getResource() {
-    return LibPhoneNumberTemplate.class.getResource("../" + template);
+    return LibPhoneNumberRenderer.class.getResource("../" + template);
   }
 
-  public String render() {
+  String render(T soyTemplate) {
     SoyFileSet sfs = SoyFileSet.builder().add(getResource()).build();
     SoyTofu tofu = sfs.compileToTofu();
     // For convenience, create another SoyTofu object that has a
@@ -29,4 +27,6 @@ public class LibPhoneNumberTemplate {
     SoyTofu simpleTofu = tofu.forNamespace(namespace);
     return simpleTofu.newRenderer(soyTemplate).render();
   }
+
+  public abstract String genHtml();
 }

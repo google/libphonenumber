@@ -19,8 +19,7 @@ package com.google.phonenumbers.demo;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
 
-import com.google.phonenumbers.demo.helper.LibPhoneNumberTemplate;
-import com.google.phonenumbers.demo.template.InputFormTemplates;
+import com.google.phonenumbers.demo.helper.InputFormRenderer;
 import java.io.IOException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -33,20 +32,12 @@ import javax.servlet.http.HttpServletResponse;
  * number to be from.
  */
 @SuppressWarnings("serial")
-public class Input extends HttpServlet {
+public class InputServlet extends HttpServlet {
 
   /** Handle the get request to get information about a number based on query parameters. */
   public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
     resp.setContentType("text/html");
     resp.setCharacterEncoding(UTF_8.name());
-    resp.getWriter()
-        .println(
-            new LibPhoneNumberTemplate(
-                    "input_form.soy",
-                    "com.google.phonenumbers.demo.inputForm",
-                    InputFormTemplates.InputForm.builder()
-                        .setWelcomeTitle("Phone Number Parser Demo for LibPhoneNumber")
-                        .build())
-                .render());
+    resp.getWriter().println(new InputFormRenderer().genHtml());
   }
 }

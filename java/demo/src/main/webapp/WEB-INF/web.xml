@@ -4,11 +4,11 @@
     xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
   http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
   <servlet>
-    <servlet-class>com.google.phonenumbers.demo.Results</servlet-class>
+    <servlet-class>com.google.phonenumbers.demo.ResultsServlet</servlet-class>
     <servlet-name>PhoneNumberParser</servlet-name>
   </servlet>
   <servlet>
-    <servlet-class>com.google.phonenumbers.demo.Input</servlet-class>
+    <servlet-class>com.google.phonenumbers.demo.InputServlet</servlet-class>
     <servlet-name>Input</servlet-name>
   </servlet>
   <servlet-mapping>
