@@ -1,4 +1,4 @@
-package com.google.phonenumbers.demo.helper;
+package com.google.phonenumbers.demo.render;
 
 import com.google.common.collect.ImmutableList;
 import com.google.i18n.phonenumbers.AsYouTypeFormatter;
@@ -9,6 +9,7 @@ import com.google.i18n.phonenumbers.PhoneNumberUtil.PhoneNumberFormat;
 import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber;
 import com.google.i18n.phonenumbers.ShortNumberInfo;
 import com.google.i18n.phonenumbers.geocoding.PhoneNumberOfflineGeocoder;
+import com.google.phonenumbers.demo.helper.WebHelper;
 import com.google.phonenumbers.demo.template.ResultTemplates.SingleNumber;
 import java.util.ArrayList;
 import java.util.List;

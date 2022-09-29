@@ -19,7 +19,7 @@ package com.google.phonenumbers.demo;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
 
-import com.google.phonenumbers.demo.helper.InputFormRenderer;
+import com.google.phonenumbers.demo.render.InputFormRenderer;
 import java.io.IOException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;

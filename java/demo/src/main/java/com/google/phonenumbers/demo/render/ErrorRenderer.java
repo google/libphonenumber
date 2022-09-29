@@ -1,4 +1,4 @@
-package com.google.phonenumbers.demo.helper;
+package com.google.phonenumbers.demo.render;
 
 import com.google.phonenumbers.demo.template.ResultErrorTemplates;
 import com.google.phonenumbers.demo.template.ResultErrorTemplates.Error;

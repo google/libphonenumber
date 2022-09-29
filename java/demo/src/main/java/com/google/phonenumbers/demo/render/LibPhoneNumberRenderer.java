@@ -1,4 +1,4 @@
-package com.google.phonenumbers.demo.helper;
+package com.google.phonenumbers.demo.render;
 
 import com.google.template.soy.SoyFileSet;
 import com.google.template.soy.data.SoyTemplate;

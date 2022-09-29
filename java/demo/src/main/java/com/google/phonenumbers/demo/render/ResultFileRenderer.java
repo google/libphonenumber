@@ -1,4 +1,4 @@
-package com.google.phonenumbers.demo.helper;
+package com.google.phonenumbers.demo.render;
 
 import com.google.i18n.phonenumbers.NumberParseException;
 import com.google.i18n.phonenumbers.PhoneNumberUtil;
