@@ -4,7 +4,7 @@
     xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
   http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
   <servlet>
-    <servlet-class>com.google.phonenumbers.demo.ResultsServlet</servlet-class>
+    <servlet-class>com.google.phonenumbers.demo.ResultServlet</servlet-class>
     <servlet-name>PhoneNumberParser</servlet-name>
   </servlet>
   <servlet>

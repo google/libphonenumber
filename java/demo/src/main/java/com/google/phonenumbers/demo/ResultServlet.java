@@ -48,7 +48,7 @@ import org.apache.commons.io.IOUtils;
  * number to be from.
  */
 @SuppressWarnings("serial")
-public class ResultsServlet extends HttpServlet {
+public class ResultServlet extends HttpServlet {
 
   private final PhoneNumberUtil phoneUtil = PhoneNumberUtil.getInstance();
 
