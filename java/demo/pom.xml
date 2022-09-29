@@ -21,6 +21,7 @@
     <maven.compiler.showDeprecation>true</maven.compiler.showDeprecation>
     <archiveClasses>true</archiveClasses>
     <soy.root>src/main/resources/com/google/phonenumbers/demo</soy.root>
+    <soy.package>com.google.phonenumbers.demo.template</soy.package>
   </properties>
 
   <prerequisites>
@@ -98,7 +99,7 @@
                     <arguments>
                       <argument>--generateInvocationBuilders</argument>
                       <argument>--javaPackage</argument>
-                      <argument>com.google.phonenumbers.demo.template</argument>
+                      <argument>${soy.package}</argument>
                       <argument>--javaClassNameSource</argument>
                       <argument>filename</argument>
                       <argument>--srcs</argument>
@@ -126,18 +127,10 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-javadoc-plugin</artifactId>
-        <version>2.7</version>
-        <executions>
-          <execution>
-            <id>attach-javadocs</id>
-            <goals>
-              <goal>jar</goal>
-            </goals>
-            <configuration>
-              <failOnError>false</failOnError> <!-- SoyParseInfoGenerator.jar does not seem to create valid javadoc which requires failOnError false to compile -->
-            </configuration>
-          </execution>
-        </executions>
+        <version>3.4.1</version>
+        <configuration>
+          <excludePackageNames>${soy.package}</excludePackageNames>
+        </configuration>
       </plugin>
     </plugins>
   </build>
