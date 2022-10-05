@@ -1,0 +1,25 @@
+Region ; Prefix    ; Length ; Type               ; Tariff
+PT     ; 10[1-38]0 ; 4      ; COMMERCIAL
+PT     ; 1045      ; 4      ; COMMERCIAL
+PT     ; 105[01]   ; 4      ; COMMERCIAL
+PT     ; 1078      ; 4      ; COMMERCIAL
+PT     ; 109[16]   ; 4      ; COMMERCIAL
+PT     ; 11[25]    ; 3      ; EMERGENCY          ; TOLL_FREE
+PT     ; 11600[06] ; 6      ; EXPANDED_EMERGENCY ; TOLL_FREE
+PT     ; 116111    ; 6      ; EXPANDED_EMERGENCY ; TOLL_FREE
+PT     ; 117       ; 3      ; EXPANDED_EMERGENCY ; TOLL_FREE
+PT     ; 118       ; 3      ; COMMERCIAL
+PT     ; 1400      ; 4      ; COMMERCIAL
+PT     ; 141[45]   ; 4      ; COMMERCIAL
+PT     ; 144       ; 3      ; COMMERCIAL
+PT     ; 15[15]0   ; 4      ; COMMERCIAL         ; TOLL_FREE
+PT     ; 1583      ; 4      ; COMMERCIAL         ; TOLL_FREE
+PT     ; 1591      ; 4      ; COMMERCIAL         ; TOLL_FREE
+PT     ; 161[0236] ; 4      ; COMMERCIAL
+PT     ; 16[258]0  ; 4      ; COMMERCIAL
+PT     ; 163[02]   ; 4      ; COMMERCIAL
+PT     ; 1678      ; 4      ; COMMERCIAL
+PT     ; 169[169]  ; 4      ; COMMERCIAL
+PT     ; 1820      ; 4      ; COMMERCIAL         ; TOLL_FREE
+PT     ; 1878      ; 4      ; COMMERCIAL         ; TOLL_FREE
+PT     ; 189[16]   ; 4      ; COMMERCIAL         ; TOLL_FREE

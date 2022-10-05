@@ -1,0 +1,9 @@
+Region ; Label          ; Comment
+TM     ; SC             ; "http://www.itu.int/oth/T02020000D7/en"
+TM     ; SC             ; "http://en.wikipedia.org/wiki/Telephone_numbers_in_Turkmenistan"
+TM     ; SC_EMERGENCY   ; "http://www.netglobers.com/asia/turkmenistan-emergency-numbers-in-turkmenistan.html\nhttp://www.voyage.gc.ca/countries_pays/report_rapport-eng.asp?id=301000"
+TM     ; XML            ; "No tollFree or premiumRate information can be found."
+TM     ; XML            ; "http://www.itu.int/oth/T02020000D7/en"
+TM     ; XML            ; "http://en.wikipedia.org/wiki/Telephone_numbers_in_Turkmenistan"
+TM     ; XML_FIXED_LINE ; "Additional prefixes from the wikipedia page."
+TM     ; XML_MOBILE     ; "According to feedback from users, the carrier Altyn Asyr is the only one currently\noperating, with the numbers 6[3-5]\\d{6}. MTS used to operate the ranges 6[6-8] but this\nhas been suspended. It is unclear whether it will resume. We support both ranges in the\nmeantime. The range 62 seems also now to be in use, according to numbers found online.\nMTS Turkmenistan have recently launched their NDC(69). So added range 69 after getting\nconfirmation from the carriers who own them."

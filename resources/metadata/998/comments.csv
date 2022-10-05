@@ -1,0 +1,11 @@
+Region ; Label               ; Comment
+UZ     ; SC                  ; "http://www.ttts.uz/eng/telephone_codes/codes_uzb_eng"
+UZ     ; SC                  ; "http://www.itu.int/oth/T02020000E1/en"
+UZ     ; SC_CARRIER_SPECIFIC ; "https://support.google.com/plus/answer/1304917"
+UZ     ; SC_EMERGENCY        ; "http://travel.state.gov/travel/cis_pa_tw/cis/cis_1057.html\nhttp://www.expat.uz/index.php?/Emergency-Numbers.html\nhttp://www.mts.uz/en/citycodes/how_to_call_sos\nNote that the third source, for a local mobile company, comments that a '*' needs to\nbe dialled before the 2-digit emergency numbers on their cell-phone. This is not\nexplicitly handled here, but instead is handled by normalising input in the code."
+UZ     ; SC_SMS_SERVICES     ; "https://support.google.com/plus/answer/1304917"
+UZ     ; XML                 ; "No tollFree or premiumRate information can be found."
+UZ     ; XML                 ; "http://www.ttts.uz/eng/telephone_codes/codes_uzb_eng"
+UZ     ; XML                 ; "http://www.itu.int/oth/T02020000E1/en"
+UZ     ; XML_FIXED_LINE      ; "Adding 711 from numbers found online, such as the US embassy, and 6922, which seems to\nbe used in Namangan."
+UZ     ; XML_MOBILE          ; "Adding 9[45] as suggested by http://www.ucell.uz/en/for_subscribers/how_to_call.html\nAdding other prefixes from http://www.weltvorwahlen.de/99861353.html, and any other\nprefixes Tyntec has a carrier mapped to. Adding 5550[013] & 5590 based on user report."

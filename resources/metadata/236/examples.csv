@@ -1,0 +1,4 @@
+Region ; Type         ; Number
+CF     ; FIXED_LINE   ; "21612345"
+CF     ; MOBILE       ; "70012345"
+CF     ; PREMIUM_RATE ; "87761234"

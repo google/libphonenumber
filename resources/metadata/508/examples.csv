@@ -1,0 +1,5 @@
+Region ; Type                 ; Number
+PM     ; FIXED_LINE           ; "430123"
+PM     ; MOBILE               ; "551234"
+PM     ; FIXED_LINE_OR_MOBILE ; "430123"
+PM     ; TOLL_FREE            ; "800012345"

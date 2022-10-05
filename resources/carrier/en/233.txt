@@ -19,6 +19,7 @@
 23326|Airtel
 23327|tiGO
 23328|Expresso
+23329|National Security
 23350|Vodafone
 23354|MTN
 23355|MTN

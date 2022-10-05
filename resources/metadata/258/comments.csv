@@ -1,0 +1,8 @@
+Region ; Label         ; Comment
+MZ     ; SC            ; "http://www.itu.int/oth/T0202000091/en"
+MZ     ; SC_EMERGENCY  ; "11X is national, 19X is for Maputo."
+MZ     ; SC_EMERGENCY  ; "http://www.lonelyplanet.com/shop_pickandmix/previews/mozambique-maputo-preview.pdf"
+MZ     ; SC_EMERGENCY  ; "http://ccmusa.online.co.mz/index.php?option=com_content&task=view&id=20&Itemid=30"
+MZ     ; XML           ; "The plan suggests 801 and 802 numbers are shared-cost numbers, and numbers beginning with\na 9 are premium rate, but no online examples can be found of any of these so they are\nomitted for the time-being."
+MZ     ; XML           ; "http://www.itu.int/oth/T0202000091/en"
+MZ     ; XML_TOLL_FREE ; "Unsure of the length requirement on toll-free numbers, so using 9 based on online\nexamples."

@@ -1,0 +1,30 @@
+Prefix      ; Length ; Type       ; Tariff        ; Operator ; Format       ; Regions ; Geocode:en         ; Provenance ; Comment
+[14-69]     ; 7      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt1_1/3/3" ; "LB"    ;                    ; ITU
+21          ; 8      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt2_2/3/3" ; "LB"    ; "Beirut"           ; ITU
+24          ; 8      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt2_2/3/3" ; "LB"    ; "Metn"             ; ITU
+25          ; 8      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt2_2/3/3" ; "LB"    ; "Chouf"            ; ITU
+26          ; 8      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt2_2/3/3" ; "LB"    ; "North Lebanon"    ; ITU
+27[1-9]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt2_2/3/3" ; "LB"    ; "South Lebanon"    ; ITU
+28[1-9]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt2_2/3/3" ; "LB"    ; "Bekaa"            ; ITU
+29          ; 8      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt2_2/3/3" ; "LB"    ; "Jbeil & Keserwan" ; ITU
+3[06-9]     ; 7      ; MOBILE     ; STANDARD_RATE ; "touch"  ; "fmt1_1/3/3" ; "LB"    ;                    ; IR21       ; "IR21 dated 6/26/2018"
+3[1-5]      ; 7      ; MOBILE     ; STANDARD_RATE ; "alfa"   ; "fmt1_1/3/3" ; "LB"    ;                    ; IR21       ; "IR21 dated 10/23/2018"
+7[06][06-9] ; 8      ; MOBILE     ; STANDARD_RATE ; "touch"  ; "fmt2_2/3/3" ; "LB"    ;                    ; IR21       ; "IR21 dated 6/26/2018"
+70[1-5]     ; 8      ; MOBILE     ; STANDARD_RATE ; "alfa"   ; "fmt2_2/3/3" ; "LB"    ;                    ; IR21       ; "IR21 dated 10/23/2018"
+71[06-9]    ; 8      ; MOBILE     ; STANDARD_RATE ; "alfa"   ; "fmt2_2/3/3" ; "LB"    ;                    ; IR21       ; "IR21 dated 10/23/2018"
+71[1-5]     ; 8      ; MOBILE     ; STANDARD_RATE ; "touch"  ; "fmt2_2/3/3" ; "LB"    ;                    ; IR21       ; "IR21 dated 6/26/2018"
+7[2-57]     ; 7      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt1_1/3/3" ; "LB"    ;                    ; ITU
+76[13-5]    ; 8      ; MOBILE     ; STANDARD_RATE ; "alfa"   ; "fmt2_2/3/3" ; "LB"    ;                    ; IR21       ; "IR21 dated 10/23/2018"
+762         ; 7      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt1_1/3/3" ; "LB"    ;                    ; ITU
+78[0-7]     ; 7      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt1_1/3/3" ; "LB"    ;                    ; ITU
+78[89]      ; 8      ; MOBILE     ; STANDARD_RATE ; "touch"  ; "fmt2_2/3/3" ; "LB"    ;                    ; IR21       ; "IR21 dated 6/26/2018"
+79[04-9]    ; 7      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt1_1/3/3" ; "LB"    ;                    ; ITU
+791         ; 8      ; MOBILE     ; STANDARD_RATE ; "alfa"   ; "fmt2_2/3/3" ; "LB"    ;                    ; IR21       ; "IR21 dated 10/23/2018"
+792         ; 8      ; MOBILE     ; STANDARD_RATE ;          ; "fmt2_2/3/3" ; "LB"
+793[01]     ; 8      ; MOBILE     ; STANDARD_RATE ; "alfa"   ; "fmt2_2/3/3" ; "LB"    ;                    ; IR21       ; "IR21 dated 10/23/2018"
+7932[0-4]   ; 8      ; MOBILE     ; STANDARD_RATE ; "alfa"   ; "fmt2_2/3/3" ; "LB"    ;                    ; IR21       ; "IR21 dated 10/23/2018"
+8[02-9]     ; 7      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt1_1/3/3" ; "LB"    ;                    ; ITU
+80          ; 8      ; FIXED_LINE ; SHARED_COST   ;          ; "fmt2_2/3/3" ; "LB"    ;                    ; ITU
+81[06-9]    ; 8      ; MOBILE     ; STANDARD_RATE ; "touch"  ; "fmt2_2/3/3" ; "LB"    ;                    ; IR21       ; "IR21 dated 6/26/2018"
+81[1-5]     ; 8      ; MOBILE     ; STANDARD_RATE ; "alfa"   ; "fmt2_2/3/3" ; "LB"    ;                    ; IR21       ; "IR21 dated 10/23/2018"
+9[01]       ; 8      ; FIXED_LINE ; PREMIUM_RATE  ;          ; "fmt2_2/3/3" ; "LB"    ;                    ; ITU

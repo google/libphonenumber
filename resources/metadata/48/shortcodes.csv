@@ -1,0 +1,13 @@
+Region ; Prefix    ; Length ; Type               ; Tariff    ; Format
+PL     ; 112       ; 3      ; EMERGENCY          ; TOLL_FREE
+PL     ; 116000    ; 6      ; EXPANDED_EMERGENCY ; TOLL_FREE ; "shortcode_3/3"
+PL     ; 116111    ; 6      ; EXPANDED_EMERGENCY ; TOLL_FREE ; "shortcode_3/3"
+PL     ; 116123    ; 6      ; EXPANDED_EMERGENCY ; TOLL_FREE ; "shortcode_3/3"
+PL     ; 118000    ; 6      ; COMMERCIAL         ;           ; "shortcode_3/3"
+PL     ; 11891[23] ; 6      ; COMMERCIAL         ;           ; "shortcode_3/3"
+PL     ; 19        ; 5      ; COMMERCIAL         ;           ; "shortcode_5"
+PL     ; 98[4-6]   ; 3      ; EXPANDED_EMERGENCY
+PL     ; 987       ; 3      ; COMMERCIAL
+PL     ; 99[1-4]   ; 3      ; COMMERCIAL
+PL     ; 99[56]    ; 3      ; EXPANDED_EMERGENCY
+PL     ; 99[7-9]   ; 3      ; EMERGENCY          ; TOLL_FREE

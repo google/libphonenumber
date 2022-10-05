@@ -1,0 +1,23 @@
+Prefix ; Length ; Type            ; Tariff        ; Operator        ; Format     ; Regions ; Geocode:en  ; Provenance
+21     ; 7      ; FIXED_LINE      ; STANDARD_RATE ;                 ; "fmt1_3/4" ; "TL"    ; "Manufahi"
+22     ; 7      ; FIXED_LINE      ; STANDARD_RATE ;                 ; "fmt1_3/4" ; "TL"    ; "Cova Lima"
+23     ; 7      ; FIXED_LINE      ; STANDARD_RATE ;                 ; "fmt1_3/4" ; "TL"    ; "Bobonaro"
+24     ; 7      ; FIXED_LINE      ; STANDARD_RATE ;                 ; "fmt1_3/4" ; "TL"    ; "Ainaro"
+25     ; 7      ; FIXED_LINE      ; STANDARD_RATE ;                 ; "fmt1_3/4" ; "TL"    ; "Dekuse"
+3[1-3] ; 7      ; FIXED_LINE      ; STANDARD_RATE ;                 ; "fmt1_3/4" ; "TL"    ; "Dili"
+3[45]  ; 7      ; FIXED_LINE      ; STANDARD_RATE ;                 ; "fmt1_3/4" ; "TL"
+36     ; 7      ; FIXED_LINE      ; STANDARD_RATE ;                 ; "fmt1_3/4" ; "TL"    ; "Liquica"
+37     ; 7      ; FIXED_LINE      ; STANDARD_RATE ;                 ; "fmt1_3/4" ; "TL"    ; "Aileu"
+38     ; 7      ; FIXED_LINE      ; STANDARD_RATE ;                 ; "fmt1_3/4" ; "TL"    ; "Ermera"
+39     ; 7      ; FIXED_LINE      ; STANDARD_RATE ;                 ; "fmt1_3/4" ; "TL"    ; "Oekusi"
+41     ; 7      ; FIXED_LINE      ; STANDARD_RATE ;                 ; "fmt1_3/4" ; "TL"    ; "Baucau"
+42     ; 7      ; FIXED_LINE      ; STANDARD_RATE ;                 ; "fmt1_3/4" ; "TL"    ; "Manatuto"
+43     ; 7      ; FIXED_LINE      ; STANDARD_RATE ;                 ; "fmt1_3/4" ; "TL"    ; "Viqueque"
+44     ; 7      ; FIXED_LINE      ; STANDARD_RATE ;                 ; "fmt1_3/4" ; "TL"    ; "Lautem"
+70     ; 7      ; PERSONAL_NUMBER ; STANDARD_RATE ;                 ; "fmt1_3/4" ; "TL"
+72     ; 8      ; MOBILE          ; STANDARD_RATE ; "timor_telecom" ; "fmt2_4/4" ; "TL"    ;             ; ITU
+7[34]  ; 8      ; MOBILE          ; STANDARD_RATE ; "telkomcel"     ; "fmt2_4/4" ; "TL"    ;             ; IR21
+7[56]  ; 8      ; MOBILE          ; STANDARD_RATE ; "viettel"       ; "fmt2_4/4" ; "TL"    ;             ; ITU
+7[78]  ; 8      ; MOBILE          ; STANDARD_RATE ; "timor_telecom" ; "fmt2_4/4" ; "TL"    ;             ; IR21
+80     ; 7      ; FIXED_LINE      ; TOLL_FREE     ;                 ; "fmt1_3/4" ; "TL"
+90     ; 7      ; FIXED_LINE      ; PREMIUM_RATE  ;                 ; "fmt1_3/4" ; "TL"

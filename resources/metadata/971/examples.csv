@@ -1,0 +1,7 @@
+Region ; Type         ; Number
+AE     ; FIXED_LINE   ; "22345678"
+AE     ; MOBILE       ; "501234567"
+AE     ; TOLL_FREE    ; "800123456"
+AE     ; PREMIUM_RATE ; "900234567"
+AE     ; SHARED_COST  ; "700012345"
+AE     ; UAN          ; "600212345"

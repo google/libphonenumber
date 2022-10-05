@@ -1,0 +1,5 @@
+Region ; Type        ; Number
+PS     ; FIXED_LINE  ; "22234567"
+PS     ; MOBILE      ; "599123456"
+PS     ; TOLL_FREE   ; "1800123456"
+PS     ; SHARED_COST ; "1700123456"

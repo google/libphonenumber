@@ -1,0 +1,5 @@
+Region ; Type       ; Number
+GF     ; FIXED_LINE ; "594101234"
+GF     ; MOBILE     ; "694201234"
+GF     ; TOLL_FREE  ; "800012345"
+GF     ; VOIP       ; "976012345"

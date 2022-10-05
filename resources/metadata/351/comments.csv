@@ -1,0 +1,6 @@
+Region ; Label            ; Comment
+PT     ; SC               ; "http://www.anacom.pt/render.jsp?categoryId=279098"
+PT     ; XML              ; "http://www.anacom.pt/render.jsp?categoryId=279098"
+PT     ; XML_PREMIUM_RATE ; "Fixed maximum cost numbers: 761=0.60€, 761=1€, 762=2€."
+PT     ; XML_PREMIUM_RATE ; "Audio Text prefixes 601,607,608,646 and 648 added here"
+PT     ; XML_SHARED_COST  ; "808 are priced as local calls, 809 are national calls."

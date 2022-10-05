@@ -1,0 +1,12 @@
+Format         ; Parent Format  ; Comment
+XXXX XXX XXX   ; fmt_kz_4/2/2/2 ; "Alternate KZ formatting (4-digit prefixes)"
+XXXXX XXXXX    ; fmt_kz_5/1/2/2 ; "Alternate KZ formatting (5-digit prefixes)"
+XXX XXX XX XX  ; fmt_kz_4/2/2/2 ; "Sometimes KZ numbers are formatted in the traditional RU way assuming 3-digit prefixes everywhere."
+XXX XXX XX XX  ; fmt_kz_5/1/2/2 ; "Sometimes KZ numbers are formatted in the traditional RU way assuming 3-digit prefixes everywhere."
+XXX XX XX XXX  ; fmt_kz_3/3/4   ; "Alternate formatting for 3-digit prefixes"
+XXX X XX XX XX ; fmt_kz_3/3/4   ; "Alternate formatting for 3-digit prefixes"
+XXX XX XX XXX  ; fmt_ru_3/3/2/2 ; "Alternate formatting for 3-digit prefixes"
+XXX X XX XX XX ; fmt_ru_3/3/2/2 ; "Alternate formatting for 3-digit prefixes"
+XXXX XX XX XX  ; fmt_ru_3/3/2/2 ; "Russian numbers are sometimes formatted with a 4-digit prefix"
+XXXX XXX XXX   ; fmt_ru_3/3/2/2 ; "Russian numbers are sometimes formatted with a 4-digit prefix"
+XXXXX XXXXX    ; fmt_ru_3/3/2/2 ; "Russian numbers are sometimes formatted with a 5-digit prefix - this may in fact only apply to some prefixes, but we don't have a good understanding of which these are so err on the side of including all."

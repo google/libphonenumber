@@ -61,6 +61,8 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
       new PhoneNumber().setCountryCode(1).setNationalNumber(2423570000L);
   private static final PhoneNumber BS_NUMBER =
       new PhoneNumber().setCountryCode(1).setNationalNumber(2423651234L);
+  private static final PhoneNumber CO_FIXED_LINE =
+      new PhoneNumber().setCountryCode(57).setNationalNumber(6012345678L);
   // Note that this is the same as the example number for DE in the metadata.
   private static final PhoneNumber DE_NUMBER =
       new PhoneNumber().setCountryCode(49).setNationalNumber(30123456L);
@@ -810,6 +812,8 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
   public void testFormatNumberForMobileDialing() {
     // Numbers are normally dialed in national format in-country, and international format from
     // outside the country.
+    assertEquals("6012345678",
+        phoneUtil.formatNumberForMobileDialing(CO_FIXED_LINE, RegionCode.CO, false));
     assertEquals("030123456",
         phoneUtil.formatNumberForMobileDialing(DE_NUMBER, RegionCode.DE, false));
     assertEquals("+4930123456",

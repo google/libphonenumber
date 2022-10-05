@@ -1,0 +1,9 @@
+Region ; Label            ; Comment
+SM     ; SC               ; "http://www.itu.int/oth/T02020000B5/en"
+SM     ; XML              ; "San Marino fixed-line numbers have an area code of ""0549"". However, this seems to be\noptional when dialling from outside the country; the phone number can be reached both with\nand without this area code. The nationalPrefixForParsing and nationalPrefixTransformRule\nare used to ensure that if the 0549 is not present, it will be added."
+SM     ; XML              ; "Information about Italy."
+SM     ; XML              ; "http://www.itu.int/oth/T02020000B5/en"
+SM     ; XML              ; "http://en.wikipedia.org/wiki/%2B39"
+SM     ; XML              ; "http://en.wikipedia.org/wiki/%2B378"
+SM     ; XML_FIXED_LINE   ; "Example numbers provided by the Telecommunications Services."
+SM     ; XML_PREMIUM_RATE ; "Includes Video Call numbers."

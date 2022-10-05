@@ -1,0 +1,4 @@
+Region ; Label          ; Comment
+ER     ; XML            ; "http://www.itu.int/oth/T0202000042/en"
+ER     ; XML_FIXED_LINE ; "Test number from plan."
+ER     ; XML_MOBILE     ; "It is unclear in the plan whether the 07 mobile prefix superseded the previous 017[1-3]\nnumbers or was in addition to them, so we support both here."

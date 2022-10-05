@@ -1,0 +1,6 @@
+Region ; Type         ; Number
+SI     ; FIXED_LINE   ; "12345678"
+SI     ; MOBILE       ; "31234567"
+SI     ; TOLL_FREE    ; "80123456"
+SI     ; PREMIUM_RATE ; "90123456"
+SI     ; VOIP         ; "59012345"

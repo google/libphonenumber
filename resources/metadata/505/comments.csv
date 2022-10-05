@@ -1,0 +1,4 @@
+Region ; Label      ; Comment
+NI     ; SC         ; "http://www.itu.int/oth/T020200009A/en"
+NI     ; XML        ; "http://www.itu.int/oth/T020200009A/en"
+NI     ; XML_MOBILE ; "55[0-7], 57, 58 and 7[5-8] were added from bug reports/numbers found online."
