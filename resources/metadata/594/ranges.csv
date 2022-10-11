@@ -6,7 +6,7 @@ Prefix      ; Length ; Type       ; Tariff        ; Operator  ; Format          
 5945[6-9]   ; 9      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_3/2/2/2"    ; "GF"
 5946[0-3]   ; 9      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_3/2/2/2"    ; "GF"
 59480       ; 9      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_3/2/2/2"    ; "GF"
-5949[0-8]   ; 9      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_3/2/2/2"    ; "GF"    ; GOVERNMENT
+5949        ; 9      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_3/2/2/2"    ; "GF"    ; GOVERNMENT
 6940[0-7]   ; 9      ; MOBILE     ; STANDARD_RATE ; "sfr"     ; "fmt1_3/2/2/2"    ; "GF"
 6940[89]    ; 9      ; MOBILE     ; STANDARD_RATE ; "digicel" ; "fmt1_3/2/2/2"    ; "GF"
 6941[01]    ; 9      ; MOBILE     ; STANDARD_RATE ;           ; "fmt1_3/2/2/2"    ; "GF"
@@ -14,6 +14,7 @@ Prefix      ; Length ; Type       ; Tariff        ; Operator  ; Format          
 6941[7-9]   ; 9      ; MOBILE     ; STANDARD_RATE ; "sfr"     ; "fmt1_3/2/2/2"    ; "GF"
 6942        ; 9      ; MOBILE     ; STANDARD_RATE ; "orange"  ; "fmt1_3/2/2/2"    ; "GF"
 6943[0-48]  ; 9      ; MOBILE     ; STANDARD_RATE ; "orange"  ; "fmt1_3/2/2/2"    ; "GF"
+6943[5-7]   ; 9      ; MOBILE     ; STANDARD_RATE ; "free"    ; "fmt1_3/2/2/2"    ; "GF"    ; GOVERNMENT
 6944[0-589] ; 9      ; MOBILE     ; STANDARD_RATE ; "orange"  ; "fmt1_3/2/2/2"    ; "GF"
 6944[67]    ; 9      ; MOBILE     ; STANDARD_RATE ; "sfr"     ; "fmt1_3/2/2/2"    ; "GF"
 6949        ; 9      ; MOBILE     ; STANDARD_RATE ; "digicel" ; "fmt1_3/2/2/2"    ; "GF"

@@ -86,7 +86,7 @@ Calling Code ; Main Region ; Extra Regions                                      
 376          ; "AD"        ;                                                                           ;                   ; "00"       ; "Europe/Andorra"
 377          ; "MC"        ;                                                                           ; "0"               ; "00"       ; "Europe/Monaco"
 378          ; "SM"        ;                                                                           ;                   ; "00"       ; "Europe/San_Marino"
-380          ; "UA"        ;                                                                           ; "0"               ; "0~0"      ; "Europe/Bucharest"
+380          ; "UA"        ;                                                                           ; "0"               ; "0~0"      ; "Europe/Kyiv"
 381          ; "RS"        ;                                                                           ; "0"               ; "00"       ; "Europe/Belgrade"                                     ; "RS"
 382          ; "ME"        ;                                                                           ; "0"               ; "00"       ; "Europe/Podgorica"
 383          ; "XK"        ;                                                                           ; "0"               ; "00"       ; "Europe/Belgrade"

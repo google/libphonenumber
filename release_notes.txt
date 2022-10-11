@@ -1,3 +1,13 @@
+Oct 11, 2022: v8.12.57
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   BJ, EH, GB, GF, GG, JE, MA, MW, SG, SN, SO, ZM
+ - Updated geocoding data for country calling code(s): 229 (en)
+ - Updated carrier data for country calling code(s):
+   27 (en), 34 (en), 47 (en), 65 (en), 212 (en), 252 (en), 260 (en), 594 (en),
+   974 (en)
+ - Updated / refreshed time zone meta data.
+
 Sep 22, 2022: v8.12.56
 Metadata changes:
  - Updated phone metadata for region code(s): HR, MK, PT, SG, TT

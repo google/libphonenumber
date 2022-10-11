@@ -104,6 +104,7 @@ Prefix     ; Length ; Type       ; Tariff        ; Operator             ; Format
 72[0-2]    ; 9      ; MOBILE     ; STANDARD_RATE ; "inwi"               ; "fmt1_3/6"     ; "EH,MA" ;                                                  ;                                                  ; GOVERNMENT
 76[0-8]    ; 9      ; MOBILE     ; STANDARD_RATE ; "maroc_telecom"      ; "fmt1_3/6"     ; "EH,MA" ;                                                  ;                                                  ; IR21
 77         ; 9      ; MOBILE     ; STANDARD_RATE ; "meditel"            ; "fmt1_3/6"     ; "EH,MA"
+78[0-3]    ; 9      ; MOBILE     ; STANDARD_RATE ; "meditel"            ; "fmt1_3/6"     ; "EH,MA" ;                                                  ;                                                  ; ITU
 80         ; 9      ; FIXED_LINE ; TOLL_FREE     ;                      ; "fmt5_2/7"     ; "EH,MA"
 89[013-9]  ; 9      ; FIXED_LINE ; PREMIUM_RATE  ;                      ; "fmt5_2/7"     ; "EH,MA"
 892        ; 9      ; FIXED_LINE ; PREMIUM_RATE  ;                      ; "fmt2_4/5"     ; "EH,MA"

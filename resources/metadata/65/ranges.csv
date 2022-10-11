@@ -1,7 +1,7 @@
 Prefix       ; Length ; Type       ; Tariff        ; Operator     ; Format       ; Regions ; Provenance ; Comment
 1800         ; 11     ; FIXED_LINE ; TOLL_FREE     ;              ; "fmt2_4/3/4" ; "SG"
 1900         ; 11     ; FIXED_LINE ; PREMIUM_RATE  ;              ; "fmt2_4/3/4" ; "SG"
-3[12]        ; 8      ; VOIP       ; STANDARD_RATE ;              ; "fmt1_4/4"   ; "SG"    ; GOVERNMENT ; "Government Dated March 2019"
+3[12]        ; 8      ; VOIP       ; STANDARD_RATE ;              ; "fmt1_4/4"   ; "SG"    ; GOVERNMENT ; "Government Dated MarcH 2019"
 60           ; 8      ; FIXED_LINE ; STANDARD_RATE ;              ; "fmt1_4/4"   ; "SG"
 6[1-578]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;              ; "fmt1_4/4"   ; "SG"    ; GOVERNMENT ; "Government Dated March 2019"
 660[0-4]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;              ; "fmt1_4/4"   ; "SG"    ; GOVERNMENT ; "Government Dated March 2019"
@@ -40,6 +40,8 @@ Prefix       ; Length ; Type       ; Tariff        ; Operator     ; Format      
 8048         ; 8      ; MOBILE     ; STANDARD_RATE ; "myrepublic" ; "fmt1_4/4"   ; "SG"    ;            ; "User report"
 805[0-2]     ; 8      ; MOBILE     ; STANDARD_RATE ; "m1"         ; "fmt1_4/4"   ; "SG"    ; IR21
 805[367]     ; 8      ; MOBILE     ; STANDARD_RATE ; "simba"      ; "fmt1_4/4"   ; "SG"    ; IR21
+8054         ; 8      ; MOBILE     ; STANDARD_RATE ; "singtel"    ; "fmt1_4/4"   ; "SG"    ; IR21
+8055         ; 8      ; MOBILE     ; STANDARD_RATE ; "geenet"     ; "fmt1_4/4"   ; "SG"    ; IR21
 81[07]       ; 8      ; MOBILE     ; STANDARD_RATE ; "m1"         ; "fmt1_4/4"   ; "SG"
 81[1356]     ; 8      ; MOBILE     ; STANDARD_RATE ; "starhub"    ; "fmt1_4/4"   ; "SG"
 812          ; 8      ; MOBILE     ; STANDARD_RATE ; "singtel"    ; "fmt1_4/4"   ; "SG"

@@ -107,6 +107,7 @@
 346122|Lycamobile
 346124|Lycamobile
 346125|Lycamobile
+34613|Yoigo
 34615|Orange
 34616|Movistar
 34617|Vodafone
