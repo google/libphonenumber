@@ -212,9 +212,9 @@
 474886|telia
 474888|telia
 474889|telia
-474890|telenor norge
-474891|telenor norge
-474892|telenor norge
+474890|ice norge
+474891|ice norge
+474892|ice norge
 474893|telia
 474894|telenor norge
 474895|telia
