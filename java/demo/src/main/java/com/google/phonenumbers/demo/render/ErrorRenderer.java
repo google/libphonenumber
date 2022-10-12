@@ -20,7 +20,9 @@ package com.google.phonenumbers.demo.render;
 
 import com.google.phonenumbers.demo.template.ResultErrorTemplates;
 import com.google.phonenumbers.demo.template.ResultErrorTemplates.Error;
+import java.net.MalformedURLException;
 import java.util.Locale;
+import javax.servlet.ServletContext;
 
 public class ErrorRenderer extends LibPhoneNumberRenderer<Error> {
   private final String phoneNumber;
@@ -29,8 +31,12 @@ public class ErrorRenderer extends LibPhoneNumberRenderer<Error> {
   private final String error;
 
   public ErrorRenderer(
-      String phoneNumber, String defaultCountry, Locale geocodingLocale, String error) {
-    super("result_error.soy", "com.google.phonenumbers.demo.error");
+      String phoneNumber,
+      String defaultCountry,
+      Locale geocodingLocale,
+      String error,
+      ServletContext servletContext) {
+    super("result_error.soy", "com.google.phonenumbers.demo.error", servletContext);
     this.phoneNumber = phoneNumber;
     this.defaultCountry = defaultCountry;
     this.geocodingLocale = geocodingLocale;
@@ -38,7 +44,7 @@ public class ErrorRenderer extends LibPhoneNumberRenderer<Error> {
   }
 
   @Override
-  public String genHtml() {
+  public String genHtml() throws MalformedURLException {
     return super.render(
         ResultErrorTemplates.Error.builder()
             .setPhoneNumber(phoneNumber)

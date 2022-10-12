@@ -23,21 +23,24 @@ import com.google.i18n.phonenumbers.PhoneNumberUtil;
 import com.google.i18n.phonenumbers.PhoneNumberUtil.PhoneNumberFormat;
 import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber;
 import com.google.phonenumbers.demo.template.ResultFileTemplates.File;
+import java.net.MalformedURLException;
 import java.util.StringTokenizer;
+import javax.servlet.ServletContext;
 
 public class ResultFileRenderer extends LibPhoneNumberRenderer<File> {
   private final String defaultCountry;
   private final String fileContents;
   private final PhoneNumberUtil phoneUtil = PhoneNumberUtil.getInstance();
 
-  public ResultFileRenderer(String defaultCountry, String fileContents) {
-    super("result_file.soy", "com.google.phonenumbers.demo.file");
+  public ResultFileRenderer(
+      String defaultCountry, String fileContents, ServletContext servletContext) {
+    super("result_file.soy", "com.google.phonenumbers.demo.file", servletContext);
     this.fileContents = fileContents;
     this.defaultCountry = defaultCountry;
   }
 
   @Override
-  public String genHtml() {
+  public String genHtml() throws MalformedURLException {
     File.Builder soyTemplate = File.builder();
     int phoneNumberId = 0;
     StringTokenizer tokenizer = new StringTokenizer(fileContents, ",");

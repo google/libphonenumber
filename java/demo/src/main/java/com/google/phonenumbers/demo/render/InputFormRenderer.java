@@ -20,15 +20,17 @@ package com.google.phonenumbers.demo.render;
 
 import com.google.phonenumbers.demo.template.InputFormTemplates;
 import com.google.phonenumbers.demo.template.InputFormTemplates.InputForm;
+import java.net.MalformedURLException;
+import javax.servlet.ServletContext;
 
 public class InputFormRenderer extends LibPhoneNumberRenderer<InputForm> {
 
-  public InputFormRenderer() {
-    super("input_form.soy", "com.google.phonenumbers.demo.inputForm");
+  public InputFormRenderer(ServletContext servletContext) {
+    super("input_form.soy", "com.google.phonenumbers.demo.inputForm", servletContext);
   }
 
   @Override
-  public String genHtml() {
+  public String genHtml() throws MalformedURLException {
     return super.render(
         InputFormTemplates.InputForm.builder()
             .setWelcomeTitle("Phone Number Parser Demo for LibPhoneNumber")

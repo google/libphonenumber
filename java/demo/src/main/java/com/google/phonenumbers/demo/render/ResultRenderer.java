@@ -29,9 +29,11 @@ import com.google.i18n.phonenumbers.ShortNumberInfo;
 import com.google.i18n.phonenumbers.geocoding.PhoneNumberOfflineGeocoder;
 import com.google.phonenumbers.demo.helper.WebHelper;
 import com.google.phonenumbers.demo.template.ResultTemplates.SingleNumber;
+import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import javax.servlet.ServletContext;
 
 public class ResultRenderer extends LibPhoneNumberRenderer<SingleNumber> {
   private final String phoneNumber;
@@ -42,8 +44,12 @@ public class ResultRenderer extends LibPhoneNumberRenderer<SingleNumber> {
   private final ShortNumberInfo shortInfo = ShortNumberInfo.getInstance();
 
   public ResultRenderer(
-      String phoneNumber, String defaultCountry, Locale geocodingLocale, PhoneNumber number) {
-    super("result.soy", "com.google.phonenumbers.demo.singleNumber");
+      String phoneNumber,
+      String defaultCountry,
+      Locale geocodingLocale,
+      PhoneNumber number,
+      ServletContext servletContext) {
+    super("result.soy", "com.google.phonenumbers.demo.singleNumber", servletContext);
     this.phoneNumber = phoneNumber;
     this.defaultCountry = defaultCountry;
     this.geocodingLocale = geocodingLocale;
@@ -51,7 +57,7 @@ public class ResultRenderer extends LibPhoneNumberRenderer<SingleNumber> {
   }
 
   @Override
-  public String genHtml() {
+  public String genHtml() throws MalformedURLException {
     // Header info at Start of Page
     SingleNumber.Builder soyTemplate =
         SingleNumber.builder()

@@ -21,22 +21,27 @@ package com.google.phonenumbers.demo.render;
 import com.google.template.soy.SoyFileSet;
 import com.google.template.soy.data.SoyTemplate;
 import com.google.template.soy.tofu.SoyTofu;
+import java.net.MalformedURLException;
 import java.net.URL;
+import javax.servlet.ServletContext;
 
 public abstract class LibPhoneNumberRenderer<T extends SoyTemplate> {
   private final String template;
   private final String namespace;
+  private final ServletContext servletContext;
 
-  public LibPhoneNumberRenderer(String template, String namespace) {
+  public LibPhoneNumberRenderer(String template, String namespace, ServletContext servletContext) {
     this.template = template;
     this.namespace = namespace;
+    this.servletContext = servletContext;
   }
 
-  private URL getResource() {
-    return LibPhoneNumberRenderer.class.getResource("../" + template);
+  private URL getResource() throws MalformedURLException {
+    return servletContext.getResource(
+        "src/main/resources/com/google/phonenumbers/demo/" + template);
   }
 
-  String render(T soyTemplate) {
+  String render(T soyTemplate) throws MalformedURLException {
     SoyFileSet sfs = SoyFileSet.builder().add(getResource()).build();
     SoyTofu tofu = sfs.compileToTofu();
     // For convenience, create another SoyTofu object that has a
@@ -46,5 +51,5 @@ public abstract class LibPhoneNumberRenderer<T extends SoyTemplate> {
     return simpleTofu.newRenderer(soyTemplate).render();
   }
 
-  public abstract String genHtml();
+  public abstract String genHtml() throws MalformedURLException;
 }

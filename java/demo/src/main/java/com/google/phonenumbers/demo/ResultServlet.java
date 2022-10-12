@@ -30,6 +30,7 @@ import com.google.phonenumbers.demo.render.ResultFileRenderer;
 import com.google.phonenumbers.demo.render.ResultRenderer;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.MalformedURLException;
 import java.util.Locale;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -100,7 +101,9 @@ public class ResultServlet extends HttpServlet {
           WebHelper.getPermaLinkURL(
               phoneNumber, defaultCountry, geocodingLocale, false /* absoluteURL */));
     } else {
-      resp.getWriter().println(new ResultFileRenderer(defaultCountry, fileContents).genHtml());
+      resp.getWriter()
+          .println(
+              new ResultFileRenderer(defaultCountry, fileContents, getServletContext()).genHtml());
     }
   }
 
@@ -132,12 +135,16 @@ public class ResultServlet extends HttpServlet {
    * the language used for displaying the area descriptions generated from phone number geocoding.
    */
   private String getOutputForSingleNumber(
-      String phoneNumber, String defaultCountry, Locale geocodingLocale) {
+      String phoneNumber, String defaultCountry, Locale geocodingLocale)
+      throws MalformedURLException {
     try {
       PhoneNumber number = phoneUtil.parseAndKeepRawInput(phoneNumber, defaultCountry);
-      return new ResultRenderer(phoneNumber, defaultCountry, geocodingLocale, number).genHtml();
+      return new ResultRenderer(
+              phoneNumber, defaultCountry, geocodingLocale, number, getServletContext())
+          .genHtml();
     } catch (NumberParseException e) {
-      return new ErrorRenderer(phoneNumber, defaultCountry, geocodingLocale, e.toString())
+      return new ErrorRenderer(
+              phoneNumber, defaultCountry, geocodingLocale, e.toString(), getServletContext())
           .genHtml();
     }
   }

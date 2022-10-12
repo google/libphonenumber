@@ -39,6 +39,6 @@ public class InputServlet extends HttpServlet {
   public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
     resp.setContentType("text/html");
     resp.setCharacterEncoding(UTF_8.name());
-    resp.getWriter().println(new InputFormRenderer().genHtml());
+    resp.getWriter().println(new InputFormRenderer(getServletContext()).genHtml());
   }
 }
