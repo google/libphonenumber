@@ -36,9 +36,9 @@
       <version>2022-07-20</version>
     </dependency>
     <dependency>
-      <artifactId>appengine-api-1.0-sdk</artifactId>
-      <groupId>com.google.appengine</groupId>
-      <version>2.0.8</version>
+      <artifactId>appengine-maven-plugin</artifactId>
+      <groupId>com.google.cloud.tools</groupId>
+      <version>2.4.4</version>
     </dependency>
     <dependency>
       <groupId>javax.servlet</groupId>
