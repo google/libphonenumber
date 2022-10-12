@@ -38,7 +38,7 @@ public abstract class LibPhoneNumberRenderer<T extends SoyTemplate> {
 
   private URL getResource() throws MalformedURLException {
     return servletContext.getResource(
-        "src/main/resources/com/google/phonenumbers/demo/" + template);
+        "/WEB-INF/classes/com/google/phonenumbers/demo/" + template);
   }
 
   String render(T soyTemplate) throws MalformedURLException {
