@@ -57,6 +57,10 @@ delay after the GitHub release.
 
 Last demo update: v8.12.56.
 
+Note: Eventhough the library (main branch/[maven release](https://repo1.maven.org/maven2/com/googlecode/libphonenumber/libphonenumber/8.12.56/))
+is at v8.12.57, because of some deployment issues, we were unable to update the
+demo with the new binary version. We will soon fix this.
+
 If this number is lower than the [latest release's version
 number](https://github.com/google/libphonenumber/releases), we are between
 releases and the demo may be at either version.
