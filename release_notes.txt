@@ -8,6 +8,13 @@ Metadata changes:
    974 (en)
  - Updated / refreshed time zone meta data.
 
+Errors:
+  - At this version, Java demo portal's WAR file do not work when deployed in
+    live AppEngine server, however it works when deployed and run in local
+    AppEngine server. This issue will be fixed soon. PR#2834
+  - [Java demo portal](https://libphonenumber.appspot.com/) is still at version 8.12.57.
+    So we recommend to use [JS demo portal](https://htmlpreview.github.io/?https://github.com/google/libphonenumber/blob/master/javascript/i18n/phonenumbers/demo-compiled.html) as new metadata updates are missing there.
+
 Sep 22, 2022: v8.12.56
 Metadata changes:
  - Updated phone metadata for region code(s): HR, MK, PT, SG, TT
