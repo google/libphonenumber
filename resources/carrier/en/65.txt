@@ -17,10 +17,10 @@
 # https://en.wikipedia.org/wiki/Circles.Life#Singapore
 
 65801|Simba
-658018|SingTel
+658018|Zero1
 658019|SingTel
 658020|SingTel
-658021|SingTel
+658021|Zero1
 658022|M1
 658023|M1
 658024|Simba
@@ -34,9 +34,11 @@
 658033|Simba
 658034|Simba
 658035|Simba
+658036|Zero1
+658037|Zero1
 65804|M1
 658040|SingTel
-658045|SingTel
+658045|Zero1
 658048|myrepublic
 658049|SingTel
 658050|M1
@@ -268,8 +270,8 @@
 658771|vivohub
 658772|vivohub
 658773|SingTel
-658774|SingTel
-658775|SingTel
+658774|Zero1
+658775|Zero1
 658776|M1
 658777|M1
 658778|M1
@@ -306,8 +308,8 @@
 658842|vivohub
 658843|vivohub
 658844|M1
-658845|SingTel
-658846|SingTel
+658845|Zero1
+658846|Zero1
 658847|Simba
 658848|M1
 658849|Simba
@@ -335,8 +337,8 @@
 658902|Simba
 658903|Simba
 658904|Simba
-658905|SingTel
-658906|SingTel
+658905|Zero1
+658906|Zero1
 658907|SingTel
 658908|SingTel
 658909|SingTel
@@ -350,7 +352,7 @@
 658926|Simba
 658927|Simba
 658928|Simba
-658929|SingTel
+658929|Zero1
 658930|Simba
 658931|Simba
 658932|Simba
@@ -364,7 +366,7 @@
 658940|SingTel
 658941|SingTel
 658942|SingTel
-658943|SingTel
+658943|Zero1
 658944|Simba
 658945|Simba
 658946|Simba
