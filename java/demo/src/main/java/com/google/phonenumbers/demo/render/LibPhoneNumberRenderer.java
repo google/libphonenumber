@@ -26,7 +26,7 @@ public abstract class LibPhoneNumberRenderer<T extends SoyTemplate> {
 
   String render(T soyTemplate) {
     SoySauce soySauce = new SoySauceBuilder().build();
-    return soySauce.newRenderer(soyTemplate).renderText().get();
+    return soySauce.newRenderer(soyTemplate).renderHtml().get().toString();
   }
 
   public abstract String genHtml();
