@@ -17,8 +17,8 @@
 # https://en.wikipedia.org/wiki/Circles.Life#Singapore
 
 65801|Simba
-658018|Zero1
-658019|SingTel
+658018|SingTel
+658019|Zero1
 658020|SingTel
 658021|Zero1
 658022|M1
