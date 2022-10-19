@@ -43,7 +43,6 @@ public class ResultRenderer extends LibPhoneNumberRenderer<SingleNumber> {
 
   public ResultRenderer(
       String phoneNumber, String defaultCountry, Locale geocodingLocale, PhoneNumber number) {
-    super("result.soy", "com.google.phonenumbers.demo.singleNumber");
     this.phoneNumber = phoneNumber;
     this.defaultCountry = defaultCountry;
     this.geocodingLocale = geocodingLocale;

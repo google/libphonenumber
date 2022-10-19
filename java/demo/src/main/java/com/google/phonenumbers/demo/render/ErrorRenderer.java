@@ -30,7 +30,6 @@ public class ErrorRenderer extends LibPhoneNumberRenderer<Error> {
 
   public ErrorRenderer(
       String phoneNumber, String defaultCountry, Locale geocodingLocale, String error) {
-    super("result_error.soy", "com.google.phonenumbers.demo.error");
     this.phoneNumber = phoneNumber;
     this.defaultCountry = defaultCountry;
     this.geocodingLocale = geocodingLocale;
