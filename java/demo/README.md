@@ -40,7 +40,7 @@ Install [Cloud Code Plugin for Visual Studio Code](https://marketplace.visualstu
 Most IDEs should autodetect your configuration after installing the plugin (and
 restart)
 
-![App Engine Run Config](/Users/rogg/IdeaProjects/libphonenumber/java/demo/.readme_res/App_Engine_Run_Config.png)
+![App Engine Run Config](.readme_res/App_Engine_Run_Config.png)
 
 ## (Optional) Run Natively
 
