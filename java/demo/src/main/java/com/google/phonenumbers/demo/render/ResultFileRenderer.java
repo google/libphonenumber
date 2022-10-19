@@ -31,7 +31,6 @@ public class ResultFileRenderer extends LibPhoneNumberRenderer<File> {
   private final PhoneNumberUtil phoneUtil = PhoneNumberUtil.getInstance();
 
   public ResultFileRenderer(String defaultCountry, String fileContents) {
-    super("result_file.soy", "com.google.phonenumbers.demo.file");
     this.fileContents = fileContents;
     this.defaultCountry = defaultCountry;
   }
