@@ -87,17 +87,12 @@ Requirements:
     so you might need to download and install it manually.
 
     Find and download the Debian packages for your system. For example:
-    http://packages.ubuntu.com/utopic/libre2-1
-    http://packages.ubuntu.com/utopic/libre2-dev
+    https://packages.ubuntu.com/search?keywords=libre2-9
+    https://packages.ubuntu.com/search?keywords=libre2-dev
 
     You need to download both the libre2-dev and libre2-1 packages.
     Once downloaded, install them with:
     $ sudo dpkg -i libre2*.deb
-
-    If you want to install it from source, it's available via Mercurial at:
-    https://re2.googlecode.com/hg
-    however precise instructions on building and installing are outside the
-    scope of this document.
 
   - ICU
     Installation:
@@ -127,13 +122,37 @@ Requirements:
     - Windows Win32 synchronization API.		
 
 	If you access libphonenumber from a single thread, you don't need one of
-    these solution.
+    these solutions.
 
     You can install it very easily on a Debian-based GNU/Linux distribution:
     $ sudo apt-get install libboost-dev libboost-thread-dev libboost-system-dev
 
     Note: Boost Thread is the only library needed at link time.
 
+
+  - abseil-cpp
+    As this dependency package might not be very common, we are downloading,
+    building and linking this library as part of the regular build process i.e
+    part of CMake/Make instructions. If you wish to install this C++ developer
+    library at your system level and avoid building every time, you can try
+    below instruction set.
+
+    Installation:
+    - Official [installation guide](https://abseil.io/docs/cpp/tools/cmake-installs).
+      Something that we followed in Linux system.
+      $ git clone https://github.com/abseil/abseil-cpp.git
+      $ cd abseil-cpp
+      $ cmake . -DCMAKE_INSTALL_PREFIX="$HOME/lpn-deps" -DCMAKE_POSITION_INDEPENDENT_CODE=ON
+      $ cmake --build . --target install
+    - When building libphonenumber library, if abseil-cpp is still getting downloaded and
+      built, use flags like ```CMAKE_PREFIX_PATH="$HOME/lpn-deps"```
+    - Notes:
+      - We are cloning only a particular version of the abseil-cpp so that we
+	are not commiting to catch up with new build requirements of that
+	library. Eg: After the above tag version C++14 is made as minimum
+	version to build abseil-cpp library.
+      - libphonenumber is presently using C++11 by default, you can always
+	change it by passing ```CMAKE_CXX_STANDARD``` flag.
 
 Building and testing the library
 --------------------------------

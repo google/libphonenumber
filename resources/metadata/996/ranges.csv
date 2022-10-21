@@ -86,6 +86,7 @@ Prefix        ; Length ; Type       ; Tariff        ; Area Code Length ; Operato
 755           ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "alfa_telecom" ; "fmt_3/3/3"      ; "KG"    ;                                           ; IR21       ; "IR21 dated 3/4/2019"
 77            ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "sky_mobile"   ; "fmt_3/3/3"      ; "KG"    ;                                           ; IR21       ; "IR21 dated 10/11/2018"
 800           ; 9,10   ; FIXED_LINE ; TOLL_FREE     ;                  ;                ; "toll_3/3/1/2-3" ; "KG"
-880           ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "alfa_telecom" ; "fmt_3/3/3"      ; "KG"    ;                                           ; IR21
-99[0578]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "alfa_telecom" ; "fmt_3/3/3"      ; "KG"
-99[69]        ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "sky_mobile"   ; "fmt_3/3/3"      ; "KG"    ;                                           ; IR21       ; "IR21 dated 10/11/2018 - updated range"
+88[08]        ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "alfa_telecom" ; "fmt_3/3/3"      ; "KG"    ;                                           ; IR21
+99[05]        ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "alfa_telecom" ; "fmt_3/3/3"      ; "KG"
+996           ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "sky_mobile"   ; "fmt_3/3/3"      ; "KG"    ;                                           ; IR21       ; "IR21 dated 10/11/2018 - updated range"
+99[7-9]       ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "alfa_telecom" ; "fmt_3/3/3"      ; "KG"    ;                                           ; IR21

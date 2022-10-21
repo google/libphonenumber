@@ -29,6 +29,7 @@ Prefix    ; Length ; Type       ; Tariff        ; Operator          ; Format    
 6[79]     ; 9      ; MOBILE     ; STANDARD_RATE ; "nationlink"      ; "mobile_2/5-7" ; "SO"
 68        ; 8      ; MOBILE     ; STANDARD_RATE ; "somnet"          ; "mobile_1/7"   ; "SO"
 68        ; 9      ; MOBILE     ; STANDARD_RATE ; "somnet"          ; "mobile_2/5-7" ; "SO"
+70        ; 8      ; MOBILE     ; STANDARD_RATE ; "golis_telecom"   ; "mobile_1/7"   ; "SO"    ;             ; IR21
 71        ; 8      ; MOBILE     ; STANDARD_RATE ; "amtel"           ; "mobile_1/7"   ; "SO"
 7[2-8]    ; 8      ; MOBILE     ; STANDARD_RATE ;                   ; "mobile_1/7"   ; "SO"
 79        ; 8      ; MOBILE     ; STANDARD_RATE ; "somtel"          ; "mobile_1/7"   ; "SO"    ;             ;            ; "Added per client's request."

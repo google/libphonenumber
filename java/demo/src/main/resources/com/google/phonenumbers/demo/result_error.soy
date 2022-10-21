@@ -1,0 +1,20 @@
+{namespace com.google.phonenumbers.demo.error}
+{template error}
+{@param phoneNumber: string}
+{@param defaultCountry: string}
+{@param geocodingLocale: string}
+{@param error: string}
+<!DOCTYPE html>
+<HTML lang="en">
+<HEAD>
+  <LINK type="text/css" rel="stylesheet" href="/stylesheets/main.css"/>
+  <title>Results for {$phoneNumber}</title>
+</HEAD>
+<BODY>
+<p>Phone Number entered: {$phoneNumber}</p>
+<p>Default Country entered: {$defaultCountry}</p>
+<p>Language entered: {$geocodingLocale}</p>
+<p>An error occurred while parsing the input: {$error}
+</BODY>
+</HTML>
+{/template}

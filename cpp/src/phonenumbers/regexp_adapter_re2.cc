@@ -129,7 +129,7 @@ class RE2RegExp : public RegExp {
                              matched_string, NULL, NULL, NULL, NULL, NULL);
     } else {
       return DispatchRE2Call(RE2::PartialMatchN, input_string, utf8_regexp_,
-                             matched_string, NULL, NULL), NULL, NULL, NULL);
+                             matched_string, NULL, NULL, NULL, NULL, NULL);
     }
   }
 
