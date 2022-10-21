@@ -106,11 +106,27 @@ public final class ResultTemplates {
                 /* required= */ true,
                 com.google.common.reflect.TypeToken.of(java.lang.Boolean.class));
 
+    /** {@param numberOfLeadingZeros} */
+    public static final com.google.template.soy.data.SoyTemplateParam<java.lang.Long>
+        NUMBER_OF_LEADING_ZEROS =
+            com.google.template.soy.data.SoyTemplateParam.standard(
+                "numberOfLeadingZeros",
+                /* required= */ true,
+                com.google.common.reflect.TypeToken.of(java.lang.Long.class));
+
     /** {@param rawInput} */
     public static final com.google.template.soy.data.SoyTemplateParam<java.lang.String>
         RAW_INPUT =
             com.google.template.soy.data.SoyTemplateParam.standard(
                 "rawInput",
+                /* required= */ true,
+                com.google.common.reflect.TypeToken.of(java.lang.String.class));
+
+    /** {@param preferredDomesticCarrierCode} */
+    public static final com.google.template.soy.data.SoyTemplateParam<java.lang.String>
+        PREFERRED_DOMESTIC_CARRIER_CODE =
+            com.google.template.soy.data.SoyTemplateParam.standard(
+                "preferredDomesticCarrierCode",
                 /* required= */ true,
                 com.google.common.reflect.TypeToken.of(java.lang.String.class));
 
@@ -242,6 +258,22 @@ public final class ResultTemplates {
                 /* required= */ true,
                 com.google.common.reflect.TypeToken.of(java.lang.String.class));
 
+    /** {@param mobileDiallingFormatFromUs} */
+    public static final com.google.template.soy.data.SoyTemplateParam<java.lang.String>
+        MOBILE_DIALLING_FORMAT_FROM_US =
+            com.google.template.soy.data.SoyTemplateParam.standard(
+                "mobileDiallingFormatFromUs",
+                /* required= */ true,
+                com.google.common.reflect.TypeToken.of(java.lang.String.class));
+
+    /** {@param nationalDiallingFormatWithPreferredCarrierCode} */
+    public static final com.google.template.soy.data.SoyTemplateParam<java.lang.String>
+        NATIONAL_DIALLING_FORMAT_WITH_PREFERRED_CARRIER_CODE =
+            com.google.template.soy.data.SoyTemplateParam.standard(
+                "nationalDiallingFormatWithPreferredCarrierCode",
+                /* required= */ true,
+                com.google.common.reflect.TypeToken.of(java.lang.String.class));
+
     /** {@param rows} */
     public static final com.google.template.soy.data.SoyTemplateParam<java.lang.Iterable<? extends java.util.Collection<java.lang.String>>>
         ROWS =
@@ -307,7 +339,9 @@ public final class ResultTemplates {
         EXTENSION,
         COUNTRY_CODE_SOURCE,
         ITALIAN_LEADING_ZERO,
+        NUMBER_OF_LEADING_ZEROS,
         RAW_INPUT,
+        PREFERRED_DOMESTIC_CARRIER_CODE,
         IS_POSSIBLE_NUMBER,
         IS_VALID_NUMBER,
         IS_VALID_NUMBER_FOR_REGION,
@@ -324,6 +358,8 @@ public final class ResultTemplates {
         INTERNATIONAL_FORMAT,
         OUT_OF_COUNTRY_FORMAT_FROM_US,
         OUT_OF_COUNTRY_FORMAT_FROM_CH,
+        MOBILE_DIALLING_FORMAT_FROM_US,
+        NATIONAL_DIALLING_FORMAT_WITH_PREFERRED_CARRIER_CODE,
         ROWS,
         DESCRIPTION_FOR_NUMBER,
         TIME_ZONES_FOR_NUMBER,
@@ -334,7 +370,7 @@ public final class ResultTemplates {
     public static final class Builder extends com.google.template.soy.data.BaseSoyTemplateImpl.AbstractBuilder<Builder, SingleNumber> {
 
       private Builder() {
-        super(31);
+        super(35);
       }
 
       @java.lang.Override
@@ -443,6 +479,18 @@ public final class ResultTemplates {
         return setParamInternal(ITALIAN_LEADING_ZERO, asFuture(future, AbstractBuilder::asBool));
       }
 
+      /** Sets numberOfLeadingZeros. */
+      @com.google.errorprone.annotations.CanIgnoreReturnValue
+      public Builder setNumberOfLeadingZeros(long value) {
+        return setParamInternal(NUMBER_OF_LEADING_ZEROS, asInt(value));
+      }
+
+      /** Future compatible version of {@link #setNumberOfLeadingZeros(long)}. */
+      @com.google.errorprone.annotations.CanIgnoreReturnValue
+      public Builder setNumberOfLeadingZerosFuture(java.util.concurrent.Future<? extends java.lang.Number> future) {
+        return setParamInternal(NUMBER_OF_LEADING_ZEROS, asFuture(future, AbstractBuilder::asBoxedInt));
+      }
+
       /** Sets rawInput. */
       @com.google.errorprone.annotations.CanIgnoreReturnValue
       public Builder setRawInput(java.lang.String value) {
@@ -453,6 +501,21 @@ public final class ResultTemplates {
       @com.google.errorprone.annotations.CanIgnoreReturnValue
       public Builder setRawInputFuture(java.util.concurrent.Future<java.lang.String> future) {
         return setParamInternal(RAW_INPUT, asFuture(future, AbstractBuilder::asString));
+      }
+
+      /** Sets preferredDomesticCarrierCode. */
+      @com.google.errorprone.annotations.CanIgnoreReturnValue
+      public Builder setPreferredDomesticCarrierCode(java.lang.String value) {
+        return setParamInternal(PREFERRED_DOMESTIC_CARRIER_CODE, asString(value));
+      }
+
+      /**
+       * Future compatible version of {@link
+       * #setPreferredDomesticCarrierCode(java.lang.String)}.
+       */
+      @com.google.errorprone.annotations.CanIgnoreReturnValue
+      public Builder setPreferredDomesticCarrierCodeFuture(java.util.concurrent.Future<java.lang.String> future) {
+        return setParamInternal(PREFERRED_DOMESTIC_CARRIER_CODE, asFuture(future, AbstractBuilder::asString));
       }
 
       /** Sets isPossibleNumber. */
@@ -651,6 +714,33 @@ public final class ResultTemplates {
       @com.google.errorprone.annotations.CanIgnoreReturnValue
       public Builder setOutOfCountryFormatFromChFuture(java.util.concurrent.Future<java.lang.String> future) {
         return setParamInternal(OUT_OF_COUNTRY_FORMAT_FROM_CH, asFuture(future, AbstractBuilder::asString));
+      }
+
+      /** Sets mobileDiallingFormatFromUs. */
+      @com.google.errorprone.annotations.CanIgnoreReturnValue
+      public Builder setMobileDiallingFormatFromUs(java.lang.String value) {
+        return setParamInternal(MOBILE_DIALLING_FORMAT_FROM_US, asString(value));
+      }
+
+      /** Future compatible version of {@link #setMobileDiallingFormatFromUs(java.lang.String)}. */
+      @com.google.errorprone.annotations.CanIgnoreReturnValue
+      public Builder setMobileDiallingFormatFromUsFuture(java.util.concurrent.Future<java.lang.String> future) {
+        return setParamInternal(MOBILE_DIALLING_FORMAT_FROM_US, asFuture(future, AbstractBuilder::asString));
+      }
+
+      /** Sets nationalDiallingFormatWithPreferredCarrierCode. */
+      @com.google.errorprone.annotations.CanIgnoreReturnValue
+      public Builder setNationalDiallingFormatWithPreferredCarrierCode(java.lang.String value) {
+        return setParamInternal(NATIONAL_DIALLING_FORMAT_WITH_PREFERRED_CARRIER_CODE, asString(value));
+      }
+
+      /**
+       * Future compatible version of {@link
+       * #setNationalDiallingFormatWithPreferredCarrierCode(java.lang.String)}.
+       */
+      @com.google.errorprone.annotations.CanIgnoreReturnValue
+      public Builder setNationalDiallingFormatWithPreferredCarrierCodeFuture(java.util.concurrent.Future<java.lang.String> future) {
+        return setParamInternal(NATIONAL_DIALLING_FORMAT_WITH_PREFERRED_CARRIER_CODE, asFuture(future, AbstractBuilder::asString));
       }
 
       /** Sets rows. */
