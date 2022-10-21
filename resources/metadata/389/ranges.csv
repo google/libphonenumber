@@ -1,149 +1,158 @@
-Prefix        ; Length ; Type       ; Tariff        ; Area Code Length ; Operator   ; Format             ; Regions ; Geocode:en                            ; Provenance ; Comment
-2[23]         ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;            ; "fixed_line_1/3/4" ; "MK"    ; "Skopje"                              ; ITU
-250           ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;            ; "fixed_line_1/3/4" ; "MK"    ; "Skopje"                              ; GOVERNMENT
-25[1-578]     ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;            ; "fixed_line_1/3/4" ; "MK"    ; "Skopje"                              ; ITU
-260[0-8]      ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;            ; "fixed_line_1/3/4" ; "MK"    ; "Skopje"                              ; GOVERNMENT
-2609          ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;            ; "fixed_line_1/3/4" ; "MK"    ; "Skopje"                              ; ITU
-261[05689]    ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;            ; "fixed_line_1/3/4" ; "MK"    ; "Skopje"                              ;            ; "FILLUP TO SUPPORT MASTER RANGE"
-261[1-4]      ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;            ; "fixed_line_1/3/4" ; "MK"    ; "Skopje"                              ; ITU
-2617          ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;            ; "fixed_line_1/3/4" ; "MK"    ; "Skopje"                              ; GOVERNMENT
-2620          ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;            ; "fixed_line_1/3/4" ; "MK"    ; "Skopje"                              ; ITU
-2770          ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;            ; "fixed_line_1/3/4" ; "MK"    ; "Skopje"                              ; ITU
-282           ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;            ; "fixed_line_1/3/4" ; "MK"    ; "Skopje"
-31[34]        ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Kumanovo/Kriva Palanka/Kratovo"      ; ITU
-315[036]      ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Kumanovo/Kriva Palanka/Kratovo"
-315[124578]   ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Kumanovo/Kriva Palanka/Kratovo"      ; ITU
-3159          ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Kumanovo/Kriva Palanka/Kratovo"      ;            ; "FILLUP TO SUPPORT MASTER RANGE"
-3160          ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Kumanovo/Kriva Palanka/Kratovo"      ;            ; "FILLUP TO SUPPORT MASTER RANGE"
-3161[015-9]   ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Kumanovo/Kriva Palanka/Kratovo"      ;            ; "FILLUP TO SUPPORT MASTER RANGE"
-31612         ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Kumanovo/Kriva Palanka/Kratovo"      ; GOVERNMENT
-3161[34]      ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Kumanovo/Kriva Palanka/Kratovo"      ; ITU
-316[2-9]      ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Kumanovo/Kriva Palanka/Kratovo"      ; GOVERNMENT
-318           ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Kumanovo/Kriva Palanka/Kratovo"      ; GOVERNMENT
-32[2-4]       ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Stip/Probistip/Sveti Nikole/Radovis" ; ITU
-325[0369]     ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Stip/Probistip/Sveti Nikole/Radovis" ; GOVERNMENT
-325[12457]    ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Stip/Probistip/Sveti Nikole/Radovis" ; ITU
-3258          ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Stip/Probistip/Sveti Nikole/Radovis" ;            ; "FILLUP TO SUPPORT MASTER RANGE"
-326[034]      ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Stip/Probistip/Sveti Nikole/Radovis" ; ITU
-3261[0-36]    ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Stip/Probistip/Sveti Nikole/Radovis" ; ITU
-3261[457-9]   ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Stip/Probistip/Sveti Nikole/Radovis" ;            ; "FILLUP TO SUPPORT MASTER RANGE"
-326[25689]    ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Stip/Probistip/Sveti Nikole/Radovis" ;            ; "FILLUP TO SUPPORT MASTER RANGE"
-3267          ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Stip/Probistip/Sveti Nikole/Radovis" ; GOVERNMENT
-328           ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Stip/Probistip/Sveti Nikole/Radovis" ; GOVERNMENT
-33[2-4]       ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Kocani/Berovo/Delcevo/Vinica"        ; ITU
-335[0689]     ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Kocani/Berovo/Delcevo/Vinica"        ;            ; "FILLUP TO SUPPORT MASTER RANGE"
-335[12457]    ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Kocani/Berovo/Delcevo/Vinica"        ; ITU
-3353          ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Kocani/Berovo/Delcevo/Vinica"        ; GOVERNMENT
-336[024-689]  ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Kocani/Berovo/Delcevo/Vinica"        ;            ; "FILLUP TO SUPPORT MASTER RANGE"
-3361[013-9]   ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Kocani/Berovo/Delcevo/Vinica"        ;            ; "FILLUP TO SUPPORT MASTER RANGE"
-33612         ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Kocani/Berovo/Delcevo/Vinica"        ; ITU
-336[37]       ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Kocani/Berovo/Delcevo/Vinica"        ; GOVERNMENT
-338           ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Kocani/Berovo/Delcevo/Vinica"
-34[23]        ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Gevgelija/Valandovo/Strumica/Dojran" ; ITU
-3444          ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;            ; "fixed_line_1/3/4" ; "MK"    ; "Gevgelija/Valandovo/Strumica/Dojran" ; ITU
-3450          ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Gevgelija/Valandovo/Strumica/Dojran"
-345[12457]    ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Gevgelija/Valandovo/Strumica/Dojran" ; ITU
-345[3689]     ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Gevgelija/Valandovo/Strumica/Dojran" ;            ; "FILLUP TO SUPPORT MASTER RANGE"
-3460[0-7]     ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Gevgelija/Valandovo/Strumica/Dojran" ;            ; "FILLUP TO SUPPORT MASTER RANGE"
-34608         ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Gevgelija/Valandovo/Strumica/Dojran"
-34609         ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Gevgelija/Valandovo/Strumica/Dojran" ; ITU
-34610         ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Gevgelija/Valandovo/Strumica/Dojran"
-3461[12]      ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Gevgelija/Valandovo/Strumica/Dojran" ; ITU
-3461[3-9]     ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Gevgelija/Valandovo/Strumica/Dojran" ;            ; "FILLUP TO SUPPORT MASTER RANGE"
-346[2-689]    ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Gevgelija/Valandovo/Strumica/Dojran" ;            ; "FILLUP TO SUPPORT MASTER RANGE"
-3467          ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Gevgelija/Valandovo/Strumica/Dojran" ; GOVERNMENT
-34700         ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;            ; "fixed_line_1/3/4" ; "MK"    ; "Gevgelija/Valandovo/Strumica/Dojran" ; ITU
-348           ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Gevgelija/Valandovo/Strumica/Dojran"
-42[2-4]       ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Gostivar"                            ; ITU
-425[03689]    ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Gostivar"                            ;            ; "FILLUP TO SUPPORT MASTER RANGE"
-425[12457]    ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Gostivar"                            ; ITU
-426[02-689]   ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Gostivar"                            ;            ; "FILLUP TO SUPPORT MASTER RANGE"
-4261[02-9]    ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Gostivar"                            ;            ; "FILLUP TO SUPPORT MASTER RANGE"
-42611         ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Gostivar"                            ; ITU
-4267          ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Gostivar"                            ; GOVERNMENT
-428           ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Gostivar"
-43[2-4]       ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Veles/Kavadarci/Negotino"            ; ITU
-4350          ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Veles/Kavadarci/Negotino"
-435[12457]    ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Veles/Kavadarci/Negotino"            ; ITU
-43[56]3       ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Veles/Kavadarci/Negotino"            ; GOVERNMENT
-435[689]      ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Veles/Kavadarci/Negotino"            ;            ; "FILLUP TO SUPPORT MASTER RANGE"
-4360[0-7]     ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Veles/Kavadarci/Negotino"            ;            ; "FILLUP TO SUPPORT MASTER RANGE"
-43608         ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Veles/Kavadarci/Negotino"
-43609         ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Veles/Kavadarci/Negotino"            ; ITU
-4361[01457-9] ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Veles/Kavadarci/Negotino"            ;            ; "FILLUP TO SUPPORT MASTER RANGE"
-4361[236]     ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Veles/Kavadarci/Negotino"            ; ITU
-436[24-9]     ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Veles/Kavadarci/Negotino"            ;            ; "FILLUP TO SUPPORT MASTER RANGE"
-43700         ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;            ; "fixed_line_1/3/4" ; "MK"    ; "Veles/Kavadarci/Negotino"            ; GOVERNMENT
-438           ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Veles/Kavadarci/Negotino"
-44[34]        ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Tetovo"                              ; ITU
-4450          ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Tetovo"
-445[12457]    ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Tetovo"                              ; ITU
-4453          ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Tetovo"                              ; GOVERNMENT
-445[689]      ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Tetovo"                              ;            ; "FILLUP TO SUPPORT MASTER RANGE"
-446[05-9]     ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Tetovo"                              ;            ; "FILLUP TO SUPPORT MASTER RANGE"
-4461[025]     ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Tetovo"                              ;            ; "FILLUP TO SUPPORT MASTER RANGE"
-4461[13]      ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Tetovo"                              ; ITU
-4461[46-9]    ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Tetovo"
-4462          ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Tetovo"
-446[34]       ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Tetovo"                              ; GOVERNMENT
-448           ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Tetovo"
-452           ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Kicevo/Makedonski Brod"              ; ITU
-45440         ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;            ; "fixed_line_1/3/4" ; "MK"    ; "Kicevo/Makedonski Brod"              ; ITU
-455[0689]     ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Kicevo/Makedonski Brod"              ;            ; "FILLUP TO SUPPORT MASTER RANGE"
-455[12457]    ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Kicevo/Makedonski Brod"              ; ITU
-4553          ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Kicevo/Makedonski Brod"              ; GOVERNMENT
-456[0235-9]   ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Kicevo/Makedonski Brod"              ;            ; "FILLUP TO SUPPORT MASTER RANGE"
-4561[02-9]    ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Kicevo/Makedonski Brod"              ;            ; "FILLUP TO SUPPORT MASTER RANGE"
-45611         ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Kicevo/Makedonski Brod"              ; ITU
-4564          ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Kicevo/Makedonski Brod"              ; GOVERNMENT
-45700         ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;            ; "fixed_line_1/3/4" ; "MK"    ; "Kicevo/Makedonski Brod"              ; GOVERNMENT
-458           ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Kicevo/Makedonski Brod"
-46[278]       ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Ohrid/Struga/Debar"                  ; ITU
-46440         ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;            ; "fixed_line_1/3/4" ; "MK"    ; "Ohrid/Struga/Debar"                  ; ITU
-465[0689]     ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Ohrid/Struga/Debar"                  ;            ; "FILLUP TO SUPPORT MASTER RANGE"
-465[12457]    ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Ohrid/Struga/Debar"                  ; ITU
-4653          ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Ohrid/Struga/Debar"                  ; GOVERNMENT
-466[02-9]     ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Ohrid/Struga/Debar"                  ;            ; "FILLUP TO SUPPORT MASTER RANGE"
-4661[03-9]    ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Ohrid/Struga/Debar"                  ;            ; "FILLUP TO SUPPORT MASTER RANGE"
-4661[12]      ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Ohrid/Struga/Debar"                  ; ITU
-47[24]        ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Bitola/Demir Hisar/Resen"            ; ITU
-475[0689]     ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Bitola/Demir Hisar/Resen"            ;            ; "FILLUP TO SUPPORT MASTER RANGE"
-475[12457]    ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Bitola/Demir Hisar/Resen"            ; ITU
-47[56]3       ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Bitola/Demir Hisar/Resen"            ; GOVERNMENT
-4760[08]      ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Bitola/Demir Hisar/Resen"            ;            ; "FILLUP TO SUPPORT MASTER RANGE"
-4760[1-7]     ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ;                                       ;            ; "FILLUP TO SUPPORT MASTER RANGE"
-47609         ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Bitola/Demir Hisar/Resen"            ; ITU
-4761[026]     ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Bitola/Demir Hisar/Resen"            ; ITU
-4761[17-9]    ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Bitola/Demir Hisar/Resen"            ;            ; "FILLUP TO SUPPORT MASTER RANGE"
-4761[3-5]     ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Bitola/Demir Hisar/Resen"
-476[24-9]     ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Bitola/Demir Hisar/Resen"            ;            ; "FILLUP TO SUPPORT MASTER RANGE"
-47700         ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;            ; "fixed_line_1/3/4" ; "MK"    ; "Bitola/Demir Hisar/Resen"            ; GOVERNMENT
-478           ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Bitola/Demir Hisar/Resen"
-484           ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Prilep/Krusevo"                      ; ITU
-4850          ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Prilep/Krusevo"
-485[12457]    ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Prilep/Krusevo"                      ; ITU
-485[3689]     ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Prilep/Krusevo"                      ;            ; "FILLUP TO SUPPORT MASTER RANGE"
-4860          ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"
-4861[017]     ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Prilep/Krusevo"                      ;            ; "FILLUP TO SUPPORT MASTER RANGE"
-4861[2-589]   ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Prilep/Krusevo"
-48616         ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Prilep/Krusevo"                      ; ITU
-486[2-9]      ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Prilep/Krusevo"                      ;            ; "FILLUP TO SUPPORT MASTER RANGE"
-488           ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt1_2/3/3"       ; "MK"    ; "Prilep/Krusevo"
-5[02-9]       ; 8      ; FIXED_LINE ; PREMIUM_RATE  ;                  ;            ; "var_cost_3/1/2/2" ; "MK"    ;                                       ;            ; "FILLUP TO SUPPORT MASTER RANGE"
-7[0-2]        ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "t_mobile" ; "fmt1_2/3/3"       ; "MK"    ;                                       ; ITU
-731           ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "a1"       ; "fmt1_2/3/3"       ; "MK"
-73[23]        ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "a1"       ; "fmt1_2/3/3"       ; "MK"    ;                                       ; IR21
-734[04]       ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "a1"       ; "fmt1_2/3/3"       ; "MK"    ;                                       ; IR21
-734[1-35-9]   ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "a1"       ; "fmt1_2/3/3"       ; "MK"    ;                                       ;            ; "FILLUP TO SUPPORT MASTER RANGE"
-73555         ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "a1"       ; "fmt1_2/3/3"       ; "MK"    ;                                       ; IR21
-742[02-9]     ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "t_mobile" ; "fmt1_2/3/3"       ; "MK"    ;                                       ; IR21
-7421          ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "mobik"    ; "fmt1_2/3/3"       ; "MK"    ;                                       ; ITU
-7460          ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "t_mobile" ; "fmt1_2/3/3"       ; "MK"    ;                                       ; IR21
-74747         ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "t_mobile" ; "fmt1_2/3/3"       ; "MK"    ;                                       ; IR21
-7[5-8]        ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "a1"       ; "fmt1_2/3/3"       ; "MK"    ;                                       ; IR21
-79[23]        ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "a1"       ; "fmt1_2/3/3"       ; "MK"    ;                                       ; IR21
-794[01]       ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "a1"       ; "fmt1_2/3/3"       ; "MK"    ;                                       ; IR21
-7942[0-4]     ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "a1"       ; "fmt1_2/3/3"       ; "MK"    ;                                       ; IR21
-800           ; 8      ; FIXED_LINE ; TOLL_FREE     ;                  ;            ; "var_cost_3/1/2/2" ; "MK"    ;                                       ; GOVERNMENT
-80[1-9]       ; 8      ; FIXED_LINE ; SHARED_COST   ;                  ;            ; "var_cost_3/1/2/2" ; "MK"    ;                                       ;            ; "FILLUP TO SUPPORT MASTER RANGE"
-8[1-9]        ; 8      ; FIXED_LINE ; SHARED_COST   ;                  ;            ; "var_cost_3/1/2/2" ; "MK"    ;                                       ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+Prefix        ; Length ; Type       ; Tariff        ; Area Code Length ; Operator    ; Format             ; Regions ; Geocode:en                            ; Provenance ; Comment
+2[01]         ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;             ; "fixed_line_1/3/4" ; "MK"    ; "Skopje"                              ; GOVERNMENT
+2[23]         ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;             ; "fixed_line_1/3/4" ; "MK"    ; "Skopje"                              ; ITU
+250           ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;             ; "fixed_line_1/3/4" ; "MK"    ; "Skopje"                              ; GOVERNMENT
+25[1-578]     ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;             ; "fixed_line_1/3/4" ; "MK"    ; "Skopje"                              ; ITU
+260[0-8]      ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;             ; "fixed_line_1/3/4" ; "MK"    ; "Skopje"                              ; GOVERNMENT
+2609          ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;             ; "fixed_line_1/3/4" ; "MK"    ; "Skopje"                              ; ITU
+261[05689]    ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;             ; "fixed_line_1/3/4" ; "MK"    ; "Skopje"                              ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+261[1-4]      ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;             ; "fixed_line_1/3/4" ; "MK"    ; "Skopje"                              ; ITU
+2617          ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;             ; "fixed_line_1/3/4" ; "MK"    ; "Skopje"                              ; GOVERNMENT
+2620          ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;             ; "fixed_line_1/3/4" ; "MK"    ; "Skopje"                              ; ITU
+2770          ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;             ; "fixed_line_1/3/4" ; "MK"    ; "Skopje"                              ; ITU
+282           ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;             ; "fixed_line_1/3/4" ; "MK"    ; "Skopje"
+31[34]        ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Kumanovo/Kriva Palanka/Kratovo"      ; ITU
+315[036]      ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Kumanovo/Kriva Palanka/Kratovo"
+315[124578]   ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Kumanovo/Kriva Palanka/Kratovo"      ; ITU
+3159          ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Kumanovo/Kriva Palanka/Kratovo"      ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+3160          ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Kumanovo/Kriva Palanka/Kratovo"      ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+3161[015-9]   ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Kumanovo/Kriva Palanka/Kratovo"      ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+31612         ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Kumanovo/Kriva Palanka/Kratovo"      ; GOVERNMENT
+3161[34]      ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Kumanovo/Kriva Palanka/Kratovo"      ; ITU
+316[2-9]      ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Kumanovo/Kriva Palanka/Kratovo"      ; GOVERNMENT
+318           ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Kumanovo/Kriva Palanka/Kratovo"      ; GOVERNMENT
+32[2-4]       ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Stip/Probistip/Sveti Nikole/Radovis" ; ITU
+325[0369]     ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Stip/Probistip/Sveti Nikole/Radovis" ; GOVERNMENT
+325[12457]    ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Stip/Probistip/Sveti Nikole/Radovis" ; ITU
+3258          ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Stip/Probistip/Sveti Nikole/Radovis" ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+326[034]      ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Stip/Probistip/Sveti Nikole/Radovis" ; ITU
+3261[0-36]    ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Stip/Probistip/Sveti Nikole/Radovis" ; ITU
+3261[457-9]   ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Stip/Probistip/Sveti Nikole/Radovis" ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+326[25689]    ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Stip/Probistip/Sveti Nikole/Radovis" ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+3267          ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Stip/Probistip/Sveti Nikole/Radovis" ; GOVERNMENT
+328           ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Stip/Probistip/Sveti Nikole/Radovis" ; GOVERNMENT
+33[2-4]       ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Kocani/Berovo/Delcevo/Vinica"        ; ITU
+335[0689]     ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Kocani/Berovo/Delcevo/Vinica"        ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+335[12457]    ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Kocani/Berovo/Delcevo/Vinica"        ; ITU
+3353          ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Kocani/Berovo/Delcevo/Vinica"        ; GOVERNMENT
+336[024-689]  ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Kocani/Berovo/Delcevo/Vinica"        ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+3361[013-9]   ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Kocani/Berovo/Delcevo/Vinica"        ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+33612         ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Kocani/Berovo/Delcevo/Vinica"        ; ITU
+336[37]       ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Kocani/Berovo/Delcevo/Vinica"        ; GOVERNMENT
+338           ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Kocani/Berovo/Delcevo/Vinica"
+34[23]        ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Gevgelija/Valandovo/Strumica/Dojran" ; ITU
+3444          ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;             ; "fixed_line_1/3/4" ; "MK"    ; "Gevgelija/Valandovo/Strumica/Dojran" ; ITU
+3450          ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Gevgelija/Valandovo/Strumica/Dojran"
+345[12457]    ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Gevgelija/Valandovo/Strumica/Dojran" ; ITU
+345[3689]     ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Gevgelija/Valandovo/Strumica/Dojran" ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+3460[0-7]     ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Gevgelija/Valandovo/Strumica/Dojran" ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+34608         ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Gevgelija/Valandovo/Strumica/Dojran"
+34609         ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Gevgelija/Valandovo/Strumica/Dojran" ; ITU
+34610         ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Gevgelija/Valandovo/Strumica/Dojran"
+3461[12]      ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Gevgelija/Valandovo/Strumica/Dojran" ; ITU
+3461[3-9]     ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Gevgelija/Valandovo/Strumica/Dojran" ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+346[2-689]    ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Gevgelija/Valandovo/Strumica/Dojran" ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+3467          ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Gevgelija/Valandovo/Strumica/Dojran" ; GOVERNMENT
+34700         ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;             ; "fixed_line_1/3/4" ; "MK"    ; "Gevgelija/Valandovo/Strumica/Dojran" ; ITU
+348           ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Gevgelija/Valandovo/Strumica/Dojran"
+42[2-4]       ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Gostivar"                            ; ITU
+425[03689]    ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Gostivar"                            ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+425[12457]    ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Gostivar"                            ; ITU
+426[02-689]   ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Gostivar"                            ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+4261[02-9]    ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Gostivar"                            ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+42611         ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Gostivar"                            ; ITU
+4267          ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Gostivar"                            ; GOVERNMENT
+428           ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Gostivar"
+43[2-4]       ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Veles/Kavadarci/Negotino"            ; ITU
+4350          ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Veles/Kavadarci/Negotino"
+435[12457]    ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Veles/Kavadarci/Negotino"            ; ITU
+43[56]3       ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Veles/Kavadarci/Negotino"            ; GOVERNMENT
+435[689]      ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Veles/Kavadarci/Negotino"            ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+4360[0-7]     ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Veles/Kavadarci/Negotino"            ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+43608         ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Veles/Kavadarci/Negotino"
+43609         ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Veles/Kavadarci/Negotino"            ; ITU
+4361[01457-9] ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Veles/Kavadarci/Negotino"            ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+4361[236]     ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Veles/Kavadarci/Negotino"            ; ITU
+436[24-9]     ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Veles/Kavadarci/Negotino"            ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+43700         ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;             ; "fixed_line_1/3/4" ; "MK"    ; "Veles/Kavadarci/Negotino"            ; GOVERNMENT
+438           ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Veles/Kavadarci/Negotino"
+44[34]        ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Tetovo"                              ; ITU
+4450          ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Tetovo"
+445[12457]    ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Tetovo"                              ; ITU
+4453          ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Tetovo"                              ; GOVERNMENT
+445[689]      ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Tetovo"                              ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+446[05-9]     ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Tetovo"                              ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+4461[025]     ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Tetovo"                              ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+4461[13]      ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Tetovo"                              ; ITU
+4461[46-9]    ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Tetovo"
+4462          ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Tetovo"
+446[34]       ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Tetovo"                              ; GOVERNMENT
+448           ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Tetovo"
+452           ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Kicevo/Makedonski Brod"              ; ITU
+45440         ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;             ; "fixed_line_1/3/4" ; "MK"    ; "Kicevo/Makedonski Brod"              ; ITU
+455[0689]     ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Kicevo/Makedonski Brod"              ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+455[12457]    ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Kicevo/Makedonski Brod"              ; ITU
+4553          ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Kicevo/Makedonski Brod"              ; GOVERNMENT
+456[0235-9]   ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Kicevo/Makedonski Brod"              ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+4561[02-9]    ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Kicevo/Makedonski Brod"              ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+45611         ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Kicevo/Makedonski Brod"              ; ITU
+4564          ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Kicevo/Makedonski Brod"              ; GOVERNMENT
+45700         ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;             ; "fixed_line_1/3/4" ; "MK"    ; "Kicevo/Makedonski Brod"              ; GOVERNMENT
+458           ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Kicevo/Makedonski Brod"
+46[278]       ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Ohrid/Struga/Debar"                  ; ITU
+46440         ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;             ; "fixed_line_1/3/4" ; "MK"    ; "Ohrid/Struga/Debar"                  ; ITU
+465[0689]     ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Ohrid/Struga/Debar"                  ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+465[12457]    ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Ohrid/Struga/Debar"                  ; ITU
+4653          ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Ohrid/Struga/Debar"                  ; GOVERNMENT
+466[02-9]     ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Ohrid/Struga/Debar"                  ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+4661[03-9]    ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Ohrid/Struga/Debar"                  ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+4661[12]      ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Ohrid/Struga/Debar"                  ; ITU
+47[24]        ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Bitola/Demir Hisar/Resen"            ; ITU
+475[0689]     ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Bitola/Demir Hisar/Resen"            ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+475[12457]    ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Bitola/Demir Hisar/Resen"            ; ITU
+47[56]3       ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Bitola/Demir Hisar/Resen"            ; GOVERNMENT
+4760[08]      ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Bitola/Demir Hisar/Resen"            ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+4760[1-7]     ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ;                                       ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+47609         ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Bitola/Demir Hisar/Resen"            ; ITU
+4761[026]     ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Bitola/Demir Hisar/Resen"            ; ITU
+4761[17-9]    ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Bitola/Demir Hisar/Resen"            ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+4761[3-5]     ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Bitola/Demir Hisar/Resen"
+476[24-9]     ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Bitola/Demir Hisar/Resen"            ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+47700         ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;             ; "fixed_line_1/3/4" ; "MK"    ; "Bitola/Demir Hisar/Resen"            ; GOVERNMENT
+478           ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Bitola/Demir Hisar/Resen"
+484           ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Prilep/Krusevo"                      ; ITU
+4850          ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Prilep/Krusevo"
+485[12457]    ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Prilep/Krusevo"                      ; ITU
+485[3689]     ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Prilep/Krusevo"                      ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+4860          ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"
+4861[017]     ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Prilep/Krusevo"                      ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+4861[2-589]   ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Prilep/Krusevo"
+48616         ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Prilep/Krusevo"                      ; ITU
+486[2-9]      ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Prilep/Krusevo"                      ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+488           ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fmt1_2/3/3"       ; "MK"    ; "Prilep/Krusevo"
+5             ; 8      ; FIXED_LINE ; PREMIUM_RATE  ;                  ;             ; "var_cost_3/1/2/2" ; "MK"    ;                                       ; GOVERNMENT
+7[0-2]        ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "t_mobile"  ; "fmt1_2/3/3"       ; "MK"    ;                                       ; ITU
+731           ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "a1"        ; "fmt1_2/3/3"       ; "MK"
+73[23]        ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "a1"        ; "fmt1_2/3/3"       ; "MK"    ;                                       ; IR21
+734[04]       ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "a1"        ; "fmt1_2/3/3"       ; "MK"    ;                                       ; IR21
+734[1-35-9]   ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "a1"        ; "fmt1_2/3/3"       ; "MK"    ;                                       ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+73555         ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "a1"        ; "fmt1_2/3/3"       ; "MK"    ;                                       ; IR21
+7[349]7[01]   ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "t_mobile"  ; "fmt1_2/3/3"       ; "MK"    ;                                       ; GOVERNMENT
+737[578]      ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "a1"        ; "fmt1_2/3/3"       ; "MK"    ;                                       ; GOVERNMENT
+742[02-9]     ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "t_mobile"  ; "fmt1_2/3/3"       ; "MK"    ;                                       ; IR21
+7421          ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "mobik"     ; "fmt1_2/3/3"       ; "MK"    ;                                       ; ITU
+7460          ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "t_mobile"  ; "fmt1_2/3/3"       ; "MK"    ;                                       ; IR21
+74747         ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "t_mobile"  ; "fmt1_2/3/3"       ; "MK"    ;                                       ; IR21
+747[58]       ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "a1"        ; "fmt1_2/3/3"       ; "MK"    ;                                       ; GOVERNMENT
+7477[0-35-9]  ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "a1"        ; "fmt1_2/3/3"       ; "MK"    ;                                       ; GOVERNMENT
+74774         ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "telekabel" ; "fmt1_2/3/3"       ; "MK"    ;                                       ; GOVERNMENT
+7[5-8]        ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "a1"        ; "fmt1_2/3/3"       ; "MK"    ;                                       ; IR21
+79[019]77     ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "a1"        ; "fmt1_2/3/3"       ; "MK"    ;                                       ; GOVERNMENT
+79[23]        ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "a1"        ; "fmt1_2/3/3"       ; "MK"    ;                                       ; IR21
+794[01]       ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "a1"        ; "fmt1_2/3/3"       ; "MK"    ;                                       ; IR21
+7942[0-4]     ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "a1"        ; "fmt1_2/3/3"       ; "MK"    ;                                       ; IR21
+7975          ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "a1"        ; "fmt1_2/3/3"       ; "MK"    ;                                       ; GOVERNMENT
+800           ; 8      ; FIXED_LINE ; TOLL_FREE     ;                  ;             ; "var_cost_3/1/2/2" ; "MK"    ;                                       ; GOVERNMENT
+80[1-689]     ; 8      ; FIXED_LINE ; SHARED_COST   ;                  ;             ; "var_cost_3/1/2/2" ; "MK"    ;                                       ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+807           ; 8      ; FIXED_LINE ; SHARED_COST   ;                  ;             ; "var_cost_3/1/2/2" ; "MK"    ;                                       ; GOVERNMENT
+8[1-9]        ; 8      ; FIXED_LINE ; SHARED_COST   ;                  ;             ; "var_cost_3/1/2/2" ; "MK"    ;                                       ;            ; "FILLUP TO SUPPORT MASTER RANGE"

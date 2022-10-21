@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-#include "phonenumbers/metadata.h"
+#include "phonenumbers/test_metadata.h"
 
 namespace i18n {
 namespace phonenumbers {

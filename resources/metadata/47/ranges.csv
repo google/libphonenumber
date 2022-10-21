@@ -149,9 +149,10 @@ Prefix          ; Length ; Type            ; Tariff        ; Operator           
 488[0-37]       ; 8      ; MOBILE          ; STANDARD_RATE ;                          ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
 488[45]         ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; IR21       ; "IR21  01/02/2019"
 488[689]        ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"                  ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
-489[0-268]      ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; IR21       ; "IR21  01/02/2019"
+489[0-2]        ; 8      ; MOBILE          ; STANDARD_RATE ; "ice"                    ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; IR21
 489[359]        ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"                  ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
 4894            ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+489[68]         ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; IR21       ; "IR21  01/02/2019"
 5[12]           ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fixed_line_2/2/2/2" ; "Europe/Oslo"         ; "NO"    ; "Rogaland"             ; GOVERNMENT
 5[356]          ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fixed_line_2/2/2/2" ; "Europe/Oslo"         ; "NO"    ; "Hordaland"            ; GOVERNMENT
 57              ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fixed_line_2/2/2/2" ; "Europe/Oslo"         ; "NO"    ; "Sogn og Fjordane"     ; GOVERNMENT
