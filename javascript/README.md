@@ -20,9 +20,9 @@ How to setup:
 
 1.  We officially support only these versions of these dependencies:
 
-* Closure library: v20190415
+* Closure library: v20201006
 
-* Closure compiler: v20140407
+* Closure compiler: v20210302
 
 * Closure linter: v2.3.19
 

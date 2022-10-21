@@ -19,12 +19,8 @@
 99550055|Silknet
 9955007|MyPhone
 995505|MagtiCom
-9955110|MagtiCom
-9955111|MagtiCom
-9955112|MagtiCom
-9955113|MagtiCom
+995511|MagtiCom
 9955115|Silknet
-9955117|MagtiCom
 995514|Geocell
 995515|MagtiCom
 995517|MagtiCom
