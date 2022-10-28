@@ -24,8 +24,8 @@ Prefix    ; Length ; Type       ; Tariff        ; Operator   ; Format     ; Regi
 66        ; 8      ; MOBILE     ; STANDARD_RATE ; "ooredoo"  ; "fmt2_4/4" ; "QA"    ; IR21       ; "IR21 dated 2/2/2018"
 7[047]    ; 8      ; MOBILE     ; STANDARD_RATE ; "vodafone" ; "fmt2_4/4" ; "QA"    ; IR21       ; "IR21 dated 11/20/2018"
 71        ; 8      ; MOBILE     ; STANDARD_RATE ; "vodafone" ; "fmt2_4/4" ; "QA"    ; IR21
-72[0-3]   ; 8      ; MOBILE     ; STANDARD_RATE ; "vodafone" ; "fmt2_4/4" ; "QA"    ; IR21
-72[4-9]   ; 8      ; MOBILE     ; STANDARD_RATE ;            ; "fmt2_4/4" ; "QA"
+72[0-6]   ; 8      ; MOBILE     ; STANDARD_RATE ; "vodafone" ; "fmt2_4/4" ; "QA"    ; IR21
+72[7-9]   ; 8      ; MOBILE     ; STANDARD_RATE ;            ; "fmt2_4/4" ; "QA"
 7[35689]  ; 8      ; MOBILE     ; STANDARD_RATE ;            ; "fmt2_4/4" ; "QA"
 800       ; 7      ; FIXED_LINE ; TOLL_FREE     ;            ; "fmt1_3/4" ; "QA"
 800       ; 9      ; FIXED_LINE ; TOLL_FREE     ;            ;            ; "QA"    ;            ; "User report"

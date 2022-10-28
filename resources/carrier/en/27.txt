@@ -112,6 +112,11 @@
 27675|Vodacom
 27676|Telkom Mobile
 27677|Telkom Mobile
+2768|Telkom Mobile
+27686|MTN
+27687|MTN
+27688|MTN
+27689|MTN
 2771|Vodacom
 27710|MTN
 27717|MTN

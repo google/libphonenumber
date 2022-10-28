@@ -26,14 +26,7 @@
 974399|ooredoo
 97450|ooredoo
 97451|ooredoo
-974520|ooredoo
-974521|ooredoo
-974522|ooredoo
-974523|ooredoo
-974524|ooredoo
-974525|ooredoo
-974526|ooredoo
-974527|ooredoo
+97452|ooredoo
 97455|ooredoo
 974599|ooredoo
 974600|ooredoo
@@ -44,5 +37,8 @@
 974721|Vodafone
 974722|Vodafone
 974723|Vodafone
+974724|Vodafone
+974725|Vodafone
+974726|Vodafone
 97474|Vodafone
 97477|Vodafone

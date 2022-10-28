@@ -87,17 +87,12 @@ Requirements:
     so you might need to download and install it manually.
 
     Find and download the Debian packages for your system. For example:
-    http://packages.ubuntu.com/utopic/libre2-1
-    http://packages.ubuntu.com/utopic/libre2-dev
+    https://packages.ubuntu.com/search?keywords=libre2-9
+    https://packages.ubuntu.com/search?keywords=libre2-dev
 
     You need to download both the libre2-dev and libre2-1 packages.
     Once downloaded, install them with:
     $ sudo dpkg -i libre2*.deb
-
-    If you want to install it from source, it's available via Mercurial at:
-    https://re2.googlecode.com/hg
-    however precise instructions on building and installing are outside the
-    scope of this document.
 
   - ICU
     Installation:
@@ -127,7 +122,7 @@ Requirements:
     - Windows Win32 synchronization API.		
 
 	If you access libphonenumber from a single thread, you don't need one of
-    these solution.
+    these solutions.
 
     You can install it very easily on a Debian-based GNU/Linux distribution:
     $ sudo apt-get install libboost-dev libboost-thread-dev libboost-system-dev
@@ -145,7 +140,7 @@ Requirements:
     Installation:
     - Official [installation guide](https://abseil.io/docs/cpp/tools/cmake-installs).
       Something that we followed in Linux system.
-      $ git clone https://github.com/abseil/abseil-cpp.git --branch 273292d --single-branch
+      $ git clone https://github.com/abseil/abseil-cpp.git
       $ cd abseil-cpp
       $ cmake . -DCMAKE_INSTALL_PREFIX="$HOME/lpn-deps" -DCMAKE_POSITION_INDEPENDENT_CODE=ON
       $ cmake --build . --target install

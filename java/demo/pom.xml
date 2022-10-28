@@ -3,13 +3,13 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.googlecode.libphonenumber</groupId>
   <artifactId>demo</artifactId>
-  <version>8.12.57-SNAPSHOT</version>
+  <version>8.12.58-SNAPSHOT</version>
   <packaging>war</packaging>
   <url>https://github.com/google/libphonenumber/</url>
   <parent>
     <groupId>com.googlecode.libphonenumber</groupId>
     <artifactId>libphonenumber-parent</artifactId>
-    <version>8.12.57-SNAPSHOT</version>
+    <version>8.12.58-SNAPSHOT</version>
   </parent>
 
   <properties>
@@ -20,7 +20,9 @@
     <maven.compiler.target>1.8</maven.compiler.target>
     <maven.compiler.showDeprecation>true</maven.compiler.showDeprecation>
     <archiveClasses>true</archiveClasses>
-    <soy.root>src/main/resources/com/google/phonenumbers/demo</soy.root>
+    <soy.root>${project.basedir}/src/main/resources/com/google/phonenumbers/demo</soy.root>
+    <soy.srcs>${soy.root}/input_form.soy,${soy.root}/result.soy,${soy.root}/result_error.soy,${soy.root}/result_file.soy</soy.srcs>
+    <soy.output.dir>${project.build.directory}/${project.build.finalName}/WEB-INF/lib/</soy.output.dir>
     <soy.package>com.google.phonenumbers.demo.template</soy.package>
   </properties>
 
@@ -36,9 +38,9 @@
       <version>2022-07-20</version>
     </dependency>
     <dependency>
-      <artifactId>appengine-api-1.0-sdk</artifactId>
-      <groupId>com.google.appengine</groupId>
-      <version>2.0.8</version>
+      <artifactId>appengine-maven-plugin</artifactId>
+      <groupId>com.google.cloud.tools</groupId>
+      <version>2.4.4</version>
     </dependency>
     <dependency>
       <groupId>javax.servlet</groupId>
@@ -65,17 +67,17 @@
     <dependency>
       <groupId>com.googlecode.libphonenumber</groupId>
       <artifactId>libphonenumber</artifactId>
-      <version>8.12.57-SNAPSHOT</version>
+      <version>8.12.58-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>com.googlecode.libphonenumber</groupId>
       <artifactId>geocoder</artifactId>
-      <version>2.193-SNAPSHOT</version>
+      <version>2.194-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>com.googlecode.libphonenumber</groupId>
       <artifactId>carrier</artifactId>
-      <version>1.183-SNAPSHOT</version>
+      <version>1.184-SNAPSHOT</version>
     </dependency>
   </dependencies>
 
@@ -83,32 +85,6 @@
     <!-- for hot reload of the web application-->
     <outputDirectory>${project.build.directory}/${project.build.finalName}/WEB-INF/classes</outputDirectory>
     <plugins>
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>exec-maven-plugin</artifactId>
-        <version>3.1.0</version>
-        <executions>
-          <execution>
-            <goals>
-              <goal>java</goal>
-            </goals>
-          </execution>
-        </executions>
-        <configuration>
-          <mainClass>com.google.template.soy.SoyParseInfoGenerator</mainClass>
-                    <arguments>
-                      <argument>--generateInvocationBuilders</argument>
-                      <argument>--javaPackage</argument>
-                      <argument>${soy.package}</argument>
-                      <argument>--javaClassNameSource</argument>
-                      <argument>filename</argument>
-                      <argument>--srcs</argument>
-                      <argument>${soy.root}/input_form.soy,${soy.root}/result.soy,${soy.root}/result_error.soy,${soy.root}/result_file.soy</argument>
-                      <argument>--outputDirectory</argument>
-                      <argument>src/main/java/com/google/phonenumbers/demo/template/</argument>
-                    </arguments>
-        </configuration>
-      </plugin>
       <plugin>
         <groupId>com.google.cloud.tools</groupId>
         <artifactId>appengine-maven-plugin</artifactId>
@@ -123,6 +99,56 @@
           <target>8</target>
         </configuration>
         <groupId>org.apache.maven.plugins</groupId>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>3.1.0</version>
+        <executions>
+          <execution>
+            <!-- soy-parser generates template classes in
+            com.google.phonenumbers.demo.template package and isn't tied to a
+            build lifecycle, i.e. it needs to be run manually with
+            "mvn exec:java@soy-parser" -->
+            <id>soy-parser</id>
+            <goals>
+              <goal>java</goal>
+            </goals>
+            <configuration>
+              <mainClass>com.google.template.soy.SoyParseInfoGenerator</mainClass>
+              <arguments>
+                <argument>--generateInvocationBuilders</argument>
+                <argument>--javaPackage</argument>
+                <argument>${soy.package}</argument>
+                <argument>--javaClassNameSource</argument>
+                <argument>filename</argument>
+                <argument>--srcs</argument>
+                <argument>${soy.srcs}</argument>
+                <argument>--outputDirectory</argument>
+                <argument>${project.basedir}/src/main/java/com/google/phonenumbers/demo/template/</argument>
+              </arguments>
+            </configuration>
+          </execution>
+          <execution>
+            <!-- soy-compiler compiles templates so that we can use SoySauce
+            instead of Tofu and it's tied to the build lifecycle (it's part of
+            install phase). -->
+            <id>soy-compiler</id>
+            <goals>
+              <goal>java</goal>
+            </goals>
+            <phase>install</phase>
+            <configuration>
+              <mainClass>com.google.template.soy.SoyToJbcSrcCompiler</mainClass>
+              <arguments>
+                <argument>--srcs</argument>
+                <argument>${soy.srcs}</argument>
+                <argument>--output</argument>
+                <argument>${soy.output.dir}/soy-templates.jar</argument>
+              </arguments>
+            </configuration>
+          </execution>
+        </executions>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
