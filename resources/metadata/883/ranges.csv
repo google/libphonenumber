@@ -1,4 +1,5 @@
 Prefix   ; Length ; Type ; Tariff        ; Format         ; Regions ; Provenance
+200      ; 12     ; VOIP ; STANDARD_RATE ; "fmt2_3/3/3/3" ; "001"   ; IR21
 210      ; 10     ; VOIP ; STANDARD_RATE ; "fmt4_3/3/4"   ; "001"   ; IR21
 370[1-9] ; 12     ; VOIP ; STANDARD_RATE ; "fmt2_3/3/3/3" ; "001"   ; IR21
 5100     ; 9      ; VOIP ; STANDARD_RATE ; "fmt1_3/3/3"   ; "001"   ; ITU

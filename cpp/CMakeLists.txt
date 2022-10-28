@@ -23,7 +23,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 project (libphonenumber)
 set (libphonenumber_VERSION_MAJOR 8)
-set (libphonenumber_VERSION_MINOR 12)
+set (libphonenumber_VERSION_MINOR 13)
 set (libphonenumber_VERSION_PATCH 0)
 
 if (32BIT)
