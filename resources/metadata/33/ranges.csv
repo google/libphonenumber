@@ -1,6 +1,6 @@
 Prefix          ; Length ; Type       ; Tariff        ; Operator                       ; Format            ; Regions ; Geocode:en                     ; Geocode:fr                     ; Provenance ; Comment
-10[023]         ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;                                ;                                ; GOVERNMENT
-10[146-9]       ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;                                ;                                ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+10[0-3]         ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;                                ;                                ; GOVERNMENT
+10[46-9]        ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;                                ;                                ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 105             ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ; "Ile de France"                ; "Ile de France"                ; GOVERNMENT
 11              ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;                                ;                                ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 12[0-35-9]      ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;                                ;                                ;            ; "FILLUP TO SUPPORT MASTER RANGE"
@@ -668,7 +668,7 @@ Prefix          ; Length ; Type       ; Tariff        ; Operator                
 15038           ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ; "Paris"                        ; "Paris"                        ; GOVERNMENT
 1504[01]        ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ; "Paris"                        ; "Paris"                        ; GOVERNMENT
 1504[2-9]       ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ; "Ile de France"                ; "Ile de France"                ; GOVERNMENT
-15[1249]        ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;                                ;                                ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+15[124]         ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;                                ;                                ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 1530[0-24-9]    ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ; "Paris"                        ; "Paris"                        ; GOVERNMENT
 15303           ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ; "Ile de France"                ; "Ile de France"                ; GOVERNMENT
 1531[01679]     ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ; "Paris"                        ; "Paris"                        ; GOVERNMENT
@@ -814,6 +814,7 @@ Prefix          ; Length ; Type       ; Tariff        ; Operator                
 1589[134]       ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ; "Créteil"                      ; "Créteil"                      ; GOVERNMENT
 15892           ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ; "Bobigny"                      ; "Bobigny"                      ; GOVERNMENT
 15896           ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ; "Le Raincy"                    ; "Le Raincy"                    ; GOVERNMENT
+159             ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;                                ;                                ; GOVERNMENT
 1600[014]       ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;                                ;                                ; GOVERNMENT
 16002           ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ; "Ozoir-la-Ferrière"            ; "Ozoir-la-Ferrière"            ; GOVERNMENT
 16003           ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ; "Dammartin-en-Goële"           ; "Dammartin-en-Goële"           ; GOVERNMENT
@@ -11348,8 +11349,8 @@ Prefix          ; Length ; Type       ; Tariff        ; Operator                
 9772[0-368]     ; 9      ; VOIP       ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;                                ;                                ; GOVERNMENT
 9772[4579]      ; 9      ; VOIP       ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;                                ;                                ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 978[015-8]      ; 9      ; VOIP       ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;                                ;                                ; GOVERNMENT
-9782[0-3]       ; 9      ; VOIP       ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;                                ;                                ; GOVERNMENT
-9782[4-9]       ; 9      ; VOIP       ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;                                ;                                ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+9782[0-4]       ; 9      ; VOIP       ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;                                ;                                ; GOVERNMENT
+9782[5-9]       ; 9      ; VOIP       ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;                                ;                                ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 9783[05-9]      ; 9      ; VOIP       ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;                                ;                                ; GOVERNMENT
 9783[1-4]       ; 9      ; VOIP       ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;                                ;                                ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 9784[0-2]       ; 9      ; VOIP       ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;                                ;                                ; GOVERNMENT

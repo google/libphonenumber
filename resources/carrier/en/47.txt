@@ -222,6 +222,7 @@
 474898|telenor norge
 474899|telia
 47591|telenor norge
+47596|ice norge
 4790|telenor norge
 479042|svea billing services
 479043|svea billing services
@@ -317,9 +318,9 @@
 479441|telenor norge
 479442|telia
 479443|telia
-479444|telenor norge
-479445|telenor norge
-479446|telenor norge
+479444|ice norge
+479445|ice norge
+479446|ice norge
 479447|telia
 479448|telia
 479449|telia

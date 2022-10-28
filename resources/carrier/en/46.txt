@@ -250,7 +250,12 @@
 46726006|Telavox AB
 46726008|Global Telefoni Sve
 4672601|Telavox AB
+4672603|Tele2 Sverige
+4672604|Tele2 Sverige
+4672605|Tele2 Sverige
 4672606|Tele2 Sverige
+4672607|Tele2 Sverige
+4672608|Tele2 Sverige
 467261|GLOBETOUCH AB
 467262|GLOBETOUCH AB
 467263|GLOBETOUCH AB
@@ -395,6 +400,7 @@
 46734527|Soatso AB
 46734528|Soatso AB
 46734529|Soatso AB
+4673453|TeliaSonera
 4673454|Tele2 Sverige
 4673455|Viatel Sweden
 4673456|Svea Billing System
