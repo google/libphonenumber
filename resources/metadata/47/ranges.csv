@@ -156,8 +156,9 @@ Prefix          ; Length ; Type            ; Tariff        ; Operator           
 5[12]           ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fixed_line_2/2/2/2" ; "Europe/Oslo"         ; "NO"    ; "Rogaland"             ; GOVERNMENT
 5[356]          ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fixed_line_2/2/2/2" ; "Europe/Oslo"         ; "NO"    ; "Hordaland"            ; GOVERNMENT
 57              ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fixed_line_2/2/2/2" ; "Europe/Oslo"         ; "NO"    ; "Sogn og Fjordane"     ; GOVERNMENT
-59[02-9]        ; 8      ; MOBILE          ; STANDARD_RATE ;                          ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ"
+59[02-57-9]     ; 8      ; MOBILE          ; STANDARD_RATE ;                          ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ"
 591             ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ"
+596             ; 8      ; MOBILE          ; STANDARD_RATE ; "ice"                    ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; IR21
 61              ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fixed_line_2/2/2/2" ; "Europe/Oslo"         ; "NO"    ; "Oppland"              ; GOVERNMENT
 62              ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fixed_line_2/2/2/2" ; "Europe/Oslo"         ; "NO"    ; "Hedmark"              ; GOVERNMENT
 6[3467]         ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fixed_line_2/2/2/2" ; "Europe/Oslo"         ; "NO"    ; "Akershus"             ; GOVERNMENT
@@ -214,8 +215,9 @@ Prefix          ; Length ; Type            ; Tariff        ; Operator           
 941[3-9]        ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ"
 942             ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"                  ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
 943             ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; IR21       ; "IR21  01/02/2019"
-944[014-6]      ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; IR21       ; "IR21  01/02/2019"
+944[01]         ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; IR21       ; "IR21  01/02/2019"
 944[237-9]      ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"                  ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+944[4-6]        ; 8      ; MOBILE          ; STANDARD_RATE ; "ice"                    ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; IR21
 945[0-4]        ; 8      ; MOBILE          ; STANDARD_RATE ; "telia_telecom_solution" ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
 945[5-9]        ; 8      ; MOBILE          ; STANDARD_RATE ;                          ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
 946             ; 8      ; MOBILE          ; STANDARD_RATE ;                          ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ"

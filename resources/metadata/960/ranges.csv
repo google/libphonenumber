@@ -31,3 +31,4 @@ Prefix  ; Length ; Type       ; Tariff        ; Operator   ; Format       ; Regi
 800     ; 10     ; FIXED_LINE ; TOLL_FREE     ;            ; "fmt2_3/3/4" ; "MV"
 900     ; 10     ; FIXED_LINE ; PREMIUM_RATE  ;            ; "fmt2_3/3/4" ; "MV"
 9[13-9] ; 7      ; MOBILE     ; STANDARD_RATE ; "ooredoo"  ; "fmt1_3/4"   ; "MV"    ;                      ; IR21
+92      ; 7      ; MOBILE     ; STANDARD_RATE ; "ooredoo"  ; "fmt1_3/4"   ; "MV"    ;                      ; GOVERNMENT

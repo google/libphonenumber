@@ -1,1 +1,1 @@
- - Removal of unused leading_zero_possible proto field in phonemetadata.proto and all generated code. This has not been used for a long time, it was removed from metadata in 2017.
+

@@ -1,11 +1,13 @@
 Prefix       ; Length ; Type       ; Tariff        ; National Only ; Operator   ; Format            ; Regions ; Geocode:en                         ; Provenance
 220[013]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Polo Paz"                         ; ITU
 2202         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Tegucigalpa"                      ; WEB
+2204         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Francisco Morazan"                ; GOVERNMENT
 2205         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"
 2209         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Res. Centro América, Tegucigalpa" ; ITU
 2211         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "El Picacho"                       ; ITU
 221[26]      ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Rdsi Tegucigalpa (Pri3)"          ; ITU
 2213         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Telef. Inalámbrica Tegucig."      ; ITU
+221[4589]    ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Francisco Morazan"                ; GOVERNMENT
 2217         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"
 222[02]      ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Principal"                        ; ITU
 2221         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Almendros"                        ; ITU
@@ -21,6 +23,7 @@ Prefix       ; Length ; Type       ; Tariff        ; National Only ; Operator   
 223[34]      ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Toncontín"                        ; ITU
 2236         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Almendros"                        ; ITU
 223[78]      ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Principal"                        ; ITU
+2242         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Francisco Morazan"                ; GOVERNMENT
 2243         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"
 2244         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Tegucigalpa"
 224[56]      ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "La Vega, Tegucigalpa"             ; ITU
@@ -28,9 +31,11 @@ Prefix       ; Length ; Type       ; Tariff        ; National Only ; Operator   
 2257         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Prados Universitarios"            ; ITU
 226[245]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"
 227[0135689] ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"
-228[01346-9] ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"
+228[046-9]   ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"
+228[13]      ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Francisco Morazan"
 229[01]      ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Toncontin"                        ; ITU
 2292         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"
+2405         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Atlantida"                        ; GOVERNMENT
 2407         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Roatán, Bay Islands"
 2408         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"
 2423         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "La Ceiba"                         ; ITU
@@ -55,7 +60,10 @@ Prefix       ; Length ; Type       ; Tariff        ; National Only ; Operator   
 2452         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Coyoles Central"                  ; ITU
 2453         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Guanaja"                          ; ITU
 2455         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "French Harbour"                   ; ITU
+245[89]      ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Atlantida"                        ; GOVERNMENT
+250[235]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Cortes"                           ; GOVERNMENT
 250[7-9]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"
+251[135]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Cortes"                           ; GOVERNMENT
 2516         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "San Pedro Sula, Cortés"
 254[05]      ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "San Pedro Sula, Cortés"
 2543         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Inalámbrica Sps"                  ; ITU
@@ -69,12 +77,15 @@ Prefix       ; Length ; Type       ; Tariff        ; National Only ; Operator   
 2564         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "San Pedro Sula, Cortés"
 2565         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Chamelecón"                       ; ITU
 2566         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Jardines Del Valle"               ; ITU
-25[78]0      ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"
+2569         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Cortes"                           ; GOVERNMENT
+2570         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Cortes"
 2574         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Búfalo"                           ; ITU
+2580         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"
 26[06]       ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"
 2617         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Choloma, Cortés"
 262[067]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"
 263[04]      ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"
+2637         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Santa Barbra"                     ; GOVERNMENT
 264[0-2]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "C. Comunitarios"                  ; ITU
 2643         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Santa Bárbara"                    ; ITU
 2647         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Progreso"                         ; ITU
@@ -98,6 +109,7 @@ Prefix       ; Length ; Type       ; Tariff        ; National Only ; Operator   
 268[0-8]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "La Lima"                          ; ITU
 2690         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "El Negrito"                       ; ITU
 2691         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Morazán"                          ; ITU
+270[5-79]    ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Olancho"                          ; GOVERNMENT
 2764         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Amarat/Marcala"                   ; ITU
 2766         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Valle De Ángeles"                 ; ITU
 2767         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Ojojona"                          ; ITU
