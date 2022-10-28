@@ -405,12 +405,8 @@ public class BuildMetadataJsonFromXml extends Command {
     toJsArray(metadata.getNoInternationalDialling(), jsArrayBuilder);
     // optional PhoneNumberDesc uan = 25;
     toJsArray(metadata.getUan(), jsArrayBuilder);
-    // optional bool leading_zero_possible = 26 [default=false];
-    if (metadata.isLeadingZeroPossible()) {
-      jsArrayBuilder.append(1);
-    } else {
-      jsArrayBuilder.append(null);
-    }
+    // missing 26
+    jsArrayBuilder.append(null);
     // optional PhoneNumberDesc emergency = 27;
     toJsArray(metadata.getEmergency(), jsArrayBuilder);
     // optional PhoneNumberDesc voicemail = 28;
