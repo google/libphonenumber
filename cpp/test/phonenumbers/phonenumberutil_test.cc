@@ -869,7 +869,7 @@ TEST_F(PhoneNumberUtilTest, FormatOutOfCountryWithPreferredIntlPrefix) {
   test_number.set_italian_leading_zero(true);
   // This should use 0011, since that is the preferred international prefix
   // (both 0011 and 0012 are accepted as possible international prefixes in our
-  // test metadta.)
+  // test metadata.)
   phone_util_.FormatOutOfCountryCallingNumber(test_number, RegionCode::AU(),
                                               &formatted_number);
   EXPECT_EQ("0011 39 02 3661 8300", formatted_number);
