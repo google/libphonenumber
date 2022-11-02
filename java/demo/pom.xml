@@ -137,7 +137,6 @@
             <goals>
               <goal>java</goal>
             </goals>
-            <phase>install</phase>
             <configuration>
               <mainClass>com.google.template.soy.SoyToJbcSrcCompiler</mainClass>
               <arguments>
