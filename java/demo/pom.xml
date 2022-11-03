@@ -112,11 +112,15 @@
             "mvn exec:java@soy-parser" -->
             <id>soy-parser</id>
             <goals>
-              <goal>java</goal>
+              <goal>exec</goal>
             </goals>
+            <phase>generate-sources</phase>
             <configuration>
-              <mainClass>com.google.template.soy.SoyParseInfoGenerator</mainClass>
+              <executable>java</executable>
               <arguments>
+                <argument>-classpath</argument>
+                <classpath/>
+                <argument>com.google.template.soy.SoyParseInfoGenerator</argument>
                 <argument>--generateInvocationBuilders</argument>
                 <argument>--javaPackage</argument>
                 <argument>${soy.package}</argument>
