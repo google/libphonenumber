@@ -135,11 +135,15 @@
             install phase). -->
             <id>soy-compiler</id>
             <goals>
-              <goal>java</goal>
+              <goal>exec</goal>
             </goals>
+            <phase>install</phase>
             <configuration>
-              <mainClass>com.google.template.soy.SoyToJbcSrcCompiler</mainClass>
+              <executable>java</executable>
               <arguments>
+                <argument>-classpath</argument>
+                <classpath/>
+                <argument>com.google.template.soy.SoyToJbcSrcCompiler</argument>
                 <argument>--srcs</argument>
                 <argument>${soy.srcs}</argument>
                 <argument>--output</argument>
