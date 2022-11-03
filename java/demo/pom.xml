@@ -107,9 +107,7 @@
         <executions>
           <execution>
             <!-- soy-parser generates template classes in
-            com.google.phonenumbers.demo.template package and isn't tied to a
-            build lifecycle, i.e. it needs to be run manually with
-            "mvn exec:java@soy-parser" -->
+            com.google.phonenumbers.demo.template package -->
             <id>soy-parser</id>
             <goals>
               <goal>exec</goal>
@@ -135,8 +133,7 @@
           </execution>
           <execution>
             <!-- soy-compiler compiles templates so that we can use SoySauce
-            instead of Tofu and it's tied to the build lifecycle (it's part of
-            install phase). -->
+            instead of Tofu. -->
             <id>soy-compiler</id>
             <goals>
               <goal>exec</goal>
