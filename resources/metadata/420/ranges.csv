@@ -130,7 +130,8 @@ Prefix        ; Length ; Type            ; Tariff        ; Operator             
 7995[0-3]     ; 9      ; MOBILE          ; STANDARD_RATE ; "terms"                    ; "fmt1_3/3/3"   ; "CZ"    ;                            ; GOVERNMENT
 79954         ; 9      ; MOBILE          ; STANDARD_RATE ; "t_mobile"                 ; "fmt1_3/3/3"   ; "CZ"    ;                            ; GOVERNMENT
 7995[56]      ; 9      ; MOBILE          ; STANDARD_RATE ; "gomobil"                  ; "fmt1_3/3/3"   ; "CZ"    ;                            ; GOVERNMENT
-7995[7-9]     ; 9      ; MOBILE          ; STANDARD_RATE ;                            ; "fmt1_3/3/3"   ; "CZ"    ;                            ;            ; "Fillup To Support Master Range"
+79957         ; 9      ; MOBILE          ; STANDARD_RATE ; "t_mobile"                 ; "fmt1_3/3/3"   ; "CZ"    ;                            ; IR21
+7995[89]      ; 9      ; MOBILE          ; STANDARD_RATE ;                            ; "fmt1_3/3/3"   ; "CZ"    ;                            ;            ; "Fillup To Support Master Range"
 799[79][0-8]  ; 9      ; MOBILE          ; STANDARD_RATE ;                            ; "fmt1_3/3/3"   ; "CZ"    ;                            ;            ; "Fillup To Support Master Range"
 79979         ; 9      ; MOBILE          ; STANDARD_RATE ; "minitel"                  ; "fmt1_3/3/3"   ; "CZ"    ;                            ; GOVERNMENT
 79999         ; 9      ; MOBILE          ; STANDARD_RATE ; "t_mobile"                 ; "fmt1_3/3/3"   ; "CZ"    ;                            ; GOVERNMENT
