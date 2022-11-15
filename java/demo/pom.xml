@@ -22,7 +22,8 @@
     <archiveClasses>true</archiveClasses>
     <soy.root>${project.basedir}/src/main/resources/com/google/phonenumbers/demo</soy.root>
     <soy.srcs>${soy.root}/input_form.soy,${soy.root}/result.soy,${soy.root}/result_error.soy,${soy.root}/result_file.soy</soy.srcs>
-    <soy.output.dir>${project.build.directory}/${project.build.finalName}/WEB-INF/lib/</soy.output.dir>
+    <soy.parser.output>${project.build.directory}/generated-sources/com/google/phonenumbers/demo/template/</soy.parser.output>
+    <soy.compiler.output>${project.build.directory}/${project.build.finalName}/WEB-INF/lib/soy-templates.jar</soy.compiler.output>
     <soy.package>com.google.phonenumbers.demo.template</soy.package>
   </properties>
 
@@ -107,16 +108,18 @@
         <executions>
           <execution>
             <!-- soy-parser generates template classes in
-            com.google.phonenumbers.demo.template package and isn't tied to a
-            build lifecycle, i.e. it needs to be run manually with
-            "mvn exec:java@soy-parser" -->
+            com.google.phonenumbers.demo.template package -->
             <id>soy-parser</id>
             <goals>
-              <goal>java</goal>
+              <goal>exec</goal>
             </goals>
+            <phase>generate-sources</phase>
             <configuration>
-              <mainClass>com.google.template.soy.SoyParseInfoGenerator</mainClass>
+              <executable>java</executable>
               <arguments>
+                <argument>-classpath</argument>
+                <classpath />
+                <argument>com.google.template.soy.SoyParseInfoGenerator</argument>
                 <argument>--generateInvocationBuilders</argument>
                 <argument>--javaPackage</argument>
                 <argument>${soy.package}</argument>
@@ -125,26 +128,29 @@
                 <argument>--srcs</argument>
                 <argument>${soy.srcs}</argument>
                 <argument>--outputDirectory</argument>
-                <argument>${project.basedir}/src/main/java/com/google/phonenumbers/demo/template/</argument>
+                <argument>${soy.parser.output}</argument>
               </arguments>
+              <sourceRoot>${soy.parser.output}</sourceRoot>
             </configuration>
           </execution>
           <execution>
             <!-- soy-compiler compiles templates so that we can use SoySauce
-            instead of Tofu and it's tied to the build lifecycle (it's part of
-            install phase). -->
+            instead of Tofu. -->
             <id>soy-compiler</id>
             <goals>
-              <goal>java</goal>
+              <goal>exec</goal>
             </goals>
             <phase>install</phase>
             <configuration>
-              <mainClass>com.google.template.soy.SoyToJbcSrcCompiler</mainClass>
+              <executable>java</executable>
               <arguments>
+                <argument>-classpath</argument>
+                <classpath />
+                <argument>com.google.template.soy.SoyToJbcSrcCompiler</argument>
                 <argument>--srcs</argument>
                 <argument>${soy.srcs}</argument>
                 <argument>--output</argument>
-                <argument>${soy.output.dir}/soy-templates.jar</argument>
+                <argument>${soy.compiler.output}</argument>
               </arguments>
             </configuration>
           </execution>
@@ -155,7 +161,10 @@
         <artifactId>maven-javadoc-plugin</artifactId>
         <version>3.4.1</version>
         <configuration>
-          <excludePackageNames>${soy.package}</excludePackageNames>
+          <!-- SoyInfoParser does not generate valid javadoc and
+          <excludePackageNames> does not work for /generated-sources for
+          some reason-->
+          <failOnError>false</failOnError>
         </configuration>
       </plugin>
     </plugins>
