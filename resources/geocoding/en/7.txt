@@ -174,7 +174,6 @@
 771458|Kostanai Region
 77145834|Krasnogorsk
 771459|Kostanai Region
-77149|Kostanai
 77152|Petropavlovsk
 771531|Bulayevo
 771532|Smirnovo
@@ -226,11 +225,10 @@
 771839|Akku
 771840|Bayanaul
 771841|Aktogai
-771842|Koktobe
+771842|Aktogaisky District
 771843|Maisky District
 771844|Irtyshsky District
 771845|Pavlodar Area
-77185|Shaldai
 77187|Ekibastuz
 77212|Karaganda
 77213|Aktau/Temirtau
@@ -303,9 +301,7 @@
 772540|Arys
 772541|Myrzakent
 772542|Asykata
-772543|Aqsumbe
 772544|Shaulder
-772545|Ikan
 772546|Sholakkorgan
 772547|Lenger
 772548|Shayan
