@@ -3,14 +3,14 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.googlecode.libphonenumber</groupId>
   <artifactId>carrier</artifactId>
-  <version>1.185-SNAPSHOT</version>
+  <version>1.185</version>
   <packaging>jar</packaging>
   <url>https://github.com/google/libphonenumber/</url>
 
   <parent>
     <groupId>com.googlecode.libphonenumber</groupId>
     <artifactId>libphonenumber-parent</artifactId>
-    <version>8.13.1-SNAPSHOT</version>
+    <version>8.13.1</version>
   </parent>
 
   <build>
@@ -55,12 +55,12 @@
     <dependency>
       <groupId>com.googlecode.libphonenumber</groupId>
       <artifactId>libphonenumber</artifactId>
-      <version>8.13.1-SNAPSHOT</version>
+      <version>8.13.1</version>
     </dependency>
     <dependency>
       <groupId>com.googlecode.libphonenumber</groupId>
       <artifactId>prefixmapper</artifactId>
-      <version>2.195-SNAPSHOT</version>
+      <version>2.195</version>
     </dependency>
   </dependencies>
 
