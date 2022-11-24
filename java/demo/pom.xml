@@ -140,7 +140,7 @@
             <goals>
               <goal>exec</goal>
             </goals>
-            <phase>install</phase>
+            <phase>compile</phase>
             <configuration>
               <executable>java</executable>
               <arguments>
