@@ -225,6 +225,7 @@ maintenance processes.
 *   C#: https://github.com/twcclegg/libphonenumber-csharp
 *   Go: https://github.com/nyaruka/phonenumbers
 *   Objective-c: https://github.com/iziz/libPhoneNumber-iOS
+*   Swift: https://github.com/marmelroy/PhoneNumberKit
 *   PHP: https://github.com/giggsey/libphonenumber-for-php
 *   PostgreSQL in-database types: https://github.com/blm768/pg-libphonenumber
 *   Python: https://github.com/daviddrysdale/python-phonenumbers
