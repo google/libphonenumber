@@ -499,7 +499,9 @@ if (${BUILD_GEOCODER} STREQUAL "ON")
   list (APPEND GEOCODER_DEPS ${COMMON_DEPS})
   # Note that the subset of base/ on which the geocoder relies is implemented
   # on top of Boost header-only libraries (e.g. scoped_ptr.hpp).
-  target_link_libraries (geocoding ${LIBRARY_DEPS})
+  if (${BUILD_STATIC_LIB} STREQUAL "ON")
+    target_link_libraries (geocoding ${LIBRARY_DEPS})
+  endif ()
   target_link_libraries (geocoding-shared ${LIBRARY_DEPS})
 endif ()
 
@@ -666,7 +668,9 @@ if (BUILD_SHARED_LIB)
 endif ()
 
 if (${BUILD_GEOCODER} STREQUAL "ON")
-  install (TARGETS geocoding LIBRARY DESTINATION ${LIBDIR} ARCHIVE DESTINATION ${LIBDIR})
+  if (${BUILD_STATIC_LIB} STREQUAL "ON")
+    install (TARGETS geocoding LIBRARY DESTINATION ${LIBDIR} ARCHIVE DESTINATION ${LIBDIR})
+  endif ()
   install (TARGETS geocoding-shared LIBRARY DESTINATION ${LIBDIR} ARCHIVE
            DESTINATION ${LIBDIR})
 endif ()
@@ -678,7 +682,11 @@ if (${BUILD_GEOCODER} STREQUAL "ON")
     geocoding_test_program
     "test/phonenumbers/geocoding/geocoding_test_program.cc"
   )
-  target_link_libraries (geocoding_test_program geocoding phonenumber)
+  if (${BUILD_STATIC_LIB} STREQUAL "ON")
+    target_link_libraries (geocoding_test_program geocoding phonenumber)
+  else ()
+    target_link_libraries (geocoding_test_program geocoding-shared phonenumber-shared)
+  endif ()
 endif ()
 
 # Build an RPM
