@@ -133,7 +133,7 @@ Prefix        ; Length ; Type       ; Tariff        ; Area Code Length ; Operato
 5             ; 8      ; FIXED_LINE ; PREMIUM_RATE  ;                  ;             ; "var_cost_3/1/2/2" ; "MK"    ;                                       ; GOVERNMENT
 7[0-2]        ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "t_mobile"  ; "fmt1_2/3/3"       ; "MK"    ;                                       ; ITU
 731           ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "a1"        ; "fmt1_2/3/3"       ; "MK"
-73[23]        ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "a1"        ; "fmt1_2/3/3"       ; "MK"    ;                                       ; IR21
+73[238]       ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "a1"        ; "fmt1_2/3/3"       ; "MK"    ;                                       ; IR21
 734[04]       ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "a1"        ; "fmt1_2/3/3"       ; "MK"    ;                                       ; IR21
 734[1-35-9]   ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "a1"        ; "fmt1_2/3/3"       ; "MK"    ;                                       ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 73555         ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "a1"        ; "fmt1_2/3/3"       ; "MK"    ;                                       ; IR21

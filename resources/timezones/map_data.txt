@@ -3116,8 +3116,7 @@
 645|Pacific/Auckland
 646|Pacific/Auckland
 647|Pacific/Auckland
-6480|Pacific/Auckland
-6486|Pacific/Auckland
+648|Pacific/Auckland
 649|Pacific/Auckland
 65|Asia/Singapore
 66|Asia/Bangkok
@@ -3195,6 +3194,7 @@
 7713|Asia/Aqtobe
 772|Asia/Almaty
 7729|Asia/Aqtobe
+779|Asia/Almaty
 7800|Asia/Almaty&Asia/Aqtobe&Europe/Moscow
 7803|Europe/Moscow
 7804|Europe/Moscow

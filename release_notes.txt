@@ -1,3 +1,23 @@
+Nov 10, 2022: v8.13.1
+Metadata changes:
+ - Updated alternate formatting data for country calling code(s): 7
+ - Updated phone metadata for region code(s): GI, KG, KZ, RU
+ - Updated geocoding data for country calling code(s): 7 (en, ru), 64 (en)
+ - Updated carrier data for country calling code(s):
+   51 (en), 350 (en), 420 (en), 996 (en)
+ - Updated / refreshed time zone meta data.
+
+Oct 28, 2022: v8.13.0
+ - Removal of unused leading_zero_possible proto field in phonemetadata.proto and all generated code. This has not been used for a long time, it was removed from metadata in 2017.
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   883, BW, CI, CN, CY, HN, MA, MK, MV, OM
+ - Updated short number metadata for region code(s): FI
+ - Updated geocoding data for country calling code(s): 504 (en)
+ - Updated carrier data for country calling code(s):
+   7 (en, ru), 46 (en), 47 (en), 48 (en), 357 (en), 359 (en), 389 (en),
+   960 (en)
+
 Oct 11, 2022: v8.12.57
 Metadata changes:
  - Updated phone metadata for region code(s):
