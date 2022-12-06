@@ -64,7 +64,9 @@ public class ResultRenderer extends LibPhoneNumberRenderer<SingleNumber> {
         .setExtension(number.getExtension())
         .setCountryCodeSource(number.getCountryCodeSource().toString())
         .setItalianLeadingZero(number.isItalianLeadingZero())
-        .setRawInput(number.getRawInput());
+        .setNumberOfLeadingZeros(number.getNumberOfLeadingZeros())
+        .setRawInput(number.getRawInput())
+        .setPreferredDomesticCarrierCode(number.getPreferredDomesticCarrierCode());
 
     boolean isNumberValid = phoneUtil.isValidNumber(number);
     boolean hasDefaultCountry = !defaultCountry.isEmpty() && !defaultCountry.equals("ZZ");
@@ -104,7 +106,11 @@ public class ResultRenderer extends LibPhoneNumberRenderer<SingleNumber> {
         .setOutOfCountryFormatFromUs(
             isNumberValid ? phoneUtil.formatOutOfCountryCallingNumber(number, "US") : "invalid")
         .setOutOfCountryFormatFromCh(
-            isNumberValid ? phoneUtil.formatOutOfCountryCallingNumber(number, "CH") : "invalid");
+            isNumberValid ? phoneUtil.formatOutOfCountryCallingNumber(number, "CH") : "invalid")
+        .setMobileDiallingFormatFromUs(
+            isNumberValid ? phoneUtil.formatNumberForMobileDialing(number, "US", true) : "invalid")
+        .setNationalDiallingFormatWithPreferredCarrierCode(
+            isNumberValid ? phoneUtil.formatNationalNumberWithCarrierCode(number, "") : "invalid");
 
     // Get As You Type Formatter Table
     List<List<String>> rows = new ArrayList<>();

@@ -148,6 +148,16 @@ function phoneNumberParser() {
       output.append(
           phoneUtil_.formatNationalNumberWithCarrierCode(number, carrierCode));
     }
+    output.append('\nFormat for mobile dialing (calling from US): ');
+    output.append(
+        isNumberValid ?
+            phoneUtil_.formatNumberForMobileDialing(number, 'US', true) :
+            'invalid');
+    output.append('\nFormat for national dialing with preferred carrier code and empty fallback carrier code: ');
+    output.append(
+        isNumberValid ?
+            phoneUtil_.formatNationalNumberWithPreferredCarrierCode(number, '') :
+            'invalid');
     output.append('\n\n****AsYouTypeFormatter Results****');
     var formatter = new i18n.phonenumbers.AsYouTypeFormatter(regionCode);
     var phoneNumberLength = phoneNumber.length;

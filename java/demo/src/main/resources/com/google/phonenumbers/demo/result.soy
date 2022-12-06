@@ -9,7 +9,9 @@
 {@param extension: string}
 {@param countryCodeSource: string}
 {@param italianLeadingZero: bool}
+{@param numberOfLeadingZeros: int}
 {@param rawInput: string}
+{@param preferredDomesticCarrierCode: string}
 
 {@param isPossibleNumber: bool}
 {@param isValidNumber: bool}
@@ -29,6 +31,8 @@
 {@param internationalFormat: string}
 {@param outOfCountryFormatFromUs: string}
 {@param outOfCountryFormatFromCh: string}
+{@param mobileDiallingFormatFromUs: string}
+{@param nationalDiallingFormatWithPreferredCarrierCode: string}
 
 {@param rows: list<list<string>>}
 
@@ -75,8 +79,16 @@
       <TD>{$italianLeadingZero}</TD>
     </TR>
     <TR>
+      <TH>number_of_leading_zeros</TH>
+      <TD>{$numberOfLeadingZeros}</TD>
+    </TR>
+    <TR>
       <TH>raw_input</TH>
       <TD>{$rawInput}</TD>
+    </TR>
+    <TR>
+      <TH>preferred_domestic_carrier_code</TH>
+      <TD>{$preferredDomesticCarrierCode}</TD>
     </TR>
   </TABLE>
 </DIV>
@@ -188,6 +200,14 @@
     <TR>
       <TH>Out-of-country format from CH</TH>
       <TD>{$outOfCountryFormatFromCh}</TD>
+    </TR>
+    <TR>
+      <TH>Format for mobile dialing (calling from US)</TH>
+      <TD>{$mobileDiallingFormatFromUs}</TD>
+    </TR>
+    <TR>
+      <TH>Format for national dialing with preferred carrier code and empty fallback carrier code</TH>
+      <TD>{$nationalDiallingFormatWithPreferredCarrierCode}</TD>
     </TR>
   </TABLE>
 </DIV>
