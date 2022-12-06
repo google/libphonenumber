@@ -15,34 +15,50 @@
 # Veon was formerly known as Beeline/VimpelCom.
 
 9955000|Mobilaive
-9955005|MagtiCom
+99550050|MagtiCom
+99550055|Silknet
+9955007|MyPhone
 995505|MagtiCom
 995511|MagtiCom
+9955115|Silknet
 995514|Geocell
+995515|MagtiCom
+995517|MagtiCom
 99552|MagtiCom
 99553|MagtiCom
 99554444|MagtiCom
-99555000|Gimobile
-99555001|Gimobile
-99555002|Gimobile
-99555003|Gimobile
+995550|MagtiCom
+99555000|Geocell
+99555005|Geocell
+99555050|Geocell
 99555055|Datacom
 995551|MagtiCom
-995552|Premium Net International SRL
+9955520|Premium Net International SRL
+9955522|Asanet
 995555|Geocell
 995557|Geocell
 995558|Geocell
-99555900|Globalcell
+995559|Globalcell
+995559995|DataHouse Global
+995559996|DataHouse Global
+995559997|DataHouse Global
+995559998|DataHouse Global
+995559999|DataHouse Global
 99556|Veon
 995570|Silknet
 995571|Veon
 995574|Veon
 9955750|Asanet
-9955757|MagtiCom
+9955755|Silknet
+99557575|Silknet
+99557577|MagtiCom
+99557578|MagtiCom
 995577|Geocell
 995579|Veon
+995580|Silknet
 995585|MagtiCom
-995588|Geocell
+9955885|Silknet
+9955888|Geocell
 995591|MagtiCom
 995592|Veon
 995593|Geocell

@@ -1,0 +1,11 @@
+Region ; Type            ; Number
+PT     ; FIXED_LINE      ; "212345678"
+PT     ; MOBILE          ; "912345678"
+PT     ; PAGER           ; "622212345"
+PT     ; TOLL_FREE       ; "800123456"
+PT     ; PREMIUM_RATE    ; "760123456"
+PT     ; SHARED_COST     ; "808123456"
+PT     ; PERSONAL_NUMBER ; "884123456"
+PT     ; VOIP            ; "301234567"
+PT     ; UAN             ; "707123456"
+PT     ; VOICEMAIL       ; "600110000"

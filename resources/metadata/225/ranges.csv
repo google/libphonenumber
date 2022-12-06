@@ -1,0 +1,59 @@
+Prefix     ; Length ; Type       ; Tariff        ; Operator ; Format           ; Regions ; Geocode:en         ; Geocode:fr         ; Provenance
+01         ; 10     ; MOBILE     ; STANDARD_RATE ; "moov"   ; "mobile_2/2/2/4" ; "CI"    ;                    ;                    ; IR21
+05         ; 10     ; MOBILE     ; STANDARD_RATE ; "mtn"    ; "mobile_2/2/2/4" ; "CI"    ;                    ;                    ; IR21
+07         ; 10     ; MOBILE     ; STANDARD_RATE ; "orange" ; "mobile_2/2/2/4" ; "CI"    ;                    ;                    ; IR21
+21[014-9]  ; 10     ; FIXED_LINE ; STANDARD_RATE ;          ; "fixed_2/2/1/5"  ; "CI"    ;                    ;                    ; ITU
+2120       ; 10     ; FIXED_LINE ; STANDARD_RATE ;          ; "fixed_2/2/1/5"  ; "CI"    ; "Plateau, Abidjan" ; "Plateau, Abidjan" ; ITU
+2121       ; 10     ; FIXED_LINE ; STANDARD_RATE ;          ; "fixed_2/2/1/5"  ; "CI"    ; "Abidjan-sud"      ; "Abidjan-sud"      ; ITU
+2122       ; 10     ; FIXED_LINE ; STANDARD_RATE ;          ; "fixed_2/2/1/5"  ; "CI"    ; "Cocody, Abidjan"  ; "Cocody, Abidjan"  ; ITU
+2123       ; 10     ; FIXED_LINE ; STANDARD_RATE ;          ; "fixed_2/2/1/5"  ; "CI"    ; "Banco, Abidjan"   ; "Banco, Abidjan"   ; ITU
+2124       ; 10     ; FIXED_LINE ; STANDARD_RATE ;          ; "fixed_2/2/1/5"  ; "CI"    ; "Abobo, Abidjan"   ; "Abobo, Abidjan"   ; ITU
+212[5-9]   ; 10     ; FIXED_LINE ; STANDARD_RATE ;          ; "fixed_2/2/1/5"  ; "CI"    ;                    ;                    ; ITU
+2130       ; 10     ; FIXED_LINE ; STANDARD_RATE ;          ; "fixed_2/2/1/5"  ; "CI"    ; "Yamoussoukro"     ; "Yamoussoukro"     ; ITU
+2131       ; 10     ; FIXED_LINE ; STANDARD_RATE ;          ; "fixed_2/2/1/5"  ; "CI"    ; "Bouaké"           ; "Bouaké"           ; ITU
+2132       ; 10     ; FIXED_LINE ; STANDARD_RATE ;          ; "fixed_2/2/1/5"  ; "CI"    ; "Daloa"            ; "Daloa"            ; ITU
+2133       ; 10     ; FIXED_LINE ; STANDARD_RATE ;          ; "fixed_2/2/1/5"  ; "CI"    ; "Man"              ; "Man"              ; ITU
+2134       ; 10     ; FIXED_LINE ; STANDARD_RATE ;          ; "fixed_2/2/1/5"  ; "CI"    ; "San-Pédro"        ; "San-Pédro"        ; ITU
+2135       ; 10     ; FIXED_LINE ; STANDARD_RATE ;          ; "fixed_2/2/1/5"  ; "CI"    ; "Abengourou"       ; "Abengourou"       ; ITU
+2136       ; 10     ; FIXED_LINE ; STANDARD_RATE ;          ; "fixed_2/2/1/5"  ; "CI"    ; "Korhogo"          ; "Korhogo"          ; ITU
+213[7-9]   ; 10     ; FIXED_LINE ; STANDARD_RATE ;          ; "fixed_2/2/1/5"  ; "CI"    ;                    ;                    ; ITU
+25[014-9]  ; 10     ; FIXED_LINE ; STANDARD_RATE ;          ; "fixed_2/2/1/5"  ; "CI"    ;                    ;                    ; IR21
+25200      ; 10     ; FIXED_LINE ; STANDARD_RATE ;          ; "fixed_2/2/1/5"  ; "CI"    ; "Plateau, Abidjan" ; "Plateau, Abidjan" ; ITU
+2520[1-9]  ; 10     ; FIXED_LINE ; STANDARD_RATE ;          ; "fixed_2/2/1/5"  ; "CI"    ; "Plateau, Abidjan" ; "Plateau, Abidjan" ; IR21
+25210      ; 10     ; FIXED_LINE ; STANDARD_RATE ;          ; "fixed_2/2/1/5"  ; "CI"    ; "Abidjan-sud"      ; "Abidjan-sud"      ; ITU
+2521[1-9]  ; 10     ; FIXED_LINE ; STANDARD_RATE ;          ; "fixed_2/2/1/5"  ; "CI"    ; "Abidjan-sud"      ; "Abidjan-sud"      ; IR21
+25220      ; 10     ; FIXED_LINE ; STANDARD_RATE ;          ; "fixed_2/2/1/5"  ; "CI"    ; "Cocody, Abidjan"  ; "Cocody, Abidjan"  ; ITU
+2522[1-9]  ; 10     ; FIXED_LINE ; STANDARD_RATE ;          ; "fixed_2/2/1/5"  ; "CI"    ; "Cocody, Abidjan"  ; "Cocody, Abidjan"  ; IR21
+25230      ; 10     ; FIXED_LINE ; STANDARD_RATE ;          ; "fixed_2/2/1/5"  ; "CI"    ; "Banco, Abidjan"   ; "Banco, Abidjan"   ; ITU
+2523[1-9]  ; 10     ; FIXED_LINE ; STANDARD_RATE ;          ; "fixed_2/2/1/5"  ; "CI"    ; "Banco, Abidjan"   ; "Banco, Abidjan"   ; IR21
+25240      ; 10     ; FIXED_LINE ; STANDARD_RATE ;          ; "fixed_2/2/1/5"  ; "CI"    ; "Abobo, Abidjan"   ; "Abobo, Abidjan"   ; ITU
+2524[1-9]  ; 10     ; FIXED_LINE ; STANDARD_RATE ;          ; "fixed_2/2/1/5"  ; "CI"    ; "Abobo, Abidjan"   ; "Abobo, Abidjan"   ; IR21
+252[5-9]   ; 10     ; FIXED_LINE ; STANDARD_RATE ;          ; "fixed_2/2/1/5"  ; "CI"    ;                    ;                    ; IR21
+25300      ; 10     ; FIXED_LINE ; STANDARD_RATE ;          ; "fixed_2/2/1/5"  ; "CI"    ; "Yamoussoukro"     ; "Yamoussoukro"     ; ITU
+2530[1-9]  ; 10     ; FIXED_LINE ; STANDARD_RATE ;          ; "fixed_2/2/1/5"  ; "CI"    ; "Yamoussoukro"     ; "Yamoussoukro"     ; IR21
+25310      ; 10     ; FIXED_LINE ; STANDARD_RATE ;          ; "fixed_2/2/1/5"  ; "CI"    ; "Bouaké"           ; "Bouaké"           ; ITU
+2531[1-9]  ; 10     ; FIXED_LINE ; STANDARD_RATE ;          ; "fixed_2/2/1/5"  ; "CI"    ; "Bouaké"           ; "Bouaké"           ; IR21
+25320      ; 10     ; FIXED_LINE ; STANDARD_RATE ;          ; "fixed_2/2/1/5"  ; "CI"    ; "Daloa"            ; "Daloa"            ; ITU
+2532[1-9]  ; 10     ; FIXED_LINE ; STANDARD_RATE ;          ; "fixed_2/2/1/5"  ; "CI"    ; "Daloa"            ; "Daloa"            ; IR21
+25330      ; 10     ; FIXED_LINE ; STANDARD_RATE ;          ; "fixed_2/2/1/5"  ; "CI"    ; "Man"              ; "Man"              ; ITU
+2533[1-9]  ; 10     ; FIXED_LINE ; STANDARD_RATE ;          ; "fixed_2/2/1/5"  ; "CI"    ; "Man"              ; "Man"              ; IR21
+25340      ; 10     ; FIXED_LINE ; STANDARD_RATE ;          ; "fixed_2/2/1/5"  ; "CI"    ; "San-Pédro"        ; "San-Pédro"        ; ITU
+2534[1-9]  ; 10     ; FIXED_LINE ; STANDARD_RATE ;          ; "fixed_2/2/1/5"  ; "CI"    ; "San-Pédro"        ; "San-Pédro"        ; IR21
+25350      ; 10     ; FIXED_LINE ; STANDARD_RATE ;          ; "fixed_2/2/1/5"  ; "CI"    ; "Abengourou"       ; "Abengourou"       ; ITU
+2535[1-9]  ; 10     ; FIXED_LINE ; STANDARD_RATE ;          ; "fixed_2/2/1/5"  ; "CI"    ; "Abengourou"       ; "Abengourou"       ; IR21
+25360      ; 10     ; FIXED_LINE ; STANDARD_RATE ;          ; "fixed_2/2/1/5"  ; "CI"    ; "Korhogo"          ; "Korhogo"          ; ITU
+2536[1-9]  ; 10     ; FIXED_LINE ; STANDARD_RATE ;          ; "fixed_2/2/1/5"  ; "CI"    ; "Korhogo"          ; "Korhogo"          ; IR21
+253[7-9]   ; 10     ; FIXED_LINE ; STANDARD_RATE ;          ; "fixed_2/2/1/5"  ; "CI"    ;                    ;                    ; IR21
+2720[23]   ; 10     ; FIXED_LINE ; STANDARD_RATE ;          ; "fixed_2/2/1/5"  ; "CI"    ; "Plateau, Abidjan" ; "Plateau, Abidjan" ; ITU
+2721[2357] ; 10     ; FIXED_LINE ; STANDARD_RATE ;          ; "fixed_2/2/1/5"  ; "CI"    ; "Abidjan-sud"      ; "Abidjan-sud"      ; ITU
+27222      ; 10     ; FIXED_LINE ; STANDARD_RATE ;          ; "fixed_2/2/1/5"  ; "CI"    ; "Abidjan-sud"      ; "Abidjan-sud"
+2722[45]   ; 10     ; FIXED_LINE ; STANDARD_RATE ;          ; "fixed_2/2/1/5"  ; "CI"    ; "Cocody, Abidjan"  ; "Cocody, Abidjan"  ; ITU
+2723[45]   ; 10     ; FIXED_LINE ; STANDARD_RATE ;          ; "fixed_2/2/1/5"  ; "CI"    ; "Banco, Abidjan"   ; "Banco, Abidjan"   ; ITU
+2724[3-5]  ; 10     ; FIXED_LINE ; STANDARD_RATE ;          ; "fixed_2/2/1/5"  ; "CI"    ; "Abobo, Abidjan"   ; "Abobo, Abidjan"   ; ITU
+27306      ; 10     ; FIXED_LINE ; STANDARD_RATE ;          ; "fixed_2/2/1/5"  ; "CI"    ; "Yamoussoukro"     ; "Yamoussoukro"     ; ITU
+2731[69]   ; 10     ; FIXED_LINE ; STANDARD_RATE ;          ; "fixed_2/2/1/5"  ; "CI"    ; "Bouaké"           ; "Bouaké"           ; ITU
+27327      ; 10     ; FIXED_LINE ; STANDARD_RATE ;          ; "fixed_2/2/1/5"  ; "CI"    ; "Daloa"            ; "Daloa"            ; ITU
+27337      ; 10     ; FIXED_LINE ; STANDARD_RATE ;          ; "fixed_2/2/1/5"  ; "CI"    ; "Man"              ; "Man"              ; ITU
+27347      ; 10     ; FIXED_LINE ; STANDARD_RATE ;          ; "fixed_2/2/1/5"  ; "CI"    ; "San-Pédro"        ; "San-Pédro"        ; ITU
+27357      ; 10     ; FIXED_LINE ; STANDARD_RATE ;          ; "fixed_2/2/1/5"  ; "CI"    ; "Abengourou"       ; "Abengourou"       ; ITU
+27367      ; 10     ; FIXED_LINE ; STANDARD_RATE ;          ; "fixed_2/2/1/5"  ; "CI"    ; "Korhogo"          ; "Korhogo"          ; ITU

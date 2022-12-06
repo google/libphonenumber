@@ -30,6 +30,8 @@
 8869022|T Star
 8869023|T Star
 8869024|T Star
+8869025|T Star
+8869026|T Star
 886903|FarEasTone
 8869040|Taiwan Mobile
 8869041|Taiwan Mobile

@@ -1,0 +1,6 @@
+Id            ; Domestic Selection Codes ; International Dialling Codes ; Name:en         ; Name:zh ; Name:zh-Hant
+__unknown     ; "1[12]xxx"               ; "1[12]xxx00"
+cbn           ;                          ;                              ; "CBN"           ; "CBN"   ; "CBN"
+china_mobile  ; "179xx"                  ; "179xx00"                    ; "China Mobile"  ; "中国移动"  ; "中國移動"
+china_telecom ;                          ;                              ; "China Telecom" ; "中国电信"  ; "中國電信"
+china_unicom  ;                          ;                              ; "China Unicom"  ; "中国联通"  ; "中國聯通"

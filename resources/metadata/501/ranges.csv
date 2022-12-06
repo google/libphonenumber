@@ -1,0 +1,18 @@
+Prefix ; Length ; Type       ; Tariff        ; Operator ; Format         ; Regions ; Geocode:en             ; Provenance ; Comment
+0800   ; 11     ; FIXED_LINE ; TOLL_FREE     ;          ; "fmt2_1/3/4/3" ; "BZ"
+2[02]  ; 7      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt1_3/4"     ; "BZ"    ; "Belize District"
+236    ; 7      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt1_3/4"     ; "BZ"    ; "Belize District"
+2[68]0 ; 7      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt1_3/4"     ; "BZ"    ; "Belize District"      ; ITU
+3[02]  ; 7      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt1_3/4"     ; "BZ"    ; "Orange Walk District"
+3[68]0 ; 7      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt1_3/4"     ; "BZ"    ; "Orange Walk District" ; ITU
+4[02]  ; 7      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt1_3/4"     ; "BZ"    ; "Corozal District"
+4[68]0 ; 7      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt1_3/4"     ; "BZ"    ; "Corozal District"     ; ITU
+5[02]  ; 7      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt1_3/4"     ; "BZ"    ; "Stann Creek District"
+5[68]0 ; 7      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt1_3/4"     ; "BZ"    ; "Stann Creek District" ; ITU
+6[0-3] ; 7      ; MOBILE     ; STANDARD_RATE ; "digi"   ; "fmt1_3/4"     ; "BZ"    ;                        ; IR21       ; "IR21 dated 10/9/2018"
+6[5-7] ; 7      ; MOBILE     ; STANDARD_RATE ; "smart"  ; "fmt1_3/4"     ; "BZ"    ;                        ; INTERNAL
+7[02]  ; 7      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt1_3/4"     ; "BZ"    ; "Toledo District"
+732    ; 7      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt1_3/4"     ; "BZ"    ; "Toledo District"
+7[68]0 ; 7      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt1_3/4"     ; "BZ"    ; "Toledo District"      ; ITU
+8[02]  ; 7      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt1_3/4"     ; "BZ"    ; "Cayo District"
+8[68]0 ; 7      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt1_3/4"     ; "BZ"    ; "Cayo District"        ; ITU

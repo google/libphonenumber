@@ -1,0 +1,5 @@
+Region ; Label        ; Comment
+GM     ; SC           ; "http://www.itu.int/oth/T020200004F/en"
+GM     ; SC_EMERGENCY ; "http://travel.state.gov/travel/cis_pa_tw/cis/cis_1121.html"
+GM     ; SC_EMERGENCY ; "http://www.netglobers.com/africa/gambia-emergency-numbers-in-the-gambia.html"
+GM     ; XML          ; "http://www.itu.int/oth/T020200004F/en"

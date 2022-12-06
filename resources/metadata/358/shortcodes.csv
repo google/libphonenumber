@@ -1,0 +1,10 @@
+Region ; Prefix ; Length ; Type               ; Tariff    ; Format        ; Provenance ; Comment
+AX     ; 112    ; 3      ; EMERGENCY          ; TOLL_FREE
+AX     ; 75[12] ; 5      ; COMMERCIAL         ;           ; "shortcode_5"
+FI     ; 112    ; 3      ; EMERGENCY          ; TOLL_FREE
+FI     ; 116000 ; 6      ; EXPANDED_EMERGENCY ; TOLL_FREE ; "shortcode_6" ;            ; "User report"
+FI     ; 116006 ; 6      ; EXPANDED_EMERGENCY ; TOLL_FREE ; "shortcode_6"
+FI     ; 116111 ; 6      ; EXPANDED_EMERGENCY ; TOLL_FREE ; "shortcode_6"
+FI     ; 116117 ; 6      ; EXPANDED_EMERGENCY ; TOLL_FREE ; "shortcode_6" ;            ; "User report"
+FI     ; 116123 ; 6      ; EXPANDED_EMERGENCY ; TOLL_FREE ; "shortcode_6" ; GOVERNMENT
+FI     ; 75[12] ; 5      ; COMMERCIAL         ;           ; "shortcode_5"

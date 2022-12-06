@@ -1,0 +1,8 @@
+Region ; Type         ; Number
+MD     ; FIXED_LINE   ; "22212345"
+MD     ; MOBILE       ; "62112345"
+MD     ; TOLL_FREE    ; "80012345"
+MD     ; PREMIUM_RATE ; "90012345"
+MD     ; SHARED_COST  ; "80812345"
+MD     ; VOIP         ; "30123456"
+MD     ; UAN          ; "80312345"

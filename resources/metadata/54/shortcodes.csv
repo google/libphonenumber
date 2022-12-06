@@ -1,0 +1,15 @@
+Region ; Prefix   ; Length ; Type               ; Tariff    ; Sms  ; Carrier Specific ; Format
+AR     ; 000      ; 3      ; COMMERCIAL         ; TOLL_FREE ;      ;                  ; "shortcode_3"
+AR     ; 10[017]  ; 3      ; EMERGENCY          ; TOLL_FREE ;      ;                  ; "shortcode_3"
+AR     ; 102      ; 3      ; COMMERCIAL         ; TOLL_FREE ;      ;                  ; "shortcode_3"
+AR     ; 10[356]  ; 3      ; EXPANDED_EMERGENCY ; TOLL_FREE ;      ;                  ; "shortcode_3"
+AR     ; 11[0245] ; 3      ; COMMERCIAL         ; TOLL_FREE ;      ;                  ; "shortcode_3"
+AR     ; 113      ; 3      ; COMMERCIAL         ;           ;      ;                  ; "shortcode_3"
+AR     ; 120      ; 3      ; EXPANDED_EMERGENCY ; TOLL_FREE ;      ;                  ; "shortcode_3"
+AR     ; 12[15]   ; 3      ; COMMERCIAL         ; TOLL_FREE ;      ;                  ; "shortcode_3"
+AR     ; 13[47]   ; 3      ; EXPANDED_EMERGENCY ; TOLL_FREE ;      ;                  ; "shortcode_3"
+AR     ; 14[478]  ; 3      ; EXPANDED_EMERGENCY ; TOLL_FREE ;      ;                  ; "shortcode_3"
+AR     ; 19       ; 2      ; COMMERCIAL         ; TOLL_FREE
+AR     ; 3372     ; 4      ; COMMERCIAL         ;           ; true
+AR     ; 89338    ; 5      ; COMMERCIAL         ;           ; true ; true
+AR     ; 911      ; 3      ; EMERGENCY          ; TOLL_FREE ;      ;                  ; "shortcode_3"

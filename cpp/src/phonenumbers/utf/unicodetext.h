@@ -295,7 +295,8 @@ class UnicodeText {
   // the data is tested for interchange-validity. If it is not
   // interchange-valid, a LOG(WARNING) is issued, and each
   // structurally invalid byte and each interchange-invalid codepoint
-  // is replaced with a space.
+  // is replaced with a space. The `utf8_was_valid_` status is set
+  // appropriately and may be queried afterwards.
 
   // x.CopyUTF8(buf, len) copies buf into x.
   UnicodeText& CopyUTF8(const char* utf8_buffer, int byte_length);
@@ -311,6 +312,9 @@ class UnicodeText {
   // If the buffer is not valid, this has the same effect as
   // CopyUTF8(utf8_buffer, byte_length).
   UnicodeText& PointToUTF8(const char* utf8_buffer, int byte_length);
+
+  // Was this UnicodeText created from valid UTF-8?
+  bool UTF8WasValid() const { return repr_.utf8_was_valid_; }
 
   // Occasionally it is necessary to use functions that operate on the
   // pointer returned by utf8_data(). MakeIterator(p) provides a way
@@ -331,8 +335,9 @@ class UnicodeText {
     int size_;
     int capacity_;
     bool ours_;  // Do we own data_?
+    bool utf8_was_valid_; // Were we created from valid UTF-8?
 
-    Repr() : data_(NULL), size_(0), capacity_(0), ours_(true) {}
+    Repr() : data_(NULL), size_(0), capacity_(0), ours_(true), utf8_was_valid_(true) {}
     ~Repr() { if (ours_) delete[] data_; }
 
     void clear();
@@ -439,7 +444,7 @@ inline UnicodeText UTF8ToUnicodeText(const char* utf8_buf, int len,
 }
 
 inline UnicodeText UTF8ToUnicodeText(const string& utf_string, bool do_copy) {
-  return UTF8ToUnicodeText(utf_string.data(), utf_string.size(), do_copy);
+  return UTF8ToUnicodeText(utf_string.data(), static_cast<int>(utf_string.size()), do_copy);
 }
 
 inline UnicodeText UTF8ToUnicodeText(const char* utf8_buf, int len) {

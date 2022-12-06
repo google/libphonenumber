@@ -1,0 +1,278 @@
+Prefix          ; Length ; Type            ; Tariff        ; Operator                 ; Format               ; Timezone              ; Regions ; Geocode:en             ; Provenance ; Comment
+0[2-9]          ; 5      ; UAN             ; STANDARD_RATE ;                          ;                      ; "Europe/Oslo"         ; "NO,SJ"
+21[0-25-8]      ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fixed_line_2/2/2/2" ; "Europe/Oslo"         ; "NO"    ; "Oslo"                 ; GOVERNMENT
+213[01]         ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fixed_line_2/2/2/2" ; "Europe/Oslo"         ; "NO"
+213[2-9]        ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fixed_line_2/2/2/2" ; "Europe/Oslo"         ; "NO"    ; "Oslo"                 ; GOVERNMENT
+214[0235-9]     ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fixed_line_2/2/2/2" ; "Europe/Oslo"         ; "NO"    ; "Oslo"                 ; GOVERNMENT
+2141[0-35-9]    ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fixed_line_2/2/2/2" ; "Europe/Oslo"         ; "NO"    ; "Oslo"                 ; GOVERNMENT
+21414           ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fixed_line_2/2/2/2" ; "Europe/Oslo"         ; "NO"
+2144[0-8]       ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fixed_line_2/2/2/2" ; "Europe/Oslo"         ; "NO"    ; "Oslo"                 ; GOVERNMENT
+21449           ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fixed_line_2/2/2/2" ; "Europe/Oslo"         ; "NO"
+219[013-8]      ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fixed_line_2/2/2/2" ; "Europe/Oslo"         ; "NO"    ; "Oslo"                 ; GOVERNMENT
+2192            ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fixed_line_2/2/2/2" ; "Europe/Oslo"         ; "NO"
+2199[0-79]      ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fixed_line_2/2/2/2" ; "Europe/Oslo"         ; "NO"    ; "Oslo"                 ; GOVERNMENT
+21998           ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fixed_line_2/2/2/2" ; "Europe/Oslo"         ; "NO"
+22              ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fixed_line_2/2/2/2" ; "Europe/Oslo"         ; "NO"    ; "Oslo"                 ; GOVERNMENT
+23[0-579]       ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fixed_line_2/2/2/2" ; "Europe/Oslo"         ; "NO"    ; "Oslo"                 ; GOVERNMENT
+236[01346-9]    ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fixed_line_2/2/2/2" ; "Europe/Oslo"         ; "NO"    ; "Oslo"                 ; GOVERNMENT
+2362[0-8]       ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fixed_line_2/2/2/2" ; "Europe/Oslo"         ; "NO"    ; "Oslo"                 ; GOVERNMENT
+23629           ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fixed_line_2/2/2/2" ; "Europe/Oslo"         ; "NO"
+2365[02-57-9]   ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fixed_line_2/2/2/2" ; "Europe/Oslo"         ; "NO"    ; "Oslo"                 ; GOVERNMENT
+2365[16]        ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fixed_line_2/2/2/2" ; "Europe/Oslo"         ; "NO"
+238[0-8]        ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fixed_line_2/2/2/2" ; "Europe/Oslo"         ; "NO"    ; "Oslo"                 ; GOVERNMENT
+2389            ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fixed_line_2/2/2/2" ; "Europe/Oslo"         ; "NO"
+24[03-9]        ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fixed_line_2/2/2/2" ; "Europe/Oslo"         ; "NO"    ; "Oslo"                 ; GOVERNMENT
+241[0-8]        ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fixed_line_2/2/2/2" ; "Europe/Oslo"         ; "NO"    ; "Oslo"                 ; GOVERNMENT
+2419            ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fixed_line_2/2/2/2" ; "Europe/Oslo"         ; "NO"
+2420[02-9]      ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fixed_line_2/2/2/2" ; "Europe/Oslo"         ; "NO"    ; "Oslo"                 ; GOVERNMENT
+24201           ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fixed_line_2/2/2/2" ; "Europe/Oslo"         ; "NO"
+242[1-9]        ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fixed_line_2/2/2/2" ; "Europe/Oslo"         ; "NO"    ; "Oslo"                 ; GOVERNMENT
+3[12]           ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fixed_line_2/2/2/2" ; "Europe/Oslo"         ; "NO"    ; "Buskerud"             ; GOVERNMENT
+33              ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fixed_line_2/2/2/2" ; "Europe/Oslo"         ; "NO"    ; "Vestfold"             ; GOVERNMENT
+35              ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fixed_line_2/2/2/2" ; "Europe/Oslo"         ; "NO"    ; "Telemark"             ; GOVERNMENT
+37              ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fixed_line_2/2/2/2" ; "Europe/Oslo"         ; "NO"    ; "Aust-Agder"           ; GOVERNMENT
+38              ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fixed_line_2/2/2/2" ; "Europe/Oslo"         ; "NO"    ; "Vest-Agder"           ; GOVERNMENT
+40[01][01]      ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"                  ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ"
+400[23]         ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"                  ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+400[4-9]        ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+401[23]         ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; IR21       ; "IR21  01/02/2019"
+4014            ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"                  ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; IR21
+401[5-9]        ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+402[0134]       ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"                  ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+402[28]         ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ"
+40[23][5-7]     ; 8      ; MOBILE          ; STANDARD_RATE ; "sierra_wireless"        ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+4029            ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"                  ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ"
+403[03489]      ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"                  ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+403[12]         ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"                  ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ"
+40[45]          ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"                  ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+406[0-4]        ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"                  ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ"
+4065            ; 8      ; MOBILE          ; STANDARD_RATE ; "telia_telecom_solution" ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+4066            ; 8      ; MOBILE          ; STANDARD_RATE ;                          ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+4067            ; 8      ; MOBILE          ; STANDARD_RATE ; "nextgentel"             ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+406[89]         ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; IR21       ; "IR21  01/02/2019"
+407[0-689]      ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"                  ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+4077            ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"                  ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ"
+40[89][01]      ; 8      ; MOBILE          ; STANDARD_RATE ; "telia_telecom_solution" ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+40[89]2[0-4]    ; 8      ; MOBILE          ; STANDARD_RATE ; "telia_telecom_solution" ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+40[89]2[5-9]    ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; IR21       ; "IR21  01/02/2019"
+40[89]3         ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; IR21       ; "IR21  01/02/2019"
+408[4-689]      ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+4087            ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ"
+409[4-9]        ; 8      ; MOBILE          ; STANDARD_RATE ; "lyca_mobile"            ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+410[017]        ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"                  ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+410[23589]      ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; IR21       ; "IR21  01/02/2019"
+410[46]         ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"                  ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ"
+411[04]         ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"                  ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ"
+411[1-356]      ; 8      ; MOBILE          ; STANDARD_RATE ; "chilimobil"             ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+411[7-9]        ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"                  ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+41[23]          ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"                  ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ"
+41[4-7]         ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ"
+41[89]          ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; IR21       ; "IR21  01/02/2019"
+45[0167]        ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"                  ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+45[24]          ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"                  ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ"
+453[0-5]        ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; IR21       ; "IR21  01/02/2019"
+4536            ; 8      ; MOBILE          ; STANDARD_RATE ; "nkom"                   ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+453[78]         ; 8      ; MOBILE          ; STANDARD_RATE ; "erate"                  ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+4539            ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"                  ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ"
+455[019]        ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"                  ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ"
+455[2-8]        ; 8      ; MOBILE          ; STANDARD_RATE ; "lyca_mobile"            ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+4580            ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ"
+458[12589]      ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+458[347]        ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"                  ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+4586            ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"                  ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ"
+459[05689]      ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; IR21       ; "IR21  01/02/2019"
+459[1347]       ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"                  ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+4592            ; 8      ; MOBILE          ; STANDARD_RATE ; "lyca_mobile"            ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+460             ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; IR21       ; "IR21  01/02/2019"
+4610            ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; IR21       ; "IR21  01/02/2019"
+461[1-6]        ; 8      ; MOBILE          ; STANDARD_RATE ; "chilimobil"             ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+461[7-9]        ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+4620            ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+462[124-7]      ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"                  ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+4623            ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"                  ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ"
+462[89]         ; 8      ; MOBILE          ; STANDARD_RATE ; "erate"                  ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+463             ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"                  ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+464             ; 8      ; MOBILE          ; STANDARD_RATE ; "netcom"                 ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ"
+465[04]         ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"                  ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ"
+465[1-3]        ; 8      ; MOBILE          ; STANDARD_RATE ; "ice"                    ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+465[5-9]        ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"                  ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+466[0-3]        ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"                  ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ"
+466[4589]       ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"                  ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+4666            ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ"
+4667            ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+467[045]        ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"                  ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ"
+467[12]         ; 8      ; MOBILE          ; STANDARD_RATE ; "lyca_mobile"            ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+4673            ; 8      ; MOBILE          ; STANDARD_RATE ;                          ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+467[6-9]        ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"                  ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+468             ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ"
+469[0-6]        ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ"
+4697            ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"                  ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; IR21       ; "IR21  02/28/2019"
+4698            ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; IR21       ; "IR21  01/02/2019"
+4699            ; 8      ; MOBILE          ; STANDARD_RATE ;                          ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+470             ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; IR21       ; "IR21  01/02/2019"
+471[0-2]        ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; IR21       ; "IR21  01/02/2019"
+471[3-7]        ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"                  ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+471[89]         ; 8      ; MOBILE          ; STANDARD_RATE ; "chilimobil"             ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+472             ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"                  ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+473             ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"                  ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ"
+47[49]0         ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ"
+474[1-3]        ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; IR21       ; "IR21  01/02/2019"
+4744            ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"                  ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ"
+474[5-9]        ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"                  ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+475[01]         ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+475[2-9]        ; 8      ; MOBILE          ; STANDARD_RATE ; "altibox"                ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+476[0-8]        ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ"
+4769            ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"                  ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+477[0156]       ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ"
+477[2-47-9]     ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"                  ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+478             ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ"
+479[1-3]        ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"                  ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ"
+479[4-7]        ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"                  ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+479[89]         ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+48[0-2]         ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ"
+483[0-2]        ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ"
+483[3-6]        ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"                  ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+48[39]7         ; 8      ; MOBILE          ; STANDARD_RATE ;                          ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+483[89]         ; 8      ; MOBILE          ; STANDARD_RATE ; "ice"                    ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+484[03-7]       ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"                  ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+4841            ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; IR21       ; "IR21  01/02/2019"
+4842            ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+484[89]         ; 8      ; MOBILE          ; STANDARD_RATE ; "erate"                  ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+4850            ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"                  ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+4851            ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"                  ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; IR21
+485[2-7]        ; 8      ; MOBILE          ; STANDARD_RATE ;                          ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+4858            ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; IR21       ; "IR21  01/02/2019"
+4859            ; 8      ; MOBILE          ; STANDARD_RATE ; "erate"                  ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+486[0-8]        ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"                  ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+4869            ; 8      ; MOBILE          ; STANDARD_RATE ;                          ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+487             ; 8      ; MOBILE          ; STANDARD_RATE ;                          ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+488[0-37]       ; 8      ; MOBILE          ; STANDARD_RATE ;                          ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+488[45]         ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; IR21       ; "IR21  01/02/2019"
+488[689]        ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"                  ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+489[0-2]        ; 8      ; MOBILE          ; STANDARD_RATE ; "ice"                    ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; IR21
+489[359]        ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"                  ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+4894            ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+489[68]         ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; IR21       ; "IR21  01/02/2019"
+5[12]           ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fixed_line_2/2/2/2" ; "Europe/Oslo"         ; "NO"    ; "Rogaland"             ; GOVERNMENT
+5[356]          ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fixed_line_2/2/2/2" ; "Europe/Oslo"         ; "NO"    ; "Hordaland"            ; GOVERNMENT
+57              ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fixed_line_2/2/2/2" ; "Europe/Oslo"         ; "NO"    ; "Sogn og Fjordane"     ; GOVERNMENT
+59[02-57-9]     ; 8      ; MOBILE          ; STANDARD_RATE ;                          ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ"
+591             ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ"
+596             ; 8      ; MOBILE          ; STANDARD_RATE ; "ice"                    ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; IR21
+61              ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fixed_line_2/2/2/2" ; "Europe/Oslo"         ; "NO"    ; "Oppland"              ; GOVERNMENT
+62              ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fixed_line_2/2/2/2" ; "Europe/Oslo"         ; "NO"    ; "Hedmark"              ; GOVERNMENT
+6[3467]         ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fixed_line_2/2/2/2" ; "Europe/Oslo"         ; "NO"    ; "Akershus"             ; GOVERNMENT
+69              ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fixed_line_2/2/2/2" ; "Europe/Oslo"         ; "NO"    ; "Østfold"              ; GOVERNMENT
+7[01]           ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fixed_line_2/2/2/2" ; "Europe/Oslo"         ; "NO"    ; "Møre og Romsdal"      ; GOVERNMENT
+7[23]           ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fixed_line_2/2/2/2" ; "Europe/Oslo"         ; "NO"    ; "Sør-Trøndelag"        ; GOVERNMENT
+74              ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fixed_line_2/2/2/2" ; "Europe/Oslo"         ; "NO"    ; "Nord-Trøndelag"       ; GOVERNMENT
+7[56]           ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fixed_line_2/2/2/2" ; "Europe/Oslo"         ; "NO"    ; "Nordland"             ; GOVERNMENT
+77              ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fixed_line_2/2/2/2" ; "Europe/Oslo"         ; "NO"    ; "Troms"                ; GOVERNMENT
+78              ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fixed_line_2/2/2/2" ; "Europe/Oslo"         ; "NO"    ; "Finnmark"             ; GOVERNMENT
+79              ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fixed_line_2/2/2/2" ; "Arctic/Longyearbyen" ; "SJ"    ; "Svalbard & Jan Mayen" ; GOVERNMENT
+80[01]          ; 8      ; FIXED_LINE      ; TOLL_FREE     ;                          ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+8100[0-6]       ; 8      ; FIXED_LINE      ; SHARED_COST   ;                          ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+8100[7-9]       ; 8      ; UAN             ; STANDARD_RATE ;                          ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ"
+8101            ; 8      ; UAN             ; STANDARD_RATE ;                          ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+810[2-8]        ; 8      ; FIXED_LINE      ; SHARED_COST   ;                          ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+81[23]          ; 8      ; VOICEMAIL       ; STANDARD_RATE ;                          ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ"
+815             ; 8      ; UAN             ; STANDARD_RATE ;                          ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+82[09]          ; 8      ; FIXED_LINE      ; PREMIUM_RATE  ;                          ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+85[0-5]         ; 8      ; VOIP            ; STANDARD_RATE ;                          ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+880             ; 8      ; PERSONAL_NUMBER ; STANDARD_RATE ;                          ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+90[0-25-9]      ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+903             ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; IR21       ; "IR21  01/02/2019"
+904[017]        ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+904[2-4]        ; 8      ; MOBILE          ; STANDARD_RATE ; "svea_billing_services"  ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+904[56]         ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; IR21       ; "IR21  01/02/2019"
+904[89]         ; 8      ; MOBILE          ; STANDARD_RATE ; "telavox"                ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+91[049]         ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; IR21       ; "IR21  01/02/2019"
+91[135-8]       ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+912[0-3]        ; 8      ; MOBILE          ; STANDARD_RATE ; "chilimobil"             ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+9124            ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+912[5-9]        ; 8      ; MOBILE          ; STANDARD_RATE ; "lyca_mobile"            ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+920             ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"                  ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ"
+92[15][0-7]     ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"                  ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+92[15][89]      ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; IR21       ; "IR21  01/02/2019"
+92[2468]        ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"                  ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+923[0-57]       ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"                  ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+923[689]        ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; IR21       ; "IR21  01/02/2019"
+927[0-689]      ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; IR21       ; "IR21  01/02/2019"
+9277            ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"                  ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+929[0-6]        ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; IR21       ; "IR21  01/02/2019"
+929[7-9]        ; 8      ; MOBILE          ; STANDARD_RATE ; "ice"                    ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; IR21
+93[02468]       ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"                  ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ"
+93[1357][0-689] ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; IR21       ; "IR21  01/02/2019"
+9317            ; 8      ; MOBILE          ; STANDARD_RATE ;                          ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+93[357]7        ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"                  ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ"
+9390            ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; IR21       ; "IR21  01/02/2019"
+9391            ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"                  ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ"
+939[2-9]        ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"                  ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+94[01][0-2]     ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"                  ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+940[35]         ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ"
+9404            ; 8      ; MOBILE          ; STANDARD_RATE ; "com4"                   ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+940[6-9]        ; 8      ; MOBILE          ; STANDARD_RATE ; "ice"                    ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; IR21
+941[3-9]        ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ"
+942             ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"                  ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+943             ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; IR21       ; "IR21  01/02/2019"
+944[01]         ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; IR21       ; "IR21  01/02/2019"
+944[237-9]      ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"                  ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+944[4-6]        ; 8      ; MOBILE          ; STANDARD_RATE ; "ice"                    ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; IR21
+945[0-4]        ; 8      ; MOBILE          ; STANDARD_RATE ; "telia_telecom_solution" ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+945[5-9]        ; 8      ; MOBILE          ; STANDARD_RATE ;                          ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+946             ; 8      ; MOBILE          ; STANDARD_RATE ;                          ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ"
+9470            ; 8      ; MOBILE          ; STANDARD_RATE ;                          ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ"
+947[1-3]        ; 8      ; MOBILE          ; STANDARD_RATE ; "lyca_mobile"            ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+947[4-9]        ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ"
+948             ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ"
+949[078]        ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+949[1-6]        ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; IR21       ; "IR21  01/02/2019"
+9499            ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"                  ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+95[0-247-9]     ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ"
+95[356]         ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; IR21       ; "IR21  01/02/2019"
+9600            ; 8      ; MOBILE          ; STANDARD_RATE ; "phonect"                ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+960[149]        ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ"
+960[235-8]      ; 8      ; MOBILE          ; STANDARD_RATE ;                          ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ"
+96[125]         ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; IR21       ; "IR21  01/02/2019"
+96[34]          ; 8      ; MOBILE          ; STANDARD_RATE ;                          ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ"
+966[0-4]        ; 8      ; MOBILE          ; STANDARD_RATE ; "erate"                  ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+966[5-9]        ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"                  ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+967[0-5]        ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"                  ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+967[6-8]        ; 8      ; MOBILE          ; STANDARD_RATE ;                          ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+96[78]9         ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; IR21       ; "IR21  01/02/2019"
+968[0-8]        ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"                  ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+969[0-2]        ; 8      ; MOBILE          ; STANDARD_RATE ; "erate"                  ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+9693            ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; IR21       ; "IR21  01/02/2019"
+9694            ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"                  ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+969[5-9]        ; 8      ; MOBILE          ; STANDARD_RATE ; "lyca_mobile"            ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+97[015-7]       ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ"
+97[24]          ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; IR21       ; "IR21  01/02/2019"
+973[0-4]        ; 8      ; MOBILE          ; STANDARD_RATE ; "ice"                    ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; IR21
+973[5-9]        ; 8      ; MOBILE          ; STANDARD_RATE ; "lyca_mobile"            ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+978             ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"                  ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+979[0-4]        ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"                  ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+979[5-9]        ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ"
+98[02468]       ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"                  ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ"
+981             ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"                  ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+983[0-6]        ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"                  ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+9837            ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"                  ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ"
+983[89]         ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; IR21       ; "IR21  01/02/2019"
+985[0-35-9]     ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; IR21       ; "IR21  01/02/2019"
+9854            ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"                  ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ"
+9870            ; 8      ; MOBILE          ; STANDARD_RATE ; "kvantel"                ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+987[1-589]      ; 8      ; MOBILE          ; STANDARD_RATE ;                          ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+9876            ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"                  ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ"
+9877            ; 8      ; MOBILE          ; STANDARD_RATE ; "chilimobil"             ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+9890            ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"                  ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+989[1-8]        ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; IR21       ; "IR21  01/02/2019"
+9899            ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"                  ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ"
+990[0-6]        ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; IR21       ; "IR21  01/02/2019"
+9907            ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+990[89]         ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"                  ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+991             ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; IR21       ; "IR21  01/02/2019"
+99[2-57]        ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ"
+996[0-69]       ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; IR21       ; "IR21  01/02/2019"
+996[78]         ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"                  ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+998[0-4]        ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; IR21       ; "IR21  01/02/2019"
+998[5-9]        ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"                  ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+999             ; 8      ; MOBILE          ; STANDARD_RATE ;                          ; "non_geo_3/2/3"      ; "Europe/Oslo"         ; "NO,SJ"

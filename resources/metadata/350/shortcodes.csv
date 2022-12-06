@@ -1,0 +1,25 @@
+Region ; Prefix    ; Length ; Type               ; Tariff        ; Carrier Specific
+GI     ; 100       ; 3      ; COMMERCIAL         ; TOLL_FREE     ; true
+GI     ; 112       ; 3      ; EMERGENCY          ; TOLL_FREE
+GI     ; 115       ; 3      ; COMMERCIAL         ; TOLL_FREE     ; true
+GI     ; 11600[06] ; 6      ; EXPANDED_EMERGENCY ; TOLL_FREE
+GI     ; 11611[17] ; 6      ; EXPANDED_EMERGENCY ; TOLL_FREE
+GI     ; 116123    ; 6      ; EXPANDED_EMERGENCY ; TOLL_FREE
+GI     ; 118       ; 5      ; COMMERCIAL         ;               ; true
+GI     ; 123       ; 3      ; COMMERCIAL         ; TOLL_FREE     ; true
+GI     ; 141       ; 3      ; COMMERCIAL         ; TOLL_FREE
+GI     ; 147[014]  ; 4      ; COMMERCIAL         ; TOLL_FREE
+GI     ; 150       ; 3      ; COMMERCIAL         ; STANDARD_RATE
+GI     ; 151       ; 3      ; COMMERCIAL         ; TOLL_FREE     ; true
+GI     ; 155       ; 3      ; COMMERCIAL         ; TOLL_FREE
+GI     ; 19[09]    ; 3      ; EMERGENCY          ; TOLL_FREE
+GI     ; 19[2-4]   ; 3      ; COMMERCIAL         ; TOLL_FREE     ; true
+GI     ; 555       ; 3      ; COMMERCIAL         ; TOLL_FREE     ; true
+GI     ; 800       ; 3      ; COMMERCIAL         ;               ; true
+GI     ; 800[0-79] ; 4      ; COMMERCIAL         ; TOLL_FREE
+GI     ; 8008      ; 4      ; EXPANDED_EMERGENCY ; TOLL_FREE
+GI     ; 80[1-9]   ; 4      ; COMMERCIAL         ; TOLL_FREE
+GI     ; 8[1-69]   ; 4      ; COMMERCIAL         ; PREMIUM_RATE
+GI     ; 84[0-2]   ; 3      ; COMMERCIAL         ;               ; true
+GI     ; 87        ; 4      ; COMMERCIAL         ; STANDARD_RATE
+GI     ; 88[0-589] ; 3      ; COMMERCIAL         ;               ; true

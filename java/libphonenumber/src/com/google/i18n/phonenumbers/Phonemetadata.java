@@ -102,7 +102,9 @@ public final class Phonemetadata {
     public java.util.List<String> leadingDigitPatterns() {
       return leadingDigitsPattern_;
     }
-    public int leadingDigitsPatternSize() { return leadingDigitsPattern_.size(); }
+    @Deprecated
+    public int leadingDigitsPatternSize() { return getLeadingDigitsPatternCount(); }
+    public int getLeadingDigitsPatternCount() { return leadingDigitsPattern_.size(); }
     public String getLeadingDigitsPattern(int index) {
       return leadingDigitsPattern_.get(index);
     }
@@ -361,6 +363,16 @@ public final class Phonemetadata {
       public PhoneMetadata build() {
         return this;
       }
+
+      public Builder setId(String value) {
+        super.setId(value);
+        return this;
+      }
+
+      public Builder setInternationalPrefix(String value) {
+        super.setInternationalPrefix(value);
+        return this;
+      }
     }
     public static Builder newBuilder() {
       return new Builder();
@@ -371,6 +383,12 @@ public final class Phonemetadata {
     private PhoneNumberDesc generalDesc_ = null;
     public boolean hasGeneralDesc() { return hasGeneralDesc; }
     public PhoneNumberDesc getGeneralDesc() { return generalDesc_; }
+    public PhoneNumberDesc getGeneralDescBuilder() {
+      if (generalDesc_ == null) {
+        generalDesc_ = new PhoneNumberDesc();
+      }
+      return generalDesc_ ;
+    }
     public PhoneMetadata setGeneralDesc(PhoneNumberDesc value) {
       if (value == null) {
         throw new NullPointerException();
@@ -730,10 +748,16 @@ public final class Phonemetadata {
 
     // repeated NumberFormat number_format = 19;
     private java.util.List<NumberFormat> numberFormat_ = new java.util.ArrayList<NumberFormat>();
+    @Deprecated
     public java.util.List<NumberFormat> numberFormats() {
+      return getNumberFormatList();
+    }
+    public java.util.List<NumberFormat> getNumberFormatList() {
       return numberFormat_;
     }
-    public int numberFormatSize() { return numberFormat_.size(); }
+    @Deprecated
+    public int numberFormatSize() { return getNumberFormatCount(); }
+    public int getNumberFormatCount() { return numberFormat_.size(); }
     public NumberFormat getNumberFormat(int index) {
       return numberFormat_.get(index);
     }
@@ -748,10 +772,16 @@ public final class Phonemetadata {
     // repeated NumberFormat intl_number_format = 20;
     private java.util.List<NumberFormat> intlNumberFormat_ =
         new java.util.ArrayList<NumberFormat>();
+    @Deprecated
     public java.util.List<NumberFormat> intlNumberFormats() {
+      return getIntlNumberFormatList();
+    }
+    public java.util.List<NumberFormat> getIntlNumberFormatList() {
       return intlNumberFormat_;
     }
-    public int intlNumberFormatSize() { return intlNumberFormat_.size(); }
+    @Deprecated
+    public int intlNumberFormatSize() { return getIntlNumberFormatCount(); }
+    public int getIntlNumberFormatCount() { return intlNumberFormat_.size(); }
     public NumberFormat getIntlNumberFormat(int index) {
       return intlNumberFormat_.get(index);
     }
@@ -798,27 +828,13 @@ public final class Phonemetadata {
       return this;
     }
 
-    // optional bool leading_zero_possible = 26 [default = false];
-    private boolean hasLeadingZeroPossible;
-    private boolean leadingZeroPossible_ = false;
-    public boolean hasLeadingZeroPossible() { return hasLeadingZeroPossible; }
-    public boolean isLeadingZeroPossible() { return leadingZeroPossible_; }
-    public PhoneMetadata setLeadingZeroPossible(boolean value) {
-      hasLeadingZeroPossible = true;
-      leadingZeroPossible_ = value;
-      return this;
-    }
-    public PhoneMetadata clearLeadingZeroPossible() {
-      hasLeadingZeroPossible = false;
-      leadingZeroPossible_ = false;
-      return this;
-    }
-
     // optional bool mobile_number_portable_region = 32 [default = false];
     private boolean hasMobileNumberPortableRegion;
     private boolean mobileNumberPortableRegion_ = false;
     public boolean hasMobileNumberPortableRegion() { return hasMobileNumberPortableRegion; }
-    public boolean isMobileNumberPortableRegion() { return mobileNumberPortableRegion_; }
+    @Deprecated
+    public boolean isMobileNumberPortableRegion() { return getMobileNumberPortableRegion(); }
+    public boolean getMobileNumberPortableRegion() { return mobileNumberPortableRegion_; }
     public PhoneMetadata setMobileNumberPortableRegion(boolean value) {
       hasMobileNumberPortableRegion = true;
       mobileNumberPortableRegion_ = value;
@@ -949,8 +965,6 @@ public final class Phonemetadata {
       if (hasLeadingDigits) {
         objectOutput.writeUTF(leadingDigits_);
       }
-
-      objectOutput.writeBoolean(leadingZeroPossible_);
 
       objectOutput.writeBoolean(mobileNumberPortableRegion_);
     }
@@ -1110,8 +1124,6 @@ public final class Phonemetadata {
       if (hasString) {
         setLeadingDigits(objectInput.readUTF());
       }
-
-      setLeadingZeroPossible(objectInput.readBoolean());
 
       setMobileNumberPortableRegion(objectInput.readBoolean());
     }

@@ -1,0 +1,7 @@
+Region ; Type         ; Number
+AM     ; FIXED_LINE   ; "10123456"
+AM     ; MOBILE       ; "77123456"
+AM     ; TOLL_FREE    ; "80012345"
+AM     ; PREMIUM_RATE ; "90012345"
+AM     ; SHARED_COST  ; "80112345"
+AM     ; VOIP         ; "60271234"

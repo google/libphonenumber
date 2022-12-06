@@ -1,0 +1,4 @@
+Region ; Label          ; Comment
+CU     ; SC             ; "www.itu.int/oth/T0202000033/en"
+CU     ; XML            ; "http://www.itu.int/oth/T0202000033/en"
+CU     ; XML_FIXED_LINE ; "Based on one of the data sources, 80[25] and 878 ranges are fixed-line as per\nGovernment docs, though no other references are found."

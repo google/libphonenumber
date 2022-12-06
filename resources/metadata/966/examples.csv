@@ -1,0 +1,7 @@
+Region ; Type         ; Number
+SA     ; FIXED_LINE   ; "112345678"
+SA     ; MOBILE       ; "512345678"
+SA     ; TOLL_FREE    ; "8001234567"
+SA     ; PREMIUM_RATE ; "925012345"
+SA     ; SHARED_COST  ; "920012345"
+SA     ; UAN          ; "8110123456"

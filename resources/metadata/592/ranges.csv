@@ -1,0 +1,82 @@
+Prefix   ; Length ; Type       ; Tariff        ; Operator         ; Format     ; Regions ; Geocode:en                                      ; Provenance ; Comment
+216      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                  ; "fmt1_3/4" ; "GY"    ; "Diamond/Grove"                                 ; ITU
+217      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                  ; "fmt1_3/4" ; "GY"    ; "Mocha"                                         ; ITU
+218      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                  ; "fmt1_3/4" ; "GY"    ; "Georgetown (S/R/Veldt)"                        ; ITU
+219      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                  ; "fmt1_3/4" ; "GY"    ; "Georgetown,Sophia"                             ; ITU
+220      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                  ; "fmt1_3/4" ; "GY"    ; "B/V Central"                                   ; ITU
+221      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                  ; "fmt1_3/4" ; "GY"    ; "Mahaicony"                                     ; ITU
+2[27]2   ; 7      ; FIXED_LINE ; STANDARD_RATE ;                  ; "fmt1_3/4" ; "GY"    ; "B/V West"                                      ; ITU
+22[35-7] ; 7      ; FIXED_LINE ; STANDARD_RATE ;                  ; "fmt1_3/4" ; "GY"    ; "Georgetown"                                    ; ITU
+228      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                  ; "fmt1_3/4" ; "GY"    ; "Mahaica/Belmont"                               ; ITU
+229      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                  ; "fmt1_3/4" ; "GY"    ; "Enterprise/Cove & John"                        ; ITU
+231      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                  ; "fmt1_3/4" ; "GY"    ; "Georgetown"                                    ; ITU
+232      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                  ; "fmt1_3/4" ; "GY"    ; "Novar/Catherine/Belladrum/Bush Lot"            ; ITU
+233      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                  ; "fmt1_3/4" ; "GY"    ; "Agricola/Houston/Eccles/Nandy Park"            ; ITU
+234      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                  ; "fmt1_3/4" ; "GY"    ; "B/V Central"                                   ; ITU
+253      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                  ; "fmt1_3/4" ; "GY"    ; "La Grange/Goed Fortuin"                        ; ITU
+254      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                  ; "fmt1_3/4" ; "GY"    ; "New Road/Best"                                 ; ITU
+255      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                  ; "fmt1_3/4" ; "GY"    ; "Paradise/Golden Grove/Haslington"              ; ITU
+256      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                  ; "fmt1_3/4" ; "GY"    ; "Victoria/Hope West"                            ; ITU
+257      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                  ; "fmt1_3/4" ; "GY"    ; "Cane Grove/Strangroen"                         ; ITU
+258      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                  ; "fmt1_3/4" ; "GY"    ; "Planters Hall/Mortice"                         ; ITU
+259      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                  ; "fmt1_3/4" ; "GY"    ; "Clonbrook/Unity"                               ; ITU
+260      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                  ; "fmt1_3/4" ; "GY"    ; "Tuschen/Parika"                                ; ITU
+261      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                  ; "fmt1_3/4" ; "GY"    ; "Timehri/Long Creek/Soesdyke"                   ; ITU
+262      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                  ; "fmt1_3/4" ; "GY"    ; "Parika"                                        ; ITU
+263      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                  ; "fmt1_3/4" ; "GY"
+264      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                  ; "fmt1_3/4" ; "GY"    ; "Vreed-en-Hoop"                                 ; ITU
+265      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                  ; "fmt1_3/4" ; "GY"    ; "Diamond"                                       ; ITU
+266      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                  ; "fmt1_3/4" ; "GY"    ; "New Hope/Friendship/Grove/Land of Canaan"      ; ITU
+267      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                  ; "fmt1_3/4" ; "GY"    ; "Wales"                                         ; ITU
+268      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                  ; "fmt1_3/4" ; "GY"    ; "Leonora"                                       ; ITU
+269      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                  ; "fmt1_3/4" ; "GY"    ; "Windsor Forest"                                ; ITU
+270      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                  ; "fmt1_3/4" ; "GY"    ; "Melanie/Non Pariel/Enmore"                     ; ITU
+271      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                  ; "fmt1_3/4" ; "GY"    ; "Canal No. 1/Canal No. 2"                       ; ITU
+274      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                  ; "fmt1_3/4" ; "GY"    ; "Vigilance"                                     ; ITU
+275      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                  ; "fmt1_3/4" ; "GY"    ; "Met-en-Meer-Zorg"                              ; ITU
+276      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                  ; "fmt1_3/4" ; "GY"    ; "Anna Catherina/ Cornelia Ida/Hague/Fellowship" ; ITU
+277      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                  ; "fmt1_3/4" ; "GY"    ; "Zeeburg/Uitvlugt"                              ; ITU
+279      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                  ; "fmt1_3/4" ; "GY"    ; "Good Hope/Stanleytown"                         ; ITU
+289      ; 7      ; FIXED_LINE ; TOLL_FREE     ;                  ; "fmt1_3/4" ; "GY"    ;                                                 ; ITU
+322      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                  ; "fmt1_3/4" ; "GY"    ; "Kilcoy/Hampshire/Nigg"                         ; ITU
+325      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                  ; "fmt1_3/4" ; "GY"    ; "Mibikuri/No: 34/Joppa/Brighton"                ; ITU
+326      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                  ; "fmt1_3/4" ; "GY"    ; "Adelphi/Fryish/No. 40"                         ; ITU
+327      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                  ; "fmt1_3/4" ; "GY"    ; "Blairmont/Cumberland"                          ; ITU
+328      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                  ; "fmt1_3/4" ; "GY"    ; "Cottage/Tempe/Onverwagt/Bath/Waterloo"         ; ITU
+329      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                  ; "fmt1_3/4" ; "GY"    ; "Willemstad/Fort Wellington/Ithaca"             ; ITU
+330      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                  ; "fmt1_3/4" ; "GY"    ; "Rosignol/Shieldstown"                          ; ITU
+331      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                  ; "fmt1_3/4" ; "GY"    ; "Adventure/Joanna"                              ; ITU
+332      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                  ; "fmt1_3/4" ; "GY"    ; "Sheet Anchor/Susannah"                         ; ITU
+33[34]   ; 7      ; FIXED_LINE ; STANDARD_RATE ;                  ; "fmt1_3/4" ; "GY"    ; "New Amsterdam"                                 ; ITU
+335      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                  ; "fmt1_3/4" ; "GY"    ; "Crabwood Creek/No: 76/Corentyne"               ; ITU
+336      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                  ; "fmt1_3/4" ; "GY"    ; "Edinburg/Port Mourant"                         ; ITU
+337      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                  ; "fmt1_3/4" ; "GY"    ; "Whim/Bloomfield/Liverpool/Rose Hall"           ; ITU
+338      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                  ; "fmt1_3/4" ; "GY"    ; "Benab/No. 65 Village/Massiah"                  ; ITU
+339      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                  ; "fmt1_3/4" ; "GY"    ; "No: 52/Skeldon"                                ; ITU
+440      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                  ; "fmt1_3/4" ; "GY"    ; "Kwakwani"                                      ; ITU
+441      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                  ; "fmt1_3/4" ; "GY"    ; "Ituni"                                         ; ITU
+442      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                  ; "fmt1_3/4" ; "GY"    ; "Christianburg/Amelia’s Ward"                   ; ITU
+444      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                  ; "fmt1_3/4" ; "GY"    ; "Linden/Canvas City/Wisroc"                     ; ITU
+455      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                  ; "fmt1_3/4" ; "GY"    ; "Bartica"                                       ; ITU
+456      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                  ; "fmt1_3/4" ; "GY"    ; "Mahdia"                                        ; ITU
+60[0-48] ; 7      ; MOBILE     ; STANDARD_RATE ; "digicel_guyana" ; "fmt1_3/4" ; "GY"    ;                                                 ; IR21
+60[5-7]  ; 7      ; MOBILE     ; STANDARD_RATE ;                  ; "fmt1_3/4" ; "GY"    ;                                                 ;            ; "FILLUP THE MASTER RANGE"
+609      ; 7      ; MOBILE     ; STANDARD_RATE ; "gt&t"           ; "fmt1_3/4" ; "GY"    ;                                                 ; IR21
+6[124]   ; 7      ; MOBILE     ; STANDARD_RATE ; "gt&t"           ; "fmt1_3/4" ; "GY"    ;                                                 ; IR21
+630      ; 7      ; MOBILE     ; STANDARD_RATE ; "digicel_guyana" ; "fmt1_3/4" ; "GY"    ;                                                 ; IR21
+63[135]  ; 7      ; MOBILE     ; STANDARD_RATE ;                  ; "fmt1_3/4" ; "GY"    ;                                                 ;            ; "FILLUP THE MASTER RANGE"
+63[267]  ; 7      ; MOBILE     ; STANDARD_RATE ; "digicel_guyana" ; "fmt1_3/4" ; "GY"
+634      ; 7      ; MOBILE     ; STANDARD_RATE ;                  ; "fmt1_3/4" ; "GY"    ;                                                 ; IR21
+63[89]   ; 7      ; MOBILE     ; STANDARD_RATE ; "gt&t"           ; "fmt1_3/4" ; "GY"    ;                                                 ; IR21
+65[0-8]  ; 7      ; MOBILE     ; STANDARD_RATE ; "gt&t"           ; "fmt1_3/4" ; "GY"    ;                                                 ; IR21
+659      ; 7      ; MOBILE     ; STANDARD_RATE ; "digicel_guyana" ; "fmt1_3/4" ; "GY"    ;                                                 ; IR21
+6[6-9]   ; 7      ; MOBILE     ; STANDARD_RATE ; "digicel_guyana" ; "fmt1_3/4" ; "GY"    ;                                                 ; IR21
+70[01]   ; 7      ; MOBILE     ; STANDARD_RATE ; "digicel_guyana" ; "fmt1_3/4" ; "GY"    ;                                                 ; IR21
+70[5-7]  ; 7      ; MOBILE     ; STANDARD_RATE ;                  ; "fmt1_3/4" ; "GY"    ;                                                 ; IR21
+77[14]   ; 7      ; FIXED_LINE ; STANDARD_RATE ;                  ; "fmt1_3/4" ; "GY"
+772      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                  ; "fmt1_3/4" ; "GY"    ; "Lethem"                                        ; ITU
+773      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                  ; "fmt1_3/4" ; "GY"    ; "Aishalton"                                     ; ITU
+775      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                  ; "fmt1_3/4" ; "GY"    ; "Matthews Ridge"                                ; ITU
+777      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                  ; "fmt1_3/4" ; "GY"    ; "Mabaruma/Port Kaituma"                         ; ITU
+862      ; 7      ; FIXED_LINE ; TOLL_FREE     ;                  ; "fmt1_3/4" ; "GY"    ;                                                 ; ITU
+9008     ; 7      ; FIXED_LINE ; PREMIUM_RATE  ;                  ; "fmt1_3/4" ; "GY"

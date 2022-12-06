@@ -181,8 +181,10 @@ message PhoneMetadata {
   // matching the international prefixes will be stored in this field.
   optional string international_prefix = 11;
 
-  // If more than one international prefix is present, a preferred prefix can
-  // be specified here for out-of-country formatting purposes. If this field is
+  // If the international prefix that we want to use when formatting the number
+  // for out-of-country dialling contains non-digit symbols, or there is more
+  // than one international prefix is present, a preferred prefix can be
+  // specified here for out-of-country formatting purposes. If this field is
   // not present, and multiple international prefixes are present, then "+"
   // will be used instead.
   optional string preferred_international_prefix = 17;
@@ -283,15 +285,14 @@ message PhoneMetadata {
   // should not overlap.
   optional string leading_digits = 23;
 
-  // Deprecated: do not use. Will be deletd when there are no references to this
-  // later.
-  optional bool leading_zero_possible = 26 [default=false];
-
   // This field is set when this country has implemented mobile number
   // portability. This means that transferring mobile numbers between carriers
   // is allowed. A consequence of this is that phone prefix to carrier mapping
   // is less reliable.
   optional bool mobile_number_portable_region = 32 [default=false];
+
+  reserved 26;
+  reserved "leading_zero_possible";
 }
 
 message PhoneMetadataCollection {

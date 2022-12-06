@@ -1,0 +1,7 @@
+Region ; Type            ; Number
+PE     ; FIXED_LINE      ; "11234567"
+PE     ; MOBILE          ; "912345678"
+PE     ; TOLL_FREE       ; "80012345"
+PE     ; PREMIUM_RATE    ; "80512345"
+PE     ; SHARED_COST     ; "80112345"
+PE     ; PERSONAL_NUMBER ; "80212345"

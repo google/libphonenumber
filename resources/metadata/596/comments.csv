@@ -1,0 +1,9 @@
+Region ; Label         ; Comment
+MQ     ; SC            ; "http://www.itu.int/oth/T0202000086/en"
+MQ     ; SC            ; "http://www.arcep.fr/index.php?id=2137&bloc=0596&CMD=RESULTS_NUMEROTATION"
+MQ     ; SC_EMERGENCY  ; "http://www.martinique.franceantilles.fr/pratique/urgences/"
+MQ     ; XML           ; "The 876 prefix is mentioned in the plan, but the plan is from 2006 and in France VOIP\nnumbers were changed from 087 to the 09 prefix in 2009. It is likely this occurred here\ntoo."
+MQ     ; XML           ; "http://www.itu.int/oth/T0202000086/en"
+MQ     ; XML           ; "http://www.arcep.fr/index.php?id=2137&bloc=0596&CMD=RESULTS_NUMEROTATION"
+MQ     ; XML_MOBILE    ; "Ranges are updated based on below official page. Search using prefix 0696X. Ex: 06965\nhttp://www.arcep.fr/index.php?id=2137&amp;bloc=0596&amp;CMD=RESULTS_NUMEROTATION"
+MQ     ; XML_TOLL_FREE ; "As per ARCEP, mainland France and overseas territories use 0800 to 0805 as Toll-free\nnumbers."

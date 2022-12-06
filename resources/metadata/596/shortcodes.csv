@@ -1,0 +1,3 @@
+Region ; Prefix ; Length ; Type      ; Tariff
+MQ     ; 112    ; 3      ; EMERGENCY ; TOLL_FREE
+MQ     ; 1[578] ; 2      ; EMERGENCY ; TOLL_FREE

@@ -1,0 +1,7 @@
+Region ; Type         ; Number
+SN     ; FIXED_LINE   ; "301012345"
+SN     ; MOBILE       ; "701234567"
+SN     ; TOLL_FREE    ; "800123456"
+SN     ; PREMIUM_RATE ; "884123456"
+SN     ; SHARED_COST  ; "810123456"
+SN     ; VOIP         ; "933301234"

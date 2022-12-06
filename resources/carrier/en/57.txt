@@ -22,9 +22,7 @@
 573006|Tigo
 573007|Tigo
 573008|Tigo
-5730091|Tigo
-5730092|Tigo
-5730093|Tigo
+573009|Tigo
 573012|Tigo
 573013|Tigo
 573014|Tigo
@@ -33,13 +31,20 @@
 573017|Tigo
 573022|Tigo
 573023|Tigo
-5730240|Tigo
-5730241|Tigo
-5730242|Tigo
-5730243|Tigo
-5730244|Tigo
-5730245|Tigo
-5730246|Tigo
+573024|Tigo
+5730247|Partners Telecom Colombia
+5730248|Partners Telecom Colombia
+5730249|Partners Telecom Colombia
+573025|Partners Telecom Colombia
+573026|Partners Telecom Colombia
+573027|Partners Telecom Colombia
+5730280|Partners Telecom Colombia
+5730281|Partners Telecom Colombia
+5730282|Partners Telecom Colombia
+5730283|Partners Telecom Colombia
+5730284|Partners Telecom Colombia
+5730285|Partners Telecom Colombia
+5730286|Partners Telecom Colombia
 57303|Uff!
 5730410|Tigo
 5730411|Tigo
@@ -189,14 +194,7 @@
 573147|Claro
 573148|Claro
 57315|Movistar
-573162|Movistar
-573163|Movistar
-573164|Movistar
-573165|Movistar
-573166|Movistar
-573167|Movistar
-573168|Movistar
-573169|Movistar
+57316|Movistar
 57317|Movistar
 57318|Movistar
 573192|Movistar
@@ -228,12 +226,29 @@
 573233|Claro
 573234|Claro
 573235|Claro
+573236|Partners Telecom Colombia
+573237|Partners Telecom Colombia
+573238|Partners Telecom Colombia
+573239|Partners Telecom Colombia
+573241|Partners Telecom Colombia
+573242|Tigo
+573243|Tigo
+573244|Tigo
+573245|Tigo
+573246|Tigo
+573247|Partners Telecom Colombia
+573248|Partners Telecom Colombia
+573249|Partners Telecom Colombia
 57330|Movistar
 5733300|Setroc Mobile
 5733301|Setroc Mobile
 5733302|Setroc Mobile
 5733303|Setroc Mobile
 5733304|Setroc Mobile
+5733305|Tigo
+5733306|Tigo
+5733307|Tigo
+5733308|Tigo
 5733310|Libre Tecnologias
 5733311|Libre Tecnologias
 5733312|Libre Tecnologias
@@ -261,6 +276,9 @@
 5733362|Suma Movil
 5733363|Suma Movil
 5733364|Suma Movil
+5733365|Suma Movil
+5733366|Suma Movil
+5733367|Suma Movil
 573502|Avantel
 573503|Avantel
 573504|Avantel
@@ -269,3 +287,4 @@
 573507|Avantel
 573508|Avantel
 57351|Avantel
+579|Movistar

@@ -1,0 +1,13 @@
+Prefix    ; Length ; Type       ; Tariff        ; Operator    ; Format     ; Regions ; Geocode:en     ; Provenance ; Comment
+2[013-9]  ; 7      ; FIXED_LINE ; STANDARD_RATE ;             ; "fmt1_3/4" ; "BN"    ; "Brunei Muara"
+22[0-7]   ; 7      ; FIXED_LINE ; STANDARD_RATE ;             ; "fmt1_3/4" ; "BN"    ; "Brunei Muara" ; GOVERNMENT ; "Regulator Monthly File"
+22[89]    ; 7      ; MOBILE     ; STANDARD_RATE ; "dstcom"    ; "fmt1_3/4" ; "BN"    ;                ; IR21       ; "IR21 dated 4/27/2018"
+3         ; 7      ; FIXED_LINE ; STANDARD_RATE ;             ; "fmt1_3/4" ; "BN"    ; "Beliat"       ; GOVERNMENT ; "Regulator Monthly File"
+4         ; 7      ; FIXED_LINE ; STANDARD_RATE ;             ; "fmt1_3/4" ; "BN"    ; "Tutong"       ; GOVERNMENT ; "Regulator Monthly File"
+5[0-25-9] ; 7      ; FIXED_LINE ; STANDARD_RATE ;             ; "fmt1_3/4" ; "BN"    ; "Temburong"    ; GOVERNMENT ; "Regulator Monthly File"
+5[34]     ; 7      ; VOIP       ; STANDARD_RATE ;             ; "fmt1_3/4" ; "BN"    ;                ; GOVERNMENT ; "Regulator Monthly File"
+7[04-689] ; 7      ; MOBILE     ; STANDARD_RATE ;             ; "fmt1_3/4" ; "BN"
+7[1-37]   ; 7      ; MOBILE     ; STANDARD_RATE ; "dstcom"    ; "fmt1_3/4" ; "BN"    ;                ; IR21       ; "IR21 dated 4/27/2018"
+8[045]    ; 7      ; MOBILE     ; STANDARD_RATE ;             ; "fmt1_3/4" ; "BN"
+8[1-3]    ; 7      ; MOBILE     ; STANDARD_RATE ; "progresif" ; "fmt1_3/4" ; "BN"    ;                ; IR21       ; "IR21 dated 1/28/2019"
+8[6-9]    ; 7      ; MOBILE     ; STANDARD_RATE ; "dstcom"    ; "fmt1_3/4" ; "BN"    ;                ; IR21       ; "IR21 dated 4/27/2018"

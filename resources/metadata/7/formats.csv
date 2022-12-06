@@ -1,0 +1,6 @@
+Id             ; National                ; International       ; Local       ; National Prefix Optional ; Comment
+fmt_kz_3/3/4   ; "# (XXX) XXX XXXX"      ; "XXX XXX XXXX"      ;             ; true                     ; "Kazakhstan formatting only."
+fmt_kz_4/2/2/2 ; "# (XXXX) XX XX XX"     ; "XXXX XX XX XX"     ;             ; true                     ; "Kazakhstan formatting only."
+fmt_kz_5/1/2/2 ; "# (XXXXX) X XX XX"     ; "XXXXX X XX XX"     ;             ; true                     ; "Kazakhstan formatting only."
+fmt_ru_3/3/2/2 ; "# (XXX) XXX-XX-XX"     ; "XXX XXX-XX-XX"     ; "XXX-XX-XX" ; true                     ; "Russian number formatting mostly, some minor overlap with shared ranges."
+fmt_ru_4/4/3/3 ; "# (XXXX) XXXX XXX XXX" ; "XXXX XXXX XXX XXX"

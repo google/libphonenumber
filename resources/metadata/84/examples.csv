@@ -1,0 +1,7 @@
+Region ; Type         ; Number
+VN     ; FIXED_LINE   ; "2101234567"
+VN     ; MOBILE       ; "912345678"
+VN     ; TOLL_FREE    ; "1800123456"
+VN     ; PREMIUM_RATE ; "1900123456"
+VN     ; VOIP         ; "672012345"
+VN     ; UAN          ; "1992000"

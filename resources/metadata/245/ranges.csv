@@ -1,0 +1,32 @@
+Prefix      ; Length ; Type       ; Tariff        ; Operator   ; Format       ; Regions ; Geocode:en    ; Provenance
+40          ; 7      ; VOIP       ; STANDARD_RATE ;            ; "fmt2_3/4"   ; "GW"
+443[0168]   ; 9      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/3/3" ; "GW"    ;               ; ITU
+4432[01]    ; 9      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/3/3" ; "GW"    ; "Bissau"      ; ITU
+44322       ; 9      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/3/3" ; "GW"    ; "St. Luzia"   ; ITU
+4432[346-9] ; 9      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/3/3" ; "GW"    ;               ; ITU
+44325       ; 9      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/3/3" ; "GW"    ; "Brá"         ; ITU
+4433[036-9] ; 9      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/3/3" ; "GW"    ;               ; ITU
+44331       ; 9      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/3/3" ; "GW"    ; "Mansôa"      ; ITU
+44332       ; 9      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/3/3" ; "GW"    ; "Bissora"     ; ITU
+44334       ; 9      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/3/3" ; "GW"    ; "Mansaba"     ; ITU
+44335       ; 9      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/3/3" ; "GW"    ; "Farim"       ; ITU
+4434[03-9]  ; 9      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/3/3" ; "GW"    ;               ; ITU
+44341       ; 9      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/3/3" ; "GW"    ; "Bafatá"      ; ITU
+44342       ; 9      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/3/3" ; "GW"    ; "Bambadinca"  ; ITU
+4435[05-9]  ; 9      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/3/3" ; "GW"    ;               ; ITU
+44351       ; 9      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/3/3" ; "GW"    ; "Gabu"        ; ITU
+44352       ; 9      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/3/3" ; "GW"    ; "Sonaco"      ; ITU
+44353       ; 9      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/3/3" ; "GW"    ; "Pirada"      ; ITU
+44354       ; 9      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/3/3" ; "GW"    ; "Pitche"      ; ITU
+44370       ; 9      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/3/3" ; "GW"    ; "Buba"        ; ITU
+4437[1-9]   ; 9      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/3/3" ; "GW"    ;               ; ITU
+4439[0589]  ; 9      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/3/3" ; "GW"    ;               ; ITU
+44391       ; 9      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/3/3" ; "GW"    ; "Canchungo"   ; ITU
+44392       ; 9      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/3/3" ; "GW"    ; "Cacheu"      ; ITU
+44393       ; 9      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/3/3" ; "GW"    ; "S. Domingos" ; ITU
+44394       ; 9      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/3/3" ; "GW"    ; "Bula"        ; ITU
+44396       ; 9      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/3/3" ; "GW"    ; "Ingoré"      ; ITU
+44397       ; 9      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/3/3" ; "GW"    ; "Bigene"      ; ITU
+95          ; 9      ; MOBILE     ; STANDARD_RATE ; "orange"   ; "fmt1_3/3/3" ; "GW"    ;               ; IR21
+96[569]     ; 9      ; MOBILE     ; STANDARD_RATE ; "spacetel" ; "fmt1_3/3/3" ; "GW"    ;               ; IR21
+977         ; 9      ; MOBILE     ; STANDARD_RATE ; "guinetel" ; "fmt1_3/3/3" ; "GW"    ;               ; ITU

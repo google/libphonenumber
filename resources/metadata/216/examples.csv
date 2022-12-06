@@ -1,0 +1,7 @@
+Region ; Type                 ; Number
+TN     ; FIXED_LINE           ; "30010123"
+TN     ; MOBILE               ; "20123456"
+TN     ; FIXED_LINE_OR_MOBILE ; "30010123"
+TN     ; TOLL_FREE            ; "80101234"
+TN     ; PREMIUM_RATE         ; "88123456"
+TN     ; SHARED_COST          ; "81101234"

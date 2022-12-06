@@ -1,0 +1,12 @@
+Id                           ; National           ; Carrier           ; International     ; Local       ; National Prefix Optional ; Comment
+fixed_2/4/4                  ; "#XX XXXX XXXX"    ; "@ XX XXXX XXXX"  ; "XX XXXX XXXX"    ; "XXXX XXXX" ; true                     ; "10 digit fixed line range"
+fixed_3/3/4                  ; "#XXX XXX XXXX"    ; "@ XXX XXX XXXX"  ; "XXX XXX XXXX"    ; "XXX XXXX"  ; true                     ; "10 digit fixed line range"
+fixed_3/4/4                  ; "#XXX XXXX XXXX"   ; "@ XXX XXXX XXXX" ; "XXX XXXX XXXX"   ; "XXXX XXXX" ; true                     ; "11 digit fixed line range"
+fixed_4/3/4                  ; "#XXXX XXX XXXX"   ; "@ XXXX XXX XXXX" ; "XXXX XXX XXXX"   ; "XXX XXXX"  ; true                     ; "11 digit fixed line range"
+mobile_3/4/4                 ; "XXX XXXX XXXX"    ; "@ XXX XXXX XXXX" ; "XXX XXXX XXXX"   ;             ;                          ; "Mobile range"
+premium_rate_4/4             ; "XXXX XXXX"        ;                   ;                   ;             ;                          ; "8-digit premium rate numbers."
+sharedcost_3/7-8             ; "XXX XXXXXXX*"     ;                   ; "XXX XXXXXXX*"    ;             ;                          ; "10-11 digit shared cost range"
+shortcodes_with_prefix_2/5-6 ; "#XX XXXXX*"       ; "@ XX XXXXX*"     ; "XX XXXXX*"       ; "XXXXX*"    ;                          ; "100xx and 9[56]xxx(x) numbers with two-digit area codes."
+shortcodes_with_prefix_3/5-6 ; "#XXX XXXXX*"      ; "@ XXX XXXXX*"    ; "XXX XXXXX*"      ; "XXXXX*"    ;                          ; "100xx and 9[56]xxx(x) numbers with three-digit area codes."
+tollfree_2/3/3/4             ; "#XX XXX XXX XXXX" ;                   ; "XX XXX XXX XXXX" ;             ; true                     ; "12 digit toll free range"
+varcost_3/3/4                ; "XXX XXX XXXX"     ;                   ; "XXX XXX XXXX"    ;             ;                          ; "10 digit toll free or shared cost range"

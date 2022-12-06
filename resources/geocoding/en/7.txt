@@ -34,6 +34,7 @@
 7351|Chelyabinsk
 7352|Kurgan
 7353|Orenburg
+736|Simferopol
 7381|Omsk
 7382|Tomsk
 7383|Novosibirsk
@@ -43,6 +44,7 @@
 7390|Republic of Khakassia
 7391|Krasnoyarsk Territory
 7394|Republic of Tuva
+7395|Irkutsk
 740|Kaliningrad
 7411|Republic of Sakha
 7413|Magadan
@@ -172,6 +174,7 @@
 771458|Kostanai Region
 77145834|Krasnogorsk
 771459|Kostanai Region
+77149|Kostanai
 77152|Petropavlovsk
 771531|Bulayevo
 771532|Smirnovo
@@ -223,10 +226,11 @@
 771839|Akku
 771840|Bayanaul
 771841|Aktogai
-771842|Aktogaisky District
+771842|Koktobe
 771843|Maisky District
 771844|Irtyshsky District
 771845|Pavlodar Area
+77185|Shaldai
 77187|Ekibastuz
 77212|Karaganda
 77213|Aktau/Temirtau
@@ -299,7 +303,9 @@
 772540|Arys
 772541|Myrzakent
 772542|Asykata
+772543|Aqsumbe
 772544|Shaulder
+772545|Ikan
 772546|Sholakkorgan
 772547|Lenger
 772548|Shayan
@@ -391,6 +397,7 @@
 7865|Stavropol territory
 7866|Kabardino-Balkarian Republic
 7867|Republic of North Ossetia
+7869|Sevastopol
 7871|Chechen Republic
 7872|Republic of Daghestan
 7873|Ingushi Republic

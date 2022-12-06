@@ -1,0 +1,3 @@
+Id               ; National       ; International ; Comment
+fixed_line_3/3/3 ; "#XXX XXX XXX" ; "XXX XXX XXX" ; "Format for fixed-line numbers. The two digit area code and single digit operator\ncodes are grouped as it is the most common way of writing fixed-line numbers in LK."
+mobile_2/3/4     ; "#XX XXX XXXX" ; "XX XXX XXXX" ; "Format for mobile numbers."

@@ -1,0 +1,4 @@
+Region ; Type       ; Number
+WS     ; FIXED_LINE ; "22123"
+WS     ; MOBILE     ; "7212345"
+WS     ; TOLL_FREE  ; "800123"

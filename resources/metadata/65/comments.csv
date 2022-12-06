@@ -1,0 +1,6 @@
+Region ; Label           ; Comment
+SG     ; SC_SMS_SERVICES ; "77222 is an SMS shortcode based on a user report and online results."
+SG     ; XML             ; "http://www.ida.gov.sg/Policies-and-Regulations/Industry-and-Licensees/Numbering/National-Numbering-Plan-and-Allocation-Process.aspx"
+SG     ; XML             ; "https://en.wikipedia.org/wiki/Telephone_numbers_in_Singapore"
+SG     ; XML_MOBILE      ; "802[23] ,804[1467] and 8055 are added based on user report. "
+SG     ; XML_UAN         ; "Although not detailed in the plan beyond mentioning their existence, it seems 7000\nnumbers are used for companies. Most of the online examples are in fact alpha-numbers."

@@ -62,7 +62,7 @@ public class AsYouTypeFormatter {
   // code, from the national number.
   private static final char SEPARATOR_BEFORE_NATIONAL_NUMBER = ' ';
   private static final PhoneMetadata EMPTY_METADATA =
-      new PhoneMetadata().setInternationalPrefix("NA");
+      PhoneMetadata.newBuilder().setId("<ignored>").setInternationalPrefix("NA").build();
   private PhoneMetadata defaultMetadata;
   private PhoneMetadata currentMetadata;
 
@@ -70,10 +70,12 @@ public class AsYouTypeFormatter {
   // used by the AYTF. It is eligible when the format element under numberFormat contains groups of
   // the dollar sign followed by a single digit, separated by valid phone number punctuation. This
   // prevents invalid punctuation (such as the star sign in Israeli star numbers) getting into the
-  // output of the AYTF.
+  // output of the AYTF. We require that the first group is present in the output pattern to ensure
+  // no data is lost while formatting; when we format as you type, this should always be the case.
   private static final Pattern ELIGIBLE_FORMAT_PATTERN =
       Pattern.compile("[" + PhoneNumberUtil.VALID_PUNCTUATION + "]*"
-          + "(\\$\\d" + "[" + PhoneNumberUtil.VALID_PUNCTUATION + "]*)+");
+          + "\\$1" + "[" + PhoneNumberUtil.VALID_PUNCTUATION + "]*(\\$\\d"
+          + "[" + PhoneNumberUtil.VALID_PUNCTUATION + "]*)*");
   // A set of characters that, if found in a national prefix formatting rules, are an indicator to
   // us that we should separate the national prefix from the number when formatting.
   private static final Pattern NATIONAL_PREFIX_SEPARATORS_PATTERN = Pattern.compile("[- ]");
@@ -166,9 +168,9 @@ public class AsYouTypeFormatter {
     // First decide whether we should use international or national number rules.
     boolean isInternationalNumber = isCompleteNumber && extractedNationalPrefix.length() == 0;
     List<NumberFormat> formatList =
-        (isInternationalNumber && currentMetadata.intlNumberFormatSize() > 0)
-            ? currentMetadata.intlNumberFormats()
-            : currentMetadata.numberFormats();
+        (isInternationalNumber && currentMetadata.getIntlNumberFormatCount() > 0)
+            ? currentMetadata.getIntlNumberFormatList()
+            : currentMetadata.getNumberFormatList();
     for (NumberFormat format : formatList) {
       // Discard a few formats that we know are not relevant based on the presence of the national
       // prefix.
@@ -203,12 +205,12 @@ public class AsYouTypeFormatter {
     Iterator<NumberFormat> it = possibleFormats.iterator();
     while (it.hasNext()) {
       NumberFormat format = it.next();
-      if (format.leadingDigitsPatternSize() == 0) {
+      if (format.getLeadingDigitsPatternCount() == 0) {
         // Keep everything that isn't restricted by leading digits.
         continue;
       }
       int lastLeadingDigitsPattern =
-          Math.min(indexOfLeadingDigitsPattern, format.leadingDigitsPatternSize() - 1);
+          Math.min(indexOfLeadingDigitsPattern, format.getLeadingDigitsPatternCount() - 1);
       Pattern leadingDigitsPattern = regexCache.getPatternForRegex(
           format.getLeadingDigitsPattern(lastLeadingDigitsPattern));
       Matcher m = leadingDigitsPattern.matcher(leadingDigits);

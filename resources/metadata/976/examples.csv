@@ -1,0 +1,4 @@
+Region ; Type       ; Number
+MN     ; FIXED_LINE ; "53123456"
+MN     ; MOBILE     ; "88123456"
+MN     ; VOIP       ; "75123456"

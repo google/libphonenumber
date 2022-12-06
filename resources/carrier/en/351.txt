@@ -15,10 +15,21 @@
 # Source: https://www.anacom.pt/pnn/pesquisa.do
 # Results of mobile ranges: https://anacom.pt/pnn/pnnSearch.do?channel=&jscript=on&languageId=0&ssl=false&dataInicioDia=dd&dataInicioMes=mm&dataInicioAno=yyyy&dataFimDia=dd&dataFimMes=mm&dataFimAno=yyyy&assunto=&estado=NON&css=143&css=144&css=145&css=150
 
-351609|NOS
-35163|NOS
-35165|NOS
-35166|NOS
+3511|NOS
+351609230|NOS
+35160929|NOS
+3516093|NOS
+351639230|NOS
+351639233|Digi Communications
+35163929|NOS
+3516393|NOS
+351659230|NOS
+351659233|Digi Communications
+35165929|NOS
+3516593|NOS
+351669230|NOS
+35166929|NOS
+3516693|NOS
 35191|Vodafone
 3519200|Lycamobile
 3519201|Lycamobile
@@ -31,15 +42,11 @@
 3519221|MEO
 3519222|MEO
 3519230|NOS
-3519231|NOS
-3519232|NOS
-3519233|NOS
+3519231|Vodafone
+3519232|MEO
+3519233|Digi Communications
 3519234|NOS
-3519240|MEO
-3519241|MEO
-3519242|MEO
-3519243|MEO
-3519244|MEO
+351924|MEO
 351925|MEO
 351926|MEO
 351927|MEO
@@ -51,5 +58,6 @@
 3519292|NOS
 3519293|NOS
 3519294|NOS
+3519295|Sumamovil Portugal
 35193|NOS
 35196|MEO

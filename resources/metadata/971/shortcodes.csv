@@ -1,0 +1,4 @@
+Region ; Prefix  ; Length ; Type       ; Tariff    ; Sms
+AE     ; 112     ; 3      ; EMERGENCY  ; TOLL_FREE
+AE     ; 445[16] ; 4      ; COMMERCIAL ;           ; true
+AE     ; 99[7-9] ; 3      ; EMERGENCY  ; TOLL_FREE
