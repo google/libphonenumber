@@ -13,7 +13,8 @@ Prefix    ; Length ; Type       ; Tariff        ; Operator          ; Format    
 4[89]     ; 9      ; MOBILE     ; STANDARD_RATE ; "airsom"          ; "mobile_3/3/3" ; "SO"
 5[578]    ; 7      ; FIXED_LINE ; STANDARD_RATE ;                   ; "fixed_1/6"    ; "SO"    ;             ; ITU        ; "14.4.2009"
 59        ; 7      ; FIXED_LINE ; STANDARD_RATE ;                   ; "fixed_1/6"    ; "SO"
-60[0-489] ; 8      ; MOBILE     ; STANDARD_RATE ;                   ; "mobile_1/7"   ; "SO"
+60[0-389] ; 8      ; MOBILE     ; STANDARD_RATE ;                   ; "mobile_1/7"   ; "SO"
+[69]04    ; 8      ; MOBILE     ; STANDARD_RATE ; "golis_telecom"   ; "mobile_1/7"   ; "SO"    ;             ; IR21
 60[5-7]   ; 8      ; MOBILE     ; STANDARD_RATE ; "golis_telecom"   ; "mobile_1/7"   ; "SO"
 60[5-7]   ; 9      ; MOBILE     ; STANDARD_RATE ; "golis_telecom"   ; "mobile_2/5-7" ; "SO"    ;             ; IR21
 61        ; 8      ; MOBILE     ; STANDARD_RATE ; "hormuud"         ; "mobile_1/7"   ; "SO"

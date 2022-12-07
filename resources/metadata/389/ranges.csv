@@ -148,11 +148,10 @@ Prefix        ; Length ; Type       ; Tariff        ; Area Code Length ; Operato
 74774         ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "telekabel" ; "fmt1_2/3/3"       ; "MK"    ;                                       ; GOVERNMENT
 7[5-8]        ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "a1"        ; "fmt1_2/3/3"       ; "MK"    ;                                       ; IR21
 79[019]77     ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "a1"        ; "fmt1_2/3/3"       ; "MK"    ;                                       ; GOVERNMENT
-79[23]        ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "a1"        ; "fmt1_2/3/3"       ; "MK"    ;                                       ; IR21
-794[01]       ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "a1"        ; "fmt1_2/3/3"       ; "MK"    ;                                       ; IR21
-7942[0-4]     ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "a1"        ; "fmt1_2/3/3"       ; "MK"    ;                                       ; IR21
+79[2-4]       ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "a1"        ; "fmt1_2/3/3"       ; "MK"    ;                                       ; IR21
 7975          ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "a1"        ; "fmt1_2/3/3"       ; "MK"    ;                                       ; GOVERNMENT
 800           ; 8      ; FIXED_LINE ; TOLL_FREE     ;                  ;             ; "var_cost_3/1/2/2" ; "MK"    ;                                       ; GOVERNMENT
 80[1-689]     ; 8      ; FIXED_LINE ; SHARED_COST   ;                  ;             ; "var_cost_3/1/2/2" ; "MK"    ;                                       ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 807           ; 8      ; FIXED_LINE ; SHARED_COST   ;                  ;             ; "var_cost_3/1/2/2" ; "MK"    ;                                       ; GOVERNMENT
-8[1-9]        ; 8      ; FIXED_LINE ; SHARED_COST   ;                  ;             ; "var_cost_3/1/2/2" ; "MK"    ;                                       ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+8[1-7]        ; 8      ; FIXED_LINE ; SHARED_COST   ;                  ;             ; "var_cost_3/1/2/2" ; "MK"    ;                                       ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+8[89]         ; 8      ; FIXED_LINE ; SHARED_COST   ;                  ;             ; "var_cost_3/1/2/2" ; "MK"    ;                                       ; GOVERNMENT

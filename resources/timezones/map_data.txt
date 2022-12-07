@@ -703,8 +703,10 @@
 1345|America/Cayman
 1346|America/Chicago
 1347|America/New_York
+1350|America/Los_Angeles
 1351|America/New_York
 1352|America/New_York
+1354|America/Toronto
 1360|America/Los_Angeles
 1361|America/Chicago
 1364|America/New_York
@@ -712,6 +714,7 @@
 1367|America/Toronto
 1368|America/Edmonton
 1380|America/New_York
+1382|America/Toronto
 1385|America/Denver
 1386|America/New_York
 1401|America/New_York
@@ -1207,6 +1210,7 @@
 1680|America/New_York
 1681|America/New_York
 1682|America/Chicago
+1683|America/Toronto
 1684|Pacific/Pago_Pago
 1689|America/Chicago
 1701|America/Denver&America/North_Dakota/Center
@@ -1629,6 +1633,7 @@
 1830|America/Chicago
 1831|America/Los_Angeles
 1832|America/Chicago
+1835|America/New_York
 1838|America/New_York
 1839|America/New_York
 1840|America/Los_Angeles
