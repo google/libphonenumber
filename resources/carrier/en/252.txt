@@ -18,6 +18,7 @@
 25239|AirSom
 25248|AirSom
 25249|AirSom
+252604|Golis Telecom
 252605|Golis Telecom
 252606|Golis Telecom
 252607|Golis Telecom

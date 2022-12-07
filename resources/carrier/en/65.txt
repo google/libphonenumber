@@ -47,6 +47,8 @@
 658055|Geenet
 658056|Simba
 658057|Simba
+658058|Simba
+65806|Simba
 6581|StarHub
 65810|M1
 65812|SingTel

@@ -7572,6 +7572,7 @@
 1339|Massachusetts
 1340200|Chtamstths, VI
 1340203|Chtamstths, VI
+1340206|St. Croix, VI
 1340208|St. Croix, VI
 1340423|Chtamstths, VI
 134044|Chtamstths, VI
@@ -7627,6 +7628,7 @@
 1347843|Bronx, NY
 1347862|Bronx, NY
 1347915|Brooklyn, NY
+1350|California
 1351|Massachusetts
 1352|Florida
 1352205|Lady Lake, FL
@@ -7765,6 +7767,7 @@
 1352872|Gainesville, FL
 1352873|Ocala, FL
 1352955|Gainesville, FL
+1354|Quebec
 1360|Washington State
 1360210|Camas, WA
 1360213|Vancouver, WA
@@ -8106,6 +8109,7 @@
 1367|Quebec
 1368|Alberta
 1380|Ohio
+1382|Ontario
 1385|Utah
 1386|Florida
 1386218|Orange City, FL
@@ -19332,6 +19336,7 @@
 1682622|Mansfield, TX
 1682647|Fort Worth, TX
 1682885|Fort Worth, TX
+1683|Ontario
 1689|Florida
 1701|North Dakota
 1701221|Bismarck, ND
@@ -26336,6 +26341,7 @@
 1832826|Houston, TX
 1832912|Houston, TX
 1832934|Magnolia, TX
+1835|Pennsylvania
 1838|New York
 1839|South Carolina
 1840|California
