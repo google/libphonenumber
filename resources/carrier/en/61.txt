@@ -106,7 +106,12 @@
 614808|Pivotel Satellite
 61481|Optus
 61482|Optus
-61483|Telstra
+614830|Telstra
+614831|Telstra
+614832|Telstra
+614833|Telstra
+614838|Telstra
+614839|Optus
 61484|Telstra
 61485|TravelSIM
 614858|Pivotel Satellite
