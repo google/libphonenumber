@@ -83,6 +83,7 @@ Prefix          ; Length ; Type       ; Tariff        ; Area Code Length ; Opera
 11552           ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;                 ; "fmt_2/3/4" ; "ET"    ; "Filwha VI, Addis Ababa"                 ; ITU        ; "ITU Date: 09/12/2005"
 11553           ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;                 ; "fmt_2/3/4" ; "ET"    ; "Filwha V, Addis Ababa"                  ; ITU        ; "ITU Date: 09/12/2005"
 11554           ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;                 ; "fmt_2/3/4" ; "ET"    ; "Filwha VII, Addis Ababa"                ; ITU        ; "ITU Date: 09/12/2005"
+11615           ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;                 ; "fmt_2/3/4" ; "ET"    ;                                          ;            ; "User report"
 11617           ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;                 ; "fmt_2/3/4" ; "ET"    ;                                          ; WEB
 11618           ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;                 ; "fmt_2/3/4" ; "ET"    ; "Bole I, Addis Ababa"                    ; ITU        ; "ITU Date: 09/12/2005"
 11626           ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;                 ; "fmt_2/3/4" ; "ET"    ; "Bole Michael, Addis Ababa"              ; ITU        ; "ITU Date: 09/12/2005"

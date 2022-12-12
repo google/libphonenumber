@@ -1,3 +1,16 @@
+Dec 07, 2022: v8.13.2
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   882, AS, AU, BI, BM, BS, CA, CC, CX, ET, GB, GH, GU, GY, MK, MU, NG, SG, SO,
+   TJ, US, UY, VI
+ - New geocoding data for country calling code(s):
+   1350 (en), 1354 (en), 1382 (en), 1683 (en), 1835 (en)
+ - Updated geocoding data for country calling code(s): 1340 (en)
+ - Updated carrier data for country calling code(s):
+   27 (en), 33 (en), 61 (en), 65 (en), 230 (en), 233 (en), 234 (en), 252 (en),
+   260 (en), 370 (en), 592 (en), 882 (en), 992 (en), 1441 (en), 1671 (en)
+ - Updated / refreshed time zone meta data.
+
 Nov 10, 2022: v8.13.1
 Metadata changes:
  - Updated alternate formatting data for country calling code(s): 7

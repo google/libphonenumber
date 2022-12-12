@@ -74,7 +74,7 @@ Prefix      ; Length ; Type       ; Tariff        ; Area Code Length ; Operator 
 800         ; 10     ; FIXED_LINE ; TOLL_FREE     ;                  ;              ; "non_geo_3/3/3-4"    ; "NG"    ;                 ; ITU
 800         ; 11,12  ; FIXED_LINE ; TOLL_FREE     ;                  ;              ; "fmt1_3/4/4-5"       ; "NG"
 800         ; 13,14  ; FIXED_LINE ; TOLL_FREE     ;                  ;              ; "fmt2_3/5/5-6"       ; "NG"
-801[01]     ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "megatech"   ; "non_geo_3/3/3-4"    ; "NG"    ;                 ; GOVERNMENT
+801         ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "mafab"      ; "non_geo_3/3/3-4"    ; "NG"    ;                 ; GOVERNMENT
 80[28]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "airtel"     ; "non_geo_3/3/3-4"    ; "NG"    ;                 ; IR21
 80[36]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "mtn"        ; "non_geo_3/3/3-4"    ; "NG"    ;                 ; GOVERNMENT
 804         ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "ntel"       ; "non_geo_3/3/3-4"    ; "NG"    ;                 ; GOVERNMENT
@@ -105,7 +105,7 @@ Prefix      ; Length ; Type       ; Tariff        ; Area Code Length ; Operator 
 904         ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "airtel"     ; "non_geo_3/3/3-4"    ; "NG"    ;                 ;            ; "Added per client's request."
 90[89]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "9mobile"    ; "non_geo_3/3/3-4"    ; "NG"    ;                 ; IR21
 9[1-9]      ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;              ; "fixed_line_1/3/3-4" ; "NG"    ; "Abuja"
-912         ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "airtel"     ; "non_geo_3/3/3-4"    ; "NG"    ;                 ; IR21
+91[12]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "airtel"     ; "non_geo_3/3/3-4"    ; "NG"    ;                 ; IR21
 913         ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "mtn"        ; "non_geo_3/3/3-4"    ; "NG"    ;                 ; TELECOMS
 915         ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "glo"        ; "non_geo_3/3/3-4"    ; "NG"    ;                 ; IR21
 916         ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "mtn"        ; "non_geo_3/3/3-4"    ; "NG"    ;                 ; GOVERNMENT
