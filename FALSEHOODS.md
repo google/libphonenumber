@@ -272,5 +272,5 @@ surprising how many false assumptions programmers continue to make about them.
     however there are cases in which someone may voice-call an M2M sim. 
     One example is for in-home & roaming telecare/medical alarms,
     in the event of an alarm activation then automated voice messages can be
-    played on the voice via telephony APIs, or a human may call the device
+    played on the device via telephony APIs, or a human may call the device
     directly (potentially also via a telephony API).
