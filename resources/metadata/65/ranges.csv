@@ -38,7 +38,7 @@ Prefix       ; Length ; Type       ; Tariff        ; Operator     ; Format      
 804[23]      ; 8      ; MOBILE     ; STANDARD_RATE ; "m1"         ; "fmt1_4/4"   ; "SG"    ; IR21
 8044         ; 8      ; MOBILE     ; STANDARD_RATE ; "m1"         ; "fmt1_4/4"   ; "SG"
 8048         ; 8      ; MOBILE     ; STANDARD_RATE ; "myrepublic" ; "fmt1_4/4"   ; "SG"    ;            ; "User report"
-805[0-2]     ; 8      ; MOBILE     ; STANDARD_RATE ; "m1"         ; "fmt1_4/4"   ; "SG"    ; IR21
+805[0-29]    ; 8      ; MOBILE     ; STANDARD_RATE ; "m1"         ; "fmt1_4/4"   ; "SG"    ; IR21
 805[36-8]    ; 8      ; MOBILE     ; STANDARD_RATE ; "simba"      ; "fmt1_4/4"   ; "SG"    ; IR21
 8054         ; 8      ; MOBILE     ; STANDARD_RATE ; "singtel"    ; "fmt1_4/4"   ; "SG"    ; IR21
 8055         ; 8      ; MOBILE     ; STANDARD_RATE ; "geenet"     ; "fmt1_4/4"   ; "SG"    ; IR21

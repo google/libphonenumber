@@ -1,3 +1,12 @@
+Dec 21, 2022: v8.13.3
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   882, 883, AT, GP, MX, QA, RE, SG, YE
+ - Updated short number metadata for region code(s): AT, BE
+ - Updated geocoding data for country calling code(s): 52 (en)
+ - Updated carrier data for country calling code(s):
+   44 (en), 65 (en), 420 (en), 882 (en), 967 (en)
+
 Dec 07, 2022: v8.13.2
 Metadata changes:
  - Updated phone metadata for region code(s):
