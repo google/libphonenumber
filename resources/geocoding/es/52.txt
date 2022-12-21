@@ -15,6 +15,7 @@
 # Generated from:
 # https://www.itu.int/dms_pub/itu-t/oth/02/02/T020200008A0002PDFS.pdf
 
+52220|Puebla
 52221|Puebla
 52222|Puebla
 52223|Puebla
@@ -252,6 +253,7 @@
 52717|Estado de México
 52718|Estado de México
 52719|San Francisco Xonacatlán/Temoaya, MEX
+52720|Toluca
 52721|Ixtapan de la Sal, MEX
 52722|Estado de México
 52723|Coatepec Harinas, MEX

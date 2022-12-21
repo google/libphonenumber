@@ -1,5 +1,6 @@
 Prefix    ; Length ; Type       ; Tariff        ; Operator   ; Format     ; Regions ; Provenance ; Comment
-2[12]     ; 7      ; PAGER      ; STANDARD_RATE ;            ; "fmt1_3/4" ; "QA"    ; ITU
+0080[01]  ; 11     ; FIXED_LINE ; TOLL_FREE     ;            ;            ; "QA"    ; GOVERNMENT
+2[12]     ; 7      ; PAGER      ; STANDARD_RATE ;            ; "fmt1_3/4" ; "QA"    ; GOVERNMENT
 23        ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt2_4/4" ; "QA"    ; GOVERNMENT
 261       ; 7      ; PAGER      ; STANDARD_RATE ;            ; "fmt1_3/4" ; "QA"    ; ITU
 28        ; 8      ; MOBILE     ; STANDARD_RATE ; "ooredoo"  ; "fmt2_4/4" ; "QA"    ; IR21       ; "IR21 dated 2/2/2018"
@@ -12,7 +13,11 @@ Prefix    ; Length ; Type       ; Tariff        ; Operator   ; Format     ; Regi
 39[0-8]   ; 8      ; MOBILE     ; STANDARD_RATE ;            ; "fmt2_4/4" ; "QA"
 399       ; 8      ; MOBILE     ; STANDARD_RATE ; "ooredoo"  ; "fmt2_4/4" ; "QA"    ; IR21       ; "IR21 dated 2/2/2018"
 4[04]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt2_4/4" ; "QA"
+41111     ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt2_4/4" ; "QA"    ; GOVERNMENT
+414[056]  ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt2_4/4" ; "QA"    ; GOVERNMENT
 414[1-4]  ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt2_4/4" ; "QA"    ;            ; "User report"
+42022     ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt2_4/4" ; "QA"    ; GOVERNMENT
+4999      ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt2_4/4" ; "QA"    ; GOVERNMENT
 5[05]     ; 8      ; MOBILE     ; STANDARD_RATE ; "ooredoo"  ; "fmt2_4/4" ; "QA"    ; IR21       ; "IR21 dated 2/2/2018"
 5[12]     ; 8      ; MOBILE     ; STANDARD_RATE ; "ooredoo"  ; "fmt2_4/4" ; "QA"    ; IR21
 5[346-8]  ; 8      ; MOBILE     ; STANDARD_RATE ;            ; "fmt2_4/4" ; "QA"

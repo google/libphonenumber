@@ -641,42 +641,55 @@
       <generalDesc>
         <nationalNumberPattern>
           [168]\d\d(?:
-            \d{3}
+            \d(?:
+              \d{2}
+            )?
           )?
         </nationalNumberPattern>
       </generalDesc>
       <shortCode>
-        <possibleLengths national="3,6"/>
+        <possibleLengths national="3,4,6"/>
         <exampleNumber>112</exampleNumber>
         <nationalNumberPattern>
-          116(?:
-            00[06]|
+          1(?:
             1(?:
-              17|
-              23
+              2|
+              6(?:
+                00[06]|
+                1(?:
+                  17|
+                  23
+                )
+              )
+            )|
+            2[0238]|
+            3[03]|
+            4(?:
+              [0-247]|
+              5[05]|
+              84
             )
           )|
           (?:
             61|
             8108[1-3]
-          )0|
-          1(?:
-            [12]2|
-            33|
-            44
-          )
+          )0
         </nationalNumberPattern>
       </shortCode>
       <tollFree>
-        <possibleLengths national="3,6"/>
+        <possibleLengths national="3,4,6"/>
         <exampleNumber>112</exampleNumber>
         <nationalNumberPattern>
-          116\d{3}|
           1(?:
-            [12]2|
-            33|
-            44
-          )
+            12|
+            2[0238]|
+            3[03]|
+            4[0-247]
+          )|
+          1(?:
+            16\d\d|
+            4[58]
+          )\d
         </nationalNumberPattern>
       </tollFree>
       <!-- Added yesss! numbers 810810 , 810820 and 810830 based on their website. 
@@ -701,9 +714,19 @@
         </nationalNumberPattern>
       </emergency>
       <expandedEmergency>
-        <possibleLengths national="6"/>
-        <exampleNumber>116000</exampleNumber>
-        <nationalNumberPattern>116\d{3}</nationalNumberPattern>
+        <possibleLengths national="3,4,6"/>
+        <exampleNumber>120</exampleNumber>
+        <nationalNumberPattern>
+          1(?:
+            16\d{3}|
+            2[038]|
+            30|
+            4(?:
+              [0-27]|
+              [58]\d
+            )
+          )
+        </nationalNumberPattern>
       </expandedEmergency>
     </territory>
 
@@ -1172,10 +1195,7 @@
         <nationalNumberPattern>
           1(?:
             0[0-8]|
-            1(?:
-              [027]|
-              6117
-            )|
+            16117|
             2(?:
               12|
               3[0-24]
@@ -1203,6 +1223,7 @@
             81[39]
           )|
           [2-9]\d{3}|
+          11[02679]|
           1(?:
             1600|
             45
@@ -1222,7 +1243,7 @@
         <nationalNumberPattern>
           1(?:
             0[0-35-8]|
-            1[02]|
+            1[0269]|
             7(?:
               12|
               77
@@ -1275,8 +1296,8 @@
           1(?:
             0[235-8]|
             1(?:
-              0|
-              60\d\d
+              [09]|
+              6000
             )
           )
         </nationalNumberPattern>
