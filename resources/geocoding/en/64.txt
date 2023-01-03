@@ -43,11 +43,19 @@
 643226|Otautau
 643230|Invercargill
 643231|Invercargill
+643232|Riverton/Winton
+643233|Riverton/Winton
 643234|Riverton
 643235|Invercargill
 643236|Winton
+643237|Riverton/Winton
+643238|Riverton/Winton
 643239|Invercargill
+643240|Tokanui/Lumsden/Te Anau
+643241|Tokanui/Lumsden/Te Anau
 6432420|Christchurch
+6432421|Tokanui/Lumsden/Te Anau
+6432422|Tokanui/Lumsden/Te Anau
 6432423|Dunedin
 6432424|Nelson
 6432425|Invercargill
@@ -55,6 +63,7 @@
 6432427|Greymouth
 6432428|Queenstown
 6432429|Timaru
+643243|Tokanui/Lumsden/Te Anau
 6432440|Christchurch
 6432441|Christchurch
 6432442|Christchurch
@@ -65,9 +74,12 @@
 6432447|Timaru
 6432448|Dunedin
 6432449|Queenstown
+643245|Tokanui/Lumsden/Te Anau
 643246|Tokanui
+643247|Tokanui/Lumsden/Te Anau
 643248|Lumsden
 643249|Te Anau
+64325|South Island
 643250|Christchurch
 643260|Christchurch
 6432606|Dunedin
@@ -78,7 +90,7 @@
 6432611|Kaikoura
 6432612|Rangiora
 6432613|Waitangi (Chatham Is.)
-6432614|Akaroa
+6432614|South Island
 6432615|Amberley
 6432616|Ashburton
 6432617|Cheviot
@@ -129,8 +141,14 @@
 6432662|Christchurch
 6432663|Christchurch
 6432664|Christchurch
+6432665|South Island
+6432666|South Island
+6432667|South Island
 6432668|Blenheim
 6432669|Rangiora
+643267|South Island
+643268|South Island
+643269|South Island
 643270|Christchurch
 6432710|Christchurch
 6432711|Akaroa
@@ -181,6 +199,12 @@
 6432756|Gore
 6432757|Lumsden
 6432758|Otautau
+6432759|South Island
+643276|South Island
+643277|South Island
+643278|South Island
+643279|South Island
+64328|South Island
 6432800|Te Anau
 6432801|Lumsden
 6432802|Gore
@@ -205,6 +229,7 @@
 6432887|Nelson
 6432888|Nelson
 6432889|Blenheim
+64329|South Island
 6432990|Lumsden
 6432991|Milton
 6432992|Gore
@@ -215,14 +240,7 @@
 6432997|Edendale
 6432998|Tokanui
 6432999|Invercargill
-643300|Ashburton/Akaroa/Chatham Islands
-643302|Ashburton/Akaroa/Chatham Islands
-643303|Ashburton/Akaroa/Chatham Islands
-643304|Ashburton/Akaroa/Chatham Islands
-643305|Ashburton/Akaroa/Chatham Islands
-643306|Ashburton/Akaroa/Chatham Islands
-643307|Ashburton/Akaroa/Chatham Islands
-643308|Ashburton/Akaroa/Chatham Islands
+64330|Ashburton/Akaroa/Chatham Islands
 64331|Rangiora/Amberley/Culverden/Darfield/Cheviot/Kaikoura
 64332|Christchurch
 643331|Christchurch
@@ -235,7 +253,7 @@
 643339|Christchurch
 64334|Christchurch
 64335|Christchurch
-64336|Christchurch
+64336|South Island
 64337|Christchurch
 64338|Christchurch
 643390|Christchurch
@@ -249,6 +267,7 @@
 6433917|Franz Josef
 6433918|Fox Glacier
 6433919|Haast
+643392|South Island
 643393|Christchurch
 6433940|Westport
 6433941|Blenheim
@@ -270,6 +289,8 @@
 6433957|Palmerston
 6433958|Oamaru
 6433959|Balclutha
+643396|South Island
+643397|South Island
 6433980|Milton
 6433981|Twizel
 6433982|Kurow
@@ -280,6 +301,7 @@
 6433987|Cromwell
 6433988|Wanaka
 6433989|Waimate
+6433990|South Island
 6433991|Invercargill
 6433992|Riverton
 6433993|Te Anau
@@ -289,10 +311,15 @@
 6433997|Gore
 6433998|Lumsden
 6433999|Otautau
+64340|South Island
 643409|Queenstown
+643410|Balclutha/Milton
+643411|Balclutha/Milton
 643412|Balclutha
 643413|Balclutha
+643414|Balclutha/Milton
 643415|Balclutha
+643416|Balclutha/Milton
 643417|Milton
 643418|Balclutha
 643419|Balclutha
@@ -369,24 +396,25 @@
 6434297|Westport
 6434298|Hokitika
 6434299|Haast
+64343|Oamaru
 643430|Mt Cook
-643431|Oamaru
-643432|Oamaru
-643433|Oamaru
-643434|Oamaru
+643435|Oamaru/Mount Cook/Twizel/Kurow
 6434350|Twizel
 6434351|Mt Cook
 6434353|Twizel
 6434359|Twizel
 643436|Kurow
-643437|Oamaru
 643438|Kurow
-643439|Oamaru
 6434400|Alexandra
 6434401|Cromwell
 6434402|Alexandra
+6434403|Queenstown/Cromwell/Alexandra/Wanaka/Ranfurly/Roxburgh
 6434404|Alexandra
 6434405|Alexandra
+6434406|Queenstown/Cromwell/Alexandra/Wanaka/Ranfurly/Roxburgh
+6434407|Queenstown/Cromwell/Alexandra/Wanaka/Ranfurly/Roxburgh
+6434408|Queenstown/Cromwell/Alexandra/Wanaka/Ranfurly/Roxburgh
+6434409|Queenstown/Cromwell/Alexandra/Wanaka/Ranfurly/Roxburgh
 643441|Queenstown
 643442|Queenstown
 643443|Wanaka
@@ -404,6 +432,11 @@
 643455|Dunedin
 643456|Dunedin
 643457|Dunedin
+643458|Dunedin/Queenstown
+643459|Dunedin/Queenstown
+643460|Dunedin/Palmerston
+643461|Dunedin/Palmerston
+643462|Dunedin/Palmerston
 643463|Palmerston
 643464|Dunedin
 643465|Palmerston
@@ -412,14 +445,11 @@
 643468|Dunedin
 643469|Dunedin
 64347|Dunedin
-643481|Dunedin
-643482|Dunedin
-643484|Dunedin
+64348|Dunedin
+643480|Dunedin/Lawrence/Mosgiel
+643483|Dunedin/Lawrence/Mosgiel
 643485|Lawrence
-643486|Dunedin
-643487|Dunedin
-643488|Dunedin
-643489|Dunedin
+64349|South Island
 6434990|Queenstown
 6434991|Cromwell
 6434992|Ranfurly
@@ -430,6 +460,7 @@
 6434997|Lawrence
 6434998|Dunedin
 6434999|Dunedin
+6435|South Island
 643520|Blenheim
 643521|Nelson
 643522|Nelson
@@ -557,13 +588,7 @@
 6435888|Timaru
 6435889|Timaru
 643590|Christchurch
-6435950|Christchurch
-6435951|Christchurch
-6435952|Christchurch
-6435953|Christchurch
-6435954|Christchurch
-6435955|Christchurch
-6435956|Christchurch
+643595|Christchurch
 6435990|Hokitika
 6435991|Franz Josef
 6435992|Fox Glacier
@@ -574,9 +599,11 @@
 6435997|Amberley
 6435998|Rangiora
 6435999|Christchurch
-643612|Timaru
-643614|Timaru
-643615|Timaru
+64360|South Island
+64361|Timaru
+64362|South Island
+64363|South Island
+64364|South Island
 6436500|Christchurch
 6436501|Akaroa
 6436502|Amberley
@@ -707,20 +734,14 @@
 6436688|Waitangi (Chatham Is.)
 6436689|Christchurch
 643669|Christchurch
+64367|South Island
+64368|Timaru
 643680|Fairlie
-643681|Timaru
-643683|Timaru
-643684|Timaru
+643682|Timaru/Waimate/Fairlie
 643685|Fairlie
-643686|Timaru
-643687|Timaru
-643688|Timaru
 643689|Waimate
+64369|Geraldine
 643690|Waimate
-643692|Geraldine
-643693|Geraldine
-643696|Geraldine
-643697|Geraldine
 6436990|Cheviot
 6436991|Culverden
 6436992|Greymouth
@@ -731,10 +752,10 @@
 6436997|Motueka
 6436998|Blenheim
 6436999|Nelson
-643731|Greymouth
-643732|Greymouth
-643736|Greymouth
-643738|Greymouth
+64370|South Island
+64371|South Island
+64372|South Island
+64373|Greymouth
 643740|Christchurch
 643741|Christchurch
 643742|Dunedin
@@ -787,17 +808,21 @@
 6437485|Te Anau
 6437486|Tokanui
 6437487|Winton
+6437488|South Island
+6437489|South Island
 643749|Christchurch
 643750|Haast
 643751|Fox Glacier
 643752|Franz Josef
 643753|Hokitika
+643754|Hokitika/Franz Josef Glacier/Fox Glacier/Haast
 643755|Hokitika
 643756|Hokitika
-643762|Greymouth
-643767|Greymouth
-643768|Greymouth
-643769|Greymouth
+643757|Hokitika/Franz Josef Glacier/Fox Glacier/Haast
+643758|Hokitika/Franz Josef Glacier/Fox Glacier/Haast
+643759|Hokitika/Franz Josef Glacier/Fox Glacier/Haast
+64376|Greymouth
+64377|South Island
 6437770|Nelson
 6437771|Blenheim
 6437772|Timaru
@@ -808,9 +833,8 @@
 6437777|Christchurch
 6437778|Greymouth
 6437779|Invercargill
-643782|Westport
-643788|Westport
-643789|Westport
+64378|Westport
+64379|South Island
 6439000|Christchurch
 6439001|Christchurch
 6439002|Rangiora
@@ -824,12 +848,16 @@
 6439010|Queenstown
 6439011|Queenstown
 6439012|Queenstown
+6439013|Ashburton
+6439014|Ashburton
 6439015|Wanaka
 6439016|Alexandra
 6439017|Cromwell
 6439018|Ranfurly
 6439019|Roxburgh
 6439020|Gore
+6439021|Ashburton
+6439022|Ashburton
 6439023|Te Anau
 6439024|Lumsden
 6439025|Otautau
@@ -839,31 +867,41 @@
 6439029|Tokanui
 643903|Christchurch
 6439040|Balclutha
+6439041|Ashburton
 6439042|Oamaru
+6439043|Ashburton
 6439044|Milton
 6439045|Twizel
 6439046|Kurow
 6439047|Alexandra
 6439048|Lawrence
 6439049|Palmerston
+643905|Ashburton
 6439050|Geraldine
 6439052|Mt Cook
 6439055|Fairlie
 6439057|Waimate
 6439060|Greymouth
 6439061|Greymouth
+6439062|Ashburton
 6439063|Westport
+6439064|Ashburton
+6439065|Ashburton
 6439066|Hokitika
 6439067|Franz Josef
 6439068|Fox Glacier
 6439069|Haast
 6439070|Motueka
 6439071|Motueka
+6439072|Ashburton
 6439073|Motueka
+6439074|Ashburton
 6439075|Takaka
+6439076|Ashburton
+6439077|Ashburton
+6439078|Ashburton
 6439079|Murchison
-6439080|Ashburton
-6439081|Ashburton
+643908|Ashburton
 6439082|Culverden
 6439083|Cheviot
 6439084|Amberley
@@ -871,9 +909,14 @@
 6439090|Rangiora
 6439091|Rangiora
 6439092|Rangiora
+6439093|Ashburton
+6439094|Ashburton
+6439095|Ashburton
+6439096|Ashburton
 6439097|Darfield
 6439098|Akaroa
 6439099|Kaikoura
+64391|South Island
 643920|Rangiora
 643921|Blenheim
 643922|Nelson
@@ -934,6 +977,8 @@
 6439325|Kaikoura
 6439326|Rangiora
 6439327|Ashburton
+6439328|South Island
+6439329|South Island
 6439330|Westport
 6439331|Greymouth
 6439332|Hokitika
@@ -943,6 +988,7 @@
 6439336|Cromwell
 6439337|Wanaka
 6439338|Queenstown
+6439339|South Island
 6439340|Mt Cook
 6439341|Fairlie
 6439342|Geraldine
@@ -951,6 +997,13 @@
 6439345|Christchurch
 6439346|Christchurch
 6439347|Christchurch
+6439348|South Island
+6439349|South Island
+643935|South Island
+643936|South Island
+643937|South Island
+643938|South Island
+643939|South Island
 643940|Christchurch
 643941|Christchurch
 643942|Christchurch
@@ -989,18 +1042,16 @@
 6439534|Mt Cook
 6439535|Fairlie
 6439536|Waimate
+6439537|Dunedin/Timaru
+6439538|Dunedin/Timaru
+6439539|Dunedin/Timaru
+643954|Dunedin/Timaru
 643955|Dunedin
 643956|Timaru
 643957|Timaru
-643960|Christchurch
-643961|Christchurch
-643962|Christchurch
-643963|Christchurch
-643964|Christchurch
-643965|Christchurch
-643966|Christchurch
-643967|Christchurch
-643968|Christchurch
+643958|Dunedin/Timaru
+643959|Dunedin/Timaru
+64396|Christchurch
 6439700|Nelson
 6439701|Nelson
 6439702|Nelson
@@ -1088,12 +1139,15 @@
 6439856|Darfield
 6439857|Akaroa
 6439858|Kaikoura
+6439859|Christchurch/Blenheim/Nelson
 6439860|Nelson
 6439861|Nelson
 6439862|Nelson
 6439863|Motueka
 6439864|Takaka
 6439865|Murchison
+6439866|Christchurch/Blenheim/Nelson
+6439867|Christchurch/Blenheim/Nelson
 6439868|Blenheim
 6439869|Blenheim
 6439870|Queenstown
@@ -1103,14 +1157,21 @@
 6439874|Cromwell
 6439875|Ranfurly
 6439876|Roxburgh
+6439877|Christchurch/Blenheim/Nelson
+6439878|Christchurch/Blenheim/Nelson
+6439879|Christchurch/Blenheim/Nelson
 6439880|Greymouth
 6439881|Greymouth
 6439882|Westport
 6439883|Hokitika
 6439884|Franz Josef
 6439885|Fox Glacier
-6439886|Haast
+6439886|Christchurch/Blenheim/Nelson
+6439887|Christchurch/Blenheim/Nelson
+6439888|Christchurch/Blenheim/Nelson
+6439889|Christchurch/Blenheim/Nelson
 643989|Nelson
+64399|South Island
 644202|Wellington
 644203|Wellington
 644204|Wellington
@@ -1141,56 +1202,19 @@
 644281|Wellington
 6442820|Wellington
 6442821|Wellington
-644290|Paraparaumu
-644292|Paraparaumu
-644293|Paraparaumu
-644296|Paraparaumu
-644297|Paraparaumu
-644298|Paraparaumu
-644299|Paraparaumu
-6443330|Wellington
-6443331|Wellington
-6443332|Wellington
+64429|Paraparaumu
+6443|Wellington
 6443333|Paraparaumu
-644370|Wellington
 6443708|Paraparaumu
 6443709|Paraparaumu
-64438|Wellington
-644390|Wellington
-644391|Wellington
-644392|Wellington
 644393|Paraparaumu
-644399|Wellington
 6443990|Paraparaumu
-644436|Wellington
-644437|Wellington
-644439|Wellington
-644460|Wellington
-644461|Wellington
-644462|Wellington
-644463|Wellington
-644464|Wellington
-644465|Wellington
-644466|Wellington
-644467|Wellington
-64447|Wellington
-644488|Wellington
+6444|Wellington
 6444887|Paraparaumu
 6444888|Paraparaumu
 6444889|Paraparaumu
-644493|Wellington
-644494|Wellington
-644495|Wellington
-644496|Wellington
-644497|Wellington
-644498|Wellington
-644499|Wellington
-644524|Wellington
-644525|Wellington
-644526|Wellington
-644527|Wellington
-644528|Wellington
-644529|Wellington
+6445|Wellington/Hutt Valley
+64452|Wellington
 644550|Wellington
 644551|Paraparaumu
 644555|Wellington
@@ -1204,13 +1228,7 @@
 644587|Wellington
 644589|Wellington
 644590|Wellington
-6445950|Wellington
-6445951|Wellington
-6445952|Wellington
-6445953|Wellington
-6445954|Wellington
-6445955|Wellington
-6445956|Wellington
+644595|Wellington
 644619|Wellington
 644650|Wellington
 6446509|Paraparaumu
@@ -1218,12 +1236,7 @@
 644777|Wellington
 6447770|Paraparaumu
 6447771|Paraparaumu
-644801|Wellington
-644802|Wellington
-644803|Wellington
-644804|Wellington
-644805|Wellington
-644806|Wellington
+64480|Wellington
 644810|Wellington
 644815|Wellington
 644816|Wellington
@@ -1245,44 +1258,15 @@
 644895|Paraparaumu
 644896|Wellington
 644897|Wellington
-644900|Wellington
+6449|Wellington
 6449008|Paraparaumu
-644901|Wellington
 644902|Paraparaumu
-644903|Wellington
 6449030|Paraparaumu
 6449031|Paraparaumu
 644904|Paraparaumu
 644905|Paraparaumu
 644906|Paraparaumu
-644907|Wellington
-6449080|Paraparaumu
-6449081|Paraparaumu
-6449082|Wellington
-6449083|Wellington
-6449084|Wellington
-644909|Wellington
-644910|Wellington
-6449120|Wellington
-6449121|Wellington
-6449122|Wellington
-6449123|Wellington
-6449124|Wellington
-644913|Wellington
-644914|Wellington
-644915|Wellington
-644916|Wellington
-644917|Wellington
-644918|Wellington
-644920|Wellington
-644922|Wellington
-644924|Wellington
-644928|Wellington
-644931|Wellington
-644934|Wellington
-644938|Wellington
-644939|Wellington
-64497|Wellington
+644908|Paraparaumu
 6449740|Paraparaumu
 6449741|Paraparaumu
 644975|Paraparaumu
@@ -1352,7 +1336,6 @@
 6462412|Gisborne
 6462413|Gisborne
 6462414|Napier
-6462415|Levin
 6462416|Waipukurau
 6462417|Wanganui
 6462418|Palmerston North
@@ -1392,11 +1375,7 @@
 6462627|Wanganui
 6462628|Wanganui
 6462629|Levin
-646272|Hawera
-646273|Hawera
-646274|Hawera
-646278|Hawera
-646279|Hawera
+64627|Hawera
 6462800|Palmerston North
 6462801|Palmerston North
 6462802|Palmerston North
@@ -1417,46 +1396,22 @@
 6462817|Napier
 6462818|New Plymouth
 6462819|Levin
-646304|Featherston
-646306|Featherston
-646307|Featherston
-646308|Featherston
+64630|Featherston
+64632|Palmerston North
+646320|Palmerston North/Marton
 646321|Marton
 646322|Marton
-646323|Palmerston North
-646324|Palmerston North
-646325|Palmerston North
-646326|Palmerston North
 646327|Marton
-646328|Palmerston North
-646329|Palmerston North
-646341|Wanganui
-646342|Wanganui
-646343|Wanganui
-646344|Wanganui
-646345|Wanganui
-646346|Wanganui
-646347|Wanganui
-646348|Wanganui
-646349|Wanganui
+64634|Wanganui
 64635|Palmerston North
-646362|Levin
-646363|Levin
-646364|Levin
+64636|Levin
 646365|Palmerston North
-646366|Levin
-646367|Levin
-646368|Levin
-646369|Levin
-646370|Masterton
-646372|Masterton
-646373|Masterton
+64637|Masterton
+646371|Masterton/Dannevirke/Pahiatua
 646374|Dannevirke
 646375|Pahiatua
 646376|Pahiatua
-646377|Masterton
-646378|Masterton
-646379|Masterton
+64638|Taihape/Ohakune/Waiouru
 646382|Taihape
 646385|Ohakune
 646387|Waiouru
@@ -1542,11 +1497,15 @@
 6466007|Stratford
 6466008|Ohakune
 6466009|Waiouru
-646601|Napier
 6466010|Taihape
 6466011|Marton
-6466012|Pahiatua
 6466013|Featherston
+6466014|Napier
+6466015|Napier
+6466016|Napier
+6466017|Napier
+6466018|Napier
+6466019|Napier
 646650|Napier
 6466508|Napier/Wairoa
 6466509|Napier/Waipukurau
@@ -1588,32 +1547,19 @@
 6466997|New Plymouth
 6466998|New Plymouth
 6466999|New Plymouth
+64675|New Plymouth
 646750|Mokau
-646751|New Plymouth
-646752|New Plymouth
 6467525|Mokau
 6467529|Mokau
-646753|New Plymouth
-646754|New Plymouth
-6467550|New Plymouth
-6467551|New Plymouth
-6467552|New Plymouth
-6467553|New Plymouth
-6467554|New Plymouth
-6467555|New Plymouth
-6467557|New Plymouth
-6467558|New Plymouth
-6467559|New Plymouth
-646756|New Plymouth
-646757|New Plymouth
-646758|New Plymouth
-646759|New Plymouth
+6467556|New Plymouth/Mokau
+646760|New Plymouth/Opunake/Stratford
 646761|Opunake
 646762|Stratford
 646763|Opunake
 646764|Stratford
 646765|Stratford
 646766|New Plymouth
+646767|New Plymouth/Opunake/Stratford
 646768|New Plymouth
 646769|New Plymouth
 6467770|Gisborne
@@ -1652,40 +1598,31 @@
 6468264|Palmerston North
 6468268|New Plymouth
 6468269|New Plymouth
-6468300|Napier
-6468301|Napier
-6468302|Napier
-6468303|Napier
-6468308|Napier
-6468309|Napier
-646831|Napier/Hastings
-646833|Napier/Hastings
-646834|Napier/Hastings
-646835|Napier/Hastings
-646836|Napier/Hastings
+64683|Napier/Hastings
+646830|Napier
+6468304|Napier/Wairoa
+6468305|Napier/Wairoa
+6468306|Napier/Wairoa
+6468307|Napier/Wairoa
+646832|Napier/Wairoa
 646837|Wairoa
 646838|Wairoa
-646839|Napier/Hastings
+646840|Napier City
+646841|Napier City
 646842|Napier/Hastings
 646843|Napier/Hastings
 646844|Napier/Hastings
 646845|Napier/Hastings
+646846|Napier City
 646847|Napier/Hastings
-646855|Waipukurau
-646856|Waipukurau
-646857|Waipukurau
-646858|Waipukurau
-646861|Gisborne
-646862|Gisborne
-646863|Gisborne
+646848|Napier City
+646849|Napier City
+64685|Waipukurau
+64686|Gisborne
+646860|Gisborne/Ruatoria
 646864|Ruatoria
-646865|Gisborne
-646867|Gisborne
-646868|Gisborne
-6468690|Gisborne
-6468691|Gisborne
-6468692|Gisborne
-6468693|Gisborne
+646866|Gisborne/Ruatoria
+646869|Gisborne/Ruatoria
 64687|Napier/Hastings
 6468800|Napier/Hastings
 6468801|Wanganui
@@ -1819,13 +1756,17 @@
 6469317|Pahiatua
 6469318|Levin
 6469319|Masterton
+64694|Masterton/Levin
 646946|Masterton
 6469468|Featherston
 646949|Levin W100
+646950|Palmerston North/New Plymouth
 646951|Palmerston North
 646952|Palmerston North W100
 646953|Palmerston North W100
 646954|Palmerston North W100
+646955|Palmerston North/New Plymouth
+646956|Palmerston North/New Plymouth
 6469570|Palmerston North
 6469571|Palmerston North
 6469572|Palmerston North
@@ -1836,17 +1777,28 @@
 6469577|Ohakune
 6469578|Marton
 6469579|Pahiatua
+646958|Palmerston North/New Plymouth
+646959|Palmerston North/New Plymouth
+646960|Wanganui/New Plymouth
 6469610|Wanganui
 6469611|Wanganui
+6469612|Wanganui/New Plymouth
 6469613|Levin
 6469614|Levin
 6469615|Masterton
 6469616|Featherston
+6469617|Wanganui/New Plymouth
+6469618|Wanganui/New Plymouth
+6469619|Wanganui/New Plymouth
+646962|Wanganui/New Plymouth
+646963|Wanganui/New Plymouth
 646964|Wanganui
 646965|Wanganui W100
+646966|Wanganui/New Plymouth
 646967|New Plymouth
 646968|New Plymouth W100
 646969|New Plymouth
+64697|Napier
 6469710|New Plymouth
 6469711|New Plymouth
 6469712|New Plymouth
@@ -1854,19 +1806,13 @@
 6469714|Hawera
 6469715|Mokau
 6469716|Opunake
-646974|Napier
-646975|Napier
-646976|Napier
+64698|Gisborne
 6469850|Napier
 6469851|Napier
 6469852|Napier
-6469853|Wairoa
+6469853|Waiouru
 6469854|Waipukurau
-646986|Gisborne
 6469869|Ruatoria
-6469890|Gisborne
-6469891|Gisborne
-6469892|Gisborne
 6469893|Ruatoria
 647210|Hamilton
 647211|Hamilton
@@ -1985,17 +1931,13 @@
 6472827|Tauranga
 6472828|Tauranga
 6472829|Tauranga
-647304|Whakatane
-647305|Whakatane
-647306|Whakatane
-647307|Whakatane
-647308|Whakatane
-647309|Whakatane
+64730|Whakatane
+64731|Whakatane/Opotiki
 647312|Whakatane
 647315|Opotiki
-647322|Whakatane
-647323|Whakatane
+64732|Whakatane
 647325|Opotiki
+64733|Rotorua/Taupo
 647332|Rotorua
 6473331|Rotorua
 6473332|Rotorua
@@ -2003,27 +1945,11 @@
 6473338|Rotorua
 6473339|Taupo
 647334|Rotorua
-647343|Rotorua
-647345|Rotorua
-647346|Rotorua
-647347|Rotorua
-647348|Rotorua
-647349|Rotorua
-647350|Rotorua
-647351|Rotorua
-647357|Rotorua
-647362|Rotorua
-647366|Rotorua
-647372|Taupo
-647374|Taupo
-647376|Taupo
-647377|Taupo
-647378|Taupo
-6473841|Taupo
-6473842|Taupo
-6473843|Taupo
-6473847|Taupo
-647386|Taupo
+64734|Rotorua
+64735|Rotorua
+64736|Rotorua
+64737|Taupo
+64738|Taupo
 647390|Hamilton
 647391|Hamilton
 6473920|Huntly
@@ -2089,17 +2015,7 @@
 6474659|Whangamata
 647466|Tauranga
 647533|Tauranga
-647541|Tauranga
-647542|Tauranga
-647543|Tauranga
-647544|Tauranga
-647546|Tauranga
-647547|Tauranga
-6475480|Tauranga
-6475481|Tauranga
-6475482|Tauranga
-6475483|Tauranga
-647549|Tauranga
+64754|Tauranga
 647551|Tauranga
 647552|Tauranga
 647557|Tauranga
@@ -2169,7 +2085,7 @@
 6478070|Morrinsville
 6478071|Otorohanga
 6478072|Paeroa
-6478073|Tokoroa/Putaruru
+6478073|Putaruru/Tokoroa
 6478074|Taumarunui
 6478075|Te Kuiti
 6478076|Te Awamutu
@@ -2208,6 +2124,9 @@
 6478142|Whakatane
 6478143|Opotiki
 6478144|Tauranga
+647820|Hamilton/Huntly
+647821|Hamilton/Huntly
+647822|Hamilton/Huntly
 647823|Hamilton
 647824|Hamilton
 647825|Hamilton
@@ -2215,38 +2134,11 @@
 647827|Hamilton
 647828|Huntly
 647829|Hamilton
-647832|Hamilton
-647833|Hamilton
-647834|Hamilton
-647836|Hamilton
-647837|Hamilton
-647838|Hamilton
-647839|Hamilton
-647843|Hamilton
-6478450|Hamilton
-6478451|Hamilton
-647846|Hamilton
-647847|Hamilton
-647848|Hamilton
-647849|Hamilton
-647850|Hamilton
-647851|Hamilton
-647852|Hamilton
-647853|Hamilton
-647854|Hamilton
-647855|Hamilton
-647856|Hamilton
-647857|Hamilton
-647858|Hamilton
-6478590|Hamilton
-6478591|Hamilton
-6478592|Hamilton
-6478593|Hamilton
-6478594|Hamilton
-6478595|Hamilton
-6478597|Hamilton
-6478598|Hamilton
-6478599|Hamilton
+64783|Hamilton
+64784|Hamilton
+64785|Hamilton
+647860|Paeroa/Waihi/Thames/Whangamata
+647861|Paeroa/Waihi/Thames/Whangamata
 647862|Paeroa
 647863|Waihi
 647864|Thames
@@ -2259,9 +2151,12 @@
 647871|Te Awamutu
 647872|Te Awamutu
 647873|Otorohanga
+647874|Te Awamutu/Otorohanga/Te Kuiti
+647875|Te Awamutu/Otorohanga/Te Kuiti
 647876|Te Kuiti
 647877|Te Kuiti
 647878|Te Kuiti
+647879|Te Awamutu/Otorohanga/Te Kuiti
 647880|Matamata
 647881|Matamata
 647882|Putaruru/Tokoroa
@@ -2272,11 +2167,7 @@
 647887|Morrinsville
 647888|Matamata
 647889|Morrinsville
-647892|Taumarunui
-647893|Taumarunui
-647894|Taumarunui
-647895|Taumarunui
-647896|Taumarunui
+64789|Taumarunui
 6478990|Thames
 6478991|Whangamata
 6478992|Paeroa
@@ -2287,13 +2178,13 @@
 6478997|Morrinsville
 6478998|Hamilton
 6478999|Hamilton
+64790|Taupo
 6479000|Hamilton
 6479001|Hamilton
 6479002|Matamata
 6479003|Thames
 6479004|Te Awamutu
 6479005|Tauranga
-6479006|Taupo
 6479007|Whakatane
 6479008|Rotorua
 6479009|Hamilton
@@ -2312,10 +2203,6 @@
 6479040|Otorohanga
 6479045|Taumarunui
 6479049|Te Kuiti
-647905|Taupo
-647906|Taupo
-6479090|Taupo
-6479091|Taupo
 6479100|Rotorua
 6479101|Rotorua
 6479102|Rotorua
@@ -2331,10 +2218,12 @@
 6479240|Taupo
 6479241|Whakatane
 6479242|Rotorua
+6479243|Rotorua/Whakatane/Tauranga
 6479244|Tauranga
 6479245|Matamata
 6479246|Thames
 6479247|Hamilton
+6479248|Rotorua/Whakatane/Tauranga
 6479249|Huntly
 647925|Tauranga
 647926|Tauranga
@@ -2350,18 +2239,15 @@
 6479297|Tauranga
 6479298|Taupo
 6479299|Rotorua
+64793|Tauranga
 6479420|Tauranga
 6479421|Tauranga
 6479422|Tauranga
 647949|Hamilton
+64795|Hamilton
 6479500|Whakatane
 6479501|Opotiki
-647957|Hamilton
-647958|Hamilton
-647959|Hamilton
-647960|Hamilton
-647961|Hamilton
-647968|Hamilton
+64796|Hamilton
 647970|Hamilton
 6479708|Thames
 6479709|Matamata
@@ -2411,55 +2297,24 @@
 647987|Tauranga
 647988|Rotorua
 647989|Taupo
-649200|Auckland
+6492|Auckland
 6492006|Helensville
 6492007|Warkworth
 6492008|Hibiscus Coast
 6492009|Pukekohe
-649210|Auckland
-649211|Auckland
-649212|Auckland
-649213|Auckland
-649214|Auckland
-649215|Auckland
-649216|Auckland
-649218|Auckland
-649220|Auckland
-6492220|Auckland
-6492221|Auckland
-6492222|Auckland
-6492223|Auckland
-6492224|Auckland
 6492225|Pukekohe
 6492226|Helensville
 6492227|Whangarei
 6492228|Warkworth
 6492229|Hibiscus Coast
-649230|Pukekohe
-649232|Pukekohe
-649233|Pukekohe
-649235|Pukekohe
-649236|Pukekohe
-649237|Pukekohe
-649238|Pukekohe
-649239|Pukekohe
-6492420|Auckland
+64923|Pukekohe
 6492426|Whangarei
 6492427|Warkworth
 6492428|Hibiscus Coast
 6492429|Pukekohe
-649248|Auckland
-649249|Auckland
-64925|Auckland
-64926|Auckland
-64927|Auckland
-649280|Auckland
 6492807|Helensville
 6492808|Great Barrier Island
 6492809|Maungaturoto
-649281|Auckland
-649282|Auckland
-6492830|Auckland
 6492831|Maungaturoto
 6492832|Dargaville
 6492833|Warkworth
@@ -2469,27 +2324,23 @@
 6492837|Hibiscus Coast
 6492838|Pukekohe
 6492839|Whangarei
-649291|Auckland
-649292|Auckland
-649294|Auckland
-649295|Auckland
-649296|Auckland
-649297|Auckland
-649298|Auckland
-649299|Auckland
 64930|Auckland
+64931|Auckland/Waiheke Island
+64932|Auckland/Waiheke Island
 649320|Auckland
 6493206|Pukekohe
 6493207|Hibiscus Coast
 6493208|Helensville
 6493209|Great Barrier Island
 64933|Auckland
+64934|Auckland/Waiheke Island
 649347|Auckland
 649348|Auckland
 649349|Auckland
 64935|Auckland
 64936|Auckland
 64937|Auckland
+64938|Auckland/Waiheke Island
 649390|Auckland
 649391|Auckland
 649392|Auckland
@@ -2507,6 +2358,10 @@
 6493942|Great Barrier Island
 6493943|Helensville
 6493944|Hibiscus Coast
+649395|Auckland/Waiheke Island
+649396|Auckland/Waiheke Island
+649397|Auckland/Waiheke Island
+649398|Auckland/Waiheke Island
 649399|Auckland
 6493990|Great Barrier Island
 6493991|Pukekohe
@@ -2543,33 +2398,16 @@
 649452|Auckland
 649458|Dargaville
 649459|Whangarei
-6494700|Whangarei
-6494701|Whangarei
-6494702|Whangarei
-6494703|Whangarei
-6494704|Whangarei
-6494705|Whangarei
-6494706|Whangarei
-649473|Auckland
-649475|Auckland
-649476|Auckland
-649477|Auckland
-649478|Auckland
-649479|Auckland
+64947|Auckland
+649470|Whangarei
 64948|Auckland
-64952|Auckland
-64953|Auckland
-649550|Auckland
-649551|Auckland
+6495|Auckland
 649552|Pukekohe
 6495530|Great Barrier Island
 6495531|Helensville
 6495532|Warkworth
 6495533|Whangarei
-6495538|Auckland
-6495539|Auckland
 649554|Hibiscus Coast
-649555|Auckland
 6495560|Whangarei
 6495561|Whangarei
 6495562|Whangarei
@@ -2580,46 +2418,20 @@
 6495567|Kaitaia
 6495568|Kawakawa
 6495569|Maungaturoto
-649557|Auckland
-649558|Auckland
 6495588|Hibiscus Coast
 6495589|Pukekohe
-64957|Auckland
-649580|Auckland
-649581|Auckland
-649582|Auckland
-649583|Auckland
-649585|Auckland
-649588|Auckland
-649589|Auckland
-649590|Auckland
-649600|Auckland
+6496|Auckland
 6496007|Helensville
 6496008|Hibiscus Coast
 6496009|Pukekohe
 6496010|Kaitaia
-6496011|Kaikohe
 6496012|Kawakawa
 6496013|Whangarei
 6496014|Dargaville
 6496015|Maungaturoto
 6496016|Warkworth
 6496017|Great Barrier Island
-6496018|Auckland
-6496019|Auckland
 6496100|Pukekohe
-64962|Auckland
-649630|Auckland
-649631|Auckland
-649632|Auckland
-649633|Auckland
-649634|Auckland
-649635|Auckland
-649636|Auckland
-649638|Auckland
-649639|Auckland
-649640|Auckland
-649650|Auckland
 6496507|Helensville
 6496508|Hibiscus Coast
 6496509|Pukekohe
@@ -2634,12 +2446,6 @@
 6496518|Kawakawa
 6496519|Maungaturoto
 649652|Warkworth
-649666|Auckland
-6496880|Auckland
-6496881|Auckland
-6496882|Auckland
-6496883|Auckland
-6496884|Auckland
 6496990|Kaitaia
 6496991|Kaikohe
 6496992|Kawakawa
@@ -2649,7 +2455,6 @@
 6496996|Warkworth
 6496997|Hibiscus Coast
 6496998|Helensville
-6496999|Auckland
 6497770|Whangarei
 6497771|Kaikohe
 6497772|Kaitaia
@@ -2660,38 +2465,13 @@
 6497777|Auckland
 6497778|Pukekohe
 6497779|Great Barrier Island
-649801|Auckland
+6498|Auckland
 6498016|Hibiscus Coast
 6498017|Hibiscus Coast
 6498018|Whangarei
 6498019|Pukekohe
-649810|Auckland
-649811|Auckland
-649812|Auckland
-649813|Auckland
-649814|Auckland
-649815|Auckland
-649816|Auckland
-649817|Auckland
-649818|Auckland
-649820|Auckland
-649822|Auckland
-649825|Auckland
-649826|Auckland
-649827|Auckland
-649828|Auckland
-649829|Auckland
-64983|Auckland
-649840|Auckland
-649845|Auckland
-649846|Auckland
-649847|Auckland
-649849|Auckland
-649869|Auckland
 6498690|Kawakawa
 6498691|Maungaturoto
-649880|Auckland
-649881|Auckland
 6498814|Pukekohe
 6498815|Helensville
 6498816|Great Barrier Island
@@ -2703,8 +2483,6 @@
 6498824|Kawakawa
 6498825|Maungaturoto
 6498826|Warkworth
-649883|Auckland
-649884|Auckland
 6498850|Great Barrier Island
 6498851|Pukekohe
 6498852|Warkworth
@@ -2715,28 +2493,18 @@
 6498857|Dargaville
 6498858|Kaikohe
 6498859|Kaitaia
-649886|Auckland
-649887|Auckland
-649888|Auckland
 6498880|Helensville
 6498881|Hibiscus Coast
 6498882|Whangarei
 6498883|Whangarei
-649889|Auckland
-649890|Auckland
 6498900|Pukekohe
 6498901|Pukekohe
-649892|Auckland
-6499000|Auckland
-6499001|Auckland
-6499002|Auckland
+6499|Auckland
 6499003|Warkworth
 6499004|Hibiscus Coast
-6499005|Auckland
 6499006|Whangarei
 6499007|Kaikohe
 6499008|Pukekohe
-6499009|Auckland
 6499010|Kaitaia
 6499011|Kaitaia
 6499012|Kawakawa
@@ -2748,7 +2516,6 @@
 6499018|Maungaturoto
 6499019|Maungaturoto
 649902|Warkworth
-649903|Auckland
 6499040|Helensville
 6499041|Helensville
 6499042|Hibiscus Coast
@@ -2759,7 +2526,7 @@
 6499047|Pukekohe
 6499048|Pukekohe
 6499049|Great Barrier Island
-649905|Auckland
+6499060|Warkworth
 6499061|Hibiscus Coast
 6499062|Hibiscus Coast
 6499063|Hibiscus Coast
@@ -2769,34 +2536,18 @@
 6499067|Pukekohe
 6499068|Pukekohe
 6499069|Pukekohe
-649908|Auckland
-649909|Auckland
+649907|Warkworth
 6499100|Pukekohe
 6499101|Pukekohe
-649912|Auckland
-649913|Auckland
-649914|Auckland
-649915|Auckland
-649916|Auckland
-649917|Auckland
-649918|Auckland
-649919|Auckland
-64992|Auckland
 6499295|Kaikohe
 6499296|Kaitaia
 6499297|Hibiscus Coast
 6499298|Pukekohe
 6499299|Whangarei
-649930|Auckland
-649940|Auckland
-649941|Auckland
 6499420|Pukekohe
 6499421|Hibiscus Coast
 6499422|Helensville
 6499423|Great Barrier Island
-6499424|Auckland
-6499425|Auckland
-6499426|Auckland
 6499428|Warkworth
 6499450|Warkworth
 6499451|Warkworth
@@ -2824,17 +2575,9 @@
 6499473|Helensville
 6499474|Helensville
 6499475|Hibiscus Coast
-6499476|Auckland
 6499477|Pukekohe
 6499478|Pukekohe
 6499479|Pukekohe
-649948|Auckland
-649949|Auckland
-649950|Auckland
-649951|Auckland
-649952|Auckland
-649953|Auckland
-649954|Auckland
 6499551|Whangarei
 6499552|Dargaville
 6499553|Kaikohe
@@ -2844,21 +2587,11 @@
 6499557|Warkworth
 6499558|Great Barrier Island
 6499559|Whangarei
-649956|Auckland
 649957|Pukekohe
 649958|Helensville
 649959|Hibiscus Coast
-649962|Auckland
-649963|Auckland
 6499630|Pukekohe
 6499631|Pukekohe
-649964|Auckland
-649965|Auckland
-649966|Auckland
-649967|Auckland
-649968|Auckland
-649969|Auckland
-64997|Auckland
 6499716|Helensville
 6499717|Whangarei
 6499718|Whangarei
@@ -2871,19 +2604,11 @@
 6499746|Kawakawa
 6499747|Dargaville
 6499748|Whangarei
-649980|Auckland
+64998|Whangarei
 6499810|Hibiscus Coast
 6499811|Hibiscus Coast
 6499818|Great Barrier Island
 6499819|Helensville
-649982|Whangarei
-649983|Whangarei
-649984|Auckland
-649985|Auckland
-649986|Whangarei
-6499870|Whangarei
-6499871|Whangarei
-6499872|Whangarei
 6499873|Kaitaia
 6499874|Kawakawa
 6499875|Dargaville
@@ -2891,4 +2616,3 @@
 6499877|Maungaturoto
 6499878|Warkworth
 6499879|Warkworth
-649988|Whangarei

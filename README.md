@@ -55,7 +55,12 @@ Cream Sandwich).
 The [Java demo](https://libphonenumber.appspot.com/) is updated with a slight
 delay after the GitHub release.
 
-Last demo update: v8.12.55.
+Last demo update: v8.13.3.
+
+Note: Eventhough the library (main branch/[maven release](https://repo1.maven.org/maven2/com/googlecode/libphonenumber/libphonenumber/8.12.56/))
+is at v8.12.57, because of some deployment issues, we were unable to update the
+Java demo with the new binary version. We will soon fix this. Meantime, please
+use JS demo.
 
 If this number is lower than the [latest release's version
 number](https://github.com/google/libphonenumber/releases), we are between
@@ -220,6 +225,7 @@ maintenance processes.
 *   C#: https://github.com/twcclegg/libphonenumber-csharp
 *   Go: https://github.com/nyaruka/phonenumbers
 *   Objective-c: https://github.com/iziz/libPhoneNumber-iOS
+*   Swift: https://github.com/marmelroy/PhoneNumberKit
 *   PHP: https://github.com/giggsey/libphonenumber-for-php
 *   PostgreSQL in-database types: https://github.com/blm768/pg-libphonenumber
 *   Python: https://github.com/daviddrysdale/python-phonenumbers

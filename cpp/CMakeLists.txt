@@ -24,6 +24,11 @@ set(CMAKE_CXX_STANDARD 11 CACHE STRING "C++ standard used to compile this projec
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_POSITION_INDEPENDENT_CODE TRUE)
 
+project (libphonenumber)
+set (libphonenumber_VERSION_MAJOR 8)
+set (libphonenumber_VERSION_MINOR 13)
+set (libphonenumber_VERSION_PATCH 0)
+
 if (32BIT)
   set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -m32")
   set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -m32")
@@ -382,7 +387,7 @@ add_metadata_gen_target (
   ${TEST_METADATA_TARGET}
   "${RESOURCES_DIR}/PhoneNumberMetadataForTesting.xml"
   "test_metadata"
-  "metadata"
+  "test_metadata"
 )
 list (APPEND TESTING_LIBRARY_SOURCES "src/phonenumbers/test_metadata.cc")
 

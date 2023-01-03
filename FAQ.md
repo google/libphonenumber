@@ -210,7 +210,7 @@ Therefore, clients should be aware that there is possibility of false positives 
 
 ### <a href="#operator_specific_numbers">What about numbers that are only valid for a set of subscribers?</a>
 
-There are some numbers that only work for the subcribers of certain operators
+There are some numbers that only work for the subscribers of certain operators
 for special operator-specific services. These differ from carrierSpecific since
 they're not shortcodes. We don't support these numbers due to their limited use
 scope, few examples (only the [area code 700](https://en.wikipedia.org/wiki/Area_code_700)
@@ -367,7 +367,7 @@ right thing if the phone number object is as intended.
 
 @Mexico,
 Mexico used to have such additional prefixes (1, 02, 045, ...) for dialling
-mobile numbers internatioanlly, fixed-line to mobile nationally.. As these
+mobile numbers internationally, fixed-line to mobile nationally.. As these
 dialling patterns were deprecated, we have continued to maintain mobile and
 fixed-line ranges at higher level, returning type as [`FIXED_LINE_OR_MOBILE`](#fixed_line_or_mobile)
 

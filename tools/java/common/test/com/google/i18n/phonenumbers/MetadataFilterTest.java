@@ -90,7 +90,6 @@ public class MetadataFilterTest extends TestCase {
     blacklist.put("nationalPrefixTransformRule", new TreeSet<String>());
     blacklist.put("sameMobileAndFixedLinePattern", new TreeSet<String>());
     blacklist.put("mainCountryForCode", new TreeSet<String>());
-    blacklist.put("leadingZeroPossible", new TreeSet<String>());
     blacklist.put("mobileNumberPortableRegion", new TreeSet<String>());
 
     assertEquals(MetadataFilter.forSpecialBuild(), new MetadataFilter(blacklist));
@@ -751,7 +750,6 @@ public class MetadataFilterTest extends TestCase {
     map1.put("nationalPrefixTransformRule", new TreeSet<String>());
     map1.put("sameMobileAndFixedLinePattern", new TreeSet<String>());
     map1.put("mainCountryForCode", new TreeSet<String>());
-    map1.put("leadingZeroPossible", new TreeSet<String>());
     map1.put("mobileNumberPortableRegion", new TreeSet<String>());
 
     TreeMap<String, TreeSet<String>> map2 = new TreeMap<String, TreeSet<String>>();
@@ -777,7 +775,6 @@ public class MetadataFilterTest extends TestCase {
     map1.put("nationalPrefixTransformRule", new TreeSet<String>());
     map1.put("sameMobileAndFixedLinePattern", new TreeSet<String>());
     map1.put("mainCountryForCode", new TreeSet<String>());
-    map1.put("leadingZeroPossible", new TreeSet<String>());
     map1.put("mobileNumberPortableRegion", new TreeSet<String>());
 
     TreeMap<String, TreeSet<String>> map2 = new TreeMap<String, TreeSet<String>>();
@@ -820,7 +817,6 @@ public class MetadataFilterTest extends TestCase {
     blacklist.put("nationalPrefixTransformRule", new TreeSet<String>());
     blacklist.put("sameMobileAndFixedLinePattern", new TreeSet<String>());
     blacklist.put("mainCountryForCode", new TreeSet<String>());
-    blacklist.put("leadingZeroPossible", new TreeSet<String>());
     blacklist.put("mobileNumberPortableRegion", new TreeSet<String>());
 
     MetadataFilter filter = new MetadataFilter(blacklist);

@@ -1,10 +1,8 @@
 Prefix      ; Length ; Type       ; Tariff        ; Area Code Length ; National Only ; Operator            ; Format      ; Regions ; Geocode:en             ; Provenance ; Comment
 [25]0       ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "vodafone"          ; "fmt_2/3/4" ; "GH"    ;                        ; GOVERNMENT
-23          ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "globacom_zain"     ; "fmt_2/3/4" ; "GH"    ;                        ; GOVERNMENT
+2[367]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "airteltigo"        ; "fmt_2/3/4" ; "GH"    ;                        ; IR21
 24          ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "mtn"               ; "fmt_2/3/4" ; "GH"    ;                        ; GOVERNMENT
 25[67]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "mtn"               ; "fmt_2/3/4" ; "GH"    ;                        ; IR21
-26          ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "airtel"            ; "fmt_2/3/4" ; "GH"    ;                        ; GOVERNMENT
-[25]7       ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "tigo"              ; "fmt_2/3/4" ; "GH"    ;                        ; GOVERNMENT
 28          ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "expresso"          ; "fmt_2/3/4" ; "GH"    ;                        ; GOVERNMENT
 29          ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "national_security" ; "fmt_2/3/4" ; "GH"    ;                        ; GOVERNMENT
 302         ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                     ; "fmt_2/3/4" ; "GH"    ; "Accra"                ; GOVERNMENT
@@ -87,7 +85,7 @@ Prefix      ; Length ; Type       ; Tariff        ; Area Code Length ; National 
 397         ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                     ; "fmt_2/3/4" ; "GH"    ; "Upper West Region"
 3980        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                     ; "fmt_2/3/4" ; "GH"    ; "Upper West Region"
 5[45]       ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "mtn"               ; "fmt_2/3/4" ; "GH"    ;                        ; GOVERNMENT
-56[01]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "airtel"            ; "fmt_2/3/4" ; "GH"    ;                        ; ITU
+5[67]       ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "airteltigo"        ; "fmt_2/3/4" ; "GH"    ;                        ; IR21
 59[1-6]     ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ; "mtn"               ; "fmt_2/3/4" ; "GH"    ;                        ; IR21       ; "Client asked to add based on IR21. T#04478034"
 59[7-9]     ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "mtn"               ; "fmt_2/3/4" ; "GH"    ;                        ; IR21
 800         ; 8      ; FIXED_LINE ; TOLL_FREE     ;                  ; true          ;                     ; "toll_3/5"  ; "GH"

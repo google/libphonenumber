@@ -14,7 +14,7 @@ Prefix       ; Length ; Type       ; Tariff        ; Operator          ; Format 
 5905[12]     ; 9      ; FIXED_LINE ; STANDARD_RATE ;                   ; "fmt1_3/2/2/2"    ; "BL,MF"
 5905[3-579]  ; 9      ; FIXED_LINE ; STANDARD_RATE ;                   ; "fmt1_3/2/2/2"    ; "GP"
 5906[0189]   ; 9      ; FIXED_LINE ; STANDARD_RATE ;                   ; "fmt1_3/2/2/2"    ; "GP"
-59062        ; 9      ; FIXED_LINE ; STANDARD_RATE ;                   ; "fmt1_3/2/2/2"    ; "GP"       ; GOVERNMENT
+5906[23]     ; 9      ; FIXED_LINE ; STANDARD_RATE ;                   ; "fmt1_3/2/2/2"    ; "GP"       ; GOVERNMENT
 5907[08]     ; 9      ; FIXED_LINE ; STANDARD_RATE ;                   ; "fmt1_3/2/2/2"    ; "GP"
 5907[79]     ; 9      ; FIXED_LINE ; STANDARD_RATE ;                   ; "fmt1_3/2/2/2"    ; "MF"
 5908[0-689]  ; 9      ; FIXED_LINE ; STANDARD_RATE ;                   ; "fmt1_3/2/2/2"    ; "GP"

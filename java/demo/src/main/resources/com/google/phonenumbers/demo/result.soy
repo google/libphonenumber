@@ -1,0 +1,273 @@
+{namespace com.google.phonenumbers.demo.singleNumber}
+{template singleNumber}
+{@param phoneNumber: string}
+{@param defaultCountry: string}
+{@param geocodingLocale: string}
+
+{@param countryCode: int}
+{@param nationalNumber: int}
+{@param extension: string}
+{@param countryCodeSource: string}
+{@param italianLeadingZero: bool}
+{@param numberOfLeadingZeros: int}
+{@param rawInput: string}
+{@param preferredDomesticCarrierCode: string}
+
+{@param isPossibleNumber: bool}
+{@param isValidNumber: bool}
+{@param isValidNumberForRegion: bool|null}
+{@param phoneNumberRegion: string|null}
+{@param numberType: string}
+{@param validationResult: string}
+
+{@param isPossibleShortNumber: bool}
+{@param isValidShortNumber: bool}
+{@param isPossibleShortNumberForRegion: bool|null}
+{@param isValidShortNumberForRegion: bool|null}
+
+{@param e164Format: string}
+{@param originalFormat: string}
+{@param nationalFormat: string}
+{@param internationalFormat: string}
+{@param outOfCountryFormatFromUs: string}
+{@param outOfCountryFormatFromCh: string}
+{@param mobileDiallingFormatFromUs: string}
+{@param nationalDiallingFormatWithPreferredCarrierCode: string}
+
+{@param rows: list<list<string>>}
+
+{@param descriptionForNumber: string}
+{@param timeZonesForNumber: string}
+{@param nameForNumber: string}
+{@param newIssueLink: string}
+{@param guidelinesLink: string}
+
+
+<!DOCTYPE html>
+<HTML lang="en">
+<HEAD>
+  <LINK type="text/css" rel="stylesheet" href="/stylesheets/main.css"/>
+  <title>Results for {$phoneNumber}</title>
+</HEAD>
+<BODY>
+<p>Phone Number entered: {$phoneNumber}</p>
+<p>Default Country entered: {$defaultCountry}</p>
+<p>Language entered: {$geocodingLocale}</p>
+<DIV>
+  <TABLE border=1>
+    <TR>
+      <TD colspan=2>Parsing Result (parseAndKeepRawInput())</TD>
+    </TR>
+    <TR>
+      <TH>country_code</TH>
+      <TD>{$countryCode}</TD>
+    </TR>
+    <TR>
+      <TH>national_number</TH>
+      <TD>{$nationalNumber}</TD>
+    </TR>
+    <TR>
+      <TH>extension</TH>
+      <TD>{$extension}</TD>
+    </TR>
+    <TR>
+      <TH>country_code_source</TH>
+      <TD>{$countryCodeSource}</TD>
+    </TR>
+    <TR>
+      <TH>italian_leading_zero</TH>
+      <TD>{$italianLeadingZero}</TD>
+    </TR>
+    <TR>
+      <TH>number_of_leading_zeros</TH>
+      <TD>{$numberOfLeadingZeros}</TD>
+    </TR>
+    <TR>
+      <TH>raw_input</TH>
+      <TD>{$rawInput}</TD>
+    </TR>
+    <TR>
+      <TH>preferred_domestic_carrier_code</TH>
+      <TD>{$preferredDomesticCarrierCode}</TD>
+    </TR>
+  </TABLE>
+</DIV>
+<DIV>
+  <TABLE border=1>
+    <TR>
+      <TD colspan=2>Validation Results</TD>
+    </TR>
+    <TR>
+      <TH>Result from isPossibleNumber()</TH>
+      <TD>{$isPossibleNumber}</TD>
+    </TR>
+{if $isPossibleNumber}
+  {if $validationResult == "IS_POSSIBLE_LOCAL_ONLY"}
+    <TR>
+      <TH>Result from isPossibleNumberWithReason()</TH>
+      <TD>{$validationResult}</TD>
+    </TR>
+    <TR>
+      <TD colspan=2>Number is considered invalid as it is not a possible national number.</TD>
+    </TR>
+  {else}
+    <TR>
+      <TH>Result from isValidNumber()</TH>
+      <TD>{$isValidNumber}</TD>
+    </TR>
+    {if $isValidNumberForRegion != null}
+    <TR>
+      <TH>Result from isValidNumberForRegion()</TH>
+      <TD>{$isValidNumberForRegion}</TD>
+    </TR>
+    {/if}
+    <TR>
+      <TH>Phone Number region</TH>
+      <TD>{$phoneNumberRegion ?: ""}</TD>
+    </TR>
+    <TR>
+      <TH>Result from getNumberType()</TH>
+      <TD>{$numberType}</TD>
+    </TR>
+  {/if}
+{else}
+    <TR>
+      <TH>Result from isPossibleNumberWithReason()</TH>
+      <TD>{$validationResult}</TD>
+    </TR>
+    <TR>
+      <TD colspan=2>Note: Numbers that are not possible have type UNKNOWN, an unknown region, and are considered invalid.</TD>
+    </TR>
+{/if}
+  </TABLE>
+</DIV>
+
+{if not $isValidNumber}
+<DIV>
+  <TABLE border=1>
+  <TR><TD colspan=2>Short Number Results</TD></TR>
+    <TR>
+      <TH>Result from isPossibleShortNumber()</TH>
+      <TD>{$isPossibleShortNumber}</TD>
+    </TR>
+  {if $isPossibleShortNumber}
+    <TR>
+      <TH>Result from isValidShortNumber()</TH>
+      <TD>{$isValidShortNumber}</TD>
+    </TR>
+  {/if}
+  {if $isPossibleShortNumberForRegion != null}
+    <TR>
+      <TH>Result from isPossibleShortNumberForRegion()</TH>
+      <TD>{$isPossibleShortNumberForRegion}</TD>
+    </TR>
+    {if $isPossibleShortNumberForRegion and $isValidShortNumberForRegion != null}
+      <TR>
+        <TH>Result from isValidShortNumberForRegion()</TH>
+        <TD>{$isValidShortNumberForRegion}</TD>
+      </TR>
+    {/if}
+  {/if}
+  </TABLE>
+</DIV>
+{/if}
+
+<DIV>
+  <TABLE border=1>
+    <TR>
+      <TD colspan=2>Formatting Results</TD>
+    </TR>
+    <TR>
+      <TH>E164 format</TH>
+      <TD>{$e164Format}</TD>
+    </TR>
+    <TR>
+      <TH>Original format</TH>
+      <TD>{$originalFormat}</TD>
+    </TR>
+    <TR>
+      <TH>National format</TH>
+      <TD>{$nationalFormat}</TD>
+    </TR>
+    <TR>
+      <TH>International format</TH>
+      <TD>{$internationalFormat}</TD>
+    </TR>
+    <TR>
+      <TH>Out-of-country format from US</TH>
+      <TD>{$outOfCountryFormatFromUs}</TD>
+    </TR>
+    <TR>
+      <TH>Out-of-country format from CH</TH>
+      <TD>{$outOfCountryFormatFromCh}</TD>
+    </TR>
+    <TR>
+      <TH>Format for mobile dialing (calling from US)</TH>
+      <TD>{$mobileDiallingFormatFromUs}</TD>
+    </TR>
+    <TR>
+      <TH>Format for national dialing with preferred carrier code and empty fallback carrier code</TH>
+      <TD>{$nationalDiallingFormatWithPreferredCarrierCode}</TD>
+    </TR>
+  </TABLE>
+</DIV>
+
+<DIV>
+  <TABLE border=1>
+    <TR>
+      <TD colspan=2>AsYouTypeFormatter Results</TD>
+    </TR>
+    {for $row in $rows}
+    <TR>
+      <TH>Char entered: '{$row[0]}' Output: "</TH>
+      <TD>{$row[1]}</TD>
+    </TR>
+    {/for}
+
+  </TABLE>
+</DIV>
+
+
+{if $isValidNumber}
+
+<DIV>
+  <TABLE border=1>
+    <TR>
+      <TD colspan=2>PhoneNumberOfflineGeocoder Results</TD>
+    </TR>
+    <TR>
+      <TH>Location</TH>
+      <TD>{$descriptionForNumber}</TD>
+    </TR>
+  </TABLE>
+</DIV>
+<DIV>
+  <TABLE border=1>
+    <TR>
+      <TD colspan=2>PhoneNumberToTimeZonesMapper Results</TD>
+    </TR>
+    <TR>
+      <TH>Time zone(s)</TH>
+      <TD>{$timeZonesForNumber}</TD>
+    </TR>
+  </TABLE>
+</DIV>
+  {if ['MOBILE', 'FIXED_LINE_OR_MOBILE', 'PAGER'].contains($numberType)}
+<DIV>
+  <TABLE border=1>
+    <TR>
+      <TD colspan=2>PhoneNumberToCarrierMapper Results</TD>
+    </TR>
+    <TR>
+      <TH>Carrier</TH>
+      <TD>{$nameForNumber}</TD>
+    </TR>
+  </TABLE>
+</DIV>
+  {/if}
+{/if}
+
+<b style="color:red">File an issue</b>: by clicking on <a target="_blank" href="{$newIssueLink}">this link</a>, I confirm that I have read the <a target="_blank" href="{$guidelinesLink}">contributor's guidelines</a>.
+</BODY>
+</HTML>
+{/template}

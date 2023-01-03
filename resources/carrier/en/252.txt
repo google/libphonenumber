@@ -18,6 +18,7 @@
 25239|AirSom
 25248|AirSom
 25249|AirSom
+252604|Golis Telecom
 252605|Golis Telecom
 252606|Golis Telecom
 252607|Golis Telecom
@@ -30,6 +31,7 @@
 25267|Nationlink
 25268|SomNet
 25269|Nationlink
+25270|Golis Telecom
 25271|Amtel
 25279|Somtel
 25280|Somali Networks

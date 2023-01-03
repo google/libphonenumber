@@ -1,15 +1,18 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+{namespace com.google.phonenumbers.demo.inputForm}
+{template inputForm}
+{@param welcomeTitle: string}
 <html>
   <head>
     <link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
+    <title>{$welcomeTitle}</title>
   </head>
   <body>
-    <h2>Phone Number Parser Demo</h2>
+    <h2>{$welcomeTitle}</h2>
     <form action="/phonenumberparser" method="post" accept-charset="UTF-8"
           enctype="multipart/form-data">
       <h2>Step 1</h2>
       <p>
-      Specify a Phone Number: <input type="text" name="phoneNumber" size="25">
+      Specify a Phone Number: <input type="text" name="phoneNumber" size="25" value="">
       <p>
       <b>Or</b> Upload a file containing phone numbers separated by comma.
       <p>
@@ -37,3 +40,4 @@
     </form>
   </body>
 </html>
+{/template}

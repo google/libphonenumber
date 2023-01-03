@@ -79,6 +79,7 @@ Prefix        ; Length ; Type       ; Tariff        ; Area Code Length ; Operato
 55            ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "alfa_telecom" ; "fmt_3/3/3"      ; "KG"    ;                                           ; IR21       ; "IR21 dated 3/4/2019"
 56            ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "winline"      ; "fmt_3/3/3"      ; "KG"
 57            ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "sotel"        ; "fmt_3/3/3"      ; "KG"
+600           ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "sky_mobile"   ; "fmt_3/3/3"      ; "KG"    ;                                           ; IR21
 609           ; 9      ; FIXED_LINE ; STANDARD_RATE ; 3                ;                ; "fmt_3/3/3"      ; "KG"
 612           ; 9      ; FIXED_LINE ; STANDARD_RATE ; 3                ;                ; "fmt_3/3/3"      ; "KG"
 62[2-4]       ; 9      ; FIXED_LINE ; STANDARD_RATE ; 3                ;                ; "fmt_3/3/3"      ; "KG"

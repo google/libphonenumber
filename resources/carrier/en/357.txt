@@ -12,6 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+35791|Cytamobile-Vodafone
 35794|Lemontel
 35795|PrimeTel
 35796|MTN
