@@ -16,18 +16,13 @@
 
 cmake_minimum_required (VERSION 3.11)
 
-project (libphonenumber VERSION 8.12.0)
+project (libphonenumber VERSION 8.13.0)
 
 # Pick the C++ standard to compile with.
 # Abseil currently supports C++11, C++14, and C++17.
 set(CMAKE_CXX_STANDARD 11 CACHE STRING "C++ standard used to compile this project")
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_POSITION_INDEPENDENT_CODE TRUE)
-
-project (libphonenumber)
-set (libphonenumber_VERSION_MAJOR 8)
-set (libphonenumber_VERSION_MINOR 13)
-set (libphonenumber_VERSION_PATCH 0)
 
 if (32BIT)
   set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -m32")
@@ -387,7 +382,7 @@ add_metadata_gen_target (
   ${TEST_METADATA_TARGET}
   "${RESOURCES_DIR}/PhoneNumberMetadataForTesting.xml"
   "test_metadata"
-  "test_metadata"
+  "metadata"
 )
 list (APPEND TESTING_LIBRARY_SOURCES "src/phonenumbers/test_metadata.cc")
 
