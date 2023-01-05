@@ -109,6 +109,9 @@ endif ()
 find_package(absl)
 
 if(NOT absl_FOUND)
+  # Overide abseil install rules for subprojects
+  set(ABSL_ENABLE_INSTALL ON)
+  
   # Downloading the abseil sources at particular version to not catch up
   # with its new build requirements like min C++14 is mandated in that lib.
   FetchContent_Declare(
