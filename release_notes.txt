@@ -1,3 +1,13 @@
+Jan 05, 2023: v8.13.4
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   BG, BJ, ET, GH, HT, LR, MG, QA, SI, UZ
+ - Updated short number metadata for region code(s): FO
+ - Updated geocoding data for country calling code(s): 251 (en)
+ - Updated carrier data for country calling code(s):
+   45 (en), 48 (en), 231 (en), 233 (en), 261 (en), 298 (en), 383 (en), 386 (en),
+   509 (en), 974 (en), 998 (en)
+
 Dec 21, 2022: v8.13.3
 Metadata changes:
  - Updated phone metadata for region code(s):

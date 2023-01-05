@@ -156,8 +156,10 @@ Prefix             ; Length ; Type       ; Tariff        ; National Only ; Opera
 31[019]            ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Dunajska Streda"   ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 3116               ; 6      ; FIXED_LINE ; STANDARD_RATE ; false         ;                            ; "fixed_2/2/2-3" ; "SK"    ; "Dunajska Streda"
 311[67]            ; 7      ; FIXED_LINE ; STANDARD_RATE ; false         ;                            ; "fixed_2/2/2-3" ; "SK"    ; "Dunajska Streda"
-3120[01]0          ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Dunajska Streda"   ; GOVERNMENT
-3120[01][1-9]      ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Dunajska Streda"   ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+312000             ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Dunajska Streda"   ; GOVERNMENT
+31200[1-9]         ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Dunajska Streda"   ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+31201[01]          ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Dunajska Streda"   ; GOVERNMENT
+31201[2-9]         ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Dunajska Streda"   ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 31202              ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Dunajska Streda"   ; GOVERNMENT
 3120[3-9]          ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Dunajska Streda"   ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 312[15]            ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Dunajska Streda"   ;            ; "FILLUP TO SUPPORT MASTER RANGE"
@@ -221,8 +223,10 @@ Prefix             ; Length ; Type       ; Tariff        ; National Only ; Opera
 32[019]            ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Trencin"           ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 3216               ; 6      ; FIXED_LINE ; STANDARD_RATE ; false         ;                            ; "fixed_2/2/2-3" ; "SK"    ; "Trencin"
 321[67]            ; 7      ; FIXED_LINE ; STANDARD_RATE ; false         ;                            ; "fixed_2/2/2-3" ; "SK"    ; "Trencin"
-3220[01]0          ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Trencin"           ; GOVERNMENT
-3220[01][1-9]      ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Trencin"           ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+322000             ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Trencin"           ; GOVERNMENT
+32200[1-9]         ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Trencin"           ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+32201[01]          ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Trencin"           ; GOVERNMENT
+32201[2-9]         ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Trencin"           ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 32202              ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Trencin"           ; GOVERNMENT
 3220[3-9]          ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Trencin"           ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 322[15]            ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Trencin"           ;            ; "FILLUP TO SUPPORT MASTER RANGE"
@@ -289,8 +293,10 @@ Prefix             ; Length ; Type       ; Tariff        ; National Only ; Opera
 33[019]            ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Trnava"            ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 3316               ; 6      ; FIXED_LINE ; STANDARD_RATE ; false         ;                            ; "fixed_2/2/2-3" ; "SK"    ; "Trnava"
 331[67]            ; 7      ; FIXED_LINE ; STANDARD_RATE ; false         ;                            ; "fixed_2/2/2-3" ; "SK"    ; "Trnava"
-3320[01]0          ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Trnava"            ; GOVERNMENT
-3320[01][1-9]      ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Trnava"            ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+332000             ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Trnava"            ; GOVERNMENT
+33200[1-9]         ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Trnava"            ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+33201[01]          ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Trnava"            ; GOVERNMENT
+33201[2-9]         ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Trnava"            ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 33202              ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Trnava"            ; GOVERNMENT
 3320[3-9]          ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Trnava"            ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 332[15]            ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Trnava"            ;            ; "FILLUP TO SUPPORT MASTER RANGE"
@@ -366,8 +372,10 @@ Prefix             ; Length ; Type       ; Tariff        ; National Only ; Opera
 34[019]            ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Senica"            ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 3416               ; 6      ; FIXED_LINE ; STANDARD_RATE ; false         ;                            ; "fixed_2/2/2-3" ; "SK"    ; "Senica"
 341[67]            ; 7      ; FIXED_LINE ; STANDARD_RATE ; false         ;                            ; "fixed_2/2/2-3" ; "SK"    ; "Senica"
-3420[01]0          ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Senica"            ; GOVERNMENT
-3420[01][1-9]      ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Senica"            ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+342000             ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Senica"            ; GOVERNMENT
+34200[1-9]         ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Senica"            ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+34201[01]          ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Senica"            ; GOVERNMENT
+34201[2-9]         ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Senica"            ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 34202              ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Senica"            ; GOVERNMENT
 3420[3-9]          ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Senica"            ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 342[15]            ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Senica"            ;            ; "FILLUP TO SUPPORT MASTER RANGE"
@@ -433,8 +441,10 @@ Prefix             ; Length ; Type       ; Tariff        ; National Only ; Opera
 35[019]            ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Nove Zamky"        ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 3516               ; 6      ; FIXED_LINE ; STANDARD_RATE ; false         ;                            ; "fixed_2/2/2-3" ; "SK"    ; "Nove Zamky"
 351[67]            ; 7      ; FIXED_LINE ; STANDARD_RATE ; false         ;                            ; "fixed_2/2/2-3" ; "SK"    ; "Nove Zamky"
-3520[01]0          ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Nove Zamky"        ; GOVERNMENT
-3520[01][1-9]      ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Nove Zamky"        ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+352000             ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Nove Zamky"        ; GOVERNMENT
+35200[1-9]         ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Nove Zamky"        ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+35201[01]          ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Nove Zamky"        ; GOVERNMENT
+35201[2-9]         ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Nove Zamky"        ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 35202              ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Nove Zamky"        ; GOVERNMENT
 3520[3-9]          ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Nove Zamky"        ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 352[15]            ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Nove Zamky"        ;            ; "FILLUP TO SUPPORT MASTER RANGE"
@@ -496,8 +506,10 @@ Prefix             ; Length ; Type       ; Tariff        ; National Only ; Opera
 36[019]            ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Levice"            ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 3616               ; 6      ; FIXED_LINE ; STANDARD_RATE ; false         ;                            ; "fixed_2/2/2-3" ; "SK"    ; "Levice"
 361[67]            ; 7      ; FIXED_LINE ; STANDARD_RATE ; false         ;                            ; "fixed_2/2/2-3" ; "SK"    ; "Levice"
-3620[01]0          ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Levice"            ; GOVERNMENT
-3620[01][1-9]      ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Levice"            ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+362000             ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Levice"            ; GOVERNMENT
+36200[1-9]         ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Levice"            ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+36201[01]          ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Levice"            ; GOVERNMENT
+36201[2-9]         ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Levice"            ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 36202              ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Levice"            ; GOVERNMENT
 3620[3-9]          ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Levice"            ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 362[15]            ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Levice"            ;            ; "FILLUP TO SUPPORT MASTER RANGE"
@@ -560,10 +572,8 @@ Prefix             ; Length ; Type       ; Tariff        ; National Only ; Opera
 37[019]            ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Nitra"             ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 3716               ; 6      ; FIXED_LINE ; STANDARD_RATE ; false         ;                            ; "fixed_2/2/2-3" ; "SK"    ; "Nitra"
 371[67]            ; 7      ; FIXED_LINE ; STANDARD_RATE ; false         ;                            ; "fixed_2/2/2-3" ; "SK"    ; "Nitra"
-37200[01]          ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Nitra"             ; GOVERNMENT
-37200[2-9]         ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Nitra"             ;            ; "FILLUP TO SUPPORT MASTER RANGE"
-372010             ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Nitra"             ; GOVERNMENT
-37201[1-9]         ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Nitra"             ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+3720[01][01]       ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Nitra"             ; GOVERNMENT
+3720[01][2-9]      ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Nitra"             ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 37202              ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Nitra"             ; GOVERNMENT
 3720[3-9]          ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Nitra"             ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 372[15]            ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Nitra"             ;            ; "FILLUP TO SUPPORT MASTER RANGE"
@@ -634,8 +644,10 @@ Prefix             ; Length ; Type       ; Tariff        ; National Only ; Opera
 38[019]            ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Topolcany"         ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 3816               ; 6      ; FIXED_LINE ; STANDARD_RATE ; false         ;                            ; "fixed_2/2/2-3" ; "SK"    ; "Topolcany"
 381[67]            ; 7      ; FIXED_LINE ; STANDARD_RATE ; false         ;                            ; "fixed_2/2/2-3" ; "SK"    ; "Topolcany"
-3820[01]0          ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Topolcany"         ; GOVERNMENT
-3820[01][1-9]      ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Topolcany"         ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+382000             ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Topolcany"         ; GOVERNMENT
+38200[1-9]         ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Topolcany"         ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+38201[01]          ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Topolcany"         ; GOVERNMENT
+38201[2-9]         ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Topolcany"         ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 38202              ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Topolcany"         ; GOVERNMENT
 3820[3-9]          ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Topolcany"         ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 382[15]            ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Topolcany"         ;            ; "FILLUP TO SUPPORT MASTER RANGE"
@@ -707,8 +719,8 @@ Prefix             ; Length ; Type       ; Tariff        ; National Only ; Opera
 411[67]            ; 7      ; FIXED_LINE ; STANDARD_RATE ; false         ;                            ; "fixed_2/2/2-3" ; "SK"    ; "Zilina"
 412000             ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Zilina"            ; GOVERNMENT
 41200[1-9]         ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Zilina"            ;            ; "FILLUP TO SUPPORT MASTER RANGE"
-4120[13-9]         ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Zilina"            ;            ; "FILLUP TO SUPPORT MASTER RANGE"
-41202              ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Zilina"            ; GOVERNMENT
+4120[12]           ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Zilina"            ; GOVERNMENT
+4120[3-9]          ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Zilina"            ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 412[15]            ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Zilina"            ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 4122[0367]         ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Zilina"            ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 4122[1459]         ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Zilina"            ; GOVERNMENT
@@ -776,8 +788,10 @@ Prefix             ; Length ; Type       ; Tariff        ; National Only ; Opera
 42[0179]           ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Povazska Bystrica" ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 4216               ; 6      ; FIXED_LINE ; STANDARD_RATE ; false         ;                            ; "fixed_2/2/2-3" ; "SK"    ; "Povazska Bystrica"
 421[67]            ; 7      ; FIXED_LINE ; STANDARD_RATE ; false         ;                            ; "fixed_2/2/2-3" ; "SK"    ; "Povazska Bystrica"
-4220[01]0          ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Povazska Bystrica" ; GOVERNMENT
-4220[01][1-9]      ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Povazska Bystrica" ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+422000             ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Povazska Bystrica" ; GOVERNMENT
+42200[1-9]         ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Povazska Bystrica" ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+42201[01]          ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Povazska Bystrica" ; GOVERNMENT
+42201[2-9]         ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Povazska Bystrica" ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 42202              ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Povazska Bystrica" ; GOVERNMENT
 4220[3-9]          ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Povazska Bystrica" ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 422[15]            ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Povazska Bystrica" ;            ; "FILLUP TO SUPPORT MASTER RANGE"
@@ -837,8 +851,8 @@ Prefix             ; Length ; Type       ; Tariff        ; National Only ; Opera
 431[67]            ; 7      ; FIXED_LINE ; STANDARD_RATE ; false         ;                            ; "fixed_2/2/2-3" ; "SK"    ; "Martin"
 432000             ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Martin"            ; GOVERNMENT
 43200[1-9]         ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Martin"            ;            ; "FILLUP TO SUPPORT MASTER RANGE"
-4320[13-9]         ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Martin"            ;            ; "FILLUP TO SUPPORT MASTER RANGE"
-43202              ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Martin"            ; GOVERNMENT
+4320[12]           ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Martin"            ; GOVERNMENT
+4320[3-9]          ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Martin"            ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 432[15]            ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Martin"            ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 4322[0367]         ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Martin"            ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 4322[1459]         ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Martin"            ; GOVERNMENT
@@ -904,8 +918,10 @@ Prefix             ; Length ; Type       ; Tariff        ; National Only ; Opera
 44[0179]           ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Liptovsky Mikulas" ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 4416               ; 6      ; FIXED_LINE ; STANDARD_RATE ; false         ;                            ; "fixed_2/2/2-3" ; "SK"    ; "Liptovsky Mikulas"
 441[67]            ; 7      ; FIXED_LINE ; STANDARD_RATE ; false         ;                            ; "fixed_2/2/2-3" ; "SK"    ; "Liptovsky Mikulas"
-4420[01]0          ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Liptovsky Mikulas" ; GOVERNMENT
-4420[01][1-9]      ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Liptovsky Mikulas" ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+442000             ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Liptovsky Mikulas" ; GOVERNMENT
+44200[1-9]         ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Liptovsky Mikulas" ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+44201[01]          ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Liptovsky Mikulas" ; GOVERNMENT
+44201[2-9]         ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Liptovsky Mikulas" ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 44202              ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Liptovsky Mikulas" ; GOVERNMENT
 4420[3-9]          ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Liptovsky Mikulas" ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 442[15]            ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Liptovsky Mikulas" ;            ; "FILLUP TO SUPPORT MASTER RANGE"
@@ -966,8 +982,10 @@ Prefix             ; Length ; Type       ; Tariff        ; National Only ; Opera
 45[0179]           ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Zvolen"            ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 4516               ; 6      ; FIXED_LINE ; STANDARD_RATE ; false         ;                            ; "fixed_2/2/2-3" ; "SK"    ; "Zvolen"
 451[67]            ; 7      ; FIXED_LINE ; STANDARD_RATE ; false         ;                            ; "fixed_2/2/2-3" ; "SK"    ; "Zvolen"
-4520[01]0          ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Zvolen"            ; GOVERNMENT
-4520[01][1-9]      ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Zvolen"            ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+452000             ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Zvolen"            ; GOVERNMENT
+45200[1-9]         ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Zvolen"            ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+45201[01]          ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Zvolen"            ; GOVERNMENT
+45201[2-9]         ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Zvolen"            ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 45202              ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Zvolen"            ; GOVERNMENT
 4520[3-9]          ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Zvolen"            ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 452[15]            ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Zvolen"            ;            ; "FILLUP TO SUPPORT MASTER RANGE"
@@ -1030,8 +1048,10 @@ Prefix             ; Length ; Type       ; Tariff        ; National Only ; Opera
 46[0179]           ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Prievidza"         ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 4616               ; 6      ; FIXED_LINE ; STANDARD_RATE ; false         ;                            ; "fixed_2/2/2-3" ; "SK"    ; "Prievidza"
 461[67]            ; 7      ; FIXED_LINE ; STANDARD_RATE ; false         ;                            ; "fixed_2/2/2-3" ; "SK"    ; "Prievidza"
-4620[01]0          ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Prievidza"         ; GOVERNMENT
-4620[01][1-9]      ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Prievidza"         ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+462000             ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Prievidza"         ; GOVERNMENT
+46200[1-9]         ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Prievidza"         ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+46201[01]          ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Prievidza"         ; GOVERNMENT
+46201[2-9]         ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Prievidza"         ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 46202              ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Prievidza"         ; GOVERNMENT
 4620[3-9]          ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Prievidza"         ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 462[15]            ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Prievidza"         ;            ; "FILLUP TO SUPPORT MASTER RANGE"
@@ -1093,8 +1113,10 @@ Prefix             ; Length ; Type       ; Tariff        ; National Only ; Opera
 47[019]            ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Lucenec"           ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 4716               ; 6      ; FIXED_LINE ; STANDARD_RATE ; false         ;                            ; "fixed_2/2/2-3" ; "SK"    ; "Lucenec"
 471[67]            ; 7      ; FIXED_LINE ; STANDARD_RATE ; false         ;                            ; "fixed_2/2/2-3" ; "SK"    ; "Lucenec"
-4720[01]0          ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Lucenec"           ; GOVERNMENT
-4720[01][1-9]      ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Lucenec"           ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+472000             ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Lucenec"           ; GOVERNMENT
+47200[1-9]         ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Lucenec"           ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+47201[01]          ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Lucenec"           ; GOVERNMENT
+47201[2-9]         ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Lucenec"           ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 47202              ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Lucenec"           ; GOVERNMENT
 4720[3-9]          ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Lucenec"           ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 472[15]            ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Lucenec"           ;            ; "FILLUP TO SUPPORT MASTER RANGE"
@@ -1158,8 +1180,10 @@ Prefix             ; Length ; Type       ; Tariff        ; National Only ; Opera
 48[0179]           ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Banska Bystrica"   ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 4816               ; 6      ; FIXED_LINE ; STANDARD_RATE ; false         ;                            ; "fixed_2/2/2-3" ; "SK"    ; "Banska Bystrica"
 481[67]            ; 7      ; FIXED_LINE ; STANDARD_RATE ; false         ;                            ; "fixed_2/2/2-3" ; "SK"    ; "Banska Bystrica"
-4820[01]0          ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Banska Bystrica"   ; GOVERNMENT
-4820[01][1-9]      ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Banska Bystrica"   ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+482000             ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Banska Bystrica"   ; GOVERNMENT
+48200[1-9]         ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Banska Bystrica"   ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+48201[01]          ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Banska Bystrica"   ; GOVERNMENT
+48201[2-9]         ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Banska Bystrica"   ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 48202              ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Banska Bystrica"   ; GOVERNMENT
 4820[3-9]          ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Banska Bystrica"   ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 482[15]            ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Banska Bystrica"   ;            ; "FILLUP TO SUPPORT MASTER RANGE"
@@ -1219,8 +1243,10 @@ Prefix             ; Length ; Type       ; Tariff        ; National Only ; Opera
 51[019]            ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Presov"            ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 5116               ; 6      ; FIXED_LINE ; STANDARD_RATE ; false         ;                            ; "fixed_2/2/2-3" ; "SK"    ; "Presov"
 511[67]            ; 7      ; FIXED_LINE ; STANDARD_RATE ; false         ;                            ; "fixed_2/2/2-3" ; "SK"    ; "Presov"
-5120[01]0          ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Presov"            ; GOVERNMENT
-5120[01][1-9]      ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Presov"            ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+512000             ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Presov"            ; GOVERNMENT
+51200[1-9]         ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Presov"            ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+51201[01]          ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Presov"            ; GOVERNMENT
+51201[2-9]         ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Presov"            ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 51202              ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Presov"            ; GOVERNMENT
 5120[3-9]          ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Presov"            ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 512[15]            ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Presov"            ;            ; "FILLUP TO SUPPORT MASTER RANGE"
@@ -1291,8 +1317,10 @@ Prefix             ; Length ; Type       ; Tariff        ; National Only ; Opera
 52[019]            ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Poprad"            ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 5216               ; 6      ; FIXED_LINE ; STANDARD_RATE ; false         ;                            ; "fixed_2/2/2-3" ; "SK"    ; "Poprad"
 521[67]            ; 7      ; FIXED_LINE ; STANDARD_RATE ; false         ;                            ; "fixed_2/2/2-3" ; "SK"    ; "Poprad"
-5220[01]0          ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Poprad"            ; GOVERNMENT
-5220[01][1-9]      ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Poprad"            ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+522000             ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Poprad"            ; GOVERNMENT
+52200[1-9]         ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Poprad"            ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+52201[01]          ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Poprad"            ; GOVERNMENT
+52201[2-9]         ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Poprad"            ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 52202              ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Poprad"            ; GOVERNMENT
 5220[3-9]          ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Poprad"            ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 522[15]            ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Poprad"            ;            ; "FILLUP TO SUPPORT MASTER RANGE"
@@ -1356,8 +1384,10 @@ Prefix             ; Length ; Type       ; Tariff        ; National Only ; Opera
 53[0179]           ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Spisska Nova Ves"  ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 5316               ; 6      ; FIXED_LINE ; STANDARD_RATE ; false         ;                            ; "fixed_2/2/2-3" ; "SK"    ; "Spisska Nova Ves"
 531[67]            ; 7      ; FIXED_LINE ; STANDARD_RATE ; false         ;                            ; "fixed_2/2/2-3" ; "SK"    ; "Spisska Nova Ves"
-5320[01]0          ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Spisska Nova Ves"  ; GOVERNMENT
-5320[01][1-9]      ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Spisska Nova Ves"  ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+532000             ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Spisska Nova Ves"  ; GOVERNMENT
+53200[1-9]         ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Spisska Nova Ves"  ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+53201[01]          ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Spisska Nova Ves"  ; GOVERNMENT
+53201[2-9]         ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Spisska Nova Ves"  ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 53202              ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Spisska Nova Ves"  ; GOVERNMENT
 5320[3-9]          ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Spisska Nova Ves"  ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 532[15]            ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Spisska Nova Ves"  ;            ; "FILLUP TO SUPPORT MASTER RANGE"
@@ -1418,8 +1448,10 @@ Prefix             ; Length ; Type       ; Tariff        ; National Only ; Opera
 54[019]            ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Bardejov"          ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 5416               ; 6      ; FIXED_LINE ; STANDARD_RATE ; false         ;                            ; "fixed_2/2/2-3" ; "SK"    ; "Bardejov"
 541[67]            ; 7      ; FIXED_LINE ; STANDARD_RATE ; false         ;                            ; "fixed_2/2/2-3" ; "SK"    ; "Bardejov"
-5420[01]0          ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Bardejov"          ; GOVERNMENT
-5420[01][1-9]      ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Bardejov"          ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+542000             ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Bardejov"          ; GOVERNMENT
+54200[1-9]         ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Bardejov"          ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+54201[01]          ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Bardejov"          ; GOVERNMENT
+54201[2-9]         ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Bardejov"          ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 54202              ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Bardejov"          ; GOVERNMENT
 5420[3-9]          ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Bardejov"          ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 542[15]            ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Bardejov"          ;            ; "FILLUP TO SUPPORT MASTER RANGE"
@@ -1563,8 +1595,10 @@ Prefix             ; Length ; Type       ; Tariff        ; National Only ; Opera
 56[0179]           ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Michalovce"        ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 5616               ; 6      ; FIXED_LINE ; STANDARD_RATE ; false         ;                            ; "fixed_2/2/2-3" ; "SK"    ; "Michalovce"
 561[67]            ; 7      ; FIXED_LINE ; STANDARD_RATE ; false         ;                            ; "fixed_2/2/2-3" ; "SK"    ; "Michalovce"
-5620[01]0          ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Michalovce"        ; GOVERNMENT
-5620[01][1-9]      ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Michalovce"        ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+562000             ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Michalovce"        ; GOVERNMENT
+56200[1-9]         ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Michalovce"        ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+56201[01]          ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Michalovce"        ; GOVERNMENT
+56201[2-9]         ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Michalovce"        ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 56202              ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Michalovce"        ; GOVERNMENT
 5620[3-9]          ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Michalovce"        ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 562[15]            ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Michalovce"        ;            ; "FILLUP TO SUPPORT MASTER RANGE"
@@ -1628,8 +1662,10 @@ Prefix             ; Length ; Type       ; Tariff        ; National Only ; Opera
 57[019]            ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Humenne"           ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 5716               ; 6      ; FIXED_LINE ; STANDARD_RATE ; false         ;                            ; "fixed_2/2/2-3" ; "SK"    ; "Humenne"
 571[67]            ; 7      ; FIXED_LINE ; STANDARD_RATE ; false         ;                            ; "fixed_2/2/2-3" ; "SK"    ; "Humenne"
-5720[01]0          ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Humenne"           ; GOVERNMENT
-5720[01][1-9]      ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Humenne"           ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+572000             ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Humenne"           ; GOVERNMENT
+57200[1-9]         ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Humenne"           ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+57201[01]          ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Humenne"           ; GOVERNMENT
+57201[2-9]         ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Humenne"           ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 57202              ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Humenne"           ; GOVERNMENT
 5720[3-9]          ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Humenne"           ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 572[15]            ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Humenne"           ;            ; "FILLUP TO SUPPORT MASTER RANGE"
@@ -1693,8 +1729,10 @@ Prefix             ; Length ; Type       ; Tariff        ; National Only ; Opera
 58[019]            ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Roznava"           ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 5816               ; 6      ; FIXED_LINE ; STANDARD_RATE ; false         ;                            ; "fixed_2/2/2-3" ; "SK"    ; "Roznava"
 581[67]            ; 7      ; FIXED_LINE ; STANDARD_RATE ; false         ;                            ; "fixed_2/2/2-3" ; "SK"    ; "Roznava"
-5820[01]0          ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Roznava"           ; GOVERNMENT
-5820[01][1-9]      ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Roznava"           ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+582000             ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Roznava"           ; GOVERNMENT
+58200[1-9]         ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Roznava"           ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+58201[01]          ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Roznava"           ; GOVERNMENT
+58201[2-9]         ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Roznava"           ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 58202              ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Roznava"           ; GOVERNMENT
 5820[3-9]          ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Roznava"           ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 582[15]            ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Roznava"           ;            ; "FILLUP TO SUPPORT MASTER RANGE"

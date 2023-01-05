@@ -11,11 +11,10 @@ Prefix     ; Length ; Type       ; Tariff        ; Operator   ; Format       ; R
 39[1-9]    ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_2/3/3" ; "XK"    ; "Peja"      ; "Pejë"      ; "Пећ"
 4[389]     ; 8      ; MOBILE     ; STANDARD_RATE ; "ipko"     ; "fmt1_2/3/3" ; "XK"    ;             ;             ;                      ; IR21
 44         ; 8      ; MOBILE     ; STANDARD_RATE ; "vala"     ; "fmt1_2/3/3" ; "XK"    ;             ;             ;                      ; GOVERNMENT
-450        ; 8      ; MOBILE     ; STANDARD_RATE ;            ; "fmt1_2/3/3" ; "XK"
+4[56]0     ; 8      ; MOBILE     ; STANDARD_RATE ;            ; "fmt1_2/3/3" ; "XK"
 45[1-47-9] ; 8      ; MOBILE     ; STANDARD_RATE ; "vala"     ; "fmt1_2/3/3" ; "XK"    ;             ;             ;                      ; GOVERNMENT
 45[56]     ; 8      ; MOBILE     ; STANDARD_RATE ; "z_mobile" ; "fmt1_2/3/3" ; "XK"    ;             ;             ;                      ; GOVERNMENT
-46[02-9]   ; 8      ; MOBILE     ; STANDARD_RATE ;            ; "fmt1_2/3/3" ; "XK"
-461        ; 8      ; MOBILE     ; STANDARD_RATE ; "z_mobile" ; "fmt1_2/3/3" ; "XK"    ;             ;             ;                      ; GOVERNMENT
+46[1-9]    ; 8      ; MOBILE     ; STANDARD_RATE ; "vala"     ; "fmt1_2/3/3" ; "XK"    ;             ;             ;                      ; GOVERNMENT
 47         ; 8      ; MOBILE     ; STANDARD_RATE ; "mts_doo"  ; "fmt1_2/3/3" ; "XK"    ;             ;             ;                      ; GOVERNMENT
 800        ; 8      ; FIXED_LINE ; TOLL_FREE     ;            ; "fmt2_3/5"   ; "XK"
 900        ; 8      ; FIXED_LINE ; PREMIUM_RATE  ;            ; "fmt2_3/5"   ; "XK"

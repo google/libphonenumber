@@ -2202,7 +2202,8 @@ Prefix        ; Length ; Type            ; Tariff        ; Area Code Length ; Op
 99423         ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Great Barrier Island"
 9942[4-79]    ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Auckland"
 99428         ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Warkworth"
-994[34]       ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Auckland"                                               ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+9943          ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Auckland"                                               ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+9944          ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Auckland"                                               ; GOVERNMENT
 9945[0-3]     ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Warkworth"
 99454         ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Whangarei"
 994[56]5      ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Dargaville"
