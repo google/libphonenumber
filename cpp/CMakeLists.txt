@@ -31,6 +31,10 @@ if (32BIT)
   set (CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -m32")
 endif ()
 
+# Set out-of-tree tools directory
+set (TOOLS_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../tools/cpp")
+set (TOOLS_BINARY_DIR "${CMAKE_CURRENT_BINARY_DIR}/tools")
+
 # Helper functions dealing with finding libraries and programs this library
 # depends on.
 
@@ -93,6 +97,7 @@ option (USE_STD_MAP "Force the use of std::map" OFF)
 option (BUILD_STATIC_LIB "Build static libraries" ON)
 option (BUILD_SHARED_LIBS "Build shared libraries" ON)
 option (BUILD_TESTING "Build testing" ON)
+option (BUILD_TOOLS_ONLY "Limit build to targets in ../tools/cpp" OFF)
 option (USE_STDMUTEX "Use C++ 2011 std::mutex for multi-threading" OFF)
 option (USE_POSIX_THREAD "Use Posix api for multi-threading" OFF)
 
@@ -128,6 +133,16 @@ if(NOT absl_FOUND)
   add_subdirectory(${abseil-cpp_SOURCE_DIR} ${abseil-cpp_BINARY_DIR})
 endif()
 
+if (BUILD_TESTING)
+  include (../tools/cpp/gtest.cmake)
+  find_or_build_gtest ()
+endif()
+
+if (BUILD_TOOLS_ONLY)
+  add_subdirectory("${TOOLS_DIR}" "${TOOLS_BINARY_DIR}")
+  return()
+endif()
+
 if (USE_BOOST)
   add_definitions ("-DI18N_PHONENUMBERS_USE_BOOST")
   if (WIN32)
@@ -151,11 +166,6 @@ endif ()
 
 if ((NOT USE_BOOST) AND (NOT USE_STDMUTEX))
   find_package (Threads)
-endif()
-
-if (BUILD_TESTING)
-  include (../tools/cpp/gtest.cmake)
-  find_or_build_gtest ()
 endif()
 
 if (USE_RE2)
@@ -234,8 +244,7 @@ add_custom_command (
 
 if (BUILD_GEOCODER)
   # Geocoding data cpp file generation
-  set (TOOLS_DIR "${CMAKE_CURRENT_BINARY_DIR}/tools")
-  add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/../tools/cpp" "${TOOLS_DIR}")
+  add_subdirectory("${TOOLS_DIR}" "${TOOLS_BINARY_DIR}")
 
   set (GEOCODING_DIR "${RESOURCES_DIR}/geocoding")
   file (GLOB_RECURSE GEOCODING_SOURCES "${GEOCODING_DIR}/*.txt")
