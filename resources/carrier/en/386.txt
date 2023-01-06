@@ -21,7 +21,8 @@
 38651|Telekom Slovenije
 38664|T-2
 386651|SŽ - Infrastruktura
-386655|Telekom Slovenije
+3866555|Telekom Slovenije
+3866556|Sloexport
 386656|SoftNet
 386657|Novatel
 38668|A1

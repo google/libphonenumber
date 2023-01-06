@@ -92,6 +92,7 @@ Prefix          ; Length ; Type       ; Tariff        ; Area Code Length ; Opera
 11645           ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;                 ; "fmt_2/3/4" ; "ET"    ; "Yeka I, Addis Ababa"                    ; ITU        ; "ITU Date: 09/12/2005"
 11646           ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;                 ; "fmt_2/3/4" ; "ET"    ; "Yeka II, Addis Ababa"                   ; ITU        ; "ITU Date: 09/12/2005"
 11647           ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;                 ; "fmt_2/3/4" ; "ET"    ; "Yeka Rss III, Addis Ababa"              ; ITU        ; "ITU Date: 09/12/2005"
+11650           ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;                 ; "fmt_2/3/4" ; "ET"    ; "Addis Ababa"
 11651           ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;                 ; "fmt_2/3/4" ; "ET"    ; "East Addis Ababa Zone"                  ; ITU        ; "ITU Date: 09/12/2005"
 11652           ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;                 ; "fmt_2/3/4" ; "ET"    ; "South Addis Ababa Zone"                 ; ITU        ; "ITU Date: 09/12/2005"
 11653           ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;                 ; "fmt_2/3/4" ; "ET"    ; "South-West Addis Ababa Zone"            ; ITU        ; "ITU Date: 09/12/2005"

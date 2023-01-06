@@ -4859,7 +4859,10 @@
         <possibleLengths national="3,4"/>
         <exampleNumber>112</exampleNumber>
         <nationalNumberPattern>
-          11[248]|
+          1(?:
+            1[248]|
+            819
+          )|
           1(?:
             4[124]|
             71|
@@ -4868,15 +4871,25 @@
         </nationalNumberPattern>
       </shortCode>
       <tollFree>
-        <possibleLengths national="3"/>
+        <possibleLengths national="3,4"/>
         <exampleNumber>112</exampleNumber>
-        <nationalNumberPattern>11[24]</nationalNumberPattern>
+        <nationalNumberPattern>
+          1(?:
+            1[24]|
+            81\d
+          )
+        </nationalNumberPattern>
       </tollFree>
       <emergency>
         <possibleLengths national="3"/>
         <exampleNumber>112</exampleNumber>
         <nationalNumberPattern>11[24]</nationalNumberPattern>
       </emergency>
+      <expandedEmergency>
+        <possibleLengths national="4"/>
+        <exampleNumber>1810</exampleNumber>
+        <nationalNumberPattern>181\d</nationalNumberPattern>
+      </expandedEmergency>
     </territory>
 
     <!-- France (FR) -->

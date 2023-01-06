@@ -12,5 +12,4 @@ Prefix         ; Length ; Type       ; Tariff        ; Operator          ; Forma
 90[13-5][15-7] ; 6      ; FIXED_LINE ; PREMIUM_RATE  ;                   ; "fmt_6" ; "FO"    ; GOVERNMENT
 902[125-7]     ; 6      ; FIXED_LINE ; PREMIUM_RATE  ;                   ; "fmt_6" ; "FO"    ; GOVERNMENT
 909            ; 6      ; FIXED_LINE ; PREMIUM_RATE  ;                   ; "fmt_6" ; "FO"    ; GOVERNMENT
-91             ; 6      ; MOBILE     ; STANDARD_RATE ; "tosa"            ; "fmt_6" ; "FO"    ; ITU
-96             ; 6      ; MOBILE     ; STANDARD_RATE ; "faroese_telecom" ; "fmt_6" ; "FO"    ; ITU
+9[16]          ; 6      ; MOBILE     ; STANDARD_RATE ; "faroese_telecom" ; "fmt_6" ; "FO"    ; ITU

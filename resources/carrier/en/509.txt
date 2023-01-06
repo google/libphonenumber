@@ -12,13 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-50930|Digicel
-50931|Digicel
-50934|Digicel
-50936|Digicel
-50937|Digicel
-50938|Digicel
-50939|Digicel
+5093|Digicel
+50932|Natcom
+50933|Natcom
+50935|Natcom
 50940|Natcom
 50941|Natcom
 50942|Natcom
@@ -28,3 +25,4 @@
 50947|Digicel
 50948|Digicel
 50949|Digicel
+5095|Natcom
