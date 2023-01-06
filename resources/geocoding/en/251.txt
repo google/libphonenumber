@@ -97,6 +97,7 @@
 25111645|Yeka I, Addis Ababa
 25111646|Yeka II, Addis Ababa
 25111647|Yeka Rss III, Addis Ababa
+25111650|Addis Ababa
 25111651|East Addis Ababa Zone
 25111652|South Addis Ababa Zone
 25111653|South-West Addis Ababa Zone

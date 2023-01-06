@@ -84,6 +84,7 @@ Prefix      ; Length ; Type       ; Tariff        ; Area Code Length ; National 
 3920        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                     ; "fmt_2/3/4" ; "GH"    ; "Wa"                   ; GOVERNMENT
 397         ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                     ; "fmt_2/3/4" ; "GH"    ; "Upper West Region"
 3980        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                     ; "fmt_2/3/4" ; "GH"    ; "Upper West Region"
+53          ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "mtn"               ; "fmt_2/3/4" ; "GH"    ;                        ; IR21
 5[45]       ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "mtn"               ; "fmt_2/3/4" ; "GH"    ;                        ; GOVERNMENT
 5[67]       ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "airteltigo"        ; "fmt_2/3/4" ; "GH"    ;                        ; IR21
 59[1-6]     ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ; "mtn"               ; "fmt_2/3/4" ; "GH"    ;                        ; IR21       ; "Client asked to add based on IR21. T#04478034"

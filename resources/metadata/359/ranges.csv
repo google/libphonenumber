@@ -1,4 +1,5 @@
 Prefix        ; Length ; Type       ; Tariff        ; Area Code Length ; Operator  ; Format           ; Regions ; Geocode:bg                           ; Geocode:en                           ; Provenance ; Comment
+00800         ; 12     ; FIXED_LINE ; TOLL_FREE     ;                  ;           ;                  ; "BG"    ;                                      ;                                      ;            ; "User report"
 2             ; 6      ; FIXED_LINE ; STANDARD_RATE ; 1                ;           ; "fixed_1/1/2/2"  ; "BG"    ; "София"                              ; "Sofia"                              ; GOVERNMENT ; "Regulator Numbering Plan Dated 5/2/2014"
 2             ; 7,8    ; FIXED_LINE ; STANDARD_RATE ; 1                ;           ; "fixed_1/3/3-4"  ; "BG"    ; "София"                              ; "Sofia"
 300           ; 7,8    ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fixed_2/3/2-3"  ; "BG"    ;                                      ;                                      ; GOVERNMENT ; "Regulator Numbering Plan Dated 5/2/2014"
