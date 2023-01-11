@@ -3360,13 +3360,13 @@ public class PhoneNumberUtil {
   }
 
   /**
-   * Extracts the value of the phone-context parameter of numberToExtractFrom, following the syntax
-   * defined in RFC3966.
+   * Extracts the value of the phone-context parameter of numberToExtractFrom where the index of
+   * ";phone-context=" is the parameter indexOfPhoneContext, following the syntax defined in
+   * RFC3966.
    *
    * @return the extracted string (possibly empty), or null if no phone-context parameter is found.
    */
-  private String extractPhoneContext(String numberToExtractFrom) {
-    int indexOfPhoneContext = numberToExtractFrom.indexOf(RFC3966_PHONE_CONTEXT);
+  private String extractPhoneContext(String numberToExtractFrom, int indexOfPhoneContext) {
     // If no phone-context parameter is present
     if (indexOfPhoneContext == -1) {
       return null;
@@ -3409,7 +3409,9 @@ public class PhoneNumberUtil {
    */
   private void buildNationalNumberForParsing(String numberToParse, StringBuilder nationalNumber)
       throws NumberParseException {
-    String phoneContext = extractPhoneContext(numberToParse);
+    int indexOfPhoneContext = numberToParse.indexOf(RFC3966_PHONE_CONTEXT);
+
+    String phoneContext = extractPhoneContext(numberToParse, indexOfPhoneContext);
     if (!isPhoneContextValid(phoneContext)) {
       throw new NumberParseException(NumberParseException.ErrorType.NOT_A_NUMBER,
           "The phone-context value is invalid.");
@@ -3418,6 +3420,9 @@ public class PhoneNumberUtil {
       // If the phone context contains a phone number prefix, we need to capture it, whereas domains
       // will be ignored.
       if (phoneContext.charAt(0) == PLUS_SIGN) {
+        // Additional parameters might follow the phone context. If so, we will remove them here
+        // because the parameters after phone context are not important for parsing the phone
+        // number.
         nationalNumber.append(phoneContext);
       }
 
@@ -3428,7 +3433,6 @@ public class PhoneNumberUtil {
       int indexOfRfc3966Prefix = numberToParse.indexOf(RFC3966_PREFIX);
       int indexOfNationalNumber =
           (indexOfRfc3966Prefix >= 0) ? indexOfRfc3966Prefix + RFC3966_PREFIX.length() : 0;
-      int indexOfPhoneContext = numberToParse.indexOf(RFC3966_PHONE_CONTEXT);
       nationalNumber.append(numberToParse.substring(indexOfNationalNumber, indexOfPhoneContext));
     } else {
       // Extract a possible number from the string passed in (this strips leading characters that
