@@ -31,9 +31,10 @@ public class NumberParseException extends Exception {
      */
     INVALID_COUNTRY_CODE,
     /**
-     * This generally indicates the string passed in had less than 3 digits in it. More
-     * specifically, the number failed to match the regular expression VALID_PHONE_NUMBER in
-     * PhoneNumberUtil.java.
+     * This indicates the string passed is not a valid number. Either the string had less than 3
+     * digits in it or had an invalid phone-context parameter. More specifically, the number failed
+     * to match the regular expression VALID_PHONE_NUMBER, RFC3966_GLOBAL_NUMBER_DIGITS, or
+     * RFC3966_DOMAINNAME in PhoneNumberUtil.java.
      */
     NOT_A_NUMBER,
     /**
