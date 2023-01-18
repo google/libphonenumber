@@ -42,6 +42,8 @@ Prefix      ; Length ; Type       ; Tariff        ; Operator ; Format         ; 
 2383        ; 8      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt1_2/2/2/2" ; "BJ"    ; "Tanguiéta"                            ; "Tanguiéta"                             ; ITU
 24          ; 8      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt1_2/2/2/2" ; "BJ"    ; "Tanguiéta"                            ;                                         ; GOVERNMENT
 4[01]       ; 8      ; MOBILE     ; STANDARD_RATE ; "sbin"   ; "fmt1_2/2/2/2" ; "BJ"    ;                                        ;                                         ; IR21
+42          ; 8      ; MOBILE     ; STANDARD_RATE ; "mtn"    ; "fmt1_2/2/2/2" ; "BJ"    ;                                        ;                                         ; IR21
+50          ; 8      ; MOBILE     ; STANDARD_RATE ; "mtn"    ; "fmt1_2/2/2/2" ; "BJ"    ;                                        ;                                         ; IR21
 5[1-37-9]   ; 8      ; MOBILE     ; STANDARD_RATE ; "mtn"    ; "fmt1_2/2/2/2" ; "BJ"
 54          ; 8      ; MOBILE     ; STANDARD_RATE ; "mtn"    ; "fmt1_2/2/2/2" ; "BJ"    ;                                        ;                                         ;            ; "User report"
 55          ; 8      ; MOBILE     ; STANDARD_RATE ; "moov"   ; "fmt1_2/2/2/2" ; "BJ"    ;                                        ;                                         ; IR21
