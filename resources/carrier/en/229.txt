@@ -14,7 +14,9 @@
 
 # Libercom is brand name of Benintelecoms and Moov is brand name of Etisalat.
 
-2294|SBIN
+22940|SBIN
+22941|SBIN
+22942|MTN
 2295|MTN
 22955|Moov
 22956|Moov
