@@ -1,3 +1,9 @@
+Jan 17, 2023: v8.13.5
+Metadata changes:
+ - Updated phone metadata for region code(s): BJ, EE, GI, GP, MN, TD
+ - Updated carrier data for country calling code(s):
+   46 (en), 229 (en), 235 (en), 976 (en)
+
 Jan 05, 2023: v8.13.4
 Metadata changes:
  - Updated phone metadata for region code(s):
