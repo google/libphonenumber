@@ -3394,7 +3394,7 @@ public class PhoneNumberUtil {
     if (phoneContext == null) {
       return true;
     }
-    if (phoneContext.isEmpty()) {
+    if (phoneContext.length() == 0) {
       return false;
     }
 
