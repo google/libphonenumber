@@ -17,8 +17,8 @@
 cmake_minimum_required (VERSION 3.11)
 
 # Pick the C++ standard to compile with.
-# Abseil currently supports C++11, C++14, and C++17.
-set(CMAKE_CXX_STANDARD 11)
+# Abseil currently supports 4C++14, and C++17.
+set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 project (generate_geocoding_data)
@@ -56,4 +56,3 @@ if (BUILD_TESTING)
   add_executable (generate_geocoding_data_test ${TEST_SOURCES})
   target_link_libraries (generate_geocoding_data_test absl::btree ${TEST_LIBS} absl::node_hash_set)
 endif()
-
