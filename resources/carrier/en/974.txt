@@ -12,8 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-97428|ooredoo
-97429|Vodafone
 97430|Vodafone
 974310|Vodafone
 974311|Vodafone

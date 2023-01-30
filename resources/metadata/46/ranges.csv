@@ -624,10 +624,11 @@ Prefix          ; Length ; Type            ; Tariff        ; Operator           
 727512          ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
 72751[347-9]    ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"
 72751[56]       ; 9      ; MOBILE          ; STANDARD_RATE ; "fink_telecom"              ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
-7275[27-9]      ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"
+7275[279]       ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"
 72753           ; 9      ; MOBILE          ; STANDARD_RATE ; "netmore"                   ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
 72754           ; 9      ; MOBILE          ; STANDARD_RATE ; "telenor"                   ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; IR21
 7275[56]        ; 9      ; MOBILE          ; STANDARD_RATE ; "fink_telecom"              ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+72758           ; 9      ; MOBILE          ; STANDARD_RATE ; "lancelot"                  ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; IR21
 727[6-8]        ; 9      ; MOBILE          ; STANDARD_RATE ; "lycamobile"                ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
 7279            ; 9      ; MOBILE          ; STANDARD_RATE ; "telenor"                   ; "mobile_etc_2/3/2/2"     ; "SE"
 7280            ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"

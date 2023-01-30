@@ -307,6 +307,7 @@
 4672754|Telenor Sverige
 4672755|FINK TELECOM SERVIC
 4672756|FINK TELECOM SERVIC
+4672758|Lancelot Telecom
 467276|Lycamobile Sweden
 467277|Lycamobile Sweden
 467278|Lycamobile Sweden

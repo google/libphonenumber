@@ -1,12 +1,14 @@
-Region ; Prefix    ; Length ; Type               ; Tariff       ; Sms
+Region ; Prefix    ; Length ; Type               ; Tariff       ; Sms  ; Provenance
 BE     ; 10[01]    ; 3      ; EMERGENCY          ; TOLL_FREE
 BE     ; 10[235-8] ; 3      ; EXPANDED_EMERGENCY ; TOLL_FREE
 BE     ; 104       ; 3      ; COMMERCIAL
 BE     ; 110       ; 3      ; EXPANDED_EMERGENCY ; TOLL_FREE
 BE     ; 112       ; 3      ; EMERGENCY          ; TOLL_FREE
+BE     ; 116       ; 3      ; COMMERCIAL         ; TOLL_FREE    ;      ; GOVERNMENT
 BE     ; 116000    ; 6      ; EXPANDED_EMERGENCY ; TOLL_FREE
 BE     ; 116117    ; 6      ; COMMERCIAL         ; TOLL_FREE
 BE     ; 117       ; 3      ; COMMERCIAL
+BE     ; 119       ; 3      ; EXPANDED_EMERGENCY ; TOLL_FREE    ;      ; GOVERNMENT
 BE     ; 12[03]4   ; 4      ; COMMERCIAL         ; PREMIUM_RATE
 BE     ; 1207      ; 4      ; COMMERCIAL
 BE     ; 1212      ; 4      ; COMMERCIAL         ; PREMIUM_RATE

@@ -3,13 +3,13 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.googlecode.libphonenumber</groupId>
   <artifactId>demo</artifactId>
-  <version>8.13.3-SNAPSHOT</version>
+  <version>8.13.6-SNAPSHOT</version>
   <packaging>war</packaging>
   <url>https://github.com/google/libphonenumber/</url>
   <parent>
     <groupId>com.googlecode.libphonenumber</groupId>
     <artifactId>libphonenumber-parent</artifactId>
-    <version>8.13.3-SNAPSHOT</version>
+    <version>8.13.6-SNAPSHOT</version>
   </parent>
 
   <properties>
@@ -68,17 +68,17 @@
     <dependency>
       <groupId>com.googlecode.libphonenumber</groupId>
       <artifactId>libphonenumber</artifactId>
-      <version>8.13.3-SNAPSHOT</version>
+      <version>8.13.6-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>com.googlecode.libphonenumber</groupId>
       <artifactId>geocoder</artifactId>
-      <version>2.197-SNAPSHOT</version>
+      <version>2.200-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>com.googlecode.libphonenumber</groupId>
       <artifactId>carrier</artifactId>
-      <version>1.187-SNAPSHOT</version>
+      <version>1.190-SNAPSHOT</version>
     </dependency>
   </dependencies>
 
@@ -100,6 +100,11 @@
           <target>8</target>
         </configuration>
         <groupId>org.apache.maven.plugins</groupId>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>3.3.1</version>
       </plugin>
       <plugin>
         <groupId>org.codehaus.mojo</groupId>

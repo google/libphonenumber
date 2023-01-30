@@ -21,6 +21,7 @@
 23328|Expresso
 23329|National Security
 23350|Vodafone
+23353|MTN
 23354|MTN
 23355|MTN
 23356|airteltiGO
