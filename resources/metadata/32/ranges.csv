@@ -20,15 +20,14 @@ Prefix        ; Length ; Type       ; Tariff        ; Operator                  
 461[0-79]     ; 9      ; MOBILE     ; STANDARD_RATE ;                                  ; "fmt1_3/2/2/2" ; "BE"
 4618          ; 9      ; MOBILE     ; STANDARD_RATE ; "nmbs"                           ; "fmt1_3/2/2/2" ; "BE"    ;                      ;                      ;                      ;                      ; GOVERNMENT
 46[24]        ; 9      ; MOBILE     ; STANDARD_RATE ;                                  ; "fmt1_3/2/2/2" ; "BE"
-4630          ; 9      ; MOBILE     ; STANDARD_RATE ; "tismi_bv"                       ; "fmt1_3/2/2/2" ; "BE"    ;                      ;                      ;                      ;                      ; GOVERNMENT
+4630          ; 9      ; MOBILE     ; STANDARD_RATE ; "lancelot"                       ; "fmt1_3/2/2/2" ; "BE"    ;                      ;                      ;                      ;                      ; IR21
 463[1-9]      ; 9      ; MOBILE     ; STANDARD_RATE ;                                  ; "fmt1_3/2/2/2" ; "BE"
-4650          ; 9      ; MOBILE     ; STANDARD_RATE ;                                  ; "fmt1_3/2/2/2" ; "BE"
+46[57]0       ; 9      ; MOBILE     ; STANDARD_RATE ; "telenet"                        ; "fmt1_3/2/2/2" ; "BE"    ;                      ;                      ;                      ;                      ; IR21
 465[1-9]      ; 9      ; MOBILE     ; STANDARD_RATE ; "lycamobile"                     ; "fmt1_3/2/2/2" ; "BE"    ;                      ;                      ;                      ;                      ; GOVERNMENT
 466[0-4]      ; 9      ; MOBILE     ; STANDARD_RATE ; "lycamobile"                     ; "fmt1_3/2/2/2" ; "BE"    ;                      ;                      ;                      ;                      ; GOVERNMENT
 466[5-7]      ; 9      ; MOBILE     ; STANDARD_RATE ; "vectone"                        ; "fmt1_3/2/2/2" ; "BE"    ;                      ;                      ;                      ;                      ; IR21
 4668          ; 9      ; MOBILE     ; STANDARD_RATE ;                                  ; "fmt1_3/2/2/2" ; "BE"
 4669          ; 9      ; MOBILE     ; STANDARD_RATE ; "voxbone_sa"                     ; "fmt1_3/2/2/2" ; "BE"    ;                      ;                      ;                      ;                      ; GOVERNMENT
-4670          ; 9      ; MOBILE     ; STANDARD_RATE ; "telenet"                        ; "fmt1_3/2/2/2" ; "BE"    ;                      ;                      ;                      ;                      ; IR21
 467[12]       ; 9      ; MOBILE     ; STANDARD_RATE ; "join_experience_belgium"        ; "fmt1_3/2/2/2" ; "BE"    ;                      ;                      ;                      ;                      ; IR21
 46730[0-57-9] ; 9      ; MOBILE     ; STANDARD_RATE ;                                  ; "fmt1_3/2/2/2" ; "BE"
 467306        ; 9      ; MOBILE     ; STANDARD_RATE ; "telenet"                        ; "fmt1_3/2/2/2" ; "BE"    ;                      ;                      ;                      ;                      ; GOVERNMENT
@@ -39,13 +38,15 @@ Prefix        ; Length ; Type       ; Tariff        ; Operator                  
 4679          ; 9      ; MOBILE     ; STANDARD_RATE ; "interactive_digital_media_gmbh" ; "fmt1_3/2/2/2" ; "BE"    ;                      ;                      ;                      ;                      ; GOVERNMENT
 468[0-5]      ; 9      ; MOBILE     ; STANDARD_RATE ; "telenet"                        ; "fmt1_3/2/2/2" ; "BE"    ;                      ;                      ;                      ;                      ; IR21
 4686          ; 9      ; MOBILE     ; STANDARD_RATE ; "onoff_telecom_sasu"             ; "fmt1_3/2/2/2" ; "BE"    ;                      ;                      ;                      ;                      ; GOVERNMENT
-468[78]       ; 9      ; MOBILE     ; STANDARD_RATE ; "premium_routing_gmbh"           ; "fmt1_3/2/2/2" ; "BE"    ;                      ;                      ;                      ;                      ; GOVERNMENT
+468[78]       ; 9      ; MOBILE     ; STANDARD_RATE ; "lancelot"                       ; "fmt1_3/2/2/2" ; "BE"    ;                      ;                      ;                      ;                      ; IR21
 4689          ; 9      ; MOBILE     ; STANDARD_RATE ; "febo_telecom"                   ; "fmt1_3/2/2/2" ; "BE"    ;                      ;                      ;                      ;                      ; GOVERNMENT
 469           ; 9      ; MOBILE     ; STANDARD_RATE ; "telenet"                        ; "fmt1_3/2/2/2" ; "BE"    ;                      ;                      ;                      ;                      ; IR21
 47            ; 9      ; MOBILE     ; STANDARD_RATE ; "proximus"                       ; "fmt1_3/2/2/2" ; "BE"    ;                      ;                      ;                      ;                      ; IR21
-480[013468]   ; 9      ; MOBILE     ; STANDARD_RATE ;                                  ; "fmt1_3/2/2/2" ; "BE"
+480[0148]     ; 9      ; MOBILE     ; STANDARD_RATE ;                                  ; "fmt1_3/2/2/2" ; "BE"
 4802          ; 9      ; MOBILE     ; STANDARD_RATE ; "tismi_bv"                       ; "fmt1_3/2/2/2" ; "BE"    ;                      ;                      ;                      ;                      ; IR21
+4803          ; 9      ; MOBILE     ; STANDARD_RATE ; "lancelot"                       ; "fmt1_3/2/2/2" ; "BE"    ;                      ;                      ;                      ;                      ; IR21
 4805          ; 9      ; MOBILE     ; STANDARD_RATE ; "voyacom_sprl"                   ; "fmt1_3/2/2/2" ; "BE"    ;                      ;                      ;                      ;                      ; GOVERNMENT
+4806          ; 9      ; MOBILE     ; STANDARD_RATE ; "telenet"                        ; "fmt1_3/2/2/2" ; "BE"    ;                      ;                      ;                      ;                      ; IR21
 4807          ; 9      ; MOBILE     ; STANDARD_RATE ; "messagebird"                    ; "fmt1_3/2/2/2" ; "BE"    ;                      ;                      ;                      ;                      ; GOVERNMENT
 4809          ; 9      ; MOBILE     ; STANDARD_RATE ; "ericsson"                       ; "fmt1_3/2/2/2" ; "BE"    ;                      ;                      ;                      ;                      ; GOVERNMENT
 48[12]        ; 9      ; MOBILE     ; STANDARD_RATE ;                                  ; "fmt1_3/2/2/2" ; "BE"

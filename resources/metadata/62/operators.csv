@@ -1,9 +1,7 @@
 Id        ; International Dialling Codes ; Name:en
-3         ;                              ; "3"
-__unknown ; "00[89]"
+__unknown ; "008,009"
 axis      ;                              ; "AXIS"
-hutchison ;                              ; "Hutchison"
-im3       ;                              ; "IM3"
+indosat   ;                              ; "Indosat Ooredoo Hutchison"
 smartfren ;                              ; "Smartfren"
 telkomsel ;                              ; "Telkomsel"
 xl        ;                              ; "XL"
