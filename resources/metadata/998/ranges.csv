@@ -1,9 +1,7 @@
 Prefix         ; Length ; Type                 ; Tariff        ; Operator    ; Format        ; Regions ; Provenance ; Comment
 33             ; 9      ; MOBILE               ; STANDARD_RATE ; "uzmobile"  ; "fmt_2/3/2/2" ; "UZ"    ; IR21
 50             ; 9      ; MOBILE               ; STANDARD_RATE ; "ucell"     ; "fmt_2/3/2/2" ; "UZ"    ; IR21
-5550[013]      ; 9      ; MOBILE               ; STANDARD_RATE ; "uzmobile"  ; "fmt_2/3/2/2" ; "UZ"    ;            ; "User report"
-5570           ; 9      ; FIXED_LINE           ; STANDARD_RATE ;             ; "fmt_2/3/2/2" ; "UZ"    ;            ; "User report"
-5590           ; 9      ; MOBILE               ; STANDARD_RATE ;             ; "fmt_2/3/2/2" ; "UZ"
+55             ; 9      ; FIXED_LINE           ; STANDARD_RATE ;             ; "fmt_2/3/2/2" ; "UZ"    ; TELECOMS
 6122[01]       ; 9      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "mobiuz"    ; "fmt_2/3/2/2" ; "UZ"
 6122[2-9]      ; 9      ; FIXED_LINE           ; STANDARD_RATE ;             ; "fmt_2/3/2/2" ; "UZ"
 61298          ; 9      ; MOBILE               ; STANDARD_RATE ; "mobiuz"    ; "fmt_2/3/2/2" ; "UZ"

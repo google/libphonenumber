@@ -97,8 +97,7 @@
 61476|Telstra
 61477|Telstra
 61478|Optus
-614790|Optus
-614791|Optus
+61479|Optus
 614800|Pivotel Satellite
 614801|Telstra
 614803|Telstra
