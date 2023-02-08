@@ -1,4 +1,4 @@
-Prefix       ; Length ; Type       ; Tariff        ; National Only ; Operator   ; Format            ; Regions ; Geocode:en                         ; Provenance
+Prefix       ; Length ; Type       ; Tariff        ; National Only ; Operator   ; Format            ; Regions ; Geocode:en                         ; Provenance ; Comment
 220[013]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Polo Paz"                         ; ITU
 2202         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Tegucigalpa"                      ; WEB
 2204         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Francisco Morazan"                ; GOVERNMENT
@@ -64,6 +64,7 @@ Prefix       ; Length ; Type       ; Tariff        ; National Only ; Operator   
 250[235]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Cortes"                           ; GOVERNMENT
 250[7-9]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"
 251[135]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Cortes"                           ; GOVERNMENT
+2512         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "San Pedro Sula, Cortés"           ;            ; "User report"
 2516         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "San Pedro Sula, Cortés"
 254[05]      ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "San Pedro Sula, Cortés"
 2543         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Inalámbrica Sps"                  ; ITU

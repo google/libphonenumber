@@ -938,7 +938,7 @@ Prefix            ; Length ; Type            ; Tariff        ; Area Code Length 
 74577             ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "spacetel"                 ; "mobile_4/6"   ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB"
 7457[89]          ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "cardboardfish"            ; "mobile_4/6"   ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB"
 7458[01]          ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "gamma_telecom"            ; "mobile_4/6"   ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB"
-74582             ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "premium_routing"          ; "mobile_4/6"   ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB"
+74582             ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "lancelot"                 ; "mobile_4/6"   ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB"          ;                                             ; IR21
 74583             ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "virgin_mobile"            ; "mobile_4/6"   ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB"
 74584             ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "airwave"                  ; "mobile_4/6"   ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB"
 74585             ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "marathon_telecom"         ; "mobile_4/6"   ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB"
