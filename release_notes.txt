@@ -1,3 +1,20 @@
+Feb 08, 2023: v8.13.6
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   AG, AI, AS, AU, BB, BM, BS, CA, CC, CF, CX, DM, DO, GD, GE, GU, HN, JM, KN,
+   KY, LA, LC, MP, MS, MV, PR, SI, SX, TC, TT, US, UZ, VC, VG, VI, VN
+ - Updated short number metadata for region code(s): SC
+ - Updated geocoding data for country calling code(s): 504 (en)
+ - Updated carrier data for country calling code(s):
+   32 (en), 44 (en), 61 (en), 62 (en), 236 (en), 372 (en), 386 (en), 960 (en),
+   995 (en), 998 (en), 1246 (en)
+
+Jan 17, 2023: v8.13.5
+Metadata changes:
+ - Updated phone metadata for region code(s): BJ, EE, GI, GP, MN, TD
+ - Updated carrier data for country calling code(s):
+   46 (en), 229 (en), 235 (en), 976 (en)
+
 Jan 05, 2023: v8.13.4
 Metadata changes:
  - Updated phone metadata for region code(s):

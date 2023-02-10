@@ -19,6 +19,7 @@ Prefix      ; Length ; Type       ; Tariff        ; Operator     ; Format       
 75[26][1-9] ; 8      ; MOBILE     ; STANDARD_RATE ; "telecel"    ; "fmt1_2/2/2/2" ; "CF"    ;            ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 755[04-8]   ; 8      ; MOBILE     ; STANDARD_RATE ; "telecel"    ; "fmt1_2/2/2/2" ; "CF"    ;            ; ITU
 755[1-39]   ; 8      ; MOBILE     ; STANDARD_RATE ; "telecel"    ; "fmt1_2/2/2/2" ; "CF"    ;            ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+76          ; 8      ; MOBILE     ; STANDARD_RATE ; "telecel"    ; "fmt1_2/2/2/2" ; "CF"
 770[0-57]   ; 8      ; MOBILE     ; STANDARD_RATE ; "nationlink" ; "fmt1_2/2/2/2" ; "CF"    ;            ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 770[689]    ; 8      ; MOBILE     ; STANDARD_RATE ; "nationlink" ; "fmt1_2/2/2/2" ; "CF"    ;            ; ITU
 77[1-3679]  ; 8      ; MOBILE     ; STANDARD_RATE ; "nationlink" ; "fmt1_2/2/2/2" ; "CF"    ;            ;            ; "FILLUP TO SUPPORT MASTER RANGE"

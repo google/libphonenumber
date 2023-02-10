@@ -74,35 +74,45 @@ Prefix          ; Length ; Type       ; Tariff        ; Area Code Length ; Natio
 495             ; 9      ; FIXED_LINE ; STANDARD_RATE ; 3                ; false         ;                    ; "fmt_3/2/2/2"    ; "GE"    ; "Khoni"                 ; ITU
 496             ; 9      ; FIXED_LINE ; STANDARD_RATE ; 3                ; false         ;                    ; "fmt_3/2/2/2"    ; "GE"    ; "Ozurgeti"              ; ITU
 497             ; 9      ; FIXED_LINE ; STANDARD_RATE ; 3                ; false         ;                    ; "fmt_3/2/2/2"    ; "GE"    ; "Tkibuli"               ; ITU
-5000            ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "mobilaive"        ; "mobile_3/2/2/2" ; "GE"
+5000            ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "silknet"          ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
 50050[0-4]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "magticom"         ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21       ; "IR21 dated 3/1/2019"
 50050[5-9]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "magticom"         ; "mobile_3/2/2/2" ; "GE"    ;                         ; ITU
 50055           ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "silknet"          ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
 50070[0-4]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "myphone"          ; "mobile_3/2/2/2" ; "GE"    ;                         ; ITU
+50505[0-4]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "silknet"          ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
 50555[5-9]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "magticom"         ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21       ; "IR21 dated 3/1/2019"
+510[01]0[0-4]   ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "silknet"          ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
 51100           ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "magticom"         ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
+51107[0-4]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "silknet"          ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
 511[124]        ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "magticom"         ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
 5113[01]        ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "magticom"         ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
 51133[0-4]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "magticom"         ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
 51151[0-4]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "silknet"          ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
 51177[5-9]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "magticom"         ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
-514             ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "geocell"          ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21       ; "IR21 dated 10/26/2018"
+514             ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "silknet"          ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
 51555[5-9]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "magticom"         ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
 51777[5-9]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "magticom"         ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
+520[02]0[0-4]   ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "silknet"          ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
 52222[0-4]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "magticom"         ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21       ; "IR21 dated 3/1/2019"
+522252[0-4]     ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "silknet"          ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
+52252[0-4]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "silknet"          ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
+530[03]0[0-4]   ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "silknet"          ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
 53333[0-4]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "magticom"         ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21       ; "IR21 dated 3/1/2019"
-544[0-35-9]     ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ;                    ; "mobile_3/2/2/2" ; "GE"
+53353[0-4]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "silknet"          ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
+540[04]0[0-4]   ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "silknet"          ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
+544[0-36-9]     ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ;                    ; "mobile_3/2/2/2" ; "GE"
 5444[0-35-9]    ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ;                    ; "mobile_3/2/2/2" ; "GE"
 54444           ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "magticom"         ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21       ; "IR21 dated 3/1/2019"
-5500[05]        ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "geocell"          ; "mobile_3/2/2/2" ; "GE"    ;                         ; ITU
+5445            ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "silknet"          ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
+5500[05]        ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "silknet"          ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
 550[05][1-46-9] ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "magticom"         ; "mobile_3/2/2/2" ; "GE"    ;                         ; ITU
 550[1-46-9]     ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "magticom"         ; "mobile_3/2/2/2" ; "GE"    ;                         ; ITU
-55050           ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "geocell"          ; "mobile_3/2/2/2" ; "GE"    ;                         ; ITU
+55050           ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "silknet"          ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
 55055           ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "datacom"          ; "mobile_3/2/2/2" ; "GE"    ;                         ; ITU
 551             ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "magticom"         ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21       ; "IR21 dated 3/1/2019"
 55200           ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "pni"              ; "mobile_3/2/2/2" ; "GE"
 55222[0-4]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "asanet"           ; "mobile_3/2/2/2" ; "GE"    ;                         ; ITU
-55[578]         ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "geocell"          ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21       ; "IR21 dated 10/26/2018"
+55[578]         ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "silknet"          ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
 559[0-8]        ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "globalcell"       ; "mobile_3/2/2/2" ; "GE"    ;                         ; ITU
 5599[0-8]       ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "globalcell"       ; "mobile_3/2/2/2" ; "GE"    ;                         ; ITU
 55999[0-4]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "globalcell"       ; "mobile_3/2/2/2" ; "GE"    ;                         ; ITU
@@ -114,16 +124,18 @@ Prefix          ; Length ; Type       ; Tariff        ; Area Code Length ; Natio
 575[57]5        ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "silknet"          ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
 57577[7-9]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "magticom"         ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21       ; "IR21 dated 3/1/2019"
 57578[01]       ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "magticom"         ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21       ; "IR21 dated 3/1/2019"
-577             ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "geocell"          ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21       ; "IR21 dated 10/26/2018"
+577             ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "silknet"          ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
 578             ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ;                    ; "mobile_3/2/2/2" ; "GE"
 580[01]         ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "silknet"          ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
 5802[0-4]       ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "silknet"          ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
 5858[89]        ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "magticom"         ; "mobile_3/2/2/2" ; "GE"
 58855           ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "silknet"          ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
-58888           ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "geocell"          ; "mobile_3/2/2/2" ; "GE"
+58888           ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "silknet"          ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
+59000[0-4]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "silknet"          ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
+59090           ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "silknet"          ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
 59[15689]       ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "magticom"         ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21       ; "IR21 dated 3/1/2019"
 59[27]          ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "veon"             ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21       ; "IR21 dated 9/13/2018"
-593             ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "geocell"          ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21       ; "IR21 dated 10/26/2018"
+593             ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "silknet"          ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
 706             ; 9      ; VOIP       ; STANDARD_RATE ;                  ; true          ;                    ; "voip_3/3/3"     ; "GE"
 707             ; 9      ; VOIP       ; STANDARD_RATE ;                  ; true          ;                    ; "voip_3/3/3"     ; "GE"    ;                         ; ITU
 790             ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "magticom"         ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21       ; "IR21 dated 3/1/2019"

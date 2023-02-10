@@ -11730,13 +11730,14 @@
         <nationalNumberPattern>
           1(?:
             [06]\d|
-            1[0-2467]|
+            1[0-246-8]|
             2[0-8]|
             3[13]|
             4[0-2]|
-            [59][15]|
+            5[15]|
             7[124-6]|
-            8[158]
+            8[158]|
+            9[015]
           )|
           9(?:
             6\d\d|
@@ -11749,7 +11750,7 @@
         <exampleNumber>111</exampleNumber>
         <nationalNumberPattern>
           1(?:
-            1[146]|
+            1[1468]|
             60
           )|
           999
@@ -11765,7 +11766,7 @@
         <exampleNumber>111</exampleNumber>
         <nationalNumberPattern>
           1(?:
-            1[146]|
+            1[1468]|
             60
           )
         </nationalNumberPattern>
