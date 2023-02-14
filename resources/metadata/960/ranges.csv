@@ -4,8 +4,8 @@ Prefix  ; Length ; Type       ; Tariff        ; Operator   ; Format       ; Regi
 33[0-4] ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/4"   ; "MV"    ; "Malé/Hulhulé/Aarah" ; GOVERNMENT
 335     ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/4"   ; "MV"    ; "Hulhumalé"          ; GOVERNMENT
 339     ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/4"   ; "MV"    ; "Vilimalé"           ; GOVERNMENT
-4[05]0  ; 7      ; UAN        ; STANDARD_RATE ;            ; "fmt1_3/4"   ; "MV"
-401     ; 7      ; UAN        ; STANDARD_RATE ;            ; "fmt1_3/4"   ; "MV"    ;                      ; GOVERNMENT
+40[01]  ; 7      ; UAN        ; STANDARD_RATE ;            ; "fmt1_3/4"   ; "MV"    ;                      ; IR21
+450     ; 7      ; UAN        ; STANDARD_RATE ;            ; "fmt1_3/4"   ; "MV"
 46[46]  ; 7      ; MOBILE     ; STANDARD_RATE ;            ; "fmt1_3/4"   ; "MV"
 650     ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/4"   ; "MV"    ; "Haa Alifu"          ; GOVERNMENT
 652     ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/4"   ; "MV"    ; "Haa Dhaalu"         ; GOVERNMENT
@@ -29,6 +29,5 @@ Prefix  ; Length ; Type       ; Tariff        ; Operator   ; Format       ; Regi
 68[89]  ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/4"   ; "MV"    ; "Addu"               ; GOVERNMENT
 7       ; 7      ; MOBILE     ; STANDARD_RATE ; "dhiraagu" ; "fmt1_3/4"   ; "MV"    ;                      ; IR21
 800     ; 10     ; FIXED_LINE ; TOLL_FREE     ;            ; "fmt2_3/3/4" ; "MV"
+9       ; 7      ; MOBILE     ; STANDARD_RATE ; "ooredoo"  ; "fmt1_3/4"   ; "MV"    ;                      ; IR21
 900     ; 10     ; FIXED_LINE ; PREMIUM_RATE  ;            ; "fmt2_3/3/4" ; "MV"
-9[13-9] ; 7      ; MOBILE     ; STANDARD_RATE ; "ooredoo"  ; "fmt1_3/4"   ; "MV"    ;                      ; IR21
-92      ; 7      ; MOBILE     ; STANDARD_RATE ; "ooredoo"  ; "fmt1_3/4"   ; "MV"    ;                      ; GOVERNMENT

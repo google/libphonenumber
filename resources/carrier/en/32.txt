@@ -25,16 +25,9 @@
 32456|Mobile Vikings/JIM Mobile
 32460|Proximus
 324618|N.M.B.S.
-324630|TISMI BV
-324651|Lycamobile
-324652|Lycamobile
-324653|Lycamobile
-324654|Lycamobile
-324655|Lycamobile
-324656|Lycamobile
-324657|Lycamobile
-324658|Lycamobile
-324659|Lycamobile
+324630|Lancelot Telecom
+32465|Lycamobile
+324650|Telenet
 324660|Lycamobile
 324661|Lycamobile
 324662|Lycamobile
@@ -55,13 +48,15 @@
 324679|Interactive Digital Media GmbH
 32468|Telenet
 324686|OnOff Télécom SASU
-324687|Premium Routing GmbH
-324688|Premium Routing GmbH
+324687|Lancelot Telecom
+324688|Lancelot Telecom
 324689|Febo Telecom
 32469|Telenet
 3247|Proximus
 324802|TISMI BV
+324803|Lancelot Telecom
 324805|Voyacom SPRL
+324806|Telenet
 324807|MessageBird BV
 324809|Ericsson NV
 32483|Telenet

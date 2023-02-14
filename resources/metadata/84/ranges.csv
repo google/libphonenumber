@@ -58,7 +58,7 @@ Prefix   ; Length ; Type       ; Tariff        ; National Only ; Operator       
 275      ; 10     ; FIXED_LINE ; STANDARD_RATE ; false         ;                     ; "fixed_3/4/3"    ; "VN"    ; "Ben Tre province"         ; "Bến Tre"               ; ITU
 276      ; 10     ; FIXED_LINE ; STANDARD_RATE ; false         ;                     ; "fixed_3/4/3"    ; "VN"    ; "Tay Ninh province"        ; "Tây Ninh"              ; ITU
 277      ; 10     ; FIXED_LINE ; STANDARD_RATE ; false         ;                     ; "fixed_3/4/3"    ; "VN"    ; "Dong Thap province"       ; "Đồng Tháp"             ; ITU
-28[2-79] ; 10     ; FIXED_LINE ; STANDARD_RATE ; false         ;                     ; "fixed_2/4/4"    ; "VN"    ; "Ho Chi Minh City"         ; "Thành phố Hồ Chí Minh" ;            ; "Added per client's request."
+28[2-9]  ; 10     ; FIXED_LINE ; STANDARD_RATE ; false         ;                     ; "fixed_2/4/4"    ; "VN"    ; "Ho Chi Minh City"         ; "Thành phố Hồ Chí Minh" ;            ; "Added per client's request."
 290      ; 10     ; FIXED_LINE ; STANDARD_RATE ; false         ;                     ; "fixed_3/4/3"    ; "VN"    ; "Ca Mau province"          ; "Cà Mau"                ; ITU
 291      ; 10     ; FIXED_LINE ; STANDARD_RATE ; false         ;                     ; "fixed_3/4/3"    ; "VN"    ; "Bac Lieu province"        ; "Bạc Liêu"              ; ITU
 292      ; 10     ; FIXED_LINE ; STANDARD_RATE ; false         ;                     ; "fixed_3/4/3"    ; "VN"    ; "Can Tho City"             ; "Thành phố Cần Thơ"     ; ITU

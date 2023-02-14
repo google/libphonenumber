@@ -13,11 +13,12 @@ Prefix      ; Length ; Type       ; Tariff        ; Area Code Length ; Operator 
 6555        ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "telekom_slovenije" ; "mobile_2/3/3"  ; "SI"
 6556        ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "sloexport"         ; "mobile_2/3/3"  ; "SI"    ;                                           ; GOVERNMENT
 656[01]     ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "softnet"           ; "mobile_2/3/3"  ; "SI"    ;                                           ; GOVERNMENT
-6570        ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "novatel"           ; "mobile_2/3/3"  ; "SI"
+65[78]      ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "novatel"           ; "mobile_2/3/3"  ; "SI"    ;                                           ; GOVERNMENT
 68          ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "a1"                ; "mobile_2/3/3"  ; "SI"
-69[02-9]    ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "a1"                ; "mobile_2/3/3"  ; "SI"    ;                                           ; ITU
+69[02-46-9] ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "a1"                ; "mobile_2/3/3"  ; "SI"    ;                                           ; ITU
 6910        ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "compatel"          ; "mobile_2/3/3"  ; "SI"
 691[1-9]    ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "a1"                ; "mobile_2/3/3"  ; "SI"    ;                                           ; ITU
+695         ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "novatel"           ; "mobile_2/3/3"  ; "SI"    ;                                           ; GOVERNMENT
 7[01]       ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "telemach"          ; "mobile_2/3/3"  ; "SI"
 7[2-8]      ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                     ; "fixed_1/3/2/2" ; "SI"    ; "Novo Mesto/Krško"
 80          ; 6-8    ; FIXED_LINE ; TOLL_FREE     ;                  ;                     ; "varcost_2/3-6" ; "SI"
