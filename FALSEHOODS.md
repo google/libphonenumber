@@ -264,3 +264,13 @@ surprising how many false assumptions programmers continue to make about them.
     during, or after the actual implementation of numbering plan changes in the
     real world. The actual date on which a phone number range becomes active may
     not always adhere to official announcements.
+
+1. **Nobody voice calls M2M sim numbers**
+
+    M2M sim cards are for machine-to-machine communication and are up to 
+    15 characters long. Typically they are used for data and SMS messages, 
+    however there are cases in which someone may voice-call an M2M sim. 
+    One example is for in-home & roaming telecare/medical alarms,
+    in the event of an alarm activation then automated voice messages can be
+    played on the device via telephony APIs, or a human may call the device
+    directly (potentially also via a telephony API).
