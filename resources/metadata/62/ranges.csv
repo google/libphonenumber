@@ -1,4 +1,4 @@
-Prefix    ; Length ; Type       ; Tariff        ; Area Code Length ; National Only ; Operator    ; Format             ; Timezone                      ; Regions ; Geocode:en                                          ; Geocode:id
+Prefix    ; Length ; Type       ; Tariff        ; Area Code Length ; National Only ; Operator    ; Format             ; Timezone                      ; Regions ; Geocode:en                                          ; Geocode:id                                          ; Provenance
 001803    ; 12     ; FIXED_LINE ; TOLL_FREE     ;                  ; true          ;             ; "tollfree_3/3/3/3" ;                               ; "ID"
 001803    ; 13     ; FIXED_LINE ; TOLL_FREE     ;                  ; true          ;             ; "tollfree_2/4/3/4" ;                               ; "ID"
 007803    ; 13     ; FIXED_LINE ; TOLL_FREE     ;                  ; true          ;             ; "tollfree_2/4/3/4" ; "Asia/Jakarta&Asia/Makassar"  ; "ID"
@@ -291,8 +291,8 @@ Prefix    ; Length ; Type       ; Tariff        ; Area Code Length ; National On
 811       ; 11,12  ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "telkomsel" ; "mobile_3/4/4-5"   ; "Asia/Jakarta&Asia/Makassar"  ; "ID"
 81[23]    ; 9,10   ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "telkomsel" ; "mobile_3/3-4/3"   ; "Asia/Jakarta"                ; "ID"
 81[23]    ; 11,12  ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "telkomsel" ; "mobile_3/4/4-5"   ; "Asia/Jakarta"                ; "ID"
-81[4-6]   ; 9,10   ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "im3"       ; "mobile_3/3-4/3"   ; "Asia/Jakarta"                ; "ID"
-81[4-6]   ; 11,12  ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "im3"       ; "mobile_3/4/4-5"   ; "Asia/Jakarta"                ; "ID"
+81[4-6]   ; 9,10   ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "indosat"   ; "mobile_3/3-4/3"   ; "Asia/Jakarta"                ; "ID"    ;                                                     ;                                                     ; IR21
+81[4-6]   ; 11,12  ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "indosat"   ; "mobile_3/4/4-5"   ; "Asia/Jakarta"                ; "ID"    ;                                                     ;                                                     ; IR21
 817       ; 9,10   ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "xl"        ; "mobile_3/3-4/3"   ; "Asia/Jakarta"                ; "ID"
 817       ; 11,12  ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "xl"        ; "mobile_3/4/4-5"   ; "Asia/Jakarta"                ; "ID"
 81[89]    ; 9,10   ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "xl"        ; "mobile_3/3-4/3"   ; "Asia/Jakarta&Asia/Makassar"  ; "ID"
@@ -315,8 +315,8 @@ Prefix    ; Length ; Type       ; Tariff        ; Area Code Length ; National On
 85[12]    ; 11,12  ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "telkomsel" ; "mobile_3/4/4-5"   ; "Asia/Jakarta"                ; "ID"
 853       ; 9,10   ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "telkomsel" ; "mobile_3/3-4/3"   ; "Asia/Jakarta&Asia/Makassar"  ; "ID"
 853       ; 11,12  ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "telkomsel" ; "mobile_3/4/4-5"   ; "Asia/Jakarta&Asia/Makassar"  ; "ID"
-85[5-8]   ; 9,10   ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "im3"       ; "mobile_3/3-4/3"   ; "Asia/Jakarta"                ; "ID"
-85[5-8]   ; 11,12  ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "im3"       ; "mobile_3/4/4-5"   ; "Asia/Jakarta"                ; "ID"
+85[5-8]   ; 9,10   ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "indosat"   ; "mobile_3/3-4/3"   ; "Asia/Jakarta"                ; "ID"    ;                                                     ;                                                     ; IR21
+85[5-8]   ; 11,12  ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "indosat"   ; "mobile_3/4/4-5"   ; "Asia/Jakarta"                ; "ID"    ;                                                     ;                                                     ; IR21
 859       ; 9,10   ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "xl"        ; "mobile_3/3-4/3"   ; "Asia/Jakarta"                ; "ID"
 859       ; 11,12  ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "xl"        ; "mobile_3/4/4-5"   ; "Asia/Jakarta"                ; "ID"
 86[0-79]  ; 9,10   ; MOBILE     ; STANDARD_RATE ;                  ; false         ;             ; "mobile_3/3-4/3"   ; "Asia/Jakarta"                ; "ID"
@@ -337,10 +337,8 @@ Prefix    ; Length ; Type       ; Tariff        ; Area Code Length ; National On
 887       ; 11,12  ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "smartfren" ; "mobile_3/4/4-5"   ; "Asia/Jakarta&Asia/Makassar"  ; "ID"
 89[0-4]   ; 9,10   ; MOBILE     ; STANDARD_RATE ;                  ; false         ;             ; "mobile_3/3-4/3"   ; "Asia/Jakarta"                ; "ID"
 89[0-4]   ; 11,12  ; MOBILE     ; STANDARD_RATE ;                  ; false         ;             ; "mobile_3/4/4-5"   ; "Asia/Jakarta"                ; "ID"
-895       ; 9,10   ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "hutchison" ; "mobile_3/3-4/3"   ; "Asia/Jakarta"                ; "ID"
-895       ; 11,12  ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "hutchison" ; "mobile_3/4/4-5"   ; "Asia/Jakarta"                ; "ID"
-89[6-9]   ; 9,10   ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "3"         ; "mobile_3/3-4/3"   ; "Asia/Jakarta"                ; "ID"
-89[6-9]   ; 11,12  ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "3"         ; "mobile_3/4/4-5"   ; "Asia/Jakarta"                ; "ID"
+89[5-9]   ; 9,10   ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "indosat"   ; "mobile_3/3-4/3"   ; "Asia/Jakarta"                ; "ID"    ;                                                     ;                                                     ; IR21
+89[5-9]   ; 11,12  ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "indosat"   ; "mobile_3/4/4-5"   ; "Asia/Jakarta"                ; "ID"    ;                                                     ;                                                     ; IR21
 901       ; 8-11   ; FIXED_LINE ; STANDARD_RATE ; 3                ; false         ;             ; "fixed_3/5-8"      ; "Asia/Jayapura"               ; "ID"    ; "Timika"                                            ; "Timika"
 902       ; 8-11   ; FIXED_LINE ; STANDARD_RATE ; 3                ; false         ;             ; "fixed_3/5-8"      ; "Asia/Jayapura"               ; "ID"    ; "Agats"                                             ; "Agats"
 910       ; 8-11   ; FIXED_LINE ; STANDARD_RATE ; 3                ; false         ;             ; "fixed_3/5-8"      ; "Asia/Jayapura"               ; "ID"    ; "Bandanaira"                                        ; "Bandanaira"

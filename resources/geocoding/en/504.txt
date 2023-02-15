@@ -88,6 +88,7 @@
 5042503|Cortes
 5042505|Cortes
 5042511|Cortes
+5042512|San Pedro Sula, Cortés
 5042513|Cortes
 5042515|Cortes
 5042516|San Pedro Sula, Cortés
