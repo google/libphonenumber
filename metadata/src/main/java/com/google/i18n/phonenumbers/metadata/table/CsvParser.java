@@ -73,19 +73,23 @@ public final class CsvParser {
           } else {
             ImmutableMap.Builder<String, String> map = ImmutableMap.builder();
             // Not a pure lambda due to the need to index columns.
-            row.forEach(new Consumer<String>() {
-              private int i = 0;
+            row.forEach(
+                new Consumer<String>() {
+                  private int i = 0;
 
-              @Override
-              public void accept(String v) {
-                checkArgument(i < header.size(),
-                    "too many columns (expected %s): %s", header.size(), map);
-                if (!v.isEmpty()) {
-                  map.put(header.get(i++), v);
-                }
-              }
-            });
-            handler.accept(map.build());
+                  @Override
+                  public void accept(String v) {
+                    checkArgument(
+                        i < header.size(),
+                        "too many columns (expected %s): %s",
+                        header.size(),
+                        map);
+                    if (!v.isEmpty()) {
+                      map.put(header.get(i++), v);
+                    }
+                  }
+                });
+            handler.accept(map.buildOrThrow());
           }
         }
       };

@@ -25,7 +25,7 @@ import java.nio.file.Path;
 
 /**
  * A CSV provider which reads files rooted in a given directory. The file layout should match that
- * in the CSV metadata directory ({@code googledata/third_party/i18n/phonenumbers/metadata}).
+ * in the CSV metadata directory ({@code third_party/libphonenumber_metadata/metadata}).
  */
 public final class FileBasedCsvLoader implements CsvDataProvider {
   /** Returns a CSV loader which reads files from the given base directory. */
