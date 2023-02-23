@@ -25,6 +25,7 @@
 370660|BITĖ
 370661|BITĖ
 3706610|Tele 2
+37066186|Lancelot Telecom
 370662|Telia
 3706630|Telia
 37066313|BITĖ
@@ -35,7 +36,14 @@
 37066318|BITĖ
 37066319|BITĖ
 37066320|BITĖ
+37066321|Lancelot Telecom
 37066323|BITĖ
+37066324|Lancelot Telecom
+37066325|Lancelot Telecom
+37066326|Lancelot Telecom
+37066327|Lancelot Telecom
+37066328|Lancelot Telecom
+37066329|Lancelot Telecom
 3706650|Telia
 3706651|Telia
 37066522|Telia
@@ -119,12 +127,7 @@
 37069748|Telia
 37069749|Telia
 3706975|Telia
-37069760|Telia
-37069761|Telia
-37069762|Telia
-37069763|Telia
-37069764|Telia
-37069765|Telia
+3706976|Lancelot Telecom
 3706977|Telia
 3706979|Telia
 370698|Telia

@@ -4977,10 +4977,6 @@
             99
           )|
           202\d|
-          3(?:
-            646|
-            9[07]0
-          )|
           634|
           70[06]|
           (?:
@@ -4994,14 +4990,15 @@
            here as it is given "libre" which does not mean zero cost instead it is up to the
            provider http://www.telecom-infoconso.fr/les-numeros-08-et-les-numeros-courts/ -->
       <premiumRate>
-        <possibleLengths national="5,6"/>
-        <exampleNumber>36665</exampleNumber>
+        <possibleLengths national="[4-6]"/>
+        <exampleNumber>3200</exampleNumber>
         <nationalNumberPattern>
+          366\d\d|
+          3[2-9]\d\d|
           (?:
             118|
             [4-8]\d
-          )\d{3}|
-          36665
+          )\d{3}
         </nationalNumberPattern>
       </premiumRate>
       <!-- http://www.appel118.fr/detail.php lists 118777 as only being accessible from SFR. 224
@@ -13072,7 +13069,7 @@
       </emergency>
     </territory>
 
-    <!-- Turkey (TR) -->
+    <!-- Türkiye (TR) -->
     <territory id="TR">
       <generalDesc>
         <nationalNumberPattern>[1-9]\d{2,4}</nationalNumberPattern>
