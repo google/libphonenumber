@@ -202,8 +202,9 @@ Prefix         ; Length ; Type       ; Tariff        ; Area Code Length ; Operat
 6056295        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "Cartagena"                        ; "Cartagena"
 6056[5-8]      ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "Cartagena"                        ; "Cartagena"
 606[24-79]     ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"
-6063[06-9]     ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"
+6063[09]       ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"
 6063[1-5]      ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "Pereira"                          ; "Pereira"
+6063[6-8]      ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "Eje Cafetero"                     ; "Eje Cafetero"                     ; GOVERNMENT
 6068[0-6]      ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"
 6068[7-9]      ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "Manizales"                        ; "Manizales"
 607[2-478]     ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"

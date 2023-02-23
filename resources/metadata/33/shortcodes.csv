@@ -30,21 +30,15 @@ FR     ; 2020           ; 4      ; COMMERCIAL         ; STANDARD_RATE ;      ; t
 FR     ; 224            ; 3      ; COMMERCIAL         ; TOLL_FREE     ;      ; true
 FR     ; 3[01]          ; 4      ; COMMERCIAL         ; TOLL_FREE
 FR     ; 3[0-2457-9]    ; 5      ; COMMERCIAL         ;               ; true
-FR     ; 3[2-578]       ; 4      ; COMMERCIAL
+FR     ; 3[2-9]         ; 4      ; COMMERCIAL         ; PREMIUM_RATE
 FR     ; 33[0-689]      ; 5      ; COMMERCIAL         ;               ; true
 FR     ; 33700          ; 5      ; COMMERCIAL         ; TOLL_FREE     ; true
 FR     ; 3370[1-9]      ; 5      ; COMMERCIAL         ;               ; true
 FR     ; 337[1-9]       ; 5      ; COMMERCIAL         ;               ; true
-FR     ; 36[0-35-9]     ; 4      ; COMMERCIAL
 FR     ; 36[0-57-9]     ; 5      ; COMMERCIAL         ;               ; true
-FR     ; 364[0-57-9]    ; 4      ; COMMERCIAL
-FR     ; 3646           ; 4      ; COMMERCIAL         ; STANDARD_RATE
 FR     ; 366[0-57-9]    ; 5      ; COMMERCIAL         ;               ; true
 FR     ; 3666[0-46-9]   ; 5      ; COMMERCIAL         ;               ; true
 FR     ; 36665          ; 5      ; COMMERCIAL         ; PREMIUM_RATE  ; true
-FR     ; 39[07]0        ; 4      ; COMMERCIAL         ; STANDARD_RATE
-FR     ; 39[07][1-9]    ; 4      ; COMMERCIAL
-FR     ; 39[1-689]      ; 4      ; COMMERCIAL
 FR     ; [4-8]          ; 5      ; COMMERCIAL         ; PREMIUM_RATE  ; true
 FR     ; 61[14]         ; 3      ; COMMERCIAL         ; STANDARD_RATE ;      ; true
 FR     ; 634            ; 3      ; COMMERCIAL         ; STANDARD_RATE ;      ; true

@@ -309,7 +309,7 @@
     <!-- Calling code and formatting shared with 'US' -->
     <!-- http://www.itu.int/oth/T0202000008/en -->
     <territory id="AG" countryCode="1" leadingDigits="268" internationalPrefix="011"
-               nationalPrefix="1" nationalPrefixForParsing="1|([457]\d{6})$"
+               nationalPrefix="1" nationalPrefixForParsing="([457]\d{6})$|1"
                nationalPrefixTransformRule="268$1" mobileNumberPortableRegion="true">
       <generalDesc>
         <nationalNumberPattern>
@@ -433,7 +433,7 @@
     <!-- Calling code and formatting shared with 'US' -->
     <!-- http://www.itu.int/oth/T0202000007/en -->
     <territory id="AI" countryCode="1" leadingDigits="264" internationalPrefix="011"
-               nationalPrefix="1" nationalPrefixForParsing="1|([2457]\d{6})$"
+               nationalPrefix="1" nationalPrefixForParsing="([2457]\d{6})$|1"
                nationalPrefixTransformRule="264$1" mobileNumberPortableRegion="true">
       <generalDesc>
         <nationalNumberPattern>
@@ -1997,7 +1997,7 @@
     <!-- Calling code and formatting shared with 'US' -->
     <!-- http://www.itu.int/oth/T0202000004/en -->
     <territory id="AS" countryCode="1" leadingDigits="684" internationalPrefix="011"
-               nationalPrefix="1" nationalPrefixForParsing="1|([267]\d{6})$"
+               nationalPrefix="1" nationalPrefixForParsing="([267]\d{6})$|1"
                nationalPrefixTransformRule="684$1">
       <generalDesc>
         <nationalNumberPattern>
@@ -2346,7 +2346,7 @@
     <territory id="AU" mainCountryForCode="true" countryCode="61"
                preferredInternationalPrefix="0011"
                internationalPrefix="001[14-689]|14(?:1[14]|34|4[17]|[56]6|7[47]|88)0011"
-               nationalPrefix="0" nationalPrefixForParsing="0|(183[12])"
+               nationalPrefix="0" nationalPrefixForParsing="(183[12])|0"
                mobileNumberPortableRegion="true">
       <availableFormats>
         <!-- Pager (5-6 digits) -->
@@ -2994,7 +2994,7 @@
     <!-- Calling code and formatting shared with 'US' -->
     <!-- http://www.itu.int/oth/T0202000013/en -->
     <territory id="BB" countryCode="1" leadingDigits="246" internationalPrefix="011"
-               nationalPrefix="1" nationalPrefixForParsing="1|([2-9]\d{6})$"
+               nationalPrefix="1" nationalPrefixForParsing="([2-9]\d{6})$|1"
                nationalPrefixTransformRule="246$1" mobileNumberPortableRegion="true">
       <generalDesc>
         <nationalNumberPattern>
@@ -4168,7 +4168,7 @@
     <!-- Calling code and formatting shared with 'US' -->
     <!-- http://www.itu.int/oth/T0202000018/en -->
     <territory id="BM" countryCode="1" leadingDigits="441" internationalPrefix="011"
-               nationalPrefix="1" nationalPrefixForParsing="1|([2-9]\d{6})$"
+               nationalPrefix="1" nationalPrefixForParsing="([2-9]\d{6})$|1"
                nationalPrefixTransformRule="441$1" mobileNumberPortableRegion="true">
       <generalDesc>
         <nationalNumberPattern>
@@ -4689,7 +4689,7 @@
     <!-- Calling code and formatting shared with 'US' -->
     <!-- http://www.itu.int/oth/T0202000010/en -->
     <territory id="BS" countryCode="1" leadingDigits="242" internationalPrefix="011"
-               nationalPrefix="1" nationalPrefixForParsing="1|([3-8]\d{6})$"
+               nationalPrefix="1" nationalPrefixForParsing="([3-8]\d{6})$|1"
                nationalPrefixTransformRule="242$1" mobileNumberPortableRegion="true">
       <generalDesc>
         <nationalNumberPattern>
@@ -5520,7 +5520,7 @@
     <!-- https://www.thenumberingsystem.com.au/#/number-register/search -->
     <territory id="CC" countryCode="61" preferredInternationalPrefix="0011"
                internationalPrefix="001[14-689]|14(?:1[14]|34|4[17]|[56]6|7[47]|88)0011"
-               nationalPrefix="0" nationalPrefixForParsing="0|([59]\d{7})$"
+               nationalPrefix="0" nationalPrefixForParsing="([59]\d{7})$|0"
                nationalPrefixTransformRule="8$1">
       <generalDesc>
         <nationalNumberPattern>
@@ -6301,7 +6301,7 @@
     <!-- https://en.wikipedia.org/wiki/Telephone_numbers_in_China -->
     <territory id="CN" countryCode="86" preferredInternationalPrefix="00"
                internationalPrefix="00|1(?:[12]\d|79)\d\d00" nationalPrefix="0"
-               nationalPrefixForParsing="0|(1(?:[12]\d|79)\d\d)">
+               nationalPrefixForParsing="(1(?:[12]\d|79)\d\d)|0">
       <availableFormats>
         <numberFormat pattern="(\d{5,6})">
           <leadingDigits>
@@ -7741,7 +7741,7 @@
     <!-- https://www.thenumberingsystem.com.au/#/number-register/search -->
     <territory id="CX" countryCode="61" preferredInternationalPrefix="0011"
                internationalPrefix="001[14-689]|14(?:1[14]|34|4[17]|[56]6|7[47]|88)0011"
-               nationalPrefix="0" nationalPrefixForParsing="0|([59]\d{7})$"
+               nationalPrefix="0" nationalPrefixForParsing="([59]\d{7})$|0"
                nationalPrefixTransformRule="8$1">
       <generalDesc>
         <nationalNumberPattern>
@@ -8634,7 +8634,7 @@
     <!-- Calling code and formatting shared with 'US' -->
     <!-- http://www.itu.int/oth/T020200003B/en -->
     <territory id="DM" countryCode="1" leadingDigits="767" internationalPrefix="011"
-               nationalPrefix="1" nationalPrefixForParsing="1|([2-7]\d{6})$"
+               nationalPrefix="1" nationalPrefixForParsing="([2-7]\d{6})$|1"
                nationalPrefixTransformRule="767$1" mobileNumberPortableRegion="true">
       <generalDesc>
         <nationalNumberPattern>
@@ -10132,10 +10132,7 @@
               3[0-8]|
               9[589]
             )|
-            7(?:
-              00|
-              [3-9]\d
-            )
+            7[3-9]\d
           )\d{6}
         </nationalNumberPattern>
       </mobile>
@@ -10795,7 +10792,7 @@
     <!-- Calling code and formatting shared with 'US' -->
     <!-- http://www.itu.int/oth/T0202000057/en -->
     <territory id="GD" countryCode="1" leadingDigits="473" internationalPrefix="011"
-               nationalPrefix="1" nationalPrefixForParsing="1|([2-9]\d{6})$"
+               nationalPrefix="1" nationalPrefixForParsing="([2-9]\d{6})$|1"
                nationalPrefixTransformRule="473$1" mobileNumberPortableRegion="true">
       <generalDesc>
         <nationalNumberPattern>
@@ -11166,7 +11163,7 @@
     <!-- http://static.ofcom.org.uk/static/numbering/ -->
     <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_the_United_Kingdom -->
     <territory id="GG" countryCode="44" internationalPrefix="00" nationalPrefix="0"
-               nationalPrefixForParsing="0|([25-9]\d{5})$" nationalPrefixTransformRule="1481$1">
+               nationalPrefixForParsing="([25-9]\d{5})$|0" nationalPrefixTransformRule="1481$1">
       <generalDesc>
         <nationalNumberPattern>
           (?:
@@ -11939,7 +11936,7 @@
     <!-- Calling code and formatting shared with 'US' -->
     <!-- http://www.nationalnanpa.com/nas/public/assigned_code_query_step1.do?method=resetCodeQueryModel -->
     <territory id="GU" countryCode="1" leadingDigits="671" internationalPrefix="011"
-               nationalPrefix="1" nationalPrefixForParsing="1|([3-9]\d{6})$"
+               nationalPrefix="1" nationalPrefixForParsing="([3-9]\d{6})$|1"
                nationalPrefixTransformRule="671$1">
       <generalDesc>
         <nationalNumberPattern>
@@ -13442,7 +13439,7 @@
     <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_the_United_Kingdom -->
     <territory id="IM" countryCode="44" leadingDigits="74576|(?:16|7[56])24"
                internationalPrefix="00" nationalPrefix="0"
-               nationalPrefixForParsing="0|([25-8]\d{5})$" nationalPrefixTransformRule="1624$1">
+               nationalPrefixForParsing="([25-8]\d{5})$|0" nationalPrefixTransformRule="1624$1">
       <generalDesc>
         <nationalNumberPattern>
           1624\d{6}|
@@ -15340,7 +15337,7 @@
     <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_the_United_Kingdom -->
     <!-- http://www.jcra.je/cms3/v2/public/cmsChild.asp?pageID=1024&childID=1036 -->
     <territory id="JE" countryCode="44" internationalPrefix="00" nationalPrefix="0"
-               nationalPrefixForParsing="0|([0-24-8]\d{5})$" nationalPrefixTransformRule="1534$1">
+               nationalPrefixForParsing="([0-24-8]\d{5})$|0" nationalPrefixTransformRule="1534$1">
       <generalDesc>
         <nationalNumberPattern>
           1534\d{6}|
@@ -17177,7 +17174,7 @@
     <!-- Calling code and formatting shared with 'US' -->
     <!-- http://www.itu.int/oth/T02020000B0/en -->
     <territory id="KN" countryCode="1" leadingDigits="869" internationalPrefix="011"
-               nationalPrefix="1" nationalPrefixForParsing="1|([2-7]\d{6})$"
+               nationalPrefix="1" nationalPrefixForParsing="([2-7]\d{6})$|1"
                nationalPrefixTransformRule="869$1" mobileNumberPortableRegion="true">
       <generalDesc>
         <nationalNumberPattern>
@@ -17731,7 +17728,7 @@
     <!-- Calling code and formatting shared with 'US' -->
     <!-- http://www.itu.int/oth/T0202000027/en -->
     <territory id="KY" countryCode="1" leadingDigits="345" internationalPrefix="011"
-               nationalPrefix="1" nationalPrefixForParsing="1|([2-9]\d{6})$"
+               nationalPrefix="1" nationalPrefixForParsing="([2-9]\d{6})$|1"
                nationalPrefixTransformRule="345$1" mobileNumberPortableRegion="true">
       <generalDesc>
         <nationalNumberPattern>
@@ -18219,7 +18216,7 @@
     <!-- Calling code and formatting shared with 'US' -->
     <!-- http://www.itu.int/oth/T02020000B1/en -->
     <territory id="LC" countryCode="1" leadingDigits="758" internationalPrefix="011"
-               nationalPrefix="1" nationalPrefixForParsing="1|([2-8]\d{6})$"
+               nationalPrefix="1" nationalPrefixForParsing="([2-8]\d{6})$|1"
                nationalPrefixTransformRule="758$1" mobileNumberPortableRegion="true">
       <generalDesc>
         <nationalNumberPattern>
@@ -18347,7 +18344,7 @@
     <!-- http://www.llv.li/#/11193 -->
     <!-- https://www.itu.int/oth/T020200007B/en -->
     <territory id="LI" countryCode="423" internationalPrefix="00" nationalPrefix="0"
-               nationalPrefixForParsing="0|(1001)">
+               nationalPrefixForParsing="(1001)|0">
       <availableFormats>
         <!-- Number format for national mobile services, fixed-line, toll-free, UAN and premium rate services.
              Some different patterns for tollfree and shared cost numbers may be found by searching
@@ -19587,7 +19584,7 @@
     <!-- Madagascar (MG) -->
     <!-- http://www.itu.int/oth/T020200007F/en -->
     <territory id="MG" countryCode="261" internationalPrefix="00" nationalPrefix="0"
-               nationalPrefixForParsing="0|([24-9]\d{6})$" nationalPrefixTransformRule="20$1">
+               nationalPrefixForParsing="([24-9]\d{6})$|0" nationalPrefixTransformRule="20$1">
       <availableFormats>
         <numberFormat pattern="(\d{2})(\d{2})(\d{3})(\d{2})" nationalPrefixFormattingRule="$NP$FG">
           <leadingDigits>[23]</leadingDigits>
@@ -19785,6 +19782,7 @@
             )|
             9(?:
               [2-4]\d|
+              5[01]|
               7[015]
             )
           )\d{4}
@@ -20465,7 +20463,7 @@
     <!-- http://www.itu.int/oth/T02020000EE/en -->
     <!-- http://www.cnmiphonebook.com/ -->
     <territory id="MP" countryCode="1" leadingDigits="670" internationalPrefix="011"
-               nationalPrefix="1" nationalPrefixForParsing="1|([2-9]\d{6})$"
+               nationalPrefix="1" nationalPrefixForParsing="([2-9]\d{6})$|1"
                nationalPrefixTransformRule="670$1">
       <generalDesc>
         <nationalNumberPattern>
@@ -20627,14 +20625,12 @@
       </availableFormats>
       <generalDesc>
         <nationalNumberPattern>
+          596\d{6}|
           (?:
             69|
-            80
-          )\d{7}|
-          (?:
-            59|
-            97
-          )6\d{6}
+            80|
+            9\d
+          )\d{7}
         </nationalNumberPattern>
       </generalDesc>
       <fixedLine>
@@ -20676,9 +20672,15 @@
         <possibleLengths national="9"/>
         <exampleNumber>976612345</exampleNumber>
         <nationalNumberPattern>
-          976(?:
-            6\d|
-            7[0-367]
+          9(?:
+            (?:
+              39|
+              47
+            )7[01]|
+            76(?:
+              6\d|
+              7[0-367]
+            )
           )\d{4}
         </nationalNumberPattern>
       </voip>
@@ -20732,7 +20734,7 @@
     <!-- Calling code and formatting shared with 'US' -->
     <!-- http://www.itu.int/oth/T020200008F/en -->
     <territory id="MS" countryCode="1" leadingDigits="664" internationalPrefix="011"
-               nationalPrefix="1" nationalPrefixForParsing="1|([34]\d{6})$"
+               nationalPrefix="1" nationalPrefixForParsing="([34]\d{6})$|1"
                nationalPrefixTransformRule="664$1" mobileNumberPortableRegion="true">
       <generalDesc>
         <nationalNumberPattern>
@@ -24764,8 +24766,8 @@
     <!-- Main region for 'YT' -->
     <!-- http://www.itu.int/oth/T020200004B/en -->
     <!-- http://www.arcep.fr/index.php?id=2137&bloc=0596&CMD=RESULTS_NUMEROTATION -->
-    <territory id="RE" mainCountryForCode="true" countryCode="262" leadingDigits="26[23]|69|[89]"
-               internationalPrefix="00" nationalPrefix="0">
+    <territory id="RE" mainCountryForCode="true" countryCode="262" internationalPrefix="00"
+               nationalPrefix="0">
       <availableFormats>
         <numberFormat pattern="(\d{3})(\d{2})(\d{2})(\d{2})" nationalPrefixFormattingRule="$NP$FG">
           <leadingDigits>[2689]</leadingDigits>
@@ -24774,10 +24776,9 @@
       </availableFormats>
       <generalDesc>
         <nationalNumberPattern>
-          976\d{6}|
           (?:
             26|
-            [68]\d
+            [689]\d
           )\d{7}
         </nationalNumberPattern>
       </generalDesc>
@@ -24790,7 +24791,7 @@
             2\d\d|
             3(?:
               0\d|
-              1[0-2]
+              1[0-3]
             )
           )\d{4}
         </nationalNumberPattern>
@@ -24815,10 +24816,14 @@
                 9[0-479]
               )
             )|
-            976(?:
-              2[27]|
-              3[0-37]|
-              9\d
+            9(?:
+              399[0-2]|
+              4790|
+              76(?:
+                2[27]|
+                3[0-37]|
+                9\d
+              )
             )
           )\d{4}
         </nationalNumberPattern>
@@ -24923,7 +24928,7 @@
             1[0-3]|
             [2-7]\d|
             8[03-8]|
-            9[019]
+            9[0-29]
           )\d{6}
         </nationalNumberPattern>
       </mobile>
@@ -26942,7 +26947,7 @@
     <!-- http://www.nanpa.com/pdf/PL_429.pdf -->
     <!-- http://www.itu.int/oth/T02020000F7/en -->
     <territory id="SX" countryCode="1" leadingDigits="721" internationalPrefix="011"
-               nationalPrefix="1" nationalPrefixForParsing="1|(5\d{6})$"
+               nationalPrefix="1" nationalPrefixForParsing="(5\d{6})$|1"
                nationalPrefixTransformRule="721$1" mobileNumberPortableRegion="true">
       <generalDesc>
         <nationalNumberPattern>
@@ -27167,7 +27172,7 @@
     <!-- Calling code and formatting shared with 'US' -->
     <!-- http://www.itu.int/oth/T02020000D8/en -->
     <territory id="TC" countryCode="1" leadingDigits="649" internationalPrefix="011"
-               nationalPrefix="1" nationalPrefixForParsing="1|([2-479]\d{6})$"
+               nationalPrefix="1" nationalPrefixForParsing="([2-479]\d{6})$|1"
                nationalPrefixTransformRule="649$1" mobileNumberPortableRegion="true">
       <generalDesc>
         <nationalNumberPattern>
@@ -27362,7 +27367,7 @@
         <exampleNumber>90112345</exampleNumber>
         <nationalNumberPattern>
           (?:
-            7[09]|
+            7[019]|
             9[0-36-9]
           )\d{6}
         </nationalNumberPattern>
@@ -27863,7 +27868,7 @@
       </voip>
     </territory>
 
-    <!-- Turkey (TR) -->
+    <!-- Türkiye (TR) -->
     <!-- http://en.wikipedia.org/wiki/%2B90 -->
     <!-- http://www.itu.int/oth/T02020000D6/en -->
     <!-- https://eng.btk.gov.tr/en-US/Pages/National-Numbering-Plan -->
@@ -28056,7 +28061,7 @@
     <!-- Calling code and formatting shared with 'US' -->
     <!-- http://www.itu.int/oth/T02020000D4/en -->
     <territory id="TT" countryCode="1" leadingDigits="868" internationalPrefix="011"
-               nationalPrefix="1" nationalPrefixForParsing="1|([2-46-8]\d{6})$"
+               nationalPrefix="1" nationalPrefixForParsing="([2-46-8]\d{6})$|1"
                nationalPrefixTransformRule="868$1" mobileNumberPortableRegion="true">
       <generalDesc>
         <nationalNumberPattern>
@@ -28846,11 +28851,17 @@
         <possibleLengths national="10" localOnly="7"/>
         <exampleNumber>2015550123</exampleNumber>
         <nationalNumberPattern>
-          505(?:
-            [2-57-9]\d\d|
-            6(?:
-              [0-35-9]\d|
-              4[46]
+          (?:
+            47220[01]|
+            5(?:
+              05(?:
+                [2-57-9]\d\d|
+                6(?:
+                  [0-35-9]\d|
+                  4[46]
+                )
+              )|
+              57200
             )
           )\d{4}|
           (?:
@@ -28945,11 +28956,17 @@
         <possibleLengths national="10" localOnly="7"/>
         <exampleNumber>2015550123</exampleNumber>
         <nationalNumberPattern>
-          505(?:
-            [2-57-9]\d\d|
-            6(?:
-              [0-35-9]\d|
-              4[46]
+          (?:
+            47220[01]|
+            5(?:
+              05(?:
+                [2-57-9]\d\d|
+                6(?:
+                  [0-35-9]\d|
+                  4[46]
+                )
+              )|
+              57200
             )
           )\d{4}|
           (?:
@@ -29694,7 +29711,7 @@
     <!-- Calling code and formatting shared with 'US' -->
     <!-- http://www.itu.int/oth/T02020000B3/en -->
     <territory id="VC" countryCode="1" leadingDigits="784" internationalPrefix="011"
-               nationalPrefix="1" nationalPrefixForParsing="1|([2-7]\d{6})$"
+               nationalPrefix="1" nationalPrefixForParsing="([2-7]\d{6})$|1"
                nationalPrefixTransformRule="784$1" mobileNumberPortableRegion="true">
       <generalDesc>
         <nationalNumberPattern>
@@ -29895,7 +29912,7 @@
     <!-- Calling code and formatting shared with 'US' -->
     <!-- http://www.itu.int/oth/T020200001E/en -->
     <territory id="VG" countryCode="1" leadingDigits="284" internationalPrefix="011"
-               nationalPrefix="1" nationalPrefixForParsing="1|([2-578]\d{6})$"
+               nationalPrefix="1" nationalPrefixForParsing="([2-578]\d{6})$|1"
                nationalPrefixTransformRule="284$1" mobileNumberPortableRegion="true">
       <generalDesc>
         <nationalNumberPattern>
@@ -29912,7 +29929,6 @@
         <possibleLengths national="10" localOnly="7"/>
         <exampleNumber>2842291234</exampleNumber>
         <nationalNumberPattern>
-          284496[0-5]\d{3}|
           284(?:
             229|
             4(?:
@@ -29933,7 +29949,6 @@
         <possibleLengths national="10" localOnly="7"/>
         <exampleNumber>2843001234</exampleNumber>
         <nationalNumberPattern>
-          284496[6-9]\d{3}|
           284(?:
             245|
             3(?:
@@ -29945,7 +29960,7 @@
             4(?:
               4[0-6]|
               68|
-              99
+              9[69]
             )|
             5(?:
               4[0-7]|
@@ -30024,7 +30039,7 @@
     <!-- Calling code and formatting shared with 'US' -->
     <!-- http://www.itu.int/oth/T02020000DF/en -->
     <territory id="VI" countryCode="1" leadingDigits="340" internationalPrefix="011"
-               nationalPrefix="1" nationalPrefixForParsing="1|([2-9]\d{6})$"
+               nationalPrefix="1" nationalPrefixForParsing="([2-9]\d{6})$|1"
                nationalPrefixTransformRule="340$1">
       <generalDesc>
         <nationalNumberPattern>
@@ -30654,15 +30669,20 @@
     <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_France -->
     <!-- http://www.comores-online.com/mwezinet/internet/262 -->
     <!-- http://www.arcep.fr/index.php?id=2137&bloc=0596&CMD=RESULTS_NUMEROTATION -->
-    <territory id="YT" countryCode="262" leadingDigits="269|63" internationalPrefix="00"
+    <territory id="YT" countryCode="262" leadingDigits="269|63|9398" internationalPrefix="00"
                nationalPrefix="0">
       <generalDesc>
         <nationalNumberPattern>
-          80\d{7}|
           (?:
-            26|
-            63
-          )9\d{6}
+            (?:
+              (?:
+                26|
+                63
+              )9|
+              80\d
+            )\d\d|
+            93980
+          )\d{4}
         </nationalNumberPattern>
       </generalDesc>
       <fixedLine>
@@ -30670,7 +30690,7 @@
         <exampleNumber>269601234</exampleNumber>
         <nationalNumberPattern>
           269(?:
-            0[0-367]|
+            0[0-467]|
             5[0-3]|
             6\d|
             [78]0
@@ -30681,14 +30701,17 @@
         <possibleLengths national="9"/>
         <exampleNumber>639012345</exampleNumber>
         <nationalNumberPattern>
-          639(?:
-            0[0-79]|
-            1[019]|
-            [267]\d|
-            3[09]|
-            40|
-            5[05-9]|
-            9[04-79]
+          (?:
+            639(?:
+              0[0-79]|
+              1[019]|
+              [267]\d|
+              3[09]|
+              40|
+              5[05-9]|
+              9[04-79]
+            )|
+            93980
           )\d{4}
         </nationalNumberPattern>
       </mobile>
