@@ -1,3 +1,15 @@
+Feb 23, 2023: v8.13.7
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   AG, AI, AS, AU, BB, BM, BS, CC, CN, CX, DM, FR, GD, GG, GU, IM, JE, KN, KY,
+   LC, LI, MG, MK, MP, MQ, MS, RE, RO, SX, TC, TG, TT, US, VC, VG, VI, YT
+ - Updated short number metadata for region code(s): FR
+ - New geocoding data for country calling code(s): 1472 (en), 1557 (en)
+ - Updated geocoding data for country calling code(s): 57 (en)
+ - Updated carrier data for country calling code(s):
+   33 (en), 34 (en), 41 (en), 228 (en), 370 (en), 389 (en), 1246 (en)
+ - Updated / refreshed time zone meta data.
+
 Feb 08, 2023: v8.13.6
 Metadata changes:
  - Updated phone metadata for region code(s):
