@@ -1,0 +1,39 @@
+bin/
+hello                          # command executable
+    outyet                         # command executable
+src/
+    golang.org/x/example/
+        .git/                      # Git repository metadata
+	hello/
+	    hello.go               # command source
+	outyet/
+	    main.go                # command source
+	    main_test.go           # test source
+	stringutil/
+	    reverse.go             # package source
+	    reverse_test.go        # test source
+    golang.org/x/image/
+        .git/                      # Git repository metadata
+	bmp/
+	    reader.go              # package source
+	    writer.go              # package source
+  Go/
+     systring.go              hello                          # command executable
+    outyet                         # command executable
+src/
+    golang.org/x/example/
+        .git/                      # Git repository metadata
+	hello/
+	    hello.go               # command source
+	outyet/
+	    main.go                # command source
+	    main_test.go           # test source
+	stringutil/
+	    reverse.go             # package source
+	    reverse_test.go        # test source
+    golang.org/x/image/
+        .git/                      # Git repository metadata
+	bmp/
+	    reader.go              # package source
+	    writer.go              # package source
+     
