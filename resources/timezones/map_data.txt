@@ -937,6 +937,7 @@
 1468|America/Toronto
 1469|America/Chicago
 1470|America/New_York
+1472|America/New_York
 1473|America/Grenada
 1474|America/Winnipeg
 1475|America/New_York
@@ -975,6 +976,7 @@
 1541889|America/Denver
 1548|America/Toronto
 1551|America/New_York
+1557|America/Chicago
 1559|America/Los_Angeles
 1561|America/New_York
 1562|America/Los_Angeles
@@ -2087,7 +2089,10 @@
 26282|Indian/Reunion
 26288|Indian/Reunion
 26289|Indian/Reunion
-2629|Indian/Reunion
+2629398|Indian/Mayotte
+2629399|Indian/Reunion
+26294|Indian/Reunion
+26297|Indian/Reunion
 263|Africa/Harare
 264|Africa/Windhoek
 265|Africa/Blantyre

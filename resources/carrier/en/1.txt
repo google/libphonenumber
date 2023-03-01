@@ -59,19 +59,23 @@
 124272|BaTelCo
 124273|aliv
 12428|aliv
-124623|Digicel
-124624|Digicel
-124625|Digicel
+124623|Cable & Wireless
+124624|Cable & Wireless
+124625|Cable & Wireless
+1246256|Digicel
+1246257|Digicel
+1246258|Digicel
+1246259|Digicel
 124626|Digicel
 124628|Cable & Wireless
-124635|Digicel
-1246360|Digicel
-1246361|Digicel
-1246362|Digicel
-1246363|Digicel
-1246364|Digicel
-1246365|Digicel
-1246366|Digicel
+124635|Cable & Wireless
+1246360|Cable & Wireless
+1246361|Cable & Wireless
+1246362|Cable & Wireless
+1246363|Cable & Wireless
+1246364|Cable & Wireless
+1246365|Cable & Wireless
+1246366|Cable & Wireless
 1246446|Neptune Communications
 124645|Sunbeach Communications
 12465211|Digicel
