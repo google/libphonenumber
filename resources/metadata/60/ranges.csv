@@ -83,7 +83,7 @@ Prefix         ; Length ; Type       ; Tariff        ; Area Code Length ; Operat
 1170[3-9]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "digi"          ; "mobile_2/4/4"    ; "MY"    ;                           ; IR21
 1171[01]       ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "digi"          ; "mobile_2/4/4"    ; "MY"    ;                           ; IR21
 1171[2-9]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "celecom"       ; "mobile_2/4/4"    ; "MY"
-11721          ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "celecom"       ; "mobile_2/4/4"    ; "MY"    ;                           ; IR21
+1172[01]       ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "celecom"       ; "mobile_2/4/4"    ; "MY"    ;                           ; IR21
 1172[2-6]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "maxis"         ; "mobile_2/4/4"    ; "MY"
 1172[7-9]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "ytl"           ; "mobile_2/4/4"    ; "MY"    ;                           ; IR21
 117[34]        ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "ytl"           ; "mobile_2/4/4"    ; "MY"    ;                           ; IR21

@@ -34,8 +34,9 @@ Prefix     ; Length ; Type       ; Tariff        ; Operator        ; Format     
 90[09]     ; 8      ; MOBILE     ; STANDARD_RATE ; "zain"          ; "fmt1_4/3-4" ; "KW"    ; IR21       ; "IR21 dated 4/7/2019"
 911[01]    ; 8      ; MOBILE     ; STANDARD_RATE ; "zain"          ; "fmt1_4/3-4" ; "KW"    ; IR21       ; "IR21 dated 4/7/2019"
 9199       ; 8      ; MOBILE     ; STANDARD_RATE ; "zain"          ; "fmt1_4/3-4" ; "KW"    ; IR21
+9200       ; 8      ; MOBILE     ; STANDARD_RATE ; "zain"          ; "fmt1_4/3-4" ; "KW"    ; IR21
 922        ; 8      ; MOBILE     ; STANDARD_RATE ; "zain"          ; "fmt1_4/3-4" ; "KW"    ; IR21       ; "IR21 dated 4/7/2019"
-9300       ; 8      ; MOBILE     ; STANDARD_RATE ; "zain"          ; "fmt1_4/3-4" ; "KW"    ; IR21
+93[03]0    ; 8      ; MOBILE     ; STANDARD_RATE ; "zain"          ; "fmt1_4/3-4" ; "KW"    ; IR21
 9333       ; 8      ; MOBILE     ; STANDARD_RATE ; "zain"          ; "fmt1_4/3-4" ; "KW"    ; IR21       ; "IR21 dated 4/7/2019"
 9[4679]    ; 8      ; MOBILE     ; STANDARD_RATE ; "zain"          ; "fmt1_4/3-4" ; "KW"    ; IR21       ; "IR21 dated 4/7/2019"
 9500       ; 8      ; MOBILE     ; STANDARD_RATE ; "zain"          ; "fmt1_4/3-4" ; "KW"    ;            ; "Client requested to add based on IR21. T#04478052"

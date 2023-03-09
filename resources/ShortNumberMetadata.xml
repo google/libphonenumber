@@ -2456,7 +2456,7 @@
             )|
             4(?:
               [03-57]|
-              1[45]
+              1[0145]
             )|
             6(?:
               00|
@@ -2465,7 +2465,7 @@
             8(?:
               02|
               1[189]|
-              50|
+              [25]0|
               7|
               8[08]|
               99
@@ -2514,7 +2514,7 @@
         <nationalNumberPattern>
           1(?:
             14|
-            8[01589]
+            8[0-2589]
           )\d|
           543|
           83111
@@ -3635,16 +3635,10 @@
     <!-- http://www.dba.erhvervsstyrelsen.dk/numbering-lists -->
     <territory id="DK">
       <generalDesc>
-        <nationalNumberPattern>
-          1\d\d(?:
-            \d(?:
-              \d{2}
-            )?
-          )?
-        </nationalNumberPattern>
+        <nationalNumberPattern>1\d{2,5}</nationalNumberPattern>
       </generalDesc>
       <shortCode>
-        <possibleLengths national="3,4,6"/>
+        <possibleLengths national="[3-6]"/>
         <exampleNumber>112</exampleNumber>
         <nationalNumberPattern>
           1(?:
@@ -3655,12 +3649,14 @@
                 111
               )
             )|
+            619[0-2]|
             8(?:
-              [08]1|
+              01|
               1[0238]|
               28|
               30|
-              5[13]
+              5[13]|
+              8[18]
             )
           )
         </nationalNumberPattern>
