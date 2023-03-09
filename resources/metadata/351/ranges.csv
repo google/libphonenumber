@@ -69,6 +69,8 @@ Prefix      ; Length ; Type            ; Tariff        ; Operator     ; Format  
 65929       ; 9      ; MOBILE          ; STANDARD_RATE ; "nos"        ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; IR21
 6593        ; 9      ; MOBILE          ; STANDARD_RATE ; "nos"        ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; IR21
 67          ; 9      ; ISP             ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"
+7038[01]    ; 9      ; UAN             ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; GOVERNMENT
+70596       ; 9      ; UAN             ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; GOVERNMENT
 707         ; 9      ; UAN             ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"
 708[17]     ; 9      ; UAN             ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"
 760[1-57]   ; 9      ; FIXED_LINE      ; PREMIUM_RATE  ;              ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"

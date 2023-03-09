@@ -1,3 +1,14 @@
+Mar 09, 2023: v8.13.8
+Code changes:
+ - Added a check to PhoneNumberUtil that the value of the `phone-context`
+ parameter of the tel URI follows the correct syntax as defined in
+ [RFC3966](https://www.rfc-editor.org/rfc/rfc3966#section-3).
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   BL, GF, GM, GP, KW, MF, MY, PM, PT
+ - Updated short number metadata for region code(s): CH, DK
+ - Updated carrier data for country calling code(s): 60 (en), 220 (en)
+
 Feb 23, 2023: v8.13.7
 Metadata changes:
  - Updated phone metadata for region code(s):

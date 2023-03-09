@@ -19,4 +19,5 @@ Prefix      ; Length ; Type       ; Tariff        ; Operator  ; Format          
 6944[67]    ; 9      ; MOBILE     ; STANDARD_RATE ; "sfr"     ; "fmt1_3/2/2/2"    ; "GF"
 6949        ; 9      ; MOBILE     ; STANDARD_RATE ; "digicel" ; "fmt1_3/2/2/2"    ; "GF"
 80[0-5]     ; 9      ; FIXED_LINE ; TOLL_FREE     ;           ; "varcost_3/2/2/2" ; "GF"    ;            ; "ARCEP"
+9396        ; 9      ; VOIP       ; STANDARD_RATE ;           ; "varcost_3/2/2/2" ; "GF"    ; ITU
 976         ; 9      ; VOIP       ; STANDARD_RATE ;           ; "fmt1_3/2/2/2"    ; "GF"    ; INTERNAL   ; "3rd party carrier"

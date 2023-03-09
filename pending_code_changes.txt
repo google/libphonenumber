@@ -1,4 +1,1 @@
-Code changes:
- - Added a check to PhoneNumberUtil that the value of the `phone-context`
- parameter of the tel URI follows the correct syntax as defined in
- [RFC3966](https://www.rfc-editor.org/rfc/rfc3966#section-3).
+
