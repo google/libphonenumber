@@ -97,11 +97,13 @@ const char kRfc3966ExtnPrefix[] = ";ext=";
 const char kRfc3966Prefix[] = "tel:";
 const char kRfc3966PhoneContext[] = ";phone-context=";
 const char kRfc3966IsdnSubaddress[] = ";isub=";
+const char kRfc3966VisualSeparator[] = "[\\-\\.\\(\\)]?";
 
 const char kDigits[] = "\\p{Nd}";
 // We accept alpha characters in phone numbers, ASCII only. We store lower-case
 // here only since our regular expressions are case-insensitive.
 const char kValidAlpha[] = "a-z";
+const char kValidAlphaInclUppercase[] = "A-Za-z";
 
 // Default extension prefix to use when formatting. This will be put in front of
 // any extension component of the number, after the main national number is
@@ -654,6 +656,13 @@ class PhoneNumberRegExpsAndMappings {
   // indicators. When matching, these are hardly ever used to indicate this.
   const string extn_patterns_for_parsing_;
 
+  // Regular expressions of different parts of the phone-context parameter,
+  // following the syntax defined in RFC3966.
+  const std::string rfc3966_phone_digit_;
+  const std::string alphanum_;
+  const std::string rfc3966_domainlabel_;
+  const std::string rfc3966_toplabel_;
+
  public:
   scoped_ptr<const AbstractRegExpFactory> regexp_factory_;
   scoped_ptr<RegExpCache> regexp_cache_;
@@ -756,6 +765,14 @@ class PhoneNumberRegExpsAndMappings {
 
   scoped_ptr<const RegExp> plus_chars_pattern_;
 
+  // Regular expression of valid global-number-digits for the phone-context
+  // parameter, following the syntax defined in RFC3966.
+  std::unique_ptr<const RegExp> rfc3966_global_number_digits_pattern_;
+
+  // Regular expression of valid domainname for the phone-context parameter,
+  // following the syntax defined in RFC3966.
+  std::unique_ptr<const RegExp> rfc3966_domainname_pattern_;
+
   PhoneNumberRegExpsAndMappings()
       : valid_phone_number_(
             StrCat(kDigits, "{", PhoneNumberUtil::kMinLengthForNsn, "}|[",
@@ -764,6 +781,13 @@ class PhoneNumberRegExpsAndMappings {
                    kDigits, "){3,}[", PhoneNumberUtil::kValidPunctuation,
                    kStarSign, kValidAlpha, kDigits, "]*")),
         extn_patterns_for_parsing_(CreateExtnPattern(/* for_parsing= */ true)),
+        rfc3966_phone_digit_(
+            StrCat("(", kDigits, "|", kRfc3966VisualSeparator, ")")),
+        alphanum_(StrCat(kValidAlphaInclUppercase, kDigits)),
+        rfc3966_domainlabel_(
+            StrCat("[", alphanum_, "]+((\\-)*[", alphanum_, "])*")),
+        rfc3966_toplabel_(StrCat("[", kValidAlphaInclUppercase,
+                                 "]+((\\-)*[", alphanum_, "])*")),
         regexp_factory_(new RegExpFactory()),
         regexp_cache_(new RegExpCache(*regexp_factory_.get(), 128)),
         diallable_char_mappings_(),
@@ -809,7 +833,12 @@ class PhoneNumberRegExpsAndMappings {
             regexp_factory_->CreateRegExp("(\\$\\d)")),
         carrier_code_pattern_(regexp_factory_->CreateRegExp("\\$CC")),
         plus_chars_pattern_(regexp_factory_->CreateRegExp(
-            StrCat("[", PhoneNumberUtil::kPlusChars, "]+"))) {
+            StrCat("[", PhoneNumberUtil::kPlusChars, "]+"))),
+        rfc3966_global_number_digits_pattern_(regexp_factory_->CreateRegExp(
+            StrCat("^\\", kPlusSign, rfc3966_phone_digit_, "*", kDigits,
+                   rfc3966_phone_digit_, "*$"))),
+        rfc3966_domainname_pattern_(regexp_factory_->CreateRegExp(StrCat(
+            "^(", rfc3966_domainlabel_, "\\.)*", rfc3966_toplabel_, "\\.?$"))) {
     InitializeMapsAndSets();
   }
 
@@ -2118,30 +2147,78 @@ bool PhoneNumberUtil::CheckRegionForParsing(
   return true;
 }
 
+// Extracts the value of the phone-context parameter of number_to_extract_from
+// where the index of ";phone-context=" is parameter index_of_phone_context,
+// following the syntax defined in RFC3966.
+// Returns the extracted string_view (possibly empty), or a nullopt if no
+// phone-context parameter is found.
+absl::optional<string> PhoneNumberUtil::ExtractPhoneContext(
+    const string& number_to_extract_from,
+    const size_t index_of_phone_context) const {
+  // If no phone-context parameter is present
+  if (index_of_phone_context == std::string::npos) {
+    return absl::nullopt;
+  }
+
+  size_t phone_context_start =
+      index_of_phone_context + strlen(kRfc3966PhoneContext);
+  // If phone-context parameter is empty
+  if (phone_context_start >= number_to_extract_from.length()) {
+    return "";
+  }
+
+  size_t phone_context_end =
+      number_to_extract_from.find(';', phone_context_start);
+  // If phone-context is not the last parameter
+  if (phone_context_end != std::string::npos) {
+    return number_to_extract_from.substr(
+        phone_context_start, phone_context_end - phone_context_start);
+  } else {
+    return number_to_extract_from.substr(phone_context_start);
+  }
+}
+
+// Returns whether the value of phoneContext follows the syntax defined in
+// RFC3966.
+bool PhoneNumberUtil::IsPhoneContextValid(
+    const absl::optional<string> phone_context) const {
+  if (!phone_context.has_value()) {
+    return true;
+  }
+  if (phone_context.value().empty()) {
+    return false;
+  }
+
+  // Does phone-context value match pattern of global-number-digits or
+  // domainname
+  return reg_exps_->rfc3966_global_number_digits_pattern_->FullMatch(
+      std::string{phone_context.value()}) ||
+      reg_exps_->rfc3966_domainname_pattern_->FullMatch(
+          std::string{phone_context.value()});
+}
+
 // Converts number_to_parse to a form that we can parse and write it to
 // national_number if it is written in RFC3966; otherwise extract a possible
 // number out of it and write to national_number.
-void PhoneNumberUtil::BuildNationalNumberForParsing(
+PhoneNumberUtil::ErrorType PhoneNumberUtil::BuildNationalNumberForParsing(
     const string& number_to_parse, string* national_number) const {
   size_t index_of_phone_context = number_to_parse.find(kRfc3966PhoneContext);
-  if (index_of_phone_context != string::npos) {
-    size_t phone_context_start =
-        index_of_phone_context + strlen(kRfc3966PhoneContext);
+
+  absl::optional<string> phone_context =
+      ExtractPhoneContext(number_to_parse, index_of_phone_context);
+  if (!IsPhoneContextValid(phone_context)) {
+    VLOG(2) << "The phone-context value is invalid.";
+    return NOT_A_NUMBER;
+  }
+
+  if (phone_context.has_value()) {
     // If the phone context contains a phone number prefix, we need to capture
     // it, whereas domains will be ignored.
-    if (phone_context_start < (number_to_parse.length() - 1) &&
-        number_to_parse.at(phone_context_start) == kPlusSign[0]) {
+    if (phone_context.value().at(0) == kPlusSign[0]) {
       // Additional parameters might follow the phone context. If so, we will
       // remove them here because the parameters after phone context are not
       // important for parsing the phone number.
-      size_t phone_context_end = number_to_parse.find(';', phone_context_start);
-      if (phone_context_end != string::npos) {
-        StrAppend(
-            national_number, number_to_parse.substr(
-                phone_context_start, phone_context_end - phone_context_start));
-      } else {
-        StrAppend(national_number, number_to_parse.substr(phone_context_start));
-      }
+      StrAppend(national_number, phone_context.value());
     }
 
     // Now append everything between the "tel:" prefix and the phone-context.
@@ -2175,6 +2252,7 @@ void PhoneNumberUtil::BuildNationalNumberForParsing(
   // we are concerned about deleting content from a potential number string
   // when there is no strong evidence that the number is actually written in
   // RFC3966.
+  return NO_PARSING_ERROR;
 }
 
 // Note if any new field is added to this method that should always be filled
@@ -2189,7 +2267,11 @@ PhoneNumberUtil::ErrorType PhoneNumberUtil::ParseHelper(
   DCHECK(phone_number);
 
   string national_number;
-  BuildNationalNumberForParsing(number_to_parse, &national_number);
+  PhoneNumberUtil::ErrorType build_national_number_for_parsing_return =
+      BuildNationalNumberForParsing(number_to_parse, &national_number);
+  if (build_national_number_for_parsing_return != NO_PARSING_ERROR) {
+    return build_national_number_for_parsing_return;
+  }
 
   if (!IsViablePhoneNumber(national_number)) {
     VLOG(2) << "The string supplied did not seem to be a phone number.";

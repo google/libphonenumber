@@ -2122,10 +2122,6 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
         phoneUtil.parse("tel:253-0000;phone-context=www.google.com", RegionCode.US));
     assertEquals(US_LOCAL_NUMBER,
         phoneUtil.parse("tel:253-0000;isub=12345;phone-context=www.google.com", RegionCode.US));
-    // This is invalid because no "+" sign is present as part of phone-context. The phone context
-    // is simply ignored in this case just as if it contains a domain.
-    assertEquals(US_LOCAL_NUMBER,
-        phoneUtil.parse("tel:2530000;isub=12345;phone-context=1-650", RegionCode.US));
     assertEquals(US_LOCAL_NUMBER,
         phoneUtil.parse("tel:2530000;isub=12345;phone-context=1234.com", RegionCode.US));
 
@@ -2539,18 +2535,18 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
       // succeed in being parsed.
       String invalidRfcPhoneContext = "tel:555-1234;phone-context=1-331";
       phoneUtil.parse(invalidRfcPhoneContext, RegionCode.ZZ);
-      fail("'Unknown' region code not allowed: should fail.");
+      fail("phone-context is missing '+' sign: should fail.");
     } catch (NumberParseException e) {
       // Expected this exception.
       assertEquals("Wrong error type stored in exception.",
-                   NumberParseException.ErrorType.INVALID_COUNTRY_CODE,
+                   NumberParseException.ErrorType.NOT_A_NUMBER,
                    e.getErrorType());
     }
     try {
       // Only the phone-context symbol is present, but no data.
       String invalidRfcPhoneContext = ";phone-context=";
       phoneUtil.parse(invalidRfcPhoneContext, RegionCode.ZZ);
-      fail("No number is present: should fail.");
+      fail("phone-context can't be empty: should fail.");
     } catch (NumberParseException e) {
       // Expected this exception.
       assertEquals("Wrong error type stored in exception.",
@@ -2893,6 +2889,69 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
     threeZeros.setCountryCode(61).setNationalNumber(0L).setItalianLeadingZero(true)
         .setNumberOfLeadingZeros(3);
     assertEquals(threeZeros, phoneUtil.parse("0000", RegionCode.AU));
+  }
+
+  public void testParseWithPhoneContext() throws Exception {
+    // context    = ";phone-context=" descriptor
+    // descriptor = domainname / global-number-digits
+
+    // Valid global-phone-digits
+    assertEquals(NZ_NUMBER, phoneUtil.parse("tel:033316005;phone-context=+64", RegionCode.ZZ));
+    assertEquals(
+        NZ_NUMBER,
+        phoneUtil.parse(
+            "tel:033316005;phone-context=+64;{this isn't part of phone-context anymore!}",
+            RegionCode.ZZ));
+    PhoneNumber nzFromPhoneContext = new PhoneNumber();
+    nzFromPhoneContext.setCountryCode(64).setNationalNumber(3033316005L);
+    assertEquals(
+        nzFromPhoneContext,
+        phoneUtil.parse("tel:033316005;phone-context=+64-3", RegionCode.ZZ));
+    PhoneNumber brFromPhoneContext = new PhoneNumber();
+    brFromPhoneContext.setCountryCode(55).setNationalNumber(5033316005L);
+    assertEquals(
+        brFromPhoneContext,
+        phoneUtil.parse("tel:033316005;phone-context=+(555)", RegionCode.ZZ));
+    PhoneNumber usFromPhoneContext = new PhoneNumber();
+    usFromPhoneContext.setCountryCode(1).setNationalNumber(23033316005L);
+    assertEquals(
+        usFromPhoneContext,
+        phoneUtil.parse("tel:033316005;phone-context=+-1-2.3()", RegionCode.ZZ));
+
+    // Valid domainname
+    assertEquals(NZ_NUMBER, phoneUtil.parse("tel:033316005;phone-context=abc.nz", RegionCode.NZ));
+    assertEquals(
+        NZ_NUMBER,
+        phoneUtil.parse("tel:033316005;phone-context=www.PHONE-numb3r.com", RegionCode.NZ));
+    assertEquals(NZ_NUMBER, phoneUtil.parse("tel:033316005;phone-context=a", RegionCode.NZ));
+    assertEquals(
+        NZ_NUMBER, phoneUtil.parse("tel:033316005;phone-context=3phone.J.", RegionCode.NZ));
+    assertEquals(NZ_NUMBER, phoneUtil.parse("tel:033316005;phone-context=a--z", RegionCode.NZ));
+
+    // Invalid descriptor
+    assertThrowsForInvalidPhoneContext("tel:033316005;phone-context=");
+    assertThrowsForInvalidPhoneContext("tel:033316005;phone-context=+");
+    assertThrowsForInvalidPhoneContext("tel:033316005;phone-context=64");
+    assertThrowsForInvalidPhoneContext("tel:033316005;phone-context=++64");
+    assertThrowsForInvalidPhoneContext("tel:033316005;phone-context=+abc");
+    assertThrowsForInvalidPhoneContext("tel:033316005;phone-context=.");
+    assertThrowsForInvalidPhoneContext("tel:033316005;phone-context=3phone");
+    assertThrowsForInvalidPhoneContext("tel:033316005;phone-context=a-.nz");
+    assertThrowsForInvalidPhoneContext("tel:033316005;phone-context=a{b}c");
+  }
+
+  private void assertThrowsForInvalidPhoneContext(String numberToParse) {
+    final String numberToParseFinal = numberToParse;
+    assertEquals(
+        NumberParseException.ErrorType.NOT_A_NUMBER,
+        assertThrows(
+            NumberParseException.class, new ThrowingRunnable() {
+              @Override
+              public void run() throws Throwable {
+                phoneUtil.parse(numberToParseFinal, RegionCode.ZZ);
+              }
+            })
+            .getErrorType());
   }
 
   public void testCountryWithNoNumberDesc() {
