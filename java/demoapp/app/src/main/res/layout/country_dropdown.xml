@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+  <com.google.android.material.textfield.TextInputLayout
+      style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+      android:id="@+id/country_dropdown_input"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:hint="@string/main_activity_country_dropdown_hint">
+
+    <AutoCompleteTextView
+        android:id="@+id/country_dropdown_input_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/main_activity_country_dropdown_hint"
+        android:imeOptions="actionDone"
+        android:inputType="text" />
+
+  </com.google.android.material.textfield.TextInputLayout>
+
+</LinearLayout>
