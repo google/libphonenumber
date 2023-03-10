@@ -19,7 +19,7 @@ Prefix       ; Length ; Type       ; Tariff        ; Operator   ; Format    ; Re
 4488         ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt_3/4" ; "GM"    ; "Sibanor"                                                             ; ITU
 4489         ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt_3/4" ; "GM"    ; "Bwiam"                                                               ; ITU
 449          ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt_3/4" ; "GM"    ; "Bakau"                                                               ; ITU
-5[0-3]       ; 7      ; MOBILE     ; STANDARD_RATE ; "qcell"    ; "fmt_3/4" ; "GM"    ;                                                                       ; IR21
+5[0-4]       ; 7      ; MOBILE     ; STANDARD_RATE ; "qcell"    ; "fmt_3/4" ; "GM"    ;                                                                       ; IR21
 553          ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt_3/4" ; "GM"    ; "Soma"                                                                ; ITU        ; "Added per client's request."
 5540         ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt_3/4" ; "GM"    ; "Kaiaf"                                                               ; ITU
 5541         ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt_3/4" ; "GM"    ; "Kwenella"                                                            ; ITU

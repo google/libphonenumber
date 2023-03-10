@@ -1,10 +1,11 @@
-Region ; Prefix     ; Length ; Type               ; Tariff        ; Sms  ; Carrier Specific
+Region ; Prefix     ; Length ; Type               ; Tariff        ; Sms  ; Carrier Specific ; Provenance
 CH     ; 10[78]     ; 5      ; COMMERCIAL
 CH     ; 11[278]    ; 3      ; EMERGENCY          ; TOLL_FREE
 CH     ; 1145       ; 4      ; COMMERCIAL         ; PREMIUM_RATE
 CH     ; 116000     ; 6      ; COMMERCIAL         ; TOLL_FREE
 CH     ; 116111     ; 6      ; EXPANDED_EMERGENCY ; TOLL_FREE
 CH     ; 14[035]    ; 3      ; EXPANDED_EMERGENCY ; STANDARD_RATE
+CH     ; 141[01]    ; 4      ; EXPANDED_EMERGENCY ; STANDARD_RATE ;      ;                  ; GOVERNMENT
 CH     ; 141[45]    ; 4      ; EXPANDED_EMERGENCY ; STANDARD_RATE
 CH     ; 144        ; 3      ; EMERGENCY          ; TOLL_FREE
 CH     ; 147        ; 3      ; EXPANDED_EMERGENCY ; TOLL_FREE
@@ -12,6 +13,7 @@ CH     ; 1600       ; 4      ; COMMERCIAL         ; STANDARD_RATE
 CH     ; 16[1-46]   ; 3      ; COMMERCIAL         ; STANDARD_RATE
 CH     ; 1802       ; 4      ; COMMERCIAL         ; PREMIUM_RATE
 CH     ; 181[189]   ; 4      ; COMMERCIAL         ; PREMIUM_RATE
+CH     ; 1820       ; 4      ; COMMERCIAL         ; PREMIUM_RATE  ;      ;                  ; GOVERNMENT
 CH     ; 1850       ; 4      ; COMMERCIAL         ; PREMIUM_RATE
 CH     ; 187        ; 3      ; COMMERCIAL
 CH     ; 188[08]    ; 4      ; COMMERCIAL         ; PREMIUM_RATE
