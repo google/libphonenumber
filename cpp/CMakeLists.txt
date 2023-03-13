@@ -19,8 +19,8 @@ cmake_minimum_required (VERSION 3.11)
 project (libphonenumber VERSION 8.13.0)
 
 # Pick the C++ standard to compile with.
-# Abseil currently supports C++11, C++14, and C++17.
-set(CMAKE_CXX_STANDARD 11 CACHE STRING "C++ standard used to compile this project")
+# Abseil currently supports C++14, and C++17.
+set(CMAKE_CXX_STANDARD 14 CACHE STRING "C++ standard used to compile this project")
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_POSITION_INDEPENDENT_CODE TRUE)
 
@@ -111,7 +111,7 @@ find_package(absl)
 if(NOT absl_FOUND)
   # Overide abseil install rules for subprojects
   set(ABSL_ENABLE_INSTALL ON)
-  
+
   # Downloading the abseil sources at particular version to not catch up
   # with its new build requirements like min C++14 is mandated in that lib.
   FetchContent_Declare(
