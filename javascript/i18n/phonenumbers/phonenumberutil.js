@@ -4386,7 +4386,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.parseHelper_ =
 /**
  * Extracts the value of the phone-context parameter of numberToExtractFrom,
  * following the syntax defined in RFC3966.
- * @param numberToExtractFrom
+ * @param {?string} numberToExtractFrom
  * @return {string|null} the extracted string (possibly empty), or null if no
  * phone-context parameter is found.
  * @private
