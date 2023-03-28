@@ -20,7 +20,9 @@
 38592|A1 Telekom
 38595|Tele2
 385970|Hrvatski Telekom
+3859750|Lancelot Telecom
 3859751|Telefocus
+3859754|Lancelot Telecom
 3859757|Mobile One
 38597596|Altavox
 38597597|INNOVAC

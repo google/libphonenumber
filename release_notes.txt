@@ -1,3 +1,9 @@
+Mar 28, 2023: v8.13.9
+Metadata changes:
+ - Updated phone metadata for region code(s): BL, GF, GI, GP, HR, MF, MQ
+ - Updated short number metadata for region code(s): JO
+ - Updated carrier data for country calling code(s): 350 (en), 385 (en)
+
 Mar 09, 2023: v8.13.8
 Code changes:
  - Added a check to PhoneNumberUtil that the value of the `phone-context`

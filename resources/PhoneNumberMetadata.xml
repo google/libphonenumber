@@ -4160,9 +4160,12 @@
         <exampleNumber>976012345</exampleNumber>
         <nationalNumberPattern>
           9(?:
-            395|
-            76[018]
-          )\d{5}
+            (?:
+              395|
+              76[018]
+            )\d|
+            475[01]
+          )\d{4}
         </nationalNumberPattern>
       </voip>
     </territory>
@@ -11104,7 +11107,7 @@
         <numberFormat pattern="(\d{3})(\d{2})(\d{2})(\d{2})" nationalPrefixFormattingRule="$NP$FG">
           <leadingDigits>
             [56]|
-            97
+            9[47]
           </leadingDigits>
           <format>$1 $2 $3 $4</format>
         </numberFormat>
@@ -11160,9 +11163,12 @@
         <exampleNumber>976012345</exampleNumber>
         <nationalNumberPattern>
           9(?:
-            396|
-            76\d
-          )\d{5}
+            (?:
+              396|
+              76\d
+            )\d|
+            476[01]
+          )\d{4}
         </nationalNumberPattern>
       </voip>
     </territory>
@@ -11398,9 +11404,9 @@
       <generalDesc>
         <nationalNumberPattern>
           (?:
-            [25]\d\d|
-            606
-          )\d{5}
+            [25]\d|
+            60
+          )\d{6}
         </nationalNumberPattern>
       </generalDesc>
       <fixedLine>
@@ -11410,8 +11416,8 @@
           2190[0-2]\d{3}|
           2(?:
             0(?:
-              0\d|
-              20
+              [02]\d|
+              3[01]
             )|
             16[24-9]|
             2[2-5]\d
@@ -11422,14 +11428,17 @@
         <possibleLengths national="8"/>
         <exampleNumber>57123456</exampleNumber>
         <nationalNumberPattern>
-          525(?:
-            0\d|
-            1[0-4]
-          )\d{3}|
+          5251[0-4]\d{3}|
           (?:
-            5[146-8]\d|
-            606
-          )\d{5}
+            5(?:
+              [146-8]\d\d|
+              250
+            )|
+            60(?:
+              1[01]|
+              6\d
+            )
+          )\d{4}
         </nationalNumberPattern>
       </mobile>
     </territory>
@@ -11639,9 +11648,8 @@
             2[0-68]|
             3[1289]|
             5[3-579]|
-            6[0-489]|
+            [68][0-689]|
             7[08]|
-            8[0-689]|
             9\d
           )\d{4}
         </nationalNumberPattern>
@@ -11676,9 +11684,12 @@
         <exampleNumber>976012345</exampleNumber>
         <nationalNumberPattern>
           9(?:
-            395|
-            76[018]
-          )\d{5}
+            (?:
+              395|
+              76[018]
+            )\d|
+            475[01]
+          )\d{4}
         </nationalNumberPattern>
       </voip>
     </territory>
@@ -12637,17 +12648,22 @@
         <possibleLengths national="8,9"/>
         <exampleNumber>921234567</exampleNumber>
         <nationalNumberPattern>
-          98\d{6,7}|
-          975(?:
-            1\d|
-            77|
-            9[67]
-          )\d{4}|
           9(?:
-            0[1-9]|
-            [1259]\d|
-            7[0679]
-          )\d{6}
+            (?:
+              0[1-9]|
+              [12589]\d
+            )\d\d|
+            7(?:
+              [0679]\d\d|
+              5(?:
+                [01]\d|
+                44|
+                77|
+                9[67]
+              )
+            )
+          )\d{4}|
+          98\d{6}
         </nationalNumberPattern>
       </mobile>
       <tollFree>
@@ -19594,9 +19610,12 @@
         <exampleNumber>976012345</exampleNumber>
         <nationalNumberPattern>
           9(?:
-            395|
-            76[018]
-          )\d{5}
+            (?:
+              395|
+              76[018]
+            )\d|
+            475[01]
+          )\d{4}
         </nationalNumberPattern>
       </voip>
     </territory>
@@ -20693,10 +20712,8 @@
         <exampleNumber>976612345</exampleNumber>
         <nationalNumberPattern>
           9(?:
-            (?:
-              39|
-              47
-            )7[01]|
+            397[01]|
+            477[0-2]|
             76(?:
               6\d|
               7[0-367]

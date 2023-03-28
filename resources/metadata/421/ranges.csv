@@ -2173,8 +2173,8 @@ Prefix             ; Length ; Type       ; Tariff        ; National Only ; Opera
 988688             ; 9      ; FIXED_LINE ; PREMIUM_RATE  ; true          ;                            ; "fmt_3/3/3"     ; "SK"    ;                     ; GOVERNMENT
 988700             ; 9      ; FIXED_LINE ; PREMIUM_RATE  ; true          ;                            ; "fmt_3/3/3"     ; "SK"    ;                     ; GOVERNMENT
 98870[1-9]         ; 9      ; FIXED_LINE ; PREMIUM_RATE  ; true          ;                            ; "fmt_3/3/3"     ; "SK"    ;                     ;            ; "FILLUP TO SUPPORT MASTER RANGE"
-98871[014679]      ; 9      ; FIXED_LINE ; PREMIUM_RATE  ; true          ;                            ; "fmt_3/3/3"     ; "SK"    ;                     ;            ; "FILLUP TO SUPPORT MASTER RANGE"
-98871[2358]        ; 9      ; FIXED_LINE ; PREMIUM_RATE  ; true          ;                            ; "fmt_3/3/3"     ; "SK"    ;                     ; GOVERNMENT
+98871[01479]       ; 9      ; FIXED_LINE ; PREMIUM_RATE  ; true          ;                            ; "fmt_3/3/3"     ; "SK"    ;                     ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+98871[23568]       ; 9      ; FIXED_LINE ; PREMIUM_RATE  ; true          ;                            ; "fmt_3/3/3"     ; "SK"    ;                     ; GOVERNMENT
 9887[2-469]        ; 9      ; FIXED_LINE ; PREMIUM_RATE  ; true          ;                            ; "fmt_3/3/3"     ; "SK"    ;                     ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 98875[0256]        ; 9      ; FIXED_LINE ; PREMIUM_RATE  ; true          ;                            ; "fmt_3/3/3"     ; "SK"    ;                     ; GOVERNMENT
 98875[1347-9]      ; 9      ; FIXED_LINE ; PREMIUM_RATE  ; true          ;                            ; "fmt_3/3/3"     ; "SK"    ;                     ;            ; "FILLUP TO SUPPORT MASTER RANGE"
