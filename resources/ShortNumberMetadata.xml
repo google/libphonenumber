@@ -7635,41 +7635,39 @@
       </generalDesc>
       <shortCode>
         <possibleLengths national="3,5"/>
-        <exampleNumber>109</exampleNumber>
+        <exampleNumber>102</exampleNumber>
         <nationalNumberPattern>
           1(?:
-            09|
-            1[0-248]|
+            0[2359]|
+            1[0-68]|
             9[0-24-79]
           )|
-          9(?:
-            0903|
-            11|
-            8788
-          )
+          9[0-4689]\d{3}|
+          911
         </nationalNumberPattern>
       </shortCode>
       <tollFree>
         <possibleLengths national="3"/>
-        <exampleNumber>112</exampleNumber>
+        <exampleNumber>102</exampleNumber>
         <nationalNumberPattern>
           1(?:
-            1[24]|
+            0[235]|
+            1[2-6]|
             9[127]
           )|
           911
         </nationalNumberPattern>
       </tollFree>
+      <premiumRate>
+        <possibleLengths national="5"/>
+        <exampleNumber>90000</exampleNumber>
+        <nationalNumberPattern>9[0-4689]\d{3}</nationalNumberPattern>
+      </premiumRate>
       <!-- https://support.twitter.com/articles/20170024 -->
       <carrierSpecific>
         <possibleLengths national="5"/>
-        <exampleNumber>90900</exampleNumber>
-        <nationalNumberPattern>
-          9(?:
-            09|
-            87
-          )\d\d
-        </nationalNumberPattern>
+        <exampleNumber>90000</exampleNumber>
+        <nationalNumberPattern>9[0-4689]\d{3}</nationalNumberPattern>
       </carrierSpecific>
       <!-- 192 is only available in Amman, 197 in the suburbs. -->
       <emergency>
@@ -7696,13 +7694,8 @@
       <!-- https://support.twitter.com/articles/20170024 -->
       <smsServices>
         <possibleLengths national="5"/>
-        <exampleNumber>90900</exampleNumber>
-        <nationalNumberPattern>
-          9(?:
-            09|
-            87
-          )\d\d
-        </nationalNumberPattern>
+        <exampleNumber>90000</exampleNumber>
+        <nationalNumberPattern>9[0-4689]\d{3}</nationalNumberPattern>
       </smsServices>
     </territory>
 

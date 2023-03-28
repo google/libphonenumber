@@ -30,7 +30,9 @@ Prefix   ; Length ; Type            ; Tariff        ; Area Code Length ; Operato
 9[12]    ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "a1"               ; "mobile_2/3/3-4"  ; "HR"    ;                        ; IR21       ; "IR21 dated 10/18/2018"
 95       ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "tele2"            ; "mobile_2/3/3-4"  ; "HR"    ;                        ; IR21       ; "IR21 dated 12/19/2018"
 97[0679] ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "hrvatski_telekom" ; "mobile_2/3/3-4"  ; "HR"    ;                        ; IR21       ; "IR21 dated 1/30/2019"
+9750     ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "lancelot"         ; "mobile_2/3/3-4"  ; "HR"    ;                        ; IR21
 9751     ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "telefocus"        ; "mobile_2/3/3-4"  ; "HR"    ;                        ; GOVERNMENT ; "HAKOM monthly file"
+97544    ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "lancelot"         ; "mobile_2/3/3-4"  ; "HR"    ;                        ; IR21
 97577    ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "mobileone"        ; "mobile_2/3/3-4"  ; "HR"    ;                        ; GOVERNMENT
 97596    ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "altavox"          ; "mobile_2/3/3-4"  ; "HR"    ;                        ; GOVERNMENT
 97597    ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "innovac"          ; "mobile_2/3/3-4"  ; "HR"    ;                        ; GOVERNMENT
