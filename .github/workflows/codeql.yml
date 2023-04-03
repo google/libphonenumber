@@ -50,6 +50,8 @@ jobs:
         
       - name: Install Protoc
         uses: arduino/setup-protoc@v1
+        with:
+          version: '3.x'
 
       # Initializes the CodeQL tools for scanning.
       - name: Initialize CodeQL
