@@ -88,8 +88,8 @@ Prefix           ; Length ; Type            ; Tariff        ; National Only ; Op
 5102[07-9]       ; 10     ; MOBILE          ; STANDARD_RATE ; false         ;                                      ; "mobile_3/3/2/2"   ; "TR"
 510210           ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "pasifik_telekom"                    ; "mobile_3/3/2/2"   ; "TR"    ;                       ;                       ; GOVERNMENT
 51021[1-9]       ; 10     ; MOBILE          ; STANDARD_RATE ; false         ;                                      ; "mobile_3/3/2/2"   ; "TR"
-51022[0-3]       ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "netgsm"                             ; "mobile_3/3/2/2"   ; "TR"    ;                       ;                       ; GOVERNMENT
-51022[4-9]       ; 10     ; MOBILE          ; STANDARD_RATE ; false         ;                                      ; "mobile_3/3/2/2"   ; "TR"
+51022[0-37]      ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "netgsm"                             ; "mobile_3/3/2/2"   ; "TR"    ;                       ;                       ; GOVERNMENT
+51022[4-689]     ; 10     ; MOBILE          ; STANDARD_RATE ; false         ;                                      ; "mobile_3/3/2/2"   ; "TR"
 51023[013-9]     ; 10     ; MOBILE          ; STANDARD_RATE ; false         ;                                      ; "mobile_3/3/2/2"   ; "TR"
 510232           ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "Foniv_telecommunications_services"  ; "mobile_3/3/2/2"   ; "TR"    ;                       ;                       ; GOVERNMENT
 51024[0-35-9]    ; 10     ; MOBILE          ; STANDARD_RATE ; false         ;                                      ; "mobile_3/3/2/2"   ; "TR"

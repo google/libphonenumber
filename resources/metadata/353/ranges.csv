@@ -1883,8 +1883,7 @@ Prefix          ; Length ; Type            ; Tariff        ; Area Code Length ; 
 8[39]5          ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; false         ; "3"                 ; "fmt_2/3/4"         ; "IE"
 835             ; 10     ; VOICEMAIL       ; STANDARD_RATE ;                  ; false         ;                     ; "voicemail_2/1/3/4" ; "IE"    ;                                                   ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 83[679]         ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; false         ; "3"                 ; "fmt_2/3/4"         ; "IE"    ;                                                   ;            ; "FILLUP TO SUPPORT MASTER RANGE"
-85[0-46-9]      ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; false         ; "meteor"            ; "fmt_2/3/4"         ; "IE"    ;                                                   ; IR21
-855             ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; false         ; "meteor"            ; "fmt_2/3/4"         ; "IE"
+85              ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; false         ; "meteor"            ; "fmt_2/3/4"         ; "IE"    ;                                                   ; IR21
 8[5-7]5         ; 10     ; VOICEMAIL       ; STANDARD_RATE ;                  ; false         ;                     ; "voicemail_2/1/3/4" ; "IE"    ;                                                   ; IR21
 86[0-46-9]      ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; false         ; "o2"                ; "fmt_2/3/4"         ; "IE"    ;                                                   ; IR21
 865             ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; false         ; "o2"                ; "fmt_2/3/4"         ; "IE"

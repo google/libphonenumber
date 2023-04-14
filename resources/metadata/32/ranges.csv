@@ -103,6 +103,7 @@ Prefix        ; Length ; Type       ; Tariff        ; Operator                  
 902[0-3568]   ; 8      ; FIXED_LINE ; PREMIUM_RATE  ;                                  ; "fmt4_3/2/3"   ; "BE"    ; "Gent"               ; "Ghent"              ; "Gand"               ; "Gent"
 903[0135689]  ; 8      ; FIXED_LINE ; PREMIUM_RATE  ;                                  ; "fmt4_3/2/3"   ; "BE"    ; "Gent"               ; "Ghent"              ; "Gand"               ; "Gent"
 903[24]       ; 8      ; FIXED_LINE ; PREMIUM_RATE  ;                                  ; "fmt4_3/2/3"   ; "BE"    ; "Gent"               ; "Ghent"              ; "Gand"               ; "Gent"               ; GOVERNMENT
+9040          ; 8      ; FIXED_LINE ; PREMIUM_RATE  ;                                  ; "fmt4_3/2/3"   ; "BE"    ; "Gent"               ; "Ghent"              ; "Gand"               ; "Gent"               ; GOVERNMENT
 904[2-68]     ; 8      ; FIXED_LINE ; PREMIUM_RATE  ;                                  ; "fmt4_3/2/3"   ; "BE"    ; "Gent"               ; "Ghent"              ; "Gand"               ; "Gent"
 905[1-68]     ; 8      ; FIXED_LINE ; PREMIUM_RATE  ;                                  ; "fmt4_3/2/3"   ; "BE"    ; "Gent"               ; "Ghent"              ; "Gand"               ; "Gent"
 906[0-378]    ; 8      ; FIXED_LINE ; PREMIUM_RATE  ;                                  ; "fmt4_3/2/3"   ; "BE"    ; "Gent"               ; "Ghent"              ; "Gand"               ; "Gent"
