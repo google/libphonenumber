@@ -10876,7 +10876,7 @@ Prefix          ; Length ; Type       ; Tariff        ; Operator                
 657             ; 9      ; MOBILE     ; STANDARD_RATE ; "emessage"                     ; "fmt_1/2/2/2/2"   ; "FR"    ;                                ;                                ; GOVERNMENT
 66              ; 9      ; MOBILE     ; STANDARD_RATE ; "bouygues"                     ; "fmt_1/2/2/2/2"   ; "FR"    ;                                ;                                ; IR21
 6[78]           ; 9      ; MOBILE     ; STANDARD_RATE ; "orange_france"                ; "fmt_1/2/2/2/2"   ; "FR"    ;                                ;                                ; GOVERNMENT
-695             ; 9      ; MOBILE     ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;                                ;                                ; IR21
+695             ; 9      ; MOBILE     ; STANDARD_RATE ; "free"                         ; "fmt_1/2/2/2/2"   ; "FR"    ;                                ;                                ; IR21
 69[89]          ; 9      ; MOBILE     ; STANDARD_RATE ; "bouygues"                     ; "fmt_1/2/2/2/2"   ; "FR"    ;                                ;                                ; IR21
 7[34]           ; 9      ; MOBILE     ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"
 7500            ; 9      ; MOBILE     ; STANDARD_RATE ; "euroinformation_telecom"      ; "fmt_1/2/2/2/2"   ; "FR"    ;                                ;                                ; GOVERNMENT
