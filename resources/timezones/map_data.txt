@@ -916,6 +916,7 @@
 1423989|America/New_York
 1424|America/Los_Angeles
 1425|America/Los_Angeles
+1428|America/Halifax
 1430|America/Chicago
 1431|America/Winnipeg
 1432|America/Chicago

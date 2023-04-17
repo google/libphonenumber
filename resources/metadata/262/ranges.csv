@@ -63,7 +63,7 @@ Prefix       ; Length ; Type       ; Tariff        ; Operator ; Format         ;
 89[1-37-9]   ; 9      ; FIXED_LINE ; PREMIUM_RATE  ;          ; "fmt1_3/2/2/2" ; "Indian/Reunion"                ; "RE"
 93980        ; 9      ; MOBILE     ; STANDARD_RATE ;          ; "fmt1_3/2/2/2" ; "Indian/Mayotte"                ; "YT"    ; GOVERNMENT
 9399[0-2]    ; 9      ; MOBILE     ; STANDARD_RATE ;          ; "fmt1_3/2/2/2" ; "Indian/Reunion"                ; "RE"    ; GOVERNMENT
-94790        ; 9      ; MOBILE     ; STANDARD_RATE ;          ; "fmt1_3/2/2/2" ; "Indian/Reunion"                ; "RE"    ; GOVERNMENT
+9479[01]     ; 9      ; MOBILE     ; STANDARD_RATE ;          ; "fmt1_3/2/2/2" ; "Indian/Reunion"                ; "RE"    ; GOVERNMENT
 9762[27]     ; 9      ; MOBILE     ; STANDARD_RATE ;          ; "fmt1_3/2/2/2" ; "Indian/Reunion"                ; "RE"    ; GOVERNMENT
 9763[0-37]   ; 9      ; MOBILE     ; STANDARD_RATE ;          ; "fmt1_3/2/2/2" ; "Indian/Reunion"                ; "RE"    ; GOVERNMENT
 9769         ; 9      ; MOBILE     ; STANDARD_RATE ; "orange" ; "fmt1_3/2/2/2" ; "Indian/Reunion"                ; "RE"    ; GOVERNMENT

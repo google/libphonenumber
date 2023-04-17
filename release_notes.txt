@@ -1,3 +1,14 @@
+Apr 14, 2023: v8.13.10
+Metadata changes:
+ - Updated phone metadata for region code(s): BE, CA, CL, GE, MM, MU, RE, US
+ - New geocoding data for country calling code(s): 1428 (en)
+ - Updated geocoding data for country calling code(s):
+   86 (en, zh), 95 (en), 1472 (en)
+ - Updated carrier data for country calling code(s):
+   33 (en), 41 (en), 56 (en), 81 (en), 90 (en), 230 (en), 381 (en), 995 (en),
+   998 (en), 1284 (en)
+ - Updated / refreshed time zone meta data.
+
 Mar 28, 2023: v8.13.9
 Metadata changes:
  - Updated phone metadata for region code(s): BL, GF, GI, GP, HR, MF, MQ
