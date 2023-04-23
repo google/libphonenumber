@@ -106,7 +106,8 @@ if (USE_ALTERNATE_FORMATS)
 endif ()
 
 # Find all the required libraries and programs.
-find_package(absl)
+# Use "CONFIG" as there is no built-in cmake module for absl.
+find_package(absl CONFIG REQUIRED)
 
 if(NOT absl_FOUND)
   # Overide abseil install rules for subprojects
