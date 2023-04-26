@@ -176,14 +176,11 @@ if (USE_RE2)
   find_required_library (RE2 re2/re2.h re2 "Google RE2")
 endif ()
 
+find_package(Protobuf REQUIRED)
 if (USE_PROTOBUF_LITE)
-  find_required_library (PROTOBUF google/protobuf/message_lite.h protobuf-lite
-                         "Google Protocol Buffers")
-  check_library_version (PC_PROTOBUF protobuf-lite>=2.4)
+  set(PROTOBUF_LIB ${Protobuf_LITE_LIBRARIES})
 else ()
-  find_required_library (PROTOBUF google/protobuf/message_lite.h protobuf
-                         "Google Protocol Buffers")
-  check_library_version (PC_PROTOBUF protobuf>=2.4)
+  set(PROTOBUF_LIB ${Protobuf_LIBRARIES})
 endif ()
 
 find_required_library (ICU_UC unicode/uchar.h icuuc "ICU")
@@ -198,9 +195,6 @@ if (USE_ICU_REGEXP OR BUILD_GEOCODER)
   list (APPEND ICU_INCLUDE_DIR ${ICU_I18N_INCLUDE_DIR})
   list (APPEND ICU_LIB ${ICU_I18N_LIB})
 endif ()
-
-find_required_program (PROTOC protoc
-                       "Google Protocol Buffers compiler (protoc)")
 
 if (REGENERATE_METADATA)
   find_required_program (JAVA java
@@ -239,7 +233,7 @@ set (
 )
 
 add_custom_command (
-  COMMAND ${PROTOC_BIN} --cpp_out=${CMAKE_CURRENT_SOURCE_DIR}/src/phonenumbers/
+  COMMAND ${Protobuf_PROTOC_EXECUTABLE} --cpp_out=${CMAKE_CURRENT_SOURCE_DIR}/src/phonenumbers/
     --proto_path=${RESOURCES_DIR} ${PROTOBUF_SOURCES}
 
   OUTPUT ${PROTOBUF_OUTPUT}
