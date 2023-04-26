@@ -1,3 +1,8 @@
+Apr 26, 2023: v8.13.11
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   BL, CG, GB, GF, GP, MF, RE, SG, TJ, YT
+
 Apr 14, 2023: v8.13.10
 Metadata changes:
  - Updated phone metadata for region code(s): BE, CA, CL, GE, MM, MU, RE, US
