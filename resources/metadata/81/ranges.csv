@@ -355,7 +355,7 @@ Prefix         ; Length ; Type            ; Tariff        ; National Only ; Oper
 4994           ; 9      ; FIXED_LINE      ; STANDARD_RATE ; false         ;                          ; "fixed_4/1/4"      ; "JP"    ;                             ; "三宅"
 4996           ; 9      ; FIXED_LINE      ; STANDARD_RATE ; false         ;                          ; "fixed_4/1/4"      ; "JP"    ;                             ; "八丈島"
 4998           ; 9      ; FIXED_LINE      ; STANDARD_RATE ; false         ;                          ; "fixed_4/1/4"      ; "JP"    ; "Ogasawara, Tokyo"          ; "小笠原"
-50[1589]       ; 10     ; VOIP            ; STANDARD_RATE ; false         ;                          ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
+50[157-9]      ; 10     ; VOIP            ; STANDARD_RATE ; false         ;                          ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
 5020[0-2]      ; 10     ; VOIP            ; STANDARD_RATE ; false         ;                          ; "fmt10_2/4/4"      ; "JP"
 50203[0-6]     ; 10     ; VOIP            ; STANDARD_RATE ; false         ;                          ; "fmt10_2/4/4"      ; "JP"
 50203[7-9]     ; 10     ; VOIP            ; STANDARD_RATE ; false         ;                          ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
@@ -376,10 +376,6 @@ Prefix         ; Length ; Type            ; Tariff        ; National Only ; Oper
 5062[0-5]      ; 10     ; VOIP            ; STANDARD_RATE ; false         ;                          ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
 5062[6-9]      ; 10     ; VOIP            ; STANDARD_RATE ; false         ;                          ; "fmt10_2/4/4"      ; "JP"
 506[3-5]       ; 10     ; VOIP            ; STANDARD_RATE ; false         ;                          ; "fmt10_2/4/4"      ; "JP"
-507[0-689]     ; 10     ; VOIP            ; STANDARD_RATE ; false         ;                          ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
-5077[0-79]     ; 10     ; VOIP            ; STANDARD_RATE ; false         ;                          ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
-50778[0-79]    ; 10     ; VOIP            ; STANDARD_RATE ; false         ;                          ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
-507788         ; 10     ; VOIP            ; STANDARD_RATE ; false         ;                          ; "fmt10_2/4/4"      ; "JP"
 52             ; 9      ; FIXED_LINE      ; STANDARD_RATE ; false         ;                          ; "fixed_2/3/4"      ; "JP"    ; "Nagoya, Aichi"             ; "名古屋"
 530            ; 9      ; FIXED_LINE      ; STANDARD_RATE ; false         ;                          ; "fixed_2/3/4"      ; "JP"
 531            ; 9      ; FIXED_LINE      ; STANDARD_RATE ; false         ;                          ; "fixed_3/2/4"      ; "JP"    ; "Tahara, Aichi"             ; "田原"
@@ -516,8 +512,9 @@ Prefix         ; Length ; Type            ; Tariff        ; National Only ; Oper
 7050[1-9]      ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "softbank"               ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
 705[1-6]       ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "softbank"               ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
 7057           ; 10     ; MOBILE          ; STANDARD_RATE ; false         ;                          ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
-7058[02-9]     ; 10     ; MOBILE          ; STANDARD_RATE ; false         ;                          ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
+7058[02-4]     ; 10     ; MOBILE          ; STANDARD_RATE ; false         ;                          ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
 70581          ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "softbank"               ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
+7058[5-9]      ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "kddi"                   ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
 7059           ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "kddi"                   ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; IR21
 706[07]        ; 10     ; MOBILE          ; STANDARD_RATE ; false         ;                          ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
 706[124-69]    ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "softbank"               ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
