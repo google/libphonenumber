@@ -111,6 +111,13 @@ class PhoneNumberUtilTest : public testing::Test {
     return phone_util_.ContainsOnlyValidDigits(s);
   }
 
+  void AssertThrowsForInvalidPhoneContext(const string number_to_parse) {
+    PhoneNumber actual_number;
+    EXPECT_EQ(
+        PhoneNumberUtil::NOT_A_NUMBER,
+        phone_util_.Parse(number_to_parse, RegionCode::ZZ(), &actual_number));
+  }
+
   const PhoneNumberUtil& phone_util_;
 
  private:
@@ -3653,13 +3660,6 @@ TEST_F(PhoneNumberUtilTest, ParseNationalNumber) {
                 "tel:253-0000;isub=12345;phone-context=www.google.com",
                 RegionCode::US(), &test_number));
   EXPECT_EQ(us_local_number, test_number);
-  // This is invalid because no "+" sign is present as part of phone-context.
-  // The phone context is simply ignored in this case just as if it contains a
-  // domain.
-  EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
-            phone_util_.Parse("tel:2530000;isub=12345;phone-context=1-650",
-                              RegionCode::US(), &test_number));
-  EXPECT_EQ(us_local_number, test_number);
   EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
             phone_util_.Parse("tel:2530000;isub=12345;phone-context=1234.com",
                               RegionCode::US(), &test_number));
@@ -4085,7 +4085,7 @@ TEST_F(PhoneNumberUtilTest, FailedParseOnInvalidNumbers) {
   EXPECT_EQ(PhoneNumber::default_instance(), test_number);
   // This is invalid because no "+" sign is present as part of phone-context.
   // This should not succeed in being parsed.
-  EXPECT_EQ(PhoneNumberUtil::INVALID_COUNTRY_CODE_ERROR,
+  EXPECT_EQ(PhoneNumberUtil::NOT_A_NUMBER,
             phone_util_.Parse("tel:555-1234;phone-context=1-331",
                               RegionCode::ZZ(), &test_number));
   EXPECT_EQ(PhoneNumber::default_instance(), test_number);
@@ -4701,6 +4701,97 @@ TEST_F(PhoneNumberUtilTest, ParseItalianLeadingZeros) {
             phone_util_.Parse("0000", RegionCode::AU(),
                               &test_number));
   EXPECT_EQ(zeros_number, test_number);
+}
+
+TEST_F(PhoneNumberUtilTest, ParseWithPhoneContext) {
+  PhoneNumber expected_number;
+  expected_number.set_country_code(64);
+  expected_number.set_national_number(33316005L);
+  PhoneNumber actual_number;
+
+  // context    = ";phone-context=" descriptor
+  // descriptor = domainname / global-number-digits
+
+  // Valid global-phone-digits
+  EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
+            phone_util_.Parse("tel:033316005;phone-context=+64",
+                              RegionCode::ZZ(), &actual_number));
+  EXPECT_EQ(expected_number, actual_number);
+  actual_number.Clear();
+
+  EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
+            phone_util_.Parse("tel:033316005;phone-context=+64;{this isn't "
+                              "part of phone-context anymore!}",
+                              RegionCode::ZZ(), &actual_number));
+  EXPECT_EQ(expected_number, actual_number);
+  actual_number.Clear();
+
+  expected_number.set_national_number(3033316005L);
+  EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
+            phone_util_.Parse("tel:033316005;phone-context=+64-3",
+                              RegionCode::ZZ(), &actual_number));
+  EXPECT_EQ(expected_number, actual_number);
+  actual_number.Clear();
+
+  expected_number.set_country_code(55);
+  expected_number.set_national_number(5033316005L);
+  EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
+            phone_util_.Parse("tel:033316005;phone-context=+(555)",
+                              RegionCode::ZZ(), &actual_number));
+  EXPECT_EQ(expected_number, actual_number);
+  actual_number.Clear();
+
+  expected_number.set_country_code(1);
+  expected_number.set_national_number(23033316005L);
+  EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
+            phone_util_.Parse("tel:033316005;phone-context=+-1-2.3()",
+                              RegionCode::ZZ(), &actual_number));
+  EXPECT_EQ(expected_number, actual_number);
+  actual_number.Clear();
+
+  // Valid domainname
+  expected_number.set_country_code(64);
+  expected_number.set_national_number(33316005L);
+  EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
+            phone_util_.Parse("tel:033316005;phone-context=abc.nz",
+                              RegionCode::NZ(), &actual_number));
+  EXPECT_EQ(expected_number, actual_number);
+  actual_number.Clear();
+
+  EXPECT_EQ(
+      PhoneNumberUtil::NO_PARSING_ERROR,
+      phone_util_.Parse("tel:033316005;phone-context=www.PHONE-numb3r.com",
+                        RegionCode::NZ(), &actual_number));
+  EXPECT_EQ(expected_number, actual_number);
+  actual_number.Clear();
+
+  EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
+            phone_util_.Parse("tel:033316005;phone-context=a", RegionCode::NZ(),
+                              &actual_number));
+  EXPECT_EQ(expected_number, actual_number);
+  actual_number.Clear();
+
+  EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
+            phone_util_.Parse("tel:033316005;phone-context=3phone.J.",
+                              RegionCode::NZ(), &actual_number));
+  EXPECT_EQ(expected_number, actual_number);
+  actual_number.Clear();
+
+  EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
+            phone_util_.Parse("tel:033316005;phone-context=a--z",
+                              RegionCode::NZ(), &actual_number));
+  EXPECT_EQ(expected_number, actual_number);
+
+  // Invalid descriptor
+  AssertThrowsForInvalidPhoneContext("tel:033316005;phone-context=");
+  AssertThrowsForInvalidPhoneContext("tel:033316005;phone-context=+");
+  AssertThrowsForInvalidPhoneContext("tel:033316005;phone-context=64");
+  AssertThrowsForInvalidPhoneContext("tel:033316005;phone-context=++64");
+  AssertThrowsForInvalidPhoneContext("tel:033316005;phone-context=+abc");
+  AssertThrowsForInvalidPhoneContext("tel:033316005;phone-context=.");
+  AssertThrowsForInvalidPhoneContext("tel:033316005;phone-context=3phone");
+  AssertThrowsForInvalidPhoneContext("tel:033316005;phone-context=a-.nz");
+  AssertThrowsForInvalidPhoneContext("tel:033316005;phone-context=a{b}c");
 }
 
 TEST_F(PhoneNumberUtilTest, CanBeInternationallyDialled) {

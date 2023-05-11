@@ -1,3 +1,36 @@
+Apr 26, 2023: v8.13.11
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   BL, CG, GB, GF, GP, MF, RE, SG, TJ, YT
+
+Apr 14, 2023: v8.13.10
+Metadata changes:
+ - Updated phone metadata for region code(s): BE, CA, CL, GE, MM, MU, RE, US
+ - New geocoding data for country calling code(s): 1428 (en)
+ - Updated geocoding data for country calling code(s):
+   86 (en, zh), 95 (en), 1472 (en)
+ - Updated carrier data for country calling code(s):
+   33 (en), 41 (en), 56 (en), 81 (en), 90 (en), 230 (en), 381 (en), 995 (en),
+   998 (en), 1284 (en)
+ - Updated / refreshed time zone meta data.
+
+Mar 28, 2023: v8.13.9
+Metadata changes:
+ - Updated phone metadata for region code(s): BL, GF, GI, GP, HR, MF, MQ
+ - Updated short number metadata for region code(s): JO
+ - Updated carrier data for country calling code(s): 350 (en), 385 (en)
+
+Mar 09, 2023: v8.13.8
+Code changes:
+ - Added a check to PhoneNumberUtil that the value of the `phone-context`
+ parameter of the tel URI follows the correct syntax as defined in
+ [RFC3966](https://www.rfc-editor.org/rfc/rfc3966#section-3).
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   BL, GF, GM, GP, KW, MF, MY, PM, PT
+ - Updated short number metadata for region code(s): CH, DK
+ - Updated carrier data for country calling code(s): 60 (en), 220 (en)
+
 Feb 23, 2023: v8.13.7
 Metadata changes:
  - Updated phone metadata for region code(s):

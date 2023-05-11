@@ -1,5 +1,6 @@
 Prefix      ; Length ; Type       ; Tariff        ; Area Code Length ; Operator    ; Format        ; Regions ; Geocode:en          ; Provenance
 [09]0       ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "megafon"   ; "fmt_2/3/4"   ; "TJ"
+0[127]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "megafon"   ; "fmt_2/3/4"   ; "TJ"    ;                     ; IR21
 10          ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "o_mobile"  ; "fmt_2/3/4"   ; "TJ"
 11          ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "tcell"     ; "fmt_2/3/4"   ; "TJ"    ;                     ; IR21
 17          ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "babilon_m" ; "fmt_2/3/4"   ; "TJ"    ;                     ; IR21
