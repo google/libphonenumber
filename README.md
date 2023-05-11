@@ -259,3 +259,7 @@ Alternatives to our own versions:
     https://github.com/seegno/google-libphonenumber - a browserify-compatible
     wrapper around the original unmodified library installable via npm, which
     packs the Google Closure library, about 420 KB in size.
+
+Tools based on libphonenumber metadata:
+
+*   Scala: https://github.com/mr-tolmach/raf - library for generating valid phone numbers in the E.164 format
