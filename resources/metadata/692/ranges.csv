@@ -4,6 +4,7 @@ Prefix ; Length ; Type       ; Tariff        ; Operator ; Format     ; Regions ;
 329    ; 7      ; MOBILE     ; STANDARD_RATE ; "nta"    ; "fmt1_3/4" ; "MH"
 453    ; 7      ; MOBILE     ; STANDARD_RATE ; "nta"    ; "fmt1_3/4" ; "MH"    ; GOVERNMENT
 45[56] ; 7      ; MOBILE     ; STANDARD_RATE ; "nta"    ; "fmt1_3/4" ; "MH"
+45[78] ; 7      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt1_3/4" ; "MH"    ;            ; "User report"
 528    ; 7      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt1_3/4" ; "MH"
 545    ; 7      ; MOBILE     ; STANDARD_RATE ; "nta"    ; "fmt1_3/4" ; "MH"
 625    ; 7      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt1_3/4" ; "MH"

@@ -97,16 +97,5 @@ Prefix        ; Length ; Type       ; Tariff        ; Operator                  
 86            ; 8      ; FIXED_LINE ; STANDARD_RATE ;                                  ; "fmt3_2/2/2/2" ; "BE"    ; "Durbuy"             ; "Durbuy"             ; "Durbuy"             ; "Durbuy"
 87            ; 8      ; FIXED_LINE ; STANDARD_RATE ;                                  ; "fmt3_2/2/2/2" ; "BE"    ; "Verviers"           ; "Verviers"           ; "Verviers"           ; "Verviers"
 89            ; 8      ; FIXED_LINE ; STANDARD_RATE ;                                  ; "fmt3_2/2/2/2" ; "BE"    ; "Genk"               ; "Genk"               ; "Genk"               ; "Genk"
-900[0-35-8]   ; 8      ; FIXED_LINE ; PREMIUM_RATE  ;                                  ; "fmt4_3/2/3"   ; "BE"    ; "Gent"               ; "Ghent"              ; "Gand"               ; "Gent"
-90[07]4       ; 8      ; FIXED_LINE ; PREMIUM_RATE  ;                                  ; "fmt4_3/2/3"   ; "BE"    ; "Gent"               ; "Ghent"              ; "Gand"               ; "Gent"               ; GOVERNMENT
-901[36]       ; 8      ; FIXED_LINE ; PREMIUM_RATE  ;                                  ; "fmt4_3/2/3"   ; "BE"    ; "Gent"               ; "Ghent"              ; "Gand"               ; "Gent"
-902[0-3568]   ; 8      ; FIXED_LINE ; PREMIUM_RATE  ;                                  ; "fmt4_3/2/3"   ; "BE"    ; "Gent"               ; "Ghent"              ; "Gand"               ; "Gent"
-903[0135689]  ; 8      ; FIXED_LINE ; PREMIUM_RATE  ;                                  ; "fmt4_3/2/3"   ; "BE"    ; "Gent"               ; "Ghent"              ; "Gand"               ; "Gent"
-903[24]       ; 8      ; FIXED_LINE ; PREMIUM_RATE  ;                                  ; "fmt4_3/2/3"   ; "BE"    ; "Gent"               ; "Ghent"              ; "Gand"               ; "Gent"               ; GOVERNMENT
-9040          ; 8      ; FIXED_LINE ; PREMIUM_RATE  ;                                  ; "fmt4_3/2/3"   ; "BE"    ; "Gent"               ; "Ghent"              ; "Gand"               ; "Gent"               ; GOVERNMENT
-904[2-68]     ; 8      ; FIXED_LINE ; PREMIUM_RATE  ;                                  ; "fmt4_3/2/3"   ; "BE"    ; "Gent"               ; "Ghent"              ; "Gand"               ; "Gent"
-905[1-68]     ; 8      ; FIXED_LINE ; PREMIUM_RATE  ;                                  ; "fmt4_3/2/3"   ; "BE"    ; "Gent"               ; "Ghent"              ; "Gand"               ; "Gent"
-906[0-378]    ; 8      ; FIXED_LINE ; PREMIUM_RATE  ;                                  ; "fmt4_3/2/3"   ; "BE"    ; "Gent"               ; "Ghent"              ; "Gand"               ; "Gent"
-907[23568]    ; 8      ; FIXED_LINE ; PREMIUM_RATE  ;                                  ; "fmt4_3/2/3"   ; "BE"    ; "Gent"               ; "Ghent"              ; "Gand"               ; "Gent"
-909[34679]    ; 8      ; FIXED_LINE ; PREMIUM_RATE  ;                                  ; "fmt4_3/2/3"   ; "BE"    ; "Gent"               ; "Ghent"              ; "Gand"               ; "Gent"
+90            ; 8      ; FIXED_LINE ; PREMIUM_RATE  ;                                  ; "fmt4_3/2/3"   ; "BE"    ; "Gent"               ; "Ghent"              ; "Gand"               ; "Gent"
 9[2-4]        ; 8      ; FIXED_LINE ; STANDARD_RATE ;                                  ; "fmt2_1/3/2/2" ; "BE"    ; "Gent"               ; "Ghent"              ; "Gand"               ; "Gent"
