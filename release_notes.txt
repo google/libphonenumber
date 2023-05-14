@@ -1,10 +1,3 @@
-May 11, 2023: v8.13.12
-Metadata changes:
- - Updated phone metadata for region code(s): BE, BJ, ET, KI, MH, US
- - Updated geocoding data for country calling code(s): 686 (en), 1472 (en)
- - Updated carrier data for country calling code(s):
-   229 (en), 420 (en), 686 (en), 692 (en)
-
 Apr 26, 2023: v8.13.11
 Metadata changes:
  - Updated phone metadata for region code(s):
