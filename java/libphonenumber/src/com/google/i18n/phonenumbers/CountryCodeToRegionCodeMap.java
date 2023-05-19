@@ -885,7 +885,7 @@ public class CountryCodeToRegionCodeMap {
     listWithRegionCode.add("AE");
     countryCodeToRegionCodeMap.put(971, listWithRegionCode);
 
-    listWithRegionCode = new ArrayList<String>(1);
+    listWithRegionCode = new ArrayList<String>(2);
     listWithRegionCode.add("IL");
     listWithRegionCode.add("PS");
     countryCodeToRegionCodeMap.put(972, listWithRegionCode);
