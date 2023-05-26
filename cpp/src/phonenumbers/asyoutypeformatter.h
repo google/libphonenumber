@@ -38,9 +38,9 @@
 
 #include "phonenumbers/base/basictypes.h"
 #include "phonenumbers/base/memory/scoped_ptr.h"
+#include "phonenumbers/phonemetadata.pb.h"
 #include "phonenumbers/regexp_adapter.h"
 #include "phonenumbers/regexp_cache.h"
-#include "phonenumbers/phonemetadata.pb.h"
 #include "phonenumbers/unicodestring.h"
 
 namespace i18n {
@@ -52,7 +52,7 @@ class PhoneNumberUtil;
 
 class AsYouTypeFormatter {
  public:
-  ~AsYouTypeFormatter() {}
+  ~AsYouTypeFormatter() = default;
 
   // Formats a phone number on-the-fly as each digit is entered.
   // next_char is the most recently entered digit of a phone number. Formatting

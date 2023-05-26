@@ -14,9 +14,9 @@
 //
 // Author: Ben Gertzfield
 
-#include <gtest/gtest.h>
-
 #include "phonenumbers/utf/unicodetext.h"
+
+#include <gtest/gtest.h>
 
 namespace i18n {
 namespace phonenumbers {
@@ -26,13 +26,13 @@ TEST(UnicodeTextTest, Iterator) {
     const char* utf8;
     char32 code_point;
   } values[] = {
-    { "\x31", 0x31 }, // U+0031 DIGIT ONE
-    { "\xC2\xBD", 0x00BD }, // U+00BD VULGAR FRACTION ONE HALF
-    { "\xEF\xBC\x91", 0xFF11 }, // U+FF11 FULLWIDTH DIGIT ONE
-    { "\xF0\x9F\x80\x80", 0x1F000 }, // U+1F000 MAHJONG TILE EAST WIND
+      {"\x31", 0x31},                 // U+0031 DIGIT ONE
+      {"\xC2\xBD", 0x00BD},           // U+00BD VULGAR FRACTION ONE HALF
+      {"\xEF\xBC\x91", 0xFF11},       // U+FF11 FULLWIDTH DIGIT ONE
+      {"\xF0\x9F\x80\x80", 0x1F000},  // U+1F000 MAHJONG TILE EAST WIND
   };
 
-  for (size_t i = 0; i < sizeof values / sizeof values[0]; i++) {
+  for (size_t i = 0; i < ArraySize(values); i++) {
     string number(values[i].utf8);
     UnicodeText number_as_unicode;
     number_as_unicode.PointToUTF8(number.data(), number.size());
@@ -42,5 +42,5 @@ TEST(UnicodeTextTest, Iterator) {
   }
 }
 
-} // namespace phonenumbers
-} // namespace i18n
+}  // namespace phonenumbers
+}  // namespace i18n

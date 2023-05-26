@@ -22,7 +22,7 @@ namespace gtl {
 // Compares the first attribute of two pairs.
 struct OrderByFirst {
   template <typename T>
-  bool operator()(const T& p1, const T& p2) const {
+  bool operator()(const T &p1, const T &p2) const {
     return p1.first < p2.first;
   }
 };
@@ -30,8 +30,8 @@ struct OrderByFirst {
 // Deletes the second attribute (pointer type expected) of the pairs contained
 // in the provided range.
 template <typename ForwardIterator>
-void STLDeleteContainerPairSecondPointers(const ForwardIterator& begin,
-                                          const ForwardIterator& end) {
+void STLDeleteContainerPairSecondPointers(const ForwardIterator &begin,
+                                          const ForwardIterator &end) {
   for (ForwardIterator it = begin; it != end; ++it) {
     delete it->second;
   }
@@ -39,7 +39,7 @@ void STLDeleteContainerPairSecondPointers(const ForwardIterator& begin,
 
 // Deletes the pointers contained in the provided container.
 template <typename T>
-void STLDeleteElements(T* container) {
+void STLDeleteElements(T *container) {
   for (typename T::iterator it = container->begin(); it != container->end();
        ++it) {
     delete *it;

@@ -40,21 +40,16 @@ bool UnicodeString::operator==(const UnicodeString& rhs) const {
 
 void UnicodeString::append(const UnicodeString& unicode_string) {
   invalidateCachedIndex();
-  for (UnicodeString::const_iterator it = unicode_string.begin();
-       it != unicode_string.end(); ++it) {
-    append(*it);
+  for (auto content : unicode_string) {
+    append(content);
   }
 }
 
 int UnicodeString::indexOf(char32 codepoint) const {
-  int pos = 0;
-  for (UnicodeText::const_iterator it = text_.begin(); it != text_.end();
-       ++it, ++pos) {
-    if (*it == codepoint) {
-      return pos;
-    }
-  }
-  return -1;
+  auto it = std::find(text_.begin(), text_.end(), codepoint);
+  return (it != text_.end())
+             ? static_cast<int>(std::distance(text_.begin(), it))
+             : -1;
 }
 
 void UnicodeString::replace(int start, int length, const UnicodeString& src) {
@@ -106,7 +101,8 @@ char32 UnicodeString::operator[](int index) const {
     cached_it_ = text_.begin();
     cached_index_ = 0;
   }
-  for (; cached_index_ < index; ++cached_index_, ++cached_it_) {}
+  for (; cached_index_ < index; ++cached_index_, ++cached_it_) {
+  }
   return *cached_it_;
 }
 

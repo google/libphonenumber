@@ -34,7 +34,7 @@ namespace i18n {
 namespace phonenumbers {
 
 template <class R, class A1, class A2, class A3, class A4>
-    class ResultCallback4;
+class ResultCallback4;
 
 using std::string;
 using std::vector;
@@ -48,6 +48,7 @@ class PhoneNumberUtil;
 
 class PhoneNumberMatcher {
   friend class PhoneNumberMatcherTest;
+
  public:
   // Leniency when finding potential phone numbers in text segments. The levels
   // here are ordered in increasing strictness.
@@ -74,16 +75,12 @@ class PhoneNumberMatcher {
   };
 
   // Constructs a phone number matcher.
-  PhoneNumberMatcher(const PhoneNumberUtil& util,
-                     const string& text,
-                     const string& region_code,
-                     Leniency leniency,
-                     int max_tries);
+  PhoneNumberMatcher(const PhoneNumberUtil& util, string text,
+                     string region_code, Leniency leniency, int max_tries);
 
   // Wrapper to construct a phone number matcher, with no limitation on the
   // number of retries and VALID Leniency.
-  PhoneNumberMatcher(const string& text,
-                     const string& region_code);
+  PhoneNumberMatcher(string text, string region_code);
 
   ~PhoneNumberMatcher();
 
@@ -134,29 +131,25 @@ class PhoneNumberMatcher {
                       PhoneNumberMatch* match);
 
   bool CheckNumberGroupingIsValid(
-    const PhoneNumber& phone_number,
-    const string& candidate,
-    ResultCallback4<bool, const PhoneNumberUtil&, const PhoneNumber&,
-                    const string&, const vector<string>&>* checker) const;
+      const PhoneNumber& phone_number, const string& candidate,
+      ResultCallback4<bool, const PhoneNumberUtil&, const PhoneNumber&,
+                      const string&, const vector<string>&>* checker) const;
 
   // Helper method to get the national-number part of a number, formatted
   // without any national prefix, and return it as a set of digit blocks that
   // would be formatted together following standard formatting rules.
-  void GetNationalNumberGroups(
-      const PhoneNumber& number,
-      vector<string>* digit_blocks) const;
+  void GetNationalNumberGroups(const PhoneNumber& number,
+                               vector<string>* digit_blocks) const;
 
   // Helper method to get the national-number part of a number, formatted
   // without any national prefix, and return it as a set of digit blocks that
   // should be formatted together according to the formatting pattern passed in.
-  void GetNationalNumberGroupsForPattern(
-      const PhoneNumber& number,
-      const NumberFormat* formatting_pattern,
-      vector<string>* digit_blocks) const;
+  void GetNationalNumberGroupsForPattern(const PhoneNumber& number,
+                                         const NumberFormat* formatting_pattern,
+                                         vector<string>* digit_blocks) const;
 
   bool AllNumberGroupsAreExactlyPresent(
-      const PhoneNumberUtil& util,
-      const PhoneNumber& phone_number,
+      const PhoneNumberUtil& util, const PhoneNumber& phone_number,
       const string& normalized_candidate,
       const vector<string>& formatted_number_groups) const;
 
@@ -165,8 +158,7 @@ class PhoneNumberMatcher {
 
   // In interface for testing purposes.
   static bool ContainsMoreThanOneSlashInNationalNumber(
-      const PhoneNumber& number,
-      const string& candidate,
+      const PhoneNumber& number, const string& candidate,
       const PhoneNumberUtil& util);
 
   // Helper method to determine if a character is a Latin-script letter or not.

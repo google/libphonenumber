@@ -14,11 +14,12 @@
 
 #include "phonenumbers/phonenumbermatcher.h"
 
-#include <string>
-#include <vector>
-
 #include <gtest/gtest.h>
 #include <unicode/unistr.h>
+
+#include <string>
+#include <utility>
+#include <vector>
 
 #include "phonenumbers/base/basictypes.h"
 #include "phonenumbers/base/memory/scoped_ptr.h"
@@ -34,8 +35,8 @@
 namespace i18n {
 namespace phonenumbers {
 
-using std::string;
 using icu::UnicodeString;
+using std::string;
 
 namespace {
 // Small class that holds the context of the number we are testing against. The
@@ -44,10 +45,9 @@ namespace {
 struct NumberContext {
   string leading_text_;
   string trailing_text_;
-  NumberContext(const string& leading_text, const string& trailing_text)
-    : leading_text_(leading_text),
-      trailing_text_(trailing_text) {
-  }
+  NumberContext(string leading_text, string trailing_text)
+      : leading_text_(std::move(leading_text)),
+        trailing_text_(std::move(trailing_text)) {}
 };
 
 // Small class that holds the number we want to test and the region for which it
@@ -56,14 +56,10 @@ struct NumberTest {
   string raw_string_;
   string region_;
 
-  string ToString() const {
-    return StrCat(raw_string_, " (", region_, ")");
-  }
+  string ToString() const { return StrCat(raw_string_, " (", region_, ")"); }
 
-  NumberTest(const string& raw_string, const string& region)
-      : raw_string_(raw_string),
-        region_(region) {
-  }
+  NumberTest(string raw_string, string region)
+      : raw_string_(std::move(raw_string)), region_(std::move(region)) {}
 };
 }  // namespace
 
@@ -71,9 +67,8 @@ class PhoneNumberMatcherTest : public testing::Test {
  protected:
   PhoneNumberMatcherTest()
       : phone_util_(*PhoneNumberUtil::GetInstance()),
-        matcher_(phone_util_, "",
-                 RegionCode::US(),
-                 PhoneNumberMatcher::VALID, 5),
+        matcher_(phone_util_, "", RegionCode::US(), PhoneNumberMatcher::VALID,
+                 5),
         offset_(0) {
     PhoneNumberUtil::GetInstance()->SetLogger(new StdoutLogger());
   }
@@ -82,8 +77,8 @@ class PhoneNumberMatcherTest : public testing::Test {
     return PhoneNumberMatcher::IsLatinLetter(letter);
   }
 
-  bool ContainsMoreThanOneSlashInNationalNumber(
-      const PhoneNumber& phone_number, const string& candidate) {
+  bool ContainsMoreThanOneSlashInNationalNumber(const PhoneNumber& phone_number,
+                                                const string& candidate) {
     return PhoneNumberMatcher::ContainsMoreThanOneSlashInNationalNumber(
         phone_number, candidate, phone_util_);
   }
@@ -105,10 +100,9 @@ class PhoneNumberMatcherTest : public testing::Test {
       const std::vector<NumberTest>& test_cases,
       PhoneNumberMatcher::Leniency leniency) const {
     scoped_ptr<PhoneNumberMatcher> matcher;
-    for (std::vector<NumberTest>::const_iterator test = test_cases.begin();
-         test != test_cases.end(); ++test) {
-      matcher.reset(GetMatcherWithLeniency(
-          test->raw_string_, test->region_, leniency));
+    for (auto test = test_cases.begin(); test != test_cases.end(); ++test) {
+      matcher.reset(
+          GetMatcherWithLeniency(test->raw_string_, test->region_, leniency));
       EXPECT_TRUE(matcher->HasNext())
           << "No match found in " << test->ToString()
           << " for leniency: " << leniency;
@@ -116,8 +110,8 @@ class PhoneNumberMatcherTest : public testing::Test {
         PhoneNumberMatch match;
         matcher->Next(&match);
         EXPECT_EQ(test->raw_string_, match.raw_string())
-            << "Found wrong match in test " << test->ToString()
-            << ". Found " << match.raw_string();
+            << "Found wrong match in test " << test->ToString() << ". Found "
+            << match.raw_string();
       }
     }
   }
@@ -128,12 +122,12 @@ class PhoneNumberMatcherTest : public testing::Test {
       const std::vector<NumberTest>& test_cases,
       PhoneNumberMatcher::Leniency leniency) const {
     scoped_ptr<PhoneNumberMatcher> matcher;
-    for (std::vector<NumberTest>::const_iterator test = test_cases.begin();
-         test != test_cases.end(); ++test) {
-      matcher.reset(GetMatcherWithLeniency(
-          test->raw_string_, test->region_, leniency));
-      EXPECT_FALSE(matcher->HasNext()) << "Match found in " << test->ToString()
-                                       << " for leniency: " << leniency;
+    for (const auto& test_case : test_cases) {
+      matcher.reset(GetMatcherWithLeniency(test_case.raw_string_,
+                                           test_case.region_, leniency));
+      EXPECT_FALSE(matcher->HasNext())
+          << "Match found in " << test_case.ToString()
+          << " for leniency: " << leniency;
     }
   }
 
@@ -188,9 +182,9 @@ class PhoneNumberMatcherTest : public testing::Test {
     if (is_valid) {
       DoTestInContext(number, region, contexts, PhoneNumberMatcher::VALID);
     } else {
-      for (std::vector<NumberContext>::const_iterator it = contexts.begin();
-           it != contexts.end(); ++it) {
-        string text = StrCat(it->leading_text_, number, it->trailing_text_);
+      for (const auto& context : contexts) {
+        string text =
+            StrCat(context.leading_text_, number, context.trailing_text_);
         PhoneNumberMatcher matcher(text, region);
         EXPECT_FALSE(matcher.HasNext());
       }
@@ -198,9 +192,9 @@ class PhoneNumberMatcherTest : public testing::Test {
     if (is_possible) {
       DoTestInContext(number, region, contexts, PhoneNumberMatcher::POSSIBLE);
     } else {
-      for (std::vector<NumberContext>::const_iterator it = contexts.begin();
-           it != contexts.end(); ++it) {
-        string text = StrCat(it->leading_text_, number, it->trailing_text_);
+      for (const auto& context : contexts) {
+        string text =
+            StrCat(context.leading_text_, number, context.trailing_text_);
         PhoneNumberMatcher matcher(phone_util_, text, region,
                                    PhoneNumberMatcher::POSSIBLE,
                                    10000);  // Number of matches.
@@ -223,41 +217,41 @@ class PhoneNumberMatcherTest : public testing::Test {
   void FindPossibleInContext(const string& number,
                              const string& default_country) {
     std::vector<NumberContext> context_pairs;
-    context_pairs.push_back(NumberContext("", ""));  // no context
-    context_pairs.push_back(NumberContext("   ", "\t"));  // whitespace only
-    context_pairs.push_back(NumberContext("Hello ", ""));  // no context at end
+    context_pairs.emplace_back("", "");        // no context
+    context_pairs.emplace_back("   ", "\t");   // whitespace only
+    context_pairs.emplace_back("Hello ", "");  // no context at end
     // No context at start.
-    context_pairs.push_back(NumberContext("", " to call me!"));
-    context_pairs.push_back(NumberContext("Hi there, call ", " to reach me!"));
+    context_pairs.emplace_back("", " to call me!");
+    context_pairs.emplace_back("Hi there, call ", " to reach me!");
     // With commas.
-    context_pairs.push_back(NumberContext("Hi there, call ", ", or don't"));
+    context_pairs.emplace_back("Hi there, call ", ", or don't");
     // Three examples without whitespace around the number.
-    context_pairs.push_back(NumberContext("Hi call", ""));
-    context_pairs.push_back(NumberContext("", "forme"));
-    context_pairs.push_back(NumberContext("Hi call", "forme"));
+    context_pairs.emplace_back("Hi call", "");
+    context_pairs.emplace_back("", "forme");
+    context_pairs.emplace_back("Hi call", "forme");
     // With other small numbers.
-    context_pairs.push_back(NumberContext("It's cheap! Call ", " before 6:30"));
+    context_pairs.emplace_back("It's cheap! Call ", " before 6:30");
     // With a second number later.
-    context_pairs.push_back(NumberContext("Call ", " or +1800-123-4567!"));
+    context_pairs.emplace_back("Call ", " or +1800-123-4567!");
     // With a Month-Day date.
-    context_pairs.push_back(NumberContext("Call me on June 2 at", ""));
+    context_pairs.emplace_back("Call me on June 2 at", "");
     // With publication pages.
-    context_pairs.push_back(NumberContext(
-        "As quoted by Alfonso 12-15 (2009), you may call me at ", ""));
-    context_pairs.push_back(NumberContext(
-        "As quoted by Alfonso et al. 12-15 (2009), you may call me at ", ""));
+    context_pairs.emplace_back(
+        "As quoted by Alfonso 12-15 (2009), you may call me at ", "");
+    context_pairs.emplace_back(
+        "As quoted by Alfonso et al. 12-15 (2009), you may call me at ", "");
     // With dates, written in the American style.
-    context_pairs.push_back(NumberContext(
-        "As I said on 03/10/2011, you may call me at ", ""));
+    context_pairs.emplace_back("As I said on 03/10/2011, you may call me at ",
+                               "");
     // With trailing numbers after a comma. The 45 should not be considered an
     // extension.
-    context_pairs.push_back(NumberContext("", ", 45 days a year"));
+    context_pairs.emplace_back("", ", 45 days a year");
     // When matching we don't consider semicolon along with legitimate extension
     // symbol to indicate an extension. The 7246433 should not be considered an
     // extension.
-    context_pairs.push_back(NumberContext("", ";x 7246433"));
+    context_pairs.emplace_back("", ";x 7246433");
     // With a postfix stripped off as it looks like the start of another number.
-    context_pairs.push_back(NumberContext("Call ", "/x12 more"));
+    context_pairs.emplace_back("Call ", "/x12 more");
 
     DoTestInContext(number, default_country, context_pairs,
                     PhoneNumberMatcher::POSSIBLE);
@@ -268,15 +262,15 @@ class PhoneNumberMatcherTest : public testing::Test {
   void FindValidInContext(const string& number, const string& default_country) {
     std::vector<NumberContext> context_pairs;
     // With other small numbers.
-    context_pairs.push_back(NumberContext("It's only 9.99! Call ", " to buy"));
+    context_pairs.emplace_back("It's only 9.99! Call ", " to buy");
     // With a number Day.Month.Year date.
-    context_pairs.push_back(NumberContext("Call me on 21.6.1984 at ", ""));
+    context_pairs.emplace_back("Call me on 21.6.1984 at ", "");
     // With a number Month/Day date.
-    context_pairs.push_back(NumberContext("Call me on 06/21 at ", ""));
+    context_pairs.emplace_back("Call me on 06/21 at ", "");
     // With a number Day.Month date.
-    context_pairs.push_back(NumberContext("Call me on 21.6. at ", ""));
+    context_pairs.emplace_back("Call me on 21.6. at ", "");
     // With a number Month/Day/Year date.
-    context_pairs.push_back(NumberContext("Call me on 06/21/84 at ", ""));
+    context_pairs.emplace_back("Call me on 06/21/84 at ", "");
 
     DoTestInContext(number, default_country, context_pairs,
                     PhoneNumberMatcher::VALID);
@@ -285,19 +279,17 @@ class PhoneNumberMatcherTest : public testing::Test {
   void DoTestInContext(const string& number, const string& default_country,
                        const std::vector<NumberContext>& context_pairs,
                        PhoneNumberMatcher::Leniency leniency) {
-    for (std::vector<NumberContext>::const_iterator it = context_pairs.begin();
-         it != context_pairs.end(); ++it) {
-      string prefix = it->leading_text_;
-      string text = StrCat(prefix, number, it->trailing_text_);
+    for (const auto& context_pair : context_pairs) {
+      string prefix = context_pair.leading_text_;
+      string text = StrCat(prefix, number, context_pair.trailing_text_);
 
-      int start = prefix.length();
-      int end = start + number.length();
+      auto start = prefix.length();
+      auto end = start + number.length();
       PhoneNumberMatcher matcher(phone_util_, text, default_country, leniency,
                                  1000000 /* max_tries */);
       PhoneNumberMatch match;
-      ASSERT_TRUE(matcher.HasNext())
-          << "Did not find a number in '" << text << "'; expected '"
-          << number << "'";
+      ASSERT_TRUE(matcher.HasNext()) << "Did not find a number in '" << text
+                                     << "'; expected '" << number << "'";
       matcher.Next(&match);
 
       string extracted = text.substr(match.start(), match.length());
@@ -429,7 +421,8 @@ TEST_F(PhoneNumberMatcherTest, FindWithInternationalPrefixes) {
   DoTestFindInContext("++1 (650) 333-6000", RegionCode::PL());
   // Using a full-width plus sign.
   DoTestFindInContext(
-      "\xEF\xBC\x8B""1 (650) 333-6000" /* "＋1 (650) 333-6000" */,
+      "\xEF\xBC\x8B"
+      "1 (650) 333-6000" /* "＋1 (650) 333-6000" */,
       RegionCode::SG());
   // The whole number, including punctuation, is here represented in full-width
   // form.
@@ -607,9 +600,8 @@ TEST_F(PhoneNumberMatcherTest, MatchWithSurroundingZipcodes) {
   PhoneNumber expected_result;
   phone_util_.Parse(number, RegionCode::US(), &expected_result);
 
-  scoped_ptr<PhoneNumberMatcher> matcher(
-      GetMatcherWithLeniency(zip_preceding, RegionCode::US(),
-                             PhoneNumberMatcher::VALID));
+  scoped_ptr<PhoneNumberMatcher> matcher(GetMatcherWithLeniency(
+      zip_preceding, RegionCode::US(), PhoneNumberMatcher::VALID));
 
   PhoneNumberMatch match;
   EXPECT_TRUE(matcher->HasNext());
@@ -622,15 +614,14 @@ TEST_F(PhoneNumberMatcherTest, MatchWithSurroundingZipcodes) {
 
   string zip_following =
       StrCat("My number is ", number, ". 34215 is my zip-code.");
-  matcher.reset(
-      GetMatcherWithLeniency(zip_following, RegionCode::US(),
-                             PhoneNumberMatcher::VALID));
+  matcher.reset(GetMatcherWithLeniency(zip_following, RegionCode::US(),
+                                       PhoneNumberMatcher::VALID));
 
   PhoneNumberMatch match_with_spaces;
   EXPECT_TRUE(matcher->HasNext());
   EXPECT_TRUE(matcher->Next(&match_with_spaces));
-  AssertMatchProperties(
-      match_with_spaces, zip_following, number, RegionCode::US());
+  AssertMatchProperties(match_with_spaces, zip_following, number,
+                        RegionCode::US());
 }
 
 TEST_F(PhoneNumberMatcherTest, IsLatinLetter) {
@@ -654,13 +645,15 @@ TEST_F(PhoneNumberMatcherTest, IsLatinLetter) {
 
 TEST_F(PhoneNumberMatcherTest, MatchesWithSurroundingLatinChars) {
   std::vector<NumberContext> possible_only_contexts;
-  possible_only_contexts.push_back(NumberContext("abc", "def"));
-  possible_only_contexts.push_back(NumberContext("abc", ""));
-  possible_only_contexts.push_back(NumberContext("", "def"));
-  possible_only_contexts.push_back(NumberContext("\xC3\x89" /* "É" */, ""));
+  possible_only_contexts.emplace_back("abc", "def");
+  possible_only_contexts.emplace_back("abc", "");
+  possible_only_contexts.emplace_back("", "def");
+  possible_only_contexts.emplace_back("\xC3\x89" /* "É" */, "");
   // e with an acute accent decomposed (with combining mark).
-  possible_only_contexts.push_back(
-      NumberContext("\x20\x22\xCC\x81""e\xCC\x81" /* "́e\xCC\x81" */, ""));
+  possible_only_contexts.emplace_back(
+      "\x20\x22\xCC\x81"
+      "e\xCC\x81" /* "́e\xCC\x81" */,
+      "");
 
   // Numbers should not be considered valid, if they are surrounded by Latin
   // characters, but should be considered possible.
@@ -669,24 +662,24 @@ TEST_F(PhoneNumberMatcherTest, MatchesWithSurroundingLatinChars) {
 
 TEST_F(PhoneNumberMatcherTest, MoneyNotSeenAsPhoneNumber) {
   std::vector<NumberContext> possible_only_contexts;
-  possible_only_contexts.push_back(NumberContext("$", ""));
-  possible_only_contexts.push_back(NumberContext("", "$"));
-  possible_only_contexts.push_back(NumberContext("\xC2\xA3" /* "£" */, ""));
-  possible_only_contexts.push_back(NumberContext("\xC2\xA5" /* "¥" */, ""));
+  possible_only_contexts.emplace_back("$", "");
+  possible_only_contexts.emplace_back("", "$");
+  possible_only_contexts.emplace_back("\xC2\xA3" /* "£" */, "");
+  possible_only_contexts.emplace_back("\xC2\xA5" /* "¥" */, "");
   FindMatchesInContexts(possible_only_contexts, false, true);
 }
 
 TEST_F(PhoneNumberMatcherTest, PercentageNotSeenAsPhoneNumber) {
   std::vector<NumberContext> possible_only_contexts;
-  possible_only_contexts.push_back(NumberContext("", "%"));
+  possible_only_contexts.emplace_back("", "%");
   // Numbers followed by % should be dropped.
   FindMatchesInContexts(possible_only_contexts, false, true);
 }
 
 TEST_F(PhoneNumberMatcherTest, PhoneNumberWithLeadingOrTrailingMoneyMatches) {
   std::vector<NumberContext> contexts;
-  contexts.push_back(NumberContext("$20 ", ""));
-  contexts.push_back(NumberContext("", " 100$"));
+  contexts.emplace_back("$20 ", "");
+  contexts.emplace_back("", " 100$");
   // Because of the space after the 20 (or before the 100) these dollar amounts
   // should not stop the actual number from being found.
   FindMatchesInContexts(contexts, true, true);
@@ -698,9 +691,9 @@ TEST_F(PhoneNumberMatcherTest,
   // Contexts with trailing characters. Leading characters are okay here since
   // the numbers we will insert start with punctuation, but trailing characters
   // are still not allowed.
-  possible_only_contexts.push_back(NumberContext("abc", "def"));
-  possible_only_contexts.push_back(NumberContext("", "def"));
-  possible_only_contexts.push_back(NumberContext("", "\xC3\x89" /* "É" */));
+  possible_only_contexts.emplace_back("abc", "def");
+  possible_only_contexts.emplace_back("", "def");
+  possible_only_contexts.emplace_back("", "\xC3\x89" /* "É" */);
 
   // Numbers should not be considered valid, if they have trailing Latin
   // characters, but should be considered possible.
@@ -712,12 +705,12 @@ TEST_F(PhoneNumberMatcherTest,
                         number_with_brackets);
 
   std::vector<NumberContext> valid_contexts;
-  valid_contexts.push_back(NumberContext("abc", ""));
-  valid_contexts.push_back(NumberContext("\xC3\x89" /* "É" */, ""));
-  valid_contexts.push_back(
-      NumberContext("\xC3\x89" /* "É" */, "."));  // Trailing punctuation.
+  valid_contexts.emplace_back("abc", "");
+  valid_contexts.emplace_back("\xC3\x89" /* "É" */, "");
+  valid_contexts.emplace_back("\xC3\x89" /* "É" */,
+                              ".");  // Trailing punctuation.
   // Trailing white-space.
-  valid_contexts.push_back(NumberContext("\xC3\x89" /* "É" */, " def"));
+  valid_contexts.emplace_back("\xC3\x89" /* "É" */, " def");
 
   // Numbers should be considered valid, since they start with punctuation.
   FindMatchesInContexts(valid_contexts, true, true, RegionCode::US(),
@@ -728,18 +721,19 @@ TEST_F(PhoneNumberMatcherTest,
 
 TEST_F(PhoneNumberMatcherTest, MatchesWithSurroundingChineseChars) {
   std::vector<NumberContext> valid_contexts;
-  valid_contexts.push_back(NumberContext(
+  valid_contexts.emplace_back(
       /* "我的电话号码是" */
       "\xE6\x88\x91\xE7\x9A\x84\xE7\x94\xB5\xE8\xAF\x9D\xE5\x8F\xB7\xE7\xA0\x81"
-      "\xE6\x98\xAF", ""));
-  valid_contexts.push_back(NumberContext(
+      "\xE6\x98\xAF",
+      "");
+  valid_contexts.emplace_back(
       "",
       /* "是我的电话号码" */
       "\xE6\x98\xAF\xE6\x88\x91\xE7\x9A\x84\xE7\x94\xB5\xE8\xAF\x9D\xE5\x8F\xB7"
-      "\xE7\xA0\x81"));
-  valid_contexts.push_back(NumberContext(
+      "\xE7\xA0\x81");
+  valid_contexts.emplace_back(
       "\xE8\xAF\xB7\xE6\x8B\xA8\xE6\x89\x93" /* "请拨打" */,
-      "\xE6\x88\x91\xE5\x9C\xA8\xE6\x98\x8E\xE5\xA4\xA9" /* "我在明天" */));
+      "\xE6\x88\x91\xE5\x9C\xA8\xE6\x98\x8E\xE5\xA4\xA9" /* "我在明天" */);
 
   // Numbers should be considered valid, since they are surrounded by Chinese.
   FindMatchesInContexts(valid_contexts, true, true);
@@ -748,13 +742,13 @@ TEST_F(PhoneNumberMatcherTest, MatchesWithSurroundingChineseChars) {
 TEST_F(PhoneNumberMatcherTest, MatchesWithSurroundingPunctuation) {
   std::vector<NumberContext> valid_contexts;
   // At end of text.
-  valid_contexts.push_back(NumberContext("My number-", ""));
+  valid_contexts.emplace_back("My number-", "");
   // At start of text.
-  valid_contexts.push_back(NumberContext("", ".Nice day."));
+  valid_contexts.emplace_back("", ".Nice day.");
   // Punctuation surround number.
-  valid_contexts.push_back(NumberContext("Tel:", "."));
+  valid_contexts.emplace_back("Tel:", ".");
   // White-space is also fine.
-  valid_contexts.push_back(NumberContext("Tel: ", " on Saturdays."));
+  valid_contexts.emplace_back("Tel: ", " on Saturdays.");
 
   // Numbers should be considered valid, since they are surrounded by
   // punctuation.
@@ -775,8 +769,8 @@ TEST_F(PhoneNumberMatcherTest,
   number2.set_national_number(4552343451ULL);
   PhoneNumberMatch match2(21, "455-234-3451", number2);
 
-  PhoneNumberMatcher matcher(
-      phone_util_, text, region, PhoneNumberMatcher::VALID, 100);
+  PhoneNumberMatcher matcher(phone_util_, text, region,
+                             PhoneNumberMatcher::VALID, 100);
 
   PhoneNumberMatch actual_match1;
   PhoneNumberMatch actual_match2;
@@ -792,140 +786,146 @@ TEST_F(PhoneNumberMatcherTest,
        DoesNotMatchMultiplePhoneNumbersSeparatedWithNoWhiteSpace) {
   const string text = "Call 650-253-4561--455-234-3451";
   const string& region = RegionCode::US();
-  PhoneNumberMatcher matcher(
-      phone_util_, text, region, PhoneNumberMatcher::VALID, 100);
+  PhoneNumberMatcher matcher(phone_util_, text, region,
+                             PhoneNumberMatcher::VALID, 100);
   EXPECT_FALSE(matcher.HasNext());
 }
 
 // Strings with number-like things that shouldn't be found under any level.
 static const NumberTest kImpossibleCases[] = {
-  NumberTest("12345", RegionCode::US()),
-  NumberTest("23456789", RegionCode::US()),
-  NumberTest("234567890112", RegionCode::US()),
-  NumberTest("650+253+1234", RegionCode::US()),
-  NumberTest("3/10/1984", RegionCode::CA()),
-  NumberTest("03/27/2011", RegionCode::US()),
-  NumberTest("31/8/2011", RegionCode::US()),
-  NumberTest("1/12/2011", RegionCode::US()),
-  NumberTest("10/12/82", RegionCode::DE()),
-  NumberTest("650x2531234", RegionCode::US()),
-  NumberTest("2012-01-02 08:00", RegionCode::US()),
-  NumberTest("2012/01/02 08:00", RegionCode::US()),
-  NumberTest("20120102 08:00", RegionCode::US()),
-  NumberTest("2014-04-12 04:04 PM", RegionCode::US()),
-  NumberTest("2014-04-12 &nbsp;04:04 PM", RegionCode::US()),
-  NumberTest("2014-04-12 &nbsp;04:04 PM", RegionCode::US()),
-  NumberTest("2014-04-12  04:04 PM", RegionCode::US()),
+    NumberTest("12345", RegionCode::US()),
+    NumberTest("23456789", RegionCode::US()),
+    NumberTest("234567890112", RegionCode::US()),
+    NumberTest("650+253+1234", RegionCode::US()),
+    NumberTest("3/10/1984", RegionCode::CA()),
+    NumberTest("03/27/2011", RegionCode::US()),
+    NumberTest("31/8/2011", RegionCode::US()),
+    NumberTest("1/12/2011", RegionCode::US()),
+    NumberTest("10/12/82", RegionCode::DE()),
+    NumberTest("650x2531234", RegionCode::US()),
+    NumberTest("2012-01-02 08:00", RegionCode::US()),
+    NumberTest("2012/01/02 08:00", RegionCode::US()),
+    NumberTest("20120102 08:00", RegionCode::US()),
+    NumberTest("2014-04-12 04:04 PM", RegionCode::US()),
+    NumberTest("2014-04-12 &nbsp;04:04 PM", RegionCode::US()),
+    NumberTest("2014-04-12 &nbsp;04:04 PM", RegionCode::US()),
+    NumberTest("2014-04-12  04:04 PM", RegionCode::US()),
 };
 
 // Strings with number-like things that should only be found under "possible".
 static const NumberTest kPossibleOnlyCases[] = {
-  // US numbers cannot start with 7 in the test metadata to be valid.
-  NumberTest("7121115678", RegionCode::US()),
-  // 'X' should not be found in numbers at leniencies stricter than POSSIBLE,
-  // unless it represents a carrier code or extension.
-  NumberTest("1650 x 253 - 1234", RegionCode::US()),
-  NumberTest("650 x 253 - 1234", RegionCode::US()),
-  NumberTest("6502531x234", RegionCode::US()),
-  NumberTest("(20) 3346 1234", RegionCode::GB()),  // Non-optional NP omitted
+    // US numbers cannot start with 7 in the test metadata to be valid.
+    NumberTest("7121115678", RegionCode::US()),
+    // 'X' should not be found in numbers at leniencies stricter than POSSIBLE,
+    // unless it represents a carrier code or extension.
+    NumberTest("1650 x 253 - 1234", RegionCode::US()),
+    NumberTest("650 x 253 - 1234", RegionCode::US()),
+    NumberTest("6502531x234", RegionCode::US()),
+    NumberTest("(20) 3346 1234", RegionCode::GB()),  // Non-optional NP omitted
 };
 
 // Strings with number-like things that should only be found up to and including
 // the "valid" leniency level.
 static const NumberTest kValidCases[] = {
-  NumberTest("65 02 53 00 00", RegionCode::US()),
-  NumberTest("6502 538365", RegionCode::US()),
-  // 2 slashes are illegal at higher levels.
-  NumberTest("650//253-1234", RegionCode::US()),
-  NumberTest("650/253/1234", RegionCode::US()),
-  NumberTest("9002309. 158", RegionCode::US()),
-  NumberTest("12 7/8 - 14 12/34 - 5", RegionCode::US()),
-  NumberTest("12.1 - 23.71 - 23.45", RegionCode::US()),
-  NumberTest("800 234 1 111x1111", RegionCode::US()),
-  NumberTest("1979-2011 100", RegionCode::US()),
-  // National number in wrong format.
-  NumberTest("+494949-4-94", RegionCode::DE()),
-  NumberTest(
-      /* "４１５６６６-７７７７" */
-      "\xEF\xBC\x94\xEF\xBC\x91\xEF\xBC\x95\xEF\xBC\x96\xEF\xBC\x96\xEF\xBC\x96"
-      "\x2D\xEF\xBC\x97\xEF\xBC\x97\xEF\xBC\x97\xEF\xBC\x97", RegionCode::US()),
-  NumberTest("2012-0102 08", RegionCode::US()),  // Very strange formatting.
-  NumberTest("2012-01-02 08", RegionCode::US()),
-  // Breakdown assistance number with unexpected formatting.
-  NumberTest("1800-1-0-10 22", RegionCode::AU()),
-  NumberTest("030-3-2 23 12 34", RegionCode::DE()),
-  NumberTest("03 0 -3 2 23 12 34", RegionCode::DE()),
-  NumberTest("(0)3 0 -3 2 23 12 34", RegionCode::DE()),
-  NumberTest("0 3 0 -3 2 23 12 34", RegionCode::DE()),
+    NumberTest("65 02 53 00 00", RegionCode::US()),
+    NumberTest("6502 538365", RegionCode::US()),
+    // 2 slashes are illegal at higher levels.
+    NumberTest("650//253-1234", RegionCode::US()),
+    NumberTest("650/253/1234", RegionCode::US()),
+    NumberTest("9002309. 158", RegionCode::US()),
+    NumberTest("12 7/8 - 14 12/34 - 5", RegionCode::US()),
+    NumberTest("12.1 - 23.71 - 23.45", RegionCode::US()),
+    NumberTest("800 234 1 111x1111", RegionCode::US()),
+    NumberTest("1979-2011 100", RegionCode::US()),
+    // National number in wrong format.
+    NumberTest("+494949-4-94", RegionCode::DE()),
+    NumberTest(
+        /* "４１５６６６-７７７７" */
+        "\xEF\xBC\x94\xEF\xBC\x91\xEF\xBC\x95\xEF\xBC\x96\xEF\xBC\x96\xEF\xBC"
+        "\x96"
+        "\x2D\xEF\xBC\x97\xEF\xBC\x97\xEF\xBC\x97\xEF\xBC\x97",
+        RegionCode::US()),
+    NumberTest("2012-0102 08", RegionCode::US()),  // Very strange formatting.
+    NumberTest("2012-01-02 08", RegionCode::US()),
+    // Breakdown assistance number with unexpected formatting.
+    NumberTest("1800-1-0-10 22", RegionCode::AU()),
+    NumberTest("030-3-2 23 12 34", RegionCode::DE()),
+    NumberTest("03 0 -3 2 23 12 34", RegionCode::DE()),
+    NumberTest("(0)3 0 -3 2 23 12 34", RegionCode::DE()),
+    NumberTest("0 3 0 -3 2 23 12 34", RegionCode::DE()),
 #ifdef I18N_PHONENUMBERS_USE_ALTERNATE_FORMATS
-  // Fits an alternate pattern, but the leading digits don't match.
-  NumberTest("+52 332 123 23 23", RegionCode::MX()),
+    // Fits an alternate pattern, but the leading digits don't match.
+    NumberTest("+52 332 123 23 23", RegionCode::MX()),
 #endif  // I18N_PHONENUMBERS_USE_ALTERNATE_FORMATS
 };
 
 // Strings with number-like things that should only be found up to and including
 // the "strict_grouping" leniency level.
 static const NumberTest kStrictGroupingCases[] = {
-  NumberTest("(415) 6667777", RegionCode::US()),
-  NumberTest("415-6667777", RegionCode::US()),
-  // Should be found by strict grouping but not exact grouping, as the last two
-  // groups are formatted together as a block.
-  NumberTest("0800-2491234", RegionCode::DE()),
-  // If the user is using alternate formats, test that numbers formatted in
-  // that way are found.
+    NumberTest("(415) 6667777", RegionCode::US()),
+    NumberTest("415-6667777", RegionCode::US()),
+    // Should be found by strict grouping but not exact grouping, as the last
+    // two groups are formatted together as a block.
+    NumberTest("0800-2491234", RegionCode::DE()),
+// If the user is using alternate formats, test that numbers formatted in
+// that way are found.
 #ifdef I18N_PHONENUMBERS_USE_ALTERNATE_FORMATS
-  // Doesn't match any formatting in the test file, but almost matches an
-  // alternate format (the last two groups have been squashed together here).
-  NumberTest("0900-1 123123", RegionCode::DE()),
-  NumberTest("(0)900-1 123123", RegionCode::DE()),
-  NumberTest("0 900-1 123123", RegionCode::DE()),
+    // Doesn't match any formatting in the test file, but almost matches an
+    // alternate format (the last two groups have been squashed together here).
+    NumberTest("0900-1 123123", RegionCode::DE()),
+    NumberTest("(0)900-1 123123", RegionCode::DE()),
+    NumberTest("0 900-1 123123", RegionCode::DE()),
 #endif  // I18N_PHONENUMBERS_USE_ALTERNATE_FORMATS
-  // NDC also found as part of the country calling code; this shouldn't ruin the
-  // grouping expectations.
-  NumberTest("+33 3 34 2312", RegionCode::FR()),
+    // NDC also found as part of the country calling code; this shouldn't ruin
+    // the grouping expectations.
+    NumberTest("+33 3 34 2312", RegionCode::FR()),
 };
 
 // Strings with number-like things that should be found at all levels.
 static const NumberTest kExactGroupingCases[] = {
-  NumberTest(
-      /* "４１５６６６７７７７" */
-      "\xEF\xBC\x94\xEF\xBC\x91\xEF\xBC\x95\xEF\xBC\x96\xEF\xBC\x96\xEF\xBC\x96"
-      "\xEF\xBC\x97\xEF\xBC\x97\xEF\xBC\x97\xEF\xBC\x97", RegionCode::US()),
-  NumberTest(
-      /* "４１５－６６６－７７７７" */
-      "\xEF\xBC\x94\xEF\xBC\x91\xEF\xBC\x95\xEF\xBC\x8D\xEF\xBC\x96\xEF\xBC\x96"
-      "\xEF\xBC\x96\xEF\xBC\x8D\xEF\xBC\x97\xEF\xBC\x97\xEF\xBC\x97"
-      "\xEF\xBC\x97", RegionCode::US()),
-  NumberTest("4156667777", RegionCode::US()),
-  NumberTest("4156667777 x 123", RegionCode::US()),
-  NumberTest("415-666-7777", RegionCode::US()),
-  NumberTest("415/666-7777", RegionCode::US()),
-  NumberTest("415-666-7777 ext. 503", RegionCode::US()),
-  NumberTest("1 415 666 7777 x 123", RegionCode::US()),
-  NumberTest("+1 415-666-7777", RegionCode::US()),
-  NumberTest("+494949 49", RegionCode::DE()),
-  NumberTest("+49-49-34", RegionCode::DE()),
-  NumberTest("+49-4931-49", RegionCode::DE()),
-  NumberTest("04931-49", RegionCode::DE()),  // With National Prefix
-  NumberTest("+49-494949", RegionCode::DE()),  // One group with country code
-  NumberTest("+49-494949 ext. 49", RegionCode::DE()),
-  NumberTest("+49494949 ext. 49", RegionCode::DE()),
-  NumberTest("0494949", RegionCode::DE()),
-  NumberTest("0494949 ext. 49", RegionCode::DE()),
-  NumberTest("01 (33) 3461 2234", RegionCode::MX()),  // Optional NP present
-  NumberTest("(33) 3461 2234", RegionCode::MX()),  // Optional NP omitted
-  // If the user is using alternate formats, test that numbers formatted in
-  // that way are found.
+    NumberTest(
+        /* "４１５６６６７７７７" */
+        "\xEF\xBC\x94\xEF\xBC\x91\xEF\xBC\x95\xEF\xBC\x96\xEF\xBC\x96\xEF\xBC"
+        "\x96"
+        "\xEF\xBC\x97\xEF\xBC\x97\xEF\xBC\x97\xEF\xBC\x97",
+        RegionCode::US()),
+    NumberTest(
+        /* "４１５－６６６－７７７７" */
+        "\xEF\xBC\x94\xEF\xBC\x91\xEF\xBC\x95\xEF\xBC\x8D\xEF\xBC\x96\xEF\xBC"
+        "\x96"
+        "\xEF\xBC\x96\xEF\xBC\x8D\xEF\xBC\x97\xEF\xBC\x97\xEF\xBC\x97"
+        "\xEF\xBC\x97",
+        RegionCode::US()),
+    NumberTest("4156667777", RegionCode::US()),
+    NumberTest("4156667777 x 123", RegionCode::US()),
+    NumberTest("415-666-7777", RegionCode::US()),
+    NumberTest("415/666-7777", RegionCode::US()),
+    NumberTest("415-666-7777 ext. 503", RegionCode::US()),
+    NumberTest("1 415 666 7777 x 123", RegionCode::US()),
+    NumberTest("+1 415-666-7777", RegionCode::US()),
+    NumberTest("+494949 49", RegionCode::DE()),
+    NumberTest("+49-49-34", RegionCode::DE()),
+    NumberTest("+49-4931-49", RegionCode::DE()),
+    NumberTest("04931-49", RegionCode::DE()),    // With National Prefix
+    NumberTest("+49-494949", RegionCode::DE()),  // One group with country code
+    NumberTest("+49-494949 ext. 49", RegionCode::DE()),
+    NumberTest("+49494949 ext. 49", RegionCode::DE()),
+    NumberTest("0494949", RegionCode::DE()),
+    NumberTest("0494949 ext. 49", RegionCode::DE()),
+    NumberTest("01 (33) 3461 2234", RegionCode::MX()),  // Optional NP present
+    NumberTest("(33) 3461 2234", RegionCode::MX()),     // Optional NP omitted
+// If the user is using alternate formats, test that numbers formatted in
+// that way are found.
 #ifdef I18N_PHONENUMBERS_USE_ALTERNATE_FORMATS
-  // Breakdown assistance number using alternate formatting pattern.
-  NumberTest("1800-10-10 22", RegionCode::AU()),
-  // Doesn't match any formatting in the test file, but matches an alternate
-  // format exactly.
-  NumberTest("0900-1 123 123", RegionCode::DE()),
-  NumberTest("(0)900-1 123 123", RegionCode::DE()),
-  NumberTest("0 900-1 123 123", RegionCode::DE()),
+    // Breakdown assistance number using alternate formatting pattern.
+    NumberTest("1800-10-10 22", RegionCode::AU()),
+    // Doesn't match any formatting in the test file, but matches an alternate
+    // format exactly.
+    NumberTest("0900-1 123 123", RegionCode::DE()),
+    NumberTest("(0)900-1 123 123", RegionCode::DE()),
+    NumberTest("0 900-1 123 123", RegionCode::DE()),
 #endif  // I18N_PHONENUMBERS_USE_ALTERNATE_FORMATS
-  NumberTest("+33 3 34 23 12", RegionCode::FR()),
+    NumberTest("+33 3 34 23 12", RegionCode::FR()),
 };
 
 TEST_F(PhoneNumberMatcherTest, MatchesWithPossibleLeniency) {
@@ -934,9 +934,8 @@ TEST_F(PhoneNumberMatcherTest, MatchesWithPossibleLeniency) {
                     kPossibleOnlyCases + arraysize(kPossibleOnlyCases));
   test_cases.insert(test_cases.begin(), kValidCases,
                     kValidCases + arraysize(kValidCases));
-  test_cases.insert(
-      test_cases.begin(), kStrictGroupingCases,
-      kStrictGroupingCases + arraysize(kStrictGroupingCases));
+  test_cases.insert(test_cases.begin(), kStrictGroupingCases,
+                    kStrictGroupingCases + arraysize(kStrictGroupingCases));
   test_cases.insert(test_cases.begin(), kExactGroupingCases,
                     kExactGroupingCases + arraysize(kExactGroupingCases));
   DoTestNumberMatchesForLeniency(test_cases, PhoneNumberMatcher::POSSIBLE);
@@ -953,9 +952,8 @@ TEST_F(PhoneNumberMatcherTest, MatchesWithValidLeniency) {
   std::vector<NumberTest> test_cases;
   test_cases.insert(test_cases.begin(), kValidCases,
                     kValidCases + arraysize(kValidCases));
-  test_cases.insert(
-      test_cases.begin(), kStrictGroupingCases,
-      kStrictGroupingCases + arraysize(kStrictGroupingCases));
+  test_cases.insert(test_cases.begin(), kStrictGroupingCases,
+                    kStrictGroupingCases + arraysize(kStrictGroupingCases));
   test_cases.insert(test_cases.begin(), kExactGroupingCases,
                     kExactGroupingCases + arraysize(kExactGroupingCases));
   DoTestNumberMatchesForLeniency(test_cases, PhoneNumberMatcher::VALID);
@@ -972,9 +970,8 @@ TEST_F(PhoneNumberMatcherTest, NonMatchesWithValidLeniency) {
 
 TEST_F(PhoneNumberMatcherTest, MatchesWithStrictGroupingLeniency) {
   std::vector<NumberTest> test_cases;
-  test_cases.insert(
-      test_cases.begin(), kStrictGroupingCases,
-      kStrictGroupingCases + arraysize(kStrictGroupingCases));
+  test_cases.insert(test_cases.begin(), kStrictGroupingCases,
+                    kStrictGroupingCases + arraysize(kStrictGroupingCases));
   test_cases.insert(test_cases.begin(), kExactGroupingCases,
                     kExactGroupingCases + arraysize(kExactGroupingCases));
   DoTestNumberMatchesForLeniency(test_cases,
@@ -1009,9 +1006,8 @@ TEST_F(PhoneNumberMatcherTest, NonMatchesWithExactGroupingLeniency) {
                     kPossibleOnlyCases + arraysize(kPossibleOnlyCases));
   test_cases.insert(test_cases.begin(), kValidCases,
                     kValidCases + arraysize(kValidCases));
-  test_cases.insert(
-      test_cases.begin(), kStrictGroupingCases,
-      kStrictGroupingCases + arraysize(kStrictGroupingCases));
+  test_cases.insert(test_cases.begin(), kStrictGroupingCases,
+                    kStrictGroupingCases + arraysize(kStrictGroupingCases));
   DoTestNumberNonMatchesForLeniency(test_cases,
                                     PhoneNumberMatcher::EXACT_GROUPING);
 }
@@ -1034,18 +1030,17 @@ TEST_F(PhoneNumberMatcherTest, NonMatchingBracketsAreInvalid) {
   // The digits up to the ", " form a valid US number, but it shouldn't be
   // matched as one since there was a non-matching bracket present.
   scoped_ptr<PhoneNumberMatcher> matcher(GetMatcherWithLeniency(
-      "80.585 [79.964, 81.191]", RegionCode::US(),
-      PhoneNumberMatcher::VALID));
+      "80.585 [79.964, 81.191]", RegionCode::US(), PhoneNumberMatcher::VALID));
   EXPECT_FALSE(matcher->HasNext());
 
   // The trailing "]" is thrown away before parsing, so the resultant number,
   // while a valid US number, does not have matching brackets.
-  matcher.reset(GetMatcherWithLeniency(
-      "80.585 [79.964]", RegionCode::US(), PhoneNumberMatcher::VALID));
+  matcher.reset(GetMatcherWithLeniency("80.585 [79.964]", RegionCode::US(),
+                                       PhoneNumberMatcher::VALID));
   EXPECT_FALSE(matcher->HasNext());
 
-  matcher.reset(GetMatcherWithLeniency(
-      "80.585 ((79.964)", RegionCode::US(), PhoneNumberMatcher::VALID));
+  matcher.reset(GetMatcherWithLeniency("80.585 ((79.964)", RegionCode::US(),
+                                       PhoneNumberMatcher::VALID));
   EXPECT_FALSE(matcher->HasNext());
 
   // This case has too many sets of brackets to be valid.
@@ -1057,14 +1052,14 @@ TEST_F(PhoneNumberMatcherTest, NonMatchingBracketsAreInvalid) {
 TEST_F(PhoneNumberMatcherTest, NoMatchIfRegionIsUnknown) {
   // Fail on non-international prefix if region code is ZZ.
   scoped_ptr<PhoneNumberMatcher> matcher(GetMatcherWithLeniency(
-      "Random text body - number is 0331 6005, see you there",
-      RegionCode::ZZ(), PhoneNumberMatcher::VALID));
+      "Random text body - number is 0331 6005, see you there", RegionCode::ZZ(),
+      PhoneNumberMatcher::VALID));
   EXPECT_FALSE(matcher->HasNext());
 }
 
 TEST_F(PhoneNumberMatcherTest, NoMatchInEmptyString) {
-  scoped_ptr<PhoneNumberMatcher> matcher(GetMatcherWithLeniency(
-      "", RegionCode::US(), PhoneNumberMatcher::VALID));
+  scoped_ptr<PhoneNumberMatcher> matcher(
+      GetMatcherWithLeniency("", RegionCode::US(), PhoneNumberMatcher::VALID));
   EXPECT_FALSE(matcher->HasNext());
   matcher.reset(GetMatcherWithLeniency("  ", RegionCode::US(),
                                        PhoneNumberMatcher::VALID));
@@ -1085,11 +1080,9 @@ TEST_F(PhoneNumberMatcherTest, NoErrorWithSpecialCharacters) {
       "i18n_phonenumbers_Pho\356eNumberMatcher_Leniency_VALID_1"
       "\nfuzzvar1159: 20316 info:%415-666-7777 123 fake str79ee\nt";
   string Numbers;
-  for (int i = 0; i < 100; ++i)
-    Numbers.append(stringWithSpecialCharacters);
-  scoped_ptr<PhoneNumberMatcher> matcher(
-      GetMatcherWithLeniency(Numbers, RegionCode::US(),
-                             PhoneNumberMatcher::POSSIBLE));
+  for (int i = 0; i < 100; ++i) Numbers.append(stringWithSpecialCharacters);
+  scoped_ptr<PhoneNumberMatcher> matcher(GetMatcherWithLeniency(
+      Numbers, RegionCode::US(), PhoneNumberMatcher::POSSIBLE));
   // Since the input text contains invalid UTF-8, we do not return
   // any matches.
   EXPECT_FALSE(matcher->HasNext());
@@ -1110,8 +1103,8 @@ TEST_F(PhoneNumberMatcherTest, Sequences) {
   number2.set_national_number(32316005ULL);
   PhoneNumberMatch match2(19, "032316005", number2);
 
-  PhoneNumberMatcher matcher(
-      phone_util_, text, region, PhoneNumberMatcher::POSSIBLE, 100);
+  PhoneNumberMatcher matcher(phone_util_, text, region,
+                             PhoneNumberMatcher::POSSIBLE, 100);
 
   PhoneNumberMatch actual_match1;
   PhoneNumberMatch actual_match2;
@@ -1133,13 +1126,13 @@ TEST_F(PhoneNumberMatcherTest, MaxMatches) {
   phone_util_.Parse("+14156667777", RegionCode::US(), &number);
   std::vector<PhoneNumber> expected(100, number);
 
-  PhoneNumberMatcher matcher(
-      phone_util_, numbers, RegionCode::US(), PhoneNumberMatcher::VALID, 10);
+  PhoneNumberMatcher matcher(phone_util_, numbers, RegionCode::US(),
+                             PhoneNumberMatcher::VALID, 10);
   std::vector<PhoneNumber> actual;
   PhoneNumberMatch match;
   while (matcher.HasNext()) {
     matcher.Next(&match);
-    actual.push_back(match.number());
+    actual.emplace_back(match.number());
   }
   EXPECT_EQ(expected, actual);
 }
@@ -1154,8 +1147,8 @@ TEST_F(PhoneNumberMatcherTest, MaxMatchesInvalid) {
     numbers.append("My info: 415-666-7777,");
   }
 
-  PhoneNumberMatcher matcher(
-      phone_util_, numbers, RegionCode::US(), PhoneNumberMatcher::VALID, 10);
+  PhoneNumberMatcher matcher(phone_util_, numbers, RegionCode::US(),
+                             PhoneNumberMatcher::VALID, 10);
   EXPECT_FALSE(matcher.HasNext());
 }
 
@@ -1170,22 +1163,21 @@ TEST_F(PhoneNumberMatcherTest, MaxMatchesMixed) {
   phone_util_.Parse("+14156667777", RegionCode::ZZ(), &number);
   std::vector<PhoneNumber> expected(10, number);
 
-  PhoneNumberMatcher matcher(
-      phone_util_, numbers, RegionCode::US(), PhoneNumberMatcher::VALID, 10);
+  PhoneNumberMatcher matcher(phone_util_, numbers, RegionCode::US(),
+                             PhoneNumberMatcher::VALID, 10);
   std::vector<PhoneNumber> actual;
   PhoneNumberMatch match;
   while (matcher.HasNext()) {
     matcher.Next(&match);
-    actual.push_back(match.number());
+    actual.emplace_back(match.number());
   }
   EXPECT_EQ(expected, actual);
 }
 
 TEST_F(PhoneNumberMatcherTest, NonPlusPrefixedNumbersNotFoundForInvalidRegion) {
   PhoneNumberMatch match;
-  scoped_ptr<PhoneNumberMatcher> matcher(
-      GetMatcherWithLeniency("1 456 764 156", RegionCode::GetUnknown(),
-                             PhoneNumberMatcher::VALID));
+  scoped_ptr<PhoneNumberMatcher> matcher(GetMatcherWithLeniency(
+      "1 456 764 156", RegionCode::GetUnknown(), PhoneNumberMatcher::VALID));
   EXPECT_FALSE(matcher->HasNext());
   EXPECT_FALSE(matcher->Next(&match));
   EXPECT_FALSE(matcher->HasNext());
@@ -1193,9 +1185,8 @@ TEST_F(PhoneNumberMatcherTest, NonPlusPrefixedNumbersNotFoundForInvalidRegion) {
 
 TEST_F(PhoneNumberMatcherTest, EmptyIteration) {
   PhoneNumberMatch match;
-  scoped_ptr<PhoneNumberMatcher> matcher(
-      GetMatcherWithLeniency("", RegionCode::GetUnknown(),
-                             PhoneNumberMatcher::VALID));
+  scoped_ptr<PhoneNumberMatcher> matcher(GetMatcherWithLeniency(
+      "", RegionCode::GetUnknown(), PhoneNumberMatcher::VALID));
   EXPECT_FALSE(matcher->HasNext());
   EXPECT_FALSE(matcher->HasNext());
   EXPECT_FALSE(matcher->Next(&match));
@@ -1204,9 +1195,8 @@ TEST_F(PhoneNumberMatcherTest, EmptyIteration) {
 
 TEST_F(PhoneNumberMatcherTest, SingleIteration) {
   PhoneNumberMatch match;
-  scoped_ptr<PhoneNumberMatcher> matcher(
-      GetMatcherWithLeniency("+14156667777", RegionCode::GetUnknown(),
-                             PhoneNumberMatcher::VALID));
+  scoped_ptr<PhoneNumberMatcher> matcher(GetMatcherWithLeniency(
+      "+14156667777", RegionCode::GetUnknown(), PhoneNumberMatcher::VALID));
 
   // Try HasNext() twice to ensure it does not advance.
   EXPECT_TRUE(matcher->HasNext());
@@ -1219,19 +1209,17 @@ TEST_F(PhoneNumberMatcherTest, SingleIteration) {
 
 TEST_F(PhoneNumberMatcherTest, SingleIteration_WithNextOnly) {
   PhoneNumberMatch match;
-  scoped_ptr<PhoneNumberMatcher> matcher(
-      GetMatcherWithLeniency("+14156667777", RegionCode::GetUnknown(),
-                             PhoneNumberMatcher::VALID));
+  scoped_ptr<PhoneNumberMatcher> matcher(GetMatcherWithLeniency(
+      "+14156667777", RegionCode::GetUnknown(), PhoneNumberMatcher::VALID));
   EXPECT_TRUE(matcher->Next(&match));
   EXPECT_FALSE(matcher->Next(&match));
 }
 
 TEST_F(PhoneNumberMatcherTest, DoubleIteration) {
   PhoneNumberMatch match;
-  scoped_ptr<PhoneNumberMatcher> matcher(
-      GetMatcherWithLeniency("+14156667777 foobar +14156667777 ",
-                             RegionCode::GetUnknown(),
-                             PhoneNumberMatcher::VALID));
+  scoped_ptr<PhoneNumberMatcher> matcher(GetMatcherWithLeniency(
+      "+14156667777 foobar +14156667777 ", RegionCode::GetUnknown(),
+      PhoneNumberMatcher::VALID));
 
   // Double HasNext() to ensure it does not advance.
   EXPECT_TRUE(matcher->HasNext());
@@ -1248,10 +1236,9 @@ TEST_F(PhoneNumberMatcherTest, DoubleIteration) {
 
 TEST_F(PhoneNumberMatcherTest, DoubleIteration_WithNextOnly) {
   PhoneNumberMatch match;
-  scoped_ptr<PhoneNumberMatcher> matcher(
-      GetMatcherWithLeniency("+14156667777 foobar +14156667777 ",
-                             RegionCode::GetUnknown(),
-                             PhoneNumberMatcher::VALID));
+  scoped_ptr<PhoneNumberMatcher> matcher(GetMatcherWithLeniency(
+      "+14156667777 foobar +14156667777 ", RegionCode::GetUnknown(),
+      PhoneNumberMatcher::VALID));
 
   EXPECT_TRUE(matcher->Next(&match));
   EXPECT_TRUE(matcher->Next(&match));

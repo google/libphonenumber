@@ -20,6 +20,7 @@
 #include "phonenumbers/phonenumbermatch.h"
 
 #include <string>
+#include <utility>
 
 #include "phonenumbers/phonenumber.h"
 #include "phonenumbers/phonenumber.pb.h"
@@ -28,23 +29,17 @@
 namespace i18n {
 namespace phonenumbers {
 
-PhoneNumberMatch::PhoneNumberMatch(int start,
-                                   const string& raw_string,
-                                   const PhoneNumber& number)
-    : start_(start), raw_string_(raw_string), number_(number) {
-}
+PhoneNumberMatch::PhoneNumberMatch(int start, string raw_string,
+                                   PhoneNumber number)
+    : start_(start), raw_string_(std::move(raw_string)),
+      number_(std::move(number)) {}
 
 PhoneNumberMatch::PhoneNumberMatch()
-    : start_(-1), raw_string_(""), number_(PhoneNumber::default_instance()) {
-}
+    : start_(-1), number_(PhoneNumber::default_instance()) {}
 
-const PhoneNumber& PhoneNumberMatch::number() const {
-  return number_;
-}
+const PhoneNumber& PhoneNumberMatch::number() const { return number_; }
 
-int PhoneNumberMatch::start() const {
-  return start_;
-}
+int PhoneNumberMatch::start() const { return start_; }
 
 int PhoneNumberMatch::end() const {
   return static_cast<int>(start_ + raw_string_.length());
@@ -54,13 +49,9 @@ int PhoneNumberMatch::length() const {
   return static_cast<int>(raw_string_.length());
 }
 
-const string& PhoneNumberMatch::raw_string() const {
-  return raw_string_;
-}
+const string& PhoneNumberMatch::raw_string() const { return raw_string_; }
 
-void PhoneNumberMatch::set_start(int start) {
-  start_ = start;
-}
+void PhoneNumberMatch::set_start(int start) { start_ = start; }
 
 void PhoneNumberMatch::set_raw_string(const string& raw_string) {
   raw_string_ = raw_string;
@@ -77,8 +68,7 @@ string PhoneNumberMatch::ToString() const {
 
 bool PhoneNumberMatch::Equals(const PhoneNumberMatch& match) const {
   return ExactlySameAs(match.number_, number_) &&
-      match.raw_string_.compare(raw_string_) == 0 &&
-      match.start_ == start_;
+         match.raw_string_ == raw_string_ && match.start_ == start_;
 }
 
 void PhoneNumberMatch::CopyFrom(const PhoneNumberMatch& match) {

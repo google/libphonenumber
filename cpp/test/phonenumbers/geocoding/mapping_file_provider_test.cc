@@ -27,11 +27,11 @@ using std::string;
 
 namespace {
 
-#define COUNTRY_LANGUAGES(code, languagelist)                             \
-  const char* country_languages_##code[] = languagelist;                  \
-  const CountryLanguages country_##code = {                               \
-    country_languages_##code,                                             \
-    sizeof(country_languages_##code) / sizeof(*country_languages_##code), \
+#define COUNTRY_LANGUAGES(code, languagelist)                \
+  const char *country_languages_##code[] = languagelist;     \
+  const CountryLanguages country_##code = {                  \
+      country_languages_##code,                              \
+      static_cast<int>(ArraySize(country_languages_##code)), \
   };
 
 // Array literals cannot be passed as regular macro arguments, the separating
@@ -43,21 +43,21 @@ namespace {
 const int country_calling_codes[] = {1, 41, 65, 86};
 
 const int country_calling_codes_size =
-  sizeof(country_calling_codes) / sizeof(*country_calling_codes);
+    static_cast<int>(ArraySize(country_calling_codes));
 
-COUNTRY_LANGUAGES(1,  ARRAY_WRAPPER({"en"}));
+COUNTRY_LANGUAGES(1, ARRAY_WRAPPER({"en"}));
 COUNTRY_LANGUAGES(41, ARRAY_WRAPPER({"de", "fr", "it", "rm"}));
 COUNTRY_LANGUAGES(65, ARRAY_WRAPPER({"en", "ms", "ta", "zh_Hans"}));
 COUNTRY_LANGUAGES(86, ARRAY_WRAPPER({"en", "zh", "zh_Hant"}));
 
-const CountryLanguages* country_languages[] = {
-  &country_1,
-  &country_41,
-  &country_65,
-  &country_86,
+const CountryLanguages *country_languages[] = {
+    &country_1,
+    &country_41,
+    &country_65,
+    &country_86,
 };
 
-const CountryLanguages* test_get_country_languages(int index) {
+const CountryLanguages *test_get_country_languages(int index) {
   return country_languages[index];
 }
 
@@ -83,8 +83,8 @@ TEST(MappingFileProviderTest, TestGetFileName) {
   EXPECT_EQ("86_zh", provider.GetFileName(86, "zh", "", "SG", &filename));
   EXPECT_EQ("86_zh_Hant", provider.GetFileName(86, "zh", "", "TW", &filename));
   EXPECT_EQ("86_zh_Hant", provider.GetFileName(86, "zh", "", "HK", &filename));
-  EXPECT_EQ("86_zh_Hant", provider.GetFileName(86, "zh", "Hant", "TW",
-                                               &filename));
+  EXPECT_EQ("86_zh_Hant",
+            provider.GetFileName(86, "zh", "Hant", "TW", &filename));
 }
 
 }  // namespace phonenumbers

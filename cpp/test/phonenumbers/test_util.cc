@@ -14,11 +14,12 @@
 
 // Author: Philippe Liard
 
+#include "phonenumbers/test_util.h"
+
 #include <iostream>
 #include <vector>
 
 #include "phonenumbers/phonenumber.pb.h"
-#include "phonenumbers/test_util.h"
 
 namespace i18n {
 namespace phonenumbers {
@@ -28,29 +29,29 @@ ostream& operator<<(ostream& os, const PhoneNumber& number) {
      << "country_code: " << number.country_code() << std::endl
      << "national_number: " << number.national_number() << std::endl;
   if (number.has_extension()) {
-     os << "extension: " << number.extension() << std::endl;
+    os << "extension: " << number.extension() << std::endl;
   }
   if (number.has_italian_leading_zero()) {
-     os << "italian_leading_zero: " << number.italian_leading_zero() << std::endl;
+    os << "italian_leading_zero: " << number.italian_leading_zero()
+       << std::endl;
   }
   if (number.has_raw_input()) {
-     os << "raw_input: " << number.raw_input() << std::endl;
+    os << "raw_input: " << number.raw_input() << std::endl;
   }
   if (number.has_country_code_source()) {
-     os << "country_code_source: " << number.country_code_source() << std::endl;
+    os << "country_code_source: " << number.country_code_source() << std::endl;
   }
   if (number.has_preferred_domestic_carrier_code()) {
-     os << "preferred_domestic_carrier_code: "
-        << number.preferred_domestic_carrier_code() << std::endl;
+    os << "preferred_domestic_carrier_code: "
+       << number.preferred_domestic_carrier_code() << std::endl;
   }
   return os;
 }
 
 ostream& operator<<(ostream& os, const vector<PhoneNumber>& numbers) {
   os << "[" << std::endl;
-  for (vector<PhoneNumber>::const_iterator it = numbers.begin();
-       it != numbers.end(); ++it) {
-    os << *it;
+  for (const auto& number : numbers) {
+    os << number;
   }
   os << std::endl << "]" << std::endl;
   return os;

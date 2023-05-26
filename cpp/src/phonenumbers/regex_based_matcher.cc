@@ -33,12 +33,11 @@ RegexBasedMatcher::RegexBasedMatcher()
     : regexp_factory_(new RegExpFactory()),
       regexp_cache_(new RegExpCache(*regexp_factory_, 128)) {}
 
-RegexBasedMatcher::~RegexBasedMatcher() {}
+RegexBasedMatcher::~RegexBasedMatcher() = default;
 
-bool RegexBasedMatcher::MatchNationalNumber(
-    const string& number,
-    const PhoneNumberDesc& number_desc,
-    bool allow_prefix_match) const {
+bool RegexBasedMatcher::MatchNationalNumber(const string& number,
+                                            const PhoneNumberDesc& number_desc,
+                                            bool allow_prefix_match) const {
   const string& national_number_pattern = number_desc.national_number_pattern();
   // We don't want to consider it a prefix match when matching non-empty input
   // against an empty pattern.
@@ -48,10 +47,9 @@ bool RegexBasedMatcher::MatchNationalNumber(
   return Match(number, national_number_pattern, allow_prefix_match);
 }
 
-bool RegexBasedMatcher::Match(
-    const string& number,
-    const string& number_pattern,
-    bool allow_prefix_match) const {
+bool RegexBasedMatcher::Match(const string& number,
+                              const string& number_pattern,
+                              bool allow_prefix_match) const {
   const RegExp& regexp(regexp_cache_->GetRegExp(number_pattern));
 
   if (regexp.FullMatch(number)) {
@@ -59,9 +57,8 @@ bool RegexBasedMatcher::Match(
   }
   const scoped_ptr<RegExpInput> normalized_number_input(
       regexp_factory_->CreateInput(number));
-  return regexp.Consume(normalized_number_input.get())
-      ? allow_prefix_match
-      : false;
+  return regexp.Consume(normalized_number_input.get()) ? allow_prefix_match
+                                                       : false;
 }
 
 }  // namespace phonenumbers

@@ -57,13 +57,9 @@ class Logger {
   // Note that if set_verbosity_level has been used to set the level to a value
   // that is not represented by an enum, the result here will be a log
   // level that is higher than LOG_DEBUG.
-  inline int level() const {
-    return level_;
-  }
+  inline int level() const { return level_; }
 
-  inline void set_level(int level) {
-    level_ = level;
-  }
+  inline void set_level(int level) { level_ = level; }
 
   // If you want to see verbose logs in addition to other logs, use this method.
   // This will result in all log messages at the levels above being shown, along
@@ -79,9 +75,7 @@ class Logger {
     return logger;
   }
 
-  static inline Logger* mutable_logger_impl() {
-    return impl_;
-  }
+  static inline Logger* mutable_logger_impl() { return impl_; }
 
  private:
   static Logger* impl_;
@@ -92,9 +86,9 @@ class Logger {
 // phonenumber library.
 class NullLogger : public Logger {
  public:
-  virtual ~NullLogger() {}
+  ~NullLogger() override = default;
 
-  virtual void WriteMessage(const string& /* msg */) {}
+  void WriteMessage(const string& /* msg */) override {}
 };
 
 }  // namespace phonenumbers

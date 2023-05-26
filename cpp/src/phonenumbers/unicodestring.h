@@ -17,10 +17,10 @@
 #ifndef I18N_PHONENUMBERS_UNICODESTRING_H_
 #define I18N_PHONENUMBERS_UNICODESTRING_H_
 
-#include "phonenumbers/utf/unicodetext.h"
-
 #include <cstring>
 #include <limits>
+
+#include "phonenumbers/utf/unicodetext.h"
 
 namespace i18n {
 namespace phonenumbers {
@@ -58,21 +58,15 @@ class UnicodeString {
 
   typedef UnicodeText::const_iterator const_iterator;
 
-  inline const_iterator begin() const {
-    return text_.begin();
-  }
+  inline const_iterator begin() const { return text_.begin(); }
 
-  inline const_iterator end() const {
-    return text_.end();
-  }
+  inline const_iterator end() const { return text_.end(); }
 
   // Returns the index of the provided codepoint or -1 if not found.
   int indexOf(char32 codepoint) const;
 
   // Returns the number of codepoints contained in the unicode string.
-  inline int length() const {
-    return text_.size();
-  }
+  inline int length() const { return text_.size(); }
 
   // Clears the unicode string.
   inline void remove() {
@@ -99,8 +93,7 @@ class UnicodeString {
   // copying the underlying C string. If one of the provided parameters is out
   // of range, the function returns an empty unicode string.
   UnicodeString tempSubString(
-      int start,
-      int length = std::numeric_limits<int>::max()) const;
+      int start, int length = std::numeric_limits<int>::max()) const;
 
   inline void toUTF8String(string& out) const {
     out = UnicodeTextToUTF8(text_);
@@ -109,7 +102,7 @@ class UnicodeString {
   char32 operator[](int index) const;
 
  private:
-  UnicodeText text_;
+  UnicodeText text_{};
 
   // As UnicodeText doesn't provide random access, an operator[] implementation
   // would naively iterate from the beginning of the string to the supplied
@@ -121,12 +114,10 @@ class UnicodeString {
   // The following function which invalidates the cached index corresponding to
   // the iterator position must be called every time the unicode string is
   // modified (i.e. in all the non-const methods).
-  inline void invalidateCachedIndex() {
-    cached_index_ = -1;
-  }
+  inline void invalidateCachedIndex() { cached_index_ = -1; }
 
   // Iterator corresponding to the cached index below, used by operator[].
-  mutable UnicodeText::const_iterator cached_it_;
+  mutable UnicodeText::const_iterator cached_it_{};
   mutable int cached_index_;
 };
 

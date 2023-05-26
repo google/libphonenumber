@@ -17,9 +17,9 @@
 // UnicodeString::toUTF8(), requires an implementation of a string byte sink.
 // See unicode/unistr.h and unicode/bytestream.h in ICU for more details.
 
-#include <string>
-
 #include <unicode/unistr.h>
+
+#include <string>
 
 namespace i18n {
 namespace phonenumbers {
@@ -28,9 +28,9 @@ class StringByteSink : public icu::ByteSink {
  public:
   // Constructs a ByteSink that will append bytes to the dest string.
   explicit StringByteSink(std::string* dest);
-  virtual ~StringByteSink();
+  ~StringByteSink() override = default;
 
-  virtual void Append(const char* data, int32_t n);
+  void Append(const char* data, int32_t n) override;
 
  private:
   std::string* const dest_;

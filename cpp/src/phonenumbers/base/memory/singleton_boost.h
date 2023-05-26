@@ -25,8 +25,8 @@ namespace phonenumbers {
 template <class T>
 class Singleton : private boost::noncopyable {
  public:
-  Singleton() {}
-  virtual ~Singleton() {}
+  Singleton() = default;
+  virtual ~Singleton() = default;
 
   static T* GetInstance() {
     boost::call_once(Init, flag_);
@@ -34,16 +34,16 @@ class Singleton : private boost::noncopyable {
   }
 
  private:
-  static void Init() {
-    instance_.reset(new T());
-  }
+  static void Init() { instance_.reset(new T()); }
 
   static boost::scoped_ptr<T> instance_;
   static boost::once_flag flag_;
 };
 
-template <class T> boost::scoped_ptr<T> Singleton<T>::instance_;
-template <class T> boost::once_flag Singleton<T>::flag_ = BOOST_ONCE_INIT;
+template <class T>
+boost::scoped_ptr<T> Singleton<T>::instance_;
+template <class T>
+boost::once_flag Singleton<T>::flag_ = BOOST_ONCE_INIT;
 
 }  // namespace phonenumbers
 }  // namespace i18n

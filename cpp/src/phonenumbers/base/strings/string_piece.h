@@ -46,13 +46,12 @@ class StringPiece {
   // We provide non-explicit singleton constructors so users can pass
   // in a "const char*" or a "string" wherever a "StringPiece" is
   // expected.
-  StringPiece() : ptr_(NULL), length_(0) { }
-  StringPiece(const char* str)
-    : ptr_(str), length_((str == NULL) ? 0 : strlen(str)) { }
-  StringPiece(const std::string& str)
-    : ptr_(str.data()), length_(str.size()) { }
-  StringPiece(const char* offset, size_type len)
-    : ptr_(offset), length_(len) { }
+  StringPiece() : ptr_(nullptr), length_(0) {}
+  explicit StringPiece(const char* str)
+      : ptr_(str), length_((str == nullptr) ? 0 : strlen(str)) {}
+  explicit StringPiece(const std::string& str)
+      : ptr_(str.data()), length_(str.size()) {}
+  StringPiece(const char* offset, size_type len) : ptr_(offset), length_(len) {}
 
   // data() may return a pointer to a buffer with embedded NULs, and the
   // returned buffer may or may not be null terminated.  Therefore it is
@@ -64,7 +63,7 @@ class StringPiece {
   bool empty() const { return length_ == 0; }
 
   void clear() {
-    ptr_ = NULL;
+    ptr_ = nullptr;
     length_ = 0;
   }
   void set(const char* data, size_type len) {
@@ -87,23 +86,23 @@ class StringPiece {
     length_ -= n;
   }
 
-  void remove_suffix(size_type n) {
-    length_ -= n;
-  }
+  void remove_suffix(size_type n) { length_ -= n; }
 
   int compare(const StringPiece& x) const {
-    int r = wordmemcmp(
-        ptr_, x.ptr_, (length_ < x.length_ ? length_ : x.length_));
+    int r =
+        wordmemcmp(ptr_, x.ptr_, (length_ < x.length_ ? length_ : x.length_));
     if (r == 0) {
-      if (length_ < x.length_) r = -1;
-      else if (length_ > x.length_) r = +1;
+      if (length_ < x.length_)
+        r = -1;
+      else if (length_ > x.length_)
+        r = +1;
     }
     return r;
   }
 
   std::string as_string() const {
     // std::string doesn't like to take a NULL pointer even with a 0 size.
-    return std::string(!empty() ? data() : "", size());
+    return {!empty() ? data() : "", size()};
   }
 
   void CopyToString(std::string* target) const;
@@ -118,7 +117,7 @@ class StringPiece {
   // Does "this" end with "x"
   bool ends_with(const StringPiece& x) const {
     return ((length_ >= x.length_) &&
-            (wordmemcmp(ptr_ + (length_-x.length_), x.ptr_, x.length_) == 0));
+            (wordmemcmp(ptr_ + (length_ - x.length_), x.ptr_, x.length_) == 0));
   }
 
   iterator begin() const { return ptr_; }
@@ -126,9 +125,7 @@ class StringPiece {
   const_reverse_iterator rbegin() const {
     return const_reverse_iterator(ptr_ + length_);
   }
-  const_reverse_iterator rend() const {
-    return const_reverse_iterator(ptr_);
-  }
+  const_reverse_iterator rend() const { return const_reverse_iterator(ptr_); }
 
   size_type max_size() const { return length_; }
   size_type capacity() const { return length_; }
@@ -160,8 +157,8 @@ class StringPiece {
   }
 
  private:
-  const char*   ptr_;
-  size_type     length_;
+  const char* ptr_;
+  size_type length_;
 };
 
 bool operator==(const StringPiece& x, const StringPiece& y);

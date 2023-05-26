@@ -22,11 +22,11 @@
 #include "phonenumbers/regexp_adapter_icu.h"
 
 #include <stddef.h>
-#include <string>
-
 #include <unicode/regex.h>
 #include <unicode/stringpiece.h>
 #include <unicode/unistr.h>
+
+#include <string>
 
 #include "phonenumbers/base/basictypes.h"
 #include "phonenumbers/base/logging.h"
@@ -66,25 +66,20 @@ UnicodeString Utf8StringToUnicodeString(const string& source) {
 class IcuRegExpInput : public RegExpInput {
  public:
   explicit IcuRegExpInput(const string& utf8_input)
-      : utf8_input_(Utf8StringToUnicodeString(utf8_input)),
-        position_(0) {}
+      : utf8_input_(Utf8StringToUnicodeString(utf8_input)), position_(0) {}
 
-  virtual ~IcuRegExpInput() {}
+  ~IcuRegExpInput() override = default;
 
-  virtual string ToString() const {
+  string ToString() const override {
     return UnicodeStringToUtf8String(utf8_input_.tempSubString(position_));
   }
 
-  UnicodeString* Data() {
-    return &utf8_input_;
-  }
+  UnicodeString* Data() { return &utf8_input_; }
 
   // The current start position. For a newly created input, position is 0. Each
   // call to ConsumeRegExp() or RegExp::Consume() advances the position in the
   // case of the successful match to be after the match.
-  int position() const {
-    return position_;
-  }
+  int position() const { return position_; }
 
   void set_position(int position) {
     DCHECK(position >= 0 && position <= utf8_input_.length());
@@ -109,31 +104,28 @@ class IcuRegExp : public RegExp {
     if (U_FAILURE(status)) {
       // The provided regular expressions should compile correctly.
       LOG(ERROR) << "Error compiling regular expression: " << utf8_regexp;
-      utf8_regexp_.reset(NULL);
+      utf8_regexp_.reset(nullptr);
     }
   }
 
-  virtual ~IcuRegExp() {}
+  ~IcuRegExp() override = default;
 
-  virtual bool Consume(RegExpInput* input_string,
-                       bool anchor_at_start,
-                       string* matched_string1,
-                       string* matched_string2,
-                       string* matched_string3,
-                       string* matched_string4,
-                       string* matched_string5,
-                       string* matched_string6) const {
+  bool Consume(RegExpInput* input_string, bool anchor_at_start,
+               string* matched_string1, string* matched_string2,
+               string* matched_string3, string* matched_string4,
+               string* matched_string5,
+               string* matched_string6) const override {
     DCHECK(input_string);
-    if (!utf8_regexp_.get()) {
+    if (!utf8_regexp_) {
       return false;
     }
-    IcuRegExpInput* const input = static_cast<IcuRegExpInput*>(input_string);
+    auto* const input = dynamic_cast<IcuRegExpInput*>(input_string);
     UErrorCode status = U_ZERO_ERROR;
     const scoped_ptr<RegexMatcher> matcher(
         utf8_regexp_->matcher(*input->Data(), status));
     bool match_succeeded = anchor_at_start
-        ? matcher->lookingAt(input->position(), status)
-        : matcher->find(input->position(), status);
+                               ? matcher->lookingAt(input->position(), status)
+                               : matcher->find(input->position(), status);
     if (!match_succeeded || U_FAILURE(status)) {
       return false;
     }
@@ -156,10 +148,9 @@ class IcuRegExp : public RegExp {
     return !U_FAILURE(status);
   }
 
-  bool Match(const string& input_string,
-             bool full_match,
-             string* matched_string) const {
-    if (!utf8_regexp_.get()) {
+  bool Match(const string& input_string, bool full_match,
+             string* matched_string) const override {
+    if (!utf8_regexp_) {
       return false;
     }
     IcuRegExpInput input(input_string);
@@ -167,8 +158,8 @@ class IcuRegExp : public RegExp {
     const scoped_ptr<RegexMatcher> matcher(
         utf8_regexp_->matcher(*input.Data(), status));
     bool match_succeeded = full_match
-        ? matcher->matches(input.position(), status)
-        : matcher->find(input.position(), status);
+                               ? matcher->matches(input.position(), status)
+                               : matcher->find(input.position(), status);
     if (!match_succeeded || U_FAILURE(status)) {
       return false;
     }
@@ -178,11 +169,10 @@ class IcuRegExp : public RegExp {
     return !U_FAILURE(status);
   }
 
-  bool Replace(string* string_to_process,
-               bool global,
-               const string& replacement_string) const {
+  bool Replace(string* string_to_process, bool global,
+               const string& replacement_string) const override {
     DCHECK(string_to_process);
-    if (!utf8_regexp_.get()) {
+    if (!utf8_regexp_) {
       return false;
     }
     IcuRegExpInput input(*string_to_process);
@@ -199,16 +189,13 @@ class IcuRegExp : public RegExp {
     if (!matcher->find()) {
       return false;
     }
-    matcher->appendReplacement(output,
-                               Utf8StringToUnicodeString(replacement_string),
-                               status);
+    matcher->appendReplacement(
+        output, Utf8StringToUnicodeString(replacement_string), status);
     if (global) {
       // Continue and look for more matches.
       while (matcher->find()) {
         matcher->appendReplacement(
-            output,
-            Utf8StringToUnicodeString(replacement_string),
-            status);
+            output, Utf8StringToUnicodeString(replacement_string), status);
       }
     }
 

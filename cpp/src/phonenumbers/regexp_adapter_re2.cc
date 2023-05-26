@@ -17,59 +17,50 @@
 
 #include "phonenumbers/regexp_adapter_re2.h"
 
-#include <cstddef>
-#include <string>
-
 #include <re2/re2.h>
 #include <re2/stringpiece.h>
 
-#include "phonenumbers/base/basictypes.h"
+#include <string>
+
 #include "phonenumbers/base/logging.h"
 #include "phonenumbers/stringutil.h"
 
-#include "absl/strings/string_view.h"
 namespace i18n {
 namespace phonenumbers {
-
+using namespace re2;
 // Implementation of RegExpInput abstract class.
 class RE2RegExpInput : public RegExpInput {
  public:
-  explicit RE2RegExpInput(const string& utf8_input)
-      : string_(utf8_input),
-        utf8_input_(string_) {}
+  explicit RE2RegExpInput(string utf8_input)
+      : string_(std::move(utf8_input)), utf8_input_(string_) {}
 
-  virtual string ToString() const {
-    return utf8_input_.ToString();
-  }
+  string ToString() const override { return utf8_input_.ToString(); }
 
-  StringPiece* Data() {
-    return &utf8_input_;
-  }
+  StringPiece* Data() { return &utf8_input_; }
 
  private:
   // string_ holds the string referenced by utf8_input_ as StringPiece doesn't
   // copy the string passed in.
   const string string_;
-  StringPiece utf8_input_;
+  StringPiece utf8_input_{};
 };
 
 namespace {
 
 template <typename Function, typename Input>
-bool DispatchRE2Call(Function regex_function,
-                     Input input,
-                     const RE2& regexp,
-                     string* out1,
-                     string* out2,
-                     string* out3,
-                     string* out4,
-                     string* out5,
-                     string* out6) {
-  const RE2::Arg outs[] = { out1, out2, out3, out4, out5, out6};
-  const RE2::Arg* const args[] = {&outs[0], &outs[1], &outs[2], 
+bool DispatchRE2Call(Function regex_function, Input input, const RE2& regexp,
+                     string* out1, string* out2, string* out3, string* out4,
+                     string* out5, string* out6) {
+  const RE2::Arg outs[] = {out1, out2, out3, out4, out5, out6};
+  const RE2::Arg* const args[] = {&outs[0], &outs[1], &outs[2],
                                   &outs[3], &outs[4], &outs[5]};
-  const int argc =
-      out6 ? 6 : out5 ? 5 : out4 ? 4 : out3 ? 3 : out2 ? 2 : out1 ? 1 : 0;
+  const int argc = out6   ? 6
+                   : out5 ? 5
+                   : out4 ? 4
+                   : out3 ? 3
+                   : out2 ? 2
+                   : out1 ? 1
+                          : 0;
   return regex_function(input, regexp, args, argc);
 }
 
@@ -93,49 +84,43 @@ string TransformRegularExpressionToRE2Syntax(const string& regex) {
 // Implementation of RegExp abstract class.
 class RE2RegExp : public RegExp {
  public:
-  explicit RE2RegExp(const string& utf8_regexp)
-      : utf8_regexp_(utf8_regexp) {}
+  explicit RE2RegExp(const string& utf8_regexp) : utf8_regexp_(utf8_regexp) {}
 
-  virtual bool Consume(RegExpInput* input_string,
-                       bool anchor_at_start,
-                       string* matched_string1,
-                       string* matched_string2,
-                       string* matched_string3,
-                       string* matched_string4,
-                       string* matched_string5,
-                       string* matched_string6) const {
+  bool Consume(RegExpInput* input_string, bool anchor_at_start,
+               string* matched_string1, string* matched_string2,
+               string* matched_string3, string* matched_string4,
+               string* matched_string5,
+               string* matched_string6) const override {
     DCHECK(input_string);
     StringPiece* utf8_input =
         static_cast<RE2RegExpInput*>(input_string)->Data();
 
     if (anchor_at_start) {
       return DispatchRE2Call(RE2::ConsumeN, utf8_input, utf8_regexp_,
-                             matched_string1, matched_string2,
-                             matched_string3, matched_string4,
-                             matched_string5, matched_string6);
+                             matched_string1, matched_string2, matched_string3,
+                             matched_string4, matched_string5, matched_string6);
     } else {
       return DispatchRE2Call(RE2::FindAndConsumeN, utf8_input, utf8_regexp_,
-                             matched_string1, matched_string2,
-                             matched_string3, matched_string4,
-                             matched_string5, matched_string6);
+                             matched_string1, matched_string2, matched_string3,
+                             matched_string4, matched_string5, matched_string6);
     }
   }
 
-  virtual bool Match(const string& input_string,
-                     bool full_match,
-                     string* matched_string) const {
+  bool Match(const string& input_string, bool full_match,
+             string* matched_string) const override {
     if (full_match) {
       return DispatchRE2Call(RE2::FullMatchN, input_string, utf8_regexp_,
-                             matched_string, NULL, NULL, NULL, NULL, NULL);
+                             matched_string, nullptr, nullptr, nullptr, nullptr,
+                             nullptr);
     } else {
       return DispatchRE2Call(RE2::PartialMatchN, input_string, utf8_regexp_,
-                             matched_string, NULL, NULL, NULL, NULL, NULL);
+                             matched_string, nullptr, nullptr, nullptr, nullptr,
+                             nullptr);
     }
   }
 
-  virtual bool Replace(string* string_to_process,
-                       bool global,
-                       const string& replacement_string) const {
+  bool Replace(string* string_to_process, bool global,
+               const string& replacement_string) const override {
     DCHECK(string_to_process);
     const string re2_replacement_string =
         TransformRegularExpressionToRE2Syntax(replacement_string);

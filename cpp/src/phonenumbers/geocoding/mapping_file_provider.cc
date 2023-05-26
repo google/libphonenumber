@@ -32,50 +32,48 @@ using std::string;
 namespace {
 
 struct NormalizedLocale {
-  const char* locale;
-  const char* normalized_locale;
+  const char *locale;
+  const char *normalized_locale;
 };
 
 const NormalizedLocale kNormalizedLocales[] = {
-  {"zh_TW", "zh_Hant"},
-  {"zh_HK", "zh_Hant"},
-  {"zh_MO", "zh_Hant"},
+    {"zh_TW", "zh_Hant"},
+    {"zh_HK", "zh_Hant"},
+    {"zh_MO", "zh_Hant"},
 };
 
-const char* GetNormalizedLocale(const string& full_locale) {
-  const int size = sizeof(kNormalizedLocales) / sizeof(*kNormalizedLocales);
-  for (int i = 0; i != size; ++i) {
-    if (full_locale.compare(kNormalizedLocales[i].locale) == 0) {
-      return kNormalizedLocales[i].normalized_locale;
-    }
-  }
-  return NULL;
+const char *GetNormalizedLocale(const string &full_locale) {
+  auto pos =
+      std::find_if(std::begin(kNormalizedLocales), std::end(kNormalizedLocales),
+                   [&full_locale](NormalizedLocale n_locale) {
+                     return n_locale.locale == full_locale;
+                   });
+  if (pos != std::end(kNormalizedLocales)) return pos->normalized_locale;
+  return nullptr;
 }
 
-void AppendLocalePart(const string& part, string* full_locale) {
+void AppendLocalePart(const string &part, string *full_locale) {
   if (!part.empty()) {
     full_locale->append("_");
     full_locale->append(part);
   }
 }
 
-void ConstructFullLocale(const string& language, const string& script, const
-                         string& region, string* full_locale) {
+void ConstructFullLocale(const string &language, const string &script,
+                         const string &region, string *full_locale) {
   full_locale->assign(language);
   AppendLocalePart(script, full_locale);
   AppendLocalePart(region, full_locale);
 }
 
 // Returns true if s1 comes strictly before s2 in lexicographic order.
-bool IsLowerThan(const char* s1, const char* s2) {
-  return strcmp(s1, s2) < 0;
-}
+bool IsLowerThan(const char *s1, const char *s2) { return strcmp(s1, s2) < 0; }
 
 // Returns true if languages contains language.
-bool HasLanguage(const CountryLanguages* languages, const string& language) {
-  const char** const start = languages->available_languages;
-  const char** const end = start + languages->available_languages_size;
-  const char** const it =
+bool HasLanguage(const CountryLanguages *languages, const string &language) {
+  const char **const start = languages->available_languages;
+  const char **const end = start + languages->available_languages_size;
+  const char **const it =
       std::lower_bound(start, end, language.c_str(), IsLowerThan);
   return it != end && strcmp(language.c_str(), *it) == 0;
 }
@@ -83,53 +81,50 @@ bool HasLanguage(const CountryLanguages* languages, const string& language) {
 }  // namespace
 
 MappingFileProvider::MappingFileProvider(
-    const int* country_calling_codes, int country_calling_codes_size,
+    const int *country_calling_codes, int country_calling_codes_size,
     country_languages_getter get_country_languages)
-  : country_calling_codes_(country_calling_codes),
-    country_calling_codes_size_(country_calling_codes_size),
-    get_country_languages_(get_country_languages) {
-}
+    : country_calling_codes_(country_calling_codes),
+      country_calling_codes_size_(country_calling_codes_size),
+      get_country_languages_(get_country_languages) {}
 
-const string& MappingFileProvider::GetFileName(int country_calling_code,
-                                               const string& language,
-                                               const string& script,
-                                               const string& region,
-                                               string* filename) const {
+const string &MappingFileProvider::GetFileName(int country_calling_code,
+                                               const string &language,
+                                               const string &script,
+                                               const string &region,
+                                               string *filename) const {
   filename->clear();
   if (language.empty()) {
     return *filename;
   }
-  const int* const country_calling_codes_end = country_calling_codes_ +
-      country_calling_codes_size_;
-  const int* const it =
-      std::lower_bound(country_calling_codes_,
-                       country_calling_codes_end,
-                       country_calling_code);
+  const int *const country_calling_codes_end =
+      country_calling_codes_ + country_calling_codes_size_;
+  const int *const it = std::lower_bound(
+      country_calling_codes_, country_calling_codes_end, country_calling_code);
   if (it == country_calling_codes_end || *it != country_calling_code) {
     return *filename;
   }
-  const CountryLanguages* const langs =
+  const CountryLanguages *const langs =
       get_country_languages_(it - country_calling_codes_);
   if (langs->available_languages_size > 0) {
     string language_code;
     FindBestMatchingLanguageCode(langs, language, script, region,
                                  &language_code);
-  if (!language_code.empty()) {
-    std::stringstream filename_buf;
-    filename_buf << country_calling_code << "_" << language_code;
-    *filename = filename_buf.str();
+    if (!language_code.empty()) {
+      std::stringstream filename_buf;
+      filename_buf << country_calling_code << "_" << language_code;
+      *filename = filename_buf.str();
     }
   }
   return *filename;
 }
 
 void MappingFileProvider::FindBestMatchingLanguageCode(
-  const CountryLanguages* languages, const string& language,
-  const string& script, const string& region, string* best_match) const {
+    const CountryLanguages *languages, const string &language,
+    const string &script, const string &region, string *best_match) const {
   string full_locale;
   ConstructFullLocale(language, script, region, &full_locale);
-  const char* const normalized_locale = GetNormalizedLocale(full_locale);
-  if (normalized_locale != NULL) {
+  const char *const normalized_locale = GetNormalizedLocale(full_locale);
+  if (normalized_locale != nullptr) {
     string normalized_locale_str(normalized_locale);
     if (HasLanguage(languages, normalized_locale_str)) {
       best_match->swap(normalized_locale_str);

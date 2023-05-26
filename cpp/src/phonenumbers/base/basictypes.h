@@ -5,13 +5,13 @@
 #ifndef I18N_PHONENUMBERS_BASE_BASICTYPES_H_
 #define I18N_PHONENUMBERS_BASE_BASICTYPES_H_
 
-#include <limits.h>         // So we can set the bounds of our types
-#include <stddef.h>         // For size_t
-#include <string.h>         // for memcpy
+#include <climits>  // So we can set the bounds of our types
+#include <cstddef>  // For size_t
+#include <cstring>  // for memcpy
 
 #if !defined(_WIN32)
 // stdint.h is part of C99 but MSVC doesn't have it.
-#include <stdint.h>         // For intptr_t.
+#include <cstdint>  // For intptr_t.
 #endif
 
 namespace i18n {
@@ -30,36 +30,36 @@ typedef uint16_t uint16;
 typedef uint32_t uint32;
 typedef uint64_t uint64;
 
-const uint8  kuint8max  = UINT8_MAX;
+const uint8 kuint8max = UINT8_MAX;
 const uint16 kuint16max = UINT16_MAX;
 const uint32 kuint32max = UINT32_MAX;
 const uint64 kuint64max = UINT64_MAX;
-const  int8  kint8min   = INT8_MIN;
-const  int8  kint8max   = INT8_MAX;
-const  int16 kint16min  = INT16_MIN;
-const  int16 kint16max  = INT16_MAX;
-const  int32 kint32min  = INT32_MIN;
-const  int32 kint32max  = INT32_MAX;
-const  int64 kint64min  = INT64_MIN;
-const  int64 kint64max  = INT64_MAX;
+const int8 kint8min = INT8_MIN;
+const int8 kint8max = INT8_MAX;
+const int16 kint16min = INT16_MIN;
+const int16 kint16max = INT16_MAX;
+const int32 kint32min = INT32_MIN;
+const int32 kint32max = INT32_MAX;
+const int64 kint64min = INT64_MIN;
+const int64 kint64max = INT64_MAX;
 
-#else // !INT64_MAX
+#else  // !INT64_MAX
 
-typedef signed char         int8;
-typedef short               int16;
+typedef signed char int8;
+typedef short int16;
 // TODO: Remove these type guards.  These are to avoid conflicts with
 // obsolete/protypes.h in the Gecko SDK.
 #ifndef _INT32
 #define _INT32
-typedef int                 int32;
+typedef int int32;
 #endif
 
 // The NSPR system headers define 64-bit as |long| when possible.  In order to
 // not have typedef mismatches, we do the same on LP64.
 #if __LP64__
-typedef long                int64;
+typedef long int64;
 #else
-typedef long long           int64;
+typedef long long int64;
 #endif
 
 // NOTE: unsigned types are DANGEROUS in loops and other arithmetical
@@ -68,13 +68,13 @@ typedef long long           int64;
 // use 'unsigned' to express "this value should always be positive";
 // use assertions for this.
 
-typedef unsigned char      uint8;
-typedef unsigned short     uint16;
+typedef unsigned char uint8;
+typedef unsigned short uint16;
 // TODO: Remove these type guards.  These are to avoid conflicts with
 // obsolete/protypes.h in the Gecko SDK.
 #ifndef _UINT32
 #define _UINT32
-typedef unsigned int       uint32;
+typedef unsigned int uint32;
 #endif
 
 // See the comment above about NSPR and 64-bit.
@@ -84,15 +84,15 @@ typedef unsigned long uint64;
 typedef unsigned long long uint64;
 #endif
 
-#endif // !INT64_MAX
+#endif  // !INT64_MAX
 
-typedef signed char         schar;
+typedef signed char schar;
 
 // A type to represent a Unicode code-point value. As of Unicode 4.0,
 // such values require up to 21 bits.
 // (For type-checking on pointers, make this explicitly signed,
 // and it should always be the signed version of whatever int32 is.)
-typedef signed int         char32;
+typedef signed int char32;
 
 // A macro to disallow the copy constructor and operator= functions
 // This should be used in the private: declarations for a class
@@ -169,7 +169,7 @@ char (&ArraySizeHelper(const T (&array)[N]))[N];
 // size is 3 or greater than 4 will be (righteously) rejected.
 
 #if !defined(ARRAYSIZE_UNSAFE)
-#define ARRAYSIZE_UNSAFE(a) \
+#define ARRAYSIZE_UNSAFE(a)     \
   ((sizeof(a) / sizeof(*(a))) / \
    static_cast<size_t>(!(sizeof(a) % sizeof(*(a)))))
 #endif
@@ -197,8 +197,7 @@ char (&ArraySizeHelper(const T (&array)[N]))[N];
 #else
 
 template <bool>
-struct CompileAssert {
-};
+struct CompileAssert {};
 
 // Annotate a variable indicating it's ok if the variable is not used.
 // (Typically used to silence a compiler warning when the assignment
@@ -256,6 +255,11 @@ struct CompileAssert {
 //   causes ((0.0) ? 1 : -1) to incorrectly evaluate to 1.
 
 #endif
+// Calculate the size of array at compile-time.
+template <typename T, size_t N>
+size_t ArraySize(T (&)[N]) {
+  return N;
+}
 
 }  // namespace phonenumbers
 }  // namespace i18n

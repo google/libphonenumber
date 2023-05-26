@@ -26,15 +26,12 @@
 namespace i18n {
 namespace phonenumbers {
 
-AreaCodeMap::AreaCodeMap()
-  : phone_util_(*PhoneNumberUtil::GetInstance()) {
-}
+AreaCodeMap::AreaCodeMap() : phone_util_(*PhoneNumberUtil::GetInstance()) {}
 
-AreaCodeMap::~AreaCodeMap() {
-}
+AreaCodeMap::~AreaCodeMap() = default;
 
 void AreaCodeMap::ReadAreaCodeMap(const PrefixDescriptions* descriptions) {
-  DefaultMapStorage* storage = new DefaultMapStorage();
+  auto* storage = new DefaultMapStorage();
   storage->ReadFromMap(descriptions);
   storage_.reset(storage);
 }
@@ -42,7 +39,7 @@ void AreaCodeMap::ReadAreaCodeMap(const PrefixDescriptions* descriptions) {
 const char* AreaCodeMap::Lookup(const PhoneNumber& number) const {
   const int entries = storage_->GetNumOfEntries();
   if (!entries) {
-    return NULL;
+    return nullptr;
   }
 
   string national_number;
@@ -63,14 +60,14 @@ const char* AreaCodeMap::Lookup(const PhoneNumber& number) const {
     }
     current_index = BinarySearch(0, current_index, phone_prefix);
     if (current_index < 0) {
-      return NULL;
+      return nullptr;
     }
     const int32 current_prefix = storage_->GetPrefix(current_index);
     if (phone_prefix == current_prefix) {
       return storage_->GetDescription(current_index);
     }
   }
-  return NULL;
+  return nullptr;
 }
 
 int AreaCodeMap::BinarySearch(int start, int end, int64 value) const {

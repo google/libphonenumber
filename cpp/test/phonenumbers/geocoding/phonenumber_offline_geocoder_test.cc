@@ -48,32 +48,28 @@ const Locale kSimplifiedChineseLocale = Locale("zh", "CN");
 
 class PhoneNumberOfflineGeocoderTest : public testing::Test {
  protected:
-  PhoneNumberOfflineGeocoderTest() :
-    KO_NUMBER1(MakeNumber(82, 22123456UL)),
-    KO_NUMBER2(MakeNumber(82, 322123456UL)),
-    KO_NUMBER3(MakeNumber(82, uint64{6421234567})),
-    KO_INVALID_NUMBER(MakeNumber(82, 1234UL)),
-    KO_MOBILE(MakeNumber(82, uint64{101234567})),
-    US_NUMBER1(MakeNumber(1, uint64{6502530000})),
-    US_NUMBER2(MakeNumber(1, uint64{6509600000})),
-    US_NUMBER3(MakeNumber(1, 2128120000UL)),
-    US_NUMBER4(MakeNumber(1, uint64{6174240000})),
-    US_INVALID_NUMBER(MakeNumber(1, 123456789UL)),
-    BS_NUMBER1(MakeNumber(1, 2423651234UL)),
-    AU_NUMBER(MakeNumber(61, 236618300UL)),
-    NUMBER_WITH_INVALID_COUNTRY_CODE(MakeNumber(999, 2423651234UL)),
-    INTERNATIONAL_TOLL_FREE(MakeNumber(800, 12345678UL)) {
-  }
+  PhoneNumberOfflineGeocoderTest()
+      : KO_NUMBER1(MakeNumber(82, 22123456UL)),
+        KO_NUMBER2(MakeNumber(82, 322123456UL)),
+        KO_NUMBER3(MakeNumber(82, uint64{6421234567})),
+        KO_INVALID_NUMBER(MakeNumber(82, 1234UL)),
+        KO_MOBILE(MakeNumber(82, uint64{101234567})),
+        US_NUMBER1(MakeNumber(1, uint64{6502530000})),
+        US_NUMBER2(MakeNumber(1, uint64{6509600000})),
+        US_NUMBER3(MakeNumber(1, 2128120000UL)),
+        US_NUMBER4(MakeNumber(1, uint64{6174240000})),
+        US_INVALID_NUMBER(MakeNumber(1, 123456789UL)),
+        BS_NUMBER1(MakeNumber(1, 2423651234UL)),
+        AU_NUMBER(MakeNumber(61, 236618300UL)),
+        NUMBER_WITH_INVALID_COUNTRY_CODE(MakeNumber(999, 2423651234UL)),
+        INTERNATIONAL_TOLL_FREE(MakeNumber(800, 12345678UL)) {}
 
-  virtual void SetUp() {
-    geocoder_.reset(
-        new PhoneNumberOfflineGeocoder(
-            get_test_country_calling_codes(),
-            get_test_country_calling_codes_size(),
-            get_test_country_languages,
-            get_test_prefix_language_code_pairs(),
-            get_test_prefix_language_code_pairs_size(),
-            get_test_prefix_descriptions));
+  void SetUp() override {
+    geocoder_.reset(new PhoneNumberOfflineGeocoder(
+        get_test_country_calling_codes(), get_test_country_calling_codes_size(),
+        get_test_country_languages, get_test_prefix_language_code_pairs(),
+        get_test_prefix_language_code_pairs_size(),
+        get_test_prefix_descriptions));
   }
 
  protected:
@@ -104,19 +100,22 @@ TEST_F(PhoneNumberOfflineGeocoderTest,
   // Chinese is returned.
 
   // "\u7F8E\u56FD" (unicode escape sequences are not always supported)
-  EXPECT_EQ("\xe7""\xbe""\x8e""\xe5""\x9b""\xbd",
-            geocoder_->GetDescriptionForNumber(US_NUMBER1,
-                                               kSimplifiedChineseLocale));
+  EXPECT_EQ(
+      "\xe7"
+      "\xbe"
+      "\x8e"
+      "\xe5"
+      "\x9b"
+      "\xbd",
+      geocoder_->GetDescriptionForNumber(US_NUMBER1, kSimplifiedChineseLocale));
   EXPECT_EQ("Bahamas",
             geocoder_->GetDescriptionForNumber(BS_NUMBER1, Locale("en", "US")));
   EXPECT_EQ("Australia",
             geocoder_->GetDescriptionForNumber(AU_NUMBER, Locale("en", "US")));
-  EXPECT_EQ("",
-            geocoder_->GetDescriptionForNumber(NUMBER_WITH_INVALID_COUNTRY_CODE,
-                                               Locale("en", "US")));
-  EXPECT_EQ("",
-            geocoder_->GetDescriptionForNumber(INTERNATIONAL_TOLL_FREE,
-                                               Locale("en", "US")));
+  EXPECT_EQ("", geocoder_->GetDescriptionForNumber(
+                    NUMBER_WITH_INVALID_COUNTRY_CODE, Locale("en", "US")));
+  EXPECT_EQ("", geocoder_->GetDescriptionForNumber(INTERNATIONAL_TOLL_FREE,
+                                                   Locale("en", "US")));
 }
 
 TEST_F(PhoneNumberOfflineGeocoderTest,
@@ -144,11 +143,23 @@ TEST_F(PhoneNumberOfflineGeocoderTest, TestGetDescriptionForKoreanNumber) {
   EXPECT_EQ("Jeju",
             geocoder_->GetDescriptionForNumber(KO_NUMBER3, kEnglishLocale));
   // "\uC11C\uC6B8"
-  EXPECT_EQ("\xec""\x84""\x9c""\xec""\x9a""\xb8",
-            geocoder_->GetDescriptionForNumber(KO_NUMBER1, kKoreanLocale));
+  EXPECT_EQ(
+      "\xec"
+      "\x84"
+      "\x9c"
+      "\xec"
+      "\x9a"
+      "\xb8",
+      geocoder_->GetDescriptionForNumber(KO_NUMBER1, kKoreanLocale));
   // "\uC778\uCC9C"
-  EXPECT_EQ("\xec""\x9d""\xb8""\xec""\xb2""\x9c",
-            geocoder_->GetDescriptionForNumber(KO_NUMBER2, kKoreanLocale));
+  EXPECT_EQ(
+      "\xec"
+      "\x9d"
+      "\xb8"
+      "\xec"
+      "\xb2"
+      "\x9c",
+      geocoder_->GetDescriptionForNumber(KO_NUMBER2, kKoreanLocale));
 }
 
 TEST_F(PhoneNumberOfflineGeocoderTest, TestGetDescriptionForFallBack) {
@@ -164,36 +175,41 @@ TEST_F(PhoneNumberOfflineGeocoderTest, TestGetDescriptionForFallBack) {
             geocoder_->GetDescriptionForNumber(US_NUMBER1, kItalianLocale));
   // Korean doesn't fall back to English.
   // "\uB300\uD55C\uBBFC\uAD6D"
-  EXPECT_EQ("\xeb""\x8c""\x80""\xed""\x95""\x9c""\xeb""\xaf""\xbc""\xea""\xb5"
-            "\xad",
-            geocoder_->GetDescriptionForNumber(KO_NUMBER3, kKoreanLocale));
+  EXPECT_EQ(
+      "\xeb"
+      "\x8c"
+      "\x80"
+      "\xed"
+      "\x95"
+      "\x9c"
+      "\xeb"
+      "\xaf"
+      "\xbc"
+      "\xea"
+      "\xb5"
+      "\xad",
+      geocoder_->GetDescriptionForNumber(KO_NUMBER3, kKoreanLocale));
 }
 
 TEST_F(PhoneNumberOfflineGeocoderTest,
        TestGetDescriptionForNumberWithUserRegion) {
   // User in Italy, American number. We should just show United States, in
   // Spanish, and not more detailed information.
-  EXPECT_EQ("Estados Unidos",
-            geocoder_->GetDescriptionForNumber(US_NUMBER1, Locale("es", "ES"),
-                                               "IT"));
+  EXPECT_EQ("Estados Unidos", geocoder_->GetDescriptionForNumber(
+                                  US_NUMBER1, Locale("es", "ES"), "IT"));
   // Unknown region - should just show country name.
-  EXPECT_EQ("Estados Unidos",
-            geocoder_->GetDescriptionForNumber(US_NUMBER1, Locale("es", "ES"),
-                                               "ZZ"));
+  EXPECT_EQ("Estados Unidos", geocoder_->GetDescriptionForNumber(
+                                  US_NUMBER1, Locale("es", "ES"), "ZZ"));
   // User in the States, language German, should show detailed data.
-  EXPECT_EQ("Kalifornien",
-            geocoder_->GetDescriptionForNumber(US_NUMBER1, kGermanLocale,
-                                               "US"));
+  EXPECT_EQ("Kalifornien", geocoder_->GetDescriptionForNumber(
+                               US_NUMBER1, kGermanLocale, "US"));
   // User in the States, language French, no data for French, so we fallback to
   // English detailed data.
-  EXPECT_EQ("CA",
-            geocoder_->GetDescriptionForNumber(US_NUMBER1, kFrenchLocale,
-                                               "US"));
+  EXPECT_EQ("CA", geocoder_->GetDescriptionForNumber(US_NUMBER1, kFrenchLocale,
+                                                     "US"));
   // Invalid number - return an empty string.
-  EXPECT_EQ("",
-            geocoder_->GetDescriptionForNumber(US_INVALID_NUMBER,
-                                               kEnglishLocale,
-                                               "US"));
+  EXPECT_EQ("", geocoder_->GetDescriptionForNumber(US_INVALID_NUMBER,
+                                                   kEnglishLocale, "US"));
 }
 
 TEST_F(PhoneNumberOfflineGeocoderTest, TestGetDescriptionForInvalidNumber) {

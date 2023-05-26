@@ -23,8 +23,6 @@ namespace phonenumbers {
 
 StringByteSink::StringByteSink(string* dest) : dest_(dest) {}
 
-StringByteSink::~StringByteSink() {}
-
 void StringByteSink::Append(const char* data, int32_t n) {
   dest_->append(data, n);
 }

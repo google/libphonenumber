@@ -67,9 +67,7 @@ class PhoneNumberMatch {
   // - start is the index into the target text.
   // - match is the matched string of the target text.
   // - number is the matched phone number.
-  PhoneNumberMatch(int start,
-                   const string& raw_string,
-                   const PhoneNumber& number);
+  PhoneNumberMatch(int start, string raw_string, PhoneNumber number);
 
   // Default constructor.
   PhoneNumberMatch();

@@ -14,13 +14,14 @@
 
 // Author: Fredrik Roubert
 
-#include <cstddef>
-#include <string>
+#include "phonenumbers/regexp_cache.h"
 
 #include <gtest/gtest.h>
 
+#include <cstddef>
+#include <string>
+
 #include "phonenumbers/base/synchronization/lock.h"
-#include "phonenumbers/regexp_cache.h"
 #include "phonenumbers/regexp_factory.h"
 
 namespace i18n {
@@ -33,15 +34,15 @@ class RegExpCacheTest : public testing::Test {
   static constexpr size_t min_items_ = 2;
 
   RegExpCacheTest() : cache_(regexp_factory_, min_items_) {}
-  virtual ~RegExpCacheTest() {}
+  ~RegExpCacheTest() override = default;
 
   RegExpFactory regexp_factory_;
   RegExpCache cache_;
 };
 
 TEST_F(RegExpCacheTest, CacheConstructor) {
-  AutoLock l(cache_.lock_);  
-  ASSERT_TRUE(cache_.cache_impl_ != NULL);
+  AutoLock l(cache_.lock_);
+  ASSERT_TRUE(cache_.cache_impl_ != nullptr);
   EXPECT_TRUE(cache_.cache_impl_->empty());
 }
 

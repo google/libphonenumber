@@ -14,13 +14,14 @@
 
 // Author: Philippe Liard
 
-#include <string>
+#include "phonenumbers/logger.h"
 
 #include <gtest/gtest.h>
 
+#include <string>
+
 #include "phonenumbers/base/memory/scoped_ptr.h"
 #include "phonenumbers/default_logger.h"
-#include "phonenumbers/logger.h"
 
 namespace i18n {
 namespace phonenumbers {
@@ -29,15 +30,11 @@ namespace phonenumbers {
 // string for convenience.
 class StringLogger : public Logger {
  public:
-  virtual ~StringLogger() {}
+  ~StringLogger() override = default;
 
-  const string& message() const {
-    return msg_;
-  }
+  const string& message() const { return msg_; }
 
-  virtual void WriteMessage(const string& msg) {
-    msg_ += msg;
-  }
+  void WriteMessage(const string& msg) override { msg_ += msg; }
 
  private:
   string msg_;
@@ -45,7 +42,7 @@ class StringLogger : public Logger {
 
 class LoggerTest : public ::testing::Test {
  protected:
-  virtual void SetUp() {
+  void SetUp() override {
     test_logger_.reset(new StringLogger());
     test_logger_->set_level(LOG_INFO);
     // Save the current logger implementation and restore it when the test is
@@ -55,14 +52,14 @@ class LoggerTest : public ::testing::Test {
     Logger::set_logger_impl(test_logger_.get());
   }
 
-  virtual void TearDown() {
+  void TearDown() override {
     // Restore the previous logger implementation to avoid side-effects in other
     // tests as mentioned above.
     Logger::set_logger_impl(old_logger_);
   }
 
   scoped_ptr<StringLogger> test_logger_;
-  Logger* old_logger_;
+  Logger* old_logger_{};
 };
 
 TEST_F(LoggerTest, LoggerIgnoresHigherVerbosity) {

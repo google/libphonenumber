@@ -36,13 +36,13 @@ RegExpCache::RegExpCache(const AbstractRegExpFactory& regexp_factory,
 #else
       cache_impl_(new CacheImpl())
 #endif
-{}
+{
+}
 
 RegExpCache::~RegExpCache() {
   AutoLock l(lock_);
-  for (CacheImpl::const_iterator
-       it = cache_impl_->begin(); it != cache_impl_->end(); ++it) {
-    delete it->second;
+  for (const auto& it : *cache_impl_) {
+    delete it.second;
   }
 }
 

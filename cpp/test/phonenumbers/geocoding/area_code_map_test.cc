@@ -18,10 +18,10 @@
 
 #include "phonenumbers/geocoding/area_code_map.h"
 
+#include <gtest/gtest.h>  // NOLINT(build/include_order)
+
 #include <cstddef>
 #include <vector>
-
-#include <gtest/gtest.h>  // NOLINT(build/include_order)
 
 #include "phonenumbers/geocoding/geocoding_data.h"
 #include "phonenumbers/phonenumber.pb.h"
@@ -39,74 +39,44 @@ void MakeCodeMap(const PrefixDescriptions* descriptions,
 }
 
 const int32 prefix_1_us_prefixes[] = {
-  1212,
-  1480,
-  1650,
-  1907,
-  1201664,
-  1480893,
-  1501372,
-  1626308,
-  1650345,
-  1867993,
-  1972480,
+    1212,    1480,    1650,    1907,    1201664, 1480893,
+    1501372, 1626308, 1650345, 1867993, 1972480,
 };
 
 const char* prefix_1_us_descriptions[] = {
-  "New York",
-  "Arizona",
-  "California",
-  "Alaska",
-  "Westwood, NJ",
-  "Phoenix, AZ",
-  "Little Rock, AR",
-  "Alhambra, CA",
-  "San Mateo, CA",
-  "Dawson, YT",
-  "Richardson, TX",
+    "New York",      "Arizona",     "California",      "Alaska",
+    "Westwood, NJ",  "Phoenix, AZ", "Little Rock, AR", "Alhambra, CA",
+    "San Mateo, CA", "Dawson, YT",  "Richardson, TX",
 };
 
 const int32 prefix_1_us_lengths[] = {
-  4, 7,
+    4,
+    7,
 };
 
 const PrefixDescriptions prefix_1_us = {
-  prefix_1_us_prefixes,
-  sizeof(prefix_1_us_prefixes) / sizeof(*prefix_1_us_prefixes),
-  prefix_1_us_descriptions,
-  prefix_1_us_lengths,
-  sizeof(prefix_1_us_lengths) / sizeof(*prefix_1_us_lengths),
-};
+    prefix_1_us_prefixes, static_cast<int>(ArraySize(prefix_1_us_prefixes)),
+    prefix_1_us_descriptions, prefix_1_us_lengths,
+    static_cast<int>(ArraySize(prefix_1_us_lengths))};
 
 const int32 prefix_39_it_prefixes[] = {
-  3902,
-  3906,
-  39010,
-  390131,
-  390321,
-  390975,
+    3902, 3906, 39010, 390131, 390321, 390975,
 };
 
 const char* prefix_39_it_descriptions[] = {
-  "Milan",
-  "Rome",
-  "Genoa",
-  "Alessandria",
-  "Novara",
-  "Potenza",
+    "Milan", "Rome", "Genoa", "Alessandria", "Novara", "Potenza",
 };
 
 const int32 prefix_39_it_lengths[] = {
-  4, 5, 6,
+    4,
+    5,
+    6,
 };
 
 const PrefixDescriptions prefix_39_it = {
-  prefix_39_it_prefixes,
-  sizeof(prefix_39_it_prefixes) / sizeof(*prefix_39_it_prefixes),
-  prefix_39_it_descriptions,
-  prefix_39_it_lengths,
-  sizeof(prefix_39_it_lengths) / sizeof(*prefix_1_us_lengths),
-};
+    prefix_39_it_prefixes, static_cast<int>(ArraySize(prefix_39_it_prefixes)),
+    prefix_39_it_descriptions, prefix_39_it_lengths,
+    static_cast<int>(ArraySize(prefix_39_it_lengths))};
 
 void MakeCodeMapUS(scoped_ptr<AreaCodeMap>* code_map) {
   MakeCodeMap(&prefix_1_us, code_map);
@@ -127,7 +97,7 @@ PhoneNumber MakePhoneNumber(int32 country_code, uint64 national_number) {
 
 class AreaCodeMapTest : public testing::Test {
  protected:
-  virtual void SetUp() {
+  void SetUp() override {
     MakeCodeMapUS(&map_US_);
     MakeCodeMapIT(&map_IT_);
   }
@@ -160,15 +130,15 @@ TEST_F(AreaCodeMapTest, TestLookupNumberCA2) {
 
 TEST_F(AreaCodeMapTest, TestLookupNumberTX) {
   EXPECT_STREQ("Richardson, TX",
-            map_US_->Lookup(MakePhoneNumber(1, 9724801234LL)));
+               map_US_->Lookup(MakePhoneNumber(1, 9724801234LL)));
 }
 
 TEST_F(AreaCodeMapTest, TestLookupNumberNotFoundTX) {
-  EXPECT_STREQ(NULL, map_US_->Lookup(MakePhoneNumber(1, 9724811234LL)));
+  EXPECT_STREQ(nullptr, map_US_->Lookup(MakePhoneNumber(1, 9724811234LL)));
 }
 
 TEST_F(AreaCodeMapTest, TestLookupNumberCH) {
-  EXPECT_STREQ(NULL, map_US_->Lookup(MakePhoneNumber(41, 446681300L)));
+  EXPECT_STREQ(nullptr, map_US_->Lookup(MakePhoneNumber(41, 446681300L)));
 }
 
 TEST_F(AreaCodeMapTest, TestLookupNumberIT) {
@@ -185,7 +155,7 @@ TEST_F(AreaCodeMapTest, TestLookupNumberIT) {
   // A mobile number
   number.set_national_number(321123456L);
   number.set_italian_leading_zero(false);
-  EXPECT_STREQ(NULL, map_IT_->Lookup(number));
+  EXPECT_STREQ(nullptr, map_IT_->Lookup(number));
 
   // An invalid number (too short)
   number.set_national_number(321123L);

@@ -35,11 +35,11 @@ class RegExpCache;
 class RegexBasedMatcher : public MatcherApi {
  public:
   RegexBasedMatcher();
-  ~RegexBasedMatcher();
+  ~RegexBasedMatcher() override;
 
   bool MatchNationalNumber(const string& number,
                            const PhoneNumberDesc& number_desc,
-                           bool allow_prefix_match) const;
+                           bool allow_prefix_match) const override;
 
  private:
   bool Match(const string& number, const string& number_pattern,

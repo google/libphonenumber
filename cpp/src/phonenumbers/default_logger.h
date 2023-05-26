@@ -17,10 +17,10 @@
 #ifndef I18N_PHONENUMBERS_DEFAULT_LOGGER_H_
 #define I18N_PHONENUMBERS_DEFAULT_LOGGER_H_
 
-#include "phonenumbers/logger.h"
-
 #include <sstream>
 #include <string>
+
+#include "phonenumbers/logger.h"
 
 namespace i18n {
 namespace phonenumbers {
@@ -35,9 +35,7 @@ struct ConvertToString;
 
 template <typename T>
 struct ConvertToString {
-  static inline string DoWork(const T& s) {
-    return string(s);
-  }
+  static inline string DoWork(const T& s) { return string(s); }
 };
 
 template <>
@@ -70,16 +68,16 @@ class LoggerHandler {
   }
 
  private:
-  Logger* const impl_;
+  Logger* const impl_{};
 };
 
 inline LoggerHandler LOG(int n) {
   Logger* const logger_impl = Logger::mutable_logger_impl();
   if (logger_impl->level() < n) {
-    return LoggerHandler(NULL);
+    return nullptr;
   }
   logger_impl->WriteLevel();
-  return LoggerHandler(logger_impl);
+  return logger_impl;
 }
 
 inline LoggerHandler VLOG(int n) {
@@ -92,7 +90,7 @@ inline LoggerHandler VLOG(int n) {
 // messages to the standard output.
 class StdoutLogger : public Logger {
  public:
-  virtual ~StdoutLogger() {}
+  virtual ~StdoutLogger() = default;
 
   virtual void WriteLevel();
   virtual void WriteMessage(const string& msg);

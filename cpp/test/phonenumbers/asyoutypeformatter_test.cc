@@ -63,17 +63,19 @@ TEST_F(AsYouTypeFormatterTest, ConvertUnicodeStringPosition) {
   EXPECT_EQ(-1, ConvertUnicodeStringPosition(UnicodeString("12345"), 10));
   EXPECT_EQ(3, ConvertUnicodeStringPosition(UnicodeString("12345"), 3));
   EXPECT_EQ(0, ConvertUnicodeStringPosition(
-      UnicodeString("\xEF\xBC\x95" /* "５" */), 0));
-  EXPECT_EQ(4, ConvertUnicodeStringPosition(
-      UnicodeString("0\xEF\xBC\x95""3" /* "0５3" */), 2));
-  EXPECT_EQ(5, ConvertUnicodeStringPosition(
-      UnicodeString("0\xEF\xBC\x95""3" /* "0５3" */), 3));
+                   UnicodeString("\xEF\xBC\x95" /* "５" */), 0));
+  EXPECT_EQ(4, ConvertUnicodeStringPosition(UnicodeString("0\xEF\xBC\x95"
+                                                          "3" /* "0５3" */),
+                                            2));
+  EXPECT_EQ(5, ConvertUnicodeStringPosition(UnicodeString("0\xEF\xBC\x95"
+                                                          "3" /* "0５3" */),
+                                            3));
 }
 
 TEST_F(AsYouTypeFormatterTest, Constructor) {
   formatter_.reset(phone_util_.GetAsYouTypeFormatter(RegionCode::US()));
 
-  EXPECT_TRUE(GetCurrentMetadata() != NULL);
+  EXPECT_TRUE(GetCurrentMetadata() != nullptr);
 }
 
 TEST_F(AsYouTypeFormatterTest, InvalidPlusSign) {
@@ -254,9 +256,8 @@ TEST_F(AsYouTypeFormatterTest, AYTF_USFullWidthCharacters) {
   EXPECT_EQ("\xEF\xBC\x96\xEF\xBC\x95" /* "６５" */,
             formatter_->InputDigit(UnicodeString("\xEF\xBC\x95" /* "５" */)[0],
                                    &result_));
-  EXPECT_EQ("650",
-            formatter_->InputDigit(UnicodeString("\xEF\xBC\x90" /* "０" */)[0],
-                                   &result_));
+  EXPECT_EQ("650", formatter_->InputDigit(
+                       UnicodeString("\xEF\xBC\x90" /* "０" */)[0], &result_));
   EXPECT_EQ("650 2",
             formatter_->InputDigit(UnicodeString("\xEF\xBC\x92" /* "２" */)[0],
                                    &result_));
@@ -328,8 +329,8 @@ TEST_F(AsYouTypeFormatterTest, AYTFAndRememberPositionUS) {
   EXPECT_EQ("1 650 253 2", formatter_->InputDigit('2', &result_));
   EXPECT_EQ("1 650 253 22", formatter_->InputDigit('2', &result_));
   EXPECT_EQ(5, formatter_->GetRememberedPosition());
-  EXPECT_EQ("1 650 253 222", formatter_->InputDigitAndRememberPosition('2',
-        &result_));
+  EXPECT_EQ("1 650 253 222",
+            formatter_->InputDigitAndRememberPosition('2', &result_));
   EXPECT_EQ(13, formatter_->GetRememberedPosition());
   EXPECT_EQ("1 650 253 2222", formatter_->InputDigit('2', &result_));
   EXPECT_EQ(13, formatter_->GetRememberedPosition());
@@ -698,7 +699,7 @@ TEST_F(AsYouTypeFormatterTest, AYTF_MX) {
   EXPECT_EQ("+52 800 123 45", formatter_->InputDigit('5', &result_));
   EXPECT_EQ("+52 800 123 456", formatter_->InputDigit('6', &result_));
   EXPECT_EQ("+52 800 123 4567", formatter_->InputDigit('7', &result_));
-  
+
   // +529011234567, proactively ensuring that no formatting is applied,
   // where a format is chosen that would otherwise have led to some digits
   // being dropped.

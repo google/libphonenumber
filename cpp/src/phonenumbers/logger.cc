@@ -21,7 +21,7 @@
 namespace i18n {
 namespace phonenumbers {
 
-Logger* Logger::impl_ = NULL;
+Logger* Logger::impl_ = nullptr;
 
 }  // namespace phonenumbers
 }  // namespace i18n

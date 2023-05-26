@@ -38,7 +38,7 @@ using std::string;
 // implementations (StringPiece for RE2, UnicodeString for ICU Regex).
 class RegExpInput {
  public:
-  virtual ~RegExpInput() {}
+  virtual ~RegExpInput() = default;
 
   // Converts to a C++ string.
   virtual string ToString() const = 0;
@@ -49,7 +49,7 @@ class RegExpInput {
 // implemented.
 class RegExp {
  public:
-  virtual ~RegExp() {}
+  virtual ~RegExp() = default;
 
   // Matches string to regular expression, returns true if expression was
   // matched, false otherwise, advances position in the match.
@@ -58,22 +58,17 @@ class RegExp {
   // the beginning of the tested region of the string.
   // matched_string1..6 - string extracted from the match in sequential order.
   // Can be NULL.
-  virtual bool Consume(RegExpInput* input_string,
-                       bool anchor_at_start,
-                       string* matched_string1,
-                       string* matched_string2,
-                       string* matched_string3,
-                       string* matched_string4,
+  virtual bool Consume(RegExpInput* input_string, bool anchor_at_start,
+                       string* matched_string1, string* matched_string2,
+                       string* matched_string3, string* matched_string4,
                        string* matched_string5,
                        string* matched_string6) const = 0;
-                       
+
   // Helper methods calling the Consume method that assume the match must start
   // at the beginning.
   inline bool Consume(RegExpInput* input_string, string* matched_string1,
-                      string* matched_string2,
-                      string* matched_string3,
-                      string* matched_string4,
-                      string* matched_string5,
+                      string* matched_string2, string* matched_string3,
+                      string* matched_string4, string* matched_string5,
                       string* matched_string6) const {
     return Consume(input_string, true, matched_string1, matched_string2,
                    matched_string3, matched_string4, matched_string5,
@@ -81,55 +76,49 @@ class RegExp {
   }
 
   inline bool Consume(RegExpInput* input_string, string* matched_string1,
-                      string* matched_string2,
-                      string* matched_string3,
-                      string* matched_string4,
-                      string* matched_string5) const {
+                      string* matched_string2, string* matched_string3,
+                      string* matched_string4, string* matched_string5) const {
     return Consume(input_string, true, matched_string1, matched_string2,
-                   matched_string3, matched_string4, matched_string5, NULL);
+                   matched_string3, matched_string4, matched_string5, nullptr);
   }
 
   inline bool Consume(RegExpInput* input_string, string* matched_string1,
-                      string* matched_string2,
-                      string* matched_string3,
+                      string* matched_string2, string* matched_string3,
                       string* matched_string4) const {
     return Consume(input_string, true, matched_string1, matched_string2,
-                   matched_string3, matched_string4, NULL, NULL);
+                   matched_string3, matched_string4, nullptr, nullptr);
   }
-
 
   // Helper methods calling the Consume method that assume the match must start
   // at the beginning.
-  inline bool Consume(RegExpInput* input_string,
-                      string* matched_string1,
-                      string* matched_string2,
-                      string* matched_string3) const {
+  inline bool Consume(RegExpInput* input_string, string* matched_string1,
+                      string* matched_string2, string* matched_string3) const {
     return Consume(input_string, true, matched_string1, matched_string2,
-                   matched_string3, NULL, NULL, NULL);
+                   matched_string3, nullptr, nullptr, nullptr);
   }
 
-  inline bool Consume(RegExpInput* input_string,
-                      string* matched_string1,
+  inline bool Consume(RegExpInput* input_string, string* matched_string1,
                       string* matched_string2) const {
-    return Consume(input_string, true, matched_string1, matched_string2, NULL,
-    		   NULL, NULL, NULL);
+    return Consume(input_string, true, matched_string1, matched_string2,
+                   nullptr, nullptr, nullptr, nullptr);
   }
 
   inline bool Consume(RegExpInput* input_string, string* matched_string) const {
-    return Consume(input_string, true, matched_string, NULL, NULL, NULL, NULL,
-    	   	   NULL);
+    return Consume(input_string, true, matched_string, nullptr, nullptr,
+                   nullptr, nullptr, nullptr);
   }
 
   inline bool Consume(RegExpInput* input_string) const {
-    return Consume(input_string, true, NULL, NULL, NULL, NULL, NULL, NULL);
+    return Consume(input_string, true, nullptr, nullptr, nullptr, nullptr,
+                   nullptr, nullptr);
   }
 
   // Helper method calling the Consume method that assumes the match can start
   // at any place in the string.
   inline bool FindAndConsume(RegExpInput* input_string,
                              string* matched_string) const {
-    return Consume(input_string, false, matched_string, NULL, NULL, NULL, NULL,
-    	           NULL);
+    return Consume(input_string, false, matched_string, nullptr, nullptr,
+                   nullptr, nullptr, nullptr);
   }
 
   // Matches string to regular expression, returns true if the expression was
@@ -138,8 +127,7 @@ class RegExp {
   // full_match - if true, match would be successful only if it matches the
   // complete string.
   // matched_string - the string extracted from the match. Can be NULL.
-  virtual bool Match(const string& input_string,
-                     bool full_match,
+  virtual bool Match(const string& input_string, bool full_match,
                      string* matched_string) const = 0;
 
   // Helper methods calling the Match method with the right arguments.
@@ -149,7 +137,7 @@ class RegExp {
   }
 
   inline bool PartialMatch(const string& input_string) const {
-    return Match(input_string, false, NULL);
+    return Match(input_string, false, nullptr);
   }
 
   inline bool FullMatch(const string& input_string,
@@ -158,7 +146,7 @@ class RegExp {
   }
 
   inline bool FullMatch(const string& input_string) const {
-    return Match(input_string, true, NULL);
+    return Match(input_string, true, nullptr);
   }
 
   // Replaces match(es) in 'string_to_process'. If 'global' is true,
@@ -167,8 +155,7 @@ class RegExp {
   // replacement string are referenced with the $[0-9] notation.
   // Returns true if the pattern matches and a replacement occurs, false
   // otherwise.
-  virtual bool Replace(string* string_to_process,
-                       bool global,
+  virtual bool Replace(string* string_to_process, bool global,
                        const string& replacement_string) const = 0;
 
   // Helper methods calling the Replace method with the right arguments.
@@ -187,7 +174,7 @@ class RegExp {
 // implementing RegExp and RegExpInput.
 class AbstractRegExpFactory {
  public:
-  virtual ~AbstractRegExpFactory() {}
+  virtual ~AbstractRegExpFactory() = default;
 
   // Creates a new instance of RegExpInput. The deletion of the returned
   // instance is under the responsibility of the caller.

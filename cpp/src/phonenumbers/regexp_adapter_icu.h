@@ -29,10 +29,10 @@ namespace phonenumbers {
 // engine.
 class ICURegExpFactory : public AbstractRegExpFactory {
  public:
-  virtual ~ICURegExpFactory() {}
+  ~ICURegExpFactory() override = default;
 
-  virtual RegExpInput* CreateInput(const string& utf8_input) const;
-  virtual RegExp* CreateRegExp(const string& utf8_regexp) const;
+  RegExpInput* CreateInput(const string& utf8_input) const override;
+  RegExp* CreateRegExp(const string& utf8_regexp) const override;
 };
 
 }  // namespace phonenumbers

@@ -28,10 +28,10 @@ namespace phonenumbers {
 // implementation of RegExp and RegExpInput classes based on RE2.
 class RE2RegExpFactory : public AbstractRegExpFactory {
  public:
-  virtual ~RE2RegExpFactory() {}
+  ~RE2RegExpFactory() override = default;
 
-  virtual RegExpInput* CreateInput(const string& utf8_input) const;
-  virtual RegExp* CreateRegExp(const string& utf8_regexp) const;
+  RegExpInput* CreateInput(const string& utf8_input) const override;
+  RegExp* CreateRegExp(const string& utf8_regexp) const override;
 };
 
 }  // namespace phonenumbers
