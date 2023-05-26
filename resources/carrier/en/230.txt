@@ -23,6 +23,7 @@
 2305471|Cellplus
 23055|Emtel
 230550|Cellplus
+230552|MTML
 23057|Cellplus
 230571|Emtel
 230572|Emtel
@@ -53,5 +54,7 @@
 230598|Emtel
 230700|Cellplus
 230701|Emtel
+230702|MTML
 230730|Emtel
+230731|MTML
 230733|Cellplus
