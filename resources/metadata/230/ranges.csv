@@ -18,7 +18,8 @@ Prefix     ; Length ; Type                 ; Tariff        ; Operator   ; Format
 5471       ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "cellplus" ; "fmt2_4/4" ; "MU"    ;                  ;                  ;                   ; GOVERNMENT
 547[2-9]   ; 8      ; MOBILE               ; STANDARD_RATE ; "emtel"    ; "fmt2_4/4" ; "MU"    ;                  ;                  ;                   ; GOVERNMENT
 550        ; 8      ; MOBILE               ; STANDARD_RATE ; "cellplus" ; "fmt2_4/4" ; "MU"    ;                  ;                  ;                   ; GOVERNMENT
-55[1-9]    ; 8      ; MOBILE               ; STANDARD_RATE ; "emtel"    ; "fmt2_4/4" ; "MU"    ;                  ;                  ;                   ; IR21
+55[13-9]   ; 8      ; MOBILE               ; STANDARD_RATE ; "emtel"    ; "fmt2_4/4" ; "MU"    ;                  ;                  ;                   ; IR21
+552        ; 8      ; MOBILE               ; STANDARD_RATE ; "mtml"     ; "fmt2_4/4" ; "MU"    ;                  ;                  ;                   ; ITU
 57[05-9]   ; 8      ; MOBILE               ; STANDARD_RATE ; "cellplus" ; "fmt2_4/4" ; "MU"    ;                  ;                  ;                   ; GOVERNMENT
 57[1-4]    ; 8      ; MOBILE               ; STANDARD_RATE ; "emtel"    ; "fmt2_4/4" ; "MU"    ;                  ;                  ;                   ; GOVERNMENT
 58[0-3]    ; 8      ; MOBILE               ; STANDARD_RATE ; "cellplus" ; "fmt2_4/4" ; "MU"    ;                  ;                  ;                   ; GOVERNMENT
@@ -32,7 +33,9 @@ Prefix     ; Length ; Type                 ; Tariff        ; Operator   ; Format
 6          ; 7      ; FIXED_LINE           ; STANDARD_RATE ;            ; "fmt1_3/4" ; "MU"    ; "South Region"   ; "Región Sur"     ; "Région Sud"
 700        ; 8      ; MOBILE               ; STANDARD_RATE ; "cellplus" ; "fmt2_4/4" ; "MU"    ;                  ;                  ;                   ; ITU
 701        ; 8      ; MOBILE               ; STANDARD_RATE ; "emtel"    ; "fmt2_4/4" ; "MU"    ;                  ;                  ;                   ; IR21
+702        ; 8      ; MOBILE               ; STANDARD_RATE ; "mtml"     ; "fmt2_4/4" ; "MU"    ;                  ;                  ;                   ; ITU
 730        ; 8      ; MOBILE               ; STANDARD_RATE ; "emtel"    ; "fmt2_4/4" ; "MU"    ;                  ;                  ;                   ; IR21
+731        ; 8      ; MOBILE               ; STANDARD_RATE ; "mtml"     ; "fmt2_4/4" ; "MU"    ;                  ;                  ;                   ; ITU
 733        ; 8      ; MOBILE               ; STANDARD_RATE ; "cellplus" ; "fmt2_4/4" ; "MU"    ;                  ;                  ;                   ; ITU
 80[0-2]    ; 7      ; FIXED_LINE           ; TOLL_FREE     ;            ; "fmt1_3/4" ; "MU"
 802        ; 10     ; FIXED_LINE           ; TOLL_FREE     ;            ; "fmt3_5/5" ; "MU"    ;                  ;                  ;                   ; INTERNAL
