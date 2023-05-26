@@ -3502,7 +3502,7 @@
               2|
               3\d
             )\d{2,3}|
-            5[0568]|
+            5\d|
             99
           )|
           1(?:
@@ -3526,7 +3526,7 @@
                 )
               )
             )|
-            5[0568]
+            5\d
           )
         </nationalNumberPattern>
       </tollFree>
@@ -3536,7 +3536,7 @@
         <nationalNumberPattern>
           1(?:
             12|
-            5[0568]
+            5\d
           )
         </nationalNumberPattern>
       </emergency>
