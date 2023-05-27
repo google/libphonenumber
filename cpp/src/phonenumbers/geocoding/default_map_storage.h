@@ -59,13 +59,13 @@ class DefaultMapStorage {
 
  private:
   // Sorted sequence of phone number prefixes.
-  const int32* prefixes_;
-  int prefixes_size_;
+  const int32* prefixes_{};
+  int prefixes_size_{};
   // Sequence of prefix descriptions, in the same order than prefixes_.
-  const char** descriptions_;
+  const char** descriptions_{};
   // Sequence of unique possible lengths in ascending order.
-  const int32* possible_lengths_;
-  int possible_lengths_size_;
+  const int32* possible_lengths_{};
+  int possible_lengths_size_{};
 
   DISALLOW_COPY_AND_ASSIGN(DefaultMapStorage);
 };
