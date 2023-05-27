@@ -17,12 +17,12 @@
 #ifndef I18N_PHONENUMBERS_GEOCODING_PHONENUMBER_OFFLINE_GEOCODER_H_
 #define I18N_PHONENUMBERS_GEOCODING_PHONENUMBER_OFFLINE_GEOCODER_H_
 
+#include <unicode/locid.h>  // NOLINT(build/include_order)
+
 #include <map>
 #include <string>
 
-#include <unicode/locid.h>  // NOLINT(build/include_order)
 #include "absl/synchronization/mutex.h"
-
 #include "phonenumbers/base/basictypes.h"
 #include "phonenumbers/base/memory/scoped_ptr.h"
 
@@ -54,8 +54,7 @@ class PhoneNumberOfflineGeocoder {
 
   // For tests
   PhoneNumberOfflineGeocoder(
-      const int* country_calling_codes,
-      int country_calling_codes_size,
+      const int* country_calling_codes, int country_calling_codes_size,
       country_languages_getter get_country_languages,
       const char** prefix_language_code_pairs,
       int prefix_language_code_pairs_size,
@@ -96,7 +95,8 @@ class PhoneNumberOfflineGeocoder {
   // omitted from the description if the phone number comes from this region. It
   // should be a two-letter uppercase CLDR region code.
   string GetDescriptionForValidNumber(const PhoneNumber& number,
-      const Locale& language, const string& user_region) const;
+                                      const Locale& language,
+                                      const string& user_region) const;
 
   // As per GetDescriptionForValidNumber(PhoneNumber, Locale) but explicitly
   // checks the validity of the number passed in.
@@ -106,22 +106,24 @@ class PhoneNumberOfflineGeocoder {
   // As per GetDescriptionForValidNumber(PhoneNumber, Locale, String) but
   // explicitly checks the validity of the number passed in.
   string GetDescriptionForNumber(const PhoneNumber& number,
-      const Locale& language, const string& user_region) const;
+                                 const Locale& language,
+                                 const string& user_region) const;
 
  private:
-  void Init(const int* country_calling_codes,
-            int country_calling_codes_size,
+  void Init(const int* country_calling_codes, int country_calling_codes_size,
             country_languages_getter get_country_languages,
             const char** prefix_language_code_pairs,
             int prefix_language_code_pairs_size,
             prefix_descriptions_getter get_prefix_descriptions);
 
-  const AreaCodeMap* LoadAreaCodeMapFromFile(
-      const string& filename) const ABSL_EXCLUSIVE_LOCKS_REQUIRED(mu_);
+  const AreaCodeMap* LoadAreaCodeMapFromFile(const string& filename) const
+      ABSL_EXCLUSIVE_LOCKS_REQUIRED(mu_);
 
-  const AreaCodeMap* GetPhonePrefixDescriptions(
-      int prefix, const string& language, const string& script,
-      const string& region) const ABSL_EXCLUSIVE_LOCKS_REQUIRED(mu_);
+  const AreaCodeMap* GetPhonePrefixDescriptions(int prefix,
+                                                const string& language,
+                                                const string& script,
+                                                const string& region) const
+      ABSL_EXCLUSIVE_LOCKS_REQUIRED(mu_);
 
   // Returns the customary display name in the given language for the given
   // region.
@@ -145,20 +147,21 @@ class PhoneNumberOfflineGeocoder {
   // 3166-1.
   const char* GetAreaDescription(const PhoneNumber& number, const string& lang,
                                  const string& script,
-                                 const string& region) const ABSL_LOCKS_EXCLUDED(mu_);
+                                 const string& region) const
+      ABSL_LOCKS_EXCLUDED(mu_);
 
   bool MayFallBackToEnglish(const string& lang) const;
 
  private:
-  const PhoneNumberUtil* phone_util_;
+  const PhoneNumberUtil* phone_util_{};
   // The MappingFileProvider knows for which combination of country calling code
   // and language a phone prefix mapping file is available in the file system,
   // so that a file can be loaded when needed.
   scoped_ptr<const MappingFileProvider> provider_;
 
-  const char** prefix_language_code_pairs_;
-  int prefix_language_code_pairs_size_;
-  prefix_descriptions_getter get_prefix_descriptions_;
+  const char** prefix_language_code_pairs_{};
+  int prefix_language_code_pairs_size_{};
+  prefix_descriptions_getter get_prefix_descriptions_{};
 
   // A mapping from country calling codes languages pairs to the corresponding
   // phone prefix map that has been loaded.
