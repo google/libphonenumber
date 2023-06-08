@@ -11298,7 +11298,10 @@
         <possibleLengths national="[3-5]"/>
         <exampleNumber>100</exampleNumber>
         <nationalNumberPattern>
-          999|
+          9(?:
+            00|
+            [19]\d
+          )|
           (?:
             1|
             20|
@@ -11308,14 +11311,24 @@
       </shortCode>
       <tollFree>
         <possibleLengths national="3"/>
-        <exampleNumber>999</exampleNumber>
-        <nationalNumberPattern>999</nationalNumberPattern>
+        <exampleNumber>990</exampleNumber>
+        <nationalNumberPattern>99\d</nationalNumberPattern>
       </tollFree>
+      <premiumRate>
+        <possibleLengths national="3"/>
+        <exampleNumber>900</exampleNumber>
+        <nationalNumberPattern>900</nationalNumberPattern>
+      </premiumRate>
       <emergency>
         <possibleLengths national="3"/>
         <exampleNumber>999</exampleNumber>
         <nationalNumberPattern>999</nationalNumberPattern>
       </emergency>
+      <expandedEmergency>
+        <possibleLengths national="3"/>
+        <exampleNumber>990</exampleNumber>
+        <nationalNumberPattern>99[0-8]</nationalNumberPattern>
+      </expandedEmergency>
     </territory>
 
     <!-- Réunion (RE) -->

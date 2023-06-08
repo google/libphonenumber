@@ -1,3 +1,12 @@
+Jun 08, 2023: v8.13.14
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   BD, EE, ET, IR, MM, MN, NZ, OM, QA
+ - Updated short number metadata for region code(s): QA
+ - Updated geocoding data for country calling code(s): 95 (en)
+ - Updated carrier data for country calling code(s):
+   33 (en), 51 (en), 98 (en, fa), 372 (en)
+
 May 26, 2023: v8.13.13
 Metadata changes:
  - Updated phone metadata for region code(s):
