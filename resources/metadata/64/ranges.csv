@@ -16,6 +16,7 @@ Prefix        ; Length ; Type            ; Tariff        ; Area Code Length ; Op
 266           ; 8,9    ; PAGER           ; STANDARD_RATE ;                  ;                          ; "mobile_2/3/3-5" ; "Pacific/Auckland" ; "NZ"    ;                                                          ; IR21
 27[0-35-9]    ; 9,10   ; MOBILE          ; STANDARD_RATE ;                  ; "spark"                  ; "mobile_2/3/3-5" ; "Pacific/Auckland" ; "NZ"
 274           ; 9,10   ; MOBILE          ; STANDARD_RATE ;                  ; "spark"                  ; "fmt_3/3/3-4"    ; "Pacific/Auckland" ; "NZ"
+275           ; 8      ; MOBILE          ; STANDARD_RATE ;                  ;                          ; "mobile_2/3/3-5" ; "Pacific/Auckland" ; "NZ"
 280           ; 9,10   ; MOBILE          ; STANDARD_RATE ;                  ; "vodafone"               ; "mobile_2/3-4/4" ; "Pacific/Auckland" ; "NZ"
 281           ; 9,10   ; MOBILE          ; STANDARD_RATE ;                  ; "sure"                   ; "mobile_2/3-4/4" ; "Pacific/Auckland" ; "NZ"
 2820          ; 9,10   ; MOBILE          ; STANDARD_RATE ;                  ; "voxbone"                ; "mobile_2/3-4/4" ; "Pacific/Auckland" ; "NZ"
