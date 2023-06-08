@@ -3203,9 +3203,9 @@
               9
             )|
             6(?:
+              [15]|
               28|
-              4[14]|
-              5
+              4[14]
             )|
             7[2-589]|
             8(?:
@@ -9174,7 +9174,7 @@
                     3[5-9]
                   )\d|
                   7(?:
-                    [3679]\d|
+                    [0-3679]\d|
                     8[13-9]
                   )|
                   8(?:
@@ -9672,7 +9672,7 @@
         <possibleLengths national="9"/>
         <exampleNumber>911234567</exampleNumber>
         <nationalNumberPattern>
-          7001\d{5}|
+          700[1-9]\d{5}|
           (?:
             7(?:
               0[1-9]|
@@ -14894,13 +14894,14 @@
               [0-46]\d\d|
               5[15]0|
               8(?:
-                1\d|
+                [12]\d|
                 88
               )|
               9(?:
                 0[0-3]|
                 [19]\d|
                 21|
+                69|
                 77|
                 8[7-9]
               )
@@ -20064,7 +20065,6 @@
               )\d|
               4(?:
                 2[29]|
-                39|
                 62|
                 7[0-2]|
                 83
@@ -20079,7 +20079,6 @@
               4(?:
                 0\d|
                 [26]2|
-                39|
                 7[0-2]|
                 83
               )|
@@ -20124,10 +20123,7 @@
                   3\d|
                   8[01459]
                 )\d|
-                4(?:
-                  39|
-                  [67]0
-                )
+                4[67]0
               )
             )
           )\d{4}|
@@ -20432,7 +20428,7 @@
         <nationalNumberPattern>
           (?:
             83[01]|
-            920
+            92[039]
           )\d{5}|
           (?:
             5[05]|
@@ -22940,7 +22936,10 @@
         <exampleNumber>211234567</exampleNumber>
         <nationalNumberPattern>
           2[0-27-9]\d{7,8}|
-          21\d{6}
+          2(?:
+            1\d|
+            75
+          )\d{5}
         </nationalNumberPattern>
       </mobile>
       <pager>
@@ -23031,7 +23030,7 @@
       <fixedLine>
         <possibleLengths national="8"/>
         <exampleNumber>23123456</exampleNumber>
-        <nationalNumberPattern>2[2-6]\d{6}</nationalNumberPattern>
+        <nationalNumberPattern>2[1-6]\d{6}</nationalNumberPattern>
       </fixedLine>
       <mobile>
         <possibleLengths national="8"/>
@@ -24811,12 +24810,7 @@
       <pager>
         <possibleLengths national="7"/>
         <exampleNumber>2123456</exampleNumber>
-        <nationalNumberPattern>
-          2(?:
-            1\d|
-            61
-          )\d{4}
-        </nationalNumberPattern>
+        <nationalNumberPattern>2[16]\d{5}</nationalNumberPattern>
       </pager>
       <!-- Prefix 800 with 9 digit length is added based on user report. -->
       <tollFree>
