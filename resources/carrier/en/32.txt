@@ -26,6 +26,7 @@
 32460|Proximus
 324618|N.M.B.S.
 324630|Lancelot Telecom
+324631|Lancelot Telecom
 32465|Lycamobile
 324650|Telenet
 324660|Lycamobile
