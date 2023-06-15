@@ -418,6 +418,6 @@ Prefix            ; Length ; Type       ; Tariff        ; Area Code Length ; Ope
 83[01]            ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "g_mobile" ; "fmt1_4/4"         ; "Asia/Ulaanbaatar"                 ; "MN"    ;                                   ; ITU
 85                ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "mobicom"  ; "fmt1_4/4"         ; "Asia/Ulaanbaatar"                 ; "MN"    ;                                   ; IR21
 9[016]            ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "skytel"   ; "fmt1_4/4"         ; "Asia/Ulaanbaatar"                 ; "MN"    ;                                   ; IR21
-920               ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "skytel"   ; "fmt1_4/4"         ; "Asia/Ulaanbaatar"                 ; "MN"    ;                                   ; IR21
+92[039]           ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "skytel"   ; "fmt1_4/4"         ; "Asia/Ulaanbaatar"                 ; "MN"    ;                                   ; IR21
 9[378]            ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "g_mobile" ; "fmt1_4/4"         ; "Asia/Ulaanbaatar"                 ; "MN"    ;                                   ; IR21
 9[459]            ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "mobicom"  ; "fmt1_4/4"         ; "Asia/Ulaanbaatar"                 ; "MN"    ;                                   ; IR21
