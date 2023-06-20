@@ -74,6 +74,7 @@ Prefix        ; Length ; Type       ; Tariff        ; Operator                  
 703[0457]     ; 8      ; FIXED_LINE ; PREMIUM_RATE  ;                                  ; "fmt3_2/2/2/2" ; "BE"
 7036          ; 8      ; FIXED_LINE ; PREMIUM_RATE  ;                                  ; "fmt3_2/2/2/2" ; "BE"    ;                      ;                      ;                      ;                      ; GOVERNMENT
 7044          ; 8      ; FIXED_LINE ; PREMIUM_RATE  ;                                  ; "fmt3_2/2/2/2" ; "BE"
+7064          ; 8      ; FIXED_LINE ; PREMIUM_RATE  ;                                  ; "fmt3_2/2/2/2" ; "BE"    ;                      ;                      ;                      ;                      ; GOVERNMENT
 706[569]      ; 8      ; FIXED_LINE ; PREMIUM_RATE  ;                                  ; "fmt3_2/2/2/2" ; "BE"
 707[0579]     ; 8      ; FIXED_LINE ; PREMIUM_RATE  ;                                  ; "fmt3_2/2/2/2" ; "BE"
 71            ; 8      ; FIXED_LINE ; STANDARD_RATE ;                                  ; "fmt3_2/2/2/2" ; "BE"    ; "Charleroi"          ; "Charleroi"          ; "Charleroi"          ; "Charleroi"
