@@ -408,9 +408,11 @@ Prefix            ; Length ; Type       ; Tariff        ; Area Code Length ; Ope
 6[06]             ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "ondo"     ; "fmt1_4/4"         ; "Asia/Ulaanbaatar"                 ; "MN"
 69                ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "skytel"   ; "fmt1_4/4"         ; "Asia/Ulaanbaatar"                 ; "MN"    ;                                   ; ITU
 70[0-5]           ; 8      ; FIXED_LINE ; STANDARD_RATE ; 4                ;            ; "fmt1_4/4"         ; "Asia/Ulaanbaatar"                 ; "MN"    ;                                   ; ITU
+707[078]          ; 8      ; FIXED_LINE ; STANDARD_RATE ; 4                ;            ; "fmt1_4/4"         ; "Asia/Ulaanbaatar"                 ; "MN"    ;                                   ; GOVERNMENT
+7080              ; 8      ; FIXED_LINE ; STANDARD_RATE ; 4                ;            ; "fmt1_4/4"         ; "Asia/Ulaanbaatar"                 ; "MN"    ;                                   ; GOVERNMENT
 71[013-9]         ; 8      ; VOIP       ; STANDARD_RATE ;                  ;            ; "fmt1_4/4"         ; "Asia/Ulaanbaatar"                 ; "MN"
 712[0-79]         ; 8      ; VOIP       ; STANDARD_RATE ;                  ;            ; "fmt1_4/4"         ; "Asia/Ulaanbaatar"                 ; "MN"
-7128              ; 8      ; FIXED_LINE ; STANDARD_RATE ;                  ;            ; "fmt1_4/4"         ; "Asia/Ulaanbaatar"                 ; "MN"    ;                                   ; ITU
+7128              ; 8      ; FIXED_LINE ; STANDARD_RATE ; 4                ;            ; "fmt1_4/4"         ; "Asia/Ulaanbaatar"                 ; "MN"    ;                                   ; ITU
 72                ; 8      ; VOIP       ; STANDARD_RATE ;                  ;            ; "fmt1_4/4"         ; "Asia/Ulaanbaatar"                 ; "MN"
 7[5-9]            ; 8      ; VOIP       ; STANDARD_RATE ;                  ;            ; "fmt1_4/4"         ; "Asia/Ulaanbaatar"                 ; "MN"    ;                                   ; ITU
 8[0689]           ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "unitel"   ; "fmt1_4/4"         ; "Asia/Ulaanbaatar"                 ; "MN"    ;                                   ; IR21
