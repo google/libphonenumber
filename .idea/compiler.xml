@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="java-build" />
+        <module name="carrier" />
+        <module name="prefixmapper" />
+        <module name="common-build" />
+        <module name="data-tools" />
+        <module name="geocoder" />
+        <module name="libphonenumber" />
+        <module name="demo" />
+        <module name="cpp-build" />
+      </profile>
+    </annotationProcessing>
+  </component>
+</project>

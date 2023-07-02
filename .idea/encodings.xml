@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/java/carrier/src" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/java/carrier/src/com/google/i18n/phonenumbers/carrier/data" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/java/demo/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/java/demo/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/java/geocoder/src" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/java/geocoder/src/com/google/i18n/phonenumbers/geocoding/data" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/java/geocoder/src/com/google/i18n/phonenumbers/timezones/data" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/java/internal/prefixmapper/src" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/java/internal/prefixmapper/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/java/libphonenumber/src" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/java/libphonenumber/src/com/google/i18n/phonenumbers/data" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/java/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/java/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/tools/java/common/src" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/tools/java/common/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/tools/java/cpp-build/src" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/tools/java/cpp-build/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/tools/java/data/src" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/tools/java/data/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/tools/java/java-build/src" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/tools/java/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/tools/java/src/main/resources" charset="UTF-8" />
+  </component>
+</project>
