@@ -92,6 +92,12 @@ public class PhoneNumberUtil {
   // a possibly geographically-related type anyway (like FIXED_LINE).
   private static final Set<Integer> GEO_MOBILE_COUNTRIES;
 
+
+  // Map of country calling codes that use a mobile token before the area code. One example of when
+  // this is relevant is when determining the length of the national destination code, which should
+  // be the length of the area code plus the length of the mobile token.
+  private static final Map<String, PhoneMetadata> PHONE_METADATA_MAP;
+
   // The PLUS_SIGN signifies the international prefix.
   static final char PLUS_SIGN = '+';
 
@@ -215,6 +221,9 @@ public class PhoneNumberUtil {
     allPlusNumberGroupings.put('.', '.');
     allPlusNumberGroupings.put('\uFF0E', '.');
     ALL_PLUS_NUMBER_GROUPING_SYMBOLS = Collections.unmodifiableMap(allPlusNumberGroupings);
+
+    // Pattern that makes it easy to distinguish whether a region has a single international dialing
+    PHONE_METADATA_MAP = new HashMap<>();
   }
 
   // Pattern that makes it easy to distinguish whether a region has a single international dialing
@@ -2307,7 +2316,15 @@ public class PhoneNumberUtil {
     if (!isValidRegionCode(regionCode)) {
       return null;
     }
-    PhoneMetadata phoneMetadata = metadataSource.getMetadataForRegion(regionCode);
+
+    PhoneMetadata phoneMetadata;
+    if(PHONE_METADATA_MAP.containsKey(regionCode)){
+      phoneMetadata = PHONE_METADATA_MAP.get(regionCode);
+    }else{
+      phoneMetadata = metadataSource.getMetadataForRegion(regionCode);
+      PHONE_METADATA_MAP.put(regionCode, phoneMetadata);
+    }
+
     ensureMetadataIsNonNull(phoneMetadata, "Missing metadata for region code " + regionCode);
     return phoneMetadata;
   }
