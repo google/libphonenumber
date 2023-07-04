@@ -292,8 +292,9 @@ Prefix        ; Length ; Type       ; Tariff        ; Operator   ; Format       
 269[46-9]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 2695[01]      ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
 2695[2-9]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
-2[79]90[034]  ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
+2790[034]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
 2890[0245]    ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
+2990          ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
 60[0-59]      ; 8      ; MOBILE     ; STANDARD_RATE ; "tigo"     ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
 60[6-8]       ; 8      ; MOBILE     ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"
 61            ; 8      ; MOBILE     ; STANDARD_RATE ; "movistar" ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
