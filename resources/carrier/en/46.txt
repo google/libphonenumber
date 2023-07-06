@@ -152,6 +152,7 @@
 46720801|Telavox AB
 46720802|Telavox AB
 46720803|Telavox AB
+46720806|TeliaSonera
 46720807|Telavox AB
 46720808|Telavox AB
 4672081|BM Sverige AB
@@ -161,6 +162,10 @@
 4672085|Tele2 Sverige
 4672087|Telenor Sverige
 4672088|Telenor Sverige
+46720893|TeliaSonera
+46720894|TeliaSonera
+46720895|TeliaSonera
+46720896|TeliaSonera
 46720902|Telavox AB
 46720908|Telavox AB
 4672092|Telavox AB

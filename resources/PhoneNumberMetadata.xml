@@ -758,7 +758,7 @@
             4[02-9]|
             5[0-46-9]|
             [6-8]\d|
-            9[01]
+            9[0-2]
           )\d{4}
         </nationalNumberPattern>
       </voip>
@@ -4919,7 +4919,7 @@
         <numberFormat pattern="(\d{3})(\d{4})">
           <leadingDigits>
             [24-6]|
-            3[15-79]
+            3[15-9]
           </leadingDigits>
           <format>$1 $2</format>
         </numberFormat>
@@ -4966,7 +4966,8 @@
               1[0-35-9]|
               55|
               [69]\d|
-              7[013]
+              7[013]|
+              81
             )|
             4(?:
               6[03]|
@@ -9174,7 +9175,7 @@
                     3[5-9]
                   )\d|
                   7(?:
-                    [0-3679]\d|
+                    [0-79]\d|
                     8[13-9]
                   )|
                   8(?:
@@ -15576,7 +15577,7 @@
                 40|
                 5[06]|
                 6[2-589]|
-                7[025-9]|
+                7[0-25-9]|
                 8[04]|
                 9[4-9]
               )|
@@ -16868,10 +16869,7 @@
       <generalDesc>
         <nationalNumberPattern>
           8\d{9}|
-          (?:
-            [235-8]\d|
-            99
-          )\d{7}
+          [235-9]\d{8}
         </nationalNumberPattern>
       </generalDesc>
       <!-- Extra area codes found on Web Search: 3147. -->
@@ -16956,7 +16954,10 @@
               55
             )|
             88[08]|
-            99[05-9]
+            9(?:
+              12|
+              9[05-9]
+            )
           )\d{6}
         </nationalNumberPattern>
       </mobile>
@@ -24192,8 +24193,8 @@
         <exampleNumber>430123</exampleNumber>
         <nationalNumberPattern>
           (?:
-            4[1-356]|
-            50
+            4[1-35-7]|
+            5[01]
           )\d{4}
         </nationalNumberPattern>
       </fixedLine>
@@ -26001,7 +26002,7 @@
           <leadingDigits>
             [369]|
             8(?:
-              0[1-6]|
+              0[1-7]|
               [1-9]
             )
           </leadingDigits>
@@ -26050,12 +26051,12 @@
         <exampleNumber>81234567</exampleNumber>
         <nationalNumberPattern>
           8(?:
-            06[0-689]|
+            07[01]|
             95[0-2]
           )\d{4}|
           (?:
             8(?:
-              0[1-5]|
+              0[1-6]|
               [1-8]\d|
               9[0-4]
             )|
@@ -26963,31 +26964,25 @@
         <exampleNumber>21234567</exampleNumber>
         <nationalNumberPattern>
           2(?:
-            (?:
-              [1-6]\d\d|
-              990
-            )\d|
-            790[034]|
-            890[0245]
-          )\d{3}
+            79(?:
+              0[0347-9]|
+              [1-9]\d
+            )|
+            89(?:
+              0[024589]|
+              [1-9]\d
+            )
+          )\d{3}|
+          2(?:
+            [1-69]\d|
+            [78][0-8]
+          )\d{5}
         </nationalNumberPattern>
       </fixedLine>
       <mobile>
         <possibleLengths national="8"/>
         <exampleNumber>70123456</exampleNumber>
-        <nationalNumberPattern>
-          66(?:
-            [02-9]\d\d|
-            1(?:
-              [02-9]\d|
-              16
-            )
-          )\d{3}|
-          (?:
-            6[0-57-9]|
-            7\d
-          )\d{6}
-        </nationalNumberPattern>
+        <nationalNumberPattern>[67]\d{7}</nationalNumberPattern>
       </mobile>
       <!-- Toll free numbers are either 800 NNNN or 800 NNNN NNNN. -->
       <tollFree>
@@ -27550,10 +27545,7 @@
           <format>$1 $2 $3</format>
         </numberFormat>
         <numberFormat pattern="(\d{3})(\d{2})(\d{4})">
-          <leadingDigits>
-            [34]7|
-            91[78]
-          </leadingDigits>
+          <leadingDigits>[34]7</leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
         <numberFormat pattern="(\d{4})(\d)(\d{4})">
@@ -27596,7 +27588,11 @@
         <possibleLengths national="9"/>
         <exampleNumber>917123456</exampleNumber>
         <nationalNumberPattern>
-          41[18]\d{6}|
+          (?:
+            0[348]0|
+            41[18]|
+            81[1-9]
+          )\d{6}|
           (?:
             0[0-27]|
             1[017]|
