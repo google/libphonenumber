@@ -11,6 +11,7 @@ Prefix     ; Length ; Type       ; Tariff        ; Operator     ; Format        
 36         ; 7      ; FIXED_LINE ; STANDARD_RATE ;              ; "fixed_3/4"       ; "BW"    ; "Gaborone"           ; ITU
 37[01]     ; 7      ; FIXED_LINE ; STANDARD_RATE ;              ; "fixed_3/4"       ; "BW"    ; "Gaborone"           ; ITU
 373        ; 7      ; FIXED_LINE ; STANDARD_RATE ;              ; "fixed_3/4"       ; "BW"
+381        ; 7      ; FIXED_LINE ; STANDARD_RATE ;              ; "fixed_3/4"       ; "BW"    ; "Gaborone"           ;            ; "User report"
 39[0-57]   ; 7      ; FIXED_LINE ; STANDARD_RATE ;              ; "fixed_3/4"       ; "BW"    ; "Gaborone"           ; ITU
 39[689]    ; 7      ; FIXED_LINE ; STANDARD_RATE ;              ; "fixed_3/4"       ; "BW"
 46[03]     ; 7      ; FIXED_LINE ; STANDARD_RATE ;              ; "fixed_3/4"       ; "BW"    ; "Serowe"             ; ITU

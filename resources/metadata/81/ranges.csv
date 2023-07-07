@@ -508,18 +508,19 @@ Prefix         ; Length ; Type            ; Tariff        ; National Only ; Oper
 703[5-8]       ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "kddi"                   ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
 704[0-489]     ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "nttdocomo"              ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
 704[5-7]       ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "kddi"                   ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
-70500          ; 10     ; MOBILE          ; STANDARD_RATE ; false         ;                          ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
+705[08]0       ; 10     ; MOBILE          ; STANDARD_RATE ; false         ;                          ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
 7050[1-9]      ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "softbank"               ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
 705[1-6]       ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "softbank"               ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
 7057           ; 10     ; MOBILE          ; STANDARD_RATE ; false         ;                          ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
-7058[02-4]     ; 10     ; MOBILE          ; STANDARD_RATE ; false         ;                          ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
 70581          ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "softbank"               ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
+7058[2-4]      ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "kddi"                   ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; IR21
 7058[5-9]      ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "kddi"                   ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
 7059           ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "kddi"                   ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; IR21
-706[07]        ; 10     ; MOBILE          ; STANDARD_RATE ; false         ;                          ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
+7060           ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "kddi"                   ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; IR21
 706[124-69]    ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "softbank"               ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
 7063[0-6]      ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "softbank"               ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
 7063[7-9]      ; 10     ; MOBILE          ; STANDARD_RATE ; false         ;                          ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
+7067           ; 10     ; MOBILE          ; STANDARD_RATE ; false         ;                          ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
 7068[0-5]      ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "softbank"               ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
 7068[6-9]      ; 10     ; MOBILE          ; STANDARD_RATE ; false         ;                          ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
 707[0-389]     ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "nttdocomo"              ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
