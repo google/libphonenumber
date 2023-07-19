@@ -1,3 +1,12 @@
+Jul 19, 2023: v8.13.17
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   BL, CU, FR, GF, GP, HK, KR, MF, MQ, MU, PK, RE, SO, YT
+ - Updated geocoding data for country calling code(s): 53 (en)
+ - Updated carrier data for country calling code(s):
+   81 (en), 82 (en, ko), 262 (en), 371 (en)
+ - Updated / refreshed time zone meta data.
+
 Jul 06, 2023: v8.13.16
 Metadata changes:
  - Updated phone metadata for region code(s):
