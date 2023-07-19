@@ -92,8 +92,7 @@ Prefix       ; Length ; Type            ; Tariff        ; Operator              
 577          ; 8      ; MOBILE          ; STANDARD_RATE ; "china_mobile"           ; "fmt1_4/4"     ; "HK"    ; IR21
 578          ; 8      ; MOBILE          ; STANDARD_RATE ; "hkt"                    ; "fmt1_4/4"     ; "HK"    ; IR21
 579          ; 8      ; MOBILE          ; STANDARD_RATE ; "hkt"                    ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
-580[135-8]   ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
-580[24]      ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fmt1_4/4"     ; "HK"
+580[1-9]     ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
 5812         ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fmt1_4/4"     ; "HK"
 581[3-9]     ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
 590[0-5]     ; 8      ; MOBILE          ; STANDARD_RATE ; "hkt"                    ; "fmt1_4/4"     ; "HK"    ; IR21

@@ -4117,6 +4117,7 @@
         <nationalNumberPattern>
           590(?:
             2[7-9]|
+            3[3-7]|
             5[12]|
             87
           )\d{4}
@@ -4157,7 +4158,7 @@
               395|
               76[018]
             )\d|
-            475[0-2]
+            475[0-5]
           )\d{4}
         </nationalNumberPattern>
       </voip>
@@ -7551,7 +7552,7 @@
         <nationalNumberPattern>
           (?:
             3[23]|
-            48
+            4[89]
           )\d{4,6}|
           (?:
             31|
@@ -10112,9 +10113,11 @@
         <possibleLengths national="9"/>
         <exampleNumber>123456789</exampleNumber>
         <nationalNumberPattern>
+          59[1-9]\d{6}|
           (?:
-            [1-35]\d|
-            4[1-9]
+            [1-3]\d|
+            4[1-9]|
+            5[0-8]
           )\d{7}
         </nationalNumberPattern>
       </fixedLine>
@@ -11134,9 +11137,8 @@
         <exampleNumber>594101234</exampleNumber>
         <nationalNumberPattern>
           594(?:
-            [0239]\d|
+            [02-49]\d|
             [16][0-3]|
-            4[03-9]|
             5[6-9]|
             80
           )\d{4}
@@ -11170,7 +11172,7 @@
               396|
               76\d
             )\d|
-            476[0-2]
+            476[0-5]
           )\d{4}
         </nationalNumberPattern>
       </voip>
@@ -11649,7 +11651,7 @@
             0[1-68]|
             [14][0-24-9]|
             2[0-68]|
-            3[1289]|
+            3[1-9]|
             5[3-579]|
             [68][0-689]|
             7[08]|
@@ -11691,7 +11693,7 @@
               395|
               76[018]
             )\d|
-            475[0-2]
+            475[0-5]
           )\d{4}
         </nationalNumberPattern>
       </voip>
@@ -12320,7 +12322,7 @@
               )
             )|
             58(?:
-              0[1-8]|
+              0[1-9]|
               1[2-9]
             )
           )\d{4}
@@ -17584,7 +17586,7 @@
             22[13]\d
           )\d{4,5}|
           1(?:
-            0[1-46-9]|
+            0[0-46-9]|
             [16-9]\d|
             2[013-9]
           )\d{6,7}
@@ -19604,7 +19606,7 @@
             0[079]|
             [14]3|
             [27][79]|
-            30|
+            3[03-7]|
             5[0-268]|
             87
           )\d{4}
@@ -19645,7 +19647,7 @@
               395|
               76[018]
             )\d|
-            475[0-2]
+            475[0-5]
           )\d{4}
         </nationalNumberPattern>
       </voip>
@@ -20711,7 +20713,7 @@
             [03-7]\d|
             10|
             2[7-9]|
-            8[09]|
+            8[0-39]|
             9[4-9]
           )\d{4}
         </nationalNumberPattern>
@@ -20743,8 +20745,8 @@
         <exampleNumber>976612345</exampleNumber>
         <nationalNumberPattern>
           9(?:
-            397[01]|
-            477[0-2]|
+            397[0-2]|
+            477[0-5]|
             76(?:
               6\d|
               7[0-367]
@@ -21050,7 +21052,7 @@
             )|
             4(?:
               [013568]\d|
-              2[4-7]
+              2[4-8]
             )|
             54(?:
               [3-5]\d|
@@ -23888,7 +23890,7 @@
         <nationalNumberPattern>
           3(?:
             [0-24]\d|
-            3[0-7]|
+            3[0-79]|
             55|
             64
           )\d{7}
@@ -24864,7 +24866,7 @@
             2\d\d|
             3(?:
               0\d|
-              1[0-3]
+              1[0-4]
             )
           )\d{4}
         </nationalNumberPattern>
@@ -24873,30 +24875,19 @@
         <possibleLengths national="9"/>
         <exampleNumber>692123456</exampleNumber>
         <nationalNumberPattern>
-          (?:
-            69(?:
-              2\d\d|
-              3(?:
-                0[0-46]|
-                1[013]|
-                2[0-2]|
-                3[0-39]|
-                4\d|
-                5[0-5]|
-                6[0-6]|
-                7[0-27]|
-                8[0-8]|
-                9[0-479]
-              )
-            )|
-            9(?:
-              399[0-3]|
-              479[0-2]|
-              76(?:
-                2[27]|
-                3[0-37]|
-                9\d
-              )
+          69(?:
+            2\d\d|
+            3(?:
+              0[0-46]|
+              1[013]|
+              2[0-2]|
+              3[0-39]|
+              4\d|
+              5[0-5]|
+              6[0-6]|
+              7[0-27]|
+              8[0-8]|
+              9[0-479]
             )
           )\d{4}
         </nationalNumberPattern>
@@ -24924,6 +24915,21 @@
           )\d{6}
         </nationalNumberPattern>
       </sharedCost>
+      <voip>
+        <possibleLengths national="9"/>
+        <exampleNumber>939901234</exampleNumber>
+        <nationalNumberPattern>
+          9(?:
+            399[0-3]|
+            479[0-5]|
+            76(?:
+              2[27]|
+              3[0-37]|
+              9\d
+            )
+          )\d{4}
+        </nationalNumberPattern>
+      </voip>
     </territory>
 
     <!-- Romania (RO) -->
@@ -26724,8 +26730,9 @@
         </numberFormat>
         <numberFormat pattern="(\d{3})(\d{3})(\d{3})">
           <leadingDigits>
-            [3478]|
+            [348]|
             64|
+            79|
             90
           </leadingDigits>
           <format>$1 $2 $3</format>
@@ -26735,6 +26742,7 @@
             1|
             28|
             6[0-35-9]|
+            77|
             9[2-9]
           </leadingDigits>
           <format>$1 $2</format>
@@ -26785,7 +26793,7 @@
                 3[59]|
                 4[89]|
                 6\d|
-                79|
+                7[79]|
                 8[08]
               )\d|
               9(?:
@@ -30720,20 +30728,18 @@
     <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_France -->
     <!-- http://www.comores-online.com/mwezinet/internet/262 -->
     <!-- http://www.arcep.fr/index.php?id=2137&bloc=0596&CMD=RESULTS_NUMEROTATION -->
-    <territory id="YT" countryCode="262" leadingDigits="269|63|9398" internationalPrefix="00"
+    <territory id="YT" countryCode="262" leadingDigits="269|63|9(?:39|47)8" internationalPrefix="00"
                nationalPrefix="0">
       <generalDesc>
         <nationalNumberPattern>
           (?:
-            (?:
-              (?:
-                26|
-                63
-              )9|
-              80\d
-            )\d|
-            9398
-          )\d{5}
+            80|
+            9\d
+          )\d{7}|
+          (?:
+            26|
+            63
+          )9\d{6}
         </nationalNumberPattern>
       </generalDesc>
       <fixedLine>
@@ -30742,7 +30748,7 @@
         <nationalNumberPattern>
           269(?:
             0[0-467]|
-            5[0-3]|
+            5[0-4]|
             6\d|
             [78]0
           )\d{4}
@@ -30752,17 +30758,14 @@
         <possibleLengths national="9"/>
         <exampleNumber>639012345</exampleNumber>
         <nationalNumberPattern>
-          (?:
-            639(?:
-              0[0-79]|
-              1[019]|
-              [267]\d|
-              3[09]|
-              40|
-              5[05-9]|
-              9[04-79]
-            )|
-            9398[01]
+          639(?:
+            0[0-79]|
+            1[019]|
+            [267]\d|
+            3[09]|
+            40|
+            5[05-9]|
+            9[04-79]
           )\d{4}
         </nationalNumberPattern>
       </mobile>
@@ -30772,6 +30775,16 @@
         <exampleNumber>801234567</exampleNumber>
         <nationalNumberPattern>80\d{7}</nationalNumberPattern>
       </tollFree>
+      <voip>
+        <possibleLengths national="9"/>
+        <exampleNumber>939801234</exampleNumber>
+        <nationalNumberPattern>
+          9(?:
+            39|
+            47
+          )8[01]\d{4}
+        </nationalNumberPattern>
+      </voip>
     </territory>
 
     <!-- South Africa (ZA) -->

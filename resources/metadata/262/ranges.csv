@@ -1,11 +1,11 @@
 Prefix       ; Length ; Type       ; Tariff        ; Operator ; Format         ; Timezone                        ; Regions ; Provenance ; Comment
 262          ; 9      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt1_3/2/2/2" ; "Indian/Reunion"                ; "RE"
 2630         ; 9      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt1_3/2/2/2" ; "Indian/Reunion"                ; "RE"    ; GOVERNMENT
-2631[0-3]    ; 9      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt1_3/2/2/2" ; "Indian/Reunion"                ; "RE"    ; GOVERNMENT
+2631[0-4]    ; 9      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt1_3/2/2/2" ; "Indian/Reunion"                ; "RE"    ; GOVERNMENT
 2690[0-4]    ; 9      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt1_3/2/2/2" ; "Indian/Mayotte"                ; "YT"    ; GOVERNMENT
 2690[67]     ; 9      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt1_3/2/2/2" ; "Indian/Mayotte"                ; "YT"
 2695[0-2]    ; 9      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt1_3/2/2/2" ; "Indian/Mayotte"                ; "YT"    ; GOVERNMENT ; "ARCEP 4/9/2019"
-26953        ; 9      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt1_3/2/2/2" ; "Indian/Mayotte"                ; "YT"    ; GOVERNMENT
+2695[34]     ; 9      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt1_3/2/2/2" ; "Indian/Mayotte"                ; "YT"    ; GOVERNMENT
 2696[0-47-9] ; 9      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt1_3/2/2/2" ; "Indian/Mayotte"                ; "YT"
 2696[56]     ; 9      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt1_3/2/2/2" ; "Indian/Mayotte"                ; "YT"    ; GOVERNMENT ; "ARCEP 4/9/2019"
 269[78]0     ; 9      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt1_3/2/2/2" ; "Indian/Mayotte"                ; "YT"
@@ -61,9 +61,10 @@ Prefix       ; Length ; Type       ; Tariff        ; Operator ; Format         ;
 884          ; 9      ; FIXED_LINE ; SHARED_COST   ;          ; "fmt1_3/2/2/2" ; "Indian/Reunion"                ; "RE"
 890          ; 9      ; FIXED_LINE ; SHARED_COST   ;          ; "fmt1_3/2/2/2" ; "Indian/Reunion"                ; "RE"
 89[1-37-9]   ; 9      ; FIXED_LINE ; PREMIUM_RATE  ;          ; "fmt1_3/2/2/2" ; "Indian/Reunion"                ; "RE"
-9398[01]     ; 9      ; MOBILE     ; STANDARD_RATE ;          ; "fmt1_3/2/2/2" ; "Indian/Mayotte"                ; "YT"    ; GOVERNMENT
-9399[0-3]    ; 9      ; MOBILE     ; STANDARD_RATE ;          ; "fmt1_3/2/2/2" ; "Indian/Reunion"                ; "RE"    ; GOVERNMENT
-9479[0-2]    ; 9      ; MOBILE     ; STANDARD_RATE ;          ; "fmt1_3/2/2/2" ; "Indian/Reunion"                ; "RE"    ; GOVERNMENT
-9762[27]     ; 9      ; MOBILE     ; STANDARD_RATE ;          ; "fmt1_3/2/2/2" ; "Indian/Reunion"                ; "RE"    ; GOVERNMENT
-9763[0-37]   ; 9      ; MOBILE     ; STANDARD_RATE ;          ; "fmt1_3/2/2/2" ; "Indian/Reunion"                ; "RE"    ; GOVERNMENT
-9769         ; 9      ; MOBILE     ; STANDARD_RATE ; "orange" ; "fmt1_3/2/2/2" ; "Indian/Reunion"                ; "RE"    ; GOVERNMENT
+9398[01]     ; 9      ; VOIP       ; STANDARD_RATE ;          ; "fmt1_3/2/2/2" ; "Indian/Mayotte"                ; "YT"    ; GOVERNMENT
+9399[0-3]    ; 9      ; VOIP       ; STANDARD_RATE ;          ; "fmt1_3/2/2/2" ; "Indian/Reunion"                ; "RE"    ; GOVERNMENT
+9478[01]     ; 9      ; VOIP       ; STANDARD_RATE ;          ; "fmt1_3/2/2/2" ; "Indian/Mayotte"                ; "YT"    ; GOVERNMENT
+9479[0-5]    ; 9      ; VOIP       ; STANDARD_RATE ;          ; "fmt1_3/2/2/2" ; "Indian/Reunion"                ; "RE"    ; GOVERNMENT
+9762[27]     ; 9      ; VOIP       ; STANDARD_RATE ;          ; "fmt1_3/2/2/2" ; "Indian/Reunion"                ; "RE"    ; GOVERNMENT
+9763[0-37]   ; 9      ; VOIP       ; STANDARD_RATE ;          ; "fmt1_3/2/2/2" ; "Indian/Reunion"                ; "RE"    ; GOVERNMENT
+9769         ; 9      ; VOIP       ; STANDARD_RATE ;          ; "fmt1_3/2/2/2" ; "Indian/Reunion"                ; "RE"    ; GOVERNMENT

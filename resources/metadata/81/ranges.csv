@@ -504,8 +504,9 @@ Prefix         ; Length ; Type            ; Tariff        ; National Only ; Oper
 703[09]        ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "nttdocomo"              ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
 703[1-3]       ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "softbank"               ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
 7034[01]       ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "softbank"               ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
-7034[2-9]      ; 10     ; MOBILE          ; STANDARD_RATE ; false         ;                          ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
-703[5-8]       ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "kddi"                   ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
+7034[2-9]      ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "kddi"                   ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
+703[5-7]       ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "kddi"                   ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
+7038           ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "okinawa_cellular"       ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
 704[0-489]     ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "nttdocomo"              ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
 704[5-7]       ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "kddi"                   ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
 705[08]0       ; 10     ; MOBILE          ; STANDARD_RATE ; false         ;                          ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
@@ -627,16 +628,18 @@ Prefix         ; Length ; Type            ; Tariff        ; National Only ; Oper
 800            ; 10     ; FIXED_LINE      ; TOLL_FREE     ; false         ;                          ; "tollfree_3/3/4"   ; "JP"
 80[128]        ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "nttdocomo"              ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
 80[34]         ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "softbank"               ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
-80[56]         ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "kddi"                   ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
+805            ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "kddi"                   ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
+806            ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "okinawa_cellular"       ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
 807[0-5]       ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "softbank"               ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
 8076[0-8]      ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "softbank"               ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
 80769          ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "nttdocomo"              ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
 807[78]        ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "nttdocomo"              ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
 8079[0-2]      ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "nttdocomo"              ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
 8079[3-9]      ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "softbank"               ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
-809[038]       ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "kddi"                   ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
+809[03]        ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "kddi"                   ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
 809[1467]      ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "softbank"               ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
 809[259]       ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "nttdocomo"              ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
+8098           ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "okinawa_cellular"       ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
 82[06][019]    ; 9      ; FIXED_LINE      ; STANDARD_RATE ; false         ;                          ; "fixed_3/2/4"      ; "JP"
 820[2-6]       ; 9      ; FIXED_LINE      ; STANDARD_RATE ; false         ;                          ; "fixed_3/2/4"      ; "JP"    ; "Yanai, Yamaguchi"          ; "柳井"
 820[78]        ; 9      ; FIXED_LINE      ; STANDARD_RATE ; false         ;                          ; "fixed_3/2/4"      ; "JP"    ;                             ; "久賀"
@@ -809,7 +812,8 @@ Prefix         ; Length ; Type            ; Tariff        ; National Only ; Oper
 901[37]        ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "softbank"               ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
 9018[0-5]      ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "kddi"                   ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
 9018[6-9]      ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "nttdocomo"              ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
-9019[0-7]      ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "kddi"                   ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
+9019[0-35-7]   ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "kddi"                   ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
+90194          ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "okinawa_cellular"       ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
 9019[89]       ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "nttdocomo"              ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
 9020           ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "kddi"                   ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
 902[1-7]       ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "nttdocomo"              ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
@@ -820,7 +824,8 @@ Prefix         ; Length ; Type            ; Tariff        ; National Only ; Oper
 9034[06-9]     ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "nttdocomo"              ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
 9034[12]       ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "softbank"               ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
 9034[3-5]      ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "kddi"                   ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
-903[5-8]       ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "kddi"                   ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
+903[568]       ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "kddi"                   ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
+90[39]7        ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "okinawa_cellular"       ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
 9039[0-7]      ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "softbank"               ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
 9039[89]       ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "kddi"                   ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
 904[035-9]     ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "nttdocomo"              ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
@@ -829,7 +834,7 @@ Prefix         ; Length ; Type            ; Tariff        ; National Only ; Oper
 9041[5-9]      ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "kddi"                   ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
 9042[0-5]      ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "kddi"                   ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
 9042[6-9]      ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "softbank"               ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
-9044           ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "kddi"                   ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
+9044           ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "okinawa_cellular"       ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
 905            ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "nttdocomo"              ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
 906[045]       ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "softbank"               ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
 906[1-3]       ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "kddi"                   ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
@@ -838,14 +843,16 @@ Prefix         ; Length ; Type            ; Tariff        ; National Only ; Oper
 9067[0-5]      ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "kddi"                   ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
 9067[6-9]      ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "nttdocomo"              ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
 9068[0-2489]   ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "nttdocomo"              ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
-9068[35-7]     ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "kddi"                   ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
+9068[357]      ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "kddi"                   ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
+90686          ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "okinawa_cellular"       ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
 9069           ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "nttdocomo"              ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
 907[0-46-9]    ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "nttdocomo"              ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
 9075           ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "kddi"                   ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
 9080[0-3]      ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "nttdocomo"              ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
 9080[4-68]     ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "kddi"                   ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
 9080[79]       ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "softbank"               ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
-908[12]        ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "kddi"                   ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
+9081           ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "kddi"                   ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
+9082           ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "okinawa_cellular"       ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
 9083[0-36-9]   ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "kddi"                   ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
 9083[45]       ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "softbank"               ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
 9084[05-9]     ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "softbank"               ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
@@ -858,7 +865,7 @@ Prefix         ; Length ; Type            ; Tariff        ; National Only ; Oper
 908[7-9]       ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "nttdocomo"              ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
 909[05]        ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "nttdocomo"              ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
 909[1489]      ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "softbank"               ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
-909[237]       ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "kddi"                   ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
+909[23]        ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "kddi"                   ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
 9096[0-467]    ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "kddi"                   ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
 9096[589]      ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "softbank"               ; "fmt10_2/4/4"      ; "JP"    ;                             ;            ; GOVERNMENT
 920[0-3679]    ; 9      ; FIXED_LINE      ; STANDARD_RATE ; false         ;                          ; "fixed_3/2/4"      ; "JP"
