@@ -21,6 +21,7 @@ Prefix        ; Length ; Type            ; Tariff        ; Area Code Length ; Op
 31            ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "zong"       ; "mobile_3/7"      ; "PK"
 32            ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "warid"      ; "mobile_3/7"      ; "PK"    ;                        ; IR21
 33[0-7]       ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "ufone"      ; "mobile_3/7"      ; "PK"
+339           ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "ufone"      ; "mobile_3/7"      ; "PK"    ;                        ; IR21
 34            ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "telenor"    ; "mobile_3/7"      ; "PK"
 355           ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "sco"        ; "mobile_3/7"      ; "PK"
 364           ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "instaphone" ; "mobile_3/7"      ; "PK"

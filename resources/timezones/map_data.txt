@@ -2092,7 +2092,8 @@
 26289|Indian/Reunion
 2629398|Indian/Mayotte
 2629399|Indian/Reunion
-26294|Indian/Reunion
+2629478|Indian/Mayotte
+2629479|Indian/Reunion
 26297|Indian/Reunion
 263|Africa/Harare
 264|Africa/Windhoek
