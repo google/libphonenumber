@@ -16,7 +16,7 @@ jobs:
 
     - uses: actions/checkout@ee0669bd1cc54295c223e0bb666b733df41de1c5 # v2.7.0
     - name: Set up JDK 8 and Maven
-      uses: actions/setup-java@91d3aa4956ec4a53e477c4907347b5e3481be8c9 # v2.5.1
+      uses: actions/setup-java@5ffc13f4174014e2d4d4572b3d74c3fa61aeb2c2 # v3.11.0
       with:
         java-version: '8'
         distribution: 'adopt'
