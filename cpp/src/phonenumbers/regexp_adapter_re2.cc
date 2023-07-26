@@ -39,7 +39,7 @@ class RE2RegExpInput : public RegExpInput {
         utf8_input_(string_) {}
 
   virtual string ToString() const {
-    return utf8_input_.ToString();
+    return string_;
   }
 
   StringPiece* Data() {
