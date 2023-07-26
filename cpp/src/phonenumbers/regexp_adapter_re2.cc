@@ -39,7 +39,7 @@ class RE2RegExpInput : public RegExpInput {
         utf8_input_(string_) {}
 
   virtual string ToString() const {
-    return string_;
+    return string(utf8_input_.data(), utf8_input_.size());
   }
 
   StringPiece* Data() {
