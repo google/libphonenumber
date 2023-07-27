@@ -45,12 +45,6 @@ Some examples:
     alpha character is not converted and the resulting number is invalid, e.g.
     with `+1 412 535 c000`.
 
-Other examples, in reports:
-
-*   [#328](http://github.com/google/libphonenumber/issues/328)
-*   [#1001](http://github.com/google/libphonenumber/issues/1001)
-*   [#1199](http://github.com/google/libphonenumber/issues/1199)
-*   [#1813](http://github.com/google/libphonenumber/issues/1813)
 
 ### <a href="#prefix_not_removed">Why wasn't the national prefix removed when parsing?</a>
 
