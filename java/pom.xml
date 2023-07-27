@@ -114,7 +114,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
-        <version>2.12</version>
+        <version>3.1.2</version>
         <configuration>
           <forkCount>0</forkCount>
           <includes>
@@ -138,7 +138,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-javadoc-plugin</artifactId>
-        <version>2.7</version>
+        <version>3.5.0</version>
         <executions>
           <execution>
             <id>attach-javadocs</id>
