@@ -930,8 +930,7 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
     assertEquals("+1 (650) 253-0000", phoneUtil.formatByPattern(US_NUMBER,
                                                                 PhoneNumberFormat.INTERNATIONAL,
                                                                 newNumberFormats));
-     PhoneNumber usNumber2 =
-        PhoneNumber.newBuilder().setCountryCode(1).setNationalNumber(6507129823L).build();
+    PhoneNumber usNumber2 = new PhoneNumber().setCountryCode(1).setNationalNumber(6507129823L);
     assertEquals(
         "tel:+1-650-712-9823",
         phoneUtil.formatByPattern(usNumber2, PhoneNumberFormat.RFC3966, newNumberFormats));
