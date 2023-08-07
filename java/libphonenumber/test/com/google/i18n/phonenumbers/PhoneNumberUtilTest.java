@@ -503,7 +503,7 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
     // if that is available no matter which format is specified.
     assertEquals("000-000-0000",
                  phoneUtil.format(US_SPOOF_WITH_RAW_INPUT, PhoneNumberFormat.NATIONAL));
-    assertEquals("0", phoneUtil.format(US_SPOOF, PhoneNumberFormat.NATIONAL));
+    assertEquals("", phoneUtil.format(US_SPOOF, PhoneNumberFormat.NATIONAL));
   }
 
   public void testFormatBSNumber() {
@@ -914,7 +914,7 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
     // Test that the Australian emergency number 000 is formatted correctly.
     PhoneNumber auNumber = new PhoneNumber().setCountryCode(61).setNationalNumber(0L)
         .setItalianLeadingZero(true).setNumberOfLeadingZeros(2);
-    assertEquals("000", phoneUtil.formatNumberForMobileDialing(auNumber, RegionCode.AU, false));
+    assertEquals("", phoneUtil.formatNumberForMobileDialing(auNumber, RegionCode.AU, false));
     assertEquals("", phoneUtil.formatNumberForMobileDialing(auNumber, RegionCode.NZ, false));
   }
 
