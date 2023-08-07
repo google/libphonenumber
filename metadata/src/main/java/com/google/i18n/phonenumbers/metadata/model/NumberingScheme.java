@@ -418,7 +418,7 @@ public abstract class NumberingScheme {
       nationalPrefixSometimesOptional |= spec.nationalPrefixOptional();
     }
      // Only if the present region is not JP do this check as in Japan we are not capturing domestic
-    // carrier codes, please check cl/529339300 for more details.
+    // carrier codes.
     if (!cc.toString().equals(JAPAN_COUNTRY_CODE)) {
       checkMetadata(
           attributes.getCarrierPrefixes().isEmpty() || carrierTemplatesExist,
