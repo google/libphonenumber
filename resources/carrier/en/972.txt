@@ -33,6 +33,7 @@
 97255440|Merkaziya
 9725550|Annatel
 9725551|Annatel
+9725552|Annatel
 9725555|Rami Levy
 972556|Rami Levy
 9725570|Cellact
