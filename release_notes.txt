@@ -1,3 +1,15 @@
+Aug 02, 2023: v8.13.18
+Metadata changes:
+ - Updated alternate formatting data for country calling code(s): 84
+ - Updated phone metadata for region code(s):
+   BH, CU, EG, GE, GL, IL, JP, NZ, RE, SG, UG, UZ, VN, YT
+ - Updated short number metadata for region code(s): JP
+ - Updated geocoding data for country calling code(s): 299 (en)
+ - Updated carrier data for country calling code(s):
+   41 (en), 46 (en), 53 (en), 64 (en), 65 (en), 221 (en), 972 (en), 973 (en),
+   995 (en), 998 (en)
+ - Updated / refreshed time zone meta data.
+
 Jul 19, 2023: v8.13.17
 Metadata changes:
  - Updated phone metadata for region code(s):
