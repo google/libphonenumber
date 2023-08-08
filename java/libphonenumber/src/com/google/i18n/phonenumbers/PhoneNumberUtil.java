@@ -1280,8 +1280,7 @@ public class PhoneNumberUtil {
       // This is the only case where a number can be formatted as E164 without a
       // leading '+' symbol (but the original number wasn't parseable anyway).
       if (number.hasRawInput() && number.getRawInput().length() > 0) {
-        String rawInput = number.getRawInput();
-        return rawInput;
+        return number.getRawInput();
       }else{
         return "";
       }
