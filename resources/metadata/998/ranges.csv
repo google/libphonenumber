@@ -1,4 +1,5 @@
 Prefix         ; Length ; Type                 ; Tariff        ; Operator    ; Format        ; Regions ; Provenance ; Comment
+200[01]        ; 9      ; MOBILE               ; STANDARD_RATE ; "beeline"   ; "fmt_2/3/2/2" ; "UZ"    ; IR21
 33             ; 9      ; MOBILE               ; STANDARD_RATE ; "humans"    ; "fmt_2/3/2/2" ; "UZ"    ; ITU
 50             ; 9      ; MOBILE               ; STANDARD_RATE ; "ucell"     ; "fmt_2/3/2/2" ; "UZ"    ; IR21
 55             ; 9      ; FIXED_LINE           ; STANDARD_RATE ;             ; "fmt_2/3/2/2" ; "UZ"    ; TELECOMS
