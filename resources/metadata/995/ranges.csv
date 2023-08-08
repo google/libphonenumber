@@ -75,6 +75,9 @@ Prefix          ; Length ; Type       ; Tariff        ; Area Code Length ; Natio
 496             ; 9      ; FIXED_LINE ; STANDARD_RATE ; 3                ; false         ;                    ; "fmt_3/2/2/2"    ; "GE"    ; "Ozurgeti"              ; ITU
 497             ; 9      ; FIXED_LINE ; STANDARD_RATE ; 3                ; false         ;                    ; "fmt_3/2/2/2"    ; "GE"    ; "Tkibuli"               ; ITU
 5000            ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "silknet"          ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
+50011           ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "silknet"          ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
+50022           ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "silknet"          ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
+50033           ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "silknet"          ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
 50044           ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "silknet"          ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
 50050[0-4]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "magticom"         ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21       ; "IR21 dated 3/1/2019"
 50050[5-9]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "magticom"         ; "mobile_3/2/2/2" ; "GE"    ;                         ; ITU
