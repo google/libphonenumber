@@ -7704,12 +7704,17 @@
     <!-- http://www.numberingplans.com/?page=dialling&sub=areacodes&ac=JP -->
     <territory id="JP">
       <generalDesc>
-        <nationalNumberPattern>1\d\d</nationalNumberPattern>
+        <nationalNumberPattern>
+          [01]\d\d(?:
+            \d{7}
+          )?
+        </nationalNumberPattern>
       </generalDesc>
       <shortCode>
-        <possibleLengths national="3"/>
+        <possibleLengths national="3,10"/>
         <exampleNumber>102</exampleNumber>
         <nationalNumberPattern>
+          000[259]\d{6}|
           1(?:
             0[24]|
             1[089]|
@@ -7728,6 +7733,13 @@
         <exampleNumber>110</exampleNumber>
         <nationalNumberPattern>11[09]</nationalNumberPattern>
       </emergency>
+      <!-- As per confirmations from the carrier (NTTDocomo), these are SMS only short codes,
+           which are used to interact with respective companies i.e. after scanning the code. -->
+      <smsServices>
+        <possibleLengths national="10"/>
+        <exampleNumber>0005000000</exampleNumber>
+        <nationalNumberPattern>000\d{7}</nationalNumberPattern>
+      </smsServices>
     </territory>
 
     <!-- Kenya (KE) -->
