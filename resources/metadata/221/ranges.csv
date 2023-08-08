@@ -15,7 +15,7 @@ Prefix    ; Length ; Type       ; Tariff        ; Operator    ; Format         ;
 75[38]3   ; 9      ; MOBILE     ; STANDARD_RATE ; "promobile" ; "fmt1_2/3/2/2" ; "SN"    ;                 ; ITU
 75[4-6]   ; 9      ; MOBILE     ; STANDARD_RATE ; "promobile" ; "fmt1_2/3/2/2" ; "SN"    ;                 ; ITU
 757       ; 9      ; MOBILE     ; STANDARD_RATE ; "origines"  ; "fmt1_2/3/2/2" ; "SN"    ;                 ; ITU
-76        ; 9      ; MOBILE     ; STANDARD_RATE ; "tigo"      ; "fmt1_2/3/2/2" ; "SN"    ;                 ; IR21
+76        ; 9      ; MOBILE     ; STANDARD_RATE ; "free"      ; "fmt1_2/3/2/2" ; "SN"    ;                 ; IR21
 7[78]     ; 9      ; MOBILE     ; STANDARD_RATE ; "orange"    ; "fmt1_2/3/2/2" ; "SN"    ;                 ; ITU
 790       ; 9      ; MOBILE     ; STANDARD_RATE ; "adie"      ; "fmt1_2/3/2/2" ; "SN"    ;                 ; ITU
 800       ; 9      ; FIXED_LINE ; TOLL_FREE     ;             ; "fmt2_3/2/2/2" ; "SN"

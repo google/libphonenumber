@@ -3,14 +3,14 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.googlecode.libphonenumber</groupId>
   <artifactId>libphonenumber</artifactId>
-  <version>8.13.18-SNAPSHOT</version>
+  <version>8.13.19-SNAPSHOT</version>
   <packaging>jar</packaging>
   <url>https://github.com/google/libphonenumber/</url>
 
   <parent>
     <groupId>com.googlecode.libphonenumber</groupId>
     <artifactId>libphonenumber-parent</artifactId>
-    <version>8.13.18-SNAPSHOT</version>
+    <version>8.13.19-SNAPSHOT</version>
   </parent>
 
   <build>
@@ -42,7 +42,7 @@
       </plugin>
       <plugin>
         <artifactId>maven-jar-plugin</artifactId>
-        <version>3.0.2</version>
+        <version>3.3.0</version>
         <executions>
           <execution>
             <id>default-jar</id>
