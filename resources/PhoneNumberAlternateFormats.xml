@@ -3498,7 +3498,7 @@
       <availableFormats>
         <!-- Alternate mobile format -->
         <numberFormat pattern="(\d{3})(\d{3})(\d{3})">
-          <leadingDigits>[69]</leadingDigits>
+          <leadingDigits>6</leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
         <!-- Alternate format for big cities. -->
