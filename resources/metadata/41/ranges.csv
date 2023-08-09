@@ -1679,7 +1679,9 @@ Prefix            ; Length ; Type            ; Tariff        ; Operator         
 78[015]           ; 9      ; MOBILE          ; STANDARD_RATE ; "salt"                  ; "fmt1_2/3/2/2"   ; "CH"    ;                                 ;                                 ;                                 ;                                  ; GOVERNMENT
 78[236-9]         ; 9      ; MOBILE          ; STANDARD_RATE ; "salt"                  ; "fmt1_2/3/2/2"   ; "CH"    ;                                 ;                                 ;                                 ;                                  ; IR21
 784[0-2]          ; 9      ; MOBILE          ; STANDARD_RATE ; "upc"                   ; "fmt1_2/3/2/2"   ; "CH"    ;                                 ;                                 ;                                 ;                                  ; GOVERNMENT
-784[3-7]          ; 9      ; MOBILE          ; STANDARD_RATE ;                         ; "fmt1_2/3/2/2"   ; "CH"
+784[3-6]          ; 9      ; MOBILE          ; STANDARD_RATE ;                         ; "fmt1_2/3/2/2"   ; "CH"
+7847[0-6]         ; 9      ; MOBILE          ; STANDARD_RATE ; "mtel"                  ; "fmt1_2/3/2/2"   ; "CH"    ;                                 ;                                 ;                                 ;                                  ; GOVERNMENT
+7847[7-9]         ; 9      ; MOBILE          ; STANDARD_RATE ;                         ; "fmt1_2/3/2/2"   ; "CH"
 78480             ; 9      ; MOBILE          ; STANDARD_RATE ; "nexphone"              ; "fmt1_2/3/2/2"   ; "CH"    ;                                 ;                                 ;                                 ;                                  ; IR21
 784[89][1-9]      ; 9      ; MOBILE          ; STANDARD_RATE ;                         ; "fmt1_2/3/2/2"   ; "CH"
 78490             ; 9      ; MOBILE          ; STANDARD_RATE ; "telecom26"             ; "fmt1_2/3/2/2"   ; "CH"    ;                                 ;                                 ;                                 ;                                  ; GOVERNMENT
