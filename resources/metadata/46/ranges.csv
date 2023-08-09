@@ -533,8 +533,9 @@ Prefix          ; Length ; Type            ; Tariff        ; Operator           
 7208[3-5]       ; 9      ; MOBILE          ; STANDARD_RATE ; "tele2"                     ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; IR21
 72086           ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"
 7208[78]        ; 9      ; MOBILE          ; STANDARD_RATE ; "telenor"                   ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; IR21
-72089[127-9]    ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"
+72089[1279]     ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"
 72089[3-6]      ; 9      ; MOBILE          ; STANDARD_RATE ; "telia"                     ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; IR21
+720898          ; 9      ; MOBILE          ; STANDARD_RATE ; "xplora"                    ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
 720900          ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
 72090[13-79]    ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"
 72090[28]       ; 9      ; MOBILE          ; STANDARD_RATE ; "telavox"                   ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
@@ -561,7 +562,8 @@ Prefix          ; Length ; Type            ; Tariff        ; Operator           
 72342           ; 9      ; MOBILE          ; STANDARD_RATE ; "telenor"                   ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; IR21
 72343           ; 9      ; MOBILE          ; STANDARD_RATE ; "messagebird"               ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
 7234[49][09]    ; 9      ; MOBILE          ; STANDARD_RATE ; "beepsend"                  ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
-72344[1-8]      ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"
+72344[148]      ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"
+72344[235-7]    ; 9      ; MOBILE          ; STANDARD_RATE ; "xplora"                    ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
 72345           ; 9      ; MOBILE          ; STANDARD_RATE ; "42_telecom_ab"             ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
 723460          ; 9      ; MOBILE          ; STANDARD_RATE ; "beepsend"                  ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
 72346[1468]     ; 9      ; MOBILE          ; STANDARD_RATE ; "telenor"                   ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; IR21
