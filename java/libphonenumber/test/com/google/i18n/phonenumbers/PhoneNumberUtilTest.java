@@ -930,9 +930,10 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
     assertEquals("+1 (650) 253-0000", phoneUtil.formatByPattern(US_NUMBER,
                                                                 PhoneNumberFormat.INTERNATIONAL,
                                                                 newNumberFormats));
-    assertEquals("tel:+1-650-253-0000", phoneUtil.formatByPattern(US_NUMBER,
-                                                                  PhoneNumberFormat.RFC3966,
-                                                                  newNumberFormats));
+    PhoneNumber usNumber2 = new PhoneNumber().setCountryCode(1).setNationalNumber(6507129823L);
+    assertEquals(
+        "tel:+1-650-712-9823",
+        phoneUtil.formatByPattern(usNumber2, PhoneNumberFormat.RFC3966, newNumberFormats));
 
     // $NP is set to '1' for the US. Here we check that for other NANPA countries the US rules are
     // followed.

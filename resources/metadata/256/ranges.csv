@@ -33,7 +33,7 @@ Prefix      ; Length ; Type       ; Tariff        ; Area Code Length ; Operator 
 726[01]     ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "tangerine"    ; "fmt_3/6"   ; "UG"    ;                           ; ITU
 736         ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "hamilton"     ; "fmt_3/6"   ; "UG"    ;                           ; ITU
 74[0-4]     ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "sure_telecom" ; "fmt_3/6"   ; "UG"    ;                           ; IR21
-76[0-4]     ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "mtn"          ; "fmt_3/6"   ; "UG"    ;                           ; IR21
+76[0-5]     ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "mtn"          ; "fmt_3/6"   ; "UG"    ;                           ; IR21
 7[78]       ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "mtn"          ; "fmt_3/6"   ; "UG"    ;                           ; IR21
 79[89]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "africell"     ; "fmt_3/6"   ; "UG"    ;                           ; IR21
 800[1-3]    ; 9      ; FIXED_LINE ; TOLL_FREE     ;                  ;                ; "fmt_3/6"   ; "UG"
