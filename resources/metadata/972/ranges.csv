@@ -67,7 +67,7 @@ Prefix      ; Length ; Type       ; Tariff        ; Area Code Length ; National 
 554[14]0    ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "merkaziya"        ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; GOVERNMENT
 5543        ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "maskyoo"          ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; ITU
 5544[1-9]   ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "cellran_cellular" ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; GOVERNMENT
-555[01]     ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "annatel"          ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; GOVERNMENT
+555[0-2]    ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "annatel"          ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; GOVERNMENT
 5555        ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "rami_levy"        ; "mobile_2/3/4"        ; "IL"
 555[689]    ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ;                    ; "mobile_2/3/4"        ; "IL"
 556[6-8]    ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "rami_levy"        ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; GOVERNMENT

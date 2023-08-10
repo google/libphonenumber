@@ -94,7 +94,7 @@
     <dependency>
       <groupId>com.google.guava</groupId>
       <artifactId>guava</artifactId>
-      <version>29.0-jre</version>
+      <version>32.1.2-jre</version>
     </dependency>
 
     <!-- https://mvnrepository.com/artifact/com.ibm.icu/icu4j -->
@@ -108,14 +108,14 @@
     <dependency>
       <groupId>com.google.protobuf</groupId>
       <artifactId>protobuf-java</artifactId>
-      <version>3.21.7</version>
+      <version>3.23.4</version>
     </dependency>
 
     <!-- https://mvnrepository.com/artifact/com.google.auto.value/auto-value -->
     <dependency>
       <groupId>com.google.auto.value</groupId>
       <artifactId>auto-value</artifactId>
-      <version>1.7.4</version>
+      <version>1.10.2</version>
       <scope>provided</scope>
     </dependency>
 
@@ -123,7 +123,7 @@
     <dependency>
       <groupId>com.google.auto.value</groupId>
       <artifactId>auto-value-annotations</artifactId>
-      <version>1.7.4</version>
+      <version>1.10.2</version>
     </dependency>
 
     <!-- https://mvnrepository.com/artifact/com.github.os72/protoc-jar-maven-plugin -->
@@ -144,7 +144,7 @@
     <dependency>
       <groupId>com.google.truth</groupId>
       <artifactId>truth</artifactId>
-      <version>1.0.1</version>
+      <version>1.1.5</version>
       <scope>test</scope>
     </dependency>
 
