@@ -12,13 +12,19 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-9920|Megafon
+99200|Megafon
+99201|Megafon
+99202|Megafon
+99203|ZET-MOBILE
+99204|ZET-MOBILE
+99207|Megafon
+99208|ZET-MOBILE
 99210|O-Mobile
 99211|Tcell
 99217|Babilon-M
 9922|O-Mobile
 99230|O-Mobile
-99240|Tacom
+99240|ZET-MOBILE
 99241|Megafon
 99250|Tcell
 99255|Megafon
@@ -26,12 +32,12 @@
 99271|Babilon-M
 99277|Tcell
 99278|Megafon
-99280|Tacom
+99280|ZET-MOBILE
+99281|ZET-MOBILE
 99287|Megafon
 99288|Megafon
 99290|Megafon
-99291|Tacom
-992918|Babilon-M
+99291|ZET-MOBILE
 99292|Tcell
 99293|Tcell
 99294|Babilon-M
