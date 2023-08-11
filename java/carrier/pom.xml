@@ -3,14 +3,14 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.googlecode.libphonenumber</groupId>
   <artifactId>carrier</artifactId>
-  <version>1.198-SNAPSHOT</version>
+  <version>1.203-SNAPSHOT</version>
   <packaging>jar</packaging>
   <url>https://github.com/google/libphonenumber/</url>
 
   <parent>
     <groupId>com.googlecode.libphonenumber</groupId>
     <artifactId>libphonenumber-parent</artifactId>
-    <version>8.13.14-SNAPSHOT</version>
+    <version>8.13.19-SNAPSHOT</version>
   </parent>
 
   <build>
@@ -32,7 +32,7 @@
       <plugin>
         <groupId>org.apache.felix</groupId>
         <artifactId>maven-bundle-plugin</artifactId>
-        <version>3.2.0</version>
+        <version>5.1.9</version>
         <configuration>
           <instructions>
           	<Fragment-Host>com.googlecode.libphonenumber</Fragment-Host>
@@ -41,7 +41,7 @@
       </plugin>
       <plugin>
         <artifactId>maven-jar-plugin</artifactId>
-        <version>3.0.2</version>
+        <version>3.3.0</version>
         <executions>
           <execution>
             <id>default-jar</id>
@@ -79,12 +79,12 @@
     <dependency>
       <groupId>com.googlecode.libphonenumber</groupId>
       <artifactId>libphonenumber</artifactId>
-      <version>8.13.14-SNAPSHOT</version>
+      <version>8.13.19-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>com.googlecode.libphonenumber</groupId>
       <artifactId>prefixmapper</artifactId>
-      <version>2.208-SNAPSHOT</version>
+      <version>2.213-SNAPSHOT</version>
     </dependency>
   </dependencies>
 

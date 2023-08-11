@@ -128,12 +128,14 @@ Prefix     ; Length ; Type       ; Tariff        ; Area Code Length ; National O
 99510      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; false         ;                 ; "nongeo_3/3/3-4" ; "IR"
 99550      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; false         ;                 ; "nongeo_3/3/3-4" ; "IR"    ;                              ;                       ; ITU
 9981       ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "shatel_mobile" ; "nongeo_3/3/3-4" ; "IR"    ;                              ;                       ; TELECOMS   ; "Confirmation of 9981 range with carrier"
+9982       ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "shatel_mobile" ; "nongeo_3/3/3-4" ; "IR"    ;                              ;                       ; ITU
 99888      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; false         ;                 ; "nongeo_3/3/3-4" ; "IR"
 99900      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "lotustel"      ; "nongeo_3/3/3-4" ; "IR"
 9990[13]   ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; false         ;                 ; "nongeo_3/3/3-4" ; "IR"
 99902      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "ir_mci"        ; "nongeo_3/3/3-4" ; "IR"
 9991       ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "irancell"      ; "nongeo_3/3/3-4" ; "IR"    ;                              ;                       ; IR21
 99921      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; false         ;                 ; "nongeo_3/3/3-4" ; "IR"
+99969      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; false         ;                 ; "nongeo_3/3/3-4" ; "IR"    ;                              ;                       ; ITU
 99977      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; false         ;                 ; "nongeo_3/3/3-4" ; "IR"
 9998[7-9]  ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "rightel"       ; "nongeo_3/3/3-4" ; "IR"    ;                              ;                       ; IR21
 9999[0-5]  ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; false         ;                 ; "nongeo_3/3/3-4" ; "IR"    ;                              ;                       ; ITU

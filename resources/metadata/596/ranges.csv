@@ -6,6 +6,7 @@ Prefix       ; Length ; Type       ; Tariff        ; Operator       ; Format    
 5964[0-46-8] ; 9      ; FIXED_LINE ; STANDARD_RATE ;                ; "fmt1_3/2/2/2"    ; "MQ"
 5964[59]     ; 9      ; FIXED_LINE ; STANDARD_RATE ;                ; "fmt1_3/2/2/2"    ; "MQ"    ; GOVERNMENT
 5968[09]     ; 9      ; FIXED_LINE ; STANDARD_RATE ;                ; "fmt1_3/2/2/2"    ; "MQ"
+5968[1-3]    ; 9      ; FIXED_LINE ; STANDARD_RATE ;                ; "fmt1_3/2/2/2"    ; "MQ"    ; GOVERNMENT
 5969[4-8]    ; 9      ; FIXED_LINE ; STANDARD_RATE ;                ; "fmt1_3/2/2/2"    ; "MQ"
 59699        ; 9      ; FIXED_LINE ; STANDARD_RATE ;                ; "fmt1_3/2/2/2"    ; "MQ"    ; GOVERNMENT
 6960         ; 9      ; MOBILE     ; STANDARD_RATE ; "sfr_rife"     ; "fmt1_3/2/2/2"    ; "MQ"
@@ -24,7 +25,8 @@ Prefix       ; Length ; Type       ; Tariff        ; Operator       ; Format    
 69727        ; 9      ; MOBILE     ; STANDARD_RATE ; "digicel"      ; "fmt1_3/2/2/2"    ; "MQ"
 80[0-5]      ; 9      ; FIXED_LINE ; TOLL_FREE     ;                ; "varcost_3/2/2/2" ; "MQ"    ;            ; "ARCEP"
 9397[01]     ; 9      ; VOIP       ; STANDARD_RATE ;                ; "fmt1_3/2/2/2"    ; "MQ"    ; ITU
-9477[0-2]    ; 9      ; VOIP       ; STANDARD_RATE ;                ; "fmt1_3/2/2/2"    ; "MQ"    ; GOVERNMENT
+93972        ; 9      ; VOIP       ; STANDARD_RATE ;                ; "fmt1_3/2/2/2"    ; "MQ"    ; GOVERNMENT
+9477[0-5]    ; 9      ; VOIP       ; STANDARD_RATE ;                ; "fmt1_3/2/2/2"    ; "MQ"    ; GOVERNMENT
 97660        ; 9      ; VOIP       ; STANDARD_RATE ;                ; "fmt1_3/2/2/2"    ; "MQ"    ; GOVERNMENT
 9766[1-9]    ; 9      ; VOIP       ; STANDARD_RATE ;                ; "fmt1_3/2/2/2"    ; "MQ"    ; GOVERNMENT ; "ARCEP Monthly Report"
 9767[0-367]  ; 9      ; VOIP       ; STANDARD_RATE ;                ; "fmt1_3/2/2/2"    ; "MQ"    ; GOVERNMENT ; "ARCEP Monthly Report"
