@@ -81,11 +81,11 @@ Prefix   ; Length ; Type       ; Tariff        ; National Only ; Operator       
 86       ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "viettel_mobile"    ; "mobile_3/3/3"   ; "VN"    ;                            ;                         ; IR21
 89[689]  ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "mobifone"          ; "mobile_3/3/3"   ; "VN"    ;                            ;                         ; IR21
 897      ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "mobifone"          ; "mobile_3/3/3"   ; "VN"
-9[03]    ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "mobifone"          ; "mobile_2/3/2/2" ; "VN"    ;                            ;                         ; IR21
-9[14]    ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "vinaphone"         ; "mobile_2/3/2/2" ; "VN"    ;                            ;                         ; IR21
-92       ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "vietnamobile"      ; "mobile_2/3/2/2" ; "VN"    ;                            ;                         ; IR21
-95       ; 9      ; MOBILE     ; STANDARD_RATE ; false         ;                     ; "mobile_2/3/2/2" ; "VN"
-9[6-8]   ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "viettel"           ; "mobile_2/3/2/2" ; "VN"    ;                            ;                         ; IR21
-99[01]   ; 9      ; MOBILE     ; STANDARD_RATE ; false         ;                     ; "mobile_2/3/2/2" ; "VN"
-99[3-7]  ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "g_mobile"          ; "mobile_2/3/2/2" ; "VN"
-99[89]   ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "indochina_telecom" ; "mobile_2/3/2/2" ; "VN"
+9[03]    ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "mobifone"          ; "mobile_3/3/3"   ; "VN"    ;                            ;                         ; IR21
+9[14]    ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "vinaphone"         ; "mobile_3/3/3"   ; "VN"    ;                            ;                         ; IR21
+92       ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "vietnamobile"      ; "mobile_3/3/3"   ; "VN"    ;                            ;                         ; IR21
+95       ; 9      ; MOBILE     ; STANDARD_RATE ; false         ;                     ; "mobile_3/3/3"   ; "VN"
+9[6-8]   ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "viettel"           ; "mobile_3/3/3"   ; "VN"    ;                            ;                         ; IR21
+99[01]   ; 9      ; MOBILE     ; STANDARD_RATE ; false         ;                     ; "mobile_3/3/3"   ; "VN"
+99[3-7]  ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "g_mobile"          ; "mobile_3/3/3"   ; "VN"
+99[89]   ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "indochina_telecom" ; "mobile_3/3/3"   ; "VN"

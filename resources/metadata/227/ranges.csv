@@ -26,6 +26,7 @@ Prefix     ; Length ; Type       ; Tariff        ; Operator ; Format            
 23         ; 8      ; MOBILE     ; STANDARD_RATE ; "orange" ; "fmt1_2/2/2/2"    ; "NE"    ;             ; IR21
 70         ; 8      ; MOBILE     ; STANDARD_RATE ; "orange" ; "fmt1_2/2/2/2"    ; "NE"    ;             ; ITU
 74         ; 8      ; MOBILE     ; STANDARD_RATE ; "moov"   ; "fmt1_2/2/2/2"    ; "NE"    ;             ; ITU
+77         ; 8      ; MOBILE     ; STANDARD_RATE ; "airtel" ; "fmt1_2/2/2/2"    ; "NE"
 8[01]      ; 8      ; MOBILE     ; STANDARD_RATE ; "orange" ; "fmt1_2/2/2/2"    ; "NE"    ;             ; IR21
 82         ; 8      ; MOBILE     ; STANDARD_RATE ; "orange" ; "fmt1_2/2/2/2"    ; "NE"    ;             ; ITU
 [89]3      ; 8      ; MOBILE     ; STANDARD_RATE ; "nt"     ; "fmt1_2/2/2/2"    ; "NE"    ;             ; ITU
