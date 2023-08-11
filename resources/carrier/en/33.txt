@@ -279,6 +279,8 @@
 3375705|Mobiweb telecom limited
 3375706|Nordnet
 3375707|Keyyo
+3375714|AIF
+3375715|AIF
 3375717|Keyyo
 337572|Mobiquithings
 337573|Mobiquithings

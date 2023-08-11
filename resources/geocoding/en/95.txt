@@ -95,7 +95,6 @@
 95642487|Shawpin
 9564472|Meiktila
 956525|Ngape
-9567439|Naypyidaw
 9567460|Naypyitaw
 9567470|Naypyitaw
 9567550|Naypyidaw

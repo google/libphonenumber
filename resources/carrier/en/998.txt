@@ -12,6 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+9982|Beeline
 9983|HUMANS
 99850|Ucell
 99861220|MobiUZ
