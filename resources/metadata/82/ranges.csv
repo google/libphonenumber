@@ -3,6 +3,7 @@ Prefix      ; Length ; Type            ; Tariff        ; Area Code Length ; Nati
 003[06]8    ; 12     ; FIXED_LINE      ; TOLL_FREE     ;                  ; true          ;              ; "toll_free_5/3-4/4"  ; "KR"
 00798       ; 12,13  ; FIXED_LINE      ; TOLL_FREE     ;                  ; true          ;              ; "toll_free_5/3-4/4"  ; "KR"
 00798       ; 14     ; FIXED_LINE      ; TOLL_FREE     ;                  ; true          ;              ; "toll_free_5/2/3/4"  ; "KR"
+100         ; 9,10   ; MOBILE          ; STANDARD_RATE ;                  ; false         ; "lg"         ; "fmt_2/3-4/4"        ; "KR"    ;               ;            ; ITU
 101         ; 9,10   ; MOBILE          ; STANDARD_RATE ;                  ; false         ;              ; "fmt_2/3-4/4"        ; "KR"
 102[01]     ; 9,10   ; MOBILE          ; STANDARD_RATE ;                  ; false         ; "sk_tellink" ; "fmt_2/3-4/4"        ; "KR"    ;               ;            ; IR21       ; "IR21 Date: 10/26/2018"
 102[2-4]    ; 9,10   ; MOBILE          ; STANDARD_RATE ;                  ; false         ; "lg"         ; "fmt_2/3-4/4"        ; "KR"    ;               ;            ; IR21       ; "IR21 Date: 02/02/2018"
