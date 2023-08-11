@@ -77,13 +77,13 @@
         <dependency>
             <groupId>com.google.auto.value</groupId>
             <artifactId>auto-value</artifactId>
-            <version>1.7.4</version>
+            <version>1.10.2</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.google.auto.value</groupId>
             <artifactId>auto-value-annotations</artifactId>
-            <version>1.7.4</version>
+            <version>1.10.2</version>
         </dependency>
     </dependencies>
 </project>

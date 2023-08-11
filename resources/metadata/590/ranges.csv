@@ -9,6 +9,7 @@ Prefix       ; Length ; Type       ; Tariff        ; Operator          ; Format 
 59028        ; 9      ; FIXED_LINE ; STANDARD_RATE ;                   ; "fmt1_3/2/2/2"    ; "BL,GP"
 59030        ; 9      ; FIXED_LINE ; STANDARD_RATE ;                   ; "fmt1_3/2/2/2"    ; "MF"
 5903[1289]   ; 9      ; FIXED_LINE ; STANDARD_RATE ;                   ; "fmt1_3/2/2/2"    ; "GP"
+5903[3-7]    ; 9      ; FIXED_LINE ; STANDARD_RATE ;                   ; "fmt1_3/2/2/2"    ; "BL,GP,MF" ; GOVERNMENT
 5904[0-24-9] ; 9      ; FIXED_LINE ; STANDARD_RATE ;                   ; "fmt1_3/2/2/2"    ; "GP"
 5905[068]    ; 9      ; FIXED_LINE ; STANDARD_RATE ;                   ; "fmt1_3/2/2/2"    ; "MF"
 5905[12]     ; 9      ; FIXED_LINE ; STANDARD_RATE ;                   ; "fmt1_3/2/2/2"    ; "BL,MF"
@@ -51,6 +52,6 @@ Prefix       ; Length ; Type       ; Tariff        ; Operator          ; Format 
 6913[1-5]    ; 9      ; MOBILE     ; STANDARD_RATE ; "orange"          ; "fmt1_3/2/2/2"    ; "BL,GP,MF" ; GOVERNMENT ; "Regulator Monthly Report (Arcep)"
 80[0-5]      ; 9      ; FIXED_LINE ; TOLL_FREE     ;                   ; "varcost_3/2/2/2" ; "BL,GP,MF" ;            ; "ARCEP"
 9395         ; 9      ; VOIP       ; STANDARD_RATE ;                   ; "fmt1_3/2/2/2"    ; "BL,GP,MF" ; ITU
-9475[0-2]    ; 9      ; VOIP       ; STANDARD_RATE ;                   ; "fmt1_3/2/2/2"    ; "BL,GP,MF" ; GOVERNMENT
+9475[0-5]    ; 9      ; VOIP       ; STANDARD_RATE ;                   ; "fmt1_3/2/2/2"    ; "BL,GP,MF" ; GOVERNMENT
 976[01]      ; 9      ; VOIP       ; STANDARD_RATE ;                   ; "fmt1_3/2/2/2"    ; "BL,GP,MF" ; GOVERNMENT ; "Regulator Monthly Report (Arcep)"
 9768         ; 9      ; VOIP       ; STANDARD_RATE ;                   ; "fmt1_3/2/2/2"    ; "BL,GP,MF" ; ITU
