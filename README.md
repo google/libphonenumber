@@ -55,9 +55,9 @@ Cream Sandwich).
 The [Java demo](https://libphonenumber.appspot.com/) is updated with a slight
 delay after the GitHub release.
 
-Last demo update: v8.13.8.
+Last demo update: v8.13.18.
 
-Note: Eventhough the library (main branch/[maven release](https://repo1.maven.org/maven2/com/googlecode/libphonenumber/libphonenumber/8.12.56/))
+Note: Even though the library (main branch/[maven release](https://repo1.maven.org/maven2/com/googlecode/libphonenumber/libphonenumber/8.12.56/))
 is at v8.12.57, because of some deployment issues, we were unable to update the
 Java demo with the new binary version. We will soon fix this. Meantime, please
 use JS demo.
@@ -259,3 +259,7 @@ Alternatives to our own versions:
     https://github.com/seegno/google-libphonenumber - a browserify-compatible
     wrapper around the original unmodified library installable via npm, which
     packs the Google Closure library, about 420 KB in size.
+
+Tools based on libphonenumber metadata:
+
+*   Scala: https://github.com/mr-tolmach/raf - library for generating valid phone numbers in the E.164 format

@@ -91,7 +91,7 @@ Prefix      ; Length ; Type            ; Tariff        ; Operator     ; Format  
 9231        ; 9      ; MOBILE          ; STANDARD_RATE ; "vodafone"   ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; GOVERNMENT
 9232        ; 9      ; MOBILE          ; STANDARD_RATE ; "meo"        ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; GOVERNMENT
 9233        ; 9      ; MOBILE          ; STANDARD_RATE ; "digi"       ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; GOVERNMENT
-923[5-9]    ; 9      ; MOBILE          ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"
+923[5-9]    ; 9      ; MOBILE          ; STANDARD_RATE ; "nos"        ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; GOVERNMENT
 924         ; 9      ; MOBILE          ; STANDARD_RATE ; "meo"        ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; IR21
 92[5-7]     ; 9      ; MOBILE          ; STANDARD_RATE ; "meo"        ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; IR21       ; "IR21 dated 4/2/2019"
 928[01]     ; 9      ; MOBILE          ; STANDARD_RATE ; "nowo"       ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; GOVERNMENT ; "Mobile Section updated 4/15/2019"

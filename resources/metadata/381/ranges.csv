@@ -33,7 +33,7 @@ Prefix   ; Length ; Type       ; Tariff        ; Area Code Length ; Operator    
 38[2-9]  ; 7-12   ; FIXED_LINE ; STANDARD_RATE ; 2                ;                  ; "fmt_2/5-10" ; "RS"    ; "Pristina"           ; "Приштина"
 390[2-9] ; 7-12   ; FIXED_LINE ; STANDARD_RATE ; 3                ;                  ; "fmt_3/3-9"  ; "RS"    ; "Dakovica"           ; "Ђаковица"
 39[2-9]  ; 7-12   ; FIXED_LINE ; STANDARD_RATE ; 2                ;                  ; "fmt_2/5-10" ; "RS"    ; "Pec"                ; "Пећ"
-6[018]   ; 8,9    ; MOBILE     ; STANDARD_RATE ;                  ; "vip"            ; "fmt_2/5-10" ; "RS"    ;                      ;                      ; IR21
+6[018]   ; 8,9    ; MOBILE     ; STANDARD_RATE ;                  ; "a1"             ; "fmt_2/5-10" ; "RS"    ;                      ;                      ; IR21
 6[239]   ; 8,9    ; MOBILE     ; STANDARD_RATE ;                  ; "telenor"        ; "fmt_2/5-10" ; "RS"    ;                      ;                      ; IR21
 6[4-6]   ; 8,9    ; MOBILE     ; STANDARD_RATE ;                  ; "mts"            ; "fmt_2/5-10" ; "RS"    ;                      ;                      ; IR21
 67[0-59] ; 9,10   ; MOBILE     ; STANDARD_RATE ;                  ;                  ; "fmt_2/5-10" ; "RS"

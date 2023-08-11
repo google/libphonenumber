@@ -112,7 +112,8 @@ Prefix        ; Length ; Type            ; Tariff        ; Operator             
 794[0-8]      ; 9      ; MOBILE          ; STANDARD_RATE ; "o2"                       ; "fmt1_3/3/3"   ; "CZ"    ;                            ; IR21
 7949          ; 9      ; MOBILE          ; STANDARD_RATE ;                            ; "fmt1_3/3/3"   ; "CZ"    ;                            ;            ; "Fillup To Support Master Range"
 795[01]       ; 9      ; MOBILE          ; STANDARD_RATE ; "vectone"                  ; "fmt1_3/3/3"   ; "CZ"    ;                            ; GOVERNMENT
-795[2-9]      ; 9      ; MOBILE          ; STANDARD_RATE ;                            ; "fmt1_3/3/3"   ; "CZ"    ;                            ;            ; "Fillup To Support Master Range"
+795[23]       ; 9      ; MOBILE          ; STANDARD_RATE ; "o2"                       ; "fmt1_3/3/3"   ; "CZ"    ;                            ; GOVERNMENT
+795[4-9]      ; 9      ; MOBILE          ; STANDARD_RATE ;                            ; "fmt1_3/3/3"   ; "CZ"    ;                            ;            ; "Fillup To Support Master Range"
 79[68]        ; 9      ; MOBILE          ; STANDARD_RATE ;                            ; "fmt1_3/3/3"   ; "CZ"    ;                            ;            ; "Fillup To Support Master Range"
 797[0-4]      ; 9      ; MOBILE          ; STANDARD_RATE ;                            ; "fmt1_3/3/3"   ; "CZ"    ;                            ;            ; "Fillup To Support Master Range"
 79750         ; 9      ; MOBILE          ; STANDARD_RATE ; "dialtelecom"              ; "fmt1_3/3/3"   ; "CZ"    ;                            ; GOVERNMENT
