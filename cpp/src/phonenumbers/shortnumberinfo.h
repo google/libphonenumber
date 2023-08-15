@@ -46,7 +46,12 @@ class ShortNumberInfo {
  public:
   ShortNumberInfo();
   ~ShortNumberInfo();
-
+#ifdef ISTREAM_DATA_PROVIDER
+ private:
+  void ClearMetadata();
+ public:
+  void ReloadMetadata();
+#endif // ISTREAM_DATA_PROVIDER
   // Cost categories of short numbers.
   enum ShortNumberCost {
     TOLL_FREE,
@@ -206,6 +211,7 @@ class ShortNumberInfo {
   bool MatchesEmergencyNumberHelper(const string& number,
                                     const string& region_code,
                                     bool allow_prefix_match) const;
+  void LoadMetadata();
 
   DISALLOW_COPY_AND_ASSIGN(ShortNumberInfo);
 };

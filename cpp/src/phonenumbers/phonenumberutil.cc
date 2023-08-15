@@ -21,7 +21,7 @@
 #include <map>
 #include <utility>
 #include <vector>
-
+#include <boost/filesystem.hpp>
 #include <unicode/uchar.h>
 #include <unicode/utf8.h>
 
@@ -34,7 +34,6 @@
 #include "phonenumbers/matcher_api.h"
 #include "phonenumbers/metadata.h"
 #include "phonenumbers/normalize_utf8.h"
-#include "phonenumbers/phonemetadata.pb.h"
 #include "phonenumbers/phonenumber.h"
 #include "phonenumbers/phonenumber.pb.h"
 #include "phonenumbers/regex_based_matcher.h"
@@ -46,6 +45,8 @@
 #include "phonenumbers/stringutil.h"
 #include "phonenumbers/utf/unicodetext.h"
 #include "phonenumbers/utf/utf.h"
+
+#include <fstream>
 
 namespace i18n {
 namespace phonenumbers {
@@ -121,6 +122,21 @@ const char kPossibleCharsAfterExtLabel[] =
     "[:\\.\xEF\xBC\x8E]?[ \xC2\xA0\\t,-]*";
 const char kOptionalExtSuffix[] = "#?";
 
+const string METADATA_FILE_NAME = "metadata.dat";
+
+#ifdef ISTREAM_DATA_PROVIDER
+bool LoadMetadataFromFile(const string& fileName, PhoneMetadataCollection* metadata) {
+  std::fstream input(fileName.c_str(), std::ios::in | std::ios::binary);
+  if (!input) {
+    LOG(ERROR) << "metadata file not found.";
+  } else if (!metadata->ParseFromIstream(&input)) {
+    LOG(ERROR) << "Could not parse binary data from file.";
+    return false;
+  }
+
+  return true;
+}
+#else
 bool LoadCompiledInMetadata(PhoneMetadataCollection* metadata) {
   if (!metadata->ParseFromArray(metadata_get(), metadata_size())) {
     LOG(ERROR) << "Could not parse binary data.";
@@ -128,6 +144,7 @@ bool LoadCompiledInMetadata(PhoneMetadataCollection* metadata) {
   }
   return true;
 }
+#endif // ISTREAM_DATA_PROVIDER
 
 // Returns a pointer to the description inside the metadata of the appropriate
 // type.
@@ -846,25 +863,62 @@ class PhoneNumberRegExpsAndMappings {
   DISALLOW_COPY_AND_ASSIGN(PhoneNumberRegExpsAndMappings);
 };
 
-// Private constructor. Also takes care of initialisation.
-PhoneNumberUtil::PhoneNumberUtil()
-    : logger_(Logger::set_logger_impl(new NullLogger())),
-      matcher_api_(new RegexBasedMatcher()),
-      reg_exps_(new PhoneNumberRegExpsAndMappings),
-      country_calling_code_to_region_code_map_(
-          new std::vector<IntRegionsPair>()),
-      nanpa_regions_(new absl::node_hash_set<string>()),
-      region_to_metadata_map_(new absl::node_hash_map<string, PhoneMetadata>()),
-      country_code_to_non_geographical_metadata_map_(
-          new absl::node_hash_map<int, PhoneMetadata>) {
-  Logger::set_logger_impl(logger_.get());
-  // TODO: Update the java version to put the contents of the init
-  // method inside the constructor as well to keep both in sync.
-  PhoneMetadataCollection metadata_collection;
-  if (!LoadCompiledInMetadata(&metadata_collection)) {
-    LOG(DFATAL) << "Could not parse compiled-in metadata.";
-    return;
+#ifdef ISTREAM_DATA_PROVIDER
+void PhoneNumberUtil::ClearMetadata() {
+  country_code_to_non_geographical_metadata_map_->clear();
+  region_to_metadata_map_->clear();
+
+  gtl::STLDeleteContainerPairSecondPointers(
+    country_calling_code_to_region_code_map_->begin(),
+    country_calling_code_to_region_code_map_->end());
+
+  country_calling_code_to_region_code_map_->clear();
+  nanpa_regions_->clear();
+}
+
+bool UpdateMetadataFile(const string& filepath) {
+
+  boost::filesystem::path path_to = boost::filesystem::current_path();
+  path_to += "/";
+  path_to += METADATA_FILE_NAME;
+  boost::filesystem::path path_bk = path_to;
+  path_bk += ".bak";
+  boost::system::error_code ec;
+
+  boost::filesystem::copy(path_to.string(), path_bk.string(), ec);
+  if (ec) {
+    LOG(DFATAL) << "Could not create backup copy of metadata file." << ec.message();
+    return false;
   }
+  boost::filesystem::rename(filepath, path_to.string(), ec);
+  if(ec) {
+    LOG(DFATAL) << "Could not rename metadata file." << ec.message();
+    return false;
+  }
+  boost::filesystem::remove(path_bk, ec);
+  if(ec) {
+    LOG(DFATAL) << "Could not remove metadata file." << ec.message();
+  }
+  return true;
+}
+
+bool PhoneNumberUtil::ReloadMetadata(const string& filepath) {
+  ClearMetadata();
+  PhoneMetadataCollection metadata_collection;
+  if (!LoadMetadataFromFile(filepath, &metadata_collection)) {
+    LOG(DFATAL) << "Could not parse metadata from file.";
+    return false;
+  }
+  LoadMetadataFromCollection(metadata_collection);
+  if(!UpdateMetadataFile(filepath)){
+    LOG(DFATAL) << "Could not update metadata file.";
+    return false;
+  }
+  return true;
+}
+#endif // ISTREAM_DATA_PROVIDER
+
+void PhoneNumberUtil::LoadMetadataFromCollection(const PhoneMetadataCollection& metadata_collection) {
   // Storing data in a temporary map to make it easier to find other regions
   // that share a country calling code when inserting data.
   std::map<int, std::list<string>* > country_calling_code_to_region_map;
@@ -911,6 +965,35 @@ PhoneNumberUtil::PhoneNumberUtil()
   // Sort all the pairs in ascending order according to country calling code.
   std::sort(country_calling_code_to_region_code_map_->begin(),
             country_calling_code_to_region_code_map_->end(), OrderByFirst());
+}
+
+// Private constructor. Also takes care of initialisation.
+PhoneNumberUtil::PhoneNumberUtil()
+    : logger_(Logger::set_logger_impl(new NullLogger())),
+      matcher_api_(new RegexBasedMatcher()),
+      reg_exps_(new PhoneNumberRegExpsAndMappings),
+      country_calling_code_to_region_code_map_(
+          new std::vector<IntRegionsPair>()),
+      nanpa_regions_(new absl::node_hash_set<string>()),
+      region_to_metadata_map_(new absl::node_hash_map<string, PhoneMetadata>()),
+      country_code_to_non_geographical_metadata_map_(
+          new absl::node_hash_map<int, PhoneMetadata>) {
+  Logger::set_logger_impl(logger_.get());
+  // TODO: Update the java version to put the contents of the init
+  // method inside the constructor as well to keep both in sync.
+  PhoneMetadataCollection metadata_collection;
+#ifdef ISTREAM_DATA_PROVIDER
+  if (!LoadMetadataFromFile(METADATA_FILE_NAME, &metadata_collection)) {
+      LOG(DFATAL) << "Could not parse metadata from file.";
+      return;
+  }
+#else
+  if (!LoadCompiledInMetadata(&metadata_collection)) {
+      LOG(DFATAL) << "Could not parse compiled-in metadata.";
+      return;
+  }
+#endif // ISTREAM_DATA_PROVIDER
+  LoadMetadataFromCollection(metadata_collection);
 }
 
 PhoneNumberUtil::~PhoneNumberUtil() {

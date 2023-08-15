@@ -26,6 +26,7 @@
 #include "phonenumbers/regex_based_matcher.h"
 #include "phonenumbers/region_code.h"
 #include "phonenumbers/short_metadata.h"
+#include <fstream>
 
 namespace i18n {
 namespace phonenumbers {
@@ -34,6 +35,30 @@ using google::protobuf::RepeatedField;
 using std::map;
 using std::string;
 
+
+#ifdef ISTREAM_DATA_PROVIDER
+bool LoadMetadataFromFile(string fileName, PhoneMetadataCollection* metadata) {
+  std::fstream input(fileName.c_str(), std::ios::in | std::ios::binary);
+  if (!input) {
+    LOG(ERROR) << "metadata file not found.";
+  } else if (!metadata->ParseFromIstream(&input)) {
+    LOG(ERROR) << "Could not parse binary data from file.";
+    return false;
+  }
+
+  return true;
+}
+
+void ShortNumberInfo::ClearMetadata(){
+  region_to_short_metadata_map_->clear();
+  regions_where_emergency_numbers_must_be_exact_->clear();
+}
+
+void ShortNumberInfo::ReloadMetadata() {
+  ClearMetadata();
+  LoadMetadata();
+}
+#else
 bool LoadCompiledInMetadata(PhoneMetadataCollection* metadata) {
   if (!metadata->ParseFromArray(short_metadata_get(), short_metadata_size())) {
     LOG(ERROR) << "Could not parse binary data.";
@@ -41,17 +66,22 @@ bool LoadCompiledInMetadata(PhoneMetadataCollection* metadata) {
   }
   return true;
 }
+#endif // ISTREAM_DATA_PROVIDER
 
-ShortNumberInfo::ShortNumberInfo()
-    : phone_util_(*PhoneNumberUtil::GetInstance()),
-      matcher_api_(new RegexBasedMatcher()),
-      region_to_short_metadata_map_(new absl::flat_hash_map<string, PhoneMetadata>()),
-      regions_where_emergency_numbers_must_be_exact_(new absl::flat_hash_set<string>()) {
+void ShortNumberInfo::LoadMetadata() {
   PhoneMetadataCollection metadata_collection;
+#ifdef ISTREAM_DATA_PROVIDER
+  const string metadataInputFile = "metadata_short.dat";
+  if (!LoadMetadataFromFile(metadataInputFile, &metadata_collection)) {
+    LOG(DFATAL) << "Could not parse metadata from file.";
+    return;
+  }
+#else
   if (!LoadCompiledInMetadata(&metadata_collection)) {
     LOG(DFATAL) << "Could not parse compiled-in metadata.";
     return;
   }
+#endif // ISTREAM_DATA_PROVIDER
   for (const auto& metadata : metadata_collection.metadata()) {
     const string& region_code = metadata.id();
     region_to_short_metadata_map_->insert(std::make_pair(region_code, metadata));
@@ -59,6 +89,14 @@ ShortNumberInfo::ShortNumberInfo()
   regions_where_emergency_numbers_must_be_exact_->insert("BR");
   regions_where_emergency_numbers_must_be_exact_->insert("CL");
   regions_where_emergency_numbers_must_be_exact_->insert("NI");
+}
+
+ShortNumberInfo::ShortNumberInfo()
+    : phone_util_(*PhoneNumberUtil::GetInstance()),
+      matcher_api_(new RegexBasedMatcher()),
+      region_to_short_metadata_map_(new absl::flat_hash_map<string, PhoneMetadata>()),
+      regions_where_emergency_numbers_must_be_exact_(new absl::flat_hash_set<string>()) {
+  LoadMetadata();
 }
 
 ShortNumberInfo::~ShortNumberInfo() {}

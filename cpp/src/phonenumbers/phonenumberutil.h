@@ -30,6 +30,7 @@
 #include "phonenumbers/base/memory/singleton.h"
 #include "phonenumbers/phonenumber.pb.h"
 
+#include "phonenumbers/phonemetadata.pb.h"
 #include "absl/container/node_hash_set.h"
 #include "absl/container/node_hash_map.h"
 
@@ -67,6 +68,11 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   friend class ShortNumberInfoTest;
   friend class Singleton<PhoneNumberUtil>;
 
+#ifdef ISTREAM_DATA_PROVIDER
+  void ClearMetadata();
+ public:
+  bool ReloadMetadata(const string& fileName);
+#endif // ISTREAM_DATA_PROVIDER
  public:
   ~PhoneNumberUtil();
   static const char kRegionCodeForNonGeoEntity[];
@@ -818,10 +824,12 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   // PhoneMetadata for that country calling code. Examples of the country
   // calling codes include 800 (International Toll Free Service) and 808
   // (International Shared Cost Service).
+
   scoped_ptr<absl::node_hash_map<int, PhoneMetadata> >
       country_code_to_non_geographical_metadata_map_;
 
   PhoneNumberUtil();
+  void LoadMetadataFromCollection(const PhoneMetadataCollection& metadata_collection);
 
   // Returns a regular expression for the possible extensions that may be found
   // in a number, for use when matching.

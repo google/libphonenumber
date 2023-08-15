@@ -118,7 +118,11 @@ class PhoneNumberUtilTest : public testing::Test {
         phone_util_.Parse(number_to_parse, RegionCode::ZZ(), &actual_number));
   }
 
-  const PhoneNumberUtil& phone_util_;
+  void ReloadMetadata(const string fileName) {
+      phone_util_.ReloadMetadata(fileName);
+  }
+
+  PhoneNumberUtil& phone_util_;
 
  private:
   DISALLOW_COPY_AND_ASSIGN(PhoneNumberUtilTest);
@@ -157,6 +161,11 @@ TEST_F(PhoneNumberUtilTest, InterchangeInvalidCodepoints) {
     EXPECT_EQ(PhoneNumberUtil::NOT_A_NUMBER,
               phone_util_.Parse(input, RegionCode::GB(), &phone_number));
   }
+}
+
+TEST_F(PhoneNumberUtilTest, ReloadMetadata) {
+  const string filename = "metadata.dat";
+  EXPECT_TRUE(phone_util_.ReloadMetadata(filename));
 }
 
 TEST_F(PhoneNumberUtilTest, GetSupportedRegions) {
