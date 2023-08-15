@@ -53,7 +53,7 @@
     <dependency>
       <groupId>commons-io</groupId>
       <artifactId>commons-io</artifactId>
-      <version>2.7</version>
+      <version>2.13.0</version>
     </dependency>
     <dependency>
       <groupId>commons-fileupload</groupId>
@@ -104,7 +104,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-war-plugin</artifactId>
-        <version>3.3.1</version>
+        <version>3.4.0</version>
       </plugin>
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
