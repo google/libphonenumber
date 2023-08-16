@@ -23,7 +23,7 @@
 #include <map>
 #include <set>
 #include <string>
-
+#include "phonenumbers/phonemetadata.pb.h"
 #include "phonenumbers/base/basictypes.h"
 #include "phonenumbers/base/memory/scoped_ptr.h"
 #include "absl/container/flat_hash_set.h"
@@ -43,6 +43,7 @@ class PhoneNumber;
 class PhoneNumberUtil;
 
 class ShortNumberInfo {
+  void LoadMetadataFromCollection(const PhoneMetadataCollection& metadata_collection);
  public:
   ShortNumberInfo();
   ~ShortNumberInfo();
@@ -50,7 +51,7 @@ class ShortNumberInfo {
  private:
   void ClearMetadata();
  public:
-  void ReloadMetadata();
+  bool ReloadMetadata(const string& filename);
 #endif // ISTREAM_DATA_PROVIDER
   // Cost categories of short numbers.
   enum ShortNumberCost {

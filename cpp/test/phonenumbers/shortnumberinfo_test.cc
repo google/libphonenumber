@@ -47,7 +47,7 @@ class ShortNumberInfoTest : public testing::Test {
   }
 
   const PhoneNumberUtil phone_util_;
-  const ShortNumberInfo short_info_;
+  ShortNumberInfo short_info_;
 
  private:
   DISALLOW_COPY_AND_ASSIGN(ShortNumberInfoTest);
@@ -94,6 +94,11 @@ TEST_F(ShortNumberInfoTest, IsValidShortNumber) {
   shared_number.set_country_code(44);
   shared_number.set_national_number(uint64{18001});
   EXPECT_TRUE(short_info_.IsValidShortNumber(shared_number));
+}
+
+TEST_F(ShortNumberInfoTest, ReloadMetadata) {
+  const string filename = "metadata_short.dat";
+  EXPECT_TRUE(short_info_.ReloadMetadata(filename));
 }
 
 TEST_F(ShortNumberInfoTest, IsCarrierSpecific) {
