@@ -1,7 +1,7 @@
 Prefix       ; Length ; Type       ; Tariff        ; Operator ; Format         ; Timezone                        ; Regions ; Provenance ; Comment
 262          ; 9      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt1_3/2/2/2" ; "Indian/Reunion"                ; "RE"
 2630         ; 9      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt1_3/2/2/2" ; "Indian/Reunion"                ; "RE"    ; GOVERNMENT
-2631[0-4]    ; 9      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt1_3/2/2/2" ; "Indian/Reunion"                ; "RE"    ; GOVERNMENT
+2631[0-5]    ; 9      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt1_3/2/2/2" ; "Indian/Reunion"                ; "RE"    ; GOVERNMENT
 2690[0-4]    ; 9      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt1_3/2/2/2" ; "Indian/Mayotte"                ; "YT"    ; GOVERNMENT
 2690[67]     ; 9      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt1_3/2/2/2" ; "Indian/Mayotte"                ; "YT"
 2695[0-2]    ; 9      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt1_3/2/2/2" ; "Indian/Mayotte"                ; "YT"    ; GOVERNMENT ; "ARCEP 4/9/2019"
@@ -35,6 +35,7 @@ Prefix       ; Length ; Type       ; Tariff        ; Operator ; Format         ;
 6929[2-4]    ; 9      ; MOBILE     ; STANDARD_RATE ; "only"   ; "fmt1_3/2/2/2" ; "Indian/Reunion"                ; "RE"    ; IR21       ; "IR21 dated 3/6/2019"
 6930[06]     ; 9      ; MOBILE     ; STANDARD_RATE ; "orange" ; "fmt1_3/2/2/2" ; "Indian/Reunion"                ; "RE"    ; GOVERNMENT ; "ARCEP 4/9/2019"
 6930[1-4]    ; 9      ; MOBILE     ; STANDARD_RATE ; "sfr"    ; "fmt1_3/2/2/2" ; "Indian/Reunion"                ; "RE"    ; IR21       ; "IR21 dated 10/8/2016"
+693[06]5     ; 9      ; MOBILE     ; STANDARD_RATE ; "zeop"   ; "fmt1_3/2/2/2" ; "Indian/Reunion"                ; "RE"    ; GOVERNMENT
 6931[03]     ; 9      ; MOBILE     ; STANDARD_RATE ; "sfr"    ; "fmt1_3/2/2/2" ; "Indian/Reunion"                ; "RE"    ; IR21       ; "IR21 dated 10/8/2016"
 69311        ; 9      ; MOBILE     ; STANDARD_RATE ; "orange" ; "fmt1_3/2/2/2" ; "Indian/Reunion"                ; "RE"    ; GOVERNMENT ; "ARCEP 4/9/2019"
 69320        ; 9      ; MOBILE     ; STANDARD_RATE ; "sfr"    ; "fmt1_3/2/2/2" ; "Indian/Reunion"                ; "RE"    ; IR21       ; "IR21 dated 10/8/2016"
@@ -47,7 +48,6 @@ Prefix       ; Length ; Type       ; Tariff        ; Operator ; Format         ;
 69355        ; 9      ; MOBILE     ; STANDARD_RATE ; "orange" ; "fmt1_3/2/2/2" ; "Indian/Reunion"                ; "RE"    ; GOVERNMENT ; "ARCEP 4/9/2019"
 6936[1-3]    ; 9      ; MOBILE     ; STANDARD_RATE ; "zeop"   ; "fmt1_3/2/2/2" ; "Indian/Reunion"                ; "RE"    ; IR21       ; "IR21 dated 1/3/2019"
 69364        ; 9      ; MOBILE     ; STANDARD_RATE ; "zeop"   ; "fmt1_3/2/2/2" ; "Indian/Reunion"                ; "RE"    ; GOVERNMENT ; "ARCEP 3/2/2020"
-69365        ; 9      ; MOBILE     ; STANDARD_RATE ; "zeop"   ; "fmt1_3/2/2/2" ; "Indian/Reunion"                ; "RE"    ; GOVERNMENT
 69366        ; 9      ; MOBILE     ; STANDARD_RATE ; "orange" ; "fmt1_3/2/2/2" ; "Indian/Reunion"                ; "RE"    ; GOVERNMENT ; "ARCEP 4/9/2019"
 69377        ; 9      ; MOBILE     ; STANDARD_RATE ; "orange" ; "fmt1_3/2/2/2" ; "Indian/Reunion"                ; "RE"    ; GOVERNMENT ; "ARCEP 4/9/2019"
 6938[0-3]    ; 9      ; MOBILE     ; STANDARD_RATE ; "only"   ; "fmt1_3/2/2/2" ; "Indian/Reunion"                ; "RE"    ; IR21       ; "IR21 dated 3/6/2019"

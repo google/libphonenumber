@@ -5646,8 +5646,8 @@
       </generalDesc>
       <shortCode>
         <possibleLengths national="3"/>
-        <exampleNumber>112</exampleNumber>
-        <nationalNumberPattern>112</nationalNumberPattern>
+        <exampleNumber>110</exampleNumber>
+        <nationalNumberPattern>1[1-8]\d</nationalNumberPattern>
       </shortCode>
       <tollFree>
         <possibleLengths national="3"/>
@@ -7737,8 +7737,8 @@
            which are used to interact with respective companies i.e. after scanning the code. -->
       <smsServices>
         <possibleLengths national="10"/>
-        <exampleNumber>0005000000</exampleNumber>
-        <nationalNumberPattern>000\d{7}</nationalNumberPattern>
+        <exampleNumber>0002000000</exampleNumber>
+        <nationalNumberPattern>000[259]\d{6}</nationalNumberPattern>
       </smsServices>
     </territory>
 
