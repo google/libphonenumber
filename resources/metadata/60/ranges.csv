@@ -88,6 +88,7 @@ Prefix         ; Length ; Type       ; Tariff        ; Area Code Length ; Operat
 1172[7-9]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "ytl"           ; "mobile_2/4/4"    ; "MY"    ;                           ; IR21
 117[34]        ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "ytl"           ; "mobile_2/4/4"    ; "MY"    ;                           ; IR21
 1175[0-6]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "ytl"           ; "mobile_2/4/4"    ; "MY"    ;                           ; IR21
+11757          ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "u_mobile"      ; "mobile_2/4/4"    ; "MY"    ;                           ; IR21
 11888[69]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "u_mobile"      ; "mobile_2/4/4"    ; "MY"    ;                           ; IR21
 118888         ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "red_one"       ; "mobile_2/4/4"    ; "MY"    ;                           ; GOVERNMENT
 12             ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "maxis"         ; "fmt_2/3/3-4"     ; "MY"    ;                           ; IR21
