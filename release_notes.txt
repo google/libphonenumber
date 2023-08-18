@@ -1,3 +1,14 @@
+Aug 17, 2023: v8.13.19
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   GB, GF, IL, JP, MQ, MY, NO, PL, RE, SJ, TJ, US
+ - Updated short number metadata for region code(s): GL, JP
+ - New geocoding data for country calling code(s): 1983 (en)
+ - Updated geocoding data for country calling code(s): 44 (en), 975 (en)
+ - Updated carrier data for country calling code(s):
+   47 (en), 51 (en), 60 (en), 216 (en), 262 (en), 972 (en), 992 (en)
+ - Updated / refreshed time zone meta data.
+
 Aug 02, 2023: v8.13.18
 Metadata changes:
  - Updated alternate formatting data for country calling code(s): 84

@@ -156,9 +156,6 @@ Prefix          ; Length ; Type            ; Tariff        ; Operator           
 5[12]           ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fmt_2/2/2/2"   ; "Europe/Oslo"         ; "NO"    ; "Rogaland"             ; GOVERNMENT
 5[356]          ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fmt_2/2/2/2"   ; "Europe/Oslo"         ; "NO"    ; "Hordaland"            ; GOVERNMENT
 57              ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fmt_2/2/2/2"   ; "Europe/Oslo"         ; "NO"    ; "Sogn og Fjordane"     ; GOVERNMENT
-59[02-57-9]     ; 8      ; MOBILE          ; STANDARD_RATE ;                          ; "fmt_2/2/2/2"   ; "Europe/Oslo"         ; "NO,SJ"
-591             ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "fmt_2/2/2/2"   ; "Europe/Oslo"         ; "NO,SJ"
-596             ; 8      ; MOBILE          ; STANDARD_RATE ; "ice"                    ; "fmt_2/2/2/2"   ; "Europe/Oslo"         ; "NO,SJ" ;                        ; IR21
 61              ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fmt_2/2/2/2"   ; "Europe/Oslo"         ; "NO"    ; "Oppland"              ; GOVERNMENT
 62              ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fmt_2/2/2/2"   ; "Europe/Oslo"         ; "NO"    ; "Hedmark"              ; GOVERNMENT
 6[3467]         ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fmt_2/2/2/2"   ; "Europe/Oslo"         ; "NO"    ; "Akershus"             ; GOVERNMENT
