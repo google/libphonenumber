@@ -118,11 +118,14 @@ class PhoneNumberUtilTest : public testing::Test {
         phone_util_.Parse(number_to_parse, RegionCode::ZZ(), &actual_number));
   }
 
+#ifdef ISTREAM_DATA_PROVIDER
   void ReloadMetadata(const string fileName) {
       phone_util_.ReloadMetadata(fileName);
   }
-
   PhoneNumberUtil& phone_util_;
+#else
+  const PhoneNumberUtil& phone_util_;
+#endif
 
  private:
   DISALLOW_COPY_AND_ASSIGN(PhoneNumberUtilTest);
@@ -163,10 +166,12 @@ TEST_F(PhoneNumberUtilTest, InterchangeInvalidCodepoints) {
   }
 }
 
+#ifdef ISTREAM_DATA_PROVIDER
 TEST_F(PhoneNumberUtilTest, ReloadMetadata) {
   const string filename = "metadata.dat";
   EXPECT_TRUE(phone_util_.ReloadMetadata(filename));
 }
+#endif
 
 TEST_F(PhoneNumberUtilTest, GetSupportedRegions) {
   std::set<string> regions;

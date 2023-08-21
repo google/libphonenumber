@@ -100,6 +100,11 @@ option (BUILD_TESTING "Build testing" ON)
 option (BUILD_TOOLS_ONLY "Limit build to targets in ../tools/cpp" OFF)
 option (USE_STDMUTEX "Use C++ 2011 std::mutex for multi-threading" OFF)
 option (USE_POSIX_THREAD "Use Posix api for multi-threading" OFF)
+option (ISTREAM_DATA_PROVIDER "Use protoduf binary file as input for metadata" OFF)
+
+if(ISTREAM_DATA_PROVIDER)
+  add_definitions ("-DISTREAM_DATA_PROVIDER")
+endif()
 
 if (USE_ALTERNATE_FORMATS)
   add_definitions ("-DI18N_PHONENUMBERS_USE_ALTERNATE_FORMATS")
@@ -553,6 +558,24 @@ if(BUILD_TESTING)
       "test/phonenumbers/unicodestring_test.cc"
       "test/phonenumbers/utf/unicodetext_test.cc")
 
+  if(ISTREAM_DATA_PROVIDER)
+    set (METADATA_CONVERTOR_SOURCES_TEST
+      "src/phonenumbers/metadata_convertor.cc"
+      "src/phonenumbers/test_metadata.cc")
+
+    set (METADATA_CONVERTOR_SOURCES_LITE
+      "src/phonenumbers/metadata_convertor.cc"
+      "src/phonenumbers/lite_metadata.cc")
+
+    set (METADATA_CONVERTOR_SOURCES
+      "src/phonenumbers/metadata_convertor.cc"
+      "src/phonenumbers/metadata.cc")
+
+    set (METADATA_CONVERTOR_SOURCES_SHORT
+      "src/phonenumbers/metadata_convertor_short.cc"
+      "src/phonenumbers/short_metadata.cc")
+  endif()
+
   if (BUILD_GEOCODER)
     set (GEOCODING_TEST_SOURCES
         "test/phonenumbers/geocoding/area_code_map_test.cc"
@@ -572,6 +595,17 @@ if(BUILD_TESTING)
   # Build the testing binary.
   include_directories ("test")
   add_executable (libphonenumber_test ${TEST_SOURCES})
+  if(ISTREAM_DATA_PROVIDER)
+    add_executable(metadata_convertor ${METADATA_CONVERTOR_SOURCES})
+    add_executable(metadata_convertor_lite ${METADATA_CONVERTOR_SOURCES_LITE})
+    add_executable(metadata_convertor_test ${METADATA_CONVERTOR_SOURCES_TEST})
+    add_executable(metadata_convertor_short ${METADATA_CONVERTOR_SOURCES_SHORT})
+
+    target_link_libraries (metadata_convertor  ${PROTOBUF_LIB} phonenumber)
+    target_link_libraries (metadata_convertor_lite  ${PROTOBUF_LIB} phonenumber)
+    target_link_libraries (metadata_convertor_test  ${PROTOBUF_LIB} phonenumber)
+    target_link_libraries (metadata_convertor_short  ${PROTOBUF_LIB} phonenumber)
+  endif()
   set (TEST_LIBS phonenumber_testing ${GTEST_LIB})
 
   if (NOT WIN32)

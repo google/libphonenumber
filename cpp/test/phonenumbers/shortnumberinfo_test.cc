@@ -96,10 +96,12 @@ TEST_F(ShortNumberInfoTest, IsValidShortNumber) {
   EXPECT_TRUE(short_info_.IsValidShortNumber(shared_number));
 }
 
+#ifdef ISTREAM_DATA_PROVIDER
 TEST_F(ShortNumberInfoTest, ReloadMetadata) {
   const string filename = "metadata_short.dat";
   EXPECT_TRUE(short_info_.ReloadMetadata(filename));
 }
+#endif
 
 TEST_F(ShortNumberInfoTest, IsCarrierSpecific) {
   PhoneNumber carrier_specific_number;
