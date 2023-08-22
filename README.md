@@ -66,6 +66,13 @@ If this number is lower than the [latest release's version
 number](https://github.com/google/libphonenumber/releases), we are between
 releases and the demo may be at either version.
 
+### Demo App
+
+There is a demo Android App called [E.164 Formatter](java/demoapp) in this
+repository. The purpose of this App is to show an example of how the library can
+be used in a real-life situation, in this case specifically in an Android App
+using Java.
+
 ## JavaScript
 
 The [JavaScript
