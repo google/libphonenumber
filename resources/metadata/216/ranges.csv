@@ -13,7 +13,7 @@ Prefix     ; Length ; Type                 ; Tariff        ; Operator           
 36[0-4]    ; 8      ; MOBILE               ; STANDARD_RATE ;                    ; "fmt1_2/3/3" ; "TN"
 391        ; 8      ; MOBILE               ; STANDARD_RATE ;                    ; "fmt1_2/3/3" ; "TN"
 4[0-24]    ; 8      ; MOBILE               ; STANDARD_RATE ; "tunisie_telecom"  ; "fmt1_2/3/3" ; "TN"    ;                                                      ; IR21       ; "IR21 dated 2/13/2019"
-43         ; 8      ; MOBILE               ; STANDARD_RATE ; "lyca_mobile"      ; "fmt1_2/3/3" ; "TN"
+43         ; 8      ; MOBILE               ; STANDARD_RATE ; "tunisie_telecom"  ; "fmt1_2/3/3" ; "TN"    ;                                                      ; IR21
 45         ; 8      ; MOBILE               ; STANDARD_RATE ; "watany_ettisalat" ; "fmt1_2/3/3" ; "TN"
 46         ; 8      ; MOBILE               ; STANDARD_RATE ; "ooredoo"          ; "fmt1_2/3/3" ; "TN"    ;                                                      ; IR21       ; "IR21 dated 8/6/2018"
 47         ; 8      ; MOBILE               ; STANDARD_RATE ; "tunisie_telecom"  ; "fmt1_2/3/3" ; "TN"
