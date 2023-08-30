@@ -2721,6 +2721,7 @@
 569379|Ops Ingenieria Ltda.
 569380|Ops Ingenieria Ltda.
 569381|Ops Ingenieria Ltda.
+569388|Entel
 56940|Entel
 56941|Movistar
 56942|Entel

@@ -52,11 +52,11 @@ Prefix      ; Length ; Type       ; Tariff        ; Area Code Length ; National 
 48[89]      ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ; false         ;                    ; "fixed_1/3/4"         ; "IL"    ; "Haifa and North Regions"    ; "חיפה והצפון"        ;            ; "Fill up to support master range"
 49[02-467]  ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ; false         ;                    ; "fixed_1/3/4"         ; "IL"    ; "Haifa and North Regions"    ; "חיפה והצפון"        ;            ; "Fill up to support master range"
 49[1589]    ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ; false         ;                    ; "fixed_1/3/4"         ; "IL"    ; "Haifa and North Regions"    ; "חיפה והצפון"        ; GOVERNMENT
-50[2-9]     ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "pelephone"        ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; IR21
+50[02-9]    ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "pelephone"        ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; IR21
 51[2-9]     ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "xphone"           ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; GOVERNMENT
-52[2-9]     ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "cellcom"          ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; IR21
+52[02-9]    ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "cellcom"          ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; IR21
 53          ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "hot_mobile"       ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; IR21
-54[2-9]     ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "orange"           ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; IR21
+54[2-9]     ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "orange"           ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; GOVERNMENT
 5501        ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "beezz"            ; "mobile_2/3/4"        ; "IL"
 552[23]     ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "home_cellular"    ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; IR21
 552[4-9]    ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "019mobile"        ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; IR21
@@ -75,7 +75,7 @@ Prefix      ; Length ; Type       ; Tariff        ; Area Code Length ; National 
 558[7-9]    ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "pelephone"        ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; GOVERNMENT
 559[1-9]    ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "019mobile"        ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; GOVERNMENT
 56          ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "ooredoo"          ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; IR21
-58[3-7]     ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "golan_telecom"    ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; IR21
+58[3-7]     ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "golan_telecom"    ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; GOVERNMENT
 59[2-9]     ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "jawwal"           ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; GOVERNMENT
 718         ; 9      ; VOIP       ; STANDARD_RATE ;                  ; false         ;                    ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; GOVERNMENT
 72[23]      ; 9      ; VOIP       ; STANDARD_RATE ;                  ; false         ;                    ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; GOVERNMENT

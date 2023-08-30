@@ -1556,7 +1556,7 @@
             3(?:
               364|
               4(?:
-                1[2-7]|
+                1[2-8]|
                 [235][4-6]|
                 84
               )|
@@ -1829,7 +1829,7 @@
               3(?:
                 364|
                 4(?:
-                  1[2-7]|
+                  1[2-8]|
                   [235][4-6]|
                   84
                 )|
@@ -3567,6 +3567,7 @@
         <exampleNumber>8001234567</exampleNumber>
         <nationalNumberPattern>80[03]\d{7}</nationalNumberPattern>
       </tollFree>
+      <!-- Prefix 9643 added as per user report. -->
       <voip>
         <possibleLengths national="10"/>
         <exampleNumber>9604123456</exampleNumber>
@@ -3575,6 +3576,7 @@
             0[469]|
             1[0-47]|
             3[389]|
+            43|
             6[69]|
             7[78]
           )\d{6}
@@ -12206,7 +12208,7 @@
     <territory id="GY" countryCode="592" internationalPrefix="001">
       <availableFormats>
         <numberFormat pattern="(\d{3})(\d{4})">
-          <leadingDigits>[2-46-9]</leadingDigits>
+          <leadingDigits>[2-9]</leadingDigits>
           <format>$1 $2</format>
         </numberFormat>
       </availableFormats>
@@ -12215,6 +12217,7 @@
           9008\d{3}|
           (?:
             [2-467]\d\d|
+            510|
             862
           )\d{4}
         </nationalNumberPattern>
@@ -12252,8 +12255,14 @@
         <exampleNumber>6091234</exampleNumber>
         <nationalNumberPattern>
           (?:
+            510|
             6\d\d|
-            70[0-35-7]
+            7(?:
+              0\d|
+              1[0-8]|
+              25|
+              49
+            )
           )\d{4}
         </nationalNumberPattern>
       </mobile>
@@ -13384,7 +13393,8 @@
           55410\d{4}|
           5(?:
             (?:
-              [0-249][2-9]|
+              [02][02-9]|
+              [149][2-9]|
               [36]\d|
               8[3-7]
             )\d|
@@ -22722,21 +22732,23 @@
       <availableFormats>
         <!-- Enhanced voice services -->
         <numberFormat pattern="(\d{2})(\d{3,8})" nationalPrefixFormattingRule="$NP$FG">
-          <leadingDigits>8[1-579]</leadingDigits>
+          <leadingDigits>8[1-79]</leadingDigits>
           <format>$1 $2</format>
         </numberFormat>
         <!-- 7, 8-digit variable cost (premium rate/toll free). -->
         <numberFormat pattern="(\d{3})(\d{2})(\d{2,3})" nationalPrefixFormattingRule="$NP$FG">
           <leadingDigits>
             50[036-8]|
-            [89]0
+            8|
+            90
           </leadingDigits>
           <leadingDigits>
             50(?:
               [0367]|
               88
             )|
-            [89]0
+            8|
+            90
           </leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
@@ -22757,8 +22769,7 @@
               10|
               74
             )|
-            [59]|
-            80
+            [589]
           </leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
@@ -22782,25 +22793,23 @@
               [169]|
               7[0-35-9]
             )|
-            7|
-            86
+            7
           </leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
       </availableFormats>
       <generalDesc>
         <nationalNumberPattern>
-          [29]\d{7,9}|
+          [1289]\d{9}|
           50\d{5}(?:
             \d{2,3}
           )?|
-          6[0-35-9]\d{6}|
-          7\d{7,8}|
-          8\d{4,9}|
+          [27-9]\d{7,8}|
           (?:
-            11\d|
-            [34]
-          )\d{7}
+            [34]\d|
+            6[0-35-9]
+          )\d{6}|
+          8\d{4,6}
         </nationalNumberPattern>
       </generalDesc>
       <fixedLine>
@@ -22831,11 +22840,6 @@
           )\d{5}
         </nationalNumberPattern>
       </mobile>
-      <pager>
-        <possibleLengths national="8,9"/>
-        <exampleNumber>86123456</exampleNumber>
-        <nationalNumberPattern>86\d{6,7}</nationalNumberPattern>
-      </pager>
       <!-- These are the toll free patterns used, by Telecom and Telstra/Clear, but they are
            referred to as 'Value-added service' in the phone plan for some reason. 85 numbers are
            not covered, as telecom companies don't seem to support them yet. -->
@@ -22855,7 +22859,7 @@
         <exampleNumber>900123456</exampleNumber>
         <nationalNumberPattern>
           (?:
-            11\d{5}|
+            1[13-57-9]\d{5}|
             50(?:
               0[08]|
               30|
@@ -22877,11 +22881,12 @@
         <exampleNumber>83012378</exampleNumber>
         <nationalNumberPattern>
           8(?:
-            1[6-9]|
+            1[16-9]|
             22|
             3\d|
             4[045]|
             5[459]|
+            6[235-9]|
             7[0-3579]|
             90
           )\d{2,7}
@@ -22929,7 +22934,7 @@
           (?:
             7(?:
               [1289]\d|
-              69|
+              6[89]|
               7[0-5]
             )|
             9(?:
@@ -25250,12 +25255,12 @@
           <leadingDigits>0</leadingDigits>
           <format>$1 $2 $3 $4</format>
         </numberFormat>
-        <numberFormat pattern="(\d{3})(\d{3})(\d{3})" nationalPrefixFormattingRule="$NP$FG">
-          <leadingDigits>[7-9]</leadingDigits>
-          <format>$1 $2 $3</format>
-        </numberFormat>
         <numberFormat pattern="(\d{3})(\d{3})(\d{3})">
           <leadingDigits>2</leadingDigits>
+          <format>$1 $2 $3</format>
+        </numberFormat>
+        <numberFormat pattern="(\d{3})(\d{3})(\d{3})" nationalPrefixFormattingRule="$NP$FG">
+          <leadingDigits>[7-9]</leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
       </availableFormats>
@@ -25285,7 +25290,7 @@
       <mobile>
         <possibleLengths national="9"/>
         <exampleNumber>720123456</exampleNumber>
-        <nationalNumberPattern>7[2389]\d{7}</nationalNumberPattern>
+        <nationalNumberPattern>7[237-9]\d{7}</nationalNumberPattern>
       </mobile>
       <tollFree>
         <possibleLengths national="9"/>
@@ -27697,7 +27702,7 @@
           (?:
             (?:
               [259]\d|
-              4[0-7]
+              4[0-8]
             )\d|
             3(?:
               1[1-35]|

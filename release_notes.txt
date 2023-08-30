@@ -1,3 +1,9 @@
+Aug 30, 2023: v8.13.20
+Metadata changes:
+ - Updated phone metadata for region code(s): AR, BD, GY, IL, NZ, OM, RW, TN
+ - Updated carrier data for country calling code(s):
+   46 (en), 56 (en), 216 (en), 250 (en), 592 (en)
+
 Aug 17, 2023: v8.13.19
 Metadata changes:
  - Updated phone metadata for region code(s):
