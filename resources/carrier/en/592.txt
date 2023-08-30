@@ -12,29 +12,30 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+5925|GTT
 592600|Digicel Guyana
 592601|Digicel Guyana
 592602|Digicel Guyana
 592603|Digicel Guyana
 592604|Digicel Guyana
 592608|Digicel Guyana
-592609|Guyana Telephone and Telegraph Company
-59261|Guyana Telephone and Telegraph Company
-59262|Guyana Telephone and Telegraph Company
+592609|GTT
+59261|GTT
+59262|GTT
 592630|Digicel Guyana
+592631|GTT
 592632|Digicel Guyana
 592636|Digicel Guyana
 592637|Digicel Guyana
-592638|Guyana Telephone and Telegraph Company
-592639|Guyana Telephone and Telegraph Company
-59264|Guyana Telephone and Telegraph Company
-59265|Guyana Telephone and Telegraph Company
-592659|Digicel Guyana
+592638|GTT
+592639|GTT
+59264|GTT
+59265|GTT
 59266|Digicel Guyana
 59267|Digicel Guyana
 59268|Digicel Guyana
 59269|Digicel Guyana
-592700|Digicel Guyana
-592701|Digicel Guyana
-592702|Digicel Guyana
-592703|Digicel Guyana
+59270|GTT
+59271|GTT
+59272|GTT
+59274|GTT
