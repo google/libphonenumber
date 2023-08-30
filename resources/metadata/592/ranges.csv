@@ -59,20 +59,21 @@ Prefix   ; Length ; Type       ; Tariff        ; Operator         ; Format     ;
 444      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                  ; "fmt1_3/4" ; "GY"    ; "Linden/Canvas City/Wisroc"                     ; ITU
 455      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                  ; "fmt1_3/4" ; "GY"    ; "Bartica"                                       ; ITU
 456      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                  ; "fmt1_3/4" ; "GY"    ; "Mahdia"                                        ; ITU
+510      ; 7      ; MOBILE     ; STANDARD_RATE ; "gtt"            ; "fmt1_3/4" ; "GY"    ;                                                 ; IR21
 60[0-48] ; 7      ; MOBILE     ; STANDARD_RATE ; "digicel_guyana" ; "fmt1_3/4" ; "GY"    ;                                                 ; IR21
 60[5-7]  ; 7      ; MOBILE     ; STANDARD_RATE ;                  ; "fmt1_3/4" ; "GY"    ;                                                 ;            ; "FILLUP THE MASTER RANGE"
-609      ; 7      ; MOBILE     ; STANDARD_RATE ; "gt&t"           ; "fmt1_3/4" ; "GY"    ;                                                 ; IR21
-6[124]   ; 7      ; MOBILE     ; STANDARD_RATE ; "gt&t"           ; "fmt1_3/4" ; "GY"    ;                                                 ; IR21
+609      ; 7      ; MOBILE     ; STANDARD_RATE ; "gtt"            ; "fmt1_3/4" ; "GY"    ;                                                 ; IR21
+6[1245]  ; 7      ; MOBILE     ; STANDARD_RATE ; "gtt"            ; "fmt1_3/4" ; "GY"    ;                                                 ; IR21
 630      ; 7      ; MOBILE     ; STANDARD_RATE ; "digicel_guyana" ; "fmt1_3/4" ; "GY"    ;                                                 ; IR21
-63[135]  ; 7      ; MOBILE     ; STANDARD_RATE ;                  ; "fmt1_3/4" ; "GY"    ;                                                 ;            ; "FILLUP THE MASTER RANGE"
+63[189]  ; 7      ; MOBILE     ; STANDARD_RATE ; "gtt"            ; "fmt1_3/4" ; "GY"    ;                                                 ; IR21
 63[267]  ; 7      ; MOBILE     ; STANDARD_RATE ; "digicel_guyana" ; "fmt1_3/4" ; "GY"
+63[35]   ; 7      ; MOBILE     ; STANDARD_RATE ;                  ; "fmt1_3/4" ; "GY"    ;                                                 ;            ; "FILLUP THE MASTER RANGE"
 634      ; 7      ; MOBILE     ; STANDARD_RATE ;                  ; "fmt1_3/4" ; "GY"    ;                                                 ; IR21
-63[89]   ; 7      ; MOBILE     ; STANDARD_RATE ; "gt&t"           ; "fmt1_3/4" ; "GY"    ;                                                 ; IR21
-65[0-8]  ; 7      ; MOBILE     ; STANDARD_RATE ; "gt&t"           ; "fmt1_3/4" ; "GY"    ;                                                 ; IR21
-659      ; 7      ; MOBILE     ; STANDARD_RATE ; "digicel_guyana" ; "fmt1_3/4" ; "GY"    ;                                                 ; IR21
 6[6-9]   ; 7      ; MOBILE     ; STANDARD_RATE ; "digicel_guyana" ; "fmt1_3/4" ; "GY"    ;                                                 ; IR21
-70[0-3]  ; 7      ; MOBILE     ; STANDARD_RATE ; "digicel_guyana" ; "fmt1_3/4" ; "GY"    ;                                                 ; IR21
-70[5-7]  ; 7      ; MOBILE     ; STANDARD_RATE ;                  ; "fmt1_3/4" ; "GY"    ;                                                 ; IR21
+70       ; 7      ; MOBILE     ; STANDARD_RATE ; "gtt"            ; "fmt1_3/4" ; "GY"    ;                                                 ; IR21
+71[0-8]  ; 7      ; MOBILE     ; STANDARD_RATE ; "gtt"            ; "fmt1_3/4" ; "GY"    ;                                                 ; IR21
+725      ; 7      ; MOBILE     ; STANDARD_RATE ; "gtt"            ; "fmt1_3/4" ; "GY"    ;                                                 ; IR21
+749      ; 7      ; MOBILE     ; STANDARD_RATE ; "gtt"            ; "fmt1_3/4" ; "GY"    ;                                                 ; IR21
 77[14]   ; 7      ; FIXED_LINE ; STANDARD_RATE ;                  ; "fmt1_3/4" ; "GY"
 772      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                  ; "fmt1_3/4" ; "GY"    ; "Lethem"                                        ; ITU
 773      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                  ; "fmt1_3/4" ; "GY"    ; "Aishalton"                                     ; ITU
