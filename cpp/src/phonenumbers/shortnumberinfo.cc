@@ -60,7 +60,7 @@ void ShortNumberInfo::ClearMetadata(){
 
 bool UpdateShortMetadataFile(const string& filepath) {
 
-  boost::filesystem::path path_to = boost::filesystem::current_path();
+  boost::filesystem::path path_to(METADATA_PATH);
   path_to += "/";
   path_to += METADATA_SHORT_FILE_NAME;
   boost::filesystem::path path_bk = path_to;
@@ -126,7 +126,10 @@ ShortNumberInfo::ShortNumberInfo()
 
   PhoneMetadataCollection metadata_collection;
 #ifdef ISTREAM_DATA_PROVIDER
-  if (!LoadMetadataFromFile(METADATA_SHORT_FILE_NAME, &metadata_collection)) {
+  boost::filesystem::path path_to(METADATA_PATH);
+  path_to += "/";
+  path_to += METADATA_SHORT_FILE_NAME;
+  if (!LoadMetadataFromFile(path_to.string(), &metadata_collection)) {
     LOG(DFATAL) << "Could not parse metadata from file.";
     return;
   }

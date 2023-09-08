@@ -168,8 +168,9 @@ TEST_F(PhoneNumberUtilTest, InterchangeInvalidCodepoints) {
 
 #ifdef ISTREAM_DATA_PROVIDER
 TEST_F(PhoneNumberUtilTest, ReloadMetadata) {
-  const string filename = "metadata.dat";
-  EXPECT_TRUE(phone_util_.ReloadMetadata(filename));
+  string path(METADATA_PATH);
+  path.append("/metadata.dat");
+  EXPECT_TRUE(phone_util_.ReloadMetadata(path));
 }
 #endif
 

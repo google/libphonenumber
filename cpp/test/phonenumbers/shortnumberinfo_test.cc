@@ -98,8 +98,9 @@ TEST_F(ShortNumberInfoTest, IsValidShortNumber) {
 
 #ifdef ISTREAM_DATA_PROVIDER
 TEST_F(ShortNumberInfoTest, ReloadMetadata) {
-  const string filename = "metadata_short.dat";
-  EXPECT_TRUE(short_info_.ReloadMetadata(filename));
+  string path(METADATA_PATH);
+  path.append("/metadata_short.dat");
+  EXPECT_TRUE(short_info_.ReloadMetadata(path));
 }
 #endif
 

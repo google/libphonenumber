@@ -878,7 +878,7 @@ void PhoneNumberUtil::ClearMetadata() {
 
 bool UpdateMetadataFile(const string& filepath) {
 
-  boost::filesystem::path path_to = boost::filesystem::current_path();
+  boost::filesystem::path path_to(METADATA_PATH);
   path_to += "/";
   path_to += METADATA_FILE_NAME;
   boost::filesystem::path path_bk = path_to;
@@ -983,7 +983,10 @@ PhoneNumberUtil::PhoneNumberUtil()
   // method inside the constructor as well to keep both in sync.
   PhoneMetadataCollection metadata_collection;
 #ifdef ISTREAM_DATA_PROVIDER
-  if (!LoadMetadataFromFile(METADATA_FILE_NAME, &metadata_collection)) {
+  boost::filesystem::path path_to(METADATA_PATH);
+  path_to += "/";
+  path_to += METADATA_FILE_NAME;
+  if (!LoadMetadataFromFile(path_to.string(), &metadata_collection)) {
       LOG(DFATAL) << "Could not parse metadata from file.";
       return;
   }

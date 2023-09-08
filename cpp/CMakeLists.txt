@@ -104,6 +104,7 @@ option (ISTREAM_DATA_PROVIDER "Use protoduf binary file as input for metadata" O
 
 if(ISTREAM_DATA_PROVIDER)
   add_definitions ("-DISTREAM_DATA_PROVIDER")
+  add_definitions(-DMETADATA_PATH="${METADATA_PATH}")
 endif()
 
 if (USE_ALTERNATE_FORMATS)
