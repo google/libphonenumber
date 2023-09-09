@@ -176,11 +176,11 @@ if (USE_RE2)
   find_required_library (RE2 re2/re2.h re2 "Google RE2")
 endif ()
 
-find_package(Protobuf REQUIRED)
+find_package(Protobuf CONFIG REQUIRED)
 if (USE_PROTOBUF_LITE)
-  set(PROTOBUF_LIB ${Protobuf_LITE_LIBRARIES})
+  set(PROTOBUF_LIB protobuf::libprotobuf-lite)
 else ()
-  set(PROTOBUF_LIB ${Protobuf_LIBRARIES})
+  set(PROTOBUF_LIB protobuf::libprotobuf)
 endif ()
 
 find_required_library (ICU_UC unicode/uchar.h icuuc "ICU")
@@ -233,8 +233,9 @@ set (
 )
 
 add_custom_command (
-  COMMAND ${Protobuf_PROTOC_EXECUTABLE} --cpp_out=${CMAKE_CURRENT_SOURCE_DIR}/src/phonenumbers/
-    --proto_path=${RESOURCES_DIR} ${PROTOBUF_SOURCES}
+  COMMAND protobuf::protoc
+  ARGS --cpp_out=${CMAKE_CURRENT_SOURCE_DIR}/src/phonenumbers/ --proto_path=${RESOURCES_DIR} ${PROTOBUF_SOURCES}
+  VERBATIM
 
   OUTPUT ${PROTOBUF_OUTPUT}
   DEPENDS ${PROTOBUF_SOURCES}
