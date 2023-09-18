@@ -2452,8 +2452,8 @@ Prefix          ; Length ; Type       ; Tariff        ; Operator                
 21907           ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ; "Issoudun"                     ; "Issoudun"                     ; GOVERNMENT
 21908           ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ; "Châteauroux"                  ; "Châteauroux"                  ; GOVERNMENT
 21909           ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;                                ;                                ;            ; "FILLUP TO SUPPORT MASTER RANGE"
-219[134]        ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;                                ;                                ; GOVERNMENT
-219[25-9]       ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;                                ;                                ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+219[1-4]        ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;                                ;                                ; GOVERNMENT
+219[5-9]        ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;                                ;                                ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 22000           ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ; "Saint-Brieuc"                 ; "Saint-Brieuc"                 ; GOVERNMENT
 2200[14]        ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ; "Brest"                        ; "Brest"                        ; GOVERNMENT
 22002           ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ; "Rennes"                       ; "Rennes"                       ; GOVERNMENT
@@ -4305,8 +4305,8 @@ Prefix          ; Length ; Type       ; Tariff        ; Operator                
 25825           ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ; "Vire"                         ; "Vire"                         ; GOVERNMENT
 25826           ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ; "Bayeux"                       ; "Bayeux"                       ; GOVERNMENT
 2582[7-9]       ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;                                ;                                ;            ; "FILLUP TO SUPPORT MASTER RANGE"
-258[36-9]       ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;                                ;                                ;            ; "FILLUP TO SUPPORT MASTER RANGE"
-258[45]         ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;                                ;                                ; GOVERNMENT
+258[3-5]        ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;                                ;                                ; GOVERNMENT
+258[6-9]        ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;                                ;                                ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 2590[05]        ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ; "La Roche-sur-Yon"             ; "La Roche-sur-Yon"             ; GOVERNMENT
 2590[136-9]     ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ; "Nantes"                       ; "Nantes"                       ; GOVERNMENT
 25902           ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ; "Luçon"                        ; "Luçon"                        ; GOVERNMENT
@@ -5562,7 +5562,8 @@ Prefix          ; Length ; Type       ; Tariff        ; Operator                
 33948           ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ; "Vesoul"                       ; "Vesoul"                       ; GOVERNMENT
 3395[04]        ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ; "Lons-le-Saunier"              ; "Lons-le-Saunier"              ; GOVERNMENT
 33953           ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ; "Belfort"                      ; "Belfort"                      ; GOVERNMENT
-3395[5-9]       ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;                                ;                                ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+3395[5-79]      ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;                                ;                                ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+33958           ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;                                ;                                ; GOVERNMENT
 3396            ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;                                ;                                ; GOVERNMENT
 3397[07]        ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ; "Vesoul"                       ; "Vesoul"                       ; GOVERNMENT
 3397[18]        ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ; "Lons-le-Saunier"              ; "Lons-le-Saunier"              ; GOVERNMENT
@@ -11326,8 +11327,8 @@ Prefix          ; Length ; Type       ; Tariff        ; Operator                
 9789[6-9]       ; 9      ; VOIP       ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;                                ;                                ; GOVERNMENT
 9800[0189]      ; 9      ; VOIP       ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;                                ;                                ; GOVERNMENT
 9800[2-7]       ; 9      ; VOIP       ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;                                ;                                ;            ; "FILLUP TO SUPPORT MASTER RANGE"
-9801[03]        ; 9      ; VOIP       ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;                                ;                                ; GOVERNMENT
-9801[124-9]     ; 9      ; VOIP       ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;                                ;                                ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+9801[0-3]       ; 9      ; VOIP       ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;                                ;                                ; GOVERNMENT
+9801[4-9]       ; 9      ; VOIP       ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;                                ;                                ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 9802            ; 9      ; VOIP       ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;                                ;                                ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 98030           ; 9      ; VOIP       ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;                                ;                                ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 9803[1-9]       ; 9      ; VOIP       ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;                                ;                                ; GOVERNMENT
@@ -11335,11 +11336,9 @@ Prefix          ; Length ; Type       ; Tariff        ; Operator                
 981             ; 9      ; VOIP       ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;                                ;                                ; GOVERNMENT
 9820[0-4]       ; 9      ; VOIP       ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;                                ;                                ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 9820[5-9]       ; 9      ; VOIP       ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;                                ;                                ; GOVERNMENT
-9821[0-2]       ; 9      ; VOIP       ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;                                ;                                ; GOVERNMENT
-9821[3-9]       ; 9      ; VOIP       ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;                                ;                                ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+982[18][0-2]    ; 9      ; VOIP       ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;                                ;                                ; GOVERNMENT
+982[18][3-9]    ; 9      ; VOIP       ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;                                ;                                ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 982[2-7]        ; 9      ; VOIP       ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;                                ;                                ; GOVERNMENT
-9828[02]        ; 9      ; VOIP       ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;                                ;                                ; GOVERNMENT
-9828[13-9]      ; 9      ; VOIP       ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;                                ;                                ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 9829[0-8]       ; 9      ; VOIP       ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;                                ;                                ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 98299           ; 9      ; VOIP       ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;                                ;                                ; GOVERNMENT
 983[02-9]       ; 9      ; VOIP       ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;                                ;                                ; GOVERNMENT
