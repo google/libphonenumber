@@ -1,3 +1,9 @@
+Sep 18, 2023: v8.13.21
+Metadata changes:
+ - Updated phone metadata for region code(s): AU, CC, CX, MX, UY
+ - Updated geocoding data for country calling code(s): 52 (en), 61 (en)
+ - Updated carrier data for country calling code(s): 61 (en)
+
 Aug 30, 2023: v8.13.20
 Metadata changes:
  - Updated phone metadata for region code(s): AR, BD, GY, IL, NZ, OM, RW, TN
