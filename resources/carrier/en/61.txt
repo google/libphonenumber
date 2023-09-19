@@ -78,6 +78,7 @@
 61459|Telstra
 61460|Telstra
 61461|Telstra
+61462|Telstra
 61466|Optus
 61467|Telstra
 61468|Optus
@@ -102,6 +103,9 @@
 614801|Telstra
 614803|Telstra
 614804|Telstra
+614805|Telstra
+614806|Telstra
+614807|Telstra
 614808|Pivotel Satellite
 61481|Optus
 61482|Optus

@@ -2985,7 +2985,7 @@
 61251187|Uriarra Forest
 61251188|Yass
 61251189|Anembo
-61251190|Binalong
+61251190|Canberra
 61251191|Bungendore
 61251192|Burrinjuck
 61251193|Canberra
@@ -2995,9 +2995,9 @@
 61251197|Gundaroo
 61251198|Michelago
 61251199|Rye Park
-61251200|The Mullion
-61251201|Uriarra Forest
-61251202|Yass
+61251200|Binalong
+61251201|Anembo
+61251202|Bungendore
 61251203|Anembo
 61251204|Binalong
 61251205|Bungendore
@@ -3012,16 +3012,16 @@
 61251214|The Mullion
 61251215|Uriarra Forest
 61251216|Yass
-61251217|Anembo
+61251217|Burrinjuck
 61251218|Binalong
-61251219|Bungendore
+61251219|Canberra
 6125122|Canberra
 6125123|Canberra
 6125124|Canberra
 6125125|Canberra
 6125126|Canberra
 6125127|Canberra
-61251280|Burrinjuck
+61251280|Canberra
 61251281|Canberra
 61251282|Captains Flat
 61251283|Cavan
@@ -3031,47 +3031,19 @@
 61251287|Rye Park
 61251288|The Mullion
 61251289|Uriarra Forest
-61251290|Yass
+61251290|Captains Flat
 61251291|Canberra
-612530000|Leadville
-612530001|Leadville
-612530002|Leadville
-612530003|Leadville
-612530004|Leadville/Baldry/Bathurst/Birriwa
-612530005|Leadville/Baldry/Bathurst/Birriwa
-612530006|Leadville
-612530007|Baldry
-612530008|Bathurst
-612530009|Birriwa
-612530010|Lue
-612530011|Lue
-612530012|Lue
-612530013|Lue
-612530014|Lue/Blayney/Boorowa/Bribbaree
-612530015|Lue/Blayney/Boorowa/Bribbaree
-612530016|Lue
-612530017|Blayney
-612530018|Boorowa
-612530019|Bribbaree
-61253002|Mudgee
-612530029|Burraga
-612530030|Twelve Mile
-612530031|Twelve Mile
-612530032|Twelve Mile
-612530033|Twelve Mile
-612530034|Twelve Mile/Bylong/Canowindra/Bathurst
-612530035|Twelve Mile/Bylong/Canowindra/Bathurst
-612530036|Twelve Mile
-612530037|Bylong
-612530038|Canowindra
-612530039|Bathurst
-61253004|Windeyer
-612530048|Caragabal
-612530049|Cassilis
-61253005|Wollar
-612530055|Lithgow
-612530056|Orange
-612530059|Coolah
+61251292|Canberra
+612513|Cavan/Canberra/Gearys Gap/Gundaroo/Bungendore/Michelago/Burrinjuck/Rye Park/The Mullion/Captains Flat/UriarraForest/Yass
+612514|Canberra/Gearys Gap/Gundaroo/Michelago/Rye Park/The Mullion/Uriarra Forest/Yass/Anembo/Binalong/Bungendore/Burrinjuck/Captains Flat/Cavan
+612515|Canberra
+612516|Canberra
+61253000|Leadville/Baldry/Bathurst/Birriwa
+61253001|Lue/Blayney/Boorowa/Bribbaree/Birriwa
+61253002|Boorowa/Bribbaree/Burraga/Mudgee
+61253003|Bathurst/Burraga/Bylong/Canowindra/Twelve Mile
+61253004|Canowindra/Caragabal/Cassilis/Windeyer
+61253005|Cassilis/Coolah/Lithgow/Orange/Wollar
 61253006|Baldry
 612530068|Cowra
 612530069|Cudal
