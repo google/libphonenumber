@@ -230,6 +230,7 @@ libphonenumber project. We do not evaluate their quality or influence their
 maintenance processes.
 
 *   C#: https://github.com/twcclegg/libphonenumber-csharp
+*   Gleam: https://github.com/massivefermion/phony
 *   Go: https://github.com/nyaruka/phonenumbers
 *   Objective-c: https://github.com/iziz/libPhoneNumber-iOS
 *   Swift: https://github.com/marmelroy/PhoneNumberKit
