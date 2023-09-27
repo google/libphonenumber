@@ -836,7 +836,8 @@ Prefix      ; Length ; Type       ; Tariff        ; Area Code Length ; Operator 
 66[135-9]   ; 7-13   ; MOBILE     ; STANDARD_RATE ;                  ;                          ; "fixed_3/3-10" ; "AT"
 662         ; 6-13   ; FIXED_LINE ; STANDARD_RATE ; 3                ;                          ; "fixed_3/3-10" ; "AT"    ; "Salzburg"                          ; "Salzburg"                          ; GOVERNMENT
 664         ; 7-13   ; MOBILE     ; STANDARD_RATE ;                  ; "a1_ta"                  ; "fixed_3/3-10" ; "AT"    ;                                     ;                                     ; IR21
-67[0-589]   ; 7-13   ; MOBILE     ; STANDARD_RATE ;                  ;                          ; "fixed_3/3-10" ; "AT"
+670         ; 7-13   ; MOBILE     ; STANDARD_RATE ;                  ; "spusu"                  ; "fixed_3/3-10" ; "AT"    ;                                     ;                                     ; IR21
+67[1-589]   ; 7-13   ; MOBILE     ; STANDARD_RATE ;                  ;                          ; "fixed_3/3-10" ; "AT"
 676         ; 7-13   ; MOBILE     ; STANDARD_RATE ;                  ; "t_mobile_at"            ; "fixed_3/3-10" ; "AT"    ;                                     ;                                     ; IR21
 677[0-289]  ; 7-13   ; MOBILE     ; STANDARD_RATE ;                  ; "t_mobile_at"            ; "fixed_3/3-10" ; "AT"
 677[3-7]    ; 7-13   ; MOBILE     ; STANDARD_RATE ;                  ;                          ; "fixed_3/3-10" ; "AT"

@@ -58,6 +58,7 @@ Prefix      ; Length ; Type       ; Tariff        ; Area Code Length ; National 
 53          ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "hot_mobile"       ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; IR21
 54[2-9]     ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "orange"           ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; GOVERNMENT
 5501        ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "beezz"            ; "mobile_2/3/4"        ; "IL"
+552[01]     ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "paycall"          ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; GOVERNMENT
 552[23]     ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "home_cellular"    ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; IR21
 552[4-9]    ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "019mobile"        ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; IR21
 553[01]     ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "019mobile"        ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; IR21

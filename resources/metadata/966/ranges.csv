@@ -12,6 +12,7 @@ Prefix      ; Length ; Type       ; Tariff        ; Area Code Length ; Operator 
 515[34]     ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "stc"            ; "mobile_2/3/4"   ; "SA"    ;                                        ;                            ; IR21       ; "IR12 dated 7/4/2019"
 5[46]       ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "mobily"         ; "mobile_2/3/4"   ; "SA"
 57[0-3]     ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "virgin"         ; "mobile_2/3/4"   ; "SA"
+574         ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "redbull_mobile" ; "mobile_2/3/4"   ; "SA"    ;                                        ;                            ; IR21
 575         ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "redbull_mobile" ; "mobile_2/3/4"   ; "SA"    ;                                        ;                            ; ITU
 57[6-8]     ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "lebara"         ; "mobile_2/3/4"   ; "SA"
 579[01]     ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "mobily"         ; "mobile_2/3/4"   ; "SA"    ;                                        ;                            ; IR21
