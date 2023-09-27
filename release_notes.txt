@@ -1,3 +1,12 @@
+Sep 27, 2023: v8.13.22
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   881, CO, IL, LI, MK, SA, TR, UG, UY
+ - Updated geocoding data for country calling code(s): 598 (en)
+ - Updated carrier data for country calling code(s):
+   39 (en), 41 (en), 43 (en), 49 (en), 57 (en), 90 (en), 237 (en), 389 (en),
+   423 (en), 853 (en), 966 (en), 972 (en)
+
 Sep 18, 2023: v8.13.21
 Metadata changes:
  - Updated phone metadata for region code(s): AU, CC, CX, MX, UY

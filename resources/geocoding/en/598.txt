@@ -17,16 +17,8 @@
 598433|Canelones
 598434|San Jose de Mayo
 598435|Florida
-5984360|Durazno
-5984361|Durazno
-5984362|Durazno
-5984363|Durazno
+598436|Durazno
 5984364|Trinidad/Flores
-5984365|Durazno
-5984366|Durazno
-5984367|Durazno
-5984368|Durazno
-5984369|Durazno
 598444|Minas/Lavalleja
 598445|Treinta y Tres
 598447|Rocha

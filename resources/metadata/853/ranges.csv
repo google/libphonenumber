@@ -38,9 +38,8 @@ Prefix       ; Length ; Type       ; Tariff        ; Operator                   
 639[01]      ; 8      ; MOBILE     ; STANDARD_RATE ; "china_telecom"              ; "fmt1_4/4" ; "MO"    ; GOVERNMENT
 639[2-7]     ; 8      ; MOBILE     ; STANDARD_RATE ; "ctm"                        ; "fmt1_4/4" ; "MO"    ; GOVERNMENT
 650[0-4]     ; 8      ; MOBILE     ; STANDARD_RATE ; "3"                          ; "fmt1_4/4" ; "MO"    ; IR21
-650[5-9]     ; 8      ; MOBILE     ; STANDARD_RATE ;                              ; "fmt1_4/4" ; "MO"
+65[01][5-9]  ; 8      ; MOBILE     ; STANDARD_RATE ; "ctm"                        ; "fmt1_4/4" ; "MO"    ; GOVERNMENT
 651[0-4]     ; 8      ; MOBILE     ; STANDARD_RATE ;                              ; "fmt1_4/4" ; "MO"
-651[5-9]     ; 8      ; MOBILE     ; STANDARD_RATE ; "ctm"                        ; "fmt1_4/4" ; "MO"    ; GOVERNMENT
 65[27][0-3]  ; 8      ; MOBILE     ; STANDARD_RATE ; "china_telecom"              ; "fmt1_4/4" ; "MO"    ; GOVERNMENT
 652[4-9]     ; 8      ; MOBILE     ; STANDARD_RATE ; "ctm"                        ; "fmt1_4/4" ; "MO"    ; GOVERNMENT
 653[016-9]   ; 8      ; MOBILE     ; STANDARD_RATE ; "ctm"                        ; "fmt1_4/4" ; "MO"    ; GOVERNMENT

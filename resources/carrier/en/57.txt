@@ -258,9 +258,14 @@
 5733316|Libre Tecnologias
 57333170|Libre Tecnologias
 57333171|Libre Tecnologias
+573332|Movil Exito
 5733320|Tigo
 5733321|Tigo
 5733330|GoMobile
+5733332|EZTALK Mobile
+5733333|EZTALK Mobile
+5733334|EZTALK Mobile
+5733335|EZTALK Mobile
 5733340|Comunicaciones Dime
 5733341|Comunicaciones Dime
 5733342|Comunicaciones Dime
