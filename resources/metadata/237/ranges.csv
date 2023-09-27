@@ -123,7 +123,8 @@ Prefix           ; Length ; Type       ; Tariff        ; Operator       ; Format
 66               ; 9      ; MOBILE     ; STANDARD_RATE ; "nexttel"      ; "fmt1_1/2/2/2/2" ; "CM"
 67               ; 9      ; MOBILE     ; STANDARD_RATE ; "mtn_cameroon" ; "fmt1_1/2/2/2/2" ; "CM"    ;                       ; IR21       ; "IR21 dated 7/16/2018"
 68[0-3]          ; 9      ; MOBILE     ; STANDARD_RATE ; "mtn_cameroon" ; "fmt1_1/2/2/2/2" ; "CM"    ;                       ; IR21       ; "IR21 dated 7/16/2018"
-68[4-9]          ; 9      ; MOBILE     ; STANDARD_RATE ; "nexttel"      ; "fmt1_1/2/2/2/2" ; "CM"    ;                       ; INTERNAL
+68[4589]         ; 9      ; MOBILE     ; STANDARD_RATE ; "nexttel"      ; "fmt1_1/2/2/2/2" ; "CM"    ;                       ; INTERNAL
+68[67]           ; 9      ; MOBILE     ; STANDARD_RATE ; "orange"       ; "fmt1_1/2/2/2/2" ; "CM"    ;                       ; IR21
 69               ; 9      ; MOBILE     ; STANDARD_RATE ; "orange"       ; "fmt1_1/2/2/2/2" ; "CM"
 88               ; 8      ; FIXED_LINE ; TOLL_FREE     ;                ; "fmt2_2/2/2/2"   ; "CM"
 88               ; 9      ; FIXED_LINE ; TOLL_FREE     ;                ; "fmt1_1/2/2/2/2" ; "CM"

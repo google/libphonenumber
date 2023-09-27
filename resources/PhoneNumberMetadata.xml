@@ -7331,7 +7331,7 @@
     <!-- http://www.itu.int/oth/T020200002C/en -->
     <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_Colombia -->
     <territory id="CO" countryCode="57" internationalPrefix="00(?:4(?:[14]4|56)|[579])"
-               nationalPrefix="0" nationalPrefixForParsing="0(4(?:[14]4|56)|[579])?"
+               nationalPrefix="0" nationalPrefixForParsing="0([3579]|4(?:[14]4|56))?"
                mobileNumberPortableRegion="true">
       <availableFormats>
         <numberFormat pattern="(\d{3})(\d{7})" nationalPrefixFormattingRule="($FG)"
@@ -7376,7 +7376,10 @@
             [0-4]\d|
             5[0-4]
           )\d{4}|
-          60[124-8][2-9]\d{6}
+          60(?:
+            [124-7][2-9]|
+            8[1-9]
+          )\d{6}
         </nationalNumberPattern>
       </fixedLine>
       <!-- Added prefix 323 based on user report and online evidences. -->
@@ -7384,13 +7387,12 @@
         <possibleLengths national="10"/>
         <exampleNumber>3211234567</exampleNumber>
         <nationalNumberPattern>
+          333301[0-5]\d{3}|
           3333(?:
-            0(?:
-              0\d|
-              1[0-5]
-            )|
-            [4-9]\d\d
-          )\d{3}|
+            00|
+            2[5-9]|
+            [3-9]\d
+          )\d{4}|
           (?:
             3(?:
               24[1-9]|
@@ -13400,7 +13402,7 @@
             )\d|
             5(?:
               01|
-              2[2-9]|
+              2\d|
               3[0-3]|
               4[34]|
               5[0-25689]|
@@ -18382,7 +18384,7 @@
             6(?:
               (?:
                 4[5-9]|
-                5[0-4]
+                5[0-469]
               )\d|
               6(?:
                 [0245]\d|
@@ -19733,6 +19735,7 @@
             [0-25-8]\d\d|
             3(?:
               [1-48]\d|
+              60|
               7[01578]
             )|
             4(?:
@@ -25364,7 +25367,7 @@
           579[01]\d{5}|
           5(?:
             [013-689]\d|
-            7[0-35-8]
+            7[0-8]
           )\d{6}
         </nationalNumberPattern>
       </mobile>
@@ -27857,13 +27860,13 @@
           <leadingDigits>
             5(?:
               [0-59]|
-              616
+              61[06]
             )
           </leadingDigits>
           <leadingDigits>
             5(?:
               [0-59]|
-              6161
+              61[06]1
             )
           </leadingDigits>
           <format>$1 $2 $3 $4</format>
@@ -27940,7 +27943,10 @@
         <possibleLengths national="10"/>
         <exampleNumber>5012345678</exampleNumber>
         <nationalNumberPattern>
-          56161\d{5}|
+          561(?:
+            011|
+            61\d
+          )\d{4}|
           5(?:
             0[15-7]|
             1[06]|
@@ -28740,7 +28746,7 @@
             20|
             36|
             4[0-4]|
-            6[0-5]|
+            6[0-6]|
             9[89]
           )\d{6}
         </nationalNumberPattern>
@@ -29084,9 +29090,8 @@
         </numberFormat>
         <numberFormat pattern="(\d{3})(\d{4})" nationalPrefixFormattingRule="$NP$FG">
           <leadingDigits>
-            405|
-            8|
-            90
+            [49]0|
+            8
           </leadingDigits>
           <format>$1 $2</format>
         </numberFormat>
@@ -29105,11 +29110,6 @@
           <leadingDigits>0</leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
-        <!-- 10 digit toll free numbers -->
-        <numberFormat pattern="(\d{3})(\d{3})(\d{4})" nationalPrefixFormattingRule="$NP$FG">
-          <leadingDigits>4</leadingDigits>
-          <format>$1 $2 $3</format>
-        </numberFormat>
         <!-- 11 - 13 digit toll free numbers -->
         <numberFormat pattern="(\d{3})(\d{3})(\d{3})(\d{2,4})">
           <leadingDigits>0</leadingDigits>
@@ -29119,7 +29119,6 @@
       <generalDesc>
         <nationalNumberPattern>
           0004\d{2,9}|
-          4\d{9}|
           [1249]\d{7}|
           (?:
             [49]\d|
@@ -29158,10 +29157,9 @@
         <nationalNumberPattern>
           0004\d{2,9}|
           (?:
-            4\d{5}|
+            405|
             80[05]
-          )\d{4}|
-          405\d{4}
+          )\d{4}
         </nationalNumberPattern>
       </tollFree>
       <premiumRate>
@@ -31407,17 +31405,27 @@
       <availableFormats>
         <!-- Formatting chosen based on ITU document and Iridium website FAQ. -->
         <numberFormat pattern="(\d)(\d{3})(\d{5})">
-          <leadingDigits>[0-36-9]</leadingDigits>
+          <leadingDigits>[0-37-9]</leadingDigits>
+          <format>$1 $2 $3</format>
+        </numberFormat>
+        <numberFormat pattern="(\d)(\d{3})(\d{5,6})">
+          <leadingDigits>6</leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
       </availableFormats>
       <generalDesc>
-        <nationalNumberPattern>[0-36-9]\d{8}</nationalNumberPattern>
+        <nationalNumberPattern>
+          6\d{9}|
+          [0-36-9]\d{8}
+        </nationalNumberPattern>
       </generalDesc>
       <mobile>
-        <possibleLengths national="9"/>
+        <possibleLengths national="9,10"/>
         <exampleNumber>612345678</exampleNumber>
-        <nationalNumberPattern>[0-36-9]\d{8}</nationalNumberPattern>
+        <nationalNumberPattern>
+          6\d{9}|
+          [0-36-9]\d{8}
+        </nationalNumberPattern>
       </mobile>
     </territory>
 

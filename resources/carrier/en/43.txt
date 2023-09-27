@@ -15,6 +15,7 @@
 43650|tele.ring
 43660|Hutchison Drei Austria
 43664|A1 TA
+43670|spusu
 43676|T-Mobile AT
 436770|T-Mobile AT
 436771|T-Mobile AT
