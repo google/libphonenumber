@@ -262,7 +262,8 @@ Prefix          ; Length ; Type            ; Tariff        ; Operator           
 68[78]5[1-9]    ; 10     ; MOBILE          ; STANDARD_RATE ;                             ; "all_3/3/4"                 ; "GR"
 689[0-8]        ; 10     ; MOBILE          ; STANDARD_RATE ;                             ; "all_3/3/4"                 ; "GR"
 689900          ; 10     ; MOBILE          ; STANDARD_RATE ; "oteglobe"                  ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; GOVERNMENT
-68990[1-9]      ; 10     ; MOBILE          ; STANDARD_RATE ;                             ; "all_3/3/4"                 ; "GR"
+689901          ; 10     ; MOBILE          ; STANDARD_RATE ; "m_stat"                    ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; GOVERNMENT
+68990[2-9]      ; 10     ; MOBILE          ; STANDARD_RATE ;                             ; "all_3/3/4"                 ; "GR"
 6899[1-9]       ; 10     ; MOBILE          ; STANDARD_RATE ;                             ; "all_3/3/4"                 ; "GR"
 6900            ; 10     ; MOBILE          ; STANDARD_RATE ; "bws"                       ; "all_3/3/4"                 ; "GR"
 690[1-5]00      ; 10     ; MOBILE          ; STANDARD_RATE ; "mi_carrier_services"       ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; GOVERNMENT
