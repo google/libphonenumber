@@ -43,8 +43,7 @@ Prefix     ; Length ; Type       ; Tariff        ; Operator     ; Format        
 772        ; 8      ; MOBILE     ; STANDARD_RATE ; "btc_mobile" ; "fmt_2/3/3"       ; "BW"    ;                      ; ITU
 77[39]     ; 8      ; MOBILE     ; STANDARD_RATE ; "orange"     ; "fmt_2/3/3"       ; "BW"    ;                      ;            ; "Added per client's request."
 77[45]     ; 8      ; MOBILE     ; STANDARD_RATE ; "orange"     ; "fmt_2/3/3"       ; "BW"    ;                      ; ITU
-78[01]     ; 8      ; MOBILE     ; STANDARD_RATE ; "orange"     ; "fmt_2/3/3"       ; "BW"    ;                      ; ITU
-78[2-4]    ; 8      ; MOBILE     ; STANDARD_RATE ; "orange"     ; "fmt_2/3/3"       ; "BW"    ;                      ; GOVERNMENT
+78         ; 8      ; MOBILE     ; STANDARD_RATE ; "orange"     ; "fmt_2/3/3"       ; "BW"    ;                      ; GOVERNMENT
 791[01]    ; 8      ; VOIP       ; STANDARD_RATE ;              ; "fmt_2/3/3"       ; "BW"    ;                      ; ITU
 7912[0-7]  ; 8      ; VOIP       ; STANDARD_RATE ;              ; "fmt_2/3/3"       ; "BW"    ;                      ; ITU
 792[0-4]   ; 8      ; VOIP       ; STANDARD_RATE ;              ; "fmt_2/3/3"       ; "BW"    ;                      ; ITU
