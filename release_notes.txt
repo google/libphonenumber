@@ -1,3 +1,9 @@
+Oct 11, 2023: v8.13.23
+Metadata changes:
+ - Updated phone metadata for region code(s): BW, GE, NU, RE
+ - Updated carrier data for country calling code(s):
+   30 (en), 229 (en), 262 (en)
+
 Sep 27, 2023: v8.13.22
 Metadata changes:
  - Updated phone metadata for region code(s):

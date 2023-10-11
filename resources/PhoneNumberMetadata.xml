@@ -5001,10 +5001,7 @@
         <nationalNumberPattern>
           (?:
             321|
-            7(?:
-              [1-7]\d|
-              8[0-4]
-            )
+            7[1-8]\d
           )\d{5}
         </nationalNumberPattern>
       </mobile>
@@ -11057,7 +11054,7 @@
               )|
               8(?:
                 0(?:
-                  [01]\d|
+                  [018]\d|
                   2[0-4]
                 )|
                 58[89]|
@@ -22722,7 +22719,7 @@
       <mobile>
         <possibleLengths national="7"/>
         <exampleNumber>8884012</exampleNumber>
-        <nationalNumberPattern>888[4-9]\d{3}</nationalNumberPattern>
+        <nationalNumberPattern>888[1-9]\d{3}</nationalNumberPattern>
       </mobile>
     </territory>
 
@@ -24754,7 +24751,7 @@
             2\d\d|
             3(?:
               0\d|
-              1[0-5]
+              1[0-6]
             )
           )\d{4}
         </nationalNumberPattern>
@@ -24772,7 +24769,7 @@
               3[0-39]|
               4\d|
               5[0-5]|
-              7[0-27]|
+              7[0-37]|
               8[0-8]|
               9[0-479]
             )
