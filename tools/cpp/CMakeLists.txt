@@ -16,41 +16,8 @@
 
 cmake_minimum_required (VERSION 3.11)
 
-# Pick the C++ standard to compile with.
-# Abseil currently supports C++11, C++14, and C++17.
-set(CMAKE_CXX_STANDARD 11)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
 project (generate_geocoding_data)
 
-# Helper functions dealing with finding libraries and programs this library
-# depends on.
-include (gtest.cmake)
-include (FetchContent)
-
-# Downloading the abseil sources.
-FetchContent_Declare(
-    abseil-cpp
-    GIT_REPOSITORY  https://github.com/abseil/abseil-cpp.git
-    GIT_TAG         origin/master
-)
-
-# Building the abseil binaries
-FetchContent_GetProperties(abseil-cpp)
-if (NOT abseil-cpp_POPULATED)
-    FetchContent_Populate(abseil-cpp)
-endif ()
-
-if (NOT abseil-cpp_POPULATED)
-   message (FATAL_ERROR "Could not build abseil-cpp binaries.")
-endif ()
-
-# Safeguarding against any potential link errors as mentioned in
-# https://github.com/abseil/abseil-cpp/issues/225
-set(CMAKE_POSITION_INDEPENDENT_CODE TRUE)
-add_subdirectory(${abseil-cpp_SOURCE_DIR} ${abseil-cpp_BINARY_DIR})
-
-find_or_build_gtest ()
 set (
   SOURCES
   "src/cpp-build/generate_geocoding_data.cc"
@@ -64,21 +31,24 @@ endif ()
 include_directories ("src")
 
 add_executable (generate_geocoding_data ${SOURCES})
-target_link_libraries (generate_geocoding_data absl::strings absl::btree)
+target_link_libraries (generate_geocoding_data absl::strings absl::btree absl::node_hash_set)
 
-set (TEST_SOURCES
-  "src/cpp-build/generate_geocoding_data.cc"
-  "test/cpp-build/generate_geocoding_data_test.cc"
-  "test/cpp-build/run_tests.cc"
-)
+if (BUILD_TESTING)
+  set (TEST_SOURCES
+      "src/cpp-build/generate_geocoding_data.cc"
+      "test/cpp-build/generate_geocoding_data_test.cc"
+      "test/cpp-build/run_tests.cc"
+  )
 
-set (TEST_LIBS ${GTEST_LIB})
+  set (TEST_LIBS ${GTEST_LIB})
 
-if (NOT WIN32)
-  list (APPEND TEST_LIBS pthread)
-endif ()
+  if (NOT WIN32)
+    list (APPEND TEST_LIBS pthread)
+  endif ()
 
-# Build the testing binary.
-include_directories ("test")
-add_executable (generate_geocoding_data_test ${TEST_SOURCES})
-target_link_libraries (generate_geocoding_data_test absl::btree ${TEST_LIBS})
+  # Build the testing binary.
+  include_directories ("test")
+  add_executable (generate_geocoding_data_test ${TEST_SOURCES})
+  target_link_libraries (generate_geocoding_data_test absl::btree ${TEST_LIBS} absl::node_hash_set)
+endif()
+

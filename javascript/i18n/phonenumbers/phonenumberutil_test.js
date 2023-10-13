@@ -89,6 +89,10 @@ var BS_NUMBER = new i18n.phonenumbers.PhoneNumber();
 BS_NUMBER.setCountryCode(1);
 BS_NUMBER.setNationalNumber(2423651234);
 
+/** @type {!i18n.phonenumbers.PhoneNumber} */
+var CO_FIXED_LINE = new i18n.phonenumbers.PhoneNumber();
+CO_FIXED_LINE.setCountryCode(57);
+CO_FIXED_LINE.setNationalNumber(6012345678);
 
 // Note that this is the same as the example number for DE in the metadata.
 /** @type {!i18n.phonenumbers.PhoneNumber} */
@@ -892,7 +896,7 @@ function testFormatOutOfCountryWithPreferredIntlPrefix() {
   assertEquals(
       '0011 39 02 3661 8300',
       phoneUtil.formatOutOfCountryCallingNumber(IT_NUMBER, RegionCode.AU));
-      
+
   // Testing preferred international prefixes with ~ are supported (designates
   // waiting).
   assertEquals(
@@ -1103,6 +1107,9 @@ function testFormatWithPreferredCarrierCode() {
 function testFormatNumberForMobileDialing() {
   // Numbers are normally dialed in national format in-country, and
   // international format from outside the country.
+  assertEquals(
+      '6012345678',
+      phoneUtil.formatNumberForMobileDialing(CO_FIXED_LINE, RegionCode.CO, false));
   assertEquals(
       '030123456',
       phoneUtil.formatNumberForMobileDialing(DE_NUMBER, RegionCode.DE, false));
@@ -2811,11 +2818,6 @@ function testParseNationalNumber() {
       'tel:253-0000;phone-context=www.google.com', RegionCode.US)));
   assertTrue(US_LOCAL_NUMBER.equals(phoneUtil.parse(
       'tel:253-0000;isub=12345;phone-context=www.google.com', RegionCode.US)));
-  // This is invalid because no "+" sign is present as part of phone-context.
-  // The phone context is simply ignored in this case just as if it contains a
-  // domain.
-  assertTrue(US_LOCAL_NUMBER.equals(phoneUtil.parse(
-      'tel:2530000;isub=12345;phone-context=1-650', RegionCode.US)));
   assertTrue(US_LOCAL_NUMBER.equals(phoneUtil.parse(
       'tel:2530000;isub=12345;phone-context=1234.com', RegionCode.US)));
 
@@ -3323,20 +3325,19 @@ function testFailedParseOnInvalidNumbers() {
     /** @type {string} */
     var invalidRfcPhoneContext = 'tel:555-1234;phone-context=1-331';
     phoneUtil.parse(invalidRfcPhoneContext, RegionCode.ZZ);
-    fail('"Unknown" region code not allowed: should fail.');
+    fail('phone-context is missing "+" sign: should fail.');
   } catch (e) {
     // Expected this exception.
     assertEquals(
         'Wrong error type stored in exception.',
-        i18n.phonenumbers.Error.INVALID_COUNTRY_CODE, e.message);
+        i18n.phonenumbers.Error.NOT_A_NUMBER, e.message);
   }
   try {
     // Only the phone-context symbol is present, but no data.
     invalidRfcPhoneContext = ';phone-context=';
     phoneUtil.parse(invalidRfcPhoneContext, RegionCode.ZZ);
     fail(
-        'Should have thrown an exception, no valid country calling code ' +
-        'present.');
+        'phone-context can\'t be empty: should fail.');
   } catch (e) {
     // Expected.
     assertEquals(
@@ -3783,6 +3784,68 @@ function testParseItalianLeadingZeros() {
   threeZeros.setItalianLeadingZero(true);
   threeZeros.setNumberOfLeadingZeros(3);
   assertTrue(threeZeros.equals(phoneUtil.parse('0000', RegionCode.AU)));
+}
+
+function testParseWithPhoneContext() {
+  // context    = ";phone-context=" descriptor
+  // descriptor = domainname / global-number-digits
+
+  // Valid global-phone-digits
+  assertTrue(NZ_NUMBER.equals(
+      phoneUtil.parse("tel:033316005;phone-context=+64", RegionCode.ZZ)));
+  assertTrue(NZ_NUMBER.equals(phoneUtil.parse(
+      "tel:033316005;phone-context=+64;{this isn't part of phone-context anymore!}",
+      RegionCode.ZZ)));
+  /** @type {!i18n.phonenumbers.PhoneNumber} */
+  var nzFromPhoneContext = new i18n.phonenumbers.PhoneNumber();
+  nzFromPhoneContext.setCountryCode(64);
+  nzFromPhoneContext.setNationalNumber(3033316005);
+  assertTrue(nzFromPhoneContext.equals(
+      phoneUtil.parse("tel:033316005;phone-context=+64-3", RegionCode.ZZ)));
+  /** @type {!i18n.phonenumbers.PhoneNumber} */
+  var brFromPhoneContext = new i18n.phonenumbers.PhoneNumber();
+  brFromPhoneContext.setCountryCode(55);
+  brFromPhoneContext.setNationalNumber(5033316005);
+  assertTrue(brFromPhoneContext.equals(
+      phoneUtil.parse("tel:033316005;phone-context=+(555)", RegionCode.ZZ)));
+  /** @type {!i18n.phonenumbers.PhoneNumber} */
+  var usFromPhoneContext = new i18n.phonenumbers.PhoneNumber();
+  usFromPhoneContext.setCountryCode(1);
+  usFromPhoneContext.setNationalNumber(23033316005);
+  assertTrue(usFromPhoneContext.equals(
+      phoneUtil.parse("tel:033316005;phone-context=+-1-2.3()", RegionCode.ZZ)));
+
+  // Valid domainname
+  assertTrue(NZ_NUMBER.equals(
+      phoneUtil.parse("tel:033316005;phone-context=abc.nz", RegionCode.NZ)));
+  assertTrue(NZ_NUMBER.equals(
+      phoneUtil.parse("tel:033316005;phone-context=www.PHONE-numb3r.com",
+          RegionCode.NZ)));
+  assertTrue(NZ_NUMBER.equals(
+      phoneUtil.parse("tel:033316005;phone-context=a", RegionCode.NZ)));
+  assertTrue(NZ_NUMBER.equals(
+      phoneUtil.parse("tel:033316005;phone-context=3phone.J.", RegionCode.NZ)));
+  assertTrue(NZ_NUMBER.equals(
+      phoneUtil.parse("tel:033316005;phone-context=a--z", RegionCode.NZ)));
+
+  // Invalid descriptor
+  assertThrowsForInvalidPhoneContext("tel:033316005;phone-context=");
+  assertThrowsForInvalidPhoneContext("tel:033316005;phone-context=+");
+  assertThrowsForInvalidPhoneContext("tel:033316005;phone-context=64");
+  assertThrowsForInvalidPhoneContext("tel:033316005;phone-context=++64");
+  assertThrowsForInvalidPhoneContext("tel:033316005;phone-context=+abc");
+  assertThrowsForInvalidPhoneContext("tel:033316005;phone-context=.");
+  assertThrowsForInvalidPhoneContext("tel:033316005;phone-context=3phone");
+  assertThrowsForInvalidPhoneContext("tel:033316005;phone-context=a-.nz");
+  assertThrowsForInvalidPhoneContext("tel:033316005;phone-context=a{b}c");
+}
+
+function assertThrowsForInvalidPhoneContext(numberToParse) {
+  try {
+    phoneUtil.parse(numberToParse, RegionCode.ZZ);
+  } catch (e) {
+    assertEquals(i18n.phonenumbers.Error.NOT_A_NUMBER, e.message);
+  }
 }
 
 function testCountryWithNoNumberDesc() {

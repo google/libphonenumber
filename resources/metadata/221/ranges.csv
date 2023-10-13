@@ -1,0 +1,25 @@
+Prefix    ; Length ; Type       ; Tariff        ; Operator    ; Format         ; Regions ; Geocode:en      ; Provenance
+301[0-2]  ; 9      ; FIXED_LINE ; STANDARD_RATE ;             ; "fmt1_2/3/2/2" ; "SN"    ;                 ; ITU
+3080      ; 9      ; FIXED_LINE ; STANDARD_RATE ;             ; "fmt1_2/3/2/2" ; "SN"    ;                 ; ITU
+3282      ; 9      ; FIXED_LINE ; STANDARD_RATE ;             ; "fmt1_2/3/2/2" ; "SN"    ;                 ; ITU
+338[1-9]  ; 9      ; FIXED_LINE ; STANDARD_RATE ;             ; "fmt1_2/3/2/2" ; "SN"    ; "Dakar"         ; ITU
+3392      ; 9      ; VOIP       ; STANDARD_RATE ;             ; "fmt1_2/3/2/2" ; "SN"    ;                 ; ITU
+339[3-9]  ; 9      ; FIXED_LINE ; STANDARD_RATE ;             ; "fmt1_2/3/2/2" ; "SN"    ; "Outside Dakar" ; ITU
+3611      ; 9      ; FIXED_LINE ; STANDARD_RATE ;             ; "fmt1_2/3/2/2" ; "SN"    ;                 ; ITU
+39[01]    ; 9      ; VOIP       ; STANDARD_RATE ;             ; "fmt1_2/3/2/2" ; "SN"    ;                 ; ITU
+70        ; 9      ; MOBILE     ; STANDARD_RATE ; "expresso"  ; "fmt1_2/3/2/2" ; "SN"    ;                 ; IR21
+721       ; 9      ; MOBILE     ; STANDARD_RATE ; "hayo"      ; "fmt1_2/3/2/2" ; "SN"    ;                 ; ITU
+7501      ; 9      ; MOBILE     ; STANDARD_RATE ; "promobile" ; "fmt1_2/3/2/2" ; "SN"    ;                 ; ITU
+75[19]0   ; 9      ; MOBILE     ; STANDARD_RATE ; "promobile" ; "fmt1_2/3/2/2" ; "SN"    ;                 ; IR21
+7525      ; 9      ; MOBILE     ; STANDARD_RATE ; "promobile" ; "fmt1_2/3/2/2" ; "SN"    ;                 ; IR21
+75[38]3   ; 9      ; MOBILE     ; STANDARD_RATE ; "promobile" ; "fmt1_2/3/2/2" ; "SN"    ;                 ; ITU
+75[4-6]   ; 9      ; MOBILE     ; STANDARD_RATE ; "promobile" ; "fmt1_2/3/2/2" ; "SN"    ;                 ; ITU
+757       ; 9      ; MOBILE     ; STANDARD_RATE ; "origines"  ; "fmt1_2/3/2/2" ; "SN"    ;                 ; ITU
+76        ; 9      ; MOBILE     ; STANDARD_RATE ; "free"      ; "fmt1_2/3/2/2" ; "SN"    ;                 ; IR21
+7[78]     ; 9      ; MOBILE     ; STANDARD_RATE ; "orange"    ; "fmt1_2/3/2/2" ; "SN"    ;                 ; ITU
+790       ; 9      ; MOBILE     ; STANDARD_RATE ; "adie"      ; "fmt1_2/3/2/2" ; "SN"    ;                 ; ITU
+800       ; 9      ; FIXED_LINE ; TOLL_FREE     ;             ; "fmt2_3/2/2/2" ; "SN"
+81[02468] ; 9      ; FIXED_LINE ; SHARED_COST   ;             ; "fmt2_3/2/2/2" ; "SN"
+88[4689]  ; 9      ; FIXED_LINE ; PREMIUM_RATE  ;             ; "fmt2_3/2/2/2" ; "SN"
+933[13]0  ; 9      ; VOIP       ; STANDARD_RATE ;             ; "fmt1_2/3/2/2" ; "SN"    ;                 ; ITU
+93929     ; 9      ; VOIP       ; STANDARD_RATE ;             ; "fmt1_2/3/2/2" ; "SN"    ;                 ; ITU

@@ -15,8 +15,10 @@
 # Sources: https://en.wikipedia.org/wiki/Telephone_numbers_in_Zambia and
 # http://www.itu.int/oth/T02020000E8/en
 
+26075|ZAMTEL
 26076|MTN
 26077|Airtel
 26095|ZAMTEL
 26096|MTN
 26097|Airtel
+26098|Beeline Telecoms

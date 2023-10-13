@@ -1,0 +1,46 @@
+Prefix   ; Length ; Type       ; Tariff        ; Area Code Length ; Operator         ; Format       ; Regions ; Geocode:en           ; Geocode:sr           ; Provenance
+10[2-9]  ; 7-12   ; FIXED_LINE ; STANDARD_RATE ; 2                ;                  ; "fmt_2/5-10" ; "RS"    ; "Pirot"              ; "Пирот"
+11[1-9]  ; 7-12   ; FIXED_LINE ; STANDARD_RATE ; 2                ;                  ; "fmt_2/5-10" ; "RS"    ; "Belgrade"           ; "Београд"
+12[2-9]  ; 7-12   ; FIXED_LINE ; STANDARD_RATE ; 2                ;                  ; "fmt_2/5-10" ; "RS"    ; "Pozarevac"          ; "Пожаревац"
+13[2-9]  ; 7-12   ; FIXED_LINE ; STANDARD_RATE ; 2                ;                  ; "fmt_2/5-10" ; "RS"    ; "Pancevo"            ; "Панчево"
+14[2-9]  ; 7-12   ; FIXED_LINE ; STANDARD_RATE ; 2                ;                  ; "fmt_2/5-10" ; "RS"    ; "Valjevo"            ; "Ваљево"
+15[2-9]  ; 7-12   ; FIXED_LINE ; STANDARD_RATE ; 2                ;                  ; "fmt_2/5-10" ; "RS"    ; "Sabac"              ; "Шабац"
+16[2-9]  ; 7-12   ; FIXED_LINE ; STANDARD_RATE ; 2                ;                  ; "fmt_2/5-10" ; "RS"    ; "Leskovac"           ; "Лесковац"
+17[2-9]  ; 7-12   ; FIXED_LINE ; STANDARD_RATE ; 2                ;                  ; "fmt_2/5-10" ; "RS"    ; "Vranje"             ; "Врање"
+18[2-9]  ; 7-12   ; FIXED_LINE ; STANDARD_RATE ; 2                ;                  ; "fmt_2/5-10" ; "RS"    ; "Nis"                ; "Ниш"
+19[2-9]  ; 7-12   ; FIXED_LINE ; STANDARD_RATE ; 2                ;                  ; "fmt_2/5-10" ; "RS"    ; "Zajecar"            ; "Зајечар"
+20[2-9]  ; 7-12   ; FIXED_LINE ; STANDARD_RATE ; 2                ;                  ; "fmt_2/5-10" ; "RS"    ; "Novi Pazar"         ; "Нови Пазар"
+21[2-9]  ; 7-12   ; FIXED_LINE ; STANDARD_RATE ; 2                ;                  ; "fmt_2/5-10" ; "RS"    ; "Novi Sad"           ; "Нови Сад"
+22[2-9]  ; 7-12   ; FIXED_LINE ; STANDARD_RATE ; 2                ;                  ; "fmt_2/5-10" ; "RS"    ; "Sremska Mitrovica"  ; "Сремска Митровица"
+230[2-9] ; 7-12   ; FIXED_LINE ; STANDARD_RATE ; 3                ;                  ; "fmt_3/3-9"  ; "RS"    ; "Kikinda"            ; "Кикинда"
+23[2-9]  ; 7-12   ; FIXED_LINE ; STANDARD_RATE ; 2                ;                  ; "fmt_2/5-10" ; "RS"    ; "Zrenjanin"          ; "Зрењанин"
+24[2-9]  ; 7-12   ; FIXED_LINE ; STANDARD_RATE ; 2                ;                  ; "fmt_2/5-10" ; "RS"    ; "Subotica"           ; "Суботица"
+25[2-9]  ; 7-12   ; FIXED_LINE ; STANDARD_RATE ; 2                ;                  ; "fmt_2/5-10" ; "RS"    ; "Sombor"             ; "Сомбор"
+26[2-9]  ; 7-12   ; FIXED_LINE ; STANDARD_RATE ; 2                ;                  ; "fmt_2/5-10" ; "RS"    ; "Smederevo"          ; "Смедерево"
+27[2-9]  ; 7-12   ; FIXED_LINE ; STANDARD_RATE ; 2                ;                  ; "fmt_2/5-10" ; "RS"    ; "Prokuplje"          ; "Прокупље"
+280[2-9] ; 7-12   ; FIXED_LINE ; STANDARD_RATE ; 3                ;                  ; "fmt_3/3-9"  ; "RS"    ; "Gnjilane"           ; "Гњилане"
+28[2-9]  ; 7-12   ; FIXED_LINE ; STANDARD_RATE ; 2                ;                  ; "fmt_2/5-10" ; "RS"    ; "Kosovska Mitrovica" ; "Косовска Митровица"
+290[2-9] ; 7-12   ; FIXED_LINE ; STANDARD_RATE ; 3                ;                  ; "fmt_3/3-9"  ; "RS"    ; "Urosevac"           ; "Урошевац"
+29[2-9]  ; 7-12   ; FIXED_LINE ; STANDARD_RATE ; 2                ;                  ; "fmt_2/5-10" ; "RS"    ; "Prizren"            ; "Призрен"
+30[2-9]  ; 7-12   ; FIXED_LINE ; STANDARD_RATE ; 2                ;                  ; "fmt_2/5-10" ; "RS"    ; "Bor"                ; "Бор"
+31[2-9]  ; 7-12   ; FIXED_LINE ; STANDARD_RATE ; 2                ;                  ; "fmt_2/5-10" ; "RS"    ; "Uzice"              ; "Ужице"
+32[2-9]  ; 7-12   ; FIXED_LINE ; STANDARD_RATE ; 2                ;                  ; "fmt_2/5-10" ; "RS"    ; "Cacak"              ; "Чачак"
+33[2-9]  ; 7-12   ; FIXED_LINE ; STANDARD_RATE ; 2                ;                  ; "fmt_2/5-10" ; "RS"    ; "Prijepolje"         ; "Пријепоље"
+34[2-9]  ; 7-12   ; FIXED_LINE ; STANDARD_RATE ; 2                ;                  ; "fmt_2/5-10" ; "RS"    ; "Kragujevac"         ; "Крагујевац"
+35[2-9]  ; 7-12   ; FIXED_LINE ; STANDARD_RATE ; 2                ;                  ; "fmt_2/5-10" ; "RS"    ; "Jagodina"           ; "Јагодина"
+36[2-9]  ; 7-12   ; FIXED_LINE ; STANDARD_RATE ; 2                ;                  ; "fmt_2/5-10" ; "RS"    ; "Kraljevo"           ; "Краљево"
+37[2-9]  ; 7-12   ; FIXED_LINE ; STANDARD_RATE ; 2                ;                  ; "fmt_2/5-10" ; "RS"    ; "Krusevac"           ; "Крушевац"
+38[2-9]  ; 7-12   ; FIXED_LINE ; STANDARD_RATE ; 2                ;                  ; "fmt_2/5-10" ; "RS"    ; "Pristina"           ; "Приштина"
+390[2-9] ; 7-12   ; FIXED_LINE ; STANDARD_RATE ; 3                ;                  ; "fmt_3/3-9"  ; "RS"    ; "Dakovica"           ; "Ђаковица"
+39[2-9]  ; 7-12   ; FIXED_LINE ; STANDARD_RATE ; 2                ;                  ; "fmt_2/5-10" ; "RS"    ; "Pec"                ; "Пећ"
+6[018]   ; 8,9    ; MOBILE     ; STANDARD_RATE ;                  ; "a1"             ; "fmt_2/5-10" ; "RS"    ;                      ;                      ; IR21
+6[239]   ; 8,9    ; MOBILE     ; STANDARD_RATE ;                  ; "telenor"        ; "fmt_2/5-10" ; "RS"    ;                      ;                      ; IR21
+6[4-6]   ; 8,9    ; MOBILE     ; STANDARD_RATE ;                  ; "mts"            ; "fmt_2/5-10" ; "RS"    ;                      ;                      ; IR21
+67[0-59] ; 9,10   ; MOBILE     ; STANDARD_RATE ;                  ;                  ; "fmt_2/5-10" ; "RS"
+676      ; 9,10   ; MOBILE     ; STANDARD_RATE ;                  ; "globaltel"      ; "fmt_2/5-10" ; "RS"    ;                      ;                      ; IR21
+677      ; 9,10   ; MOBILE     ; STANDARD_RATE ;                  ; "globaltel"      ; "fmt_2/5-10" ; "RS"    ;                      ;                      ; GOVERNMENT
+678      ; 9,10   ; MOBILE     ; STANDARD_RATE ;                  ; "vectone_mobile" ; "fmt_2/5-10" ; "RS"
+7[06]    ; 6-12   ; UAN        ; STANDARD_RATE ;                  ;                  ; "fmt_3/3-9"  ; "RS"    ;                      ;                      ; GOVERNMENT
+78       ; 6-10   ; FIXED_LINE ; PREMIUM_RATE  ;                  ;                  ; "fmt_3/3-9"  ; "RS"
+800      ; 6-12   ; FIXED_LINE ; TOLL_FREE     ;                  ;                  ; "fmt_3/3-9"  ; "RS"    ;                      ;                      ; GOVERNMENT
+90[0169] ; 6-10   ; FIXED_LINE ; PREMIUM_RATE  ;                  ;                  ; "fmt_3/3-9"  ; "RS"    ;                      ;                      ; GOVERNMENT

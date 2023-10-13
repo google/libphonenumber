@@ -1,0 +1,13 @@
+Prefix       ; Length ; Type                 ; Tariff        ; Operator               ; Format            ; Regions ; Provenance ; Comment
+40           ; 6      ; MOBILE               ; STANDARD_RATE ; "globaltel"            ; "fmt1_2/2/2"      ; "PM"    ; GOVERNMENT ; "Government dated: 7/17/2012"
+41           ; 6      ; FIXED_LINE           ; STANDARD_RATE ;                        ; "fmt1_2/2/2"      ; "PM"    ; GOVERNMENT ; "Government dated: 6/4/2002"
+42           ; 6      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "orange"               ; "fmt1_2/2/2"      ; "PM"    ; GOVERNMENT ; "Government dated: 7/1/2018"
+43           ; 6      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "diabolocom"           ; "fmt1_2/2/2"      ; "PM"    ; GOVERNMENT ; "Government dated: 12/7/2017"
+44           ; 6      ; MOBILE               ; STANDARD_RATE ; "globaltel"            ; "fmt1_2/2/2"      ; "PM"    ; GOVERNMENT ; "Government dated: 7/29/2014"
+4[5-7]       ; 6      ; FIXED_LINE           ; STANDARD_RATE ;                        ; "fmt1_2/2/2"      ; "PM"    ; GOVERNMENT
+50           ; 6      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "keyyo"                ; "fmt1_2/2/2"      ; "PM"    ; GOVERNMENT ; "Government dated: 3/2/2006"
+51           ; 6      ; FIXED_LINE           ; STANDARD_RATE ;                        ; "fmt1_2/2/2"      ; "PM"    ; GOVERNMENT
+55           ; 6      ; MOBILE               ; STANDARD_RATE ; "spm_telecom"          ; "fmt1_2/2/2"      ; "PM"    ; GOVERNMENT ; "Government dated: 7/19/2000"
+56           ; 6      ; MOBILE               ; STANDARD_RATE ; "kav_el_international" ; "fmt1_2/2/2"      ; "PM"    ; GOVERNMENT
+708[45][0-5] ; 9      ; MOBILE               ; STANDARD_RATE ;                        ; "mobile_3/3/3"    ; "PM"    ; ITU
+80[0-5]      ; 9      ; FIXED_LINE           ; TOLL_FREE     ;                        ; "varcost_3/2/2/2" ; "PM"    ;            ; "ARCEP"

@@ -1,0 +1,33 @@
+Prefix    ; Length ; Type       ; Tariff        ; Operator   ; Format     ; Regions ; Provenance ; Comment
+0080[01]  ; 11     ; FIXED_LINE ; TOLL_FREE     ;            ;            ; "QA"    ; GOVERNMENT
+21        ; 7      ; PAGER      ; STANDARD_RATE ;            ; "fmt1_3/4" ; "QA"    ; GOVERNMENT
+26        ; 7      ; PAGER      ; STANDARD_RATE ;            ; "fmt1_3/4" ; "QA"    ; ITU
+30        ; 8      ; MOBILE     ; STANDARD_RATE ; "vodafone" ; "fmt2_4/4" ; "QA"    ; IR21       ; "IR21 dated 11/20/2018"
+31[0-6]   ; 8      ; MOBILE     ; STANDARD_RATE ; "vodafone" ; "fmt2_4/4" ; "QA"    ; IR21       ; "IR21 dated 11/20/2018"
+31[7-9]   ; 8      ; MOBILE     ; STANDARD_RATE ;            ; "fmt2_4/4" ; "QA"
+3[24-8]   ; 8      ; MOBILE     ; STANDARD_RATE ;            ; "fmt2_4/4" ; "QA"
+33        ; 8      ; MOBILE     ; STANDARD_RATE ; "ooredoo"  ; "fmt2_4/4" ; "QA"    ; IR21       ; "IR21 dated 2/2/2018"
+39[0-8]   ; 8      ; MOBILE     ; STANDARD_RATE ;            ; "fmt2_4/4" ; "QA"
+399       ; 8      ; MOBILE     ; STANDARD_RATE ; "ooredoo"  ; "fmt2_4/4" ; "QA"    ; IR21       ; "IR21 dated 2/2/2018"
+4[04]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt2_4/4" ; "QA"
+41111     ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt2_4/4" ; "QA"    ; GOVERNMENT
+414[056]  ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt2_4/4" ; "QA"    ; GOVERNMENT
+414[1-4]  ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt2_4/4" ; "QA"    ;            ; "User report"
+42022     ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt2_4/4" ; "QA"    ; GOVERNMENT
+4999      ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt2_4/4" ; "QA"    ; GOVERNMENT
+5[05]     ; 8      ; MOBILE     ; STANDARD_RATE ; "ooredoo"  ; "fmt2_4/4" ; "QA"    ; IR21       ; "IR21 dated 2/2/2018"
+5[12]     ; 8      ; MOBILE     ; STANDARD_RATE ; "ooredoo"  ; "fmt2_4/4" ; "QA"    ; IR21
+5[346-8]  ; 8      ; MOBILE     ; STANDARD_RATE ;            ; "fmt2_4/4" ; "QA"
+59[0-8]   ; 8      ; MOBILE     ; STANDARD_RATE ;            ; "fmt2_4/4" ; "QA"
+599       ; 8      ; MOBILE     ; STANDARD_RATE ; "ooredoo"  ; "fmt2_4/4" ; "QA"    ; IR21       ; "IR21 dated 2/2/2018"
+600       ; 8      ; MOBILE     ; STANDARD_RATE ; "ooredoo"  ; "fmt2_4/4" ; "QA"    ; IR21       ; "IR21 dated 2/2/2018"
+60[1-9]   ; 8      ; MOBILE     ; STANDARD_RATE ;            ; "fmt2_4/4" ; "QA"
+6[1-57-9] ; 8      ; MOBILE     ; STANDARD_RATE ;            ; "fmt2_4/4" ; "QA"
+66        ; 8      ; MOBILE     ; STANDARD_RATE ; "ooredoo"  ; "fmt2_4/4" ; "QA"    ; IR21       ; "IR21 dated 2/2/2018"
+7[047]    ; 8      ; MOBILE     ; STANDARD_RATE ; "vodafone" ; "fmt2_4/4" ; "QA"    ; IR21       ; "IR21 dated 11/20/2018"
+71        ; 8      ; MOBILE     ; STANDARD_RATE ; "vodafone" ; "fmt2_4/4" ; "QA"    ; IR21
+72[0-6]   ; 8      ; MOBILE     ; STANDARD_RATE ; "vodafone" ; "fmt2_4/4" ; "QA"    ; IR21
+72[7-9]   ; 8      ; MOBILE     ; STANDARD_RATE ;            ; "fmt2_4/4" ; "QA"
+7[35689]  ; 8      ; MOBILE     ; STANDARD_RATE ;            ; "fmt2_4/4" ; "QA"
+800       ; 7      ; FIXED_LINE ; TOLL_FREE     ;            ; "fmt1_3/4" ; "QA"
+800       ; 9      ; FIXED_LINE ; TOLL_FREE     ;            ;            ; "QA"    ;            ; "User report"

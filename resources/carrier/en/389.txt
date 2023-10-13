@@ -14,13 +14,39 @@
 
 # Source: https://e-agencija.aek.mk/aek-crm-portal/Pages/Public/PublicFreeSeries/PublicFreeSeries
 # Mapped ranges at 3-4 digit granularity level for easier maintenance. Added
-# some additional ranges based on respective IR.21 docs.
+# some additional ranges based on respective IR.21 docs. MVNOs ranges are listed
+# if the assignments are clear. Ex: 79[019]77 range is assigned to A1 which is
+# further assigned to respective MVNOs.
 
-3897|A1
+
 38970|T-Mobile
 38971|T-Mobile
 38972|T-Mobile
+38973|A1
+389736|T-Mobile
+3897370|T-Mobile
+3897371|T-Mobile
 389742|T-Mobile
 3897421|Mobik
 389746|T-Mobile
-389747|T-Mobile
+3897470|T-Mobile
+3897471|T-Mobile
+3897474|T-Mobile
+3897475|A1
+3897477|A1
+38974774|Telekabel
+3897478|A1
+38975|A1
+38976|A1
+38977|A1
+38978|A1
+389790|A1
+389791|A1
+389792|Lyca Mobile
+389793|Lyca Mobile
+389794|Lyca Mobile
+389795|Lyca Mobile
+3897970|T-Mobile
+3897971|T-Mobile
+3897975|A1
+389799|A1

@@ -30,6 +30,9 @@
 #include "phonenumbers/base/memory/singleton.h"
 #include "phonenumbers/phonenumber.pb.h"
 
+#include "absl/container/node_hash_set.h"
+#include "absl/container/node_hash_map.h"
+
 class TelephoneNumber;
 
 namespace i18n {
@@ -394,15 +397,15 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
       const string& calling_from,
       string* formatted_number) const;
 
-  // Formats a phone number using the original phone number format that the
-  // number is parsed from. The original format is embedded in the
-  // country_code_source field of the PhoneNumber object passed in. If such
-  // information is missing, the number will be formatted into the NATIONAL
-  // format by default. When we don't have a formatting pattern for the number,
-  // the method returns the raw input when it is available.
-  //
-  // Note this method guarantees no digit will be inserted, removed or modified
-  // as a result of formatting.
+  // Formats a phone number using the original phone number format (e.g.
+  // INTERNATIONAL or NATIONAL) that the number is parsed from, provided that
+  // the number has been parsed with ParseAndKeepRawInput. Otherwise the number
+  // will be formatted in NATIONAL format. The original format is embedded in
+  // the country_code_source field of the PhoneNumber object passed in, which is
+  // only set when parsing keeps the raw input. When we don't have a formatting
+  // pattern for the number, the method falls back to returning the raw input.
+  // When the number is an invalid number, the method returns the raw input when
+  // it is available.
   void FormatInOriginalFormat(const PhoneNumber& number,
                               const string& region_calling_from,
                               string* formatted_number) const;
@@ -805,17 +808,17 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
       country_calling_code_to_region_code_map_;
 
   // The set of regions that share country calling code 1.
-  scoped_ptr<std::set<string> > nanpa_regions_;
+  scoped_ptr<absl::node_hash_set<string> > nanpa_regions_;
   static const int kNanpaCountryCode = 1;
 
   // A mapping from a region code to a PhoneMetadata for that region.
-  scoped_ptr<std::map<string, PhoneMetadata> > region_to_metadata_map_;
+  scoped_ptr<absl::node_hash_map<string, PhoneMetadata> > region_to_metadata_map_;
 
   // A mapping from a country calling code for a non-geographical entity to the
   // PhoneMetadata for that country calling code. Examples of the country
   // calling codes include 800 (International Toll Free Service) and 808
   // (International Shared Cost Service).
-  scoped_ptr<std::map<int, PhoneMetadata> >
+  scoped_ptr<absl::node_hash_map<int, PhoneMetadata> >
       country_code_to_non_geographical_metadata_map_;
 
   PhoneNumberUtil();
@@ -955,8 +958,14 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
                         bool check_region,
                         PhoneNumber* phone_number) const;
 
-  void BuildNationalNumberForParsing(const string& number_to_parse,
-                                     string* national_number) const;
+  absl::optional<string> ExtractPhoneContext(
+      const string& number_to_extract_from,
+      size_t index_of_phone_context) const;
+
+  bool IsPhoneContextValid(absl::optional<string> phone_context) const;
+
+  ErrorType BuildNationalNumberForParsing(const string& number_to_parse,
+                                          string* national_number) const;
 
   bool IsShorterThanPossibleNormalNumber(const PhoneMetadata* country_metadata,
                                          const string& number) const;

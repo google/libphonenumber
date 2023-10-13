@@ -1,0 +1,12 @@
+Prefix   ; Length ; Type       ; Tariff        ; Operator ; Format         ; Regions ; Provenance ; Comment
+111      ; 9      ; MOBILE     ; STANDARD_RATE ; "mtl"    ; "fmt3_3/2/2/2" ; "MW"    ; ITU
+1[235-9] ; 7      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt1_1/3/3"   ; "MW"    ; ITU
+14       ; 7      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt1_1/3/3"   ; "MW"
+21       ; 9      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt2_3/3/3"   ; "MW"    ; ITU
+22       ; 9      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt2_3/3/3"   ; "MW"    ; IR21
+31       ; 9      ; MOBILE     ; STANDARD_RATE ; "tnm"    ; "fmt3_3/2/2/2" ; "MW"    ; IR21       ; "Dated 11/1/2019"
+77       ; 9      ; MOBILE     ; STANDARD_RATE ; "gain"   ; "fmt3_3/2/2/2" ; "MW"    ; ITU
+88       ; 9      ; MOBILE     ; STANDARD_RATE ; "tnm"    ; "fmt3_3/2/2/2" ; "MW"    ; IR21       ; "dated 11/1/2019"
+89       ; 9      ; MOBILE     ; STANDARD_RATE ; "tnm"    ; "fmt3_3/2/2/2" ; "MW"    ; IR21
+98       ; 9      ; MOBILE     ; STANDARD_RATE ; "airtel" ; "fmt3_3/2/2/2" ; "MW"    ; IR21
+99       ; 9      ; MOBILE     ; STANDARD_RATE ; "airtel" ; "fmt3_3/2/2/2" ; "MW"    ; IR21       ; "dated 8/22/2019"

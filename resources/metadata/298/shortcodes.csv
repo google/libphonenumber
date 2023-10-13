@@ -1,0 +1,7 @@
+Region ; Prefix  ; Length ; Type               ; Tariff    ; Provenance
+FO     ; 11[24]  ; 3      ; EMERGENCY          ; TOLL_FREE
+FO     ; 118     ; 3      ; COMMERCIAL
+FO     ; 14[124] ; 4      ; COMMERCIAL
+FO     ; 171     ; 4      ; COMMERCIAL
+FO     ; 1819    ; 4      ; EXPANDED_EMERGENCY ; TOLL_FREE ; GOVERNMENT
+FO     ; 18[7-9] ; 4      ; COMMERCIAL

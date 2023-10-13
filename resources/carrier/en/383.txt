@@ -33,12 +33,15 @@
 383457|vala
 383458|vala
 383459|vala
-383461|Z Mobile
-3834710|mts d.o.o.
-3834711|mts d.o.o.
-3834712|mts d.o.o.
-3834713|mts d.o.o.
-3834714|mts d.o.o.
-3834715|mts d.o.o.
+383461|vala
+383462|vala
+383463|vala
+383464|vala
+383465|vala
+383466|vala
+383467|vala
+383468|vala
+383469|vala
+38347|mts d.o.o.
 38348|IPKO
 38349|IPKO

@@ -1,0 +1,81 @@
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
+
+  - package-ecosystem: maven
+    directory: /java/carrier
+    schedule:
+      interval: monthly
+
+  - package-ecosystem: maven
+    directory: /java/demo
+    schedule:
+      interval: monthly
+
+  - package-ecosystem: maven
+    directory: /java/geocoder
+    schedule:
+      interval: monthly
+
+  - package-ecosystem: maven
+    directory: /java/internal/prefixmapper
+    schedule:
+      interval: monthly
+
+  - package-ecosystem: maven
+    directory: /java/libphonenumber
+    schedule:
+      interval: monthly
+
+  - package-ecosystem: maven
+    directory: /java
+    schedule:
+      interval: monthly
+
+  - package-ecosystem: maven
+    directory: /metadata
+    schedule:
+      interval: monthly
+
+  - package-ecosystem: maven
+    directory: /migrator/migrator-servlet
+    schedule:
+      interval: monthly
+
+  - package-ecosystem: maven
+    directory: /migrator
+    schedule:
+      interval: monthly
+
+  - package-ecosystem: maven
+    directory: /
+    schedule:
+      interval: monthly
+
+  - package-ecosystem: maven
+    directory: /tools/java/common
+    schedule:
+      interval: monthly
+
+  - package-ecosystem: maven
+    directory: /tools/java/cpp-build
+    schedule:
+      interval: monthly
+
+  - package-ecosystem: maven
+    directory: /tools/java/data
+    schedule:
+      interval: monthly
+
+  - package-ecosystem: maven
+    directory: /tools/java/java-build
+    schedule:
+      interval: monthly
+
+  - package-ecosystem: maven
+    directory: /tools/java
+    schedule:
+      interval: monthly

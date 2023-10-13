@@ -1,0 +1,8 @@
+Region ; Label        ; Comment
+PG     ; SC           ; "http://www.itu.int/oth/T02020000A4/en"
+PG     ; SC           ; "http://en.wikipedia.org/wiki/%2B675"
+PG     ; SC_EMERGENCY ; "http://www.pngbd.com/emergency.php has been used, excluding fixed-line phone-numbers."
+PG     ; XML          ; "http://www.itu.int/oth/T02020000A4/en"
+PG     ; XML          ; "http://en.wikipedia.org/wiki/%2B675"
+PG     ; XML          ; "http://nicta.gov.pg/search?searchword=numbering%20plan"
+PG     ; XML_VOIP     ; "Including all satellite numbers from the ITU doc here, as we found working numbers\nonline."

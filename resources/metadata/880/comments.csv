@@ -1,0 +1,13 @@
+Region ; Label               ; Comment
+BD     ; SC                  ; "http://www.itu.int/oth/T0202000012/en"
+BD     ; SC_CARRIER_SPECIFIC ; "https://support.twitter.com/articles/20170024"
+BD     ; SC_SMS_SERVICES     ; "https://support.twitter.com/articles/20170024"
+BD     ; XML                 ; "As per official evidence, 001 and 002 can be used for International dialing covering toll\nquality and non-toll quality services. But these are not in use according to our tests\n(see b/29552679)."
+BD     ; XML                 ; "http://www.itu.int/oth/T0202000012/en"
+BD     ; XML                 ; "http://en.wikipedia.org/wiki/Telephone_numbers_in_Bangladesh"
+BD     ; XML                 ; "http://www.btrc.gov.bd/national-numbering-plan"
+BD     ; XML_FIXED_LINE      ; "It might be that lengths 6-8 are local numbers only. Documentation is poor on\nBangladesh numbers."
+BD     ; XML_FIXED_LINE      ; "There was a plan to move to 10 digit fixed-line numbers, but this does not seem to have\nbeen realised, judging by online numbers and wikipedia. These patterns are grouped\nfirst by leading digit, then within by number of digits. Several Dhaka prefixes(02 731,\n02 890, 02 910, 02 550 etc.) are included despite not being mentioned on Wikipedia /\nITU due to online evidence. Another oddity is Chittagong - some numbers have a leading\n2, others do not - both are allowed for now. For some area codes, the subscriber number\nlength described in our source documentation doesn't match numbers online (e.g. 05222)\nso we allow both for now. (This applies to 0431, 04329, 04623, 05327 as well). We have\nalso added 04452 and 04923 from numbers found online. Included prefixes 2778, 2841, 2893,\n2963, 298[59] and 4462 as per user report. 9-digit 24 and 25 prefix numbers were added\nbased on user reports, although a doc from BRTC mentions that they are 10-digit numbers,\nwhich we think might be a typo."
+BD     ; XML_MOBILE          ; "Presuming that mobile numbers with the prefixes 66, 37, 44 and 38 must be followed by\nnumbers [02-9] or they would clash with fixed-line codes. According to the plan, mobile\nnumbers should be moving to 1[13-9] anyway."
+BD     ; XML_TOLL_FREE       ; "Note: Including Tele-voting numbers here as they are free of charge."
+BD     ; XML_VOIP            ; "Prefix 9643 added as per user report."

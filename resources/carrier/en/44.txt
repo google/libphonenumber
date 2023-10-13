@@ -120,6 +120,11 @@
 447340|Vodafone
 447341|Vodafone
 447342|Vodafone
+447360|Three
+447361|Three
+447362|Three
+447363|Three
+447364|Three
 447365|Three
 447366|Three
 447367|Three
@@ -129,6 +134,8 @@
 4473684|Sky
 4473685|Sky
 4473686|Sky
+4473690|Telet Research
+4473692|Sky
 4473699|Anywhere Sim
 447375|EE
 447376|EE
@@ -287,7 +294,7 @@
 4474579|CardBoardFish
 4474580|Gamma Telecom
 4474581|Gamma Telecom
-4474582|Premium Routing
+4474582|Lancelot Telecom
 4474583|Virgin Mobile
 4474584|Airwave
 4474585|Marathon Telecom

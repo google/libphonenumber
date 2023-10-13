@@ -1,0 +1,226 @@
+Prefix         ; Length ; Type       ; Tariff        ; Area Code Length ; Operator        ; Format          ; Regions ; Geocode:en                         ; Geocode:es                         ; Provenance ; Comment
+1800           ; 11     ; FIXED_LINE ; TOLL_FREE     ;                  ;                 ; "varcost_1/3/7" ; "CO"
+190[01]        ; 11     ; FIXED_LINE ; PREMIUM_RATE  ;                  ;                 ; "varcost_1/3/7" ; "CO"
+194[78]        ; 11     ; FIXED_LINE ; PREMIUM_RATE  ;                  ;                 ; "varcost_1/3/7" ; "CO"
+300[01]        ; 10     ; MOBILE     ; STANDARD_RATE ;                  ;                 ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; GOVERNMENT
+300[2-8]       ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "tigo"          ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; IR21       ; "5/13/2019"
+3009           ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "tigo"          ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; GOVERNMENT
+301[0189]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ;                 ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; GOVERNMENT
+301[2-7]       ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "tigo"          ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; IR21       ; "5/13/2019"
+302[019]       ; 10     ; MOBILE     ; STANDARD_RATE ;                  ;                 ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; GOVERNMENT
+302[23]        ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "tigo"          ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; IR21       ; "5/13/2019"
+3024[0-6]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "tigo"          ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; IR21       ; "5/13/2019"
+3024[7-9]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "wom"           ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; GOVERNMENT
+302[56]        ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "wom"           ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; GOVERNMENT
+3027           ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "wom"           ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; IR21
+3028[0-6]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "wom"           ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; IR21
+3028[7-9]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ;                 ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; GOVERNMENT
+303            ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "uff"           ; "mobile_3/7"    ; "CO"
+304[089]       ; 10     ; MOBILE     ; STANDARD_RATE ;                  ;                 ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; GOVERNMENT
+3041[0-8]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "tigo"          ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; GOVERNMENT
+30419          ; 10     ; MOBILE     ; STANDARD_RATE ;                  ;                 ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; GOVERNMENT
+304[2-4]       ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "tigo"          ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; IR21       ; "5/13/2019"
+3045[01]       ; 10     ; MOBILE     ; STANDARD_RATE ;                  ;                 ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; GOVERNMENT
+3045[2-9]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "tigo"          ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; IR21       ; "5/13/2019"
+3046[0-7]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "tigo"          ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; IR21       ; "5/13/2019"
+30468[0-4]     ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "tigo"          ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; IR21       ; "5/13/2019"
+3046850        ; 10     ; MOBILE     ; STANDARD_RATE ;                  ;                 ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; GOVERNMENT
+304685[1-9]    ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "tigo"          ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; GOVERNMENT
+30468[6-9]     ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "tigo"          ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; GOVERNMENT
+30469          ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "tigo"          ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; GOVERNMENT
+3047[0-2]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "tigo"          ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; GOVERNMENT
+30473[0-5]     ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "tigo"          ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; GOVERNMENT
+30473[6-9]     ; 10     ; MOBILE     ; STANDARD_RATE ;                  ;                 ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; GOVERNMENT
+3047[45]       ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "tigo"          ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; IR21       ; "5/13/2019"
+3047[6-9]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ;                 ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; GOVERNMENT
+305[016]       ; 10     ; MOBILE     ; STANDARD_RATE ;                  ;                 ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; GOVERNMENT
+3052[02-57-9]  ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "tigo"          ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; IR21       ; "5/13/2019"
+30521[0-6]     ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "tigo"          ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; IR21       ; "5/13/2019"
+30521[7-9]     ; 10     ; MOBILE     ; STANDARD_RATE ;                  ;                 ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; GOVERNMENT
+30526[0-6]     ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "tigo"          ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; IR21       ; "5/13/2019"
+3052670        ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "tigo"          ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; IR21       ; "5/13/2019"
+3052671        ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "tigo"          ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; GOVERNMENT
+305267[2-9]    ; 10     ; MOBILE     ; STANDARD_RATE ;                  ;                 ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; GOVERNMENT
+30526[89]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ;                 ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; GOVERNMENT
+305[378]       ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "tigo"          ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; IR21       ; "5/13/2019"
+3054[0-8]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "movil_exito"   ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; GOVERNMENT
+30549          ; 10     ; MOBILE     ; STANDARD_RATE ;                  ;                 ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; GOVERNMENT
+3055[0-6]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "tigo"          ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; GOVERNMENT
+3055[7-9]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ;                 ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; GOVERNMENT
+3059[0-5]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "tigo"          ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; IR21       ; "5/13/2019"
+3059[6-9]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ;                 ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; GOVERNMENT
+310[01]        ; 10     ; MOBILE     ; STANDARD_RATE ;                  ;                 ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; GOVERNMENT
+310[2-8]       ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "claro"         ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; IR21       ; "7/27/2018"
+3109[04-8]     ; 10     ; MOBILE     ; STANDARD_RATE ;                  ;                 ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; GOVERNMENT
+3109[1-3]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "claro"         ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; IR21       ; "7/27/2018"
+31099[01]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "claro"         ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; GOVERNMENT
+31099[2-9]     ; 10     ; MOBILE     ; STANDARD_RATE ;                  ;                 ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; GOVERNMENT
+31[1-4][019]   ; 10     ; MOBILE     ; STANDARD_RATE ;                  ;                 ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; GOVERNMENT
+31[1-4][2-8]   ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "claro"         ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; IR21       ; "7/27/2018"
+315            ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "movistar"      ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; IR21       ; "4/23/2019"
+316[01]        ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "movistar"      ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; IR21
+31[69]2        ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "movistar"      ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; GOVERNMENT
+31[69][3-9]    ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "movistar"      ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; IR21       ; "4/23/2019"
+31[78]         ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "movistar"      ; "mobile_3/7"    ; "CO"
+319[01]        ; 10     ; MOBILE     ; STANDARD_RATE ;                  ;                 ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; GOVERNMENT
+32[013][01]    ; 10     ; MOBILE     ; STANDARD_RATE ;                  ;                 ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; GOVERNMENT
+32[01][2-9]    ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "claro"         ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; IR21       ; "7/27/2018"
+322            ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "claro"         ; "mobile_3/7"    ; "CO"
+323[2-5]       ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "claro"         ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; IR21       ; "7/27/2018"
+323[6-9]       ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "wom"           ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; GOVERNMENT
+324[17-9]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "wom"           ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; GOVERNMENT
+324[2-6]       ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "tigo"          ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; IR21
+3300           ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "movistar"      ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; IR21       ; "4/23/2019"
+3330[0-4]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "setroc_mobile" ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; GOVERNMENT
+3330[5-8]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "tigo"          ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; IR21
+33309          ; 10     ; MOBILE     ; STANDARD_RATE ;                  ;                 ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; GOVERNMENT
+3331[0-6]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "libre"         ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; GOVERNMENT
+33317[01]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "libre"         ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; GOVERNMENT
+33317[2-9]     ; 10     ; MOBILE     ; STANDARD_RATE ;                  ;                 ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; GOVERNMENT
+3331[89]       ; 10     ; MOBILE     ; STANDARD_RATE ;                  ;                 ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; GOVERNMENT
+3332[01]       ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "tigo"          ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; IR21       ; "5/13/2019"
+3332[2-9]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "movil_exito"   ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; GOVERNMENT
+333300         ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "gomobile"      ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; GOVERNMENT
+333301[0-5]    ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "gomobile"      ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; GOVERNMENT
+33332[5-9]     ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "eztalk"        ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; GOVERNMENT
+3333[3-5]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "eztalk"        ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; GOVERNMENT
+3333[6-9]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ;                 ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; GOVERNMENT
+3334[0-4]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "dime"          ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; GOVERNMENT
+3334[5-9]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "tigo"          ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; GOVERNMENT
+333[57-9]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ;                 ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; GOVERNMENT
+3336[0-7]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "suma"          ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; GOVERNMENT
+3336[89]       ; 10     ; MOBILE     ; STANDARD_RATE ;                  ;                 ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; GOVERNMENT
+350[019]       ; 10     ; MOBILE     ; STANDARD_RATE ;                  ;                 ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; GOVERNMENT
+350[2-8]       ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "avantel"       ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; GOVERNMENT
+351            ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "avantel"       ; "mobile_3/7"    ; "CO"
+370            ; 10     ; MOBILE     ; STANDARD_RATE ;                  ;                 ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; GOVERNMENT
+6010[0-4]      ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "Cundinamarca"                     ; "Cundinamarca"                     ; GOVERNMENT
+60105[0-4]     ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "Cundinamarca"                     ; "Cundinamarca"                     ; GOVERNMENT
+601055[0-4]    ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "Cundinamarca"                     ; "Cundinamarca"                     ; GOVERNMENT
+60105550       ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "Cundinamarca"                     ; "Cundinamarca"                     ; GOVERNMENT
+601[2-7]       ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "Bogotá"                           ; "Bogotá"
+6018[015-9]    ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"
+601820         ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "Madrid"                           ; "Madrid"
+60182[126]     ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "Funza"                            ; "Funza"
+6018230        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "Subachoque"                       ; "Subachoque"
+601823[13-9]   ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"
+6018232        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "Funza"                            ; "Funza"
+601824[01]     ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "El Rosal"                         ; "El Rosal"
+6018242        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "La Pradera/Subachoque/Subachique" ; "La Pradera/Subachoque/Subachique"
+6018243        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "Bojaca"                           ; "Bojaca"
+601824[48]     ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"
+6018245        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "Subachoque"                       ; "Subachoque"
+6018246        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "Puente Piedra"                    ; "Puente Piedra"
+6018247        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "La Punta"                         ; "La Punta"
+6018249        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "Zipacon"                          ; "Zipacon"
+601825[0-6]    ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "Madrid"                           ; "Madrid"
+6018257        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "Funza"                            ; "Funza"
+601825[89]     ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"
+601827         ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "Mosquera"                         ; "Mosquera"
+601828[0-24-7] ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"
+6018283        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "Mosquera"                         ; "Mosquera"
+601828[89]     ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "Madrid"                           ; "Madrid"
+601829         ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"
+60183[0-3]     ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "Girardot"                         ; "Girardot"
+60183[4-6]     ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"
+6018370        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "Jerusalén"                        ; "Jerusalén"
+6018371        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "Guataqui"                         ; "Guataqui"
+601837[247-9]  ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"
+6018373        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "Beltrán"                          ; "Beltrán"
+60183[78]5     ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "Nariño"                           ; "Nariño"
+6018376        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "Tocaima"                          ; "Tocaima"
+601838[027-9]  ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"
+6018381        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "Agua de Dios"                     ; "Agua de Dios"
+6018383        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "Nilo"                             ; "Nilo"
+6018384        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "Viota"                            ; "Viota"
+6018386        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "Apulo"                            ; "Apulo"
+601839[014-69] ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"
+6018392        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "Nilo/La Esmeralda"                ; "Nilo/La Esmeralda"
+6018393        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "Girardot"                         ; "Girardot"
+601839[78]     ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "Apulo"                            ; "Apulo"
+601840[015-9]  ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"
+6018402        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "San Antonio de Tequendama"        ; "San Antonio de Tequendama"
+6018403        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "Choachi"                          ; "Choachi"
+6018404        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "Fomeque"                          ; "Fomeque"
+601841[013-58] ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"
+6018412        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "Santa Inés"                       ; "Santa Inés"
+601841[67]     ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "Guaduas"                          ; "Guaduas"
+6018419        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "Pandi"                            ; "Pandi"
+601842         ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "Facatativa"                       ; "Facatativa"
+601843[016-9]  ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "Facatativa"                       ; "Facatativa"
+6018432        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"
+6018433        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "Ninaima/Tobia"                    ; "Ninaima/Tobia"
+601843[45]     ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "Cartagenita"                      ; "Cartagenita"
+6018440        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "Facatativa"                       ; "Facatativa"
+6018441        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "Viani"                            ; "Viani"
+601844[23]     ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "Cachipay"                         ; "Cachipay"
+601844[4-7]    ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "Villeta"                          ; "Villeta"
+6018448        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"
+6018449        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "La Peña"                          ; "La Peña"
+6018450        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "San Antonio de Tequendama"        ; "San Antonio de Tequendama"
+6018451        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "Nocaima"                          ; "Nocaima"
+601845[24-9]   ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"
+6018453        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "La Florida"                       ; "La Florida"
+60184[679]     ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"
+601848[01]     ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "Quebradanegra"                    ; "Quebradanegra"
+6018482        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "La Magdalena"                     ; "La Magdalena"
+601848[3-9]    ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"
+6019           ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"
+602[24-6]      ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"
+6023[0-6]      ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "Cali"                             ; "Cali"
+6023[7-9]      ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"
+6027[014-9]    ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"
+6027[23]       ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "Pasto"                            ; "Pasto"
+6028[0-7]      ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"
+6028[89]       ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "Cali"                             ; "Cali"
+6029[02]       ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "Cali"                             ; "Cali"
+6029[13-9]     ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"
+604[2-5]       ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "Medellín"                         ; "Medellín"
+604[67]        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"
+6048[0-3689]   ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"
+60484[013-9]   ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"
+604842         ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "Medellín"                         ; "Medellín"
+60485[02-9]    ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"
+604851[01]     ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "Medellín"                         ; "Medellín"
+604851[2-9]    ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"
+60487[013-9]   ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"
+604872[0-6]    ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "Medellín"                         ; "Medellín"
+604872[7-9]    ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"
+60490[0-8]     ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"
+604909[013-9]  ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"
+6049092        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "Medellín"                         ; "Medellín"
+60491[024-689] ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"
+60491[137]     ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "Medellín"                         ; "Medellín"
+60492          ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "Medellín"                         ; "Medellín"
+6049[3-9]      ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"
+605[247-9]     ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"
+6053[019]      ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"
+6053[2-8]      ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "Barranquilla"                     ; "Barranquilla"
+6055[0-689]    ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"
+60557          ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "Valledupar"                       ; "Valledupar"
+6056[01349]    ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"
+60562[0-8]     ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"
+605629[0-46-9] ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"
+6056295        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "Cartagena"                        ; "Cartagena"
+6056[5-8]      ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "Cartagena"                        ; "Cartagena"
+606[24-79]     ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"
+6063[09]       ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"
+6063[1-5]      ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "Pereira"                          ; "Pereira"
+6063[6-8]      ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "Eje Cafetero"                     ; "Eje Cafetero"                     ; GOVERNMENT
+6068[0-6]      ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"
+6068[7-9]      ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "Manizales"                        ; "Manizales"
+607[2-478]     ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"
+6075[0-69]     ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"
+6075[78]       ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "Cucuta"                           ; "Cucuta"
+6076[0269]     ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"
+6076[13-578]   ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "Bucaramanga"                      ; "Bucaramanga"
+60790          ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "Bucaramanga"                      ; "Bucaramanga"
+6079[1-9]      ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"
+6081           ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ;                                    ;                                    ; GOVERNMENT
+608[28][0-589] ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"
+6082[67]       ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "Ibague"                           ; "Ibague"
+608[3-579]     ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"
+6086[0-57-9]   ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"
+60866          ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "Villavicencio"                    ; "Villavicencio"
+6088[67]       ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "Neiva"                            ; "Neiva"
+9101           ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "movistar"      ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; IR21

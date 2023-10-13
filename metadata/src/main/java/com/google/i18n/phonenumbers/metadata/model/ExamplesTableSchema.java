@@ -96,7 +96,7 @@ public final class ExamplesTableSchema {
     for (Cell<PhoneRegion, ValidNumberType, DigitSequence> c : table.cellSet()) {
       out.put(ExampleNumberKey.of(c.getRowKey(), c.getColumnKey()), NUMBER, c.getValue());
     }
-    return CsvTable.from(SCHEMA, out.build());
+    return CsvTable.from(SCHEMA, out.buildOrThrow());
   }
 
   /**
@@ -110,7 +110,7 @@ public final class ExamplesTableSchema {
     for (ExampleNumberKey k : csv.getKeys()) {
       out.put(k.getRegion(), k.getType(), csv.getOrDefault(k, NUMBER));
     }
-    return out.build();
+    return out.buildOrThrow();
   }
 
   private static Stream<String> write(ExampleNumberKey key) {

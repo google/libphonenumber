@@ -77,6 +77,8 @@
 61458|Telstra
 61459|Telstra
 61460|Telstra
+61461|Telstra
+61462|Telstra
 61466|Optus
 61467|Telstra
 61468|Optus
@@ -96,15 +98,23 @@
 61476|Telstra
 61477|Telstra
 61478|Optus
-614790|Optus
-614791|Optus
+61479|Optus
 614800|Pivotel Satellite
 614801|Telstra
 614803|Telstra
+614804|Telstra
+614805|Telstra
+614806|Telstra
+614807|Telstra
 614808|Pivotel Satellite
 61481|Optus
 61482|Optus
-61483|Telstra
+614830|Telstra
+614831|Telstra
+614832|Telstra
+614833|Telstra
+614838|Telstra
+614839|Optus
 61484|Telstra
 61485|TravelSIM
 614858|Pivotel Satellite

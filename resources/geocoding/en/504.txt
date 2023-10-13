@@ -18,11 +18,16 @@
 5042201|Polo Paz
 5042202|Tegucigalpa
 5042203|Polo Paz
+5042204|Francisco Morazan
 5042209|Res. Centro América, Tegucigalpa
 5042211|El Picacho
 5042212|Rdsi Tegucigalpa (Pri3)
 5042213|Telef. Inalámbrica Tegucig.
+5042214|Francisco Morazan
+5042215|Francisco Morazan
 5042216|Rdsi Tegucigalpa (Pri3)
+5042218|Francisco Morazan
+5042219|Francisco Morazan
 5042220|Principal
 5042221|Almendros
 5042222|Principal
@@ -44,13 +49,17 @@
 5042238|Principal
 5042239|Miraflores
 5042240|Kennedy, Tegucigalpa
+5042242|Francisco Morazan
 5042244|Tegucigalpa
 5042245|La Vega, Tegucigalpa
 5042246|La Vega, Tegucigalpa
 5042255|El Hato
 5042257|Prados Universitarios
+5042281|Francisco Morazan
+5042283|Francisco Morazan
 5042290|Toncontin
 5042291|Toncontin
+5042405|Atlantida
 5042407|Roatán, Bay Islands
 5042423|La Ceiba
 5042424|Sabá
@@ -73,7 +82,16 @@
 5042452|Coyoles Central
 5042453|Guanaja
 5042455|French Harbour
-504251|San Pedro Sula, Cortés
+5042458|Atlantida
+5042459|Atlantida
+5042502|Cortes
+5042503|Cortes
+5042505|Cortes
+5042511|Cortes
+5042512|San Pedro Sula, Cortés
+5042513|Cortes
+5042515|Cortes
+5042516|San Pedro Sula, Cortés
 5042540|San Pedro Sula, Cortés
 5042543|Inalámbrica Sps
 5042544|Rdsi San Pedro Sula
@@ -91,8 +109,11 @@
 5042564|San Pedro Sula, Cortés
 5042565|Chamelecón
 5042566|Jardines Del Valle
+5042569|Cortes
+5042570|Cortes
 5042574|Búfalo
 504261|Choloma, Cortés
+5042637|Santa Barbra
 5042640|C. Comunitarios
 5042641|C. Comunitarios
 5042642|C. Comunitarios
@@ -119,6 +140,7 @@
 504268|La Lima
 5042690|El Negrito
 5042691|Morazán
+504270|Olancho
 5042764|Amarat/Marcala
 5042766|Valle De Ángeles
 5042767|Ojojona

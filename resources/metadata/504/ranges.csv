@@ -1,0 +1,151 @@
+Prefix       ; Length ; Type       ; Tariff        ; National Only ; Operator   ; Format            ; Regions ; Geocode:en                         ; Provenance ; Comment
+220[013]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Polo Paz"                         ; ITU
+2202         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Tegucigalpa"                      ; WEB
+2204         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Francisco Morazan"                ; GOVERNMENT
+2205         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"
+2209         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Res. Centro América, Tegucigalpa" ; ITU
+2211         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "El Picacho"                       ; ITU
+221[26]      ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Rdsi Tegucigalpa (Pri3)"          ; ITU
+2213         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Telef. Inalámbrica Tegucig."      ; ITU
+221[4589]    ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Francisco Morazan"                ; GOVERNMENT
+2217         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"
+222[02]      ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Principal"                        ; ITU
+2221         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Almendros"                        ; ITU
+2223         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Polo Paz"                         ; ITU
+2224         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Cerro Grande"                     ; ITU
+2225         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "La Granja"                        ; ITU
+2226         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Loarque"                          ; ITU
+2227         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Res. Centro América, Tegucigalpa" ; ITU
+2228         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Kennedy, Tegucigalpa"             ; ITU
+2229         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "El Ocotal"                        ; ITU
+22[34]0      ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Kennedy, Tegucigalpa"             ; ITU
+223[1259]    ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Miraflores"                       ; ITU
+223[34]      ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Toncontín"                        ; ITU
+2236         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Almendros"                        ; ITU
+223[78]      ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Principal"                        ; ITU
+2242         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Francisco Morazan"                ; GOVERNMENT
+2243         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"
+2244         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Tegucigalpa"
+224[56]      ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "La Vega, Tegucigalpa"             ; ITU
+2255         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "El Hato"                          ; ITU
+2257         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Prados Universitarios"            ; ITU
+226[245]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"
+227[0135689] ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"
+228[046-9]   ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"
+228[13]      ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Francisco Morazan"
+229[01]      ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Toncontin"                        ; ITU
+2292         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"
+2405         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Atlantida"                        ; GOVERNMENT
+2407         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Roatán, Bay Islands"
+2408         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"
+2423         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "La Ceiba"                         ; ITU
+2424         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Sabá"                             ; ITU
+2425         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Utila, Bay Islands"               ; ITU
+2429         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "San Alejo/Mesapa"                 ; ITU
+2431         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "San Francisco, Atlántida"         ; ITU
+2433         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Arenal"                           ; ITU
+2434         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Trujillo"                         ; ITU
+2435         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Oakridge"                         ; ITU
+2436         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "La Masica"                        ; ITU
+2437         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"
+2438         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Bonito Oriental"                  ; ITU
+2439         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ;                                    ; ITU
+244[023]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "La Ceiba"                         ; ITU
+2441         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ;                                    ; ITU
+2444         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Tocoa, Colón"                     ; ITU
+2445         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Coxin Hole, Roatán"               ; ITU
+2446         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Olanchito"                        ; ITU
+2448         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Tela"                             ; ITU
+2451         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Sonaguera"                        ; ITU
+2452         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Coyoles Central"                  ; ITU
+2453         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Guanaja"                          ; ITU
+2455         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "French Harbour"                   ; ITU
+245[89]      ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Atlantida"                        ; GOVERNMENT
+250[235]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Cortes"                           ; GOVERNMENT
+250[7-9]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"
+251[135]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Cortes"                           ; GOVERNMENT
+2512         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "San Pedro Sula, Cortés"           ;            ; "User report"
+2516         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "San Pedro Sula, Cortés"
+254[05]      ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "San Pedro Sula, Cortés"
+2543         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Inalámbrica Sps"                  ; ITU
+2544         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Rdsi San Pedro Sula"              ; ITU
+255[02378]   ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "San Pedro Sula, Cortés"           ; ITU
+255[14]      ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Monte Prieto"                     ; ITU
+2555         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Rivera Hernandez, San Pedro Sula" ; ITU
+2556         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "La Puerta"                        ; ITU
+2559         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Col. Satélite"                    ; ITU
+256[01]      ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"
+2564         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "San Pedro Sula, Cortés"
+2565         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Chamelecón"                       ; ITU
+2566         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Jardines Del Valle"               ; ITU
+2569         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Cortes"                           ; GOVERNMENT
+2570         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Cortes"
+2574         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Búfalo"                           ; ITU
+2580         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"
+26[06]       ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"
+2617         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Choloma, Cortés"
+262[067]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"
+263[04]      ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"
+2637         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Santa Barbra"                     ; GOVERNMENT
+264[0-2]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "C. Comunitarios"                  ; ITU
+2643         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Santa Bárbara"                    ; ITU
+2647         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Progreso"                         ; ITU
+2648         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Progreso/Santa Cruz"              ; ITU
+2650         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "San Manuel/Rio Lindo"             ; ITU
+2651         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Cucuyagua/Copán"                  ; ITU
+2652         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Agua Caliente"                    ; ITU
+2653         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Nueva Ocotepeque"                 ; ITU
+2654         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Santa Cruz"                       ; ITU
+2655         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Lepaera/Corquín"                  ; ITU
+2656         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Gracias/S.R.Copán"                ; ITU
+2657         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "El Naranjo Sta Bárbara"           ; ITU
+2658         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Macueliso Omoa/Trascerros"        ; ITU
+2659         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "El Mochito/Quimistán"             ; ITU
+267[05]      ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Villa Nueva"                      ; ITU
+2671         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Yoro"                             ; ITU
+2672         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Cofradía"                         ; ITU
+267[38]      ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Potrerillos"                      ; ITU
+2674         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Sulaco/Los Orcones"               ; ITU
+267[67]      ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"
+268[0-8]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "La Lima"                          ; ITU
+2690         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "El Negrito"                       ; ITU
+2691         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Morazán"                          ; ITU
+270[5-79]    ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Olancho"                          ; GOVERNMENT
+2764         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Amarat/Marcala"                   ; ITU
+2766         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Valle De Ángeles"                 ; ITU
+2767         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Ojojona"                          ; ITU
+2768         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Sabana Grande"                    ; ITU
+2769         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Guaimaca"                         ; ITU
+277[02]      ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Comayagua"                        ; ITU
+2773         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Siguatepeque"                     ; ITU
+2774         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "La Paz"                           ; ITU
+2775         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Talanga"                          ; ITU
+2776         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Zamorano"                         ; ITU
+2777         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Proyecto Ala"                     ; ITU
+2778         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Centros Comunitarios"             ; ITU
+2779         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Santa Lucía"                      ; ITU
+2780         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Choluteca"
+2783         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "La Esperanza"                     ; ITU
+2784         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "La Libertad"                      ; ITU
+2791         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"
+2879         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Choluteca"                        ; ITU
+288[02]      ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Choluteca"                        ; ITU
+2881         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "San Lorenzo"                      ; ITU
+2883         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Danli"                            ; ITU
+2885         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Juticalpa"                        ; ITU
+2887         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Proyecto Ala"                     ; ITU
+2888         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "S. Marcos/Proy. Ala"              ; ITU
+2889         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Campamento"                       ; ITU
+2891         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "S. Franc. De La Paz"              ; ITU
+2892         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Yuscarán"                         ; ITU
+2893         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "El Paraíso"                       ; ITU
+2894         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Amatillo/Goascorán"               ; ITU
+2895         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Nacaome/Amapala"                  ; ITU
+2897         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "San Fco. De Becerra"              ; ITU
+2898         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Domsat"                           ; ITU
+2899         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Catacamas"                        ; ITU
+3            ; 8      ; MOBILE     ; STANDARD_RATE ;               ; "claro"    ; "fmt1_4/4"        ; "HN"    ;                                    ; ITU
+7            ; 8      ; MOBILE     ; STANDARD_RATE ;               ; "hondutel" ; "fmt1_4/4"        ; "HN"    ;                                    ; ITU
+8            ; 8      ; MOBILE     ; STANDARD_RATE ;               ; "digicel"  ; "fmt1_4/4"        ; "HN"    ;                                    ; ITU
+8002         ; 11     ; FIXED_LINE ; TOLL_FREE     ; true          ;            ; "toll_free_3/4/4" ; "HN"
+9            ; 8      ; MOBILE     ; STANDARD_RATE ;               ; "tigo"     ; "fmt1_4/4"        ; "HN"    ;                                    ; ITU

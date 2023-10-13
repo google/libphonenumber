@@ -1,0 +1,109 @@
+Prefix    ; Length ; Type       ; Tariff        ; Operator        ; Format       ; Regions ; Geocode:en                   ; Geocode:ro                   ; Provenance
+[23]1     ; 9      ; FIXED_LINE ; STANDARD_RATE ;                 ; "fmt1_2/3/4" ; "RO"    ; "Bucharest and Ilfov County" ; "București și județul Ilfov" ; GOVERNMENT
+219       ; 6      ; FIXED_LINE ; STANDARD_RATE ;                 ; "fmt2_2/4"   ; "RO"    ; "Bucharest and Ilfov County" ; "București și județul Ilfov" ; GOVERNMENT
+[23]30    ; 9      ; FIXED_LINE ; STANDARD_RATE ;                 ; "fmt3_3/3/3" ; "RO"    ; "Suceava"                    ; "Suceava"                    ; GOVERNMENT
+2309      ; 6      ; FIXED_LINE ; STANDARD_RATE ;                 ; "fmt4_3/3"   ; "RO"    ; "Suceava"                    ; "Suceava"                    ; GOVERNMENT
+[23]31    ; 9      ; FIXED_LINE ; STANDARD_RATE ;                 ; "fmt3_3/3/3" ; "RO"    ; "Botoșani"                   ; "Botoșani"                   ; GOVERNMENT
+2319      ; 6      ; FIXED_LINE ; STANDARD_RATE ;                 ; "fmt4_3/3"   ; "RO"    ; "Botoșani"                   ; "Botoșani"                   ; GOVERNMENT
+[23]32    ; 9      ; FIXED_LINE ; STANDARD_RATE ;                 ; "fmt3_3/3/3" ; "RO"    ; "Iași"                       ; "Iași"                       ; GOVERNMENT
+2329      ; 6      ; FIXED_LINE ; STANDARD_RATE ;                 ; "fmt4_3/3"   ; "RO"    ; "Iași"                       ; "Iași"                       ; GOVERNMENT
+[23]33    ; 9      ; FIXED_LINE ; STANDARD_RATE ;                 ; "fmt3_3/3/3" ; "RO"    ; "Neamț"                      ; "Neamț"                      ; GOVERNMENT
+2339      ; 6      ; FIXED_LINE ; STANDARD_RATE ;                 ; "fmt4_3/3"   ; "RO"    ; "Neamț"                      ; "Neamț"                      ; GOVERNMENT
+[23]34    ; 9      ; FIXED_LINE ; STANDARD_RATE ;                 ; "fmt3_3/3/3" ; "RO"    ; "Bacău"                      ; "Bacău"                      ; GOVERNMENT
+2349      ; 6      ; FIXED_LINE ; STANDARD_RATE ;                 ; "fmt4_3/3"   ; "RO"    ; "Bacău"                      ; "Bacău"                      ; GOVERNMENT
+[23]35    ; 9      ; FIXED_LINE ; STANDARD_RATE ;                 ; "fmt3_3/3/3" ; "RO"    ; "Vaslui"                     ; "Vaslui"                     ; GOVERNMENT
+2359      ; 6      ; FIXED_LINE ; STANDARD_RATE ;                 ; "fmt4_3/3"   ; "RO"    ; "Vaslui"                     ; "Vaslui"                     ; GOVERNMENT
+[23]36    ; 9      ; FIXED_LINE ; STANDARD_RATE ;                 ; "fmt3_3/3/3" ; "RO"    ; "Galați"                     ; "Galați"                     ; GOVERNMENT
+2369      ; 6      ; FIXED_LINE ; STANDARD_RATE ;                 ; "fmt4_3/3"   ; "RO"    ; "Galați"                     ; "Galați"                     ; GOVERNMENT
+[23]37    ; 9      ; FIXED_LINE ; STANDARD_RATE ;                 ; "fmt3_3/3/3" ; "RO"    ; "Vrancea"                    ; "Vrancea"                    ; GOVERNMENT
+2379      ; 6      ; FIXED_LINE ; STANDARD_RATE ;                 ; "fmt4_3/3"   ; "RO"    ; "Vrancea"                    ; "Vrancea"                    ; GOVERNMENT
+[23]38    ; 9      ; FIXED_LINE ; STANDARD_RATE ;                 ; "fmt3_3/3/3" ; "RO"    ; "Buzău"                      ; "Buzău"                      ; GOVERNMENT
+2389      ; 6      ; FIXED_LINE ; STANDARD_RATE ;                 ; "fmt4_3/3"   ; "RO"    ; "Buzău"                      ; "Buzău"                      ; GOVERNMENT
+[23]39    ; 9      ; FIXED_LINE ; STANDARD_RATE ;                 ; "fmt3_3/3/3" ; "RO"    ; "Brăila"                     ; "Brăila"                     ; GOVERNMENT
+2399      ; 6      ; FIXED_LINE ; STANDARD_RATE ;                 ; "fmt4_3/3"   ; "RO"    ; "Brăila"                     ; "Brăila"                     ; GOVERNMENT
+[23]40    ; 9      ; FIXED_LINE ; STANDARD_RATE ;                 ; "fmt3_3/3/3" ; "RO"    ; "Tulcea"                     ; "Tulcea"                     ; GOVERNMENT
+2409      ; 6      ; FIXED_LINE ; STANDARD_RATE ;                 ; "fmt4_3/3"   ; "RO"    ; "Tulcea"                     ; "Tulcea"                     ; GOVERNMENT
+[23]41    ; 9      ; FIXED_LINE ; STANDARD_RATE ;                 ; "fmt3_3/3/3" ; "RO"    ; "Constanța"                  ; "Constanța"                  ; GOVERNMENT
+2419      ; 6      ; FIXED_LINE ; STANDARD_RATE ;                 ; "fmt4_3/3"   ; "RO"    ; "Constanța"                  ; "Constanța"                  ; GOVERNMENT
+[23]42    ; 9      ; FIXED_LINE ; STANDARD_RATE ;                 ; "fmt3_3/3/3" ; "RO"    ; "Călărași"                   ; "Călărași"                   ; GOVERNMENT
+2429      ; 6      ; FIXED_LINE ; STANDARD_RATE ;                 ; "fmt4_3/3"   ; "RO"    ; "Călărași"                   ; "Călărași"                   ; GOVERNMENT
+[23]43    ; 9      ; FIXED_LINE ; STANDARD_RATE ;                 ; "fmt3_3/3/3" ; "RO"    ; "Ialomița"                   ; "Ialomița"                   ; GOVERNMENT
+2439      ; 6      ; FIXED_LINE ; STANDARD_RATE ;                 ; "fmt4_3/3"   ; "RO"    ; "Ialomița"                   ; "Ialomița"                   ; GOVERNMENT
+[23]44    ; 9      ; FIXED_LINE ; STANDARD_RATE ;                 ; "fmt3_3/3/3" ; "RO"    ; "Prahova"                    ; "Prahova"                    ; GOVERNMENT
+2449      ; 6      ; FIXED_LINE ; STANDARD_RATE ;                 ; "fmt4_3/3"   ; "RO"    ; "Prahova"                    ; "Prahova"                    ; GOVERNMENT
+[23]45    ; 9      ; FIXED_LINE ; STANDARD_RATE ;                 ; "fmt3_3/3/3" ; "RO"    ; "Dâmbovița"                  ; "Dâmbovița"                  ; GOVERNMENT
+2459      ; 6      ; FIXED_LINE ; STANDARD_RATE ;                 ; "fmt4_3/3"   ; "RO"    ; "Dâmbovița"                  ; "Dâmbovița"                  ; GOVERNMENT
+[23]46    ; 9      ; FIXED_LINE ; STANDARD_RATE ;                 ; "fmt3_3/3/3" ; "RO"    ; "Giurgiu"                    ; "Giurgiu"                    ; GOVERNMENT
+2469      ; 6      ; FIXED_LINE ; STANDARD_RATE ;                 ; "fmt4_3/3"   ; "RO"    ; "Giurgiu"                    ; "Giurgiu"                    ; GOVERNMENT
+[23]47    ; 9      ; FIXED_LINE ; STANDARD_RATE ;                 ; "fmt3_3/3/3" ; "RO"    ; "Teleorman"                  ; "Teleorman"                  ; GOVERNMENT
+2479      ; 6      ; FIXED_LINE ; STANDARD_RATE ;                 ; "fmt4_3/3"   ; "RO"    ; "Teleorman"                  ; "Teleorman"                  ; GOVERNMENT
+[23]48    ; 9      ; FIXED_LINE ; STANDARD_RATE ;                 ; "fmt3_3/3/3" ; "RO"    ; "Argeș"                      ; "Argeș"                      ; GOVERNMENT
+2489      ; 6      ; FIXED_LINE ; STANDARD_RATE ;                 ; "fmt4_3/3"   ; "RO"    ; "Argeș"                      ; "Argeș"                      ; GOVERNMENT
+[23]49    ; 9      ; FIXED_LINE ; STANDARD_RATE ;                 ; "fmt3_3/3/3" ; "RO"    ; "Olt"                        ; "Olt"                        ; GOVERNMENT
+2499      ; 6      ; FIXED_LINE ; STANDARD_RATE ;                 ; "fmt4_3/3"   ; "RO"    ; "Olt"                        ; "Olt"                        ; GOVERNMENT
+[23]50    ; 9      ; FIXED_LINE ; STANDARD_RATE ;                 ; "fmt3_3/3/3" ; "RO"    ; "Vâlcea"                     ; "Vâlcea"                     ; GOVERNMENT
+2509      ; 6      ; FIXED_LINE ; STANDARD_RATE ;                 ; "fmt4_3/3"   ; "RO"    ; "Vâlcea"                     ; "Vâlcea"                     ; GOVERNMENT
+[23]51    ; 9      ; FIXED_LINE ; STANDARD_RATE ;                 ; "fmt3_3/3/3" ; "RO"    ; "Dolj"                       ; "Dolj"                       ; GOVERNMENT
+2519      ; 6      ; FIXED_LINE ; STANDARD_RATE ;                 ; "fmt4_3/3"   ; "RO"    ; "Dolj"                       ; "Dolj"                       ; GOVERNMENT
+[23]52    ; 9      ; FIXED_LINE ; STANDARD_RATE ;                 ; "fmt3_3/3/3" ; "RO"    ; "Mehedinți"                  ; "Mehedinți"                  ; GOVERNMENT
+2529      ; 6      ; FIXED_LINE ; STANDARD_RATE ;                 ; "fmt4_3/3"   ; "RO"    ; "Mehedinți"                  ; "Mehedinți"                  ; GOVERNMENT
+[23]53    ; 9      ; FIXED_LINE ; STANDARD_RATE ;                 ; "fmt3_3/3/3" ; "RO"    ; "Gorj"                       ; "Gorj"                       ; GOVERNMENT
+2539      ; 6      ; FIXED_LINE ; STANDARD_RATE ;                 ; "fmt4_3/3"   ; "RO"    ; "Gorj"                       ; "Gorj"                       ; GOVERNMENT
+[23]54    ; 9      ; FIXED_LINE ; STANDARD_RATE ;                 ; "fmt3_3/3/3" ; "RO"    ; "Hunedoara"                  ; "Hunedoara"                  ; GOVERNMENT
+2549      ; 6      ; FIXED_LINE ; STANDARD_RATE ;                 ; "fmt4_3/3"   ; "RO"    ; "Hunedoara"                  ; "Hunedoara"                  ; GOVERNMENT
+[23]55    ; 9      ; FIXED_LINE ; STANDARD_RATE ;                 ; "fmt3_3/3/3" ; "RO"    ; "Caraș-Severin"              ; "Caraș-Severin"              ; GOVERNMENT
+2559      ; 6      ; FIXED_LINE ; STANDARD_RATE ;                 ; "fmt4_3/3"   ; "RO"    ; "Caraș-Severin"              ; "Caraș-Severin"              ; GOVERNMENT
+[23]56    ; 9      ; FIXED_LINE ; STANDARD_RATE ;                 ; "fmt3_3/3/3" ; "RO"    ; "Timiș"                      ; "Timiș"                      ; GOVERNMENT
+2569      ; 6      ; FIXED_LINE ; STANDARD_RATE ;                 ; "fmt4_3/3"   ; "RO"    ; "Timiș"                      ; "Timiș"                      ; GOVERNMENT
+[23]57    ; 9      ; FIXED_LINE ; STANDARD_RATE ;                 ; "fmt3_3/3/3" ; "RO"    ; "Arad"                       ; "Arad"                       ; GOVERNMENT
+2579      ; 6      ; FIXED_LINE ; STANDARD_RATE ;                 ; "fmt4_3/3"   ; "RO"    ; "Arad"                       ; "Arad"                       ; GOVERNMENT
+[23]58    ; 9      ; FIXED_LINE ; STANDARD_RATE ;                 ; "fmt3_3/3/3" ; "RO"    ; "Alba"                       ; "Alba"                       ; GOVERNMENT
+2589      ; 6      ; FIXED_LINE ; STANDARD_RATE ;                 ; "fmt4_3/3"   ; "RO"    ; "Alba"                       ; "Alba"                       ; GOVERNMENT
+[23]59    ; 9      ; FIXED_LINE ; STANDARD_RATE ;                 ; "fmt3_3/3/3" ; "RO"    ; "Bihor"                      ; "Bihor"                      ; GOVERNMENT
+2599      ; 6      ; FIXED_LINE ; STANDARD_RATE ;                 ; "fmt4_3/3"   ; "RO"    ; "Bihor"                      ; "Bihor"                      ; GOVERNMENT
+[23]60    ; 9      ; FIXED_LINE ; STANDARD_RATE ;                 ; "fmt3_3/3/3" ; "RO"    ; "Sălaj"                      ; "Sălaj"                      ; GOVERNMENT
+2609      ; 6      ; FIXED_LINE ; STANDARD_RATE ;                 ; "fmt4_3/3"   ; "RO"    ; "Sălaj"                      ; "Sălaj"                      ; GOVERNMENT
+[23]61    ; 9      ; FIXED_LINE ; STANDARD_RATE ;                 ; "fmt3_3/3/3" ; "RO"    ; "Satu Mare"                  ; "Satu Mare"                  ; GOVERNMENT
+2619      ; 6      ; FIXED_LINE ; STANDARD_RATE ;                 ; "fmt4_3/3"   ; "RO"    ; "Satu Mare"                  ; "Satu Mare"                  ; GOVERNMENT
+[23]62    ; 9      ; FIXED_LINE ; STANDARD_RATE ;                 ; "fmt3_3/3/3" ; "RO"    ; "Maramureș"                  ; "Maramureș"                  ; GOVERNMENT
+2629      ; 6      ; FIXED_LINE ; STANDARD_RATE ;                 ; "fmt4_3/3"   ; "RO"    ; "Maramureș"                  ; "Maramureș"                  ; GOVERNMENT
+[23]63    ; 9      ; FIXED_LINE ; STANDARD_RATE ;                 ; "fmt3_3/3/3" ; "RO"    ; "Bistrița-Năsăud"            ; "Bistrița-Năsăud"            ; GOVERNMENT
+2639      ; 6      ; FIXED_LINE ; STANDARD_RATE ;                 ; "fmt4_3/3"   ; "RO"    ; "Bistrița-Năsăud"            ; "Bistrița-Năsăud"            ; GOVERNMENT
+[23]64    ; 9      ; FIXED_LINE ; STANDARD_RATE ;                 ; "fmt3_3/3/3" ; "RO"    ; "Cluj"                       ; "Cluj"                       ; GOVERNMENT
+2649      ; 6      ; FIXED_LINE ; STANDARD_RATE ;                 ; "fmt4_3/3"   ; "RO"    ; "Cluj"                       ; "Cluj"                       ; GOVERNMENT
+[23]65    ; 9      ; FIXED_LINE ; STANDARD_RATE ;                 ; "fmt3_3/3/3" ; "RO"    ; "Mureș"                      ; "Mureș"                      ; GOVERNMENT
+2659      ; 6      ; FIXED_LINE ; STANDARD_RATE ;                 ; "fmt4_3/3"   ; "RO"    ; "Mureș"                      ; "Mureș"                      ; GOVERNMENT
+[23]66    ; 9      ; FIXED_LINE ; STANDARD_RATE ;                 ; "fmt3_3/3/3" ; "RO"    ; "Harghita"                   ; "Harghita"                   ; GOVERNMENT
+2669      ; 6      ; FIXED_LINE ; STANDARD_RATE ;                 ; "fmt4_3/3"   ; "RO"    ; "Harghita"                   ; "Harghita"                   ; GOVERNMENT
+[23]67    ; 9      ; FIXED_LINE ; STANDARD_RATE ;                 ; "fmt3_3/3/3" ; "RO"    ; "Covasna"                    ; "Covasna"                    ; GOVERNMENT
+2679      ; 6      ; FIXED_LINE ; STANDARD_RATE ;                 ; "fmt4_3/3"   ; "RO"    ; "Covasna"                    ; "Covasna"                    ; GOVERNMENT
+[23]68    ; 9      ; FIXED_LINE ; STANDARD_RATE ;                 ; "fmt3_3/3/3" ; "RO"    ; "Brașov"                     ; "Brașov"                     ; GOVERNMENT
+2689      ; 6      ; FIXED_LINE ; STANDARD_RATE ;                 ; "fmt4_3/3"   ; "RO"    ; "Brașov"                     ; "Brașov"                     ; GOVERNMENT
+[23]69    ; 9      ; FIXED_LINE ; STANDARD_RATE ;                 ; "fmt3_3/3/3" ; "RO"    ; "Sibiu"                      ; "Sibiu"                      ; GOVERNMENT
+2699      ; 6      ; FIXED_LINE ; STANDARD_RATE ;                 ; "fmt4_3/3"   ; "RO"    ; "Sibiu"                      ; "Sibiu"                      ; GOVERNMENT
+31        ; 6      ; FIXED_LINE ; STANDARD_RATE ;                 ; "fmt2_2/4"   ; "RO"    ; "Bucharest and Ilfov County" ; "București și județul Ilfov" ; GOVERNMENT
+37        ; 9      ; UAN        ; STANDARD_RATE ;                 ; "fmt3_3/3/3" ; "RO"    ;                              ;                              ; GOVERNMENT
+7000      ; 9      ; MOBILE     ; STANDARD_RATE ; "enigma_system" ; "fmt3_3/3/3" ; "RO"    ;                              ;                              ; GOVERNMENT
+700[1-9]  ; 9      ; MOBILE     ; STANDARD_RATE ;                 ; "fmt3_3/3/3" ; "RO"    ;                              ;                              ; GOVERNMENT
+701[0-2]  ; 9      ; MOBILE     ; STANDARD_RATE ;                 ; "fmt3_3/3/3" ; "RO"    ;                              ;                              ; GOVERNMENT
+701[3-9]  ; 9      ; MOBILE     ; STANDARD_RATE ; "lycamobile"    ; "fmt3_3/3/3" ; "RO"    ;                              ;                              ; GOVERNMENT
+7020      ; 9      ; MOBILE     ; STANDARD_RATE ; "lycamobile"    ; "fmt3_3/3/3" ; "RO"    ;                              ;                              ; GOVERNMENT
+70[346-9] ; 9      ; MOBILE     ; STANDARD_RATE ;                 ; "fmt3_3/3/3" ; "RO"    ;                              ;                              ; GOVERNMENT
+705       ; 9      ; MOBILE     ; STANDARD_RATE ; "iristel"       ; "fmt3_3/3/3" ; "RO"    ;                              ;                              ; GOVERNMENT
+710       ; 9      ; MOBILE     ; STANDARD_RATE ;                 ; "fmt3_3/3/3" ; "RO"    ;                              ;                              ; GOVERNMENT
+711       ; 9      ; MOBILE     ; STANDARD_RATE ; "telekom"       ; "fmt3_3/3/3" ; "RO"    ;                              ;                              ; GOVERNMENT
+712       ; 9      ; MOBILE     ; STANDARD_RATE ; "orange"        ; "fmt3_3/3/3" ; "RO"    ;                              ;                              ; IR21
+713       ; 9      ; MOBILE     ; STANDARD_RATE ; "orange"        ; "fmt3_3/3/3" ; "RO"
+7[23]     ; 9      ; MOBILE     ; STANDARD_RATE ; "vodafone"      ; "fmt3_3/3/3" ; "RO"    ;                              ;                              ; GOVERNMENT
+7[45]     ; 9      ; MOBILE     ; STANDARD_RATE ; "orange"        ; "fmt3_3/3/3" ; "RO"    ;                              ;                              ; GOVERNMENT
+76        ; 9      ; MOBILE     ; STANDARD_RATE ; "telekom"       ; "fmt3_3/3/3" ; "RO"    ;                              ;                              ; GOVERNMENT
+77[0-7]   ; 9      ; MOBILE     ; STANDARD_RATE ; "digi_mobil"    ; "fmt3_3/3/3" ; "RO"    ;                              ;                              ; IR21
+77[89]    ; 9      ; MOBILE     ; STANDARD_RATE ;                 ; "fmt3_3/3/3" ; "RO"    ;                              ;                              ; GOVERNMENT
+78[03-8]  ; 9      ; MOBILE     ; STANDARD_RATE ; "telekom"       ; "fmt3_3/3/3" ; "RO"    ;                              ;                              ; IR21
+79[0-29]  ; 9      ; MOBILE     ; STANDARD_RATE ; "vodafone"      ; "fmt3_3/3/3" ; "RO"    ;                              ;                              ; IR21
+800       ; 9      ; FIXED_LINE ; TOLL_FREE     ;                 ; "fmt3_3/3/3" ; "RO"    ;                              ;                              ; GOVERNMENT
+801       ; 9      ; FIXED_LINE ; SHARED_COST   ;                 ; "fmt3_3/3/3" ; "RO"    ;                              ;                              ; GOVERNMENT
+80[578]   ; 9      ; UAN        ; STANDARD_RATE ;                 ; "fmt3_3/3/3" ; "RO"    ;                              ;                              ; GOVERNMENT
+870       ; 9      ; ISP        ; STANDARD_RATE ;                 ; "fmt3_3/3/3" ; "RO"    ;                              ;                              ; GOVERNMENT
+8989      ; 9      ; ISP        ; STANDARD_RATE ;                 ; "fmt3_3/3/3" ; "RO"    ;                              ;                              ; GOVERNMENT
+90[0136]  ; 9      ; FIXED_LINE ; PREMIUM_RATE  ;                 ; "fmt3_3/3/3" ; "RO"    ;                              ;                              ; GOVERNMENT

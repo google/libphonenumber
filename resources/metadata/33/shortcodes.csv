@@ -1,0 +1,47 @@
+Region ; Prefix         ; Length ; Type               ; Tariff        ; Sms  ; Carrier Specific ; Format          ; Comment
+FR     ; 100[0-689]     ; 4      ; COMMERCIAL         ;               ;      ;                  ; "shortcode_4"
+FR     ; 1007           ; 4      ; COMMERCIAL         ; TOLL_FREE     ;      ;                  ; "shortcode_4"
+FR     ; 10[13][0-25-9] ; 4      ; COMMERCIAL         ;               ;      ;                  ; "shortcode_4"
+FR     ; 10[13]3        ; 4      ; COMMERCIAL         ; TOLL_FREE     ;      ;                  ; "shortcode_4"
+FR     ; 10[134]4       ; 4      ; COMMERCIAL         ; STANDARD_RATE ;      ;                  ; "shortcode_4"
+FR     ; 102[014-9]     ; 4      ; COMMERCIAL         ;               ;      ;                  ; "shortcode_4"
+FR     ; 102[23]        ; 4      ; COMMERCIAL         ; STANDARD_RATE ;      ;                  ; "shortcode_4"
+FR     ; 104[0-35-9]    ; 4      ; COMMERCIAL         ;               ;      ;                  ; "shortcode_4"
+FR     ; 105            ; 4      ; COMMERCIAL         ; STANDARD_RATE ;      ;                  ; "shortcode_4"
+FR     ; 106[0235-9]    ; 4      ; COMMERCIAL         ;               ;      ;                  ; "shortcode_4"
+FR     ; 106[14]        ; 4      ; COMMERCIAL         ; STANDARD_RATE ;      ;                  ; "shortcode_4"
+FR     ; 10[78]         ; 4      ; COMMERCIAL         ;               ;      ;                  ; "shortcode_4"
+FR     ; 109[0-8]       ; 4      ; COMMERCIAL         ;               ;      ;                  ; "shortcode_4"
+FR     ; 1099           ; 4      ; COMMERCIAL         ; STANDARD_RATE ;      ;                  ; "shortcode_4"
+FR     ; 110            ; 3      ; COMMERCIAL         ; TOLL_FREE
+FR     ; 112            ; 3      ; EMERGENCY          ; TOLL_FREE
+FR     ; 114            ; 3      ; EXPANDED_EMERGENCY ; TOLL_FREE     ; true
+FR     ; 11[59]         ; 3      ; EXPANDED_EMERGENCY ; TOLL_FREE
+FR     ; 116000         ; 6      ; EXPANDED_EMERGENCY ; TOLL_FREE     ;      ;                  ; "shortcode_3/3"
+FR     ; 116111         ; 6      ; EXPANDED_EMERGENCY ; TOLL_FREE     ;      ;                  ; "shortcode_3/3"
+FR     ; 118[0-689]     ; 6      ; COMMERCIAL         ; PREMIUM_RATE  ;      ;                  ; "shortcode_3/3"
+FR     ; 1187[0-689]    ; 6      ; COMMERCIAL         ; PREMIUM_RATE  ;      ;                  ; "shortcode_3/3"
+FR     ; 11877[0-689]   ; 6      ; COMMERCIAL         ; PREMIUM_RATE  ;      ;                  ; "shortcode_3/3"
+FR     ; 118777         ; 6      ; COMMERCIAL         ; PREMIUM_RATE  ;      ; true             ; "shortcode_3/3" ; "http://www.appel118.fr/detail.php\nhttp://www.comparer118.com/renseignements-telephoniques/annuaire-118777/"
+FR     ; 1[578]         ; 2      ; EMERGENCY          ; TOLL_FREE
+FR     ; 19[167]        ; 3      ; EXPANDED_EMERGENCY ; TOLL_FREE
+FR     ; 20000          ; 5      ; COMMERCIAL         ;               ;      ; true
+FR     ; 2020           ; 4      ; COMMERCIAL         ; STANDARD_RATE ;      ; true
+FR     ; 224            ; 3      ; COMMERCIAL         ; TOLL_FREE     ;      ; true
+FR     ; 3[01]          ; 4      ; COMMERCIAL         ; TOLL_FREE
+FR     ; 3[0-2457-9]    ; 5      ; COMMERCIAL         ;               ; true
+FR     ; 3[2-9]         ; 4      ; COMMERCIAL         ; PREMIUM_RATE
+FR     ; 33[0-689]      ; 5      ; COMMERCIAL         ;               ; true
+FR     ; 33700          ; 5      ; COMMERCIAL         ; TOLL_FREE     ; true
+FR     ; 3370[1-9]      ; 5      ; COMMERCIAL         ;               ; true
+FR     ; 337[1-9]       ; 5      ; COMMERCIAL         ;               ; true
+FR     ; 36[0-57-9]     ; 5      ; COMMERCIAL         ;               ; true
+FR     ; 366[0-57-9]    ; 5      ; COMMERCIAL         ;               ; true
+FR     ; 3666[0-46-9]   ; 5      ; COMMERCIAL         ;               ; true
+FR     ; 36665          ; 5      ; COMMERCIAL         ; PREMIUM_RATE  ; true
+FR     ; [4-8]          ; 5      ; COMMERCIAL         ; PREMIUM_RATE  ; true
+FR     ; 61[14]         ; 3      ; COMMERCIAL         ; STANDARD_RATE ;      ; true
+FR     ; 634            ; 3      ; COMMERCIAL         ; STANDARD_RATE ;      ; true
+FR     ; 70[06]         ; 3      ; COMMERCIAL         ; STANDARD_RATE ;      ; true
+FR     ; 722            ; 3      ; COMMERCIAL         ;               ;      ; true
+FR     ; 740            ; 3      ; COMMERCIAL         ; TOLL_FREE     ;      ; true

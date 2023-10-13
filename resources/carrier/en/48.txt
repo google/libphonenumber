@@ -12,17 +12,27 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-4821|Polska Spoka Gazownictwa Sp
+482111|Polska Spoka Gazownictwa Sp
+482113|Polska Spoka Gazownictwa Sp
+482114|Plus
+482115|Plus
+48212|Orange
 48450|Play
+48454|Orange
 484590|Play
 4845910|Play
 4845911|Play
 4845912|Play
 4845913|Play
 4845914|Play
+4845915|Plus
 4845920|SIA Ntel Solutions
 484593|Play
+4845941|Plus
 4845945|Plus
+4845946|Plus
+4845947|Plus
+4845948|Plus
 484595|Plus
 4845950|SIA Ntel Solutions
 4845957|BSG ESTONIA OU
@@ -50,7 +60,10 @@
 4857353|UPC Polska
 4857354|UPC Polska
 4857355|UPC Polska
+4857356|Plus
 4857357|Orange
+4857358|Plus
+4857359|Plus
 485739|Orange
 48574|Play
 48575|Play
@@ -169,13 +182,9 @@
 4872977|Plus
 4872978|Play
 4872979|Play
-4872980|Plus
+487298|Plus
 4872981|Play
 4872982|Play
-4872986|Plus
-4872987|Plus
-4872988|Plus
-4872989|Plus
 487299|Plus
 4872990|TELCO LEADERS LTD
 48730|Play
@@ -234,6 +243,10 @@
 487864|Orange
 487865|Orange
 487866|Orange
+4878670|Lancelot Telecom
+4878671|Plus
+4878672|Plus
+4878673|Plus
 4878678|Play
 487868|Orange
 487869|Orange

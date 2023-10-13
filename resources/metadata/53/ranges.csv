@@ -1,0 +1,23 @@
+Prefix ; Length ; Type       ; Tariff        ; Area Code Length ; Operator ; Format        ; Regions ; Geocode:en                  ; Provenance
+21     ; 7,8    ; FIXED_LINE ; STANDARD_RATE ; 2                ;          ; "fixed_2/4-6" ; "CU"    ; "Guantánamo Province"       ; GOVERNMENT
+22     ; 7,8    ; FIXED_LINE ; STANDARD_RATE ; 2                ;          ; "fixed_2/4-6" ; "CU"    ; "Santiago de Cuba Province" ; GOVERNMENT
+23     ; 7,8    ; FIXED_LINE ; STANDARD_RATE ; 2                ;          ; "fixed_2/4-6" ; "CU"    ; "Granma Province"           ; GOVERNMENT
+24     ; 7,8    ; FIXED_LINE ; STANDARD_RATE ; 2                ;          ; "fixed_2/4-6" ; "CU"    ; "Holguín Province"          ; GOVERNMENT
+31     ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;          ; "fixed_2/4-6" ; "CU"    ; "Las Tunas Province"        ; GOVERNMENT
+32     ; 6-8    ; FIXED_LINE ; STANDARD_RATE ; 2                ;          ; "fixed_2/4-6" ; "CU"    ; "Camagüey Province"         ; GOVERNMENT
+33     ; 6-8    ; FIXED_LINE ; STANDARD_RATE ; 2                ;          ; "fixed_2/4-6" ; "CU"    ; "Ciego de Ávila Province"   ; GOVERNMENT
+41     ; 7,8    ; FIXED_LINE ; STANDARD_RATE ; 2                ;          ; "fixed_2/4-6" ; "CU"    ; "Sancti Spíritus Province"  ; GOVERNMENT
+42     ; 7,8    ; FIXED_LINE ; STANDARD_RATE ; 2                ;          ; "fixed_2/4-6" ; "CU"    ; "Villa Clara Province"      ; GOVERNMENT
+43     ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;          ; "fixed_2/4-6" ; "CU"    ; "Cienfuegos Province"       ; GOVERNMENT
+45     ; 7,8    ; FIXED_LINE ; STANDARD_RATE ; 2                ;          ; "fixed_2/4-6" ; "CU"    ; "Matanzas Province"         ; GOVERNMENT
+46     ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;          ; "fixed_2/4-6" ; "CU"    ; "Isle of Youth"             ; GOVERNMENT
+47     ; 7,8    ; FIXED_LINE ; STANDARD_RATE ; 2                ;          ; "fixed_2/4-6" ; "CU"    ; "Mayabeque and Artemisa"    ; GOVERNMENT
+48     ; 6-8    ; FIXED_LINE ; STANDARD_RATE ; 2                ;          ; "fixed_2/4-6" ; "CU"    ; "Pinar del Río Province"    ; GOVERNMENT
+49     ; 6-8    ; FIXED_LINE ; STANDARD_RATE ; 2                ;          ; "fixed_2/4-6" ; "CU"    ; "Artemisa Province"
+5      ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "etecsa" ; "mobile_1/7"  ; "CU"    ;                             ; GOVERNMENT
+63     ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "etecsa" ; "mobile_1/7"  ; "CU"    ;                             ; GOVERNMENT
+7      ; 7,8    ; FIXED_LINE ; STANDARD_RATE ; 1                ;          ; "fixed_1/6-7" ; "CU"    ; "Havana City"               ; GOVERNMENT
+800    ; 10     ; FIXED_LINE ; TOLL_FREE     ;                  ;          ; "fixed_3/7"   ; "CU"    ;                             ; GOVERNMENT
+80[25] ; 10     ; FIXED_LINE ; STANDARD_RATE ;                  ;          ; "fixed_3/7"   ; "CU"    ;                             ; GOVERNMENT
+807    ; 10     ; FIXED_LINE ; SHARED_COST   ;                  ;          ; "fixed_3/7"   ; "CU"    ;                             ; GOVERNMENT
+878    ; 10     ; FIXED_LINE ; STANDARD_RATE ;                  ;          ; "fixed_3/7"   ; "CU"    ;                             ; GOVERNMENT

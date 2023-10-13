@@ -1,0 +1,7 @@
+Prefix ; Length ; Type       ; Tariff        ; National Only ; Operator   ; Format       ; Regions ; Provenance
+[19]   ; 6      ; FIXED_LINE ; PREMIUM_RATE  ; false         ;            ; "fmt1_3/3"   ; "AD"    ; ITU
+1800   ; 8      ; FIXED_LINE ; TOLL_FREE     ; true          ;            ; "fmt2_4/4"   ; "AD"    ; ITU
+1802   ; 8      ; FIXED_LINE ; TOLL_FREE     ; false         ;            ; "fmt2_4/4"   ; "AD"    ; ITU
+[356]  ; 6      ; MOBILE     ; STANDARD_RATE ; false         ; "mobiland" ; "fmt1_3/3"   ; "AD"    ; IR21
+690    ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "mobiland" ; "fmt3_3/3/3" ; "AD"    ; IR21
+[78]   ; 6      ; FIXED_LINE ; STANDARD_RATE ; false         ;            ; "fmt1_3/3"   ; "AD"    ; ITU

@@ -1,0 +1,5 @@
+Region ; Label               ; Comment
+SL     ; SC                  ; "http://www.itu.int/oth/T02020000BB/en"
+SL     ; SC_CARRIER_SPECIFIC ; "https://support.google.com/plus/answer/1304917"
+SL     ; SC_SMS_SERVICES     ; "https://support.google.com/plus/answer/1304917"
+SL     ; XML                 ; "http://www.itu.int/oth/T02020000BB/en"

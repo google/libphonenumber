@@ -1,0 +1,5 @@
+Region ; Type       ; Number
+SC     ; FIXED_LINE ; "4217123"
+SC     ; MOBILE     ; "2510123"
+SC     ; TOLL_FREE  ; "8000000"
+SC     ; VOIP       ; "6412345"

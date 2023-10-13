@@ -1,0 +1,363 @@
+Prefix          ; Length ; Type            ; Tariff        ; Operator                    ; Format                      ; Regions ; Geocode:el                        ; Geocode:en                    ; Provenance ; Comment
+21              ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "athens_and_personal_2/4/4" ; "GR"    ; "Αθήνα/Πειραιάς/Σαλαμίνα"         ; "Athens/Piraeus/Salamina"     ; GOVERNMENT
+2221            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Χαλκίδα"                         ; "Chalcis"                     ; GOVERNMENT
+2222            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Κύμη"                            ; "Kymi"                        ; GOVERNMENT
+2223            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Αλιβέρι"                         ; "Aliveri"                     ; GOVERNMENT
+2224            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Κάρυστος"                        ; "Karystos"                    ; GOVERNMENT
+2226            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Αιδηψός"                         ; "Aidipsos"                    ; GOVERNMENT
+2227            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Μαντούδι"                        ; "Kireas"                      ; GOVERNMENT
+2228            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Ψαχνά"                           ; "Messapia"                    ; GOVERNMENT
+2229            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Ερέτρια"                         ; "Eretria"                     ; GOVERNMENT
+2231            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Λαμία"                           ; "Lamia"                       ; GOVERNMENT
+2232            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Δομοκός"                         ; "Domokos"                     ; GOVERNMENT
+2233            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Αταλάντη"                        ; "Atalanta"                    ; GOVERNMENT
+2234            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Αμφίκλεια"                       ; "Amfikleia"                   ; GOVERNMENT
+2235            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Καμμένα Βούρλα"                  ; "Kamena Vourla"               ; GOVERNMENT
+2236            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Μακρακώμη"                       ; "Makrakomi"                   ; GOVERNMENT
+2237            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Καρπενήσι"                       ; "Karpenisi"                   ; GOVERNMENT
+2238            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Στυλίδα"                         ; "Stylida"                     ; GOVERNMENT
+2241            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Ρόδος"                           ; "Rhodes"                      ; GOVERNMENT
+2242            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Κως"                             ; "Kos"                         ; GOVERNMENT
+2243            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Κάλυμνος"                        ; "Kalymnos"                    ; GOVERNMENT
+2244            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Αρχάγγελος"                      ; "Archangelos, Rhodes"         ; GOVERNMENT
+2245            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Κάρπαθος"                        ; "Karpathos"                   ; GOVERNMENT
+2246            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Τήλος/Σύμη/Χάλκη/Μεγίστη"        ; "Salakos, Rhodes"             ; GOVERNMENT
+2247            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Λέρος"                           ; "Leros"                       ; GOVERNMENT
+2251            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Μυτιλήνη"                        ; "Mytilene"                    ; GOVERNMENT
+2252            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Αγιάσος/Πλωμάρι"                 ; "Agiasos/Plomari"             ; GOVERNMENT
+2253            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Καλλονή/Μήθυμνα"                 ; "Kalloni, Lesbos"             ; GOVERNMENT
+2254            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Άγιος Ευστράτιος/Μούδρος/Μύρινα" ; "Agios Efstratios"            ; GOVERNMENT
+2261            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Λειβαδιά"                        ; "Livadeia"                    ; GOVERNMENT
+2262            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Θήβα"                            ; "Thebes"                      ; GOVERNMENT
+2263            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Βίλια"                           ; "Vilia"                       ; GOVERNMENT
+2264            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Δόμβραινα"                       ; "Thisvi"                      ; GOVERNMENT
+2265            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Άμφισσα"                         ; "Amfissa"                     ; GOVERNMENT
+2266            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Λιδορίκι"                        ; "Lidoriki"                    ; GOVERNMENT
+2267            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Δίστομο"                         ; "Distomo"                     ; GOVERNMENT
+2268            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Αλίαρτος"                        ; "Aliartos"                    ; GOVERNMENT
+2271            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Χίος"                            ; "Chios"                       ; GOVERNMENT
+2272            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Καρδάμυλα"                       ; "Kardamyla"                   ; GOVERNMENT
+2273            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Σάμος"                           ; "Samos"                       ; GOVERNMENT
+2274            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Βολισσός"                        ; "Psara, Chios"                ; GOVERNMENT
+2275            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Άγιος Κήρυκος"                   ; "Agios Kirykos"               ; GOVERNMENT
+2281            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Σύρος"                           ; "Ano Syros"                   ; GOVERNMENT
+2282            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Άνδρος"                          ; "Andros"                      ; GOVERNMENT
+2283            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Τήνος"                           ; "Tinos"                       ; GOVERNMENT
+2284            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Πάρος"                           ; "Paros"                       ; GOVERNMENT
+2285            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Νάξος"                           ; "Naxos"                       ; GOVERNMENT
+2286            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Θήρα"                            ; "Santorini"                   ; GOVERNMENT
+2287            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Μήλος"                           ; "Milos"                       ; GOVERNMENT
+2288            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Κέα"                             ; "Kea"                         ; GOVERNMENT
+2289            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Μύκονος"                         ; "Mykonos"                     ; GOVERNMENT
+2291            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Λαγονήσι"                        ; "Lagonisi"                    ; GOVERNMENT
+2292            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Λαύριο"                          ; "Lavrio"                      ; GOVERNMENT
+2293            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Άγιος Σωτήρας"                   ; "Agia Sotira"                 ; GOVERNMENT
+2294            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Ραφήνα"                          ; "Rafina"                      ; GOVERNMENT
+2295            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Αφίδναι"                         ; "Afidnes"                     ; GOVERNMENT
+2296            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Μέγαρα/Νέα Πέραμος"              ; "Megara"                      ; GOVERNMENT
+2297            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Αίγινα"                          ; "Aegina"                      ; GOVERNMENT
+2298            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Μέθανα/Πόρος/Σπέτσες"            ; "Troezen/Poros/Hydra/Spetses" ; GOVERNMENT
+2299            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Μαρκόπουλο"                      ; "Markopoulo Mesogaias"        ; GOVERNMENT
+231             ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "all_3/3/4"                 ; "GR"    ; "Θεσσαλονίκη"                     ; "Thessaloniki"                ; GOVERNMENT
+2321            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Σέρρες"                          ; "Serres"                      ; GOVERNMENT
+2322            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Νιγρίτα"                         ; "Nigrita"                     ; GOVERNMENT
+2323            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Σιδηρόκαστρο"                    ; "Sidirokastro"                ; GOVERNMENT
+2324            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Νέα Ζίχνη"                       ; "Nea Zichni"                  ; GOVERNMENT
+2325            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Ηράκλεια, Σερρών"                ; "Irakleia, Serres"            ; GOVERNMENT
+2327            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Ροδόπολη, Σερρών"                ; "Rodopoli"                    ; GOVERNMENT
+2331            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Βέροια"                          ; "Veria"                       ; GOVERNMENT
+2332            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Νάουσα"                          ; "Naousa, Imathia"             ; GOVERNMENT
+2333            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Αλεξάνδρεια"                     ; "Alexandria"                  ; GOVERNMENT
+2341            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Κιλκίς"                          ; "Kilkis"                      ; GOVERNMENT
+2343            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Πολύκαστρο"                      ; "Polykastro"                  ; GOVERNMENT
+2351            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Κατερίνη"                        ; "Korinos"                     ; GOVERNMENT
+2352            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Λιτόχωρο"                        ; "Litochoro"                   ; GOVERNMENT
+2353            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Αιγίνιο"                         ; "Aiginio"                     ; GOVERNMENT
+2371            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Πολύγυρος"                       ; "Polygyros"                   ; GOVERNMENT
+2372            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Αρναία"                          ; "Arnaia"                      ; GOVERNMENT
+2373            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Νέα Μουδανιά"                    ; "Nea Moudania"                ; GOVERNMENT
+2374            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Κασσάνδρεια"                     ; "Kassandreia"                 ; GOVERNMENT
+2375            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Νικήτη"                          ; "Nikiti"                      ; GOVERNMENT
+2376            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Στρατώνι"                        ; "Stratoni"                    ; GOVERNMENT
+2377            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Άγιον Όρος/Ιερισσός"             ; "Ierissos/Mount Athos"        ; GOVERNMENT
+2381            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Έδεσσα"                          ; "Edessa"                      ; GOVERNMENT
+2382            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Γιαννιτσά"                       ; "Giannitsa"                   ; GOVERNMENT
+2384            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Αριδαία"                         ; "Aridaia"                     ; GOVERNMENT
+2385            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Φλώρινα"                         ; "Florina"                     ; GOVERNMENT
+2386            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Αμύνταιο"                        ; "Amyntaio"                    ; GOVERNMENT
+2391            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Χαλκηδόνα"                       ; "Chalkidona"                  ; GOVERNMENT
+2392            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Περαία"                          ; "Peraia, Thessaloniki"        ; GOVERNMENT
+2393            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Λαγκαδίκια"                      ; "Lagkadikia"                  ; GOVERNMENT
+2394            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Λαγκαδάς"                        ; "Lagkadas"                    ; GOVERNMENT
+2395            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Σοχός"                           ; "Sochos"                      ; GOVERNMENT
+2396            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Βασιλικά"                        ; "Vasilika"                    ; GOVERNMENT
+2397            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Ασπροβάλτα"                      ; "Asprovalta"                  ; GOVERNMENT
+2399            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Καλλικράτεια"                    ; "Kallikrateia"                ; GOVERNMENT
+241             ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "all_3/3/4"                 ; "GR"    ; "Λάρισα"                          ; "Larissa"                     ; GOVERNMENT
+2421            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Βόλος"                           ; "Volos"                       ; GOVERNMENT
+2422            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Αλμυρός"                         ; "Almyros"                     ; GOVERNMENT
+2423            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Καλά Νερά"                       ; "Kala Nera"                   ; GOVERNMENT
+2424            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Σκόπελος"                        ; "Skopelos"                    ; GOVERNMENT
+2425            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Βελεστίνο"                       ; "Feres, Magnesia"             ; GOVERNMENT
+2426            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Ζαγορά"                          ; "Zagora"                      ; GOVERNMENT
+2427            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Σκιάθος"                         ; "Skiathos"                    ; GOVERNMENT
+2428            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ;                                   ;                               ; GOVERNMENT
+2431            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Τρίκαλα"                         ; "Trikala"                     ; GOVERNMENT
+2432            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Καλαμπάκα"                       ; "Kalabaka"                    ; GOVERNMENT
+2433            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Φαρκαδόνα"                       ; "Farkadona"                   ; GOVERNMENT
+2434            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Πύλη"                            ; "Pyli"                        ; GOVERNMENT
+2441            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Καρδίτσα"                        ; "Karditsa"                    ; GOVERNMENT
+2443            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Σοφάδες"                         ; "Sofades"                     ; GOVERNMENT
+2444            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Παλαμάς"                         ; "Palamas"                     ; GOVERNMENT
+2445            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Μουζάκι"                         ; "Mouzaki"                     ; GOVERNMENT
+2461            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Κοζάνη"                          ; "Kozani"                      ; GOVERNMENT
+2462            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Γρεβενά"                         ; "Grevena"                     ; GOVERNMENT
+2463            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Πτολεμαΐδα"                      ; "Ptolemaida"                  ; GOVERNMENT
+2464            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Σέρβια"                          ; "Servia"                      ; GOVERNMENT
+2465            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Σιάτιστα"                        ; "Siatista"                    ; GOVERNMENT
+2467            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Καστοριά"                        ; "Kastoria"                    ; GOVERNMENT
+2468            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Νεάπολη"                         ; "Neapoli"                     ; GOVERNMENT
+2491            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Φάρσαλα"                         ; "Farsala"                     ; GOVERNMENT
+2492            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Τύρναβος"                        ; "Tyrnavos"                    ; GOVERNMENT
+2493            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Ελασσόνα"                        ; "Elassona"                    ; GOVERNMENT
+2494            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Αγιά"                            ; "Agia"                        ; GOVERNMENT
+2495            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Γόννοι/Μακρυχώρι"                ; "Gonnoi/Makrychori"           ; GOVERNMENT
+251             ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "all_3/3/4"                 ; "GR"    ; "Καβάλα"                          ; "Kavala"                      ; GOVERNMENT
+2521            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Δράμα"                           ; "Drama"                       ; GOVERNMENT
+2522            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Προσοτσάνη"                      ; "Prosotsani"                  ; GOVERNMENT
+2523            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Κάτω Νευροκόπι"                  ; "Kato Nevrokopi"              ; GOVERNMENT
+2524            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Παρανέστι"                       ; "Paranesti"                   ; GOVERNMENT
+2531            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Κομοτηνή"                        ; "Komotini"                    ; GOVERNMENT
+2532            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Σάπες"                           ; "Sapes"                       ; GOVERNMENT
+2533            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Ξυλαγανή"                        ; "Xylagani"                    ; GOVERNMENT
+2534            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Ίασμος"                          ; "Iasmos"                      ; GOVERNMENT
+2535            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Νέα Καλλίστη"                    ; "Nea Kallisti"                ; GOVERNMENT
+2541            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Ξάνθη"                           ; "Xanthi"                      ; GOVERNMENT
+2542            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Σταυρούπολη"                     ; "Stavroupoli"                 ; GOVERNMENT
+2544            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Εχίνος"                          ; "Echinos"                     ; GOVERNMENT
+2551            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Αλεξανδρούπολη"                  ; "Alexandroupoli"              ; GOVERNMENT
+2552            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Ορεστιάδα"                       ; "Orestiada"                   ; GOVERNMENT
+2553            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Διδυμότειχο"                     ; "Didymoteicho"                ; GOVERNMENT
+2554            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Σουφλί"                          ; "Soufli"                      ; GOVERNMENT
+2555            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Φέρες"                           ; "Feres, Evros"                ; GOVERNMENT
+2556            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Κυπρίνος"                        ; "Kyprinos"                    ; GOVERNMENT
+2591            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Χρυσούπολη"                      ; "Chrysoupoli"                 ; GOVERNMENT
+2592            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Ελευθερούπολη"                   ; "Eleftheroupoli"              ; GOVERNMENT
+2593            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Θάσος"                           ; "Thasos"                      ; GOVERNMENT
+2594            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Νέα Πέραμος Καβάλας"             ; "Nea Peramos, Kavala"         ; GOVERNMENT
+261             ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "all_3/3/4"                 ; "GR"    ; "Πάτρα"                           ; "Patras"                      ; GOVERNMENT
+2621            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Πύργος"                          ; "Burgas"                      ; GOVERNMENT
+2622            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Αμαλιάδα"                        ; "Amaliada"                    ; GOVERNMENT
+2623            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Λεχαινά"                         ; "Lechaina"                    ; GOVERNMENT
+2624            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Αρχαία Ολυμπία"                  ; "Olympia"                     ; GOVERNMENT
+2625            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Κρέστενα"                        ; "Krestena"                    ; GOVERNMENT
+2626            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Ανδρίτσαινα"                     ; "Andritsaina"                 ; GOVERNMENT
+2631            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Μεσολόγγι"                       ; "Messolonghi"                 ; GOVERNMENT
+2632            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Αιτωλικό"                        ; "Aitoliko"                    ; GOVERNMENT
+2634            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Ναύπακτος"                       ; "Nafpaktos"                   ; GOVERNMENT
+2635            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Ματαράγκα"                       ; "Mataranga"                   ; GOVERNMENT
+2641            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Αγρίνιο"                         ; "Agrinio"                     ; GOVERNMENT
+2642            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Αμφιλοχία"                       ; "Amfilochia"                  ; GOVERNMENT
+2643            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Βόνιτσα"                         ; "Vonitsa"                     ; GOVERNMENT
+2644            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Θερμό"                           ; "Thermo"                      ; GOVERNMENT
+2645            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Λευκάδα"                         ; "Lefkada"                     ; GOVERNMENT
+2646            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ;                                   ;                               ; GOVERNMENT
+2647            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Νέο Χαλκιόπουλο/Φυτείες"         ; "Fyteies"                     ; GOVERNMENT
+2651            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Ιωάννινα"                        ; "Ioannina"                    ; GOVERNMENT
+2653            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Καρυές Ασπραγγέλων"              ; "Asprangeli"                  ; GOVERNMENT
+2654            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ;                                   ;                               ; GOVERNMENT
+2655            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Κόνιτσα/Πέρδικα Δωδώνης"         ; "Konitsa"                     ; GOVERNMENT
+2656            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Μέτσοβο"                         ; "Metsovo"                     ; GOVERNMENT
+2657            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Δελβινάκι"                       ; "Delvinaki"                   ; GOVERNMENT
+2658            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Ζίτσα"                           ; "Zitsa"                       ; GOVERNMENT
+2659            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Καλέντζι Δωδώνης"                ; "Kalentzi"                    ; GOVERNMENT
+2661            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Κέρκυρα"                         ; "Corfu"                       ; GOVERNMENT
+2662            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Λευκίμμη"                        ; "Lefkimmi"                    ; GOVERNMENT
+2663            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Σκριπερό"                        ; "Corfu Island"                ; GOVERNMENT
+2664            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Φιλιάτες"                        ; "Filiates"                    ; GOVERNMENT
+2665            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Ηγουμενίτσα"                     ; "Igoumenitsa"                 ; GOVERNMENT
+2666            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Παραμυθιά"                       ; "Paramythia"                  ; GOVERNMENT
+2671            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Αργοστόλι"                       ; "Argostoli"                   ; GOVERNMENT
+2674            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Σάμη"                            ; "Sami, Cephalonia"            ; GOVERNMENT
+2681            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Άρτα"                            ; "Arta"                        ; GOVERNMENT
+2682            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Πρέβεζα"                         ; "Preveza"                     ; GOVERNMENT
+2683            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Φιλιππιάδα"                      ; "Filippiada"                  ; GOVERNMENT
+2684            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Καναλλάκι"                       ; "Kanalaki"                    ; GOVERNMENT
+2685            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Βουργαρέλι"                      ; "Athamania"                   ; GOVERNMENT
+2691            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Αίγιο"                           ; "Aigio"                       ; GOVERNMENT
+2692            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Καλάβρυτα"                       ; "Kalavryta"                   ; GOVERNMENT
+2693            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Κάτω Αχαΐα"                      ; "Kato Achaia"                 ; GOVERNMENT
+2694            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Χαλανδρίτσα"                     ; "Chalandritsa"                ; GOVERNMENT
+2695            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Ζάκυνθος"                        ; "Zakynthos"                   ; GOVERNMENT
+2696            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Ακράτα"                          ; "Akrata"                      ; GOVERNMENT
+271             ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "all_3/3/4"                 ; "GR"    ; "Τρίπολη"                         ; "Tripoli"                     ; GOVERNMENT
+2721            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Καλαμάτα"                        ; "Kalamata"                    ; GOVERNMENT
+2722            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Μεσσήνη"                         ; "Messene"                     ; GOVERNMENT
+2723            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Πύλος"                           ; "Pylos"                       ; GOVERNMENT
+2724            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Μελιγαλάς"                       ; "Meligalas"                   ; GOVERNMENT
+2725            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Κορώνη Πυλίας"                   ; "Koroni"                      ; GOVERNMENT
+2731            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Σπάρτη"                          ; "Sparti"                      ; GOVERNMENT
+2732            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Μολάοι"                          ; "Molaoi"                      ; GOVERNMENT
+2733            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Γύθειο"                          ; "Gytheio"                     ; GOVERNMENT
+2734            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Νεάπολη"                         ; "Neapoli, Voies"              ; GOVERNMENT
+2735            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Σκάλα"                           ; "Molaoi"                      ; GOVERNMENT
+2736            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Κύθηρα"                          ; "Kythera"                     ; GOVERNMENT
+2741            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Κόρινθος"                        ; "Corinth"                     ; GOVERNMENT
+2742            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Κιάτο"                           ; "Kiato"                       ; GOVERNMENT
+2743            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Ξυλόκαστρο"                      ; "Xylokastro"                  ; GOVERNMENT
+2744            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Λουτράκι"                        ; "Loutraki"                    ; GOVERNMENT
+2745            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ;                                   ;                               ; GOVERNMENT
+2746            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Νεμέα"                           ; "Nemea"                       ; GOVERNMENT
+2747            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Καλιανοί"                        ; "Stymfalia"                   ; GOVERNMENT
+2751            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Άργος"                           ; "Argos"                       ; GOVERNMENT
+2752            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Ναύπλιο"                         ; "Nafplio"                     ; GOVERNMENT
+2753            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Λυγουριό"                        ; "Lygourio"                    ; GOVERNMENT
+2754            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Κρανίδι"                         ; "Kranidi"                     ; GOVERNMENT
+2755            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Άστρος"                          ; "Astros"                      ; GOVERNMENT
+2757            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Λεωνίδιο"                        ; "Leonidio"                    ; GOVERNMENT
+2761            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Κυπαρισσία"                      ; "Kyparissia"                  ; GOVERNMENT
+2763            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Γαργαλιάνοι"                     ; "Gargalianoi"                 ; GOVERNMENT
+2765            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Κοπανάκι"                        ; "Kopanaki"                    ; GOVERNMENT
+2791            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Μεγαλόπολη"                      ; "Megalopolis"                 ; GOVERNMENT
+2792            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Καστρί Κυνουρίας"                ; "Kastri Kynourias"            ; GOVERNMENT
+2795            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Βυτίνα"                          ; "Vytina"                      ; GOVERNMENT
+2796            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Λεβίδι"                          ; "Levidi"                      ; GOVERNMENT
+2797            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Τροπαία"                         ; "Tropaia"                     ; GOVERNMENT
+281             ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "all_3/3/4"                 ; "GR"    ; "Ηράκλειο"                        ; "Heraklion"                   ; GOVERNMENT
+2821            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Χανιά"                           ; "Chania"                      ; GOVERNMENT
+2822            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Κίσσαμος"                        ; "Kissamos"                    ; GOVERNMENT
+2823            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Κάντανος"                        ; "Kandanos"                    ; GOVERNMENT
+2824            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Κολυμβάρι"                       ; "Kolymvari"                   ; GOVERNMENT
+2825            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Βάμος"                           ; "Vamos"                       ; GOVERNMENT
+2831            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Ρέθυμνο"                         ; "Rethymno"                    ; GOVERNMENT
+2832            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Σπήλι"                           ; "Spyli"                       ; GOVERNMENT
+2833            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Αμάρι"                           ; "Amari, Rethymno"             ; GOVERNMENT
+2834            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Πέραμα Μυλοποτάμου"              ; "Perama Mylopotamou"          ; GOVERNMENT
+2841            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Άγιος Νικόλαος"                  ; "Agios Nikolaos"              ; GOVERNMENT
+2842            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Ιεράπετρα"                       ; "Ierapetra"                   ; GOVERNMENT
+2843            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Σητεία"                          ; "Sitia"                       ; GOVERNMENT
+2844            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Τζερμιάδο"                       ; "Tzermadio"                   ; GOVERNMENT
+2891            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Αρκαλοχώρι"                      ; "Arkalochori"                 ; GOVERNMENT
+2892            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Μοίρες, Ηράκλειο"                ; "Moires, Heraklion"           ; GOVERNMENT
+2893            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Πύργος, Κρήτη"                   ; "Pyrgos, Crete"               ; GOVERNMENT
+2894            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Αγία Βαρβάρα, Ηράκλειο Κρήτης"   ; "Agia Varvara"                ; GOVERNMENT
+2895            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Άνω Βιάννος"                     ; "Ano Viannos"                 ; GOVERNMENT
+2897            ; 10     ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ; "Λιμένας Χερσονήσου"              ; "Limenas Chersonisou"         ; GOVERNMENT
+5005000         ; 10     ; UAN             ; STANDARD_RATE ;                             ; "fixed_4/6"                 ; "GR"    ;                                   ;                               ; GOVERNMENT ; "goverment 1/12/2019"
+685[02-46-9]    ; 10     ; MOBILE          ; STANDARD_RATE ;                             ; "all_3/3/4"                 ; "GR"
+6851[0-7]       ; 10     ; MOBILE          ; STANDARD_RATE ;                             ; "all_3/3/4"                 ; "GR"
+68518[0-46-9]   ; 10     ; MOBILE          ; STANDARD_RATE ;                             ; "all_3/3/4"                 ; "GR"
+685185          ; 10     ; MOBILE          ; STANDARD_RATE ; "cyta"                      ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; GOVERNMENT
+68519           ; 10     ; MOBILE          ; STANDARD_RATE ; "cyta"                      ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; GOVERNMENT
+6855[05][05]    ; 10     ; MOBILE          ; STANDARD_RATE ; "cyta"                      ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; GOVERNMENT
+685501          ; 10     ; MOBILE          ; STANDARD_RATE ; "bws"                       ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; GOVERNMENT
+68550[2-46-9]   ; 10     ; MOBILE          ; STANDARD_RATE ;                             ; "all_3/3/4"                 ; "GR"
+6855[1-4679]    ; 10     ; MOBILE          ; STANDARD_RATE ;                             ; "all_3/3/4"                 ; "GR"
+68555[1-46-9]   ; 10     ; MOBILE          ; STANDARD_RATE ;                             ; "all_3/3/4"                 ; "GR"
+68558[0-46-9]   ; 10     ; MOBILE          ; STANDARD_RATE ;                             ; "all_3/3/4"                 ; "GR"
+685585          ; 10     ; MOBILE          ; STANDARD_RATE ; "cyta"                      ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; GOVERNMENT
+68[78][0-46-9]  ; 10     ; MOBILE          ; STANDARD_RATE ;                             ; "all_3/3/4"                 ; "GR"
+68[78]500       ; 10     ; MOBILE          ; STANDARD_RATE ; "bws"                       ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; GOVERNMENT ; "goverment 1/12/2019"
+68[78]50[1-9]   ; 10     ; MOBILE          ; STANDARD_RATE ;                             ; "all_3/3/4"                 ; "GR"
+68[78]5[1-9]    ; 10     ; MOBILE          ; STANDARD_RATE ;                             ; "all_3/3/4"                 ; "GR"
+689[0-8]        ; 10     ; MOBILE          ; STANDARD_RATE ;                             ; "all_3/3/4"                 ; "GR"
+689900          ; 10     ; MOBILE          ; STANDARD_RATE ; "oteglobe"                  ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; GOVERNMENT
+689901          ; 10     ; MOBILE          ; STANDARD_RATE ; "m_stat"                    ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; GOVERNMENT
+68990[2-9]      ; 10     ; MOBILE          ; STANDARD_RATE ;                             ; "all_3/3/4"                 ; "GR"
+6899[1-9]       ; 10     ; MOBILE          ; STANDARD_RATE ;                             ; "all_3/3/4"                 ; "GR"
+6900            ; 10     ; MOBILE          ; STANDARD_RATE ; "bws"                       ; "all_3/3/4"                 ; "GR"
+690[1-5]00      ; 10     ; MOBILE          ; STANDARD_RATE ; "mi_carrier_services"       ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; GOVERNMENT
+690[1-4]0[1-9]  ; 10     ; MOBILE          ; STANDARD_RATE ;                             ; "all_3/3/4"                 ; "GR"
+690[1-4][1-8]   ; 10     ; MOBILE          ; STANDARD_RATE ;                             ; "all_3/3/4"                 ; "GR"
+690[1-4]9[0-8]  ; 10     ; MOBILE          ; STANDARD_RATE ;                             ; "all_3/3/4"                 ; "GR"
+690[1-4]99      ; 10     ; MOBILE          ; STANDARD_RATE ; "bws"                       ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; GOVERNMENT
+69050[1-9]      ; 10     ; MOBILE          ; STANDARD_RATE ;                             ; "all_3/3/4"                 ; "GR"
+6905[1-46]      ; 10     ; MOBILE          ; STANDARD_RATE ;                             ; "all_3/3/4"                 ; "GR"
+69055[0-46-9]   ; 10     ; MOBILE          ; STANDARD_RATE ;                             ; "all_3/3/4"                 ; "GR"
+690555          ; 10     ; MOBILE          ; STANDARD_RATE ; "amd_telecom"               ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; GOVERNMENT
+69057[0-36-9]   ; 10     ; MOBILE          ; STANDARD_RATE ;                             ; "all_3/3/4"                 ; "GR"
+69057[45]       ; 10     ; MOBILE          ; STANDARD_RATE ; "bws"                       ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; GOVERNMENT
+69058[0-79]     ; 10     ; MOBILE          ; STANDARD_RATE ;                             ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; GOVERNMENT
+690588          ; 10     ; MOBILE          ; STANDARD_RATE ; "bws"                       ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; GOVERNMENT
+69059[0-8]      ; 10     ; MOBILE          ; STANDARD_RATE ;                             ; "all_3/3/4"                 ; "GR"
+690599          ; 10     ; MOBILE          ; STANDARD_RATE ; "bws"                       ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; GOVERNMENT
+690[6-9]        ; 10     ; MOBILE          ; STANDARD_RATE ; "wind"                      ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; GOVERNMENT
+691000          ; 10     ; MOBILE          ; STANDARD_RATE ; "bws"                       ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; GOVERNMENT
+691[0467]0[1-9] ; 10     ; MOBILE          ; STANDARD_RATE ;                             ; "all_3/3/4"                 ; "GR"
+691[0467][1-9]  ; 10     ; MOBILE          ; STANDARD_RATE ;                             ; "all_3/3/4"                 ; "GR"
+691[159]        ; 10     ; MOBILE          ; STANDARD_RATE ;                             ; "all_3/3/4"                 ; "GR"
+6912[0-24-9]    ; 10     ; MOBILE          ; STANDARD_RATE ;                             ; "all_3/3/4"                 ; "GR"
+69123[0-35-9]   ; 10     ; MOBILE          ; STANDARD_RATE ;                             ; "all_3/3/4"                 ; "GR"
+691234          ; 10     ; MOBILE          ; STANDARD_RATE ; "m_stat"                    ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; GOVERNMENT
+6913[0-35-9]    ; 10     ; MOBILE          ; STANDARD_RATE ;                             ; "all_3/3/4"                 ; "GR"
+69134[0-46-9]   ; 10     ; MOBILE          ; STANDARD_RATE ;                             ; "all_3/3/4"                 ; "GR"
+691345          ; 10     ; MOBILE          ; STANDARD_RATE ; "forthnet"                  ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; GOVERNMENT
+691400          ; 10     ; MOBILE          ; STANDARD_RATE ; "amd_telecom"               ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; GOVERNMENT
+691600          ; 10     ; MOBILE          ; STANDARD_RATE ; "compatel"                  ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; GOVERNMENT
+691700          ; 10     ; MOBILE          ; STANDARD_RATE ; "inter_telecom"             ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; GOVERNMENT
+6918[0-79]      ; 10     ; MOBILE          ; STANDARD_RATE ;                             ; "all_3/3/4"                 ; "GR"
+69188[0-79]     ; 10     ; MOBILE          ; STANDARD_RATE ;                             ; "all_3/3/4"                 ; "GR"
+691888          ; 10     ; MOBILE          ; STANDARD_RATE ; "ose"                       ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; GOVERNMENT
+692[0-25-9]     ; 10     ; MOBILE          ; STANDARD_RATE ;                             ; "all_3/3/4"                 ; "GR"
+6923[0-46-9]    ; 10     ; MOBILE          ; STANDARD_RATE ;                             ; "all_3/3/4"                 ; "GR"
+69235[0-357-9]  ; 10     ; MOBILE          ; STANDARD_RATE ;                             ; "all_3/3/4"                 ; "GR"
+692354          ; 10     ; MOBILE          ; STANDARD_RATE ; "premium_net_international" ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; GOVERNMENT
+692356          ; 10     ; MOBILE          ; STANDARD_RATE ; "sia_netbalt"               ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; GOVERNMENT
+6924[013-9]     ; 10     ; MOBILE          ; STANDARD_RATE ;                             ; "all_3/3/4"                 ; "GR"
+69242[0-79]     ; 10     ; MOBILE          ; STANDARD_RATE ;                             ; "all_3/3/4"                 ; "GR"
+692428          ; 10     ; MOBILE          ; STANDARD_RATE ; "premium_net_international" ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; GOVERNMENT
+693             ; 10     ; MOBILE          ; STANDARD_RATE ; "wind"                      ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; GOVERNMENT
+694             ; 10     ; MOBILE          ; STANDARD_RATE ; "vodafone"                  ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; GOVERNMENT
+695[015-9]      ; 10     ; MOBILE          ; STANDARD_RATE ; "vodafone"                  ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; GOVERNMENT ; "goverment 1/12/2019"
+695200          ; 10     ; MOBILE          ; STANDARD_RATE ; "compatel"                  ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; GOVERNMENT
+6952[01][1-9]   ; 10     ; MOBILE          ; STANDARD_RATE ;                             ; "all_3/3/4"                 ; "GR"
+695210          ; 10     ; MOBILE          ; STANDARD_RATE ;                             ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; WEB
+6952[23]        ; 10     ; MOBILE          ; STANDARD_RATE ; "vodafone"                  ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; GOVERNMENT
+6952[49]        ; 10     ; MOBILE          ; STANDARD_RATE ; "bws"                       ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; GOVERNMENT
+6952[5-8]       ; 10     ; MOBILE          ; STANDARD_RATE ;                             ; "all_3/3/4"                 ; "GR"
+69530           ; 10     ; MOBILE          ; STANDARD_RATE ; "cyta"                      ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; GOVERNMENT ; "goverment 1/12/2019"
+695310          ; 10     ; MOBILE          ; STANDARD_RATE ; "mi_carrier_services"       ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; GOVERNMENT
+6953[134][1-9]  ; 10     ; MOBILE          ; STANDARD_RATE ;                             ; "all_3/3/4"                 ; "GR"
+69532[0-79]     ; 10     ; MOBILE          ; STANDARD_RATE ;                             ; "all_3/3/4"                 ; "GR"
+695328          ; 10     ; MOBILE          ; STANDARD_RATE ; "premium_net_international" ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; GOVERNMENT
+695330          ; 10     ; MOBILE          ; STANDARD_RATE ; "apifon"                    ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; GOVERNMENT
+695340          ; 10     ; MOBILE          ; STANDARD_RATE ; "amd_telecom"               ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; GOVERNMENT
+69535[0-46-9]   ; 10     ; MOBILE          ; STANDARD_RATE ;                             ; "all_3/3/4"                 ; "GR"
+695355          ; 10     ; MOBILE          ; STANDARD_RATE ; "cyta"                      ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; GOVERNMENT
+6953[6-9]       ; 10     ; MOBILE          ; STANDARD_RATE ;                             ; "all_3/3/4"                 ; "GR"
+695400          ; 10     ; MOBILE          ; STANDARD_RATE ; "amd_telecom"               ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; GOVERNMENT
+6954[01][1-9]   ; 10     ; MOBILE          ; STANDARD_RATE ;                             ; "all_3/3/4"                 ; "GR"
+6954[19]0       ; 10     ; MOBILE          ; STANDARD_RATE ; "mi_carrier_services"       ; "all_3/3/4"                 ; "GR"
+6954[2-46-8]    ; 10     ; MOBILE          ; STANDARD_RATE ;                             ; "all_3/3/4"                 ; "GR"
+69545[0-57-9]   ; 10     ; MOBILE          ; STANDARD_RATE ;                             ; "all_3/3/4"                 ; "GR"
+695456          ; 10     ; MOBILE          ; STANDARD_RATE ; "bws"                       ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; GOVERNMENT
+69549[1-8]      ; 10     ; MOBILE          ; STANDARD_RATE ;                             ; "all_3/3/4"                 ; "GR"
+695499          ; 10     ; MOBILE          ; STANDARD_RATE ; "m_stat"                    ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; GOVERNMENT
+6960[02-9]      ; 10     ; MOBILE          ; STANDARD_RATE ;                             ; "all_3/3/4"                 ; "GR"
+69601           ; 10     ; MOBILE          ; STANDARD_RATE ; "ote"                       ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; GOVERNMENT
+696[1-9]        ; 10     ; MOBILE          ; STANDARD_RATE ;                             ; "all_3/3/4"                 ; "GR"
+69[78]          ; 10     ; MOBILE          ; STANDARD_RATE ; "cosmote"                   ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; IR21       ; "IR21 10/24/2017"
+69900           ; 10     ; MOBILE          ; STANDARD_RATE ; "wind"                      ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; GOVERNMENT
+699010          ; 10     ; MOBILE          ; STANDARD_RATE ; "bws"                       ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; GOVERNMENT
+699011          ; 10     ; MOBILE          ; STANDARD_RATE ;                             ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; WEB
+69901[2-9]      ; 10     ; MOBILE          ; STANDARD_RATE ;                             ; "all_3/3/4"                 ; "GR"
+69902[013-9]    ; 10     ; MOBILE          ; STANDARD_RATE ;                             ; "all_3/3/4"                 ; "GR"
+699022          ; 10     ; MOBILE          ; STANDARD_RATE ; "yuboto"                    ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; GOVERNMENT
+6990[35-8]      ; 10     ; MOBILE          ; STANDARD_RATE ;                             ; "all_3/3/4"                 ; "GR"
+69904[0-579]    ; 10     ; MOBILE          ; STANDARD_RATE ;                             ; "all_3/3/4"                 ; "GR"
+699046          ; 10     ; MOBILE          ; STANDARD_RATE ; "premium_net_international" ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; GOVERNMENT
+699048          ; 10     ; MOBILE          ; STANDARD_RATE ; "amd_telecom"               ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; GOVERNMENT
+69909[0-8]      ; 10     ; MOBILE          ; STANDARD_RATE ;                             ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; GOVERNMENT
+699099          ; 10     ; MOBILE          ; STANDARD_RATE ; "bws"                       ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; GOVERNMENT ; "goverment 1/12/2019"
+699[1-9]        ; 10     ; MOBILE          ; STANDARD_RATE ; "wind"                      ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; GOVERNMENT
+70              ; 10     ; PERSONAL_NUMBER ; STANDARD_RATE ;                             ; "athens_and_personal_2/4/4" ; "GR"    ;                                   ;                               ; GOVERNMENT
+800             ; 10     ; FIXED_LINE      ; TOLL_FREE     ;                             ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; GOVERNMENT
+800             ; 11     ; FIXED_LINE      ; TOLL_FREE     ;                             ; "toll_free_3/3-4/5"         ; "GR"
+800             ; 12     ; FIXED_LINE      ; TOLL_FREE     ;                             ; "toll_free_3/3-4/5"         ; "GR"    ;                                   ;                               ;            ; "User report"
+80[16]          ; 10     ; FIXED_LINE      ; SHARED_COST   ;                             ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; GOVERNMENT ; "goverment 1/12/2019"
+812             ; 10     ; FIXED_LINE      ; SHARED_COST   ;                             ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; GOVERNMENT
+8[27]5          ; 10     ; FIXED_LINE      ; SHARED_COST   ;                             ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; GOVERNMENT
+850             ; 10     ; FIXED_LINE      ; SHARED_COST   ;                             ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; GOVERNMENT
+89[69]          ; 10     ; ISP             ; SHARED_COST   ;                             ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; GOVERNMENT
+90[19]          ; 10     ; FIXED_LINE      ; PREMIUM_RATE  ;                             ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; GOVERNMENT
+94              ; 10     ; MOBILE          ; STANDARD_RATE ; "vodafone"                  ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; IR21       ; "IR21 9/14/2018"

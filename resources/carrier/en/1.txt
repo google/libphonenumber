@@ -59,16 +59,29 @@
 124272|BaTelCo
 124273|aliv
 12428|aliv
-124623|LIME
-124624|LIME
-124625|LIME
+124623|Cable & Wireless
+124624|Cable & Wireless
+124625|Cable & Wireless
 1246256|Digicel
 1246257|Digicel
 1246258|Digicel
 1246259|Digicel
 124626|Digicel
 124628|Cable & Wireless
+124635|Cable & Wireless
+1246360|Cable & Wireless
+1246361|Cable & Wireless
+1246362|Cable & Wireless
+1246363|Cable & Wireless
+1246364|Cable & Wireless
+1246365|Cable & Wireless
+1246366|Cable & Wireless
+1246446|Neptune Communications
 124645|Sunbeach Communications
+12465211|Digicel
+12465214|LIME
+12465217|KW Telecommunications
+1246522|Ozone
 124669|Ozone
 12468|Digicel
 1264469|Cable & Wireless
@@ -105,10 +118,7 @@
 128439|Digicel
 128444|CCT
 12844689|CCT
-12844966|CCT
-12844967|CCT
-12844968|CCT
-12844969|CCT
+1284496|CCT
 1284499|CCT
 1284546|Cable & Wireless
 128456|Cable & Wireless
@@ -123,6 +133,7 @@
 134554|Digicel
 134555|Digicel
 1345649|Digicel
+134582|Logic Communications
 1345919|Cable & Wireless
 1345930|LIME
 1345936|Cable & Wireless
@@ -139,6 +150,7 @@
 144159|Digicel Bermuda
 14417|Cellular One
 14418|Cellular One
+14419|Deltronics
 1473402|Affordable Island Communications
 147341|Digicel Grenada
 147342|Digicel Grenada
@@ -168,7 +180,13 @@
 166434|Cable & Wireless
 166439|Digicel
 1670284|PTI PACIFICA
-167148|GTA
+1671480|GTA
+1671482|GTA
+1671483|GTA
+1671486|GTA
+1671487|GTA
+1671488|GTA
+1671489|GTA
 167174|PTI PACIFICA
 167183|i CAN_GSM
 167184|i CAN_GSM

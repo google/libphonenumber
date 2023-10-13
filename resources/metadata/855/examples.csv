@@ -1,0 +1,5 @@
+Region ; Type         ; Number
+KH     ; FIXED_LINE   ; "23756789"
+KH     ; MOBILE       ; "91234567"
+KH     ; TOLL_FREE    ; "1800123456"
+KH     ; PREMIUM_RATE ; "1900123456"

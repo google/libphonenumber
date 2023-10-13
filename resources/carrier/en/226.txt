@@ -18,8 +18,11 @@
 
 22601|Onatel
 22602|Onatel
+22603|Onatel
+22605|Orange
 22606|Orange
 22607|Orange
+22650|Onatel
 22651|Onatel
 22652|Onatel
 22653|Onatel

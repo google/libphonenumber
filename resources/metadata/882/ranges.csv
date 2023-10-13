@@ -1,0 +1,30 @@
+Prefix       ; Length ; Type      ; Tariff        ; Operator               ; Format             ; Regions ; Provenance
+10           ; 10     ; VOIP      ; STANDARD_RATE ;                        ; "fmt_2/4/4"        ; "001"   ; ITU
+130[0347]    ; 8      ; VOIP      ; STANDARD_RATE ;                        ; "voip_2/2/4"       ; "001"   ; ITU
+13[13][0139] ; 8      ; VOIP      ; STANDARD_RATE ;                        ; "voip_2/2/4"       ; "001"   ; ITU
+132[035]     ; 8      ; VOIP      ; STANDARD_RATE ;                        ; "voip_2/2/4"       ; "001"   ; ITU
+134[013568]  ; 8      ; VOIP      ; STANDARD_RATE ;                        ; "voip_2/2/4"       ; "001"   ; ITU
+136[0459]    ; 8      ; VOIP      ; STANDARD_RATE ;                        ; "voip_2/2/4"       ; "001"   ; ITU
+137[06]      ; 8      ; VOIP      ; STANDARD_RATE ;                        ; "voip_2/2/4"       ; "001"   ; ITU
+138[15-8]    ; 8      ; VOIP      ; STANDARD_RATE ;                        ; "voip_2/2/4"       ; "001"   ; ITU
+139[0689]    ; 8      ; VOIP      ; STANDARD_RATE ;                        ; "voip_2/2/4"       ; "001"   ; ITU
+16           ; 7      ; VOIP      ; STANDARD_RATE ;                        ; "fmt_2/5"          ; "001"
+16           ; 8      ; VOIP      ; STANDARD_RATE ;                        ; "voip_2/2/4"       ; "001"
+16           ; 9,10   ; VOIP      ; STANDARD_RATE ;                        ; "voip_2/3-4/4"     ; "001"   ; ITU
+16           ; 11,12  ; VOIP      ; STANDARD_RATE ;                        ; "fmt_2/4-5/5"      ; "001"
+23           ; 10     ; VOIP      ; STANDARD_RATE ;                        ; "fmt_2/4/4"        ; "001"   ; ITU
+285          ; 12     ; VOIP      ; STANDARD_RATE ;                        ; "fmt_2/4-5/5"      ; "001"   ; IR21
+3[15]        ; 10     ; VOIP      ; STANDARD_RATE ;                        ; "fmt_2/4/4"        ; "001"   ; ITU
+32           ; 9      ; MOBILE    ; STANDARD_RATE ; "mcp"                  ; "mobile_2/4/3"     ; "001"   ; ITU
+337          ; 9      ; MOBILE    ; STANDARD_RATE ; "oration_technologies" ; "mobile_2/4/3"     ; "001"   ; ITU
+342          ; 7      ; MOBILE    ; STANDARD_RATE ; "bebbicell"            ; "fmt_2/5"          ; "001"
+345          ; 10     ; VOIP      ; STANDARD_RATE ;                        ; "fmt_2/4/4"        ; "001"   ; ITU
+347          ; 10     ; MOBILE    ; STANDARD_RATE ; "bebbicell"            ; "fmt_2/4/4"        ; "001"
+348[57]      ; 11     ; VOICEMAIL ; STANDARD_RATE ;                        ; "voice_mail_3/4/4" ; "001"   ; ITU
+3[69]        ; 12     ; VOIP      ; STANDARD_RATE ;                        ; "fmt_2/4-5/5"      ; "001"   ; IR21
+37           ; 12     ; MOBILE    ; STANDARD_RATE ; "att"                  ; "fmt_2/4-5/5"      ; "001"   ; ITU
+4[15-8]      ; 10     ; VOIP      ; STANDARD_RATE ;                        ; "fmt_2/4/4"        ; "001"   ; ITU
+49           ; 8      ; MOBILE    ; STANDARD_RATE ; "monaco_telecom"       ; "mobile_2/6"       ; "001"   ; IR21
+50           ; 12     ; MOBILE    ; STANDARD_RATE ; "phonegroup"           ; "fmt_2/4-5/5"      ; "001"   ; ITU
+51           ; 10     ; VOIP      ; STANDARD_RATE ;                        ; "fmt_2/4/4"        ; "001"   ; ITU
+9[89]        ; 8      ; VOIP      ; STANDARD_RATE ;                        ; "voip_2/2/4"       ; "001"   ; IR21

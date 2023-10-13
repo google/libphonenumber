@@ -1,0 +1,5 @@
+Region ; Label      ; Comment
+001    ; XML        ; "Inmarsat Global Limited"
+001    ; XML        ; "http://www.itu.int/oth/T0202000065/en"
+001    ; XML        ; "http://www.inmarsat.com"
+001    ; XML_MOBILE ; "Assigning these to mobile since Inmarsat considers them to be mobile numbers."

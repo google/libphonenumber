@@ -1,0 +1,295 @@
+# Copyright (C) 2017 The Libphonenumber Authors.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+# http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# ---- Manually crafted "unit" tests ----
+
+test_case {
+  name: "Simple Range"
+  range: "1234xxx"
+  # 4 single byte, single value instructions: 0x20 + value
+  # 1 single byte, "ANY" instruction: 0x40 + (count-1)
+  expected: "\x21\x22\x23\x24\x42\x00"
+}
+test_case {
+  # NOTE: When the ANY instruction is marked as terminating, it applies when the instruction is
+  # reached, not after it's executed (i.e. \x50... is "(\d...)?", and not "\d(...)?").
+  # Match 3 x ANY (0x42), then "terminate or ANY" (0x50), then 2 x ANY
+  name: "Variable Any Match #1"
+  range: "1xxx"
+  range: "1xxxxxx"
+  expected: "\x21\x42\x50\x41\x00"
+}
+test_case {
+  name: "Variable Any Match #2"
+  range: "1xxx"
+  range: "1xxxx"
+  range: "1xxxxx"
+  range: "1xxxxxx"
+  # A repeated terminating ANY match applies on every repeat, not just the first time.
+  # Match 3 x ANY (0x42 = \d{3}), then 3 x "terminate or ANY" (0x52 = \d{0,3}).
+  expected: "\x21\x42\x52\x00"
+}
+test_case {
+  name: "Overflow Any Match"
+  range: "xxxxxxxxxxxxxxxxxx"
+  # 18 'any' digits can't fit in one instruction, so write 2 separate opcodes to match 16 (0x4F)
+  # and then 2 (0x41). This will almost never occur since DigitSequence is limited to 18 digits.
+  expected: "\x4F\x41\x00"
+}
+test_case {
+  name: "Range Matching"
+  range: "[0-4]12"
+  # First 2 bytes are a "branch" operation (opcode = 0x60 plus mask), but there are no offsets
+  # after it (since one "branch" is just to continue matching, while the other is failure).
+  expected: "\x60\x1F\x21\x22\x00"
+}
+test_case {
+  name: "Range Matching"
+  # Requires a 2-way branch in the DFA where both paths cover all input digits [0-9].
+  range: "[0-4]12"
+  range: "[5-9]34"
+  # First 2 bytes are a 2-way branch operation (opcode = 0x68 plus mask), then 2 jump offsets
+  # from the end of the branch instruction.
+  expected: "\x68\x1F\x02\x05\x21\x22\x00\x23\x24\x00"
+}
+
+# ---- Deliberate failure cases ----
+
+test_case {
+  name: "Modified Single Match Bytecode"
+  should_fail: true
+  range: "123xxxx"
+  range: "123xxxxx"
+  range: "123xxxxxx"
+  # Expected bytes have been tweaked to accept 4 (\x24), rather than 3 (\x23).
+  expected: "\x21\x22\x24\x43\x51\x00"
+}
+test_case {
+  name: "Modified Range Bytecode"
+  should_fail: true
+  range: "1[2-5]xxxx"
+  # Expected bytes have been tweaked to accept [7-9] (\x63\x80), rather than [2-5] (\x60\x3C)
+  expected: "\x21\x63\x80\x43\x00"
+}
+test_case {
+  name: "Modified Any Match Bytecode"
+  should_fail: true
+  range: "1xxxx"
+  # Expected bytes have been tweaked to accept xxx (\x42), rather than xxxx (\x43)
+  expected: "\x21\x42\x00"
+}
+
+# ---- Auto-generated "stress tests" ----
+
+test_case {
+  name: "GB Mobile"
+  range: "7[1-3]xxxxxxxx"
+  range: "74[0-46-9]xxxxxxx"
+  range: "745[0-689]xxxxxx"
+  range: "7457[0-57-9]xxxxx"
+  range: "750[0-8]xxxxxx"
+  range: "75[13-9]xxxxxxx"
+  range: "752[0-35-9]xxxxxx"
+  range: "7700[01]xxxxx"
+  range: "770[1-9]xxxxxx"
+  range: "77[1-7]xxxxxxx"
+  range: "778[02-9]xxxxxx"
+  range: "779[0-689]xxxxxx"
+  range: "78[014-9]xxxxxxx"
+  range: "78[23][0-8]xxxxxx"
+  range: "79[024-9]xxxxxxx"
+  range: "791[02-9]xxxxxx"
+  range: "7911[028]xxxxx"
+  range: "793[0-689]xxxxxx"
+  # Not much insight here - other than it starts by matching a '7' and terminates in one place
+  # after matching "any digit" 5 times (which is the shortest trailing match in the ranges).
+  expected: "\x27\x8c\xa8\x1a\x2a\x06\x09\x0d\x14\x1c\x20\x40\x10\x1e\x6b\xdf\x1c\x1f\x84\x44"
+  expected: "\x92\x5d\x1d\x16\x21\x88\x64\x92\x55\x1d\x0f\x21\x24\x6b\xf3\x09\x10\x82\x22\x49"
+  expected: "\x6d\x03\x1b\x18\x40\x10\x19\x6b\x7f\x17\x19\x61\xff\x10\x11\x63\xef\x0e\x68\x01"
+  expected: "\x11\x0c\x63\xfd\x07\x63\x7f\x04\x6b\xfd\x02\x0a\x40\x08\x63\xbf\x05\x60\x03\x02"
+  expected: "\x61\x05\x44\x00"
+}
+test_case {
+  name: "India Fixed Line"
+  range: "11[2-7]xxxxxxx"
+  range: "12[0-249][2-7]xxxxxx"
+  range: "12[35-8]x[2-7]xxxxx"
+  range: "13[0-25][2-7]xxxxxx"
+  range: "13[346-9]x[2-7]xxxxx"
+  range: "14[145][2-7]xxxxxx"
+  range: "14[236-9]x[2-7]xxxxx"
+  range: "1[59][0235-9]x[2-7]xxxxx"
+  range: "1[59][14][2-7]xxxxxx"
+  range: "16[014][2-7]xxxxxx"
+  range: "16[235-9]x[2-7]xxxxx"
+  range: "17[1257][2-7]xxxxxx"
+  range: "17[34689]x[2-7]xxxxx"
+  range: "18[01346][2-7]xxxxxx"
+  range: "18[257-9]x[2-7]xxxxx"
+  range: "2[02][2-7]xxxxxxx"
+  range: "21[134689]x[2-7]xxxxx"
+  range: "21[257][2-7]xxxxxx"
+  range: "23[013][2-7]xxxxxx"
+  range: "23[24-8]x[2-7]xxxxx"
+  range: "24[01][2-7]xxxxxx"
+  range: "24[2-8]x[2-7]xxxxx"
+  range: "25[0137][2-7]xxxxxx"
+  range: "25[25689]x[2-7]xxxxx"
+  range: "26[0158][2-7]xxxxxx"
+  range: "26[2-4679]x[2-7]xxxxx"
+  range: "27[13-79]x[2-7]xxxxx"
+  range: "278[2-7]xxxxxx"
+  range: "28[1568][2-7]xxxxxx"
+  range: "28[2-479]x[2-7]xxxxx"
+  range: "29[14][2-7]xxxxxx"
+  range: "29[235-9]x[2-7]xxxxx"
+  range: "301x[2-7]xxxxx"
+  range: "31[79]x[2-7]xxxxx"
+  range: "32[1-5]x[2-7]xxxxx"
+  range: "326[2-7]xxxxxx"
+  range: "33[2-7]xxxxxxx"
+  range: "34[13][2-7]xxxxxx"
+  range: "342[0189][2-7]xxxxx"
+  range: "342[2-7]xxxxxx"
+  range: "34[5-8]x[2-7]xxxxx"
+  range: "35[125689]x[2-7]xxxxx"
+  range: "35[34][2-7]xxxxxx"
+  range: "36[01489][2-7]xxxxxx"
+  range: "36[235-7]x[2-7]xxxxx"
+  range: "37[02-46][2-7]xxxxxx"
+  range: "37[157-9]x[2-7]xxxxx"
+  range: "38[159][2-7]xxxxxx"
+  range: "38[2-467]x[2-7]xxxxx"
+  range: "4[04][2-7]xxxxxxx"
+  range: "41[14578]x[2-7]xxxxx"
+  range: "41[36][2-7]xxxxxx"
+  range: "42[1-47][2-7]xxxxxx"
+  range: "42[5689]x[2-7]xxxxx"
+  range: "43[15][2-7]xxxxxx"
+  range: "43[2-467]x[2-7]xxxxx"
+  range: "45[12][2-7]xxxxxx"
+  range: "45[4-7]x[2-7]xxxxx"
+  range: "46[0-26-9][2-7]xxxxxx"
+  range: "46[35]x[2-7]xxxxx"
+  range: "47[0-24-9][2-7]xxxxxx"
+  range: "473x[2-7]xxxxx"
+  range: "48[013-57][2-7]xxxxxx"
+  range: "48[2689]x[2-7]xxxxx"
+  range: "49[014-7][2-7]xxxxxx"
+  range: "49[2389]x[2-7]xxxxx"
+  range: "51[025][2-7]xxxxxx"
+  range: "51[146-9]x[2-7]xxxxx"
+  range: "52[14-8]x[2-7]xxxxx"
+  range: "522[2-7]xxxxxx"
+  range: "53[1346]x[2-7]xxxxx"
+  range: "53[25][2-7]xxxxxx"
+  range: "54[14-69]x[2-7]xxxxx"
+  range: "54[28][2-7]xxxxxx"
+  range: "55[12][2-7]xxxxxx"
+  range: "55[46]x[2-7]xxxxx"
+  range: "56[146-9]x[2-7]xxxxx"
+  range: "56[25][2-7]xxxxxx"
+  range: "571[2-7]xxxxxx"
+  range: "57[2-4]x[2-7]xxxxx"
+  range: "581[2-7]xxxxxx"
+  range: "58[2-8]x[2-7]xxxxx"
+  range: "59[15][2-7]xxxxxx"
+  range: "59[246]x[2-7]xxxxx"
+  range: "61[1358]x[2-7]xxxxx"
+  range: "612[2-7]xxxxxx"
+  range: "621[2-7]xxxxxx"
+  range: "62[2457]x[2-7]xxxxx"
+  range: "631[2-7]xxxxxx"
+  range: "63[2-4]x[2-7]xxxxx"
+  range: "641[2-7]xxxxxx"
+  range: "64[235-7]x[2-7]xxxxx"
+  range: "65[17][2-7]xxxxxx"
+  range: "65[2-689]x[2-7]xxxxx"
+  range: "66[13][2-7]xxxxxx"
+  range: "66[24578]x[2-7]xxxxx"
+  range: "671[2-7]xxxxxx"
+  range: "67[235689]x[2-7]xxxxx"
+  range: "674[0189][2-7]xxxxx"
+  range: "674[2-7]xxxxxx"
+  range: "680[2-7]xxxxxx"
+  range: "68[1-6]x[2-7]xxxxx"
+  range: "71[013-9]x[2-7]xxxxx"
+  range: "712[2-7]xxxxxx"
+  range: "72[0235-9]x[2-7]xxxxx"
+  range: "72[14][2-7]xxxxxx"
+  range: "73[134][2-7]xxxxxx"
+  range: "73[2679]x[2-7]xxxxx"
+  range: "74[1-35689]x[2-7]xxxxx"
+  range: "74[47][2-7]xxxxxx"
+  range: "75[15][2-7]xxxxxx"
+  range: "75[2-46-9]x[2-7]xxxxx"
+  range: "7[67][02-9]x[2-7]xxxxx"
+  range: "7[67]1[2-7]xxxxxx"
+  range: "78[013-7]x[2-7]xxxxx"
+  range: "782[0-6][2-7]xxxxx"
+  range: "788[0189][2-7]xxxxx"
+  range: "788[2-7]xxxxxx"
+  range: "79[0189]x[2-7]xxxxx"
+  range: "79[2-7]xxxxxxx"
+  range: "80[2-467]xxxxxxx"
+  range: "81[1357-9]x[2-7]xxxxx"
+  range: "816[2-7]xxxxxx"
+  range: "82[014][2-7]xxxxxx"
+  range: "82[235-8]x[2-7]xxxxx"
+  range: "83[03-57-9]x[2-7]xxxxx"
+  range: "83[126][2-7]xxxxxx"
+  range: "84[0-24-9]x[2-7]xxxxx"
+  range: "85xx[2-7]xxxxx"
+  range: "86[136][2-7]xxxxxx"
+  range: "86[2457-9]x[2-7]xxxxx"
+  range: "87[078][2-7]xxxxxx"
+  range: "87[1-6]x[2-7]xxxxx"
+  range: "88[1256]x[2-7]xxxxx"
+  range: "88[34][2-7]xxxxxx"
+  range: "891[2-7]xxxxxx"
+  range: "89[2-4]x[2-7]xxxxx"
+  expected: "\x81\x0f\xac\x72\x08\x1e\x3b\x58\xad\xcc\x75\x8d\x8b\x0f\xac\x72\xdc\xec\xf4\x08"
+  expected: "\x0a\x0c\x0e\x10\x10\xf2\x10\xfa\x11\x00\x11\x06\x11\x0e\x93\x0f\xac\x6d\xc6\x09"
+  expected: "\x0b\x0d\x0f\x11\x13\x15\x17\x11\x07\x11\x0f\x11\x17\x11\x1f\x11\x27\x11\x2d\x11"
+  expected: "\x35\x11\x3d\x81\x31\xf5\x9d\x09\x0b\x0d\xa9\x0f\x11\x13\x15\x17\x12\x27\x12\x28"
+  expected: "\x11\x34\x11\x38\x11\x3d\x11\x41\x11\x43\x11\x45\x93\x0f\xa9\x9d\x8c\x09\x0b\x0d"
+  expected: "\x0f\x11\x13\x15\x17\x11\x3c\x11\x40\x11\x44\x11\x48\x11\x4c\x11\x50\x11\x52\x11"
+  expected: "\x54\x90\xed\xac\x72\x08\x99\x0a\x0c\x0e\x10\x12\x73\x11\xab\x11\xad\x11\xb1\x11"
+  expected: "\xb5\x11\xb9\x11\xdd\x95\x31\xf5\x9d\x63\x0a\x0c\x0e\x10\x12\x14\x16\x18\x1a\x11"
+  expected: "\xab\x11\xaf\x11\xb3\x11\xd4\x11\xd5\x11\xb1\x11\xb5\x11\xb9\x11\x44\x93\x0f\xac"
+  expected: "\x72\x09\x0b\x0d\x0f\x11\x13\x15\x17\x19\x11\x11\x11\x15\x11\x19\x11\x1d\x11\x21"
+  expected: "\x11\x25\x11\x29\x11\x2d\x11\x31\x81\x0f\xac\x72\x08\x0a\x0c\x0e\x10\x12\x14\x16"
+  expected: "\x11\x29\x11\x2d\x11\x13\x11\x2f\x11\x33\x11\x37\x11\x3b\x11\x40\x60\xfc\x11\x90"
+  expected: "\x6b\x03\x02\x04\x11\x93\x11\x88\x60\xdc\x11\x84\x6a\x17\x02\x04\x11\x80\x11\x85"
+  expected: "\x68\x27\x02\x04\x11\x78\x11\x7d\x84\x44\x89\x52\x02\x04\x11\x6e\x11\x73\x6b\xed"
+  expected: "\x02\x04\x11\x6d\x11\x64\x68\x13\x02\x04\x11\x5e\x11\x63\x84\x42\x8a\x4a\x02\x04"
+  expected: "\x11\x54\x11\x59\x68\x5b\x02\x04\x11\x4c\x11\x51\x82\x24\x51\x32\x02\x04\x11\x49"
+  expected: "\x11\x40\x80\x44\x92\x33\x02\x04\x11\x38\x11\x3d\x80\x44\x92\x53\x02\x04\x11\x2e"
+  expected: "\x11\x33\x84\x42\x90\x33\x02\x04\x11\x24\x11\x29\x69\x23\x02\x04\x11\x1c\x11\x21"
+  expected: "\x82\x42\x49\x22\x02\x04\x11\x19\x11\x10\x84\x24\x4a\x52\x02\x04\x11\x08\x11\x0d"
+  expected: "\x84\x44\x91\x52\x02\x04\x10\xfe\x11\x03\x80\x00\x89\x2a\xff\xf8\x80\x66\xd8\x32"
+  expected: "\xf2\xf5\xf9\x82\x20\x4a\x4a\xf2\xeb\x6b\x13\xe7\xee\x68\x5d\xe3\xea\x82\x04\x8a"
+  expected: "\x52\xdd\xe4\x80\x22\x89\x42\xde\xd7\x84\x42\x91\x2a\xd1\xd8\x80\x04\x8a\x52\xcb"
+  expected: "\xd2\x80\x04\x92\x0a\xc5\xcc\x82\x22\x50\x4b\xbf\xc6\x6b\xf7\xbb\xc2\x68\xbb\xb7"
+  expected: "\xbe\x68\xf3\xb3\xba\x84\x44\x8a\x0d\xad\xb4\x80\x22\x49\x12\xae\xa7\x80\x00\x51"
+  expected: "\x32\xa8\xa1\x82\x40\x49\x12\xa2\x9b\x80\x00\x82\x0a\x95\x9c\x82\x22\x51\x12\x96"
+  expected: "\x8f\x80\x00\x02\x52\x89\x90\x80\x44\x92\x52\x83\x8a\x80\x00\x8a\x12\x7d\x84\x80"
+  expected: "\x20\x08\x32\x7e\x77\x80\x04\x12\x12\x71\x78\x80\x04\x90\x52\x6b\x72\x84\x42\x92"
+  expected: "\x52\x65\x6c\x80\x44\x12\x32\x5f\x66\x84\x40\x93\x52\x59\x60\x5c\x80\x00\x92\x55"
+  expected: "\x52\x59\x6b\xfb\x55\x4e\x84\x04\x81\x32\x48\x4f\x82\x24\x4a\x2a\x49\x42\x84\x44"
+  expected: "\x8a\x52\x3c\x43\x6b\xfd\x3f\x38\x82\x22\x88\x22\x39\x32\x80\x44\x91\x53\x2c\x33"
+  expected: "\x6b\xb9\x2f\x28\x84\x44\x52\x32\x22\x29\x80\x22\x92\x55\x1c\x23\x80\x00\x4a\x4a"
+  expected: "\x1d\x16\x80\x62\x49\x33\x17\x19\x13\x21\x10\x11\x62\x80\x0e\x63\xf7\x0b\x40\x09"
+  expected: "\x40\x0c\x60\xfc\x09\x6b\x03\x09\x07\x40\x05\x60\x7f\x02\x40\x02\x60\xfc\x44\x00"
+}

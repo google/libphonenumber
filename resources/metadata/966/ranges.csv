@@ -1,0 +1,23 @@
+Prefix      ; Length ; Type       ; Tariff        ; Area Code Length ; Operator         ; Format           ; Regions ; Geocode:ar                             ; Geocode:en                 ; Provenance ; Comment
+11          ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;                  ; "fixed_2/3/4"    ; "SA"    ; "الرياض/الخرج"                         ; "Riyadh/Kharj"
+12[24-8]    ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;                  ; "fixed_2/3/4"    ; "SA"    ; "مكة/جدة"                              ; "Makkah/Jeddah"
+13[35-8]    ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;                  ; "fixed_2/3/4"    ; "SA"    ; "الدمام/الخبر/الظهران"                 ; "Dammam/Khobar/Dahran"
+14[3-68]    ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;                  ; "fixed_2/3/4"    ; "SA"    ; "المدينة المنورة/عرعر/تبوك/ينبع البحر" ; "Madenah/Arar/Tabuk/Yanbu"
+16[2-5]     ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;                  ; "fixed_2/3/4"    ; "SA"    ; "حائل/القصيم"                          ; "Hail/Qasim"
+17[235-7]   ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;                  ; "fixed_2/3/4"    ; "SA"    ; "أبها/نجران/جازان"                     ; "Abha/Najran/Jezan"
+5[035]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "stc"            ; "mobile_2/3/4"   ; "SA"    ;                                        ;                            ; IR21       ; "IR12 dated 7/4/2019"
+51[01]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "salam"          ; "mobile_2/3/4"   ; "SA"
+51[2-46-9]  ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;                  ; "mobile_2/3/4"   ; "SA"    ;                                        ;                            ;            ; "Fillup To Support Master Range"
+515[0-25-9] ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;                  ; "mobile_2/3/4"   ; "SA"    ;                                        ;                            ;            ; "Fillup To Support Master Range"
+515[34]     ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "stc"            ; "mobile_2/3/4"   ; "SA"    ;                                        ;                            ; IR21       ; "IR12 dated 7/4/2019"
+5[46]       ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "mobily"         ; "mobile_2/3/4"   ; "SA"
+57[0-3]     ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "virgin"         ; "mobile_2/3/4"   ; "SA"
+574         ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "redbull_mobile" ; "mobile_2/3/4"   ; "SA"    ;                                        ;                            ; IR21
+575         ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "redbull_mobile" ; "mobile_2/3/4"   ; "SA"    ;                                        ;                            ; ITU
+57[6-8]     ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "lebara"         ; "mobile_2/3/4"   ; "SA"
+579[01]     ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "mobily"         ; "mobile_2/3/4"   ; "SA"    ;                                        ;                            ; IR21
+5[89]       ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "zain"           ; "mobile_2/3/4"   ; "SA"
+800         ; 10     ; FIXED_LINE ; TOLL_FREE     ;                  ;                  ; "tollfree_3/3/4" ; "SA"
+811         ; 10     ; UAN        ; STANDARD_RATE ;                  ;                  ; "uan_3/3/3-4"    ; "SA"
+920         ; 9      ; FIXED_LINE ; SHARED_COST   ;                  ;                  ; "varcost_4/5"    ; "SA"
+925         ; 9      ; FIXED_LINE ; PREMIUM_RATE  ;                  ;                  ; "varcost_4/5"    ; "SA"

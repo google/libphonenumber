@@ -1,0 +1,5 @@
+Region ; Type         ; Number
+GQ     ; FIXED_LINE   ; "333091234"
+GQ     ; MOBILE       ; "222123456"
+GQ     ; TOLL_FREE    ; "800123456"
+GQ     ; PREMIUM_RATE ; "900123456"

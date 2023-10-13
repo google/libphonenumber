@@ -1,0 +1,12 @@
+Region ; Label                         ; Comment
+JP     ; SC                            ; "http://www.soumu.go.jp/main_sosiki/joho_tsusin/top/tel_number/number_shitei.html"
+JP     ; SC                            ; "http://www.numberingplans.com/?page=dialling&sub=areacodes&ac=JP"
+JP     ; SC_SMS_SERVICES               ; "As per confirmations from the carrier (NTTDocomo), these are SMS only short codes,\nwhich are used to interact with respective companies i.e. after scanning the code."
+JP     ; XML                           ; "http://www.soumu.go.jp/main_sosiki/joho_tsusin/top/tel_number/number_shitei.html"
+JP     ; XML                           ; "https://www.itu.int/oth/T020200006D/en"
+JP     ; XML                           ; "http://www.numberingplans.com/?page=dialling&sub=areacodes&ac=JP"
+JP     ; XML                           ; "nationalPrefixTransformRule is used here for purpose of capturing 0005999999 kind of\nshort codes without dropping intial '0' as national prefix. As we are using this field, the\nlibrary is unable to capture domestic carrier codes used, example input:\n003768-0XX-YYYY-ZZZZ. Due to historic reasons, the parts that we captured in\nnationalPrefixTransform rule can either be used to transform or to capture in fields like\npreferred_domestic_carrier_code; schema is designed this way."
+JP     ; XML_NO_INTERNATIONAL_DIALLING ; "Toll-free numbers with a leading ""00"" cannot be dialled internationally."
+JP     ; XML_TOLL_FREE                 ; "http://www.kddi.com/english/business/free_call_dx/number.html and\nhttp://tm.softbank.jp/english/business/phone_service/freecall_sp/index.html\nhttp://eonet.jp/home/denwa/service/access.html\nhttp://ci.fusioncom.co.jp/feature/\nhttp://www.auhikari.jp/service/tel/connection/index.html"
+JP     ; XML_TOLL_FREE                 ; "Note that in fact, the number length for 0037 and 0066 numbers should extend to 21\ndigits, confirmed with Yahoo JP. However, this extends well beyond the maximum number\nlength allowed by ITU and hence our library, so we only allow numbers up to 17 digits\nfor now (including both leading 00s)."
+JP     ; XML_UAN                       ; "Storing ""unified number service"" as UAN."

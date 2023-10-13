@@ -1,0 +1,32 @@
+Prefix      ; Length ; Type       ; Tariff        ; Operator     ; Format         ; Regions ; Geocode:en ; Provenance ; Comment
+2[12]       ; 8      ; FIXED_LINE ; STANDARD_RATE ;              ; "fmt1_2/2/2/2" ; "CF"    ; "Bangui"   ;            ; "Added based on client's request"
+700[04-9]   ; 8      ; MOBILE     ; STANDARD_RATE ; "a_cell"     ; "fmt1_2/2/2/2" ; "CF"    ;            ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+700[12]     ; 8      ; MOBILE     ; STANDARD_RATE ; "a_cell"     ; "fmt1_2/2/2/2" ; "CF"    ;            ; ITU
+7003        ; 8      ; MOBILE     ; STANDARD_RATE ; "a_cell"     ; "fmt1_2/2/2/2" ; "CF"    ;            ;            ; "Added based on client's request"
+70[1-35-7]  ; 8      ; MOBILE     ; STANDARD_RATE ; "a_cell"     ; "fmt1_2/2/2/2" ; "CF"    ;            ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+704[056]    ; 8      ; MOBILE     ; STANDARD_RATE ; "a_cell"     ; "fmt1_2/2/2/2" ; "CF"    ;            ; ITU
+704[1-47-9] ; 8      ; MOBILE     ; STANDARD_RATE ; "a_cell"     ; "fmt1_2/2/2/2" ; "CF"    ;            ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+708[05]     ; 8      ; MOBILE     ; STANDARD_RATE ; "a_cell"     ; "fmt1_2/2/2/2" ; "CF"    ;            ; ITU
+708[1-46-9] ; 8      ; MOBILE     ; STANDARD_RATE ; "a_cell"     ; "fmt1_2/2/2/2" ; "CF"    ;            ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+709[05-9]   ; 8      ; MOBILE     ; STANDARD_RATE ; "a_cell"     ; "fmt1_2/2/2/2" ; "CF"    ;            ; ITU
+709[1-4]    ; 8      ; MOBILE     ; STANDARD_RATE ; "a_cell"     ; "fmt1_2/2/2/2" ; "CF"    ;            ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+72          ; 8      ; MOBILE     ; STANDARD_RATE ; "orange"     ; "fmt1_2/2/2/2" ; "CF"    ;            ; ITU
+74          ; 8      ; MOBILE     ; STANDARD_RATE ; "orange"     ; "fmt1_2/2/2/2" ; "CF"    ;            ; IR21
+750[0-26-9] ; 8      ; MOBILE     ; STANDARD_RATE ; "telecel"    ; "fmt1_2/2/2/2" ; "CF"    ;            ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+750[3-5]    ; 8      ; MOBILE     ; STANDARD_RATE ; "telecel"    ; "fmt1_2/2/2/2" ; "CF"    ;            ; ITU
+75[1347-9]  ; 8      ; MOBILE     ; STANDARD_RATE ; "telecel"    ; "fmt1_2/2/2/2" ; "CF"    ;            ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+75[26]0     ; 8      ; MOBILE     ; STANDARD_RATE ; "telecel"    ; "fmt1_2/2/2/2" ; "CF"    ;            ; ITU
+75[26][1-9] ; 8      ; MOBILE     ; STANDARD_RATE ; "telecel"    ; "fmt1_2/2/2/2" ; "CF"    ;            ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+755[04-8]   ; 8      ; MOBILE     ; STANDARD_RATE ; "telecel"    ; "fmt1_2/2/2/2" ; "CF"    ;            ; ITU
+755[1-39]   ; 8      ; MOBILE     ; STANDARD_RATE ; "telecel"    ; "fmt1_2/2/2/2" ; "CF"    ;            ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+76          ; 8      ; MOBILE     ; STANDARD_RATE ; "telecel"    ; "fmt1_2/2/2/2" ; "CF"
+770[0-57]   ; 8      ; MOBILE     ; STANDARD_RATE ; "nationlink" ; "fmt1_2/2/2/2" ; "CF"    ;            ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+770[689]    ; 8      ; MOBILE     ; STANDARD_RATE ; "nationlink" ; "fmt1_2/2/2/2" ; "CF"    ;            ; ITU
+77[1-3679]  ; 8      ; MOBILE     ; STANDARD_RATE ; "nationlink" ; "fmt1_2/2/2/2" ; "CF"    ;            ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+774[0-35-7] ; 8      ; MOBILE     ; STANDARD_RATE ; "nationlink" ; "fmt1_2/2/2/2" ; "CF"    ;            ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+774[489]    ; 8      ; MOBILE     ; STANDARD_RATE ; "nationlink" ; "fmt1_2/2/2/2" ; "CF"    ;            ; ITU
+775[0-8]    ; 8      ; MOBILE     ; STANDARD_RATE ; "nationlink" ; "fmt1_2/2/2/2" ; "CF"    ;            ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+7759        ; 8      ; MOBILE     ; STANDARD_RATE ; "nationlink" ; "fmt1_2/2/2/2" ; "CF"    ;            ; ITU
+778[0-7]    ; 8      ; MOBILE     ; STANDARD_RATE ; "nationlink" ; "fmt1_2/2/2/2" ; "CF"    ;            ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+778[89]     ; 8      ; MOBILE     ; STANDARD_RATE ; "nationlink" ; "fmt1_2/2/2/2" ; "CF"    ;            ; ITU
+8776        ; 8      ; FIXED_LINE ; PREMIUM_RATE  ;              ; "fmt1_2/2/2/2" ; "CF"    ;            ; ITU

@@ -1,0 +1,15 @@
+Prefix         ; Length ; Type       ; Tariff        ; Operator          ; Format  ; Regions ; Provenance
+20             ; 6      ; FIXED_LINE ; STANDARD_RATE ;                   ; "fmt_6" ; "FO"    ; GOVERNMENT
+2[1-9]         ; 6      ; MOBILE     ; STANDARD_RATE ; "faroese_telecom" ; "fmt_6" ; "FO"    ; IR21
+[34]           ; 6      ; FIXED_LINE ; STANDARD_RATE ;                   ; "fmt_6" ; "FO"    ; GOVERNMENT
+5              ; 6      ; MOBILE     ; STANDARD_RATE ; "vodafone"        ; "fmt_6" ; "FO"    ; GOVERNMENT
+6[0-36]        ; 6      ; VOIP       ; STANDARD_RATE ;                   ; "fmt_6" ; "FO"    ; GOVERNMENT
+7[1-7]         ; 6      ; MOBILE     ; STANDARD_RATE ; "vodafone"        ; "fmt_6" ; "FO"    ; GOVERNMENT
+7[89]          ; 6      ; MOBILE     ; STANDARD_RATE ; "faroese_telecom" ; "fmt_6" ; "FO"    ; IR21
+80[257-9]      ; 6      ; FIXED_LINE ; TOLL_FREE     ;                   ; "fmt_6" ; "FO"    ; GOVERNMENT
+8[19]          ; 6      ; FIXED_LINE ; STANDARD_RATE ;                   ; "fmt_6" ; "FO"    ; GOVERNMENT
+88             ; 6      ; VOIP       ; STANDARD_RATE ;                   ; "fmt_6" ; "FO"
+90[13-5][15-7] ; 6      ; FIXED_LINE ; PREMIUM_RATE  ;                   ; "fmt_6" ; "FO"    ; GOVERNMENT
+902[125-7]     ; 6      ; FIXED_LINE ; PREMIUM_RATE  ;                   ; "fmt_6" ; "FO"    ; GOVERNMENT
+909            ; 6      ; FIXED_LINE ; PREMIUM_RATE  ;                   ; "fmt_6" ; "FO"    ; GOVERNMENT
+9[16]          ; 6      ; MOBILE     ; STANDARD_RATE ; "faroese_telecom" ; "fmt_6" ; "FO"    ; ITU

@@ -1,0 +1,139 @@
+Prefix           ; Length ; Type            ; Tariff        ; National Only ; Operator                             ; Format             ; Regions ; Geocode:en            ; Geocode:tr            ; Provenance
+212              ; 10     ; FIXED_LINE      ; STANDARD_RATE ; false         ;                                      ; "fixed_3/3/2/2"    ; "TR"    ; "Istanbul (Europe)"   ; "Istanbul (Avrupa)"   ; GOVERNMENT
+216              ; 10     ; FIXED_LINE      ; STANDARD_RATE ; false         ;                                      ; "fixed_3/3/2/2"    ; "TR"    ; "Istanbul (Anatolia)" ; "Istanbul (Anatolia)" ; GOVERNMENT
+222              ; 10     ; FIXED_LINE      ; STANDARD_RATE ; false         ;                                      ; "fixed_3/3/2/2"    ; "TR"    ; "Esksehir"            ; "Eskisehir"           ; GOVERNMENT
+224              ; 10     ; FIXED_LINE      ; STANDARD_RATE ; false         ;                                      ; "fixed_3/3/2/2"    ; "TR"    ; "Bursa"               ; "Bursa"               ; GOVERNMENT
+226              ; 10     ; FIXED_LINE      ; STANDARD_RATE ; false         ;                                      ; "fixed_3/3/2/2"    ; "TR"    ; "Yalova"              ; "Yalova"              ; GOVERNMENT
+228              ; 10     ; FIXED_LINE      ; STANDARD_RATE ; false         ;                                      ; "fixed_3/3/2/2"    ; "TR"    ; "Bilecik"             ; "Bilecik"             ; GOVERNMENT
+232              ; 10     ; FIXED_LINE      ; STANDARD_RATE ; false         ;                                      ; "fixed_3/3/2/2"    ; "TR"    ; "Izmir"               ; "İzmir"               ; GOVERNMENT
+236              ; 10     ; FIXED_LINE      ; STANDARD_RATE ; false         ;                                      ; "fixed_3/3/2/2"    ; "TR"    ; "Manisa"              ; "Manisa"              ; GOVERNMENT
+242              ; 10     ; FIXED_LINE      ; STANDARD_RATE ; false         ;                                      ; "fixed_3/3/2/2"    ; "TR"    ; "Antalya"             ; "Antalya"             ; GOVERNMENT
+246              ; 10     ; FIXED_LINE      ; STANDARD_RATE ; false         ;                                      ; "fixed_3/3/2/2"    ; "TR"    ; "Isparta"             ; "Isparta"             ; GOVERNMENT
+248              ; 10     ; FIXED_LINE      ; STANDARD_RATE ; false         ;                                      ; "fixed_3/3/2/2"    ; "TR"    ; "Burdur"              ; "Burdur"              ; GOVERNMENT
+252              ; 10     ; FIXED_LINE      ; STANDARD_RATE ; false         ;                                      ; "fixed_3/3/2/2"    ; "TR"    ; "Mugla"               ; "Muğla"               ; GOVERNMENT
+256              ; 10     ; FIXED_LINE      ; STANDARD_RATE ; false         ;                                      ; "fixed_3/3/2/2"    ; "TR"    ; "Aydin"               ; "Aydın"               ; GOVERNMENT
+258              ; 10     ; FIXED_LINE      ; STANDARD_RATE ; false         ;                                      ; "fixed_3/3/2/2"    ; "TR"    ; "Denizli"             ; "Denizli"             ; GOVERNMENT
+262              ; 10     ; FIXED_LINE      ; STANDARD_RATE ; false         ;                                      ; "fixed_3/3/2/2"    ; "TR"    ; "Kocaeli"             ; "Kocaeli (İzmit)"     ; GOVERNMENT
+264              ; 10     ; FIXED_LINE      ; STANDARD_RATE ; false         ;                                      ; "fixed_3/3/2/2"    ; "TR"    ; "Sakarya"             ; "Sakarya (Adapazarı)" ; GOVERNMENT
+266              ; 10     ; FIXED_LINE      ; STANDARD_RATE ; false         ;                                      ; "fixed_3/3/2/2"    ; "TR"    ; "Balikesir"           ; "Balıkesir"           ; GOVERNMENT
+272              ; 10     ; FIXED_LINE      ; STANDARD_RATE ; false         ;                                      ; "fixed_3/3/2/2"    ; "TR"    ; "Afyon"               ; "Afyon"               ; GOVERNMENT
+274              ; 10     ; FIXED_LINE      ; STANDARD_RATE ; false         ;                                      ; "fixed_3/3/2/2"    ; "TR"    ; "Kutahya"             ; "Kütahya"             ; GOVERNMENT
+276              ; 10     ; FIXED_LINE      ; STANDARD_RATE ; false         ;                                      ; "fixed_3/3/2/2"    ; "TR"    ; "Usak"                ; "Uşak"                ; GOVERNMENT
+282              ; 10     ; FIXED_LINE      ; STANDARD_RATE ; false         ;                                      ; "fixed_3/3/2/2"    ; "TR"    ; "Tekirdag"            ; "Tekirdağ"            ; GOVERNMENT
+284              ; 10     ; FIXED_LINE      ; STANDARD_RATE ; false         ;                                      ; "fixed_3/3/2/2"    ; "TR"    ; "Edirne"              ; "Edirne"              ; GOVERNMENT
+286              ; 10     ; FIXED_LINE      ; STANDARD_RATE ; false         ;                                      ; "fixed_3/3/2/2"    ; "TR"    ; "Canakkale"           ; "Çanakkale"           ; GOVERNMENT
+288              ; 10     ; FIXED_LINE      ; STANDARD_RATE ; false         ;                                      ; "fixed_3/3/2/2"    ; "TR"    ; "Kirklareli"          ; "Kırklareli"          ; GOVERNMENT
+312              ; 10     ; FIXED_LINE      ; STANDARD_RATE ; false         ;                                      ; "fixed_3/3/2/2"    ; "TR"    ; "Ankara"              ; "Ankara"              ; GOVERNMENT
+318              ; 10     ; FIXED_LINE      ; STANDARD_RATE ; false         ;                                      ; "fixed_3/3/2/2"    ; "TR"    ; "Kirikkale"           ; "Kırıkkale"           ; GOVERNMENT
+322              ; 10     ; FIXED_LINE      ; STANDARD_RATE ; false         ;                                      ; "fixed_3/3/2/2"    ; "TR"    ; "Adana"               ; "Adana"               ; GOVERNMENT
+324              ; 10     ; FIXED_LINE      ; STANDARD_RATE ; false         ;                                      ; "fixed_3/3/2/2"    ; "TR"    ; "Icel"                ; "Mersin"              ; GOVERNMENT
+326              ; 10     ; FIXED_LINE      ; STANDARD_RATE ; false         ;                                      ; "fixed_3/3/2/2"    ; "TR"    ; "Hatay"               ; "Hatay"               ; GOVERNMENT
+328              ; 10     ; FIXED_LINE      ; STANDARD_RATE ; false         ;                                      ; "fixed_3/3/2/2"    ; "TR"    ; "Osmaniye"            ; "Osmaniye"            ; GOVERNMENT
+332              ; 10     ; FIXED_LINE      ; STANDARD_RATE ; false         ;                                      ; "fixed_3/3/2/2"    ; "TR"    ; "Konya"               ; "Konya"               ; GOVERNMENT
+338              ; 10     ; FIXED_LINE      ; STANDARD_RATE ; false         ;                                      ; "fixed_3/3/2/2"    ; "TR"    ; "Karaman"             ; "Karaman"             ; GOVERNMENT
+342              ; 10     ; FIXED_LINE      ; STANDARD_RATE ; false         ;                                      ; "fixed_3/3/2/2"    ; "TR"    ; "Gaziantep"           ; "Gaziantep"           ; GOVERNMENT
+344              ; 10     ; FIXED_LINE      ; STANDARD_RATE ; false         ;                                      ; "fixed_3/3/2/2"    ; "TR"    ; "K. Maras"            ; "Kahramanmaraş"       ; GOVERNMENT
+346              ; 10     ; FIXED_LINE      ; STANDARD_RATE ; false         ;                                      ; "fixed_3/3/2/2"    ; "TR"    ; "Sivas"               ; "Sivas"               ; GOVERNMENT
+348              ; 10     ; FIXED_LINE      ; STANDARD_RATE ; false         ;                                      ; "fixed_3/3/2/2"    ; "TR"    ; "Kilis"               ; "Kilis"               ; GOVERNMENT
+352              ; 10     ; FIXED_LINE      ; STANDARD_RATE ; false         ;                                      ; "fixed_3/3/2/2"    ; "TR"    ; "Kayseri"             ; "Kayseri"             ; GOVERNMENT
+354              ; 10     ; FIXED_LINE      ; STANDARD_RATE ; false         ;                                      ; "fixed_3/3/2/2"    ; "TR"    ; "Yozgat"              ; "Yozgat"              ; GOVERNMENT
+356              ; 10     ; FIXED_LINE      ; STANDARD_RATE ; false         ;                                      ; "fixed_3/3/2/2"    ; "TR"    ; "Tokat"               ; "Tokat"               ; GOVERNMENT
+358              ; 10     ; FIXED_LINE      ; STANDARD_RATE ; false         ;                                      ; "fixed_3/3/2/2"    ; "TR"    ; "Amasya"              ; "Amasya"              ; GOVERNMENT
+362              ; 10     ; FIXED_LINE      ; STANDARD_RATE ; false         ;                                      ; "fixed_3/3/2/2"    ; "TR"    ; "Samsun"              ; "Samsun"              ; GOVERNMENT
+364              ; 10     ; FIXED_LINE      ; STANDARD_RATE ; false         ;                                      ; "fixed_3/3/2/2"    ; "TR"    ; "Corum"               ; "Çorum"               ; GOVERNMENT
+366              ; 10     ; FIXED_LINE      ; STANDARD_RATE ; false         ;                                      ; "fixed_3/3/2/2"    ; "TR"    ; "Kastamonu"           ; "Kastamonu"           ; GOVERNMENT
+368              ; 10     ; FIXED_LINE      ; STANDARD_RATE ; false         ;                                      ; "fixed_3/3/2/2"    ; "TR"    ; "Sinop"               ; "Sinop"               ; GOVERNMENT
+370              ; 10     ; FIXED_LINE      ; STANDARD_RATE ; false         ;                                      ; "fixed_3/3/2/2"    ; "TR"    ; "Karabuk"             ; "Karabük"             ; GOVERNMENT
+372              ; 10     ; FIXED_LINE      ; STANDARD_RATE ; false         ;                                      ; "fixed_3/3/2/2"    ; "TR"    ; "Zongdulak"           ; "Zonguldak"           ; GOVERNMENT
+374              ; 10     ; FIXED_LINE      ; STANDARD_RATE ; false         ;                                      ; "fixed_3/3/2/2"    ; "TR"    ; "Bolu"                ; "Bolu"                ; GOVERNMENT
+376              ; 10     ; FIXED_LINE      ; STANDARD_RATE ; false         ;                                      ; "fixed_3/3/2/2"    ; "TR"    ; "Cankiri"             ; "Çankırı"             ; GOVERNMENT
+378              ; 10     ; FIXED_LINE      ; STANDARD_RATE ; false         ;                                      ; "fixed_3/3/2/2"    ; "TR"    ; "Bartin"              ; "Bartın"              ; GOVERNMENT
+380              ; 10     ; FIXED_LINE      ; STANDARD_RATE ; false         ;                                      ; "fixed_3/3/2/2"    ; "TR"    ; "Duzce"               ; "Düzce"               ; GOVERNMENT
+382              ; 10     ; FIXED_LINE      ; STANDARD_RATE ; false         ;                                      ; "fixed_3/3/2/2"    ; "TR"    ; "Aksaray"             ; "Aksaray"             ; GOVERNMENT
+384              ; 10     ; FIXED_LINE      ; STANDARD_RATE ; false         ;                                      ; "fixed_3/3/2/2"    ; "TR"    ; "Nevsehir"            ; "Nevşehir"            ; GOVERNMENT
+386              ; 10     ; FIXED_LINE      ; STANDARD_RATE ; false         ;                                      ; "fixed_3/3/2/2"    ; "TR"    ; "Kirsehir"            ; "Kırşehir"            ; GOVERNMENT
+388              ; 10     ; FIXED_LINE      ; STANDARD_RATE ; false         ;                                      ; "fixed_3/3/2/2"    ; "TR"    ; "Nigde"               ; "Niğde"               ; GOVERNMENT
+392              ; 10     ; FIXED_LINE      ; STANDARD_RATE ; false         ;                                      ; "fixed_3/3/2/2"    ; "TR"    ; "Northern Cyprus"     ; "Kuzey Kıbrıs"        ; GOVERNMENT
+412              ; 10     ; FIXED_LINE      ; STANDARD_RATE ; false         ;                                      ; "fixed_3/3/2/2"    ; "TR"    ; "Diyarbakir"          ; "Diyarbakır"          ; GOVERNMENT
+414              ; 10     ; FIXED_LINE      ; STANDARD_RATE ; false         ;                                      ; "fixed_3/3/2/2"    ; "TR"    ; "Sanliurfa"           ; "Şanlıurfa"           ; GOVERNMENT
+416              ; 10     ; FIXED_LINE      ; STANDARD_RATE ; false         ;                                      ; "fixed_3/3/2/2"    ; "TR"    ; "Adiyaman"            ; "Adıyaman"            ; GOVERNMENT
+422              ; 10     ; FIXED_LINE      ; STANDARD_RATE ; false         ;                                      ; "fixed_3/3/2/2"    ; "TR"    ; "Malatya"             ; "Malatya"             ; GOVERNMENT
+424              ; 10     ; FIXED_LINE      ; STANDARD_RATE ; false         ;                                      ; "fixed_3/3/2/2"    ; "TR"    ; "Elazig"              ; "Elazığ"              ; GOVERNMENT
+426              ; 10     ; FIXED_LINE      ; STANDARD_RATE ; false         ;                                      ; "fixed_3/3/2/2"    ; "TR"    ; "Bingol"              ; "Bingöl"              ; GOVERNMENT
+428              ; 10     ; FIXED_LINE      ; STANDARD_RATE ; false         ;                                      ; "fixed_3/3/2/2"    ; "TR"    ; "Tuniceli"            ; "Tunceli"             ; GOVERNMENT
+432              ; 10     ; FIXED_LINE      ; STANDARD_RATE ; false         ;                                      ; "fixed_3/3/2/2"    ; "TR"    ; "Van"                 ; "Van"                 ; GOVERNMENT
+434              ; 10     ; FIXED_LINE      ; STANDARD_RATE ; false         ;                                      ; "fixed_3/3/2/2"    ; "TR"    ; "Bitlis"              ; "Bitlis"              ; GOVERNMENT
+436              ; 10     ; FIXED_LINE      ; STANDARD_RATE ; false         ;                                      ; "fixed_3/3/2/2"    ; "TR"    ; "Mus"                 ; "Muş"                 ; GOVERNMENT
+438              ; 10     ; FIXED_LINE      ; STANDARD_RATE ; false         ;                                      ; "fixed_3/3/2/2"    ; "TR"    ; "Hakkari"             ; "Hakkari"             ; GOVERNMENT
+442              ; 10     ; FIXED_LINE      ; STANDARD_RATE ; false         ;                                      ; "fixed_3/3/2/2"    ; "TR"    ; "Erzurum"             ; "Erzurum"             ; GOVERNMENT
+444              ; 7      ; UAN             ; STANDARD_RATE ; true          ;                                      ; "uan_3/1/3"        ; "TR"
+446              ; 10     ; FIXED_LINE      ; STANDARD_RATE ; false         ;                                      ; "fixed_3/3/2/2"    ; "TR"    ; "Erzincan"            ; "Erzincan"            ; GOVERNMENT
+452              ; 10     ; FIXED_LINE      ; STANDARD_RATE ; false         ;                                      ; "fixed_3/3/2/2"    ; "TR"    ; "Ordu"                ; "Ordu"                ; GOVERNMENT
+454              ; 10     ; FIXED_LINE      ; STANDARD_RATE ; false         ;                                      ; "fixed_3/3/2/2"    ; "TR"    ; "Giresun"             ; "Giresun"             ; GOVERNMENT
+456              ; 10     ; FIXED_LINE      ; STANDARD_RATE ; false         ;                                      ; "fixed_3/3/2/2"    ; "TR"    ; "Gumushane"           ; "Gümüşhane"           ; GOVERNMENT
+458              ; 10     ; FIXED_LINE      ; STANDARD_RATE ; false         ;                                      ; "fixed_3/3/2/2"    ; "TR"    ; "Bayburt"             ; "Bayburt"             ; GOVERNMENT
+462              ; 10     ; FIXED_LINE      ; STANDARD_RATE ; false         ;                                      ; "fixed_3/3/2/2"    ; "TR"    ; "Trabzon"             ; "Trabzon"             ; GOVERNMENT
+464              ; 10     ; FIXED_LINE      ; STANDARD_RATE ; false         ;                                      ; "fixed_3/3/2/2"    ; "TR"    ; "Rize"                ; "Rize"                ; GOVERNMENT
+466              ; 10     ; FIXED_LINE      ; STANDARD_RATE ; false         ;                                      ; "fixed_3/3/2/2"    ; "TR"    ; "Artvin"              ; "Artvin"              ; GOVERNMENT
+472              ; 10     ; FIXED_LINE      ; STANDARD_RATE ; false         ;                                      ; "fixed_3/3/2/2"    ; "TR"    ; "Agri"                ; "Ağrı"                ; GOVERNMENT
+474              ; 10     ; FIXED_LINE      ; STANDARD_RATE ; false         ;                                      ; "fixed_3/3/2/2"    ; "TR"    ; "Kars"                ; "Kars"                ; GOVERNMENT
+476              ; 10     ; FIXED_LINE      ; STANDARD_RATE ; false         ;                                      ; "fixed_3/3/2/2"    ; "TR"    ; "Igdir"               ; "Iğdır"               ; GOVERNMENT
+478              ; 10     ; FIXED_LINE      ; STANDARD_RATE ; false         ;                                      ; "fixed_3/3/2/2"    ; "TR"    ; "Ardahan"             ; "Ardahan"             ; GOVERNMENT
+482              ; 10     ; FIXED_LINE      ; STANDARD_RATE ; false         ;                                      ; "fixed_3/3/2/2"    ; "TR"    ; "Mardin"              ; "Mardin"              ; GOVERNMENT
+484              ; 10     ; FIXED_LINE      ; STANDARD_RATE ; false         ;                                      ; "fixed_3/3/2/2"    ; "TR"    ; "Stirt"               ; "Siirt"               ; GOVERNMENT
+486              ; 10     ; FIXED_LINE      ; STANDARD_RATE ; false         ;                                      ; "fixed_3/3/2/2"    ; "TR"    ; "Sirnak"              ; "Şırnak"              ; GOVERNMENT
+488              ; 10     ; FIXED_LINE      ; STANDARD_RATE ; false         ;                                      ; "fixed_3/3/2/2"    ; "TR"    ; "Batman"              ; "Batman"              ; GOVERNMENT
+50[15-7]         ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "turk_telekom"                       ; "mobile_3/3/2/2"   ; "TR"    ;                       ;                       ; GOVERNMENT
+510[015-9]       ; 10     ; MOBILE          ; STANDARD_RATE ; false         ;                                      ; "mobile_3/3/2/2"   ; "TR"
+5102[07-9]       ; 10     ; MOBILE          ; STANDARD_RATE ; false         ;                                      ; "mobile_3/3/2/2"   ; "TR"
+510210           ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "pasifik_telekom"                    ; "mobile_3/3/2/2"   ; "TR"    ;                       ;                       ; GOVERNMENT
+51021[1-9]       ; 10     ; MOBILE          ; STANDARD_RATE ; false         ;                                      ; "mobile_3/3/2/2"   ; "TR"
+51022[0-37]      ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "netgsm"                             ; "mobile_3/3/2/2"   ; "TR"    ;                       ;                       ; GOVERNMENT
+51022[4-689]     ; 10     ; MOBILE          ; STANDARD_RATE ; false         ;                                      ; "mobile_3/3/2/2"   ; "TR"
+51023[013-9]     ; 10     ; MOBILE          ; STANDARD_RATE ; false         ;                                      ; "mobile_3/3/2/2"   ; "TR"
+510232           ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "Foniv_telecommunications_services"  ; "mobile_3/3/2/2"   ; "TR"    ;                       ;                       ; GOVERNMENT
+51024[0-35-9]    ; 10     ; MOBILE          ; STANDARD_RATE ; false         ;                                      ; "mobile_3/3/2/2"   ; "TR"
+510244           ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "nida"                               ; "mobile_3/3/2/2"   ; "TR"    ;                       ;                       ; GOVERNMENT
+51025[0-46-9]    ; 10     ; MOBILE          ; STANDARD_RATE ; false         ;                                      ; "mobile_3/3/2/2"   ; "TR"
+510255           ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "ttm"                                ; "mobile_3/3/2/2"   ; "TR"    ;                       ;                       ; GOVERNMENT
+51026[0-57-9]    ; 10     ; MOBILE          ; STANDARD_RATE ; false         ;                                      ; "mobile_3/3/2/2"   ; "TR"
+510266           ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "medium_telecommunications_services" ; "mobile_3/3/2/2"   ; "TR"    ;                       ;                       ; GOVERNMENT
+510300           ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "mobilisim"                          ; "mobile_3/3/2/2"   ; "TR"    ;                       ;                       ; GOVERNMENT
+5103[01][1-9]    ; 10     ; MOBILE          ; STANDARD_RATE ; false         ;                                      ; "mobile_3/3/2/2"   ; "TR"
+510310           ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "assistant_telecom"                  ; "mobile_3/3/2/2"   ; "TR"    ;                       ;                       ; GOVERNMENT
+5103[25-9]       ; 10     ; MOBILE          ; STANDARD_RATE ; false         ;                                      ; "mobile_3/3/2/2"   ; "TR"
+5103[34][0-24-9] ; 10     ; MOBILE          ; STANDARD_RATE ; false         ;                                      ; "mobile_3/3/2/2"   ; "TR"
+510333           ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "roitel"                             ; "mobile_3/3/2/2"   ; "TR"    ;                       ;                       ; GOVERNMENT
+510343           ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "isnet"                              ; "mobile_3/3/2/2"   ; "TR"    ;                       ;                       ; GOVERNMENT
+510400           ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "duru_telekom"                       ; "mobile_3/3/2/2"   ; "TR"    ;                       ;                       ; GOVERNMENT
+5104[058][1-9]   ; 10     ; MOBILE          ; STANDARD_RATE ; false         ;                                      ; "mobile_3/3/2/2"   ; "TR"
+5104[1-467]      ; 10     ; MOBILE          ; STANDARD_RATE ; false         ;                                      ; "mobile_3/3/2/2"   ; "TR"
+510450           ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "pelicell"                           ; "mobile_3/3/2/2"   ; "TR"    ;                       ;                       ; GOVERNMENT
+510480           ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "alfa_telekom"                       ; "mobile_3/3/2/2"   ; "TR"    ;                       ;                       ; GOVERNMENT
+51049[0-8]       ; 10     ; MOBILE          ; STANDARD_RATE ; false         ;                                      ; "mobile_3/3/2/2"   ; "TR"
+510499           ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "hatnet"                             ; "mobile_3/3/2/2"   ; "TR"    ;                       ;                       ; GOVERNMENT
+512              ; 10     ; PAGER           ; STANDARD_RATE ; false         ;                                      ; "fixed_3/3/4"      ; "TR"    ;                       ;                       ; GOVERNMENT
+516[02-9]        ; 10     ; MOBILE          ; STANDARD_RATE ; false         ;                                      ; "mobile_3/3/2/2"   ; "TR"    ;                       ;                       ; GOVERNMENT
+5161[0-57-9]     ; 10     ; MOBILE          ; STANDARD_RATE ; false         ;                                      ; "mobile_3/3/2/2"   ; "TR"    ;                       ;                       ; GOVERNMENT
+51616            ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "turkcell"                           ; "mobile_3/3/2/2"   ; "TR"    ;                       ;                       ; IR21
+524              ; 10     ; MOBILE          ; STANDARD_RATE ; false         ;                                      ; "mobile_3/3/2/2"   ; "TR"    ;                       ;                       ; ITU
+53[0-24-9]       ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "turkcell"                           ; "mobile_3/3/2/2"   ; "TR"    ;                       ;                       ; IR21
+533[0-79]        ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "turkcell"                           ; "mobile_3/3/2/2"   ; "TR"    ;                       ;                       ; IR21
+5338[0-289]      ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "turkcell"                           ; "mobile_3/3/2/2"   ; "TR"    ;                       ;                       ; IR21
+5338[3-7]        ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "kuzey_kibris_turkcell"              ; "mobile_3/3/2/2"   ; "TR"
+54[013-9]        ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "vodafone"                           ; "mobile_3/3/2/2"   ; "TR"    ;                       ;                       ; IR21
+542[0-79]        ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "vodafone"                           ; "mobile_3/3/2/2"   ; "TR"    ;                       ;                       ; IR21
+5428[0-49]       ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "vodafone"                           ; "mobile_3/3/2/2"   ; "TR"    ;                       ;                       ; IR21
+5428[5-8]        ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "kktc_telsim"                        ; "mobile_3/3/2/2"   ; "TR"
+55[1-59]         ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "turk_telekom"                       ; "mobile_3/3/2/2"   ; "TR"
+561011           ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "selam"                              ; "mobile_3/3/2/2"   ; "TR"    ;                       ;                       ; GOVERNMENT
+56161            ; 10     ; MOBILE          ; STANDARD_RATE ;               ; "turkcell"                           ; "mobile_3/3/2/2"   ; "TR"    ;                       ;                       ; GOVERNMENT
+59221[12]        ; 10     ; PERSONAL_NUMBER ; STANDARD_RATE ; false         ;                                      ; "mobile_3/3/2/2"   ; "TR"
+592461           ; 10     ; PERSONAL_NUMBER ; STANDARD_RATE ; false         ;                                      ; "mobile_3/3/2/2"   ; "TR"
+59[46]           ; 10     ; MOBILE          ; STANDARD_RATE ; false         ;                                      ; "mobile_3/3/2/2"   ; "TR"
+800              ; 10     ; FIXED_LINE      ; TOLL_FREE     ; false         ;                                      ; "fixed_3/3/4"      ; "TR"
+800              ; 12,13  ; FIXED_LINE      ; TOLL_FREE     ; false         ;                                      ; "tollfree_3/3/6-7" ; "TR"
+811              ; 10     ; FIXED_LINE      ; TOLL_FREE     ; true          ;                                      ; "fixed_3/3/4"      ; "TR"
+850              ; 10     ; VOIP            ; STANDARD_RATE ; false         ;                                      ; "fixed_3/3/4"      ; "TR"
+8[89]8           ; 10     ; FIXED_LINE      ; PREMIUM_RATE  ; false         ;                                      ; "fixed_3/3/4"      ; "TR"
+900              ; 10     ; FIXED_LINE      ; PREMIUM_RATE  ; false         ;                                      ; "fixed_3/3/4"      ; "TR"

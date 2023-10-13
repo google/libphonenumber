@@ -2,26 +2,34 @@
 
 name: Testing Java API
 on: pull_request
+permissions:
+  contents: read
+
 jobs:
   java-test:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - name: Harden Runner
+      uses: step-security/harden-runner@8ca2b8b2ece13480cda6dacd3511b49857a23c09 # v2.5.1
+      with:
+        egress-policy: audit # TODO: change to 'egress-policy: block' after couple of runs
+
+    - uses: actions/checkout@ee0669bd1cc54295c223e0bb666b733df41de1c5 # v2.7.0
     - name: Set up JDK 8 and Maven
-      uses: actions/setup-java@v2
+      uses: actions/setup-java@cd89f46ac9d01407894225f350157564c9c7cee2 # v3.12.0
       with:
         java-version: '8'
         distribution: 'adopt'
-# Invoke the "travis" profile during Maven steps; see <profile> in pom.xml
+# Invoke the "github-actions" profile during Maven steps; see <profile> in pom.xml
 # files. This is configured not to build the "cpp-build" module.
 # The "mvn install" command will run by default during the "install" phase by
-# Travis, without the profile flag. Here we customize the install phase to use
-# the relevant profile. If we want to build "cpp-build" with Travis CI it's safe
-# to remove the first line entirely.
+# Github Actions, without the profile flag. Here we customize the install phase to
+# use the relevant profile. If we want to build "cpp-build" with Github Action CI
+# it's safe to remove the first line entirely.
     - name: Test Build Tools with Maven
       run: |
-        mvn install -P travis -DskipTests=true -Dmaven.javadoc.skip=true -B -V
-        mvn -P travis test
+        mvn install -P github-actions -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+        mvn -P github-actions test
     - name: Test Java API with Ant
       run: |
         ant clean -f java/build.xml
@@ -30,7 +38,12 @@ jobs:
   js-files-ascii-check:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - name: Harden Runner
+      uses: step-security/harden-runner@8ca2b8b2ece13480cda6dacd3511b49857a23c09 # v2.5.1
+      with:
+        egress-policy: audit # TODO: change to 'egress-policy: block' after couple of runs
+
+    - uses: actions/checkout@ee0669bd1cc54295c223e0bb666b733df41de1c5 # v2.7.0
     - name: Install ascii-safe-cli
       run: npm install -g is-ascii-safe-cli
     - name: Check whether .js api files are ascii safe or not.

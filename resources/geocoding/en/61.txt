@@ -14,6 +14,17 @@
 
 # Source: https://www.thenumberingsystem.com.au/#/number-register/search
 
+6120|New South Wales
+6121|New South Wales
+6122|New South Wales
+61230|New South Wales
+61231|New South Wales
+61232|New South Wales
+61233|Gosford
+61234|New South Wales
+61235|New South Wales
+61236|New South Wales
+61237|New South Wales
 61238000|Bowral
 61238001|Barrallier
 61238002|Bevendale
@@ -41,9 +52,9 @@
 61238024|Wombeyan Caves
 61238025|Woodhouselee
 61238026|Yerrinbool
-61238027|Bowral
-61238028|Bowral
-61238029|Bowral
+61238027|Barrallier
+61238028|Bevendale
+61238029|Binda
 61238030|Barrallier
 61238031|Bevendale
 61238032|Binda
@@ -151,32 +162,32 @@
 61238134|Wombeyan Caves
 61238135|Woodhouselee
 61238136|Yerrinbool
-61238137|Barrallier
+61238137|Goulburn
 61238138|Bevendale
 61238139|Binda
-61238140|Bowral
-61238141|Braidwood
-61238142|Breadalbane
-61238143|Bundanoon
-61238144|Bungonia
-61238145|Crookwell
-61238146|Golspie
-61238147|Goulburn
-61238148|Gundillion
-61238149|Gunning
-61238150|Lost River
-61238151|Marulan
-61238152|Nerriga
-61238153|Paddys River
-61238154|Reidsdale
-61238155|Robertson
-61238156|Rugby
-61238157|Tarago
-61238158|Taralga
-61238159|Tuena
-61238160|Wombeyan Caves
-61238161|Woodhouselee
-61238162|Yerrinbool
+61238140|Bevendale
+61238141|Bevendale
+61238142|Binda
+61238143|Binda
+61238144|Bowral
+61238145|Bowral
+61238146|Braidwood
+61238147|Braidwood
+61238148|Breadalbane
+61238149|Breadalbane
+61238150|Bundanoon
+61238151|Bundanoon
+61238152|Bungonia
+61238153|Bungonia
+61238154|Crookwell
+61238155|Crookwell
+61238156|Golspie
+61238157|Golspie
+61238158|Goulburn
+61238159|Goulburn
+61238160|Bowral
+61238161|Gundillion
+61238162|Gundillion
 61238163|Barrallier
 61238164|Bevendale
 61238165|Binda
@@ -204,16 +215,16 @@
 61238187|Woodhouselee
 61238188|Yerrinbool
 61238189|Bowral
-61238190|Barrallier
-61238191|Bevendale
-61238192|Binda
-61238193|Bowral
-61238194|Braidwood
-61238195|Breadalbane
-61238196|Bundanoon
-61238197|Bungonia
-61238198|Crookwell
-61238199|Golspie
+61238190|Paddys River
+61238191|Reidsdale
+61238192|Wombeyan Caves
+61238193|Gunning
+61238194|Gunning
+61238195|Lost River
+61238196|Lost River
+61238197|Marulan
+61238198|Marulan
+61238199|Nerriga
 61238200|Goulburn
 61238201|Gundillion
 61238202|Gunning
@@ -226,10 +237,21 @@
 61238209|Rugby
 61238210|Tarago
 61238211|Taralga
-61238212|Tuena
-61238213|Wombeyan Caves
-61238214|Woodhouselee
-61238215|Yerrinbool
+61238212|Taralga
+61238213|Tuena
+61238214|Tuena
+61238215|Wombeyan Caves
+61238216|Yerrinbool
+61238219|Woodhouselee
+6123822|Wombeyan Caves/Yerrinbool/Woodhouselee/Bowral/Braidwood/Breadalbane/Bundanoon/Bungonia/Crookwell
+6123823|Golspie/Gunning/Taralga/Goulburn/Nerriga/Paddys/River/Reidsdale/Robertson/Rugby/Tarago
+612383|Goulburn
+612384|New South Wales
+612385|Goulburn
+612386|Goulburn
+612387|New South Wales
+612388|Goulburn
+612389|New South Wales
 61240000|Bandon Grove
 61240001|Branxton
 61240002|Bulahdelah
@@ -261,28 +283,28 @@
 61240028|Tea Gardens
 61240029|Wards River
 61240030|Wootton
-61240031|Bandon Grove
-61240032|Branxton
-61240033|Bulahdelah
-61240034|Cessnock
-61240035|Clarence Town
-61240036|Dungog
-61240037|East Gresford
-61240038|Eccleston
+61240031|Laguna
+61240032|Wards River
+61240033|Newcastle
+61240034|Newcastle
+61240035|Newcastle
+61240036|Newcastle
+61240037|Newcastle
+61240038|Maitland
 61240039|Karuah
 61240040|Laguna
 61240041|Maitland
 61240042|Mulbring
-61240043|Nelson Bay
+61240043|Maitland
 61240044|Raymond Terrace
 61240045|Maitland
 61240046|Newcastle
 61240047|Raymond Terrace
 61240048|Stroud
 61240049|Swansea
-61240050|Tea Gardens
-61240051|Wards River
-61240052|Wootton
+61240050|Bandon Grove
+61240051|Bandon Grove
+61240052|Newcastle
 61240053|Bandon Grove
 61240054|Branxton
 61240055|Bulahdelah
@@ -341,26 +363,26 @@
 61240108|Wards River
 61240109|Wootton
 61240110|Bandon Grove
-61240111|Bandon Grove
+61240111|Newcastle
 61240112|Branxton
 61240113|Bulahdelah
 61240114|Cessnock
 61240115|Clarence Town
-61240116|Dungog
-61240117|East Gresford
-61240118|Eccleston
-61240119|Karuah
-61240120|Laguna
-61240121|Maitland
-61240122|Mulbring
-61240123|Nelson Bay
-61240124|Newcastle
-61240125|Raymond Terrace
-61240126|Stroud
-61240127|Swansea
-61240128|Tea Gardens
-61240129|Wards River
-61240130|Wootton
+61240116|Branxton
+61240117|Branxton
+61240118|Bulahdelah
+61240119|Bulahdelah
+61240120|Cessnock
+61240121|Cessnock
+61240122|Clarence Town
+61240123|Clarence Town
+61240124|Dungog
+61240125|Dungog
+61240126|East Gresford
+61240127|East Gresford
+61240128|Eccleston
+61240129|Eccleston
+61240130|Cessnock
 61240131|Newcastle
 61240132|Newcastle
 61240133|Newcastle
@@ -729,55 +751,55 @@
 61240709|Tea Gardens
 61240710|Wards River
 61240711|Wootton
-61240712|Bandon Grove
-61240713|Branxton
-61240714|Bulahdelah
-61240715|Cessnock
-61240716|Clarence Town
-61240717|Dungog
-61240718|East Gresford
-61240719|Eccleston
-61240720|Karuah
+61240712|Karuah
+61240713|Karuah
+61240714|Laguna
+61240715|Laguna
+61240716|Maitland
+61240717|Mulbring
+61240718|Mulbring
+61240719|Nelson Bay
+61240720|Newcastle
 61240721|Laguna
-61240722|Maitland
+61240722|Newcastle
 61240723|Mulbring
 61240724|Nelson Bay
 61240725|Newcastle
 61240726|Raymond Terrace
-61240727|Stroud
-61240728|Swansea
+61240727|Newcastle
+61240728|Maitland
 61240729|Tea Gardens
-61240730|Wards River
+61240730|Cessnock
 61240731|Wootton
-61240732|Bandon Grove
-61240733|Branxton
-61240734|Bulahdelah
-61240735|Cessnock
-61240736|Clarence Town
-61240737|Dungog
-61240738|East Gresford
-61240739|Eccleston
-61240740|Karuah
-61240741|Laguna
-61240742|Maitland
-61240743|Mulbring
-61240744|Nelson Bay
-61240745|Newcastle
-61240746|Raymond Terrace
-61240747|Stroud
-61240748|Swansea
-61240749|Tea Gardens
-61240750|Wards River
-61240751|Wootton
+61240732|Branxton
+61240733|Bandon Grove
+61240734|Branxton
+61240735|Bulahdelah
+61240736|Cessnock
+61240737|Clarence Town
+61240738|Dungog
+61240739|East Gresford
+61240740|Eccleston
+61240741|Karuah
+61240742|Laguna
+61240743|Maitland
+61240744|Mulbring
+61240745|Nelson Bay
+61240746|Newcastle
+61240747|Raymond Terrace
+61240748|Stroud
+61240749|Swansea
+61240750|Tea Gardens
+61240751|Wards River
 61240752|Newcastle
-61240753|Bandon Grove
-61240754|Branxton
-61240755|Bulahdelah
-61240756|Cessnock
-61240757|Clarence Town
-61240758|Dungog
-61240759|East Gresford
-61240760|Eccleston
+61240753|Nelson Bay
+61240754|Raymond Terrace
+61240755|Newcastle
+61240756|Stroud
+61240757|Raymond Terrace
+61240758|Swansea
+61240759|Stroud
+61240760|Newcastle
 61240761|Karuah
 61240762|Laguna
 61240763|Maitland
@@ -787,14 +809,30 @@
 61240767|Raymond Terrace
 61240768|Stroud
 61240769|Swansea
-61240770|Tea Gardens
-61240771|Wards River
-61240772|Wootton
+61240770|Swansea
+61240771|Tea Gardens
+61240772|Tea Gardens
+61240773|Newcastle
+61240774|Newcastle
+61240776|Newcastle
+6124078|Swansea
+6124079|Swansea
+6124080|Newcastle
+6124081|Newcastle/Raymond Terrace
+6124082|Cessnock/Newcastle/Maitland/Wards River/Wootton
+6124083|Nelson Bay/Newcastle/Karuah/Bandon Grove/Branxton/Bulahdelah/Cessnock/Clarence Town
+6124084|Dungog/East Gresford/Eccleston/Karuah/Laguna/Maitland/Mulbring/Nelson Bay
+6124085|Maitland/Nelson Bay/Newcastle/Raymond Terrace/Stroud/Swansea
+6124086|Tea Gardens/Wards River/Wootton/Maitland/Newcastle
+6124087|Cessnock/Maitland/Newcastle
 6124088|Newcastle
 6124089|Newcastle
 61240896|Raymond Terrace
 61240897|Raymond Terrace
 61240898|Raymond Terrace
+6124090|Newcastle
+6124091|Newcastle/Maitland
+6124092|Newcastle
 6124099|Newcastle
 6124200|Wollongong
 6124201|Wollongong
@@ -850,41 +888,37 @@
 61242092|Kiama
 61242097|Helensburgh
 61242098|Kiama
+6124210|Wollongong
 61242100|Kiama
 61242101|Helensburgh
 61242102|Kiama
-61242103|Wollongong
-61242104|Helensburgh
-61242105|Kiama
-61242106|Wollongong
-61242107|Wollongong
-61242108|Wollongong
-61242109|Wollongong
+61242105|Helensburgh
 6124211|Wollongong
 61242111|Kiama
 61242112|Kiama
 61242113|Kiama
 6124212|Wollongong
 6124213|Wollongong
-6124214|Wollongong
+61242140|Wollongong
+61242141|Wollongong
+61242142|Wollongong
+61242143|Wollongong
+61242144|Kiama
 61242145|Helensburgh
 61242146|Kiama
+61242147|Wollongong
 61242148|Helensburgh
 61242149|Kiama
-61242150|Wollongong
+61242150|Helensburgh
+61242151|Wollongong
+6124216|Kiama/Wollongong
+6124217|Helensburgh/Kiama/Wollongong
 612422|Wollongong
-6124230|Kiama
+612423|Kiama
 6124231|Wollongong
-6124232|Kiama
-6124233|Kiama
-6124234|Kiama
-6124235|Kiama
-6124236|Kiama
-6124237|Kiama
 6124238|Wollongong
 61242380|Helensburgh
-61242381|Kiama
-61242389|Kiama
+6124239|Wollongong
 6124240|Wollongong
 6124242|Wollongong
 6124243|Wollongong
@@ -893,6 +927,7 @@
 6124245|Wollongong
 6124246|Wollongong
 6124247|Wollongong
+6124248|Wollongong
 61242490|Wollongong
 61242491|Wollongong
 61242492|Wollongong
@@ -975,8 +1010,8 @@
 61243072|Mangrove Mountain
 61243073|Mangrove Mountain
 61243074|Wyong
-61243075|Gosford
-61243076|Mangrove Mountain
+61243075|Mangrove Mountain
+61243076|Wyong
 61243077|Wyong
 61243078|Gosford
 61243079|Gosford
@@ -1033,9 +1068,12 @@
 61243166|Gosford
 61243167|Mangrove Mountain
 61243168|Wyong
-61243169|Gosford
+61243169|Wyong
 61243170|Mangrove Mountain
 61243171|Wyong
+61243172|Wyong
+6124318|Gosford
+6124319|Gosford/Mangrove Mountain/Wyong
 612432|Gosford
 61243262|Wyong
 61243263|Wyong
@@ -1068,6 +1106,7 @@
 61243465|Gosford
 61243466|Gosford
 61243474|Gosford
+61243475|Wyong
 6124348|Gosford
 6124349|Gosford
 612435|Wyong
@@ -1083,8 +1122,10 @@
 61243809|Gosford
 6124381|Gosford
 6124382|Gosford
+6124383|Wyong
 6124384|Gosford
 6124385|Gosford
+6124386|Gosford
 6124388|Gosford
 6124389|Gosford
 6124390|Wyong
@@ -1114,7 +1155,7 @@
 61244016|Milton-ulladulla
 61244017|Milton-ulladulla
 61244018|Milton-ulladulla
-61244019|Jilliga
+61244019|Bawley Point
 61244020|Moruya
 61244021|Moruya
 61244022|Moruya
@@ -1135,13 +1176,13 @@
 61244037|Huskisson
 61244038|Milton-ulladulla
 61244039|Nowra
-61244040|Moruya
-61244041|Narooma
-61244042|Bawley Point
-61244043|Berry
-61244044|Huskisson
-61244045|Milton-ulladulla
-61244046|Nowra
+61244040|Berry
+61244041|Batemans Bay
+61244042|Huskisson
+61244043|Bawley Point
+61244044|Jilliga
+61244045|Berry
+61244046|Milton-ulladulla
 61244047|Batemans Bay
 61244048|Jilliga
 61244049|Moruya
@@ -1159,12 +1200,12 @@
 61244061|Berry
 61244062|Huskisson
 61244063|Milton-ulladulla
-61244064|Batemans Bay
-61244065|Jilliga
-61244066|Moruya
-61244067|Narooma
-61244068|Bawley Point
-61244069|Berry
+61244064|Moruya
+61244065|Huskisson
+61244066|Narooma
+61244067|Jilliga
+61244068|Nowra
+61244069|Milton-ulladulla
 61244070|Batemans Bay
 61244071|Jilliga
 61244072|Moruya
@@ -1174,9 +1215,9 @@
 61244076|Huskisson
 61244077|Milton-ulladulla
 61244078|Nowra
-61244079|Huskisson
-61244080|Milton-ulladulla
-61244081|Nowra
+61244079|Batemans Bay
+61244080|Moruya
+61244081|Bawley Point
 61244082|Batemans Bay
 61244083|Nowra
 61244084|Moruya
@@ -1273,15 +1314,15 @@
 61244175|Moruya
 61244176|Narooma
 61244177|Nowra
-61244178|Batemans Bay
-61244179|Bawley Point
-61244180|Berry
-61244181|Huskisson
-61244182|Jilliga
+61244178|Berry
+61244179|Narooma
+61244180|Huskisson
+61244181|Nowra
+61244182|Nowra
 61244183|Milton-ulladulla
-61244184|Moruya
-61244185|Narooma
-61244186|Nowra
+61244184|Jilliga
+61244185|Milton-ulladulla
+61244186|Moruya
 61244187|Batemans Bay
 61244188|Bawley Point
 61244189|Berry
@@ -1291,15 +1332,17 @@
 61244193|Moruya
 61244194|Narooma
 61244195|Nowra
-61244196|Batemans Bay
-61244197|Bawley Point
-61244198|Berry
-61244199|Huskisson
-61244200|Jilliga
-61244201|Milton-ulladulla
-61244202|Moruya
-61244203|Narooma
-61244204|Nowra
+61244196|Narooma
+61244197|Nowra
+61244198|Batemans Bay
+61244199|Bawley Point
+61244200|Berry
+61244201|Huskisson
+61244202|Jilliga
+61244203|Milton-ulladulla
+61244204|Moruya
+61244205|Batemans Bay
+61244208|Batemans Bay
 6124421|Nowra
 6124422|Nowra
 6124423|Nowra
@@ -1324,6 +1367,7 @@
 61244276|Bawley Point
 61244277|Bawley Point
 61244278|Jilliga
+61244279|Batemans Bay
 6124428|Nowra
 61244280|Huskisson
 61244281|Huskisson
@@ -1339,6 +1383,7 @@
 61244297|Huskisson
 61244298|Milton-ulladulla
 61244299|Milton-ulladulla
+612443|Batemans Bay/Narooma/Nowra
 6124441|Huskisson
 6124442|Huskisson
 6124443|Huskisson
@@ -1360,6 +1405,8 @@
 6124446|Nowra
 6124447|Nowra
 6124448|Nowra
+6124449|Nowra
+6124450|Nowra
 6124454|Milton-ulladulla
 6124455|Milton-ulladulla
 6124456|Milton-ulladulla
@@ -1425,10 +1472,10 @@
 61245013|Wisemans Ferry
 61245014|Wisemans Ferry
 61245015|Wisemans Ferry
-61245016|Kurrajong Heights
-61245017|St Albans
-61245018|Windsor
-61245019|Wisemans Ferry
+61245016|St Albans
+61245017|Colo Heights
+61245018|Colo Heights
+61245019|Kurrajong Heights
 61245020|Colo Heights
 61245021|Kurrajong Heights
 61245022|St Albans
@@ -1443,10 +1490,10 @@
 61245031|Kurrajong Heights
 61245032|St Albans
 61245033|Wisemans Ferry
-61245034|Colo Heights
+61245034|St Albans
 61245035|Kurrajong Heights
-61245036|St Albans
-61245037|Windsor
+61245036|Windsor
+61245037|St Albans
 61245038|Wisemans Ferry
 61245039|Wisemans Ferry
 61245040|Colo Heights
@@ -1504,19 +1551,24 @@
 61245097|Wisemans Ferry
 61245098|Colo Heights
 61245099|Kurrajong Heights
-61245100|St Albans
-61245101|Windsor
-61245102|Wisemans Ferry
+61245100|Kurrajong Heights
+61245101|Wisemans Ferry
+61245102|St Albans
 61245103|Colo Heights
 61245104|Kurrajong Heights
 61245105|St Albans
 61245106|Windsor
 61245107|Wisemans Ferry
-61245108|Colo Heights
-61245109|Kurrajong Heights
-61245110|St Albans
-61245111|Windsor
-61245112|Wisemans Ferry
+61245108|Windsor
+61245109|Wisemans Ferry
+61245110|Colo Heights
+61245111|Kurrajong Heights
+61245112|St Albans
+61245113|Windsor
+61245114|Wisemans Ferry
+61245115|St Albans
+61245116|Windsor
+61245117|Wisemans Ferry
 6124545|Windsor
 61245460|Windsor
 6124555|Windsor
@@ -1542,6 +1594,7 @@
 6124566|Wisemans Ferry
 6124567|Kurrajong Heights
 6124568|St Albans
+6124569|Windsor
 612457|Windsor
 6124580|Windsor
 6124581|Wisemans Ferry
@@ -1580,7 +1633,7 @@
 61246020|Campbelltown
 61246021|Camden
 61246022|Campbelltown
-61246023|Picton
+61246023|Camden
 61246024|Camden
 61246025|Campbelltown
 61246026|Camden
@@ -1632,8 +1685,8 @@
 61246114|Campbelltown
 61246115|Picton
 61246116|Picton
-61246117|Camden
-61246118|Campbelltown
+61246117|Campbelltown
+61246118|Picton
 61246119|Picton
 61246120|Camden
 61246121|Campbelltown
@@ -1641,6 +1694,11 @@
 61246123|Camden
 61246124|Campbelltown
 61246125|Picton
+61246126|Campbelltown/Camden
+61246127|Campbelltown/Camden
+61246128|Campbelltown/Camden
+61246129|Campbelltown/Camden
+6124613|Campbelltown/Picton
 612462|Campbelltown
 61246232|Camden
 61246234|Picton
@@ -1744,11 +1802,11 @@
 61247050|Lawson
 61247051|Mount Wilson
 61247052|Mulgoa
-61247053|Katoomba
-61247054|Lawson
-61247055|Mount Wilson
+61247053|Mulgoa
+61247054|Mount Wilson
+61247055|Penrith
 61247056|Mulgoa
-61247057|Penrith
+61247057|Katoomba
 61247058|Katoomba
 61247059|Lawson
 61247060|Penrith
@@ -1804,8 +1862,8 @@
 61247124|Mount Wilson
 61247125|Mulgoa
 61247126|Penrith
-61247127|Katoomba
-61247128|Lawson
+61247127|Lawson
+61247128|Penrith
 61247129|Mount Wilson
 61247130|Mulgoa
 61247131|Penrith
@@ -1819,6 +1877,12 @@
 61247139|Mount Wilson
 61247140|Mulgoa
 61247141|Penrith
+61247142|Penrith
+61247146|Lawson/Katoomba/Penrith
+61247147|Lawson/Katoomba/Penrith
+61247148|Lawson/Katoomba/Penrith
+61247149|Lawson/Katoomba/Penrith
+6124715|Mount Wilson/Lawson
 612472|Penrith
 6124720|Mulgoa
 612473|Penrith
@@ -1837,9 +1901,9 @@
 6124743|Penrith
 6124744|Penrith
 61247444|Mulgoa
+6124745|Katoomba
 6124747|Penrith
-61247480|Penrith
-61247489|Penrith
+6124748|Penrith
 6124749|Penrith
 6124750|Lawson
 6124751|Penrith
@@ -1869,6 +1933,7 @@
 61247608|Katoomba
 61247609|Katoomba
 6124761|Penrith
+6124762|Mulgoa
 6124773|Mulgoa
 6124774|Mulgoa
 6124775|Mulgoa
@@ -1891,12 +1956,14 @@
 61247835|Mulgoa
 61247836|Mulgoa
 61247837|Penrith
+61247838|Penrith
 6124784|Katoomba
 6124785|Katoomba
 6124786|Penrith
 6124787|Katoomba
 6124788|Katoomba
 6124789|Penrith
+6124790|Penrith
 61247999|Penrith
 61248000|Barrallier
 61248001|Barrallier
@@ -1990,6 +2057,7 @@
 61248098|Lost River
 61248099|Rugby
 61248100|Goulburn
+61248101|Goulburn
 61248107|Gundillion
 61248108|Lost River
 61248109|Nerriga
@@ -2003,8 +2071,8 @@
 61248117|Crookwell
 61248118|Lost River
 61248119|Rugby
-61248120|Tuena
-61248121|Bevendale
+61248120|Robertson
+61248121|Marulan
 61248122|Braidwood
 61248123|Breadalbane
 61248124|Bungonia
@@ -2211,6 +2279,8 @@
 61248517|Bungonia
 61248518|Robertson
 61248519|Yerrinbool
+61248520|Lost River
+61248521|Gundillion
 61248526|Braidwood
 61248527|Breadalbane
 61248528|Gundillion
@@ -2404,6 +2474,7 @@
 61248797|Taralga
 61248798|Golspie
 61248799|Bowral
+61248800|Nerriga
 61248801|Bowral
 61248802|Gundillion
 61248803|Crookwell
@@ -2413,6 +2484,8 @@
 61248807|Tuena
 61248808|Rugby
 61248809|Braidwood
+6124881|Tarago/Woodhouselee/Robertson
+6124882|Tarago/Woodhouselee/Robertson
 6124883|Bundanoon
 61248839|Yerrinbool
 6124884|Bundanoon
@@ -2428,6 +2501,7 @@
 6124889|Yerrinbool
 61248900|Tuena
 61248901|Goulburn
+61248902|Tuena
 61248997|Bowral
 61248998|Goulburn
 61248999|Goulburn
@@ -2675,6 +2749,7 @@
 61250087|Albury
 61250088|Albury
 61250089|Albury
+61250105|Albury
 61250106|Balldale
 61250107|Barnawartha
 61250108|Coppabella
@@ -2731,33 +2806,33 @@
 61250159|Walwa
 61250160|Yackandandah
 61250161|Albury
-61250162|Balldale
-61250163|Barnawartha
-61250164|Coppabella
-61250165|Corowa
-61250166|Corryong
-61250167|Cudgewa
-61250168|Culcairn
-61250169|Dartmouth
-61250170|Eskdale
-61250171|Gerogery
-61250172|Holbrook
-61250173|Howlong
-61250174|Koetong
-61250175|Leicester Park
-61250176|Little Billabong
-61250177|Nariel
-61250178|Oaklands
-61250179|Ournie
-61250180|Rand
-61250181|Rennie
-61250182|Talgarno
-61250183|Tallangatta
-61250184|Tallangatta Valley
-61250185|Talmalmo
-61250186|Walla Walla
-61250187|Walwa
-61250188|Yackandandah
+61250162|Albury
+61250163|Balldale
+61250164|Balldale
+61250165|Barnawartha
+61250166|Barnawartha
+61250167|Coppabella
+61250168|Coppabella
+61250169|Corowa
+61250170|Corowa
+61250171|Corryong
+61250172|Corryong
+61250173|Cudgewa
+61250174|Cudgewa
+61250175|Culcairn
+61250176|Culcairn
+61250177|Dartmouth
+61250178|Dartmouth
+61250179|Eskdale
+61250180|Eskdale
+61250181|Gerogery
+61250182|Gerogery
+61250183|Holbrook
+61250184|Holbrook
+61250185|Howlong
+61250186|Howlong
+61250187|Koetong
+61250188|Koetong
 61250189|Albury
 61250190|Balldale
 61250191|Barnawartha
@@ -2786,34 +2861,45 @@
 61250214|Walla Walla
 61250215|Walwa
 61250216|Yackandandah
-61250217|Albury
-61250218|Balldale
-61250219|Barnawartha
-61250220|Coppabella
-61250221|Corowa
-61250222|Corryong
-61250223|Cudgewa
-61250224|Culcairn
-61250225|Dartmouth
-61250226|Eskdale
-61250227|Gerogery
-61250228|Holbrook
-61250229|Howlong
-61250230|Koetong
-61250231|Leicester Park
-61250232|Little Billabong
-61250233|Nariel
-61250234|Oaklands
-61250235|Ournie
-61250236|Rand
-61250237|Rennie
-61250238|Talgarno
-61250239|Tallangatta
-61250240|Tallangatta Valley
-61250241|Talmalmo
-61250242|Walla Walla
-61250243|Walwa
+61250217|Leicester Park
+61250218|Leicester Park
+61250219|Little Billabong
+61250220|Little Billabong
+61250221|Nariel
+61250222|Nariel
+61250223|Oaklands
+61250224|Oaklands
+61250225|Ournie
+61250226|Ournie
+61250227|Rand
+61250228|Rand
+61250229|Rennie
+61250230|Rennie
+61250231|Talgarno
+61250232|Talgarno
+61250233|Tallangatta
+61250234|Tallangatta
+61250235|Tallangatta Valley
+61250236|Tallangatta Valley
+61250237|Talmalmo
+61250238|Talmalmo
+61250239|Walla Walla
+61250240|Walla Walla
+61250241|Walwa
+61250242|Walwa
+61250243|Yackandandah
 61250244|Yackandandah
+61250245|Albury/Balldale/Barnawartha/Coppabella/Corowa
+61250246|Albury/Balldale/Barnawartha/Coppabella/Corowa
+61250247|Albury/Balldale/Barnawartha/Coppabella/Corowa
+61250248|Albury/Balldale/Barnawartha/Coppabella/Corowa
+61250249|Albury/Balldale/Barnawartha/Coppabella/Corowa
+6125025|Corryong/Cudgewa/Culcairn/Dartmouth/Eskdale/Gerogery/Holbrook/Howlong/Koetong/Leicester Park
+6125026|Little Billabong/Nariel/Oaklands/Ournie/Rand/Rennie/Talgarno/Tallangatta/Tallangatta Valley/Talmalmo
+6125027|Walla Walla/Walwa/Yackandandah/Nariel/Oaklands/Ournie/Rand/Rennie/Talgarno/Tallangatta
+6125028|Tallangatta Valley/Talmalmo/Walla Walla/Walwa/Yackandandah/Albury/Balldale/Barnawartha/Coppabella/Corowa
+6125029|Corryong/Cudgewa/Culcairn/Dartmouth/Eskdale/Gerogery/Holbrook/Howlong/Koetong/Leicester Park
+612503|Little Billabong/Nariel/Oaklands/Ournie/Rand/Rennie/Talgarno/Tallangatta/Tallangatta Valley/Talmalmo/Walla Walla/Walwa/Yackandandah
 612510|Canberra
 61251010|Anembo
 61251011|Binalong
@@ -2899,7 +2985,7 @@
 61251187|Uriarra Forest
 61251188|Yass
 61251189|Anembo
-61251190|Binalong
+61251190|Canberra
 61251191|Bungendore
 61251192|Burrinjuck
 61251193|Canberra
@@ -2909,9 +2995,9 @@
 61251197|Gundaroo
 61251198|Michelago
 61251199|Rye Park
-61251200|The Mullion
-61251201|Uriarra Forest
-61251202|Yass
+61251200|Binalong
+61251201|Anembo
+61251202|Bungendore
 61251203|Anembo
 61251204|Binalong
 61251205|Bungendore
@@ -2926,16 +3012,16 @@
 61251214|The Mullion
 61251215|Uriarra Forest
 61251216|Yass
-61251217|Anembo
+61251217|Burrinjuck
 61251218|Binalong
-61251219|Bungendore
+61251219|Canberra
 6125122|Canberra
 6125123|Canberra
 6125124|Canberra
 6125125|Canberra
 6125126|Canberra
 6125127|Canberra
-61251280|Burrinjuck
+61251280|Canberra
 61251281|Canberra
 61251282|Captains Flat
 61251283|Cavan
@@ -2945,47 +3031,19 @@
 61251287|Rye Park
 61251288|The Mullion
 61251289|Uriarra Forest
-61251290|Yass
+61251290|Captains Flat
 61251291|Canberra
-612530000|Leadville
-612530001|Leadville
-612530002|Leadville
-612530003|Leadville
-612530004|Leadville/Baldry/Bathurst/Birriwa
-612530005|Leadville/Baldry/Bathurst/Birriwa
-612530006|Leadville
-612530007|Baldry
-612530008|Bathurst
-612530009|Birriwa
-612530010|Lue
-612530011|Lue
-612530012|Lue
-612530013|Lue
-612530014|Lue/Blayney/Boorowa/Bribbaree
-612530015|Lue/Blayney/Boorowa/Bribbaree
-612530016|Lue
-612530017|Blayney
-612530018|Boorowa
-612530019|Bribbaree
-61253002|Mudgee
-612530029|Burraga
-612530030|Twelve Mile
-612530031|Twelve Mile
-612530032|Twelve Mile
-612530033|Twelve Mile
-612530034|Twelve Mile/Bylong/Canowindra/Bathurst
-612530035|Twelve Mile/Bylong/Canowindra/Bathurst
-612530036|Twelve Mile
-612530037|Bylong
-612530038|Canowindra
-612530039|Bathurst
-61253004|Windeyer
-612530048|Caragabal
-612530049|Cassilis
-61253005|Wollar
-612530055|Lithgow
-612530056|Orange
-612530059|Coolah
+61251292|Canberra
+612513|Cavan/Canberra/Gearys Gap/Gundaroo/Bungendore/Michelago/Burrinjuck/Rye Park/The Mullion/Captains Flat/UriarraForest/Yass
+612514|Canberra/Gearys Gap/Gundaroo/Michelago/Rye Park/The Mullion/Uriarra Forest/Yass/Anembo/Binalong/Bungendore/Burrinjuck/Captains Flat/Cavan
+612515|Canberra
+612516|Canberra
+61253000|Leadville/Baldry/Bathurst/Birriwa
+61253001|Lue/Blayney/Boorowa/Bribbaree/Birriwa
+61253002|Boorowa/Bribbaree/Burraga/Mudgee
+61253003|Bathurst/Burraga/Bylong/Canowindra/Twelve Mile
+61253004|Canowindra/Caragabal/Cassilis/Windeyer
+61253005|Cassilis/Coolah/Lithgow/Orange/Wollar
 61253006|Baldry
 612530068|Cowra
 612530069|Cudal
@@ -3842,7 +3900,8 @@
 61253307|Canowindra
 61253308|Harden
 61253309|Baldry
-61253320|Canowindra
+6125331|Blayney/Bylong/Canowindra
+6125332|Canowindra/Caragabal/Cassilis/Cowra
 61253330|Dunedoo
 61253331|Dunedoo
 61253332|Dunedoo
@@ -3853,14 +3912,15 @@
 61253337|Mudgee
 61253338|Mudgee
 61253339|Hill End
-61253349|Hampton
+6125334|Frogmore/Gooloogong/Greenethorpe/Hampton
 6125335|Orange
 61253350|Hampton
 61253351|Hampton
 61253355|Mudgee
-61253369|Running Stream
-61253380|Young
-61253381|Lyndhurst
+6125336|Koorawatha/Lyndhurst/Ooma/Running Stream
+6125337|Running Stream/Twelve Mile/Tyagong/Young
+6125338|Young/Lyndhurst/Oberon/Cowra/Grenfell/Bathurst/Orange
+6125339|Orange/Lithgow/Gooloogong/Greenethorpe/Grenfell/Cassilis/Gulgong/Cowra/Hampton/Harden/Hill End/Kandos/Killongbutta/Koorawatha/Laheys Creek/Leadville/Limekilns/Lue/Lyndhurst/Bathurst
 6125353|Orange
 6125354|Lithgow
 61253550|Bathurst
@@ -4483,7 +4543,7 @@
 61255616|Telegraph Point
 61255617|Toorooka
 61255618|Widden Valley
-61255619|Baerami
+61255619|Taree
 61255620|Bowraville
 61255621|Broke
 61255622|Bunnan
@@ -8600,7 +8660,7 @@
 612594209|Humula
 612594210|Ivanhoe
 612594211|Junee
-612594212|Junee Reefs
+612594212|Griffith
 612594213|Kikoira
 612594214|Kyeamba
 612594215|Lachlan
@@ -14897,8 +14957,7 @@
 61269997|Gundagai
 61269998|Mannus
 61269999|Nangus
-6127200|Sydney
-6127201|Sydney
+61272|Sydney
 61275000|Engadine
 61275001|Sutherland
 61275002|Engadine
@@ -17124,7 +17183,7 @@
 61341594|Morwell
 61341595|Mount Taylor
 61341596|Munro
-61341597|Nowa Nowa
+61341597|Sale
 61341598|Omeo
 61341599|Orbost
 61341600|Rosedale
@@ -17502,6 +17561,12 @@
 6134245|Geelong
 61342460|Geelong
 61342461|Geelong
+6134250|Swan Marsh/Torquay/Winchelsea South/Wingeel/Aireys Inlet/Anglesea/Apollo Bay/Bannockburn/Geelong
+6134251|Geelong/Inverleigh/Barwon Downs/Kennedys Creek/Beeac/Lara/Beech Forest/Lavers Hill/Birregurra/Lorne
+6134252|Geelong/Meredith/Colac/Queenscliff/Cressy/Swan Marsh/Torquay/Winchelsea South
+6134253|Inverleigh/Wingeel/Kennedys Creek/Lara/Lavers Hill/Lorne/Meredith/Queenscliff/Swan Marsh/Torquay
+61342540|Winchelsea South/Wingeel
+61342541|Winchelsea South/Wingeel
 6134300|Horsham
 61343010|Stawell
 61343011|Daylesford
@@ -17911,106 +17976,16 @@
 613431997|Wilkur
 613431998|Willaura
 613431999|Yaapeet
-613432000|Ararat
-613432001|Bacchus Marsh
-613432002|Ballan
-613432003|Ballarat
-613432004|Balliang
-613432005|Bangerang
-613432006|Banyena
-613432007|Beaufort
-613432008|Beulah
-613432009|Broughton
-613432010|Buangor
-613432011|Buninyong
-613432012|Clear Lake
-613432013|Creswick
-613432014|Crymelon
-613432015|Dadswells Bridge
-613432016|Daylesford
-613432017|Dimboola
-613432018|Elmhurst
-613432019|Gerang Gerung
-613432020|Glenisla
-613432021|Glenorchy
-613432022|Goroke
-613432023|Halls Gap
-613432024|Horsham
-613432025|Jeparit
-613432026|Kalkee
-613432027|Kaniva
-613432028|Laharum
-613432029|Lake Bolac
-613432030|Landsborough
-613432031|Learmonth
-613432032|Linton
-613432033|Lorquon
-613432034|Marnoo
-613432035|Maroona
-613432036|Minimay
-613432037|Minyip
-613432038|Mount Wallace
-613432039|Moyston
-613432040|Murtoa
-613432041|Natimuk
-613432042|Navarre
-613432043|Nhill
-613432044|Polkemmet
-613432045|Rainbow
-613432046|Rokewood
-613432047|Scarsdale
-613432048|Serviceton
-613432049|Skipton
-613432050|Stawell
-613432051|Stoneleigh
-613432052|Streatham
-613432053|Telopea Downs
-613432054|Warracknabeal
-613432055|Wilkur
-613432056|Willaura
-613432057|Yaapeet
-613432058|Ararat
-613432059|Bacchus Marsh
-613432060|Ballan
-613432061|Ballarat
-613432062|Balliang
-613432063|Bangerang
-613432064|Banyena
-613432065|Beaufort
-613432066|Beulah
-613432067|Broughton
-613432068|Buangor
-613432069|Buninyong
-613432070|Clear Lake
-613432071|Creswick
-613432072|Crymelon
-613432073|Dadswells Bridge
-613432074|Daylesford
-613432075|Dimboola
-613432076|Elmhurst
-613432077|Gerang Gerung
-613432078|Glenisla
-613432079|Glenorchy
-613432080|Goroke
-613432081|Halls Gap
-613432082|Horsham
-613432083|Jeparit
-613432084|Kalkee
-613432085|Kaniva
-613432086|Laharum
-613432087|Lake Bolac
-613432088|Landsborough
-613432089|Learmonth
-613432090|Linton
-613432091|Lorquon
-613432092|Marnoo
-613432093|Maroona
-613432094|Minimay
-613432095|Minyip
-613432096|Mount Wallace
-613432097|Moyston
-613432098|Murtoa
-613432099|Natimuk
+61343200|Ballarat
+61343201|Horsham
+61343202|Dadswells Bridge
+61343203|Balliang
+61343204|Maroona
+61343205|Ararat/Bacchus Marsh/Ballan/Ballarat/Balliang/Bangerang/Banyena/Beaufort
+61343206|Ballan/Ballarat/Balliang/Bangerang/Banyena/Beaufort/Beulah/Broughton/Buangor/Buninyong
+61343207|Clear Lake/Creswick/Crymelon/Dadswells Bridge/Daylesford/Dimboola/Elmhurst/Gerang Gerung/Glenisla/Glenorchy
+61343208|Goroke/Halls Gap/Horsham/Jeparit/Kalkee/Kaniva/Laharum/Lake Bolac/Landsborough/Learmonth
+61343209|Linton/Lorquon/Marnoo/Maroona/Minimay/Minyip/Mount Wallace/Moyston/Murtoa/Natimuk
 613432100|Navarre
 613432101|Nhill
 613432102|Polkemmet
@@ -18097,26 +18072,41 @@
 61343227|Balliang
 61343228|Balliang
 61343229|Dadswells Bridge
+6134323|Dadswells Bridge/Daylesford/Glenisla/Maroona
 61343240|Maroona
 61343259|Serviceton
+6134326|Serviceton/Warracknabeal/Halls Gap/Bacchus Marsh
+6134327|Ballarat/Bacchus Marsh/Kaniva/Learmonth/Clear Lake/Creswick/Crymelon/Dadswells Bridge/Daylesford/Dimboola/Elmhurst/Gerang Gerung/Glenisla/Glenorchy
+61343280|Goroke/Halls Gap/Horsham/Jeparit/Kalkee/Natimuk/Navarre/Nhill/Polkemmet/Rainbow
+61343281|Rokewood/Scarsdale/Serviceton/Skipton/Stawell/Stoneleigh/Streatham/Telopea Downs/Warracknabeal/Wilkur
+61343282|Willaura/Yaapeet/Kaniva/Laharum/Lake Bolac/Landsborough/Learmonth/Linton/Lorquon/Marnoo
+61343283|Maroona/Minimay/Minyip/Mount Wallace/Moyston/Murtoa/Natimuk/Navarre/Nhill/Polkemmet
+61343284|Ararat
+61343285|Rainbow/Rokewood/Scarsdale/Serviceton/Skipton/Stawell/Stoneleigh/Streatham/Telopea Downs/Warracknabeal
+61343286|Bacchus Marsh
+61343287|Wilkur/Willaura/Yaapeet/Glenisla/Glenorchy/Goroke/Halls Gap/Horsham/Jeparit/Kalkee
+61343288|Ballan
+61343289|Warracknabeal
+61343290|Ballarat
+61343291|Ballarat
+61343292|Balliang
+61343293|Ballarat
+61343294|Bangerang
+61343295|Kaniva/Laharum/Lake Bolac/Landsborough/Learmonth/Linton/Lorquon/Marnoo/Maroona/Minimay
+61343296|Banyena
+61343297|Minyip/Mount Wallace/Moyston/Murtoa/Natimuk/Navarre/Nhill/Polkemmet/Rainbow/Rokewood
+61343298|Beaufort
+61343299|Horsham
 6134330|Ballarat
 6134331|Ballarat
-6134332|Ballarat
+6134332|Elmhurst/Horsham/Gerang Gerung/Horsham/Glenisla/Glenorchy/Ballarat
 6134333|Ballarat
 6134334|Ballarat
-61343350|Ballarat
-61343351|Ballarat
-61343352|Ballarat
-61343353|Ballarat
-61343354|Ballarat
-61343355|Ballarat
-61343356|Ararat
-61343357|Ararat
-61343358|Ararat
-6134336|Ballarat
-6134337|Ballarat
-6134338|Ballarat
-6134339|Ballarat
+6134335|Ballarat/Ararat/Stawell
+6134336|Goroke/Halls Gap/Horsham/Jeparit/Kalkee/Ballarat
+6134337|Kaniva/Laharum/Lake Bolac/Landsborough/Learmonth
+6134338|Linton/Lorquon/Marnoo/Maroona/Minimay
+6134339|Minyip/Mount Wallace/Moyston/Murtoa/Natimuk
 61343429|Ballan
 6134343|Ballarat
 61343440|Ballarat
@@ -18818,9 +18808,18 @@
 613442253|Wycheproof
 61344226|Bridgewater
 61344227|Maldon
-61344230|Birchip
+6134423|Birchip/Charlton/Cohuna
 61344249|Lake Meran
 61344260|Moonambel
+61344261|St Arnaud
+61344262|St Arnaud
+61344263|St Arnaud
+61344264|Talbot
+61344265|Talbot
+61344266|Talbot
+61344267|Traynors Lagoon
+61344268|Traynors Lagoon
+61344269|Traynors Lagoon
 61344311|Bendigo
 61344312|Bendigo
 61344313|Bendigo
@@ -19830,7 +19829,9 @@
 613470952|Yarrawonga
 613470953|Yea
 61347099|Cheshunt
-61347110|Kinglake
+6134710|Cheshunt/Devlins Bridge/Kilmore
+6134711|Kinglake/Mansfield/St James/Strathbogie
+6134712|Whorouly/Woods Point/Yarck/Beechworth
 6134800|Shepparton
 61348004|Cobram
 61348006|Tocumwal
@@ -29257,8 +29258,7 @@
 6137005|Melbourne
 6137006|Melbourne
 6137007|Melbourne
-6137010|Melbourne
-6137017|Melbourne
+613701|Melbourne
 6137020|Melbourne
 6137021|Melbourne
 6137022|Melbourne
@@ -29663,8 +29663,7 @@
 6138587|Clayton
 6138588|Clayton
 6138589|Melbourne
-6138590|Melbourne
-6138591|Melbourne
+613859|Melbourne
 6138604|Melbourne
 6138607|Melbourne
 6138608|Melbourne
@@ -29929,64 +29928,11 @@
 61389030|Dandenong
 61389031|Dandenong
 61389032|Dandenong
-6139000|Melbourne
-6139001|Melbourne
-6139002|Melbourne
-6139003|Melbourne
-6139004|Melbourne
-6139005|Melbourne
-6139006|Melbourne
+61390|Melbourne
 61390070|Eltham
-61390071|Melbourne
-61390072|Melbourne
-61390073|Melbourne
-61390074|Melbourne
-61390075|Melbourne
-61390076|Melbourne
-6139008|Melbourne
-6139009|Melbourne
 61390090|Eltham
 61390091|Eltham
 61390092|Eltham
-61390130|Melbourne
-61390154|Melbourne
-61390163|Melbourne
-6139022|Melbourne
-6139023|Melbourne
-6139024|Melbourne
-6139029|Melbourne
-6139034|Melbourne
-6139035|Melbourne
-6139036|Melbourne
-6139048|Melbourne
-6139049|Melbourne
-6139050|Melbourne
-6139051|Melbourne
-6139052|Melbourne
-6139055|Melbourne
-6139058|Melbourne
-61390635|Melbourne
-61390636|Melbourne
-61390637|Melbourne
-61390638|Melbourne
-61390639|Melbourne
-6139064|Melbourne
-6139065|Melbourne
-6139066|Melbourne
-6139067|Melbourne
-6139068|Melbourne
-6139069|Melbourne
-61390710|Melbourne
-61390711|Melbourne
-61390712|Melbourne
-61390713|Melbourne
-61390714|Melbourne
-6139076|Melbourne
-6139077|Melbourne
-6139078|Melbourne
-6139079|Melbourne
-613908|Melbourne
-61390990|Melbourne
 6139100|Melbourne
 61391011|Melbourne
 61391012|Melbourne
@@ -30517,43 +30463,11 @@
 61730594|Samford
 61730595|Beenleigh
 61730597|Ipswich
-61730600|Brisbane
-61730601|Samford
-61730602|Redcliffe
-61730603|Cleveland
-61730604|Ipswich
-61730605|Beenleigh
-61730606|Samford
-61730607|Redcliffe
-61730608|Cleveland
-61730609|Ipswich
-6173061|Brisbane
-61730610|Redcliffe
-61730611|Samford
-61730640|Brisbane
-61730641|Brisbane
-61730642|Bribie Island
-61730643|Brisbane
-61730644|Dayboro
-61730645|Dunwich
-61730646|Kooringal
-61730647|Redcliffe
-61730648|Russell Island
-61730649|Samford
-61730650|Bribie Island
-61730651|Brisbane
-61730652|Dayboro
-61730653|Dunwich
-61730654|Kooringal
-61730655|Redcliffe
-61730656|Russell Island
-61730657|Samford
-61730658|Bribie Island
-61730659|Brisbane
-6173066|Brisbane
-6173067|Brisbane
-6173068|Brisbane
-6173069|Brisbane
+617306|Brisbane
+6173060|Brisbane/Beenleigh/Cleveland/Ipswich/Redcliffe/Samford
+6173061|Brisbane/Redcliffe/Samford
+6173064|Brisbane/Bribie Island/Dayboro/Dunwich/Kooringal/Redcliffe/Russell Island/Samford
+6173065|Brisbane/Bribie Island/Dayboro/Dunwich/Kooringal/Redcliffe/Russell Island/Samford
 6173070|Brisbane
 6173071|Brisbane
 6173072|Brisbane
@@ -30701,9 +30615,7 @@
 6173297|Beenleigh
 6173298|Samford
 6173299|Beenleigh
-6173300|Brisbane
-61733095|Brisbane
-61733099|Brisbane
+617330|Brisbane
 6173316|Brisbane
 6173319|Brisbane
 6173322|Brisbane
@@ -30712,6 +30624,7 @@
 6173342|Brisbane
 617335|Brisbane
 617336|Brisbane
+617337|Brisbane
 6173380|Beenleigh
 6173381|Ipswich
 6173382|Beenleigh
@@ -30724,6 +30637,7 @@
 6173389|Ipswich
 61733898|Beenleigh
 61733899|Beenleigh
+617339|Brisbane
 61734000|Kooringal
 61734001|Kooringal
 61734002|Kooringal
@@ -31589,7 +31503,7 @@
 61740636|Euramo
 61740637|Euramo
 61740638|Georgetown
-61740639|Gordonvale
+61740639|Mareeba
 6174064|South Johnstone
 61740649|Herberton
 6174065|Silkwood
@@ -31651,7 +31565,7 @@
 61740741|Mutchilba
 61740742|Peninsula
 61740743|Ravenshoe
-61740744|Silkwood
+61740744|Ravenshoe
 61740745|South Johnstone
 61740746|Thursday Island
 61740747|Torres
@@ -33782,7 +33696,7 @@
 61743480|Boondooma
 61743481|Booyal
 61743482|Brooklands
-61743483|Brooweena
+61743483|Bundaberg
 61743484|Bundaberg
 61743485|Bunker
 61743486|Burnett
@@ -40464,7 +40378,7 @@
 61752290|Imbil
 61752291|Jimna
 61752292|Kalbar
-61752293|Kenilworth
+61752293|Laidley
 61752294|Kia Ora
 61752295|Kilcoy
 61752296|Kilkivan
@@ -40833,7 +40747,7 @@
 61753413|Noosaville
 61753414|Noosaville
 61753415|Noosaville
-617534169|Noosaville
+61753416|Noosaville
 61753417|Jimna
 61753418|Caloundra
 61753419|Caloundra
@@ -42354,7 +42268,15 @@
 617750420|Yetman
 617750421|Yuleba
 61775049|Bonshaw
-61775060|Bunya Mountains
+6177506|Bunya Mountains/Charleville/Chinchilla/Clifton
+61775070|Cooyar
+61775071|Cooyar
+61775072|Cooyar
+61775073|Cunnamulla
+61775074|Cunnamulla
+61775075|Cunnamulla
+61775077|Darr Creek
+61775078|Darr Creek
 61775079|Durham Downs
 61775090|Inglewood
 61775109|Southwood
@@ -43216,30 +43138,7 @@
 61861201|Herne Hill
 61861202|Herne Hill
 61861203|Herne Hill
-61861402|Perth
-6186141|Perth
-6186142|Perth
-6186143|Perth
-6186144|Perth
-6186145|Perth
-6186146|Perth
-61861471|Perth
-61861472|Perth
-61861473|Perth
-61861474|Perth
-61861475|Perth
-61861476|Perth
-61861477|Perth
-61861478|Perth
-61861479|Perth
-6186148|Perth
-61861490|Perth
-61861491|Perth
-61861492|Perth
-61861493|Perth
-61861494|Perth
-61861495|Perth
-61861496|Perth
+618614|Perth
 6186150|Perth
 6186151|Perth
 6186152|Perth
@@ -45662,6 +45561,11 @@
 61868430|Narrogin
 61868446|Pingelly
 61868447|Wagin
+61868581|Muradup
+61868583|Nalyerlup
+61868585|Narrakine
+61868587|Narrogin
+61868589|Newdegate
 61868888|Albany
 61868889|Lake Toolbrunup
 618700|Adelaide
@@ -46687,6 +46591,16 @@
 61875409|Policemans Point
 61875420|Tailem Bend
 61875433|Mannum
+61875521|Pinnaroo
+61875523|Policemans Point
+61875525|Renmark
+61875527|Riverton
+61875529|Robertstown
+61875531|Sanderston
+61875533|Sandleton
+61875535|Sedan
+61875537|Strathalbyn
+61875539|Swan Reach
 61875550|Murray Bridge
 61875551|Windsor
 61875552|Willunga
@@ -47768,7 +47682,7 @@
 61876417|Elliston
 61876418|Elliston
 61876419|Elliston
-61876429|Leigh Creek South
+6187642|Georgetown/Jamestown/Laura/Leigh Creek South
 61876440|Port Neill
 61876459|Wirrulla
 61876470|Gairdner

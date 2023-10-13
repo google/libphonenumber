@@ -1,0 +1,14 @@
+Region ; Prefix     ; Length ; Type               ; Tariff    ; Carrier Specific ; Format        ; Provenance
+AT     ; 1[12]2     ; 3      ; EMERGENCY          ; TOLL_FREE
+AT     ; 11600[06]  ; 6      ; EXPANDED_EMERGENCY ; TOLL_FREE ;                  ; "shortcode_6"
+AT     ; 116117     ; 6      ; EXPANDED_EMERGENCY ; TOLL_FREE ;                  ; "shortcode_6"
+AT     ; 116123     ; 6      ; EXPANDED_EMERGENCY ; TOLL_FREE ;                  ; "shortcode_6"
+AT     ; 12[038]    ; 3      ; EXPANDED_EMERGENCY ; TOLL_FREE ;                  ;               ; GOVERNMENT
+AT     ; 130        ; 3      ; EXPANDED_EMERGENCY ; TOLL_FREE ;                  ;               ; GOVERNMENT
+AT     ; 133        ; 3      ; EMERGENCY          ; TOLL_FREE
+AT     ; 14[0-27]   ; 3      ; EXPANDED_EMERGENCY ; TOLL_FREE ;                  ;               ; GOVERNMENT
+AT     ; 144        ; 3      ; EMERGENCY          ; TOLL_FREE
+AT     ; 145[05]    ; 4      ; EXPANDED_EMERGENCY ; TOLL_FREE ;                  ; "shortcode_4" ; GOVERNMENT
+AT     ; 1484       ; 4      ; EXPANDED_EMERGENCY ; TOLL_FREE ;                  ; "shortcode_4" ; GOVERNMENT
+AT     ; 610        ; 3      ; COMMERCIAL         ;           ; true
+AT     ; 8108[1-3]0 ; 6      ; COMMERCIAL         ;           ; true             ; "shortcode_6"

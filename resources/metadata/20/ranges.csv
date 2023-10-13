@@ -1,0 +1,35 @@
+Prefix     ; Length ; Type       ; Tariff        ; Area Code Length ; Operator   ; Format          ; Regions ; Geocode:en            ; Provenance
+10         ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "vodafone" ; "non_geo_2/8"   ; "EG"    ;                       ; IR21
+11         ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "etisalat" ; "non_geo_2/8"   ; "EG"    ;                       ; GOVERNMENT
+12         ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "orange"   ; "non_geo_2/8"   ; "EG"    ;                       ; GOVERNMENT
+13[23]     ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fixed2_2/6-7"  ; "EG"    ; "Banha"
+15         ; 8,9    ; FIXED_LINE ; STANDARD_RATE ; 2                ; "te"       ; "fixed2_2/6-7"  ; "EG"    ; "10th of Ramadan"
+15         ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "te"       ; "non_geo_2/8"   ; "EG"    ; "10th of Ramadan"     ; IR21
+2[2-4]     ; 9      ; FIXED_LINE ; STANDARD_RATE ; 1                ;            ; "fixed1_1/7-8"  ; "EG"    ; "Cairo/Giza/Qalyubia"
+3          ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;            ; "fixed1_1/7-8"  ; "EG"    ; "Alexandria"          ; ITU
+40         ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fixed2_2/6-7"  ; "EG"    ; "Tanta"               ; ITU
+45         ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fixed2_2/6-7"  ; "EG"    ; "Damanhur"            ; ITU
+46         ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fixed2_2/6-7"  ; "EG"    ; "Marsa Matruh"        ; ITU
+47         ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fixed2_2/6-7"  ; "EG"    ; "Kafr El-Sheikh"      ; ITU
+48         ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fixed2_2/6-7"  ; "EG"    ; "Monufia"             ; ITU
+50         ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fixed2_2/6-7"  ; "EG"    ; "Mansoura"            ; ITU
+55[0-35-9] ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fixed2_2/6-7"  ; "EG"    ; "Zagazig"
+554        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fixed2_2/6-7"  ; "EG"    ; "10th of Ramadan"
+57         ; 8,9    ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fixed2_2/6-7"  ; "EG"    ; "Damietta"            ; ITU
+62         ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fixed2_2/6-7"  ; "EG"    ; "Suez"                ; ITU
+64         ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fixed2_2/6-7"  ; "EG"    ; "Ismailia"            ; ITU
+65         ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fixed2_2/6-7"  ; "EG"    ; "Red Sea"             ; ITU
+66         ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fixed2_2/6-7"  ; "EG"    ; "Port Said"           ; ITU
+68         ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fixed2_2/6-7"  ; "EG"    ; "El-Arish"            ; ITU
+69         ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fixed2_2/6-7"  ; "EG"    ; "El-Tor"              ; ITU
+800        ; 10     ; FIXED_LINE ; TOLL_FREE     ;                  ;            ; "non_geo_3/3/4" ; "EG"
+82         ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fixed2_2/6-7"  ; "EG"    ; "Beni Suef"           ; ITU
+84         ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fixed2_2/6-7"  ; "EG"    ; "Fayoum"              ; ITU
+86         ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fixed2_2/6-7"  ; "EG"    ; "Minia"               ; ITU
+88         ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fixed2_2/6-7"  ; "EG"    ; "Assiout"             ; ITU
+900        ; 10     ; FIXED_LINE ; PREMIUM_RATE  ;                  ;            ; "non_geo_3/3/4" ; "EG"
+92         ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fixed2_2/6-7"  ; "EG"    ; "Wadi El-Gedid"       ; ITU
+93         ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fixed2_2/6-7"  ; "EG"    ; "Sohag"               ; ITU
+95         ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fixed2_2/6-7"  ; "EG"    ; "Luxor"               ; ITU
+96         ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fixed2_2/6-7"  ; "EG"    ; "Qena"                ; ITU
+97         ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fixed2_2/6-7"  ; "EG"    ; "Aswan"               ; ITU

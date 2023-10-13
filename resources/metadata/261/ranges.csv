@@ -1,0 +1,28 @@
+Prefix     ; Length ; Type       ; Tariff        ; Area Code Length ; Operator   ; Format        ; Regions ; Geocode:en                  ; Provenance
+202[013-9] ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt_2/2/3/2" ; "MG"
+2022       ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt_2/2/3/2" ; "MG"    ; "Antananarivo"
+2044       ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt_2/2/3/2" ; "MG"    ; "Antsirabe"
+2047       ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt_2/2/3/2" ; "MG"    ; "Ambositra"
+2053       ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt_2/2/3/2" ; "MG"    ; "Toamasina"                 ; ITU
+2054       ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt_2/2/3/2" ; "MG"    ; "Ambatondrazaka"            ; ITU
+2056       ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt_2/2/3/2" ; "MG"    ; "Moramanga"                 ; ITU
+2057       ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt_2/2/3/2" ; "MG"    ; "Maroantsetra/Sainte Marie" ; ITU
+2062       ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt_2/2/3/2" ; "MG"    ; "Mahajanga"                 ; ITU
+2067       ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt_2/2/3/2" ; "MG"    ; "Antsohihy"                 ; ITU
+2069       ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt_2/2/3/2" ; "MG"    ; "Maintirano"                ; ITU
+20722      ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt_2/2/3/2" ; "MG"    ; "Manakara"                  ; ITU
+20729      ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt_2/2/3/2" ; "MG"    ; "Mananjary"                 ; ITU
+2073       ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt_2/2/3/2" ; "MG"    ; "Farafangana"               ; ITU
+2075       ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt_2/2/3/2" ; "MG"    ; "Fianarantsoa"              ; ITU
+2082       ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt_2/2/3/2" ; "MG"    ; "Antsiranana"               ; ITU
+2086       ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt_2/2/3/2" ; "MG"    ; "Nosy Be"                   ; ITU
+2088       ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt_2/2/3/2" ; "MG"    ; "Sambava"                   ; ITU
+2092       ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt_2/2/3/2" ; "MG"    ; "Taolañaro"                 ; ITU
+2094       ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt_2/2/3/2" ; "MG"    ; "Toliary"                   ; ITU
+2095       ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt_2/2/3/2" ; "MG"    ; "Morondava"                 ; ITU
+22         ; 9      ; VOIP       ; STANDARD_RATE ;                  ;            ; "fmt_2/2/3/2" ; "MG"    ;                             ; ITU
+3[27]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "orange"   ; "fmt_2/2/3/2" ; "MG"    ;                             ; ITU
+33         ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "airtel"   ; "fmt_2/2/3/2" ; "MG"    ;                             ; ITU
+34         ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "telma"    ; "fmt_2/2/3/2" ; "MG"    ;                             ; ITU
+38         ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "telma"    ; "fmt_2/2/3/2" ; "MG"    ;                             ; IR21
+39         ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "blueline" ; "fmt_2/2/3/2" ; "MG"    ;                             ; ITU

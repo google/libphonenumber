@@ -1,0 +1,953 @@
+Prefix          ; Length ; Type            ; Tariff        ; Operator                    ; Format                   ; Regions ; Geocode:en                 ; Geocode:sv                 ; Provenance ; Comment
+10[1-8]         ; 9      ; UAN             ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"
+11              ; 7      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_2/3/2"      ; "SE"    ; "Norrköping"               ; "Norrköping"
+11              ; 8,9    ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_2/2-3/2/2"        ; "SE"    ; "Norrköping"               ; "Norrköping"
+120             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Åtvidaberg"               ; "Åtvidaberg"
+120             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Åtvidaberg"               ; "Åtvidaberg"
+121             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Söderköping"              ; "Söderköping"
+121             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Söderköping"              ; "Söderköping"
+122             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Finspång"                 ; "Finspång"
+122             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Finspång"                 ; "Finspång"
+123             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Valdemarsvik"             ; "Valdemarsvik"
+123             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Valdemarsvik"             ; "Valdemarsvik"
+125             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Vikbolandet"              ; "Vikbolandet"
+125             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Vikbolandet"              ; "Vikbolandet"
+13              ; 7      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_2/3/2"      ; "SE"    ; "Linköping"                ; "Linköping"
+13              ; 8,9    ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_2/2-3/2/2"        ; "SE"    ; "Linköping"                ; "Linköping"
+140             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Tranås"                   ; "Tranås"
+140             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Tranås"                   ; "Tranås"
+141             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Motala"                   ; "Motala"
+141             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Motala"                   ; "Motala"
+142             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Mjölby-Skänninge-Boxholm" ; "Mjölby-Skänninge-Boxholm"
+142             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Mjölby-Skänninge-Boxholm" ; "Mjölby-Skänninge-Boxholm"
+143             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Vadstena"                 ; "Vadstena"
+143             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Vadstena"                 ; "Vadstena"
+144             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Ödeshög"                  ; "Ödeshög"
+144             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Ödeshög"                  ; "Ödeshög"
+150             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Katrineholm"              ; "Katrineholm"
+150             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Katrineholm"              ; "Katrineholm"
+151             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Vingåker"                 ; "Vingåker"
+151             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Vingåker"                 ; "Vingåker"
+152             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Strängnäs"                ; "Strängnäs"
+152             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Strängnäs"                ; "Strängnäs"
+155             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Nyköping-Oxelösund"       ; "Nyköping-Oxelösund"
+155             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Nyköping-Oxelösund"       ; "Nyköping-Oxelösund"
+156             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Trosa-Vagnhärad"          ; "Trosa-Vagnhärad"
+156             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Trosa-Vagnhärad"          ; "Trosa-Vagnhärad"
+157             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Flen-Malmköping"          ; "Flen-Malmköping"
+157             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Flen-Malmköping"          ; "Flen-Malmköping"
+158             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Gnesta"                   ; "Gnesta"
+158             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Gnesta"                   ; "Gnesta"
+159             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Mariefred"                ; "Mariefred"
+159             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Mariefred"                ; "Mariefred"
+16              ; 7      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_2/3/2"      ; "SE"    ; "Eskilstuna-Torshälla"     ; "Eskilstuna-Torshälla"
+16              ; 8,9    ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_2/2-3/2/2"        ; "SE"    ; "Eskilstuna-Torshälla"     ; "Eskilstuna-Torshälla"
+171             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Enköping"                 ; "Enköping"
+171             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Enköping"                 ; "Enköping"
+173             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Öregrund-Östhammar"       ; "Öregrund-Östhammar"
+173             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Öregrund-Östhammar"       ; "Öregrund-Östhammar"
+174             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Alunda"                   ; "Alunda"
+174             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Alunda"                   ; "Alunda"
+175             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Hallstavik-Rimbo"         ; "Hallstavik-Rimbo"
+175             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Hallstavik-Rimbo"         ; "Hallstavik-Rimbo"
+176             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Norrtälje"                ; "Norrtälje"
+176             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Norrtälje"                ; "Norrtälje"
+18              ; 8,9    ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_2/2-3/2/2"        ; "SE"    ; "Uppsala"                  ; "Uppsala"
+19              ; 8,9    ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_2/2-3/2/2"        ; "SE"    ; "Örebro-Kumla"             ; "Örebro-Kumla"
+20              ; 6,7    ; FIXED_LINE      ; TOLL_FREE     ;                             ; "toll_free_2/2-3/2"      ; "SE"    ;                            ;                            ;            ; "toll-free, not reachable from abroad"
+20              ; 8,9    ; FIXED_LINE      ; TOLL_FREE     ;                             ; "fixed_2/2-3/2/2"        ; "SE"    ;                            ;                            ;            ; "toll-free, not reachable from abroad"
+21              ; 7      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_2/3/2"      ; "SE"    ; "Västerås"                 ; "Västerås"
+21              ; 8,9    ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_2/2-3/2/2"        ; "SE"    ; "Västerås"                 ; "Västerås"
+220             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Hallstahammar-Surahammar" ; "Hallstahammar-Surahammar"
+220             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Hallstahammar-Surahammar" ; "Hallstahammar-Surahammar"
+221             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Köping"                   ; "Köping"
+221             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Köping"                   ; "Köping"
+222             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Skinnskatteberg"          ; "Skinnskatteberg"
+222             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Skinnskatteberg"          ; "Skinnskatteberg"
+223             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Fagersta-Norberg"         ; "Fagersta-Norberg"
+223             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Fagersta-Norberg"         ; "Fagersta-Norberg"
+224             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Sala-Heby"                ; "Sala-Heby"
+224             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Sala-Heby"                ; "Sala-Heby"
+225             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Hedemora-Säter"           ; "Hedemora-Säter"
+225             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Hedemora-Säter"           ; "Hedemora-Säter"
+226             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Avesta-Krylbo"            ; "Avesta-Krylbo"
+226             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Avesta-Krylbo"            ; "Avesta-Krylbo"
+227             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Kungsör"                  ; "Kungsör"
+227             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Kungsör"                  ; "Kungsör"
+23              ; 7      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_2/3/2"      ; "SE"    ; "Falun"                    ; "Falun"
+23              ; 8,9    ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_2/2-3/2/2"        ; "SE"    ; "Falun"                    ; "Falun"
+240             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Ludvika-Smedjebacken"     ; "Ludvika-Smedjebacken"
+240             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Ludvika-Smedjebacken"     ; "Ludvika-Smedjebacken"
+241             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Gagnef-Floda"             ; "Gagnef-Floda"
+241             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Gagnef-Floda"             ; "Gagnef-Floda"
+243             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Borlänge"                 ; "Borlänge"
+243             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Borlänge"                 ; "Borlänge"
+246             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Svärdsjö-Enviken"         ; "Svärdsjö-Enviken"
+246             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Svärdsjö-Enviken"         ; "Svärdsjö-Enviken"
+247             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Leksand-Insjön"           ; "Leksand-Insjön"
+247             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Leksand-Insjön"           ; "Leksand-Insjön"
+248             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Rättvik"                  ; "Rättvik"
+248             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Rättvik"                  ; "Rättvik"
+250             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Mora-Orsa"                ; "Mora-Orsa"
+250             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Mora-Orsa"                ; "Mora-Orsa"
+251             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Älvdalen"                 ; "Älvdalen"
+251             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Älvdalen"                 ; "Älvdalen"
+25[24]          ; 12     ; VOICEMAIL       ; STANDARD_RATE ;                             ; "voicemail_3/2/3/2/2"    ; "SE"    ;                            ;                            ; IR21
+253             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Idre-Särna"               ; "Idre-Särna"
+253             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Idre-Särna"               ; "Idre-Särna"
+255             ; 12     ; VOICEMAIL       ; STANDARD_RATE ;                             ; "voicemail_3/2/3/2/2"    ; "SE"
+258             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Furudal"                  ; "Furudal"
+258             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Furudal"                  ; "Furudal"
+26              ; 7      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_2/3/2"      ; "SE"    ; "Gävle-Sandviken"          ; "Gävle-Sandviken"
+26              ; 8,9    ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_2/2-3/2/2"        ; "SE"    ; "Gävle-Sandviken"          ; "Gävle-Sandviken"
+270             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Söderhamn"                ; "Söderhamn"
+270             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Söderhamn"                ; "Söderhamn"
+271             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Alfta-Edsbyn"             ; "Alfta-Edsbyn"
+271             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Alfta-Edsbyn"             ; "Alfta-Edsbyn"
+278             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Bollnäs"                  ; "Bollnäs"
+278             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Bollnäs"                  ; "Bollnäs"
+280             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Malung"                   ; "Malung"
+280             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Malung"                   ; "Malung"
+281             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Vansbro"                  ; "Vansbro"
+281             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Vansbro"                  ; "Vansbro"
+290             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Hofors-Storvik"           ; "Hofors-Storvik"
+290             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Hofors-Storvik"           ; "Hofors-Storvik"
+291             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Hedesunda-Österfärnebo"   ; "Hedesunda-Österfärnebo"
+291             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Hedesunda-Österfärnebo"   ; "Hedesunda-Österfärnebo"
+292             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Tärnsjö-Östervåla"        ; "Tärnsjö-Östervåla"
+292             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Tärnsjö-Östervåla"        ; "Tärnsjö-Östervåla"
+293             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Tierp-Söderfors"          ; "Tierp-Söderfors"
+293             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Tierp-Söderfors"          ; "Tierp-Söderfors"
+294             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Karlholmsbruk-Skärplinge" ; "Karlholmsbruk-Skärplinge"
+294             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Karlholmsbruk-Skärplinge" ; "Karlholmsbruk-Skärplinge"
+295             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Örbyhus-Dannemora"        ; "Örbyhus-Dannemora"
+295             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Örbyhus-Dannemora"        ; "Örbyhus-Dannemora"
+297             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Ockelbo-Hamrånge"         ; "Ockelbo-Hamrånge"
+297             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Ockelbo-Hamrånge"         ; "Ockelbo-Hamrånge"
+300             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Kungsbacka"               ; "Kungsbacka"
+300             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Kungsbacka"               ; "Kungsbacka"
+301             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Hindås"                   ; "Hindås"
+301             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Hindås"                   ; "Hindås"
+302             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Lerum"                    ; "Lerum"
+302             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Lerum"                    ; "Lerum"
+303             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Kungälv"                  ; "Kungälv"
+303             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Kungälv"                  ; "Kungälv"
+304             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Orust-Tjörn"              ; "Orust-Tjörn"
+304             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Orust-Tjörn"              ; "Orust-Tjörn"
+31              ; 8,9    ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_2/2-3/2/2"        ; "SE"    ; "Gothenburg"               ; "Gothenburg"
+320             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Kinna"                    ; "Kinna"
+320             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Kinna"                    ; "Kinna"
+321             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Ulricehamn"               ; "Ulricehamn"
+321             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Ulricehamn"               ; "Ulricehamn"
+322             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Alingsås-Vårgårda"        ; "Alingsås-Vårgårda"
+322             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Alingsås-Vårgårda"        ; "Alingsås-Vårgårda"
+325             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Svenljunga-Tranemo"       ; "Svenljunga-Tranemo"
+325             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Svenljunga-Tranemo"       ; "Svenljunga-Tranemo"
+33              ; 7      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_2/3/2"      ; "SE"    ; "Borås"                    ; "Borås"
+33              ; 8,9    ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_2/2-3/2/2"        ; "SE"    ; "Borås"                    ; "Borås"
+340             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Varberg"                  ; "Varberg"
+340             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Varberg"                  ; "Varberg"
+345             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Hyltebruk-Torup"          ; "Hyltebruk-Torup"
+345             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Hyltebruk-Torup"          ; "Hyltebruk-Torup"
+346             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Falkenberg"               ; "Falkenberg"
+346             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Falkenberg"               ; "Falkenberg"
+35              ; 7      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_2/3/2"      ; "SE"    ; "Halmstad"                 ; "Halmstad"
+35              ; 8,9    ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_2/2-3/2/2"        ; "SE"    ; "Halmstad"                 ; "Halmstad"
+36              ; 7      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_2/3/2"      ; "SE"    ; "Jönköping-Huskvarna"      ; "Jönköping-Huskvarna"
+36              ; 8,9    ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_2/2-3/2/2"        ; "SE"    ; "Jönköping-Huskvarna"      ; "Jönköping-Huskvarna"
+370             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Värnamo"                  ; "Värnamo"
+370             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Värnamo"                  ; "Värnamo"
+371             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Gislaved-Anderstorp"      ; "Gislaved-Anderstorp"
+371             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Gislaved-Anderstorp"      ; "Gislaved-Anderstorp"
+372             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Ljungby"                  ; "Ljungby"
+372             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Ljungby"                  ; "Ljungby"
+380             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Nässjö"                   ; "Nässjö"
+380             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Nässjö"                   ; "Nässjö"
+381             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Eksjö"                    ; "Eksjö"
+381             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Eksjö"                    ; "Eksjö"
+382             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Sävsjö"                   ; "Sävsjö"
+382             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Sävsjö"                   ; "Sävsjö"
+383             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Vetlanda"                 ; "Vetlanda"
+383             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Vetlanda"                 ; "Vetlanda"
+390             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Gränna"                   ; "Gränna"
+390             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Gränna"                   ; "Gränna"
+392             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Mullsjö"                  ; "Mullsjö"
+392             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Mullsjö"                  ; "Mullsjö"
+393             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Vaggeryd"                 ; "Vaggeryd"
+393             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Vaggeryd"                 ; "Vaggeryd"
+40              ; 7      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_2/3/2"      ; "SE"    ; "Malmö"                    ; "Malmö"
+40              ; 8,9    ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_2/2-3/2/2"        ; "SE"    ; "Malmö"                    ; "Malmö"
+410             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Trelleborg"               ; "Trelleborg"
+410             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Trelleborg"               ; "Trelleborg"
+411             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Ystad"                    ; "Ystad"
+411             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Ystad"                    ; "Ystad"
+413             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Eslöv-Höör"               ; "Eslöv-Höör"
+413             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Eslöv-Höör"               ; "Eslöv-Höör"
+414             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Simrishamn"               ; "Simrishamn"
+414             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Simrishamn"               ; "Simrishamn"
+415             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Hörby"                    ; "Hörby"
+415             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Hörby"                    ; "Hörby"
+416             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Sjöbo"                    ; "Sjöbo"
+416             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Sjöbo"                    ; "Sjöbo"
+417             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Tomelilla"                ; "Tomelilla"
+417             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Tomelilla"                ; "Tomelilla"
+418             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Landskrona-Svalöv"        ; "Landskrona-Svalöv"
+418             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Landskrona-Svalöv"        ; "Landskrona-Svalöv"
+42              ; 7      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_2/3/2"      ; "SE"    ; "Helsingborg-Höganäs"      ; "Helsingborg-Höganäs"
+42              ; 8,9    ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_2/2-3/2/2"        ; "SE"    ; "Helsingborg-Höganäs"      ; "Helsingborg-Höganäs"
+430             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Laholm"                   ; "Laholm"
+430             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Laholm"                   ; "Laholm"
+431             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Ängelholm-Båstad"         ; "Ängelholm-Båstad"
+431             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Ängelholm-Båstad"         ; "Ängelholm-Båstad"
+433             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Markaryd-Strömsnäsbruk"   ; "Markaryd-Strömsnäsbruk"
+433             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Markaryd-Strömsnäsbruk"   ; "Markaryd-Strömsnäsbruk"
+435             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Klippan-Perstorp"         ; "Klippan-Perstorp"
+435             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Klippan-Perstorp"         ; "Klippan-Perstorp"
+44              ; 7      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_2/3/2"      ; "SE"    ; "Kristianstad"             ; "Kristianstad"
+44              ; 8,9    ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_2/2-3/2/2"        ; "SE"    ; "Kristianstad"             ; "Kristianstad"
+451             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Hässleholm"               ; "Hässleholm"
+451             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Hässleholm"               ; "Hässleholm"
+454             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Karlshamn-Olofström"      ; "Karlshamn-Olofström"
+454             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Karlshamn-Olofström"      ; "Karlshamn-Olofström"
+455             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Karlskrona"               ; "Karlskrona"
+455             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Karlskrona"               ; "Karlskrona"
+456             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Sölvesborg-Bromölla"      ; "Sölvesborg-Bromölla"
+456             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Sölvesborg-Bromölla"      ; "Sölvesborg-Bromölla"
+457             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Ronneby"                  ; "Ronneby"
+457             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Ronneby"                  ; "Ronneby"
+459             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Ryd"                      ; "Ryd"
+459             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Ryd"                      ; "Ryd"
+46              ; 7      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_2/3/2"      ; "SE"    ; "Lund"                     ; "Lund"
+46              ; 8,9    ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_2/2-3/2/2"        ; "SE"    ; "Lund"                     ; "Lund"
+470             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Växjö"                    ; "Växjö"
+470             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Växjö"                    ; "Växjö"
+471             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Emmaboda"                 ; "Emmaboda"
+471             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Emmaboda"                 ; "Emmaboda"
+472             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Alvesta-Rydaholm"         ; "Alvesta-Rydaholm"
+472             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Alvesta-Rydaholm"         ; "Alvesta-Rydaholm"
+474             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Åseda-Lenhovda"           ; "Åseda-Lenhovda"
+474             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Åseda-Lenhovda"           ; "Åseda-Lenhovda"
+476             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Älmhult"                  ; "Älmhult"
+476             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Älmhult"                  ; "Älmhult"
+477             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Tingsryd"                 ; "Tingsryd"
+477             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Tingsryd"                 ; "Tingsryd"
+478             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Lessebo"                  ; "Lessebo"
+478             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Lessebo"                  ; "Lessebo"
+479             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Osby"                     ; "Osby"
+479             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Osby"                     ; "Osby"
+480             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Kalmar"                   ; "Kalmar"
+480             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Kalmar"                   ; "Kalmar"
+481             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Nybro"                    ; "Nybro"
+481             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Nybro"                    ; "Nybro"
+485             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Öland"                    ; "Öland"
+485             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Öland"                    ; "Öland"
+486             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Torsås"                   ; "Torsås"
+486             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Torsås"                   ; "Torsås"
+490             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Västervik"                ; "Västervik"
+490             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Västervik"                ; "Västervik"
+491             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Oskarshamn-Högsby"        ; "Oskarshamn-Högsby"
+491             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Oskarshamn-Högsby"        ; "Oskarshamn-Högsby"
+492             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Vimmerby"                 ; "Vimmerby"
+492             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Vimmerby"                 ; "Vimmerby"
+493             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Gamleby"                  ; "Gamleby"
+493             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Gamleby"                  ; "Gamleby"
+494             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Kisa"                     ; "Kisa"
+494             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Kisa"                     ; "Kisa"
+495             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Hultsfred-Virserum"       ; "Hultsfred-Virserum"
+495             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Hultsfred-Virserum"       ; "Hultsfred-Virserum"
+496             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Mariannelund"             ; "Mariannelund"
+496             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Mariannelund"             ; "Mariannelund"
+498             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Gotland"                  ; "Gotland"
+498             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Gotland"                  ; "Gotland"
+499             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Mönsterås"                ; "Mönsterås"
+499             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Mönsterås"                ; "Mönsterås"
+500             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Skövde"                   ; "Skövde"
+500             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Skövde"                   ; "Skövde"
+501             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Mariestad"                ; "Mariestad"
+501             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Mariestad"                ; "Mariestad"
+502             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Tidaholm"                 ; "Tidaholm"
+502             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Tidaholm"                 ; "Tidaholm"
+503             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Hjo"                      ; "Hjo"
+503             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Hjo"                      ; "Hjo"
+504             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Tibro"                    ; "Tibro"
+504             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Tibro"                    ; "Tibro"
+505             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Karlsborg"                ; "Karlsborg"
+505             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Karlsborg"                ; "Karlsborg"
+506             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Töreboda-Hova"            ; "Töreboda-Hova"
+506             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Töreboda-Hova"            ; "Töreboda-Hova"
+510             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Lidköping"                ; "Lidköping"
+510             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Lidköping"                ; "Lidköping"
+511             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Skara-Götene"             ; "Skara-Götene"
+511             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Skara-Götene"             ; "Skara-Götene"
+512             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Vara-Nossebro"            ; "Vara-Nossebro"
+512             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Vara-Nossebro"            ; "Vara-Nossebro"
+513             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Herrljunga"               ; "Herrljunga"
+513             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Herrljunga"               ; "Herrljunga"
+514             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Grästorp"                 ; "Grästorp"
+514             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Grästorp"                 ; "Grästorp"
+515             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Falköping"                ; "Falköping"
+515             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Falköping"                ; "Falköping"
+520             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Trollhättan"              ; "Trollhättan"
+520             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Trollhättan"              ; "Trollhättan"
+521             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Vänersborg"               ; "Vänersborg"
+521             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Vänersborg"               ; "Vänersborg"
+522             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Uddevalla"                ; "Uddevalla"
+522             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Uddevalla"                ; "Uddevalla"
+523             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Lysekil"                  ; "Lysekil"
+523             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Lysekil"                  ; "Lysekil"
+524             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Munkedal"                 ; "Munkedal"
+524             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Munkedal"                 ; "Munkedal"
+525             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Grebbestad"               ; "Grebbestad"
+525             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Grebbestad"               ; "Grebbestad"
+526             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Strömstad"                ; "Strömstad"
+526             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Strömstad"                ; "Strömstad"
+528             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Färgelanda"               ; "Färgelanda"
+528             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Färgelanda"               ; "Färgelanda"
+530             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Mellerud"                 ; "Mellerud"
+530             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Mellerud"                 ; "Mellerud"
+531             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Bengtsfors"               ; "Bengtsfors"
+531             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Bengtsfors"               ; "Bengtsfors"
+532             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Åmål"                     ; "Åmål"
+532             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Åmål"                     ; "Åmål"
+533             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Säffle"                   ; "Säffle"
+533             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Säffle"                   ; "Säffle"
+534             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Ed"                       ; "Ed"
+534             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Ed"                       ; "Ed"
+54              ; 8,9    ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_2/2-3/2/2"        ; "SE"    ; "Karlstad"                 ; "Karlstad"
+550             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Kristinehamn"             ; "Kristinehamn"
+550             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Kristinehamn"             ; "Kristinehamn"
+551             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Gullspång"                ; "Gullspång"
+551             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Gullspång"                ; "Gullspång"
+552             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Deje"                     ; "Deje"
+552             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Deje"                     ; "Deje"
+553             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Molkom"                   ; "Molkom"
+553             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Molkom"                   ; "Molkom"
+554             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Kil"                      ; "Kil"
+554             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Kil"                      ; "Kil"
+555             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Grums"                    ; "Grums"
+555             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Grums"                    ; "Grums"
+560             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Torsby"                   ; "Torsby"
+560             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Torsby"                   ; "Torsby"
+563             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Hagfors-Munkfors"         ; "Hagfors-Munkfors"
+563             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Hagfors-Munkfors"         ; "Hagfors-Munkfors"
+564             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Sysslebäck"               ; "Sysslebäck"
+564             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Sysslebäck"               ; "Sysslebäck"
+565             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Sunne"                    ; "Sunne"
+565             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Sunne"                    ; "Sunne"
+570             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Arvika"                   ; "Arvika"
+570             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Arvika"                   ; "Arvika"
+571             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Charlottenberg-Åmotfors"  ; "Charlottenberg-Åmotfors"
+571             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Charlottenberg-Åmotfors"  ; "Charlottenberg-Åmotfors"
+573             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Årjäng"                   ; "Årjäng"
+573             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Årjäng"                   ; "Årjäng"
+580             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Kopparberg"               ; "Kopparberg"
+580             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Kopparberg"               ; "Kopparberg"
+581             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Lindesberg"               ; "Lindesberg"
+581             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Lindesberg"               ; "Lindesberg"
+582             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Hallsberg"                ; "Hallsberg"
+582             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Hallsberg"                ; "Hallsberg"
+583             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Askersund"                ; "Askersund"
+583             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Askersund"                ; "Askersund"
+584             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Laxå"                     ; "Laxå"
+584             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Laxå"                     ; "Laxå"
+585             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Fjugesta-Svartå"          ; "Fjugesta-Svartå"
+585             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Fjugesta-Svartå"          ; "Fjugesta-Svartå"
+586             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Karlskoga-Degerfors"      ; "Karlskoga-Degerfors"
+586             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Karlskoga-Degerfors"      ; "Karlskoga-Degerfors"
+587             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Nora"                     ; "Nora"
+587             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Nora"                     ; "Nora"
+589             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Arboga"                   ; "Arboga"
+589             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Arboga"                   ; "Arboga"
+590             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Filipstad"                ; "Filipstad"
+590             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Filipstad"                ; "Filipstad"
+591             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Hällefors-Grythyttan"     ; "Hällefors-Grythyttan"
+591             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Hällefors-Grythyttan"     ; "Hällefors-Grythyttan"
+60              ; 7      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_2/3/2"      ; "SE"    ; "Sundsvall-Timrå"          ; "Sundsvall-Timrå"
+60              ; 8,9    ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_2/2-3/2/2"        ; "SE"    ; "Sundsvall-Timrå"          ; "Sundsvall-Timrå"
+611             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Härnösand"                ; "Härnösand"
+611             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Härnösand"                ; "Härnösand"
+612             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Kramfors"                 ; "Kramfors"
+612             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Kramfors"                 ; "Kramfors"
+613             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Ullånger"                 ; "Ullånger"
+613             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Ullånger"                 ; "Ullånger"
+620             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Sollefteå"                ; "Sollefteå"
+620             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Sollefteå"                ; "Sollefteå"
+621             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Junsele"                  ; "Junsele"
+621             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Junsele"                  ; "Junsele"
+622             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Näsåker"                  ; "Näsåker"
+622             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Näsåker"                  ; "Näsåker"
+623             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Ramsele"                  ; "Ramsele"
+623             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Ramsele"                  ; "Ramsele"
+624             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Backe"                    ; "Backe"
+624             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Backe"                    ; "Backe"
+63              ; 7      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_2/3/2"      ; "SE"    ; "Östersund"                ; "Östersund"
+63              ; 8,9    ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_2/2-3/2/2"        ; "SE"    ; "Östersund"                ; "Östersund"
+640             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Krokom"                   ; "Krokom"
+640             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Krokom"                   ; "Krokom"
+642             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Lit"                      ; "Lit"
+642             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Lit"                      ; "Lit"
+643             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Hallen-Oviken"            ; "Hallen-Oviken"
+643             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Hallen-Oviken"            ; "Hallen-Oviken"
+644             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Hammerdal"                ; "Hammerdal"
+644             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Hammerdal"                ; "Hammerdal"
+645             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Föllinge"                 ; "Föllinge"
+645             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Föllinge"                 ; "Föllinge"
+647             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Åre-Järpen"               ; "Åre-Järpen"
+647             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Åre-Järpen"               ; "Åre-Järpen"
+649             ; 9      ; FIXED_LINE      ; PREMIUM_RATE  ;                             ; "fixed_3/2/2/2"          ; "SE"
+650             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Hudiksvall"               ; "Hudiksvall"
+650             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Hudiksvall"               ; "Hudiksvall"
+651             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Ljusdal"                  ; "Ljusdal"
+651             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Ljusdal"                  ; "Ljusdal"
+652             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Bergsjö"                  ; "Bergsjö"
+652             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Bergsjö"                  ; "Bergsjö"
+653             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Delsbo"                   ; "Delsbo"
+653             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Delsbo"                   ; "Delsbo"
+657             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Los"                      ; "Los"
+657             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Los"                      ; "Los"
+660             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Örnsköldsvik"             ; "Örnsköldsvik"
+660             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Örnsköldsvik"             ; "Örnsköldsvik"
+661             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Bredbyn"                  ; "Bredbyn"
+661             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Bredbyn"                  ; "Bredbyn"
+662             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Björna"                   ; "Björna"
+662             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Björna"                   ; "Björna"
+663             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Husum"                    ; "Husum"
+663             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Husum"                    ; "Husum"
+670             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Strömsund"                ; "Strömsund"
+670             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Strömsund"                ; "Strömsund"
+671             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Hoting"                   ; "Hoting"
+671             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Hoting"                   ; "Hoting"
+672             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Gäddede"                  ; "Gäddede"
+672             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Gäddede"                  ; "Gäddede"
+67[35]          ; 12     ; VOICEMAIL       ; STANDARD_RATE ;                             ; "voicemail_3/2/3/2/2"    ; "SE"    ;                            ;                            ; GOVERNMENT
+6740            ; 12     ; VOICEMAIL       ; STANDARD_RATE ;                             ; "voicemail_3/2/3/2/2"    ; "SE"    ;                            ;                            ; GOVERNMENT
+674[1-9]        ; 12     ; VOICEMAIL       ; STANDARD_RATE ;                             ; "voicemail_3/2/3/2/2"    ; "SE"
+676             ; 12     ; VOICEMAIL       ; STANDARD_RATE ;                             ; "voicemail_3/2/3/2/2"    ; "SE"    ;                            ;                            ; IR21
+678             ; 12     ; VOICEMAIL       ; STANDARD_RATE ;                             ; "voicemail_3/2/3/2/2"    ; "SE"
+680             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Sveg"                     ; "Sveg"
+680             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Sveg"                     ; "Sveg"
+682             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Rätan"                    ; "Rätan"
+682             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Rätan"                    ; "Rätan"
+684             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Hede-Funäsdalen"          ; "Hede-Funäsdalen"
+684             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Hede-Funäsdalen"          ; "Hede-Funäsdalen"
+687             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Svenstavik"               ; "Svenstavik"
+687             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Svenstavik"               ; "Svenstavik"
+690             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Ånge"                     ; "Ånge"
+690             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Ånge"                     ; "Ånge"
+691             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Torpshammar"              ; "Torpshammar"
+691             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Torpshammar"              ; "Torpshammar"
+692             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Liden"                    ; "Liden"
+692             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Liden"                    ; "Liden"
+693             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Bräcke-Gällö"             ; "Bräcke-Gällö"
+693             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Bräcke-Gällö"             ; "Bräcke-Gällö"
+695             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Stugun"                   ; "Stugun"
+695             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Stugun"                   ; "Stugun"
+696             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Hammarstrand"             ; "Hammarstrand"
+696             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Hammarstrand"             ; "Hammarstrand"
+70[047]         ; 9      ; MOBILE          ; STANDARD_RATE ; "tele2"                     ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; IR21
+701[02]         ; 9      ; MOBILE          ; STANDARD_RATE ; "spinbox_ab"                ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+701[14]         ; 9      ; MOBILE          ; STANDARD_RATE ; "telenor"                   ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; IR21
+70130[013-9]    ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"
+701302          ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+70131           ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"
+70132[0-469]    ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"
+70132[578]      ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+70133[03]       ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"
+70133[17]       ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+70133[24-689]   ; 9      ; MOBILE          ; STANDARD_RATE ; "eu_tel_ab"                 ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+70134[05]       ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"
+70134[126-9]    ; 9      ; MOBILE          ; STANDARD_RATE ; "eu_tel_ab"                 ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+70134[34]       ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+701350          ; 9      ; MOBILE          ; STANDARD_RATE ; "42_telecom_ab"             ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+70135[15]       ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+70135[247]      ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"
+70135[3689]     ; 9      ; MOBILE          ; STANDARD_RATE ; "eu_tel_ab"                 ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+70136[03]       ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+701361          ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"
+701362          ; 9      ; MOBILE          ; STANDARD_RATE ; "eu_tel_ab"                 ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+70136[4-9]      ; 9      ; MOBILE          ; STANDARD_RATE ; "42_telecom_ab"             ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+70137           ; 9      ; MOBILE          ; STANDARD_RATE ; "42_telecom_ab"             ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+70138[027]      ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"
+70138[13-689]   ; 9      ; MOBILE          ; STANDARD_RATE ; "42_telecom_ab"             ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+70139[0-46-9]   ; 9      ; MOBILE          ; STANDARD_RATE ; "42_telecom_ab"             ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+701395          ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"
+701[56]         ; 9      ; MOBILE          ; STANDARD_RATE ; "tele2"                     ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; IR21
+7017[0256]      ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"
+7017[13][0-689] ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"
+701717          ; 9      ; MOBILE          ; STANDARD_RATE ; "42_telecom_ab"             ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+7017[38]7       ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+70174[02-9]     ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"
+701741          ; 9      ; MOBILE          ; STANDARD_RATE ; "42_telecom_ab"             ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+70177[0-8]      ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"
+701779          ; 9      ; MOBILE          ; STANDARD_RATE ; "eu_tel_ab"                 ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+70178[0-6]      ; 9      ; MOBILE          ; STANDARD_RATE ; "42_telecom_ab"             ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+701788          ; 9      ; MOBILE          ; STANDARD_RATE ; "ventelo_sverige"           ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+701789          ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"
+70179[0-6]      ; 9      ; MOBILE          ; STANDARD_RATE ; "svea_billing_system"       ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+701797          ; 9      ; MOBILE          ; STANDARD_RATE ; "eu_tel_ab"                 ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+701798          ; 9      ; MOBILE          ; STANDARD_RATE ; "gotalandsnatet"            ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+701799          ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+7018[0-8]       ; 9      ; MOBILE          ; STANDARD_RATE ; "spinbox_ab"                ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+70189[0-689]    ; 9      ; MOBILE          ; STANDARD_RATE ; "alltele"                   ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+701897          ; 9      ; MOBILE          ; STANDARD_RATE ; "gotalandsnatet"            ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+7019[01]        ; 9      ; MOBILE          ; STANDARD_RATE ; "ventelo_sverige"           ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+701920          ; 9      ; MOBILE          ; STANDARD_RATE ; "viatel"                    ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+70192[16]       ; 9      ; MOBILE          ; STANDARD_RATE ; "beepsend"                  ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+70192[23]       ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+701924          ; 9      ; MOBILE          ; STANDARD_RATE ; "compatel"                  ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+701925          ; 9      ; MOBILE          ; STANDARD_RATE ; "mobilearts"                ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+70192[79]       ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"
+701928          ; 9      ; MOBILE          ; STANDARD_RATE ; "horisen"                   ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+70193           ; 9      ; MOBILE          ; STANDARD_RATE ; "comhem"                    ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+7019[45]        ; 9      ; MOBILE          ; STANDARD_RATE ; "gotalandsnatet"            ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+70196[0-4]      ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"
+70196[5-8]      ; 9      ; MOBILE          ; STANDARD_RATE ; "42_telecom_ab"             ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+701969          ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+70197[0-6]      ; 9      ; MOBILE          ; STANDARD_RATE ; "weblink_ip_phone"          ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+70197[7-9]      ; 9      ; MOBILE          ; STANDARD_RATE ; "42_telecom_ab"             ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+70198           ; 9      ; MOBILE          ; STANDARD_RATE ; "ip_only"                   ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+70199[0-5]      ; 9      ; MOBILE          ; STANDARD_RATE ; "telenor"                   ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; IR21
+701996          ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"
+70199[79]       ; 9      ; MOBILE          ; STANDARD_RATE ; "42_telecom_ab"             ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+701998          ; 9      ; MOBILE          ; STANDARD_RATE ; "mercury_internationa"      ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+70[2356]        ; 9      ; MOBILE          ; STANDARD_RATE ; "telia"                     ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+70[89]          ; 9      ; MOBILE          ; STANDARD_RATE ; "telenor"                   ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; IR21
+720[0-4]        ; 9      ; MOBILE          ; STANDARD_RATE ; "tele2"                     ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; IR21
+72050[08]       ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+720501          ; 9      ; MOBILE          ; STANDARD_RATE ; "genericmobile"             ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+72050[2-79]     ; 9      ; MOBILE          ; STANDARD_RATE ; "telavox"                   ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+7205[1-47]      ; 9      ; MOBILE          ; STANDARD_RATE ; "wifog"                     ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+7205[56]        ; 9      ; MOBILE          ; STANDARD_RATE ; "bahnhof"                   ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+720580          ; 9      ; MOBILE          ; STANDARD_RATE ; "mercury_internationa"      ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+720581          ; 9      ; MOBILE          ; STANDARD_RATE ; "beepsend"                  ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+72058[2-6]      ; 9      ; MOBILE          ; STANDARD_RATE ; "icentrex"                  ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+72058[7-9]      ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"
+72059           ; 9      ; MOBILE          ; STANDARD_RATE ; "telenor"                   ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; IR21
+7206            ; 9      ; MOBILE          ; STANDARD_RATE ; "comhem"                    ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+7207            ; 9      ; MOBILE          ; STANDARD_RATE ; "soluno"                    ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+7208[09]0       ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+72080[1-378]    ; 9      ; MOBILE          ; STANDARD_RATE ; "telavox"                   ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+72080[459]      ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"
+720806          ; 9      ; MOBILE          ; STANDARD_RATE ; "telia"                     ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; IR21
+72081           ; 9      ; MOBILE          ; STANDARD_RATE ; "bm_sverige_ab"             ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+72082           ; 9      ; MOBILE          ; STANDARD_RATE ; "fibio"                     ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+7208[3-5]       ; 9      ; MOBILE          ; STANDARD_RATE ; "tele2"                     ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; IR21
+72086           ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"
+7208[78]        ; 9      ; MOBILE          ; STANDARD_RATE ; "telenor"                   ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; IR21
+72089[1279]     ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"
+72089[3-6]      ; 9      ; MOBILE          ; STANDARD_RATE ; "telia"                     ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; IR21
+720898          ; 9      ; MOBILE          ; STANDARD_RATE ; "xplora"                    ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+720900          ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+72090[13-79]    ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"
+72090[28]       ; 9      ; MOBILE          ; STANDARD_RATE ; "telavox"                   ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+7209[13-8]      ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"
+72092           ; 9      ; MOBILE          ; STANDARD_RATE ; "telavox"                   ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+72099[0-8]      ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"
+720999          ; 9      ; MOBILE          ; STANDARD_RATE ; "mobiweb_ltd"               ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+721[01]         ; 9      ; MOBILE          ; STANDARD_RATE ; "svensk_konsumentmobi"      ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+721[23]         ; 9      ; MOBILE          ; STANDARD_RATE ; "telia"                     ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+72140           ; 9      ; MOBILE          ; STANDARD_RATE ; "bredband2"                 ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+7214[1-8]       ; 9      ; MOBILE          ; STANDARD_RATE ; "tele2"                     ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; IR21
+72149[0-4]      ; 9      ; MOBILE          ; STANDARD_RATE ; "tele2"                     ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; IR21
+72149[58]       ; 9      ; MOBILE          ; STANDARD_RATE ; "beepsend"                  ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+72149[69]       ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+721497          ; 9      ; MOBILE          ; STANDARD_RATE ; "monty_uk_global_lim"       ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+721[5-9]        ; 9      ; MOBILE          ; STANDARD_RATE ; "telenor"                   ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; IR21
+72[25]          ; 9      ; MOBILE          ; STANDARD_RATE ; "telia"                     ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+723[0-3]        ; 9      ; MOBILE          ; STANDARD_RATE ; "hutchison"                 ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+72340[02]       ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+72340[14-7]     ; 9      ; MOBILE          ; STANDARD_RATE ; "loxytel_ab"                ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+723403          ; 9      ; MOBILE          ; STANDARD_RATE ; "beepsend"                  ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+72340[89]       ; 9      ; MOBILE          ; STANDARD_RATE ; "onoff_telecom_sas"         ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+72341           ; 9      ; MOBILE          ; STANDARD_RATE ; "fello"                     ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+72342           ; 9      ; MOBILE          ; STANDARD_RATE ; "telenor"                   ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; IR21
+72343           ; 9      ; MOBILE          ; STANDARD_RATE ; "messagebird"               ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+7234[49][09]    ; 9      ; MOBILE          ; STANDARD_RATE ; "beepsend"                  ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+72344[148]      ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"
+72344[235-7]    ; 9      ; MOBILE          ; STANDARD_RATE ; "xplora"                    ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+72345           ; 9      ; MOBILE          ; STANDARD_RATE ; "42_telecom_ab"             ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+723460          ; 9      ; MOBILE          ; STANDARD_RATE ; "beepsend"                  ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+72346[1468]     ; 9      ; MOBILE          ; STANDARD_RATE ; "telenor"                   ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; IR21
+72346[2357]     ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"
+723469          ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+7234[78]        ; 9      ; MOBILE          ; STANDARD_RATE ; "benemen"                   ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+723491          ; 9      ; MOBILE          ; STANDARD_RATE ; "telenor"                   ; "mobile_etc_2/3/2/2"     ; "SE"
+72349[2-8]      ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"
+723[5-9]        ; 9      ; MOBILE          ; STANDARD_RATE ; "telenor"                   ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; IR21
+724000          ; 9      ; MOBILE          ; STANDARD_RATE ; "telenor"                   ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; IR21
+72400[14]       ; 9      ; MOBILE          ; STANDARD_RATE ; "beepsend"                  ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+72400[23]       ; 9      ; MOBILE          ; STANDARD_RATE ; "voiceintegrate"            ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+724005          ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+72400[679]      ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"
+724008          ; 9      ; MOBILE          ; STANDARD_RATE ; "telavox"                   ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+7240[12]        ; 9      ; MOBILE          ; STANDARD_RATE ; "telavox"                   ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+7240[3-9]       ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"
+7241            ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"
+724[23]         ; 9      ; MOBILE          ; STANDARD_RATE ; "wifog"                     ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+7244            ; 9      ; MOBILE          ; STANDARD_RATE ; "telenor"                   ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; IR21
+724[5-9]        ; 9      ; MOBILE          ; STANDARD_RATE ; "telia"                     ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+726000          ; 9      ; MOBILE          ; STANDARD_RATE ; "beepsend"                  ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+726001          ; 9      ; MOBILE          ; STANDARD_RATE ; "fink_telecom"              ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+72600[27]       ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"
+726003          ; 9      ; MOBILE          ; STANDARD_RATE ; "mobiweb_ltd"               ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+72600[45]       ; 9      ; MOBILE          ; STANDARD_RATE ; "tele2"                     ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; IR21
+726006          ; 9      ; MOBILE          ; STANDARD_RATE ; "telavox"                   ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+726008          ; 9      ; MOBILE          ; STANDARD_RATE ; "globaltelefoni"            ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+726009          ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+72601           ; 9      ; MOBILE          ; STANDARD_RATE ; "telavox"                   ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+7260[29]        ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"
+7260[3-578]     ; 9      ; MOBILE          ; STANDARD_RATE ; "tele2"                     ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+72606           ; 9      ; MOBILE          ; STANDARD_RATE ; "tele2"                     ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; IR21
+726[1-3]        ; 9      ; MOBILE          ; STANDARD_RATE ; "globetouch"                ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+7264[01]        ; 9      ; MOBILE          ; STANDARD_RATE ; "spirius"                   ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+726420          ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"
+726421          ; 9      ; MOBILE          ; STANDARD_RATE ; "warsin_holding_ab"         ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+726422          ; 9      ; MOBILE          ; STANDARD_RATE ; "beepsend"                  ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+72642[3-9]      ; 9      ; MOBILE          ; STANDARD_RATE ; "globaltelefoni"            ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+7264[35-9]      ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"
+72644           ; 9      ; MOBILE          ; STANDARD_RATE ; "telenor"                   ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; IR21
+726[578]        ; 9      ; MOBILE          ; STANDARD_RATE ; "telia"                     ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+7266[06]        ; 9      ; MOBILE          ; STANDARD_RATE ; "telenor"                   ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; IR21
+7266[1-578]     ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"
+72669           ; 9      ; MOBILE          ; STANDARD_RATE ; "nortechtelecom"            ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+7269[0-467]     ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"
+72695           ; 9      ; MOBILE          ; STANDARD_RATE ; "telenor"                   ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; IR21
+72698           ; 9      ; MOBILE          ; STANDARD_RATE ; "swedfonenet_ab"            ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+726990          ; 9      ; MOBILE          ; STANDARD_RATE ; "gotalandsnatet"            ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+72699[12]       ; 9      ; MOBILE          ; STANDARD_RATE ; "fast_communication"        ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+72699[3-5]      ; 9      ; MOBILE          ; STANDARD_RATE ; "swedfonenet_ab"            ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+726996          ; 9      ; MOBILE          ; STANDARD_RATE ; "nortechtelecom"            ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+72699[78]       ; 9      ; MOBILE          ; STANDARD_RATE ; "onoff_telecom_sas"         ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+726999          ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+727[0-4]        ; 9      ; MOBILE          ; STANDARD_RATE ; "telia"                     ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+72750[059]      ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+72750[12]       ; 9      ; MOBILE          ; STANDARD_RATE ; "onoff_telecom_sas"         ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+727503          ; 9      ; MOBILE          ; STANDARD_RATE ; "minitel"                   ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+72750[467]      ; 9      ; MOBILE          ; STANDARD_RATE ; "fink_telecom"              ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+727508          ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"
+72751[01]       ; 9      ; MOBILE          ; STANDARD_RATE ; "onoff_telecom_sas"         ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+727512          ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+72751[347-9]    ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"
+72751[56]       ; 9      ; MOBILE          ; STANDARD_RATE ; "fink_telecom"              ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+7275[279]       ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"
+72753           ; 9      ; MOBILE          ; STANDARD_RATE ; "netmore"                   ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+72754           ; 9      ; MOBILE          ; STANDARD_RATE ; "telenor"                   ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; IR21
+7275[56]        ; 9      ; MOBILE          ; STANDARD_RATE ; "fink_telecom"              ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+72758           ; 9      ; MOBILE          ; STANDARD_RATE ; "lancelot"                  ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; IR21
+727[6-8]        ; 9      ; MOBILE          ; STANDARD_RATE ; "lycamobile"                ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+7279            ; 9      ; MOBILE          ; STANDARD_RATE ; "telenor"                   ; "mobile_etc_2/3/2/2"     ; "SE"
+7280            ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"
+728100          ; 9      ; MOBILE          ; STANDARD_RATE ; "voiceintegrate"            ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+728101          ; 9      ; MOBILE          ; STANDARD_RATE ; "beepsend"                  ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+72810[2-9]      ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"
+7281[1-8]       ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"
+72819[0-69]     ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"
+728197          ; 9      ; MOBILE          ; STANDARD_RATE ; "telenor"                   ; "mobile_etc_2/3/2/2"     ; "SE"
+728198          ; 9      ; MOBILE          ; STANDARD_RATE ; "telavox"                   ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+7282            ; 9      ; MOBILE          ; STANDARD_RATE ; "telecom3_networks"         ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+728[3-7]        ; 9      ; MOBILE          ; STANDARD_RATE ; "tele2"                     ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; IR21
+7288            ; 9      ; MOBILE          ; STANDARD_RATE ; "telenor"                   ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; IR21
+7289            ; 9      ; MOBILE          ; STANDARD_RATE ; "qall"                      ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+729[0-4]        ; 9      ; MOBILE          ; STANDARD_RATE ; "tele2"                     ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; IR21
+7295            ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"
+729[6-9]        ; 9      ; MOBILE          ; STANDARD_RATE ; "telenor"                   ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; IR21
+730[02-9]       ; 9      ; MOBILE          ; STANDARD_RATE ; "telia"                     ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+7301            ; 9      ; MOBILE          ; STANDARD_RATE ; "sierrawireless"            ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+731[045]        ; 9      ; MOBILE          ; STANDARD_RATE ; "telenor"                   ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; IR21
+7311            ; 9      ; MOBILE          ; STANDARD_RATE ; "telia"                     ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; IR21
+73120           ; 9      ; MOBILE          ; STANDARD_RATE ; "telavox"                   ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+73121[03]       ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+73121[1278]     ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"
+731214          ; 9      ; MOBILE          ; STANDARD_RATE ; "voiceintegrate"            ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+731215          ; 9      ; MOBILE          ; STANDARD_RATE ; "cooltel_aps"               ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+731216          ; 9      ; MOBILE          ; STANDARD_RATE ; "horisen"                   ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+731219          ; 9      ; MOBILE          ; STANDARD_RATE ; "clxcommunications"         ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+73122           ; 9      ; MOBILE          ; STANDARD_RATE ; "eu_tel_ab"                 ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+73123           ; 9      ; MOBILE          ; STANDARD_RATE ; "42_telecom_ab"             ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+731240          ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+73124[1-469]    ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"
+731245          ; 9      ; MOBILE          ; STANDARD_RATE ; "eu_tel_ab"                 ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+731247          ; 9      ; MOBILE          ; STANDARD_RATE ; "beepsend"                  ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+731248          ; 9      ; MOBILE          ; STANDARD_RATE ; "telness"                   ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+73125           ; 9      ; MOBILE          ; STANDARD_RATE ; "telenor"                   ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; IR21
+73126           ; 9      ; MOBILE          ; STANDARD_RATE ; "telenorconnexion"          ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+73127           ; 9      ; MOBILE          ; STANDARD_RATE ; "swedfonenet_ab"            ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+73128           ; 9      ; MOBILE          ; STANDARD_RATE ; "sstnet"                    ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+73129           ; 9      ; MOBILE          ; STANDARD_RATE ; "spirius"                   ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+7313            ; 9      ; MOBILE          ; STANDARD_RATE ; "imez"                      ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+7316            ; 9      ; MOBILE          ; STANDARD_RATE ; "alltele"                   ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+73170[0-57-9]   ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"
+731706          ; 9      ; MOBILE          ; STANDARD_RATE ; "soatso_ab"                 ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+73171           ; 9      ; MOBILE          ; STANDARD_RATE ; "ventelo_sverige"           ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+73172[02]       ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+73172[13-6]     ; 9      ; MOBILE          ; STANDARD_RATE ; "rewicom_scandinavia"       ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+73172[78]       ; 9      ; MOBILE          ; STANDARD_RATE ; "beepsend"                  ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+731729          ; 9      ; MOBILE          ; STANDARD_RATE ; "ipify_limited"             ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+7317[3-5]       ; 9      ; MOBILE          ; STANDARD_RATE ; "svea_billing_system"       ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+73176           ; 9      ; MOBILE          ; STANDARD_RATE ; "id_mobile"                 ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+7317[7-9]       ; 9      ; MOBILE          ; STANDARD_RATE ; "sstnet"                    ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+7318            ; 9      ; MOBILE          ; STANDARD_RATE ; "can_communications_sweden" ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+7319            ; 9      ; MOBILE          ; STANDARD_RATE ; "telia"                     ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+732[03-68]      ; 9      ; MOBILE          ; STANDARD_RATE ; "telenor"                   ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; IR21
+732[12]         ; 9      ; MOBILE          ; STANDARD_RATE ; "tele2"                     ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; IR21
+7327            ; 9      ; MOBILE          ; STANDARD_RATE ; "ventelo_sverige"           ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+7329            ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"
+733             ; 9      ; MOBILE          ; STANDARD_RATE ; "telenor"                   ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; IR21
+734[0-4]        ; 9      ; MOBILE          ; STANDARD_RATE ; "telenor"                   ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; IR21
+73450           ; 9      ; MOBILE          ; STANDARD_RATE ; "weelia_enterprise_a"       ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+73451           ; 9      ; MOBILE          ; STANDARD_RATE ; "cellip"                    ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+73452[0-57-9]   ; 9      ; MOBILE          ; STANDARD_RATE ; "soatso_ab"                 ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+734526          ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"
+73453           ; 9      ; MOBILE          ; STANDARD_RATE ; "telia"                     ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; IR21
+73454           ; 9      ; MOBILE          ; STANDARD_RATE ; "tele2"                     ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+73455           ; 9      ; MOBILE          ; STANDARD_RATE ; "viatel"                    ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+73456           ; 9      ; MOBILE          ; STANDARD_RATE ; "svea_billing_system"       ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+7345[78]        ; 9      ; MOBILE          ; STANDARD_RATE ; "telenor"                   ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; IR21
+73459           ; 9      ; MOBILE          ; STANDARD_RATE ; "42_telecom_ab"             ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+73460[01]       ; 9      ; MOBILE          ; STANDARD_RATE ; "mercury_internationa"      ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+73460[2-9]      ; 9      ; MOBILE          ; STANDARD_RATE ; "ventelo_sverige"           ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+73461           ; 9      ; MOBILE          ; STANDARD_RATE ; "ventelo_sverige"           ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+7346[2-9]       ; 9      ; MOBILE          ; STANDARD_RATE ; "telenor"                   ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; IR21
+734700          ; 9      ; MOBILE          ; STANDARD_RATE ; "42_telecom_ab"             ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+734701          ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+73470[2-9]      ; 9      ; MOBILE          ; STANDARD_RATE ; "mobiweb_ltd"               ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+7347[12]        ; 9      ; MOBILE          ; STANDARD_RATE ; "telenor"                   ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; IR21
+734730          ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+73473[1-9]      ; 9      ; MOBILE          ; STANDARD_RATE ; "mercury_internationa"      ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+734740          ; 9      ; MOBILE          ; STANDARD_RATE ; "gotalandsnatet"            ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+73474[134]      ; 9      ; MOBILE          ; STANDARD_RATE ; "soatso_ab"                 ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+73474[268]      ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"
+734745          ; 9      ; MOBILE          ; STANDARD_RATE ; "beepsend"                  ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+734747          ; 9      ; MOBILE          ; STANDARD_RATE ; "telavox"                   ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+734749          ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+7347[5-9]       ; 9      ; MOBILE          ; STANDARD_RATE ; "lycamobile"                ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+734[89]         ; 9      ; MOBILE          ; STANDARD_RATE ; "lycamobile"                ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+735[0-4]        ; 9      ; MOBILE          ; STANDARD_RATE ; "hutchison"                 ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+735[5-9]        ; 9      ; MOBILE          ; STANDARD_RATE ; "tele2"                     ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; IR21
+73[679]         ; 9      ; MOBILE          ; STANDARD_RATE ; "tele2"                     ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; IR21
+738[0-4]        ; 9      ; MOBILE          ; STANDARD_RATE ; "telia"                     ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+738[58]         ; 9      ; MOBILE          ; STANDARD_RATE ; "telenor"                   ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; IR21
+7386[0-2]       ; 9      ; MOBILE          ; STANDARD_RATE ; "telenor"                   ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; IR21
+738630          ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"
+73863[12]       ; 9      ; MOBILE          ; STANDARD_RATE ; "beepsend"                  ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+738633          ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+73863[4-9]      ; 9      ; MOBILE          ; STANDARD_RATE ; "mercury_internationa"      ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+73864[07]       ; 9      ; MOBILE          ; STANDARD_RATE ; "eu_tel_ab"                 ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+738641          ; 9      ; MOBILE          ; STANDARD_RATE ; "icentrex"                  ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+738642          ; 9      ; MOBILE          ; STANDARD_RATE ; "42_telecom_ab"             ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+73864[3-5]      ; 9      ; MOBILE          ; STANDARD_RATE ; "beepsend"                  ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+73864[689]      ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"
+7386[59]0       ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+7386[59][1-9]   ; 9      ; MOBILE          ; STANDARD_RATE ; "mercury_internationa"      ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+7386[6-8]       ; 9      ; MOBILE          ; STANDARD_RATE ; "tele2"                     ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; IR21
+738[79]         ; 9      ; MOBILE          ; STANDARD_RATE ; "tele2"                     ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; IR21
+74[02-9]        ; 9      ; PAGER           ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"
+75[1-8]         ; 9      ; PERSONAL_NUMBER ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"
+760[0-4]        ; 9      ; MOBILE          ; STANDARD_RATE ; "hutchison"                 ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+760[5-9]        ; 9      ; MOBILE          ; STANDARD_RATE ; "tele2"                     ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; IR21
+76[18][0-4]     ; 9      ; MOBILE          ; STANDARD_RATE ; "telia"                     ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+7615            ; 9      ; MOBILE          ; STANDARD_RATE ; "lycamobile"                ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+761[6-9]        ; 9      ; MOBILE          ; STANDARD_RATE ; "hutchison"                 ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+76[25]          ; 9      ; MOBILE          ; STANDARD_RATE ; "tele2"                     ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; IR21
+763[0-49]       ; 9      ; MOBILE          ; STANDARD_RATE ; "hutchison"                 ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+763[5-7]        ; 9      ; MOBILE          ; STANDARD_RATE ; "telenor"                   ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; IR21
+7638            ; 9      ; MOBILE          ; STANDARD_RATE ; "easy_telecom_ab"           ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+764[0-2]        ; 9      ; MOBILE          ; STANDARD_RATE ; "tele2"                     ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; IR21
+764[3-5]        ; 9      ; MOBILE          ; STANDARD_RATE ; "lycamobile"                ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+7646[0-4]       ; 9      ; MOBILE          ; STANDARD_RATE ; "lycamobile"                ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+764650          ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+764651          ; 9      ; MOBILE          ; STANDARD_RATE ; "eu_tel_ab"                 ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+76465[2-9]      ; 9      ; MOBILE          ; STANDARD_RATE ; "mercury_internationa"      ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+76466           ; 9      ; MOBILE          ; STANDARD_RATE ; "gotalandsnatet"            ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+7646[7-9]       ; 9      ; MOBILE          ; STANDARD_RATE ; "mercury_internationa"      ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+7647[0-7]       ; 9      ; MOBILE          ; STANDARD_RATE ; "tele2"                     ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; IR21
+76478           ; 9      ; MOBILE          ; STANDARD_RATE ; "wifog"                     ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+76479           ; 9      ; MOBILE          ; STANDARD_RATE ; "beepsend"                  ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+7648            ; 9      ; MOBILE          ; STANDARD_RATE ; "globetouch"                ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+7649[08]0       ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+7649[08][1-9]   ; 9      ; MOBILE          ; STANDARD_RATE ; "mercury_internationa"      ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+7649[137]       ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"
+76492           ; 9      ; MOBILE          ; STANDARD_RATE ; "telavox"                   ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+764940          ; 9      ; MOBILE          ; STANDARD_RATE ; "tele2"                     ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; IR21
+764941          ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; IR21
+76494[2-9]      ; 9      ; MOBILE          ; STANDARD_RATE ; "ipify_limited"             ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+7649[56]        ; 9      ; MOBILE          ; STANDARD_RATE ; "tele2"                     ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; IR21
+764990          ; 9      ; MOBILE          ; STANDARD_RATE ; "gotalandsnatet"            ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+76499[1-8]      ; 9      ; MOBILE          ; STANDARD_RATE ; "mercury_internationa"      ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+764999          ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+766[0-4]        ; 9      ; MOBILE          ; STANDARD_RATE ; "telenor"                   ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; IR21
+766[58]         ; 9      ; MOBILE          ; STANDARD_RATE ; "tele2"                     ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; IR21
+7666[0-5]       ; 9      ; MOBILE          ; STANDARD_RATE ; "netett_sverige_ab"         ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+76666           ; 9      ; MOBILE          ; STANDARD_RATE ; "oretel"                    ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+76667           ; 9      ; MOBILE          ; STANDARD_RATE ; "unicorn"                   ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+76668           ; 9      ; MOBILE          ; STANDARD_RATE ; "mercury_internationa"      ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; IR21
+766690          ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+76669[1-59]     ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"
+76669[6-8]      ; 9      ; MOBILE          ; STANDARD_RATE ; "telavox"                   ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+7667[0-4]       ; 9      ; MOBILE          ; STANDARD_RATE ; "svea_billing_system"       ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+766750          ; 9      ; MOBILE          ; STANDARD_RATE ; "42_telecom_ab"             ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+76675[125-9]    ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"
+76675[34]       ; 9      ; MOBILE          ; STANDARD_RATE ; "beepsend"                  ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+766760          ; 9      ; MOBILE          ; STANDARD_RATE ; "voiceintegrate"            ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+76676[1-9]      ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"
+76677           ; 9      ; MOBILE          ; STANDARD_RATE ; "telavox"                   ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+76678           ; 9      ; MOBILE          ; STANDARD_RATE ; "swedfonenet_ab"            ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+76679[07]       ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+76679[18]       ; 9      ; MOBILE          ; STANDARD_RATE ; "beepsend"                  ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+76679[2-6]      ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"
+766799          ; 9      ; MOBILE          ; STANDARD_RATE ; "42_telecom_ab"             ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+7669[01]0       ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+7669[01][1-9]   ; 9      ; MOBILE          ; STANDARD_RATE ; "mercury_internationa"      ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+76692           ; 9      ; MOBILE          ; STANDARD_RATE ; "voxbone"                   ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+766930          ; 9      ; MOBILE          ; STANDARD_RATE ; "mercury_internationa"      ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+76693[15]       ; 9      ; MOBILE          ; STANDARD_RATE ; "beepsend"                  ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+76693[246-8]    ; 9      ; MOBILE          ; STANDARD_RATE ; "ipify_limited"             ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+766933          ; 9      ; MOBILE          ; STANDARD_RATE ; "connectel"                 ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+766939          ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+76694           ; 9      ; MOBILE          ; STANDARD_RATE ; "42_telecom_ab"             ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+7669[5-9]       ; 9      ; MOBILE          ; STANDARD_RATE ; "tele2"                     ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; IR21
+767[01]         ; 9      ; MOBILE          ; STANDARD_RATE ; "tele2"                     ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; IR21
+7672[0-5]       ; 9      ; MOBILE          ; STANDARD_RATE ; "tele2"                     ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; IR21
+767260          ; 9      ; MOBILE          ; STANDARD_RATE ; "eu_tel_ab"                 ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+76726[126]      ; 9      ; MOBILE          ; STANDARD_RATE ; "beepsend"                  ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+76726[34]       ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"
+767265          ; 9      ; MOBILE          ; STANDARD_RATE ; "horisen"                   ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+76726[79]       ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+767268          ; 9      ; MOBILE          ; STANDARD_RATE ; "rebtel"                    ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+76727           ; 9      ; MOBILE          ; STANDARD_RATE ; "telenor"                   ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; IR21
+76728           ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"
+76729[0-8]      ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"
+767299          ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+7673            ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"
+767[45]         ; 9      ; MOBILE          ; STANDARD_RATE ; "lycamobile"                ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+767[6-9]        ; 9      ; MOBILE          ; STANDARD_RATE ; "telia"                     ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+768[5-9]        ; 9      ; MOBILE          ; STANDARD_RATE ; "telenor"                   ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; IR21
+769[0-4]        ; 9      ; MOBILE          ; STANDARD_RATE ; "tele2"                     ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; IR21
+769[5-7]        ; 9      ; MOBILE          ; STANDARD_RATE ; "lycamobile"                ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+769[89]         ; 9      ; MOBILE          ; STANDARD_RATE ; "telia"                     ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+77[0-7]         ; 9      ; FIXED_LINE      ; SHARED_COST   ;                             ; "mobile_etc_2/3/2/2"     ; "SE"
+7900[02-4]      ; 9      ; MOBILE          ; STANDARD_RATE ; "0700_ltd"                  ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+79001           ; 9      ; MOBILE          ; STANDARD_RATE ; "eu_tel_ab"                 ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+79005[0-7]      ; 9      ; MOBILE          ; STANDARD_RATE ; "telenor"                   ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; IR21
+79005[89]       ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"
+79006           ; 9      ; MOBILE          ; STANDARD_RATE ; "telavox"                   ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+79007           ; 9      ; MOBILE          ; STANDARD_RATE ; "fonia"                     ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+79008           ; 9      ; MOBILE          ; STANDARD_RATE ; "voiceintegrate"            ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+79009           ; 9      ; MOBILE          ; STANDARD_RATE ; "biztelco_sverige_ab"       ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+790[1-7]        ; 9      ; MOBILE          ; STANDARD_RATE ; "tele2"                     ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; IR21
+790[89]         ; 9      ; MOBILE          ; STANDARD_RATE ; "tele2"                     ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+7910            ; 9      ; MOBILE          ; STANDARD_RATE ; "tell_ess_ab"               ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+791[1-9]        ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"
+79[246-8]       ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"
+793[0-4]        ; 9      ; MOBILE          ; STANDARD_RATE ; "hutchison"                 ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+793[5-9]        ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"
+795[0-4]        ; 9      ; MOBILE          ; STANDARD_RATE ; "junyverse"                 ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+7955[05-9]      ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"
+7955[1-4]       ; 9      ; MOBILE          ; STANDARD_RATE ; "tele2"                     ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; IR21
+795[679]        ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"
+7958[01]        ; 9      ; MOBILE          ; STANDARD_RATE ; "borderlight"               ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+7958[2-46-9]    ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"
+79585           ; 9      ; MOBILE          ; STANDARD_RATE ; "telavox"                   ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+799[0-689]      ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"
+7997            ; 9      ; MOBILE          ; STANDARD_RATE ; "telenor"                   ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; IR21
+8               ; 7,8    ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_1/2-3/2/2"        ; "SE"    ; "Stockholm"                ; "Stockholm"
+8               ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_1/3/3/2"          ; "SE"    ; "Stockholm"                ; "Stockholm"
+900[1-8]        ; 7      ; FIXED_LINE      ; PREMIUM_RATE  ;                             ; "short_premium_rate_3/4" ; "SE"
+900[1-8]        ; 8,9    ; FIXED_LINE      ; PREMIUM_RATE  ;                             ; "premium_rate_3/2-3/3"   ; "SE"
+900[1-8]        ; 10     ; FIXED_LINE      ; PREMIUM_RATE  ;                             ; "premium_rate_3/2/2/3"   ; "SE"
+90[1-9]         ; 7      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_2/3/2"      ; "SE"    ; "Umeå"                     ; "Umeå"
+90[1-9]         ; 8,9    ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_2/2-3/2/2"        ; "SE"    ; "Umeå"                     ; "Umeå"
+910             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Skellefteå"               ; "Skellefteå"
+910             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Skellefteå"               ; "Skellefteå"
+911             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Piteå"                    ; "Piteå"
+911             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Piteå"                    ; "Piteå"
+912             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Byske"                    ; "Byske"
+912             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Byske"                    ; "Byske"
+913             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Lövånger"                 ; "Lövånger"
+913             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Lövånger"                 ; "Lövånger"
+914             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Burträsk"                 ; "Burträsk"
+914             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Burträsk"                 ; "Burträsk"
+915             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Bastuträsk"               ; "Bastuträsk"
+915             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Bastuträsk"               ; "Bastuträsk"
+916             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Jörn"                     ; "Jörn"
+916             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Jörn"                     ; "Jörn"
+918             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Norsjö"                   ; "Norsjö"
+918             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Norsjö"                   ; "Norsjö"
+920             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Luleå"                    ; "Luleå"
+920             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Luleå"                    ; "Luleå"
+921             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Boden"                    ; "Boden"
+921             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Boden"                    ; "Boden"
+922             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Haparanda"                ; "Haparanda"
+922             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Haparanda"                ; "Haparanda"
+923             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Kalix"                    ; "Kalix"
+923             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Kalix"                    ; "Kalix"
+924             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Råneå"                    ; "Råneå"
+924             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Råneå"                    ; "Råneå"
+925             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Lakaträsk"                ; "Lakaträsk"
+925             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Lakaträsk"                ; "Lakaträsk"
+926             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Överkalix"                ; "Överkalix"
+926             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Överkalix"                ; "Överkalix"
+927             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Övertorneå"               ; "Övertorneå"
+927             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Övertorneå"               ; "Övertorneå"
+928             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Harads"                   ; "Harads"
+928             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Harads"                   ; "Harads"
+929             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Älvsbyn"                  ; "Älvsbyn"
+929             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Älvsbyn"                  ; "Älvsbyn"
+930             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Nordmaling"               ; "Nordmaling"
+930             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Nordmaling"               ; "Nordmaling"
+932             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Bjurholm"                 ; "Bjurholm"
+932             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Bjurholm"                 ; "Bjurholm"
+933             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Vindeln"                  ; "Vindeln"
+933             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Vindeln"                  ; "Vindeln"
+934             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Robertsfors"              ; "Robertsfors"
+934             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Robertsfors"              ; "Robertsfors"
+935             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Vännäs"                   ; "Vännäs"
+935             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Vännäs"                   ; "Vännäs"
+939[1-8]        ; 7      ; FIXED_LINE      ; PREMIUM_RATE  ;                             ; "short_premium_rate_3/4" ; "SE"
+939[1-8]        ; 8,9    ; FIXED_LINE      ; PREMIUM_RATE  ;                             ; "premium_rate_3/2-3/3"   ; "SE"
+939[1-8]        ; 10     ; FIXED_LINE      ; PREMIUM_RATE  ;                             ; "premium_rate_3/2/2/3"   ; "SE"
+940             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Vilhelmina"               ; "Vilhelmina"
+940             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Vilhelmina"               ; "Vilhelmina"
+941             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Åsele"                    ; "Åsele"
+941             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Åsele"                    ; "Åsele"
+942             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Dorotea"                  ; "Dorotea"
+942             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Dorotea"                  ; "Dorotea"
+943             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Fredrika"                 ; "Fredrika"
+943             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Fredrika"                 ; "Fredrika"
+944[1-8]        ; 7      ; FIXED_LINE      ; PREMIUM_RATE  ;                             ; "short_premium_rate_3/4" ; "SE"
+944[1-8]        ; 8,9    ; FIXED_LINE      ; PREMIUM_RATE  ;                             ; "premium_rate_3/2-3/3"   ; "SE"
+944[1-8]        ; 10     ; FIXED_LINE      ; PREMIUM_RATE  ;                             ; "premium_rate_3/2/2/3"   ; "SE"
+950             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Lycksele"                 ; "Lycksele"
+950             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Lycksele"                 ; "Lycksele"
+951             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Storuman"                 ; "Storuman"
+951             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Storuman"                 ; "Storuman"
+952             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Sorsele"                  ; "Sorsele"
+952             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Sorsele"                  ; "Sorsele"
+953             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Malå"                     ; "Malå"
+953             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Malå"                     ; "Malå"
+954             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Tärnaby"                  ; "Tärnaby"
+954             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Tärnaby"                  ; "Tärnaby"
+960             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Arvidsjaur"               ; "Arvidsjaur"
+960             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Arvidsjaur"               ; "Arvidsjaur"
+961             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Arjeplog"                 ; "Arjeplog"
+961             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Arjeplog"                 ; "Arjeplog"
+970             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Gällivare"                ; "Gällivare"
+970             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Gällivare"                ; "Gällivare"
+971             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Jokkmokk"                 ; "Jokkmokk"
+971             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Jokkmokk"                 ; "Jokkmokk"
+973             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Porjus"                   ; "Porjus"
+973             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Porjus"                   ; "Porjus"
+975             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Hakkas"                   ; "Hakkas"
+975             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Hakkas"                   ; "Hakkas"
+976             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Vuollerim"                ; "Vuollerim"
+976             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Vuollerim"                ; "Vuollerim"
+977             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Korpilombolo"             ; "Korpilombolo"
+977             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Korpilombolo"             ; "Korpilombolo"
+978             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Pajala"                   ; "Pajala"
+978             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Pajala"                   ; "Pajala"
+980             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Kiruna"                   ; "Kiruna"
+980             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Kiruna"                   ; "Kiruna"
+981             ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "short_fixed_3/2-3/2"    ; "SE"    ; "Vittangi"                 ; "Vittangi"
+981             ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                             ; "fixed_3/2/2/2"          ; "SE"    ; "Vittangi"                 ; "Vittangi"
+99[1-59]        ; 7      ; FIXED_LINE      ; PREMIUM_RATE  ;                             ; "short_premium_rate_3/4" ; "SE"
+99[1-59]        ; 10     ; FIXED_LINE      ; PREMIUM_RATE  ;                             ; "premium_rate_3/2/2/3"   ; "SE"    ;                            ;                            ; GOVERNMENT

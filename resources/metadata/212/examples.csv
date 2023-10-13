@@ -1,0 +1,11 @@
+Region ; Type         ; Number
+EH     ; FIXED_LINE   ; "528812345"
+EH     ; MOBILE       ; "650123456"
+EH     ; TOLL_FREE    ; "801234567"
+EH     ; PREMIUM_RATE ; "891234567"
+EH     ; VOIP         ; "592401234"
+MA     ; FIXED_LINE   ; "520123456"
+MA     ; MOBILE       ; "650123456"
+MA     ; TOLL_FREE    ; "801234567"
+MA     ; PREMIUM_RATE ; "891234567"
+MA     ; VOIP         ; "592401234"

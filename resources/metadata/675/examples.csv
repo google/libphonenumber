@@ -1,0 +1,6 @@
+Region ; Type       ; Number
+PG     ; FIXED_LINE ; "3123456"
+PG     ; MOBILE     ; "70123456"
+PG     ; PAGER      ; "2700123"
+PG     ; TOLL_FREE  ; "1801234"
+PG     ; VOIP       ; "2751234"

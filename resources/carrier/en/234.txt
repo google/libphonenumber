@@ -31,7 +31,7 @@
 234706|MTN
 234708|Airtel
 234709|Multilinks
-234801|Megatech
+234801|MAFAB
 234802|Airtel
 234803|MTN
 234804|Ntel
@@ -59,6 +59,7 @@
 234907|Airtel
 234908|9mobile
 234909|9mobile
+234911|Airtel
 234912|Airtel
 234913|MTN
 234915|Glo

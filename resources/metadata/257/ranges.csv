@@ -1,0 +1,17 @@
+Prefix       ; Length ; Type       ; Tariff        ; Operator       ; Format         ; Regions ; Geocode:en          ; Provenance ; Comment
+22[016-9]    ; 8      ; FIXED_LINE ; STANDARD_RATE ;                ; "fmt1_2/2/2/2" ; "BI"
+222[0-5]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;                ; "fmt1_2/2/2/2" ; "BI"    ; "Bujumbura"         ; ITU        ; "ITU dated 4/12/2018"
+2226         ; 8      ; FIXED_LINE ; STANDARD_RATE ;                ; "fmt1_2/2/2/2" ; "BI"    ; "West zone"         ; ITU        ; "ITU dated 4/12/2018"
+2227         ; 8      ; FIXED_LINE ; STANDARD_RATE ;                ; "fmt1_2/2/2/2" ; "BI"    ; "Rural areas"       ; ITU        ; "ITU dated 4/12/2018"
+222[89]      ; 8      ; FIXED_LINE ; STANDARD_RATE ;                ; "fmt1_2/2/2/2" ; "BI"
+2230         ; 8      ; FIXED_LINE ; STANDARD_RATE ;                ; "fmt1_2/2/2/2" ; "BI"    ; "North zone"        ; ITU        ; "ITU dated 4/12/2018"
+22[3-5][1-9] ; 8      ; FIXED_LINE ; STANDARD_RATE ;                ; "fmt1_2/2/2/2" ; "BI"
+2240         ; 8      ; FIXED_LINE ; STANDARD_RATE ;                ; "fmt1_2/2/2/2" ; "BI"    ; "Central east zone" ; ITU        ; "ITU dated 4/12/2018"
+2250         ; 8      ; FIXED_LINE ; STANDARD_RATE ;                ; "fmt1_2/2/2/2" ; "BI"    ; "South zone"        ; ITU        ; "ITU dated 4/12/2018"
+29           ; 8      ; MOBILE     ; STANDARD_RATE ; "leo"          ; "fmt1_2/2/2/2" ; "BI"
+31           ; 8      ; FIXED_LINE ; STANDARD_RATE ;                ; "fmt1_2/2/2/2" ; "BI"    ;                     ; GOVERNMENT
+6[1257-9]    ; 8      ; MOBILE     ; STANDARD_RATE ; "viettel"      ; "fmt1_2/2/2/2" ; "BI"    ;                     ; TELECOMS   ; "Received confirmation from carrier"
+66           ; 8      ; MOBILE     ; STANDARD_RATE ; "viettel"      ; "fmt1_2/2/2/2" ; "BI"    ;                     ; IR21
+7[1269]      ; 8      ; MOBILE     ; STANDARD_RATE ; "leo"          ; "fmt1_2/2/2/2" ; "BI"
+7[58]        ; 8      ; MOBILE     ; STANDARD_RATE ; "smart_mobile" ; "fmt1_2/2/2/2" ; "BI"
+77           ; 8      ; MOBILE     ; STANDARD_RATE ; "onatel"       ; "fmt1_2/2/2/2" ; "BI"

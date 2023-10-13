@@ -1,0 +1,20 @@
+Prefix     ; Length ; Type       ; Tariff        ; Operator   ; Format       ; Regions ; Geocode:en  ; Geocode:sq  ; Geocode:sr           ; Provenance
+280        ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_2/3/3" ; "XK"    ; "Gjilan"    ; "Gjilan"    ; "Гњилане"
+280        ; 9      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt3_3/3/3" ; "XK"    ; "Gjilan"    ; "Gjilan"    ; "Гњилане"
+28[1-9]    ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_2/3/3" ; "XK"    ; "Mitrovica" ; "Mitrovicë" ; "Косовска Митровица"
+290        ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_2/3/3" ; "XK"    ; "Ferizaj"   ; "Ferizaj"   ; "Урошевац"
+290        ; 9      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt3_3/3/3" ; "XK"    ; "Ferizaj"   ; "Ferizaj"   ; "Урошевац"
+29[1-9]    ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_2/3/3" ; "XK"    ; "Prizren"   ; "Prizren"   ; "Призрен"
+38         ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_2/3/3" ; "XK"    ; "Prishtina" ; "Prishtinë" ; "Приштина"
+390        ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_2/3/3" ; "XK"    ; "Gjakova"   ; "Gjakovë"   ; "Ђаковица"
+390        ; 9      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt3_3/3/3" ; "XK"    ; "Gjakova"   ; "Gjakovë"   ; "Ђаковица"
+39[1-9]    ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_2/3/3" ; "XK"    ; "Peja"      ; "Pejë"      ; "Пећ"
+4[389]     ; 8      ; MOBILE     ; STANDARD_RATE ; "ipko"     ; "fmt1_2/3/3" ; "XK"    ;             ;             ;                      ; IR21
+44         ; 8      ; MOBILE     ; STANDARD_RATE ; "vala"     ; "fmt1_2/3/3" ; "XK"    ;             ;             ;                      ; GOVERNMENT
+4[56]0     ; 8      ; MOBILE     ; STANDARD_RATE ;            ; "fmt1_2/3/3" ; "XK"
+45[1-47-9] ; 8      ; MOBILE     ; STANDARD_RATE ; "vala"     ; "fmt1_2/3/3" ; "XK"    ;             ;             ;                      ; GOVERNMENT
+45[56]     ; 8      ; MOBILE     ; STANDARD_RATE ; "z_mobile" ; "fmt1_2/3/3" ; "XK"    ;             ;             ;                      ; GOVERNMENT
+46[1-9]    ; 8      ; MOBILE     ; STANDARD_RATE ; "vala"     ; "fmt1_2/3/3" ; "XK"    ;             ;             ;                      ; GOVERNMENT
+47         ; 8      ; MOBILE     ; STANDARD_RATE ; "mts_doo"  ; "fmt1_2/3/3" ; "XK"    ;             ;             ;                      ; GOVERNMENT
+800        ; 8      ; FIXED_LINE ; TOLL_FREE     ;            ; "fmt2_3/5"   ; "XK"
+900        ; 8      ; FIXED_LINE ; PREMIUM_RATE  ;            ; "fmt2_3/5"   ; "XK"

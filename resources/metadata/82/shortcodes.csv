@@ -1,0 +1,30 @@
+Region ; Prefix      ; Length ; Type               ; Tariff    ; Carrier Specific ; Format
+KR     ; 10[01]      ; 3      ; COMMERCIAL         ;           ; true
+KR     ; 1[016-9]114 ; 5      ; COMMERCIAL         ;           ; true             ; "short_code_5"
+KR     ; 105         ; 3      ; COMMERCIAL
+KR     ; 110         ; 3      ; COMMERCIAL
+KR     ; 11[13]      ; 3      ; EXPANDED_EMERGENCY
+KR     ; 11[29]      ; 3      ; EMERGENCY          ; TOLL_FREE
+KR     ; 11[4-6]     ; 3      ; COMMERCIAL         ;           ; true
+KR     ; 117         ; 3      ; EXPANDED_EMERGENCY ; TOLL_FREE
+KR     ; 1[12]8      ; 3      ; COMMERCIAL         ; TOLL_FREE
+KR     ; 12[057]     ; 3      ; COMMERCIAL
+KR     ; 12[139]     ; 3      ; EXPANDED_EMERGENCY
+KR     ; 130[01]     ; 4      ; COMMERCIAL
+KR     ; 132         ; 3      ; COMMERCIAL
+KR     ; 1330        ; 4      ; EXPANDED_EMERGENCY ; TOLL_FREE
+KR     ; 133[19]     ; 4      ; EXPANDED_EMERGENCY
+KR     ; 133[235-8]  ; 4      ; COMMERCIAL
+KR     ; 134         ; 3      ; COMMERCIAL
+KR     ; 1345        ; 4      ; COMMERCIAL
+KR     ; 135[057]    ; 4      ; COMMERCIAL
+KR     ; 136[59]     ; 4      ; COMMERCIAL
+KR     ; 1366        ; 4      ; EXPANDED_EMERGENCY
+KR     ; 137[79]     ; 4      ; COMMERCIAL
+KR     ; 138[25]     ; 4      ; COMMERCIAL
+KR     ; 138[89]     ; 4      ; EXPANDED_EMERGENCY
+KR     ; 139[018]    ; 4      ; EXPANDED_EMERGENCY
+KR     ; 1399        ; 4      ; COMMERCIAL
+KR     ; 141         ; 3      ; COMMERCIAL         ;           ; true
+KR     ; 182         ; 3      ; EXPANDED_EMERGENCY ; TOLL_FREE
+KR     ; 188         ; 3      ; COMMERCIAL

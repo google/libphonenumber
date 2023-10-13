@@ -1,0 +1,425 @@
+Prefix            ; Length ; Type       ; Tariff        ; Area Code Length ; Operator   ; Format             ; Timezone                           ; Regions ; Geocode:en                        ; Provenance
+[12]1             ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fixed_line_2/2/4" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Ulaanbaatar"
+[12]21            ; 8,9    ; FIXED_LINE ; STANDARD_RATE ; 3                ;            ; "fixed_line_3/5-6" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Baganuur"
+[12]22            ; 8,9    ; FIXED_LINE ; STANDARD_RATE ; 3                ;            ; "fixed_line_3/5-6" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Bagakhangai"
+[12]23            ; 8,9    ; FIXED_LINE ; STANDARD_RATE ; 3                ;            ; "fixed_line_3/5-6" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Nalaikh"
+[12]27[013]       ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;            ; "fixed_line_4/5-6" ; "Asia/Ulaanbaatar"                 ; "MN"
+[12]272           ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;            ; "fixed_line_4/5-6" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Zuunmod city, Tuv"               ; GOVERNMENT
+[12]27[45]0       ; 9      ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"
+[12]2741          ; 9      ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Altaanbulag, Tuv"                ; GOVERNMENT
+[12]2742          ; 9      ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Argalant, Tuv"                   ; GOVERNMENT
+[12]2743          ; 9      ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Arhust, Tuv"                     ; GOVERNMENT
+[12]2744          ; 9      ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Batsumber, Tuv"                  ; GOVERNMENT
+[12]2745          ; 9      ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Bayan, Tuv"                      ; GOVERNMENT
+[12]2746          ; 9      ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Bayandelger, Tuv"                ; GOVERNMENT
+[12]2747          ; 9      ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Bayanjargal, Tuv"                ; GOVERNMENT
+[12]2748          ; 9      ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Bayan-Unjuul, Tuv"               ; GOVERNMENT
+[12]2749          ; 9      ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Bayankhangai, Tuv"               ; GOVERNMENT
+[12]2751          ; 9      ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Bayantsagaan, Tuv"               ; GOVERNMENT
+[12]2752          ; 9      ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Bayantsogt, Tuv"                 ; GOVERNMENT
+[12]2753          ; 9      ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Bayanchandmani, Tuv"             ; GOVERNMENT
+[12]2754          ; 9      ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Bornuur, Tuv"                    ; GOVERNMENT
+[12]2755          ; 9      ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Buren, Tuv"                      ; GOVERNMENT
+[12]2756          ; 9      ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Delgerkhaan, Tuv"                ; GOVERNMENT
+[12]2757          ; 9      ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Jargalant, Tuv"                  ; GOVERNMENT
+[12]2758          ; 9      ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Zaamar, Tuv"                     ; GOVERNMENT
+[12]2759          ; 9      ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Lun, Tuv"                        ; GOVERNMENT
+[12]276[09]       ; 9      ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"
+[12]2761          ; 9      ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Mungunmorit, Tuv"                ; GOVERNMENT
+[12]2762          ; 9      ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Undurshereet, Tuv"               ; GOVERNMENT
+[12]2763          ; 9      ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Sumber, Tuv"                     ; GOVERNMENT
+[12]2764          ; 9      ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Sergelen, Tuv"                   ; GOVERNMENT
+[12]2765          ; 9      ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Ugtaal, Tuv"                     ; GOVERNMENT
+[12]2766          ; 9      ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Tseel, Tuv"                      ; GOVERNMENT
+[12]2767          ; 9      ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Erdene, Tuv"                     ; GOVERNMENT
+[12]2768          ; 9      ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Erdenesant, Tuv"                 ; GOVERNMENT
+[12]27[7-9]       ; 9      ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"
+[12]3[2-8][013]   ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 4                ;            ; "fixed_line_4/5-6" ; "Asia/Ulaanbaatar"                 ; "MN"
+[12]322           ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 4                ;            ; "fixed_line_4/5-6" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Arvaikheer city, Uvurkhangai"    ; GOVERNMENT
+[12]3[23][45]0    ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"
+[12]3241          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Baruun Bayan-Ulaan, Uvurkhangai" ; GOVERNMENT
+13242             ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Bat-Ulzii, Uvurkhangai"          ; GOVERNMENT
+[12]3243          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Bayangol, Uvurkhangai"           ; GOVERNMENT
+[12]3244          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Bayan-Undur, Uvurkhangai"        ; GOVERNMENT
+[12]3245          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Bogd, Uvurkhangai"               ; GOVERNMENT
+[12]3246          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Burd, Uvurkhangai"               ; GOVERNMENT
+[12]3247          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Guchin-Us, Uvurkhangai"          ; GOVERNMENT
+[12]3248          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Zuil, Uvurkhangai"               ; GOVERNMENT
+[12]3249          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Zuunbayan-Ulaan, Uvurkhangai"    ; GOVERNMENT
+[12]3251          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Naariinteel, Uvurkhangai"        ; GOVERNMENT
+[12]3252          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Ulziit, Uvurkhangai"             ; GOVERNMENT
+[12]3253          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Sant, Uvurkhangai"               ; GOVERNMENT
+[12]3254          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Taragt, Uvurkhangai"             ; GOVERNMENT
+[12]3255          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Tugrug, Uvurkhangai"             ; GOVERNMENT
+[12]3256          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Uyanga, Uvurkhangai"             ; GOVERNMENT
+[12]3257          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Hairkhandulaan, Uvurkhangai"     ; GOVERNMENT
+[12]3258          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Kharkhorin, Uvurkhangai"         ; GOVERNMENT
+[12]3259          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Khujirt, Uvurkhangai"            ; GOVERNMENT
+[12]3[23][6-9]    ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"
+[12]332           ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 4                ;            ; "fixed_line_4/5-6" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Tsetserleg city, Arkhangai"      ; GOVERNMENT
+[12]3341          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Battsengel, Arkhangai"           ; GOVERNMENT
+[12]3342          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Bulgan, Arkhangai"               ; GOVERNMENT
+[12]3343          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Jargalant, Arkhangai"            ; GOVERNMENT
+[12]3344          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Ikh-Tamir, Arkhangai"            ; GOVERNMENT
+[12]3345          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Ugii-Nuur, Arkhangai"            ; GOVERNMENT
+[12]3346          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Ulziit, Arkhangai"               ; GOVERNMENT
+[12]3347          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Undur-Ulaan, Arkhangai"          ; GOVERNMENT
+[12]3348          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Tariat, Arkhangai"               ; GOVERNMENT
+[12]3349          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Tuvshruulekh, Arkhangai"         ; GOVERNMENT
+[12]3351          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Khairkhan, Arkhangai"            ; GOVERNMENT
+[12]3352          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Khahgai, Arkhangai"              ; GOVERNMENT
+[12]3353          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Khashaat, Arkhangai"             ; GOVERNMENT
+[12]3354          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Khotont, Arkhangai"              ; GOVERNMENT
+[12]3355          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Tsakhirt, Arkhangai"             ; GOVERNMENT
+[12]3356          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Tsenkher, Arkhangai"             ; GOVERNMENT
+[12]3357          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Tsetserleg, Arkhangai"           ; GOVERNMENT
+[12]3358          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Chuluut, Arkhangai"              ; GOVERNMENT
+[12]3359          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Erdenemandal, Arkhangai"         ; GOVERNMENT
+[12]342           ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 4                ;            ; "fixed_line_4/5-6" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Bulgan city, Bulgan"             ; GOVERNMENT
+[12]3440          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"
+[12]3441          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Bayanagt, Bulgan"                ; GOVERNMENT
+[12]3442          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Bayannuur, Bulgan"               ; GOVERNMENT
+[12]3443          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Bugat, Bulgan"                   ; GOVERNMENT
+[12]3444          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Buregkhangai, Bulgan"            ; GOVERNMENT
+[12]3445          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Gurvanbulag, Bulgan"             ; GOVERNMENT
+[12]3446          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Dashinchilen, Bulgan"            ; GOVERNMENT
+[12]3447          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Mogod, Bulgan"                   ; GOVERNMENT
+[12]3448          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Orkhon, Bulgan"                  ; GOVERNMENT
+[12]3449          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Rashaant, Bulgan"                ; GOVERNMENT
+[12]345[07-9]     ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"
+[12]3451          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Saikhan, Bulgan"                 ; GOVERNMENT
+[12]3452          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Selenge, Bulgan"                 ; GOVERNMENT
+[12]3453          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Teshig, Bulgan"                  ; GOVERNMENT
+[12]3454          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Khangal, Bulgan"                 ; GOVERNMENT
+[12]3455          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Khishig-Undur, Bulgan"           ; GOVERNMENT
+[12]3456          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Khutag-Undur, Bulgan"            ; GOVERNMENT
+[12]34[6-9]       ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"
+[12]352           ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 4                ;            ; "fixed_line_4/5-6" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Erdenet city, Orkhon"            ; GOVERNMENT
+[12]354[02-9]     ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"
+[12]3541          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Jargalant, Orkhon"               ; GOVERNMENT
+[12]35[5-9]       ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"
+[12]362           ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 4                ;            ; "fixed_line_4/5-6" ; "Asia/Choibalsan&Asia/Ulaanbaatar" ; "MN"    ; "Sukhbaatar city, Selenge"        ; GOVERNMENT
+[12]3640          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"
+[12]3641          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Altanbulag, Selenge"             ; GOVERNMENT
+[12]3642          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Baruunburen, Selenge"            ; GOVERNMENT
+[12]3643          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Bayangol, Selenge"               ; GOVERNMENT
+[12]3644          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Yereu, Selenge"                  ; GOVERNMENT
+[12]3645          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Javkhlant, Selenge"              ; GOVERNMENT
+[12]3646          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Zuunburen, Selenge"              ; GOVERNMENT
+[12]3647          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Mandal, Selenge"                 ; GOVERNMENT
+[12]3648          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Orkhon, Selenge"                 ; GOVERNMENT
+[12]3649          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Orkhontuul, Selenge"             ; GOVERNMENT
+[12]365[089]      ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"
+[12]3651          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Saikhan, Selenge"                ; GOVERNMENT
+[12]3652          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Sant, Selenge"                   ; GOVERNMENT
+[12]3653          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Tushig, Selenge"                 ; GOVERNMENT
+[12]3654          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Khuder, Selenge"                 ; GOVERNMENT
+[12]3655          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Hushaat, Selenge"                ; GOVERNMENT
+[12]3656          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Tsagaannuur, Selenge"            ; GOVERNMENT
+[12]3657          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Shaamar, Selenge"                ; GOVERNMENT
+[12]36[6-9]       ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"
+[12]372           ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 4                ;            ; "fixed_line_4/5-6" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Darkhan city, Darkhan-Uul"       ; GOVERNMENT
+[12]374[04-9]     ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"
+[12]3741          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Orkhon, Darkhan-Uul"             ; GOVERNMENT
+[12]3742          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Khongor, Darkhan-Uul"            ; GOVERNMENT
+[12]3743          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Sharingol, Darkhan-Uul"          ; GOVERNMENT
+[12]37[5-9]       ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"
+[12]382           ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 4                ;            ; "fixed_line_4/5-6" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Murun city, Khuvsgul"            ; GOVERNMENT
+[12]38[45]0       ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"
+[12]3841          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Alag-Erdene, Khuvsgul"           ; GOVERNMENT
+[12]3842          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Arbulag, Khuvsgul"               ; GOVERNMENT
+[12]3843          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Bayanzurkh, Khuvsgul"            ; GOVERNMENT
+[12]3844          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Burentogtokh, Khuvsgul"          ; GOVERNMENT
+[12]3845          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Galt, Khuvsgul"                  ; GOVERNMENT
+13846             ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Jargalant, Khuvsgul"             ; GOVERNMENT
+[12]3847          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Ikh-Uul, Khuvsgul"               ; GOVERNMENT
+[12]3848          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Rashaant, Khuvsgul"              ; GOVERNMENT
+[12]3849          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Renchinlkhumbe, Khuvsgul"        ; GOVERNMENT
+[12]3851          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Tarialan, Khuvsgul"              ; GOVERNMENT
+[12]3852          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Tosontsengel, Khuvsgul"          ; GOVERNMENT
+[12]3853          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Tumurbulag, Khuvsgul"            ; GOVERNMENT
+[12]3854          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Tunel, Khuvsgul"                 ; GOVERNMENT
+[12]3855          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Ulaan-Uul, Khuvsgul"             ; GOVERNMENT
+[12]3856          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Khankh, Khuvsgul"                ; GOVERNMENT
+[12]3857          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Khatgal, Khuvsgul"               ; GOVERNMENT
+[12]3858          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Tsagaannuur, Khuvsgul"           ; GOVERNMENT
+[12]3859          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Tsagaan-Uul, Khuvsgul"           ; GOVERNMENT
+[12]386[06-9]     ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"
+[12]3861          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Tsagaan-Uur, Khuvsgul"           ; GOVERNMENT
+[12]3862          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Tsetserleg, Khuvsgul"            ; GOVERNMENT
+[12]3863          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Chaandmani-Undur, Khuvsgul"      ; GOVERNMENT
+[12]3864          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Shine-Ider, Khuvsgul"            ; GOVERNMENT
+[12]3865          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Erdenebulgan, Khuvsgul"          ; GOVERNMENT
+[12]38[7-9]       ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"
+[12]4[2-68][013]  ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 4                ;            ; "fixed_line_4/5-6" ; "Asia/Hovd"                        ; "MN"
+[12]422           ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 4                ;            ; "fixed_line_4/5-6" ; "Asia/Hovd"                        ; "MN"    ; "Ulgii, Bayan-Ulgii"              ; GOVERNMENT
+[12]4240          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"
+[12]4241          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Altai, Bayan-Ulgii"              ; GOVERNMENT
+[12]4242          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Altantsugts, Bayan-Ulgii"        ; GOVERNMENT
+[12]4243          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Bayannuur, Bayan-Ulgii"          ; GOVERNMENT
+[12]4244          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Bugat, Bayan-Ulgii"              ; GOVERNMENT
+[12]4245          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Bulgan, Bayan-Ulgii"             ; GOVERNMENT
+[12]4246          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Buyant, Bayan-Ulgii"             ; GOVERNMENT
+[12]4247          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Deluun, Bayan-Ulgii"             ; GOVERNMENT
+[12]4248          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Nogoonnnuur, Bayan-Ulgii"        ; GOVERNMENT
+[12]4249          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Sagsai, Bayan-Ulgii"             ; GOVERNMENT
+[12]425[04-9]     ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"
+[12]4251          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Tolbo, Bayan-Ulgii"              ; GOVERNMENT
+[12]4252          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Ulaankhus, Bayan-Ulgii"          ; GOVERNMENT
+[12]4253          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Tsengel, Bayan-Ulgii"            ; GOVERNMENT
+[12]42[6-9]       ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"
+[12]432           ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 4                ;            ; "fixed_line_4/5-6" ; "Asia/Hovd"                        ; "MN"    ; "Khovd city, Khovd"               ; GOVERNMENT
+[12]4340          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"
+[12]4341          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Altai, Khovd"                    ; GOVERNMENT
+[12]4342          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Bulgan, Khovd"                   ; GOVERNMENT
+14343             ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Buyant, Khovd"                   ; GOVERNMENT
+[12]4344          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Darvi, Khovd"                    ; GOVERNMENT
+[12]4345          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Durgun, Khovd"                   ; GOVERNMENT
+[12]4346          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Duut, Khovd"                     ; GOVERNMENT
+[12]4347          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Zereg, Khovd"                    ; GOVERNMENT
+[12]4348          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Mankhan, Khovd"                  ; GOVERNMENT
+[12]4349          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Munkhkhairkhan, Khovd"           ; GOVERNMENT
+[12]435[089]      ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"
+[12]4351          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Must, Khovd"                     ; GOVERNMENT
+[12]4352          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Myangad, Khovd"                  ; GOVERNMENT
+[12]4353          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Uench, Khovd"                    ; GOVERNMENT
+[12]4354          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Khovd, Khovd"                    ; GOVERNMENT
+[12]4355          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Tsetseg, Khovd"                  ; GOVERNMENT
+[12]4356          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Chandmani, Khovd"                ; GOVERNMENT
+[12]4357          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Erdeneburen, Khovd"              ; GOVERNMENT
+[12]43[6-9]       ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"
+[12]442           ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 4                ;            ; "fixed_line_4/5-6" ; "Asia/Hovd"                        ; "MN"    ; "Bayankhongor city, Bayankhongor" ; GOVERNMENT
+[12]44[45]0       ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"
+[12]4441          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Baatsagaan, Bayankhongor"        ; GOVERNMENT
+14442             ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Bayanbulag, Bayankhongor"
+[12]4443          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Bayangovi, Bayankhongor"         ; GOVERNMENT
+[12]4444          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Bayanlig, Bayankhongor"          ; GOVERNMENT
+[12]4445          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Bayan-Ovoo, Bayankhongor"        ; GOVERNMENT
+[12]4446          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Bayan-Undur, Bayankhongor"       ; GOVERNMENT
+[12]4447          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Bayantsagaan, Bayankhongor"      ; GOVERNMENT
+[12]4448          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Bogd, Bayankhongor"              ; GOVERNMENT
+[12]4449          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Bumbugur, Bayankhongor"          ; GOVERNMENT
+[12]4451          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Buutsagaan, Bayankhongor"        ; GOVERNMENT
+[12]4452          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Galuut, Bayankhongor"            ; GOVERNMENT
+[12]4453          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Gurvanbulag, Bayankhongor"       ; GOVERNMENT
+[12]4454          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Jargalant, Bayankhongor"         ; GOVERNMENT
+[12]4455          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Jinst, Bayankhongor"             ; GOVERNMENT
+[12]4456          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Zag, Bayankhongor"               ; GOVERNMENT
+[12]4457          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Ulziit, Bayankhongor"            ; GOVERNMENT
+[12]4458          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Khureemaral, Bayankhongor"       ; GOVERNMENT
+[12]4459          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Shjnejinst, Bayankhongor"        ; GOVERNMENT
+[12]446[02-9]     ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"
+[12]4461          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Erdenetsogt, Bayankhongor"       ; GOVERNMENT
+[12]44[7-9]       ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"
+[12]452           ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 4                ;            ; "fixed_line_4/5-6" ; "Asia/Hovd"                        ; "MN"    ; "Ulaangom city, Uvs"              ; GOVERNMENT
+[12]45[45]0       ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"
+[12]4541          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Baruunturuun, Uvs"               ; GOVERNMENT
+[12]4542          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Bukhmurun, Uvs"                  ; GOVERNMENT
+[12]4543          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Davst, Uvs"                      ; GOVERNMENT
+[12]4544          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Zavkhan, Uvs"                    ; GOVERNMENT
+[12]4545          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Zuungovi, Uvs"                   ; GOVERNMENT
+[12]4546          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Zuunkhangai, Uvs"                ; GOVERNMENT
+[12]4547          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Malchin, Uvs"                    ; GOVERNMENT
+[12]4548          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Naranbulag, Uvs"                 ; GOVERNMENT
+[12]4549          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Ulgii, Uvs"                      ; GOVERNMENT
+[12]4551          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Umnugovi, Uvs"                   ; GOVERNMENT
+[12]4552          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Undurkhangai, Uvs"               ; GOVERNMENT
+[12]4553          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Sagili, Uvs"                     ; GOVERNMENT
+[12]4554          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Tarialan, Uvs"                   ; GOVERNMENT
+[12]4555          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Turgen, Uvs"                     ; GOVERNMENT
+[12]4556          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Tes, Uvs"                        ; GOVERNMENT
+[12]4557          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Khovd, Uvs"                      ; GOVERNMENT
+[12]4558          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Khyargas, Uvs"                   ; GOVERNMENT
+[12]4559          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Tsagaankhairkhan, Uvs"           ; GOVERNMENT
+[12]45[6-9]       ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"
+[12]462           ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 4                ;            ; "fixed_line_4/5-6" ; "Asia/Hovd"                        ; "MN"    ; "Uliastal city, Zavkhan"          ; GOVERNMENT
+[12]46[45]0       ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"
+[12]4641          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Aldarkhaan, Zavkhan"             ; GOVERNMENT
+[12]4642          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Asgat, Zavkhan"                  ; GOVERNMENT
+[12]4643          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Bayantest, Zavkhan"              ; GOVERNMENT
+[12]4644          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Bayankhairkhan, Zavkhan"         ; GOVERNMENT
+[12]4645          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Bulnai, Zavkhan"                 ; GOVERNMENT
+[12]4646          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Durvuljin, Zavkhan"              ; GOVERNMENT
+[12]4647          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Zavkhanmandal, Zavkhan"          ; GOVERNMENT
+[12]4648          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Ider, Zavkhan"                   ; GOVERNMENT
+[12]4649          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Ikh-Uul, Zavkhan"                ; GOVERNMENT
+[12]4651          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Numrug, Zavkhan"                 ; GOVERNMENT
+[12]4652          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Otgon, Zavkhan"                  ; GOVERNMENT
+[12]4653          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Santmargad, Zavkhan"             ; GOVERNMENT
+[12]4654          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Songino, Zavkhan"                ; GOVERNMENT
+[12]4655          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Tudevtei, Zavkhan"               ; GOVERNMENT
+[12]4656          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Telmen, Zavkhan"                 ; GOVERNMENT
+[12]4657          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Tes, Zavkhan"                    ; GOVERNMENT
+[12]4658          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Urgamal, Zavkhan"                ; GOVERNMENT
+[12]4659          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Tsegeenkhairkhan, Zavkhan"       ; GOVERNMENT
+[12]466[06-9]     ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"
+[12]4661          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Tsagaanchuluut, Zavkhan"
+[12]4662          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Tsetsen-Uul, Zavkhan"
+[12]4663          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Shiluustei, Zavkhan"
+[12]4664          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Erdenekhaijkhan, Zavkhan"
+[12]4665          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Yaruu, Zavkhan"
+[12]46[7-9]       ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"
+[12]482           ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 4                ;            ; "fixed_line_4/5-6" ; "Asia/Hovd"                        ; "MN"    ; "Altai city, Govi-Altai"          ; GOVERNMENT
+[12]4840          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"
+[12]4841          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Altai, Govi-Altai"               ; GOVERNMENT
+[12]4842          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Bayan-Uul, Govi-Altai"           ; GOVERNMENT
+[12]4843          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Biger, Govi-Altai"               ; GOVERNMENT
+[12]4844          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Bugant, Govi-Altai"              ; GOVERNMENT
+[12]4845          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Darvi, Govi-Altai"               ; GOVERNMENT
+[12]4846          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Delger, Govi-Altai"              ; GOVERNMENT
+[12]4847          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Jargalan, Govi-Altai"            ; GOVERNMENT
+[12]4848          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Taishir, Govi-Altai"             ; GOVERNMENT
+[12]4849          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Tonkhil, Govi-Altai"             ; GOVERNMENT
+[12]485[09]       ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"
+[12]4851          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Tugrug, Govi-Altai"              ; GOVERNMENT
+[12]4852          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Khaluun, Govi-Altai"             ; GOVERNMENT
+[12]4853          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Khukhmorit, Govi-Altai"          ; GOVERNMENT
+[12]4854          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Tsogt, Govi-Altai"               ; GOVERNMENT
+[12]4855          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Tseel, Govi-Altai"               ; GOVERNMENT
+[12]4856          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Chandmani, Govi-Altai"           ; GOVERNMENT
+[12]4857          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Sharga, Govi-Altai"              ; GOVERNMENT
+[12]4858          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Erdene, Govi-Altai"              ; GOVERNMENT
+[12]48[6-9]       ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"
+[12]5[1-469][013] ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 4                ;            ; "fixed_line_4/5-6" ; "Asia/Ulaanbaatar"                 ; "MN"
+[12]512           ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 4                ;            ; "fixed_line_4/5-6" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Baruun-Urt city, Sukhbaatar"     ; GOVERNMENT
+[12]5140          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"
+[12]5141          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Asgat, Sukhbaatar"               ; GOVERNMENT
+[12]5142          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Bayandelger, Sukhbaatar"         ; GOVERNMENT
+[12]5143          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Dariganga, Sukhbaatar"           ; GOVERNMENT
+[12]5144          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Munkhkhaan, Sukhbaatar"          ; GOVERNMENT
+[12]5145          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Naran, Sukhbaatar"               ; GOVERNMENT
+[12]5146          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Ongon, Sukhbaatar"               ; GOVERNMENT
+[12]5147          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Sukhbaatar, Sukhbaatar"          ; GOVERNMENT
+[12]5148          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Tuvshin-Shiree, Sukhbaatar"      ; GOVERNMENT
+[12]5149          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Tumentsogt, Sukhbaatar"          ; GOVERNMENT
+[12]515[04-9]     ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"
+[12]5151          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Uulbayan, Sukhbaatar"            ; GOVERNMENT
+[12]5152          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Halzan, Sukhbaatar"              ; GOVERNMENT
+[12]5153          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Erdenetsagaan, Sukhbaatar"       ; GOVERNMENT
+[12]51[6-9]       ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"
+[12]522           ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 4                ;            ; "fixed_line_4/5-6" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Sainshand city, Dornogovi"       ; GOVERNMENT
+[12]5240          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"
+[12]5241          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Airag, Dornogovi"                ; GOVERNMENT
+[12]5242          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Altanshiree, Dornogovi"          ; GOVERNMENT
+[12]5243          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Dalanjargalan, Dornogovi"        ; GOVERNMENT
+[12]5244          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Delgerekh, Dornogovi"            ; GOVERNMENT
+[12]5245          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Zamiin-Uud, Dornogovi"           ; GOVERNMENT
+[12]5246          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Ikh-Khet, Dornogovi"             ; GOVERNMENT
+[12]5247          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Mandakh, Dornogovi"              ; GOVERNMENT
+[12]5248          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Urgun, Dornogovi"                ; GOVERNMENT
+[12]5249          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Saikhandulaan, Dornogovi"        ; GOVERNMENT
+[12]525[05-9]     ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"
+[12]5251          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Ulaanbadrakh, Dornogovi"         ; GOVERNMENT
+[12]5252          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Khatanbulag, Dornogovi"          ; GOVERNMENT
+[12]5253          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Huvsgul, Dornogovi"              ; GOVERNMENT
+[12]5254          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Erdene, Dornogovi"               ; GOVERNMENT
+[12]52[6-9]       ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"
+[12]532           ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 4                ;            ; "fixed_line_4/5-6" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Dalanzadgad, Umnugovi"           ; GOVERNMENT
+[12]5[39]40       ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"
+[12]5341          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Bayandalai, Umnugovi"            ; GOVERNMENT
+[12]5342          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Bayan-Ovoo, Umnugovi"            ; GOVERNMENT
+[12]5343          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Bulgan, Umnugovi"                ; GOVERNMENT
+[12]5344          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Gurvan tes, Umnugovi"            ; GOVERNMENT
+[12]5345          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Mandal-Ovoo, Umnugovi"           ; GOVERNMENT
+[12]5346          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Manlai, Umnugovi"                ; GOVERNMENT
+[12]5347          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Noyon, Umnugovi"                 ; GOVERNMENT
+[12]5348          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Nomgon, Umnugovi"                ; GOVERNMENT
+[12]5349          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Savrai, Umnugovi"                ; GOVERNMENT
+[12]5[39]5[06-9]  ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"
+[12]5351          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Khanbogd, Umnugovi"              ; GOVERNMENT
+[12]5352          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Khankhongor, Umnugovi"           ; GOVERNMENT
+[12]5353          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Khurmen, Umnugovi"               ; GOVERNMENT
+[12]5354          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Tsogt-Ovoo, Umnugovi"            ; GOVERNMENT
+15355             ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Tsogttsetsii, Umnugovi"          ; GOVERNMENT
+[12]5[39][6-9]    ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"
+[12]542           ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 4                ;            ; "fixed_line_4/5-6" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Choir, Govisumber"               ; GOVERNMENT
+[12]544[03-9]     ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"
+[12]5441          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Bayantal, Govisumber"            ; GOVERNMENT
+[12]5442          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Shivee-Govi, Govisumber"         ; GOVERNMENT
+[12]54[5-9]       ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"
+[12]562           ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 4                ;            ; "fixed_line_4/5-6" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Undurkhaan city, Khentii"        ; GOVERNMENT
+[12]5640          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"
+[12]5641          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Batnorov, Khentii"               ; GOVERNMENT
+[12]5642          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Batshireet, Khentii"             ; GOVERNMENT
+15643             ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Bayan-Adraga, Khentii"           ; GOVERNMENT
+[12]5644          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Bayanmunkh, Khentii"             ; GOVERNMENT
+[12]5645          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Bayan-Ovoo, Khentii"             ; GOVERNMENT
+[12]5646          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Bayankhutagt, Khentii"           ; GOVERNMENT
+[12]5647          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Binder, Khentii"                 ; GOVERNMENT
+[12]5648          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Galshir, Khentii"                ; GOVERNMENT
+[12]5649          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Dadal, Khentii"                  ; GOVERNMENT
+[12]565[089]      ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"
+[12]5651          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Darkhan, Khentii"                ; GOVERNMENT
+[12]5652          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Delgerkhaan, Khentii"            ; GOVERNMENT
+[12]5653          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Jargaltkhaan, Khentii"           ; GOVERNMENT
+[12]5654          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Murun, Khentii"                  ; GOVERNMENT
+[12]5655          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Norovlin, Khentii"               ; GOVERNMENT
+[12]5656          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Umnudelger, Khentii"             ; GOVERNMENT
+[12]5657          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Tsenkhermandal, Khentii"         ; GOVERNMENT
+[12]56[6-9]       ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"
+[12]58[013]       ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 4                ;            ; "fixed_line_4/5-6" ; "Asia/Choibalsan"                  ; "MN"
+1582              ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 4                ;            ; "fixed_line_4/5-6" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Choibalsan city, Dornod"         ; GOVERNMENT
+[12]5840          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Choibalsan"                  ; "MN"
+15841             ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Choibalsan"                  ; "MN"    ; "Bayandun, Dornod"
+[12]5842          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Choibalsan"                  ; "MN"    ; "Bayantumen, Dornod"              ; GOVERNMENT
+[12]5843          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Choibalsan"                  ; "MN"    ; "Bayan-Uul, Dornod"               ; GOVERNMENT
+[12]5844          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Choibalsan"                  ; "MN"    ; "Bulgan, Dornod"                  ; GOVERNMENT
+[12]5845          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Choibalsan"                  ; "MN"    ; "Gurvanzagal, Dornod"             ; GOVERNMENT
+[12]5846          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Choibalsan"                  ; "MN"    ; "Dashbalbar, Dornod"              ; GOVERNMENT
+[12]5847          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Choibalsan"                  ; "MN"    ; "Matad, Dornod"                   ; GOVERNMENT
+[12]5848          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Choibalsan"                  ; "MN"    ; "Sereglen, Dornod"                ; GOVERNMENT
+15849             ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Choibalsan"                  ; "MN"    ; "Khalkh, Dornod"                  ; GOVERNMENT
+[12]585[05-9]     ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Choibalsan"                  ; "MN"
+[12]5851          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Choibalsan"                  ; "MN"    ; "Khulunbuyir, Dornod"             ; GOVERNMENT
+[12]5852          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Choibalsan"                  ; "MN"    ; "Tsagaan-Ovoo, Dornod"            ; GOVERNMENT
+[12]5853          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Choibalsan"                  ; "MN"    ; "Choibalsan, Dornod"              ; GOVERNMENT
+[12]5854          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Choibalsan"                  ; "MN"    ; "Chuluunkhoroot, Dornod"          ; GOVERNMENT
+[12]58[6-9]       ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Choibalsan"                  ; "MN"
+1592              ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;            ; "fixed_line_4/5-6" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Mandalgovi city, Dundgovi"       ; GOVERNMENT
+1592              ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;            ; "fixed_line_4/5-6" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Mandalgovi city, Dundgovi"
+[12]5941          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Adaatsag, Dundgovi"              ; GOVERNMENT
+[12]5942          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Bayanjargalan, Dundgovi"         ; GOVERNMENT
+[12]5943          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Govi-Ugtaal, Dundgovi"           ; GOVERNMENT
+[12]5944          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Gurvansaikhan, Dundgovi"         ; GOVERNMENT
+[12]5945          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Delgerkhangai, Dundgovi"         ; GOVERNMENT
+[12]5946          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Delgertsogt, Dundgovi"           ; GOVERNMENT
+[12]5947          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Deren, Dundgovi"                 ; GOVERNMENT
+[12]5948          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Luus, Dundgovi"                  ; GOVERNMENT
+[12]5949          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Ulziit, Dundgovi"                ; GOVERNMENT
+[12]5951          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Undurshil, Dundgovi"             ; GOVERNMENT
+[12]5952          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Saikhan-Ovoo, Dundgovi"          ; GOVERNMENT
+15953             ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Khuld, Dundgovi"
+[12]5954          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Tsagaandelger, Dundgovi"         ; GOVERNMENT
+[12]5955          ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Erdenedalai, Dundgovi"           ; GOVERNMENT
+23242             ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Batulzii, Uvurkhangai"           ; GOVERNMENT
+23846             ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Jargalant, Khuvsgul"
+24343             ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Buyant, Khovd"
+24442             ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Hovd"                        ; "MN"    ; "Bayanbulag, Bayankhongor"        ; GOVERNMENT
+25355             ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Tsogt-Tsetsii, Umnugovi"         ; GOVERNMENT
+25643             ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Bayan-Adarga, Khentii"           ; GOVERNMENT
+2582              ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 4                ;            ; "fixed_line_4/5-6" ; "Asia/Choibalsan"                  ; "MN"    ; "Choibalsan city, Dornod"         ; GOVERNMENT
+25841             ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Choibalsan"                  ; "MN"    ; "Bayandun, Dornod"                ; GOVERNMENT
+25849             ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Choibalsan"                  ; "MN"    ; "Khalkhgol, Dornod"               ; GOVERNMENT
+2592              ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 4                ;            ; "fixed_line_4/5-6" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Mandalgovi city, Dundgovi"       ; GOVERNMENT
+25953             ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Khuld, Dundgovi"                 ; GOVERNMENT
+5[05]             ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "unitel"   ; "fmt1_4/4"         ; "Asia/Ulaanbaatar"                 ; "MN"    ;                                   ; ITU
+53                ; 8      ; FIXED_LINE ; STANDARD_RATE ; 4                ;            ; "fmt1_4/4"         ; "Asia/Ulaanbaatar"                 ; "MN"    ;                                   ; IR21
+5[68]             ; 8      ; FIXED_LINE ; STANDARD_RATE ; 4                ;            ; "fmt1_4/4"         ; "Asia/Ulaanbaatar"                 ; "MN"
+6[06]             ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "ondo"     ; "fmt1_4/4"         ; "Asia/Ulaanbaatar"                 ; "MN"
+69                ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "skytel"   ; "fmt1_4/4"         ; "Asia/Ulaanbaatar"                 ; "MN"    ;                                   ; ITU
+70[0-5]           ; 8      ; FIXED_LINE ; STANDARD_RATE ; 4                ;            ; "fmt1_4/4"         ; "Asia/Ulaanbaatar"                 ; "MN"    ;                                   ; ITU
+707[078]          ; 8      ; FIXED_LINE ; STANDARD_RATE ; 4                ;            ; "fmt1_4/4"         ; "Asia/Ulaanbaatar"                 ; "MN"    ;                                   ; GOVERNMENT
+7080              ; 8      ; FIXED_LINE ; STANDARD_RATE ; 4                ;            ; "fmt1_4/4"         ; "Asia/Ulaanbaatar"                 ; "MN"    ;                                   ; GOVERNMENT
+71[013-9]         ; 8      ; VOIP       ; STANDARD_RATE ;                  ;            ; "fmt1_4/4"         ; "Asia/Ulaanbaatar"                 ; "MN"
+712[0-79]         ; 8      ; VOIP       ; STANDARD_RATE ;                  ;            ; "fmt1_4/4"         ; "Asia/Ulaanbaatar"                 ; "MN"
+7128              ; 8      ; FIXED_LINE ; STANDARD_RATE ; 4                ;            ; "fmt1_4/4"         ; "Asia/Ulaanbaatar"                 ; "MN"    ;                                   ; ITU
+72                ; 8      ; VOIP       ; STANDARD_RATE ;                  ;            ; "fmt1_4/4"         ; "Asia/Ulaanbaatar"                 ; "MN"
+7[5-9]            ; 8      ; VOIP       ; STANDARD_RATE ;                  ;            ; "fmt1_4/4"         ; "Asia/Ulaanbaatar"                 ; "MN"    ;                                   ; ITU
+8[0689]           ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "unitel"   ; "fmt1_4/4"         ; "Asia/Ulaanbaatar"                 ; "MN"    ;                                   ; IR21
+81                ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "ondo"     ; "fmt1_4/4"         ; "Asia/Ulaanbaatar"                 ; "MN"
+83[01]            ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "g_mobile" ; "fmt1_4/4"         ; "Asia/Ulaanbaatar"                 ; "MN"    ;                                   ; ITU
+85                ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "mobicom"  ; "fmt1_4/4"         ; "Asia/Ulaanbaatar"                 ; "MN"    ;                                   ; IR21
+9[016]            ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "skytel"   ; "fmt1_4/4"         ; "Asia/Ulaanbaatar"                 ; "MN"    ;                                   ; IR21
+92[039]           ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "skytel"   ; "fmt1_4/4"         ; "Asia/Ulaanbaatar"                 ; "MN"    ;                                   ; IR21
+9[378]            ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "g_mobile" ; "fmt1_4/4"         ; "Asia/Ulaanbaatar"                 ; "MN"    ;                                   ; IR21
+9[459]            ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "mobicom"  ; "fmt1_4/4"         ; "Asia/Ulaanbaatar"                 ; "MN"    ;                                   ; IR21

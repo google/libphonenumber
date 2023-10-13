@@ -1,0 +1,4 @@
+Region ; Label          ; Comment
+PW     ; SC             ; "http://www.itu.int/oth/T02020000A2/en"
+PW     ; XML            ; "http://www.itu.int/oth/T02020000A2/en"
+PW     ; XML_FIXED_LINE ; "900XXXX is mentioned as fixed-line and ""PNCC/Operator Services"". Might be carrier\nspecific services of PNCC network. As we do not have carrier specific category in phone\nmetadata, adding support to it here."

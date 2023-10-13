@@ -1,0 +1,16 @@
+Region ; Prefix    ; Length ; Type               ; Tariff    ; Provenance
+SC     ; 10        ; 3      ; COMMERCIAL
+SC     ; 11[027]   ; 3      ; COMMERCIAL
+SC     ; 11[146]   ; 3      ; EXPANDED_EMERGENCY ; TOLL_FREE
+SC     ; 118       ; 3      ; EXPANDED_EMERGENCY ; TOLL_FREE ; ITU
+SC     ; 12[0-8]   ; 3      ; COMMERCIAL
+SC     ; 13[13]    ; 3      ; COMMERCIAL
+SC     ; 14[0-2]   ; 3      ; COMMERCIAL
+SC     ; 1[59][15] ; 3      ; COMMERCIAL
+SC     ; 160       ; 3      ; EXPANDED_EMERGENCY ; TOLL_FREE
+SC     ; 16[1-9]   ; 3      ; COMMERCIAL
+SC     ; 17[124-6] ; 3      ; COMMERCIAL
+SC     ; 18[158]   ; 3      ; COMMERCIAL
+SC     ; 190       ; 3      ; COMMERCIAL         ;           ; ITU
+SC     ; 96        ; 4      ; COMMERCIAL
+SC     ; 999       ; 3      ; EMERGENCY          ; TOLL_FREE

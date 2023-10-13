@@ -1,0 +1,14 @@
+Prefix     ; Length ; Type       ; Tariff        ; Area Code Length ; Operator      ; Format             ; Regions ; Provenance
+202        ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "etl"         ; "mobile_2/2/3/3"   ; "LA"    ; IR21
+203        ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "etl"         ; "mobile_2/2/3/3"   ; "LA"    ; TELECOMS
+205        ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "lao_telecom" ; "mobile_2/2/3/3"   ; "LA"    ; IR21
+207[6-8]   ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "beeline"     ; "mobile_2/2/3/3"   ; "LA"    ; ITU
+2088       ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "best"        ; "mobile_2/2/3/3"   ; "LA"    ; IR21
+209        ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "unitel"      ; "mobile_2/2/3/3"   ; "LA"    ; IR21
+2[13]      ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;               ; "fixed_line_2/3/3" ; "LA"    ; ITU
+30[0135-8] ; 9      ; UAN        ; STANDARD_RATE ;                  ;               ; "uan_2/2/2/3"      ; "LA"
+302        ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "etl"         ; "mobile_2/2/3/3"   ; "LA"    ; TELECOMS
+30[49]     ; 9      ; UAN        ; STANDARD_RATE ;                  ;               ; "uan_2/2/2/3"      ; "LA"    ; IR21
+[35-7][14] ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;               ; "fixed_line_2/3/3" ; "LA"    ; ITU
+41         ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;               ; "fixed_line_2/3/3" ; "LA"    ; ITU
+8[1468]    ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;               ; "fixed_line_2/3/3" ; "LA"    ; ITU

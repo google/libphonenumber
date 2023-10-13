@@ -1,0 +1,7 @@
+Region ; Prefix   ; Length ; Type       ; Tariff    ; Sms
+JP     ; 000[259] ; 10     ; COMMERCIAL ;           ; true
+JP     ; 10[24]   ; 3      ; COMMERCIAL
+JP     ; 11[09]   ; 3      ; EMERGENCY  ; TOLL_FREE
+JP     ; 118      ; 3      ; COMMERCIAL ; TOLL_FREE
+JP     ; 144      ; 3      ; COMMERCIAL
+JP     ; 189      ; 3      ; COMMERCIAL

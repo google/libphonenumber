@@ -14,6 +14,24 @@
 # Wiki Link : https://tr.wikipedia.org/wiki/Türkiye'deki_telefon_numaraları
 
 9050|Turk Telekom
+90510210|Pasifik Telekom
+90510220|Netgsm
+90510221|Netgsm
+90510222|Netgsm
+90510223|Netgsm
+90510227|Netgsm
+90510232|Foniv Telecommunications Services
+90510244|Nida Telekomunikasyon
+90510255|TTM
+90510266|Medium Telecommunications Services
+90510300|Mobilisim Mobil Bilisim
+90510310|Assistant Telecom
+90510333|Roitel
+90510343|Isnet
+90510400|Duru Telekom
+90510450|Pelicell Telecommunications
+90510480|Alfa iletisim
+90510499|HATNET BILGI ILETISIM TEKNOLOJILERI
 9051616|Turkcell
 9053|Turkcell
 9053383|Kuzey Kibris Turkcell
@@ -27,4 +45,5 @@
 9054287|KKTC Telsim
 9054288|KKTC Telsim
 9055|Turk Telekom
-9056|Turkcell
+905610|Selam Mobile
+905616|Turkcell

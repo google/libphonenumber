@@ -1,0 +1,65 @@
+Prefix      ; Length ; Type       ; Tariff        ; Area Code Length ; Operator       ; Format          ; Regions ; Geocode:en   ; Provenance ; Comment
+1[2-6]      ; 7      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                ; "fixed_1/3/3-4" ; "YE"    ; "Sanaa"      ; ITU
+17          ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                ; "fixed_1/3/3-4" ; "YE"    ; "Sanaa"      ; ITU
+18[03-9]    ; 7      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                ; "fixed_1/3/3-4" ; "YE"    ; "Sanaa"
+18[12]      ; 7      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                ; "fixed_1/3/3-4" ; "YE"    ; "Sanaa"      ; ITU
+2[23]       ; 7      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                ; "fixed_1/3/3-4" ; "YE"    ; "Aden"       ; ITU
+24          ; 7      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                ; "fixed_1/3/3-4" ; "YE"    ; "Dhalea"     ; ITU
+25          ; 7      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                ; "fixed_1/3/3-4" ; "YE"    ; "Lahj"       ; ITU
+26          ; 7      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                ; "fixed_1/3/3-4" ; "YE"    ; "Abyan"      ; ITU
+28[013]     ; 7      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                ; "fixed_1/3/3-4" ; "YE"    ; "Aden"
+282         ; 7      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                ; "fixed_1/3/3-4" ; "YE"    ; "Aden"       ; ITU
+2840        ; 7      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                ; "fixed_1/3/3-4" ; "YE"    ; "Aden"       ; ITU
+284[12]     ; 7      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                ; "fixed_1/3/3-4" ; "YE"    ; "Dhalea"     ; ITU
+284[3-9]    ; 7      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                ; "fixed_1/3/3-4" ; "YE"    ; "Dhalea"
+285         ; 7      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                ; "fixed_1/3/3-4" ; "YE"    ; "Lahj"       ; ITU
+286         ; 7      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                ; "fixed_1/3/3-4" ; "YE"    ; "Abyan"      ; ITU
+28[7-9]     ; 7      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                ; "fixed_1/3/3-4" ; "YE"
+3[2358]     ; 7      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                ; "fixed_1/3/3-4" ; "YE"    ; "Hodaidah"   ; ITU
+42          ; 7      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                ; "fixed_1/3/3-4" ; "YE"    ; "Taiz"       ; ITU
+43[0-24-9]  ; 7      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                ; "fixed_1/3/3-4" ; "YE"    ; "Taiz"       ; ITU
+433         ; 7      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                ; "fixed_1/3/3-4" ; "YE"    ; "Ibb"        ; ITU
+4[45]       ; 7      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                ; "fixed_1/3/3-4" ; "YE"    ; "Ibb"        ; ITU
+48[0-26-9]  ; 7      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                ; "fixed_1/3/3-4" ; "YE"
+483         ; 7      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                ; "fixed_1/3/3-4" ; "YE"    ; "Taiz"       ; ITU
+484[0-3]    ; 7      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                ; "fixed_1/3/3-4" ; "YE"    ; "Taiz"       ; ITU
+484[4-9]    ; 7      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                ; "fixed_1/3/3-4" ; "YE"    ; "Ibb"        ; ITU
+485         ; 7      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                ; "fixed_1/3/3-4" ; "YE"    ; "Ibb"        ; ITU
+52          ; 7      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                ; "fixed_1/3/3-4" ; "YE"    ; "Shabwah"    ; ITU
+5[3-5]      ; 7      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                ; "fixed_1/3/3-4" ; "YE"    ; "Hadhrmout"  ; ITU
+56[0-57-9]  ; 7      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                ; "fixed_1/3/3-4" ; "YE"
+566         ; 7      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                ; "fixed_1/3/3-4" ; "YE"    ; "Soqatrah"   ; ITU
+63[0368]    ; 7      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                ; "fixed_1/3/3-4" ; "YE"    ; "Maareb"     ; ITU
+63[1257]    ; 7      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                ; "fixed_1/3/3-4" ; "YE"
+634         ; 7      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                ; "fixed_1/3/3-4" ; "YE"    ; "Aljawf"     ; ITU
+639         ; 7      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                ; "fixed_1/3/3-4" ; "YE"    ; "Dhamar"     ; ITU
+64          ; 7      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                ; "fixed_1/3/3-4" ; "YE"    ; "Dhamar"     ; ITU
+65[01]      ; 7      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                ; "fixed_1/3/3-4" ; "YE"    ; "Dhamar"     ; ITU
+65[2-7]     ; 7      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                ; "fixed_1/3/3-4" ; "YE"    ; "Al Baidha"  ; ITU
+65[89]      ; 7      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                ; "fixed_1/3/3-4" ; "YE"
+68[017-9]   ; 7      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                ; "fixed_1/3/3-4" ; "YE"
+68[24]      ; 7      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                ; "fixed_1/3/3-4" ; "YE"    ; "Dhamar"     ; ITU
+683         ; 7      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                ; "fixed_1/3/3-4" ; "YE"    ; "Maareb"     ; ITU
+685[03]     ; 7      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                ; "fixed_1/3/3-4" ; "YE"    ; "Al Baidha"  ; ITU
+685[124-9]  ; 7      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                ; "fixed_1/3/3-4" ; "YE"
+686[0289]   ; 7      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                ; "fixed_1/3/3-4" ; "YE"    ; "Al Baidha"  ; ITU
+686[14-7]   ; 7      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                ; "fixed_1/3/3-4" ; "YE"    ; "Dhamar"     ; ITU
+6863        ; 7      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                ; "fixed_1/3/3-4" ; "YE"    ; "Maareb"     ; ITU
+70          ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "y"            ; "mobile_3/3/3"  ; "YE"    ;              ; ITU
+71          ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "sabafon"      ; "mobile_3/3/3"  ; "YE"    ;              ; IR21
+72          ; 7      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                ; "fixed_1/3/3-4" ; "YE"    ; "Hajjah"     ; ITU
+73          ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "mtn"          ; "mobile_3/3/3"  ; "YE"    ;              ; ITU
+74          ; 7      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                ; "fixed_1/3/3-4" ; "YE"    ; "Al Mahweet" ; ITU
+75          ; 7      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                ; "fixed_1/3/3-4" ; "YE"    ; "Saadah"     ; ITU
+76          ; 7      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                ; "fixed_1/3/3-4" ; "YE"    ; "Amran"      ; ITU
+77          ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "yemen_mobile" ; "mobile_3/3/3"  ; "YE"    ;              ; ITU
+78          ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "yemen_mobile" ; "mobile_3/3/3"  ; "YE"    ;              ; IR21       ; "User report"
+78[0-3]     ; 7      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                ; "fixed_1/3/3-4" ; "YE"
+784[0-46-9] ; 7      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                ; "fixed_1/3/3-4" ; "YE"
+7845        ; 7      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                ; "fixed_1/3/3-4" ; "YE"    ; "Al Mahweet" ; ITU
+785         ; 7      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                ; "fixed_1/3/3-4" ; "YE"    ; "Saadah"     ; ITU
+786         ; 7      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                ; "fixed_1/3/3-4" ; "YE"    ; "Amran"      ; ITU
+787[0-3]    ; 7      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                ; "fixed_1/3/3-4" ; "YE"    ; "Hajjah"     ; ITU
+787[49]     ; 7      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                ; "fixed_1/3/3-4" ; "YE"    ; "Al Mahweet" ; ITU
+787[58]     ; 7      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                ; "fixed_1/3/3-4" ; "YE"    ; "Saadah"     ; ITU
+787[67]     ; 7      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                ; "fixed_1/3/3-4" ; "YE"    ; "Amran"      ; ITU

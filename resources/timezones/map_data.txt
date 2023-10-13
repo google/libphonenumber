@@ -501,6 +501,7 @@
 1256|America/Chicago
 1260|America/New_York
 1262|America/Chicago
+1263|America/Toronto
 1264|America/Anguilla
 1267|America/New_York
 1268|America/Antigua
@@ -668,7 +669,14 @@
 1308874|America/Denver
 1308882|America/Denver
 1309|America/Chicago
-1310|America/Los_Angeles
+13102|America/Los_Angeles
+13103|America/Los_Angeles
+13104|America/Los_Angeles
+13105|America/Los_Angeles
+13106|America/Los_Angeles
+13107|America/Los_Angeles
+13108|America/Los_Angeles
+13109|America/Los_Angeles
 1312|America/Chicago
 1313|America/New_York
 1314|America/Chicago
@@ -695,8 +703,10 @@
 1345|America/Cayman
 1346|America/Chicago
 1347|America/New_York
+1350|America/Los_Angeles
 1351|America/New_York
 1352|America/New_York
+1354|America/Toronto
 1360|America/Los_Angeles
 1361|America/Chicago
 1364|America/New_York
@@ -704,6 +714,7 @@
 1367|America/Toronto
 1368|America/Edmonton
 1380|America/New_York
+1382|America/Toronto
 1385|America/Denver
 1386|America/New_York
 1401|America/New_York
@@ -905,6 +916,7 @@
 1423989|America/New_York
 1424|America/Los_Angeles
 1425|America/Los_Angeles
+1428|America/Halifax
 1430|America/Chicago
 1431|America/Winnipeg
 1432|America/Chicago
@@ -922,8 +934,11 @@
 1450|America/Toronto
 1458|America/Los_Angeles
 1463|America/New_York
+1464|America/Chicago
+1468|America/Toronto
 1469|America/Chicago
 1470|America/New_York
+1472|America/New_York
 1473|America/Grenada
 1474|America/Winnipeg
 1475|America/New_York
@@ -962,6 +977,7 @@
 1541889|America/Denver
 1548|America/Toronto
 1551|America/New_York
+1557|America/Chicago
 1559|America/Los_Angeles
 1561|America/New_York
 1562|America/Los_Angeles
@@ -980,6 +996,7 @@
 1580|America/Chicago
 1581|America/Toronto
 1582|America/New_York
+1584|America/Winnipeg
 1585|America/New_York
 1586|America/New_York
 1587|America/Edmonton
@@ -1179,6 +1196,7 @@
 1649|America/Grand_Turk
 1650|America/Los_Angeles
 1651|America/Chicago
+1656|America/New_York
 1657|America/Los_Angeles
 1658|America/Jamaica
 1659|America/Chicago
@@ -1195,6 +1213,7 @@
 1680|America/New_York
 1681|America/New_York
 1682|America/Chicago
+1683|America/Toronto
 1684|Pacific/Pago_Pago
 1689|America/Chicago
 1701|America/Denver&America/North_Dakota/Center
@@ -1412,8 +1431,10 @@
 1734|America/New_York
 1737|America/Chicago
 1740|America/New_York
+1742|America/Toronto
 1743|America/New_York
 1747|America/Los_Angeles
+1753|America/Toronto
 1754|America/New_York
 1757|America/New_York
 1758|America/St_Lucia
@@ -1609,11 +1630,13 @@
 1819|America/Toronto
 1820|America/Los_Angeles
 1825|America/Edmonton
+1826|America/New_York
 1828|America/New_York
 1829|America/Santo_Domingo
 1830|America/Chicago
 1831|America/Los_Angeles
 1832|America/Chicago
+1835|America/New_York
 1838|America/New_York
 1839|America/New_York
 1840|America/Los_Angeles
@@ -1980,8 +2003,10 @@
 1939|America/Puerto_Rico
 1940|America/Chicago
 1941|America/New_York
+1943|America/New_York
 1945|America/Chicago
 1947|America/New_York
+1948|America/New_York
 1949|America/Los_Angeles
 1951|America/Los_Angeles
 1952|America/Chicago
@@ -1995,6 +2020,7 @@
 1978|America/New_York
 1979|America/Chicago
 1980|America/New_York
+1983|America/Denver
 1984|America/New_York
 1985|America/Chicago
 1986|America/Boise&America/Los_Angeles
@@ -2065,7 +2091,13 @@
 26282|Indian/Reunion
 26288|Indian/Reunion
 26289|Indian/Reunion
-2629|Indian/Reunion
+2629398|Indian/Mayotte
+2629399|Indian/Reunion
+2629478|Indian/Mayotte
+2629479|Indian/Reunion
+2629762|Indian/Reunion
+2629763|Indian/Reunion
+2629769|Indian/Mayotte
 263|Africa/Harare
 264|Africa/Windhoek
 265|Africa/Blantyre
@@ -2155,7 +2187,7 @@
 376|Europe/Andorra
 377|Europe/Monaco
 378|Europe/San_Marino
-380|Europe/Bucharest
+380|Europe/Kyiv
 381|Europe/Belgrade
 382|Europe/Podgorica
 383|Europe/Belgrade
@@ -2170,6 +2202,7 @@
 391|Europe/Rome&Europe/Vatican
 393|Europe/Rome&Europe/Vatican
 395|Europe/Rome&Europe/Vatican
+397|Europe/Rome
 398|Europe/Rome&Europe/Vatican
 40|Europe/Bucharest
 41|Europe/Zurich
@@ -3098,8 +3131,7 @@
 645|Pacific/Auckland
 646|Pacific/Auckland
 647|Pacific/Auckland
-6480|Pacific/Auckland
-6486|Pacific/Auckland
+648|Pacific/Auckland
 649|Pacific/Auckland
 65|Asia/Singapore
 66|Asia/Bangkok
@@ -3177,6 +3209,7 @@
 7713|Asia/Aqtobe
 772|Asia/Almaty
 7729|Asia/Aqtobe
+779|Asia/Almaty
 7800|Asia/Almaty&Asia/Aqtobe&Europe/Moscow
 7803|Europe/Moscow
 7804|Europe/Moscow
@@ -3256,6 +3289,11 @@
 97624|Asia/Hovd
 97625|Asia/Ulaanbaatar
 976258|Asia/Choibalsan
+9765|Asia/Ulaanbaatar
+9766|Asia/Ulaanbaatar
+9767|Asia/Ulaanbaatar
+9768|Asia/Ulaanbaatar
+9769|Asia/Ulaanbaatar
 977|Asia/Katmandu
 98|Asia/Tehran
 992|Asia/Dushanbe

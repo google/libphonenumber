@@ -1,0 +1,200 @@
+# Copyright (C) 2013 The Libphonenumber Authors
+
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+
+# http://www.apache.org/licenses/LICENSE-2.0
+
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+371200|Tele2
+3712010|Bite Latvia
+3712011|Bite Latvia
+3712012|Bite Latvia
+3712013|Bite Latvia
+3712014|Bite Latvia
+3712015|Bite Latvia
+3712016|Bite Latvia
+3712017|Bite Latvia
+3712019|Bite Latvia
+371202|LMT
+371203|Tele2
+371204|Tele2
+371205|Tele2
+371206|Bite Latvia
+371207|Bite Latvia
+3712080|Bite Latvia
+3712081|Bite Latvia
+3712082|Bite Latvia
+3712083|Bite Latvia
+3712084|Bite Latvia
+3712085|Bite Latvia
+3712086|Bite Latvia
+3712087|Bite Latvia
+3712088|Bite Latvia
+3712094|Triatel
+37121|Bite Latvia
+3712200|LMT
+3712201|LMT
+3712202|LMT
+3712203|LMT
+3712204|LMT
+3712205|Bite Latvia
+3712206|Bite Latvia
+3712207|Bite Latvia
+3712208|Bite Latvia
+3712209|Bite Latvia
+371221|Bite Latvia
+371222|Bite Latvia
+371223|Tele2
+3712239|Bite Latvia
+371224|LMT
+371225|Bite Latvia
+3712266|LMT
+3712267|Tele2
+3712272|Bite Latvia
+3712277|LMT
+3712280|Bite Latvia
+3712281|Bite Latvia
+3712282|Bite Latvia
+3712283|Bite Latvia
+3712284|Bite Latvia
+3712285|UNISTARS
+3712286|Triatel
+3712287|Triatel
+3712288|LMT
+3712299|LMT
+371230|Bite Latvia
+37123100|Bite Latvia
+3712311|Bite Latvia
+3712317|Bite Latvia
+3712320|Bite Latvia
+3712322|Bite Latvia
+37123230|Tele2
+37123232|Tele2
+37123233|Tele2
+37123238|Tele2
+3712327|Bite Latvia
+3712328|LMT
+3712330|Bite Latvia
+3712333|Tele2
+3712337|Bite Latvia
+37123400|Bite Latvia
+37123402|Tele2
+37123444|Bite Latvia
+37123456|Tele2
+3712347|Bite Latvia
+37123500|Bite Latvia
+3712355|Bite Latvia
+3712357|Bite Latvia
+3712366|Bite Latvia
+3712377|Bite Latvia
+3712380|LMT
+3712381|LMT
+3712382|LMT
+3712383|LMT
+3712384|LMT
+3712388|Bite Latvia
+3712399|Bite Latvia
+3712400|Bite Latvia
+3712411|Bite Latvia
+3712420|Bite Latvia
+3712422|Bite Latvia
+3712424|Bite Latvia
+3712433|Bite Latvia
+3712440|Bite Latvia
+3712442|Bite Latvia
+3712444|LMT
+3712450|Bite Latvia
+3712455|Bite Latvia
+3712460|Bite Latvia
+3712466|Bite Latvia
+3712477|Bite Latvia
+3712478|Tele2
+3712479|Tele2
+371248|Tele2
+3712488|Bite Latvia
+371249|Tele2
+3712499|Bite Latvia
+3712500|Bite Latvia
+371251|Bite Latvia
+371252|Tele2
+371253|Tele2
+371254|LMT
+371255|Bite Latvia
+3712556|LMT
+3712557|LMT
+3712558|LMT
+3712559|LMT
+371256|LMT
+371257|LMT
+371258|Triatel
+3712585|Bite Latvia
+3712586|Bite Latvia
+3712587|Bite Latvia
+3712588|Bite Latvia
+371259|Tele2
+37126|LMT
+371260|Tele2
+371267|Tele2
+371268|Tele2
+371269|Tele2
+371270|Tele2
+371271|Tele2
+3712720|Bite Latvia
+3712721|Bite Latvia
+3712722|Bite Latvia
+3712723|Bite Latvia
+3712724|Bite Latvia
+3712725|Bite Latvia
+3712726|Tele2
+3712727|Bite Latvia
+3712729|LMT
+371273|LMT
+371274|Bite Latvia
+371275|Bite Latvia
+3712760|Bite Latvia
+3712761|Bite Latvia
+3712762|Bite Latvia
+3712763|Bite Latvia
+3712764|Bite Latvia
+3712765|Bite Latvia
+3712766|Bite Latvia
+3712767|Bite Latvia
+371277|Bite Latvia
+3712777|LMT
+371278|LMT
+3712790|LMT
+3712792|Bite Latvia
+3712799|Bite Latvia
+371280|LMT
+371281|Tele2
+371282|Tele2
+371283|LMT
+3712844|Tele2
+3712845|Tele2
+3712846|Tele2
+3712847|Tele2
+3712848|Tele2
+3712849|LMT
+3712855|Bite Latvia
+371286|LMT
+371287|LMT
+371288|Tele2
+371289|Tele2
+3712900|Bite Latvia
+3712902|Bite Latvia
+371291|LMT
+371292|LMT
+371293|LMT
+371294|LMT
+371295|Tele2
+371296|Tele2
+371297|Tele2
+371298|Tele2
+371299|Tele2

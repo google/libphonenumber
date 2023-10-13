@@ -1,0 +1,37 @@
+Prefix      ; Length ; Type       ; Tariff        ; Area Code Length ; Operator   ; Format               ; Regions ; Geocode:en               ; Provenance ; Comment
+0004        ; 6,7    ; FIXED_LINE ; TOLL_FREE     ;                  ;            ; "tollfree_3/3-4"     ; "UY"    ;                          ;            ; "User report"
+0004        ; 8-10   ; FIXED_LINE ; TOLL_FREE     ;                  ;            ; "tollfree_3/3/2-4"   ; "UY"    ;                          ;            ; "User report"
+0004        ; 11-13  ; FIXED_LINE ; TOLL_FREE     ;                  ;            ; "tollfree_3/3/3/2-4" ; "UY"    ;                          ;            ; "User report"
+1770        ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;            ; "fixed_4/4"          ; "UY"    ;                          ;            ; "User  Report"
+1920        ; 8      ; FIXED_LINE ; STANDARD_RATE ;                  ;            ; "fixed_4/4"          ; "UY"    ;                          ;            ; "User report"
+1987        ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;            ; "fixed_4/4"          ; "UY"    ;                          ;            ; "User  Report"
+2           ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;            ; "fixed_4/4"          ; "UY"    ; "Montevideo"             ; ITU
+405         ; 7      ; FIXED_LINE ; TOLL_FREE     ;                  ;            ; "varcost_3/4"        ; "UY"    ;                          ;            ; "User  Report"
+42          ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;            ; "fixed_4/4"          ; "UY"    ; "San Carlos"             ; ITU
+43[0-27-9]  ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;            ; "fixed_4/4"          ; "UY"    ;                          ; ITU
+433         ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;            ; "fixed_4/4"          ; "UY"    ; "Canelones"              ; ITU
+434         ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;            ; "fixed_4/4"          ; "UY"    ; "San Jose de Mayo"       ; ITU
+435         ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;            ; "fixed_4/4"          ; "UY"    ; "Florida"                ; ITU
+436[0-35-9] ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;            ; "fixed_4/4"          ; "UY"    ; "Durazno"                ; ITU
+4364        ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;            ; "fixed_4/4"          ; "UY"    ; "Trinidad/Flores"        ; ITU
+44[0-3689]  ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;            ; "fixed_4/4"          ; "UY"    ;                          ; ITU
+444         ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;            ; "fixed_4/4"          ; "UY"    ; "Minas/Lavalleja"        ; ITU
+445         ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;            ; "fixed_4/4"          ; "UY"    ; "Treinta y Tres"         ; ITU
+447         ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;            ; "fixed_4/4"          ; "UY"    ; "Rocha"                  ; ITU
+45[01457-9] ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;            ; "fixed_4/4"          ; "UY"    ;                          ; ITU
+452         ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;            ; "fixed_4/4"          ; "UY"    ; "Colonia del Scaramento" ; ITU
+453         ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;            ; "fixed_4/4"          ; "UY"    ; "Mercedes/Soriano"       ; ITU
+456         ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;            ; "fixed_4/4"          ; "UY"    ; "Fray Bentos/Rio Negro"  ; ITU
+46[015-9]   ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;            ; "fixed_4/4"          ; "UY"    ;                          ; ITU
+462         ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;            ; "fixed_4/4"          ; "UY"    ; "Rivera"                 ; ITU
+463         ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;            ; "fixed_4/4"          ; "UY"    ; "Tacuarembo"             ; ITU
+464         ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;            ; "fixed_4/4"          ; "UY"    ; "Melo/Cerro Largo"       ; ITU
+47[014-689] ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;            ; "fixed_4/4"          ; "UY"    ;                          ; ITU
+472         ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;            ; "fixed_4/4"          ; "UY"    ; "Paysandu"               ; ITU
+473         ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;            ; "fixed_4/4"          ; "UY"    ; "Salto"                  ; ITU
+477         ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;            ; "fixed_4/4"          ; "UY"    ; "Artigas"                ; ITU
+80[05]      ; 7      ; FIXED_LINE ; TOLL_FREE     ;                  ;            ; "varcost_3/4"        ; "UY"
+90[0-8]     ; 7      ; FIXED_LINE ; PREMIUM_RATE  ;                  ;            ; "varcost_3/4"        ; "UY"
+9[1289]     ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "antel"    ; "mobile_2/3/3"       ; "UY"    ;                          ; IR21       ; "IR21 dated 3/26/2019"
+9[3-5]      ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "movistar" ; "mobile_2/3/3"       ; "UY"    ;                          ; IR21       ; "IR21 dated 8/17/2018"
+9[67]       ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "claro"    ; "mobile_2/3/3"       ; "UY"    ;                          ; IR21       ; "IR21 dated 7/20/2018"

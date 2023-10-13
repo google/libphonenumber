@@ -74,7 +74,7 @@
 2125378|Salé
 2125379|Souk Larbaa
 2125380|Rabat et alentours
-21253880|Tanger et alentours
+2125388|Tanger et alentours
 21253890|Fès/Maknès et alentours
 2125393|Tanger
 2125394|Asilah

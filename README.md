@@ -55,11 +55,23 @@ Cream Sandwich).
 The [Java demo](https://libphonenumber.appspot.com/) is updated with a slight
 delay after the GitHub release.
 
-Last demo update: v8.12.40.
+Last demo update: v8.13.23.
+
+Note: Even though the library (main branch/[maven release](https://repo1.maven.org/maven2/com/googlecode/libphonenumber/libphonenumber/8.12.56/))
+is at v8.12.57, because of some deployment issues, we were unable to update the
+Java demo with the new binary version. We will soon fix this. Meantime, please
+use JS demo.
 
 If this number is lower than the [latest release's version
 number](https://github.com/google/libphonenumber/releases), we are between
 releases and the demo may be at either version.
+
+### Demo App
+
+There is a demo Android App called [E.164 Formatter](java/demoapp) in this
+repository. The purpose of this App is to show an example of how the library can
+be used in a real-life situation, in this case specifically in an Android App
+using Java.
 
 ## JavaScript
 
@@ -218,16 +230,22 @@ libphonenumber project. We do not evaluate their quality or influence their
 maintenance processes.
 
 *   C#: https://github.com/twcclegg/libphonenumber-csharp
+*   Gleam: https://github.com/massivefermion/phony
 *   Go: https://github.com/nyaruka/phonenumbers
 *   Objective-c: https://github.com/iziz/libPhoneNumber-iOS
+*   Swift: https://github.com/marmelroy/PhoneNumberKit
 *   PHP: https://github.com/giggsey/libphonenumber-for-php
 *   PostgreSQL in-database types: https://github.com/blm768/pg-libphonenumber
 *   Python: https://github.com/daviddrysdale/python-phonenumbers
+*   Ruby: https://github.com/ianks/mini_phone
+*   Ruby: https://github.com/daddyz/phonelib
 *   Ruby: https://github.com/mobi/telephone_number
 *   Rust: https://github.com/1aim/rust-phonenumber
 *   Erlang: https://github.com/marinakr/libphonenumber_erlang
 *   Clojure: https://github.com/randomseed-io/phone-number
 *   R: https://github.com/socialresearchcentre/dialr/
+*   Elixir: https://github.com/socialpaymentsbv/ex_phone_number
+*   Salesforce: https://appexchange.salesforce.com/appxListingDetail?listingId=a0N3A00000G12oJUAR
 
 Alternatives to our own versions:
 
@@ -249,3 +267,7 @@ Alternatives to our own versions:
     https://github.com/seegno/google-libphonenumber - a browserify-compatible
     wrapper around the original unmodified library installable via npm, which
     packs the Google Closure library, about 420 KB in size.
+
+Tools based on libphonenumber metadata:
+
+*   Scala: https://github.com/mr-tolmach/raf - library for generating valid phone numbers in the E.164 format

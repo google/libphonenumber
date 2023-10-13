@@ -1,0 +1,33 @@
+Prefix      ; Length ; Type       ; Tariff        ; Area Code Length ; Operator            ; Format          ; Regions ; Geocode:en                                ; Provenance
+1[2-8]      ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                     ; "fixed_1/3/2/2" ; "SI"    ; "Ljubljana"
+2[2-8]      ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                     ; "fixed_1/3/2/2" ; "SI"    ; "Maribor/Ravne na Koroškem/Murska Sobota"
+[34]0       ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "a1"                ; "mobile_2/3/3"  ; "SI"
+[35]1       ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "telekom_slovenije" ; "mobile_2/3/3"  ; "SI"
+3[2-8]      ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                     ; "fixed_1/3/2/2" ; "SI"    ; "Celje/Trbovlje"
+4[139]      ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "telekom_slovenije" ; "mobile_2/3/3"  ; "SI"
+4[24-8]     ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                     ; "fixed_1/3/2/2" ; "SI"    ; "Kranj"
+5[2-8]      ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                     ; "fixed_1/3/2/2" ; "SI"    ; "Gorica/Koper/Postojna"
+59          ; 8      ; VOIP       ; STANDARD_RATE ;                  ;                     ; "voip_3/5"      ; "SI"
+64          ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "t_2"               ; "mobile_2/3/3"  ; "SI"
+651         ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "sz_infrastruktura" ; "mobile_2/3/3"  ; "SI"
+6555        ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "telekom_slovenije" ; "mobile_2/3/3"  ; "SI"
+6556        ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "sloexport"         ; "mobile_2/3/3"  ; "SI"    ;                                           ; GOVERNMENT
+656[01]     ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "softnet"           ; "mobile_2/3/3"  ; "SI"    ;                                           ; GOVERNMENT
+65[78]      ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "novatel"           ; "mobile_2/3/3"  ; "SI"    ;                                           ; GOVERNMENT
+68          ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "a1"                ; "mobile_2/3/3"  ; "SI"
+69[02-46-9] ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "a1"                ; "mobile_2/3/3"  ; "SI"    ;                                           ; ITU
+6910        ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "compatel"          ; "mobile_2/3/3"  ; "SI"
+691[1-9]    ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "a1"                ; "mobile_2/3/3"  ; "SI"    ;                                           ; ITU
+695         ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "novatel"           ; "mobile_2/3/3"  ; "SI"    ;                                           ; GOVERNMENT
+7[01]       ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "telemach"          ; "mobile_2/3/3"  ; "SI"
+7[2-8]      ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                     ; "fixed_1/3/2/2" ; "SI"    ; "Novo Mesto/Krško"
+80          ; 6-8    ; FIXED_LINE ; TOLL_FREE     ;                  ;                     ; "varcost_2/3-6" ; "SI"
+81[67]      ; 8      ; VOIP       ; STANDARD_RATE ;                  ;                     ; "voip_3/5"      ; "SI"
+818[0-489]  ; 8      ; VOIP       ; STANDARD_RATE ;                  ;                     ; "voip_3/5"      ; "SI"
+8185        ; 8      ; VOIP       ; STANDARD_RATE ;                  ;                     ; "voip_3/5"      ; "SI"    ;                                           ; GOVERNMENT
+820         ; 8      ; VOIP       ; STANDARD_RATE ;                  ;                     ; "voip_3/5"      ; "SI"
+822[0-37-9] ; 8      ; VOIP       ; STANDARD_RATE ;                  ;                     ; "voip_3/5"      ; "SI"
+828[0-2489] ; 8      ; VOIP       ; STANDARD_RATE ;                  ;                     ; "voip_3/5"      ; "SI"
+83[389]     ; 8      ; VOIP       ; STANDARD_RATE ;                  ;                     ; "voip_3/5"      ; "SI"
+89[1-3]     ; 5-8    ; FIXED_LINE ; PREMIUM_RATE  ;                  ;                     ; "varcost_2/3-6" ; "SI"
+90          ; 6-8    ; FIXED_LINE ; PREMIUM_RATE  ;                  ;                     ; "varcost_2/3-6" ; "SI"

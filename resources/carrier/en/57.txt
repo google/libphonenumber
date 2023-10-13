@@ -22,9 +22,7 @@
 573006|Tigo
 573007|Tigo
 573008|Tigo
-5730091|Tigo
-5730092|Tigo
-5730093|Tigo
+573009|Tigo
 573012|Tigo
 573013|Tigo
 573014|Tigo
@@ -39,6 +37,14 @@
 5730249|Partners Telecom Colombia
 573025|Partners Telecom Colombia
 573026|Partners Telecom Colombia
+573027|Partners Telecom Colombia
+5730280|Partners Telecom Colombia
+5730281|Partners Telecom Colombia
+5730282|Partners Telecom Colombia
+5730283|Partners Telecom Colombia
+5730284|Partners Telecom Colombia
+5730285|Partners Telecom Colombia
+5730286|Partners Telecom Colombia
 57303|Uff!
 5730410|Tigo
 5730411|Tigo
@@ -239,6 +245,10 @@
 5733302|Setroc Mobile
 5733303|Setroc Mobile
 5733304|Setroc Mobile
+5733305|Tigo
+5733306|Tigo
+5733307|Tigo
+5733308|Tigo
 5733310|Libre Tecnologias
 5733311|Libre Tecnologias
 5733312|Libre Tecnologias
@@ -248,9 +258,14 @@
 5733316|Libre Tecnologias
 57333170|Libre Tecnologias
 57333171|Libre Tecnologias
+573332|Movil Exito
 5733320|Tigo
 5733321|Tigo
 5733330|GoMobile
+5733332|EZTALK Mobile
+5733333|EZTALK Mobile
+5733334|EZTALK Mobile
+5733335|EZTALK Mobile
 5733340|Comunicaciones Dime
 5733341|Comunicaciones Dime
 5733342|Comunicaciones Dime
@@ -266,6 +281,9 @@
 5733362|Suma Movil
 5733363|Suma Movil
 5733364|Suma Movil
+5733365|Suma Movil
+5733366|Suma Movil
+5733367|Suma Movil
 573502|Avantel
 573503|Avantel
 573504|Avantel

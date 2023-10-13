@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    version="2.5"
+    xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+  http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+  <servlet>
+    <servlet-class>com.google.phonenumbers.demo.ResultServlet</servlet-class>
+    <servlet-name>PhoneNumberParser</servlet-name>
+  </servlet>
+  <servlet>
+    <servlet-class>com.google.phonenumbers.demo.InputServlet</servlet-class>
+    <servlet-name>Input</servlet-name>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PhoneNumberParser</servlet-name>
+    <url-pattern>/phonenumberparser</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Input</servlet-name>
+    <url-pattern>/inputform</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Input</servlet-name>
+    <url-pattern>/</url-pattern>
+  </servlet-mapping>
+</web-app>

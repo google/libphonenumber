@@ -23,7 +23,6 @@
 goog.provide('i18n.phonenumbers.demo');
 
 goog.require('goog.dom');
-goog.require('goog.json');
 goog.require('goog.proto2.ObjectSerializer');
 goog.require('goog.string.StringBuffer');
 goog.require('i18n.phonenumbers.AsYouTypeFormatter');
@@ -50,8 +49,10 @@ function phoneNumberParser() {
   try {
     var number = phoneUtil_.parseAndKeepRawInput(phoneNumber, regionCode);
     output.append('****Parsing Result:****\n');
-    output.append(goog.json.serialize(new goog.proto2.ObjectSerializer(
-        goog.proto2.ObjectSerializer.KeyOption.NAME).serialize(number)));
+    output.append(JSON.stringify(
+        new goog.proto2
+            .ObjectSerializer(goog.proto2.ObjectSerializer.KeyOption.NAME)
+            .serialize(number)));
     output.append('\n\n****Validation Results:****');
     var isPossible = phoneUtil_.isPossibleNumber(number);
     output.append('\nResult from isPossibleNumber(): ');
@@ -147,6 +148,16 @@ function phoneNumberParser() {
       output.append(
           phoneUtil_.formatNationalNumberWithCarrierCode(number, carrierCode));
     }
+    output.append('\nFormat for mobile dialing (calling from US): ');
+    output.append(
+        isNumberValid ?
+            phoneUtil_.formatNumberForMobileDialing(number, 'US', true) :
+            'invalid');
+    output.append('\nFormat for national dialing with preferred carrier code and empty fallback carrier code: ');
+    output.append(
+        isNumberValid ?
+            phoneUtil_.formatNationalNumberWithPreferredCarrierCode(number, '') :
+            'invalid');
     output.append('\n\n****AsYouTypeFormatter Results****');
     var formatter = new i18n.phonenumbers.AsYouTypeFormatter(regionCode);
     var phoneNumberLength = phoneNumber.length;

@@ -1,0 +1,8 @@
+Region ; Label               ; Comment
+IE     ; SC                  ; "https://www.comreg.ie/csv/downloads/ComReg15136.pdf"
+IE     ; SC_CARRIER_SPECIFIC ; "https://support.twitter.com/articles/20170024"
+IE     ; SC_SMS_SERVICES     ; "https://support.twitter.com/articles/20170024"
+IE     ; XML                 ; "http://www.comreg.ie/licensing_and_services/numbering_plan_for_ireland.552.440.html"
+IE     ; XML                 ; "http://www.comreg.ie/_fileupload/publications/ComReg1119.pdf"
+IE     ; XML_FIXED_LINE      ; "We allow 6-7 digit subscriber numbers for the 021 area code since that seems to be\nreflected by the numbers in the Yellow Pages. Another peculiarity is that 048 actually\nreplaces 00 44 28 when Irish people dial, allowing them to easily dial Northern\nIreland. We support these numbers here, although technically they are numbers for the\nUK."
+IE     ; XML_VOICEMAIL       ; "These start with mobile prefixes, and then have the digit 5 inserted, before the rest\nof the number."

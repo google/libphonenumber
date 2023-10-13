@@ -16,6 +16,9 @@
 417507|Swisscom
 417508|Swisscom
 417509|Swisscom
+417519|Swisscom
+41752|Swisscom
+41753|Swisscom
 41754|Swisscom
 417550|Swisscom
 417551|Swisscom
@@ -60,9 +63,21 @@
 41781|Salt
 41782|Salt
 41783|Salt
-417840|UPC Switzerland
-417841|UPC Switzerland
-417842|UPC Switzerland
+417840|Sunrise
+417841|Sunrise
+417842|Sunrise
+417844|spusu
+4178460|Tismi
+4178461|Tismi
+4178462|Tismi
+4178463|Tismi
+4178470|MTEL
+4178471|MTEL
+4178472|MTEL
+4178473|MTEL
+4178474|MTEL
+4178475|MTEL
+4178476|MTEL
 4178480|Nexphone
 4178490|Telecom26 AG
 41785|Salt

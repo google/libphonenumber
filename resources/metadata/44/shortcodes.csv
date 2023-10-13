@@ -1,0 +1,79 @@
+Region ; Prefix    ; Length ; Type               ; Tariff    ; Sms  ; Carrier Specific ; Provenance
+GB     ; 100       ; 3      ; COMMERCIAL
+GB     ; 101       ; 3      ; EXPANDED_EMERGENCY
+GB     ; 105       ; 3      ; COMMERCIAL         ; TOLL_FREE
+GB     ; 111       ; 3      ; COMMERCIAL
+GB     ; 112       ; 3      ; EMERGENCY          ; TOLL_FREE
+GB     ; 116000    ; 6      ; EXPANDED_EMERGENCY ; TOLL_FREE
+GB     ; 116111    ; 6      ; EXPANDED_EMERGENCY ; TOLL_FREE
+GB     ; 116123    ; 6      ; EXPANDED_EMERGENCY ; TOLL_FREE
+GB     ; 118       ; 6      ; COMMERCIAL
+GB     ; 119       ; 3      ; EXPANDED_EMERGENCY ; TOLL_FREE ;      ;                  ; WEB
+GB     ; 12[1-3]   ; 3      ; COMMERCIAL
+GB     ; 1250      ; 4      ; COMMERCIAL         ;           ; true ; true
+GB     ; 133       ; 3      ; COMMERCIAL
+GB     ; 141       ; 3      ; COMMERCIAL
+GB     ; 147       ; 4      ; COMMERCIAL
+GB     ; 15        ; 3      ; COMMERCIAL
+GB     ; 1571      ; 4      ; COMMERCIAL         ;           ;      ; true
+GB     ; 170       ; 4      ; COMMERCIAL
+GB     ; 17[56]0   ; 4      ; COMMERCIAL         ; TOLL_FREE ;      ; true
+GB     ; 18000     ; 5      ; COMMERCIAL         ; TOLL_FREE
+GB     ; 1800[1-9] ; 5      ; COMMERCIAL
+GB     ; 19[15]    ; 3      ; COMMERCIAL
+GB     ; 202       ; 3      ; COMMERCIAL         ;           ;      ; true
+GB     ; 20202     ; 5      ; COMMERCIAL         ;           ; true ; true
+GB     ; 21300     ; 5      ; COMMERCIAL         ;           ; true ; true
+GB     ; 2202      ; 4      ; COMMERCIAL         ; TOLL_FREE
+GB     ; 2211      ; 4      ; COMMERCIAL
+GB     ; 222       ; 3      ; COMMERCIAL
+GB     ; 2302      ; 4      ; COMMERCIAL
+GB     ; 23336     ; 5      ; COMMERCIAL         ;           ;      ; true
+GB     ; 2345      ; 4      ; COMMERCIAL
+GB     ; 2425      ; 4      ; COMMERCIAL
+GB     ; 248       ; 3      ; COMMERCIAL         ; TOLL_FREE ;      ; true
+GB     ; 3[13]3    ; 3      ; COMMERCIAL
+GB     ; 40[02]    ; 3      ; COMMERCIAL
+GB     ; 435[01]   ; 4      ; COMMERCIAL
+GB     ; 4444      ; 4      ; COMMERCIAL         ; TOLL_FREE ;      ; true
+GB     ; 4445      ; 4      ; COMMERCIAL
+GB     ; 45        ; 3      ; COMMERCIAL
+GB     ; 6         ; 5      ; COMMERCIAL
+GB     ; 650       ; 3      ; COMMERCIAL
+GB     ; 7[089]    ; 5      ; COMMERCIAL         ;           ; true
+GB     ; 789       ; 3      ; COMMERCIAL
+GB     ; 8[01]     ; 5      ; COMMERCIAL         ;           ; true
+GB     ; 8[2-9]    ; 5      ; COMMERCIAL
+GB     ; 901       ; 3      ; COMMERCIAL         ;           ;      ; true
+GB     ; 999       ; 3      ; EMERGENCY          ; TOLL_FREE
+GG     ; 10[01]    ; 3      ; COMMERCIAL
+GG     ; 111       ; 3      ; COMMERCIAL
+GG     ; 112       ; 3      ; EMERGENCY          ; TOLL_FREE
+GG     ; 11[68]    ; 6      ; COMMERCIAL
+GG     ; 123       ; 3      ; COMMERCIAL
+GG     ; 141       ; 3      ; COMMERCIAL
+GG     ; 147       ; 4      ; COMMERCIAL
+GG     ; 155       ; 3      ; COMMERCIAL
+GG     ; 1800      ; 5      ; COMMERCIAL
+GG     ; 19[05]    ; 3      ; COMMERCIAL
+GG     ; 999       ; 3      ; EMERGENCY          ; TOLL_FREE
+IM     ; 1         ; 3,6    ; COMMERCIAL
+IM     ; 86444     ; 5      ; COMMERCIAL         ;           ; true
+IM     ; 89887     ; 5      ; COMMERCIAL         ;           ; true
+IM     ; 999       ; 3      ; EMERGENCY          ; TOLL_FREE
+JE     ; 100       ; 3      ; COMMERCIAL
+JE     ; 112       ; 3      ; EMERGENCY          ; TOLL_FREE
+JE     ; 118       ; 6      ; COMMERCIAL
+JE     ; 123       ; 3      ; COMMERCIAL
+JE     ; 14[14]    ; 3      ; COMMERCIAL
+JE     ; 1428      ; 4      ; COMMERCIAL
+JE     ; 147       ; 4      ; COMMERCIAL
+JE     ; 15        ; 3      ; COMMERCIAL
+JE     ; 170[12]   ; 4      ; COMMERCIAL
+JE     ; 17[128]   ; 3      ; COMMERCIAL
+JE     ; 173       ; 3      ; COMMERCIAL
+JE     ; 1735      ; 4      ; COMMERCIAL
+JE     ; 1808      ; 4      ; COMMERCIAL
+JE     ; 19[0135]  ; 3      ; COMMERCIAL
+JE     ; 23[2-4]   ; 3      ; COMMERCIAL
+JE     ; 999       ; 3      ; EMERGENCY          ; TOLL_FREE

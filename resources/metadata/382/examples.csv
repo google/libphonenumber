@@ -1,0 +1,7 @@
+Region ; Type         ; Number
+ME     ; FIXED_LINE   ; "30234567"
+ME     ; MOBILE       ; "67622901"
+ME     ; TOLL_FREE    ; "80080002"
+ME     ; PREMIUM_RATE ; "94515151"
+ME     ; VOIP         ; "78108780"
+ME     ; UAN          ; "77273012"

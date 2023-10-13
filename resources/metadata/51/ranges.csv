@@ -1,0 +1,276 @@
+Prefix         ; Length ; Type            ; Tariff        ; Area Code Length ; Operator          ; Format         ; Regions ; Geocode:en      ; Provenance ; Comment
+1[0-8]         ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                   ; "fixed_1/7"    ; "PE"    ; "Lima/Callao"
+41[0-8]        ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 2                ;                   ; "fixed_2/6"    ; "PE"    ; "Amazonas"
+419[0-35-9]    ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 2                ;                   ; "fixed_2/6"    ; "PE"    ; "Amazonas"
+4194           ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 2                ;                   ; "fixed_2/6"    ; "PE"    ; "Amazonas"      ; GOVERNMENT ; "Added as 4 digit range per client's request."
+42[0-8]        ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 2                ;                   ; "fixed_2/6"    ; "PE"    ; "San Martín"
+429[0-35-9]    ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 2                ;                   ; "fixed_2/6"    ; "PE"    ; "San Martín"
+4294           ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 2                ;                   ; "fixed_2/6"    ; "PE"    ; "San Martín"    ; GOVERNMENT ; "Added as 4 digit range per client's request."
+43[0-8]        ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 2                ;                   ; "fixed_2/6"    ; "PE"    ; "Ancash"
+44[013-8]      ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 2                ;                   ; "fixed_2/6"    ; "PE"    ; "La Libertad"
+442            ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 2                ;                   ; "fixed_2/6"    ; "PE"    ; "La Libertad"   ; GOVERNMENT
+51[0-8]        ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 2                ;                   ; "fixed_2/6"    ; "PE"    ; "Puno"          ; GOVERNMENT
+52[0-8]        ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 2                ;                   ; "fixed_2/6"    ; "PE"    ; "Tacna"         ; GOVERNMENT
+529[0-46-9]    ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 2                ;                   ; "fixed_2/6"    ; "PE"    ; "Tacna"
+5295           ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 2                ;                   ; "fixed_2/6"    ; "PE"    ; "Tacna"         ; GOVERNMENT ; "Added as 4 digit range per client's request."
+53[0-8]        ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 2                ;                   ; "fixed_2/6"    ; "PE"    ; "Moquegua"
+539[0-46-9]    ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 2                ;                   ; "fixed_2/6"    ; "PE"    ; "Moquegua"
+5395           ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 2                ;                   ; "fixed_2/6"    ; "PE"    ; "Moquegua"      ; GOVERNMENT ; "Added as 4 digit range per client's request."
+54[013-8]      ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 2                ;                   ; "fixed_2/6"    ; "PE"    ; "Arequipa"
+542            ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 2                ;                   ; "fixed_2/6"    ; "PE"    ; "Arequipa"      ; GOVERNMENT
+56[0-8]        ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 2                ;                   ; "fixed_2/6"    ; "PE"    ; "Ica"
+569[0-46-9]    ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 2                ;                   ; "fixed_2/6"    ; "PE"    ; "Ica"
+5695           ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 2                ;                   ; "fixed_2/6"    ; "PE"    ; "Ica"           ; GOVERNMENT ; "Added as 4 digit range per client's request."
+61[0-8]        ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 2                ;                   ; "fixed_2/6"    ; "PE"    ; "Ucayali"       ; GOVERNMENT
+619[0-57-9]    ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 2                ;                   ; "fixed_2/6"    ; "PE"    ; "Ucayali"
+6196           ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 2                ;                   ; "fixed_2/6"    ; "PE"    ; "Ucayali"       ; GOVERNMENT ; "Added as 4 digit range per client's request."
+62[0-8]        ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 2                ;                   ; "fixed_2/6"    ; "PE"    ; "Huánuco"       ; GOVERNMENT
+629[0-57-9]    ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 2                ;                   ; "fixed_2/6"    ; "PE"    ; "Huánuco"
+6296           ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 2                ;                   ; "fixed_2/6"    ; "PE"    ; "Huánuco"       ; GOVERNMENT ; "Added as 4 digit range per client's request."
+63[0-8]        ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 2                ;                   ; "fixed_2/6"    ; "PE"    ; "Pasco"         ; GOVERNMENT
+639[0-57-9]    ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 2                ;                   ; "fixed_2/6"    ; "PE"    ; "Pasco"
+6396           ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 2                ;                   ; "fixed_2/6"    ; "PE"    ; "Pasco"         ; GOVERNMENT ; "Added as 4 digit range per client's request."
+64[0-8]        ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 2                ;                   ; "fixed_2/6"    ; "PE"    ; "Junín"         ; GOVERNMENT
+649[0-47-9]    ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 2                ;                   ; "fixed_2/6"    ; "PE"    ; "Junín"
+649[56]        ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 2                ;                   ; "fixed_2/6"    ; "PE"    ; "Junín"         ; GOVERNMENT ; "Added as 4 digit range per client's request."
+65[0-8]        ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 2                ;                   ; "fixed_2/6"    ; "PE"    ; "Loreto"        ; GOVERNMENT
+659[0-57-9]    ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 2                ;                   ; "fixed_2/6"    ; "PE"    ; "Loreto"
+6596           ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 2                ;                   ; "fixed_2/6"    ; "PE"    ; "Loreto"        ; GOVERNMENT ; "Added as 4 digit range per client's request."
+66[0-8]        ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 2                ;                   ; "fixed_2/6"    ; "PE"    ; "Ayacucho"      ; GOVERNMENT
+669[0-57-9]    ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 2                ;                   ; "fixed_2/6"    ; "PE"    ; "Ayacucho"
+6696           ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 2                ;                   ; "fixed_2/6"    ; "PE"    ; "Ayacucho"      ; GOVERNMENT ; "Added as 4 digit range per client's request."
+67[0-8]        ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 2                ;                   ; "fixed_2/6"    ; "PE"    ; "Huancavelica"
+679[0-57-9]    ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 2                ;                   ; "fixed_2/6"    ; "PE"    ; "Huancavelica"
+6796           ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 2                ;                   ; "fixed_2/6"    ; "PE"    ; "Huancavelica"  ; GOVERNMENT ; "Added as 4 digit range per client's request."
+7173           ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 2                ;                   ; "fixed_2/6"    ; "PE"    ;                 ; GOVERNMENT ; "Added as 4 digit range per client's request."
+72[0-8]        ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 2                ;                   ; "fixed_2/6"    ; "PE"    ; "Tumbes"        ; GOVERNMENT
+729[0-689]     ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 2                ;                   ; "fixed_2/6"    ; "PE"    ; "Tumbes"
+7297           ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 2                ;                   ; "fixed_2/6"    ; "PE"    ; "Tumbes"        ; GOVERNMENT ; "Added as 4 digit range per client's request."
+73[0-8]        ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 2                ;                   ; "fixed_2/6"    ; "PE"    ; "Piura"         ; GOVERNMENT
+74[0-8]        ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 2                ;                   ; "fixed_2/6"    ; "PE"    ; "Lambayeque"    ; GOVERNMENT
+749[0-689]     ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 2                ;                   ; "fixed_2/6"    ; "PE"    ; "Lambayeque"
+7497           ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 2                ;                   ; "fixed_2/6"    ; "PE"    ; "Lambayeque"    ; GOVERNMENT ; "Added as 4 digit range per client's request."
+76[0-8]        ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 2                ;                   ; "fixed_2/6"    ; "PE"    ; "Cajamarca"     ; GOVERNMENT
+769[0-689]     ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 2                ;                   ; "fixed_2/6"    ; "PE"    ; "Cajamarca"
+7697           ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 2                ;                   ; "fixed_2/6"    ; "PE"    ; "Cajamarca"     ; GOVERNMENT ; "Added as 4 digit range per client's request."
+800            ; 8      ; FIXED_LINE      ; TOLL_FREE     ;                  ;                   ; "fixed_3/5"    ; "PE"
+801            ; 8      ; FIXED_LINE      ; SHARED_COST   ;                  ;                   ; "fixed_3/5"    ; "PE"
+80[24]         ; 8      ; PERSONAL_NUMBER ; STANDARD_RATE ;                  ;                   ; "fixed_3/5"    ; "PE"
+805            ; 8      ; FIXED_LINE      ; PREMIUM_RATE  ;                  ;                   ; "fixed_3/5"    ; "PE"
+810[069]       ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 2                ;                   ; "fixed_2/6"    ; "PE"    ;                 ; GOVERNMENT
+810[58]        ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 2                ;                   ; "fixed_2/6"    ; "PE"    ;                 ; GOVERNMENT ; "Added as 4 digit range per client's request."
+82[0-8]        ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 2                ;                   ; "fixed_2/6"    ; "PE"    ; "Madre de Dios" ; GOVERNMENT
+829[0-79]      ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 2                ;                   ; "fixed_2/6"    ; "PE"    ; "Madre de Dios"
+8298           ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 2                ;                   ; "fixed_2/6"    ; "PE"    ; "Madre de Dios" ; GOVERNMENT ; "Added as 4 digit range per client's request."
+830            ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 2                ;                   ; "fixed_2/6"    ; "PE"    ; "Apurímac"      ; GOVERNMENT
+83[1-8]        ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 2                ;                   ; "fixed_2/6"    ; "PE"    ; "Apurímac"
+839[0-79]      ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 2                ;                   ; "fixed_2/6"    ; "PE"    ; "Apurímac"
+8398           ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 2                ;                   ; "fixed_2/6"    ; "PE"    ; "Apurímac"      ; GOVERNMENT ; "Added as 4 digit range per client's request."
+84[0-8]        ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 2                ;                   ; "fixed_2/6"    ; "PE"    ; "Cusco"         ; GOVERNMENT
+849[0-69]      ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 2                ;                   ; "fixed_2/6"    ; "PE"    ; "Cusco"
+849[78]        ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 2                ;                   ; "fixed_2/6"    ; "PE"    ; "Cusco"         ; GOVERNMENT ; "Added as 4 digit range per client's request."
+8600           ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 2                ;                   ; "fixed_2/6"    ; "PE"    ;                 ; GOVERNMENT ; "Added as 4 digit range per client's request."
+86[01][6-9]    ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 2                ;                   ; "fixed_2/6"    ; "PE"    ;                 ; GOVERNMENT
+8629           ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 2                ;                   ; "fixed_2/6"    ; "PE"    ;                 ; GOVERNMENT ; "Added as 4 digit range per client's request."
+870[569]       ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 2                ;                   ; "fixed_2/6"    ; "PE"    ;                 ; GOVERNMENT ; "Added as 4 digit range per client's request."
+8750           ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 2                ;                   ; "fixed_2/6"    ; "PE"    ;                 ; GOVERNMENT ; "Added as 4 digit range per client's request."
+8760           ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 2                ;                   ; "fixed_2/6"    ; "PE"    ;                 ; GOVERNMENT
+90[01]         ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "claro"           ; "mobile_3/3/3" ; "PE"    ;                 ; IR21
+90[236-8]      ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "entel"           ; "mobile_3/3/3" ; "PE"
+90[45]         ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "entel"           ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+909            ; 9      ; MOBILE          ; STANDARD_RATE ;                  ;                   ; "mobile_3/3/3" ; "PE"    ;                 ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+91[03-8]       ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "claro"           ; "mobile_3/3/3" ; "PE"    ;                 ; IR21
+911            ; 9      ; MOBILE          ; STANDARD_RATE ;                  ;                   ; "mobile_3/3/3" ; "PE"    ;                 ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+912            ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "entel"           ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+919[01]        ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "claro"           ; "mobile_3/3/3" ; "PE"    ;                 ; IR21
+9192[0-7]      ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "claro"           ; "mobile_3/3/3" ; "PE"    ;                 ; IR21
+9192[89]       ; 9      ; MOBILE          ; STANDARD_RATE ;                  ;                   ; "mobile_3/3/3" ; "PE"    ;                 ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+919[3-79]      ; 9      ; MOBILE          ; STANDARD_RATE ;                  ;                   ; "mobile_3/3/3" ; "PE"    ;                 ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+9198           ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "entel"           ; "mobile_3/3/3" ; "PE"    ;                 ; IR21
+920            ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "movistar"        ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+92[157-9]      ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "claro"           ; "mobile_3/3/3" ; "PE"    ;                 ; IR21
+92[2-4]        ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "entel"           ; "mobile_3/3/3" ; "PE"    ;                 ; IR21
+926[0-245]     ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "claro"           ; "mobile_3/3/3" ; "PE"    ;                 ; IR21
+9263[0-5]      ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "claro"           ; "mobile_3/3/3" ; "PE"    ;                 ; IR21
+9263[67]       ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "dolphin_telecom" ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+9263[89]       ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "entel"           ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+926[6-9]       ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "entel"           ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+93[015]        ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "claro"           ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+932[0-6]       ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "claro"           ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+9327[01]       ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "claro"           ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+9327[2-9]      ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "movistar"        ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+932[89]        ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "movistar"        ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+93[346]        ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "entel"           ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+937[0-2]       ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "entel"           ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+9373[0-3]      ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "entel"           ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+9373[4-9]      ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "claro"           ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+937[4-9]       ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "movistar"        ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+93[89]         ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "movistar"        ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+940            ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "claro"           ; "mobile_3/3/3" ; "PE"    ;                 ; IR21
+941[0-7]       ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "claro"           ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+941[89]        ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "movistar"        ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+942[014-689]   ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "movistar"        ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+942[237]       ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "claro"           ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+943[0-24689]   ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "movistar"        ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+943[35]        ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "claro"           ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+9437[0-7]      ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "claro"           ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+9437[89]       ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "movistar"        ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+944[0-357]     ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "claro"           ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+944[4689]      ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "movistar"        ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+945            ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "movistar"        ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+946[0-5]       ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "entel"           ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+946[67]        ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "claro"           ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+9468[0-3]      ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "movistar"        ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+9468[4-9]      ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "claro"           ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+9469           ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "movistar"        ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+947[04-689]    ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "movistar"        ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+947[1-3]       ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "entel"           ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+9477           ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "claro"           ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+9480[0-4]      ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "movistar"        ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+9480[5-9]      ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "claro"           ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+948[14-689]    ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "movistar"        ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+948[237]       ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "claro"           ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+9490[0-6]      ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "movistar"        ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+9490[7-9]      ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "claro"           ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+949[1-3]       ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "claro"           ; "mobile_3/3/3" ; "PE"    ;                 ; IR21
+949[4-68]      ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "movistar"        ; "mobile_3/3/3" ; "PE"    ;                 ; IR21
+9497[0-7]      ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "claro"           ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+9497[89]       ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "movistar"        ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+9499[0-79]     ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "movistar"        ; "mobile_3/3/3" ; "PE"    ;                 ; IR21
+94998[013-6]   ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "movistar"        ; "mobile_3/3/3" ; "PE"    ;                 ; IR21
+949982[01]     ; 9      ; MOBILE          ; STANDARD_RATE ;                  ;                   ; "mobile_3/3/3" ; "PE"    ;                 ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+949982[2-9]    ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "movistar"        ; "mobile_3/3/3" ; "PE"    ;                 ; IR21
+949987[0-4]    ; 9      ; MOBILE          ; STANDARD_RATE ;                  ;                   ; "mobile_3/3/3" ; "PE"    ;                 ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+949987[5-9]    ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "movistar"        ; "mobile_3/3/3" ; "PE"    ;                 ; IR21
+94998[89]      ; 9      ; MOBILE          ; STANDARD_RATE ;                  ;                   ; "mobile_3/3/3" ; "PE"    ;                 ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+95[01][04-689] ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "movistar"        ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+95[023]10      ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "entel"           ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+9501[1-9]      ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "claro"           ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+950[237]       ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "claro"           ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+951[1-37]      ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "claro"           ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+952[025689]    ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "movistar"        ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+9521[1-9]      ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "claro"           ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+952[34]        ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "claro"           ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+9527[0-2]      ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "claro"           ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+9527[3-9]      ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "movistar"        ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+953[02-478]    ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "claro"           ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+9531[1-9]      ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "claro"           ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+9535[017-9]    ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "claro"           ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+9535[2-6]      ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "movistar"        ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+953[69]        ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "movistar"        ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+954[04-689]    ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "movistar"        ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+954[17]        ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "claro"           ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+954[23]0       ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "claro"           ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+954[23][1-9]   ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "movistar"        ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+955[0-4]       ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "entel"           ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+95550          ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "movistar"        ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+9555[1-9]      ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "entel"           ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+955[689]       ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "movistar"        ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+9557           ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "claro"           ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+956[014-689]   ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "movistar"        ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+956[237]       ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "claro"           ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+957[0-37]      ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "claro"           ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+957[4-689]     ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "movistar"        ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+958[09][0-4]   ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "movistar"        ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+958[09][5-9]   ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "claro"           ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+958[1-37]      ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "claro"           ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+9584[0-6]      ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "movistar"        ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+9584[7-9]      ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "claro"           ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+958[568]       ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "movistar"        ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+959[04-689]    ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "movistar"        ; "mobile_3/3/3" ; "PE"    ;                 ; IR21
+959[137]       ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "claro"           ; "mobile_3/3/3" ; "PE"    ;                 ; IR21
+9592[0-7]      ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "claro"           ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+9592[89]       ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "movistar"        ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+9600[0-3]      ; 9      ; MOBILE          ; STANDARD_RATE ;                  ;                   ; "mobile_3/3/3" ; "PE"    ;                 ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+9600[4-9]      ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "claro"           ; "mobile_3/3/3" ; "PE"    ;                 ; IR21
+960[1-9]       ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "entel"           ; "mobile_3/3/3" ; "PE"    ;                 ; IR21
+961[01569]     ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "movistar"        ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+961[2-478]     ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "claro"           ; "mobile_3/3/3" ; "PE"    ;                 ; IR21
+962[014-689]   ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "movistar"        ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+962[237]       ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "claro"           ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+963[0-478]     ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "claro"           ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+9635[0-4]      ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "movistar"        ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+9635[5-9]      ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "claro"           ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+9636           ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "movistar"        ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+9639[0-589]    ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "movistar"        ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+9639[67]       ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "entel"           ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+964[04-9]      ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "movistar"        ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+964[1-3]       ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "claro"           ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+965[0689]      ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "movistar"        ; "mobile_3/3/3" ; "PE"    ;                 ; IR21
+965[1-57]      ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "claro"           ; "mobile_3/3/3" ; "PE"    ;                 ; IR21
+966[0-25689]   ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "movistar"        ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+966[37]        ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "claro"           ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+9664[0-8]      ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "claro"           ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+96649          ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "movistar"        ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+967[0-578]     ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "claro"           ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+9676[0-47]     ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "claro"           ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+9676[5689]     ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "movistar"        ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+9679[0189]     ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "movistar"        ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+9679[2-7]      ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "claro"           ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+968[014-689]   ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "movistar"        ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+96820          ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "entel"           ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+96821          ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "claro"           ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+9682[2-9]      ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "movistar"        ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+9683[0-5]      ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "claro"           ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+9683[6-9]      ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "movistar"        ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+9687           ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "claro"           ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+969[0-24-689]  ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "movistar"        ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+969[37]        ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "claro"           ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+9700           ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "movistar"        ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+970[13-8]      ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "entel"           ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+9702           ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "claro"           ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+9709[0-8]      ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "movistar"        ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+97099          ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "entel"           ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+97[15]         ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "movistar"        ; "mobile_3/3/3" ; "PE"    ;                 ; IR21
+972[01]        ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "entel"           ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+972[2-47]      ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "claro"           ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+9725[0-2]      ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "movistar"        ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+9725[3-9]      ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "claro"           ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+972[689]       ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "movistar"        ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+973[0-7]       ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "claro"           ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+973[89]        ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "movistar"        ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+974[09]        ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "movistar"        ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+97410          ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "entel"           ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+9741[1-9]      ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "movistar"        ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+974[2-7]       ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "claro"           ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+9748[0-6]      ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "claro"           ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+9748[7-9]      ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "movistar"        ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+976[016-9]     ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "movistar"        ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+976[23]        ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "claro"           ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+976[45]        ; 9      ; MOBILE          ; STANDARD_RATE ;                  ;                   ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+977[01]        ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "claro"           ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+97720          ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "entel"           ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+9772[1-9]      ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "movistar"        ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+977[3-9]       ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "entel"           ; "mobile_3/3/3" ; "PE"    ;                 ; IR21
+978[014589]    ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "movistar"        ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+97820          ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "claro"           ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+97821          ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "entel"           ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+9782[2-9]      ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "movistar"        ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+978[367]       ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "claro"           ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+979[0-24-689]  ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "movistar"        ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+979[37]        ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "claro"           ; "mobile_3/3/3" ; "PE"    ;                 ; IR21
+9800[0-2]      ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "entel"           ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+9800[3-9]      ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "movistar"        ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+980[1-3]       ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "movistar"        ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+980[4-9]       ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "claro"           ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+981[0-5]       ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "entel"           ; "mobile_3/3/3" ; "PE"    ;                 ; IR21
+981[6-9]       ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "movistar"        ; "mobile_3/3/3" ; "PE"    ;                 ; IR21
+982[0-578]     ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "claro"           ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+9826[018]      ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "movistar"        ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+9826[2-79]     ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "claro"           ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+9829[0-79]     ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "claro"           ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+98298          ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "movistar"        ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+983[0-378]     ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "claro"           ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+983[45]        ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "entel"           ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+983[69]        ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "movistar"        ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+984[05689]     ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "movistar"        ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+984[1-47]      ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "claro"           ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+98[58]         ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "movistar"        ; "mobile_3/3/3" ; "PE"    ;                 ; IR21
+98[679]        ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "claro"           ; "mobile_3/3/3" ; "PE"    ;                 ; IR21
+99[0569]       ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "movistar"        ; "mobile_3/3/3" ; "PE"    ;                 ; IR21
+99[1-37]       ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "claro"           ; "mobile_3/3/3" ; "PE"    ;                 ; IR21
+994[0-2]       ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "entel"           ; "mobile_3/3/3" ; "PE"    ;                 ; IR21
+994[36-9]      ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "claro"           ; "mobile_3/3/3" ; "PE"    ;                 ; IR21
+994[45]        ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "movistar"        ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
+998[04-9]      ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "movistar"        ; "mobile_3/3/3" ; "PE"    ;                 ; IR21
+998[1-3]       ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "entel"           ; "mobile_3/3/3" ; "PE"    ;                 ; IR21

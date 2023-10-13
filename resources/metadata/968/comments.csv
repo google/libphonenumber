@@ -1,0 +1,4 @@
+Region ; Label         ; Comment
+OM     ; SC            ; "http://www.itu.int/oth/T020200009F/en"
+OM     ; XML           ; "http://www.itu.int/oth/T020200009F/en"
+OM     ; XML_TOLL_FREE ; "Link to document about toll-free numbers on http://www.tra.gov.om, which suggests they\nshould be 8007 followed by 4 digits. However, the only examples I can find, including\nthe customer help line for the main telephony company there (omantel), is 8007 followed\nby 5 digits, so am allowing both for now to be on the safe side. 500 numbers seem to\noffer international toll-free dialing numbers - +968 500 1300 for international help\ndesk for omantel, for example. Toll-free numbers 800[05] are added based on user report\nand not official docs."

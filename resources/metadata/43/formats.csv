@@ -1,0 +1,10 @@
+Id           ; National           ; International     ; Comment
+fixed_1/3-12 ; "#X XXX*********"  ; "X XXX*********"  ; "Vienna (Wien) fixed line format (1-digit area code)."
+fixed_3/3-10 ; "#XXX XXX*******"  ; "XXX XXX*******"  ; "3-digit area codes (fixed line, including premium rate and toll free)."
+fixed_4/3-9  ; "#XXXX XXX******"  ; "XXXX XXX******"  ; "4-digit area codes (fixed line only)."
+shortcode_4  ; "XXXX"             ;                   ; "Shortcode format"
+shortcode_6  ; "XXXXXX"           ;                   ; "Shortcode format"
+voip_2/3-5   ; "#XX XXX**"        ; "XX XXX**"        ; "VOIP (5-7 digits).\nThese formats are the most common for prefixes 050, 057 and 059, as found on Austrian web pages."
+voip_2/3/3-4 ; "#XX XXX XXX*"     ; "XX XXX XXX*"     ; "VOIP (8-9 digits)."
+voip_2/4/4-7 ; "#XX XXXX XXXX***" ; "XX XXXX XXXX***" ; "VOIP (10-13 digits)."
+voip_3/2     ; "#XXX XX"          ; "XXX XX"          ; "VOIP (517xx only, which seems like the only VOIP range with a 3-digit prefix)."

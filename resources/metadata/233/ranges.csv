@@ -1,0 +1,92 @@
+Prefix      ; Length ; Type       ; Tariff        ; Area Code Length ; National Only ; Operator            ; Format      ; Regions ; Geocode:en             ; Provenance ; Comment
+[25]0       ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "vodafone"          ; "fmt_2/3/4" ; "GH"    ;                        ; GOVERNMENT
+2[367]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "airteltigo"        ; "fmt_2/3/4" ; "GH"    ;                        ; IR21
+24          ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "mtn"               ; "fmt_2/3/4" ; "GH"    ;                        ; GOVERNMENT
+25[67]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "mtn"               ; "fmt_2/3/4" ; "GH"    ;                        ; IR21
+28          ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "expresso"          ; "fmt_2/3/4" ; "GH"    ;                        ; GOVERNMENT
+29          ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "national_security" ; "fmt_2/3/4" ; "GH"    ;                        ; GOVERNMENT
+302         ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                     ; "fmt_2/3/4" ; "GH"    ; "Accra"                ; GOVERNMENT
+303[0-46-9] ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                     ; "fmt_2/3/4" ; "GH"    ; "Tema"                 ; GOVERNMENT
+3035        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                     ; "fmt_2/3/4" ; "GH"    ; "Ada"                  ; GOVERNMENT
+307         ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                     ; "fmt_2/3/4" ; "GH"    ; "Greater Accra Region"
+308[01]     ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                     ; "fmt_2/3/4" ; "GH"    ; "Greater Accra Region"
+3082[0-5]   ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                     ; "fmt_2/3/4" ; "GH"    ; "Greater Accra Region"
+3120        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                     ; "fmt_2/3/4" ; "GH"    ; "Takoradi"             ; GOVERNMENT
+3121        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                     ; "fmt_2/3/4" ; "GH"    ; "Axim"                 ; GOVERNMENT
+3122        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                     ; "fmt_2/3/4" ; "GH"    ; "Elubo"                ; GOVERNMENT
+3123        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                     ; "fmt_2/3/4" ; "GH"    ; "Tarkwa"               ; GOVERNMENT
+3124        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                     ; "fmt_2/3/4" ; "GH"    ; "Asankragwa"           ; GOVERNMENT
+3125        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                     ; "fmt_2/3/4" ; "GH"    ; "Samreboi"             ; GOVERNMENT
+3126        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                     ; "fmt_2/3/4" ; "GH"    ; "Enchi"                ; GOVERNMENT
+317         ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                     ; "fmt_2/3/4" ; "GH"    ; "Western Region"
+3180        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                     ; "fmt_2/3/4" ; "GH"    ; "Western Region"
+3220        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                     ; "fmt_2/3/4" ; "GH"    ; "Kumasi"               ; GOVERNMENT
+3221        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                     ; "fmt_2/3/4" ; "GH"    ; "Konongo"              ; GOVERNMENT
+3222        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                     ; "fmt_2/3/4" ; "GH"    ; "Ashanti Mampong"      ; GOVERNMENT
+3223        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                     ; "fmt_2/3/4" ; "GH"    ; "Ejura"                ; GOVERNMENT
+3224        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                     ; "fmt_2/3/4" ; "GH"    ; "Bekwai"               ; GOVERNMENT
+3225        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                     ; "fmt_2/3/4" ; "GH"    ; "Obuasi"               ; GOVERNMENT
+327         ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                     ; "fmt_2/3/4" ; "GH"    ; "Ashanti Region"
+3280        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                     ; "fmt_2/3/4" ; "GH"    ; "Ashanti Region"
+3320        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                     ; "fmt_2/3/4" ; "GH"    ; "Swedru"               ; GOVERNMENT
+3321        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                     ; "fmt_2/3/4" ; "GH"    ; "Cape Coast"           ; GOVERNMENT
+3322        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                     ; "fmt_2/3/4" ; "GH"    ; "Dunkwa"               ; GOVERNMENT
+3323        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                     ; "fmt_2/3/4" ; "GH"    ; "Winneba"              ; GOVERNMENT
+337         ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                     ; "fmt_2/3/4" ; "GH"    ; "Central Region"
+3380        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                     ; "fmt_2/3/4" ; "GH"    ; "Central Region"
+3420        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                     ; "fmt_2/3/4" ; "GH"    ; "Koforidua"            ; GOVERNMENT
+3421        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                     ; "fmt_2/3/4" ; "GH"    ; "Nsawam"               ; GOVERNMENT
+3423        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                     ; "fmt_2/3/4" ; "GH"    ; "Mpraeso"              ; GOVERNMENT
+3424        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                     ; "fmt_2/3/4" ; "GH"    ; "Donkorkrom"           ; GOVERNMENT
+3425        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                     ; "fmt_2/3/4" ; "GH"    ; "Suhum"                ; GOVERNMENT
+3426        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                     ; "fmt_2/3/4" ; "GH"    ; "Asamankese"           ; GOVERNMENT
+3427        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                     ; "fmt_2/3/4" ; "GH"    ; "Akuapim Mampong"      ; GOVERNMENT
+3428        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                     ; "fmt_2/3/4" ; "GH"    ; "Aburi"                ; GOVERNMENT
+3429[013-9] ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                     ; "fmt_2/3/4" ; "GH"
+34292       ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                     ; "fmt_2/3/4" ; "GH"    ; "Akim Oda"             ; GOVERNMENT
+3430        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                     ; "fmt_2/3/4" ; "GH"    ; "Akosombo"             ; GOVERNMENT
+3431        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                     ; "fmt_2/3/4" ; "GH"    ; "Nkawkaw"              ; GOVERNMENT
+347         ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                     ; "fmt_2/3/4" ; "GH"    ; "Eastern Region"
+3480        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                     ; "fmt_2/3/4" ; "GH"    ; "Eastern Region"
+3520        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                     ; "fmt_2/3/4" ; "GH"    ; "Sunyani"              ; GOVERNMENT
+3521        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                     ; "fmt_2/3/4" ; "GH"    ; "Bechem"               ; GOVERNMENT
+3522        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                     ; "fmt_2/3/4" ; "GH"    ; "Berekum"              ; GOVERNMENT
+3523        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                     ; "fmt_2/3/4" ; "GH"    ; "Dormaa Ahenkro"       ; GOVERNMENT
+3524        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                     ; "fmt_2/3/4" ; "GH"    ; "Wenchi"               ; GOVERNMENT
+3525        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                     ; "fmt_2/3/4" ; "GH"    ; "Techiman"             ; GOVERNMENT
+3526        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                     ; "fmt_2/3/4" ; "GH"    ; "Atebubu"              ; GOVERNMENT
+3527        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                     ; "fmt_2/3/4" ; "GH"    ; "Yeji"                 ; GOVERNMENT
+357         ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                     ; "fmt_2/3/4" ; "GH"    ; "Brong-Ahafo Region"
+3580        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                     ; "fmt_2/3/4" ; "GH"    ; "Brong-Ahafo Region"
+3620        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                     ; "fmt_2/3/4" ; "GH"    ; "Ho"                   ; GOVERNMENT
+3621        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                     ; "fmt_2/3/4" ; "GH"    ; "Amedzofe"             ; GOVERNMENT
+3622        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                     ; "fmt_2/3/4" ; "GH"    ; "Hohoe"                ; GOVERNMENT
+3623        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                     ; "fmt_2/3/4" ; "GH"    ; "Kpandu"               ; GOVERNMENT
+3624        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                     ; "fmt_2/3/4" ; "GH"    ; "Kete-Krachi"          ; GOVERNMENT
+3625        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                     ; "fmt_2/3/4" ; "GH"    ; "Denu/Aflao"           ; GOVERNMENT
+3626        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                     ; "fmt_2/3/4" ; "GH"    ; "Keta/Akatsi"          ; GOVERNMENT
+367         ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                     ; "fmt_2/3/4" ; "GH"    ; "Volta Region"
+3680        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                     ; "fmt_2/3/4" ; "GH"    ; "Volta Region"
+3720        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                     ; "fmt_2/3/4" ; "GH"    ; "Tamale"               ; GOVERNMENT
+3721        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                     ; "fmt_2/3/4" ; "GH"    ; "Walewale"             ; GOVERNMENT
+3722        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                     ; "fmt_2/3/4" ; "GH"    ; "Buipe"                ; GOVERNMENT
+3723        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                     ; "fmt_2/3/4" ; "GH"    ; "Damongo"              ; GOVERNMENT
+3724        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                     ; "fmt_2/3/4" ; "GH"    ; "Yendi"                ; GOVERNMENT
+3725        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                     ; "fmt_2/3/4" ; "GH"    ; "Bole"                 ; GOVERNMENT
+3726        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                     ; "fmt_2/3/4" ; "GH"    ; "Salaga"               ; GOVERNMENT
+377         ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                     ; "fmt_2/3/4" ; "GH"    ; "Northern Region"
+3780        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                     ; "fmt_2/3/4" ; "GH"    ; "Northern Region"
+3820        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                     ; "fmt_2/3/4" ; "GH"    ; "Bolgatanga"           ; GOVERNMENT
+3821        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                     ; "fmt_2/3/4" ; "GH"    ; "Navrongo"             ; GOVERNMENT
+3822        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                     ; "fmt_2/3/4" ; "GH"    ; "Bawku"                ; GOVERNMENT
+387         ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                     ; "fmt_2/3/4" ; "GH"    ; "Upper East Region"
+3880        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                     ; "fmt_2/3/4" ; "GH"    ; "Upper East Region"
+3920        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                     ; "fmt_2/3/4" ; "GH"    ; "Wa"                   ; GOVERNMENT
+397         ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                     ; "fmt_2/3/4" ; "GH"    ; "Upper West Region"
+3980        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                     ; "fmt_2/3/4" ; "GH"    ; "Upper West Region"
+53          ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "mtn"               ; "fmt_2/3/4" ; "GH"    ;                        ; IR21
+5[45]       ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "mtn"               ; "fmt_2/3/4" ; "GH"    ;                        ; GOVERNMENT
+5[67]       ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "airteltigo"        ; "fmt_2/3/4" ; "GH"    ;                        ; IR21
+59[1-6]     ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ; "mtn"               ; "fmt_2/3/4" ; "GH"    ;                        ; IR21       ; "Client asked to add based on IR21. T#04478034"
+59[7-9]     ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "mtn"               ; "fmt_2/3/4" ; "GH"    ;                        ; IR21
+800         ; 8      ; FIXED_LINE ; TOLL_FREE     ;                  ; true          ;                     ; "toll_3/5"  ; "GH"

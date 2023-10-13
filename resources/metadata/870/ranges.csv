@@ -1,0 +1,4 @@
+Prefix  ; Length ; Type   ; Tariff        ; Format       ; Regions ; Provenance
+[356]   ; 9      ; MOBILE ; STANDARD_RATE ; "fmt1_3/3/3" ; "001"
+7[6-8]  ; 9      ; MOBILE ; STANDARD_RATE ; "fmt1_3/3/3" ; "001"
+774[45] ; 12     ; MOBILE ; STANDARD_RATE ;              ; "001"   ; IR21

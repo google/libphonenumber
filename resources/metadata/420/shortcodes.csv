@@ -1,0 +1,17 @@
+Region ; Prefix        ; Length ; Type               ; Tariff
+CZ     ; 112           ; 3      ; EMERGENCY          ; TOLL_FREE
+CZ     ; 11600[06]     ; 6      ; EXPANDED_EMERGENCY ; TOLL_FREE
+CZ     ; 11600[1-57-9] ; 6      ; COMMERCIAL
+CZ     ; 1160[1-9]     ; 6      ; COMMERCIAL
+CZ     ; 1161[03-9]    ; 6      ; COMMERCIAL
+CZ     ; 11611[02-9]   ; 6      ; COMMERCIAL
+CZ     ; 116111        ; 6      ; EXPANDED_EMERGENCY ; TOLL_FREE
+CZ     ; 11612[0-24-9] ; 6      ; COMMERCIAL
+CZ     ; 116123        ; 6      ; EXPANDED_EMERGENCY ; TOLL_FREE
+CZ     ; 116[2-9]      ; 6      ; COMMERCIAL
+CZ     ; 118           ; 4      ; COMMERCIAL
+CZ     ; 12            ; 4      ; COMMERCIAL
+CZ     ; 1[24]         ; 5      ; COMMERCIAL
+CZ     ; 13            ; 5,6    ; COMMERCIAL
+CZ     ; 15            ; 3      ; EMERGENCY          ; TOLL_FREE
+CZ     ; 199           ; 3      ; COMMERCIAL

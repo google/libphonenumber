@@ -1,0 +1,33 @@
+Prefix  ; Length ; Type       ; Tariff        ; Operator   ; Format       ; Regions ; Geocode:en           ; Provenance
+30[01]  ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/4"   ; "MV"    ; "Malé/Hulhulé/Aarah" ; GOVERNMENT
+30[23]  ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/4"   ; "MV"    ; "Malé Region"        ; GOVERNMENT
+33[0-4] ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/4"   ; "MV"    ; "Malé/Hulhulé/Aarah" ; GOVERNMENT
+335     ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/4"   ; "MV"    ; "Hulhumalé"          ; GOVERNMENT
+339     ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/4"   ; "MV"    ; "Vilimalé"           ; GOVERNMENT
+40[01]  ; 7      ; UAN        ; STANDARD_RATE ;            ; "fmt1_3/4"   ; "MV"    ;                      ; IR21
+450     ; 7      ; UAN        ; STANDARD_RATE ;            ; "fmt1_3/4"   ; "MV"
+46[46]  ; 7      ; MOBILE     ; STANDARD_RATE ;            ; "fmt1_3/4"   ; "MV"
+650     ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/4"   ; "MV"    ; "Haa Alifu"          ; GOVERNMENT
+652     ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/4"   ; "MV"    ; "Haa Dhaalu"         ; GOVERNMENT
+654     ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/4"   ; "MV"    ; "Shaviyani"          ; GOVERNMENT
+656     ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/4"   ; "MV"    ; "Noonu"              ; GOVERNMENT
+65[89]  ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/4"   ; "MV"    ; "Raa"                ; GOVERNMENT
+660     ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/4"   ; "MV"    ; "Baa"                ; GOVERNMENT
+662     ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/4"   ; "MV"    ; "Lhaviyani"          ; GOVERNMENT
+66[45]  ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/4"   ; "MV"    ; "Kaafu"              ; GOVERNMENT
+666     ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/4"   ; "MV"    ; "Alifu Alifu"        ; GOVERNMENT
+668     ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/4"   ; "MV"    ; "Alifu Dhaalu"       ; GOVERNMENT
+670     ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/4"   ; "MV"    ; "Vaavu"              ; GOVERNMENT
+672     ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/4"   ; "MV"    ; "Meemu"              ; GOVERNMENT
+674     ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/4"   ; "MV"    ; "Faafu"              ; GOVERNMENT
+676     ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/4"   ; "MV"    ; "Dhaalu"             ; GOVERNMENT
+678     ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/4"   ; "MV"    ; "Thaa"               ; GOVERNMENT
+680     ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/4"   ; "MV"    ; "Laamu"              ; GOVERNMENT
+682     ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/4"   ; "MV"    ; "Gaafu Alifu"        ; GOVERNMENT
+684     ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/4"   ; "MV"    ; "Gaafu Dhaalu"       ; GOVERNMENT
+686     ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/4"   ; "MV"    ; "Gnaviyani"          ; GOVERNMENT
+68[89]  ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/4"   ; "MV"    ; "Addu"               ; GOVERNMENT
+7       ; 7      ; MOBILE     ; STANDARD_RATE ; "dhiraagu" ; "fmt1_3/4"   ; "MV"    ;                      ; IR21
+800     ; 10     ; FIXED_LINE ; TOLL_FREE     ;            ; "fmt2_3/3/4" ; "MV"
+9       ; 7      ; MOBILE     ; STANDARD_RATE ; "ooredoo"  ; "fmt1_3/4"   ; "MV"    ;                      ; IR21
+900     ; 10     ; FIXED_LINE ; PREMIUM_RATE  ;            ; "fmt2_3/3/4" ; "MV"

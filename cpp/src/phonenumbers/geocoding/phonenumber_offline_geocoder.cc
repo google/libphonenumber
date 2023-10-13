@@ -92,16 +92,12 @@ const AreaCodeMap* PhoneNumberOfflineGeocoder::GetPhonePrefixDescriptions(
   }
   AreaCodeMaps::const_iterator it = available_maps_.find(filename);
   if (it == available_maps_.end()) {
-    it = LoadAreaCodeMapFromFile(filename);
-    if (it == available_maps_.end()) {
-      return NULL;
-    }
+    return LoadAreaCodeMapFromFile(filename);
   }
   return it->second;
 }
 
-PhoneNumberOfflineGeocoder::AreaCodeMaps::const_iterator
-PhoneNumberOfflineGeocoder::LoadAreaCodeMapFromFile(
+const AreaCodeMap* PhoneNumberOfflineGeocoder::LoadAreaCodeMapFromFile(
     const string& filename) const {
   const char** const prefix_language_code_pairs_end =
       prefix_language_code_pairs_ + prefix_language_code_pairs_size_;
@@ -114,9 +110,10 @@ PhoneNumberOfflineGeocoder::LoadAreaCodeMapFromFile(
     AreaCodeMap* const m = new AreaCodeMap();
     m->ReadAreaCodeMap(get_prefix_descriptions_(
             prefix_language_code_pair - prefix_language_code_pairs_));
-    return available_maps_.insert(AreaCodeMaps::value_type(filename, m)).first;
+    return available_maps_.insert(AreaCodeMaps::value_type(filename, m))
+        .first->second;
   }
-  return available_maps_.end();
+  return NULL;
 }
 
 string PhoneNumberOfflineGeocoder::GetCountryNameForNumber(

@@ -1,0 +1,7 @@
+Id                 ; National           ; International      ; Comment
+fixed_4/4          ; "XXXX XXXX"        ; "XXXX XXXX"        ; "Following paginasamarillas.com.uy formatting."
+mobile_2/3/3       ; "#XX XXX XXX"      ; "XX XXX XXX"       ; "Including the national prefix here since URSEC does when formatting these."
+tollfree_3/3-4     ; "XXX XXX*"         ; "XXX XXX*"         ; "6 - 7 digit toll free numbers"
+tollfree_3/3/2-4   ; "XXX XXX XX**"     ; "XXX XXX XX**"     ; "8 - 10 digit toll free numbers"
+tollfree_3/3/3/2-4 ; "XXX XXX XXX XX**" ; "XXX XXX XXX XX**" ; "11 - 13 digit toll free numbers"
+varcost_3/4        ; "#XXX XXXX"        ; "XXX XXXX"

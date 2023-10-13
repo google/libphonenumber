@@ -1,0 +1,50 @@
+Prefix       ; Length ; Type       ; Tariff        ; Operator   ; Format    ; Regions ; Geocode:en                                                            ; Provenance ; Comment
+[27]         ; 7      ; MOBILE     ; STANDARD_RATE ; "africell" ; "fmt_3/4" ; "GM"    ;                                                                       ; IR21
+3            ; 7      ; MOBILE     ; STANDARD_RATE ; "qcell"    ; "fmt_3/4" ; "GM"    ;                                                                       ; IR21
+42           ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt_3/4" ; "GM"    ; "Banjul"                                                              ; ITU
+43           ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt_3/4" ; "GM"    ; "Bundung/Serekunda"                                                   ; ITU
+4410         ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt_3/4" ; "GM"    ; "Brufut"                                                              ; ITU
+4412         ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt_3/4" ; "GM"    ; "Tanji"                                                               ; ITU
+441[47]      ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt_3/4" ; "GM"    ; "Sanyang"                                                             ; ITU
+4416         ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt_3/4" ; "GM"    ; "Tujereng"                                                            ; ITU
+4419[0-46-9] ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt_3/4" ; "GM"    ; "Kartong"                                                             ; ITU        ; "Geocode changed per client's request"
+44195        ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt_3/4" ; "GM"    ; "Berending"                                                           ; ITU        ; "Geocode changed per client's request"
+446          ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt_3/4" ; "GM"    ; "Kotu/Senegambia"                                                     ; ITU
+447          ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt_3/4" ; "GM"    ; "Yundum"                                                              ; ITU
+4480         ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt_3/4" ; "GM"    ; "Bondali"                                                             ; ITU
+448[1-4]     ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt_3/4" ; "GM"    ; "Brikama/Kanilia"                                                     ; ITU
+4485         ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt_3/4" ; "GM"    ; "Kafuta"                                                              ; ITU
+4486         ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt_3/4" ; "GM"    ; "Gunjur"                                                              ; ITU
+4487         ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt_3/4" ; "GM"    ; "Faraba"                                                              ; ITU
+4488         ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt_3/4" ; "GM"    ; "Sibanor"                                                             ; ITU
+4489         ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt_3/4" ; "GM"    ; "Bwiam"                                                               ; ITU
+449          ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt_3/4" ; "GM"    ; "Bakau"                                                               ; ITU
+5[0-4]       ; 7      ; MOBILE     ; STANDARD_RATE ; "qcell"    ; "fmt_3/4" ; "GM"    ;                                                                       ; IR21
+553          ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt_3/4" ; "GM"    ; "Soma"                                                                ; ITU        ; "Added per client's request."
+5540         ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt_3/4" ; "GM"    ; "Kaiaf"                                                               ; ITU
+5541         ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt_3/4" ; "GM"    ; "Kwenella"                                                            ; ITU
+5542         ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt_3/4" ; "GM"    ; "Nyorojattaba"                                                        ; ITU
+5543         ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt_3/4" ; "GM"    ; "Japeneh/Soma"                                                        ; ITU
+5544         ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt_3/4" ; "GM"    ; "Bureng"                                                              ; ITU
+5545         ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt_3/4" ; "GM"    ; "Pakaliba"                                                            ; ITU
+5546         ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt_3/4" ; "GM"    ; "Kudang"                                                              ; ITU
+5547         ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt_3/4" ; "GM"    ; "Jareng"                                                              ; ITU
+566[0-47-9]  ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt_3/4" ; "GM"    ; "Baja Kunda/Basse/Fatoto/Gambisara/Garawol/Misera/Sambakunda/Sudowol" ; ITU
+5665         ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt_3/4" ; "GM"    ; "Kuntaur"                                                             ; ITU
+5666         ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt_3/4" ; "GM"    ; "Numeyel"                                                             ; ITU
+567[0-3579]  ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt_3/4" ; "GM"    ; "Sotuma"                                                              ; ITU
+5674         ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt_3/4" ; "GM"    ; "Bansang"                                                             ; ITU
+5676         ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt_3/4" ; "GM"    ; "Georgetown"                                                          ; ITU
+5678         ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt_3/4" ; "GM"    ; "Brikama-Ba"                                                          ; ITU
+5710         ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt_3/4" ; "GM"    ; "Barra"                                                               ; ITU
+5714         ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt_3/4" ; "GM"    ; "Ndugukebbe"                                                          ; ITU
+5720         ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt_3/4" ; "GM"    ; "Kerewan"                                                             ; ITU
+5723         ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt_3/4" ; "GM"    ; "Njabakunda"                                                          ; ITU
+5725         ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt_3/4" ; "GM"    ; "Iliasa"                                                              ; ITU
+5735         ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt_3/4" ; "GM"    ; "Farafenni"                                                           ; ITU
+5738         ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt_3/4" ; "GM"    ; "Ngensanjal"                                                          ; ITU
+5748         ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt_3/4" ; "GM"    ; "Kaur"                                                                ; ITU
+5[89]        ; 7      ; MOBILE     ; STANDARD_RATE ; "qcell"    ; "fmt_3/4" ; "GM"    ;                                                                       ;            ; "Added per client's request."
+6            ; 7      ; MOBILE     ; STANDARD_RATE ; "comium"   ; "fmt_3/4" ; "GM"    ;                                                                       ; IR21
+8            ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt_3/4" ; "GM"    ;                                                                       ; ITU
+9            ; 7      ; MOBILE     ; STANDARD_RATE ; "gamcel"   ; "fmt_3/4" ; "GM"    ;                                                                       ; ITU

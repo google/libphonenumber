@@ -1,0 +1,15 @@
+Prefix     ; Length ; Type       ; Tariff        ; Operator  ; Format       ; Regions ; Provenance
+22         ; 8      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_2/2/4" ; "HT"
+25[1-5]    ; 8      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_2/2/4" ; "HT"
+281        ; 8      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_2/2/4" ; "HT"
+29[149]    ; 8      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_2/2/4" ; "HT"    ; ITU
+3[0146-9]  ; 8      ; MOBILE     ; STANDARD_RATE ; "digicel" ; "fmt1_2/2/4" ; "HT"
+3[235]     ; 8      ; MOBILE     ; STANDARD_RATE ; "natcom"  ; "fmt1_2/2/4" ; "HT"    ; IR21
+4[0-3]     ; 8      ; MOBILE     ; STANDARD_RATE ; "natcom"  ; "fmt1_2/2/4" ; "HT"
+4[46-9]    ; 8      ; MOBILE     ; STANDARD_RATE ; "digicel" ; "fmt1_2/2/4" ; "HT"
+45         ; 8      ; MOBILE     ; STANDARD_RATE ;           ; "fmt1_2/2/4" ; "HT"
+55         ; 8      ; MOBILE     ; STANDARD_RATE ; "natcom"  ; "fmt1_2/2/4" ; "HT"    ; IR21
+8          ; 8      ; FIXED_LINE ; TOLL_FREE     ;           ; "fmt1_2/2/4" ; "HT"
+9[67][0-4] ; 8      ; VOIP       ; STANDARD_RATE ;           ; "fmt1_2/2/4" ; "HT"
+98[0-3589] ; 8      ; VOIP       ; STANDARD_RATE ;           ; "fmt1_2/2/4" ; "HT"
+99         ; 8      ; VOIP       ; STANDARD_RATE ;           ; "fmt1_2/2/4" ; "HT"

@@ -1,0 +1,4 @@
+Region ; Prefix    ; Length ; Type       ; Tariff
+GL     ; 11[013-9] ; 3      ; COMMERCIAL
+GL     ; 112       ; 3      ; EMERGENCY  ; TOLL_FREE
+GL     ; 1[2-8]    ; 3      ; COMMERCIAL

@@ -509,7 +509,17 @@
 562334|Entel
 5623348|Claro
 5623349|Claro
-562335|Claro
+562335|Movistar
+5623350|Claro
+5623351|Claro
+5623352|Claro
+562336|Movistar
+562337|Claro
+5623370|Movistar
+5623371|Movistar
+5623372|Movistar
+5623373|Movistar
+562338|Claro
 56236|Entel
 56322162|Entel
 56322163|Entel
@@ -845,24 +855,7 @@
 5641219|Entel
 564122|Compania De Telecomunicaciones De Chile S.A.
 5641229|Gtd Telesat S.A.
-5641230|Compania De Telecomunicaciones De Chile S.A.
-5641231|Compania De Telecomunicaciones De Chile S.A.
-5641232|Compania De Telecomunicaciones De Chile S.A.
-5641233|Compania De Telecomunicaciones De Chile S.A.
-5641234|Compania De Telecomunicaciones De Chile S.A.
-5641235|Compania De Telecomunicaciones De Chile S.A.
-5641236|Compania De Telecomunicaciones De Chile S.A.
-5641237|Compania De Telecomunicaciones De Chile S.A.
-56412380|Compania De Telecomunicaciones De Chile S.A.
-56412381|Compania De Telecomunicaciones De Chile S.A.
-56412382|Compania De Telecomunicaciones De Chile S.A.
-56412383|Compania De Telecomunicaciones De Chile S.A.
-56412384|Compania De Telecomunicaciones De Chile S.A.
-56412385|Compania De Telecomunicaciones De Chile S.A.
-56412386|Compania De Telecomunicaciones De Chile S.A.
-56412387|Compania De Telecomunicaciones De Chile S.A.
-56412388|Compania De Telecomunicaciones De Chile S.A.
-5641239|Compania De Telecomunicaciones De Chile S.A.
+564123|Compania De Telecomunicaciones De Chile S.A.
 564124|Compania De Telecomunicaciones De Chile S.A.
 5641246|Telefonica Del Sur S.A.
 564125|Compania De Telecomunicaciones De Chile S.A.
@@ -964,6 +957,9 @@
 56413383|Compania De Telecomunicaciones De Chile S.A.
 56413384|Compania De Telecomunicaciones De Chile S.A.
 5641339|Telefonica Del Sur S.A.
+5641350|Entel
+5641351|Entel
+5641352|Entel
 5641355|Claro
 5641356|Claro
 5641357|Claro
@@ -1534,6 +1530,11 @@
 565225574|Compania Chilena De Comunicaciones Parallel S.A.
 5652256|Entel
 5652257|Entel
+5652258|Movistar
+5652259|Movistar
+5652260|Movistar
+5652261|Movistar
+5652262|Movistar
 5652268|Compania De Telecomunicaciones De Chile S.A.
 56531980|Compania De Telecomunicaciones De Chile S.A.
 56531981|Compania De Telecomunicaciones De Chile S.A.
@@ -1701,6 +1702,11 @@
 5655298|Entel
 56553280|Redvoiss
 56553320|Entel
+5655334|Movistar
+5655335|Movistar
+5655336|Movistar
+5655337|Movistar
+5655338|Movistar
 5657221|Vtr Banda Ancha (Chile) S.A.
 5657222|Claro
 5657223|Convergia Telecom S.A.
@@ -1760,6 +1766,10 @@
 5657281|Gtd Telesat S.A.
 5657283|Movistar
 5657284|Gtd Manquehue S.A.
+5657285|Entel
+5657286|Entel
+5657287|Entel
+5657288|Entel
 565822|Compania De Telecomunicaciones De Chile S.A.
 5658231|Vtr Banda Ancha (Chile) S.A.
 5658232|Vtr Banda Ancha (Chile) S.A.
@@ -2279,6 +2289,10 @@
 5671274|Entel
 5671277|Telestar
 5671279|Vtr Banda Ancha (Chile) S.A.
+5671280|Entel
+5671281|Entel
+5671282|Entel
+5671283|Entel
 5671288|Compania De Telecomunicaciones De Chile S.A.
 56712970|Comunicacion Y Telefonia Rural S.A.
 56712971|Comunicacion Y Telefonia Rural S.A.
@@ -2707,6 +2721,7 @@
 569379|Ops Ingenieria Ltda.
 569380|Ops Ingenieria Ltda.
 569381|Ops Ingenieria Ltda.
+569388|Entel
 56940|Entel
 56941|Movistar
 56942|Entel

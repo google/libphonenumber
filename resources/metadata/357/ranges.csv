@@ -1,0 +1,13 @@
+Prefix  ; Length ; Type            ; Tariff        ; Operator              ; Format     ; Regions ; Provenance
+2[2-6]  ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                       ; "fmt1_2/6" ; "CY"    ; GOVERNMENT
+50      ; 8      ; UAN             ; STANDARD_RATE ;                       ; "fmt1_2/6" ; "CY"
+700     ; 8      ; PERSONAL_NUMBER ; STANDARD_RATE ;                       ; "fmt1_2/6" ; "CY"    ; GOVERNMENT
+77      ; 8      ; UAN             ; STANDARD_RATE ;                       ; "fmt1_2/6" ; "CY"
+800     ; 8      ; FIXED_LINE      ; TOLL_FREE     ;                       ; "fmt1_2/6" ; "CY"    ; GOVERNMENT
+80[1-9] ; 8      ; FIXED_LINE      ; SHARED_COST   ;                       ; "fmt1_2/6" ; "CY"
+90[09]  ; 8      ; FIXED_LINE      ; PREMIUM_RATE  ;                       ; "fmt1_2/6" ; "CY"    ; GOVERNMENT
+910     ; 8      ; MOBILE          ; STANDARD_RATE ; "cytamobile_vodafone" ; "fmt1_2/6" ; "CY"    ; GOVERNMENT
+94      ; 8      ; MOBILE          ; STANDARD_RATE ; "lemontel"            ; "fmt1_2/6" ; "CY"
+95      ; 8      ; MOBILE          ; STANDARD_RATE ; "primetel"            ; "fmt1_2/6" ; "CY"    ; IR21
+96      ; 8      ; MOBILE          ; STANDARD_RATE ; "mtn"                 ; "fmt1_2/6" ; "CY"    ; IR21
+9[79]   ; 8      ; MOBILE          ; STANDARD_RATE ; "cytamobile_vodafone" ; "fmt1_2/6" ; "CY"    ; IR21

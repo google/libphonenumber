@@ -1,0 +1,11 @@
+Prefix  ; Length ; Type       ; Tariff        ; Area Code Length ; Operator                      ; Format           ; Regions ; Geocode:en         ; Provenance ; Comment
+16      ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "b_mobile_of_bhutan_telecom"  ; "mobile_2/2/2/2" ; "BT"
+17      ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "b_mobile_of_bhutan_telecom"  ; "mobile_2/2/2/2" ; "BT"    ;                    ; IR21       ; "IR21 dated 8/16/2017"
+2[3-6]  ; 7      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                               ; "fixed_1/3/3"    ; "BT"    ; "Thimphu"
+3[5-7]  ; 7      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                               ; "fixed_1/3/3"    ; "BT"    ; "Trongsa"
+4[5-7]  ; 7      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                               ; "fixed_1/3/3"    ; "BT"    ; "Trashigang"
+5[236]  ; 7      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                               ; "fixed_1/3/3"    ; "BT"    ; "Phuentsholing"
+6[2-46] ; 7      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                               ; "fixed_1/3/3"    ; "BT"    ; "Gelephu"
+7[246]  ; 7      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                               ; "fixed_1/3/3"    ; "BT"    ; "Samdrup Jongkhar"
+77      ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "tashicell_of_tashi_infocomm" ; "mobile_2/2/2/2" ; "BT"    ;                    ; IR21       ; "IR21 dated 7/30/2018"
+8[2-4]  ; 7      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                               ; "fixed_1/3/3"    ; "BT"    ; "Paro"

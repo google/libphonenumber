@@ -1,0 +1,18 @@
+Prefix ; Length ; Type       ; Tariff        ; Area Code Length ; Operator  ; Format        ; Regions ; Geocode:en                               ; Provenance ; Comment
+211    ; 9      ; FIXED_LINE ; STANDARD_RATE ; 3                ;           ; "fixed_3/3/3" ; "ZM"    ; "Lusaka Province"                        ; ITU        ; "Dated: 09/07/2018"
+212    ; 9      ; FIXED_LINE ; STANDARD_RATE ; 3                ;           ; "fixed_3/3/3" ; "ZM"    ; "Ndola/Copperbelt and Luapula Provinces" ; ITU        ; "Dated: 09/07/2018"
+213    ; 9      ; FIXED_LINE ; STANDARD_RATE ; 3                ;           ; "fixed_3/3/3" ; "ZM"    ; "Livingstone/Southern Province"          ; ITU        ; "Dated: 09/07/2018"
+214    ; 9      ; FIXED_LINE ; STANDARD_RATE ; 3                ;           ; "fixed_3/3/3" ; "ZM"    ; "Kasama/Northern Province"               ; ITU        ; "Dated: 09/07/2018"
+215    ; 9      ; FIXED_LINE ; STANDARD_RATE ; 3                ;           ; "fixed_3/3/3" ; "ZM"    ; "Kabwe/Central Province"                 ; ITU        ; "Dated: 09/07/2018"
+216    ; 9      ; FIXED_LINE ; STANDARD_RATE ; 3                ;           ; "fixed_3/3/3" ; "ZM"    ; "Chipata/Eastern Province"               ; ITU        ; "Dated: 09/07/2018"
+217    ; 9      ; FIXED_LINE ; STANDARD_RATE ; 3                ;           ; "fixed_3/3/3" ; "ZM"    ; "Solwezi/Western Province"               ; ITU        ; "Dated: 09/07/2018"
+218    ; 9      ; FIXED_LINE ; STANDARD_RATE ; 3                ;           ; "fixed_3/3/3" ; "ZM"    ; "Mongu/North-Western Province"           ; ITU        ; "Dated: 09/07/2018"
+63     ; 9      ; VOIP       ; STANDARD_RATE ;                  ;           ;               ; "ZM"    ;                                          ; ITU
+75     ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "zamtel"  ; "mobile_2/7"  ; "ZM"    ;                                          ; IR21
+[79]6  ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "mtn"     ; "mobile_2/7"  ; "ZM"
+77     ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "airtel"  ; "mobile_2/7"  ; "ZM"    ;                                          ; ITU        ; "Dated: 09/07/2018"
+79     ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;           ; "mobile_2/7"  ; "ZM"    ;                                          ; ITU        ; "Dated: 09/07/2018"
+800    ; 9      ; FIXED_LINE ; TOLL_FREE     ;                  ;           ; "fixed_3/3/3" ; "ZM"
+95     ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "zamtel"  ; "mobile_2/7"  ; "ZM"
+97     ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "airtel"  ; "mobile_2/7"  ; "ZM"
+98     ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "beeline" ; "mobile_2/7"  ; "ZM"    ;                                          ; ITU

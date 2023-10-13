@@ -1,0 +1,10 @@
+Prefix   ; Length ; Type       ; Tariff        ; Operator    ; Format         ; Regions ; Provenance
+06       ; 8      ; FIXED_LINE ; STANDARD_RATE ;             ; "fmt3_2/2/2/2" ; "RW"    ; ITU
+2[23568] ; 9      ; FIXED_LINE ; STANDARD_RATE ;             ; "fmt1_3/3/3"   ; "RW"    ; GOVERNMENT
+72       ; 9      ; MOBILE     ; STANDARD_RATE ; "tigo"      ; "fmt2_3/3/3"   ; "RW"    ; IR21
+73       ; 9      ; MOBILE     ; STANDARD_RATE ; "airtel"    ; "fmt2_3/3/3"   ; "RW"    ; IR21
+77       ; 9      ; MOBILE     ; STANDARD_RATE ; "kt_rwanda" ; "fmt2_3/3/3"   ; "RW"    ; GOVERNMENT
+78       ; 9      ; MOBILE     ; STANDARD_RATE ; "mtn"       ; "fmt2_3/3/3"   ; "RW"    ; GOVERNMENT
+79       ; 9      ; MOBILE     ; STANDARD_RATE ; "mtn"       ; "fmt2_3/3/3"   ; "RW"    ; IR21
+800      ; 9      ; FIXED_LINE ; TOLL_FREE     ;             ; "fmt2_3/3/3"   ; "RW"
+900      ; 9      ; FIXED_LINE ; PREMIUM_RATE  ;             ; "fmt2_3/3/3"   ; "RW"

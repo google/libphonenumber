@@ -1,0 +1,118 @@
+Prefix       ; Length ; Type            ; Tariff        ; Operator   ; Format         ; Regions ; Geocode:en           ; Provenance ; Comment
+310          ; 8      ; FIXED_LINE      ; STANDARD_RATE ;            ; "fmt_3/5"      ; "LT"    ; "Varėna"             ; ITU
+31[12467]    ; 8      ; FIXED_LINE      ; STANDARD_RATE ;            ; "fmt_3/5"      ; "LT"
+313          ; 8      ; FIXED_LINE      ; STANDARD_RATE ;            ; "fmt_3/5"      ; "LT"    ; "Druskininkai"       ; ITU
+315          ; 8      ; FIXED_LINE      ; STANDARD_RATE ;            ; "fmt_3/5"      ; "LT"    ; "Alytus"             ; ITU
+318          ; 8      ; FIXED_LINE      ; STANDARD_RATE ;            ; "fmt_3/5"      ; "LT"    ; "Lazdijai"           ; ITU
+319          ; 8      ; FIXED_LINE      ; STANDARD_RATE ;            ; "fmt_3/5"      ; "LT"    ; "Birštonas/Prienai"  ; ITU
+340          ; 8      ; FIXED_LINE      ; STANDARD_RATE ;            ; "fmt_3/5"      ; "LT"    ; "Ukmergė"            ; ITU
+34[148]      ; 8      ; FIXED_LINE      ; STANDARD_RATE ;            ; "fmt_3/5"      ; "LT"
+342          ; 8      ; FIXED_LINE      ; STANDARD_RATE ;            ; "fmt_3/5"      ; "LT"    ; "Vilkaviškis"        ; ITU
+343          ; 8      ; FIXED_LINE      ; STANDARD_RATE ;            ; "fmt_3/5"      ; "LT"    ; "Marijampolė"        ; ITU
+345          ; 8      ; FIXED_LINE      ; STANDARD_RATE ;            ; "fmt_3/5"      ; "LT"    ; "Šakiai"             ; ITU
+346          ; 8      ; FIXED_LINE      ; STANDARD_RATE ;            ; "fmt_3/5"      ; "LT"    ; "Kaišiadorys"        ; ITU
+347          ; 8      ; FIXED_LINE      ; STANDARD_RATE ;            ; "fmt_3/5"      ; "LT"    ; "Kėdainiai"          ; ITU
+349          ; 8      ; FIXED_LINE      ; STANDARD_RATE ;            ; "fmt_3/5"      ; "LT"    ; "Jonava"             ; ITU
+37           ; 8      ; FIXED_LINE      ; STANDARD_RATE ;            ; "fixed_2/6"    ; "LT"    ; "Kaunas"             ; ITU
+380          ; 8      ; FIXED_LINE      ; STANDARD_RATE ;            ; "fmt_3/5"      ; "LT"    ; "Šalčininkai"        ; ITU
+381          ; 8      ; FIXED_LINE      ; STANDARD_RATE ;            ; "fmt_3/5"      ; "LT"    ; "Anykščiai"          ; ITU
+382          ; 8      ; FIXED_LINE      ; STANDARD_RATE ;            ; "fmt_3/5"      ; "LT"    ; "Širvintos"          ; ITU
+383          ; 8      ; FIXED_LINE      ; STANDARD_RATE ;            ; "fmt_3/5"      ; "LT"    ; "Molėtai"            ; ITU
+38[48]       ; 8      ; FIXED_LINE      ; STANDARD_RATE ;            ; "fmt_3/5"      ; "LT"
+385          ; 8      ; FIXED_LINE      ; STANDARD_RATE ;            ; "fmt_3/5"      ; "LT"    ; "Zarasai"            ; ITU
+386          ; 8      ; FIXED_LINE      ; STANDARD_RATE ;            ; "fmt_3/5"      ; "LT"    ; "Ignalina/Visaginas" ; ITU
+387          ; 8      ; FIXED_LINE      ; STANDARD_RATE ;            ; "fmt_3/5"      ; "LT"    ; "Švenčionys"         ; ITU
+389          ; 8      ; FIXED_LINE      ; STANDARD_RATE ;            ; "fmt_3/5"      ; "LT"    ; "Utena"              ; ITU
+41           ; 8      ; FIXED_LINE      ; STANDARD_RATE ;            ; "fixed_2/6"    ; "LT"    ; "Šiauliai"           ; ITU
+42[0349]     ; 8      ; FIXED_LINE      ; STANDARD_RATE ;            ; "fmt_3/5"      ; "LT"
+421          ; 8      ; FIXED_LINE      ; STANDARD_RATE ;            ; "fmt_3/5"      ; "LT"    ; "Pakruojis"          ; ITU
+422          ; 8      ; FIXED_LINE      ; STANDARD_RATE ;            ; "fmt_3/5"      ; "LT"    ; "Radviliškis"        ; ITU
+425          ; 8      ; FIXED_LINE      ; STANDARD_RATE ;            ; "fmt_3/5"      ; "LT"    ; "Akmenė"             ; ITU
+426          ; 8      ; FIXED_LINE      ; STANDARD_RATE ;            ; "fmt_3/5"      ; "LT"    ; "Joniškis"           ; ITU
+427          ; 8      ; FIXED_LINE      ; STANDARD_RATE ;            ; "fmt_3/5"      ; "LT"    ; "Kelmė"              ; ITU
+428          ; 8      ; FIXED_LINE      ; STANDARD_RATE ;            ; "fmt_3/5"      ; "LT"    ; "Raseiniai"          ; ITU
+440          ; 8      ; FIXED_LINE      ; STANDARD_RATE ;            ; "fmt_3/5"      ; "LT"    ; "Skuodas"            ; ITU
+441          ; 8      ; FIXED_LINE      ; STANDARD_RATE ;            ; "fmt_3/5"      ; "LT"    ; "Šilutė"             ; ITU
+442          ; 8      ; FIXED_LINE      ; STANDARD_RATE ;            ; "fmt_3/5"      ; "LT"
+443          ; 8      ; FIXED_LINE      ; STANDARD_RATE ;            ; "fmt_3/5"      ; "LT"    ; "Mažeikiai"          ; ITU
+444          ; 8      ; FIXED_LINE      ; STANDARD_RATE ;            ; "fmt_3/5"      ; "LT"    ; "Telšiai"            ; ITU
+445          ; 8      ; FIXED_LINE      ; STANDARD_RATE ;            ; "fmt_3/5"      ; "LT"    ; "Kretinga"           ; ITU
+446          ; 8      ; FIXED_LINE      ; STANDARD_RATE ;            ; "fmt_3/5"      ; "LT"    ; "Tauragė"            ; ITU
+447          ; 8      ; FIXED_LINE      ; STANDARD_RATE ;            ; "fmt_3/5"      ; "LT"    ; "Jurbarkas"          ; ITU
+448          ; 8      ; FIXED_LINE      ; STANDARD_RATE ;            ; "fmt_3/5"      ; "LT"    ; "Plungė"             ; ITU
+449          ; 8      ; FIXED_LINE      ; STANDARD_RATE ;            ; "fmt_3/5"      ; "LT"    ; "Šilalė"             ; ITU
+450          ; 8      ; FIXED_LINE      ; STANDARD_RATE ;            ; "fixed_2/6"    ; "LT"    ; "Biržai"             ; ITU
+451          ; 8      ; FIXED_LINE      ; STANDARD_RATE ;            ; "fixed_2/6"    ; "LT"    ; "Pasvalys"           ; ITU
+45[2-7]      ; 8      ; FIXED_LINE      ; STANDARD_RATE ;            ; "fixed_2/6"    ; "LT"    ; "Panevėžys"          ; ITU
+458          ; 8      ; FIXED_LINE      ; STANDARD_RATE ;            ; "fixed_2/6"    ; "LT"    ; "Rokiškis"           ; ITU
+459          ; 8      ; FIXED_LINE      ; STANDARD_RATE ;            ; "fixed_2/6"    ; "LT"    ; "Kupiškis"           ; ITU
+460          ; 8      ; FIXED_LINE      ; STANDARD_RATE ;            ; "fmt_3/5"      ; "LT"    ; "Palanga"            ; ITU
+46[1-8]      ; 8      ; FIXED_LINE      ; STANDARD_RATE ;            ; "fixed_2/6"    ; "LT"    ; "Klaipėda"           ; ITU
+469          ; 8      ; FIXED_LINE      ; STANDARD_RATE ;            ; "fmt_3/5"      ; "LT"    ; "Neringa"            ; ITU
+52[0-7]      ; 8      ; FIXED_LINE      ; STANDARD_RATE ;            ; "fixed_1/3/4"  ; "LT"    ; "Vilnius"            ; ITU
+528          ; 8      ; FIXED_LINE      ; STANDARD_RATE ;            ; "fmt_3/5"      ; "LT"    ; "Trakai"             ; ITU
+529          ; 8      ; FIXED_LINE      ; STANDARD_RATE ;            ; "fmt_3/5"      ; "LT"
+6[07]        ; 8      ; MOBILE          ; STANDARD_RATE ; "tele_2"   ; "fmt_3/5"      ; "LT"    ;                      ; IR21
+6[12]        ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"    ; "fmt_3/5"      ; "LT"    ;                      ; IR21
+6[35]        ; 8      ; MOBILE          ; STANDARD_RATE ; "bite"     ; "fmt_3/5"      ; "LT"    ;                      ; IR21
+64[0-49]     ; 8      ; MOBILE          ; STANDARD_RATE ; "bite"     ; "fmt_3/5"      ; "LT"    ;                      ; IR21
+64[5-8]      ; 8      ; MOBILE          ; STANDARD_RATE ; "tele_2"   ; "fmt_3/5"      ; "LT"    ;                      ; IR21
+660          ; 8      ; MOBILE          ; STANDARD_RATE ; "bite"     ; "fmt_3/5"      ; "LT"    ;                      ; IR21
+6610[0-46-9] ; 8      ; MOBILE          ; STANDARD_RATE ; "tele_2"   ; "fmt_3/5"      ; "LT"    ;                      ; IR21
+66105        ; 8      ; MOBILE          ; STANDARD_RATE ; "bite"     ; "fmt_3/5"      ; "LT"    ;                      ; IR21
+661[1-79]    ; 8      ; MOBILE          ; STANDARD_RATE ; "bite"     ; "fmt_3/5"      ; "LT"    ;                      ; IR21
+6618[0-57-9] ; 8      ; MOBILE          ; STANDARD_RATE ; "bite"     ; "fmt_3/5"      ; "LT"
+66186        ; 8      ; MOBILE          ; STANDARD_RATE ; "lancelot" ; "fmt_3/5"      ; "LT"    ;                      ; IR21
+66[29]       ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"    ; "fmt_3/5"      ; "LT"    ;                      ; IR21
+6630         ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"    ; "fmt_3/5"      ; "LT"    ;                      ; IR21
+6631[0-2]    ; 8      ; MOBILE          ; STANDARD_RATE ;            ; "fmt_3/5"      ; "LT"    ;                      ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+6631[3-9]    ; 8      ; MOBILE          ; STANDARD_RATE ; "bite"     ; "fmt_3/5"      ; "LT"    ;                      ; IR21
+6632[03]     ; 8      ; MOBILE          ; STANDARD_RATE ; "bite"     ; "fmt_3/5"      ; "LT"    ;                      ; IR21
+6632[14-9]   ; 8      ; MOBILE          ; STANDARD_RATE ; "lancelot" ; "fmt_3/5"      ; "LT"    ;                      ; IR21
+66322        ; 8      ; MOBILE          ; STANDARD_RATE ;            ; "fmt_3/5"      ; "LT"
+663[3-9]     ; 8      ; MOBILE          ; STANDARD_RATE ;            ; "fmt_3/5"      ; "LT"    ;                      ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+664          ; 8      ; MOBILE          ; STANDARD_RATE ;            ; "fmt_3/5"      ; "LT"
+665[013]     ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"    ; "fmt_3/5"      ; "LT"    ;                      ; IR21
+6652[01]     ; 8      ; MOBILE          ; STANDARD_RATE ;            ; "fmt_3/5"      ; "LT"    ;                      ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+6652[2-9]    ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"    ; "fmt_3/5"      ; "LT"    ;                      ; IR21
+665[4-9]     ; 8      ; MOBILE          ; STANDARD_RATE ;            ; "fmt_3/5"      ; "LT"    ;                      ; IR21
+666[0157-9]  ; 8      ; MOBILE          ; STANDARD_RATE ; "bite"     ; "fmt_3/5"      ; "LT"    ;                      ; IR21
+66620        ; 8      ; MOBILE          ; STANDARD_RATE ;            ; "fmt_3/5"      ; "LT"    ;                      ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+66621        ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"    ; "fmt_3/5"      ; "LT"    ;                      ; IR21
+6662[2-9]    ; 8      ; MOBILE          ; STANDARD_RATE ; "bite"     ; "fmt_3/5"      ; "LT"    ;                      ; IR21
+666[34]      ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"    ; "fmt_3/5"      ; "LT"    ;                      ; IR21
+6666         ; 8      ; MOBILE          ; STANDARD_RATE ; "tele_2"   ; "fmt_3/5"      ; "LT"    ;                      ; IR21
+667[06-9]    ; 8      ; MOBILE          ; STANDARD_RATE ; "bite"     ; "fmt_3/5"      ; "LT"    ;                      ; IR21
+6671[02-8]   ; 8      ; MOBILE          ; STANDARD_RATE ;            ; "fmt_3/5"      ; "LT"    ;                      ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+6671[19]     ; 8      ; MOBILE          ; STANDARD_RATE ; "bite"     ; "fmt_3/5"      ; "LT"    ;                      ; IR21
+6672[0-7]    ; 8      ; MOBILE          ; STANDARD_RATE ;            ; "fmt_3/5"      ; "LT"    ;                      ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+6672[89]     ; 8      ; MOBILE          ; STANDARD_RATE ; "bite"     ; "fmt_3/5"      ; "LT"    ;                      ; IR21
+667[3-5]     ; 8      ; MOBILE          ; STANDARD_RATE ;            ; "fmt_3/5"      ; "LT"    ;                      ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+6680         ; 8      ; MOBILE          ; STANDARD_RATE ; "tele_2"   ; "fmt_3/5"      ; "LT"    ;                      ; IR21
+668[12589]   ; 8      ; MOBILE          ; STANDARD_RATE ;            ; "fmt_3/5"      ; "LT"    ;                      ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+6683[0-8]    ; 8      ; MOBILE          ; STANDARD_RATE ;            ; "fmt_3/5"      ; "LT"    ;                      ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+66839        ; 8      ; MOBILE          ; STANDARD_RATE ; "tele_2"   ; "fmt_3/5"      ; "LT"    ;                      ; IR21
+6684[0-2]    ; 8      ; MOBILE          ; STANDARD_RATE ; "tele_2"   ; "fmt_3/5"      ; "LT"    ;                      ; IR21
+6684[3-9]    ; 8      ; MOBILE          ; STANDARD_RATE ;            ; "fmt_3/5"      ; "LT"    ;                      ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+6686[0-5]    ; 8      ; MOBILE          ; STANDARD_RATE ; "tele_2"   ; "fmt_3/5"      ; "LT"    ;                      ; IR21
+6686[6-9]    ; 8      ; MOBILE          ; STANDARD_RATE ;            ; "fmt_3/5"      ; "LT"    ;                      ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+6687[0-589]  ; 8      ; MOBILE          ; STANDARD_RATE ;            ; "fmt_3/5"      ; "LT"    ;                      ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+6687[67]     ; 8      ; MOBILE          ; STANDARD_RATE ; "bite"     ; "fmt_3/5"      ; "LT"    ;                      ; IR21
+68[026-8]    ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"    ; "fmt_3/5"      ; "LT"    ;                      ; IR21
+68[159]      ; 8      ; MOBILE          ; STANDARD_RATE ; "bite"     ; "fmt_3/5"      ; "LT"    ;                      ; IR21
+68[34]       ; 8      ; MOBILE          ; STANDARD_RATE ; "tele_2"   ; "fmt_3/5"      ; "LT"    ;                      ; IR21
+69[019]      ; 8      ; MOBILE          ; STANDARD_RATE ; "bite"     ; "fmt_3/5"      ; "LT"    ;                      ; IR21
+69[2-68]     ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"    ; "fmt_3/5"      ; "LT"    ;                      ; IR21
+697[0-3579]  ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"    ; "fmt_3/5"      ; "LT"    ;                      ; IR21
+6974[0147-9] ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"    ; "fmt_3/5"      ; "LT"    ;                      ; IR21
+6974[23]     ; 8      ; MOBILE          ; STANDARD_RATE ; "bite"     ; "fmt_3/5"      ; "LT"    ;                      ; IR21
+6974[56]     ; 8      ; MOBILE          ; STANDARD_RATE ;            ; "fmt_3/5"      ; "LT"    ;                      ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+6976         ; 8      ; MOBILE          ; STANDARD_RATE ; "lancelot" ; "fmt_3/5"      ; "LT"    ;                      ; IR21
+6978         ; 8      ; MOBILE          ; STANDARD_RATE ;            ; "fmt_3/5"      ; "LT"    ;                      ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+70[05]       ; 8      ; PERSONAL_NUMBER ; STANDARD_RATE ;            ; "nongeo_3/2/3" ; "LT"    ;                      ; ITU
+70[67]       ; 8      ; UAN             ; STANDARD_RATE ;            ; "nongeo_3/2/3" ; "LT"    ;                      ; ITU
+80[02]       ; 8      ; FIXED_LINE      ; TOLL_FREE     ;            ; "nongeo_3/2/3" ; "LT"    ;                      ; ITU
+[89]01       ; 8      ; VOIP            ; STANDARD_RATE ;            ; "nongeo_3/2/3" ; "LT"    ;                      ; ITU
+808          ; 8      ; FIXED_LINE      ; SHARED_COST   ;            ; "nongeo_3/2/3" ; "LT"    ;                      ; ITU
+90[0239]     ; 8      ; FIXED_LINE      ; PREMIUM_RATE  ;            ; "nongeo_3/2/3" ; "LT"    ;                      ; ITU
+910          ; 8      ; FIXED_LINE      ; PREMIUM_RATE  ;            ; "nongeo_3/2/3" ; "LT"    ;                      ; ITU

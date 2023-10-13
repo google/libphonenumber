@@ -54,7 +54,7 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.13</version>
+            <version>4.13.2</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -66,7 +66,7 @@
         <dependency>
             <groupId>info.picocli</groupId>
             <artifactId>picocli</artifactId>
-            <version>4.5.0</version>
+            <version>4.7.4</version>
         </dependency>
         <dependency>
             <groupId>com.google.truth.extensions</groupId>
@@ -77,13 +77,13 @@
         <dependency>
             <groupId>com.google.auto.value</groupId>
             <artifactId>auto-value</artifactId>
-            <version>1.7.4</version>
+            <version>1.10.2</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.google.auto.value</groupId>
             <artifactId>auto-value-annotations</artifactId>
-            <version>1.7.4</version>
+            <version>1.10.2</version>
         </dependency>
     </dependencies>
 </project>

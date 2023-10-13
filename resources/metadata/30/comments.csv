@@ -1,0 +1,7 @@
+Region ; Label           ; Comment
+GR     ; SC              ; "http://www.itu.int/oth/T0202000055/en"
+GR     ; SC              ; "http://en.wikipedia.org/wiki/%2B30"
+GR     ; XML             ; "http://www.itu.int/oth/T0202000055/en"
+GR     ; XML             ; "http://en.wikipedia.org/wiki/%2B30"
+GR     ; XML             ; "http://www.eett.gr/opencms/opencms/EETT_EN/Electronic_Communications/Telecoms/Numbering/NumberAssignments.html"
+GR     ; XML_SHARED_COST ; "Including calls with maximum charge of 0,25 EUR/minute here instead of under premium\nrate."

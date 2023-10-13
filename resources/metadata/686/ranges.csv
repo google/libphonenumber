@@ -1,0 +1,62 @@
+Prefix        ; Length ; Type       ; Tariff        ; Operator     ; Regions ; Geocode:en        ; Provenance
+[258]0        ; 5      ; FIXED_LINE ; STANDARD_RATE ;              ; "KI"
+2[1-4]        ; 5      ; FIXED_LINE ; STANDARD_RATE ;              ; "KI"    ; "Bairiki"
+2[56]         ; 5      ; FIXED_LINE ; STANDARD_RATE ;              ; "KI"    ; "Betio"
+27            ; 5      ; FIXED_LINE ; STANDARD_RATE ;              ; "KI"    ; "Tarawa"
+2[89]         ; 5      ; FIXED_LINE ; STANDARD_RATE ;              ; "KI"    ; "Bikenibeu"
+300[01]       ; 8      ; VOIP       ; STANDARD_RATE ;              ; "KI"    ;                   ; ITU
+301211        ; 8      ; VOIP       ; STANDARD_RATE ;              ; "KI"    ;                   ; ITU
+301220        ; 8      ; VOIP       ; STANDARD_RATE ;              ; "KI"    ;                   ; ITU
+3[12]         ; 5      ; FIXED_LINE ; STANDARD_RATE ;              ; "KI"    ; "North Tarawa"
+33            ; 5      ; FIXED_LINE ; STANDARD_RATE ;              ; "KI"    ; "Abaiang"
+34            ; 5      ; FIXED_LINE ; STANDARD_RATE ;              ; "KI"    ; "Marakei"
+35            ; 5      ; FIXED_LINE ; STANDARD_RATE ;              ; "KI"    ; "Butaritari"
+36            ; 5      ; FIXED_LINE ; STANDARD_RATE ;              ; "KI"    ; "Makin"
+37            ; 5      ; FIXED_LINE ; STANDARD_RATE ;              ; "KI"    ; "Banaba"
+38            ; 5      ; FIXED_LINE ; STANDARD_RATE ;              ; "KI"    ; "Maiana"
+39            ; 5      ; FIXED_LINE ; STANDARD_RATE ;              ; "KI"    ; "Kuria"
+40            ; 5      ; FIXED_LINE ; STANDARD_RATE ;              ; "KI"    ; "Aranuka"
+41            ; 5      ; FIXED_LINE ; STANDARD_RATE ;              ; "KI"    ; "Abemama"
+42            ; 5      ; FIXED_LINE ; STANDARD_RATE ;              ; "KI"    ; "Nonouti"
+43            ; 5      ; FIXED_LINE ; STANDARD_RATE ;              ; "KI"    ; "Tabiteuea North"
+44            ; 5      ; FIXED_LINE ; STANDARD_RATE ;              ; "KI"    ; "Tabiteuea South"
+45            ; 5      ; FIXED_LINE ; STANDARD_RATE ;              ; "KI"    ; "Onotoa"
+46            ; 5      ; FIXED_LINE ; STANDARD_RATE ;              ; "KI"    ; "Beru"
+47            ; 5      ; FIXED_LINE ; STANDARD_RATE ;              ; "KI"    ; "Nikunau"
+48            ; 5      ; FIXED_LINE ; STANDARD_RATE ;              ; "KI"    ; "Tamana"
+49            ; 5      ; FIXED_LINE ; STANDARD_RATE ;              ; "KI"    ; "Arorae"
+6200[01]      ; 8      ; MOBILE     ; STANDARD_RATE ; "ocean_link" ; "KI"    ;                   ; ITU
+63            ; 8      ; MOBILE     ; STANDARD_RATE ; "ocean_link" ; "KI"    ;                   ; IR21
+[67]502[12]   ; 8      ; FIXED_LINE ; STANDARD_RATE ;              ; "KI"    ; "Bairiki"         ; ITU
+[67]512[56]   ; 8      ; FIXED_LINE ; STANDARD_RATE ;              ; "KI"    ; "Betio"           ; ITU
+[67]522[89]   ; 8      ; FIXED_LINE ; STANDARD_RATE ;              ; "KI"    ; "Bikenibeu"       ; ITU
+65[34]00      ; 8      ; FIXED_LINE ; STANDARD_RATE ;              ; "KI"    ; "Gilbert Islands" ; ITU
+65500         ; 8      ; FIXED_LINE ; STANDARD_RATE ;              ; "KI"    ; "Phoenix Islands" ; ITU
+7[0146-9]     ; 8      ; MOBILE     ; STANDARD_RATE ; "athkl"      ; "KI"    ;                   ; IR21
+72[0-689]     ; 8      ; MOBILE     ; STANDARD_RATE ; "athkl"      ; "KI"    ;                   ; IR21
+72700         ; 8      ; FIXED_LINE ; STANDARD_RATE ;              ; "KI"    ; "Gilbert Islands"
+7270[1-9]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;              ; "KI"
+727[1-9]      ; 8      ; FIXED_LINE ; STANDARD_RATE ;              ; "KI"
+73[02-9]      ; 8      ; MOBILE     ; STANDARD_RATE ; "athkl"      ; "KI"    ;                   ; IR21
+73100         ; 8      ; FIXED_LINE ; STANDARD_RATE ;              ; "KI"    ;                   ; ITU
+7310[1-9]     ; 8      ; MOBILE     ; STANDARD_RATE ; "athkl"      ; "KI"    ;                   ; IR21
+731[1-9]      ; 8      ; MOBILE     ; STANDARD_RATE ; "athkl"      ; "KI"    ;                   ; IR21
+750[013-9]    ; 8      ; MOBILE     ; STANDARD_RATE ; "athkl"      ; "KI"    ;                   ; IR21
+7502[03-9]    ; 8      ; MOBILE     ; STANDARD_RATE ; "athkl"      ; "KI"    ;                   ; IR21
+751[013-9]    ; 8      ; MOBILE     ; STANDARD_RATE ; "athkl"      ; "KI"    ;                   ; IR21
+7512[0-47-9]  ; 8      ; MOBILE     ; STANDARD_RATE ; "athkl"      ; "KI"    ;                   ; IR21
+752[013-9]    ; 8      ; MOBILE     ; STANDARD_RATE ; "athkl"      ; "KI"    ;                   ; IR21
+7522[0-7]     ; 8      ; MOBILE     ; STANDARD_RATE ; "athkl"      ; "KI"    ;                   ; IR21
+75300         ; 8      ; FIXED_LINE ; STANDARD_RATE ;              ; "KI"    ; "Gilbert Islands" ; ITU
+75[34]0[1-9]  ; 8      ; MOBILE     ; STANDARD_RATE ; "athkl"      ; "KI"    ;                   ; IR21
+75[34][1-79]  ; 8      ; MOBILE     ; STANDARD_RATE ; "athkl"      ; "KI"    ;                   ; IR21
+75[34]8[02-9] ; 8      ; MOBILE     ; STANDARD_RATE ; "athkl"      ; "KI"    ;                   ; IR21
+75[34]81      ; 8      ; FIXED_LINE ; STANDARD_RATE ;              ; "KI"    ; "Line Islands"    ; ITU
+75[45]00      ; 8      ; FIXED_LINE ; STANDARD_RATE ;              ; "KI"    ; "Phoenix Islands" ; ITU
+7550[1-9]     ; 8      ; MOBILE     ; STANDARD_RATE ; "athkl"      ; "KI"    ;                   ; IR21
+755[1-9]      ; 8      ; MOBILE     ; STANDARD_RATE ; "athkl"      ; "KI"    ;                   ; IR21
+75[6-9]       ; 8      ; MOBILE     ; STANDARD_RATE ; "athkl"      ; "KI"    ;                   ; IR21
+8[12]         ; 5      ; FIXED_LINE ; STANDARD_RATE ;              ; "KI"    ; "Kiritimati"
+83            ; 5      ; FIXED_LINE ; STANDARD_RATE ;              ; "KI"    ; "Fanning"
+84            ; 5      ; FIXED_LINE ; STANDARD_RATE ;              ; "KI"    ; "Washington"
+85            ; 5      ; FIXED_LINE ; STANDARD_RATE ;              ; "KI"    ; "Kanton"

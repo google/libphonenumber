@@ -49,8 +49,10 @@
 37281|Telia Eesti AS
 3728110|Tele 2
 3728111|Elisa
+3728123|Elisa
 37282|Elisa
 3728200|Telia Eesti AS
+3728203|Telia Eesti AS
 3728204|Tele 2
 37282056|Tele 2
 37282057|Tele 2
@@ -61,6 +63,10 @@
 3728217|Tele 2
 3728218|Tele 2
 37282199|Tele 2
+3728270|Telia Eesti AS
+3728271|Telia Eesti AS
+3728272|Telia Eesti AS
+3728273|Telia Eesti AS
 3728282|Telia Eesti AS
 3728285|Tele 2
 3728286|Tele 2

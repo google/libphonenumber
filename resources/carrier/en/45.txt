@@ -252,7 +252,7 @@
 45458|telenor
 45459|telenor
 45461|telenor
-45462|telenor
+454626|Lancelot Telecom
 45463|telenor
 45464|telenor
 45465|telenor
@@ -835,6 +835,7 @@
 4581374|mitto ag
 4581375|monty uk global limited
 4581376|icentrex lso(tdc)
+4581378|mobiweb limited
 4581379|telenor
 458138|mundio mobile
 458139|mundio mobile
