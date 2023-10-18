@@ -2876,6 +2876,9 @@ public class PhoneNumberUtil {
     String possibleCountryIddPrefix = "NonMatch";
     if (defaultRegionMetadata != null) {
       possibleCountryIddPrefix = defaultRegionMetadata.getInternationalPrefix();
+      if ( defaultRegionMetadata.getId().equals("RU") && possibleCountryIddPrefix.contains("810")) {
+    		possibleCountryIddPrefix = "00";
+    	}
     }
 
     CountryCodeSource countryCodeSource =
