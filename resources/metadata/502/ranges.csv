@@ -161,3 +161,4 @@ Prefix       ; Length ; Type       ; Tariff        ; Operator   ; Format       ;
 7979         ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "GT"    ; GOVERNMENT
 798[0-24-9]  ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "GT"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 7983         ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "GT"    ; GOVERNMENT
+80[0-4]      ; 8      ; MOBILE     ; STANDARD_RATE ; "tigo"     ; "fmt1_4/4"   ; "GT"    ; IR21

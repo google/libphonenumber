@@ -5028,7 +5028,7 @@
           79(?:
             1(?:
               [01]\d|
-              2[0-7]
+              2[0-8]
             )|
             2[0-7]\d
           )\d{3}
@@ -9156,7 +9156,10 @@
             8(?:
               1(?:
                 0(?:
-                  000|
+                  0(?:
+                    00|
+                    [178]\d
+                  )|
                   [3-9]\d\d
                 )|
                 (?:
@@ -11939,7 +11942,7 @@
     <territory id="GT" countryCode="502" internationalPrefix="00">
       <availableFormats>
         <numberFormat pattern="(\d{4})(\d{4})">
-          <leadingDigits>[2-7]</leadingDigits>
+          <leadingDigits>[2-8]</leadingDigits>
           <format>$1 $2</format>
         </numberFormat>
         <numberFormat pattern="(\d{4})(\d{3})(\d{4})">
@@ -11949,6 +11952,7 @@
       </availableFormats>
       <generalDesc>
         <nationalNumberPattern>
+          80\d{6}|
           (?:
             1\d{3}|
             [2-7]
@@ -11963,7 +11967,12 @@
       <mobile>
         <possibleLengths national="8"/>
         <exampleNumber>51234567</exampleNumber>
-        <nationalNumberPattern>[3-5]\d{7}</nationalNumberPattern>
+        <nationalNumberPattern>
+          (?:
+            [3-5]\d\d|
+            80[0-4]
+          )\d{5}
+        </nationalNumberPattern>
       </mobile>
       <tollFree>
         <possibleLengths national="11"/>
@@ -12364,8 +12373,7 @@
                 0[0-7]|
                 1[0-6]|
                 4[0-57-9]|
-                6[0-4]|
-                7[0-8]
+                6[0-4]
               )
             )|
             573[0-6]|
@@ -12377,7 +12385,7 @@
               7[1-5]|
               8[0-4]
             )|
-            848[015-9]|
+            848[0-25-9]|
             9(?:
               29[013-9]|
               59[0-4]
@@ -12386,7 +12394,7 @@
           (?:
             4(?:
               4[01]|
-              6[2358]
+              6[23578]
             )|
             5(?:
               [1-59][0-46-9]|
@@ -12696,7 +12704,7 @@
       <tollFree>
         <possibleLengths national="[7-9]"/>
         <exampleNumber>800123456</exampleNumber>
-        <nationalNumberPattern>80[01]\d{4,6}</nationalNumberPattern>
+        <nationalNumberPattern>80\d{5,7}</nationalNumberPattern>
       </tollFree>
       <premiumRate>
         <possibleLengths national="[6-8]"/>
@@ -17844,7 +17852,7 @@
     <!-- http://www.itu.int/oth/T020200006F/en -->
     <!-- https://telecom.kz/en/catalog/kazahstan.171777/5 -->
     <territory id="KZ" countryCode="7" leadingDigits="33|7" preferredInternationalPrefix="8~10"
-               internationalPrefix="810" nationalPrefix="8">
+               internationalPrefix="810" nationalPrefix="8" mobileNumberPortableRegion="true">
       <generalDesc>
         <nationalNumberPattern>
           (?:
@@ -20973,7 +20981,7 @@
               9[0-8]
             )|
             7(?:
-              0[0-2]|
+              0[0-3]|
               3[013]
             )
           )\d{5}
@@ -23018,7 +23026,7 @@
               3[0137]|
               4[17]|
               5[05]|
-              6[58]|
+              6[058]|
               7[0167]|
               8[2358]|
               9[1389]
@@ -23057,7 +23065,7 @@
               3[03]|
               4[04]|
               5[05-9]|
-              6[056]|
+              6[0156]|
               7[0-24-9]|
               8[5-9]|
               90
@@ -25028,7 +25036,8 @@
          http://www.minjust.ru/ru/structure/contact/. Contains formatting instructions for
          Kazakhstan as well. -->
     <territory id="RU" mainCountryForCode="true" countryCode="7" leadingDigits="3[04-689]|[489]"
-               preferredInternationalPrefix="8~10" internationalPrefix="810" nationalPrefix="8">
+               preferredInternationalPrefix="8~10" internationalPrefix="810" nationalPrefix="8"
+               mobileNumberPortableRegion="true">
       <availableFormats>
         <numberFormat pattern="(\d{3})(\d{2})(\d{2})">
           <leadingDigits>[0-79]</leadingDigits>
@@ -28739,11 +28748,10 @@
         <nationalNumberPattern>
           726[01]\d{5}|
           7(?:
-            [01578]\d|
+            [015-8]\d|
             20|
             36|
             4[0-4]|
-            6[0-6]|
             9[89]
           )\d{6}
         </nationalNumberPattern>
@@ -28810,7 +28818,7 @@
         <nationalNumberPattern>
           5056(?:
             [0-35-9]\d|
-            4[46]
+            4[468]
           )\d{4}|
           (?:
             4722|
@@ -28911,7 +28919,7 @@
         <nationalNumberPattern>
           5056(?:
             [0-35-9]\d|
-            4[46]
+            4[468]
           )\d{4}|
           (?:
             4722|
@@ -29180,8 +29188,8 @@
       </availableFormats>
       <generalDesc>
         <nationalNumberPattern>
-          200\d{6}|
           (?:
+            20|
             33|
             [5-79]\d|
             88
@@ -29234,7 +29242,7 @@
               )|
               (?:
                 1[12]|
-                8\d
+                [68]\d
               )\d|
               2(?:
                 22|
@@ -29259,11 +29267,6 @@
                 5[1-9]|
                 6[1457]
               )|
-              6(?:
-                22|
-                3[12457]|
-                4[13-8]
-              )|
               9(?:
                 22|
                 5[1-9]
@@ -29281,14 +29284,11 @@
         <nationalNumberPattern>
           (?:
             (?:
-              200[01]|
-              (?:
-                33|
-                50|
-                88|
-                9[0-57-9]
-              )\d\d
-            )\d|
+              [25]0|
+              33|
+              88|
+              9[0-57-9]
+            )\d{3}|
             6(?:
               1(?:
                 2(?:
@@ -29496,27 +29496,6 @@
                   [5-7]\d|
                   8[78]|
                   9[079]
-                )
-              )|
-              6(?:
-                2(?:
-                  2[1245]|
-                  4[2-4]
-                )|
-                39\d|
-                41[179]|
-                5(?:
-                  [349]\d|
-                  5[0-2]
-                )|
-                7(?:
-                  0[017]|
-                  [13]\d|
-                  22|
-                  44|
-                  55|
-                  67|
-                  88
                 )
               )|
               9(?:
