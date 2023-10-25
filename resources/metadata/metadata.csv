@@ -163,7 +163,7 @@ Calling Code ; Main Region ; Extra Regions                                      
 690          ; "TK"        ;                                                                           ;                   ; "00"       ; "Pacific/Fakaofo"
 691          ; "FM"        ;                                                                           ;                   ; "00"
 692          ; "MH"        ;                                                                           ; "1"               ; "011"      ; "Pacific/Majuro"
-7            ; "RU"        ; "KZ"                                                                      ; "8"               ; "8~10"
+7            ; "RU"        ; "KZ"                                                                      ; "8"               ; "8~10"     ;                                                       ; "KZ,RU"
 800          ; "001"
 808          ; "001"
 81           ; "JP"        ;                                                                           ; "0"               ; "010"      ; "Asia/Tokyo"                                          ; "JP"

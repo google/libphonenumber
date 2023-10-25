@@ -1,3 +1,10 @@
+Oct 25, 2023: v8.13.24
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   BW, EE, GT, HK, HR, KZ, MU, PA, RU, UG, US, UZ
+ - Updated carrier data for country calling code(s):
+   230 (en), 502 (en), 852 (en, zh, zh_Hant), 998 (en)
+
 Oct 11, 2023: v8.13.23
 Metadata changes:
  - Updated phone metadata for region code(s): BW, GE, NU, RE

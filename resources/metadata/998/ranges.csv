@@ -1,5 +1,5 @@
 Prefix         ; Length ; Type                 ; Tariff        ; Operator    ; Format        ; Regions ; Provenance ; Comment
-200[01]        ; 9      ; MOBILE               ; STANDARD_RATE ; "beeline"   ; "fmt_2/3/2/2" ; "UZ"    ; IR21
+20             ; 9      ; MOBILE               ; STANDARD_RATE ; "beeline"   ; "fmt_2/3/2/2" ; "UZ"    ; IR21
 33             ; 9      ; MOBILE               ; STANDARD_RATE ; "humans"    ; "fmt_2/3/2/2" ; "UZ"    ; ITU
 50             ; 9      ; MOBILE               ; STANDARD_RATE ; "ucell"     ; "fmt_2/3/2/2" ; "UZ"    ; IR21
 55             ; 9      ; FIXED_LINE           ; STANDARD_RATE ;             ; "fmt_2/3/2/2" ; "UZ"    ; TELECOMS
@@ -210,23 +210,7 @@ Prefix         ; Length ; Type                 ; Tariff        ; Operator    ; F
 757[5-7]       ; 9      ; MOBILE               ; STANDARD_RATE ; "mobiuz"    ; "fmt_2/3/2/2" ; "UZ"
 7578[78]       ; 9      ; MOBILE               ; STANDARD_RATE ; "mobiuz"    ; "fmt_2/3/2/2" ; "UZ"
 7579[079]      ; 9      ; MOBILE               ; STANDARD_RATE ; "mobiuz"    ; "fmt_2/3/2/2" ; "UZ"
-7622[036-9]    ; 9      ; FIXED_LINE           ; STANDARD_RATE ;             ; "fmt_2/3/2/2" ; "UZ"
-7622[1245]     ; 9      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "mobiuz"    ; "fmt_2/3/2/2" ; "UZ"
-7624[2-4]      ; 9      ; MOBILE               ; STANDARD_RATE ; "mobiuz"    ; "fmt_2/3/2/2" ; "UZ"
-763[12457]     ; 9      ; FIXED_LINE           ; STANDARD_RATE ;             ; "fmt_2/3/2/2" ; "UZ"
-7639           ; 9      ; MOBILE               ; STANDARD_RATE ; "mobiuz"    ; "fmt_2/3/2/2" ; "UZ"
-7641[02-68]    ; 9      ; FIXED_LINE           ; STANDARD_RATE ;             ; "fmt_2/3/2/2" ; "UZ"
-7641[179]      ; 9      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "mobiuz"    ; "fmt_2/3/2/2" ; "UZ"
-764[3-8]       ; 9      ; FIXED_LINE           ; STANDARD_RATE ;             ; "fmt_2/3/2/2" ; "UZ"
-765[349]       ; 9      ; MOBILE               ; STANDARD_RATE ; "mobiuz"    ; "fmt_2/3/2/2" ; "UZ"
-7655[0-2]      ; 9      ; MOBILE               ; STANDARD_RATE ; "mobiuz"    ; "fmt_2/3/2/2" ; "UZ"
-7670[017]      ; 9      ; MOBILE               ; STANDARD_RATE ; "mobiuz"    ; "fmt_2/3/2/2" ; "UZ"
-767[13]        ; 9      ; MOBILE               ; STANDARD_RATE ; "mobiuz"    ; "fmt_2/3/2/2" ; "UZ"
-76722          ; 9      ; MOBILE               ; STANDARD_RATE ; "mobiuz"    ; "fmt_2/3/2/2" ; "UZ"
-76744          ; 9      ; MOBILE               ; STANDARD_RATE ; "mobiuz"    ; "fmt_2/3/2/2" ; "UZ"
-76755          ; 9      ; MOBILE               ; STANDARD_RATE ; "mobiuz"    ; "fmt_2/3/2/2" ; "UZ"
-76767          ; 9      ; MOBILE               ; STANDARD_RATE ; "mobiuz"    ; "fmt_2/3/2/2" ; "UZ"
-76788          ; 9      ; MOBILE               ; STANDARD_RATE ; "mobiuz"    ; "fmt_2/3/2/2" ; "UZ"
+76             ; 9      ; FIXED_LINE           ; STANDARD_RATE ;             ; "fmt_2/3/2/2" ; "UZ"    ; ITU
 77             ; 9      ; MOBILE               ; STANDARD_RATE ; "uzmobile"  ; "fmt_2/3/2/2" ; "UZ"    ; IR21
 78             ; 9      ; FIXED_LINE           ; STANDARD_RATE ;             ; "fmt_2/3/2/2" ; "UZ"    ;            ; "Confirmed the block 78 as FIXED per the IR21 Ucell Contact details"
 7922[03-79]    ; 9      ; FIXED_LINE           ; STANDARD_RATE ;             ; "fmt_2/3/2/2" ; "UZ"
