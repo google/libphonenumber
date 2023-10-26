@@ -123,7 +123,7 @@
     <dependency>
       <groupId>com.google.auto.value</groupId>
       <artifactId>auto-value-annotations</artifactId>
-      <version>1.10.2</version>
+      <version>1.10.4</version>
     </dependency>
 
     <!-- https://mvnrepository.com/artifact/com.github.os72/protoc-jar-maven-plugin -->
