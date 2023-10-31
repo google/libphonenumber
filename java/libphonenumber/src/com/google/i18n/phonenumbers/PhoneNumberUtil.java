@@ -2877,7 +2877,9 @@ public class PhoneNumberUtil {
     if (defaultRegionMetadata != null) {
       possibleCountryIddPrefix = defaultRegionMetadata.getInternationalPrefix();
       if ( defaultRegionMetadata.getId().equals("RU") && possibleCountryIddPrefix.contains("810")) {
-    		possibleCountryIddPrefix = "00";
+    		 if (new String(fullNumber).startsWith("8108")) {
+          possibleCountryIddPrefix = "00";
+        }
     	}
     }
 
