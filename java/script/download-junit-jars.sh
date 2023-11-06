@@ -22,5 +22,5 @@ download_jar "JUnit" "junit-$junit_version.jar" "https://repo1.maven.org/maven2/
 download_jar "Mockito" "mockito-all-$mockito_version.jar" "https://repo1.maven.org/maven2/org/mockito/mockito-all/$mockito_version/mockito-all-$mockito_version.jar"
 
 # Run the mvn install command for the Snapshot jars
-cd ../ 
+cd ../
 mvn clean install
