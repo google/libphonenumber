@@ -67,7 +67,9 @@ Prefix   ; Length ; Type       ; Tariff        ; National Only ; Operator       
 296      ; 10     ; FIXED_LINE ; STANDARD_RATE ; false         ;                     ; "fixed_3/4/3"    ; "VN"    ; "An Giang province"        ; "An Giang"              ; ITU
 297      ; 10     ; FIXED_LINE ; STANDARD_RATE ; false         ;                     ; "fixed_3/4/3"    ; "VN"    ; "Kien Giang province"      ; "Kiên Giang"            ; ITU
 299      ; 10     ; FIXED_LINE ; STANDARD_RATE ; false         ;                     ; "fixed_3/4/3"    ; "VN"    ; "Soc Trang province"       ; "Sóc Trăng"             ; ITU
-3        ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "viettel_mobile"    ; "mobile_3/3/3"   ; "VN"    ;                            ;                         ; IR21
+30       ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "mobifone"          ; "mobile_3/3/3"   ; "VN"    ;                            ;                         ; IR21
+3[1-9]   ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "viettel_mobile"    ; "mobile_3/3/3"   ; "VN"    ;                            ;                         ; IR21
+51       ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "mobifone"          ; "mobile_3/3/3"   ; "VN"    ;                            ;                         ; IR21
 52[238]  ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "vietnamobile"      ; "mobile_3/3/3"   ; "VN"    ;                            ;                         ; IR21
 559      ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "reddi"             ; "mobile_3/3/3"   ; "VN"    ;                            ;                         ; GOVERNMENT
 5[68]    ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "vietnamobile"      ; "mobile_3/3/3"   ; "VN"    ;                            ;                         ; IR21

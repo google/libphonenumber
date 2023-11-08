@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-5925|GTT
+592510|Digicel Guyana
 592600|Digicel Guyana
 592601|Digicel Guyana
 592602|Digicel Guyana
@@ -23,19 +23,32 @@
 59261|GTT
 59262|GTT
 592630|Digicel Guyana
-592631|GTT
+592631|Green Gibraltar
 592632|Digicel Guyana
+592633|Digicel Guyana
+592634|GTT
+592635|E-Networks
 592636|Digicel Guyana
 592637|Digicel Guyana
 592638|GTT
 592639|GTT
 59264|GTT
 59265|GTT
+592659|Digicel Guyana
 59266|Digicel Guyana
 59267|Digicel Guyana
 59268|Digicel Guyana
 59269|Digicel Guyana
-59270|GTT
-59271|GTT
+592700|Digicel Guyana
+592701|Digicel Guyana
+592702|Digicel Guyana
+592703|Digicel Guyana
+592704|Digicel Guyana
+592705|GTT
+592706|GTT
+592707|GTT
+592708|GTT
+592709|GTT
+59271|E-Networks
 59272|GTT
 59274|GTT

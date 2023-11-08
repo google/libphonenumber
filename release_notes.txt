@@ -1,3 +1,14 @@
+Nov 08, 2023: v8.13.25
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   883, BH, BJ, EH, GU, GY, HK, MA, NU, SG, US, VN
+ - New geocoding data for country calling code(s):
+   1227 (en), 1329 (en), 1369 (en), 1730 (en)
+ - Updated carrier data for country calling code(s):
+   65 (en), 84 (en), 212 (en), 229 (en), 592 (en), 683 (en),
+   852 (en, zh, zh_Hant)
+ - Updated / refreshed time zone meta data.
+
 Oct 25, 2023: v8.13.24
 Metadata changes:
  - Updated phone metadata for region code(s):
