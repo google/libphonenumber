@@ -19,6 +19,7 @@ Prefix     ; Length ; Type       ; Tariff        ; Operator      ; Format     ; 
 663[03-9]  ; 8      ; MOBILE     ; STANDARD_RATE ; "zain_bh"     ; "fmt1_4/4" ; "BH"    ; IR21       ; "IR21 dated 8/26/2018"
 663[12]    ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ; "fmt1_4/4" ; "BH"
 6644       ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ; "fmt1_4/4" ; "BH"
+6655       ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ; "fmt1_4/4" ; "BH"    ; ITU
 66[69]     ; 8      ; MOBILE     ; STANDARD_RATE ; "zain_bh"     ; "fmt1_4/4" ; "BH"    ; IR21       ; "IR21 dated 8/26/2018"
 667[0-6]   ; 8      ; MOBILE     ; STANDARD_RATE ; "batelco"     ; "fmt1_4/4" ; "BH"    ; IR21       ; "IR21 dated 11/26/2018"
 667[7-9]   ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ; "fmt1_4/4" ; "BH"    ; ITU
