@@ -41,7 +41,7 @@ Prefix      ; Length ; Type       ; Tariff        ; Operator  ; Format         ;
 2382        ; 8      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_2/2/2/2" ; "BJ"    ; "Natitingou"                           ; "Natitingou"                            ; ITU
 2383        ; 8      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_2/2/2/2" ; "BJ"    ; "Tanguiéta"                            ; "Tanguiéta"                             ; ITU
 24          ; 8      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_2/2/2/2" ; "BJ"    ; "Tanguiéta"                            ;                                         ; GOVERNMENT
-4[0135]     ; 8      ; MOBILE     ; STANDARD_RATE ; "celtiis" ; "fmt1_2/2/2/2" ; "BJ"    ;                                        ;                                         ; IR21
+4[013-5]    ; 8      ; MOBILE     ; STANDARD_RATE ; "celtiis" ; "fmt1_2/2/2/2" ; "BJ"    ;                                        ;                                         ; IR21
 4[26]       ; 8      ; MOBILE     ; STANDARD_RATE ; "mtn"     ; "fmt1_2/2/2/2" ; "BJ"    ;                                        ;                                         ; IR21
 50          ; 8      ; MOBILE     ; STANDARD_RATE ; "mtn"     ; "fmt1_2/2/2/2" ; "BJ"    ;                                        ;                                         ; IR21
 5[1-37-9]   ; 8      ; MOBILE     ; STANDARD_RATE ; "mtn"     ; "fmt1_2/2/2/2" ; "BJ"
