@@ -42,12 +42,12 @@ class ShortNumberInfoTest : public testing::Test {
     return phone_number;
   }
 
-  ShortNumberInfoTest() : short_info_() {
-    PhoneNumberUtil::GetInstance()->SetLogger(new StdoutLogger());
+  ShortNumberInfoTest() : short_info_(ShortNumberInfo::GetInstance()) {
+   PhoneNumberUtil::GetInstance()->SetLogger(new StdoutLogger());
   }
 
   const PhoneNumberUtil phone_util_;
-  const ShortNumberInfo short_info_;
+  const ShortNumberInfo& short_info_;
 
  private:
   DISALLOW_COPY_AND_ASSIGN(ShortNumberInfoTest);
