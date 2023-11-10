@@ -42,6 +42,7 @@ bool LoadCompiledInMetadata(PhoneMetadataCollection* metadata) {
   return true;
 }
 
+// Private constructor. Also takes care of initialisation.
 ShortNumberInfo::ShortNumberInfo()
     : phone_util_(*PhoneNumberUtil::GetInstance()),
       matcher_api_(new RegexBasedMatcher()),
@@ -400,6 +401,13 @@ bool ShortNumberInfo::IsSmsServiceForRegion(const PhoneNumber& number,
   return phone_metadata &&
          MatchesPossibleNumberAndNationalNumber(*matcher_api_, national_number,
              phone_metadata->sms_services());
+}
+
+// Public wrapper function to get a ShortNumberInfo instance.
+// static
+const ShortNumberInfo& ShortNumberInfo::GetInstance() {
+  static auto* const kInstance = new ShortNumberInfo();
+  return *kInstance;
 }
 
 }  // namespace phonenumbers
