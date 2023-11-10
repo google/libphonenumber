@@ -44,9 +44,6 @@ class PhoneNumberUtil;
 
 class ShortNumberInfo {
  public:
-  ShortNumberInfo();
-  ~ShortNumberInfo();
-
   // Cost categories of short numbers.
   enum ShortNumberCost {
     TOLL_FREE,
@@ -176,7 +173,18 @@ class ShortNumberInfo {
       const PhoneNumber& number,
       const string& region_dialing_from) const;
 
+  // Gets a ShortNumberInfo instance to validate whether a short number is a
+  // possible number when dialed from a region, given the number in the form of
+  // a string, and the region where the number is dialed from.
+  //
+  // The ShortNumberInfo is implemented as a singleton. Therefore, calling
+  // GetInstance multiple times will only result in one instance being created.
+  static const ShortNumberInfo& GetInstance();
+
  private:
+  ShortNumberInfo();
+  ~ShortNumberInfo();
+
   const PhoneNumberUtil& phone_util_;
   const scoped_ptr<const MatcherApi> matcher_api_;
 
