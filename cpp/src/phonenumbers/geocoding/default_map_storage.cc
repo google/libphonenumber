@@ -23,11 +23,9 @@
 namespace i18n {
 namespace phonenumbers {
 
-DefaultMapStorage::DefaultMapStorage() {
-}
+DefaultMapStorage::DefaultMapStorage() = default;
 
-DefaultMapStorage::~DefaultMapStorage() {
-}
+DefaultMapStorage::~DefaultMapStorage() = default;
 
 int32 DefaultMapStorage::GetPrefix(int index) const {
   DCHECK_GE(index, 0);
@@ -49,9 +47,7 @@ void DefaultMapStorage::ReadFromMap(const PrefixDescriptions* descriptions) {
   possible_lengths_size_ = descriptions->possible_lengths_size;
 }
 
-int DefaultMapStorage::GetNumOfEntries() const {
-  return prefixes_size_;
-}
+int DefaultMapStorage::GetNumOfEntries() const { return prefixes_size_; }
 
 const int* DefaultMapStorage::GetPossibleLengths() const {
   return possible_lengths_;

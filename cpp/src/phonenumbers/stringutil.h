@@ -19,11 +19,12 @@
 
 #include <cstddef>
 #include <string>
+#include <type_traits>
 #include <vector>
 
-#include "phonenumbers/base/basictypes.h"
-#include "absl/strings/string_view.h"
 #include "absl/strings/str_cat.h"
+#include "absl/strings/string_view.h"
+#include "phonenumbers/base/basictypes.h"
 
 namespace i18n {
 namespace phonenumbers {
@@ -48,8 +49,7 @@ size_t FindNth(const string& s, char c, int n);
 
 // Splits a string using a character delimiter. Appends the components to the
 // provided vector. Note that empty tokens are ignored.
-void SplitStringUsing(const string& s, char delimiter,
-                      vector<string>* result);
+void SplitStringUsing(const string& s, char delimiter, vector<string>* result);
 
 // Returns true if 'in' starts with 'prefix' and writes 'in' minus 'prefix' into
 // 'out'.
@@ -59,10 +59,10 @@ bool TryStripPrefixString(const string& in, const string& prefix, string* out);
 bool HasSuffixString(const string& s, const string& suffix);
 
 // Converts string to int32.
-void safe_strto32(const string& s, int32 *n);
+void safe_strto32(const string& s, int32* n);
 
 // Converts string to uint64.
-void safe_strtou64(const string& s, uint64 *n);
+void safe_strtou64(const string& s, uint64* n);
 
 // Converts string to int64.
 void safe_strto64(const string& s, int64* n);
@@ -77,124 +77,37 @@ int GlobalReplaceSubstring(const string& substring, const string& replacement,
 
 // An abstract to absl::AlphaNum type; AlphaNum has more accomidating
 // constructors for more types.
-class StringHolder: public absl::AlphaNum {
+class StringHolder : public absl::AlphaNum {
  public:
   // Don't make the constructors explicit to make the StrCat usage convenient.
   StringHolder(const string& s);  // NOLINT(runtime/explicit)
   StringHolder(const char* s);    // NOLINT(runtime/explicit)
   StringHolder(uint64 n);         // NOLINT(runtime/explicit)
-  ~StringHolder();
+  ~StringHolder() = default;
 
-  const absl::string_view GetString() const {
-    return Piece();
-  }
+  absl::string_view GetString() const { return Piece(); }
 
-  const char* GetCString() const {
-    return data();
-  }
+  const char* GetCString() const { return data(); }
 
-  size_t Length() const {
-    return size();
-  }
+  size_t Length() const { return size(); }
 };
 
 string& operator+=(string& lhs, const StringHolder& rhs);
 
 // Efficient string concatenation.
+template <typename T>
+using is_valid_arg = std::is_constructible<StringHolder, T>;
+template <typename... Args, typename = absl::enable_if_t<absl::conjunction<
+                                is_valid_arg<Args>...>::value>>
+string StrCat(Args&&... args) {
+  return absl::StrCat(args...);
+}
 
-string StrCat(const StringHolder& s1, const StringHolder& s2);
-
-string StrCat(const StringHolder& s1, const StringHolder& s2,
-              const StringHolder& s3);
-
-string StrCat(const StringHolder& s1, const StringHolder& s2,
-              const StringHolder& s3, const StringHolder& s4);
-
-string StrCat(const StringHolder& s1, const StringHolder& s2,
-              const StringHolder& s3, const StringHolder& s4,
-              const StringHolder& s5);
-
-string StrCat(const StringHolder& s1, const StringHolder& s2,
-              const StringHolder& s3, const StringHolder& s4,
-              const StringHolder& s5, const StringHolder& s6);
-
-string StrCat(const StringHolder& s1, const StringHolder& s2,
-              const StringHolder& s3, const StringHolder& s4,
-              const StringHolder& s5, const StringHolder& s6,
-              const StringHolder& s7);
-
-string StrCat(const StringHolder& s1, const StringHolder& s2,
-              const StringHolder& s3, const StringHolder& s4,
-              const StringHolder& s5, const StringHolder& s6,
-              const StringHolder& s7, const StringHolder& s8);
-
-string StrCat(const StringHolder& s1, const StringHolder& s2,
-              const StringHolder& s3, const StringHolder& s4,
-              const StringHolder& s5, const StringHolder& s6,
-              const StringHolder& s7, const StringHolder& s8,
-              const StringHolder& s9);
-
-string StrCat(const StringHolder& s1, const StringHolder& s2,
-              const StringHolder& s3, const StringHolder& s4,
-              const StringHolder& s5, const StringHolder& s6,
-              const StringHolder& s7, const StringHolder& s8,
-              const StringHolder& s9, const StringHolder& s10,
-              const StringHolder& s11);
-
-string StrCat(const StringHolder& s1, const StringHolder& s2,
-              const StringHolder& s3, const StringHolder& s4,
-              const StringHolder& s5, const StringHolder& s6,
-              const StringHolder& s7, const StringHolder& s8,
-              const StringHolder& s9, const StringHolder& s10,
-              const StringHolder& s11, const StringHolder& s12);
-
-string StrCat(const StringHolder& s1, const StringHolder& s2,
-              const StringHolder& s3, const StringHolder& s4,
-              const StringHolder& s5, const StringHolder& s6,
-              const StringHolder& s7, const StringHolder& s8,
-              const StringHolder& s9, const StringHolder& s10,
-              const StringHolder& s11, const StringHolder& s12,
-              const StringHolder& s13);
-
-string StrCat(const StringHolder& s1, const StringHolder& s2,
-              const StringHolder& s3, const StringHolder& s4,
-              const StringHolder& s5, const StringHolder& s6,
-              const StringHolder& s7, const StringHolder& s8,
-              const StringHolder& s9, const StringHolder& s10,
-              const StringHolder& s11, const StringHolder& s12,
-              const StringHolder& s13, const StringHolder& s14);
-
-string StrCat(const StringHolder& s1, const StringHolder& s2,
-              const StringHolder& s3, const StringHolder& s4,
-              const StringHolder& s5, const StringHolder& s6,
-              const StringHolder& s7, const StringHolder& s8,
-              const StringHolder& s9, const StringHolder& s10,
-              const StringHolder& s11, const StringHolder& s12,
-              const StringHolder& s13, const StringHolder& s14,
-              const StringHolder& s15);
-
-string StrCat(const StringHolder& s1, const StringHolder& s2,
-              const StringHolder& s3, const StringHolder& s4,
-              const StringHolder& s5, const StringHolder& s6,
-              const StringHolder& s7, const StringHolder& s8,
-              const StringHolder& s9, const StringHolder& s10,
-              const StringHolder& s11, const StringHolder& s12,
-              const StringHolder& s13, const StringHolder& s14,
-              const StringHolder& s15, const StringHolder& s16);
-
-void StrAppend(string* dest, const StringHolder& s1);
-
-void StrAppend(string* dest, const StringHolder& s1, const StringHolder& s2);
-
-void StrAppend(string* dest, const StringHolder& s1, const StringHolder& s2,
-               const StringHolder& s3);
-
-void StrAppend(string* dest, const StringHolder& s1, const StringHolder& s2,
-               const StringHolder& s3, const StringHolder& s4);
-
-void StrAppend(string* dest, const StringHolder& s1, const StringHolder& s2,
-               const StringHolder& s3, const StringHolder& s4,
-               const StringHolder& s5);
+template <typename... Args, typename = absl::enable_if_t<absl::conjunction<
+                                is_valid_arg<Args>...>::value>>
+void StrAppend(string* dest, Args&&... args) {
+  absl::StrAppend(dest, args...);
+}
 
 }  // namespace phonenumbers
 }  // namespace i18n
