@@ -492,9 +492,13 @@ Prefix      ; Length ; Type            ; Tariff        ; National Only ; Operato
 34          ; 9,10   ; MOBILE          ; STANDARD_RATE ; false         ; "vodafone"    ; "fmt8_3/3/3-4"  ; "Europe/Rome&Europe/Vatican" ; "IT,VA"
 35          ; 9,10   ; MOBILE          ; STANDARD_RATE ; false         ;               ; "fmt8_3/3/3-4"  ; "Europe/Rome&Europe/Vatican" ; "IT,VA"
 370         ; 9,10   ; MOBILE          ; STANDARD_RATE ; false         ; "tim"         ; "fmt8_3/3/3-4"  ; "Europe/Rome&Europe/Vatican" ; "IT,VA"
-37[124-689] ; 9,10   ; MOBILE          ; STANDARD_RATE ; false         ;               ; "fmt8_3/3/3-4"  ; "Europe/Rome&Europe/Vatican" ; "IT,VA"
+371         ; 9,10   ; MOBILE          ; STANDARD_RATE ; false         ; "vodafone"    ; "fmt8_3/3/3-4"  ; "Europe/Rome&Europe/Vatican" ; "IT,VA" ;                          ;                            ; IR21
+37[24-69]   ; 9,10   ; MOBILE          ; STANDARD_RATE ; false         ;               ; "fmt8_3/3/3-4"  ; "Europe/Rome&Europe/Vatican" ; "IT,VA"
 373         ; 9,10   ; MOBILE          ; STANDARD_RATE ; false         ; "3_italia"    ; "fmt8_3/3/3-4"  ; "Europe/Rome&Europe/Vatican" ; "IT,VA" ;                          ;                            ; IR21       ; "IR21 Dated 4/6/2018"
 377         ; 9,10   ; MOBILE          ; STANDARD_RATE ; false         ; "vodafone"    ; "fmt8_3/3/3-4"  ; "Europe/Rome&Europe/Vatican" ; "IT,VA" ;                          ;                            ; IR21       ; "IR21 Dated 11/30/2018"
+3780        ; 9,10   ; MOBILE          ; STANDARD_RATE ; false         ; "spusu"       ; "fmt8_3/3/3-4"  ; "Europe/Rome&Europe/Vatican" ; "IT,VA" ;                          ;                            ; IR21
+378[1-35-9] ; 9,10   ; MOBILE          ; STANDARD_RATE ; false         ;               ; "fmt8_3/3/3-4"  ; "Europe/Rome&Europe/Vatican" ; "IT,VA"
+3784        ; 9,10   ; MOBILE          ; STANDARD_RATE ; false         ; "vodafone"    ; "fmt8_3/3/3-4"  ; "Europe/Rome&Europe/Vatican" ; "IT,VA" ;                          ;                            ; IR21
 38          ; 9      ; MOBILE          ; STANDARD_RATE ; false         ; "wind"        ; "fmt8_3/3/3-4"  ; "Europe/Rome&Europe/Vatican" ; "IT,VA"
 38[089]     ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "wind"        ; "fmt8_3/3/3-4"  ; "Europe/Rome&Europe/Vatican" ; "IT,VA" ;                          ;                            ; IR21       ; "IR21 Dated 10/10/2018"
 38[124-7]   ; 10     ; MOBILE          ; STANDARD_RATE ; false         ;               ; "fmt8_3/3/3-4"  ; "Europe/Rome&Europe/Vatican" ; "IT,VA" ;                          ;                            ; GOVERNMENT

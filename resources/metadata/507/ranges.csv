@@ -8,8 +8,8 @@ Prefix       ; Length ; Type       ; Tariff        ; Operator             ; Form
 13[013]      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
 14[17]       ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
 15[05]       ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
+16[058]      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
 161          ; 7      ; MOBILE     ; STANDARD_RATE ; "cable_wireless"     ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
-16[58]       ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
 17[017]      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
 176          ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"
 18[2358]     ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
@@ -62,7 +62,7 @@ Prefix       ; Length ; Type       ; Tariff        ; Operator             ; Form
 744          ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"
 75[06-9]     ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
 755          ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"
-76[056]      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
+76[0156]     ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
 77[0-24-9]   ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
 78[5-9]      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
 800          ; 7      ; FIXED_LINE ; TOLL_FREE     ;                      ; "fmt1_3/4"       ; "PA"

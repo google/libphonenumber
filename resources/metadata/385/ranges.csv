@@ -26,6 +26,8 @@ Prefix   ; Length ; Type            ; Tariff        ; Area Code Length ; Operato
 7[45]    ; 8      ; PERSONAL_NUMBER ; STANDARD_RATE ;                  ;                    ; "fmt_2/3/3-4"     ; "HR"
 80[01]   ; 7,8    ; FIXED_LINE      ; TOLL_FREE     ;                  ;                    ; "toll_3/2/2-3"    ; "HR"
 80[01]   ; 9      ; FIXED_LINE      ; TOLL_FREE     ;                  ;                    ; "toll_3/3/3"      ; "HR"
+80[2-9]  ; 7,8    ; FIXED_LINE      ; TOLL_FREE     ;                  ;                    ; "toll_3/2/2-3"    ; "HR"    ;                        ; GOVERNMENT
+80[2-9]  ; 9      ; FIXED_LINE      ; TOLL_FREE     ;                  ;                    ; "toll_3/3/3"      ; "HR"    ;                        ; GOVERNMENT
 90[1-9]  ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "tele2"            ; "mobile_2/3/3-4"  ; "HR"    ;                        ; IR21       ; "IR21 dated 12/19/2018"
 9[12]    ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "a1"               ; "mobile_2/3/3-4"  ; "HR"    ;                        ; IR21       ; "IR21 dated 10/18/2018"
 95       ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "tele2"            ; "mobile_2/3/3-4"  ; "HR"    ;                        ; IR21       ; "IR21 dated 12/19/2018"

@@ -17,6 +17,7 @@ Prefix     ; Length ; Type                 ; Tariff        ; Operator           
 45         ; 8      ; MOBILE               ; STANDARD_RATE ; "watany_ettisalat" ; "fmt1_2/3/3" ; "TN"
 46         ; 8      ; MOBILE               ; STANDARD_RATE ; "ooredoo"          ; "fmt1_2/3/3" ; "TN"    ;                                                      ; IR21       ; "IR21 dated 8/6/2018"
 47         ; 8      ; MOBILE               ; STANDARD_RATE ; "tunisie_telecom"  ; "fmt1_2/3/3" ; "TN"
+48         ; 8      ; MOBILE               ; STANDARD_RATE ; "ooredoo"          ; "fmt1_2/3/3" ; "TN"    ;                                                      ; IR21
 5          ; 8      ; MOBILE               ; STANDARD_RATE ; "orange"           ; "fmt1_2/3/3" ; "TN"
 70         ; 8      ; FIXED_LINE           ; STANDARD_RATE ;                    ; "fmt1_2/3/3" ; "TN"    ; "Ben Arous"
 71         ; 8      ; FIXED_LINE           ; STANDARD_RATE ;                    ; "fmt1_2/3/3" ; "TN"    ; "Ariana/Ben Arous/Carthage/Tunis"

@@ -460,6 +460,7 @@
 1224|America/Chicago
 1225|America/Chicago
 1226|America/Toronto
+1227|America/New_York
 1228|America/Chicago
 1229|America/New_York
 1231|America/New_York
@@ -690,6 +691,7 @@
 1323|America/Los_Angeles
 1325|America/Chicago
 1326|America/New_York
+1329|America/New_York
 1330|America/New_York
 1331|America/Chicago
 1332|America/New_York
@@ -713,6 +715,7 @@
 1365|America/Toronto
 1367|America/Toronto
 1368|America/Edmonton
+1369|America/Los_Angeles
 1380|America/New_York
 1382|America/Toronto
 1385|America/Denver
@@ -1426,6 +1429,7 @@
 1725|America/Los_Angeles
 1726|America/Chicago
 1727|America/New_York
+1730|America/Chicago
 1731|America/Chicago
 1732|America/New_York
 1734|America/New_York
