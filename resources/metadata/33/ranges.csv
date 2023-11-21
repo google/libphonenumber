@@ -5914,7 +5914,8 @@ Prefix          ; Length ; Type       ; Tariff        ; Operator                
 35345           ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ; "Vitry-le-François"            ; "Vitry-le-François"            ; GOVERNMENT
 35346           ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ; "Chaumont"                     ; "Chaumont"                     ; GOVERNMENT
 35347           ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ; "Saint-Dizier"                 ; "Saint-Dizier"                 ; GOVERNMENT
-3535[1-9]       ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;                                ;                                ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+3535[1-79]      ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;                                ;                                ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+35358           ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;                                ;                                ; GOVERNMENT
 3536            ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;                                ;                                ; GOVERNMENT
 35371           ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ; "Reims"                        ; "Reims"                        ; GOVERNMENT
 3537[2-5]       ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;                                ;                                ;            ; "FILLUP TO SUPPORT MASTER RANGE"
@@ -7379,7 +7380,8 @@ Prefix          ; Length ; Type       ; Tariff        ; Operator                
 3794[12]        ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ; "Mâcon"                        ; "Mâcon"                        ; GOVERNMENT
 37943           ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ; "Montceau-les-Mines"           ; "Montceau-les-Mines"           ; GOVERNMENT
 37944           ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ; "Dijon"                        ; "Dijon"                        ; GOVERNMENT
-3794[5-9]       ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;                                ;                                ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+3794[5689]      ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;                                ;                                ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+37947           ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;                                ;                                ; GOVERNMENT
 379[56]         ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;                                ;                                ; GOVERNMENT
 379[7-9]        ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;                                ;                                ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 3800[0-8]       ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ; "Nord Est"                     ; "Nord Est"                     ; GOVERNMENT
@@ -9365,11 +9367,10 @@ Prefix          ; Length ; Type       ; Tariff        ; Operator                
 48770           ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ; "Tarare"                       ; "Tarare"                       ; GOVERNMENT
 4877[16-8]      ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ; "Lyon"                         ; "Lyon"                         ; GOVERNMENT
 48773           ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ; "Montelimar"                   ; "Montelimar"                   ; GOVERNMENT
-48774           ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;                                ;                                ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+487[78]4        ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;                                ;                                ; GOVERNMENT
 48779           ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ; "Amberieu-en-Bugey"            ; "Amberieu-en-Bugey"            ; GOVERNMENT
 4878[09]        ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ; "Lyon"                         ; "Lyon"                         ; GOVERNMENT
 4878[1-35-7]    ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;                                ;                                ;            ; "FILLUP TO SUPPORT MASTER RANGE"
-48784           ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;                                ;                                ; GOVERNMENT
 4879[06]        ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ; "Valence"                      ; "Valence"                      ; GOVERNMENT
 4879[13-59]     ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ; "Lyon"                         ; "Lyon"                         ; GOVERNMENT
 48792           ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ; "Tarare"                       ; "Tarare"                       ; GOVERNMENT
@@ -9860,7 +9861,7 @@ Prefix          ; Length ; Type       ; Tariff        ; Operator                
 53262           ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ; "Albi"                         ; "Albi"                         ; GOVERNMENT
 53264           ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ; "Montauban"                    ; "Montauban"                    ; GOVERNMENT
 5326[5-9]       ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;                                ;                                ;            ; "FILLUP TO SUPPORT MASTER RANGE"
-5327            ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;                                ;                                ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+5327            ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;                                ;                                ; GOVERNMENT
 53280           ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ; "Moissac"                      ; "Moissac"                      ; GOVERNMENT
 53281           ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ; "Toulouse"                     ; "Toulouse"                     ; GOVERNMENT
 53283           ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ; "Pamiers"                      ; "Pamiers"                      ; GOVERNMENT

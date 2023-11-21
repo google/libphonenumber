@@ -1,6 +1,5 @@
 Id           ; National        ; International  ; Comment
 fmt1_3/6     ; "#XXX-XXXXXX"   ; "XXX-XXXXXX"
 fmt2_4/5     ; "#XXXX-XXXXX"   ; "XXXX-XXXXX"
-fmt3_5/4     ; "#XXXXX-XXXX"   ; "XXXXX-XXXX"
 fmt4_3/2/2/2 ; "#XXX XX XX XX" ; "XXX XX XX XX" ; "This format is added based on online references found."
 fmt5_2/7     ; "#XX-XXXXXXX"   ; "XX-XXXXXXX"

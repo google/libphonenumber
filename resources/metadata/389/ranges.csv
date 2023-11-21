@@ -148,8 +148,7 @@ Prefix       ; Length ; Type       ; Tariff        ; Area Code Length ; Operator
 734[04]      ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "a1"          ; "fmt1_2/3/3"       ; "MK"    ;                                       ; IR21
 734[1-35-9]  ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "a1"          ; "fmt1_2/3/3"       ; "MK"    ;                                       ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 73555        ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "a1"          ; "fmt1_2/3/3"       ; "MK"    ;                                       ; IR21
-7360         ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "t_mobile"    ; "fmt1_2/3/3"       ; "MK"    ;                                       ; GOVERNMENT
-737[01]      ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "t_mobile"    ; "fmt1_2/3/3"       ; "MK"    ;                                       ; GOVERNMENT
+73[67][01]   ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "t_mobile"    ; "fmt1_2/3/3"       ; "MK"    ;                                       ; GOVERNMENT
 737[578]     ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "a1"          ; "fmt1_2/3/3"       ; "MK"    ;                                       ; GOVERNMENT
 742[02-9]    ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "t_mobile"    ; "fmt1_2/3/3"       ; "MK"    ;                                       ; IR21
 7421         ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "mobik"       ; "fmt1_2/3/3"       ; "MK"    ;                                       ; ITU

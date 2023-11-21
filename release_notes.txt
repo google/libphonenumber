@@ -1,3 +1,11 @@
+Nov 21, 2023: v8.13.26
+Metadata changes:
+ - Updated phone metadata for region code(s): EH, HK, HR, MA, MK, PK, RO, TJ
+ - Updated geocoding data for country calling code(s): 212 (en, fr)
+ - Updated carrier data for country calling code(s):
+   40 (en), 45 (en), 86 (en, zh), 92 (en), 228 (en), 385 (en), 852 (en, zh),
+   992 (en)
+
 Nov 08, 2023: v8.13.25
 Metadata changes:
  - Updated phone metadata for region code(s):
