@@ -36,6 +36,7 @@
 8524614|HKT
 8524615|China Unicom
 8524616|China Unicom
+8524617|China Mobile
 8524620|China Mobile
 8524621|China Mobile
 8524622|China Mobile
@@ -71,6 +72,8 @@
 8524678|HKT
 8524679|HKT
 852468|China Mobile
+852469|China Mobile
+8524699|South China Telecommunications
 852510|China Mobile
 852511|HKT
 852512|China Mobile
@@ -190,6 +193,7 @@
 852592|HKT
 852593|China Mobile
 852594|HKT
+852595|China Mobile
 852596|3
 852597|3
 852598|China Mobile
@@ -286,7 +290,12 @@
 852695|China Mobile
 852697|HKT
 852699|China Mobile
-852707|SmarTone
+8527071|SmarTone
+8527072|SmarTone
+8527073|SmarTone
+8527074|SmarTone
+8527075|SmarTone
+8527076|China Mobile
 852708|HKT
 852840|China Mobile
 8528480|HKT
