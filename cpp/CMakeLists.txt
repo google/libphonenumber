@@ -343,14 +343,7 @@ function (add_metadata_gen_target TARGET_NAME XML_FILE METADATA_TYPE METADATA_HE
       DEPENDS ${XML_FILE}
     )
   else ()
-    add_custom_command (
-      COMMAND echo "skip metadata generation from"
-        ${XML_FILE} "to"
-        ${CMAKE_CURRENT_SOURCE_DIR}/src/phonenumbers ${METADATA_TYPE}
-
-      OUTPUT ${GEN_OUTPUT}
-      DEPENDS ${XML_FILE}
-    )
+    message(STATUS "skip metadata generation from ${XML_FILE} to ${CMAKE_CURRENT_SOURCE_DIR}/src/phonenumbers ${METADATA_TYPE}")
   endif ()
 
   add_custom_target (
