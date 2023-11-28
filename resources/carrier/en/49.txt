@@ -51,3 +51,5 @@
 49177|Eplus
 49178|Eplus
 49179|O2
+4915510|Lebara
+4915511|Lebara
