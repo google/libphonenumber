@@ -212,7 +212,6 @@ class ShortNumberInfo {
   bool MatchesEmergencyNumberHelper(const string& number,
                                     const string& region_code,
                                     bool allow_prefix_match) const;
-  void LoadMetadata();
 
   DISALLOW_COPY_AND_ASSIGN(ShortNumberInfo);
 };

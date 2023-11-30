@@ -21,6 +21,7 @@
 #include <map>
 #include <utility>
 #include <vector>
+#include <fstream>
 #include <boost/filesystem.hpp>
 #include <unicode/uchar.h>
 #include <unicode/utf8.h>
@@ -45,8 +46,6 @@
 #include "phonenumbers/stringutil.h"
 #include "phonenumbers/utf/unicodetext.h"
 #include "phonenumbers/utf/utf.h"
-
-#include <fstream>
 
 namespace i18n {
 namespace phonenumbers {
@@ -879,11 +878,14 @@ void PhoneNumberUtil::ClearMetadata() {
 bool UpdateMetadataFile(const string& filepath) {
 
   boost::filesystem::path path_to(METADATA_PATH);
-  path_to += "/";
-  path_to += METADATA_FILE_NAME;
+  path_to /= METADATA_FILE_NAME;
   boost::filesystem::path path_bk = path_to;
   path_bk += ".bak";
   boost::system::error_code ec;
+
+  if (path_to.string() == filepath) {
+    return true;
+  }
 
   boost::filesystem::copy(path_to.string(), path_bk.string(), ec);
   if (ec) {
