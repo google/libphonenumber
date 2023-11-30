@@ -18,8 +18,7 @@ Prefix        ; Length    ; Type            ; Tariff        ; Area Code Length ;
 155[0-47-9]   ; 11        ; MOBILE          ; STANDARD_RATE ;                  ;                             ; "mobile_5/6"        ; "DE"
 1555[0-46-9]  ; 11        ; MOBILE          ; STANDARD_RATE ;                  ;                             ; "mobile_5/6"        ; "DE"
 15555         ; 11        ; MOBILE          ; STANDARD_RATE ;                  ; "tismi_bv"                  ; "mobile_5/6"        ; "DE"
-1556[0-57-9]  ; 11        ; MOBILE          ; STANDARD_RATE ;                  ;                             ; "mobile_5/6"        ; "DE"
-15566         ; 11        ; MOBILE          ; STANDARD_RATE ;                  ; "drillisch_online"          ; "mobile_5/6"        ; "DE"    ;                                      ;                                      ; GOVERNMENT ; "As of: 12.03.2019"
+1556          ; 11        ; MOBILE          ; STANDARD_RATE ;                  ; "1&1"                       ; "mobile_5/6"        ; "DE"    ;                                      ;                                      ; IR21
 156[0-24-689] ; 11        ; MOBILE          ; STANDARD_RATE ;                  ;                             ; "mobile_5/6"        ; "DE"
 15630         ; 11        ; MOBILE          ; STANDARD_RATE ;                  ; "multiconnect"              ; "mobile_5/6"        ; "DE"
 1563[1-9]     ; 11        ; MOBILE          ; STANDARD_RATE ;                  ;                             ; "mobile_5/6"        ; "DE"

@@ -58,6 +58,7 @@ Prefix       ; Length ; Type            ; Tariff        ; National Only ; Operat
 8001         ; 8      ; FIXED_LINE      ; TOLL_FREE     ; false         ;               ; "mobile_varcost_4/3-4" ; "EE"    ;                        ; ITU
 800[2-9]     ; 7      ; FIXED_LINE      ; TOLL_FREE     ; true          ;               ; "mobile_varcost_4/3-4" ; "EE"    ;                        ; ITU
 810000       ; 8      ; MOBILE          ; STANDARD_RATE ; false         ; "telia_eesti" ; "mobile_varcost_4/3-4" ; "EE"    ;                        ; IR21
+8100[178]    ; 8      ; MOBILE          ; STANDARD_RATE ; false         ; "telia_eesti" ; "mobile_varcost_4/3-4" ; "EE"    ;                        ; IR21
 810[3-9]     ; 8      ; MOBILE          ; STANDARD_RATE ; false         ; "telia_eesti" ; "mobile_varcost_4/3-4" ; "EE"    ;                        ; IR21
 8110[236]    ; 8      ; MOBILE          ; STANDARD_RATE ; false         ; "tele_2"      ; "mobile_varcost_4/3-4" ; "EE"    ;                        ; IR21
 8111         ; 8      ; MOBILE          ; STANDARD_RATE ; false         ; "elisa"       ; "mobile_varcost_4/3-4" ; "EE"    ;                        ; IR21

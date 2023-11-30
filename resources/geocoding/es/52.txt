@@ -342,6 +342,7 @@
 52867|Nuevo León/Tamaulipas
 52868|Tamaulipas
 52869|Cuatro Ciénegas/San Buenaventura, COAH
+52870|Coahuila/Durango
 52871|Coahuila
 52872|Coahuila/Durango
 52873|Nuevo León

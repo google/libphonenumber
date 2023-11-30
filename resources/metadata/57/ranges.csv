@@ -79,10 +79,12 @@ Prefix         ; Length ; Type       ; Tariff        ; Area Code Length ; Operat
 33317[2-9]     ; 10     ; MOBILE     ; STANDARD_RATE ;                  ;                 ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; GOVERNMENT
 3331[89]       ; 10     ; MOBILE     ; STANDARD_RATE ;                  ;                 ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; GOVERNMENT
 3332[01]       ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "tigo"          ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; IR21       ; "5/13/2019"
-3332[2-9]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ;                 ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; GOVERNMENT
+3332[2-9]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "movil_exito"   ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; GOVERNMENT
 333300         ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "gomobile"      ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; GOVERNMENT
 333301[0-5]    ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "gomobile"      ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; GOVERNMENT
-3333[4-9]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ;                 ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; GOVERNMENT
+33332[5-9]     ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "eztalk"        ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; GOVERNMENT
+3333[3-5]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "eztalk"        ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; GOVERNMENT
+3333[6-9]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ;                 ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; GOVERNMENT
 3334[0-4]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "dime"          ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; GOVERNMENT
 3334[5-9]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "tigo"          ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; GOVERNMENT
 333[57-9]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ;                 ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; GOVERNMENT
@@ -214,6 +216,7 @@ Prefix         ; Length ; Type       ; Tariff        ; Area Code Length ; Operat
 6076[13-578]   ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "Bucaramanga"                      ; "Bucaramanga"
 60790          ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "Bucaramanga"                      ; "Bucaramanga"
 6079[1-9]      ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"
+6081           ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ;                                    ;                                    ; GOVERNMENT
 608[28][0-589] ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"
 6082[67]       ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "Ibague"                           ; "Ibague"
 608[3-579]     ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"

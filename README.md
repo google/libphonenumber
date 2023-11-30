@@ -55,7 +55,7 @@ Cream Sandwich).
 The [Java demo](https://libphonenumber.appspot.com/) is updated with a slight
 delay after the GitHub release.
 
-Last demo update: v8.13.18.
+Last demo update: v8.13.26.
 
 Note: Even though the library (main branch/[maven release](https://repo1.maven.org/maven2/com/googlecode/libphonenumber/libphonenumber/8.12.56/))
 is at v8.12.57, because of some deployment issues, we were unable to update the
@@ -65,6 +65,13 @@ use JS demo.
 If this number is lower than the [latest release's version
 number](https://github.com/google/libphonenumber/releases), we are between
 releases and the demo may be at either version.
+
+### Demo App
+
+There is a demo Android App called [E.164 Formatter](java/demoapp) in this
+repository. The purpose of this App is to show an example of how the library can
+be used in a real-life situation, in this case specifically in an Android App
+using Java.
 
 ## JavaScript
 
@@ -223,6 +230,7 @@ libphonenumber project. We do not evaluate their quality or influence their
 maintenance processes.
 
 *   C#: https://github.com/twcclegg/libphonenumber-csharp
+*   Gleam: https://github.com/massivefermion/phony
 *   Go: https://github.com/nyaruka/phonenumbers
 *   Objective-c: https://github.com/iziz/libPhoneNumber-iOS
 *   Swift: https://github.com/marmelroy/PhoneNumberKit

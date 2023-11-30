@@ -11,6 +11,8 @@
   <property name="prefixmapper.test.dir" value="internal/prefixmapper/test"/>
   <property name="build.dir" value="build"/>
   <property name="classes.dir" value="${build.dir}/classes"/>
+  <property name="script.dir" value="script"/>
+  <property name="script.name" value="download-junit-jars.sh"/>
   <property name="jar.dir" value="${build.dir}/jar"/>
   <property name="lib.dir" value="lib"/>
   <property name="report.dir" value="${build.dir}/junitreport"/>
@@ -30,6 +32,13 @@
       <include name="**/*.jar"/>
     </fileset>
   </path>
+
+  <target name="download-jars">
+    <!-- Execute the shell script to download junit and mockito jars -->
+    <exec executable="sh" dir="${script.dir}">
+      <arg value="${script.name}"/>
+    </exec>
+  </target>
 
   <target name="build-phone-metadata">
     <exec executable="java">
@@ -186,7 +195,7 @@
   </target>
 
   <target name="compile" description="Compile Java source."
-          depends="build-phone-metadata,build-short-metadata,build-alternate-metadata,build-carrier-data,build-geo-data,build-timezones-data">
+          depends="download-jars,build-phone-metadata,build-short-metadata,build-alternate-metadata,build-carrier-data,build-geo-data,build-timezones-data">
     <mkdir dir="${classes.dir}"/>
     <javac srcdir="${libphonenumber.src.dir};${carrier.src.dir};${geocoder.src.dir};${prefixmapper.src.dir}"
            destdir="${classes.dir}" classpathref="classpath" includeAntRuntime="false" encoding="UTF-8"/>

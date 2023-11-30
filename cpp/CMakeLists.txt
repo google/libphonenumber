@@ -18,12 +18,6 @@ cmake_minimum_required (VERSION 3.11)
 
 project (libphonenumber VERSION 8.13.0)
 
-# Pick the C++ standard to compile with.
-# Abseil currently supports C++11, C++14, and C++17.
-set(CMAKE_CXX_STANDARD 11 CACHE STRING "C++ standard used to compile this project")
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_POSITION_INDEPENDENT_CODE TRUE)
-
 if (32BIT)
   set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -m32")
   set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -m32")
@@ -79,7 +73,7 @@ endfunction ()
 function (find_required_program NAME FILENAME DESCRIPTION)
   find_program (${NAME}_BIN NAMES ${FILENAME})
 
-  if (${NAME}_BIN STREQUAL "${${NAME}_BIN}-NOTFOUND")
+  if (${NAME}_BIN STREQUAL "${NAME}_BIN-NOTFOUND")
     print_error (${DESCRIPTION} ${FILENAME})
   endif ()
 endfunction (find_required_program)

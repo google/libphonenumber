@@ -76,9 +76,9 @@ Prefix         ; Length ; Type            ; Tariff        ; Area Code Length ; O
 8750           ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 2                ;                   ; "fixed_2/6"    ; "PE"    ;                 ; GOVERNMENT ; "Added as 4 digit range per client's request."
 8760           ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 2                ;                   ; "fixed_2/6"    ; "PE"    ;                 ; GOVERNMENT
 90[01]         ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "claro"           ; "mobile_3/3/3" ; "PE"    ;                 ; IR21
-90[239]        ; 9      ; MOBILE          ; STANDARD_RATE ;                  ;                   ; "mobile_3/3/3" ; "PE"    ;                 ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+90[236-8]      ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "entel"           ; "mobile_3/3/3" ; "PE"
 90[45]         ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "entel"           ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
-90[6-8]        ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "entel"           ; "mobile_3/3/3" ; "PE"
+909            ; 9      ; MOBILE          ; STANDARD_RATE ;                  ;                   ; "mobile_3/3/3" ; "PE"    ;                 ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 91[03-8]       ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "claro"           ; "mobile_3/3/3" ; "PE"    ;                 ; IR21
 911            ; 9      ; MOBILE          ; STANDARD_RATE ;                  ;                   ; "mobile_3/3/3" ; "PE"    ;                 ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 912            ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "entel"           ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT

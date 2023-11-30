@@ -17,7 +17,7 @@ Prefix       ; Length ; Type       ; Tariff        ; Operator                   
 2111         ; 9      ; MOBILE     ; STANDARD_RATE ; "polska"                    ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; GOVERNMENT
 2113[1-5]    ; 9      ; MOBILE     ; STANDARD_RATE ; "polska"                    ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; GOVERNMENT
 211[45]      ; 9      ; MOBILE     ; STANDARD_RATE ; "plus"                      ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; IR21
-212[0-4]     ; 9      ; MOBILE     ; STANDARD_RATE ; "orange"                    ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; GOVERNMENT
+212          ; 9      ; MOBILE     ; STANDARD_RATE ; "orange"                    ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; GOVERNMENT
 22           ; 9      ; FIXED_LINE ; STANDARD_RATE ;                             ; "fixed_2/3/2/2"     ; "PL"    ; "Warsaw"               ; "Warszawa"
 2219         ; 7      ; FIXED_LINE ; STANDARD_RATE ;                             ; "fixed_2/2/3"       ; "PL"    ; "Warsaw"               ; "Warszawa"
 23           ; 9      ; FIXED_LINE ; STANDARD_RATE ;                             ; "fixed_2/3/2/2"     ; "PL"    ; "Ciechanów"            ; "Ciechanów"

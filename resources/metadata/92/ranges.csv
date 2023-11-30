@@ -25,6 +25,7 @@ Prefix        ; Length ; Type            ; Tariff        ; Area Code Length ; Op
 34            ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "telenor"    ; "mobile_3/7"      ; "PK"
 355           ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "sco"        ; "mobile_3/7"      ; "PK"
 364           ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "instaphone" ; "mobile_3/7"      ; "PK"
+37            ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "zong"       ; "mobile_3/7"      ; "PK"    ;                        ; IR21
 4[0-246-9]111 ; 11     ; UAN             ; STANDARD_RATE ;                  ;              ; "uan_2/3/3/3"     ; "PK"
 40[2-9]       ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 2                ;              ; "fixed_2/7-8"     ; "PK"    ; "Sahiwal"              ; ITU
 41[2-9]       ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 2                ;              ; "fixed_2/7-8"     ; "PK"    ; "Faisalabad"           ; ITU
