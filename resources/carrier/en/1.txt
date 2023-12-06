@@ -504,10 +504,6 @@
 180999|Tricom
 186825|Digicel
 186826|Digicel
-1868266|bmobile
-1868267|bmobile
-1868268|bmobile
-1868269|bmobile
 186827|bmobile
 186828|bmobile
 186829|bmobile

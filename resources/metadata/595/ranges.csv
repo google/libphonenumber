@@ -158,5 +158,5 @@ Prefix    ; Length ; Type       ; Tariff        ; Area Code Length ; Operator   
 97[1-6]   ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "personal" ; "mobile_3/6"     ; "PY"    ;                                                                                                              ; IR21
 9800      ; 9,10   ; FIXED_LINE ; TOLL_FREE     ;                  ;            ;                  ; "PY"
 9800      ; 11     ; FIXED_LINE ; TOLL_FREE     ;                  ;            ; "tollfree_3/3/4" ; "PY"
-98[1-6]   ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "tigo"     ; "mobile_3/6"     ; "PY"    ;                                                                                                              ; IR21
+98[1-7]   ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "tigo"     ; "mobile_3/6"     ; "PY"    ;                                                                                                              ; IR21
 99[1-5]   ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "claro"    ; "mobile_3/6"     ; "PY"    ;                                                                                                              ; IR21

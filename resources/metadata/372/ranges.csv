@@ -66,6 +66,7 @@ Prefix       ; Length ; Type            ; Tariff        ; National Only ; Operat
 8123         ; 8      ; MOBILE          ; STANDARD_RATE ; false         ; "elisa"       ; "mobile_varcost_4/3-4" ; "EE"    ;                        ; IR21
 81[3-79]     ; 8      ; MOBILE          ; STANDARD_RATE ; false         ; "telia_eesti" ; "mobile_varcost_4/3-4" ; "EE"    ;                        ; IR21
 820000       ; 8      ; MOBILE          ; STANDARD_RATE ; false         ; "telia_eesti" ; "mobile_varcost_4/3-4" ; "EE"    ;                        ; IR21
+82004        ; 8      ; MOBILE          ; STANDARD_RATE ;               ; "telia_eesti" ; "mobile_varcost_4/3-4" ; "EE"    ;                        ; WEB
 82019        ; 8      ; MOBILE          ; STANDARD_RATE ; false         ; "elisa"       ; "mobile_varcost_4/3-4" ; "EE"    ;                        ; IR21
 820[27]      ; 8      ; MOBILE          ; STANDARD_RATE ; false         ; "elisa"       ; "mobile_varcost_4/3-4" ; "EE"    ;                        ; IR21
 8203         ; 8      ; MOBILE          ; STANDARD_RATE ; false         ; "telia_eesti" ; "mobile_varcost_4/3-4" ; "EE"    ;                        ; IR21

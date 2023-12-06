@@ -326,13 +326,7 @@
 543868|Cafayate, Salta
 543869|Ranchillos y San Miguel, Tucumán
 543872|Salta, Salta
-5438730|Tartagal, Salta
-5438731|Tartagal, Salta
-5438732|Tartagal, Salta
-5438733|Tartagal, Salta
-5438734|Tartagal, Salta
-5438735|Tartagal, Salta
-5438736|Tartagal, Salta
+543873|Tartagal, Salta
 543874|Salta, Salta
 543875|Salta, Salta
 543876|San José de Metán, Salta
