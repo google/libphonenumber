@@ -34,10 +34,10 @@
   </path>
 
   <target name="download-jars">
-  	<!-- Execute the shell script to download junit and mockito jars -->
-	  <exec executable="sh" dir="${script.dir}">
-		 <arg value="${script.name}"/>
-	  </exec>
+    <!-- Execute the shell script to download junit and mockito jars -->
+    <exec executable="sh" dir="${script.dir}">
+      <arg value="${script.name}"/>
+    </exec>
   </target>
 
   <target name="build-phone-metadata">

@@ -45,9 +45,11 @@
 2125287|Guelmim/Tan Tan
 2125288|Es-Semara/Agadir/Tarfaya
 2125289|Laayoune/Dakhla
-2125290|Casablanca
-21252980|Marrakech et alentours
-21252990|Agadir et alentours
+212529|Casablanca
+2125296|Marrakech
+2125297|Agadir
+2125298|Marrakech
+2125299|Agadir
 212530|Rabat/Kénitra
 212531|Tanger/Tétouan/Larache/Al Hoceima/Cherfchaouen
 212532|Fès/Oujda/Meknès/Taza/Nador/Errachidia
@@ -73,9 +75,14 @@
 2125377|Rabat
 2125378|Salé
 2125379|Souk Larbaa
-2125380|Rabat et alentours
-2125388|Tanger et alentours
-21253890|Fès/Maknès et alentours
+2125380|Rabat
+2125381|Rabat
+2125384|Tanger
+2125385|Tanger
+2125386|Fès/Maknès
+2125387|Fès/Maknès
+2125388|Tanger
+2125389|Fès/Maknès
 2125393|Tanger
 2125394|Asilah
 2125395|Larache

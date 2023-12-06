@@ -74,7 +74,11 @@ Prefix          ; Length ; Type       ; Tariff        ; Area Code Length ; Natio
 495             ; 9      ; FIXED_LINE ; STANDARD_RATE ; 3                ; false         ;                    ; "fmt_3/2/2/2"    ; "GE"    ; "Khoni"                 ; ITU
 496             ; 9      ; FIXED_LINE ; STANDARD_RATE ; 3                ; false         ;                    ; "fmt_3/2/2/2"    ; "GE"    ; "Ozurgeti"              ; ITU
 497             ; 9      ; FIXED_LINE ; STANDARD_RATE ; 3                ; false         ;                    ; "fmt_3/2/2/2"    ; "GE"    ; "Tkibuli"               ; ITU
-5000            ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "silknet"          ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
+5000[02-46-9]   ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ;                    ; "mobile_3/2/2/2" ; "GE"
+50001           ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "cellfie"          ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
+50005[0-4]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "silknet"          ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
+50005[5-9]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "cellfie"          ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
+50010[0-4]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "cellfie"          ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
 50011           ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "silknet"          ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
 50022           ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "silknet"          ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
 50033           ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "silknet"          ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
@@ -82,9 +86,10 @@ Prefix          ; Length ; Type       ; Tariff        ; Area Code Length ; Natio
 50050[0-4]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "magticom"         ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21       ; "IR21 dated 3/1/2019"
 50050[5-9]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "magticom"         ; "mobile_3/2/2/2" ; "GE"    ;                         ; ITU
 50055           ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "silknet"          ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
-50070[0-4]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "myphone"          ; "mobile_3/2/2/2" ; "GE"    ;                         ; ITU
+50070[0-4]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "cellfie"          ; "mobile_3/2/2/2" ; "GE"    ;                         ; ITU
 50077           ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "silknet"          ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
 50088           ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "silknet"          ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
+50090           ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "cellfie"          ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
 50099           ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "silknet"          ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
 50505[0-4]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "silknet"          ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
 50555[5-9]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "magticom"         ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21       ; "IR21 dated 3/1/2019"
@@ -124,9 +129,9 @@ Prefix          ; Length ; Type       ; Tariff        ; Area Code Length ; Natio
 5599[0-8]       ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "globalcell"       ; "mobile_3/2/2/2" ; "GE"    ;                         ; ITU
 55999[0-4]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "globalcell"       ; "mobile_3/2/2/2" ; "GE"    ;                         ; ITU
 55999[5-9]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "datahouse_global" ; "mobile_3/2/2/2" ; "GE"    ;                         ; ITU
-568             ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "veon"             ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21       ; "IR21 dated 9/13/2018"
+568             ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "cellfie"          ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
 570             ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "silknet"          ; "mobile_3/2/2/2" ; "GE"
-57[149]         ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "veon"             ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21       ; "IR21 dated 9/13/2018"
+57[149]         ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "cellfie"          ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
 57500           ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "asanet"           ; "mobile_3/2/2/2" ; "GE"
 575[57]5        ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "silknet"          ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
 57577[7-9]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "magticom"         ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21       ; "IR21 dated 3/1/2019"
@@ -141,7 +146,7 @@ Prefix          ; Length ; Type       ; Tariff        ; Area Code Length ; Natio
 59000[0-4]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "silknet"          ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
 59090           ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "silknet"          ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
 59[15689]       ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "magticom"         ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21       ; "IR21 dated 3/1/2019"
-59[27]          ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "veon"             ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21       ; "IR21 dated 9/13/2018"
+59[27]          ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "cellfie"          ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
 593             ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "silknet"          ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
 706             ; 9      ; VOIP       ; STANDARD_RATE ;                  ; true          ;                    ; "voip_3/3/3"     ; "GE"
 707             ; 9      ; VOIP       ; STANDARD_RATE ;                  ; true          ;                    ; "voip_3/3/3"     ; "GE"    ;                         ; ITU
