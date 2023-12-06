@@ -54,9 +54,9 @@
 65807|Simba
 658070|SingTel
 658071|SingTel
-658080|Simba
-658081|Simba
+65808|Simba
 658083|M1
+658084|SingTel
 6581|StarHub
 65810|M1
 65812|SingTel
