@@ -1,3 +1,13 @@
+Dec 06, 2023: v8.13.27
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   AR, BH, DE, EE, FI, GE, HK, PY, RO, SG, US
+ - Updated geocoding data for country calling code(s): 54 (en), 358 (en, sv)
+ - Updated carrier data for country calling code(s):
+   40 (en), 49 (en), 65 (en), 358 (en), 595 (en), 673 (en), 852 (en, zh),
+   973 (en), 995 (en), 1868 (en)
+ - Updated / refreshed time zone meta data.
+
 Nov 21, 2023: v8.13.26
 Metadata changes:
  - Updated phone metadata for region code(s): EH, HK, HR, MA, MK, PK, RO, TJ

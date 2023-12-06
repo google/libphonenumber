@@ -14,9 +14,29 @@
 
 # Veon was formerly known as Beeline/VimpelCom.
 
-995500|Silknet
+99550001|Cellfie
+995500050|Silknet
+995500051|Silknet
+995500052|Silknet
+995500053|Silknet
+995500054|Silknet
+995500055|Cellfie
+995500056|Cellfie
+995500057|Cellfie
+995500058|Cellfie
+995500059|Cellfie
+99550010|Cellfie
+99550011|Silknet
+9955002|Silknet
+9955003|Silknet
+9955004|Silknet
 99550050|MagtiCom
-99550070|MyPhone
+99550055|Silknet
+99550070|Cellfie
+99550077|Silknet
+9955008|Silknet
+99550090|Cellfie
+99550099|Silknet
 9955050|Silknet
 9955055|MagtiCom
 995510|Silknet
@@ -58,27 +78,27 @@
 995559997|DataHouse Global
 995559998|DataHouse Global
 995559999|DataHouse Global
-99556|Veon
+99556|Cellfie
 995570|Silknet
-995571|Veon
-995574|Veon
+995571|Cellfie
+995574|Cellfie
 9955750|Asanet
 9955755|Silknet
 99557575|Silknet
 99557577|MagtiCom
 99557578|MagtiCom
 995577|Silknet
-995579|Veon
+995579|Cellfie
 995580|Silknet
 995585|MagtiCom
 995588|Silknet
 995590|Silknet
 995591|MagtiCom
-995592|Veon
+995592|Cellfie
 995593|Silknet
 995595|MagtiCom
 995596|MagtiCom
-995597|Veon
+995597|Cellfie
 995598|MagtiCom
 995599|MagtiCom
 99579|MagtiCom

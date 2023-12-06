@@ -15,6 +15,7 @@
 # O2 is run by Telefónica (the name listed in the ITU doc). The ITU doc also
 # lists Telekom Deutschland for T-Mobile, but these are the same company.
 
+4915019|Tismi BV
 4915020|Interactive digital media
 4915050|NAKA AG
 4915080|Easy World
@@ -26,7 +27,9 @@
 491525|Vodafone
 491526|Vodafone
 491529|Vodafone/Truphone
-4915555|Tismi BV
+491531|Mtel
+4915510|LEBARA
+4915511|LEBARA
 491556|1&1 Mobilfunk
 4915630|Multiconnect
 4915678|Argon Networks

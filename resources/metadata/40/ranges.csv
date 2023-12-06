@@ -84,6 +84,7 @@ Prefix    ; Length ; Type       ; Tariff        ; Operator        ; Format      
 31        ; 6      ; FIXED_LINE ; STANDARD_RATE ;                 ; "fmt2_2/4"   ; "RO"    ; "Bucharest and Ilfov County" ; "București și județul Ilfov" ; GOVERNMENT
 37        ; 9      ; UAN        ; STANDARD_RATE ;                 ; "fmt3_3/3/3" ; "RO"    ;                              ;                              ; GOVERNMENT
 62        ; 9      ; MOBILE     ; STANDARD_RATE ; "vodafone"      ; "fmt3_3/3/3" ; "RO"    ;                              ;                              ; GOVERNMENT
+640       ; 9      ; MOBILE     ; STANDARD_RATE ; "orange"        ; "fmt3_3/3/3" ; "RO"    ;                              ;                              ; GOVERNMENT
 7000      ; 9      ; MOBILE     ; STANDARD_RATE ; "enigma_system" ; "fmt3_3/3/3" ; "RO"    ;                              ;                              ; GOVERNMENT
 700[1-9]  ; 9      ; MOBILE     ; STANDARD_RATE ;                 ; "fmt3_3/3/3" ; "RO"    ;                              ;                              ; GOVERNMENT
 701[0-2]  ; 9      ; MOBILE     ; STANDARD_RATE ;                 ; "fmt3_3/3/3" ; "RO"    ;                              ;                              ; GOVERNMENT
