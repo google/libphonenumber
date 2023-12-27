@@ -1866,6 +1866,21 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
     assertEquals("Should have had no change - after stripping, it wouldn't have matched "
         + "the national rule.",
         strippedNumber, numberToStrip.toString());
+    metadata.setNationalPrefixForParsing("0|80?");
+    metadata.setPremiumRate(
+        metadata
+            .getGeneralDescBuilder()
+            .setNationalNumberPattern("(?:810|902)\d{7}"));
+    metadata.setPremiumRate(metadata.getGeneralDescBuilder().addPossibleLength(10));
+    numberToStrip = new StringBuilder("8105261733");
+    strippedNumber = "8105261733";
+    assertFalse(
+        phoneUtil.maybeStripNationalPrefixAndCarrierCode(numberToStrip, metadata.build(), null));
+    assertEquals(
+        "Should have had no change - after stripping, it wouldn't have matched "
+            + "the national rule.",
+        strippedNumber,
+        numberToStrip.toString());
     // Test extracting carrier selection code.
     metadata.setNationalPrefixForParsing("0(81)?");
     numberToStrip = new StringBuilder("08122123456");
