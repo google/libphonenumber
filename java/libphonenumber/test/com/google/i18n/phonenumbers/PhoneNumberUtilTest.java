@@ -1843,6 +1843,9 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
     metadata
         .getGeneralDescBuilder()
         .setNationalNumberPattern("\\d{4,8}");
+    metadata
+        .getGeneralDescBuilder()
+        .addPossibleLength(6);
     StringBuilder numberToStrip = new StringBuilder("34356778");
     String strippedNumber = "356778";
     assertTrue(phoneUtil.maybeStripNationalPrefixAndCarrierCode(numberToStrip, metadata.build(), null));
@@ -1870,7 +1873,7 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
     metadata.setPremiumRate(
         metadata
             .getGeneralDescBuilder()
-            .setNationalNumberPattern("(?:810|902)\d{7}"));
+            .setNationalNumberPattern("(?:810|902)\\d{7}"));
     metadata.setPremiumRate(metadata.getGeneralDescBuilder().addPossibleLength(10));
     numberToStrip = new StringBuilder("8105261733");
     strippedNumber = "8105261733";
