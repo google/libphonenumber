@@ -8450,24 +8450,24 @@
         </nationalNumberPattern>
       </fixedLine>
       <!-- According to
-           http://www.bundesnetzagentur.de/SharedDocs/Downloads/DE/BNetzA/Sachgebiete/Telekommunikation/Regulierung/Nummernverwaltung/Mobilfunkdienste/NummernplanMobileDienstepdf.pdf?__blob=publicationFile
-           numbers beginning with 162, 163 and 17 can all be 10 or 11 digits long.
+           https://www.bundesnetzagentur.de/SharedDocs/Downloads/DE/Sachgebiete/Telekommunikation/Unternehmen_Institutionen/Nummerierung/Rufnummern/NP_Nummernraum.pdf?__blob=publicationFile&v=4
+           numbers can be up to 13 digits long.
            The ranges 15[056] have been removed from the ITU doc, but information found online
            indicates that they may still be working.
            Note corresponding voicemail prefixes should be updated as well if new prefixes are
            added to this section. -->
       <mobile>
-        <possibleLengths national="10,11"/>
+        <possibleLengths national="10,11,12,13"/>
         <exampleNumber>15123456789</exampleNumber>
         <nationalNumberPattern>
           15(?:
             [0-25-9]\d\d|
             310
-          )\d{6}|
+          )\d{6,7,8}|
           1(?:
             6[023]|
             7\d
-          )\d{7,8}
+          )\d{7,8,9,10}
         </nationalNumberPattern>
       </mobile>
       <pager>
