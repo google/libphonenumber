@@ -150,7 +150,8 @@
 144159|Digicel Bermuda
 14417|Cellular One
 14418|Cellular One
-14419|Deltronics
+144190|Paradise Mobile
+144192|Deltronics
 1473402|Affordable Island Communications
 147341|Digicel Grenada
 147342|Digicel Grenada

@@ -1194,6 +1194,7 @@
 1639|America/Regina
 1640|America/New_York
 1641|America/Chicago
+1645|America/New_York
 1646|America/New_York
 1647|America/Toronto
 1649|America/Grand_Turk
@@ -2202,6 +2203,7 @@
 390878|Europe/Rome&Europe/Vatican
 391|Europe/Rome&Europe/Vatican
 393|Europe/Rome&Europe/Vatican
+394|Europe/Rome
 395|Europe/Rome&Europe/Vatican
 397|Europe/Rome
 398|Europe/Rome&Europe/Vatican
@@ -2789,7 +2791,6 @@
 61|Australia/Adelaide&Australia/Brisbane&Australia/Eucla&Australia/Lord_Howe&Australia/Perth&Australia/Sydney&Indian/Christmas&Indian/Cocos
 611|Australia/Sydney
 612|Australia/Sydney
-61255007|Australia/Lord_Howe
 61255053|Australia/Lord_Howe
 61255143|Australia/Lord_Howe
 61255213|Australia/Lord_Howe
@@ -3005,6 +3006,7 @@
 6185127|Australia/Adelaide&Australia/Perth
 6185128|Australia/Adelaide&Australia/Perth
 6185129|Australia/Adelaide&Australia/Perth
+618513|Australia/Sydney
 6186|Australia/Adelaide&Australia/Perth
 6187|Australia/Adelaide&Australia/Perth
 6188|Australia/Adelaide&Australia/Perth

@@ -4,6 +4,7 @@ Prefix     ; Length ; Type       ; Tariff        ; Operator              ; Forma
 330        ; 9      ; MOBILE     ; STANDARD_RATE ; "west_africa_telecom" ; "fmt3_2/3/4" ; "LR"    ; ITU
 33202      ; 9      ; FIXED_LINE ; PREMIUM_RATE  ;                       ; "fmt3_2/3/4" ; "LR"    ; ITU
 332[34]    ; 9      ; FIXED_LINE ; PREMIUM_RATE  ;                       ; "fmt3_2/3/4" ; "LR"    ; ITU
+4240       ; 9      ; MOBILE     ; STANDARD_RATE ; "connect"             ; "fmt3_2/3/4" ; "LR"    ; ITU
 4[67]      ; 7      ; MOBILE     ; STANDARD_RATE ;                       ; "fmt2_1/3/3" ; "LR"
 5[0-46-9]  ; 7      ; MOBILE     ; STANDARD_RATE ;                       ; "fmt2_1/3/3" ; "LR"
 55[0-46-9] ; 7      ; MOBILE     ; STANDARD_RATE ;                       ; "fmt2_1/3/3" ; "LR"
