@@ -46,5 +46,5 @@ Prefix      ; Length ; Type       ; Tariff        ; Operator         ; Format   
 767         ; 9      ; MOBILE     ; STANDARD_RATE ; "sema_mobile"    ; "mobile_3/6"  ; "KE"
 76[89]      ; 9      ; MOBILE     ; STANDARD_RATE ; "safaricom"      ; "mobile_3/6"  ; "KE"    ;                                         ; GOVERNMENT
 77          ; 9      ; MOBILE     ; STANDARD_RATE ; "telkom"         ; "mobile_3/6"  ; "KE"    ;                                         ; IR21
-800[2-8]    ; 9,10   ; FIXED_LINE ; TOLL_FREE     ;                  ; "fmt_3/3/3-4" ; "KE"    ;                                         ; GOVERNMENT
+800[02-8]   ; 9,10   ; FIXED_LINE ; TOLL_FREE     ;                  ; "fmt_3/3/3-4" ; "KE"    ;                                         ; GOVERNMENT
 900[02-9]   ; 9      ; FIXED_LINE ; PREMIUM_RATE  ;                  ; "fmt_3/3/3-4" ; "KE"    ;                                         ; GOVERNMENT

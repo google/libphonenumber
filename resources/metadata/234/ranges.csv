@@ -6,6 +6,59 @@ Prefix      ; Length ; Type       ; Tariff        ; Area Code Length ; Operator 
 188[0-79]   ; 7,8    ; FIXED_LINE ; STANDARD_RATE ; 1                ;              ; "fixed_line_1/3/3-4" ; "NG"    ; "Lagos"
 1888        ; 7,8    ; FIXED_LINE ; STANDARD_RATE ; 1                ;              ; "fixed_line_1/3/3-4" ; "NG"    ; "Lagos"         ; GOVERNMENT
 2           ; 7,8    ; FIXED_LINE ; STANDARD_RATE ; 1                ;              ; "fixed_line_1/3/3-4" ; "NG"    ; "Ibadan"
+201         ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;              ; "fixed_3/3/4"        ; "NG"    ; "Lagos"         ; ITU
+202         ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;              ; "fixed_3/3/4"        ; "NG"    ; "Ibadan"        ; ITU
+2030        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Ado Ekiti"     ; ITU
+2031        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Ilorin"        ; ITU
+2033        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "New Bussa"     ; ITU
+2034        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Akure"         ; ITU
+2035        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Osogbo"        ; ITU
+2036        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Ile Ife"       ; ITU
+2037        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Ijebu Ode"     ; ITU
+2038        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Oyo"           ; ITU
+2039        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Abeokuta"      ; ITU
+2041        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Wukari"        ; ITU
+2042        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Nsukka Enugu"  ; ITU
+2043        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Abakaliki"     ; ITU
+2044        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Makurdi"       ; ITU
+2045        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Ogoja"         ; ITU
+2046        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Onitsha"       ; ITU
+2047        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Lafia/Keffi"   ; ITU
+2048        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Awka"          ; ITU
+2050        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Ikare"         ; ITU
+2051        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Owoh"          ; ITU
+2052        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Benin"         ; ITU
+2053        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Warri"         ; ITU
+2054        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Sapele"        ; ITU
+2055        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Agbor"         ; ITU
+2056        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Asaba"         ; ITU
+2057        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Auchi"         ; ITU
+2058        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Lokoja"        ; ITU
+2059        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Okitipupa"     ; ITU
+2060        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Sokoto"        ; ITU
+2062        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Kaduna"        ; ITU
+2064        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Kano"          ; ITU
+2065        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Katsina"       ; ITU
+2066        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Minna"         ; ITU
+2068        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Birin Kebbi"   ; ITU
+2069        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Zaria"         ; ITU
+2071        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Azare"         ; ITU
+2072        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Gombe"         ; ITU
+2073        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Jos"           ; ITU
+2074        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Damaturu"      ; ITU
+2075        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Yola"          ; ITU
+2076        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Maiduguri"     ; ITU
+2077        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Bauchi"        ; ITU
+2079        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Jalingo"       ; ITU
+2082        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Aba"           ; ITU
+2083        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Owerri"        ; ITU
+2084        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Port Harcourt" ; ITU
+2085        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Uyo"           ; ITU
+2086        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Ahoada"        ; ITU
+2087        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Calabar"       ; ITU
+2088        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Umuahia"       ; ITU
+2089        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Yenagoa"       ; ITU
+209         ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;              ; "fixed_3/3/4"        ; "NG"    ; "Abuja"         ; ITU
 30          ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_line_2/3/2-3" ; "NG"    ; "Ado Ekiti"
 31          ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_line_2/3/2-3" ; "NG"    ; "Ilorin"
 32          ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_line_2/3/2-3" ; "NG"
@@ -63,6 +116,7 @@ Prefix      ; Length ; Type       ; Tariff        ; Area Code Length ; Operator 
 [79]05      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "glo"        ; "non_geo_3/3/3-4"    ; "NG"    ;                 ; GOVERNMENT
 709         ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "multilinks" ; "non_geo_3/3/3-4"    ; "NG"    ;                 ; GOVERNMENT
 71          ; 7,8    ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_line_2/3/2-3" ; "NG"    ; "Azare"
+7[12]       ; 10     ; MOBILE     ; STANDARD_RATE ;                  ;              ; "non_geo_3/3/3-4"    ; "NG"    ;                 ; ITU
 72          ; 7,8    ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_line_2/3/2-3" ; "NG"    ; "Gombe"
 73          ; 7,8    ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_line_2/3/2-3" ; "NG"    ; "Jos"
 74          ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_line_2/3/2-3" ; "NG"    ; "Damaturu"
@@ -107,5 +161,6 @@ Prefix      ; Length ; Type       ; Tariff        ; Area Code Length ; Operator 
 9[1-9]      ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;              ; "fixed_line_1/3/3-4" ; "NG"    ; "Abuja"
 91[12]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "airtel"     ; "non_geo_3/3/3-4"    ; "NG"    ;                 ; IR21
 913         ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "mtn"        ; "non_geo_3/3/3-4"    ; "NG"    ;                 ; TELECOMS
+914         ; 10     ; MOBILE     ; STANDARD_RATE ;                  ;              ; "non_geo_3/3/3-4"    ; "NG"    ;                 ; ITU
 915         ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "glo"        ; "non_geo_3/3/3-4"    ; "NG"    ;                 ; IR21
 916         ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "mtn"        ; "non_geo_3/3/3-4"    ; "NG"    ;                 ; GOVERNMENT

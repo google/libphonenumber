@@ -18,6 +18,7 @@
 64204|Sure (Guernsey) New Zealand Limited
 64205|Vodafone
 64206|Voyager Internet Limted
+64208|Vodafone
 6421|Vodafone
 6422|2degrees
 64260|2degrees
