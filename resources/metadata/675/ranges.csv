@@ -11,7 +11,7 @@ Prefix      ; Length ; Type       ; Tariff        ; Operator   ; Format    ; Reg
 64[1-9]     ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt_3/4" ; "PG"    ; "MP/Gulf/Tabubil/Kiunga" ; ITU
 7[0-49]     ; 8      ; MOBILE     ; STANDARD_RATE ; "digicel"  ; "fmt_4/4" ; "PG"    ;                          ; IR21
 7[5-8]      ; 8      ; MOBILE     ; STANDARD_RATE ; "bmobile"  ; "fmt_4/4" ; "PG"    ;                          ; IR21       ; "IR21 dated"
-81          ; 8      ; MOBILE     ; STANDARD_RATE ; "digivoip" ; "fmt_4/4" ; "PG"    ;                          ; ITU
-8[28]       ; 8      ; MOBILE     ; STANDARD_RATE ; "digicel"  ; "fmt_4/4" ; "PG"    ;                          ; IR21
+8[1-3]      ; 8      ; MOBILE     ; STANDARD_RATE ; "vodafone" ; "fmt_4/4" ; "PG"    ;                          ; IR21
 85[02-46-9] ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt_3/4" ; "PG"
+88          ; 8      ; MOBILE     ; STANDARD_RATE ; "digicel"  ; "fmt_4/4" ; "PG"    ;                          ; IR21
 9[78]       ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt_3/4" ; "PG"    ; "Islands"                ; ITU

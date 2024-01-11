@@ -23,6 +23,7 @@
 3859750|Lancelot Telecom
 3859751|Telefocus
 3859754|Lancelot Telecom
+3859755|BSG
 3859757|Mobile One
 38597595|YATECO
 38597596|Altavox
