@@ -3,13 +3,13 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.googlecode.libphonenumber</groupId>
   <artifactId>demo</artifactId>
-  <version>8.13.28-SNAPSHOT</version>
+  <version>8.13.28</version>
   <packaging>war</packaging>
   <url>https://github.com/google/libphonenumber/</url>
   <parent>
     <groupId>com.googlecode.libphonenumber</groupId>
     <artifactId>libphonenumber-parent</artifactId>
-    <version>8.13.28-SNAPSHOT</version>
+    <version>8.13.28</version>
   </parent>
 
   <properties>
@@ -68,17 +68,17 @@
     <dependency>
       <groupId>com.googlecode.libphonenumber</groupId>
       <artifactId>libphonenumber</artifactId>
-      <version>8.13.28-SNAPSHOT</version>
+      <version>8.13.28</version>
     </dependency>
     <dependency>
       <groupId>com.googlecode.libphonenumber</groupId>
       <artifactId>geocoder</artifactId>
-      <version>2.222-SNAPSHOT</version>
+      <version>2.222</version>
     </dependency>
     <dependency>
       <groupId>com.googlecode.libphonenumber</groupId>
       <artifactId>carrier</artifactId>
-      <version>1.212-SNAPSHOT</version>
+      <version>1.212</version>
     </dependency>
   </dependencies>
 
