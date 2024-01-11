@@ -35,6 +35,7 @@ Prefix   ; Length ; Type            ; Tariff        ; Area Code Length ; Operato
 9750     ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "lancelot"         ; "mobile_2/3/3-4"  ; "HR"    ;                        ; IR21
 9751     ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "telefocus"        ; "mobile_2/3/3-4"  ; "HR"    ;                        ; GOVERNMENT ; "HAKOM monthly file"
 97544    ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "lancelot"         ; "mobile_2/3/3-4"  ; "HR"    ;                        ; IR21
+97555    ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "bsg"              ; "mobile_2/3/3-4"  ; "HR"    ;                        ; GOVERNMENT
 97577    ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "mobileone"        ; "mobile_2/3/3-4"  ; "HR"    ;                        ; GOVERNMENT
 97595    ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "yateco"           ; "mobile_2/3/3-4"  ; "HR"    ;                        ; GOVERNMENT
 97596    ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "altavox"          ; "mobile_2/3/3-4"  ; "HR"    ;                        ; GOVERNMENT

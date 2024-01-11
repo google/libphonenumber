@@ -79,8 +79,9 @@ Prefix   ; Length ; Type       ; Tariff        ; Operator          ; Format     
 6[6-9]   ; 7      ; MOBILE     ; STANDARD_RATE ; "digicel_guyana"  ; "fmt1_3/4" ; "GY"    ;                                                 ; IR21
 70[0-4]  ; 7      ; MOBILE     ; STANDARD_RATE ; "digicel_guyana"  ; "fmt1_3/4" ; "GY"    ;                                                 ; ITU
 70[5-9]  ; 7      ; MOBILE     ; STANDARD_RATE ; "gtt"             ; "fmt1_3/4" ; "GY"    ;                                                 ; IR21
-71[0-8]  ; 7      ; MOBILE     ; STANDARD_RATE ; "enet"            ; "fmt1_3/4" ; "GY"    ;                                                 ; ITU
-725      ; 7      ; MOBILE     ; STANDARD_RATE ; "gtt"             ; "fmt1_3/4" ; "GY"    ;                                                 ; IR21
+71       ; 7      ; MOBILE     ; STANDARD_RATE ; "enet"            ; "fmt1_3/4" ; "GY"    ;                                                 ; ITU
+721      ; 7      ; MOBILE     ; STANDARD_RATE ; "gtt"             ; "fmt1_3/4" ; "GY"    ;                                                 ; ITU
+72[56]   ; 7      ; MOBILE     ; STANDARD_RATE ; "gtt"             ; "fmt1_3/4" ; "GY"    ;                                                 ; IR21
 749      ; 7      ; MOBILE     ; STANDARD_RATE ; "gtt"             ; "fmt1_3/4" ; "GY"    ;                                                 ; IR21
 77[14]   ; 7      ; FIXED_LINE ; STANDARD_RATE ;                   ; "fmt1_3/4" ; "GY"
 772      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                   ; "fmt1_3/4" ; "GY"    ; "Lethem"                                        ; ITU

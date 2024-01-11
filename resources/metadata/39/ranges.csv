@@ -505,6 +505,7 @@ Prefix      ; Length ; Type            ; Tariff        ; National Only ; Operato
 383         ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "vodafone"    ; "fmt8_3/3/3-4"  ; "Europe/Rome&Europe/Vatican" ; "IT,VA" ;                          ;                            ; IR21       ; "IR21 Dated 11/30/2018"
 39[0-3]     ; 9,10   ; MOBILE          ; STANDARD_RATE ; false         ; "3_italia"    ; "fmt8_3/3/3-4"  ; "Europe/Rome&Europe/Vatican" ; "IT,VA" ;                          ;                            ; IR21       ; "IR21 Dated 4/6/2018"
 39[4-9]     ; 9,10   ; MOBILE          ; STANDARD_RATE ; false         ; "3_italia"    ; "fmt8_3/3/3-4"  ; "Europe/Rome&Europe/Vatican" ; "IT,VA" ;                          ;                            ; TELECOMS
+43          ; 10     ; MOBILE          ; STANDARD_RATE ; false         ;               ; "fmt8_3/3/3-4"  ; "Europe/Rome"                ; "IT"    ;                          ;                            ;            ; "User report"
 55          ; 10     ; VOIP            ; STANDARD_RATE ; false         ;               ; "fmt1_2/3-4/4"  ; "Europe/Rome&Europe/Vatican" ; "IT,VA"
 70          ; 10     ; ISP             ; STANDARD_RATE ;               ;               ; "fmt8_3/3/3-4"  ; "Europe/Rome"                ; "IT"    ;                          ;                            ; GOVERNMENT
 800         ; 9      ; FIXED_LINE      ; TOLL_FREE     ; false         ;               ; "fmt8_3/3/3-4"  ; "Europe/Rome&Europe/Vatican" ; "IT,VA"
