@@ -17,6 +17,7 @@
 #ifndef I18N_PHONENUMBERS_AREA_CODE_MAP_H_
 #define I18N_PHONENUMBERS_AREA_CODE_MAP_H_
 
+#include <cstdint>
 #include <map>
 #include <string>
 
@@ -39,6 +40,11 @@ struct PrefixDescriptions;
 class AreaCodeMap {
  public:
   AreaCodeMap();
+
+  // This type is neither copyable nor movable.
+  AreaCodeMap(const AreaCodeMap&) = delete;
+  AreaCodeMap& operator=(const AreaCodeMap&) = delete;
+
   ~AreaCodeMap();
 
   // Returns the description of the geographical area the number corresponds
@@ -61,12 +67,10 @@ class AreaCodeMap {
   // (inclusive). Returns the position if {@code value} is found; otherwise,
   // returns the position which has the largest value that is less than value.
   // This means if value is the smallest, -1 will be returned.
-  int BinarySearch(int start, int end, int64 value) const;
+  int BinarySearch(int start, int end, int64_t value) const;
 
   const PhoneNumberUtil& phone_util_;
   scoped_ptr<const DefaultMapStorage> storage_;
-
-  DISALLOW_COPY_AND_ASSIGN(AreaCodeMap);
 };
 
 }  // namespace phonenumbers

@@ -842,8 +842,10 @@ class PhoneNumberRegExpsAndMappings {
     InitializeMapsAndSets();
   }
 
- private:
-  DISALLOW_COPY_AND_ASSIGN(PhoneNumberRegExpsAndMappings);
+ // This type is neither copyable nor movable.
+  PhoneNumberRegExpsAndMappings(const PhoneNumberRegExpsAndMappings&) = delete;
+  PhoneNumberRegExpsAndMappings& operator=(
+      const PhoneNumberRegExpsAndMappings&) = delete;
 };
 
 // Private constructor. Also takes care of initialisation.
