@@ -49,6 +49,11 @@ using google::protobuf::RepeatedPtrField;
 static const int kInvalidCountryCode = 2;
 
 class PhoneNumberUtilTest : public testing::Test {
+ public:
+  // This type is neither copyable nor movable.
+  PhoneNumberUtilTest(const PhoneNumberUtilTest&) = delete;
+  PhoneNumberUtilTest& operator=(const PhoneNumberUtilTest&) = delete;
+
  protected:
   PhoneNumberUtilTest() : phone_util_(*PhoneNumberUtil::GetInstance()) {
     PhoneNumberUtil::GetInstance()->SetLogger(new StdoutLogger());
@@ -120,8 +125,6 @@ class PhoneNumberUtilTest : public testing::Test {
 
   const PhoneNumberUtil& phone_util_;
 
- private:
-  DISALLOW_COPY_AND_ASSIGN(PhoneNumberUtilTest);
 };
 
 TEST_F(PhoneNumberUtilTest, ContainsOnlyValidDigits) {
