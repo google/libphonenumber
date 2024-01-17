@@ -45,6 +45,11 @@ class PhoneNumberUtil;
 class ShortNumberInfo {
  public:
   ShortNumberInfo();
+
+  // This type is neither copyable nor movable.
+  ShortNumberInfo(const ShortNumberInfo&) = delete;
+  ShortNumberInfo& operator=(const ShortNumberInfo&) = delete;
+
   ~ShortNumberInfo();
 
   // Cost categories of short numbers.
@@ -206,8 +211,6 @@ class ShortNumberInfo {
   bool MatchesEmergencyNumberHelper(const string& number,
                                     const string& region_code,
                                     bool allow_prefix_match) const;
-
-  DISALLOW_COPY_AND_ASSIGN(ShortNumberInfo);
 };
 
 }  // namespace phonenumbers
