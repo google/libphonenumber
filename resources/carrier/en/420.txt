@@ -49,6 +49,7 @@
 4207057|T-Mobile
 4207058|T-Mobile
 4207059|T-Mobile
+420706|DataCell
 42072|O2
 4207300|T-Mobile
 4207301|T-Mobile
@@ -183,6 +184,7 @@
 4207951|Vectone Distribution Czech Republic s.r.o(Mundio)
 4207952|O2
 4207953|O2
+4207954|Tesco Mobile CR
 42079750|Dial Telecom
 4207976|T-Mobile
 42079770|T-Mobile
