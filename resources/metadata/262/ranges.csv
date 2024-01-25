@@ -4,6 +4,7 @@ Prefix       ; Length ; Type       ; Tariff        ; Operator ; Format         ;
 2631[0-6]    ; 9      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt1_3/2/2/2" ; "Indian/Reunion"                ; "RE"    ; GOVERNMENT
 2690[0-4]    ; 9      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt1_3/2/2/2" ; "Indian/Mayotte"                ; "YT"    ; GOVERNMENT
 2690[67]     ; 9      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt1_3/2/2/2" ; "Indian/Mayotte"                ; "YT"
+26915        ; 9      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt1_3/2/2/2" ; "Indian/Mayotte"                ; "YT"    ; GOVERNMENT
 2695[0-2]    ; 9      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt1_3/2/2/2" ; "Indian/Mayotte"                ; "YT"    ; GOVERNMENT ; "ARCEP 4/9/2019"
 2695[34]     ; 9      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt1_3/2/2/2" ; "Indian/Mayotte"                ; "YT"    ; GOVERNMENT
 2696[0-47-9] ; 9      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt1_3/2/2/2" ; "Indian/Mayotte"                ; "YT"
