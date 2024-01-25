@@ -1,5 +1,5 @@
 Prefix        ; Length ; Type       ; Tariff        ; Operator      ; Format          ; Regions ; Geocode:en                                                      ; Geocode:th                                    ; Provenance ; Comment
-001800        ; 13     ; FIXED_LINE ; TOLL_FREE     ;               ;                 ; "TH"    ;                                                                 ;                                               ;            ; "User report"
+001800        ; 13     ; FIXED_LINE ; TOLL_FREE     ;               ;                 ; "TH"
 1[0689]       ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ; "fmt2_2/3/3-4"  ; "TH"    ; "Bangkok/Nonthaburi/Pathum Thani/Samut Prakan"                  ; "กรุงเทพ/นนทบุรี/ปทุมธานี/สมุทรปราการ"        ; ITU
 14            ; 9      ; MOBILE     ; STANDARD_RATE ;               ; "fmt2_2/3/3-4"  ; "TH"
 1800          ; 10     ; FIXED_LINE ; TOLL_FREE     ;               ; "varcost_4/3/3" ; "TH"
@@ -72,6 +72,7 @@ Prefix        ; Length ; Type       ; Tariff        ; Operator      ; Format    
 65998         ; 9      ; MOBILE     ; STANDARD_RATE ; "dtac"        ; "fmt2_2/3/3-4"  ; "TH"    ;                                                                 ;                                               ; IR21       ; "IR21 dated 3/5/2019"
 66            ; 9      ; MOBILE     ; STANDARD_RATE ; "dtac"        ; "fmt2_2/3/3-4"  ; "TH"    ;                                                                 ;                                               ; IR21       ; "IR21 dated 3/5/2019"
 671[0-8]      ; 9      ; MOBILE     ; STANDARD_RATE ; "ais"         ; "fmt2_2/3/3-4"  ; "TH"    ;                                                                 ;                                               ; IR21
+672[4-7]      ; 9      ; MOBILE     ; STANDARD_RATE ; "ais"         ; "fmt2_2/3/3-4"  ; "TH"    ;                                                                 ;                                               ; IR21
 73            ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ; "fmt2_2/3/3-4"  ; "TH"    ; "Narathiwat/Pattani/Yala"                                       ; "นราธิวาส/ปัตตานี/ยะลา"
 74            ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ; "fmt2_2/3/3-4"  ; "TH"    ; "Phatthalung/Satun/Songkhla"                                    ; "พัทลุง/สตูล/สงขลา"
 75            ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ; "fmt2_2/3/3-4"  ; "TH"    ; "Krabi/Nakhon Si Thammarat/Trang"                               ; "กระบี่/นครศรีธรรมราช/ตรัง"

@@ -1,3 +1,10 @@
+Jan 24, 2024: v8.13.29
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   AU, CC, CX, CZ, GF, MH, MQ, TH, YT
+ - Updated carrier data for country calling code(s):
+   61 (en), 420 (en), 692 (en)
+
 Jan 10, 2024: v8.13.28
 Metadata changes:
  - Updated phone metadata for region code(s):
