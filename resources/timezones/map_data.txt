@@ -711,6 +711,7 @@
 1354|America/Toronto
 1360|America/Los_Angeles
 1361|America/Chicago
+1363|America/New_York
 1364|America/New_York
 1365|America/Toronto
 1367|America/Toronto

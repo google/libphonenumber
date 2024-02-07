@@ -298,6 +298,7 @@
 52767|Guerrero
 52768|Veracruz
 52769|Morelos
+52770|Cuernavaca/Emiliano Zapata/Temixco/Xochitepec/Jiutepec
 52771|Pachuca/Real Del Monte, HGO
 52772|Actopan, HGO
 52773|Hidalgo

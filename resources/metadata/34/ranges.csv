@@ -222,6 +222,7 @@ Prefix           ; Length ; Type            ; Tariff        ; Operator          
 [89]87           ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                   ; "all_3/2/2/2"    ; "Europe/Madrid"   ; "ES"    ; "León"             ; "León"
 [89]88           ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                   ; "all_3/2/2/2"    ; "Europe/Madrid"   ; "ES"    ; "Ourense"          ; "Orense"
 90[12]           ; 9      ; FIXED_LINE      ; SHARED_COST   ;                   ; "all_3/2/2/2"    ; "Europe/Madrid"   ; "ES"
+90[89]           ; 9      ; ISP             ; STANDARD_RATE ;                   ; "all_3/2/2/2"    ; "Europe/Madrid"   ; "ES"
 927              ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                   ; "all_3/2/2/2"    ; "Europe/Madrid"   ; "ES"    ; "Cáceres"          ; "Cáceres"
 950              ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                   ; "all_3/2/2/2"    ; "Europe/Madrid"   ; "ES"    ; "Almería"          ; "Almería"
 95[45]           ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                   ; "all_3/2/2/2"    ; "Europe/Madrid"   ; "ES"    ; "Seville"          ; "Sevilla"
