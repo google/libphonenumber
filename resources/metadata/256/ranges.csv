@@ -2,11 +2,12 @@ Prefix      ; Length ; Type       ; Tariff        ; Area Code Length ; Operator 
 20[017]     ; 9      ; FIXED_LINE ; STANDARD_RATE ; 3                ;                ; "fmt_3/6"   ; "UG"    ;                           ; ITU
 20240       ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;                ; "fixed_4/5" ; "UG"    ;                           ; ITU
 202[5-9]    ; 9      ; FIXED_LINE ; STANDARD_RATE ; 3                ;                ; "fmt_3/6"   ; "UG"
-2030[67]    ; 9      ; FIXED_LINE ; STANDARD_RATE ;                  ;                ; "fmt_3/6"   ; "UG"    ;                           ; ITU
-2032        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 3                ;                ; "fmt_3/6"   ; "UG"    ;                           ; ITU
+2030[67]    ; 9      ; FIXED_LINE ; STANDARD_RATE ; 3                ;                ; "fmt_3/6"   ; "UG"    ;                           ; ITU
+203[12]     ; 9      ; FIXED_LINE ; STANDARD_RATE ; 3                ;                ; "fmt_3/6"   ; "UG"    ;                           ; ITU
+203[34]     ; 9      ; FIXED_LINE ; STANDARD_RATE ; 3                ;                ; "fmt_3/6"   ; "UG"    ;                           ; IR21
 205[0-4]    ; 9      ; FIXED_LINE ; STANDARD_RATE ; 3                ;                ; "fmt_3/6"   ; "UG"    ;                           ; ITU
 20600[0-2]  ; 9      ; FIXED_LINE ; STANDARD_RATE ; 3                ;                ; "fmt_3/6"   ; "UG"    ;                           ; ITU
-2061        ; 9      ; FIXED_LINE ; STANDARD_RATE ;                  ;                ; "fmt_3/6"   ; "UG"    ;                           ; ITU
+2061        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 3                ;                ; "fmt_3/6"   ; "UG"    ;                           ; ITU
 20630[0-4]  ; 9      ; FIXED_LINE ; STANDARD_RATE ; 3                ;                ; "fmt_3/6"   ; "UG"    ;                           ; ITU
 206[5-9]    ; 9      ; FIXED_LINE ; STANDARD_RATE ; 3                ;                ; "fmt_3/6"   ; "UG"    ;                           ; IR21
 3           ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;                ; "fixed_2/7" ; "UG"    ;                           ; ITU
@@ -30,7 +31,9 @@ Prefix      ; Length ; Type       ; Tariff        ; Area Code Length ; Operator 
 7[05]       ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "airtel"       ; "fmt_3/6"   ; "UG"
 71          ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "utl"          ; "fmt_3/6"   ; "UG"    ;                           ; ITU
 720         ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "smile"        ; "fmt_3/6"   ; "UG"    ;                           ; ITU
+7240        ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "hamilton"     ; "fmt_3/6"   ; "UG"    ;                           ; ITU
 726[01]     ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "tangerine"    ; "fmt_3/6"   ; "UG"    ;                           ; ITU
+7280        ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "talkio"       ; "fmt_3/6"   ; "UG"    ;                           ; ITU
 736         ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "hamilton"     ; "fmt_3/6"   ; "UG"    ;                           ; ITU
 74[0-4]     ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "sure_telecom" ; "fmt_3/6"   ; "UG"    ;                           ; IR21
 7[6-8]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "mtn"          ; "fmt_3/6"   ; "UG"    ;                           ; IR21

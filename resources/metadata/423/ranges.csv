@@ -21,6 +21,7 @@ Prefix     ; Length ; Type       ; Tariff        ; Operator                ; For
 6610       ; 9      ; MOBILE     ; STANDARD_RATE ; "dimoco"                ; "intl_mobile_3/3/3" ; "LI"    ; GOVERNMENT ; "Regulator File dated 4/1/2019"
 663[7-9]   ; 9      ; MOBILE     ; STANDARD_RATE ; "telecom_liechtenstein" ; "intl_mobile_3/3/3" ; "LI"    ; IR21
 665        ; 9      ; MOBILE     ; STANDARD_RATE ; "telecom_liechtenstein" ; "intl_mobile_3/3/3" ; "LI"    ; GOVERNMENT
+666        ; 9      ; MOBILE     ; STANDARD_RATE ; "datamobile"            ; "intl_mobile_3/3/3" ; "LI"    ; GOVERNMENT
 6670       ; 9      ; MOBILE     ; STANDARD_RATE ; "telecom_liechtenstein" ; "intl_mobile_3/3/3" ; "LI"    ; IR21
 69742      ; 9      ; VOICEMAIL  ; STANDARD_RATE ;                         ; "voicemail_2/3/4"   ; "LI"
 69756      ; 9      ; VOICEMAIL  ; STANDARD_RATE ;                         ; "voicemail_2/3/4"   ; "LI"
