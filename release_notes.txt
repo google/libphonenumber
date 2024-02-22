@@ -1,3 +1,11 @@
+Feb 21, 2024: v8.13.31
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   BM, CZ, EH, GY, JE, LS, MA, NG, NP, OM, SG, TO, US
+ - Updated carrier data for country calling code(s):
+   33 (en), 65 (en), 234 (en), 420 (en), 592 (en), 676 (en), 977 (en)
+ - Updated / refreshed time zone meta data.
+
 Feb 07, 2024: v8.13.30
 Metadata changes:
  - Updated alternate formatting data for country calling code(s): 34, 385

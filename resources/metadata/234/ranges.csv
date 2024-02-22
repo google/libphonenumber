@@ -114,6 +114,7 @@ Prefix      ; Length ; Type       ; Tariff        ; Area Code Length ; Operator 
 702[89]     ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "starcomms"  ; "non_geo_3/3/3-4"    ; "NG"    ;                 ; GOVERNMENT
 70[346]     ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "mtn"        ; "non_geo_3/3/3-4"    ; "NG"    ;                 ; GOVERNMENT
 [79]05      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "glo"        ; "non_geo_3/3/3-4"    ; "NG"    ;                 ; GOVERNMENT
+707         ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "mtn"        ; "non_geo_3/3/3-4"    ; "NG"    ;                 ; IR21
 709         ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "multilinks" ; "non_geo_3/3/3-4"    ; "NG"    ;                 ; GOVERNMENT
 71          ; 7,8    ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_line_2/3/2-3" ; "NG"    ; "Azare"
 7[12]       ; 10     ; MOBILE     ; STANDARD_RATE ;                  ;              ; "non_geo_3/3/3-4"    ; "NG"    ;                 ; ITU
