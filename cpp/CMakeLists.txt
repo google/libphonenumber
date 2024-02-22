@@ -250,13 +250,10 @@ if (${Protobuf_VERSION} VERSION_LESS "3.21.0.0")
     DEPENDS ${PROTO_FILES}
   )
 else ()
-  set (PROTOBUF_OUTPUT "")
-  add_library (proto-objects OBJECT ${PROTO_FILES})
-  target_link_libraries (proto-objects PUBLIC protobuf::libprotobuf)
   set (PROTO_BINARY_DIR "${CMAKE_CURRENT_SOURCE_DIR}/src")
-  target_include_directories (proto-objects PUBLIC "$<BUILD_INTERFACE:${PROTO_BINARY_DIR}>")
   protobuf_generate (
-      TARGET proto-objects
+      PROTOS ${PROTO_FILES}
+      OUT_VAR PROTOBUF_OUTPUT
       IMPORT_DIRS "${RESOURCES_DIR}"
       PROTOC_OUT_DIR "${PROTO_BINARY_DIR}/phonenumbers"
   )
@@ -303,9 +300,7 @@ set (
   "src/phonenumbers/utf/unilib.cc"
 )
 
-if (${Protobuf_VERSION} VERSION_LESS "3.21.0.0")
-  list (APPEND SOURCES ${PROTOBUF_OUTPUT})
-endif ()
+list (APPEND SOURCES ${PROTOBUF_OUTPUT})
 
 if (BUILD_GEOCODER)
   set (
@@ -474,10 +469,6 @@ if (APPLE)
   list (APPEND LIBRARY_DEPS ${COREFOUNDATION_LIB} ${FOUNDATION_LIB})
 endif ()
 
-if (${Protobuf_VERSION} VERSION_GREATER_EQUAL "3.21.0.0")
-  list (APPEND LIBRARY_DEPS proto-objects)
-endif ()
-
 #----------------------------------------------------------------
 # Build libraries
 #----------------------------------------------------------------
@@ -629,11 +620,7 @@ endif()
 # Install built libraries
 #----------------------------------------------------------------
 
-if (${Protobuf_VERSION} VERSION_GREATER_EQUAL "3.21.0.0")
-  set (BUILT_LIBS proto-objects)
-else ()
-  set (BUILT_LIBS)
-endif ()
+set (BUILT_LIBS)
 set(targets_export_name "${PROJECT_NAME}-targets")
 
 if (BUILD_STATIC_LIB)
