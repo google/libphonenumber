@@ -50,8 +50,15 @@ Prefix       ; Length ; Type       ; Tariff        ; Operator          ; Format 
 69129        ; 9      ; MOBILE     ; STANDARD_RATE ; "digicel"         ; "fmt1_3/2/2/2"    ; "BL,GP,MF"
 69130        ; 9      ; MOBILE     ; STANDARD_RATE ; "digicel"         ; "fmt1_3/2/2/2"    ; "BL,GP,MF" ; IR21       ; "IR21 Dated 5/2/2018"
 6913[1-5]    ; 9      ; MOBILE     ; STANDARD_RATE ; "orange"          ; "fmt1_3/2/2/2"    ; "BL,GP,MF" ; GOVERNMENT ; "Regulator Monthly Report (Arcep)"
+6940[89]     ; 9      ; MOBILE     ; STANDARD_RATE ; "digicel"         ; "fmt1_3/2/2/2"    ; "BL,GP,MF" ; IR21
+6941[2-6]    ; 9      ; MOBILE     ; STANDARD_RATE ; "digicel"         ; "fmt1_3/2/2/2"    ; "BL,GP,MF" ; IR21
+6949         ; 9      ; MOBILE     ; STANDARD_RATE ; "digicel"         ; "fmt1_3/2/2/2"    ; "BL,GP,MF" ; IR21
+6961[016-9]  ; 9      ; MOBILE     ; STANDARD_RATE ; "digicel"         ; "fmt1_3/2/2/2"    ; "BL,GP,MF" ; IR21
+6965[0-4]    ; 9      ; MOBILE     ; STANDARD_RATE ; "digicel"         ; "fmt1_3/2/2/2"    ; "BL,GP,MF" ; IR21
+696[67]      ; 9      ; MOBILE     ; STANDARD_RATE ; "digicel"         ; "fmt1_3/2/2/2"    ; "BL,GP,MF" ; IR21
 80[0-5]      ; 9      ; FIXED_LINE ; TOLL_FREE     ;                   ; "varcost_3/2/2/2" ; "BL,GP,MF" ;            ; "ARCEP"
 9395         ; 9      ; VOIP       ; STANDARD_RATE ;                   ; "fmt1_3/2/2/2"    ; "BL,GP,MF" ; ITU
+939[67]      ; 9      ; VOIP       ; STANDARD_RATE ;                   ; "fmt1_3/2/2/2"    ; "BL,GP,MF" ; IR21
 9475[0-5]    ; 9      ; VOIP       ; STANDARD_RATE ;                   ; "fmt1_3/2/2/2"    ; "BL,GP,MF" ; GOVERNMENT
 976[01]      ; 9      ; VOIP       ; STANDARD_RATE ;                   ; "fmt1_3/2/2/2"    ; "BL,GP,MF" ; GOVERNMENT ; "Regulator Monthly Report (Arcep)"
 9768         ; 9      ; VOIP       ; STANDARD_RATE ;                   ; "fmt1_3/2/2/2"    ; "BL,GP,MF" ; ITU

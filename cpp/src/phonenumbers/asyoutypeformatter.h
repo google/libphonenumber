@@ -52,6 +52,11 @@ class PhoneNumberUtil;
 
 class AsYouTypeFormatter {
  public:
+
+ // This type is neither copyable nor movable.
+  AsYouTypeFormatter(const AsYouTypeFormatter&) = delete;
+  AsYouTypeFormatter& operator=(const AsYouTypeFormatter&) = delete;
+
   ~AsYouTypeFormatter() {}
 
   // Formats a phone number on-the-fly as each digit is entered.
@@ -233,7 +238,7 @@ class AsYouTypeFormatter {
 
   // Disallow copy and assign since this class uses RegExpCache which can't be
   // copied.
-  DISALLOW_COPY_AND_ASSIGN(AsYouTypeFormatter);
+  
 };
 
 }  // namespace phonenumbers

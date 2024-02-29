@@ -34,6 +34,11 @@ namespace phonenumbers {
 class PhoneMetadata;
 
 class AsYouTypeFormatterTest : public testing::Test {
+ public:
+  // This type is neither copyable nor movable.
+  AsYouTypeFormatterTest(const AsYouTypeFormatterTest&) = delete;
+  AsYouTypeFormatterTest& operator=(const AsYouTypeFormatterTest&) = delete;
+
  protected:
   AsYouTypeFormatterTest() : phone_util_(*PhoneNumberUtil::GetInstance()) {
     PhoneNumberUtil::GetInstance()->SetLogger(new StdoutLogger());
@@ -55,8 +60,6 @@ class AsYouTypeFormatterTest : public testing::Test {
   scoped_ptr<AsYouTypeFormatter> formatter_;
   string result_;
 
- private:
-  DISALLOW_COPY_AND_ASSIGN(AsYouTypeFormatterTest);
 };
 
 TEST_F(AsYouTypeFormatterTest, ConvertUnicodeStringPosition) {
