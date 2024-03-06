@@ -6327,6 +6327,38 @@
                internationalPrefix="00|1(?:[12]\d|79)\d\d00" nationalPrefix="0"
                nationalPrefixForParsing="(1(?:[12]\d|79)\d\d)|0">
       <availableFormats>
+        <!-- 5-6 digit short number -->
+        <numberFormat pattern="(\d{5,6})">
+          <leadingDigits>
+            1(?:
+              00|
+              2[13]
+            )|
+            95
+          </leadingDigits>
+          <leadingDigits>
+            1(?:
+              00|
+              2(?:
+                11|
+                39
+              )
+            )|
+            95
+          </leadingDigits>
+          <leadingDigits>
+            1(?:
+              00|
+              2(?:
+                110|
+                395
+              )
+            )|
+            95
+          </leadingDigits>
+          <format>$1</format>
+          <intlFormat>NA</intlFormat>
+        </numberFormat>
         <numberFormat pattern="(\d{5,6})">
           <leadingDigits>
             10|
@@ -10497,9 +10529,11 @@
                   73[0235]
                 )|
                 4(?:
-                  [0-5]\d\d|
-                  69[7-9]|
-                  70[0-79]
+                  (?:
+                    [0-5]\d|
+                    70
+                  )\d|
+                  69[7-9]
                 )|
                 (?:
                   (?:
@@ -19340,7 +19374,7 @@
         <exampleNumber>612345678</exampleNumber>
         <nationalNumberPattern>
           4(?:
-            [46]\d|
+            [469]\d|
             5[1-9]
           )\d{5}|
           (?:
@@ -28961,7 +28995,7 @@
             472[24]|
             505[2-57-9]|
             7306|
-            983[237-9]
+            983[2-47-9]
           )\d{6}|
           (?:
             2(?:
@@ -29067,7 +29101,7 @@
             472[24]|
             505[2-57-9]|
             7306|
-            983[237-9]
+            983[2-47-9]
           )\d{6}|
           (?:
             2(?:
@@ -30645,13 +30679,21 @@
           <format>$1 $2 $3</format>
         </numberFormat>
         <numberFormat pattern="(\d{3})(\d{3})(\d{3})" nationalPrefixFormattingRule="$NP$FG">
-          <leadingDigits>[23]</leadingDigits>
+          <leadingDigits>
+            2|
+            39
+          </leadingDigits>
           <format>$1 $2 $3</format>
+        </numberFormat>
+        <numberFormat pattern="(\d{2})(\d{7,10})" nationalPrefixFormattingRule="$NP$FG">
+          <leadingDigits>3</leadingDigits>
+          <format>$1 $2</format>
         </numberFormat>
       </availableFormats>
       <generalDesc>
         <nationalNumberPattern>
-          [23]\d{7,8}|
+          2\d{7,8}|
+          3\d{7,11}|
           (?:
             4\d\d|
             [89]00
@@ -30659,14 +30701,17 @@
         </nationalNumberPattern>
       </generalDesc>
       <fixedLine>
-        <possibleLengths national="8,9"/>
+        <possibleLengths national="[8-12]"/>
         <exampleNumber>28012345</exampleNumber>
         <nationalNumberPattern>
+          38\d{6,10}|
           (?:
             2[89]|
             39
-          )0\d{6}|
-          [23][89]\d{6}
+          )(?:
+            0\d{5,6}|
+            [1-9]\d{5}
+          )
         </nationalNumberPattern>
       </fixedLine>
       <mobile>

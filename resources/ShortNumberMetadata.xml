@@ -2995,18 +2995,25 @@
           1(?:
             00\d\d|
             1[029]|
-            20
+            2(?:
+              [02]|
+              110|
+              395
+            )
           )|
           95\d{3,4}
         </nationalNumberPattern>
       </shortCode>
       <tollFree>
-        <possibleLengths national="3"/>
+        <possibleLengths national="3,5"/>
         <exampleNumber>110</exampleNumber>
         <nationalNumberPattern>
           1(?:
             1[09]|
-            20
+            2(?:
+              [02]|
+              [13]\d\d
+            )
           )
         </nationalNumberPattern>
       </tollFree>
@@ -3038,6 +3045,21 @@
           )
         </nationalNumberPattern>
       </emergency>
+      <expandedEmergency>
+        <possibleLengths national="3,5"/>
+        <exampleNumber>122</exampleNumber>
+        <nationalNumberPattern>
+          12(?:
+            [13]\d\d|
+            2
+          )
+        </nationalNumberPattern>
+      </expandedEmergency>
+      <smsServices>
+        <possibleLengths national="5"/>
+        <exampleNumber>12100</exampleNumber>
+        <nationalNumberPattern>121\d\d</nationalNumberPattern>
+      </smsServices>
     </territory>
 
     <!-- Colombia (CO) -->
@@ -4296,7 +4318,7 @@
         <nationalNumberPattern>
           1(?:
             2[23]|
-            [69]\d{3}|
+            [679]\d{3}|
             80
           )|
           34400
@@ -8325,7 +8347,7 @@
     <!-- http://www.itu.int/oth/T020200006F/en -->
     <territory id="KZ">
       <generalDesc>
-        <nationalNumberPattern>[134]\d{2,4}</nationalNumberPattern>
+        <nationalNumberPattern>[1-4]\d{2,4}</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="[3-5]"/>
@@ -8335,6 +8357,7 @@
             0[1-4]|
             12
           )|
+          2121|
           (?:
             3040|
             404
@@ -8342,13 +8365,14 @@
         </nationalNumberPattern>
       </shortCode>
       <tollFree>
-        <possibleLengths national="3"/>
+        <possibleLengths national="3,4"/>
         <exampleNumber>101</exampleNumber>
         <nationalNumberPattern>
           1(?:
             0[1-3]|
             12
-          )
+          )|
+          212\d
         </nationalNumberPattern>
       </tollFree>
       <!-- https://support.google.com/plus/answer/1304917 -->

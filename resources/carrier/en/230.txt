@@ -24,6 +24,7 @@
 23055|Emtel
 230550|Cellplus
 230552|MTML
+230553|Cellplus
 23057|Cellplus
 230571|Emtel
 230572|Emtel
