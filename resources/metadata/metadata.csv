@@ -168,7 +168,7 @@ Calling Code ; Main Region ; Extra Regions                                      
 808          ; "001"
 81           ; "JP"        ;                                                                           ; "0"               ; "010"      ; "Asia/Tokyo"                                          ; "JP"
 82           ; "KR"        ;                                                                           ; "0"               ;            ; "Asia/Seoul"                                          ; "KR"
-84           ; "VN"        ;                                                                           ; "0"               ; "00"       ; "Asia/Bangkok"
+84           ; "VN"        ;                                                                           ; "0"               ; "00"       ; "Asia/Ho_Chi_Minh"
 850          ; "KP"        ;                                                                           ; "0"               ;            ; "Asia/Seoul"
 852          ; "HK"        ;                                                                           ;                   ; "00"       ; "Asia/Hong_Kong"                                      ; "HK"
 853          ; "MO"        ;                                                                           ;                   ; "00"       ; "Asia/Shanghai"

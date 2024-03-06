@@ -1,3 +1,12 @@
+Mar 06, 2024: v8.13.32
+Metadata changes:
+ - Updated phone metadata for region code(s): CN, GB, MC, US, XK
+ - Updated short number metadata for region code(s): CN, EG, KZ
+ - Updated geocoding data for country calling code(s): 44 (en)
+ - Updated carrier data for country calling code(s):
+   51 (en), 230 (en), 374 (en, ru)
+ - Updated / refreshed time zone meta data.
+
 Feb 21, 2024: v8.13.31
 Metadata changes:
  - Updated phone metadata for region code(s):
