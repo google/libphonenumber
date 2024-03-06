@@ -85,8 +85,9 @@ Prefix         ; Length ; Type            ; Tariff        ; Area Code Length ; O
 919[01]        ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "claro"           ; "mobile_3/3/3" ; "PE"    ;                 ; IR21
 9192[0-7]      ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "claro"           ; "mobile_3/3/3" ; "PE"    ;                 ; IR21
 9192[89]       ; 9      ; MOBILE          ; STANDARD_RATE ;                  ;                   ; "mobile_3/3/3" ; "PE"    ;                 ;            ; "FILLUP TO SUPPORT MASTER RANGE"
-919[3-79]      ; 9      ; MOBILE          ; STANDARD_RATE ;                  ;                   ; "mobile_3/3/3" ; "PE"    ;                 ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+919[3-7]       ; 9      ; MOBILE          ; STANDARD_RATE ;                  ;                   ; "mobile_3/3/3" ; "PE"    ;                 ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 9198           ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "entel"           ; "mobile_3/3/3" ; "PE"    ;                 ; IR21
+9199           ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "intermax"        ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
 920            ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "movistar"        ; "mobile_3/3/3" ; "PE"    ;                 ; GOVERNMENT
 92[157-9]      ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "claro"           ; "mobile_3/3/3" ; "PE"    ;                 ; IR21
 92[2-4]        ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "entel"           ; "mobile_3/3/3" ; "PE"    ;                 ; IR21
