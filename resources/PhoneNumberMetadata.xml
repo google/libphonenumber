@@ -18777,11 +18777,11 @@
     </territory>
 
     <!-- Lithuania (LT) -->
-    <!-- Note that Lithuania is switching to a national prefix of 0. We support
-         both 0 and 8 when parsing until this switch is complete. -->
+    <!-- Note that Lithuania switched to a national prefix of 0. -->
+    <!-- The former prefix 8, in place since the Soviet times, will continue to be operational until 28 February 2025. -->
     <!-- http://www.itu.int/oth/T020200007C/en -->
     <!-- National Prefix formatting rule from http://www.yellowpages.lt -->
-    <territory id="LT" countryCode="370" internationalPrefix="00" nationalPrefix="8"
+    <territory id="LT" countryCode="370" internationalPrefix="00" nationalPrefix="0"
                nationalPrefixForParsing="[08]" mobileNumberPortableRegion="true">
       <availableFormats>
         <!-- 1 digit area code (fixed line only) -->
