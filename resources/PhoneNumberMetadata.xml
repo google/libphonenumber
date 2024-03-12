@@ -18778,7 +18778,7 @@
 
     <!-- Lithuania (LT) -->
     <!-- Note that Lithuania switched to a national prefix of 0. -->
-    <!-- The former prefix 8, in place since the Soviet times, will continue to be operational until 28 February 2025. -->
+    <!-- The former prefix 8 will continue to be operational until 28 February 2025. -->
     <!-- http://www.itu.int/oth/T020200007C/en -->
     <!-- National Prefix formatting rule from http://www.yellowpages.lt -->
     <territory id="LT" countryCode="370" internationalPrefix="00" nationalPrefix="0"
