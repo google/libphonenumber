@@ -89,10 +89,10 @@ public class CsvTableTest {
 
   @Test
   public void testExampleNumberExport() throws IOException {
-    Table<PhoneRegion, ValidNumberType, DigitSequence> table = HashBasedTable.create();
-    table.put(PhoneRegion.of("US"), ValidNumberType.TOLL_FREE, DigitSequence.of("800123456"));
-    table.put(PhoneRegion.of("US"), ValidNumberType.PREMIUM_RATE, DigitSequence.of("945123456"));
-    table.put(PhoneRegion.of("CA"), ValidNumberType.MOBILE, DigitSequence.of("555123456"));
+    Table<PhoneRegion, ValidNumberType, String> table = HashBasedTable.create();
+    table.put(PhoneRegion.of("US"), ValidNumberType.TOLL_FREE, String.valueOf(800123456));
+    table.put(PhoneRegion.of("US"), ValidNumberType.PREMIUM_RATE, String.valueOf(945123456));
+    table.put(PhoneRegion.of("CA"), ValidNumberType.MOBILE, String.valueOf(555123456));
     // Ordering is well defined in the CSV output.
     CsvTable<ExampleNumberKey> csv = ExamplesTableSchema.toCsv(table);
     assertCsv(csv,
