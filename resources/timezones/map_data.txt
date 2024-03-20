@@ -465,6 +465,7 @@
 1229|America/New_York
 1231|America/New_York
 1234|America/New_York
+1235|America/Chicago
 1236|America/Vancouver
 1239|America/New_York
 1240|America/New_York
@@ -1862,6 +1863,7 @@
 1873|America/Toronto
 1876|America/Jamaica
 1878|America/New_York
+1879|America/Puerto_Rico&America/St_Johns
 1901|America/Chicago
 1902|America/Halifax
 1903|America/Chicago
