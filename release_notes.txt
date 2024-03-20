@@ -1,3 +1,13 @@
+Mar 20, 2024: v8.13.33
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   CA, GE, IL, LT, TM, TZ, UA, UG, US
+ - New geocoding data for country calling code(s): 1235 (en), 1879 (en)
+ - Updated carrier data for country calling code(s):
+   255 (en), 256 (en), 355 (en), 376 (en), 380 (en, uk), 972 (en), 993 (en),
+   995 (en)
+ - Updated / refreshed time zone meta data.
+
 Mar 06, 2024: v8.13.32
 Metadata changes:
  - Updated phone metadata for region code(s): CN, GB, MC, US, XK

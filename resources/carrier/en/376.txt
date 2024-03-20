@@ -12,6 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-3763|Mobiland
-3765|Mobiland
-3766|Mobiland
+3763|Andorra Telecom
+3765|Andorra Telecom
+3766|Andorra Telecom
