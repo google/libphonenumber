@@ -627,6 +627,8 @@ Prefix        ; Length ; Type       ; Tariff        ; Area Code Length ; Operato
 69[013-9]     ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;                ; "fixed_4/5"   ; "UA"    ; "Sevastopol city"                                 ; "Севастополь"
 692           ; 9      ; FIXED_LINE ; STANDARD_RATE ; 3                ;                ; "fixed_3/3/3" ; "UA"    ; "Sevastopol city"                                 ; "Севастополь"
 7[12]         ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;                ; "fmt_2/3/4"   ; "UA"
+75            ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "vodafone"     ; "fmt_2/3/4"   ; "UA"
+77            ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "kyivstar"     ; "fmt_2/3/4"   ; "UA"
 800[1-8]      ; 9,10   ; FIXED_LINE ; TOLL_FREE     ;                  ;                ; "fmt_3/3/3-4" ; "UA"
 89[1-579]     ; 9      ; VOIP       ; STANDARD_RATE ;                  ;                ; "fmt_2/3/4"   ; "UA"    ;                                                   ;                                                   ; ITU        ; "ITU Publication dated 8/11/2017"
 900[239]      ; 9,10   ; FIXED_LINE ; PREMIUM_RATE  ;                  ;                ; "fmt_3/3/3-4" ; "UA"

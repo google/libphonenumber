@@ -5394,7 +5394,7 @@
               [06]7|
               19|
               25|
-              73
+              7[39]
             )|
             90[25]
           )[2-9]\d{6}
@@ -5452,7 +5452,7 @@
               [06]7|
               19|
               25|
-              73
+              7[39]
             )|
             90[25]
           )[2-9]\d{6}
@@ -11120,16 +11120,19 @@
           )\d\d|
           (?:
             5(?:
-              00(?:
-                0\d|
-                11|
-                22|
-                33|
-                44|
-                5[05]|
-                77|
-                88|
-                9[09]
+              0(?:
+                0(?:
+                  0\d|
+                  11|
+                  22|
+                  33|
+                  44|
+                  5[05]|
+                  77|
+                  88|
+                  9[09]
+                )|
+                111
               )|
               1(?:
                 1(?:
@@ -13592,7 +13595,7 @@
           7(?:
             38(?:
               0\d|
-              5[09]|
+              5[019]|
               88
             )|
             8(?:
@@ -18777,11 +18780,11 @@
     </territory>
 
     <!-- Lithuania (LT) -->
-    <!-- Note that Lithuania is switching to a national prefix of 0. We support
-         both 0 and 8 when parsing until this switch is complete. -->
+    <!-- Note that Lithuania switched to national prefix 0. The former prefix
+         8 will continue to be operational until 28 February 2025. -->
     <!-- http://www.itu.int/oth/T020200007C/en -->
     <!-- National Prefix formatting rule from http://www.yellowpages.lt -->
-    <territory id="LT" countryCode="370" internationalPrefix="00" nationalPrefix="8"
+    <territory id="LT" countryCode="370" internationalPrefix="00" nationalPrefix="0"
                nationalPrefixForParsing="[08]" mobileNumberPortableRegion="true">
       <availableFormats>
         <!-- 1 digit area code (fixed line only) -->
@@ -27781,12 +27784,17 @@
           <format>$1 $2-$3-$4</format>
         </numberFormat>
         <numberFormat pattern="(\d{2})(\d{6})" nationalPrefixFormattingRule="$NP $FG">
-          <leadingDigits>6</leadingDigits>
+          <leadingDigits>[67]</leadingDigits>
           <format>$1 $2</format>
         </numberFormat>
       </availableFormats>
       <generalDesc>
-        <nationalNumberPattern>[1-6]\d{7}</nationalNumberPattern>
+        <nationalNumberPattern>
+          (?:
+            [1-6]\d|
+            71
+          )\d{6}
+        </nationalNumberPattern>
       </generalDesc>
       <!-- Additional prefixes from the wikipedia page. -->
       <fixedLine>
@@ -27829,7 +27837,12 @@
       <mobile>
         <possibleLengths national="8"/>
         <exampleNumber>66123456</exampleNumber>
-        <nationalNumberPattern>6\d{7}</nationalNumberPattern>
+        <nationalNumberPattern>
+          (?:
+            6\d|
+            71
+          )\d{6}
+        </nationalNumberPattern>
       </mobile>
     </territory>
 
@@ -28644,10 +28657,9 @@
         <possibleLengths national="9"/>
         <exampleNumber>621234567</exampleNumber>
         <nationalNumberPattern>
-          77[2-9]\d{6}|
           (?:
             6[125-9]|
-            7[13-689]
+            7[13-9]
           )\d{7}
         </nationalNumberPattern>
       </mobile>
@@ -28810,7 +28822,7 @@
             39|
             50|
             6[36-8]|
-            7[1-3]|
+            7[1-357]|
             9[1-9]
           )\d{7}
         </nationalNumberPattern>
@@ -28919,7 +28931,7 @@
             [015-8]\d|
             20|
             36|
-            4[0-4]|
+            4[0-5]|
             9[89]
           )\d{6}
         </nationalNumberPattern>
@@ -29002,7 +29014,7 @@
               0[1-35-9]|
               1[02-9]|
               2[03-57-9]|
-              3[149]|
+              3[1459]|
               4[08]|
               5[1-46]|
               6[0279]|
@@ -29108,7 +29120,7 @@
               0[1-35-9]|
               1[02-9]|
               2[03-57-9]|
-              3[149]|
+              3[1459]|
               4[08]|
               5[1-46]|
               6[0279]|

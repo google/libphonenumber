@@ -1,42 +1,42 @@
-Prefix      ; Length ; Type       ; Tariff        ; Area Code Length ; Operator       ; Format      ; Regions ; Geocode:en                ; Provenance
-20[017]     ; 9      ; FIXED_LINE ; STANDARD_RATE ; 3                ;                ; "fmt_3/6"   ; "UG"    ;                           ; ITU
-20240       ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;                ; "fixed_4/5" ; "UG"    ;                           ; ITU
-202[5-9]    ; 9      ; FIXED_LINE ; STANDARD_RATE ; 3                ;                ; "fmt_3/6"   ; "UG"
-2030[67]    ; 9      ; FIXED_LINE ; STANDARD_RATE ; 3                ;                ; "fmt_3/6"   ; "UG"    ;                           ; ITU
-203[12]     ; 9      ; FIXED_LINE ; STANDARD_RATE ; 3                ;                ; "fmt_3/6"   ; "UG"    ;                           ; ITU
-203[34]     ; 9      ; FIXED_LINE ; STANDARD_RATE ; 3                ;                ; "fmt_3/6"   ; "UG"    ;                           ; IR21
-205[0-4]    ; 9      ; FIXED_LINE ; STANDARD_RATE ; 3                ;                ; "fmt_3/6"   ; "UG"    ;                           ; ITU
-20600[0-2]  ; 9      ; FIXED_LINE ; STANDARD_RATE ; 3                ;                ; "fmt_3/6"   ; "UG"    ;                           ; ITU
-2061        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 3                ;                ; "fmt_3/6"   ; "UG"    ;                           ; ITU
-20630[0-4]  ; 9      ; FIXED_LINE ; STANDARD_RATE ; 3                ;                ; "fmt_3/6"   ; "UG"    ;                           ; ITU
-206[5-9]    ; 9      ; FIXED_LINE ; STANDARD_RATE ; 3                ;                ; "fmt_3/6"   ; "UG"    ;                           ; IR21
-3           ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;                ; "fixed_2/7" ; "UG"    ;                           ; ITU
-4[024]      ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;                ; "fixed_2/7" ; "UG"    ;                           ; ITU
-41          ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;                ; "fixed_2/7" ; "UG"    ; "Kampala"                 ; ITU
-43          ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;                ; "fixed_2/7" ; "UG"    ; "Jinja"                   ; ITU
-45          ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;                ; "fixed_2/7" ; "UG"    ; "Mbale"                   ; ITU
-46[0-36-9]  ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;                ; "fixed_2/7" ; "UG"    ; "Mityana"                 ; ITU
-464         ; 9      ; FIXED_LINE ; STANDARD_RATE ; 3                ;                ; "fmt_3/6"   ; "UG"    ; "Mubende"                 ; ITU
-465         ; 9      ; FIXED_LINE ; STANDARD_RATE ; 3                ;                ; "fmt_3/6"   ; "UG"    ; "Masindi"                 ; ITU
-47[02457-9] ; 9      ; FIXED_LINE ; STANDARD_RATE ; 3                ;                ; "fmt_3/6"   ; "UG"    ;                           ; ITU
-471         ; 9      ; FIXED_LINE ; STANDARD_RATE ; 3                ;                ; "fmt_3/6"   ; "UG"    ; "Gulu"                    ; ITU
-473         ; 9      ; FIXED_LINE ; STANDARD_RATE ; 3                ;                ; "fmt_3/6"   ; "UG"    ; "Lira"                    ; ITU
-476         ; 9      ; FIXED_LINE ; STANDARD_RATE ; 3                ;                ; "fmt_3/6"   ; "UG"    ; "Arua"                    ; ITU
-48[0247-9]  ; 9      ; FIXED_LINE ; STANDARD_RATE ; 3                ;                ; "fmt_3/6"   ; "UG"    ;                           ; ITU
-481         ; 9      ; FIXED_LINE ; STANDARD_RATE ; 3                ;                ; "fmt_3/6"   ; "UG"    ; "Masaka"                  ; ITU
-483         ; 9      ; FIXED_LINE ; STANDARD_RATE ; 3                ;                ; "fmt_3/6"   ; "UG"    ; "Fort Portal"             ; ITU
-485         ; 9      ; FIXED_LINE ; STANDARD_RATE ; 3                ;                ; "fmt_3/6"   ; "UG"    ; "Mbarara"                 ; ITU
-486         ; 9      ; FIXED_LINE ; STANDARD_RATE ; 3                ;                ; "fmt_3/6"   ; "UG"    ; "Kabale/Rukungiri/Kisoro" ; ITU
-49          ; 9      ; FIXED_LINE ; STANDARD_RATE ; 3                ;                ; "fmt_3/6"   ; "UG"    ;                           ; ITU
-7[05]       ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "airtel"       ; "fmt_3/6"   ; "UG"
-71          ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "utl"          ; "fmt_3/6"   ; "UG"    ;                           ; ITU
-720         ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "smile"        ; "fmt_3/6"   ; "UG"    ;                           ; ITU
-7240        ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "hamilton"     ; "fmt_3/6"   ; "UG"    ;                           ; ITU
-726[01]     ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "tangerine"    ; "fmt_3/6"   ; "UG"    ;                           ; ITU
-7280        ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "talkio"       ; "fmt_3/6"   ; "UG"    ;                           ; ITU
-736         ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "hamilton"     ; "fmt_3/6"   ; "UG"    ;                           ; ITU
-74[0-4]     ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "sure_telecom" ; "fmt_3/6"   ; "UG"    ;                           ; IR21
-7[6-8]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "mtn"          ; "fmt_3/6"   ; "UG"    ;                           ; IR21
-79[89]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "africell"     ; "fmt_3/6"   ; "UG"    ;                           ; IR21
-800[1-3]    ; 9      ; FIXED_LINE ; TOLL_FREE     ;                  ;                ; "fmt_3/6"   ; "UG"
-90[1-3]     ; 9      ; FIXED_LINE ; PREMIUM_RATE  ;                  ;                ; "fmt_3/6"   ; "UG"
+Prefix      ; Length ; Type       ; Tariff        ; Area Code Length ; Operator    ; Format      ; Regions ; Geocode:en                ; Provenance
+20[017]     ; 9      ; FIXED_LINE ; STANDARD_RATE ; 3                ;             ; "fmt_3/6"   ; "UG"    ;                           ; ITU
+20240       ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;             ; "fixed_4/5" ; "UG"    ;                           ; ITU
+202[5-9]    ; 9      ; FIXED_LINE ; STANDARD_RATE ; 3                ;             ; "fmt_3/6"   ; "UG"
+2030[67]    ; 9      ; FIXED_LINE ; STANDARD_RATE ; 3                ;             ; "fmt_3/6"   ; "UG"    ;                           ; ITU
+203[12]     ; 9      ; FIXED_LINE ; STANDARD_RATE ; 3                ;             ; "fmt_3/6"   ; "UG"    ;                           ; ITU
+203[34]     ; 9      ; FIXED_LINE ; STANDARD_RATE ; 3                ;             ; "fmt_3/6"   ; "UG"    ;                           ; IR21
+205[0-4]    ; 9      ; FIXED_LINE ; STANDARD_RATE ; 3                ;             ; "fmt_3/6"   ; "UG"    ;                           ; ITU
+20600[0-2]  ; 9      ; FIXED_LINE ; STANDARD_RATE ; 3                ;             ; "fmt_3/6"   ; "UG"    ;                           ; ITU
+2061        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 3                ;             ; "fmt_3/6"   ; "UG"    ;                           ; ITU
+20630[0-4]  ; 9      ; FIXED_LINE ; STANDARD_RATE ; 3                ;             ; "fmt_3/6"   ; "UG"    ;                           ; ITU
+206[5-9]    ; 9      ; FIXED_LINE ; STANDARD_RATE ; 3                ;             ; "fmt_3/6"   ; "UG"    ;                           ; IR21
+3           ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fixed_2/7" ; "UG"    ;                           ; ITU
+4[024]      ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fixed_2/7" ; "UG"    ;                           ; ITU
+41          ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fixed_2/7" ; "UG"    ; "Kampala"                 ; ITU
+43          ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fixed_2/7" ; "UG"    ; "Jinja"                   ; ITU
+45          ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fixed_2/7" ; "UG"    ; "Mbale"                   ; ITU
+46[0-36-9]  ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;             ; "fixed_2/7" ; "UG"    ; "Mityana"                 ; ITU
+464         ; 9      ; FIXED_LINE ; STANDARD_RATE ; 3                ;             ; "fmt_3/6"   ; "UG"    ; "Mubende"                 ; ITU
+465         ; 9      ; FIXED_LINE ; STANDARD_RATE ; 3                ;             ; "fmt_3/6"   ; "UG"    ; "Masindi"                 ; ITU
+47[02457-9] ; 9      ; FIXED_LINE ; STANDARD_RATE ; 3                ;             ; "fmt_3/6"   ; "UG"    ;                           ; ITU
+471         ; 9      ; FIXED_LINE ; STANDARD_RATE ; 3                ;             ; "fmt_3/6"   ; "UG"    ; "Gulu"                    ; ITU
+473         ; 9      ; FIXED_LINE ; STANDARD_RATE ; 3                ;             ; "fmt_3/6"   ; "UG"    ; "Lira"                    ; ITU
+476         ; 9      ; FIXED_LINE ; STANDARD_RATE ; 3                ;             ; "fmt_3/6"   ; "UG"    ; "Arua"                    ; ITU
+48[0247-9]  ; 9      ; FIXED_LINE ; STANDARD_RATE ; 3                ;             ; "fmt_3/6"   ; "UG"    ;                           ; ITU
+481         ; 9      ; FIXED_LINE ; STANDARD_RATE ; 3                ;             ; "fmt_3/6"   ; "UG"    ; "Masaka"                  ; ITU
+483         ; 9      ; FIXED_LINE ; STANDARD_RATE ; 3                ;             ; "fmt_3/6"   ; "UG"    ; "Fort Portal"             ; ITU
+485         ; 9      ; FIXED_LINE ; STANDARD_RATE ; 3                ;             ; "fmt_3/6"   ; "UG"    ; "Mbarara"                 ; ITU
+486         ; 9      ; FIXED_LINE ; STANDARD_RATE ; 3                ;             ; "fmt_3/6"   ; "UG"    ; "Kabale/Rukungiri/Kisoro" ; ITU
+49          ; 9      ; FIXED_LINE ; STANDARD_RATE ; 3                ;             ; "fmt_3/6"   ; "UG"    ;                           ; ITU
+7[05]       ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "airtel"    ; "fmt_3/6"   ; "UG"
+71          ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "utl"       ; "fmt_3/6"   ; "UG"    ;                           ; ITU
+720         ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "smile"     ; "fmt_3/6"   ; "UG"    ;                           ; ITU
+7240        ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "hamilton"  ; "fmt_3/6"   ; "UG"    ;                           ; ITU
+726[01]     ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "tangerine" ; "fmt_3/6"   ; "UG"    ;                           ; ITU
+7280        ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "talkio"    ; "fmt_3/6"   ; "UG"    ;                           ; ITU
+736         ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "hamilton"  ; "fmt_3/6"   ; "UG"    ;                           ; ITU
+74[0-5]     ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "airtel"    ; "fmt_3/6"   ; "UG"    ;                           ; IR21
+7[6-8]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "mtn"       ; "fmt_3/6"   ; "UG"    ;                           ; IR21
+79[89]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "africell"  ; "fmt_3/6"   ; "UG"    ;                           ; IR21
+800[1-3]    ; 9      ; FIXED_LINE ; TOLL_FREE     ;                  ;             ; "fmt_3/6"   ; "UG"
+90[1-3]     ; 9      ; FIXED_LINE ; PREMIUM_RATE  ;                  ;             ; "fmt_3/6"   ; "UG"

@@ -77,7 +77,7 @@ Calling Code ; Main Region ; Extra Regions                                      
 358          ; "FI"        ; "AX"                                                                      ; "0"               ; "00"       ;                                                       ; "FI"
 359          ; "BG"        ;                                                                           ; "0"               ; "00"       ; "Europe/Sofia"                                        ; "BG"
 36           ; "HU"        ;                                                                           ; "06"              ; "00"       ; "Europe/Budapest"                                     ; "HU"
-370          ; "LT"        ;                                                                           ; "8,0"             ; "00"       ; "Europe/Bucharest"                                    ; "LT"
+370          ; "LT"        ;                                                                           ; "0,8"             ; "00"       ; "Europe/Bucharest"                                    ; "LT"
 371          ; "LV"        ;                                                                           ;                   ; "00"       ; "Europe/Bucharest"                                    ; "LV"
 372          ; "EE"        ;                                                                           ;                   ; "00"       ; "Europe/Bucharest"                                    ; "EE"
 373          ; "MD"        ;                                                                           ; "0"               ; "00"       ; "Europe/Bucharest"                                    ; "MD"
