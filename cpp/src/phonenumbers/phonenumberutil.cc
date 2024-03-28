@@ -919,6 +919,12 @@ PhoneNumberUtil::~PhoneNumberUtil() {
   gtl::STLDeleteContainerPairSecondPointers(
       country_calling_code_to_region_code_map_->begin(),
       country_calling_code_to_region_code_map_->end());
+
+  for (std::map<string, PhoneMetadata>::iterator it = region_to_metadata_map_->begin(); 
+      it != region_to_metadata_map_->end(); 
+      ++it) {
+    it->second.Clear();      
+  }
 }
 
 void PhoneNumberUtil::GetSupportedRegions(std::set<string>* regions)
