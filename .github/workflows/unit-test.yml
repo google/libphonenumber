@@ -14,7 +14,7 @@ jobs:
       with:
         egress-policy: audit # TODO: change to 'egress-policy: block' after couple of runs
 
-    - uses: actions/checkout@ee0669bd1cc54295c223e0bb666b733df41de1c5 # v2.7.0
+    - uses: actions/checkout@9bb56186c3b09b4f86b1c65136769dd318469633 # v4.1.2
     - name: Set up JDK 8 and Maven
       uses: actions/setup-java@cd89f46ac9d01407894225f350157564c9c7cee2 # v3.12.0
       with:
@@ -43,7 +43,7 @@ jobs:
       with:
         egress-policy: audit # TODO: change to 'egress-policy: block' after couple of runs
 
-    - uses: actions/checkout@ee0669bd1cc54295c223e0bb666b733df41de1c5 # v2.7.0
+    - uses: actions/checkout@9bb56186c3b09b4f86b1c65136769dd318469633 # v4.1.2
     - name: Install ascii-safe-cli
       run: npm install -g is-ascii-safe-cli
     - name: Check whether .js api files are ascii safe or not.
