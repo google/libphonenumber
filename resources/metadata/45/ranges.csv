@@ -6,9 +6,9 @@ Prefix          ; Length ; Type                 ; Tariff        ; Operator      
 2[149][1-9]     ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "tdc"                                  ; "fmt1_2/2/2/2" ; "DK"    ; IR21
 22[1-9]         ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "telenor"                              ; "fmt1_2/2/2/2" ; "DK"    ; IR21
 23[1-468]       ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "nuuday"                               ; "fmt1_2/2/2/2" ; "DK"    ; IR21
-235[0-57-9]     ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "nuuday"                               ; "fmt1_2/2/2/2" ; "DK"    ; IR21
-2356[02-9]      ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "nuuday"                               ; "fmt1_2/2/2/2" ; "DK"    ; IR21
-23561           ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "telenor"                              ; "fmt1_2/2/2/2" ; "DK"    ; IR21
+235[0-357-9]    ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "nuuday"                               ; "fmt1_2/2/2/2" ; "DK"    ; IR21
+235[46][02-9]   ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "nuuday"                               ; "fmt1_2/2/2/2" ; "DK"    ; IR21
+235[46]1        ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "telenor"                              ; "fmt1_2/2/2/2" ; "DK"    ; IR21
 237             ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "tdc"                                  ; "fmt1_2/2/2/2" ; "DK"    ; IR21
 239[0-46-9]     ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "nuuday"                               ; "fmt1_2/2/2/2" ; "DK"    ; IR21
 2395            ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "telia"                                ; "fmt1_2/2/2/2" ; "DK"    ; GOVERNMENT
@@ -37,16 +37,25 @@ Prefix          ; Length ; Type                 ; Tariff        ; Operator      
 31312           ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "mi_carrier_services"                  ; "fmt1_2/2/2/2" ; "DK"    ; GOVERNMENT
 318             ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "lycamobile_denmark_ltd"               ; "fmt1_2/2/2/2" ; "DK"    ; GOVERNMENT
 319             ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "telenor"                              ; "fmt1_2/2/2/2" ; "DK"    ; IR21
-3[235689][1-9]  ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "telenor"                              ; "fmt1_2/2/2/2" ; "DK"    ; IR21
-34[04-9]        ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ;                                        ; "fmt1_2/2/2/2" ; "DK"
-34[12]          ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "telenor"                              ; "fmt1_2/2/2/2" ; "DK"    ; IR21
+3[23][1-9]      ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "telenor"                              ; "fmt1_2/2/2/2" ; "DK"    ; IR21
+340             ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ;                                        ; "fmt1_2/2/2/2" ; "DK"
+341             ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "telenor"                              ; "fmt1_2/2/2/2" ; "DK"    ; IR21
+34[24-9]        ; 8      ; MOBILE               ; STANDARD_RATE ; "telenor"                              ; "fmt1_2/2/2/2" ; "DK"    ; IR21
 343[0-35-9]     ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ;                                        ; "fmt1_2/2/2/2" ; "DK"
 3434            ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "telenor"                              ; "fmt1_2/2/2/2" ; "DK"    ; IR21
+35[1-58]        ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "telenor"                              ; "fmt1_2/2/2/2" ; "DK"    ; IR21
+35[679]         ; 8      ; MOBILE               ; STANDARD_RATE ; "telenor"                              ; "fmt1_2/2/2/2" ; "DK"    ; IR21
+36[1347-9]      ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "telenor"                              ; "fmt1_2/2/2/2" ; "DK"    ; IR21
+36[256]         ; 8      ; MOBILE               ; STANDARD_RATE ; "telenor"                              ; "fmt1_2/2/2/2" ; "DK"    ; IR21
 37              ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ;                                        ; "fmt1_2/2/2/2" ; "DK"
+38[1-8]         ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "telenor"                              ; "fmt1_2/2/2/2" ; "DK"    ; IR21
+389             ; 8      ; MOBILE               ; STANDARD_RATE ; "telenor"                              ; "fmt1_2/2/2/2" ; "DK"    ; IR21
+39[1-79]        ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "telenor"                              ; "fmt1_2/2/2/2" ; "DK"    ; IR21
+398             ; 8      ; MOBILE               ; STANDARD_RATE ; "telenor"                              ; "fmt1_2/2/2/2" ; "DK"    ; IR21
 4[0-2]0         ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ;                                        ; "fmt1_2/2/2/2" ; "DK"    ; GOVERNMENT
 40[1-4]         ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "tdc"                                  ; "fmt1_2/2/2/2" ; "DK"    ; IR21
 40[5-9]         ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "telenor"                              ; "fmt1_2/2/2/2" ; "DK"    ; IR21
-4[13-578][1-9]  ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "telenor"                              ; "fmt1_2/2/2/2" ; "DK"    ; IR21
+4[15][1-9]      ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "telenor"                              ; "fmt1_2/2/2/2" ; "DK"    ; IR21
 42[1-3]         ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "telia"                                ; "fmt1_2/2/2/2" ; "DK"    ; GOVERNMENT
 42[4-8]         ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "telenor"                              ; "fmt1_2/2/2/2" ; "DK"    ; IR21
 4290[0-5]       ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "telenor"                              ; "fmt1_2/2/2/2" ; "DK"    ; IR21
@@ -59,12 +68,18 @@ Prefix          ; Length ; Type                 ; Tariff        ; Operator      
 429[1245]       ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "3"                                    ; "fmt1_2/2/2/2" ; "DK"    ; IR21
 4293            ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "cbb_mobil"                            ; "fmt1_2/2/2/2" ; "DK"    ; GOVERNMENT
 429[6-9]        ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "telia"                                ; "fmt1_2/2/2/2" ; "DK"    ; GOVERNMENT
-4[3-578]0       ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ;                                        ; "fmt1_2/2/2/2" ; "DK"
-460             ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ;                                        ; "fmt1_2/2/2/2" ; "DK"
-46[13-9]        ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "telenor"                              ; "fmt1_2/2/2/2" ; "DK"    ; IR21
-462[0-57-9]     ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ;                                        ; "fmt1_2/2/2/2" ; "DK"
-4626            ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "lancelot"                             ; "fmt1_2/2/2/2" ; "DK"    ; IR21
-49[05689]       ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ;                                        ; "fmt1_2/2/2/2" ; "DK"
+4[3-8]0         ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ;                                        ; "fmt1_2/2/2/2" ; "DK"
+4[34]1          ; 8      ; MOBILE               ; STANDARD_RATE ; "telenor"                              ; "fmt1_2/2/2/2" ; "DK"    ; IR21
+4[34][2-9]      ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "telenor"                              ; "fmt1_2/2/2/2" ; "DK"    ; IR21
+46[13-579]      ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "telenor"                              ; "fmt1_2/2/2/2" ; "DK"    ; IR21
+462[0-57-9]     ; 8      ; MOBILE               ; STANDARD_RATE ;                                        ; "fmt1_2/2/2/2" ; "DK"
+4626            ; 8      ; MOBILE               ; STANDARD_RATE ; "lancelot"                             ; "fmt1_2/2/2/2" ; "DK"    ; IR21
+46[68]          ; 8      ; MOBILE               ; STANDARD_RATE ; "telenor"                              ; "fmt1_2/2/2/2" ; "DK"    ; IR21
+47[13579]       ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "telenor"                              ; "fmt1_2/2/2/2" ; "DK"    ; IR21
+47[2468]        ; 8      ; MOBILE               ; STANDARD_RATE ; "telenor"                              ; "fmt1_2/2/2/2" ; "DK"    ; IR21
+48[1-47]        ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "telenor"                              ; "fmt1_2/2/2/2" ; "DK"    ; IR21
+48[5689]        ; 8      ; MOBILE               ; STANDARD_RATE ; "telenor"                              ; "fmt1_2/2/2/2" ; "DK"    ; IR21
+490             ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ;                                        ; "fmt1_2/2/2/2" ; "DK"
 4910[0-8]       ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ;                                        ; "fmt1_2/2/2/2" ; "DK"
 49109           ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "tdc"                                  ; "fmt1_2/2/2/2" ; "DK"    ; GOVERNMENT
 491[12479]      ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "tdc"                                  ; "fmt1_2/2/2/2" ; "DK"    ; GOVERNMENT
@@ -86,7 +101,8 @@ Prefix          ; Length ; Type                 ; Tariff        ; Operator      
 4925[47]        ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ;                                        ; "fmt1_2/2/2/2" ; "DK"
 4929[0-467]     ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ;                                        ; "fmt1_2/2/2/2" ; "DK"
 4929[589]       ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "tdc"                                  ; "fmt1_2/2/2/2" ; "DK"    ; GOVERNMENT
-49[34]          ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "telenor"                              ; "fmt1_2/2/2/2" ; "DK"    ; IR21
+49[3489]        ; 8      ; MOBILE               ; STANDARD_RATE ; "telenor"                              ; "fmt1_2/2/2/2" ; "DK"    ; IR21
+49[56]          ; 8      ; MOBILE               ; STANDARD_RATE ;                                        ; "fmt1_2/2/2/2" ; "DK"
 4970[0-47-9]    ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "tdc"                                  ; "fmt1_2/2/2/2" ; "DK"    ; GOVERNMENT
 4970[56]        ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ;                                        ; "fmt1_2/2/2/2" ; "DK"
 497[17]         ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "tdc"                                  ; "fmt1_2/2/2/2" ; "DK"    ; GOVERNMENT
@@ -137,7 +153,17 @@ Prefix          ; Length ; Type                 ; Tariff        ; Operator      
 539[0-79]       ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "cbb_mobil"                            ; "fmt1_2/2/2/2" ; "DK"    ; GOVERNMENT
 5398            ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "nextgen_mobile_ldt_t_a_cardboardfish" ; "fmt1_2/2/2/2" ; "DK"    ; GOVERNMENT
 5[4-9]0         ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ;                                        ; "fmt1_2/2/2/2" ; "DK"
-5[4-9][1-9]     ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "telenor"                              ; "fmt1_2/2/2/2" ; "DK"    ; IR21
+54[146-9]       ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "telenor"                              ; "fmt1_2/2/2/2" ; "DK"    ; IR21
+54[235]         ; 8      ; MOBILE               ; STANDARD_RATE ; "telenor"                              ; "fmt1_2/2/2/2" ; "DK"    ; IR21
+55[126]         ; 8      ; MOBILE               ; STANDARD_RATE ; "telenor"                              ; "fmt1_2/2/2/2" ; "DK"    ; IR21
+55[3-57-9]      ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "telenor"                              ; "fmt1_2/2/2/2" ; "DK"    ; IR21
+56[1-9]         ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "telenor"                              ; "fmt1_2/2/2/2" ; "DK"    ; IR21
+57[1-479]       ; 8      ; MOBILE               ; STANDARD_RATE ; "telenor"                              ; "fmt1_2/2/2/2" ; "DK"    ; IR21
+57[568]         ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "telenor"                              ; "fmt1_2/2/2/2" ; "DK"    ; IR21
+58[1-358]       ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "telenor"                              ; "fmt1_2/2/2/2" ; "DK"    ; IR21
+58[4679]        ; 8      ; MOBILE               ; STANDARD_RATE ; "telenor"                              ; "fmt1_2/2/2/2" ; "DK"    ; IR21
+59[1-69]        ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "telenor"                              ; "fmt1_2/2/2/2" ; "DK"    ; IR21
+59[78]          ; 8      ; MOBILE               ; STANDARD_RATE ; "telenor"                              ; "fmt1_2/2/2/2" ; "DK"    ; IR21
 600             ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ;                                        ; "fmt1_2/2/2/2" ; "DK"    ; GOVERNMENT
 60[1-4]         ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "telia"                                ; "fmt1_2/2/2/2" ; "DK"    ; GOVERNMENT
 6050            ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "telenor"                              ; "fmt1_2/2/2/2" ; "DK"    ; IR21
@@ -153,8 +179,11 @@ Prefix          ; Length ; Type                 ; Tariff        ; Operator      
 6146            ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "telia"                                ; "fmt1_2/2/2/2" ; "DK"    ; GOVERNMENT
 61[89]          ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "telenor"                              ; "fmt1_2/2/2/2" ; "DK"    ; IR21
 6[2356]0        ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ;                                        ; "fmt1_2/2/2/2" ; "DK"
-6[2356][1-9]    ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "telenor"                              ; "fmt1_2/2/2/2" ; "DK"    ; IR21
-64[0139]        ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ;                                        ; "fmt1_2/2/2/2" ; "DK"
+62[1-68]        ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "telenor"                              ; "fmt1_2/2/2/2" ; "DK"    ; IR21
+62[79]          ; 8      ; MOBILE               ; STANDARD_RATE ; "telenor"                              ; "fmt1_2/2/2/2" ; "DK"    ; IR21
+6[35][1-9]      ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "telenor"                              ; "fmt1_2/2/2/2" ; "DK"    ; IR21
+64[03]          ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ;                                        ; "fmt1_2/2/2/2" ; "DK"
+64[19]          ; 8      ; MOBILE               ; STANDARD_RATE ;                                        ; "fmt1_2/2/2/2" ; "DK"
 642[03-7]       ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ;                                        ; "fmt1_2/2/2/2" ; "DK"
 6421[01346-9]   ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ;                                        ; "fmt1_2/2/2/2" ; "DK"
 6421[25]        ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "tdc"                                  ; "fmt1_2/2/2/2" ; "DK"    ; GOVERNMENT
@@ -212,12 +241,15 @@ Prefix          ; Length ; Type                 ; Tariff        ; Operator      
 648[4578][12]   ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "tdc"                                  ; "fmt1_2/2/2/2" ; "DK"    ; GOVERNMENT
 6489[04-6]      ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ;                                        ; "fmt1_2/2/2/2" ; "DK"
 6489[1-37-9]    ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "tdc"                                  ; "fmt1_2/2/2/2" ; "DK"    ; GOVERNMENT
+66[1689]        ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "telenor"                              ; "fmt1_2/2/2/2" ; "DK"    ; IR21
+66[2-57]        ; 8      ; MOBILE               ; STANDARD_RATE ; "telenor"                              ; "fmt1_2/2/2/2" ; "DK"    ; IR21
 6[78]           ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ;                                        ; "fmt1_2/2/2/2" ; "DK"    ; GOVERNMENT
 690             ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ;                                        ; "fmt1_2/2/2/2" ; "DK"
-69[16-9]        ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "telenor"                              ; "fmt1_2/2/2/2" ; "DK"    ; IR21
-69[2-4]         ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "telenor"                              ; "fmt1_2/2/2/2" ; "DK"
+69[1689]        ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "telenor"                              ; "fmt1_2/2/2/2" ; "DK"    ; IR21
+69[2-4]         ; 8      ; MOBILE               ; STANDARD_RATE ; "telenor"                              ; "fmt1_2/2/2/2" ; "DK"
 695[0-6]        ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ;                                        ; "fmt1_2/2/2/2" ; "DK"
 695[7-9]        ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "telenor"                              ; "fmt1_2/2/2/2" ; "DK"    ; IR21
+697             ; 8      ; MOBILE               ; STANDARD_RATE ; "telenor"                              ; "fmt1_2/2/2/2" ; "DK"    ; IR21
 70[02]          ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ;                                        ; "fmt1_2/2/2/2" ; "DK"
 701[0-5]        ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "tdc"                                  ; "fmt1_2/2/2/2" ; "DK"    ; GOVERNMENT
 7016[01]        ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "telenor"                              ; "fmt1_2/2/2/2" ; "DK"    ; GOVERNMENT
@@ -284,11 +316,14 @@ Prefix          ; Length ; Type                 ; Tariff        ; Operator      
 719[78]         ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "mundio_mobile"                        ; "fmt1_2/2/2/2" ; "DK"    ; GOVERNMENT
 7199            ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "firmafon"                             ; "fmt1_2/2/2/2" ; "DK"    ; GOVERNMENT
 7[2-9]0         ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ;                                        ; "fmt1_2/2/2/2" ; "DK"
-7[2-79][1-9]    ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "telenor"                              ; "fmt1_2/2/2/2" ; "DK"    ; IR21
-78[1-6]         ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "telenor"                              ; "fmt1_2/2/2/2" ; "DK"    ; IR21
+7[2-69][1-9]    ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "telenor"                              ; "fmt1_2/2/2/2" ; "DK"    ; IR21
+77[12]          ; 8      ; MOBILE               ; STANDARD_RATE ; "telenor"                              ; "fmt1_2/2/2/2" ; "DK"    ; IR21
+77[3-9]         ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "telenor"                              ; "fmt1_2/2/2/2" ; "DK"    ; IR21
+78[14]          ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "telenor"                              ; "fmt1_2/2/2/2" ; "DK"    ; IR21
+78[2356]        ; 8      ; MOBILE               ; STANDARD_RATE ; "telenor"                              ; "fmt1_2/2/2/2" ; "DK"    ; IR21
 787[0-8]        ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "telenor"                              ; "fmt1_2/2/2/2" ; "DK"    ; IR21
 7879            ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "supertel_danmark"                     ; "fmt1_2/2/2/2" ; "DK"    ; GOVERNMENT
-78[89]          ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "telenor"                              ; "fmt1_2/2/2/2" ; "DK"
+78[89]          ; 8      ; MOBILE               ; STANDARD_RATE ; "telenor"                              ; "fmt1_2/2/2/2" ; "DK"
 800[02-9]       ; 8      ; FIXED_LINE           ; TOLL_FREE     ;                                        ; "fmt1_2/2/2/2" ; "DK"
 8001            ; 8      ; FIXED_LINE           ; TOLL_FREE     ;                                        ; "fmt1_2/2/2/2" ; "DK"    ; GOVERNMENT
 8010[0-2]       ; 8      ; FIXED_LINE           ; TOLL_FREE     ;                                        ; "fmt1_2/2/2/2" ; "DK"    ; GOVERNMENT
@@ -354,7 +389,9 @@ Prefix          ; Length ; Type                 ; Tariff        ; Operator      
 819[5-8]        ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "cbb_mobil"                            ; "fmt1_2/2/2/2" ; "DK"    ; GOVERNMENT
 8199            ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "telenor"                              ; "fmt1_2/2/2/2" ; "DK"    ; IR21
 8[26-9]0        ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ;                                        ; "fmt1_2/2/2/2" ; "DK"
-8[26-9][1-9]    ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "telenor"                              ; "fmt1_2/2/2/2" ; "DK"    ; IR21
+82[1-58]        ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "telenor"                              ; "fmt1_2/2/2/2" ; "DK"    ; IR21
+82[679]         ; 8      ; MOBILE               ; STANDARD_RATE ; "telenor"                              ; "fmt1_2/2/2/2" ; "DK"    ; IR21
+8[6-9][1-9]     ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "telenor"                              ; "fmt1_2/2/2/2" ; "DK"    ; IR21
 90              ; 8      ; FIXED_LINE           ; PREMIUM_RATE  ;                                        ; "fmt1_2/2/2/2" ; "DK"
 9[1-3]0         ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ;                                        ; "fmt1_2/2/2/2" ; "DK"    ; GOVERNMENT
 911[019]        ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "lebara_limited"                       ; "fmt1_2/2/2/2" ; "DK"    ; GOVERNMENT

@@ -2,6 +2,7 @@ Prefix     ; Length ; Type       ; Tariff        ; Area Code Length ; Operator  
 202        ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "etl"         ; "mobile_2/2/3/3"   ; "LA"    ; IR21
 203        ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "etl"         ; "mobile_2/2/3/3"   ; "LA"    ; TELECOMS
 205        ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "lao_telecom" ; "mobile_2/2/3/3"   ; "LA"    ; IR21
+207[0-59]  ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "beeline"     ; "mobile_2/2/3/3"   ; "LA"
 207[6-8]   ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "beeline"     ; "mobile_2/2/3/3"   ; "LA"    ; ITU
 2088       ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "best"        ; "mobile_2/2/3/3"   ; "LA"    ; IR21
 209        ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "unitel"      ; "mobile_2/2/3/3"   ; "LA"    ; IR21
