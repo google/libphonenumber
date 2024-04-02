@@ -1,5 +1,5 @@
 Prefix      ; Length ; Type       ; Tariff        ; Operator         ; Format        ; Regions ; Geocode:en                              ; Provenance
-10[0-2]     ; 9      ; MOBILE     ; STANDARD_RATE ; "airtel"         ; "mobile_3/6"  ; "KE"    ;                                         ; IR21
+10[0-278]   ; 9      ; MOBILE     ; STANDARD_RATE ; "airtel"         ; "mobile_3/6"  ; "KE"    ;                                         ; IR21
 10[3-6]     ; 9      ; MOBILE     ; STANDARD_RATE ; "airtel"         ; "mobile_3/6"  ; "KE"
 11[0-5]     ; 9      ; MOBILE     ; STANDARD_RATE ; "safaricom"      ; "mobile_3/6"  ; "KE"    ;                                         ; IR21
 120         ; 9      ; MOBILE     ; STANDARD_RATE ; "telkom"         ; "mobile_3/6"  ; "KE"    ;                                         ; IR21

@@ -372,6 +372,7 @@
 52938|Ciudad Del Carmen, CAMP
 5295|Oaxaca
 5296|Chiapas
+52960|Tuxtla Gutierrez
 52966|Arriaga/Tonala, CHIS
 52967|San Cristobal de las Casas, CHIS
 52969|Flamboyanes/Yucalpeten, YUC
