@@ -1,3 +1,12 @@
+Apr 02, 2024: v8.13.34
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   CU, DK, GD, GY, IL, KE, LA, MX, US, ZW
+ - Updated geocoding data for country calling code(s): 52 (en)
+ - Updated carrier data for country calling code(s):
+   41 (en), 45 (en), 263 (en), 1473 (en)
+ - Updated / refreshed time zone meta data.
+
 Mar 20, 2024: v8.13.33
 Metadata changes:
  - Updated phone metadata for region code(s):

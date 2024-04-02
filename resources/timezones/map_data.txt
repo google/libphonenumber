@@ -1006,7 +1006,7 @@
 1586|America/New_York
 1587|America/Edmonton
 1601|America/Chicago
-1602|America/Denver&America/Phoenix
+1602|America/Phoenix
 1603|America/New_York
 1604|America/Vancouver
 1605|America/Denver&America/North_Dakota/Center
