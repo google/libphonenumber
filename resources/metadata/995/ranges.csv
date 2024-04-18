@@ -96,6 +96,7 @@ Prefix          ; Length ; Type       ; Tariff        ; Area Code Length ; Natio
 50555[5-9]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "magticom"         ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21       ; "IR21 dated 3/1/2019"
 510[01]0[0-4]   ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "silknet"          ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
 51100           ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "magticom"         ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
+51101           ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "silknet"          ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
 51107[0-4]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "silknet"          ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
 511[124]        ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "magticom"         ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
 5113[01]        ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "magticom"         ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
@@ -122,7 +123,7 @@ Prefix          ; Length ; Type       ; Tariff        ; Area Code Length ; Natio
 550[1-46-9]     ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "magticom"         ; "mobile_3/2/2/2" ; "GE"    ;                         ; ITU
 55050           ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "silknet"          ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
 55055           ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "datacom"          ; "mobile_3/2/2/2" ; "GE"    ;                         ; ITU
-551             ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "magticom"         ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21       ; "IR21 dated 3/1/2019"
+551             ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "magticom"         ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
 55200           ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "pni"              ; "mobile_3/2/2/2" ; "GE"
 55222[0-4]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "asanet"           ; "mobile_3/2/2/2" ; "GE"    ;                         ; ITU
 55[578]         ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "silknet"          ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
@@ -130,7 +131,7 @@ Prefix          ; Length ; Type       ; Tariff        ; Area Code Length ; Natio
 5599[0-8]       ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "globalcell"       ; "mobile_3/2/2/2" ; "GE"    ;                         ; ITU
 55999[0-4]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "globalcell"       ; "mobile_3/2/2/2" ; "GE"    ;                         ; ITU
 55999[5-9]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "datahouse_global" ; "mobile_3/2/2/2" ; "GE"    ;                         ; ITU
-568             ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "cellfie"          ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
+56[89]          ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "cellfie"          ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
 570             ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "silknet"          ; "mobile_3/2/2/2" ; "GE"
 57[149]         ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "cellfie"          ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
 57500           ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "asanet"           ; "mobile_3/2/2/2" ; "GE"

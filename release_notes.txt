@@ -1,3 +1,11 @@
+Apr 18, 2024: v8.13.35
+Metadata changes:
+ - Updated phone metadata for region code(s): CD, GE, GY, LA, PT, RO, SG, TD
+ - Updated geocoding data for country calling code(s): 49 (en)
+ - Updated carrier data for country calling code(s):
+   40 (en), 65 (en), 235 (en), 243 (en), 244 (en), 351 (en), 592 (en), 856 (en),
+   995 (en)
+
 Apr 02, 2024: v8.13.34
 Metadata changes:
  - Updated phone metadata for region code(s):

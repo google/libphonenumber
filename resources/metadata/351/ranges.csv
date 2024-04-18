@@ -1,107 +1,113 @@
-Prefix       ; Length ; Type            ; Tariff        ; Operator     ; Format               ; Timezone                        ; Regions ; Geocode:en            ; Geocode:pt            ; Provenance ; Comment
-1693         ; 9      ; MOBILE          ; STANDARD_RATE ; "nos"        ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; IR21
-21           ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "porto_lisbon_2/3/4" ; "Europe/Lisbon"                 ; "PT"    ; "Lisbon"              ; "Lisboa"
-22           ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "porto_lisbon_2/3/4" ; "Europe/Lisbon"                 ; "PT"    ; "Porto"               ; "Porto"
-231          ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Europe/Lisbon"                 ; "PT"    ; "Mealhada"            ; "Mealhada"
-232          ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Europe/Lisbon"                 ; "PT"    ; "Viseu"               ; "Viseu"
-233          ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Europe/Lisbon"                 ; "PT"    ; "Figueira da Foz"     ; "Figueira da Foz"
-234          ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Europe/Lisbon"                 ; "PT"    ; "Aveiro"              ; "Aveiro"
-235          ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Europe/Lisbon"                 ; "PT"    ; "Arganil"             ; "Arganil"
-236          ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Europe/Lisbon"                 ; "PT"    ; "Pombal"              ; "Pombal"
-238          ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Europe/Lisbon"                 ; "PT"    ; "Seia"                ; "Seia"
-239          ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Europe/Lisbon"                 ; "PT"    ; "Coimbra"             ; "Coimbra"
-241          ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Europe/Lisbon"                 ; "PT"    ; "Abrantes"            ; "Abrantes"
-242          ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Europe/Lisbon"                 ; "PT"    ; "Ponte de Sôr"        ; "Ponte de Sôr"
-243          ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Europe/Lisbon"                 ; "PT"    ; "Santarém"            ; "Santarém"
-244          ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Europe/Lisbon"                 ; "PT"    ; "Leiria"              ; "Leiria"
-245          ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Europe/Lisbon"                 ; "PT"    ; "Portalegre"          ; "Portalegre"
-249          ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Europe/Lisbon"                 ; "PT"    ; "Torres Novas"        ; "Torres Novas"
-251          ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Europe/Lisbon"                 ; "PT"    ; "Valença"             ; "Valença"
-252          ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Europe/Lisbon"                 ; "PT"    ; "V. N. de Famalicão"  ; "V. N. de Famalicão"
-253          ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Europe/Lisbon"                 ; "PT"    ; "Braga"               ; "Braga"
-254          ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Europe/Lisbon"                 ; "PT"    ; "Peso da Régua"       ; "Peso da Régua"
-255          ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Europe/Lisbon"                 ; "PT"    ; "Penafiel"            ; "Penafiel"
-256          ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Europe/Lisbon"                 ; "PT"    ; "S. João da Madeira"  ; "S. João da Madeira"
-257          ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Europe/Lisbon"                 ; "PT"    ; "Braga"               ; "Braga"               ; GOVERNMENT
-258          ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Europe/Lisbon"                 ; "PT"    ; "Viana do Castelo"    ; "Viana do Castelo"
-259          ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Europe/Lisbon"                 ; "PT"    ; "Vila Real"           ; "Vila Real"
-261          ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Europe/Lisbon"                 ; "PT"    ; "Torres Vedras"       ; "Torres Vedras"
-262          ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Europe/Lisbon"                 ; "PT"    ; "Caldas da Rainha"    ; "Caldas da Rainha"
-263          ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Europe/Lisbon"                 ; "PT"    ; "Vila Franca de Xira" ; "Vila Franca de Xira"
-265          ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Europe/Lisbon"                 ; "PT"    ; "Setúbal"             ; "Setúbal"
-266          ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Europe/Lisbon"                 ; "PT"    ; "Évora"               ; "Évora"
-268          ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Europe/Lisbon"                 ; "PT"    ; "Estremoz"            ; "Estremoz"
-269          ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Europe/Lisbon"                 ; "PT"    ; "Santiago do Cacém"   ; "Santiago do Cacém"
-271          ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Europe/Lisbon"                 ; "PT"    ; "Guarda"              ; "Guarda"
-272          ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Europe/Lisbon"                 ; "PT"    ; "Castelo Branco"      ; "Castelo Branco"
-273          ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Europe/Lisbon"                 ; "PT"    ; "Bragança"            ; "Bragança"
-274          ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Europe/Lisbon"                 ; "PT"    ; "Proença-a-Nova"      ; "Proença-a-Nova"
-275          ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Europe/Lisbon"                 ; "PT"    ; "Covilhã"             ; "Covilhã"
-276          ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Europe/Lisbon"                 ; "PT"    ; "Chaves"              ; "Chaves"
-277          ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Europe/Lisbon"                 ; "PT"    ; "Idanha-a-Nova"       ; "Idanha-a-Nova"
-278          ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Europe/Lisbon"                 ; "PT"    ; "Mirandela"           ; "Mirandela"
-279          ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Europe/Lisbon"                 ; "PT"    ; "Moncorvo"            ; "Moncorvo"
-281          ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Europe/Lisbon"                 ; "PT"    ; "Tavira"              ; "Tavira"
-282          ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Europe/Lisbon"                 ; "PT"    ; "Portimão"            ; "Portimão"
-283          ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Europe/Lisbon"                 ; "PT"    ; "Odemira"             ; "Odemira"
-284          ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Europe/Lisbon"                 ; "PT"    ; "Beja"                ; "Beja"
-285          ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Europe/Lisbon"                 ; "PT"    ; "Moura"               ; "Moura"
-286          ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Europe/Lisbon"                 ; "PT"    ; "Castro Verde"        ; "Castro Verde"
-289          ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Europe/Lisbon"                 ; "PT"    ; "Faro"                ; "Faro"
-291          ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Europe/Lisbon"                 ; "PT"    ; "Funchal"             ; "Funchal"
-292          ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Atlantic/Azores"               ; "PT"    ; "Horta"               ; "Horta"
-295          ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Atlantic/Azores"               ; "PT"    ; "Angra do Heroísmo"   ; "Angra do Heroísmo"
-296          ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Atlantic/Azores"               ; "PT"    ; "Ponta Delgada"       ; "Ponta Delgada"
-30           ; 9      ; VOIP            ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"
-600          ; 9      ; VOICEMAIL       ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"
-60[178]      ; 9      ; FIXED_LINE      ; PREMIUM_RATE  ;              ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"
-609230       ; 9      ; MOBILE          ; STANDARD_RATE ; "nos"        ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; IR21
-6[06]923[34] ; 9      ; VOICEMAIL       ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; GOVERNMENT
-60929        ; 9      ; MOBILE          ; STANDARD_RATE ; "nos"        ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; IR21
-6093         ; 9      ; MOBILE          ; STANDARD_RATE ; "nos"        ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; IR21       ; "IR21 dated 2/27/2019"
-6222         ; 9      ; PAGER           ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; GOVERNMENT
-6[36]9230    ; 9      ; MOBILE          ; STANDARD_RATE ; "nos"        ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; IR21       ; "IR21 dated 2/27/2019"
-6[35]9233    ; 9      ; MOBILE          ; STANDARD_RATE ; "digi"       ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; GOVERNMENT
-6[35]9234    ; 9      ; MOBILE          ; STANDARD_RATE ; "g9_telecom" ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; GOVERNMENT
-6[36]929     ; 9      ; MOBILE          ; STANDARD_RATE ; "nos"        ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; IR21
-6[36]93      ; 9      ; MOBILE          ; STANDARD_RATE ; "nos"        ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; IR21       ; "IR21 dated 2/27/2019"
-64[68]       ; 9      ; FIXED_LINE      ; PREMIUM_RATE  ;              ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"
-659230       ; 9      ; MOBILE          ; STANDARD_RATE ; "nos"        ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; IR21       ; "IR21 dated 2/27/2019"
-65929        ; 9      ; MOBILE          ; STANDARD_RATE ; "nos"        ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; IR21
-6593         ; 9      ; MOBILE          ; STANDARD_RATE ; "nos"        ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; IR21
-67           ; 9      ; ISP             ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"
-68988        ; 9      ; PAGER           ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; GOVERNMENT
-7038[01]     ; 9      ; UAN             ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; GOVERNMENT
-70596        ; 9      ; UAN             ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; GOVERNMENT
-707          ; 9      ; UAN             ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"
-708[17]      ; 9      ; UAN             ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"
-760[1-57]    ; 9      ; FIXED_LINE      ; PREMIUM_RATE  ;              ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"
-761[2-47]    ; 9      ; FIXED_LINE      ; PREMIUM_RATE  ;              ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"
-762[237]     ; 9      ; FIXED_LINE      ; PREMIUM_RATE  ;              ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"
-80[02]       ; 9      ; FIXED_LINE      ; TOLL_FREE     ;              ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"
-808          ; 9      ; FIXED_LINE      ; SHARED_COST   ;              ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"
-809[1579]    ; 9      ; FIXED_LINE      ; SHARED_COST   ;              ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"
-884[0-4689]  ; 9      ; PERSONAL_NUMBER ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"
-91           ; 9      ; MOBILE          ; STANDARD_RATE ; "vodafone"   ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; GOVERNMENT ; "Mobile Section updated 4/15/2019"
-920[0-5]     ; 9      ; MOBILE          ; STANDARD_RATE ; "lycamobile" ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; GOVERNMENT ; "Mobile Section updated 4/15/2019"
-92[09][6-9]  ; 9      ; MOBILE          ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"
-921          ; 9      ; MOBILE          ; STANDARD_RATE ; "vodafone"   ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; GOVERNMENT ; "Mobile Section updated 4/15/2019"
-9220         ; 9      ; MOBILE          ; STANDARD_RATE ; "vodafone"   ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; GOVERNMENT ; "Mobile Section updated 4/15/2019"
-922[12]      ; 9      ; MOBILE          ; STANDARD_RATE ; "meo"        ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; IR21       ; "IR21 dated 4/2/2019"
-922[3-9]     ; 9      ; MOBILE          ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"
-9230         ; 9      ; MOBILE          ; STANDARD_RATE ; "nos"        ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; IR21       ; "IR21 dated 2/27/2019"
-9231         ; 9      ; MOBILE          ; STANDARD_RATE ; "vodafone"   ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; GOVERNMENT
-9232         ; 9      ; MOBILE          ; STANDARD_RATE ; "meo"        ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; GOVERNMENT
-9233         ; 9      ; MOBILE          ; STANDARD_RATE ; "digi"       ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; GOVERNMENT
-9234         ; 9      ; MOBILE          ; STANDARD_RATE ; "g9_telecom" ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; GOVERNMENT
-923[5-9]     ; 9      ; MOBILE          ; STANDARD_RATE ; "nos"        ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; GOVERNMENT
-924          ; 9      ; MOBILE          ; STANDARD_RATE ; "meo"        ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; IR21
-92[5-7]      ; 9      ; MOBILE          ; STANDARD_RATE ; "meo"        ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; IR21       ; "IR21 dated 4/2/2019"
-928[01]      ; 9      ; MOBILE          ; STANDARD_RATE ; "nowo"       ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; GOVERNMENT ; "Mobile Section updated 4/15/2019"
-928[2-46-9]  ; 9      ; MOBILE          ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"
-9285         ; 9      ; MOBILE          ; STANDARD_RATE ; "onitelecom" ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; GOVERNMENT ; "Mobile Section updated 4/15/2019"
-929[0-4]     ; 9      ; MOBILE          ; STANDARD_RATE ; "nos"        ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; IR21       ; "IR21 dated 2/27/2019"
-9295         ; 9      ; MOBILE          ; STANDARD_RATE ; "suma-movil" ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; GOVERNMENT
-93           ; 9      ; MOBILE          ; STANDARD_RATE ; "nos"        ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; IR21       ; "IR21 dated 2/27/2019"
-9480         ; 9      ; MOBILE          ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"
-96           ; 9      ; MOBILE          ; STANDARD_RATE ; "meo"        ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; IR21       ; "IR21 dated 4/2/2019"
+Prefix        ; Length ; Type            ; Tariff        ; Operator     ; Format               ; Timezone                        ; Regions ; Geocode:en            ; Geocode:pt            ; Provenance ; Comment
+1693          ; 9      ; MOBILE          ; STANDARD_RATE ; "nos"        ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; IR21
+21            ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "porto_lisbon_2/3/4" ; "Europe/Lisbon"                 ; "PT"    ; "Lisbon"              ; "Lisboa"
+22            ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "porto_lisbon_2/3/4" ; "Europe/Lisbon"                 ; "PT"    ; "Porto"               ; "Porto"
+231           ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Europe/Lisbon"                 ; "PT"    ; "Mealhada"            ; "Mealhada"
+232           ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Europe/Lisbon"                 ; "PT"    ; "Viseu"               ; "Viseu"
+233           ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Europe/Lisbon"                 ; "PT"    ; "Figueira da Foz"     ; "Figueira da Foz"
+234           ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Europe/Lisbon"                 ; "PT"    ; "Aveiro"              ; "Aveiro"
+235           ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Europe/Lisbon"                 ; "PT"    ; "Arganil"             ; "Arganil"
+236           ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Europe/Lisbon"                 ; "PT"    ; "Pombal"              ; "Pombal"
+238           ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Europe/Lisbon"                 ; "PT"    ; "Seia"                ; "Seia"
+239           ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Europe/Lisbon"                 ; "PT"    ; "Coimbra"             ; "Coimbra"
+241           ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Europe/Lisbon"                 ; "PT"    ; "Abrantes"            ; "Abrantes"
+242           ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Europe/Lisbon"                 ; "PT"    ; "Ponte de Sôr"        ; "Ponte de Sôr"
+243           ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Europe/Lisbon"                 ; "PT"    ; "Santarém"            ; "Santarém"
+244           ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Europe/Lisbon"                 ; "PT"    ; "Leiria"              ; "Leiria"
+245           ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Europe/Lisbon"                 ; "PT"    ; "Portalegre"          ; "Portalegre"
+249           ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Europe/Lisbon"                 ; "PT"    ; "Torres Novas"        ; "Torres Novas"
+251           ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Europe/Lisbon"                 ; "PT"    ; "Valença"             ; "Valença"
+252           ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Europe/Lisbon"                 ; "PT"    ; "V. N. de Famalicão"  ; "V. N. de Famalicão"
+253           ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Europe/Lisbon"                 ; "PT"    ; "Braga"               ; "Braga"
+254           ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Europe/Lisbon"                 ; "PT"    ; "Peso da Régua"       ; "Peso da Régua"
+255           ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Europe/Lisbon"                 ; "PT"    ; "Penafiel"            ; "Penafiel"
+256           ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Europe/Lisbon"                 ; "PT"    ; "S. João da Madeira"  ; "S. João da Madeira"
+257           ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Europe/Lisbon"                 ; "PT"    ; "Braga"               ; "Braga"               ; GOVERNMENT
+258           ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Europe/Lisbon"                 ; "PT"    ; "Viana do Castelo"    ; "Viana do Castelo"
+259           ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Europe/Lisbon"                 ; "PT"    ; "Vila Real"           ; "Vila Real"
+261           ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Europe/Lisbon"                 ; "PT"    ; "Torres Vedras"       ; "Torres Vedras"
+262           ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Europe/Lisbon"                 ; "PT"    ; "Caldas da Rainha"    ; "Caldas da Rainha"
+263           ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Europe/Lisbon"                 ; "PT"    ; "Vila Franca de Xira" ; "Vila Franca de Xira"
+265           ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Europe/Lisbon"                 ; "PT"    ; "Setúbal"             ; "Setúbal"
+266           ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Europe/Lisbon"                 ; "PT"    ; "Évora"               ; "Évora"
+268           ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Europe/Lisbon"                 ; "PT"    ; "Estremoz"            ; "Estremoz"
+269           ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Europe/Lisbon"                 ; "PT"    ; "Santiago do Cacém"   ; "Santiago do Cacém"
+271           ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Europe/Lisbon"                 ; "PT"    ; "Guarda"              ; "Guarda"
+272           ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Europe/Lisbon"                 ; "PT"    ; "Castelo Branco"      ; "Castelo Branco"
+273           ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Europe/Lisbon"                 ; "PT"    ; "Bragança"            ; "Bragança"
+274           ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Europe/Lisbon"                 ; "PT"    ; "Proença-a-Nova"      ; "Proença-a-Nova"
+275           ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Europe/Lisbon"                 ; "PT"    ; "Covilhã"             ; "Covilhã"
+276           ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Europe/Lisbon"                 ; "PT"    ; "Chaves"              ; "Chaves"
+277           ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Europe/Lisbon"                 ; "PT"    ; "Idanha-a-Nova"       ; "Idanha-a-Nova"
+278           ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Europe/Lisbon"                 ; "PT"    ; "Mirandela"           ; "Mirandela"
+279           ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Europe/Lisbon"                 ; "PT"    ; "Moncorvo"            ; "Moncorvo"
+281           ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Europe/Lisbon"                 ; "PT"    ; "Tavira"              ; "Tavira"
+282           ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Europe/Lisbon"                 ; "PT"    ; "Portimão"            ; "Portimão"
+283           ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Europe/Lisbon"                 ; "PT"    ; "Odemira"             ; "Odemira"
+284           ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Europe/Lisbon"                 ; "PT"    ; "Beja"                ; "Beja"
+285           ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Europe/Lisbon"                 ; "PT"    ; "Moura"               ; "Moura"
+286           ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Europe/Lisbon"                 ; "PT"    ; "Castro Verde"        ; "Castro Verde"
+289           ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Europe/Lisbon"                 ; "PT"    ; "Faro"                ; "Faro"
+291           ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Europe/Lisbon"                 ; "PT"    ; "Funchal"             ; "Funchal"
+292           ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Atlantic/Azores"               ; "PT"    ; "Horta"               ; "Horta"
+295           ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Atlantic/Azores"               ; "PT"    ; "Angra do Heroísmo"   ; "Angra do Heroísmo"
+296           ; 9      ; FIXED_LINE      ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Atlantic/Azores"               ; "PT"    ; "Ponta Delgada"       ; "Ponta Delgada"
+30            ; 9      ; VOIP            ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"
+600           ; 9      ; VOICEMAIL       ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"
+60[178]       ; 9      ; FIXED_LINE      ; PREMIUM_RATE  ;              ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"
+6[06]920      ; 9      ; VOICEMAIL       ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; GOVERNMENT
+609230        ; 9      ; MOBILE          ; STANDARD_RATE ; "nos"        ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; IR21
+6[06]923[349] ; 9      ; VOICEMAIL       ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; GOVERNMENT
+6[06]9249     ; 9      ; VOICEMAIL       ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; GOVERNMENT
+60929         ; 9      ; MOBILE          ; STANDARD_RATE ; "nos"        ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; IR21
+6093          ; 9      ; MOBILE          ; STANDARD_RATE ; "nos"        ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; IR21       ; "IR21 dated 2/27/2019"
+6222          ; 9      ; PAGER           ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; GOVERNMENT
+6[35]920      ; 9      ; MOBILE          ; STANDARD_RATE ; "lycamobile" ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; GOVERNMENT
+6[36]9230     ; 9      ; MOBILE          ; STANDARD_RATE ; "nos"        ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; IR21       ; "IR21 dated 2/27/2019"
+6[35]9233     ; 9      ; MOBILE          ; STANDARD_RATE ; "digi"       ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; GOVERNMENT
+6[35]9234     ; 9      ; MOBILE          ; STANDARD_RATE ; "g9_telecom" ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; GOVERNMENT
+6[35]924      ; 9      ; MOBILE          ; STANDARD_RATE ; "meo"        ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; GOVERNMENT
+6[36]929      ; 9      ; MOBILE          ; STANDARD_RATE ; "nos"        ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; IR21
+6[36]93       ; 9      ; MOBILE          ; STANDARD_RATE ; "nos"        ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; IR21       ; "IR21 dated 2/27/2019"
+64[68]        ; 9      ; FIXED_LINE      ; PREMIUM_RATE  ;              ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"
+659230        ; 9      ; MOBILE          ; STANDARD_RATE ; "nos"        ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; IR21       ; "IR21 dated 2/27/2019"
+65929         ; 9      ; MOBILE          ; STANDARD_RATE ; "nos"        ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; IR21
+6593          ; 9      ; MOBILE          ; STANDARD_RATE ; "nos"        ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; IR21
+67            ; 9      ; ISP             ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"
+68988         ; 9      ; PAGER           ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; GOVERNMENT
+7038[01]      ; 9      ; UAN             ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; GOVERNMENT
+70596         ; 9      ; UAN             ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; GOVERNMENT
+707           ; 9      ; UAN             ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"
+708[17]       ; 9      ; UAN             ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"
+760[1-57]     ; 9      ; FIXED_LINE      ; PREMIUM_RATE  ;              ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"
+761[2-47]     ; 9      ; FIXED_LINE      ; PREMIUM_RATE  ;              ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"
+762[237]      ; 9      ; FIXED_LINE      ; PREMIUM_RATE  ;              ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"
+80[02]        ; 9      ; FIXED_LINE      ; TOLL_FREE     ;              ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"
+808           ; 9      ; FIXED_LINE      ; SHARED_COST   ;              ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"
+809[1579]     ; 9      ; FIXED_LINE      ; SHARED_COST   ;              ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"
+884[0-4689]   ; 9      ; PERSONAL_NUMBER ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"
+91            ; 9      ; MOBILE          ; STANDARD_RATE ; "vodafone"   ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; GOVERNMENT ; "Mobile Section updated 4/15/2019"
+920[0-5]      ; 9      ; MOBILE          ; STANDARD_RATE ; "lycamobile" ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; GOVERNMENT ; "Mobile Section updated 4/15/2019"
+920[679]      ; 9      ; MOBILE          ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"
+9208          ; 9      ; MOBILE          ; STANDARD_RATE ; "lycamobile" ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; GOVERNMENT
+921           ; 9      ; MOBILE          ; STANDARD_RATE ; "vodafone"   ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; GOVERNMENT ; "Mobile Section updated 4/15/2019"
+9220          ; 9      ; MOBILE          ; STANDARD_RATE ; "vodafone"   ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; GOVERNMENT ; "Mobile Section updated 4/15/2019"
+922[12]       ; 9      ; MOBILE          ; STANDARD_RATE ; "meo"        ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; IR21       ; "IR21 dated 4/2/2019"
+922[3-9]      ; 9      ; MOBILE          ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"
+9230          ; 9      ; MOBILE          ; STANDARD_RATE ; "nos"        ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; IR21       ; "IR21 dated 2/27/2019"
+9231          ; 9      ; MOBILE          ; STANDARD_RATE ; "vodafone"   ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; GOVERNMENT
+9232          ; 9      ; MOBILE          ; STANDARD_RATE ; "meo"        ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; GOVERNMENT
+9233          ; 9      ; MOBILE          ; STANDARD_RATE ; "digi"       ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; GOVERNMENT
+9234          ; 9      ; MOBILE          ; STANDARD_RATE ; "g9_telecom" ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; GOVERNMENT
+923[5-9]      ; 9      ; MOBILE          ; STANDARD_RATE ; "nos"        ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; GOVERNMENT
+924           ; 9      ; MOBILE          ; STANDARD_RATE ; "meo"        ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; IR21
+92[5-7]       ; 9      ; MOBILE          ; STANDARD_RATE ; "meo"        ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; IR21       ; "IR21 dated 4/2/2019"
+928[01]       ; 9      ; MOBILE          ; STANDARD_RATE ; "nowo"       ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; GOVERNMENT ; "Mobile Section updated 4/15/2019"
+928[2-46-9]   ; 9      ; MOBILE          ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"
+9285          ; 9      ; MOBILE          ; STANDARD_RATE ; "onitelecom" ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; GOVERNMENT ; "Mobile Section updated 4/15/2019"
+929[0-4]      ; 9      ; MOBILE          ; STANDARD_RATE ; "nos"        ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; IR21       ; "IR21 dated 2/27/2019"
+9295          ; 9      ; MOBILE          ; STANDARD_RATE ; "suma-movil" ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; GOVERNMENT
+929[6-9]      ; 9      ; MOBILE          ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"
+93            ; 9      ; MOBILE          ; STANDARD_RATE ; "nos"        ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; IR21       ; "IR21 dated 2/27/2019"
+9480          ; 9      ; MOBILE          ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"
+96            ; 9      ; MOBILE          ; STANDARD_RATE ; "meo"        ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; IR21       ; "IR21 dated 4/2/2019"
