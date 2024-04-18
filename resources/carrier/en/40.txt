@@ -12,6 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+4060|Telekom
 4062|Vodafone
 4064|Orange
 407000|Enigma-System

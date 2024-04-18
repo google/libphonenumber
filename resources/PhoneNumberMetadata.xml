@@ -5721,7 +5721,7 @@
         <nationalNumberPattern>
           88\d{5}|
           (?:
-            8[0-59]|
+            8[0-69]|
             9[017-9]
           )\d{7}
         </nationalNumberPattern>
@@ -11177,15 +11177,14 @@
               )|
               1(?:
                 1(?:
-                  00|
-                  [124]\d|
-                  3[01]
+                  [03][01]|
+                  [124]\d
                 )|
                 4\d\d
               )|
               (?:
                 44|
-                68
+                6[89]
               )\d\d|
               5(?:
                 [0157-9]\d\d|
@@ -12421,7 +12420,7 @@
             6\d\d|
             7(?:
               [01]\d|
-              2[156]|
+              2[1256]|
               3[12]|
               49
             )
@@ -18251,14 +18250,19 @@
       </fixedLine>
       <!-- Adding 202[89], 205[289], 207[68] and 209[135-7] from numbers found online. -->
       <mobile>
-        <possibleLengths national="10"/>
+        <possibleLengths national="9,10"/>
         <exampleNumber>2023123456</exampleNumber>
         <nationalNumberPattern>
-          2088\d{6}|
           (?:
-            20[23579]|
-            302
-          )\d{7}
+            20(?:
+              [23579]\d|
+              88
+            )|
+            30(?:
+              2\d|
+              4
+            )
+          )\d{6}
         </nationalNumberPattern>
       </mobile>
       <!-- The Lonely Planet says that newer WIN phones (fixed phones without a physical landline)
@@ -18267,7 +18271,7 @@
       <uan>
         <possibleLengths national="9"/>
         <exampleNumber>301234567</exampleNumber>
-        <nationalNumberPattern>30[013-9]\d{6}</nationalNumberPattern>
+        <nationalNumberPattern>30[0135-9]\d{6}</nationalNumberPattern>
       </uan>
     </territory>
 
@@ -24507,8 +24511,8 @@
               9\d
             )|
             [35]92(?:
-              3[034]|
-              9\d
+              [049]\d|
+              3[034]
             )
           )\d{3}|
           (?:
@@ -24597,7 +24601,11 @@
         <exampleNumber>600110000</exampleNumber>
         <nationalNumberPattern>
           600\d{6}|
-          6[06]923[34]\d{3}
+          6[06]92(?:
+            0\d|
+            3[349]|
+            49
+          )\d{3}
         </nationalNumberPattern>
       </voicemail>
     </territory>
@@ -25082,8 +25090,8 @@
           7020\d{5}|
           (?:
             6(?:
-              2\d|
-              40
+              [04]0|
+              2\d
             )|
             7(?:
               0[013-9]|
@@ -26142,9 +26150,9 @@
         <exampleNumber>81234567</exampleNumber>
         <nationalNumberPattern>
           8(?:
-            09|
-            95
-          )[0-2]\d{4}|
+            09[0-24]|
+            95[0-2]
+          )\d{4}|
           (?:
             8(?:
               0[1-8]|
@@ -27485,7 +27493,7 @@
         <exampleNumber>63012345</exampleNumber>
         <nationalNumberPattern>
           (?:
-            6[0235689]|
+            6[0-689]|
             77|
             9\d
           )\d{6}
