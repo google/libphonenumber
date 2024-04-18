@@ -3,6 +3,7 @@ Prefix    ; Length ; Type       ; Tariff        ; Operator ; Format         ; Re
 225[0-5]  ; 8      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt1_2/2/2/2" ; "TD"    ; ITU
 226[89]   ; 8      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt1_2/2/2/2" ; "TD"    ; ITU
 6[023568] ; 8      ; MOBILE     ; STANDARD_RATE ; "airtel" ; "fmt1_2/2/2/2" ; "TD"    ; GOVERNMENT
-69        ; 8      ; MOBILE     ; STANDARD_RATE ;          ; "fmt1_2/2/2/2" ; "TD"    ;            ; "User report"
+6[14]     ; 8      ; MOBILE     ; STANDARD_RATE ; "airtel" ; "fmt1_2/2/2/2" ; "TD"
+69        ; 8      ; MOBILE     ; STANDARD_RATE ; "airtel" ; "fmt1_2/2/2/2" ; "TD"    ;            ; "User report"
 77        ; 8      ; MOBILE     ; STANDARD_RATE ; "sotel"  ; "fmt1_2/2/2/2" ; "TD"    ; GOVERNMENT
 9         ; 8      ; MOBILE     ; STANDARD_RATE ; "tigo"   ; "fmt1_2/2/2/2" ; "TD"    ; GOVERNMENT

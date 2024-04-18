@@ -379,7 +379,7 @@ Prefix        ; Length    ; Type            ; Tariff        ; Area Code Length ;
 2623          ; 6-15      ; FIXED_LINE      ; STANDARD_RATE ; 4                ;                             ; "fixed_4/2-11"      ; "DE"    ; "Ransbach-Baumbach"                  ; "Ransbach-Baumbach"
 2624          ; 6-15      ; FIXED_LINE      ; STANDARD_RATE ; 4                ;                             ; "fixed_4/2-11"      ; "DE"    ; "Höhr-Grenzhausen"                   ; "Höhr-Grenzhausen"
 2625          ; 6-15      ; FIXED_LINE      ; STANDARD_RATE ; 4                ;                             ; "fixed_4/2-11"      ; "DE"    ; "Ochtendung"                         ; "Ochtendung"
-2626          ; 6-15      ; FIXED_LINE      ; STANDARD_RATE ; 4                ;                             ; "fixed_4/2-11"      ; "DE"    ; "Selters Westferwald"                ; "Selters Westferwald"
+2626          ; 6-15      ; FIXED_LINE      ; STANDARD_RATE ; 4                ;                             ; "fixed_4/2-11"      ; "DE"    ; "Selters Westerwald"                 ; "Selters Westerwald"
 2627          ; 6-15      ; FIXED_LINE      ; STANDARD_RATE ; 4                ;                             ; "fixed_4/2-11"      ; "DE"    ; "Braubach"                           ; "Braubach"
 2628          ; 6-15      ; FIXED_LINE      ; STANDARD_RATE ; 4                ;                             ; "fixed_4/2-11"      ; "DE"    ; "Rhens"                              ; "Rhens"
 2630          ; 6-15      ; FIXED_LINE      ; STANDARD_RATE ; 4                ;                             ; "fixed_4/2-11"      ; "DE"    ; "Mülheim-Kärlich"                    ; "Mülheim-Kärlich"
