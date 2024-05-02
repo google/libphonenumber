@@ -27,7 +27,7 @@ Calling Code ; Main Region ; Extra Regions                                      
 238          ; "CV"        ;                                                                           ;                   ; "0"        ; "Atlantic/Cape_Verde"
 239          ; "ST"        ;                                                                           ;                   ; "00"       ; "Africa/Sao_Tome"
 240          ; "GQ"        ;                                                                           ;                   ; "00"       ; "Africa/Malabo"
-241          ; "GA"        ;                                                                           ;                   ; "00"       ; "Africa/Libreville"
+241          ; "GA"        ;                                                                           ; "0"               ; "00"       ; "Africa/Libreville"
 242          ; "CG"        ;                                                                           ;                   ; "00"       ; "Africa/Brazzaville"
 243          ; "CD"        ;                                                                           ; "0"               ; "00"
 244          ; "AO"        ;                                                                           ;                   ; "00"       ; "Africa/Luanda"

@@ -949,7 +949,7 @@
 1475|America/New_York
 1478|America/New_York
 1479|America/Chicago
-1480|America/Denver&America/Phoenix
+1480|America/Phoenix
 1484|America/New_York
 1501|America/Chicago
 1502|America/New_York
@@ -969,7 +969,7 @@
 1517|America/New_York
 1518|America/New_York
 1519|America/Toronto
-1520|America/Denver&America/Phoenix
+1520|America/Phoenix
 1530|America/Los_Angeles
 1531|America/Chicago
 1534|America/Chicago

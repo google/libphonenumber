@@ -1,4 +1,4 @@
 Id                          ; National       ; International ; Comment
-new_8_digit_2/2/2/2         ; "0XX XX XX XX" ; "XX XX XX XX" ; "Even in new way of dialling, 0 is mandatory when dialling domestically."
-old_non_zero_prefix_1/2/2/2 ; "0X XX XX XX"  ; "X XX XX XX"  ; "If no leading zero was supplied, format with the national prefix."
+new_8_digit_2/2/2/2         ; "#XX XX XX XX" ; "XX XX XX XX" ; "Even in new way of dialling, 0 is mandatory when dialling domestically."
+old_non_zero_prefix_1/2/2/2 ; "#X XX XX XX"  ; "X XX XX XX"  ; "If no leading zero was supplied, format with the national prefix."
 old_zero_prefix_2/2/2/2     ; "XX XX XX XX"  ; "XX XX XX XX" ; "This already has a leading zero so we format is ""as is""."

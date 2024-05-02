@@ -80,8 +80,8 @@ Prefix   ; Length ; Type       ; Tariff        ; Operator          ; Format     
 70[0-4]  ; 7      ; MOBILE     ; STANDARD_RATE ; "digicel_guyana"  ; "fmt1_3/4" ; "GY"    ;                                                 ; ITU
 70[5-9]  ; 7      ; MOBILE     ; STANDARD_RATE ; "gtt"             ; "fmt1_3/4" ; "GY"    ;                                                 ; IR21
 71       ; 7      ; MOBILE     ; STANDARD_RATE ; "enet"            ; "fmt1_3/4" ; "GY"    ;                                                 ; ITU
-721      ; 7      ; MOBILE     ; STANDARD_RATE ; "gtt"             ; "fmt1_3/4" ; "GY"    ;                                                 ; ITU
-722      ; 7      ; MOBILE     ; STANDARD_RATE ; "digicel_guyana"  ; "fmt1_3/4" ; "GY"    ;                                                 ; IR21
+7[23]0   ; 7      ; MOBILE     ; STANDARD_RATE ; "enet"            ; "fmt1_3/4" ; "GY"    ;                                                 ; ITU
+72[12]   ; 7      ; MOBILE     ; STANDARD_RATE ; "digicel_guyana"  ; "fmt1_3/4" ; "GY"    ;                                                 ; IR21
 72[56]   ; 7      ; MOBILE     ; STANDARD_RATE ; "gtt"             ; "fmt1_3/4" ; "GY"    ;                                                 ; IR21
 73[12]   ; 7      ; MOBILE     ; STANDARD_RATE ; "enet"            ; "fmt1_3/4" ; "GY"    ;                                                 ; IR21
 749      ; 7      ; MOBILE     ; STANDARD_RATE ; "gtt"             ; "fmt1_3/4" ; "GY"    ;                                                 ; IR21
