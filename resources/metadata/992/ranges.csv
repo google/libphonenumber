@@ -92,7 +92,7 @@ Prefix      ; Length ; Type       ; Tariff        ; Area Code Length ; Operator 
 50          ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "tcell"      ; "fmt_2/3/4"   ; "TJ"    ;                     ; IR21
 55          ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "megafon"    ; "fmt_2/3/4"   ; "TJ"
 7[07]       ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "tcell"      ; "fmt_2/3/4"   ; "TJ"    ;                     ; IR21
-71          ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "babilon_m"  ; "fmt_2/3/4"   ; "TJ"    ;                     ; IR21
+7[15]       ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "babilon_m"  ; "fmt_2/3/4"   ; "TJ"    ;                     ; IR21
 78          ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "megafon"    ; "fmt_2/3/4"   ; "TJ"    ;                     ; IR21
 80          ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "zet_mobile" ; "fmt_2/3/4"   ; "TJ"    ;                     ; IR21
 81[1-9]     ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "zet_mobile" ; "fmt_2/3/4"   ; "TJ"    ;                     ; IR21
