@@ -28,6 +28,7 @@ Prefix     ; Length ; Type       ; Tariff        ; Operator     ; Format        
 65[14]     ; 7      ; FIXED_LINE ; STANDARD_RATE ;              ; "fixed_3/4"       ; "BW"    ; "Kgalagadi"          ; ITU
 659        ; 7      ; FIXED_LINE ; STANDARD_RATE ;              ; "fixed_3/4"       ; "BW"    ; "Gantsi"             ; ITU
 68[067]    ; 7      ; FIXED_LINE ; STANDARD_RATE ;              ; "fixed_3/4"       ; "BW"    ; "Maun"               ; ITU
+68[134]    ; 7      ; FIXED_LINE ; STANDARD_RATE ;              ; "fixed_3/4"       ; "BW"    ; "Maun"               ;            ; "User report"
 71         ; 8      ; MOBILE     ; STANDARD_RATE ; "mascom"     ; "fmt_2/3/3"       ; "BW"    ;                      ; ITU
 72         ; 8      ; MOBILE     ; STANDARD_RATE ; "orange"     ; "fmt_2/3/3"       ; "BW"    ;                      ; ITU
 73         ; 8      ; MOBILE     ; STANDARD_RATE ; "btc_mobile" ; "fmt_2/3/3"       ; "BW"    ;                      ; IR21
@@ -46,7 +47,8 @@ Prefix     ; Length ; Type       ; Tariff        ; Operator     ; Format        
 78         ; 8      ; MOBILE     ; STANDARD_RATE ; "orange"     ; "fmt_2/3/3"       ; "BW"    ;                      ; GOVERNMENT
 791[01]    ; 8      ; VOIP       ; STANDARD_RATE ;              ; "fmt_2/3/3"       ; "BW"    ;                      ; ITU
 7912[0-7]  ; 8      ; VOIP       ; STANDARD_RATE ;              ; "fmt_2/3/3"       ; "BW"    ;                      ; ITU
-79128      ; 8      ; VOIP       ; STANDARD_RATE ;              ; "fmt_2/3/3"       ; "BW"    ;                      ; GOVERNMENT
+7912[89]   ; 8      ; VOIP       ; STANDARD_RATE ;              ; "fmt_2/3/3"       ; "BW"    ;                      ; GOVERNMENT
+7913[0-3]  ; 8      ; VOIP       ; STANDARD_RATE ;              ; "fmt_2/3/3"       ; "BW"    ;                      ; GOVERNMENT
 792[0-4]   ; 8      ; VOIP       ; STANDARD_RATE ;              ; "fmt_2/3/3"       ; "BW"    ;                      ; ITU
 792[5-7]   ; 8      ; VOIP       ; STANDARD_RATE ;              ; "fmt_2/3/3"       ; "BW"    ;                      ; IR21
 800        ; 10     ; FIXED_LINE ; TOLL_FREE     ;              ; "toll_free_3/4/3" ; "BW"    ;                      ;            ; "User report"

@@ -9,6 +9,7 @@ Prefix     ; Length ; Type                 ; Tariff        ; Operator   ; Format
 4[013568]  ; 7      ; FIXED_LINE           ; STANDARD_RATE ;            ; "fmt1_3/4" ; "MU"    ; "Central Region" ; "Región Central" ; "Région Centrale"
 42[4-7]    ; 7      ; FIXED_LINE           ; STANDARD_RATE ;            ; "fmt1_3/4" ; "MU"    ; "Central Region" ; "Región Central" ; "Région Centrale"
 428        ; 7      ; FIXED_LINE           ; STANDARD_RATE ;            ; "fmt1_3/4" ; "MU"    ; "Central Region" ; "Región Central" ; "Région Centrale" ;            ; "Added per client's request"
+471        ; 7      ; FIXED_LINE           ; STANDARD_RATE ;            ; "fmt1_3/4" ; "MU"    ; "Central Region" ; "Región Central" ; "Région Centrale" ;            ; "User report"
 525        ; 8      ; MOBILE               ; STANDARD_RATE ; "cellplus" ; "fmt2_4/4" ; "MU"    ;                  ;                  ;                   ; GOVERNMENT
 526        ; 8      ; MOBILE               ; STANDARD_RATE ; "cellplus" ; "fmt2_4/4" ; "MU"    ;                  ;                  ;                   ; ITU
 527        ; 8      ; MOBILE               ; STANDARD_RATE ; "mtml"     ; "fmt2_4/4" ; "MU"    ;                  ;                  ;                   ; ITU

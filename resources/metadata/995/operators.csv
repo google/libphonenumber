@@ -1,9 +1,10 @@
 Id               ; Name:en
 asanet           ; "Asanet"
 cellfie          ; "Cellfie"
-datacom          ; "Datacom"
 datahouse_global ; "DataHouse Global"
 globalcell       ; "Globalcell"
+icell            ; "Icell Telecom"
 magticom         ; "MagtiCom"
 pni              ; "Premium Net International SRL"
 silknet          ; "Silknet"
+unicell          ; "Unicell Mobile"
