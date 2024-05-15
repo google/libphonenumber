@@ -76,12 +76,8 @@
 61457|Telstra
 61458|Telstra
 61459|Telstra
-61460|Telstra
-61461|Telstra
-61462|Telstra
-61463|Telstra
+6146|Telstra
 61466|Optus
-61467|Telstra
 61468|Optus
 61469|Lycamobile
 614700|Lycamobile
@@ -91,7 +87,7 @@
 614704|Lycamobile
 614705|Lycamobile
 614706|Lycamobile
-614707|Lycamobile
+614707|Telstra
 61472|Telstra
 61473|Telstra
 61474|Telstra
