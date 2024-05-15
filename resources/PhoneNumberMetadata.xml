@@ -2537,17 +2537,14 @@
         <exampleNumber>412345678</exampleNumber>
         <nationalNumberPattern>
           4(?:
-            (?:
-              79|
-              94
-            )[01]|
-            83[0-389]
+            79[01]|
+            83[0-389]|
+            94[0-4]
           )\d{5}|
           4(?:
-            [0-3]\d|
+            [0-36]\d|
             4[047-9]|
             5[0-25-9]|
-            6[0-36-9]|
             7[02-8]|
             8[0-24-9]|
             9[0-37-9]
@@ -3467,9 +3464,9 @@
           )\d{4}|
           (?:
             2(?:
-              222|
-              [45]\d
-            )\d|
+              2\d|
+              [45]
+            )\d\d|
             3(?:
               1(?:
                 2[5-7]|
@@ -5609,17 +5606,14 @@
         <exampleNumber>412345678</exampleNumber>
         <nationalNumberPattern>
           4(?:
-            (?:
-              79|
-              94
-            )[01]|
-            83[0-389]
+            79[01]|
+            83[0-389]|
+            94[0-4]
           )\d{5}|
           4(?:
-            [0-3]\d|
+            [0-36]\d|
             4[047-9]|
             5[0-25-9]|
-            6[0-36-9]|
             7[02-8]|
             8[0-24-9]|
             9[0-37-9]
@@ -7879,17 +7873,14 @@
         <exampleNumber>412345678</exampleNumber>
         <nationalNumberPattern>
           4(?:
-            (?:
-              79|
-              94
-            )[01]|
-            83[0-389]
+            79[01]|
+            83[0-389]|
+            94[0-4]
           )\d{5}|
           4(?:
-            [0-3]\d|
+            [0-36]\d|
             4[047-9]|
             5[0-25-9]|
-            6[0-36-9]|
             7[02-8]|
             8[0-24-9]|
             9[0-37-9]
@@ -10348,12 +10339,12 @@
          as this breaks parsing (it treats all leading zeros as national prefixes. -->
     <!-- http://www.itu.int/oth/T020200004E/en -->
     <!-- http://www.arcep.ga -->
-    <territory id="GA" countryCode="241" internationalPrefix="00" nationalPrefix="0"
+    <territory id="GA" countryCode="241" internationalPrefix="00"
                nationalPrefixForParsing="0(11\d{6}|60\d{6}|61\d{6}|6[256]\d{6}|7[467]\d{6})"
                nationalPrefixTransformRule="$1">
       <availableFormats>
         <!-- If no leading zero was supplied, format with the national prefix. -->
-        <numberFormat pattern="(\d)(\d{2})(\d{2})(\d{2})" nationalPrefixFormattingRule="$NP$FG">
+        <numberFormat pattern="(\d)(\d{2})(\d{2})(\d{2})" nationalPrefixFormattingRule="0$FG">
           <leadingDigits>[2-7]</leadingDigits>
           <format>$1 $2 $3 $4</format>
         </numberFormat>
@@ -10363,8 +10354,11 @@
           <format>$1 $2 $3 $4</format>
         </numberFormat>
         <!-- Even in new way of dialling, 0 is mandatory when dialling domestically. -->
-        <numberFormat pattern="(\d{2})(\d{2})(\d{2})(\d{2})" nationalPrefixFormattingRule="$NP$FG">
-          <leadingDigits>[167]</leadingDigits>
+        <numberFormat pattern="(\d{2})(\d{2})(\d{2})(\d{2})" nationalPrefixFormattingRule="0$FG">
+          <leadingDigits>
+            11|
+            [67]
+          </leadingDigits>
           <format>$1 $2 $3 $4</format>
         </numberFormat>
       </availableFormats>
@@ -12425,10 +12419,9 @@
             510|
             6\d\d|
             7(?:
-              [01]\d|
-              2[0-256]|
-              3[0-2]|
-              49
+              [013]\d|
+              2[0-25-8]|
+              4[0-29]
             )
           )\d{4}
         </nationalNumberPattern>
@@ -22141,7 +22134,7 @@
           <leadingDigits>
             [089]|
             2[013]|
-            7[047]
+            7[0467]
           </leadingDigits>
           <format>$1 $2 $3 $4</format>
         </numberFormat>
@@ -22182,7 +22175,7 @@
         <nationalNumberPattern>
           (?:
             23|
-            7[047]|
+            7[0467]|
             [89]\d
           )\d{6}
         </nationalNumberPattern>
@@ -25017,7 +25010,7 @@
             399[0-3]|
             479[0-5]|
             76(?:
-              2[27]|
+              2[278]|
               3[0-37]
             )
           )\d{4}
@@ -25094,7 +25087,10 @@
         <possibleLengths national="9"/>
         <exampleNumber>712034567</exampleNumber>
         <nationalNumberPattern>
-          7020\d{5}|
+          (?:
+            630|
+            702
+          )0\d{5}|
           (?:
             6(?:
               [04]0|
@@ -29419,10 +29415,11 @@
     <!-- No tollFree or premiumRate information can be found. -->
     <!-- http://www.ttts.uz/eng/telephone_codes/codes_uzb_eng -->
     <!-- http://www.itu.int/oth/T02020000E1/en -->
-    <territory id="UZ" countryCode="998" preferredInternationalPrefix="8~10"
-               internationalPrefix="810" nationalPrefix="8">
+    <!-- The Trunk / National Prefix '0' or '8' is no longer used.  -->
+    <!-- The International Prefix / IDD is changed to '00' from '8~10' -->
+    <territory id="UZ" countryCode="998" internationalPrefix="00">
       <availableFormats>
-        <numberFormat pattern="(\d{2})(\d{3})(\d{2})(\d{2})" nationalPrefixFormattingRule="$NP $FG">
+        <numberFormat pattern="(\d{2})(\d{3})(\d{2})(\d{2})">
           <leadingDigits>[235-9]</leadingDigits>
           <format>$1 $2 $3 $4</format>
         </numberFormat>

@@ -1,3 +1,11 @@
+May 15, 2024: v8.13.37
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   AU, BD, CC, CX, GA, GY, NE, RE, RO, UZ
+ - Updated geocoding data for country calling code(s): 49 (en)
+ - Updated carrier data for country calling code(s):
+   40 (en), 44 (en), 61 (en), 592 (en)
+
 May 02, 2024: v8.13.36
 Metadata changes:
  - Updated phone metadata for region code(s):
