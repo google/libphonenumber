@@ -120,6 +120,13 @@
 447340|Vodafone
 447341|Vodafone
 447342|Vodafone
+447343|Lebara
+447349|Vodafone
+447350|Vodafone
+447351|Vodafone
+447352|Vodafone
+447353|Vodafone
+4473566|Wireless Logic
 447360|Three
 447361|Three
 447362|Three
@@ -135,7 +142,9 @@
 4473685|Sky
 4473686|Sky
 4473690|Telet Research
+4473691|Telet Research
 4473692|Sky
+4473697|Wave Mobile
 4473699|Anywhere Sim
 447375|EE
 447376|EE
@@ -198,6 +207,7 @@
 4474080|Truphone
 4474081|Truphone
 4474082|Truphone
+4474086|Truphone
 4474088|Truphone
 4474089|Truphone
 447409|Orange

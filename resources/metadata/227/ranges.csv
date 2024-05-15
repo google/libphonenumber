@@ -1,4 +1,4 @@
-Prefix     ; Length ; Type       ; Tariff        ; Operator ; Format            ; Regions ; Geocode:en  ; Provenance
+Prefix     ; Length ; Type       ; Tariff        ; Operator ; Format            ; Regions ; Geocode:en  ; Provenance ; Comment
 08         ; 8      ; FIXED_LINE ; TOLL_FREE     ;          ; "toll_free_2/3/3" ; "NE"    ;             ; ITU
 09         ; 8      ; FIXED_LINE ; PREMIUM_RATE  ;          ; "fmt1_2/2/2/2"    ; "NE"    ;             ; ITU
 2020       ; 8      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt1_2/2/2/2"    ; "NE"    ; "Niamey"    ; ITU
@@ -26,6 +26,7 @@ Prefix     ; Length ; Type       ; Tariff        ; Operator ; Format            
 23         ; 8      ; MOBILE     ; STANDARD_RATE ; "orange" ; "fmt1_2/2/2/2"    ; "NE"    ;             ; IR21
 70         ; 8      ; MOBILE     ; STANDARD_RATE ; "orange" ; "fmt1_2/2/2/2"    ; "NE"    ;             ; ITU
 74         ; 8      ; MOBILE     ; STANDARD_RATE ; "moov"   ; "fmt1_2/2/2/2"    ; "NE"    ;             ; ITU
+76         ; 8      ; MOBILE     ; STANDARD_RATE ;          ; "fmt1_2/2/2/2"    ; "NE"    ;             ;            ; "User report"
 77         ; 8      ; MOBILE     ; STANDARD_RATE ; "airtel" ; "fmt1_2/2/2/2"    ; "NE"
 8[01]      ; 8      ; MOBILE     ; STANDARD_RATE ; "orange" ; "fmt1_2/2/2/2"    ; "NE"    ;             ; IR21
 82         ; 8      ; MOBILE     ; STANDARD_RATE ; "orange" ; "fmt1_2/2/2/2"    ; "NE"    ;             ; ITU

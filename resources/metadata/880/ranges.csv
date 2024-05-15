@@ -5,7 +5,7 @@ Prefix        ; Length ; Type                 ; Tariff        ; Operator       ;
 15            ; 10     ; MOBILE               ; STANDARD_RATE ; "teletalk"     ; "fmt_4/3-6"       ; "BD"    ;                                                                                                   ; ITU
 16            ; 10     ; MOBILE               ; STANDARD_RATE ; "airtel"       ; "fmt_4/3-6"       ; "BD"    ;                                                                                                   ; ITU
 18            ; 10     ; MOBILE               ; STANDARD_RATE ; "robi"         ; "fmt_4/3-6"       ; "BD"    ;                                                                                                   ; ITU
-2222          ; 10     ; FIXED_LINE           ; STANDARD_RATE ;                ; "fmt_4/3-6"       ; "BD"    ;                                                                                                   ;            ; "User report"
+22            ; 10     ; FIXED_LINE           ; STANDARD_RATE ;                ; "fmt_4/3-6"       ; "BD"
 2[45]         ; 9      ; FIXED_LINE           ; STANDARD_RATE ;                ; "fixedline_1/7-8" ; "BD"    ; "Dhaka"                                                                                           ; ITU
 271[0-267]    ; 8      ; FIXED_LINE           ; STANDARD_RATE ;                ; "fixedline_1/7-8" ; "BD"    ; "Dhaka"                                                                                           ; ITU
 272[0-289]    ; 8      ; FIXED_LINE           ; STANDARD_RATE ;                ; "fixedline_1/7-8" ; "BD"    ; "Dhaka"                                                                                           ; ITU
