@@ -26,7 +26,7 @@
 407019|Lycamobile
 40702|Lycamobile
 40705|Iristel
-40711|Telekom
+40711|Orange
 40712|Orange
 40713|Orange
 4072|Vodafone
@@ -42,5 +42,11 @@
 40775|Digi Mobil
 40776|Digi Mobil
 40777|Digi Mobil
-4078|Telekom
+40780|Telekom
+40783|Orange
+40784|Telekom
+40785|Telekom
+40786|Telekom
+40787|Orange
+40788|Telekom
 4079|Vodafone
