@@ -53,3 +53,4 @@ Prefix              ; Length ; Type       ; Tariff        ; Operator   ; Format 
 9[19]               ; 9      ; MOBILE     ; STANDARD_RATE ; "movicel"  ; "fmt_3/3/3" ; "AO"    ;                  ;                  ; IR21       ; "IR21 dated 3/27/2018"
 9[2-4]              ; 9      ; MOBILE     ; STANDARD_RATE ; "unitel"   ; "fmt_3/3/3" ; "AO"    ;                  ;                  ; IR21       ; "IR21 dated 10/8/2018"
 95                  ; 9      ; MOBILE     ; STANDARD_RATE ; "africell" ; "fmt_3/3/3" ; "AO"    ;                  ;                  ; IR21
+97                  ; 9      ; MOBILE     ; STANDARD_RATE ; "unitel"   ; "fmt_3/3/3" ; "AO"    ;                  ;                  ; IR21

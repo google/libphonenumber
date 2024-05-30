@@ -1,6 +1,7 @@
 Prefix            ; Length ; Type            ; Tariff        ; Area Code Length ; Operator                   ; Format         ; Timezone                                           ; Regions       ; Geocode:en                                  ; Provenance ; Comment
 113[0-58]         ; 10     ; FIXED_LINE      ; STANDARD_RATE ; 3                ;                            ; "fixed_3/3/4"  ; "Europe/London"                                    ; "GB"          ; "Leeds"
 11373[03]         ; 10     ; FIXED_LINE      ; STANDARD_RATE ; 3                ;                            ; "fixed_3/3/4"  ; "Europe/London"                                    ; "GB"          ; "Leeds"                                     ;            ; "Added based on client T#04555438"
+113731            ; 10     ; FIXED_LINE      ; STANDARD_RATE ; 3                ;                            ; "fixed_3/3/4"  ; "Europe/London"                                    ; "GB"          ; "Leeds"                                     ; GOVERNMENT
 11373[25]         ; 10     ; FIXED_LINE      ; STANDARD_RATE ; 3                ;                            ; "fixed_3/3/4"  ; "Europe/London"                                    ; "GB"          ; "Leeds"
 114[0-5]          ; 10     ; FIXED_LINE      ; STANDARD_RATE ; 3                ;                            ; "fixed_3/3/4"  ; "Europe/London"                                    ; "GB"          ; "Sheffield"
 11469[7-9]        ; 10     ; FIXED_LINE      ; STANDARD_RATE ; 3                ;                            ; "fixed_3/3/4"  ; "Europe/London"                                    ; "GB"          ; "Sheffield"
@@ -25,7 +26,7 @@ Prefix            ; Length ; Type            ; Tariff        ; Area Code Length 
 121[0-7]          ; 10     ; FIXED_LINE      ; STANDARD_RATE ; 3                ;                            ; "fixed_3/3/4"  ; "Europe/London"                                    ; "GB"          ; "Birmingham"
 12180[04589]      ; 10     ; FIXED_LINE      ; STANDARD_RATE ; 3                ;                            ; "fixed_3/3/4"  ; "Europe/London"                                    ; "GB"          ; "Birmingham"
 12180[1-367]      ; 10     ; FIXED_LINE      ; STANDARD_RATE ; 3                ;                            ; "fixed_3/3/4"  ; "Europe/London"                                    ; "GB"          ; "Birmingham"                                ;            ; "Added based on client T#04555438"
-12181             ; 10     ; FIXED_LINE      ; STANDARD_RATE ; 3                ;                            ; "fixed_3/3/4"  ; "Europe/London"                                    ; "GB"          ; "Birmingham"                                ; GOVERNMENT
+1218[13]          ; 10     ; FIXED_LINE      ; STANDARD_RATE ; 3                ;                            ; "fixed_3/3/4"  ; "Europe/London"                                    ; "GB"          ; "Birmingham"                                ; GOVERNMENT
 12182             ; 10     ; FIXED_LINE      ; STANDARD_RATE ; 3                ;                            ; "fixed_3/3/4"  ; "Europe/London"                                    ; "GB"          ; "Birmingham"
 1223              ; 10     ; FIXED_LINE      ; STANDARD_RATE ; 4                ;                            ; "fixed_4/5-6"  ; "Europe/London"                                    ; "GB"          ; "Cambridge"
 1224              ; 10     ; FIXED_LINE      ; STANDARD_RATE ; 4                ;                            ; "fixed_4/5-6"  ; "Europe/London"                                    ; "GB"          ; "Aberdeen"
@@ -883,7 +884,7 @@ Prefix            ; Length ; Type            ; Tariff        ; Area Code Length 
 7406[0-2]         ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "cheers"                   ; "mobile_4/6"   ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB"
 7406[34]          ; 10     ; MOBILE          ; STANDARD_RATE ;                  ;                            ; "mobile_4/6"   ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB"
 74065             ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "telecom2"                 ; "mobile_4/6"   ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB"
-74066             ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "24_seven"                 ; "mobile_4/6"   ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB"
+74066             ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "sure"                     ; "mobile_4/6"   ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB"          ;                                             ; IR21
 74067             ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "tgl"                      ; "mobile_4/6"   ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB"
 74068             ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "08direct"                 ; "mobile_4/6"   ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB"
 74069             ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "cardboardfish"            ; "mobile_4/6"   ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB"
@@ -1039,7 +1040,9 @@ Prefix            ; Length ; Type            ; Tariff        ; Area Code Length 
 7589[4-7]         ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "vectone_mobile"           ; "mobile_4/6"   ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB"
 75898             ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "test2date"                ; "mobile_4/6"   ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB"
 75899             ; 10     ; MOBILE          ; STANDARD_RATE ;                  ;                            ; "mobile_4/6"   ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB"
-760[0-2]          ; 10     ; PAGER           ; STANDARD_RATE ;                  ;                            ; "fixed_2/4/4"  ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB,GG,JE"
+7600[0-57-9]      ; 10     ; PAGER           ; STANDARD_RATE ;                  ;                            ; "fixed_2/4/4"  ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB,GG,JE"
+76006             ; 10     ; PAGER           ; STANDARD_RATE ;                  ;                            ; "fixed_2/4/4"  ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB,GG,JE"    ;                                             ; IR21
+760[12]           ; 10     ; PAGER           ; STANDARD_RATE ;                  ;                            ; "fixed_2/4/4"  ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB,GG,JE"
 7608              ; 10     ; PAGER           ; STANDARD_RATE ;                  ;                            ; "fixed_2/4/4"  ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB,GG,JE"    ;                                             ; GOVERNMENT
 762[356]          ; 10     ; PAGER           ; STANDARD_RATE ;                  ;                            ; "fixed_2/4/4"  ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB,GG,JE"
 7624[0134689]     ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "manx_telecom"             ; "mobile_4/6"   ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "IM"
@@ -1051,9 +1054,14 @@ Prefix            ; Length ; Type            ; Tariff        ; Area Code Length 
 76464             ; 10     ; PAGER           ; STANDARD_RATE ;                  ;                            ; "fixed_2/4/4"  ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB,GG,JE"    ;                                             ; INTERNAL   ; "Added based on client T#04482197"
 7647              ; 10     ; PAGER           ; STANDARD_RATE ;                  ;                            ; "fixed_2/4/4"  ;                                                    ; "GB,GG,JE"
 765[49]           ; 10     ; PAGER           ; STANDARD_RATE ;                  ;                            ; "fixed_2/4/4"  ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB,GG,JE"
-766[0-369]        ; 10     ; PAGER           ; STANDARD_RATE ;                  ;                            ; "fixed_2/4/4"  ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB,GG,JE"
+7660[0-57-9]      ; 10     ; PAGER           ; STANDARD_RATE ;                  ;                            ; "fixed_2/4/4"  ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB,GG,JE"
+76606             ; 10     ; PAGER           ; STANDARD_RATE ;                  ;                            ; "fixed_2/4/4"  ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB,GG,JE"    ;                                             ; IR21
+766[1-39]         ; 10     ; PAGER           ; STANDARD_RATE ;                  ;                            ; "fixed_2/4/4"  ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB,GG,JE"
 76652             ; 10     ; PAGER           ; STANDARD_RATE ;                  ;                            ; "fixed_2/4/4"  ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB,GG,JE"    ;                                             ; INTERNAL   ; "Added based on client T#04482197"
-7677              ; 10     ; PAGER           ; STANDARD_RATE ;                  ;                            ; "fixed_2/4/4"  ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB,GG,JE"
+76660             ; 10     ; PAGER           ; STANDARD_RATE ;                  ;                            ; "fixed_2/4/4"  ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB,GG,JE"    ;                                             ; IR21
+7666[1-9]         ; 10     ; PAGER           ; STANDARD_RATE ;                  ;                            ; "fixed_2/4/4"  ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB,GG,JE"
+76770             ; 10     ; PAGER           ; STANDARD_RATE ;                  ;                            ; "fixed_2/4/4"  ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB,GG,JE"    ;                                             ; IR21
+7677[1-9]         ; 10     ; PAGER           ; STANDARD_RATE ;                  ;                            ; "fixed_2/4/4"  ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB,GG,JE"
 7681              ; 10     ; PAGER           ; STANDARD_RATE ;                  ;                            ; "fixed_2/4/4"  ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB,GG,JE"
 7684              ; 10     ; PAGER           ; STANDARD_RATE ;                  ;                            ; "fixed_2/4/4"  ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB,GG,JE"    ;                                             ; GOVERNMENT
 7691              ; 10     ; PAGER           ; STANDARD_RATE ;                  ;                            ; "fixed_2/4/4"  ;                                                    ; "GB,GG,JE"
@@ -1156,7 +1164,7 @@ Prefix            ; Length ; Type            ; Tariff        ; Area Code Length 
 7892[346-9]       ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "o2"                       ; "mobile_4/6"   ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB"
 78925             ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "flextel"                  ; "mobile_4/6"   ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB"
 78930             ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "magrathea"                ; "mobile_4/6"   ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB"
-78931             ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "24_seven"                 ; "mobile_4/6"   ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB"
+78931             ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "sure"                     ; "mobile_4/6"   ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB"          ;                                             ; IR21
 7893[24-7]        ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "o2"                       ; "mobile_4/6"   ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB"
 78933             ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "yim_siam"                 ; "mobile_4/6"   ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB"
 78938             ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "aql"                      ; "mobile_4/6"   ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB"
@@ -1169,7 +1177,7 @@ Prefix            ; Length ; Type            ; Tariff        ; Area Code Length 
 791[034]          ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "ee"                       ; "mobile_4/6"   ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB"
 79110             ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "marathon_telecom"         ; "mobile_4/6"   ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB"
 7911[17]          ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "jt"                       ; "mobile_4/6"   ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GG"
-7911[28]          ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "24_seven"                 ; "mobile_4/6"   ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB"
+7911[28]          ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "sure"                     ; "mobile_4/6"   ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB"          ;                                             ; IR21
 7912              ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "o2"                       ; "mobile_4/6"   ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB"
 791[56]           ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "three"                    ; "mobile_4/6"   ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB"
 791[7-9]          ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "vodafone"                 ; "mobile_4/6"   ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB"

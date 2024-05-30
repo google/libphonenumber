@@ -796,7 +796,7 @@
       <mobile>
         <possibleLengths national="9"/>
         <exampleNumber>923123456</exampleNumber>
-        <nationalNumberPattern>9[1-59]\d{7}</nationalNumberPattern>
+        <nationalNumberPattern>9[1-579]\d{7}</nationalNumberPattern>
       </mobile>
     </territory>
 
@@ -10560,7 +10560,7 @@
               1(?:
                 3(?:
                   [0-58]\d\d|
-                  73[0235]
+                  73[0-35]
                 )|
                 4(?:
                   (?:
@@ -10594,7 +10594,7 @@
                   )\d|
                   1(?:
                     [0-7]\d|
-                    8[0-2]
+                    8[0-3]
                   )
                 )|
                 (?:
@@ -12421,7 +12421,8 @@
             7(?:
               [013]\d|
               2[0-25-8]|
-              4[0-29]
+              4[0-29]|
+              5[1-9]
             )
           )\d{4}
         </nationalNumberPattern>
@@ -12511,7 +12512,7 @@
               8(?:
                 4[0-8]|
                 [59]\d|
-                6[01]
+                6[0-2]
               )
             )|
             58(?:
@@ -21322,13 +21323,10 @@
     <!-- http://en.wikipedia.org/wiki/%2B52 -->
     <!-- http://en.wikipedia.org/wiki/Premium-rate_telephone_number#Mexico -->
     <!-- http://en.wikipedia.org/wiki/Toll-free_telephone_number -->
-    <!-- When a number starts with 01 or 02, we remove the prefixes; when a number starts with 044
-         or 045 followed by 10 digits, we replace the prefixes with 1. This way all the mobile
-         numbers, regardless of whether they are written in international format (leading 1) or
-         national format (leading 044/045), will be parsed into the same form. -->
+    <!-- Dialling tokens 01, 02, 044, 045 and 1 are removed as they are no longer valid since
+         August 2019. -->
     <territory id="MX" countryCode="52" preferredInternationalPrefix="00"
-               internationalPrefix="0[09]" nationalPrefix="01"
-               nationalPrefixForParsing="0(?:[12]|4[45])|1" mobileNumberPortableRegion="true">
+               internationalPrefix="0[09]" mobileNumberPortableRegion="true">
       <availableFormats>
         <!-- 5-digit shortcodes (very rare). -->
         <numberFormat pattern="(\d{5})">
@@ -21336,8 +21334,8 @@
           <format>$1</format>
           <intlFormat>NA</intlFormat>
         </numberFormat>
-        <!-- Fixed line (2-digit area codes). -->
-        <numberFormat pattern="(\d{2})(\d{4})(\d{4})" nationalPrefixOptionalWhenFormatting="true">
+        <!-- Fixed line (2-digit area codes) and Mobile. -->
+        <numberFormat pattern="(\d{2})(\d{4})(\d{4})">
           <leadingDigits>
             33|
             5[56]|
@@ -21345,56 +21343,14 @@
           </leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
-        <!-- Fixed line (3-digit area codes) and other non-mobile numbers. -->
-        <numberFormat pattern="(\d{3})(\d{3})(\d{4})" nationalPrefixOptionalWhenFormatting="true">
+        <!-- Fixed line (3-digit area codes), Mobile and all other non geographic numbers. -->
+        <numberFormat pattern="(\d{3})(\d{3})(\d{4})">
           <leadingDigits>[2-9]</leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
-        <!-- Mobile version of fixed line 2-digit area codes and removing former mobile token 1. -->
-        <numberFormat pattern="(\d)(\d{2})(\d{4})(\d{4})"
-                      nationalPrefixOptionalWhenFormatting="true">
-          <leadingDigits>
-            1(?:
-              33|
-              5[56]|
-              81
-            )
-          </leadingDigits>
-          <format>$2 $3 $4</format>
-        </numberFormat>
-        <!-- Mobile version of fixed line 3-digit area codes and removing former mobile token 1. -->
-        <numberFormat pattern="(\d)(\d{3})(\d{3})(\d{4})"
-                      nationalPrefixOptionalWhenFormatting="true">
-          <leadingDigits>1</leadingDigits>
-          <format>$2 $3 $4</format>
-        </numberFormat>
       </availableFormats>
       <generalDesc>
-        <nationalNumberPattern>
-          1(?:
-            (?:
-              22|
-              44|
-              7[27]|
-              87|
-              9[69]
-            )[1-9]|
-            65[0-689]
-          )\d{7}|
-          (?:
-            1(?:
-              [01]\d|
-              2[13-9]|
-              [35][1-9]|
-              4[0-35-9]|
-              6[0-46-9]|
-              7[013-689]|
-              8[1-69]|
-              9[1-578]
-            )|
-            [2-9]\d
-          )\d{8}
-        </nationalNumberPattern>
+        <nationalNumberPattern>[2-9]\d{9}</nationalNumberPattern>
       </generalDesc>
       <!-- http://en.wikipedia.org/wiki/Area_codes_in_Mexico_by_code -->
       <!-- Also covering fixed satellite service numbers (prefixes: 200 and 201). -->
@@ -21473,73 +21429,11 @@
       <!-- Fixed satellite service numbers are not included here, although many other prefixes from
            the fixedLine pattern are. -->
       <mobile>
-        <possibleLengths national="10,11" localOnly="7,8"/>
-        <exampleNumber>12221234567</exampleNumber>
+        <possibleLengths national="10" localOnly="7,8"/>
+        <exampleNumber>2221234567</exampleNumber>
         <nationalNumberPattern>
           657[12]\d{6}|
           (?:
-            1(?:
-              2(?:
-                2[1-9]|
-                3[1-35-8]|
-                4[13-9]|
-                7[1-689]|
-                8[1-578]|
-                9[467]
-              )|
-              3(?:
-                1[1-79]|
-                [2458][1-9]|
-                3\d|
-                7[1-8]|
-                9[1-5]
-              )|
-              4(?:
-                1[1-57-9]|
-                [24-7][1-9]|
-                3[1-8]|
-                8[1-35-9]|
-                9[2-689]
-              )|
-              5(?:
-                [56]\d|
-                88|
-                9[1-79]
-              )|
-              6(?:
-                1[2-68]|
-                [2-4][1-9]|
-                5[1-3689]|
-                6[1-57-9]|
-                7[1-7]|
-                8[67]|
-                9[4-8]
-              )|
-              7(?:
-                [1-467][1-9]|
-                5[13-9]|
-                8[1-69]|
-                9[17]
-              )|
-              8(?:
-                1\d|
-                2[13-689]|
-                3[1-6]|
-                4[124-6]|
-                6[1246-9]|
-                7[1-378]|
-                9[12479]
-              )|
-              9(?:
-                1[346-9]|
-                2[1-4]|
-                3[2-46-8]|
-                5[1348]|
-                [69][1-9]|
-                7[12]|
-                8[1-8]
-              )
-            )|
             2(?:
               2\d|
               3[1-35-8]|
