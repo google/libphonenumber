@@ -86,6 +86,7 @@ Prefix   ; Length ; Type       ; Tariff        ; Operator          ; Format     
 73       ; 7      ; MOBILE     ; STANDARD_RATE ; "enet"            ; "fmt1_3/4" ; "GY"    ;                                                 ; IR21
 74[0-2]  ; 7      ; MOBILE     ; STANDARD_RATE ; "enet"            ; "fmt1_3/4" ; "GY"    ;                                                 ; IR21
 749      ; 7      ; MOBILE     ; STANDARD_RATE ; "gtt"             ; "fmt1_3/4" ; "GY"    ;                                                 ; IR21
+75[1-9]  ; 7      ; MOBILE     ; STANDARD_RATE ; "gtt"             ; "fmt1_3/4" ; "GY"    ;                                                 ; IR21
 77[14]   ; 7      ; FIXED_LINE ; STANDARD_RATE ;                   ; "fmt1_3/4" ; "GY"
 772      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                   ; "fmt1_3/4" ; "GY"    ; "Lethem"                                        ; ITU
 773      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                   ; "fmt1_3/4" ; "GY"    ; "Aishalton"                                     ; ITU
