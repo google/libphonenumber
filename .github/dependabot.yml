@@ -9,73 +9,193 @@ updates:
     directory: /java/carrier
     schedule:
       interval: monthly
+    groups:
+      java_carrier_minor_patch_updates:
+        update-types:
+          - "minor"
+          - "patch"
+    ignore:
+      - dependency-name: "*"
+        update-types: [ "version-update:semver-major" ]
 
   - package-ecosystem: maven
     directory: /java/demo
     schedule:
       interval: monthly
+    groups:
+      java_demo_minor_patch_updates:
+        update-types:
+          - "minor"
+          - "patch"
+    ignore:
+      - dependency-name: "*"
+        update-types: [ "version-update:semver-major" ]
 
   - package-ecosystem: maven
     directory: /java/geocoder
     schedule:
       interval: monthly
+    groups:
+      java_geocoder_minor_patch_updates:
+        update-types:
+          - "minor"
+          - "patch"
+    ignore:
+      - dependency-name: "*"
+        update-types: [ "version-update:semver-major" ]
 
   - package-ecosystem: maven
     directory: /java/internal/prefixmapper
     schedule:
       interval: monthly
+    groups:
+      java_internal_prefixmapper_minor_patch_updates:
+        update-types:
+          - "minor"
+          - "patch"
+    ignore:
+      - dependency-name: "*"
+        update-types: [ "version-update:semver-major" ]
 
   - package-ecosystem: maven
     directory: /java/libphonenumber
     schedule:
       interval: monthly
+    groups:
+      java_libphonenumber_minor_patch_updates:
+        update-types:
+          - "minor"
+          - "patch"
+    ignore:
+      - dependency-name: "*"
+        update-types: [ "version-update:semver-major" ]
 
   - package-ecosystem: maven
     directory: /java
     schedule:
       interval: monthly
+    groups:
+      java_minor_patch_updates:
+        update-types:
+          - "minor"
+          - "patch"
+    ignore:
+      - dependency-name: "*"
+        update-types: [ "version-update:semver-major" ]
 
   - package-ecosystem: maven
     directory: /metadata
     schedule:
       interval: monthly
+    groups:
+      metadata_minor_patch_updates:
+        update-types:
+          - "minor"
+          - "patch"
+    ignore:
+      - dependency-name: "*"
+        update-types: [ "version-update:semver-major" ]
 
   - package-ecosystem: maven
     directory: /migrator/migrator-servlet
     schedule:
       interval: monthly
+    groups:
+      migrator_migrator_servlet_minor_patch_updates:
+        update-types:
+          - "minor"
+          - "patch"
+    ignore:
+      - dependency-name: "*"
+        update-types: [ "version-update:semver-major" ]
 
   - package-ecosystem: maven
     directory: /migrator
     schedule:
       interval: monthly
+    groups:
+      migrator_minor_patch_updates:
+        update-types:
+          - "minor"
+          - "patch"
+    ignore:
+      - dependency-name: "*"
+        update-types: [ "version-update:semver-major" ]
 
   - package-ecosystem: maven
     directory: /
     schedule:
       interval: monthly
+    groups:
+      root_minor_patch_updates:
+        update-types:
+          - "minor"
+          - "patch"
+    ignore:
+      - dependency-name: "*"
+        update-types: [ "version-update:semver-major" ]
 
   - package-ecosystem: maven
     directory: /tools/java/common
     schedule:
       interval: monthly
+    groups:
+      tools_java_common_minor_patch_updates:
+        update-types:
+          - "minor"
+          - "patch"
+    ignore:
+      - dependency-name: "*"
+        update-types: [ "version-update:semver-major" ]
 
   - package-ecosystem: maven
     directory: /tools/java/cpp-build
     schedule:
       interval: monthly
+    groups:
+      tools_java_cpp_build_minor_patch_updates:
+        update-types:
+          - "minor"
+          - "patch"
+    ignore:
+      - dependency-name: "*"
+        update-types: [ "version-update:semver-major" ]
 
   - package-ecosystem: maven
     directory: /tools/java/data
     schedule:
       interval: monthly
+    groups:
+      tools_java_data_minor_patch_updates:
+        update-types:
+          - "minor"
+          - "patch"
+    ignore:
+      - dependency-name: "*"
+        update-types: [ "version-update:semver-major" ]
 
   - package-ecosystem: maven
     directory: /tools/java/java-build
     schedule:
       interval: monthly
+    groups:
+      tools_java_java_build_minor_patch_updates:
+        update-types:
+          - "minor"
+          - "patch"
+    ignore:
+      - dependency-name: "*"
+        update-types: [ "version-update:semver-major" ]
 
   - package-ecosystem: maven
     directory: /tools/java
     schedule:
       interval: monthly
+    groups:
+      tools_java_minor_patch_updates:
+        update-types:
+          - "minor"
+          - "patch"
+    ignore:
+      - dependency-name: "*"
+        update-types: [ "version-update:semver-major" ]
