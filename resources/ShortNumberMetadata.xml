@@ -4983,7 +4983,7 @@
           )\d\d
         </nationalNumberPattern>
       </tollFree>
-      <!-- 3646 is listed as being the same as a local call on www.ameli.fr. -->
+      <!-- 3646 is listed as being the same as a local call on www.ameli.fr. as well as 3949 on https://plmpl.fr/c/ypMY5 -->
       <standardRate>
         <possibleLengths national="3,4"/>
         <exampleNumber>611</exampleNumber>
@@ -5000,7 +5000,9 @@
           (?:
             106|
             61
-          )[14]
+          )[14]|
+          3646|
+          3949
         </nationalNumberPattern>
       </standardRate>
       <!-- SMS Services [4-8]\d{4} vary in price from 0.05 euro to 4.50 euro per SMS, based on
