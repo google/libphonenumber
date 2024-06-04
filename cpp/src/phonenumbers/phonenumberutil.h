@@ -68,6 +68,10 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   friend class Singleton<PhoneNumberUtil>;
 
  public:
+  // This type is neither copyable nor movable.
+  PhoneNumberUtil(const PhoneNumberUtil&) = delete;
+  PhoneNumberUtil& operator=(const PhoneNumberUtil&) = delete;
+
   ~PhoneNumberUtil();
   static const char kRegionCodeForNonGeoEntity[];
 
@@ -970,7 +974,6 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   bool IsShorterThanPossibleNormalNumber(const PhoneMetadata* country_metadata,
                                          const string& number) const;
 
-  DISALLOW_COPY_AND_ASSIGN(PhoneNumberUtil);
 };
 
 }  // namespace phonenumbers

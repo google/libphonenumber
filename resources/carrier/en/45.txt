@@ -44,6 +44,7 @@
 45233|Nuuday
 45234|Nuuday
 45235|Nuuday
+4523541|telenor
 4523561|telenor
 45236|Nuuday
 45237|tdc
@@ -138,6 +139,12 @@
 45341|telenor
 45342|telenor
 453434|telenor
+45344|telenor
+45345|telenor
+45346|telenor
+45347|telenor
+45348|telenor
+45349|telenor
 45351|telenor
 45352|telenor
 45353|telenor
@@ -375,6 +382,8 @@
 454977|tdc
 4549780|tdc
 4549789|tdc
+45498|telenor
+45499|telenor
 45501|telenor
 45502|telenor
 45503|telenor

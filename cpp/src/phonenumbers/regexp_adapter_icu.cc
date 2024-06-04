@@ -69,6 +69,11 @@ class IcuRegExpInput : public RegExpInput {
       : utf8_input_(Utf8StringToUnicodeString(utf8_input)),
         position_(0) {}
 
+
+  // This type is neither copyable nor movable.
+  IcuRegExpInput(const IcuRegExpInput&) = delete;
+  IcuRegExpInput& operator=(const IcuRegExpInput&) = delete;
+
   virtual ~IcuRegExpInput() {}
 
   virtual string ToString() const {
@@ -95,7 +100,6 @@ class IcuRegExpInput : public RegExpInput {
   UnicodeString utf8_input_;
   int position_;
 
-  DISALLOW_COPY_AND_ASSIGN(IcuRegExpInput);
 };
 
 // ICU implementation of the RegExp abstract class.
@@ -112,6 +116,10 @@ class IcuRegExp : public RegExp {
       utf8_regexp_.reset(NULL);
     }
   }
+
+  // This type is neither copyable nor movable.
+  IcuRegExp(const IcuRegExp&) = delete;
+  IcuRegExp& operator=(const IcuRegExp&) = delete; 
 
   virtual ~IcuRegExp() {}
 
@@ -223,8 +231,6 @@ class IcuRegExp : public RegExp {
 
  private:
   scoped_ptr<RegexPattern> utf8_regexp_;
-
-  DISALLOW_COPY_AND_ASSIGN(IcuRegExp);
 };
 
 RegExpInput* ICURegExpFactory::CreateInput(const string& utf8_input) const {

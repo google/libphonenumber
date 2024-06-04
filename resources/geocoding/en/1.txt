@@ -2334,6 +2334,7 @@
 1231995|Traverse City, MI
 1234|Ohio
 1234678|Akron, OH
+1235|Missouri
 1236|British Columbia
 1239|Florida
 1239200|Naples, FL
@@ -7574,8 +7575,12 @@
 1339|Massachusetts
 1340200|Chtamstths, VI
 1340203|Chtamstths, VI
+1340204|Chtamstths, VI
+1340205|Chtamstths, VI
 1340206|St. Croix, VI
+1340207|Chtamstths, VI
 1340208|St. Croix, VI
+1340209|Chtamstths, VI
 1340423|Chtamstths, VI
 134044|Chtamstths, VI
 1340725|Chtamstths, VI
@@ -8106,6 +8111,7 @@
 1361992|Corpus Christi, TX
 1361993|Corpus Christi, TX
 1361994|Corpus Christi, TX
+1363|New York
 1364|Kentucky
 1365|Ontario
 1367|Quebec
@@ -18848,6 +18854,7 @@
 1641932|Albia, IA
 1641939|Eldora, IA
 1641985|Riceville, IA
+1645|Florida
 1646|New York
 1646237|New York, NY
 1646336|New York, NY
@@ -27961,6 +27968,7 @@
 1873|Quebec
 1876957|Negril
 1878|Pennsylvania
+1879|Newfoundland and Labrador
 1901|Tennessee
 1901213|Memphis, TN
 1901226|Memphis, TN

@@ -298,6 +298,7 @@
 52767|Guerrero
 52768|Veracruz
 52769|Morelos
+52770|Cuernavaca/Emiliano Zapata/Temixco/Xochitepec/Jiutepec
 52771|Pachuca/Real del Monte, HGO
 52772|Actopan, HGO
 52773|Hidalgo
@@ -371,6 +372,7 @@
 52938|Ciudad del Carmen, CAMP
 5295|Oaxaca
 5296|Chiapas
+52960|Tuxtla Gutierrez
 52966|Arriaga/Tonalá, CHIS
 52967|San Cristóbal de las Casas, CHIS
 52969|Flamboyanes/Yucalpeten, YUC

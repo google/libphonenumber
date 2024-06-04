@@ -162,9 +162,11 @@
 474741|telenor norge
 474742|telenor norge
 474743|telenor norge
-47475|altibox
-474750|telenor norge
-474751|telenor norge
+47475|telenor norge
+474756|altibox
+474757|altibox
+474758|altibox
+474759|altibox
 47476|telenor norge
 474769|telia
 47477|telia
@@ -246,10 +248,8 @@
 479258|telenor norge
 479259|telenor norge
 47927|telenor norge
-47929|telenor norge
-479297|ice norge
-479298|ice norge
-479299|ice norge
+47929|ice norge
+479290|telenor norge
 47930|telia
 479310|telenor norge
 479311|telenor norge

@@ -103,6 +103,7 @@ Prefix     ; Length ; Type       ; Tariff        ; Area Code Length ; National O
 932        ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "taliya"        ; "nongeo_3/3/3-4" ; "IR"
 934        ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "telekish"      ; "nongeo_3/3/3-4" ; "IR"
 94000[09]  ; 10     ; FIXED_LINE ; STANDARD_RATE ;                  ; false         ;                 ; "nongeo_3/3/3-4" ; "IR"
+9412       ; 10     ; FIXED_LINE ; STANDARD_RATE ;                  ; false         ;                 ; "nongeo_3/3/3-4" ; "IR"    ;                              ;                       ; ITU
 942121     ; 10     ; FIXED_LINE ; STANDARD_RATE ;                  ; false         ;                 ; "nongeo_3/3/3-4" ; "IR"
 942[2689]0 ; 10     ; FIXED_LINE ; STANDARD_RATE ;                  ; false         ;                 ; "nongeo_3/3/3-4" ; "IR"
 9430[01]   ; 10     ; FIXED_LINE ; STANDARD_RATE ;                  ; false         ;                 ; "nongeo_3/3/3-4" ; "IR"
