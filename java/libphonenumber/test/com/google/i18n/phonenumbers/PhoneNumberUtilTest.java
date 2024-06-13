@@ -309,6 +309,9 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
     // Italian numbers - there is no national prefix, but it still has an area code.
     assertEquals(2, phoneUtil.getLengthOfGeographicalAreaCode(IT_NUMBER));
 
+    // Mexico numbers - there is no national prefix, but it still has an area code.
+    assertEquals(2, phoneUtil.getLengthOfGeographicalAreaCode(MX_NUMBER1));
+
     // Google Singapore. Singapore has no area code and no national prefix.
     assertEquals(0, phoneUtil.getLengthOfGeographicalAreaCode(SG_NUMBER));
 
