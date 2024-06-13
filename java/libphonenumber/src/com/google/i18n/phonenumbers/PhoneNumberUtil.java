@@ -86,8 +86,7 @@ public class PhoneNumberUtil {
   private static final Set<Integer> GEO_MOBILE_COUNTRIES_WITHOUT_MOBILE_AREA_CODES;
 
   // Set of country codes that doesn't have national prefix, but it has area codes.
-  private static final ImmutableSet<Integer> COUNTRIES_WITHOUT_NATIONAL_PREFIX_WITH_AREA_CODES =
-      ImmutableSet.of(52);
+  private static final Set<Integer> COUNTRIES_WITHOUT_NATIONAL_PREFIX_WITH_AREA_CODES;
 
   // Set of country calling codes that have geographically assigned mobile numbers. This may not be
   // complete; we add calling codes case by case, as we find geographical mobile numbers or hear
@@ -130,6 +129,11 @@ public class PhoneNumberUtil {
     geoMobileCountriesWithoutMobileAreaCodes.add(86);  // China
     GEO_MOBILE_COUNTRIES_WITHOUT_MOBILE_AREA_CODES =
         Collections.unmodifiableSet(geoMobileCountriesWithoutMobileAreaCodes);
+
+    HashSet<Integer> countriesWithoutNationalPrefixWithAreaCodes = new HashSet<>();
+    countriesWithoutNationalPrefixWithAreaCodes.add(52);  // Mexico
+    COUNTRIES_WITHOUT_NATIONAL_PREFIX_WITH_AREA_CODES = 
+    		Collections.unmodifiableSet(countriesWithoutNationalPrefixWithAreaCodes);
 
     HashSet<Integer> geoMobileCountries = new HashSet<>();
     geoMobileCountries.add(52);  // Mexico
@@ -897,6 +901,9 @@ public class PhoneNumberUtil {
     if (metadata == null) {
       return 0;
     }
+
+    PhoneNumberType type = getNumberType(number);
+    int countryCallingCode = number.getCountryCode();
     // If a country doesn't use a national prefix, and this number doesn't have an Italian leading
     // zero, we assume it is a closed dialling plan with no area codes.
     // Note:this is our general assumption, but there are exceptions which are tracked in
@@ -906,8 +913,6 @@ public class PhoneNumberUtil {
       return 0;
     }
 
-    PhoneNumberType type = getNumberType(number);
-    int countryCallingCode = number.getCountryCode();
     if (type == PhoneNumberType.MOBILE
         // Note this is a rough heuristic; it doesn't cover Indonesia well, for example, where area
         // codes are present for some mobile phones but not for others. We have no better way of
