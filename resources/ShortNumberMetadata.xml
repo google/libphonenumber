@@ -4964,10 +4964,6 @@
         <exampleNumber>15</exampleNumber>
         <nationalNumberPattern>
           1(?:
-            0(?:
-              07|
-              [13]3
-            )|
             1[02459]|
             [578]|
             9[167]
@@ -4988,19 +4984,12 @@
         <possibleLengths national="3,4"/>
         <exampleNumber>611</exampleNumber>
         <nationalNumberPattern>
-          10(?:
-            [134]4|
-            2[23]|
-            5\d|
-            99
-          )|
           202\d|
-          634|
-          70[06]|
-          (?:
-            106|
-            61
-          )[14]
+          6(?:
+            1[14]|
+            34
+          )|
+          70[06]
         </nationalNumberPattern>
       </standardRate>
       <!-- SMS Services [4-8]\d{4} vary in price from 0.05 euro to 4.50 euro per SMS, based on
@@ -5009,14 +4998,17 @@
            provider http://www.telecom-infoconso.fr/les-numeros-08-et-les-numeros-courts/ -->
       <premiumRate>
         <possibleLengths national="[4-6]"/>
-        <exampleNumber>3200</exampleNumber>
+        <exampleNumber>1000</exampleNumber>
         <nationalNumberPattern>
-          366\d\d|
-          3[2-9]\d\d|
           (?:
-            118|
-            [4-8]\d
-          )\d{3}
+            1(?:
+              0|
+              18\d
+            )|
+            366|
+            [4-8]\d\d
+          )\d\d|
+          3[2-9]\d\d
         </nationalNumberPattern>
       </premiumRate>
       <!-- http://www.appel118.fr/detail.php lists 118777 as only being accessible from SFR. 224
