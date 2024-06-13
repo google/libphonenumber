@@ -13484,6 +13484,7 @@
     <!-- http://www.itu.int/oth/T020200006A/en -->
     <!-- http://en.wikipedia.org/wiki/%2B972 -->
     <!-- http://he.wikipedia.org/wiki/%D7%A7%D7%99%D7%93%D7%95%D7%9E%D7%AA_%D7%98%D7%9C%D7%A4%D7%95%D7%9F_%D7%91%D7%99%D7%A9%D7%A8%D7%90%D7%9C -->
+    <!-- https://data.gov.il/dataset/israel-numbering-plan/resource/74b44725-d8cc-4ae9-ba08-2c40a61ab68e?filters= -->
     <territory id="IL" countryCode="972" internationalPrefix="0(?:0|1[2-9])" nationalPrefix="0"
                mobileNumberPortableRegion="true">
       <availableFormats>
@@ -16892,7 +16893,7 @@
           (?:
             1(?:
               0[0-8]|
-              1[0-5]|
+              1[0-7]|
               2[014]|
               30
             )|
@@ -28938,6 +28939,10 @@
         <exampleNumber>2015550123</exampleNumber>
         <nationalNumberPattern>
           (?:
+            3052(?:
+              0[0-8]|
+              [1-9]\d
+            )|
             5056(?:
               [0-35-9]\d|
               4[468]
@@ -28945,6 +28950,7 @@
             7302[0-4]\d
           )\d{4}|
           (?:
+            305[3-9]|
             472[24]|
             505[2-57-9]|
             7306|
@@ -28963,7 +28969,7 @@
               8[13]
             )|
             3(?:
-              0[1-57-9]|
+              0[1-47-9]|
               1[02-9]|
               2[013569]|
               3[0-24679]|
@@ -29044,6 +29050,10 @@
         <exampleNumber>2015550123</exampleNumber>
         <nationalNumberPattern>
           (?:
+            3052(?:
+              0[0-8]|
+              [1-9]\d
+            )|
             5056(?:
               [0-35-9]\d|
               4[468]
@@ -29051,6 +29061,7 @@
             7302[0-4]\d
           )\d{4}|
           (?:
+            305[3-9]|
             472[24]|
             505[2-57-9]|
             7306|
@@ -29069,7 +29080,7 @@
               8[13]
             )|
             3(?:
-              0[1-57-9]|
+              0[1-47-9]|
               1[02-9]|
               2[013569]|
               3[0-24679]|
@@ -29208,6 +29219,11 @@
           )[2-9]\d{6}
         </nationalNumberPattern>
       </personalNumber>
+      <voip>
+        <possibleLengths national="10" localOnly="7"/>
+        <exampleNumber>3052090123</exampleNumber>
+        <nationalNumberPattern>305209\d{4}</nationalNumberPattern>
+      </voip>
     </territory>
 
     <!-- Uruguay (UY) -->
