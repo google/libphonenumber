@@ -1,3 +1,10 @@
+Jun 13, 2024: v8.13.39
+Metadata changes:
+ - Updated phone metadata for region code(s): KE, US
+ - Updated short number metadata for region code(s): FR
+ - Updated geocoding data for country calling code(s): 1305 (en)
+ - Updated carrier data for country calling code(s): 61 (en)
+
 May 29, 2024: v8.13.38
 Metadata changes:
  - Updated phone metadata for region code(s): AO, GB, GY, HK, MX
