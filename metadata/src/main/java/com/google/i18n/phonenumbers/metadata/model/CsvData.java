@@ -212,7 +212,7 @@ public abstract class CsvData {
   }
 
   @Memoized
-  public ImmutableTable<PhoneRegion, ValidNumberType, DigitSequence> getExamplesAsTable() {
+  public ImmutableTable<PhoneRegion, ValidNumberType, String> getExamplesAsTable() {
     return ExamplesTableSchema.toExampleTable(getExamples());
   }
 
