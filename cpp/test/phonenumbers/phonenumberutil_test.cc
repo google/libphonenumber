@@ -1465,17 +1465,17 @@ TEST_F(PhoneNumberUtilTest, GetLengthOfGeographicalAreaCode) {
   number.set_national_number(uint64{293744000});
   EXPECT_EQ(1, phone_util_.GetLengthOfGeographicalAreaCode(number));
 
+  // Mexico numbers - there is no national prefix, but it still has an area
+  // code.
+  number.set_country_code(52);
+  number.set_national_number(uint64_t{3312345678});
+  EXPECT_EQ(2, phone_util_.GetLengthOfGeographicalAreaCode(number));
+
   // Italian numbers - there is no national prefix, but it still has an area
   // code.
   number.set_country_code(39);
   number.set_national_number(uint64{236618300});
   number.set_italian_leading_zero(true);
-  EXPECT_EQ(2, phone_util_.GetLengthOfGeographicalAreaCode(number));
-
-  // Mexico numbers - there is no national prefix, but it still has an area
-  // code.
-  number.set_country_code(52);
-  number.set_national_number(uint64_t{3312345678});
   EXPECT_EQ(2, phone_util_.GetLengthOfGeographicalAreaCode(number));
 
   // Google Singapore. Singapore has no area code and no national prefix.

@@ -2693,7 +2693,7 @@ int PhoneNumberUtil::GetLengthOfGeographicalAreaCode(
   // tracked in COUNTRIES_WITHOUT_NATIONAL_PREFIX_WITH_AREA_CODES.
   if (!metadata->has_national_prefix() && !number.italian_leading_zero() &&
       reg_exps_->countries_without_national_prefix_with_area_codes_.find(
-          country_calling_code) !=
+          country_calling_code) ==
           reg_exps_->countries_without_national_prefix_with_area_codes_.end()) {
     return 0;
   }
