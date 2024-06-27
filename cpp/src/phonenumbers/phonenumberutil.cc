@@ -690,16 +690,16 @@ class PhoneNumberRegExpsAndMappings {
   // the length of the mobile token.
   std::map<int, char> mobile_token_mappings_;
 
+  // Set of country codes that doesn't have national prefix, but it has area
+  // codes.
+  std::set<int> countries_without_national_prefix_with_area_codes_;
+
   // Set of country codes that have geographically assigned mobile numbers (see
   // geo_mobile_countries_ below) which are not based on *area codes*. For
   // example, in China mobile numbers start with a carrier indicator, and beyond
   // that are geographically assigned: this carrier indicator is not considered
   // to be an area code.
   std::set<int> geo_mobile_countries_without_mobile_area_codes_;
-
-  // Set of country codes that doesn't have national prefix, but it has area
-  // codes.
-  std::set<int> countries_without_national_prefix_with_area_codes_;
 
   // Set of country calling codes that have geographically assigned mobile
   // numbers. This may not be complete; we add calling codes case by case, as we
