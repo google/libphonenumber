@@ -1117,8 +1117,8 @@ Prefix             ; Length ; Type       ; Tariff        ; National Only ; Opera
 47200[1-9]         ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Lucenec"           ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 47201[01]          ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Lucenec"           ; GOVERNMENT
 47201[2-9]         ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Lucenec"           ;            ; "FILLUP TO SUPPORT MASTER RANGE"
-47202              ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Lucenec"           ; GOVERNMENT
-4720[3-9]          ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Lucenec"           ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+4720[23]           ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Lucenec"           ; GOVERNMENT
+4720[4-9]          ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Lucenec"           ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 472[15]            ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Lucenec"           ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 4722[0367]         ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Lucenec"           ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 4722[1459]         ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                            ; "fixed_2/3/2/2" ; "SK"    ; "Lucenec"           ; GOVERNMENT
@@ -1803,8 +1803,8 @@ Prefix             ; Length ; Type       ; Tariff        ; National Only ; Opera
 65012[014-9]       ; 9      ; VOIP       ; STANDARD_RATE ;               ;                            ; "fmt_3/3/3"     ; "SK"    ;                     ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 65012[23]          ; 9      ; VOIP       ; STANDARD_RATE ;               ;                            ; "fmt_3/3/3"     ; "SK"    ;                     ; GOVERNMENT
 6501[3-79]         ; 9      ; VOIP       ; STANDARD_RATE ;               ;                            ; "fmt_3/3/3"     ; "SK"    ;                     ;            ; "FILLUP TO SUPPORT MASTER RANGE"
-65018[0-79]        ; 9      ; VOIP       ; STANDARD_RATE ;               ;                            ; "fmt_3/3/3"     ; "SK"    ;                     ;            ; "FILLUP TO SUPPORT MASTER RANGE"
-650188             ; 9      ; VOIP       ; STANDARD_RATE ;               ;                            ; "fmt_3/3/3"     ; "SK"    ;                     ; GOVERNMENT
+65018[08]          ; 9      ; VOIP       ; STANDARD_RATE ;               ;                            ; "fmt_3/3/3"     ; "SK"    ;                     ; GOVERNMENT
+65018[1-79]        ; 9      ; VOIP       ; STANDARD_RATE ;               ;                            ; "fmt_3/3/3"     ; "SK"    ;                     ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 650[2-5]           ; 9      ; VOIP       ; STANDARD_RATE ;               ;                            ; "fmt_3/3/3"     ; "SK"    ;                     ; GOVERNMENT
 6506[0-47-9]       ; 9      ; VOIP       ; STANDARD_RATE ;               ;                            ; "fmt_3/3/3"     ; "SK"    ;                     ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 650650             ; 9      ; VOIP       ; STANDARD_RATE ;               ;                            ; "fmt_3/3/3"     ; "SK"    ;                     ; GOVERNMENT

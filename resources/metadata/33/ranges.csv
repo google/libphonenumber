@@ -1,6 +1,7 @@
 Prefix         ; Length ; Type       ; Tariff        ; Operator                       ; Format            ; Regions ; Provenance ; Comment
-10[0-589]      ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ; GOVERNMENT
+10[0-5]        ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ; GOVERNMENT ; "Re-sending file"
 10[67]         ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+10[89]         ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ; GOVERNMENT
 11             ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 12[0-35-9]     ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 124[03-9]      ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
@@ -90,8 +91,8 @@ Prefix         ; Length ; Type       ; Tariff        ; Operator                 
 356[0-479]     ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ; GOVERNMENT
 3565[0-8]      ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ; GOVERNMENT
 35659          ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
-3566[036]      ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ; GOVERNMENT
-3566[12457-9]  ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+3566[0367]     ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ; GOVERNMENT
+3566[124589]   ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 3568[0-367]    ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ; GOVERNMENT
 3568[4589]     ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 36[0-689]      ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ; GOVERNMENT
@@ -110,8 +111,8 @@ Prefix         ; Length ; Type       ; Tariff        ; Operator                 
 376[5-9]       ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 378            ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 379[0-356]     ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ; GOVERNMENT
-3794[0-478]    ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ; GOVERNMENT
-3794[569]      ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+3794[0-47-9]   ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ; GOVERNMENT
+3794[56]       ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 379[7-9]       ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 39[0-2]        ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ; GOVERNMENT
 39[3-9]        ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
@@ -357,8 +358,9 @@ Prefix         ; Length ; Type       ; Tariff        ; Operator                 
 756[0-2]       ; 9      ; MOBILE     ; STANDARD_RATE ; "euroinformation_telecom"      ; "fmt_1/2/2/2/2"   ; "FR"    ; GOVERNMENT
 7563[0-4]      ; 9      ; MOBILE     ; STANDARD_RATE ; "euroinformation_telecom"      ; "fmt_1/2/2/2/2"   ; "FR"    ; GOVERNMENT
 7563[5-9]      ; 9      ; MOBILE     ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
-7564[0-36-9]   ; 9      ; MOBILE     ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+7564[0-3679]   ; 9      ; MOBILE     ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 7564[45]       ; 9      ; MOBILE     ; STANDARD_RATE ; "sfr"                          ; "fmt_1/2/2/2/2"   ; "FR"    ; IR21
+75648          ; 9      ; MOBILE     ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ; GOVERNMENT
 756[5-9]       ; 9      ; MOBILE     ; STANDARD_RATE ; "transatel"                    ; "fmt_1/2/2/2/2"   ; "FR"    ; GOVERNMENT
 75700          ; 9      ; MOBILE     ; STANDARD_RATE ; "sewan"                        ; "fmt_1/2/2/2/2"   ; "FR"    ; GOVERNMENT
 7570[1-5]      ; 9      ; MOBILE     ; STANDARD_RATE ; "mobiweb"                      ; "fmt_1/2/2/2/2"   ; "FR"    ; GOVERNMENT
@@ -448,8 +450,8 @@ Prefix         ; Length ; Type       ; Tariff        ; Operator                 
 80548          ; 9      ; FIXED_LINE ; TOLL_FREE     ;                                ; "varcost_3/2/2/2" ; "FR"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 8056[0-3569]   ; 9      ; FIXED_LINE ; TOLL_FREE     ;                                ; "varcost_3/2/2/2" ; "FR"    ; GOVERNMENT
 8056[478]      ; 9      ; FIXED_LINE ; TOLL_FREE     ;                                ; "varcost_3/2/2/2" ; "FR"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
-8057[0135-7]   ; 9      ; FIXED_LINE ; TOLL_FREE     ;                                ; "varcost_3/2/2/2" ; "FR"    ; GOVERNMENT
-8057[2489]     ; 9      ; FIXED_LINE ; TOLL_FREE     ;                                ; "varcost_3/2/2/2" ; "FR"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+8057[0-35-7]   ; 9      ; FIXED_LINE ; TOLL_FREE     ;                                ; "varcost_3/2/2/2" ; "FR"    ; GOVERNMENT
+8057[489]      ; 9      ; FIXED_LINE ; TOLL_FREE     ;                                ; "varcost_3/2/2/2" ; "FR"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 8058[0-2568]   ; 9      ; FIXED_LINE ; TOLL_FREE     ;                                ; "varcost_3/2/2/2" ; "FR"    ; GOVERNMENT
 8058[3479]     ; 9      ; FIXED_LINE ; TOLL_FREE     ;                                ; "varcost_3/2/2/2" ; "FR"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 8059[0-35689]  ; 9      ; FIXED_LINE ; TOLL_FREE     ;                                ; "varcost_3/2/2/2" ; "FR"    ; GOVERNMENT
@@ -778,8 +780,8 @@ Prefix         ; Length ; Type       ; Tariff        ; Operator                 
 97410          ; 9      ; VOIP       ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 9741[1-9]      ; 9      ; VOIP       ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ; GOVERNMENT
 974[2-8]       ; 9      ; VOIP       ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ; GOVERNMENT
-9749[0-4]      ; 9      ; VOIP       ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ; GOVERNMENT
-9749[5-9]      ; 9      ; VOIP       ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+9749[0-478]    ; 9      ; VOIP       ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ; GOVERNMENT
+9749[569]      ; 9      ; VOIP       ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 976            ; 9      ; VOIP       ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 977[013-9]     ; 9      ; VOIP       ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ; GOVERNMENT
 9772[0-368]    ; 9      ; VOIP       ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ; GOVERNMENT

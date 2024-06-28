@@ -3,7 +3,7 @@ Prefix        ; Length ; Type                 ; Tariff        ; Operator       ;
 1[37]         ; 10     ; MOBILE               ; STANDARD_RATE ; "grameenphone" ; "fmt_4/3-6"       ; "BD"    ;                                                                                                   ; ITU
 1[49]         ; 10     ; MOBILE               ; STANDARD_RATE ; "banglalink"   ; "fmt_4/3-6"       ; "BD"    ;                                                                                                   ; IR21
 15            ; 10     ; MOBILE               ; STANDARD_RATE ; "teletalk"     ; "fmt_4/3-6"       ; "BD"    ;                                                                                                   ; ITU
-16            ; 10     ; MOBILE               ; STANDARD_RATE ; "airtel"       ; "fmt_4/3-6"       ; "BD"    ;                                                                                                   ; ITU
+16            ; 10     ; MOBILE               ; STANDARD_RATE ; "robi"         ; "fmt_4/3-6"       ; "BD"    ;                                                                                                   ; IR21
 18            ; 10     ; MOBILE               ; STANDARD_RATE ; "robi"         ; "fmt_4/3-6"       ; "BD"    ;                                                                                                   ; ITU
 22            ; 10     ; FIXED_LINE           ; STANDARD_RATE ;                ; "fmt_4/3-6"       ; "BD"
 2[45]         ; 9      ; FIXED_LINE           ; STANDARD_RATE ;                ; "fixedline_1/7-8" ; "BD"    ; "Dhaka"                                                                                           ; ITU

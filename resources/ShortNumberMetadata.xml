@@ -4719,7 +4719,10 @@
               )
             )
           )|
-          75[12]\d\d
+          (?:
+            1[235-8]\d|
+            75[12]
+          )\d\d
         </nationalNumberPattern>
       </shortCode>
       <tollFree>
@@ -4732,6 +4735,11 @@
           )
         </nationalNumberPattern>
       </tollFree>
+      <standardRate>
+        <possibleLengths national="5"/>
+        <exampleNumber>12000</exampleNumber>
+        <nationalNumberPattern>1[235-8]\d{3}</nationalNumberPattern>
+      </standardRate>
       <emergency>
         <possibleLengths national="3"/>
         <exampleNumber>112</exampleNumber>
