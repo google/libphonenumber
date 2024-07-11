@@ -1,3 +1,10 @@
+Jul 11, 2024: v8.13.41
+Metadata changes:
+ - Updated phone metadata for region code(s): CN, IL
+ - Updated short number metadata for region code(s): CN
+ - Updated carrier data for country calling code(s): 972 (en)
+ - Updated / refreshed time zone meta data.
+
 Jun 27, 2024: v8.13.40
 Metadata changes:
  - Updated phone metadata for region code(s): FI, GE, GY, HK, IL, MU, MX, TD
