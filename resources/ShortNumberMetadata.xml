@@ -2977,11 +2977,7 @@
     <!-- http://www.itu.int/oth/T020200002B/en -->
     <territory id="CN">
       <generalDesc>
-        <nationalNumberPattern>
-          [19]\d\d(?:
-            \d{2,3}
-          )?
-        </nationalNumberPattern>
+        <nationalNumberPattern>[19]\d{2,5}</nationalNumberPattern>
       </generalDesc>
       <!-- 100xx numbers are mainly used for carrier services. They can be dialed nationwide and
            are always routed to the local provider.  Note they can also be used with area codes
@@ -2989,19 +2985,24 @@
            more like fixed-line and is covered under the fixed-line pattern in
            PhoneNumberMetadata.xml. -->
       <shortCode>
-        <possibleLengths national="3,5,6"/>
-        <exampleNumber>110</exampleNumber>
+        <possibleLengths national="[3-6]"/>
+        <exampleNumber>100</exampleNumber>
         <nationalNumberPattern>
           1(?:
-            00\d\d|
-            1[029]|
-            2(?:
-              [02]|
-              110|
-              395
-            )
+            00|
+            1[0249]|
+            2395|
+            6[08]
           )|
-          95\d{3,4}
+          9[56]\d{3,4}|
+          12[023]|
+          1(?:
+            0(?:
+              [0-26]\d|
+              8
+            )|
+            21\d
+          )\d
         </nationalNumberPattern>
       </shortCode>
       <tollFree>
@@ -3012,7 +3013,8 @@
             1[09]|
             2(?:
               [02]|
-              [13]\d\d
+              1\d\d|
+              395
             )
           )
         </nationalNumberPattern>
@@ -3025,14 +3027,20 @@
            specifically wants to reach an operator in a different region. That case is more like
            fixed-line and is covered under the fixed-line pattern in PhoneNumberMetadata.xml. -->
       <standardRate>
-        <possibleLengths national="3,5,6"/>
-        <exampleNumber>112</exampleNumber>
+        <possibleLengths national="[3-6]"/>
+        <exampleNumber>100</exampleNumber>
         <nationalNumberPattern>
           1(?:
-            00\d\d|
-            12
+            0(?:
+              [0-26]\d|
+              8
+            )\d|
+            1[24]|
+            23|
+            6[08]
           )|
-          95\d{3,4}
+          9[56]\d{3,4}|
+          100
         </nationalNumberPattern>
       </standardRate>
       <emergency>
@@ -3050,15 +3058,16 @@
         <exampleNumber>122</exampleNumber>
         <nationalNumberPattern>
           12(?:
-            [13]\d\d|
-            2
+            1\d\d|
+            2|
+            395
           )
         </nationalNumberPattern>
       </expandedEmergency>
       <smsServices>
         <possibleLengths national="5"/>
-        <exampleNumber>12100</exampleNumber>
-        <nationalNumberPattern>121\d\d</nationalNumberPattern>
+        <exampleNumber>12110</exampleNumber>
+        <nationalNumberPattern>12110</nationalNumberPattern>
       </smsServices>
     </territory>
 
