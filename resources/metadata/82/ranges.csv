@@ -53,6 +53,7 @@ Prefix      ; Length ; Type            ; Tariff        ; Area Code Length ; Nati
 1899        ; 8      ; UAN             ; STANDARD_RATE ;                  ; false         ;              ; "uan_4/4"            ; "KR"
 19          ; 9,10   ; MOBILE          ; STANDARD_RATE ;                  ; false         ; "lg"         ; "fmt_2/3-4/4"        ; "KR"    ;               ;            ; IR21       ; "IR21 Date: 02/02/2018"
 2[1-9]      ; 8,9    ; FIXED_LINE      ; STANDARD_RATE ; 1                ; false         ;              ; "fixed_line_1/3-4/4" ; "KR"    ; "Seoul"       ; "서울"       ; TELECOMS
+30          ; 9      ; FIXED_LINE      ; TOLL_FREE     ;                  ; false         ;              ; "fmt_2/3/4"          ; "KR"
 311         ; 5,6    ; FIXED_LINE      ; STANDARD_RATE ; 2                ; false         ;              ; "fixed_line_2/3-4"   ; "KR"    ; "Gyeonggi"    ; "경기"
 31[1-9]     ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 2                ; false         ;              ; "fmt_2/3-4/4"        ; "KR"    ; "Gyeonggi"    ; "경기"       ; WEB        ; "Wikipedia"
 321         ; 5,6    ; FIXED_LINE      ; STANDARD_RATE ; 2                ; false         ;              ; "fixed_line_2/3-4"   ; "KR"    ; "Incheon"     ; "인천"

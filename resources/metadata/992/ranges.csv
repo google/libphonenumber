@@ -39,6 +39,7 @@ Prefix      ; Length ; Type       ; Tariff        ; Area Code Length ; Operator 
 3251        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/1/4" ; "TJ"    ; "Kabodion"          ; ITU
 3252        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/1/4" ; "TJ"    ; "Panj"              ; ITU
 325[3-9]    ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/1/4" ; "TJ"
+33[03-9]    ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "zet_mobile" ; "fmt_2/3/4"   ; "TJ"    ;                     ; IR21
 331[039]    ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/1/4" ; "TJ"
 3311        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/1/4" ; "TJ"    ; "Vose"              ; ITU
 3312        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/1/4" ; "TJ"    ; "Dangara"           ; ITU
