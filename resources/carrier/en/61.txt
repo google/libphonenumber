@@ -120,6 +120,10 @@
 61487|Telstra
 61488|Telstra
 614888|My Number
+614890|Optus
+614891|Optus
+614892|Optus
+614893|Optus
 6148984|Victorian Rail Track
 6148985|MessageBird
 614899|Pivotel Satellite

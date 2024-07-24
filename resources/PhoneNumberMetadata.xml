@@ -4342,7 +4342,7 @@
       <availableFormats>
         <numberFormat pattern="(\d)(\d{7})" carrierCodeFormattingRule="$NP$CC $FG">
           <leadingDigits>
-            [23]|
+            [235]|
             4[46]
           </leadingDigits>
           <format>$1 $2</format>
@@ -4358,10 +4358,11 @@
       </availableFormats>
       <generalDesc>
         <nationalNumberPattern>
+          8001\d{5}|
           (?:
-            [2-467]\d\d|
-            8001
-          )\d{5}
+            [2-467]\d|
+            50
+          )\d{6}
         </nationalNumberPattern>
       </generalDesc>
       <noInternationalDialling>
@@ -4434,6 +4435,11 @@
         <exampleNumber>800171234</exampleNumber>
         <nationalNumberPattern>8001[07]\d{4}</nationalNumberPattern>
       </tollFree>
+      <voip>
+        <possibleLengths national="8" localOnly="7"/>
+        <exampleNumber>50123456</exampleNumber>
+        <nationalNumberPattern>50\d{6}</nationalNumberPattern>
+      </voip>
     </territory>
 
     <!-- Caribbean Netherlands (BQ) -->
@@ -12414,15 +12420,11 @@
         <possibleLengths national="7"/>
         <exampleNumber>6091234</exampleNumber>
         <nationalNumberPattern>
+          510\d{4}|
           (?:
-            510|
-            6\d\d|
-            7(?:
-              [0135]\d|
-              2[0-8]|
-              4[0-24-9]
-            )
-          )\d{4}
+            6\d|
+            7[0-5]
+          )\d{5}
         </nationalNumberPattern>
       </mobile>
       <tollFree>
@@ -17550,7 +17552,7 @@
         <numberFormat pattern="(\d{2})(\d{3})(\d{4})" nationalPrefixFormattingRule="$NP$FG"
                       carrierCodeFormattingRule="$NP$CC-$FG">
           <leadingDigits>
-            60|
+            [36]0|
             8
           </leadingDigits>
           <format>$1-$2-$3</format>
@@ -17686,7 +17688,7 @@
           )|
           (?:
             00368|
-            80
+            [38]0
           )\d{7}
         </nationalNumberPattern>
       </tollFree>
@@ -18220,7 +18222,7 @@
         </numberFormat>
         <!-- Format for UAN numbers. -->
         <numberFormat pattern="(\d{2})(\d{2})(\d{2})(\d{3})" nationalPrefixFormattingRule="$NP$FG">
-          <leadingDigits>30[013-9]</leadingDigits>
+          <leadingDigits>30[0135-9]</leadingDigits>
           <format>$1 $2 $3 $4</format>
         </numberFormat>
         <!-- Format for mobile numbers. -->
@@ -18253,19 +18255,14 @@
       </fixedLine>
       <!-- Adding 202[89], 205[289], 207[68] and 209[135-7] from numbers found online. -->
       <mobile>
-        <possibleLengths national="9,10"/>
+        <possibleLengths national="10"/>
         <exampleNumber>2023123456</exampleNumber>
         <nationalNumberPattern>
+          208[78]\d{6}|
           (?:
-            20(?:
-              [23579]\d|
-              88
-            )|
-            30(?:
-              2\d|
-              4
-            )
-          )\d{6}
+            20[23579]|
+            30[24]
+          )\d{7}
         </nationalNumberPattern>
       </mobile>
       <!-- The Lonely Planet says that newer WIN phones (fixed phones without a physical landline)
@@ -21607,6 +21604,7 @@
         <possibleLengths national="8,9" localOnly="6,7"/>
         <exampleNumber>323856789</exampleNumber>
         <nationalNumberPattern>
+          4270\d{4}|
           (?:
             3(?:
               2[0-36-9]|
@@ -25597,9 +25595,8 @@
       </availableFormats>
       <generalDesc>
         <nationalNumberPattern>
-          800\d{4}|
           (?:
-            [249]\d|
+            [2489]\d|
             64
           )\d{5}
         </nationalNumberPattern>
@@ -25623,6 +25620,11 @@
         <exampleNumber>8000000</exampleNumber>
         <nationalNumberPattern>800[08]\d{3}</nationalNumberPattern>
       </tollFree>
+      <premiumRate>
+        <possibleLengths national="7"/>
+        <exampleNumber>8512345</exampleNumber>
+        <nationalNumberPattern>85\d{5}</nationalNumberPattern>
+      </premiumRate>
       <!-- Includes prefix 971,95[0-9] which is assigned to Audiotext ,International Audiotext
            Services. -->
       <voip>
@@ -26050,7 +26052,7 @@
         <exampleNumber>81234567</exampleNumber>
         <nationalNumberPattern>
           8(?:
-            09[0-6]|
+            09[0-68]|
             95[0-2]
           )\d{4}|
           (?:
@@ -27557,7 +27559,12 @@
           <format>$1 $2 $3</format>
         </numberFormat>
         <numberFormat pattern="(\d{4})(\d)(\d{4})">
-          <leadingDigits>3[1-5]</leadingDigits>
+          <leadingDigits>
+            3(?:
+              [1245]|
+              3[12]
+            )
+          </leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
         <numberFormat pattern="(\d{2})(\d{3})(\d{4})">
@@ -27597,6 +27604,7 @@
         <exampleNumber>917123456</exampleNumber>
         <nationalNumberPattern>
           (?:
+            33[03-9]|
             4(?:
               1[18]|
               4[02-479]
@@ -30143,6 +30151,7 @@
           340(?:
             2(?:
               0\d|
+              10|
               2[06-8]|
               4[49]|
               77
@@ -30184,6 +30193,7 @@
           340(?:
             2(?:
               0\d|
+              10|
               2[06-8]|
               4[49]|
               77
