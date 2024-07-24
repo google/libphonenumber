@@ -1,4 +1,4 @@
-Region ; Prefix     ; Length ; Type               ; Tariff
+Region ; Prefix     ; Length ; Type               ; Tariff    ; Carrier Specific
 DE     ; 11[02]     ; 3      ; EMERGENCY          ; TOLL_FREE
 DE     ; 115        ; 3      ; COMMERCIAL
 DE     ; 11600[06]  ; 6      ; EXPANDED_EMERGENCY ; TOLL_FREE
@@ -7,3 +7,4 @@ DE     ; 116123     ; 6      ; EXPANDED_EMERGENCY ; TOLL_FREE
 DE     ; 11800      ; 5,6    ; COMMERCIAL
 DE     ; 1180[1-9]  ; 5      ; COMMERCIAL
 DE     ; 118[1-9]   ; 5      ; COMMERCIAL
+DE     ; 3311       ; 4      ; COMMERCIAL         ;           ; true
