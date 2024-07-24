@@ -3,14 +3,14 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.googlecode.libphonenumber</groupId>
   <artifactId>geocoder</artifactId>
-  <version>2.236-SNAPSHOT</version>
+  <version>2.236</version>
   <packaging>jar</packaging>
   <url>https://github.com/google/libphonenumber/</url>
 
   <parent>
     <groupId>com.googlecode.libphonenumber</groupId>
     <artifactId>libphonenumber-parent</artifactId>
-    <version>8.13.42-SNAPSHOT</version>
+    <version>8.13.42</version>
   </parent>
 
   <build>
@@ -87,12 +87,12 @@
     <dependency>
       <groupId>com.googlecode.libphonenumber</groupId>
       <artifactId>libphonenumber</artifactId>
-      <version>8.13.42-SNAPSHOT</version>
+      <version>8.13.42</version>
     </dependency>
     <dependency>
       <groupId>com.googlecode.libphonenumber</groupId>
       <artifactId>prefixmapper</artifactId>
-      <version>2.236-SNAPSHOT</version>
+      <version>2.236</version>
     </dependency>
   </dependencies>
 
