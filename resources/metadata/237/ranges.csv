@@ -118,14 +118,15 @@ Prefix           ; Length ; Type       ; Tariff        ; National Only ; Operato
 23349[89]        ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                ; "fmt1_1/2/2/2/2" ; "CM"
 24[23]           ; 9      ; MOBILE     ; STANDARD_RATE ;               ;                ; "fmt1_1/2/2/2/2" ; "CM"
 62               ; 9      ; MOBILE     ; STANDARD_RATE ;               ; "camtel"       ; "fmt1_1/2/2/2/2" ; "CM"    ;                       ; TELECOMS
+640              ; 9      ; MOBILE     ; STANDARD_RATE ;               ; "orange"       ; "fmt1_1/2/2/2/2" ; "CM"    ;                       ; IR21
 65[0-4]          ; 9      ; MOBILE     ; STANDARD_RATE ;               ; "mtn_cameroon" ; "fmt1_1/2/2/2/2" ; "CM"    ;                       ; IR21       ; "IR21 dated 7/16/2018"
 65[5-9]          ; 9      ; MOBILE     ; STANDARD_RATE ;               ; "orange"       ; "fmt1_1/2/2/2/2" ; "CM"
 66               ; 9      ; MOBILE     ; STANDARD_RATE ;               ; "nexttel"      ; "fmt1_1/2/2/2/2" ; "CM"
 67               ; 9      ; MOBILE     ; STANDARD_RATE ;               ; "mtn_cameroon" ; "fmt1_1/2/2/2/2" ; "CM"    ;                       ; IR21       ; "IR21 dated 7/16/2018"
 68[0-3]          ; 9      ; MOBILE     ; STANDARD_RATE ;               ; "mtn_cameroon" ; "fmt1_1/2/2/2/2" ; "CM"    ;                       ; IR21       ; "IR21 dated 7/16/2018"
-68[459]          ; 9      ; MOBILE     ; STANDARD_RATE ;               ; "nexttel"      ; "fmt1_1/2/2/2/2" ; "CM"    ;                       ; INTERNAL
+68[45]           ; 9      ; MOBILE     ; STANDARD_RATE ;               ; "nexttel"      ; "fmt1_1/2/2/2/2" ; "CM"    ;                       ; INTERNAL
 68[67]           ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "orange"       ; "fmt1_1/2/2/2/2" ; "CM"    ;                       ; IR21
-688              ; 9      ; MOBILE     ; STANDARD_RATE ;               ; "orange"       ; "fmt1_1/2/2/2/2" ; "CM"    ;                       ; IR21
+68[89]           ; 9      ; MOBILE     ; STANDARD_RATE ;               ; "orange"       ; "fmt1_1/2/2/2/2" ; "CM"    ;                       ; IR21
 69               ; 9      ; MOBILE     ; STANDARD_RATE ;               ; "orange"       ; "fmt1_1/2/2/2/2" ; "CM"
 88               ; 8      ; FIXED_LINE ; TOLL_FREE     ;               ;                ; "fmt2_2/2/2/2"   ; "CM"
 88               ; 9      ; FIXED_LINE ; TOLL_FREE     ;               ;                ; "fmt1_1/2/2/2/2" ; "CM"

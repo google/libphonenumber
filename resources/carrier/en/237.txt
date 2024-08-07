@@ -13,6 +13,7 @@
 # limitations under the License.
 
 23762|Camtel
+23764|Orange
 237650|MTN Cameroon
 237651|MTN Cameroon
 237652|MTN Cameroon
@@ -34,5 +35,5 @@
 237686|Orange
 237687|Orange
 237688|Orange
-237689|NEXTTEL
+237689|Orange
 23769|Orange

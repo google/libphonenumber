@@ -1,3 +1,10 @@
+Aug 07, 2024: v8.13.43
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   AO, BD, BJ, CM, CN, DE, DZ, EG, FR, HK, IL, ZA
+ - Updated carrier data for country calling code(s):
+   27 (en), 33 (en), 34 (en), 41 (en), 237 (en), 244 (en), 852 (en, zh)
+
 Jul 24, 2024: v8.13.42
 Metadata changes:
  - Updated phone metadata for region code(s):
