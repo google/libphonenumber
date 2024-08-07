@@ -21,6 +21,7 @@ Prefix     ; Length ; Type       ; Tariff        ; Operator  ; Format         ; 
 55         ; 9      ; MOBILE     ; STANDARD_RATE ; "ooredoo" ; "fmt2_3/2/2/2" ; "DZ"    ;                               ; IR21       ; "IR21 dated 1/7/2019"
 56[01]     ; 9      ; MOBILE     ; STANDARD_RATE ; "ooredoo" ; "fmt2_3/2/2/2" ; "DZ"    ;                               ; IR21       ; "IR21 dated 1/7/2019"
 562        ; 9      ; MOBILE     ; STANDARD_RATE ; "ooredoo" ; "fmt2_3/2/2/2" ; "DZ"
+563        ; 9      ; MOBILE     ; STANDARD_RATE ; "ooredoo" ; "fmt2_3/2/2/2" ; "DZ"    ;                               ; IR21
 6[569]     ; 9      ; MOBILE     ; STANDARD_RATE ; "mobilis" ; "fmt2_3/2/2/2" ; "DZ"
 67[0-6]    ; 9      ; MOBILE     ; STANDARD_RATE ; "mobilis" ; "fmt2_3/2/2/2" ; "DZ"
 7[7-9]     ; 9      ; MOBILE     ; STANDARD_RATE ; "djezzy"  ; "fmt2_3/2/2/2" ; "DZ"    ;                               ; TELECOMS   ; "3rd Party Telecom Partner"

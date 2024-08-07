@@ -32,6 +32,7 @@
 852446|Hutchison Telecom
 852447|China Mobile
 852448|Hutchison Telecom
+852449|Hutchison Telecom
 852460|China Unicom
 8524607|Multibyte
 8524608|HKT
@@ -314,6 +315,7 @@
 852840|China Mobile
 852841|Hutchison Telecom
 852842|HKT
+852843|Hutchison Telecom
 8528480|HKT
 8528481|HKT
 8528482|HKT

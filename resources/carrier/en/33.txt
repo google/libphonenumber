@@ -195,8 +195,8 @@
 3375075|Alphalink
 3375076|Globalstar Europe
 3375077|Globalstar Europe
-3375078|China Telecom (France) Limited
-3375079|China Telecom (France) Limited
+3375078|Bouygues
+3375079|Bouygues
 337508|SFR
 337509|SFR
 33751|Lycamobile
@@ -296,6 +296,8 @@
 3375759|Twilio Ireland Limited
 3375760|Twilio Ireland Limited
 3375763|Euroinformation Telecom
+3375764|Bouygues
+3375765|Bouygues
 3375767|Euroinformation Telecom
 3375770|SFR
 3375771|SFR

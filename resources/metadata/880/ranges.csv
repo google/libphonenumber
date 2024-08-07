@@ -6,6 +6,7 @@ Prefix        ; Length ; Type                 ; Tariff        ; Operator       ;
 16            ; 10     ; MOBILE               ; STANDARD_RATE ; "robi"         ; "fmt_4/3-6"       ; "BD"    ;                                                                                                   ; IR21
 18            ; 10     ; MOBILE               ; STANDARD_RATE ; "robi"         ; "fmt_4/3-6"       ; "BD"    ;                                                                                                   ; ITU
 22            ; 10     ; FIXED_LINE           ; STANDARD_RATE ;                ; "fmt_4/3-6"       ; "BD"
+23            ; 10     ; FIXED_LINE           ; STANDARD_RATE ;                ; "fmt_4/3-6"       ; "BD"    ;                                                                                                   ; GOVERNMENT
 2[45]         ; 9      ; FIXED_LINE           ; STANDARD_RATE ;                ; "fixedline_1/7-8" ; "BD"    ; "Dhaka"                                                                                           ; ITU
 271[0-267]    ; 8      ; FIXED_LINE           ; STANDARD_RATE ;                ; "fixedline_1/7-8" ; "BD"    ; "Dhaka"                                                                                           ; ITU
 272[0-289]    ; 8      ; FIXED_LINE           ; STANDARD_RATE ;                ; "fixedline_1/7-8" ; "BD"    ; "Dhaka"                                                                                           ; ITU
