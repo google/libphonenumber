@@ -13,6 +13,7 @@
 # limitations under the License.
 
 # Libercom is brand name of Benintelecoms and Moov is brand name of Etisalat.
+# Celtiis is brand name of SBIN.
 
 2294|Celtiis
 22942|MTN
