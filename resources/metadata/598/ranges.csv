@@ -5,6 +5,7 @@ Prefix      ; Length ; Type       ; Tariff        ; Area Code Length ; Operator 
 1770        ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;            ; "fixed_4/4"          ; "UY"    ;                          ;            ; "User  Report"
 1920        ; 8      ; FIXED_LINE ; STANDARD_RATE ;                  ;            ; "fixed_4/4"          ; "UY"    ;                          ;            ; "User report"
 1987        ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;            ; "fixed_4/4"          ; "UY"    ;                          ;            ; "User  Report"
+1997        ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;            ; "fixed_4/4"          ; "UY"    ;                          ;            ; "User report"
 2           ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;            ; "fixed_4/4"          ; "UY"    ; "Montevideo"             ; ITU
 405         ; 7      ; FIXED_LINE ; TOLL_FREE     ;                  ;            ; "varcost_3/4"        ; "UY"    ;                          ;            ; "User  Report"
 42          ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;            ; "fixed_4/4"          ; "UY"    ; "San Carlos"             ; ITU
