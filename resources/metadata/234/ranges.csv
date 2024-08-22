@@ -1,167 +1,93 @@
-Prefix      ; Length ; Type       ; Tariff        ; Area Code Length ; Operator     ; Format               ; Regions ; Geocode:en      ; Provenance ; Comment
-1[0-79]     ; 7,8    ; FIXED_LINE ; STANDARD_RATE ; 1                ;              ; "fixed_line_1/3/3-4" ; "NG"    ; "Lagos"
-1800        ; 7,8    ; FIXED_LINE ; STANDARD_RATE ; 1                ;              ; "fixed_line_1/3/3-4" ; "NG"    ; "Lagos"         ; GOVERNMENT
-180[1-9]    ; 7,8    ; FIXED_LINE ; STANDARD_RATE ; 1                ;              ; "fixed_line_1/3/3-4" ; "NG"    ; "Lagos"
-18[1-79]    ; 7,8    ; FIXED_LINE ; STANDARD_RATE ; 1                ;              ; "fixed_line_1/3/3-4" ; "NG"    ; "Lagos"
-188[0-79]   ; 7,8    ; FIXED_LINE ; STANDARD_RATE ; 1                ;              ; "fixed_line_1/3/3-4" ; "NG"    ; "Lagos"
-1888        ; 7,8    ; FIXED_LINE ; STANDARD_RATE ; 1                ;              ; "fixed_line_1/3/3-4" ; "NG"    ; "Lagos"         ; GOVERNMENT
-2           ; 7,8    ; FIXED_LINE ; STANDARD_RATE ; 1                ;              ; "fixed_line_1/3/3-4" ; "NG"    ; "Ibadan"
-201         ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;              ; "fixed_3/3/4"        ; "NG"    ; "Lagos"         ; ITU
-202         ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;              ; "fixed_3/3/4"        ; "NG"    ; "Ibadan"        ; ITU
-2030        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Ado Ekiti"     ; ITU
-2031        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Ilorin"        ; ITU
-2033        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "New Bussa"     ; ITU
-2034        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Akure"         ; ITU
-2035        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Osogbo"        ; ITU
-2036        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Ile Ife"       ; ITU
-2037        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Ijebu Ode"     ; ITU
-2038        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Oyo"           ; ITU
-2039        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Abeokuta"      ; ITU
-2041        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Wukari"        ; ITU
-2042        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Nsukka Enugu"  ; ITU
-2043        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Abakaliki"     ; ITU
-2044        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Makurdi"       ; ITU
-2045        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Ogoja"         ; ITU
-2046        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Onitsha"       ; ITU
-2047        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Lafia/Keffi"   ; ITU
-2048        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Awka"          ; ITU
-2050        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Ikare"         ; ITU
-2051        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Owoh"          ; ITU
-2052        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Benin"         ; ITU
-2053        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Warri"         ; ITU
-2054        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Sapele"        ; ITU
-2055        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Agbor"         ; ITU
-2056        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Asaba"         ; ITU
-2057        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Auchi"         ; ITU
-2058        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Lokoja"        ; ITU
-2059        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Okitipupa"     ; ITU
-2060        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Sokoto"        ; ITU
-2062        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Kaduna"        ; ITU
-2064        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Kano"          ; ITU
-2065        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Katsina"       ; ITU
-2066        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Minna"         ; ITU
-2068        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Birin Kebbi"   ; ITU
-2069        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Zaria"         ; ITU
-2071        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Azare"         ; ITU
-2072        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Gombe"         ; ITU
-2073        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Jos"           ; ITU
-2074        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Damaturu"      ; ITU
-2075        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Yola"          ; ITU
-2076        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Maiduguri"     ; ITU
-2077        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Bauchi"        ; ITU
-2079        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Jalingo"       ; ITU
-2082        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Aba"           ; ITU
-2083        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Owerri"        ; ITU
-2084        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Port Harcourt" ; ITU
-2085        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Uyo"           ; ITU
-2086        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Ahoada"        ; ITU
-2087        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Calabar"       ; ITU
-2088        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Umuahia"       ; ITU
-2089        ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Yenagoa"       ; ITU
-209         ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;              ; "fixed_3/3/4"        ; "NG"    ; "Abuja"         ; ITU
-30          ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_line_2/3/2-3" ; "NG"    ; "Ado Ekiti"
-31          ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_line_2/3/2-3" ; "NG"    ; "Ilorin"
-32          ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_line_2/3/2-3" ; "NG"
-33          ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_line_2/3/2-3" ; "NG"    ; "New Bussa"
-34          ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_line_2/3/2-3" ; "NG"    ; "Akura"
-35          ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_line_2/3/2-3" ; "NG"    ; "Oshogbo"
-36          ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_line_2/3/2-3" ; "NG"    ; "Ile Ife"
-37          ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_line_2/3/2-3" ; "NG"    ; "Ijebu Ode"
-38          ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_line_2/3/2-3" ; "NG"    ; "Oyo"
-39          ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_line_2/3/2-3" ; "NG"    ; "Abeokuta"
-40          ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_line_2/3/2-3" ; "NG"
-41          ; 7      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_line_2/3/2-3" ; "NG"    ; "Wukari"
-42          ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_line_2/3/2-3" ; "NG"    ; "Enugu"
-43          ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_line_2/3/2-3" ; "NG"    ; "Abakaliki"
-44          ; 7,8    ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_line_2/3/2-3" ; "NG"    ; "Makurdi"
-45          ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_line_2/3/2-3" ; "NG"    ; "Ogoja"
-46          ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_line_2/3/2-3" ; "NG"    ; "Onitsha"
-47          ; 7,8    ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_line_2/3/2-3" ; "NG"    ; "Lafia"
-48          ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_line_2/3/2-3" ; "NG"    ; "Awka"
-50          ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_line_2/3/2-3" ; "NG"    ; "Ikare"
-51          ; 7,8    ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_line_2/3/2-3" ; "NG"    ; "Owo"
-52          ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_line_2/3/2-3" ; "NG"    ; "Benin"
-53          ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_line_2/3/2-3" ; "NG"    ; "Warri"
-54          ; 7,8    ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_line_2/3/2-3" ; "NG"    ; "Sapele"
-55          ; 7,8    ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_line_2/3/2-3" ; "NG"    ; "Agbor"
-56          ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_line_2/3/2-3" ; "NG"    ; "Asaba"
-57          ; 7,8    ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_line_2/3/2-3" ; "NG"    ; "Auchi"
-58          ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_line_2/3/2-3" ; "NG"    ; "Lokoja"
-59          ; 7,8    ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_line_2/3/2-3" ; "NG"    ; "Okitipupa"
-60          ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_line_2/3/2-3" ; "NG"    ; "Sokobo"
-61          ; 7,8    ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_line_2/3/2-3" ; "NG"    ; "Kafanchau"
-62          ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_line_2/3/2-3" ; "NG"    ; "Kaduna"
-63          ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_line_2/3/2-3" ; "NG"    ; "Gusau"
-64          ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_line_2/3/2-3" ; "NG"    ; "Kano"
-65          ; 7,8    ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_line_2/3/2-3" ; "NG"    ; "Katsina"
-66          ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_line_2/3/2-3" ; "NG"    ; "Minna"
-67          ; 7,8    ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_line_2/3/2-3" ; "NG"    ; "Kontagora"
-68          ; 7,8    ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_line_2/3/2-3" ; "NG"    ; "Birnin-Kebbi"
-69          ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_line_2/3/2-3" ; "NG"    ; "Zaria"
-700         ; 7,8    ; FIXED_LINE ; STANDARD_RATE ;                  ;              ; "fixed_line_2/3/2-3" ; "NG"    ;                 ;            ; "Area code is not present/known for 70 fixed-line numbers as these are found online,  not from official plan."
-700         ; 10     ; UAN        ; STANDARD_RATE ;                  ;              ; "non_geo_3/3/3-4"    ; "NG"    ;                 ; ITU
-700         ; 11,12  ; UAN        ; STANDARD_RATE ;                  ;              ; "fmt1_3/4/4-5"       ; "NG"
-700         ; 13,14  ; UAN        ; STANDARD_RATE ;                  ;              ; "fmt2_3/5/5-6"       ; "NG"
-70[13-689]  ; 7,8    ; FIXED_LINE ; STANDARD_RATE ;                  ;              ; "fixed_line_2/3/2-3" ; "NG"
-70[18]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "airtel"     ; "non_geo_3/3/3-4"    ; "NG"    ;                 ; IR21
-7020        ; 7,8    ; FIXED_LINE ; STANDARD_RATE ;                  ;              ; "fixed_line_2/3/2-3" ; "NG"    ; "Pank Shin"
-7020        ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "smile"      ; "non_geo_3/3/3-4"    ; "NG"    ;                 ; GOVERNMENT
-702[124-9]  ; 7,8    ; FIXED_LINE ; STANDARD_RATE ;                  ;              ; "fixed_line_2/3/2-3" ; "NG"
-702[12]     ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "ntel"       ; "non_geo_3/3/3-4"    ; "NG"    ;                 ; GOVERNMENT
-7024        ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "prestel"    ; "non_geo_3/3/3-4"    ; "NG"    ;                 ; GOVERNMENT
-702[56]     ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "mtn"        ; "non_geo_3/3/3-4"    ; "NG"    ;                 ; GOVERNMENT
-7027        ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "multilinks" ; "non_geo_3/3/3-4"    ; "NG"    ;                 ; GOVERNMENT
-702[89]     ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "starcomms"  ; "non_geo_3/3/3-4"    ; "NG"    ;                 ; GOVERNMENT
-70[346]     ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "mtn"        ; "non_geo_3/3/3-4"    ; "NG"    ;                 ; GOVERNMENT
-[79]05      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "glo"        ; "non_geo_3/3/3-4"    ; "NG"    ;                 ; GOVERNMENT
-707         ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "mtn"        ; "non_geo_3/3/3-4"    ; "NG"    ;                 ; IR21
-709         ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "multilinks" ; "non_geo_3/3/3-4"    ; "NG"    ;                 ; GOVERNMENT
-71          ; 7,8    ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_line_2/3/2-3" ; "NG"    ; "Azare"
-7[12]       ; 10     ; MOBILE     ; STANDARD_RATE ;                  ;              ; "non_geo_3/3/3-4"    ; "NG"    ;                 ; ITU
-72          ; 7,8    ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_line_2/3/2-3" ; "NG"    ; "Gombe"
-73          ; 7,8    ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_line_2/3/2-3" ; "NG"    ; "Jos"
-74          ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_line_2/3/2-3" ; "NG"    ; "Damaturu"
-75          ; 7,8    ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_line_2/3/2-3" ; "NG"    ; "Yola"
-76          ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_line_2/3/2-3" ; "NG"    ; "Maiduguri"
-77          ; 7,8    ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_line_2/3/2-3" ; "NG"    ; "Bauchi"
-78          ; 7      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_line_2/2/3"   ; "NG"    ; "Hadejia"
-79          ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_line_2/3/2-3" ; "NG"    ; "Jalingo"
-800         ; 10     ; FIXED_LINE ; TOLL_FREE     ;                  ;              ; "non_geo_3/3/3-4"    ; "NG"    ;                 ; ITU
-800         ; 11,12  ; FIXED_LINE ; TOLL_FREE     ;                  ;              ; "fmt1_3/4/4-5"       ; "NG"
-800         ; 13,14  ; FIXED_LINE ; TOLL_FREE     ;                  ;              ; "fmt2_3/5/5-6"       ; "NG"
-801         ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "mafab"      ; "non_geo_3/3/3-4"    ; "NG"    ;                 ; GOVERNMENT
-80[28]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "airtel"     ; "non_geo_3/3/3-4"    ; "NG"    ;                 ; IR21
-80[36]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "mtn"        ; "non_geo_3/3/3-4"    ; "NG"    ;                 ; GOVERNMENT
-804         ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "ntel"       ; "non_geo_3/3/3-4"    ; "NG"    ;                 ; GOVERNMENT
-80[57]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "glo"        ; "non_geo_3/3/3-4"    ; "NG"    ;                 ; GOVERNMENT
-809         ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "9mobile"    ; "non_geo_3/3/3-4"    ; "NG"    ;                 ; IR21
-81[0346]    ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "mtn"        ; "non_geo_3/3/3-4"    ; "NG"    ;                 ; GOVERNMENT
-81[15]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "glo"        ; "non_geo_3/3/3-4"    ; "NG"    ;                 ; GOVERNMENT
-812         ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "airtel"     ; "non_geo_3/3/3-4"    ; "NG"    ;                 ; IR21
-81[78]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "9mobile"    ; "non_geo_3/3/3-4"    ; "NG"    ;                 ; IR21
-819[01]     ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "starcomms"  ; "non_geo_3/3/3-4"    ; "NG"    ;                 ; GOVERNMENT
-82          ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_line_2/3/2-3" ; "NG"    ; "Aba"
-83          ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_line_2/3/2-3" ; "NG"    ; "Owerri"
-84[014-8]   ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_line_2/3/2-3" ; "NG"    ; "Port Harcourt"
-842[0-79]   ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_line_2/3/2-3" ; "NG"    ; "Port Harcourt"
-8428        ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_line_2/3/2-3" ; "NG"    ; "Port Harcourt" ; GOVERNMENT
-8430        ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_line_2/3/2-3" ; "NG"    ; "Port Harcourt" ; GOVERNMENT
-843[1-9]    ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_line_2/3/2-3" ; "NG"    ; "Port Harcourt"
-849[0-25-9] ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_line_2/3/2-3" ; "NG"    ; "Port Harcourt"
-849[34]     ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_line_2/3/2-3" ; "NG"    ; "Port Harcourt" ; GOVERNMENT
-85          ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_line_2/3/2-3" ; "NG"    ; "Uyo"
-86          ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_line_2/3/2-3" ; "NG"    ; "Ahoada"
-87          ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_line_2/3/2-3" ; "NG"    ; "Calabar"
-88          ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_line_2/3/2-3" ; "NG"    ; "Umuahia"
-89          ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_line_2/3/2-3" ; "NG"    ; "Yenegoa"
-90[127]     ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "airtel"     ; "non_geo_3/3/3-4"    ; "NG"    ;                 ; IR21
-90[3-9]     ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;              ; "fixed_line_1/3/3-4" ; "NG"    ; "Abuja"
-90[36]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "mtn"        ; "non_geo_3/3/3-4"    ; "NG"    ;                 ; GOVERNMENT
-904         ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "airtel"     ; "non_geo_3/3/3-4"    ; "NG"    ;                 ;            ; "Added per client's request."
-90[89]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "9mobile"    ; "non_geo_3/3/3-4"    ; "NG"    ;                 ; IR21
-9[1-9]      ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;              ; "fixed_line_1/3/3-4" ; "NG"    ; "Abuja"
-91[12]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "airtel"     ; "non_geo_3/3/3-4"    ; "NG"    ;                 ; IR21
-913         ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "mtn"        ; "non_geo_3/3/3-4"    ; "NG"    ;                 ; TELECOMS
-914         ; 10     ; MOBILE     ; STANDARD_RATE ;                  ;              ; "non_geo_3/3/3-4"    ; "NG"    ;                 ; ITU
-915         ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "glo"        ; "non_geo_3/3/3-4"    ; "NG"    ;                 ; IR21
-916         ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "mtn"        ; "non_geo_3/3/3-4"    ; "NG"    ;                 ; GOVERNMENT
+Prefix   ; Length ; Type       ; Tariff        ; Area Code Length ; Operator     ; Format               ; Regions ; Geocode:en      ; Provenance ; Comment
+201      ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;              ; "fixed_3/3/4"        ; "NG"    ; "Lagos"         ; ITU
+202      ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;              ; "fixed_3/3/4"        ; "NG"    ; "Ibadan"        ; ITU
+2030     ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Ado Ekiti"     ; ITU
+2031     ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Ilorin"        ; ITU
+2033     ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "New Bussa"     ; ITU
+2034     ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Akure"         ; ITU
+2035     ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Osogbo"        ; ITU
+2036     ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Ile Ife"       ; ITU
+2037     ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Ijebu Ode"     ; ITU
+2038     ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Oyo"           ; ITU
+2039     ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Abeokuta"      ; ITU
+2041     ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Wukari"        ; ITU
+2042     ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Nsukka Enugu"  ; ITU
+2043     ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Abakaliki"     ; ITU
+2044     ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Makurdi"       ; ITU
+2045     ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Ogoja"         ; ITU
+2046     ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Onitsha"       ; ITU
+2047     ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Lafia/Keffi"   ; ITU
+2048     ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Awka"          ; ITU
+2050     ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Ikare"         ; ITU
+2051     ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Owoh"          ; ITU
+2052     ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Benin"         ; ITU
+2053     ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Warri"         ; ITU
+2054     ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Sapele"        ; ITU
+2055     ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Agbor"         ; ITU
+2056     ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Asaba"         ; ITU
+2057     ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Auchi"         ; ITU
+2058     ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Lokoja"        ; ITU
+2059     ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Okitipupa"     ; ITU
+2060     ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Sokoto"        ; ITU
+2062     ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Kaduna"        ; ITU
+2064     ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Kano"          ; ITU
+2065     ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Katsina"       ; ITU
+2066     ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Minna"         ; ITU
+2068     ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Birin Kebbi"   ; ITU
+2069     ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Zaria"         ; ITU
+2071     ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Azare"         ; ITU
+2072     ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Gombe"         ; ITU
+2073     ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Jos"           ; ITU
+2074     ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Damaturu"      ; ITU
+2075     ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Yola"          ; ITU
+2076     ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Maiduguri"     ; ITU
+2077     ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Bauchi"        ; ITU
+2079     ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Jalingo"       ; ITU
+2082     ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Aba"           ; ITU
+2083     ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Owerri"        ; ITU
+2084     ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Port Harcourt" ; ITU
+2085     ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Uyo"           ; ITU
+2086     ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Ahoada"        ; ITU
+2087     ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Calabar"       ; ITU
+2088     ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Umuahia"       ; ITU
+2089     ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/2/4"        ; "NG"    ; "Yenagoa"       ; ITU
+209      ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;              ; "fixed_3/3/4"        ; "NG"    ; "Abuja"         ; ITU
+38       ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_line_2/3/2-3" ; "NG"    ; "Oyo"
+700      ; 10     ; UAN        ; STANDARD_RATE ;                  ;              ; "non_geo_3/3/3-4"    ; "NG"    ;                 ; ITU
+700      ; 11,12  ; UAN        ; STANDARD_RATE ;                  ;              ; "fmt1_3/4/4-5"       ; "NG"
+700      ; 13,14  ; UAN        ; STANDARD_RATE ;                  ;              ; "fmt2_3/5/5-6"       ; "NG"
+70[18]   ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "airtel"     ; "non_geo_3/3/3-4"    ; "NG"    ;                 ; IR21
+7020     ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "smile"      ; "non_geo_3/3/3-4"    ; "NG"    ;                 ; GOVERNMENT
+702[12]  ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "ntel"       ; "non_geo_3/3/3-4"    ; "NG"    ;                 ; GOVERNMENT
+7024     ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "prestel"    ; "non_geo_3/3/3-4"    ; "NG"    ;                 ; GOVERNMENT
+702[56]  ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "mtn"        ; "non_geo_3/3/3-4"    ; "NG"    ;                 ; GOVERNMENT
+7027     ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "multilinks" ; "non_geo_3/3/3-4"    ; "NG"    ;                 ; GOVERNMENT
+702[89]  ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "starcomms"  ; "non_geo_3/3/3-4"    ; "NG"    ;                 ; GOVERNMENT
+70[346]  ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "mtn"        ; "non_geo_3/3/3-4"    ; "NG"    ;                 ; GOVERNMENT
+[79]05   ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "glo"        ; "non_geo_3/3/3-4"    ; "NG"    ;                 ; GOVERNMENT
+707      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "mtn"        ; "non_geo_3/3/3-4"    ; "NG"    ;                 ; IR21
+709      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "multilinks" ; "non_geo_3/3/3-4"    ; "NG"    ;                 ; GOVERNMENT
+7[12]    ; 10     ; MOBILE     ; STANDARD_RATE ;                  ;              ; "non_geo_3/3/3-4"    ; "NG"    ;                 ; ITU
+800      ; 10     ; FIXED_LINE ; TOLL_FREE     ;                  ;              ; "non_geo_3/3/3-4"    ; "NG"    ;                 ; ITU
+800      ; 11,12  ; FIXED_LINE ; TOLL_FREE     ;                  ;              ; "fmt1_3/4/4-5"       ; "NG"
+800      ; 13,14  ; FIXED_LINE ; TOLL_FREE     ;                  ;              ; "fmt2_3/5/5-6"       ; "NG"
+801      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "mafab"      ; "non_geo_3/3/3-4"    ; "NG"    ;                 ; GOVERNMENT
+80[28]   ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "airtel"     ; "non_geo_3/3/3-4"    ; "NG"    ;                 ; IR21
+80[36]   ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "mtn"        ; "non_geo_3/3/3-4"    ; "NG"    ;                 ; GOVERNMENT
+804      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "ntel"       ; "non_geo_3/3/3-4"    ; "NG"    ;                 ; GOVERNMENT
+80[57]   ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "glo"        ; "non_geo_3/3/3-4"    ; "NG"    ;                 ; GOVERNMENT
+809      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "9mobile"    ; "non_geo_3/3/3-4"    ; "NG"    ;                 ; IR21
+81[0346] ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "mtn"        ; "non_geo_3/3/3-4"    ; "NG"    ;                 ; GOVERNMENT
+81[15]   ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "glo"        ; "non_geo_3/3/3-4"    ; "NG"    ;                 ; GOVERNMENT
+812      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "airtel"     ; "non_geo_3/3/3-4"    ; "NG"    ;                 ; IR21
+81[78]   ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "9mobile"    ; "non_geo_3/3/3-4"    ; "NG"    ;                 ; IR21
+819[01]  ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "starcomms"  ; "non_geo_3/3/3-4"    ; "NG"    ;                 ; GOVERNMENT
+90[127]  ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "airtel"     ; "non_geo_3/3/3-4"    ; "NG"    ;                 ; IR21
+90[36]   ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "mtn"        ; "non_geo_3/3/3-4"    ; "NG"    ;                 ; GOVERNMENT
+904      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "airtel"     ; "non_geo_3/3/3-4"    ; "NG"    ;                 ;            ; "Added per client's request."
+90[89]   ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "9mobile"    ; "non_geo_3/3/3-4"    ; "NG"    ;                 ; IR21
+91[12]   ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "airtel"     ; "non_geo_3/3/3-4"    ; "NG"    ;                 ; IR21
+913      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "mtn"        ; "non_geo_3/3/3-4"    ; "NG"    ;                 ; TELECOMS
+914      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ;              ; "non_geo_3/3/3-4"    ; "NG"    ;                 ; ITU
+915      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "glo"        ; "non_geo_3/3/3-4"    ; "NG"    ;                 ; IR21
+916      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "mtn"        ; "non_geo_3/3/3-4"    ; "NG"    ;                 ; GOVERNMENT

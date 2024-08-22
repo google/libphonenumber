@@ -48,7 +48,7 @@ Prefix       ; Length ; Type       ; Tariff        ; Operator     ; Format      
 808[015-9]   ; 8      ; MOBILE     ; STANDARD_RATE ; "simba"      ; "fmt1_4/4"   ; "SG"    ; IR21
 808[24]      ; 8      ; MOBILE     ; STANDARD_RATE ; "singtel"    ; "fmt1_4/4"   ; "SG"    ; IR21
 8083         ; 8      ; MOBILE     ; STANDARD_RATE ; "m1"         ; "fmt1_4/4"   ; "SG"    ; IR21
-809[035]     ; 8      ; MOBILE     ; STANDARD_RATE ; "singtel"    ; "fmt1_4/4"   ; "SG"    ; IR21
+809[0359]    ; 8      ; MOBILE     ; STANDARD_RATE ; "singtel"    ; "fmt1_4/4"   ; "SG"    ; IR21
 809[14]      ; 8      ; MOBILE     ; STANDARD_RATE ; "m1"         ; "fmt1_4/4"   ; "SG"    ; IR21
 809[268]     ; 8      ; MOBILE     ; STANDARD_RATE ; "simba"      ; "fmt1_4/4"   ; "SG"    ; IR21
 81[07]       ; 8      ; MOBILE     ; STANDARD_RATE ; "m1"         ; "fmt1_4/4"   ; "SG"
@@ -70,7 +70,8 @@ Prefix       ; Length ; Type       ; Tariff        ; Operator     ; Format      
 823          ; 8      ; MOBILE     ; STANDARD_RATE ; "starhub"    ; "fmt1_4/4"   ; "SG"    ; GOVERNMENT ; "Government Dated March 2019"
 826[0-79]    ; 8      ; MOBILE     ; STANDARD_RATE ; "singtel"    ; "fmt1_4/4"   ; "SG"
 8268         ; 8      ; MOBILE     ; STANDARD_RATE ; "starhub"    ; "fmt1_4/4"   ; "SG"
-827          ; 8      ; MOBILE     ; STANDARD_RATE ; "m1"         ; "fmt1_4/4"   ; "SG"    ; GOVERNMENT ; "Government Dated March 2019"
+827[0-35-9]  ; 8      ; MOBILE     ; STANDARD_RATE ; "m1"         ; "fmt1_4/4"   ; "SG"    ; IR21
+8274         ; 8      ; MOBILE     ; STANDARD_RATE ; "simba"      ; "fmt1_4/4"   ; "SG"    ; IR21
 828[013-79]  ; 8      ; MOBILE     ; STANDARD_RATE ; "singtel"    ; "fmt1_4/4"   ; "SG"
 828[28]      ; 8      ; MOBILE     ; STANDARD_RATE ; "m1"         ; "fmt1_4/4"   ; "SG"
 829[0-8]     ; 8      ; MOBILE     ; STANDARD_RATE ; "starhub"    ; "fmt1_4/4"   ; "SG"

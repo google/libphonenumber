@@ -2,7 +2,7 @@ Prefix      ; Length ; Type       ; Tariff        ; Operator       ; Format     
 01          ; 8      ; MOBILE     ; STANDARD_RATE ; "onatel"       ; "fmt1_2/2/2/2" ; "BF"
 02          ; 8      ; MOBILE     ; STANDARD_RATE ; "onatel"       ; "fmt1_2/2/2/2" ; "BF"    ;                         ; ITU
 03          ; 8      ; MOBILE     ; STANDARD_RATE ; "onatel"       ; "fmt1_2/2/2/2" ; "BF"    ;                         ; IR21
-05          ; 8      ; MOBILE     ; STANDARD_RATE ; "orange"       ; "fmt1_2/2/2/2" ; "BF"    ;                         ; IR21
+0[45]       ; 8      ; MOBILE     ; STANDARD_RATE ; "orange"       ; "fmt1_2/2/2/2" ; "BF"    ;                         ; IR21
 06          ; 8      ; MOBILE     ; STANDARD_RATE ; "orange"       ; "fmt1_2/2/2/2" ; "BF"    ;                         ; ITU
 07          ; 8      ; MOBILE     ; STANDARD_RATE ; "orange"       ; "fmt1_2/2/2/2" ; "BF"
 2049        ; 8      ; FIXED_LINE ; STANDARD_RATE ;                ; "fmt1_2/2/2/2" ; "BF"    ; "Kaya"

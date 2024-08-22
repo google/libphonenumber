@@ -1,3 +1,12 @@
+Aug 22, 2024: v8.13.44
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   BF, CD, GM, NG, RO, SG, SN, TJ, UY
+ - Updated short number metadata for region code(s): CA
+ - Updated geocoding data for country calling code(s): 234 (en), 243 (fr)
+ - Updated carrier data for country calling code(s):
+   32 (en), 40 (en), 65 (en), 220 (en), 226 (en), 673 (en), 992 (en)
+
 Aug 07, 2024: v8.13.43
 Metadata changes:
  - Updated phone metadata for region code(s):
