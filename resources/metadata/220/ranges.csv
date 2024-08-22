@@ -1,6 +1,7 @@
 Prefix       ; Length ; Type       ; Tariff        ; Operator   ; Format    ; Regions ; Geocode:en                                                            ; Provenance ; Comment
 [27]         ; 7      ; MOBILE     ; STANDARD_RATE ; "africell" ; "fmt_3/4" ; "GM"    ;                                                                       ; IR21
 3            ; 7      ; MOBILE     ; STANDARD_RATE ; "qcell"    ; "fmt_3/4" ; "GM"    ;                                                                       ; IR21
+4[015]       ; 7      ; MOBILE     ; STANDARD_RATE ; "africell" ; "fmt_3/4" ; "GM"    ;                                                                       ; IR21
 42           ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt_3/4" ; "GM"    ; "Banjul"                                                              ; ITU
 43           ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt_3/4" ; "GM"    ; "Bundung/Serekunda"                                                   ; ITU
 4410         ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt_3/4" ; "GM"    ; "Brufut"                                                              ; ITU

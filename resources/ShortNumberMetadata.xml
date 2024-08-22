@@ -2200,21 +2200,16 @@
       <generalDesc>
         <nationalNumberPattern>
           [1-9]\d\d(?:
-            \d\d(?:
-              \d(?:
-                \d{2}
-              )?
-            )?
+            \d{2,3}
           )?
         </nationalNumberPattern>
       </generalDesc>
       <shortCode>
-        <possibleLengths national="3,5,6,8"/>
+        <possibleLengths national="3,5,6"/>
         <exampleNumber>112</exampleNumber>
         <nationalNumberPattern>
-          112|
-          30000\d{3}|
           [1-35-9]\d{4,5}|
+          112|
           [2-8]11|
           9(?:
             11|
@@ -2254,15 +2249,10 @@
       </expandedEmergency>
       <!-- https://support.twitter.com/articles/20170024 -->
       <!-- http://www.txt.ca/en/shortcode-search/ -->
-      <!-- We also support so-called "long codes" (8 digits). Technically we know that 30000 is
-           not a valid short-code but this is too complex/not worth the time to exclude here. -->
       <smsServices>
-        <possibleLengths national="5,6,8"/>
+        <possibleLengths national="5,6"/>
         <exampleNumber>10000</exampleNumber>
-        <nationalNumberPattern>
-          300\d{5}|
-          [1-35-9]\d{4,5}
-        </nationalNumberPattern>
+        <nationalNumberPattern>[1-35-9]\d{4,5}</nationalNumberPattern>
       </smsServices>
     </territory>
 
