@@ -1559,7 +1559,8 @@
               364|
               4(?:
                 1[2-8]|
-                [235][4-6]|
+                [25][4-6]|
+                3[3-6]|
                 84
               )|
               5(?:
@@ -1641,6 +1642,7 @@
               )|
               7(?:
                 18|
+                35|
                 5[17]
               )
             )
@@ -1686,7 +1688,7 @@
               7(?:
                 16|
                 2[15]|
-                3[145]|
+                3[14]|
                 4[13]|
                 5[468]|
                 7[2-5]|
@@ -1833,7 +1835,8 @@
                 364|
                 4(?:
                   1[2-8]|
-                  [235][4-6]|
+                  [25][4-6]|
+                  3[3-6]|
                   84
                 )|
                 5(?:
@@ -1916,6 +1919,7 @@
               )|
               7(?:
                 18|
+                35|
                 5[17]
               )
             )
@@ -1961,7 +1965,7 @@
               7(?:
                 16|
                 2[15]|
-                3[145]|
+                3[14]|
                 4[13]|
                 5[468]|
                 7[2-5]|
@@ -8754,7 +8758,7 @@
                 [2-5]\d|
                 60
               )|
-              190|
+              19[01]|
               [2379]\d\d
             )
           )\d{5}
@@ -10396,7 +10400,8 @@
                 1[69]|
                 3[2-49]|
                 4[0-3]|
-                6[5-8]
+                6[5-8]|
+                7\d
               )|
               5(?:
                 1[578]|
@@ -13151,7 +13156,7 @@
     </territory>
 
     <!-- Hong Kong (HK) -->
-    <!-- http://www.ofca.gov.hk/en/industry_focus/telecommunications/portability/index.html -->
+    <!-- https://www.ofca.gov.hk/en/industry_focus/industry_focus/portability/numbering/index.html -->
     <territory id="HK" countryCode="852" preferredInternationalPrefix="00"
                internationalPrefix="00(?:30|5[09]|[126-9]?)" mobileNumberPortableRegion="true">
       <availableFormats>
@@ -13787,7 +13792,7 @@
           <format>$1 $2</format>
         </numberFormat>
         <!-- http://en.wikipedia.org/wiki/Toll-free_telephone_number, and examples on the web show
-             that sometimes they are followed by fewer digits. -->
+             that sometimes they are followed by fewer digits -->
         <numberFormat pattern="(\d{3})(\d{5,7})" nationalPrefixFormattingRule="$NP$FG">
           <leadingDigits>800</leadingDigits>
           <format>$1 $2</format>
@@ -13822,8 +13827,8 @@
           <leadingDigits>8</leadingDigits>
           <format>$1-$2-$3</format>
         </numberFormat>
-        <!-- 12 digit toll free numbers. -->
-        <numberFormat pattern="(\d{3})(\d{3})(\d{3})(\d{3})">
+        <!-- Format for 001803 toll free numbers. -->
+        <numberFormat pattern="(\d{3})(\d{3})(\d{3})(\d{2,8})">
           <leadingDigits>001</leadingDigits>
           <format>$1 $2 $3 $4</format>
           <intlFormat>NA</intlFormat>
@@ -13837,14 +13842,12 @@
       </availableFormats>
       <generalDesc>
         <nationalNumberPattern>
+          00[1-9]\d{9,14}|
           (?:
-            (?:
-              00[1-9]|
-              8\d
-            )\d{4}|
-            [1-36]
+            [1-36]|
+            8\d{5}
           )\d{6}|
-          00\d{10}|
+          00\d{9}|
           [1-9]\d{8,10}|
           [2-9]\d{7}
         </nationalNumberPattern>
@@ -13852,9 +13855,9 @@
       <!-- 00798 ITFS numbers can't be dialled internationally. Source:
            https://support.twilio.com/hc/en-us/articles/115007579027-Toll-free-phone-number-restrictions-and-limitations -->
       <noInternationalDialling>
-        <possibleLengths national="10,12,13"/>
+        <possibleLengths national="[10-17]"/>
         <nationalNumberPattern>
-          001803\d{6,7}|
+          001803\d{5,11}|
           (?:
             007803\d|
             8071
@@ -13952,15 +13955,17 @@
         <nationalNumberPattern>8[1-35-9]\d{7,10}</nationalNumberPattern>
       </mobile>
       <tollFree>
-        <possibleLengths national="[8-13]"/>
+        <possibleLengths national="[8-17]"/>
         <exampleNumber>8001234567</exampleNumber>
         <nationalNumberPattern>
-          00[17]803\d{7}|
+          00(?:
+            1803\d{5,11}|
+            7803\d{7}
+          )|
           (?:
             177\d|
             800
-          )\d{5,7}|
-          001803\d{6}
+          )\d{5,7}
         </nationalNumberPattern>
       </tollFree>
       <!-- The information below is provided by an Indonesian -->
@@ -14273,9 +14278,9 @@
           )\d{4}|
           5(?:
             (?:
-              [02][02-9]|
-              [149][2-9]|
+              [0-2][02-9]|
               [36]\d|
+              [49][2-9]|
               8[3-7]
             )\d|
             5(?:
@@ -22074,9 +22079,9 @@
             )|
             4(?:
               1[1-57-9]|
-              [25-7][1-9]|
+              [267][1-9]|
               3[1-8]|
-              4\d|
+              [45]\d|
               8[1-35-9]|
               9[2-689]
             )|
@@ -22147,9 +22152,9 @@
             )|
             4(?:
               1[1-57-9]|
-              [25-7][1-9]|
+              [267][1-9]|
               3[1-8]|
-              4\d|
+              [45]\d|
               8[1-35-9]|
               9[2-689]
             )|
@@ -23564,7 +23569,7 @@
         <possibleLengths national="8" localOnly="7"/>
         <exampleNumber>32345678</exampleNumber>
         <nationalNumberPattern>
-          24099\d{3}|
+          240\d{5}|
           (?:
             3[2-79]|
             [49][2-9]|
@@ -26628,7 +26633,7 @@
     </territory>
 
     <!-- Singapore (SG) -->
-    <!-- http://www.ida.gov.sg/Policies-and-Regulations/Industry-and-Licensees/Numbering/National-Numbering-Plan-and-Allocation-Process.aspx -->
+    <!-- https://www.imda.gov.sg/regulations-and-licensing-listing/numbering/national-numbering-plan-and-allocation-process -->
     <!-- https://en.wikipedia.org/wiki/Telephone_numbers_in_Singapore -->
     <territory id="SG" countryCode="65" internationalPrefix="0[0-3]\d"
                mobileNumberPortableRegion="true">
@@ -31489,7 +31494,7 @@
     <!-- South Africa (ZA) -->
     <!-- http://www.itu.int/oth/T02020000C1/en -->
     <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_South_Africa -->
-    <!-- https://www.icasa.org.za/Portals/0/Regulations/Regulations/NumberingPlanReg.pdf -->
+    <!-- https://www.icasa.org.za/legislation-and-regulations/amendment-of-the-numbering-plan-regulations-2016 -->
     <territory id="ZA" countryCode="27" internationalPrefix="00" nationalPrefix="0"
                mobileNumberPortableRegion="true">
       <availableFormats>
