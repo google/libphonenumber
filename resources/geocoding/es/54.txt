@@ -192,6 +192,7 @@
 543409|Moisés Ville, Santa Fe
 54341|Rosario, Santa Fe
 54342|Santa Fe, Santa Fe
+543433|Paraná, Entre Ríos
 543434|Paraná, Entre Ríos
 543435|Nogoyá, Entre Ríos
 543436|Victoria, Entre Ríos

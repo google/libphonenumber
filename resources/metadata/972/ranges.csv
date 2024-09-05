@@ -53,6 +53,7 @@ Prefix       ; Length ; Type       ; Tariff        ; Area Code Length ; National
 49[02-467]   ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ; false         ;                    ; "fixed_1/3/4"         ; "IL"    ; "Haifa and North Regions"    ; "חיפה והצפון"        ;            ; "Fill up to support master range"
 49[1589]     ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ; false         ;                    ; "fixed_1/3/4"         ; "IL"    ; "Haifa and North Regions"    ; "חיפה והצפון"        ; GOVERNMENT
 50[02-9]     ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "pelephone"        ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; IR21
+510          ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "wecom"            ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; IR21
 51[2-9]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "xphone"           ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; GOVERNMENT
 52[02-9]     ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "cellcom"          ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; IR21
 53           ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "hot_mobile"       ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; IR21

@@ -143,6 +143,7 @@
 52447|Contepec/Maravatío, MICH
 52448|Querétaro
 52449|Aguascalientes/Jesús María, AGS
+52450|Morelia
 52451|Michoacán
 52452|Nuevo San Juan Parangaricutiro/Uruapan, MICH
 52453|Apatzingán, MICH
