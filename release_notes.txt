@@ -1,3 +1,12 @@
+Sep 04, 2024: v8.13.45
+Metadata changes:
+ - Updated phone metadata for region code(s): AR, CZ, ET, ID, IL, MX, NZ
+ - Updated geocoding data for country calling code(s):
+   52 (en), 54 (en), 251 (en), 1807 (en)
+ - Updated carrier data for country calling code(s):
+   47 (en), 420 (en), 972 (en)
+ - Updated / refreshed time zone meta data.
+
 Aug 22, 2024: v8.13.44
 Metadata changes:
  - Updated phone metadata for region code(s):

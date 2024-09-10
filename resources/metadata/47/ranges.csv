@@ -47,7 +47,7 @@ Prefix          ; Length ; Type            ; Tariff        ; Operator           
 40[45]          ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"                  ; "fmt_2/2/2/2"   ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
 406[0-4]        ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"                  ; "fmt_2/2/2/2"   ; "Europe/Oslo"         ; "NO,SJ"
 4065            ; 8      ; MOBILE          ; STANDARD_RATE ; "telia_telecom_solution" ; "fmt_2/2/2/2"   ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
-4066            ; 8      ; MOBILE          ; STANDARD_RATE ;                          ; "fmt_2/2/2/2"   ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+4066            ; 8      ; MOBILE          ; STANDARD_RATE ; "billity"                ; "fmt_2/2/2/2"   ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
 4067            ; 8      ; MOBILE          ; STANDARD_RATE ; "nextgentel"             ; "fmt_2/2/2/2"   ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
 406[89]         ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "fmt_2/2/2/2"   ; "Europe/Oslo"         ; "NO,SJ" ;                        ; IR21       ; "IR21  01/02/2019"
 407[0-689]      ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"                  ; "fmt_2/2/2/2"   ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT

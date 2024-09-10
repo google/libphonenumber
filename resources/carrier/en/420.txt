@@ -22,6 +22,7 @@
 420608|Vodafone
 420702|O2
 42070300|T-Mobile
+42070301|YATECO
 4207031|T-Mobile
 4207032|T-Mobile
 4207033|T-Mobile
@@ -99,6 +100,7 @@
 42077072|Cesky bezdrat
 42077073|T-Mobile
 42077077|T-Mobile
+42077078|YATECO
 4207708|Vodafone
 4207709|Vodafone
 42077100|TT Quality s.r.o.

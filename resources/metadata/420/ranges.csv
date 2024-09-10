@@ -19,7 +19,8 @@ Prefix        ; Length ; Type            ; Tariff        ; Operator             
 70[01]        ; 9      ; PERSONAL_NUMBER ; STANDARD_RATE ;                            ; "fmt1_3/3/3"   ; "CZ"    ;                            ;            ; "Fillup To Support Master Range"
 702           ; 9      ; MOBILE          ; STANDARD_RATE ; "o2"                       ; "fmt1_3/3/3"   ; "CZ"    ;                            ; IR21
 70300         ; 9      ; MOBILE          ; STANDARD_RATE ; "t_mobile"                 ; "fmt1_3/3/3"   ; "CZ"    ;                            ; IR21
-7030[1-9]     ; 9      ; MOBILE          ; STANDARD_RATE ;                            ; "fmt1_3/3/3"   ; "CZ"    ;                            ;            ; "Fillup To Support Master Range"
+70301         ; 9      ; MOBILE          ; STANDARD_RATE ; "yateco"                   ; "fmt1_3/3/3"   ; "CZ"    ;                            ; GOVERNMENT
+7030[2-9]     ; 9      ; MOBILE          ; STANDARD_RATE ;                            ; "fmt1_3/3/3"   ; "CZ"    ;                            ;            ; "Fillup To Support Master Range"
 703[1-689]    ; 9      ; MOBILE          ; STANDARD_RATE ; "t_mobile"                 ; "fmt1_3/3/3"   ; "CZ"    ;                            ; IR21
 70370         ; 9      ; MOBILE          ; STANDARD_RATE ; "fayn"                     ; "fmt1_3/3/3"   ; "CZ"    ;                            ; GOVERNMENT
 7037[12457-9] ; 9      ; MOBILE          ; STANDARD_RATE ;                            ; "fmt1_3/3/3"   ; "CZ"    ;                            ;            ; "Fillup To Support Master Range"
@@ -31,7 +32,7 @@ Prefix        ; Length ; Type            ; Tariff        ; Operator             
 7055          ; 9      ; MOBILE          ; STANDARD_RATE ;                            ; "fmt1_3/3/3"   ; "CZ"    ;                            ;            ; "Fillup To Support Master Range"
 705[6-9]      ; 9      ; MOBILE          ; STANDARD_RATE ; "t_mobile"                 ; "fmt1_3/3/3"   ; "CZ"    ;                            ; GOVERNMENT
 7060          ; 9      ; MOBILE          ; STANDARD_RATE ; "datacell"                 ; "fmt1_3/3/3"   ; "CZ"    ;                            ; GOVERNMENT
-7190          ; 9      ; MOBILE          ; STANDARD_RATE ; "o2"                       ; "fmt1_3/3/3"   ; "CZ"    ;                            ; GOVERNMENT
+719[01]       ; 9      ; MOBILE          ; STANDARD_RATE ; "o2"                       ; "fmt1_3/3/3"   ; "CZ"    ;                            ; GOVERNMENT
 72            ; 9      ; MOBILE          ; STANDARD_RATE ; "o2"                       ; "fmt1_3/3/3"   ; "CZ"    ;                            ; IR21
 730[0-25689]  ; 9      ; MOBILE          ; STANDARD_RATE ; "t_mobile"                 ; "fmt1_3/3/3"   ; "CZ"    ;                            ; IR21
 73030         ; 9      ; MOBILE          ; STANDARD_RATE ; "t_mobile"                 ; "fmt1_3/3/3"   ; "CZ"    ;                            ; IR21
@@ -54,7 +55,8 @@ Prefix        ; Length ; Type            ; Tariff        ; Operator             
 77070         ; 9      ; MOBILE          ; STANDARD_RATE ; "o2"                       ; "fmt1_3/3/3"   ; "CZ"
 7707[12]      ; 9      ; MOBILE          ; STANDARD_RATE ; "eri"                      ; "fmt1_3/3/3"   ; "CZ"    ;                            ; GOVERNMENT
 7707[37]      ; 9      ; MOBILE          ; STANDARD_RATE ; "t_mobile"                 ; "fmt1_3/3/3"   ; "CZ"    ;                            ; IR21
-7707[4-689]   ; 9      ; MOBILE          ; STANDARD_RATE ;                            ; "fmt1_3/3/3"   ; "CZ"    ;                            ;            ; "Fillup To Support Master Range"
+7707[4-69]    ; 9      ; MOBILE          ; STANDARD_RATE ;                            ; "fmt1_3/3/3"   ; "CZ"    ;                            ;            ; "Fillup To Support Master Range"
+77078         ; 9      ; MOBILE          ; STANDARD_RATE ; "yateco"                   ; "fmt1_3/3/3"   ; "CZ"    ;                            ; GOVERNMENT
 7708[0-4]     ; 9      ; MOBILE          ; STANDARD_RATE ; "vodafone"                 ; "fmt1_3/3/3"   ; "CZ"    ;                            ; IR21
 7708[5-9]     ; 9      ; MOBILE          ; STANDARD_RATE ; "vodafone"                 ; "fmt1_3/3/3"   ; "CZ"    ;                            ; GOVERNMENT
 7709          ; 9      ; MOBILE          ; STANDARD_RATE ; "vodafone"                 ; "fmt1_3/3/3"   ; "CZ"    ;                            ; GOVERNMENT
