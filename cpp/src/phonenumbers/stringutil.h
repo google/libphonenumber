@@ -80,9 +80,10 @@ int GlobalReplaceSubstring(const string& substring, const string& replacement,
 class StringHolder: public absl::AlphaNum {
  public:
   // Don't make the constructors explicit to make the StrCat usage convenient.
-  StringHolder(const string& s);  // NOLINT(runtime/explicit)
-  StringHolder(const char* s);    // NOLINT(runtime/explicit)
-  StringHolder(uint64_t n);         // NOLINT(runtime/explicit)
+  StringHolder(const string& s);       // NOLINT(runtime/explicit)
+  StringHolder(const char* s);         // NOLINT(runtime/explicit)
+  StringHolder(uint64_t n);            // NOLINT(runtime/explicit)
+  StringHolder(absl::string_view sv);  // NOLINT(runtime/explicit)
   ~StringHolder();
 
   const absl::string_view GetString() const {
