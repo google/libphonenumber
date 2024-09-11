@@ -134,6 +134,10 @@ StringHolder::StringHolder(uint64 n)
   : absl::AlphaNum(n)
 {}
 
+StringHolder::StringHolder(absl::string_view sv)
+  : absl::AlphaNum(sv)
+{}
+
 StringHolder::~StringHolder() {}
 
 // StrCat
