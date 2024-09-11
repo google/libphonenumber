@@ -20,7 +20,7 @@
 
 package com.google.i18n.phonenumbers;
 
-public class RegionCode {
+final class RegionCode {
   // Class containing string constants of region codes for easier testing.
   // Region code for global networks (e.g. +800 numbers).
   static final String UN001 = "001";
