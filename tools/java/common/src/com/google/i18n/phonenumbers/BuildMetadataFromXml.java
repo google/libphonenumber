@@ -162,7 +162,7 @@ public class BuildMetadataFromXml {
     return countryCodeToRegionCodeMap;
   }
 
-  // Build an un list of region codes from the metadata
+  // Build a list of region codes from the metadata
   public static List<String> buildRegionCodeList(
       PhoneMetadataCollection metadataCollection) {
     List<String> regionCodeList = new ArrayList<String>();
