@@ -378,7 +378,7 @@ public class BuildMetadataProtoFromXml extends Command {
         .setModifiers("final")
         .setCopyright(Integer.parseInt(copyright));
 
-    writer.addToJavadoc(REGION_CODE_CONSTS_JAVADOC);
+    writer.setJavadoc(REGION_CODE_CONSTS_JAVADOC);
     
     for (String regionCode : regionCodeList) {
       String variableName = regionCode.toUpperCase();
@@ -423,13 +423,7 @@ public class BuildMetadataProtoFromXml extends Command {
         return this;
       }
 
-      abstract Builder setJavadoc(String javadoc);
-      private final StringBuilder javadocBuilder = new StringBuilder();
-      final Builder addToJavadoc(String text) {
-        javadocBuilder.append(text);
-        return this;
-      }
-      
+      abstract Builder setJavadoc(String javadoc);      
       abstract Builder setName(String name);
       abstract Builder setModifiers(String modifiers);
       
@@ -448,7 +442,6 @@ public class BuildMetadataProtoFromXml extends Command {
       abstract ClassWriter autoBuild();
       
       final ClassWriter build() {
-        setJavadoc(javadocBuilder.toString());
         setBody(bodyBuilder.toString());
         return autoBuild();
       }
