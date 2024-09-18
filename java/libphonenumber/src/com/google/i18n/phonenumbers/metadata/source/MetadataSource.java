@@ -17,5 +17,5 @@
 package com.google.i18n.phonenumbers.metadata.source;
 
 /** A source of phone metadata split by different regions. */
-public interface MetadataSource extends RegionMetadataSource, NonGeographicalEntityMetadataSource {
+public interface MetadataSource extends RegionMetadataSource, NonGeographicalEntityMetadataSource, NonGeographicalEntityMetadataSourceV2 {
 }

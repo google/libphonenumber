@@ -699,7 +699,7 @@ public class PhoneNumberUtil {
 
   // The set of country calling codes that map to the non-geo entity region ("001"). This set
   // currently contains < 12 elements so the default capacity of 16 (load factor=0.75) is fine.
-  private final Set<Integer> countryCodesForNonGeographicalRegion = new HashSet<>();
+  private final Set<Integer> countryCodesForNonGeographicalEntity = new HashSet<>();
 
   /**
    * This class implements a singleton, the constructor is only visible to facilitate testing.
@@ -715,7 +715,7 @@ public class PhoneNumberUtil {
       // that's the only region code it maps to.
       if (regionCodes.size() == 1 && REGION_CODE_FOR_NON_GEO_ENTITY.equals(regionCodes.get(0))) {
         // This is the subset of all country codes that map to the non-geo entity region code.
-        countryCodesForNonGeographicalRegion.add(entry.getKey());
+        countryCodesForNonGeographicalEntity.add(entry.getKey());
       } else {
         // The supported regions set does not include the "001" non-geo entity region code.
         supportedRegions.addAll(regionCodes);
@@ -1072,7 +1072,7 @@ public class PhoneNumberUtil {
    *     library supports
    */
   public Set<Integer> getSupportedGlobalNetworkCallingCodes() {
-    return Collections.unmodifiableSet(countryCodesForNonGeographicalRegion);
+    return Collections.unmodifiableSet(countryCodesForNonGeographicalEntity);
   }
 
   /**
@@ -1159,7 +1159,7 @@ public class PhoneNumberUtil {
    * entity.
    */
   public Set<PhoneNumberType> getSupportedTypesForNonGeoEntity(int countryCallingCode) {
-    PhoneMetadata metadata = getMetadataForNonGeographicalRegion(countryCallingCode);
+    PhoneMetadata metadata = getMetadataForNonGeographicalEntity(countryCallingCode);
     if (metadata == null) {
       logger.log(Level.WARNING, "Unknown country calling code for a non-geographical entity "
           + "provided: " + countryCallingCode);
@@ -1436,7 +1436,7 @@ public class PhoneNumberUtil {
   private PhoneMetadata getMetadataForRegionOrCallingCode(
       int countryCallingCode, String regionCode) {
     return REGION_CODE_FOR_NON_GEO_ENTITY.equals(regionCode)
-        ? getMetadataForNonGeographicalRegion(countryCallingCode)
+        ? getMetadataForNonGeographicalEntity(countryCallingCode)
         : getMetadataForRegion(regionCode);
   }
 
@@ -2149,7 +2149,7 @@ public class PhoneNumberUtil {
     // If there wasn't an example number for a region, try the non-geographical entities.
     for (int countryCallingCode : getSupportedGlobalNetworkCallingCodes()) {
       PhoneNumberDesc desc = getNumberDescByType(
-          getMetadataForNonGeographicalRegion(countryCallingCode), type);
+          getMetadataForNonGeographicalEntity(countryCallingCode), type);
       try {
         if (desc.hasExampleNumber()) {
           return parse("+" + countryCallingCode + desc.getExampleNumber(), UNKNOWN_REGION);
@@ -2171,7 +2171,7 @@ public class PhoneNumberUtil {
    *    to a non-geographical entity.
    */
   public PhoneNumber getExampleNumberForNonGeoEntity(int countryCallingCode) {
-    PhoneMetadata metadata = getMetadataForNonGeographicalRegion(countryCallingCode);
+    PhoneMetadata metadata = getMetadataForNonGeographicalEntity(countryCallingCode);
     if (metadata != null) {
       // For geographical entities, fixed-line data is always present. However, for non-geographical
       // entities, this is not the case, so we have to go through different types to find the
@@ -2323,17 +2323,25 @@ public class PhoneNumberUtil {
   }
 
   /**
+   * @deprecated use the following name {@link #getMetadataForNonGeographicalEntity}
+   */
+  @Deprecated
+  PhoneMetadata getMetadataForNonGeographicalRegion(int countryCallingCode) {
+    return getMetadataForNonGeographicalEntity(countryCallingCode);
+  }
+
+  /**
    * Returns the metadata for the given country calling code or {@code null} if the country calling
    * code is invalid or unknown.
    *
    * @throws MissingMetadataException if the country calling code is valid, but metadata cannot be
    *     found.
    */
-  PhoneMetadata getMetadataForNonGeographicalRegion(int countryCallingCode) {
-    if (!countryCodesForNonGeographicalRegion.contains(countryCallingCode)) {
+  PhoneMetadata getMetadataForNonGeographicalEntity(int countryCallingCode) {
+    if (!countryCodesForNonGeographicalEntity.contains(countryCallingCode)) {
       return null;
     }
-    PhoneMetadata phoneMetadata = metadataSource.getMetadataForNonGeographicalRegion(
+    PhoneMetadata phoneMetadata = metadataSource.getMetadataForNonGeographicalEntity(
         countryCallingCode);
     ensureMetadataIsNonNull(phoneMetadata,
         "Missing metadata for country code " + countryCallingCode);
