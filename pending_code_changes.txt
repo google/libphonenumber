@@ -1,3 +1,5 @@
 Code changes:
  - Added the std:: qualifier to string throughout phonenumberutil.
  - Changed several std::string parameters to absl::string_view.
+ - Renamed NonGeographicalRegion to NonGeographicalEntity.
+ - Created a new interface called NonGeographicalEntityMetadataSourceV2
