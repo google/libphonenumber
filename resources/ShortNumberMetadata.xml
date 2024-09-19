@@ -13887,18 +13887,20 @@
     <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_Uruguay -->
     <territory id="UY">
       <generalDesc>
-        <nationalNumberPattern>[19]\d{2,3}</nationalNumberPattern>
+        <nationalNumberPattern>[129]\d{2,4}</nationalNumberPattern>
       </generalDesc>
       <shortCode>
-        <possibleLengths national="3,4"/>
+        <possibleLengths national="[3-5]"/>
         <exampleNumber>104</exampleNumber>
         <nationalNumberPattern>
           1(?:
             0[4-9]|
             1[2368]|
             2[0-3568]|
-            787
+            787|
+            997\d?
           )|
+          21997|
           911
         </nationalNumberPattern>
       </shortCode>
