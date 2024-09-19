@@ -33,9 +33,11 @@
 5165|Loreto
 5166|Ayacucho
 5167|Huancavelica
+5168|Lima
 5172|Tumbes
 5173|Piura
 5174|Lambayeque
+5175|Lima
 5176|Cajamarca
 5182|Madre de Dios
 5183|Apurímac
