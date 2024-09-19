@@ -2323,7 +2323,7 @@ public class PhoneNumberUtil {
   }
 
   /**
-   * @deprecated use the following name {@link #getMetadataForNonGeographicalEntity}
+   * @deprecated Use {@link #getMetadataForNonGeographicalEntity}
    */
   @Deprecated
   PhoneMetadata getMetadataForNonGeographicalRegion(int countryCallingCode) {
