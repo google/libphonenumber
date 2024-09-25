@@ -41,12 +41,12 @@ public final class MultiFileModeFileNameProvider implements PhoneMetadataFileNam
   private boolean isAlphanumeric(String key) {
     if (key == null || key.length() == 0) {
       return false;
-       }
+    }
     // String#length doesn't actually return the number of
     // code points in the String, it returns the number
     // of char values.
     int size = key.length();
-      for (int charIdx = 0; charIdx < size; ) {
+    for (int charIdx = 0; charIdx < size; ) {
       final int codePoint = key.codePointAt(charIdx);
       if (!Character.isLetterOrDigit(codePoint)) {
         return false;
