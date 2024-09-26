@@ -1,0 +1,40 @@
+# This workflow builds and unit tests both main C++ API and also build/data tools for metadata generation.
+
+name: Testing C++ API
+on: pull_request
+permissions:
+  contents: read
+
+jobs:
+  cpp-test:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Harden Runner
+      uses: step-security/harden-runner@8ca2b8b2ece13480cda6dacd3511b49857a23c09 # v2.5.1
+      with:
+        egress-policy: audit # TODO: change to 'egress-policy: block' after couple of runs
+
+    - uses: actions/checkout@ee0669bd1cc54295c223e0bb666b733df41de1c5 # v2.7.0
+    
+    - name: Set up C++ environment
+      run: |
+        sudo apt-get install \
+        cmake cmake-curses-gui libprotobuf-dev libgtest-dev libre2-dev \
+        libicu-dev libboost-dev libboost-thread-dev libboost-system-dev \
+        protobuf-compiler
+      
+    - name: Build C++
+      run: |
+        cd cpp
+        mkdir build
+        cd build
+        cmake ..
+        make
+    
+    - name: Test C++ Build Tools
+      run: |
+        ./cpp/build/tools/generate_geocoding_data_test
+    
+    - name: Test C++ API
+      run: |
+        ./cpp/build/libphonenumber_test
