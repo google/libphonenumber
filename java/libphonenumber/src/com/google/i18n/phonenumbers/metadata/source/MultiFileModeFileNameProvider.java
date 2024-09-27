@@ -32,7 +32,7 @@ public final class MultiFileModeFileNameProvider implements PhoneMetadataFileNam
   @Override
   public String getFor(Object key) {
     String keyAsString = key.toString();
-    if (isAlphanumeric(keyAsString)) {
+    if (!isAlphanumeric(keyAsString)) {
       throw new IllegalArgumentException("Invalid key: " + keyAsString);
     }
     return phoneMetadataFileNamePrefix + key;
