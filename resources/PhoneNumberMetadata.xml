@@ -11860,6 +11860,33 @@
             )\d|
             22252[0-4]
           )\d\d|
+          5(?:
+            0(?:
+              0[17]0|
+              505
+            )|
+            1(?:
+              0[01]0|
+              1(?:
+                07|
+                33|
+                51
+              )
+            )|
+            2(?:
+              0[02]0|
+              2[25]2
+            )|
+            3(?:
+              0[03]0|
+              3[35]3
+            )|
+            (?:
+              40[04]|
+              900
+            )0|
+            5222
+          )[0-4]\d{3}|
           (?:
             5(?:
               0(?:
@@ -11881,7 +11908,9 @@
               1(?:
                 1(?:
                   [03][01]|
-                  [124]\d
+                  [124]\d|
+                  5[2-6]|
+                  7[0-4]
                 )|
                 4\d\d
               )|
@@ -11922,34 +11951,7 @@
               )
             )|
             790\d\d
-          )\d{4}|
-          5(?:
-            0(?:
-              0[17]0|
-              505
-            )|
-            1(?:
-              0[01]0|
-              1(?:
-                07|
-                33|
-                51
-              )
-            )|
-            2(?:
-              0[02]0|
-              2[25]2
-            )|
-            3(?:
-              0[03]0|
-              3[35]3
-            )|
-            (?:
-              40[04]|
-              900
-            )0|
-            5222
-          )[0-4]\d{3}
+          )\d{4}
         </nationalNumberPattern>
       </mobile>
       <!-- Information from http://www.yell.ge, examples such as Wissol Petroleum Georgia
@@ -13270,7 +13272,7 @@
             4(?:
               4[0-35-9]|
               6[02357-9]|
-              70
+              7[05]
             )|
             5(?:
               [1-59][0-46-9]|
@@ -13283,7 +13285,7 @@
               [268][0-57-9]|
               7[0-79]
             )|
-            70[1-39]|
+            70[1-49]|
             84[0-39]|
             9(?:
               0[1-9]|
@@ -20447,7 +20449,7 @@
             4[47]|
             5[3467]|
             6[279]|
-            7[35]|
+            7[356]|
             8[268]|
             9[245]
           )\d{5}
@@ -20753,9 +20755,12 @@
         <!-- 2-digit area codes (short format). -->
         <numberFormat pattern="(\d{2})(\d{2})(\d{3})" nationalPrefixFormattingRule="$NP$FG">
           <leadingDigits>
-            [45]|
+            4(?:
+              [2-46]|
+              5[3-5]
+            )|
+            5|
             6(?:
-              0[23]|
               [1-689]|
               7[235-7]
             )|
@@ -20763,13 +20768,28 @@
               [0-4]|
               5[2-7]
             )|
-            8[1-6]
+            8[1-5]|
+            (?:
+              60|
+              86
+            )[23]
           </leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
         <!-- 1-digit area codes. -->
         <numberFormat pattern="(\d)(\d{3})(\d{3,4})" nationalPrefixFormattingRule="$NP$FG">
-          <leadingDigits>[12]</leadingDigits>
+          <leadingDigits>
+            [12]|
+            452|
+            678|
+            86
+          </leadingDigits>
+          <leadingDigits>
+            [12]|
+            452|
+            6788|
+            86
+          </leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
         <!-- 2-digit area codes. -->
@@ -20831,9 +20851,11 @@
           (?:
             1(?:
               (?:
-                2\d|
+                12|
+                [28]\d|
                 3[56]|
-                [89][0-6]
+                7[3-6]|
+                9[0-6]
               )\d|
               4(?:
                 2[29]|
@@ -20870,7 +20892,10 @@
                 56
               )|
               420\d|
-              5470
+              5(?:
+                2\d|
+                470
+              )
             )|
             6(?:
               0(?:
@@ -20891,11 +20916,12 @@
                 472
               )|
               7(?:
-                (?:
-                  3\d|
-                  8[01459]
-                )\d|
-                4[67]0
+                3\d\d|
+                4[67]0|
+                8(?:
+                  [01459]\d|
+                  8
+                )
               )
             )
           )\d{4}|
@@ -21021,7 +21047,10 @@
             8(?:
               1[2-689]|
               2[2-8]|
-              [35]2\d
+              (?:
+                [35]2|
+                64
+              )\d
             )
           )\d{4}|
           25\d{5,6}|
@@ -23214,7 +23243,7 @@
     <!-- Norway (NO) -->
     <!-- Main region for 'SJ' -->
     <!-- Metadata (excluding fixed-line) should be duplicated in 'SJ'. -->
-    <!-- http://www.npt.no/npt/numsys/E.164.pdf -->
+    <!-- https://nkom.no/telefoni-og-telefonnummer/telefonnummer-og-den-norske-nummerplan/alle-nummerserier-for-norske-telefonnumre/den-norske-nummerplanen-for-telefoni-med-mer-e.164 -->
     <!-- https://en.wikipedia.org/wiki/Telephone_numbers_in_Norway -->
     <territory id="NO" mainCountryForCode="true" countryCode="47" leadingDigits="[02-689]|7[0-8]"
                internationalPrefix="00" mobileNumberPortableRegion="true">
@@ -23292,13 +23321,15 @@
         <exampleNumber>85012345</exampleNumber>
         <nationalNumberPattern>85[0-5]\d{5}</nationalNumberPattern>
       </voip>
-      <!-- Includes some 810 local-rate numbers, and long-distance rate numbers. -->
+      <!-- Includes some 810 local-rate numbers, and long-distance rate numbers.
+           04xxx is moved to Shortcodes as it can be used to send SMS as well
+           https://www.dnb.no/en/everyday-banking/services/text-message -->
       <uan>
         <possibleLengths national="5,8"/>
         <exampleNumber>02000</exampleNumber>
         <nationalNumberPattern>
           (?:
-            0[2-9]|
+            0[235-9]|
             81(?:
               0(?:
                 0[7-9]|
@@ -26930,7 +26961,7 @@
 
     <!-- Svalbard & Jan Mayen (SJ) -->
     <!-- Calling code and formatting shared with 'NO' -->
-    <!-- http://www.npt.no/pt_internet/numsys/E.164.pdf -->
+    <!-- https://nkom.no/telefoni-og-telefonnummer/telefonnummer-og-den-norske-nummerplan/alle-nummerserier-for-norske-telefonnumre/den-norske-nummerplanen-for-telefoni-med-mer-e.164 -->
     <!-- https://en.wikipedia.org/wiki/Telephone_numbers_in_Svalbard -->
     <territory id="SJ" countryCode="47" leadingDigits="79" internationalPrefix="00">
       <generalDesc>
@@ -26988,13 +27019,15 @@
         <exampleNumber>85012345</exampleNumber>
         <nationalNumberPattern>85[0-5]\d{5}</nationalNumberPattern>
       </voip>
-      <!-- Includes some 810 local-rate numbers, and long-distance rate numbers. -->
+      <!-- Includes some 810 local-rate numbers, and long-distance rate numbers.
+           04xxx is moved to Shortcodes as it can be used to send SMS as well
+           https://www.dnb.no/en/everyday-banking/services/text-message -->
       <uan>
         <possibleLengths national="5,8"/>
         <exampleNumber>02000</exampleNumber>
         <nationalNumberPattern>
           (?:
-            0[2-9]|
+            0[235-9]|
             81(?:
               0(?:
                 0[7-9]|
@@ -29441,6 +29474,7 @@
         <possibleLengths national="9"/>
         <exampleNumber>501234567</exampleNumber>
         <nationalNumberPattern>
+          790\d{6}|
           (?:
             39|
             50|
@@ -29546,13 +29580,10 @@
         <possibleLengths national="9"/>
         <exampleNumber>712345678</exampleNumber>
         <nationalNumberPattern>
-          72(?:
-            [48]0|
-            6[01]
-          )\d{5}|
+          72[48]0\d{5}|
           7(?:
             [015-8]\d|
-            20|
+            2[067]|
             36|
             4[0-5]|
             9[89]

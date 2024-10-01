@@ -52,7 +52,12 @@
 9955112|MagtiCom
 9955113|MagtiCom
 9955114|MagtiCom
-9955115|Silknet
+99551151|Silknet
+99551152|MagtiCom
+99551153|MagtiCom
+99551154|MagtiCom
+99551155|MagtiCom
+99551156|MagtiCom
 9955117|MagtiCom
 995514|Silknet
 995515|MagtiCom
