@@ -1,5 +1,5 @@
 Prefix          ; Length ; Type            ; Tariff        ; Operator                 ; Format          ; Timezone              ; Regions ; Geocode:en             ; Provenance ; Comment
-0[2-9]          ; 5      ; UAN             ; STANDARD_RATE ;                          ;                 ; "Europe/Oslo"         ; "NO,SJ"
+0[235-9]        ; 5      ; UAN             ; STANDARD_RATE ;                          ;                 ; "Europe/Oslo"         ; "NO,SJ"
 21[0-25-8]      ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fmt_2/2/2/2"   ; "Europe/Oslo"         ; "NO"    ; "Oslo"                 ; GOVERNMENT
 213[01]         ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fmt_2/2/2/2"   ; "Europe/Oslo"         ; "NO"
 213[2-9]        ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fmt_2/2/2/2"   ; "Europe/Oslo"         ; "NO"    ; "Oslo"                 ; GOVERNMENT
