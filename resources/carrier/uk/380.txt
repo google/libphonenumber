@@ -26,6 +26,7 @@
 38073|lifecell
 38075|Vodafone Україна
 38077|Київстар
+38079|J&Y
 38091|ТриМоб
 38092|PEOPLEnet
 38093|lifecell
