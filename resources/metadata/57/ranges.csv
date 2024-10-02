@@ -223,4 +223,5 @@ Prefix         ; Length ; Type       ; Tariff        ; Area Code Length ; Operat
 6086[0-57-9]   ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"
 60866          ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "Villavicencio"                    ; "Villavicencio"
 6088[67]       ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "Neiva"                            ; "Neiva"
+901            ; 10     ; FIXED_LINE ; PREMIUM_RATE  ;                  ;                 ; "fixed_3/7"     ; "CO"    ;                                    ;                                    ; GOVERNMENT
 9101           ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "movistar"      ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; IR21

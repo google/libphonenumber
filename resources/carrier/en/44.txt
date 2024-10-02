@@ -127,6 +127,7 @@
 447352|Vodafone
 447353|Vodafone
 4473566|Wireless Logic
+4473568|TATA Communications
 447360|Three
 447361|Three
 447362|Three
@@ -135,7 +136,7 @@
 447365|Three
 447366|Three
 447367|Three
-4473680|Teleena
+4473680|TATA Communications
 4473682|Sky
 4473683|Sky
 4473684|Sky
@@ -232,8 +233,8 @@
 4474184|Manx Telecom
 4474185|Telna
 4474186|Ace Call
-4474187|Teleena
-4474189|Teleena
+4474187|TATA Communications
+4474189|TATA Communications
 447419|Orange
 447420|Orange
 447421|Orange
