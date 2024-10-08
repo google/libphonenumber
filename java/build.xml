@@ -77,8 +77,9 @@
       <arg value="--output-dir=${libphonenumber.test.dir}/com/google/i18n/phonenumbers"/>
       <arg value="--data-prefix=data/PhoneNumberMetadataProtoForTesting"/>
       <arg value="--mapping-class=CountryCodeToRegionCodeMapForTesting"/>
-      <arg value="--copyright=2010"/>
+      <arg value="--copyright=2011"/>
       <arg value="--lite-build=false"/>
+      <arg value="--build-regioncode=true"/>
     </exec>
   </target>
 
