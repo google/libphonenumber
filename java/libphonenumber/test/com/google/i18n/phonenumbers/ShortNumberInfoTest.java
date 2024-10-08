@@ -241,14 +241,14 @@ public class ShortNumberInfoTest extends TestMetadataTestCase {
   }
 
   public void testConnectsToEmergencyNumber_CL() {
-    assertTrue(shortInfo.connectsToEmergencyNumber("131", RegionCode.CL));
-    assertTrue(shortInfo.connectsToEmergencyNumber("133", RegionCode.CL));
+    assertTrue(shortInfo.connectsToEmergencyNumber("131", "CL"));
+    assertTrue(shortInfo.connectsToEmergencyNumber("133", "CL"));
   }
 
   public void testConnectsToEmergencyNumberLongNumber_CL() {
     // Chilean emergency numbers don't work when additional digits are appended.
-    assertFalse(shortInfo.connectsToEmergencyNumber("1313", RegionCode.CL));
-    assertFalse(shortInfo.connectsToEmergencyNumber("1330", RegionCode.CL));
+    assertFalse(shortInfo.connectsToEmergencyNumber("1313", "CL"));
+    assertFalse(shortInfo.connectsToEmergencyNumber("1330", "CL"));
   }
 
   public void testConnectsToEmergencyNumber_AO() {
@@ -260,9 +260,9 @@ public class ShortNumberInfoTest extends TestMetadataTestCase {
 
   public void testConnectsToEmergencyNumber_ZW() {
     // Zimbabwe doesn't have any metadata in the test metadata.
-    assertFalse(shortInfo.connectsToEmergencyNumber("911", RegionCode.ZW));
-    assertFalse(shortInfo.connectsToEmergencyNumber("01312345", RegionCode.ZW));
-    assertFalse(shortInfo.connectsToEmergencyNumber("0711234567", RegionCode.ZW));
+    assertFalse(shortInfo.connectsToEmergencyNumber("911", "ZW"));
+    assertFalse(shortInfo.connectsToEmergencyNumber("01312345", "ZW"));
+    assertFalse(shortInfo.connectsToEmergencyNumber("0711234567", "ZW"));
   }
 
   public void testIsEmergencyNumber_US() {
@@ -315,9 +315,9 @@ public class ShortNumberInfoTest extends TestMetadataTestCase {
 
   public void testIsEmergencyNumber_ZW() {
     // Zimbabwe doesn't have any metadata in the test metadata.
-    assertFalse(shortInfo.isEmergencyNumber("911", RegionCode.ZW));
-    assertFalse(shortInfo.isEmergencyNumber("01312345", RegionCode.ZW));
-    assertFalse(shortInfo.isEmergencyNumber("0711234567", RegionCode.ZW));
+    assertFalse(shortInfo.isEmergencyNumber("911", "ZW"));
+    assertFalse(shortInfo.isEmergencyNumber("01312345", "ZW"));
+    assertFalse(shortInfo.isEmergencyNumber("0711234567", "ZW"));
   }
 
   public void testEmergencyNumberForSharedCountryCallingCode() {
