@@ -17369,7 +17369,7 @@
           <format>$1-$2-$3</format>
         </numberFormat>
         <numberFormat pattern="(\d{2})(\d{4})(\d{4})" nationalPrefixFormattingRule="$NP$FG">
-          <leadingDigits>[257-9]</leadingDigits>
+          <leadingDigits>[25-9]</leadingDigits>
           <format>$1-$2-$3</format>
         </numberFormat>
         <numberFormat pattern="(\d{4})(\d{3})(\d{3,4})">
@@ -17475,7 +17475,7 @@
       <mobile>
         <possibleLengths national="10"/>
         <exampleNumber>9012345678</exampleNumber>
-        <nationalNumberPattern>[7-9]0[1-9]\d{7}</nationalNumberPattern>
+        <nationalNumberPattern>[6-9]0[1-9]\d{7}</nationalNumberPattern>
       </mobile>
       <pager>
         <possibleLengths national="10"/>
