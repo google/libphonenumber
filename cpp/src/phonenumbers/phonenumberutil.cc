@@ -974,7 +974,7 @@ void PhoneNumberUtil::GetSupportedTypesForNonGeoEntity(
     std::set<PhoneNumberType>* types) const {
   DCHECK(types);
   const PhoneMetadata* metadata =
-      GetMetadataForNonGeographicalRegion(country_calling_code);
+      GetMetadataForNonGeographicalEntity(country_calling_code);
   if (metadata == NULL) {
     LOG(WARNING) << "Unknown country calling code for a non-geographical "
                  << "entity provided: "
@@ -1105,7 +1105,7 @@ const PhoneMetadata* PhoneNumberUtil::GetMetadataForRegion(
   return NULL;
 }
 
-const PhoneMetadata* PhoneNumberUtil::GetMetadataForNonGeographicalRegion(
+const PhoneMetadata* PhoneNumberUtil::GetMetadataForNonGeographicalEntity(
     int country_calling_code) const {
   absl::node_hash_map<int, PhoneMetadata>::const_iterator it =
       country_code_to_non_geographical_metadata_map_->find(
@@ -1257,7 +1257,7 @@ void PhoneNumberUtil::FormatNationalNumberWithCarrierCode(
 const PhoneMetadata* PhoneNumberUtil::GetMetadataForRegionOrCallingCode(
       int country_calling_code, const string& region_code) const {
   return kRegionCodeForNonGeoEntity == region_code
-      ? GetMetadataForNonGeographicalRegion(country_calling_code)
+      ? GetMetadataForNonGeographicalEntity(country_calling_code)
       : GetMetadataForRegion(region_code);
 }
 
@@ -2067,7 +2067,7 @@ bool PhoneNumberUtil::GetExampleNumberForType(
        it != global_network_calling_codes.end(); ++it) {
     int country_calling_code = *it;
     const PhoneMetadata* metadata =
-        GetMetadataForNonGeographicalRegion(country_calling_code);
+        GetMetadataForNonGeographicalEntity(country_calling_code);
     const PhoneNumberDesc* desc = GetNumberDescByType(*metadata, type);
     if (desc->has_example_number()) {
       ErrorType success = Parse(StrCat(kPlusSign,
@@ -2090,7 +2090,7 @@ bool PhoneNumberUtil::GetExampleNumberForNonGeoEntity(
     int country_calling_code, PhoneNumber* number) const {
   DCHECK(number);
   const PhoneMetadata* metadata =
-      GetMetadataForNonGeographicalRegion(country_calling_code);
+      GetMetadataForNonGeographicalEntity(country_calling_code);
   if (metadata) {
     // For geographical entities, fixed-line data is always present. However,
     // for non-geographical entities, this is not the case, so we have to go
