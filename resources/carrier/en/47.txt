@@ -113,28 +113,17 @@
 474629|erate
 47463|telia
 47464|NetCom
-474650|telia
+47465|telia
 474651|ice norge
 474652|ice norge
 474653|ice norge
-474654|telia
-474655|telia
-474656|telia
-474657|telia
-474658|telia
-474659|telia
 47466|telia
 474666|telenor norge
 474667|telenor norge
-474670|telia
+47467|telia
 474671|lyca mobile
 474672|lyca mobile
-474674|telia
-474675|telia
-474676|telia
-474677|telia
-474678|telia
-474679|telia
+474673|Ixt AS
 47468|telenor norge
 474690|telenor norge
 474691|telenor norge
@@ -378,6 +367,9 @@
 479698|lyca mobile
 479699|lyca mobile
 4797|telenor norge
+479727|ice norge
+479728|ice norge
+479729|ice norge
 479730|ice norge
 479731|ice norge
 479732|ice norge

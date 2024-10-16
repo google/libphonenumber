@@ -1,3 +1,8 @@
+Oct 16, 2024: v8.13.48
+Metadata changes:
+ - Updated phone metadata for region code(s): DE, SG, UG, WF
+ - Updated carrier data for country calling code(s): 47 (en)
+
 Oct 01, 2024: v8.13.47
 Metadata changes:
  - Updated phone metadata for region code(s): GE, HK, MG, MM, NO, SJ, UA, UG
