@@ -9212,11 +9212,11 @@
         <possibleLengths national="10,11"/>
         <exampleNumber>15123456789</exampleNumber>
         <nationalNumberPattern>
-          15310\d{6}|
+          16[023]\d{7,8}|
           1(?:
-            6[023]|
-            7[0-57-9]
-          )\d{7,8}|
+            5310|
+            7[0-57-9]\d
+          )\d{6}|
           1(?:
             5[0-25-9]|
             76
@@ -26761,7 +26761,7 @@
               9(?:
                 [0-4]\d|
                 5[0-3]|
-                62
+                6[0-2]
               )
             )|
             9[0-8]\d\d
@@ -29585,7 +29585,7 @@
             [015-8]\d|
             2[067]|
             36|
-            4[0-5]|
+            4[0-6]|
             9[89]
           )\d{6}
         </nationalNumberPattern>
@@ -31211,7 +31211,7 @@
     <territory id="WF" countryCode="681" internationalPrefix="00">
       <availableFormats>
         <numberFormat pattern="(\d{2})(\d{2})(\d{2})">
-          <leadingDigits>[478]</leadingDigits>
+          <leadingDigits>[47-9]</leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
         <numberFormat pattern="(\d{3})(\d{2})(\d{2})(\d{2})">
@@ -31223,11 +31223,10 @@
         <nationalNumberPattern>
           (?:
             40|
-            72
+            72|
+            8\d{4}
           )\d{4}|
-          8\d{5}(?:
-            \d{3}
-          )?
+          [89]\d{5}
         </nationalNumberPattern>
       </generalDesc>
       <!-- Web searching only finds examples with the 72 prefix but the ITU document states that
@@ -31254,6 +31253,11 @@
         <exampleNumber>800012345</exampleNumber>
         <nationalNumberPattern>80[0-5]\d{6}</nationalNumberPattern>
       </tollFree>
+      <voip>
+        <possibleLengths national="6"/>
+        <exampleNumber>921234</exampleNumber>
+        <nationalNumberPattern>9[23]\d{4}</nationalNumberPattern>
+      </voip>
       <voicemail>
         <possibleLengths national="6"/>
         <exampleNumber>401234</exampleNumber>

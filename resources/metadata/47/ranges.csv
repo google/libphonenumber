@@ -102,7 +102,7 @@ Prefix          ; Length ; Type            ; Tariff        ; Operator           
 4667            ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "fmt_2/2/2/2"   ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
 467[045]        ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"                  ; "fmt_2/2/2/2"   ; "Europe/Oslo"         ; "NO,SJ"
 467[12]         ; 8      ; MOBILE          ; STANDARD_RATE ; "lyca_mobile"            ; "fmt_2/2/2/2"   ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
-4673            ; 8      ; MOBILE          ; STANDARD_RATE ;                          ; "fmt_2/2/2/2"   ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+4673            ; 8      ; MOBILE          ; STANDARD_RATE ; "ixt_as"                 ; "fmt_2/2/2/2"   ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
 467[6-9]        ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"                  ; "fmt_2/2/2/2"   ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
 468             ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "fmt_2/2/2/2"   ; "Europe/Oslo"         ; "NO,SJ"
 469[0-6]        ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "fmt_2/2/2/2"   ; "Europe/Oslo"         ; "NO,SJ"
@@ -244,9 +244,11 @@ Prefix          ; Length ; Type            ; Tariff        ; Operator           
 9694            ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"                  ; "fmt_2/2/2/2"   ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
 969[5-9]        ; 8      ; MOBILE          ; STANDARD_RATE ; "lyca_mobile"            ; "fmt_2/2/2/2"   ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
 97[015-7]       ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "fmt_2/2/2/2"   ; "Europe/Oslo"         ; "NO,SJ"
-97[24]          ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "fmt_2/2/2/2"   ; "Europe/Oslo"         ; "NO,SJ" ;                        ; IR21       ; "IR21  01/02/2019"
+972[0-6]        ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "fmt_2/2/2/2"   ; "Europe/Oslo"         ; "NO,SJ" ;                        ; IR21
+972[7-9]        ; 8      ; MOBILE          ; STANDARD_RATE ; "ice"                    ; "fmt_2/2/2/2"   ; "Europe/Oslo"         ; "NO,SJ" ;                        ; IR21
 973[0-4]        ; 8      ; MOBILE          ; STANDARD_RATE ; "ice"                    ; "fmt_2/2/2/2"   ; "Europe/Oslo"         ; "NO,SJ" ;                        ; IR21
 973[5-9]        ; 8      ; MOBILE          ; STANDARD_RATE ; "lyca_mobile"            ; "fmt_2/2/2/2"   ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
+974             ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "fmt_2/2/2/2"   ; "Europe/Oslo"         ; "NO,SJ" ;                        ; IR21       ; "IR21  01/02/2019"
 978             ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"                  ; "fmt_2/2/2/2"   ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
 979[0-4]        ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"                  ; "fmt_2/2/2/2"   ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
 979[5-9]        ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "fmt_2/2/2/2"   ; "Europe/Oslo"         ; "NO,SJ"
