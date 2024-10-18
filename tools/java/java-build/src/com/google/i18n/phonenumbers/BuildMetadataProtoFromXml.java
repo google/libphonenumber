@@ -408,7 +408,7 @@ public class BuildMetadataProtoFromXml extends Command {
 
     static Builder builder() {
       return new AutoValue_BuildMetadataProtoFromXml_ClassWriter.Builder()
-          .setModifiers("");
+          .setJavadoc("").setModifiers("");
     }
 
     @AutoValue.Builder
