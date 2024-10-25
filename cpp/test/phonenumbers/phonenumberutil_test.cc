@@ -66,7 +66,12 @@ class PhoneNumberUtilTest : public testing::Test {
 
   const PhoneMetadata* GetMetadataForNonGeographicalRegion(
       int country_code) const {
-    return phone_util_.GetMetadataForNonGeographicalRegion(country_code);
+    return phone_util_.GetMetadataForNonGeographicalEntity(country_code);
+  }
+
+  const PhoneMetadata* GetMetadataForNonGeographicalEntity(
+      int country_code) const {
+    return phone_util_.GetMetadataForNonGeographicalEntity(country_code);
   }
 
   void ExtractPossibleNumber(const string& number,
@@ -342,6 +347,7 @@ TEST_F(PhoneNumberUtilTest, GetInstanceLoadARMetadata) {
 
 TEST_F(PhoneNumberUtilTest, GetInstanceLoadInternationalTollFreeMetadata) {
   const PhoneMetadata* metadata = GetMetadataForNonGeographicalRegion(800);
+  const PhoneMetadata* metadata = GetMetadataForNonGeographicalEntity(800);
   EXPECT_FALSE(metadata == NULL);
   EXPECT_EQ("001", metadata->id());
   EXPECT_EQ(800, metadata->country_code());
