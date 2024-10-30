@@ -274,3 +274,8 @@ surprising how many false assumptions programmers continue to make about them.
     in the event of an alarm activation then automated voice messages can be
     played on the device via telephony APIs, or a human may call the device
     directly (potentially also via a telephony API).
+
+1. **Phone numbers are more secure than email**
+
+   Phone numbers tied to SIM cards are more vulnerable than email due to
+   [Simjacking](https://en.wikipedia.org/wiki/SIM_swap_scam).
