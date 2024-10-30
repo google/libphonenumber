@@ -53,4 +53,4 @@
 59669689|SFR/Rife
 5966969|Digicel
 59669699|Orange
-596697|Digicel
+59669727|Digicel

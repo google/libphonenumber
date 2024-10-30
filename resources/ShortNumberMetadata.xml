@@ -9569,28 +9569,51 @@
     <!-- http://www.arcep.fr/index.php?id=2137&bloc=0596&CMD=RESULTS_NUMEROTATION -->
     <territory id="MQ">
       <generalDesc>
-        <nationalNumberPattern>1\d\d?</nationalNumberPattern>
+        <nationalNumberPattern>
+          [13]\d(?:
+            \d(?:
+              \d(?:
+                \d{2}
+              )?
+            )?
+          )?
+        </nationalNumberPattern>
       </generalDesc>
       <shortCode>
-        <possibleLengths national="2,3"/>
+        <possibleLengths national="[2-4],6"/>
         <exampleNumber>15</exampleNumber>
         <nationalNumberPattern>
           1(?:
             12|
             [578]
-          )
+          )|
+          (?:
+            118[02-9]|
+            3[0-2469]
+          )\d\d
         </nationalNumberPattern>
       </shortCode>
       <tollFree>
-        <possibleLengths national="2,3"/>
+        <possibleLengths national="[2-4]"/>
         <exampleNumber>15</exampleNumber>
         <nationalNumberPattern>
           1(?:
             12|
             [578]
-          )
+          )|
+          3[01]\d\d
         </nationalNumberPattern>
       </tollFree>
+      <standardRate>
+        <possibleLengths national="6"/>
+        <exampleNumber>118000</exampleNumber>
+        <nationalNumberPattern>118\d{3}</nationalNumberPattern>
+      </standardRate>
+      <premiumRate>
+        <possibleLengths national="4"/>
+        <exampleNumber>3200</exampleNumber>
+        <nationalNumberPattern>3[2469]\d\d</nationalNumberPattern>
+      </premiumRate>
       <!-- http://www.martinique.franceantilles.fr/pratique/urgences/ -->
       <emergency>
         <possibleLengths national="2,3"/>
@@ -11084,23 +11107,48 @@
       <generalDesc>
         <nationalNumberPattern>
           [13]\d(?:
-            \d{2}
+            \d\d(?:
+              \d{2}
+            )?
           )?
         </nationalNumberPattern>
       </generalDesc>
       <shortCode>
+        <possibleLengths national="2,4,6"/>
+        <exampleNumber>15</exampleNumber>
+        <nationalNumberPattern>
+          1[578]|
+          31(?:
+            03|
+            [689]\d
+          )|
+          (?:
+            118[02-9]|
+            3[02469]
+          )\d\d
+        </nationalNumberPattern>
+      </shortCode>
+      <tollFree>
         <possibleLengths national="2,4"/>
         <exampleNumber>15</exampleNumber>
         <nationalNumberPattern>
           1[578]|
-          3103
+          3(?:
+            0\d|
+            1[689]
+          )\d
         </nationalNumberPattern>
-      </shortCode>
-      <tollFree>
-        <possibleLengths national="2"/>
-        <exampleNumber>15</exampleNumber>
-        <nationalNumberPattern>1[578]</nationalNumberPattern>
       </tollFree>
+      <standardRate>
+        <possibleLengths national="6"/>
+        <exampleNumber>118000</exampleNumber>
+        <nationalNumberPattern>118\d{3}</nationalNumberPattern>
+      </standardRate>
+      <premiumRate>
+        <possibleLengths national="4"/>
+        <exampleNumber>3200</exampleNumber>
+        <nationalNumberPattern>3[2469]\d\d</nationalNumberPattern>
+      </premiumRate>
       <carrierSpecific>
         <possibleLengths national="4"/>
         <exampleNumber>3100</exampleNumber>
