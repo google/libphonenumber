@@ -233,7 +233,7 @@ Prefix       ; Length ; Type       ; Tariff        ; Operator     ; Format      
 894[0-3]     ; 8      ; MOBILE     ; STANDARD_RATE ; "singtel"    ; "fmt1_4/4"   ; "SG"    ; IR21
 8949         ; 8      ; MOBILE     ; STANDARD_RATE ; "m1"         ; "fmt1_4/4"   ; "SG"
 895[0-2]     ; 8      ; MOBILE     ; STANDARD_RATE ; "m1"         ; "fmt1_4/4"   ; "SG"    ;            ; "User report"
-8953         ; 8      ; MOBILE     ; STANDARD_RATE ; "simba"      ; "fmt1_4/4"   ; "SG"    ; IR21
+895[3-9]     ; 8      ; MOBILE     ; STANDARD_RATE ; "simba"      ; "fmt1_4/4"   ; "SG"
 896[0-2]     ; 8      ; MOBILE     ; STANDARD_RATE ; "simba"      ; "fmt1_4/4"   ; "SG"    ; IR21
 9000         ; 8      ; MOBILE     ; STANDARD_RATE ;              ; "fmt1_4/4"   ; "SG"
 900[1-9]     ; 8      ; MOBILE     ; STANDARD_RATE ; "starhub"    ; "fmt1_4/4"   ; "SG"
