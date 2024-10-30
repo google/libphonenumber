@@ -859,6 +859,9 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   const i18n::phonenumbers::PhoneMetadata* GetMetadataForNonGeographicalRegion(
       int country_calling_code) const;
 
+  const i18n::phonenumbers::PhoneMetadata* GetMetadataForNonGeographicalEntity(
+      int country_calling_code) const;
+
   const i18n::phonenumbers::PhoneMetadata* GetMetadataForRegionOrCallingCode(
       int country_calling_code,
       const std::string& region_code) const;
