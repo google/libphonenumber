@@ -5,9 +5,15 @@ Prefix       ; Length ; Type                 ; Tariff        ; Operator         
 43           ; 6      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "diabolocom"           ; "fmt1_2/2/2"      ; "PM"    ; GOVERNMENT ; "Government dated: 12/7/2017"
 44           ; 6      ; MOBILE               ; STANDARD_RATE ; "globaltel"            ; "fmt1_2/2/2"      ; "PM"    ; GOVERNMENT ; "Government dated: 7/29/2014"
 4[5-7]       ; 6      ; FIXED_LINE           ; STANDARD_RATE ;                        ; "fmt1_2/2/2"      ; "PM"    ; GOVERNMENT
+4[89]        ; 6      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ;                        ; "fmt1_2/2/2"      ; "PM"    ; ITU
 50           ; 6      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "keyyo"                ; "fmt1_2/2/2"      ; "PM"    ; GOVERNMENT ; "Government dated: 3/2/2006"
 51           ; 6      ; FIXED_LINE           ; STANDARD_RATE ;                        ; "fmt1_2/2/2"      ; "PM"    ; GOVERNMENT
+5[2-47-9]    ; 6      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ;                        ; "fmt1_2/2/2"      ; "PM"    ; ITU
 55           ; 6      ; MOBILE               ; STANDARD_RATE ; "spm_telecom"          ; "fmt1_2/2/2"      ; "PM"    ; GOVERNMENT ; "Government dated: 7/19/2000"
 56           ; 6      ; MOBILE               ; STANDARD_RATE ; "kav_el_international" ; "fmt1_2/2/2"      ; "PM"    ; GOVERNMENT
 708[45][0-5] ; 9      ; MOBILE               ; STANDARD_RATE ;                        ; "mobile_3/3/3"    ; "PM"    ; ITU
 80[0-5]      ; 9      ; FIXED_LINE           ; TOLL_FREE     ;                        ; "varcost_3/2/2/2" ; "PM"    ;            ; "ARCEP"
+80[6-9]      ; 9      ; FIXED_LINE           ; STANDARD_RATE ;                        ; "varcost_3/2/2/2" ; "PM"    ; ITU
+8[129]       ; 9      ; FIXED_LINE           ; PREMIUM_RATE  ;                        ; "varcost_3/2/2/2" ; "PM"    ; ITU
+836          ; 9      ; ISP                  ; STANDARD_RATE ;                        ; "varcost_3/2/2/2" ; "PM"    ; ITU
+86[08]       ; 9      ; ISP                  ; STANDARD_RATE ;                        ; "varcost_3/2/2/2" ; "PM"    ; ITU
