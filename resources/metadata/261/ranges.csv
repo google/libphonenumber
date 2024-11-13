@@ -14,12 +14,14 @@ Prefix     ; Length ; Type       ; Tariff        ; Area Code Length ; Operator  
 20729      ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt_2/2/3/2" ; "MG"    ; "Mananjary"                 ; ITU
 2073       ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt_2/2/3/2" ; "MG"    ; "Farafangana"               ; ITU
 2075       ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt_2/2/3/2" ; "MG"    ; "Fianarantsoa"              ; ITU
+2076       ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt_2/2/3/2" ; "MG"    ; "Antananarivo"
 2082       ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt_2/2/3/2" ; "MG"    ; "Antsiranana"               ; ITU
 2086       ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt_2/2/3/2" ; "MG"    ; "Nosy Be"                   ; ITU
 2088       ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt_2/2/3/2" ; "MG"    ; "Sambava"                   ; ITU
 2092       ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt_2/2/3/2" ; "MG"    ; "Taolañaro"                 ; ITU
 2094       ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt_2/2/3/2" ; "MG"    ; "Toliary"                   ; ITU
 2095       ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt_2/2/3/2" ; "MG"    ; "Morondava"                 ; ITU
+2097       ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt_2/2/3/2" ; "MG"
 22         ; 9      ; VOIP       ; STANDARD_RATE ;                  ;            ; "fmt_2/2/3/2" ; "MG"    ;                             ; ITU
 3[27]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "orange"   ; "fmt_2/2/3/2" ; "MG"    ;                             ; ITU
 33         ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "airtel"   ; "fmt_2/2/3/2" ; "MG"    ;                             ; ITU

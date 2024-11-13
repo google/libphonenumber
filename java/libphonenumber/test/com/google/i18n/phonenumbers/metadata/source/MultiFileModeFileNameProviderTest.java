@@ -42,4 +42,15 @@ public final class MultiFileModeFileNameProviderTest extends TestCase {
           }
         });
   }
+
+  public void getFor_shouldThrowExceptionForEmptyKey() {
+    assertThrows(
+        IllegalArgumentException.class,
+        new ThrowingRunnable() {
+          @Override
+          public void run() {
+            metadataFileNameProvider.getFor("");
+          }
+        });
+  }
 }

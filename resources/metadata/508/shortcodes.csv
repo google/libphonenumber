@@ -1,3 +1,7 @@
-Region ; Prefix ; Length ; Type       ; Tariff    ; Carrier Specific
-PM     ; 1[578] ; 2      ; EMERGENCY  ; TOLL_FREE
-PM     ; 3103   ; 4      ; COMMERCIAL ;           ; true
+Region ; Prefix    ; Length ; Type       ; Tariff        ; Carrier Specific ; Provenance
+PM     ; 118[02-9] ; 6      ; COMMERCIAL ; STANDARD_RATE ;                  ; ITU
+PM     ; 1[578]    ; 2      ; EMERGENCY  ; TOLL_FREE
+PM     ; 30        ; 4      ; COMMERCIAL ; TOLL_FREE     ;                  ; ITU
+PM     ; 3103      ; 4      ; COMMERCIAL ;               ; true
+PM     ; 31[689]   ; 4      ; COMMERCIAL ; TOLL_FREE     ;                  ; ITU
+PM     ; 3[2469]   ; 4      ; COMMERCIAL ; PREMIUM_RATE  ;                  ; ITU
