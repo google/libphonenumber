@@ -304,8 +304,7 @@ Prefix        ; Length ; Type       ; Tariff        ; Area Code Length ; Operato
 4742          ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;                ; "fixed_4/5"   ; "UA"    ; "Katerinopil, Cherkasy"                           ; "Катеринопіль, Черкаси"
 4743          ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;                ; "fixed_4/5"   ; "UA"    ; "Cherkasy"                                        ; "Черкаси"
 4744          ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;                ; "fixed_4/5"   ; "UA"    ; "Uman, Cherkasy"                                  ; "Умань, Черкаси"
-4745          ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;                ; "fixed_4/5"   ; "UA"    ; "Khrystynivka, Cherkasy"                          ; "Христинівка, Черкаси"
-4746          ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;                ; "fixed_4/5"   ; "UA"    ; "Monastyrysche, Cherkasy"                         ; "Монастирище, Черкаси"
+474[56]       ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;                ; "fixed_4/5"   ; "UA"    ; "Monastyrysche, Cherkasy"                         ; "Монастирище, Черкаси"
 4747          ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;                ; "fixed_4/5"   ; "UA"    ; "Zhashkiv, Cherkasy"                              ; "Жашків, Черкаси"
 4748          ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;                ; "fixed_4/5"   ; "UA"    ; "Mankivka, Cherkasy"                              ; "Маньківка, Черкаси"
 4749          ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;                ; "fixed_4/5"   ; "UA"    ; "Lysyanka, Cherkasy"                              ; "Лисянка, Черкаси"
@@ -629,6 +628,7 @@ Prefix        ; Length ; Type       ; Tariff        ; Area Code Length ; Operato
 7[12]         ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;                ; "fmt_2/3/4"   ; "UA"
 75            ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "vodafone"     ; "fmt_2/3/4"   ; "UA"
 77            ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "kyivstar"     ; "fmt_2/3/4"   ; "UA"
+790           ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "j&y"          ; "fmt_2/3/4"   ; "UA"    ;                                                   ;                                                   ; GOVERNMENT
 800[1-8]      ; 9,10   ; FIXED_LINE ; TOLL_FREE     ;                  ;                ; "fmt_3/3/3-4" ; "UA"
 89[1-579]     ; 9      ; VOIP       ; STANDARD_RATE ;                  ;                ; "fmt_2/3/4"   ; "UA"    ;                                                   ;                                                   ; ITU        ; "ITU Publication dated 8/11/2017"
 900[239]      ; 9,10   ; FIXED_LINE ; PREMIUM_RATE  ;                  ;                ; "fmt_3/3/3-4" ; "UA"

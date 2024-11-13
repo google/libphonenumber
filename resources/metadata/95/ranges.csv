@@ -1,4 +1,5 @@
 Prefix         ; Length ; Type       ; Tariff        ; Area Code Length ; Operator  ; Format            ; Regions ; Geocode:en                ; Provenance ; Comment
+112            ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;           ; "fixed_1/3/3-4"   ; "MM"    ; "Yangon"                  ; ITU
 12             ; 7,8    ; FIXED_LINE ; STANDARD_RATE ; 1                ;           ; "fixed_1/3/3-4"   ; "MM"
 13[0-47-9]     ; 7      ; FIXED_LINE ; STANDARD_RATE ; 1                ;           ; "fixed_1/3/3-4"   ; "MM"
 1333           ; 8      ; VOIP       ; STANDARD_RATE ;                  ;           ; "fixed_1/3/3-4"   ; "MM"
@@ -27,7 +28,9 @@ Prefix         ; Length ; Type       ; Tariff        ; Area Code Length ; Operat
 1689           ; 6      ; FIXED_LINE ; STANDARD_RATE ; 1                ;           ; "fixed_1/2/3"     ; "MM"
 1689           ; 7      ; FIXED_LINE ; STANDARD_RATE ; 1                ;           ; "fixed_1/3/3-4"   ; "MM"
 17[01]         ; 7      ; MOBILE     ; STANDARD_RATE ;                  ;           ; "fixed_1/3/3-4"   ; "MM"    ;                           ;            ; "Added Per client's request."
-1[89][0-6]     ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;           ; "fixed_1/3/3-4"   ; "MM"
+17[3-6]        ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;           ; "fixed_1/3/3-4"   ; "MM"    ;                           ; ITU
+18             ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;           ; "fixed_1/3/3-4"   ; "MM"    ;                           ; ITU
+19[0-6]        ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;           ; "fixed_1/3/3-4"   ; "MM"
 22000          ; 6      ; FIXED_LINE ; STANDARD_RATE ; 1                ;           ; "fixed_1/2/3"     ; "MM"    ; "Mingalar Mandalay"
 22000          ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;           ; "fixed_1/3/3-4"   ; "MM"    ; "Mingalar Mandalay"
 2200[1-9]      ; 6      ; FIXED_LINE ; STANDARD_RATE ; 1                ;           ; "fixed_1/2/3"     ; "MM"
@@ -82,6 +85,7 @@ Prefix         ; Length ; Type       ; Tariff        ; Area Code Length ; Operat
 43565          ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fixed_2/3/3-4"   ; "MM"    ; "Palatwa"
 4[46][2-6]     ; 7      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fixed_2/2/3"     ; "MM"
 4420           ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fixed_2/3/3-4"   ; "MM"
+452            ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;           ; "fixed_1/3/3-4"   ; "MM"    ;                           ; ITU
 45[35]         ; 7      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fixed_2/2/3"     ; "MM"
 454[0-689]     ; 7      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fixed_2/2/3"     ; "MM"
 45470          ; 7      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fixed_2/2/3"     ; "MM"    ; "Pyapon"
@@ -199,6 +203,7 @@ Prefix         ; Length ; Type       ; Tariff        ; Area Code Length ; Operat
 6755[1-9]      ; 7      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fixed_2/2/3"     ; "MM"
 6755[1-9]      ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fixed_2/3/3-4"   ; "MM"
 678[01459]     ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fixed_2/3/3-4"   ; "MM"
+6788           ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;           ; "fixed_1/3/3-4"   ; "MM"    ;                           ; ITU
 68[245]        ; 7      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fixed_2/2/3"     ; "MM"
 69200          ; 7      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fixed_2/2/3"     ; "MM"    ; "Aunglan"
 69200          ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fixed_2/3/3-4"   ; "MM"    ; "Aunglan"
@@ -292,6 +297,7 @@ Prefix         ; Length ; Type       ; Tariff        ; Area Code Length ; Operat
 863[1-46-8]    ; 7      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fixed_2/2/3"     ; "MM"
 8635           ; 7      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fixed_2/2/3"     ; "MM"    ; "Sintkuu"
 8639           ; 7      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fixed_2/2/3"     ; "MM"    ; "Letpanhla"
+864            ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;           ; "fixed_1/3/3-4"   ; "MM"    ;                           ; ITU
 92[0-4]        ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "mpt"     ; "mobile_1/3/4-6"  ; "MM"
 92[56]         ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "mpt"     ; "mobile_1/3/3/3"  ; "MM"
 93[0-36]       ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "mpt"     ; "mobile_1/3/4-6"  ; "MM"
