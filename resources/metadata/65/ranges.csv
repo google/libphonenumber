@@ -51,6 +51,7 @@ Prefix       ; Length ; Type       ; Tariff        ; Operator     ; Format      
 809[0359]    ; 8      ; MOBILE     ; STANDARD_RATE ; "singtel"    ; "fmt1_4/4"   ; "SG"    ; IR21
 809[14]      ; 8      ; MOBILE     ; STANDARD_RATE ; "m1"         ; "fmt1_4/4"   ; "SG"    ; IR21
 809[268]     ; 8      ; MOBILE     ; STANDARD_RATE ; "simba"      ; "fmt1_4/4"   ; "SG"    ; IR21
+8097         ; 8      ; MOBILE     ; STANDARD_RATE ; "cuniq"      ; "fmt1_4/4"   ; "SG"    ; WEB        ; "User report"
 81[07]       ; 8      ; MOBILE     ; STANDARD_RATE ; "m1"         ; "fmt1_4/4"   ; "SG"
 81[1356]     ; 8      ; MOBILE     ; STANDARD_RATE ; "starhub"    ; "fmt1_4/4"   ; "SG"
 812          ; 8      ; MOBILE     ; STANDARD_RATE ; "singtel"    ; "fmt1_4/4"   ; "SG"
@@ -235,6 +236,7 @@ Prefix       ; Length ; Type       ; Tariff        ; Operator     ; Format      
 895[0-2]     ; 8      ; MOBILE     ; STANDARD_RATE ; "m1"         ; "fmt1_4/4"   ; "SG"    ;            ; "User report"
 895[3-9]     ; 8      ; MOBILE     ; STANDARD_RATE ; "simba"      ; "fmt1_4/4"   ; "SG"
 896[0-2]     ; 8      ; MOBILE     ; STANDARD_RATE ; "simba"      ; "fmt1_4/4"   ; "SG"    ; IR21
+896[34]      ; 8      ; MOBILE     ; STANDARD_RATE ; "singtel"    ; "fmt1_4/4"   ; "SG"    ; IR21
 9000         ; 8      ; MOBILE     ; STANDARD_RATE ;              ; "fmt1_4/4"   ; "SG"
 900[1-9]     ; 8      ; MOBILE     ; STANDARD_RATE ; "starhub"    ; "fmt1_4/4"   ; "SG"
 90[1358]     ; 8      ; MOBILE     ; STANDARD_RATE ; "singtel"    ; "fmt1_4/4"   ; "SG"

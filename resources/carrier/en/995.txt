@@ -83,6 +83,8 @@
 995551|MagtiCom
 9955520|Premium Net International SRL
 9955522|Asanet
+995553|Silknet
+995554|Silknet
 995555|Silknet
 995557|Silknet
 995558|Silknet
