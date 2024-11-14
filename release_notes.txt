@@ -1,3 +1,11 @@
+Nov 13, 2024: v8.13.50
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   AR, BJ, BL, FI, GE, GP, HR, MF, PL, SG
+ - Updated short number metadata for region code(s): BJ, FI
+ - Updated carrier data for country calling code(s):
+   48 (en), 65 (en), 229 (en), 385 (en), 590 (en), 995 (en)
+
 Oct 30, 2024: v8.13.49
 Metadata changes:
  - Updated phone metadata for region code(s): CO, EE, MG, MQ, MV, PM, SG, TJ
