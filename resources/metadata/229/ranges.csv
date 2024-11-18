@@ -1,59 +1,72 @@
-Prefix      ; Length ; Type       ; Tariff        ; Operator  ; Format         ; Regions ; Geocode:en                             ; Geocode:fr                              ; Provenance ; Comment
-202[038]    ; 8      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_2/2/2/2" ; "BJ"
-2021        ; 8      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_2/2/2/2" ; "BJ"    ; "Ongala"                               ; "Ongala"                                ; ITU
-2022        ; 8      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_2/2/2/2" ; "BJ"    ; "Kandiévé"                             ; "Kandiévé"                              ; ITU
-2024        ; 8      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_2/2/2/2" ; "BJ"    ; "Sèmè"                                 ; "Sèmè"                                  ; ITU
-2025        ; 8      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_2/2/2/2" ; "BJ"    ; "Pobè/Kétou"                           ; "Pobè/Kétou"                            ; ITU
-2026        ; 8      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_2/2/2/2" ; "BJ"    ; "Sakété/Igolo"                         ; "Sakété/Igolo"                          ; ITU
-2027        ; 8      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_2/2/2/2" ; "BJ"    ; "Adjohoun"                             ; "Adjohoun"                              ; ITU
-2029        ; 8      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_2/2/2/2" ; "BJ"    ; "Ouémé/Plateau departments"            ; "Départements Ouémé/Plateau"            ; ITU
-2090        ; 8      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_2/2/2/2" ; "BJ"
-21[07]      ; 8      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_2/2/2/2" ; "BJ"
-2130        ; 8      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_2/2/2/2" ; "BJ"    ; "Cadjehoun"                            ; "Cadjehoun"                             ; ITU
-2131        ; 8      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_2/2/2/2" ; "BJ"    ; "Ganhi"                                ; "Ganhi"                                 ; ITU
-2132        ; 8      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_2/2/2/2" ; "BJ"    ; "Jéricho"                              ; "Jéricho"                               ; ITU
-2133        ; 8      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_2/2/2/2" ; "BJ"    ; "Akpakpa"                              ; "Akpakpa"                               ; ITU
-2134        ; 8      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_2/2/2/2" ; "BJ"    ; "Ouidah"                               ; "Ouidah"                                ; ITU
-2135        ; 8      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_2/2/2/2" ; "BJ"    ; "Godomey"                              ; "Godomey"                               ; ITU
-2136        ; 8      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_2/2/2/2" ; "BJ"    ; "Abomey-Calaci"                        ; "Abomey-Calaci"                         ; ITU
-2137        ; 8      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_2/2/2/2" ; "BJ"    ; "Allada"                               ; "Allada"                                ; ITU
-2138        ; 8      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_2/2/2/2" ; "BJ"    ; "Kouhounou"                            ; "Kouhounou"                             ; ITU
-2139        ; 8      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_2/2/2/2" ; "BJ"    ; "Littoral/Atlantique departments"      ; "Départements Littoral/Atlantique"      ; ITU
-224[024578] ; 8      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_2/2/2/2" ; "BJ"
-2241        ; 8      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_2/2/2/2" ; "BJ"    ; "Lokossa"                              ; "Lokossa"                               ; ITU
-2243        ; 8      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_2/2/2/2" ; "BJ"    ; "Come"                                 ; "Come"                                  ; ITU
-2246        ; 8      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_2/2/2/2" ; "BJ"    ; "Dogbo"                                ; "Dogbo"                                 ; ITU
-22[45]9     ; 8      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_2/2/2/2" ; "BJ"    ; "Mono/Kouffo/Zou/Collines departments" ; "Départements Mono/Couffo/Zou/Collines" ; ITU
-2250        ; 8      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_2/2/2/2" ; "BJ"    ; "Abomey"                               ; "Abomey"                                ; ITU
-2251        ; 8      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_2/2/2/2" ; "BJ"    ; "Bohicon"                              ; "Bohicon"                               ; ITU
-2252        ; 8      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_2/2/2/2" ; "BJ"    ; "Covè"                                 ; "Covè"                                  ; ITU
-2253        ; 8      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_2/2/2/2" ; "BJ"    ; "Dassa-Zoumé"                          ; "Dassa-Zoumé"                           ; ITU
-2254        ; 8      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_2/2/2/2" ; "BJ"    ; "Savalou"                              ; "Savalou"                               ; ITU
-2255        ; 8      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_2/2/2/2" ; "BJ"    ; "Savè"                                 ; "Savè"                                  ; ITU
-225[6-8]    ; 8      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_2/2/2/2" ; "BJ"
-236[04689]  ; 8      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_2/2/2/2" ; "BJ"
-2361        ; 8      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_2/2/2/2" ; "BJ"    ; "Parakou"                              ; "Parakou"                               ; ITU
-2362        ; 8      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_2/2/2/2" ; "BJ"    ; "Nikki/Ndali"                          ; "Nikki/Ndali"                           ; ITU
-2363        ; 8      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_2/2/2/2" ; "BJ"    ; "Kandi/Gogounou/Ségbana"               ; "Kandi/Gogounou/Ségbana"                ; ITU
-2365        ; 8      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_2/2/2/2" ; "BJ"    ; "Banikoara"                            ; "Banikoara"                             ; ITU
-2367        ; 8      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_2/2/2/2" ; "BJ"    ; "Malanville"                           ; "Malanville"                            ; ITU
-2380        ; 8      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_2/2/2/2" ; "BJ"    ; "Djougou"                              ; "Djougou"                               ; ITU
-238[14-9]   ; 8      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_2/2/2/2" ; "BJ"
-2382        ; 8      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_2/2/2/2" ; "BJ"    ; "Natitingou"                           ; "Natitingou"                            ; ITU
-2383        ; 8      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_2/2/2/2" ; "BJ"    ; "Tanguiéta"                            ; "Tanguiéta"                             ; ITU
-24          ; 8      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_2/2/2/2" ; "BJ"    ; "Tanguiéta"                            ;                                         ; GOVERNMENT
-4[013-578]  ; 8      ; MOBILE     ; STANDARD_RATE ; "celtiis" ; "fmt1_2/2/2/2" ; "BJ"    ;                                        ;                                         ; IR21
-4[26]       ; 8      ; MOBILE     ; STANDARD_RATE ; "mtn"     ; "fmt1_2/2/2/2" ; "BJ"    ;                                        ;                                         ; IR21
-50          ; 8      ; MOBILE     ; STANDARD_RATE ; "mtn"     ; "fmt1_2/2/2/2" ; "BJ"    ;                                        ;                                         ; IR21
-5[1-37-9]   ; 8      ; MOBILE     ; STANDARD_RATE ; "mtn"     ; "fmt1_2/2/2/2" ; "BJ"
-54          ; 8      ; MOBILE     ; STANDARD_RATE ; "mtn"     ; "fmt1_2/2/2/2" ; "BJ"    ;                                        ;                                         ;            ; "User report"
-55          ; 8      ; MOBILE     ; STANDARD_RATE ; "moov"    ; "fmt1_2/2/2/2" ; "BJ"    ;                                        ;                                         ; IR21
-56          ; 8      ; MOBILE     ; STANDARD_RATE ; "moov"    ; "fmt1_2/2/2/2" ; "BJ"
-6[03-58]    ; 8      ; MOBILE     ; STANDARD_RATE ; "moov"    ; "fmt1_2/2/2/2" ; "BJ"    ;                                        ;                                         ; IR21
-6[12679]    ; 8      ; MOBILE     ; STANDARD_RATE ; "mtn"     ; "fmt1_2/2/2/2" ; "BJ"
-81          ; 8      ; UAN        ; STANDARD_RATE ;           ; "fmt1_2/2/2/2" ; "BJ"    ;                                        ;                                         ; ITU
-857[58]     ; 8      ; VOIP       ; STANDARD_RATE ;           ; "fmt1_2/2/2/2" ; "BJ"    ;                                        ;                                         ; ITU
-9[016]      ; 8      ; MOBILE     ; STANDARD_RATE ; "mtn"     ; "fmt1_2/2/2/2" ; "BJ"    ;                                        ;                                         ; GOVERNMENT
-93          ; 8      ; MOBILE     ; STANDARD_RATE ; "blk"     ; "fmt1_2/2/2/2" ; "BJ"    ;                                        ;                                         ; ITU
-9[4589]     ; 8      ; MOBILE     ; STANDARD_RATE ; "moov"    ; "fmt1_2/2/2/2" ; "BJ"    ;                                        ;                                         ; IR21
-97          ; 8      ; MOBILE     ; STANDARD_RATE ; "mtn"     ; "fmt1_2/2/2/2" ; "BJ"    ;                                        ;                                         ; ITU
+Prefix      ; Length ; Type                 ; Tariff        ; Operator  ; Format          ; Regions ; Geocode:en                             ; Geocode:fr                              ; Provenance ; Comment
+012[0-4]    ; 10     ; FIXED_LINE           ; STANDARD_RATE ;           ; "fmt_2/2/2/2/2" ; "BJ"    ;                                        ;                                         ; ITU
+012[5-9]    ; 10     ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ;           ; "fmt_2/2/2/2/2" ; "BJ"    ;                                        ;                                         ; ITU
+014[01347]  ; 10     ; MOBILE               ; STANDARD_RATE ; "sbin"    ; "fmt_2/2/2/2/2" ; "BJ"    ;                                        ;                                         ; ITU
+014[26]     ; 10     ; MOBILE               ; STANDARD_RATE ; "mtn"     ; "fmt_2/2/2/2/2" ; "BJ"    ;                                        ;                                         ; ITU
+0145        ; 10     ; MOBILE               ; STANDARD_RATE ; "moov"    ; "fmt_2/2/2/2/2" ; "BJ"    ;                                        ;                                         ; ITU
+014[89]     ; 10     ; MOBILE               ; STANDARD_RATE ;           ; "fmt_2/2/2/2/2" ; "BJ"    ;                                        ;                                         ; ITU
+015[0-4679] ; 10     ; MOBILE               ; STANDARD_RATE ; "mtn"     ; "fmt_2/2/2/2/2" ; "BJ"    ;                                        ;                                         ; ITU
+015[58]     ; 10     ; MOBILE               ; STANDARD_RATE ; "moov"    ; "fmt_2/2/2/2/2" ; "BJ"    ;                                        ;                                         ; ITU
+016[03-58]  ; 10     ; MOBILE               ; STANDARD_RATE ; "moov"    ; "fmt_2/2/2/2/2" ; "BJ"    ;                                        ;                                         ; ITU
+016[12679]  ; 10     ; MOBILE               ; STANDARD_RATE ; "mtn"     ; "fmt_2/2/2/2/2" ; "BJ"    ;                                        ;                                         ; ITU
+019[0167]   ; 10     ; MOBILE               ; STANDARD_RATE ; "mtn"     ; "fmt_2/2/2/2/2" ; "BJ"    ;                                        ;                                         ; ITU
+019[23]     ; 10     ; MOBILE               ; STANDARD_RATE ;           ; "fmt_2/2/2/2/2" ; "BJ"    ;                                        ;                                         ; ITU
+019[4589]   ; 10     ; MOBILE               ; STANDARD_RATE ; "moov"    ; "fmt_2/2/2/2/2" ; "BJ"    ;                                        ;                                         ; ITU
+202[038]    ; 8      ; FIXED_LINE           ; STANDARD_RATE ;           ; "fmt1_2/2/2/2"  ; "BJ"
+2021        ; 8      ; FIXED_LINE           ; STANDARD_RATE ;           ; "fmt1_2/2/2/2"  ; "BJ"    ; "Ongala"                               ; "Ongala"                                ; ITU
+2022        ; 8      ; FIXED_LINE           ; STANDARD_RATE ;           ; "fmt1_2/2/2/2"  ; "BJ"    ; "Kandiévé"                             ; "Kandiévé"                              ; ITU
+2024        ; 8      ; FIXED_LINE           ; STANDARD_RATE ;           ; "fmt1_2/2/2/2"  ; "BJ"    ; "Sèmè"                                 ; "Sèmè"                                  ; ITU
+2025        ; 8      ; FIXED_LINE           ; STANDARD_RATE ;           ; "fmt1_2/2/2/2"  ; "BJ"    ; "Pobè/Kétou"                           ; "Pobè/Kétou"                            ; ITU
+2026        ; 8      ; FIXED_LINE           ; STANDARD_RATE ;           ; "fmt1_2/2/2/2"  ; "BJ"    ; "Sakété/Igolo"                         ; "Sakété/Igolo"                          ; ITU
+2027        ; 8      ; FIXED_LINE           ; STANDARD_RATE ;           ; "fmt1_2/2/2/2"  ; "BJ"    ; "Adjohoun"                             ; "Adjohoun"                              ; ITU
+2029        ; 8      ; FIXED_LINE           ; STANDARD_RATE ;           ; "fmt1_2/2/2/2"  ; "BJ"    ; "Ouémé/Plateau departments"            ; "Départements Ouémé/Plateau"            ; ITU
+2090        ; 8      ; FIXED_LINE           ; STANDARD_RATE ;           ; "fmt1_2/2/2/2"  ; "BJ"
+21[07]      ; 8      ; FIXED_LINE           ; STANDARD_RATE ;           ; "fmt1_2/2/2/2"  ; "BJ"
+2130        ; 8      ; FIXED_LINE           ; STANDARD_RATE ;           ; "fmt1_2/2/2/2"  ; "BJ"    ; "Cadjehoun"                            ; "Cadjehoun"                             ; ITU
+2131        ; 8      ; FIXED_LINE           ; STANDARD_RATE ;           ; "fmt1_2/2/2/2"  ; "BJ"    ; "Ganhi"                                ; "Ganhi"                                 ; ITU
+2132        ; 8      ; FIXED_LINE           ; STANDARD_RATE ;           ; "fmt1_2/2/2/2"  ; "BJ"    ; "Jéricho"                              ; "Jéricho"                               ; ITU
+2133        ; 8      ; FIXED_LINE           ; STANDARD_RATE ;           ; "fmt1_2/2/2/2"  ; "BJ"    ; "Akpakpa"                              ; "Akpakpa"                               ; ITU
+2134        ; 8      ; FIXED_LINE           ; STANDARD_RATE ;           ; "fmt1_2/2/2/2"  ; "BJ"    ; "Ouidah"                               ; "Ouidah"                                ; ITU
+2135        ; 8      ; FIXED_LINE           ; STANDARD_RATE ;           ; "fmt1_2/2/2/2"  ; "BJ"    ; "Godomey"                              ; "Godomey"                               ; ITU
+2136        ; 8      ; FIXED_LINE           ; STANDARD_RATE ;           ; "fmt1_2/2/2/2"  ; "BJ"    ; "Abomey-Calaci"                        ; "Abomey-Calaci"                         ; ITU
+2137        ; 8      ; FIXED_LINE           ; STANDARD_RATE ;           ; "fmt1_2/2/2/2"  ; "BJ"    ; "Allada"                               ; "Allada"                                ; ITU
+2138        ; 8      ; FIXED_LINE           ; STANDARD_RATE ;           ; "fmt1_2/2/2/2"  ; "BJ"    ; "Kouhounou"                            ; "Kouhounou"                             ; ITU
+2139        ; 8      ; FIXED_LINE           ; STANDARD_RATE ;           ; "fmt1_2/2/2/2"  ; "BJ"    ; "Littoral/Atlantique departments"      ; "Départements Littoral/Atlantique"      ; ITU
+224[024578] ; 8      ; FIXED_LINE           ; STANDARD_RATE ;           ; "fmt1_2/2/2/2"  ; "BJ"
+2241        ; 8      ; FIXED_LINE           ; STANDARD_RATE ;           ; "fmt1_2/2/2/2"  ; "BJ"    ; "Lokossa"                              ; "Lokossa"                               ; ITU
+2243        ; 8      ; FIXED_LINE           ; STANDARD_RATE ;           ; "fmt1_2/2/2/2"  ; "BJ"    ; "Come"                                 ; "Come"                                  ; ITU
+2246        ; 8      ; FIXED_LINE           ; STANDARD_RATE ;           ; "fmt1_2/2/2/2"  ; "BJ"    ; "Dogbo"                                ; "Dogbo"                                 ; ITU
+22[45]9     ; 8      ; FIXED_LINE           ; STANDARD_RATE ;           ; "fmt1_2/2/2/2"  ; "BJ"    ; "Mono/Kouffo/Zou/Collines departments" ; "Départements Mono/Couffo/Zou/Collines" ; ITU
+2250        ; 8      ; FIXED_LINE           ; STANDARD_RATE ;           ; "fmt1_2/2/2/2"  ; "BJ"    ; "Abomey"                               ; "Abomey"                                ; ITU
+2251        ; 8      ; FIXED_LINE           ; STANDARD_RATE ;           ; "fmt1_2/2/2/2"  ; "BJ"    ; "Bohicon"                              ; "Bohicon"                               ; ITU
+2252        ; 8      ; FIXED_LINE           ; STANDARD_RATE ;           ; "fmt1_2/2/2/2"  ; "BJ"    ; "Covè"                                 ; "Covè"                                  ; ITU
+2253        ; 8      ; FIXED_LINE           ; STANDARD_RATE ;           ; "fmt1_2/2/2/2"  ; "BJ"    ; "Dassa-Zoumé"                          ; "Dassa-Zoumé"                           ; ITU
+2254        ; 8      ; FIXED_LINE           ; STANDARD_RATE ;           ; "fmt1_2/2/2/2"  ; "BJ"    ; "Savalou"                              ; "Savalou"                               ; ITU
+2255        ; 8      ; FIXED_LINE           ; STANDARD_RATE ;           ; "fmt1_2/2/2/2"  ; "BJ"    ; "Savè"                                 ; "Savè"                                  ; ITU
+225[6-8]    ; 8      ; FIXED_LINE           ; STANDARD_RATE ;           ; "fmt1_2/2/2/2"  ; "BJ"
+236[04689]  ; 8      ; FIXED_LINE           ; STANDARD_RATE ;           ; "fmt1_2/2/2/2"  ; "BJ"
+2361        ; 8      ; FIXED_LINE           ; STANDARD_RATE ;           ; "fmt1_2/2/2/2"  ; "BJ"    ; "Parakou"                              ; "Parakou"                               ; ITU
+2362        ; 8      ; FIXED_LINE           ; STANDARD_RATE ;           ; "fmt1_2/2/2/2"  ; "BJ"    ; "Nikki/Ndali"                          ; "Nikki/Ndali"                           ; ITU
+2363        ; 8      ; FIXED_LINE           ; STANDARD_RATE ;           ; "fmt1_2/2/2/2"  ; "BJ"    ; "Kandi/Gogounou/Ségbana"               ; "Kandi/Gogounou/Ségbana"                ; ITU
+2365        ; 8      ; FIXED_LINE           ; STANDARD_RATE ;           ; "fmt1_2/2/2/2"  ; "BJ"    ; "Banikoara"                            ; "Banikoara"                             ; ITU
+2367        ; 8      ; FIXED_LINE           ; STANDARD_RATE ;           ; "fmt1_2/2/2/2"  ; "BJ"    ; "Malanville"                           ; "Malanville"                            ; ITU
+2380        ; 8      ; FIXED_LINE           ; STANDARD_RATE ;           ; "fmt1_2/2/2/2"  ; "BJ"    ; "Djougou"                              ; "Djougou"                               ; ITU
+238[14-9]   ; 8      ; FIXED_LINE           ; STANDARD_RATE ;           ; "fmt1_2/2/2/2"  ; "BJ"
+2382        ; 8      ; FIXED_LINE           ; STANDARD_RATE ;           ; "fmt1_2/2/2/2"  ; "BJ"    ; "Natitingou"                           ; "Natitingou"                            ; ITU
+2383        ; 8      ; FIXED_LINE           ; STANDARD_RATE ;           ; "fmt1_2/2/2/2"  ; "BJ"    ; "Tanguiéta"                            ; "Tanguiéta"                             ; ITU
+24          ; 8      ; FIXED_LINE           ; STANDARD_RATE ;           ; "fmt1_2/2/2/2"  ; "BJ"    ; "Tanguiéta"                            ;                                         ; GOVERNMENT
+4[013-578]  ; 8      ; MOBILE               ; STANDARD_RATE ; "celtiis" ; "fmt1_2/2/2/2"  ; "BJ"    ;                                        ;                                         ; IR21
+4[26]       ; 8      ; MOBILE               ; STANDARD_RATE ; "mtn"     ; "fmt1_2/2/2/2"  ; "BJ"    ;                                        ;                                         ; IR21
+50          ; 8      ; MOBILE               ; STANDARD_RATE ; "mtn"     ; "fmt1_2/2/2/2"  ; "BJ"    ;                                        ;                                         ; IR21
+5[1-37-9]   ; 8      ; MOBILE               ; STANDARD_RATE ; "mtn"     ; "fmt1_2/2/2/2"  ; "BJ"
+54          ; 8      ; MOBILE               ; STANDARD_RATE ; "mtn"     ; "fmt1_2/2/2/2"  ; "BJ"    ;                                        ;                                         ;            ; "User report"
+55          ; 8      ; MOBILE               ; STANDARD_RATE ; "moov"    ; "fmt1_2/2/2/2"  ; "BJ"    ;                                        ;                                         ; IR21
+56          ; 8      ; MOBILE               ; STANDARD_RATE ; "moov"    ; "fmt1_2/2/2/2"  ; "BJ"
+6[03-58]    ; 8      ; MOBILE               ; STANDARD_RATE ; "moov"    ; "fmt1_2/2/2/2"  ; "BJ"    ;                                        ;                                         ; IR21
+6[12679]    ; 8      ; MOBILE               ; STANDARD_RATE ; "mtn"     ; "fmt1_2/2/2/2"  ; "BJ"
+81          ; 8      ; UAN                  ; STANDARD_RATE ;           ; "fmt1_2/2/2/2"  ; "BJ"    ;                                        ;                                         ; ITU
+857[58]     ; 8      ; VOIP                 ; STANDARD_RATE ;           ; "fmt1_2/2/2/2"  ; "BJ"    ;                                        ;                                         ; ITU
+9[016]      ; 8      ; MOBILE               ; STANDARD_RATE ; "mtn"     ; "fmt1_2/2/2/2"  ; "BJ"    ;                                        ;                                         ; GOVERNMENT
+93          ; 8      ; MOBILE               ; STANDARD_RATE ; "blk"     ; "fmt1_2/2/2/2"  ; "BJ"    ;                                        ;                                         ; ITU
+9[4589]     ; 8      ; MOBILE               ; STANDARD_RATE ; "moov"    ; "fmt1_2/2/2/2"  ; "BJ"    ;                                        ;                                         ; IR21
+97          ; 8      ; MOBILE               ; STANDARD_RATE ; "mtn"     ; "fmt1_2/2/2/2"  ; "BJ"    ;                                        ;                                         ; ITU

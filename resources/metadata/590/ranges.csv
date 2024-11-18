@@ -1,64 +1,69 @@
-Prefix       ; Length ; Type       ; Tariff        ; Operator          ; Format            ; Regions    ; Provenance ; Comment
-5900[079]    ; 9      ; FIXED_LINE ; STANDARD_RATE ;                   ; "fmt1_3/2/2/2"    ; "MF"
-5900[1-68]   ; 9      ; FIXED_LINE ; STANDARD_RATE ;                   ; "fmt1_3/2/2/2"    ; "GP"
-5901[0-2]    ; 9      ; FIXED_LINE ; STANDARD_RATE ;                   ; "fmt1_3/2/2/2"    ; "GP"
-590[14]3     ; 9      ; FIXED_LINE ; STANDARD_RATE ;                   ; "fmt1_3/2/2/2"    ; "MF"
-5901[4-9]    ; 9      ; FIXED_LINE ; STANDARD_RATE ;                   ; "fmt1_3/2/2/2"    ; "GP"       ; GOVERNMENT
-5902[0-6]    ; 9      ; FIXED_LINE ; STANDARD_RATE ;                   ; "fmt1_3/2/2/2"    ; "GP"
-5902[79]     ; 9      ; FIXED_LINE ; STANDARD_RATE ;                   ; "fmt1_3/2/2/2"    ; "BL,MF"
-59028        ; 9      ; FIXED_LINE ; STANDARD_RATE ;                   ; "fmt1_3/2/2/2"    ; "BL,GP"
-59030        ; 9      ; FIXED_LINE ; STANDARD_RATE ;                   ; "fmt1_3/2/2/2"    ; "MF"
-5903[1289]   ; 9      ; FIXED_LINE ; STANDARD_RATE ;                   ; "fmt1_3/2/2/2"    ; "GP"
-5903[3-7]    ; 9      ; FIXED_LINE ; STANDARD_RATE ;                   ; "fmt1_3/2/2/2"    ; "BL,GP,MF" ; GOVERNMENT
-5904[0-24-9] ; 9      ; FIXED_LINE ; STANDARD_RATE ;                   ; "fmt1_3/2/2/2"    ; "GP"
-5905[068]    ; 9      ; FIXED_LINE ; STANDARD_RATE ;                   ; "fmt1_3/2/2/2"    ; "MF"
-5905[12]     ; 9      ; FIXED_LINE ; STANDARD_RATE ;                   ; "fmt1_3/2/2/2"    ; "BL,MF"
-5905[3-579]  ; 9      ; FIXED_LINE ; STANDARD_RATE ;                   ; "fmt1_3/2/2/2"    ; "GP"
-5906[0189]   ; 9      ; FIXED_LINE ; STANDARD_RATE ;                   ; "fmt1_3/2/2/2"    ; "GP"
-5906[2-6]    ; 9      ; FIXED_LINE ; STANDARD_RATE ;                   ; "fmt1_3/2/2/2"    ; "GP"       ; GOVERNMENT
-5907[08]     ; 9      ; FIXED_LINE ; STANDARD_RATE ;                   ; "fmt1_3/2/2/2"    ; "GP"
-5907[79]     ; 9      ; FIXED_LINE ; STANDARD_RATE ;                   ; "fmt1_3/2/2/2"    ; "MF"
-5908[0-689]  ; 9      ; FIXED_LINE ; STANDARD_RATE ;                   ; "fmt1_3/2/2/2"    ; "GP"
-59087        ; 9      ; FIXED_LINE ; STANDARD_RATE ;                   ; "fmt1_3/2/2/2"    ; "BL,MF"
-5909         ; 9      ; FIXED_LINE ; STANDARD_RATE ;                   ; "fmt1_3/2/2/2"    ; "GP"
-6900[05]     ; 9      ; MOBILE     ; STANDARD_RATE ; "sfr_rife"        ; "fmt1_3/2/2/2"    ; "BL,GP,MF"
-6900[1-4]    ; 9      ; MOBILE     ; STANDARD_RATE ;                   ; "fmt1_3/2/2/2"    ; "BL,GP,MF"
-6900[6-9]    ; 9      ; MOBILE     ; STANDARD_RATE ; "digicel"         ; "fmt1_3/2/2/2"    ; "BL,GP,MF"
-69010        ; 9      ; MOBILE     ; STANDARD_RATE ; "uts"             ; "fmt1_3/2/2/2"    ; "BL,GP,MF"
-6901[1-9]    ; 9      ; MOBILE     ; STANDARD_RATE ; "digicel"         ; "fmt1_3/2/2/2"    ; "BL,GP,MF"
-6902[013-5]  ; 9      ; MOBILE     ; STANDARD_RATE ; "digicel"         ; "fmt1_3/2/2/2"    ; "BL,GP,MF"
-69022        ; 9      ; MOBILE     ; STANDARD_RATE ; "dauphin_telecom" ; "fmt1_3/2/2/2"    ; "BL,GP,MF"
-6902[6-9]    ; 9      ; MOBILE     ; STANDARD_RATE ; "orange"          ; "fmt1_3/2/2/2"    ; "BL,GP,MF"
-6903[0-57-9] ; 9      ; MOBILE     ; STANDARD_RATE ; "orange"          ; "fmt1_3/2/2/2"    ; "BL,GP,MF"
-69036        ; 9      ; MOBILE     ; STANDARD_RATE ; "digicel"         ; "fmt1_3/2/2/2"    ; "BL,GP,MF"
-6904[017-9]  ; 9      ; MOBILE     ; STANDARD_RATE ; "orange"          ; "fmt1_3/2/2/2"    ; "BL,GP,MF"
-6904[2-6]    ; 9      ; MOBILE     ; STANDARD_RATE ; "digicel"         ; "fmt1_3/2/2/2"    ; "BL,GP,MF"
-6905         ; 9      ; MOBILE     ; STANDARD_RATE ; "orange"          ; "fmt1_3/2/2/2"    ; "BL,GP,MF"
-6906[0-578]  ; 9      ; MOBILE     ; STANDARD_RATE ; "orange"          ; "fmt1_3/2/2/2"    ; "BL,GP,MF"
-69066        ; 9      ; MOBILE     ; STANDARD_RATE ; "dauphin_telecom" ; "fmt1_3/2/2/2"    ; "BL,GP,MF"
-69069        ; 9      ; MOBILE     ; STANDARD_RATE ; "digicel"         ; "fmt1_3/2/2/2"    ; "BL,GP,MF"
-6907[0-6]    ; 9      ; MOBILE     ; STANDARD_RATE ; "orange"          ; "fmt1_3/2/2/2"    ; "BL,GP,MF"
-69077        ; 9      ; MOBILE     ; STANDARD_RATE ; "dauphin_telecom" ; "fmt1_3/2/2/2"    ; "BL,GP,MF"
-6907[89]     ; 9      ; MOBILE     ; STANDARD_RATE ; "sfr_rife"        ; "fmt1_3/2/2/2"    ; "BL,GP,MF"
-6908[0-6]    ; 9      ; MOBILE     ; STANDARD_RATE ; "digicel"         ; "fmt1_3/2/2/2"    ; "BL,GP,MF"
-69087        ; 9      ; MOBILE     ; STANDARD_RATE ; "uts"             ; "fmt1_3/2/2/2"    ; "BL,GP,MF"
-69088        ; 9      ; MOBILE     ; STANDARD_RATE ; "dauphin_telecom" ; "fmt1_3/2/2/2"    ; "BL,GP,MF"
-69089        ; 9      ; MOBILE     ; STANDARD_RATE ; "sfr_rife"        ; "fmt1_3/2/2/2"    ; "BL,GP,MF"
-6909         ; 9      ; MOBILE     ; STANDARD_RATE ; "sfr_rife"        ; "fmt1_3/2/2/2"    ; "BL,GP,MF"
-69122        ; 9      ; MOBILE     ; STANDARD_RATE ; "dauphin_telecom" ; "fmt1_3/2/2/2"    ; "BL,GP,MF"
-6912[3-8]    ; 9      ; MOBILE     ; STANDARD_RATE ; "free_caraïbe"    ; "fmt1_3/2/2/2"    ; "BL,GP,MF" ; IR21
-69129        ; 9      ; MOBILE     ; STANDARD_RATE ; "digicel"         ; "fmt1_3/2/2/2"    ; "BL,GP,MF"
-69130        ; 9      ; MOBILE     ; STANDARD_RATE ; "digicel"         ; "fmt1_3/2/2/2"    ; "BL,GP,MF" ; IR21       ; "IR21 Dated 5/2/2018"
-6913[1-5]    ; 9      ; MOBILE     ; STANDARD_RATE ; "orange"          ; "fmt1_3/2/2/2"    ; "BL,GP,MF" ; GOVERNMENT ; "Regulator Monthly Report (Arcep)"
-6940[89]     ; 9      ; MOBILE     ; STANDARD_RATE ; "digicel"         ; "fmt1_3/2/2/2"    ; "BL,GP,MF" ; IR21
-6941[2-6]    ; 9      ; MOBILE     ; STANDARD_RATE ; "digicel"         ; "fmt1_3/2/2/2"    ; "BL,GP,MF" ; IR21
-6949         ; 9      ; MOBILE     ; STANDARD_RATE ; "digicel"         ; "fmt1_3/2/2/2"    ; "BL,GP,MF" ; IR21
-6961[016-9]  ; 9      ; MOBILE     ; STANDARD_RATE ; "digicel"         ; "fmt1_3/2/2/2"    ; "BL,GP,MF" ; IR21
-6965[0-4]    ; 9      ; MOBILE     ; STANDARD_RATE ; "digicel"         ; "fmt1_3/2/2/2"    ; "BL,GP,MF" ; IR21
-696[67]      ; 9      ; MOBILE     ; STANDARD_RATE ; "digicel"         ; "fmt1_3/2/2/2"    ; "BL,GP,MF" ; IR21
-80[0-5]      ; 9      ; FIXED_LINE ; TOLL_FREE     ;                   ; "varcost_3/2/2/2" ; "BL,GP,MF" ;            ; "ARCEP"
-9395         ; 9      ; VOIP       ; STANDARD_RATE ;                   ; "fmt1_3/2/2/2"    ; "BL,GP,MF" ; ITU
-939[67]      ; 9      ; VOIP       ; STANDARD_RATE ;                   ; "fmt1_3/2/2/2"    ; "BL,GP,MF" ; IR21
-9475[0-5]    ; 9      ; VOIP       ; STANDARD_RATE ;                   ; "fmt1_3/2/2/2"    ; "BL,GP,MF" ; GOVERNMENT
-976[01]      ; 9      ; VOIP       ; STANDARD_RATE ;                   ; "fmt1_3/2/2/2"    ; "BL,GP,MF" ; GOVERNMENT ; "Regulator Monthly Report (Arcep)"
-9768         ; 9      ; VOIP       ; STANDARD_RATE ;                   ; "fmt1_3/2/2/2"    ; "BL,GP,MF" ; ITU
+Prefix       ; Length ; Type       ; Tariff        ; Operator           ; Format            ; Regions    ; Provenance ; Comment
+5900[079]    ; 9      ; FIXED_LINE ; STANDARD_RATE ;                    ; "fmt1_3/2/2/2"    ; "MF"
+5900[1-68]   ; 9      ; FIXED_LINE ; STANDARD_RATE ;                    ; "fmt1_3/2/2/2"    ; "GP"
+5901[0-2]    ; 9      ; FIXED_LINE ; STANDARD_RATE ;                    ; "fmt1_3/2/2/2"    ; "GP"
+590[14]3     ; 9      ; FIXED_LINE ; STANDARD_RATE ;                    ; "fmt1_3/2/2/2"    ; "MF"
+5901[4-9]    ; 9      ; FIXED_LINE ; STANDARD_RATE ;                    ; "fmt1_3/2/2/2"    ; "GP"       ; GOVERNMENT
+5902[0-6]    ; 9      ; FIXED_LINE ; STANDARD_RATE ;                    ; "fmt1_3/2/2/2"    ; "GP"
+5902[79]     ; 9      ; FIXED_LINE ; STANDARD_RATE ;                    ; "fmt1_3/2/2/2"    ; "BL,MF"
+59028        ; 9      ; FIXED_LINE ; STANDARD_RATE ;                    ; "fmt1_3/2/2/2"    ; "BL,GP"
+59030        ; 9      ; FIXED_LINE ; STANDARD_RATE ;                    ; "fmt1_3/2/2/2"    ; "MF"
+5903[1289]   ; 9      ; FIXED_LINE ; STANDARD_RATE ;                    ; "fmt1_3/2/2/2"    ; "GP"
+5903[3-7]    ; 9      ; FIXED_LINE ; STANDARD_RATE ;                    ; "fmt1_3/2/2/2"    ; "BL,GP,MF" ; GOVERNMENT
+5904[0-24-9] ; 9      ; FIXED_LINE ; STANDARD_RATE ;                    ; "fmt1_3/2/2/2"    ; "GP"
+5905[068]    ; 9      ; FIXED_LINE ; STANDARD_RATE ;                    ; "fmt1_3/2/2/2"    ; "MF"
+5905[12]     ; 9      ; FIXED_LINE ; STANDARD_RATE ;                    ; "fmt1_3/2/2/2"    ; "BL,MF"
+5905[3-579]  ; 9      ; FIXED_LINE ; STANDARD_RATE ;                    ; "fmt1_3/2/2/2"    ; "GP"
+5906[0189]   ; 9      ; FIXED_LINE ; STANDARD_RATE ;                    ; "fmt1_3/2/2/2"    ; "GP"
+5906[2-6]    ; 9      ; FIXED_LINE ; STANDARD_RATE ;                    ; "fmt1_3/2/2/2"    ; "GP"       ; GOVERNMENT
+5907[08]     ; 9      ; FIXED_LINE ; STANDARD_RATE ;                    ; "fmt1_3/2/2/2"    ; "GP"
+5907[79]     ; 9      ; FIXED_LINE ; STANDARD_RATE ;                    ; "fmt1_3/2/2/2"    ; "MF"
+5908[0-689]  ; 9      ; FIXED_LINE ; STANDARD_RATE ;                    ; "fmt1_3/2/2/2"    ; "GP"
+59087        ; 9      ; FIXED_LINE ; STANDARD_RATE ;                    ; "fmt1_3/2/2/2"    ; "BL,MF"
+5909         ; 9      ; FIXED_LINE ; STANDARD_RATE ;                    ; "fmt1_3/2/2/2"    ; "GP"
+6900[05]     ; 9      ; MOBILE     ; STANDARD_RATE ; "sfr_rife"         ; "fmt1_3/2/2/2"    ; "BL,GP,MF"
+6900[1-4]    ; 9      ; MOBILE     ; STANDARD_RATE ;                    ; "fmt1_3/2/2/2"    ; "BL,GP,MF"
+6900[6-9]    ; 9      ; MOBILE     ; STANDARD_RATE ; "digicel"          ; "fmt1_3/2/2/2"    ; "BL,GP,MF"
+69010        ; 9      ; MOBILE     ; STANDARD_RATE ; "uts"              ; "fmt1_3/2/2/2"    ; "BL,GP,MF"
+6901[1-9]    ; 9      ; MOBILE     ; STANDARD_RATE ; "digicel"          ; "fmt1_3/2/2/2"    ; "BL,GP,MF"
+6902[013-5]  ; 9      ; MOBILE     ; STANDARD_RATE ; "digicel"          ; "fmt1_3/2/2/2"    ; "BL,GP,MF"
+69022        ; 9      ; MOBILE     ; STANDARD_RATE ; "dauphin_telecom"  ; "fmt1_3/2/2/2"    ; "BL,GP,MF"
+6902[6-9]    ; 9      ; MOBILE     ; STANDARD_RATE ; "orange"           ; "fmt1_3/2/2/2"    ; "BL,GP,MF"
+6903[0-57-9] ; 9      ; MOBILE     ; STANDARD_RATE ; "orange"           ; "fmt1_3/2/2/2"    ; "BL,GP,MF"
+69036        ; 9      ; MOBILE     ; STANDARD_RATE ; "digicel"          ; "fmt1_3/2/2/2"    ; "BL,GP,MF"
+6904[017-9]  ; 9      ; MOBILE     ; STANDARD_RATE ; "orange"           ; "fmt1_3/2/2/2"    ; "BL,GP,MF"
+6904[2-6]    ; 9      ; MOBILE     ; STANDARD_RATE ; "digicel"          ; "fmt1_3/2/2/2"    ; "BL,GP,MF"
+6905         ; 9      ; MOBILE     ; STANDARD_RATE ; "orange"           ; "fmt1_3/2/2/2"    ; "BL,GP,MF"
+6906[0-578]  ; 9      ; MOBILE     ; STANDARD_RATE ; "orange"           ; "fmt1_3/2/2/2"    ; "BL,GP,MF"
+69066        ; 9      ; MOBILE     ; STANDARD_RATE ; "dauphin_telecom"  ; "fmt1_3/2/2/2"    ; "BL,GP,MF"
+69069        ; 9      ; MOBILE     ; STANDARD_RATE ; "digicel"          ; "fmt1_3/2/2/2"    ; "BL,GP,MF"
+6907[0-6]    ; 9      ; MOBILE     ; STANDARD_RATE ; "orange"           ; "fmt1_3/2/2/2"    ; "BL,GP,MF"
+69077        ; 9      ; MOBILE     ; STANDARD_RATE ; "dauphin_telecom"  ; "fmt1_3/2/2/2"    ; "BL,GP,MF"
+6907[89]     ; 9      ; MOBILE     ; STANDARD_RATE ; "sfr_rife"         ; "fmt1_3/2/2/2"    ; "BL,GP,MF"
+6908[0-6]    ; 9      ; MOBILE     ; STANDARD_RATE ; "digicel"          ; "fmt1_3/2/2/2"    ; "BL,GP,MF"
+69087        ; 9      ; MOBILE     ; STANDARD_RATE ; "uts"              ; "fmt1_3/2/2/2"    ; "BL,GP,MF"
+69088        ; 9      ; MOBILE     ; STANDARD_RATE ; "dauphin_telecom"  ; "fmt1_3/2/2/2"    ; "BL,GP,MF"
+69089        ; 9      ; MOBILE     ; STANDARD_RATE ; "sfr_rife"         ; "fmt1_3/2/2/2"    ; "BL,GP,MF"
+6909         ; 9      ; MOBILE     ; STANDARD_RATE ; "sfr_rife"         ; "fmt1_3/2/2/2"    ; "BL,GP,MF"
+69122        ; 9      ; MOBILE     ; STANDARD_RATE ; "dauphin_telecom"  ; "fmt1_3/2/2/2"    ; "BL,GP,MF"
+6912[3-8]    ; 9      ; MOBILE     ; STANDARD_RATE ; "free_caraïbe"     ; "fmt1_3/2/2/2"    ; "BL,GP,MF" ; IR21
+69129        ; 9      ; MOBILE     ; STANDARD_RATE ; "digicel"          ; "fmt1_3/2/2/2"    ; "BL,GP,MF"
+69130        ; 9      ; MOBILE     ; STANDARD_RATE ; "digicel"          ; "fmt1_3/2/2/2"    ; "BL,GP,MF" ; IR21       ; "IR21 Dated 5/2/2018"
+6913[1-5]    ; 9      ; MOBILE     ; STANDARD_RATE ; "orange"           ; "fmt1_3/2/2/2"    ; "BL,GP,MF" ; GOVERNMENT ; "Regulator Monthly Report (Arcep)"
+6940[89]     ; 9      ; MOBILE     ; STANDARD_RATE ; "digicel"          ; "fmt1_3/2/2/2"    ; "BL,GP,MF" ; IR21
+6941[2-6]    ; 9      ; MOBILE     ; STANDARD_RATE ; "digicel"          ; "fmt1_3/2/2/2"    ; "BL,GP,MF" ; IR21
+6949         ; 9      ; MOBILE     ; STANDARD_RATE ; "digicel"          ; "fmt1_3/2/2/2"    ; "BL,GP,MF" ; IR21
+6961[016-9]  ; 9      ; MOBILE     ; STANDARD_RATE ; "digicel"          ; "fmt1_3/2/2/2"    ; "BL,GP,MF" ; IR21
+6965[0-4]    ; 9      ; MOBILE     ; STANDARD_RATE ; "digicel"          ; "fmt1_3/2/2/2"    ; "BL,GP,MF" ; IR21
+696[67]      ; 9      ; MOBILE     ; STANDARD_RATE ; "digicel"          ; "fmt1_3/2/2/2"    ; "BL,GP,MF" ; IR21
+70900        ; 9      ; MOBILE     ; STANDARD_RATE ; "free_caraïbe"     ; "fmt1_3/2/2/2"    ; "BL,GP,MF" ; GOVERNMENT
+70901        ; 9      ; MOBILE     ; STANDARD_RATE ; "outremer_telecom" ; "fmt1_3/2/2/2"    ; "BL,GP,MF" ; GOVERNMENT
+70902        ; 9      ; MOBILE     ; STANDARD_RATE ; "digicel"          ; "fmt1_3/2/2/2"    ; "BL,GP,MF" ; GOVERNMENT
+70903        ; 9      ; MOBILE     ; STANDARD_RATE ; "orange"           ; "fmt1_3/2/2/2"    ; "BL,GP,MF" ; GOVERNMENT
+70904        ; 9      ; MOBILE     ; STANDARD_RATE ; "dauphin_telecom"  ; "fmt1_3/2/2/2"    ; "BL,GP,MF" ; GOVERNMENT
+80[0-5]      ; 9      ; FIXED_LINE ; TOLL_FREE     ;                    ; "varcost_3/2/2/2" ; "BL,GP,MF" ;            ; "ARCEP"
+9395         ; 9      ; VOIP       ; STANDARD_RATE ;                    ; "fmt1_3/2/2/2"    ; "BL,GP,MF" ; ITU
+939[67]      ; 9      ; VOIP       ; STANDARD_RATE ;                    ; "fmt1_3/2/2/2"    ; "BL,GP,MF" ; IR21
+9475[0-5]    ; 9      ; VOIP       ; STANDARD_RATE ;                    ; "fmt1_3/2/2/2"    ; "BL,GP,MF" ; GOVERNMENT
+976[01]      ; 9      ; VOIP       ; STANDARD_RATE ;                    ; "fmt1_3/2/2/2"    ; "BL,GP,MF" ; GOVERNMENT ; "Regulator Monthly Report (Arcep)"
+9768         ; 9      ; VOIP       ; STANDARD_RATE ;                    ; "fmt1_3/2/2/2"    ; "BL,GP,MF" ; ITU

@@ -1558,21 +1558,29 @@
       </generalDesc>
       <shortCode>
         <possibleLengths national="3,4"/>
-        <exampleNumber>117</exampleNumber>
+        <exampleNumber>105</exampleNumber>
         <nationalNumberPattern>
           1(?:
-            1[78]|
+            05|
+            1[24-8]|
             2[02-5]|
-            60
+            3[126-8]|
+            5[05]|
+            6[06]|
+            89
           )|
           7[0-5]\d\d
         </nationalNumberPattern>
       </shortCode>
       <tollFree>
         <possibleLengths national="3,4"/>
-        <exampleNumber>117</exampleNumber>
+        <exampleNumber>112</exampleNumber>
         <nationalNumberPattern>
-          11[78]|
+          1(?:
+            1[246-8]|
+            3[68]|
+            6[06]
+          )|
           7[3-5]\d\d
         </nationalNumberPattern>
       </tollFree>
@@ -1583,9 +1591,19 @@
       </carrierSpecific>
       <emergency>
         <possibleLengths national="3"/>
-        <exampleNumber>117</exampleNumber>
-        <nationalNumberPattern>11[78]</nationalNumberPattern>
+        <exampleNumber>112</exampleNumber>
+        <nationalNumberPattern>11[246-8]</nationalNumberPattern>
       </emergency>
+      <expandedEmergency>
+        <possibleLengths national="3"/>
+        <exampleNumber>136</exampleNumber>
+        <nationalNumberPattern>
+          1(?:
+            3[68]|
+            6[06]
+          )
+        </nationalNumberPattern>
+      </expandedEmergency>
     </territory>
 
     <!-- St. Barthélemy (BL) -->
@@ -4725,7 +4743,7 @@
             )
           )|
           (?:
-            1[235-8]\d|
+            1[2-8]\d|
             75[12]
           )\d\d
         </nationalNumberPattern>
@@ -4743,7 +4761,7 @@
       <standardRate>
         <possibleLengths national="5"/>
         <exampleNumber>12000</exampleNumber>
-        <nationalNumberPattern>1[235-8]\d{3}</nationalNumberPattern>
+        <nationalNumberPattern>1[2-8]\d{3}</nationalNumberPattern>
       </standardRate>
       <emergency>
         <possibleLengths national="3"/>
