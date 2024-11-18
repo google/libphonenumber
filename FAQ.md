@@ -362,19 +362,8 @@ right thing if the phone number object is as intended.
 @Mexico,
 Mexico used to have such additional prefixes (1, 02, 045, ...) for dialling
 mobile numbers internationally, fixed-line to mobile nationally.. As these
-dialling patterns were deprecated, we have continued to maintain mobile and
+dialling patterns were deprecated, we removed them but still maintain mobile and
 fixed-line ranges at higher level, returning type as [`FIXED_LINE_OR_MOBILE`](#fixed_line_or_mobile)
-
-### <a href="#mx_legacy_formats">Why Mexico (MX) numbers in older dialling formats are accepted as valid ones?</a>
-Though library has stopped supporting below older dialling codes in the canonical
-form and formatting results, we are lenient in parsing the number, i.e removing
-all older codes.
-- 1 -> in E.164 international diallings
-- 01, 02, 044 and 045 -> for local/national diallings
-
-This is because we found the older dialling codes supported even after deprecation
-period, so we decided to support them for longer time. However, we will stop this as
-part of [this issue](https://issuetracker.google.com/issues/205606725). More details there.
 
 ### <a name="#unsupported_regions">Why are Bouvet Island (BV), Pitcairn Island (PN), Antarctica (AQ) etc. not supported?</a>
 

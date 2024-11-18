@@ -41,5 +41,6 @@ Prefix   ; Length ; Type            ; Tariff        ; Area Code Length ; Operato
 97595    ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "yateco"           ; "mobile_2/3/3-4"  ; "HR"    ;                        ; GOVERNMENT
 97596    ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "altavox"          ; "mobile_2/3/3-4"  ; "HR"    ;                        ; GOVERNMENT
 97597    ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "innovac"          ; "mobile_2/3/3-4"  ; "HR"    ;                        ; GOVERNMENT
+97599    ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "digicom"          ; "mobile_2/3/3-4"  ; "HR"    ;                        ; GOVERNMENT
 98       ; 8      ; MOBILE          ; STANDARD_RATE ;                  ; "hrvatski_telekom" ; "mobile_2/3/3-4"  ; "HR"    ;                        ; IR21       ; "IR21 dated 1/30/2019"
 9[89]    ; 9      ; MOBILE          ; STANDARD_RATE ;                  ; "hrvatski_telekom" ; "mobile_2/3/3-4"  ; "HR"    ;                        ; IR21       ; "IR21 dated 1/30/2019"

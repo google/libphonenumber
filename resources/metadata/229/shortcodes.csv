@@ -1,6 +1,12 @@
-Region ; Prefix   ; Length ; Type       ; Tariff    ; Carrier Specific
-BJ     ; 11[78]   ; 3      ; EMERGENCY  ; TOLL_FREE
-BJ     ; 12[02-5] ; 3      ; COMMERCIAL ;           ; true
-BJ     ; 160      ; 3      ; COMMERCIAL
-BJ     ; 7[0-2]   ; 4      ; COMMERCIAL
-BJ     ; 7[3-5]   ; 4      ; COMMERCIAL ; TOLL_FREE
+Region ; Prefix   ; Length ; Type               ; Tariff    ; Carrier Specific ; Provenance
+BJ     ; 1[01]5   ; 3      ; COMMERCIAL         ;           ;                  ; ITU
+BJ     ; 11[246]  ; 3      ; EMERGENCY          ; TOLL_FREE ;                  ; ITU
+BJ     ; 11[78]   ; 3      ; EMERGENCY          ; TOLL_FREE
+BJ     ; 12[02-5] ; 3      ; COMMERCIAL         ;           ; true
+BJ     ; 13[127]  ; 3      ; COMMERCIAL         ;           ;                  ; ITU
+BJ     ; 13[68]   ; 3      ; EXPANDED_EMERGENCY ; TOLL_FREE ;                  ; ITU
+BJ     ; 15[05]   ; 3      ; COMMERCIAL         ;           ;                  ; ITU
+BJ     ; 16[06]   ; 3      ; EXPANDED_EMERGENCY ; TOLL_FREE ;                  ; ITU
+BJ     ; 189      ; 3      ; COMMERCIAL         ;           ;                  ; ITU
+BJ     ; 7[0-2]   ; 4      ; COMMERCIAL         ;           ;                  ; ITU
+BJ     ; 7[3-5]   ; 4      ; COMMERCIAL         ; TOLL_FREE
