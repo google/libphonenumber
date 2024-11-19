@@ -2215,7 +2215,7 @@ PhoneNumberUtil::ErrorType PhoneNumberUtil::BuildNationalNumberForParsing(
       // Additional parameters might follow the phone context. If so, we will
       // remove them here because the parameters after phone context are not
       // important for parsing the phone number.
-      StrAppend(national_number, phone_context.value());
+      StrAppend(national_number, StringHolder(phone_context.value()));
     }
 
     // Now append everything between the "tel:" prefix and the phone-context.
@@ -2228,9 +2228,9 @@ PhoneNumberUtil::ErrorType PhoneNumberUtil::BuildNationalNumberForParsing(
         static_cast<int>(index_of_rfc_prefix + strlen(kRfc3966Prefix)) : 0;
     StrAppend(
         national_number,
-        number_to_parse.substr(
+        StringHolder(number_to_parse.substr(
             index_of_national_number,
-            index_of_phone_context - index_of_national_number));
+            index_of_phone_context - index_of_national_number)));
   } else {
     // Extract a possible number from the string passed in (this strips leading
     // characters that could not be the start of a phone number.)
