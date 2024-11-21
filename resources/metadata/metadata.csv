@@ -15,7 +15,7 @@ Calling Code ; Main Region ; Extra Regions                                      
 226          ; "BF"        ;                                                                           ;                 ; "00"       ; "Africa/Ouagadougou"
 227          ; "NE"        ;                                                                           ;                 ; "00"       ; "Africa/Niamey"
 228          ; "TG"        ;                                                                           ;                 ; "00"       ; "Africa/Lome"
-229          ; "BJ"        ;                                                                           ;                 ; "00"       ; "Africa/Porto-Novo"
+229          ; "BJ"        ;                                                                           ;                 ; "00"       ; "Africa/Porto-Novo"                                   ; "BJ"
 230          ; "MU"        ;                                                                           ;                 ; "020"      ; "Indian/Mauritius"
 231          ; "LR"        ;                                                                           ; "0"             ; "00"       ; "Atlantic/Reykjavik"
 232          ; "SL"        ;                                                                           ; "0"             ; "00"       ; "Africa/Freetown"
