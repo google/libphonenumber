@@ -3136,7 +3136,9 @@ public class PhoneNumberUtil {
    * @throws NumberParseException  if the string is not considered to be a viable phone number (e.g.
    *     too few or too many digits) or if no default region was supplied and the number is not in
    *     international format (does not start with +)
+   * @deprecated Use {@link #parseWithOptions(CharSequence, ParsingOptions)} instead.
    */
+  @Deprecated
   public PhoneNumber parse(CharSequence numberToParse, String defaultRegion)
       throws NumberParseException {
     PhoneNumber phoneNumber = new PhoneNumber();
@@ -3147,7 +3149,9 @@ public class PhoneNumberUtil {
   /**
    * Same as {@link #parse(CharSequence, String)}, but accepts mutable PhoneNumber as a
    * parameter to decrease object creation when invoked many times.
+   * @deprecated Use {@link #parseWithOptions(CharSequence, ParsingOptions, PhoneNumber)} instead.
    */
+  @Deprecated
   public void parse(CharSequence numberToParse, String defaultRegion, PhoneNumber phoneNumber)
       throws NumberParseException {
     parseHelper(numberToParse, defaultRegion, false, true, phoneNumber);
@@ -3166,7 +3170,9 @@ public class PhoneNumberUtil {
    * @return  a phone number proto buffer filled with the parsed number
    * @throws NumberParseException  if the string is not considered to be a viable phone number or if
    *     no default region was supplied
+   * @deprecated Use {@link #parseWithOptions(CharSequence, ParsingOptions)} instead.
    */
+  @Deprecated
   public PhoneNumber parseAndKeepRawInput(CharSequence numberToParse, String defaultRegion)
       throws NumberParseException {
     PhoneNumber phoneNumber = new PhoneNumber();
@@ -3177,12 +3183,25 @@ public class PhoneNumberUtil {
   /**
    * Same as{@link #parseAndKeepRawInput(CharSequence, String)}, but accepts a mutable
    * PhoneNumber as a parameter to decrease object creation when invoked many times.
+   * @deprecated Use {@link #parseWithOptions(CharSequence, ParsingOptions, PhoneNumber)} instead.
    */
-  public void parseAndKeepRawInput(CharSequence numberToParse, String defaultRegion,
-                                   PhoneNumber phoneNumber)
+  @Deprecated
+  public void parseAndKeepRawInput(CharSequence numberToParse, String defaultRegion, PhoneNumber phoneNumber)
       throws NumberParseException {
     parseHelper(numberToParse, defaultRegion, true, true, phoneNumber);
   }
+
+  public PhoneNumber parseWithOptions(CharSequence numberToParse, ParsingOptions options)
+      throws NumberParseException {
+    PhoneNumber phoneNumber = new PhoneNumber();
+    parseHelper(numberToParse, options.getDefaultRegion(), options.hasKeepRawInput(), options.hasDefaultRegion(), phoneNumber);
+    return phoneNumber;
+  }
+
+  public void parseWithOptions(CharSequence numberToParse, ParsingOptions options, PhoneNumber phoneNumber)
+      throws NumberParseException {
+        parseHelper(numberToParse, options.getDefaultRegion(), options.hasKeepRawInput(), options.hasDefaultRegion(), phoneNumber);
+      }
 
   /**
    * Returns an iterable over all {@link PhoneNumberMatch PhoneNumberMatches} in {@code text}. This
