@@ -3249,6 +3249,18 @@ public class PhoneNumberUtil {
     parseHelper(numberToParse, options.getDefaultRegion(), options.isKeepRawInput(), true, phoneNumber);
   }
 
+  public PhoneNumber parseWithOptions(CharSequence numberToParse, ParsingOptions options)
+      throws NumberParseException {
+    PhoneNumber phoneNumber = new PhoneNumber();
+    parseHelper(numberToParse, options.getDefaultRegion(), options.hasKeepRawInput(), options.hasDefaultRegion(), phoneNumber);
+    return phoneNumber;
+  }
+
+  public void parseWithOptions(CharSequence numberToParse, ParsingOptions options, PhoneNumber phoneNumber)
+      throws NumberParseException {
+        parseHelper(numberToParse, options.getDefaultRegion(), options.hasKeepRawInput(), options.hasDefaultRegion(), phoneNumber);
+      }
+
   /**
    * Returns an iterable over all {@link PhoneNumberMatch PhoneNumberMatches} in {@code text}. This
    * is a shortcut for {@link #findNumbers(CharSequence, String, Leniency, long)

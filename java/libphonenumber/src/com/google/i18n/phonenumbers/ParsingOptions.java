@@ -30,7 +30,10 @@ public class ParsingOptions {
   public boolean hasDefaultRegion() { return hasDefaultRegion; }
   public String getDefaultRegion() { return defaultRegion_; }
   public ParsingOptions setDefaultRegion(String value) {
-    hasDefaultRegion = (value != null);
+    if (value == null) {
+      throw new NullPointerException();
+    }
+    hasDefaultRegion = true;
     defaultRegion_ = value;
     return this;
   }
