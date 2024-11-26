@@ -1,7 +1,8 @@
 <?xml version="1.0"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>com.googlecode.libphonenumber</groupId>
   <artifactId>geocoder</artifactId>
   <version>2.245-SNAPSHOT</version>
   <packaging>jar</packaging>
@@ -28,12 +29,16 @@
     </resources>
     <testResources>
       <testResource>
-        <directory>test/com/google/i18n/phonenumbers/geocoding/testing_data</directory>
-        <targetPath>com/google/i18n/phonenumbers/geocoding/testing_data</targetPath>
+        <directory>test/com/google/i18n/phonenumbers/geocoding/testing_data
+        </directory>
+        <targetPath>com/google/i18n/phonenumbers/geocoding/testing_data
+        </targetPath>
       </testResource>
       <testResource>
-        <directory>test/com/google/i18n/phonenumbers/timezones/testing_data</directory>
-        <targetPath>com/google/i18n/phonenumbers/timezones/testing_data</targetPath>
+        <directory>test/com/google/i18n/phonenumbers/timezones/testing_data
+        </directory>
+        <targetPath>com/google/i18n/phonenumbers/timezones/testing_data
+        </targetPath>
       </testResource>
     </testResources>
     <plugins>
@@ -43,24 +48,29 @@
         <version>5.1.9</version>
         <configuration>
           <instructions>
-          	<Fragment-Host>com.googlecode.libphonenumber</Fragment-Host>
+            <Fragment-Host>com.googlecode.libphonenumber</Fragment-Host>
           </instructions>
         </configuration>
       </plugin>
       <plugin>
         <artifactId>maven-jar-plugin</artifactId>
-        <version>3.3.0</version>
         <executions>
           <execution>
             <id>default-jar</id>
             <configuration>
               <archive>
-                <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
+                <manifestFile>
+                  ${project.build.outputDirectory}/META-INF/MANIFEST.MF
+                </manifestFile>
+                <manifestEntries>
+                  <Automatic-Module-Name>com.google.i18n.phonenumbers.geocoder
+                  </Automatic-Module-Name>
+                </manifestEntries>
               </archive>
             </configuration>
           </execution>
-		</executions>
-	  </plugin>
+        </executions>
+      </plugin>
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>animal-sniffer-maven-plugin</artifactId>
