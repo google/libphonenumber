@@ -346,7 +346,7 @@ TEST_F(PhoneNumberUtilTest, GetInstanceLoadARMetadata) {
 }
 
 TEST_F(PhoneNumberUtilTest, GetInstanceLoadInternationalTollFreeMetadata) {
-  const PhoneMetadata* metadata = GetMetadataForNonGeographicalRegion(800);
+  const PhoneMetadata* metadata = GetMetadataForNonGeographicalEntity(800);
   EXPECT_FALSE(metadata == NULL);
   EXPECT_EQ("001", metadata->id());
   EXPECT_EQ(800, metadata->country_code());
