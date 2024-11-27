@@ -3142,7 +3142,10 @@ public class PhoneNumberUtil {
   public PhoneNumber parse(CharSequence numberToParse, String defaultRegion)
       throws NumberParseException {
     PhoneNumber phoneNumber = new PhoneNumber();
-    parse(numberToParse, defaultRegion, phoneNumber);
+    parseWithOptions(
+      numberToParse,
+      new ParsingOptions().setDefaultRegion(defaultRegion),
+      phoneNumber);
     return phoneNumber;
   }
 
@@ -3154,7 +3157,10 @@ public class PhoneNumberUtil {
   @Deprecated
   public void parse(CharSequence numberToParse, String defaultRegion, PhoneNumber phoneNumber)
       throws NumberParseException {
-    parseHelper(numberToParse, defaultRegion, false, true, phoneNumber);
+    parseWithOptions(
+      numberToParse,
+      new ParsingOptions().setDefaultRegion(defaultRegion),
+      phoneNumber);
   }
 
   /**
@@ -3176,7 +3182,10 @@ public class PhoneNumberUtil {
   public PhoneNumber parseAndKeepRawInput(CharSequence numberToParse, String defaultRegion)
       throws NumberParseException {
     PhoneNumber phoneNumber = new PhoneNumber();
-    parseAndKeepRawInput(numberToParse, defaultRegion, phoneNumber);
+    parseWithOptions(
+      numberToParse,
+      new ParsingOptions().setKeepRawInput(true).setDefaultRegion(defaultRegion),
+      phoneNumber);
     return phoneNumber;
   }
 
@@ -3188,20 +3197,57 @@ public class PhoneNumberUtil {
   @Deprecated
   public void parseAndKeepRawInput(CharSequence numberToParse, String defaultRegion, PhoneNumber phoneNumber)
       throws NumberParseException {
-    parseHelper(numberToParse, defaultRegion, true, true, phoneNumber);
+    parseWithOptions(
+      numberToParse,
+      new ParsingOptions().setKeepRawInput(true).setDefaultRegion(defaultRegion),
+      phoneNumber);
   }
 
+  /**
+   * Parses a string and returns it as a PhoneNumber object. The method is quite lenient and looks
+   * for a number in the input text (raw input) and does not check whether the string is definitely
+   * only a phone number. To do this, it ignores punctuation and white-space, as well as any text
+   * before the number (e.g. a leading "Tel: ") and trims the non-number bits. It will accept a
+   * number in any format (E164, national, international etc), assuming it can be interpreted with
+   * the options supplied. It also attempts to convert any alpha characters into digits if it thinks
+   * this is a vanity number of the type "1800 MICROSOFT".
+   *
+   * <p>This method will throw a {@link com.google.i18n.phonenumbers.NumberParseException} if the
+   * number is not considered to be a possible number. Note that validation of whether the number is
+   * actually a valid number for a particular region is not performed. This can be done separately
+   * with {@link #isValidNumber}.
+   *
+   * <p>Note this method canonicalizes the phone number such that different representations can be
+   * easily compared, no matter what form it was originally entered in (e.g. national,
+   * international). If you want to record context about the number being parsed, such as the raw
+   * input that was entered, how the country code was derived etc. then set the `keepRawInput`
+   * option in the options accordingly.
+   *
+   * @param numberToParse number that we are attempting to parse. This can contain formatting such
+   *     as +, ( and -, as well as a phone number extension. It can also be provided in RFC3966
+   *     format.
+   * @param options options to configure the behavior of the parser. See {@link ParsingOptions} for
+   *     more details.
+   * @return a phone number proto buffer filled with the parsed number.
+   * @throws NumberParseException if the string is not considered to be a viable phone number (e.g.
+   *     too few or too many digits) or if no default region was supplied and the number is not in
+   *     international format (does not start with +).
+   */
   public PhoneNumber parseWithOptions(CharSequence numberToParse, ParsingOptions options)
       throws NumberParseException {
     PhoneNumber phoneNumber = new PhoneNumber();
-    parseHelper(numberToParse, options.getDefaultRegion(), options.hasKeepRawInput(), options.hasDefaultRegion(), phoneNumber);
+    parseWithOptions(numberToParse, options, phoneNumber);
     return phoneNumber;
   }
 
+  /**
+   * Same as{@link #parseWithOptions(CharSequence, ParsingOptions)}, but accepts a mutable
+   * PhoneNumber as a parameter to decrease object creation when invoked many times.
+   */
   public void parseWithOptions(CharSequence numberToParse, ParsingOptions options, PhoneNumber phoneNumber)
       throws NumberParseException {
-        parseHelper(numberToParse, options.getDefaultRegion(), options.hasKeepRawInput(), options.hasDefaultRegion(), phoneNumber);
-      }
+    parseHelper(numberToParse, options.getDefaultRegion(), options.isKeepRawInput(), true, phoneNumber);
+  }
 
   /**
    * Returns an iterable over all {@link PhoneNumberMatch PhoneNumberMatches} in {@code text}. This
