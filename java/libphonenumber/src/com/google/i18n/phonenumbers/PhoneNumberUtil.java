@@ -3146,6 +3146,10 @@ public class PhoneNumberUtil {
       numberToParse,
       new ParsingOptions().setDefaultRegion(defaultRegion),
       phoneNumber);
+    parseWithOptions(
+      numberToParse,
+      new ParsingOptions().setDefaultRegion(defaultRegion),
+      phoneNumber);
     return phoneNumber;
   }
 
@@ -3157,6 +3161,10 @@ public class PhoneNumberUtil {
   @Deprecated
   public void parse(CharSequence numberToParse, String defaultRegion, PhoneNumber phoneNumber)
       throws NumberParseException {
+    parseWithOptions(
+      numberToParse,
+      new ParsingOptions().setDefaultRegion(defaultRegion),
+      phoneNumber);
     parseWithOptions(
       numberToParse,
       new ParsingOptions().setDefaultRegion(defaultRegion),
@@ -3182,6 +3190,10 @@ public class PhoneNumberUtil {
   public PhoneNumber parseAndKeepRawInput(CharSequence numberToParse, String defaultRegion)
       throws NumberParseException {
     PhoneNumber phoneNumber = new PhoneNumber();
+    parseWithOptions(
+      numberToParse,
+      new ParsingOptions().setKeepRawInput(true).setDefaultRegion(defaultRegion),
+      phoneNumber);
     parseWithOptions(
       numberToParse,
       new ParsingOptions().setKeepRawInput(true).setDefaultRegion(defaultRegion),
@@ -3248,18 +3260,6 @@ public class PhoneNumberUtil {
       throws NumberParseException {
     parseHelper(numberToParse, options.getDefaultRegion(), options.isKeepRawInput(), true, phoneNumber);
   }
-
-  public PhoneNumber parseWithOptions(CharSequence numberToParse, ParsingOptions options)
-      throws NumberParseException {
-    PhoneNumber phoneNumber = new PhoneNumber();
-    parseHelper(numberToParse, options.getDefaultRegion(), options.hasKeepRawInput(), options.hasDefaultRegion(), phoneNumber);
-    return phoneNumber;
-  }
-
-  public void parseWithOptions(CharSequence numberToParse, ParsingOptions options, PhoneNumber phoneNumber)
-      throws NumberParseException {
-        parseHelper(numberToParse, options.getDefaultRegion(), options.hasKeepRawInput(), options.hasDefaultRegion(), phoneNumber);
-      }
 
   /**
    * Returns an iterable over all {@link PhoneNumberMatch PhoneNumberMatches} in {@code text}. This
