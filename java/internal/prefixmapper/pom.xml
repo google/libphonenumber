@@ -3,14 +3,14 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.googlecode.libphonenumber</groupId>
   <artifactId>prefixmapper</artifactId>
-  <version>2.245-SNAPSHOT</version>
+  <version>2.245</version>
   <packaging>jar</packaging>
   <url>https://github.com/google/libphonenumber/</url>
 
   <parent>
     <groupId>com.googlecode.libphonenumber</groupId>
     <artifactId>libphonenumber-parent</artifactId>
-    <version>8.13.51-SNAPSHOT</version>
+    <version>8.13.51</version>
     <relativePath>../../pom.xml</relativePath>
   </parent>
 
@@ -75,7 +75,7 @@
     <dependency>
       <groupId>com.googlecode.libphonenumber</groupId>
       <artifactId>libphonenumber</artifactId>
-      <version>8.13.51-SNAPSHOT</version>
+      <version>8.13.51</version>
     </dependency>
   </dependencies>
 
