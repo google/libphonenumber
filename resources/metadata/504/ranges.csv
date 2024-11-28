@@ -27,6 +27,7 @@ Prefix       ; Length ; Type       ; Tariff        ; National Only ; Operator   
 2243         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"
 2244         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Tegucigalpa"
 224[56]      ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "La Vega, Tegucigalpa"             ; ITU
+2247         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ;                                    ; WEB
 2255         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "El Hato"                          ; ITU
 2257         ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"    ; "Prados Universitarios"            ; ITU
 226[245]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;               ;            ; "fmt1_4/4"        ; "HN"
