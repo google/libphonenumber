@@ -19,7 +19,9 @@
 22171|Orange
 22172|HAYO
 22175|Promobile
+2217536|Orange
 221757|Origines
+2217585|Orange
 22176|Free
 22177|Orange
 22178|Orange

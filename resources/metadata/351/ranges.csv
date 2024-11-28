@@ -103,7 +103,8 @@ Prefix        ; Length ; Type            ; Tariff        ; Operator     ; Format
 924           ; 9      ; MOBILE          ; STANDARD_RATE ; "meo"        ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; IR21
 92[5-7]       ; 9      ; MOBILE          ; STANDARD_RATE ; "meo"        ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; IR21       ; "IR21 dated 4/2/2019"
 928[01]       ; 9      ; MOBILE          ; STANDARD_RATE ; "nowo"       ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; GOVERNMENT ; "Mobile Section updated 4/15/2019"
-928[2-46-9]   ; 9      ; MOBILE          ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"
+9282          ; 9      ; MOBILE          ; STANDARD_RATE ; "digi"       ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; IR21
+928[346-9]    ; 9      ; MOBILE          ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"
 9285          ; 9      ; MOBILE          ; STANDARD_RATE ; "onitelecom" ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; GOVERNMENT ; "Mobile Section updated 4/15/2019"
 929[0-4]      ; 9      ; MOBILE          ; STANDARD_RATE ; "nos"        ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; IR21       ; "IR21 dated 2/27/2019"
 9295          ; 9      ; MOBILE          ; STANDARD_RATE ; "suma-movil" ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; GOVERNMENT

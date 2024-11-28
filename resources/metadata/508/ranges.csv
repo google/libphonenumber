@@ -12,6 +12,7 @@ Prefix       ; Length ; Type                 ; Tariff        ; Operator         
 55           ; 6      ; MOBILE               ; STANDARD_RATE ; "spm_telecom"          ; "fmt1_2/2/2"      ; "PM"    ; GOVERNMENT ; "Government dated: 7/19/2000"
 56           ; 6      ; MOBILE               ; STANDARD_RATE ; "kav_el_international" ; "fmt1_2/2/2"      ; "PM"    ; GOVERNMENT
 708[45][0-5] ; 9      ; MOBILE               ; STANDARD_RATE ;                        ; "mobile_3/3/3"    ; "PM"    ; ITU
+70856        ; 9      ; MOBILE               ; STANDARD_RATE ; "spm_telecom"          ; "mobile_3/3/3"    ; "PM"    ; GOVERNMENT
 80[0-5]      ; 9      ; FIXED_LINE           ; TOLL_FREE     ;                        ; "varcost_3/2/2/2" ; "PM"    ;            ; "ARCEP"
 80[6-9]      ; 9      ; FIXED_LINE           ; STANDARD_RATE ;                        ; "varcost_3/2/2/2" ; "PM"    ; ITU
 8[129]       ; 9      ; FIXED_LINE           ; PREMIUM_RATE  ;                        ; "varcost_3/2/2/2" ; "PM"    ; ITU
