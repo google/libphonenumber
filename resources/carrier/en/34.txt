@@ -126,7 +126,7 @@
 346212|Movistar
 346213|Republica Movil
 346214|Republica Movil
-346215|Republica Movil
+346215|Aire Networks
 346216|Republica Movil
 34622|Yoigo
 346230|Yoigo
@@ -218,6 +218,7 @@
 3468448|Nethits
 346845|Movistar
 346846|Telecable
+346848|Euskaltel
 34685|Orange
 3468529|Carrefour
 34686|Movistar

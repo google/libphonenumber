@@ -65,6 +65,8 @@
 27564920|Vodacom
 27574920|Vodacom
 27584920|Vodacom
+27601|Telkom Mobile
+27602|Telkom Mobile
 27603|MTN
 27604|MTN
 27605|MTN
@@ -104,14 +106,10 @@
 27663|Vodacom
 27664|Vodacom
 27665|Vodacom
-27670|Telkom Mobile
-27671|Telkom Mobile
-27672|Telkom Mobile
+2767|Telkom Mobile
 27673|Vodacom
 27674|Vodacom
 27675|Vodacom
-27676|Telkom Mobile
-27677|Telkom Mobile
 2768|Telkom Mobile
 27686|MTN
 27687|MTN

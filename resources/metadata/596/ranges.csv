@@ -27,6 +27,10 @@ Prefix       ; Length ; Type       ; Tariff        ; Operator       ; Format    
 697[013-9]   ; 9      ; MOBILE     ; STANDARD_RATE ;                ; "fmt1_3/2/2/2"    ; "MQ"    ; ITU
 6972[0-689]  ; 9      ; MOBILE     ; STANDARD_RATE ;                ; "fmt1_3/2/2/2"    ; "MQ"    ; ITU
 69727        ; 9      ; MOBILE     ; STANDARD_RATE ; "digicel"      ; "fmt1_3/2/2/2"    ; "MQ"
+70910        ; 9      ; MOBILE     ; STANDARD_RATE ; "free_caraïbe" ; "fmt1_3/2/2/2"    ; "MQ"    ; GOVERNMENT
+70911        ; 9      ; MOBILE     ; STANDARD_RATE ;                ; "fmt1_3/2/2/2"    ; "MQ"    ; GOVERNMENT
+70912        ; 9      ; MOBILE     ; STANDARD_RATE ; "digicel"      ; "fmt1_3/2/2/2"    ; "MQ"    ; GOVERNMENT
+70913        ; 9      ; MOBILE     ; STANDARD_RATE ; "orange"       ; "fmt1_3/2/2/2"    ; "MQ"    ; GOVERNMENT
 80[0-5]      ; 9      ; FIXED_LINE ; TOLL_FREE     ;                ; "varcost_3/2/2/2" ; "MQ"    ;            ; "ARCEP"
 80[6-9]      ; 9      ; FIXED_LINE ; STANDARD_RATE ;                ; "fmt1_3/2/2/2"    ; "MQ"    ; ITU
 8[129]       ; 9      ; FIXED_LINE ; PREMIUM_RATE  ;                ; "varcost_3/2/2/2" ; "MQ"    ; ITU
