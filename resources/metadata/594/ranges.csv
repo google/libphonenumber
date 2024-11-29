@@ -19,6 +19,10 @@ Prefix      ; Length ; Type       ; Tariff        ; Operator  ; Format          
 6944[0-589] ; 9      ; MOBILE     ; STANDARD_RATE ; "orange"  ; "fmt1_3/2/2/2"    ; "GF"
 6944[67]    ; 9      ; MOBILE     ; STANDARD_RATE ; "sfr"     ; "fmt1_3/2/2/2"    ; "GF"
 6949        ; 9      ; MOBILE     ; STANDARD_RATE ; "digicel" ; "fmt1_3/2/2/2"    ; "GF"
+70930       ; 9      ; MOBILE     ; STANDARD_RATE ; "free"    ; "fmt1_3/2/2/2"    ; "GF"    ; GOVERNMENT
+70931       ; 9      ; MOBILE     ; STANDARD_RATE ;           ; "fmt1_3/2/2/2"    ; "GF"    ; GOVERNMENT
+70932       ; 9      ; MOBILE     ; STANDARD_RATE ; "digicel" ; "fmt1_3/2/2/2"    ; "GF"    ; GOVERNMENT
+70933       ; 9      ; MOBILE     ; STANDARD_RATE ; "orange"  ; "fmt1_3/2/2/2"    ; "GF"    ; GOVERNMENT
 80[0-5]     ; 9      ; FIXED_LINE ; TOLL_FREE     ;           ; "varcost_3/2/2/2" ; "GF"    ;            ; "ARCEP"
 9396        ; 9      ; VOIP       ; STANDARD_RATE ;           ; "varcost_3/2/2/2" ; "GF"    ; ITU
 9476[0-5]   ; 9      ; VOIP       ; STANDARD_RATE ;           ; "fmt1_3/2/2/2"    ; "GF"    ; GOVERNMENT
