@@ -3136,16 +3136,10 @@ public class PhoneNumberUtil {
    * @throws NumberParseException  if the string is not considered to be a viable phone number (e.g.
    *     too few or too many digits) or if no default region was supplied and the number is not in
    *     international format (does not start with +)
-   * @deprecated Use {@link #parseWithOptions(CharSequence, ParsingOptions)} instead.
    */
-  @Deprecated
   public PhoneNumber parse(CharSequence numberToParse, String defaultRegion)
       throws NumberParseException {
     PhoneNumber phoneNumber = new PhoneNumber();
-    parseWithOptions(
-      numberToParse,
-      new ParsingOptions().setDefaultRegion(defaultRegion),
-      phoneNumber);
     parseWithOptions(
       numberToParse,
       new ParsingOptions().setDefaultRegion(defaultRegion),
@@ -3156,15 +3150,9 @@ public class PhoneNumberUtil {
   /**
    * Same as {@link #parse(CharSequence, String)}, but accepts mutable PhoneNumber as a
    * parameter to decrease object creation when invoked many times.
-   * @deprecated Use {@link #parseWithOptions(CharSequence, ParsingOptions, PhoneNumber)} instead.
    */
-  @Deprecated
   public void parse(CharSequence numberToParse, String defaultRegion, PhoneNumber phoneNumber)
       throws NumberParseException {
-    parseWithOptions(
-      numberToParse,
-      new ParsingOptions().setDefaultRegion(defaultRegion),
-      phoneNumber);
     parseWithOptions(
       numberToParse,
       new ParsingOptions().setDefaultRegion(defaultRegion),
@@ -3190,10 +3178,6 @@ public class PhoneNumberUtil {
   public PhoneNumber parseAndKeepRawInput(CharSequence numberToParse, String defaultRegion)
       throws NumberParseException {
     PhoneNumber phoneNumber = new PhoneNumber();
-    parseWithOptions(
-      numberToParse,
-      new ParsingOptions().setKeepRawInput(true).setDefaultRegion(defaultRegion),
-      phoneNumber);
     parseWithOptions(
       numberToParse,
       new ParsingOptions().setKeepRawInput(true).setDefaultRegion(defaultRegion),
