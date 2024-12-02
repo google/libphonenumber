@@ -14,6 +14,7 @@
 
 # Taken from https://en.wikipedia.org/wiki/Telephone_numbers_in_Syria
 
+96350|Rcell
 96391|Wafa Telecom
 96392|Wafa Telecom
 96393|Syriatel

@@ -102,8 +102,8 @@ Prefix       ; Length ; Type       ; Tariff        ; Operator                   
 8[2-47]9     ; 8      ; FIXED_LINE ; STANDARD_RATE ;                              ; "fmt1_4/4" ; "MO"    ; GOVERNMENT
 85[09]       ; 8      ; FIXED_LINE ; STANDARD_RATE ;                              ; "fmt1_4/4" ; "MO"    ; GOVERNMENT
 85[1-8]      ; 8      ; FIXED_LINE ; STANDARD_RATE ;                              ; "fmt1_4/4" ; "MO"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
-88[0689]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;                              ; "fmt1_4/4" ; "MO"    ; GOVERNMENT
-88[13-57]    ; 8      ; FIXED_LINE ; STANDARD_RATE ;                              ; "fmt1_4/4" ; "MO"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+88[03689]    ; 8      ; FIXED_LINE ; STANDARD_RATE ;                              ; "fmt1_4/4" ; "MO"    ; GOVERNMENT
+88[1457]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;                              ; "fmt1_4/4" ; "MO"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 882[014-9]   ; 8      ; FIXED_LINE ; STANDARD_RATE ;                              ; "fmt1_4/4" ; "MO"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 882[23]      ; 8      ; FIXED_LINE ; STANDARD_RATE ;                              ; "fmt1_4/4" ; "MO"    ; GOVERNMENT
 89[0-79]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;                              ; "fmt1_4/4" ; "MO"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
