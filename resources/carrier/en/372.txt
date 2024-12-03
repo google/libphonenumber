@@ -71,6 +71,7 @@
 3728285|Tele 2
 3728286|Tele 2
 3728287|Tele 2
+372829|Tele 2
 37283|Tele 2
 37284|Tele 2
 37284510|Telia Eesti AS

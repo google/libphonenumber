@@ -13,7 +13,9 @@ Prefix        ; Length ; Type       ; Tariff        ; Operator                  
 4500[02-9]    ; 9      ; MOBILE     ; STANDARD_RATE ;                                  ; "fmt1_3/2/2/2" ; "BE"
 45001         ; 9      ; MOBILE     ; STANDARD_RATE ; "gateway_communications"         ; "fmt1_3/2/2/2" ; "BE"    ;                      ;                      ;                      ;                      ; GOVERNMENT
 450[1-9]      ; 9      ; MOBILE     ; STANDARD_RATE ;                                  ; "fmt1_3/2/2/2" ; "BE"
-45[1-47-9]    ; 9      ; MOBILE     ; STANDARD_RATE ;                                  ; "fmt1_3/2/2/2" ; "BE"
+4510          ; 9      ; MOBILE     ; STANDARD_RATE ; "digi"                           ; "fmt1_3/2/2/2" ; "BE"    ;                      ;                      ;                      ;                      ; GOVERNMENT
+451[1-9]      ; 9      ; MOBILE     ; STANDARD_RATE ;                                  ; "fmt1_3/2/2/2" ; "BE"
+45[2-47-9]    ; 9      ; MOBILE     ; STANDARD_RATE ;                                  ; "fmt1_3/2/2/2" ; "BE"
 455           ; 9      ; MOBILE     ; STANDARD_RATE ; "voo"                            ; "fmt1_3/2/2/2" ; "BE"    ;                      ;                      ;                      ;                      ; GOVERNMENT
 456           ; 9      ; MOBILE     ; STANDARD_RATE ; "mobile_vikings_or_jim"          ; "fmt1_3/2/2/2" ; "BE"    ;                      ;                      ;                      ;                      ; GOVERNMENT
 460           ; 9      ; MOBILE     ; STANDARD_RATE ; "proximus"                       ; "fmt1_3/2/2/2" ; "BE"    ;                      ;                      ;                      ;                      ; IR21

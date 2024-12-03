@@ -19,76 +19,57 @@
 # Note that the prefix for Pank Shin is more specific, so we don't classify
 # all mobile numbers as belonging to this locality.
 
-2341|Lagos
-2342|Ibadan
-23430|Ado Ekiti
-23431|Ilorin
-23433|New Bussa
-23434|Akura
-23435|Oshogbo
-23436|Ile Ife
-23437|Ijebu Ode
-23438|Oyo
-23439|Abeokuta
-23441|Wukari
-23442|Enugu
-23443|Abakaliki
-23444|Makurdi
-23445|Ogoja
-23446|Onitsha
-23447|Lafia
-23448|Awka
-23450|Ikare
-23451|Owo
-23452|Benin
-23453|Warri
-23454|Sapele
-23455|Agbor
-23456|Asaba
-23457|Auchi
-23458|Lokoja
-23459|Okitipupa
-23460|Sokobo
-23461|Kafanchau
-23462|Kaduna
-23463|Gusau
-23464|Kano
-23465|Katsina
-23466|Minna
-23467|Kontagora
-23468|Birnin-Kebbi
-23469|Zaria
-2347020|Pank Shin
-23471|Azare
-23472|Gombe
-23473|Jos
-23474|Damaturu
-23475|Yola
-23476|Maiduguri
-23477|Bauchi
-23478|Hadejia
-23479|Jalingo
-23482|Aba
-23483|Owerri
-23484|Port Harcourt
-23485|Uyo
-23486|Ahoada
-23487|Calabar
-23488|Umuahia
-23489|Yenegoa
-234903|Abuja
-234904|Abuja
-234905|Abuja
-234906|Abuja
-234907|Abuja
-234908|Abuja
-234909|Abuja
-23491|Abuja
-23492|Abuja
-23493|Abuja
-23494|Abuja
-23495|Abuja
-23496|Abuja
-23497|Abuja
-23498|Abuja
-23499|Abuja
+234201|Lagos
+234202|Ibadan
+2342030|Ado Ekiti
+2342031|Ilorin
+2342033|New Bussa
+2342034|Akure
+2342035|Osogbo
+2342036|Ile Ife
+2342037|Ijebu Ode
+2342038|Oyo
+2342039|Abeokuta
+2342041|Wukari
+2342042|Nsukka Enugu
+2342043|Abakaliki
+2342044|Makurdi
+2342045|Ogoja
+2342046|Onitsha
+2342047|Lafia/Keffi
+2342048|Awka
+2342050|Ikare
+2342051|Owoh
+2342052|Benin
+2342053|Warri
+2342054|Sapele
+2342055|Agbor
+2342056|Asaba
+2342057|Auchi
+2342058|Lokoja
+2342059|Okitipupa
+2342060|Sokoto
+2342062|Kaduna
+2342064|Kano
+2342065|Katsina
+2342066|Minna
+2342068|Birin Kebbi
+2342069|Zaria
+2342071|Azare
+2342072|Gombe
+2342073|Jos
+2342074|Damaturu
+2342075|Yola
+2342076|Maiduguri
+2342077|Bauchi
+2342079|Jalingo
+2342082|Aba
+2342083|Owerri
+2342084|Port Harcourt
+2342085|Uyo
+2342086|Ahoada
+2342087|Calabar
+2342088|Umuahia
+2342089|Yenagoa
+234209|Abuja
+2343|Oyo

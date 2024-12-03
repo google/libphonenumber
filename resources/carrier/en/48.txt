@@ -12,11 +12,22 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+482110|Plus
 482111|Polska Spoka Gazownictwa Sp
-482113|Polska Spoka Gazownictwa Sp
+4821130|Plus
+4821131|Polska Spoka Gazownictwa Sp
+4821132|Polska Spoka Gazownictwa Sp
+4821133|Polska Spoka Gazownictwa Sp
+4821134|Polska Spoka Gazownictwa Sp
+4821135|Polska Spoka Gazownictwa Sp
+4821136|Plus
+4821137|Plus
+4821138|Plus
+4821139|Plus
 482114|Plus
 482115|Plus
 48212|Orange
+48213|Plus
 48450|Play
 48454|Orange
 484590|Play
@@ -38,6 +49,7 @@
 4845957|BSG ESTONIA OU
 4845958|TELESTRADA S.A.
 4845959|TELESTRADA S.A.
+484596|Plus
 484598|Plus
 4850|Orange
 4851|Orange
@@ -97,8 +109,8 @@
 4857975|UPC Polska
 4857976|TELENABLER
 4857977|IM Consulting Izabela
-4857978|EZ PHONE MOBILE
-4857979|EZ PHONE MOBILE
+4857978|Plus
+4857979|Plus
 485798|Play
 485799|Play
 48600|T-Mobile
@@ -210,7 +222,6 @@
 4873930|Play
 4873990|Play
 4873991|AGILE TELECOM POLAND
-4873992|MobiWeb Telecom Limited
 4873993|SIA NetBalt
 4873997|Play
 4873998|Play
@@ -234,7 +245,6 @@
 48784|T-Mobile
 48785|Plus
 487860|Plus
-4878600|JMDI
 4878607|Play
 4878608|Play
 487861|Play
@@ -247,7 +257,11 @@
 4878671|Plus
 4878672|Plus
 4878673|Plus
+4878674|Plus
+4878675|Plus
+4878676|Plus
 4878678|Play
+4878679|Plus
 487868|Orange
 487869|Orange
 48787|T-Mobile
@@ -286,7 +300,15 @@
 488841|T-Mobile
 488842|T-Mobile
 488843|Play
+4888441|Plus
+4888442|Plus
+4888443|Plus
 4888444|CARITAS
+4888446|Plus
+4888447|Plus
+4888448|Plus
+4888449|Plus
+488845|Plus
 488846|Play
 488847|Play
 488848|Play

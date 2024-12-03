@@ -75,7 +75,7 @@ const char PhoneNumberUtil::kPlusChars[] = "+\xEF\xBC\x8B";  /* "+＋" */
 // unicode character.
 // static
 const char PhoneNumberUtil::kValidPunctuation[] =
-    /* "-x‐-―−ー－-／  ­<U+200B><U+2060>　()（）［］.\\[\\]/~⁓∼" */
+    /* "-x‐-―−ー－-／  ­<U+200B><U+2060>　()（）［］.\\[\\]/~⁓∼" */
     "-x\xE2\x80\x90-\xE2\x80\x95\xE2\x88\x92\xE3\x83\xBC\xEF\xBC\x8D-\xEF\xBC"
     "\x8F \xC2\xA0\xC2\xAD\xE2\x80\x8B\xE2\x81\xA0\xE3\x80\x80()\xEF\xBC\x88"
     "\xEF\xBC\x89\xEF\xBC\xBB\xEF\xBC\xBD.\\[\\]/~\xE2\x81\x93\xE2\x88\xBC";
@@ -619,6 +619,7 @@ class PhoneNumberRegExpsAndMappings {
     }
 
     mobile_token_mappings_.insert(std::make_pair(54, '9'));
+    countries_without_national_prefix_with_area_codes_.insert(52);  // Mexico
     geo_mobile_countries_without_mobile_area_codes_.insert(86);  // China
     geo_mobile_countries_.insert(52);  // Mexico
     geo_mobile_countries_.insert(54);  // Argentina
@@ -688,6 +689,10 @@ class PhoneNumberRegExpsAndMappings {
   // national destination code, which should be the length of the area code plus
   // the length of the mobile token.
   std::map<int, char> mobile_token_mappings_;
+
+  // Set of country codes that doesn't have national prefix, but it has area
+  // codes.
+  std::set<int> countries_without_national_prefix_with_area_codes_;
 
   // Set of country codes that have geographically assigned mobile numbers (see
   // geo_mobile_countries_ below) which are not based on *area codes*. For
@@ -795,6 +800,7 @@ class PhoneNumberRegExpsAndMappings {
         alpha_phone_mappings_(),
         all_plus_number_grouping_symbols_(),
         mobile_token_mappings_(),
+        countries_without_national_prefix_with_area_codes_(),
         geo_mobile_countries_without_mobile_area_codes_(),
         geo_mobile_countries_(),
         single_international_prefix_(regexp_factory_->CreateRegExp(
@@ -842,8 +848,10 @@ class PhoneNumberRegExpsAndMappings {
     InitializeMapsAndSets();
   }
 
- private:
-  DISALLOW_COPY_AND_ASSIGN(PhoneNumberRegExpsAndMappings);
+ // This type is neither copyable nor movable.
+  PhoneNumberRegExpsAndMappings(const PhoneNumberRegExpsAndMappings&) = delete;
+  PhoneNumberRegExpsAndMappings& operator=(
+      const PhoneNumberRegExpsAndMappings&) = delete;
 };
 
 // Private constructor. Also takes care of initialisation.
@@ -2674,15 +2682,22 @@ int PhoneNumberUtil::GetLengthOfGeographicalAreaCode(
   if (!metadata) {
     return 0;
   }
-  // If a country doesn't use a national prefix, and this number doesn't have an
-  // Italian leading zero, we assume it is a closed dialling plan with no area
-  // codes.
-  if (!metadata->has_national_prefix() && !number.italian_leading_zero()) {
-    return 0;
-  }
 
   PhoneNumberType type = GetNumberType(number);
   int country_calling_code = number.country_code();
+  
+  // If a country doesn't use a national prefix, and this number doesn't have an
+  // Italian leading zero, we assume it is a closed dialling plan with no area
+  // codes.
+  // Note:this is our general assumption, but there are exceptions which are
+  // tracked in COUNTRIES_WITHOUT_NATIONAL_PREFIX_WITH_AREA_CODES.
+  if (!metadata->has_national_prefix() && !number.italian_leading_zero() &&
+      reg_exps_->countries_without_national_prefix_with_area_codes_.find(
+          country_calling_code) ==
+          reg_exps_->countries_without_national_prefix_with_area_codes_.end()) {
+    return 0;
+  }
+
   if (type == PhoneNumberUtil::MOBILE &&
       reg_exps_->geo_mobile_countries_without_mobile_area_codes_.find(
           country_calling_code) !=

@@ -1,7 +1,8 @@
-Id              ; Name:en
-dauphin_telecom ; "Dauphin Telecom"
-digicel         ; "Digicel"
-free_caraïbe    ; "Free Caraïbe"
-orange          ; "Orange"
-sfr_rife        ; "SFR/Rife"
-uts             ; "UTS"
+Id               ; Name:en
+dauphin_telecom  ; "Dauphin Telecom"
+digicel          ; "Digicel"
+free_caraïbe     ; "Free Caraïbe"
+orange           ; "Orange"
+outremer_telecom ; "Outremer Telecom"
+sfr_rife         ; "SFR/Rife"
+uts              ; "UTS"

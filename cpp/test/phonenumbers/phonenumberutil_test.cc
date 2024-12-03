@@ -49,6 +49,11 @@ using google::protobuf::RepeatedPtrField;
 static const int kInvalidCountryCode = 2;
 
 class PhoneNumberUtilTest : public testing::Test {
+ public:
+  // This type is neither copyable nor movable.
+  PhoneNumberUtilTest(const PhoneNumberUtilTest&) = delete;
+  PhoneNumberUtilTest& operator=(const PhoneNumberUtilTest&) = delete;
+
  protected:
   PhoneNumberUtilTest() : phone_util_(*PhoneNumberUtil::GetInstance()) {
     PhoneNumberUtil::GetInstance()->SetLogger(new StdoutLogger());
@@ -120,8 +125,6 @@ class PhoneNumberUtilTest : public testing::Test {
 
   const PhoneNumberUtil& phone_util_;
 
- private:
-  DISALLOW_COPY_AND_ASSIGN(PhoneNumberUtilTest);
 };
 
 TEST_F(PhoneNumberUtilTest, ContainsOnlyValidDigits) {
@@ -1461,6 +1464,12 @@ TEST_F(PhoneNumberUtilTest, GetLengthOfGeographicalAreaCode) {
   number.set_country_code(61);
   number.set_national_number(uint64{293744000});
   EXPECT_EQ(1, phone_util_.GetLengthOfGeographicalAreaCode(number));
+
+  // Mexico numbers - there is no national prefix, but it still has an area
+  // code.
+  number.set_country_code(52);
+  number.set_national_number(uint64_t{3312345678});
+  EXPECT_EQ(2, phone_util_.GetLengthOfGeographicalAreaCode(number));
 
   // Italian numbers - there is no national prefix, but it still has an area
   // code.

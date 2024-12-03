@@ -68,7 +68,7 @@ Prefix   ; Length ; Type       ; Tariff        ; National Only ; Operator       
 297      ; 10     ; FIXED_LINE ; STANDARD_RATE ; false         ;                     ; "fixed_3/4/3"    ; "VN"    ; "Kien Giang province"      ; "Kiên Giang"            ; ITU
 299      ; 10     ; FIXED_LINE ; STANDARD_RATE ; false         ;                     ; "fixed_3/4/3"    ; "VN"    ; "Soc Trang province"       ; "Sóc Trăng"             ; ITU
 30       ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "mobifone"          ; "mobile_3/3/3"   ; "VN"    ;                            ;                         ; IR21
-3[1-9]   ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "viettel_mobile"    ; "mobile_3/3/3"   ; "VN"    ;                            ;                         ; IR21
+3[1-9]   ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "viettel"           ; "mobile_3/3/3"   ; "VN"    ;                            ;                         ; IR21
 51       ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "mobifone"          ; "mobile_3/3/3"   ; "VN"    ;                            ;                         ; IR21
 52[238]  ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "vietnamobile"      ; "mobile_3/3/3"   ; "VN"    ;                            ;                         ; IR21
 559      ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "reddi"             ; "mobile_3/3/3"   ; "VN"    ;                            ;                         ; GOVERNMENT
@@ -80,7 +80,7 @@ Prefix   ; Length ; Type       ; Tariff        ; National Only ; Operator       
 799      ; 7      ; UAN        ; STANDARD_RATE ; true          ;                     ; "uan_3/4"        ; "VN"
 80       ; 7      ; UAN        ; STANDARD_RATE ; false         ;                     ; "uan_2/5"        ; "VN"
 8[1-578] ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "vinaphone"         ; "mobile_3/3/3"   ; "VN"    ;                            ;                         ; IR21
-86       ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "viettel_mobile"    ; "mobile_3/3/3"   ; "VN"    ;                            ;                         ; IR21
+86       ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "viettel"           ; "mobile_3/3/3"   ; "VN"    ;                            ;                         ; IR21
 89[689]  ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "mobifone"          ; "mobile_3/3/3"   ; "VN"    ;                            ;                         ; IR21
 897      ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "mobifone"          ; "mobile_3/3/3"   ; "VN"
 9[03]    ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "mobifone"          ; "mobile_3/3/3"   ; "VN"    ;                            ;                         ; IR21

@@ -1,0 +1,5 @@
+target/
+!tools/java/cpp-build/target/cpp-build-1.0-SNAPSHOT-jar-with-dependencies.jar
+build/
+lib/
+generated/

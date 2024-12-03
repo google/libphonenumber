@@ -55,7 +55,7 @@ Cream Sandwich).
 The [Java demo](https://libphonenumber.appspot.com/) is updated with a slight
 delay after the GitHub release.
 
-Last demo update: v8.13.27.
+Last demo update: v8.13.51.
 
 Note: Even though the library (main branch/[maven release](https://repo1.maven.org/maven2/com/googlecode/libphonenumber/libphonenumber/8.12.56/))
 is at v8.12.57, because of some deployment issues, we were unable to update the
@@ -246,7 +246,8 @@ maintenance processes.
 *   R: https://github.com/socialresearchcentre/dialr/
 *   Elixir: https://github.com/socialpaymentsbv/ex_phone_number
 *   Salesforce: https://appexchange.salesforce.com/appxListingDetail?listingId=a0N3A00000G12oJUAR
-
+*   Dart: https://github.com/superakabo/dlibphonenumber
+  
 Alternatives to our own versions:
 
 *   Android-optimized: Our Java version loads the metadata from

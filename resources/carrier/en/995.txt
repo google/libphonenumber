@@ -15,6 +15,7 @@
 # Veon was formerly known as Beeline/VimpelCom.
 
 99550001|Cellfie
+99550002|Icell Telecom
 995500050|Silknet
 995500051|Silknet
 995500052|Silknet
@@ -28,7 +29,8 @@
 99550010|Cellfie
 99550011|Silknet
 9955002|Silknet
-9955003|Silknet
+9955003|Unicell Mobile
+99550033|Silknet
 9955004|Silknet
 99550050|MagtiCom
 99550055|Silknet
@@ -37,16 +39,26 @@
 9955008|Silknet
 99550090|Cellfie
 99550099|Silknet
+995501|Cellfie
+995502|Silknet
+995504|Cellfie
 9955050|Silknet
 9955055|MagtiCom
+995507|Globalcell
 995510|Silknet
 99551100|MagtiCom
+99551101|Silknet
 99551107|Silknet
 9955111|MagtiCom
 9955112|MagtiCom
 9955113|MagtiCom
 9955114|MagtiCom
-9955115|Silknet
+99551151|Silknet
+99551152|MagtiCom
+99551153|MagtiCom
+99551154|MagtiCom
+99551155|MagtiCom
+99551156|MagtiCom
 9955117|MagtiCom
 995514|Silknet
 995515|MagtiCom
@@ -55,20 +67,25 @@
 99552222|MagtiCom
 99552225|Silknet
 9955225|Silknet
+995525|Globalcell
 995530|Silknet
 9955333|MagtiCom
 9955335|Silknet
+995535|Globalcell
 995540|Silknet
 99554444|MagtiCom
 9955445|Silknet
+995545|Globalcell
 995550|MagtiCom
 99555000|Silknet
 99555005|Silknet
 99555050|Silknet
-99555055|Datacom
+99555055|Globalcell
 995551|MagtiCom
 9955520|Premium Net International SRL
 9955522|Asanet
+995553|Silknet
+995554|Silknet
 995555|Silknet
 995557|Silknet
 995558|Silknet
@@ -90,7 +107,8 @@
 995577|Silknet
 995579|Cellfie
 995580|Silknet
-995585|MagtiCom
+9955855|Globalcell
+9955858|MagtiCom
 995588|Silknet
 995590|Silknet
 995591|MagtiCom

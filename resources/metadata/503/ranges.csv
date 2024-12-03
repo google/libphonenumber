@@ -254,7 +254,7 @@ Prefix        ; Length ; Type       ; Tariff        ; Operator   ; Format       
 798[0-4]      ; 8      ; MOBILE     ; STANDARD_RATE ; "intelfon" ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
 798[5-9]      ; 8      ; MOBILE     ; STANDARD_RATE ; "claro"    ; "fmt1_4/4"   ; "SV"
 799           ; 8      ; MOBILE     ; STANDARD_RATE ; "movistar" ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
-800           ; 7      ; FIXED_LINE ; TOLL_FREE     ;            ; "fmt2_3/4"   ; "SV"    ; GOVERNMENT
+80[01]        ; 7      ; FIXED_LINE ; TOLL_FREE     ;            ; "fmt2_3/4"   ; "SV"    ; GOVERNMENT
 800           ; 11     ; FIXED_LINE ; TOLL_FREE     ;            ; "fmt3_3/4/4" ; "SV"    ; GOVERNMENT
 900           ; 7      ; FIXED_LINE ; PREMIUM_RATE  ;            ; "fmt2_3/4"   ; "SV"    ; GOVERNMENT
 900           ; 11     ; FIXED_LINE ; PREMIUM_RATE  ;            ; "fmt3_3/4/4" ; "SV"    ; GOVERNMENT
