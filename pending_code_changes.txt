@@ -1,1 +1,2 @@
-
+Code changes:
+ - The extension is now stripped before the formatted extension is appended for formatOutOfCountryKeepingAlphaChars.

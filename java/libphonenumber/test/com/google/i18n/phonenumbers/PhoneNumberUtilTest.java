@@ -675,7 +675,7 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
                  phoneUtil.formatOutOfCountryCallingNumber(IT_NUMBER, RegionCode.UZ));
   }
 
-  public void testFormatOutOfCountryKeepingAlphaChars() {
+  public void testFormatOutOfCountryKeepingAlphaChars() throws Exception {
     PhoneNumber alphaNumericNumber = new PhoneNumber();
     alphaNumericNumber.setCountryCode(1).setNationalNumber(8007493524L)
         .setRawInput("1800 six-flag");
@@ -700,6 +700,13 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
 
     assertEquals("1 800 SIX-FLAG",
                  phoneUtil.formatOutOfCountryKeepingAlphaChars(alphaNumericNumber, RegionCode.BS));
+
+    // Testing a number with extension.
+    PhoneNumber alphaNumericNumberWithExtn =
+        phoneUtil.parseAndKeepRawInput("800 SIX-flag ext. 1234", RegionCode.US);
+    assertEquals(
+        "0011 1 800 SIX-FLAG extn. 1234",
+        phoneUtil.formatOutOfCountryKeepingAlphaChars(alphaNumericNumberWithExtn, RegionCode.AU));
 
     // Testing that if the raw input doesn't exist, it is formatted using
     // formatOutOfCountryCallingNumber.
