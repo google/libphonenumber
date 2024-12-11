@@ -62,10 +62,6 @@
                 <manifestFile>
                   ${project.build.outputDirectory}/META-INF/MANIFEST.MF
                 </manifestFile>
-                <manifestEntries>
-                  <Automatic-Module-Name>com.google.i18n.phonenumbers.geocoder
-                  </Automatic-Module-Name>
-                </manifestEntries>
               </archive>
             </configuration>
           </execution>
