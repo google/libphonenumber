@@ -6,9 +6,8 @@ RUN apt install -y wget curl ant maven protobuf-compiler
 # Install JDK 8
 RUN wget https://javadl.oracle.com/webapps/download/GetFile/1.8.0_321-b07/df5ad55fdd604472a86a45a217032c7d/linux-i586/jdk-8u321-linux-x64.tar.gz \
 && tar xvzf jdk-8u321-linux-x64.tar.gz \
-&& ls \
+&& rm jdk-8u321-linux-x64.tar.gz \
 && mv jdk1.8.0_321/ /usr/lib/jvm \
-&& ls /usr/lib/jvm \
 && update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk1.8.0_321/bin/java 9999 \
 && sudo update-alternatives --install /usr/bin/javac javac /usr/lib/jvm/jdk1.8.0_321/bin/javac 9999 \
 && sudo update-alternatives --install /usr/bin/jar jar /usr/lib/jvm/jdk1.8.0_321/bin/jar 9999
