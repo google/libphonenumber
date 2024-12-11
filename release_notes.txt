@@ -1,3 +1,13 @@
+Dec 11, 2024: v8.13.52
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   CA, DE, DK, IL, JP, KY, MN, UG, US, UZ
+ - Updated short number metadata for region code(s): DK
+ - Updated geocoding data for country calling code(s): 86 (en, zh), 1345 (en)
+ - Updated carrier data for country calling code(s):
+   45 (en), 229 (en), 972 (en), 976 (en)
+ - Updated / refreshed time zone meta data.
+
 Nov 28, 2024: v8.13.51
 Code changes:
  - Reverted the std:: qualifier to string throughout phonenumberutil.
