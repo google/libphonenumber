@@ -49,8 +49,17 @@ public final class MetadataSourceImpl implements MetadataSource {
             metadataLoader, metadataParser, new CompositeMetadataContainer()));
   }
 
+  /**
+   * @deprecated Use {@link #getMetadataForNonGeographicalEntity(int)}
+   */
+  @Deprecated
   @Override
   public PhoneMetadata getMetadataForNonGeographicalRegion(int countryCallingCode) {
+    return getMetadataForNonGeographicalEntity(countryCallingCode);
+  }
+
+  @Override
+  public PhoneMetadata getMetadataForNonGeographicalEntity(int countryCallingCode) {
     if (GeoEntityUtility.isGeoEntity(countryCallingCode)) {
       throw new IllegalArgumentException(
           countryCallingCode + " calling code belongs to a geo entity");
