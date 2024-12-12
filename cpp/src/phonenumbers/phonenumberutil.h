@@ -862,9 +862,6 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   const i18n::phonenumbers::PhoneMetadata* GetMetadataForRegion(
       const string& region_code) const;
 
-  const i18n::phonenumbers::PhoneMetadata* GetMetadataForNonGeographicalRegion(
-      int country_calling_code) const;
-
   const i18n::phonenumbers::PhoneMetadata* GetMetadataForNonGeographicalEntity(
       int country_calling_code) const;
 

@@ -64,11 +64,6 @@ class PhoneNumberUtilTest : public testing::Test {
     return phone_util_.GetMetadataForRegion(region_code);
   }
 
-  const PhoneMetadata* GetMetadataForNonGeographicalRegion(
-      int country_code) const {
-    return phone_util_.GetMetadataForNonGeographicalEntity(country_code);
-  }
-
   const PhoneMetadata* GetMetadataForNonGeographicalEntity(
       int country_code) const {
     return phone_util_.GetMetadataForNonGeographicalEntity(country_code);
