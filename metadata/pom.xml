@@ -41,7 +41,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.8.1</version>
+        <version>3.13.0</version>
         <configuration>
           <source>11</source>
           <target>11</target>
@@ -78,7 +78,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-javadoc-plugin</artifactId>
-        <version>3.5.0</version>
+        <version>3.11.1</version>
         <configuration>
           <source>8</source>
           <nohelp>true</nohelp>
@@ -94,28 +94,28 @@
     <dependency>
       <groupId>com.google.guava</groupId>
       <artifactId>guava</artifactId>
-      <version>32.1.2-jre</version>
+      <version>33.3.1-jre</version>
     </dependency>
 
     <!-- https://mvnrepository.com/artifact/com.ibm.icu/icu4j -->
     <dependency>
       <groupId>com.ibm.icu</groupId>
       <artifactId>icu4j</artifactId>
-      <version>73.2</version>
+      <version>76.1</version>
     </dependency>
 
     <!-- https://mvnrepository.com/artifact/com.google.protobuf/protobuf-java -->
     <dependency>
       <groupId>com.google.protobuf</groupId>
       <artifactId>protobuf-java</artifactId>
-      <version>3.25.5</version>
+      <version>4.29.0</version>
     </dependency>
 
     <!-- https://mvnrepository.com/artifact/com.google.auto.value/auto-value -->
     <dependency>
       <groupId>com.google.auto.value</groupId>
       <artifactId>auto-value</artifactId>
-      <version>1.10.2</version>
+      <version>1.11.0</version>
       <scope>provided</scope>
     </dependency>
 
@@ -123,7 +123,7 @@
     <dependency>
       <groupId>com.google.auto.value</groupId>
       <artifactId>auto-value-annotations</artifactId>
-      <version>1.10.2</version>
+      <version>1.11.0</version>
     </dependency>
 
     <!-- https://mvnrepository.com/artifact/com.github.os72/protoc-jar-maven-plugin -->
@@ -144,7 +144,7 @@
     <dependency>
       <groupId>com.google.truth</groupId>
       <artifactId>truth</artifactId>
-      <version>1.1.5</version>
+      <version>1.4.4</version>
       <scope>test</scope>
     </dependency>
 
@@ -152,7 +152,7 @@
     <dependency>
       <groupId>com.google.truth.extensions</groupId>
       <artifactId>truth-java8-extension</artifactId>
-      <version>1.0.1</version>
+      <version>1.4.4</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
