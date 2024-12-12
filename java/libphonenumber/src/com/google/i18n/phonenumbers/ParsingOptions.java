@@ -18,13 +18,13 @@ package com.google.i18n.phonenumbers;
 
 /** Options for the phone number parser. */
 public class ParsingOptions {
+  
   /**
    * Returns the region we are expecting the number to be from. This is ignored if the number being
    * parsed is written in international format. In case of national format, the country_code will be
    * set to the one of this default region. If the number is guaranteed to start with a '+' followed
    * by the country calling code, then RegionCode.ZZ or null can be supplied.
    */
-  
   private boolean hasDefaultRegion;
   private String defaultRegion_ = null;
   public boolean hasDefaultRegion() { return hasDefaultRegion; }
