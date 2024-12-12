@@ -37,6 +37,7 @@
 #include "phonenumbers/phonemetadata.pb.h"
 #include "phonenumbers/phonenumber.h"
 #include "phonenumbers/phonenumber.pb.h"
+#include "phonenumbers/parsingoptions.h"
 #include "phonenumbers/regex_based_matcher.h"
 #include "phonenumbers/regexp_adapter.h"
 #include "phonenumbers/regexp_cache.h"
@@ -46,6 +47,7 @@
 #include "phonenumbers/stringutil.h"
 #include "phonenumbers/utf/unicodetext.h"
 #include "phonenumbers/utf/utf.h"
+
 
 namespace i18n {
 namespace phonenumbers {
@@ -2127,15 +2129,17 @@ PhoneNumberUtil::ErrorType PhoneNumberUtil::Parse(const string& number_to_parse,
                                                   const string& default_region,
                                                   PhoneNumber* number) const {
   DCHECK(number);
-  return ParseHelper(number_to_parse, default_region, false, true, number);
+  return ParseWithOptions(number_to_parse,
+                          ParsingOptions().SetDefaultRegion(default_region),
+                          number);
 }
 
-PhoneNumberUtil::ErrorType PhoneNumberUtil::ParseAndKeepRawInput(
-    const string& number_to_parse,
-    const string& default_region,
+PhoneNumberUtil::ErrorType PhoneNumberUtil::ParseWithOptions(
+    absl::string_view number_to_parse, const ParsingOptions& options,
     PhoneNumber* number) const {
   DCHECK(number);
-  return ParseHelper(number_to_parse, default_region, true, true, number);
+  return ParseHelper(number_to_parse, options.default_region_,
+                     options.keep_raw_input_, /*check_region=*/true, number);
 }
 
 // Checks to see that the region code used is valid, or if it is not valid, that
