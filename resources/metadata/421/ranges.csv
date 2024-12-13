@@ -1828,8 +1828,8 @@ Prefix             ; Length ; Type       ; Tariff        ; National Only ; Opera
 692[2-9]           ; 9      ; VOIP       ; STANDARD_RATE ;               ;                            ; "fmt_3/3/3"     ; "SK"    ;                     ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 696[0-57]          ; 9      ; VOIP       ; STANDARD_RATE ;               ;                            ; "fmt_3/3/3"     ; "SK"    ;                     ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 6966[0-57-9]       ; 9      ; VOIP       ; STANDARD_RATE ;               ;                            ; "fmt_3/3/3"     ; "SK"    ;                     ;            ; "FILLUP TO SUPPORT MASTER RANGE"
-69666[0-57-9]      ; 9      ; VOIP       ; STANDARD_RATE ;               ;                            ; "fmt_3/3/3"     ; "SK"    ;                     ;            ; "FILLUP TO SUPPORT MASTER RANGE"
-696666             ; 9      ; VOIP       ; STANDARD_RATE ;               ;                            ; "fmt_3/3/3"     ; "SK"    ;                     ; GOVERNMENT
+69666[0-589]       ; 9      ; VOIP       ; STANDARD_RATE ;               ;                            ; "fmt_3/3/3"     ; "SK"    ;                     ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+69666[67]          ; 9      ; VOIP       ; STANDARD_RATE ;               ;                            ; "fmt_3/3/3"     ; "SK"    ;                     ; GOVERNMENT
 6968[0-46-9]       ; 9      ; VOIP       ; STANDARD_RATE ;               ;                            ; "fmt_3/3/3"     ; "SK"    ;                     ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 69685              ; 9      ; VOIP       ; STANDARD_RATE ;               ;                            ; "fmt_3/3/3"     ; "SK"    ;                     ; GOVERNMENT
 6969[0-579]        ; 9      ; VOIP       ; STANDARD_RATE ;               ;                            ; "fmt_3/3/3"     ; "SK"    ;                     ;            ; "FILLUP TO SUPPORT MASTER RANGE"

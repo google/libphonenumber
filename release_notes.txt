@@ -1,3 +1,67 @@
+Dec 11, 2024: v8.13.52
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   CA, DE, DK, IL, JP, KY, MN, UG, US, UZ
+ - Updated short number metadata for region code(s): DK
+ - Updated geocoding data for country calling code(s): 86 (en, zh), 1345 (en)
+ - Updated carrier data for country calling code(s):
+   45 (en), 229 (en), 972 (en), 976 (en)
+ - Updated / refreshed time zone meta data.
+
+Nov 28, 2024: v8.13.51
+Code changes:
+ - Reverted the std:: qualifier to string throughout phonenumberutil.
+ - Reverted  absl::string_view to std::string parameters.
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   870, CA, GE, GF, GU, HK, HN, MQ, PM, RE, SN, SY, TG, US, YT
+ - New geocoding data for country calling code(s): 1327 (en), 1942 (en)
+ - Updated carrier data for country calling code(s):
+   27 (en), 34 (en), 81 (en), 221 (en), 228 (en), 262 (en), 351 (en), 508 (en),
+   594 (en), 596 (en), 852 (en, zh), 963 (en), 995 (en), 1671 (en)
+ - Updated / refreshed time zone meta data.
+
+Nov 13, 2024: v8.13.50
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   AR, BJ, BL, FI, GE, GP, HR, MF, PL, SG
+ - Updated short number metadata for region code(s): BJ, FI
+ - Updated carrier data for country calling code(s):
+   48 (en), 65 (en), 229 (en), 385 (en), 590 (en), 995 (en)
+
+Oct 30, 2024: v8.13.49
+Metadata changes:
+ - Updated phone metadata for region code(s): CO, EE, MG, MQ, MV, PM, SG, TJ
+ - Updated short number metadata for region code(s): MQ, PM
+ - Updated geocoding data for country calling code(s): 960 (en)
+ - Updated carrier data for country calling code(s):
+   65 (en), 372 (en), 596 (en), 992 (en)
+
+Oct 16, 2024: v8.13.48
+Metadata changes:
+ - Updated phone metadata for region code(s): DE, SG, UG, WF
+ - Updated carrier data for country calling code(s): 47 (en)
+
+Oct 01, 2024: v8.13.47
+Metadata changes:
+ - Updated phone metadata for region code(s): GE, HK, MG, MM, NO, SJ, UA, UG
+ - Updated short number metadata for region code(s): NO, SJ
+ - Updated geocoding data for country calling code(s):
+   95 (en), 261 (en), 380 (en, uk)
+ - Updated carrier data for country calling code(s):
+   256 (en), 380 (en), 852 (en, zh), 995 (en)
+
+Sep 19, 2024: v8.13.46
+Code changes:
+ - Added the std:: qualifier to string throughout phonenumberutil.
+ - Changed several std::string parameters to absl::string_view.
+Metadata changes:
+ - Updated phone metadata for region code(s): CO, HK, PA, PE, SG, SN, UZ
+ - Updated short number metadata for region code(s): UY
+ - Updated geocoding data for country calling code(s): 51 (en)
+ - Updated carrier data for country calling code(s):
+   44 (en), 57 (en), 65 (en), 221 (en), 852 (en, zh), 972 (en), 998 (en)
+
 Sep 04, 2024: v8.13.45
 Metadata changes:
  - Updated phone metadata for region code(s): AR, CZ, ET, ID, IL, MX, NZ

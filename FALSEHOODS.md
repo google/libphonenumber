@@ -249,7 +249,7 @@ surprising how many false assumptions programmers continue to make about them.
     countries a leading 0 is significant and forms part of the number itself
     (see *A leading zero in numbers formatted for domestic usage can always be
     discarded when dialing from abroad*). Moreover, a phone number may contain
-    other diallable characters (see *Phone numbers contain only digits*) or an
+    other dialable characters (see *Phone numbers contain only digits*) or an
     extension portion, dialled after waiting for a tone.
 
     **Tip:** Use the library to parse and format numbers to handle this

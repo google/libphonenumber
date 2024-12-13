@@ -14,11 +14,7 @@
 
 81701|Softbank
 817010|NTT Docomo
-817020|KDDI
-817021|KDDI
-817022|KDDI
-817023|KDDI
-817024|KDDI
+81702|KDDI
 8170250|Softbank
 817026|NTT Docomo
 817027|NTT Docomo
@@ -78,6 +74,7 @@
 817064|Softbank
 817065|Softbank
 817066|Softbank
+817067|KDDI
 8170680|Softbank
 8170681|Softbank
 8170682|Softbank
@@ -98,15 +95,7 @@
 8170823|NTT Docomo
 817083|Rakuten Communications
 817084|Rakuten Communications
-8170850|Rakuten Communications
-8170851|Rakuten Communications
-8170852|Rakuten Communications
-8170853|Rakuten Communications
-8170854|Rakuten Communications
-8170855|Rakuten Communications
-8170856|Rakuten Communications
-8170857|Rakuten Communications
-8170858|Rakuten Communications
+817085|Rakuten Communications
 817086|KDDI
 817087|KDDI
 817088|KDDI

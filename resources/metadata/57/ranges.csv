@@ -94,6 +94,7 @@ Prefix         ; Length ; Type       ; Tariff        ; Area Code Length ; Operat
 350[2-8]       ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "avantel"       ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; GOVERNMENT
 351            ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "avantel"       ; "mobile_3/7"    ; "CO"
 370            ; 10     ; MOBILE     ; STANDARD_RATE ;                  ;                 ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; GOVERNMENT
+46             ; 8      ; FIXED_LINE ; STANDARD_RATE ; 4                ;                 ; "fmt_4/4"       ; "CO"    ;                                    ;                                    ; WEB
 6010[0-4]      ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "Cundinamarca"                     ; "Cundinamarca"                     ; GOVERNMENT
 60105[0-4]     ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "Cundinamarca"                     ; "Cundinamarca"                     ; GOVERNMENT
 601055[0-4]    ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "Cundinamarca"                     ; "Cundinamarca"                     ; GOVERNMENT
@@ -223,4 +224,5 @@ Prefix         ; Length ; Type       ; Tariff        ; Area Code Length ; Operat
 6086[0-57-9]   ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"
 60866          ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "Villavicencio"                    ; "Villavicencio"
 6088[67]       ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "Neiva"                            ; "Neiva"
+901            ; 10     ; FIXED_LINE ; PREMIUM_RATE  ;                  ;                 ; "fixed_3/7"     ; "CO"    ;                                    ;                                    ; GOVERNMENT
 9101           ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "movistar"      ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; IR21
