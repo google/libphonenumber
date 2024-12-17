@@ -3852,7 +3852,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.maybeExtractCountryCode =
       var generalDesc = defaultRegionMetadata.getGeneralDesc();
       /** @type {!RegExp} */
       var validNumberPattern =
-          new RegExp(generalDesc.getNationalNumberPatternOrDefault());
+          new RegExp('^(?:' + generalDesc.getNationalNumberPatternOrDefault() + ')$');
       // Passing null since we don't need the carrier code.
       this.maybeStripNationalPrefixAndCarrierCode(
           potentialNationalNumber, defaultRegionMetadata, null);

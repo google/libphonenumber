@@ -2758,6 +2758,24 @@ function testMaybeExtractCountryCode() {
   } catch (e) {
     fail('Should not have thrown an exception: ' + e.toString());
   }
+  number = new i18n.phonenumbers.PhoneNumber();
+  try {
+    phoneNumber = '821064588888';
+    metadata  = phoneUtil.getMetadataForRegion(RegionCode.KR);
+    countryCallingCode = 82;
+    numberToFill = new goog.string.StringBuffer();
+    assertEquals(
+        'Should have extracted the country calling code of the ' +
+            'region passed in',
+        countryCallingCode,
+        phoneUtil.maybeExtractCountryCode(
+            phoneNumber, metadata, numberToFill, true, number));
+    assertEquals(
+        'Did figure out CountryCodeSource correctly',
+        CCS.FROM_NUMBER_WITHOUT_PLUS_SIGN, number.getCountryCodeSource());
+  } catch (e) {
+    fail('Should not have thrown an exception: ' + e.toString());
+  }
 }
 
 function testParseNationalNumber() {
