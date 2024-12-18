@@ -1710,6 +1710,17 @@ void PhoneNumberUtil::FormatOutOfCountryKeepingAlphaChars(
     PrefixNumberWithCountryCallingCode(country_code, INTERNATIONAL,
                                        formatted_number);
   }
+  std::string region_code;
+  GetRegionCodeForCountryCode(country_code, &region_code);
+  // Metadata cannot be null because the country code is valid.
+  const PhoneMetadata* metadata_for_region =
+      GetMetadataForRegionOrCallingCode(country_code, region_code);
+  // Strip any extension
+  std::string extension;
+  MaybeStripExtension(formatted_number, &extension);
+  // Append the formatted extension
+  MaybeAppendFormattedExtension(number, *metadata_for_region, INTERNATIONAL,
+                                formatted_number);
 }
 
 const NumberFormat* PhoneNumberUtil::ChooseFormattingPatternForNumber(
