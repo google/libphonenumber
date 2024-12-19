@@ -4759,8 +4759,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.canBeInternationallyDialled =
  */
 i18n.phonenumbers.PhoneNumberUtil.matchesEntirely = function(regex, str) {
   /** @type {Array.<string>} */
-  var matchedGroups = (typeof regex == 'string') ?
-      str.match('^(?:' + regex + ')$') : str.match(regex);
+  var matchedGroups = str.match(new RegExp('^(?:' + (typeof regex == 'string' ? regex : regex.source) + ')$', 'i'));
   if (matchedGroups && matchedGroups[0].length == str.length) {
     return true;
   }
