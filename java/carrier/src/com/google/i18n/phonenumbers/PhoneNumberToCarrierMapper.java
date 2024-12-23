@@ -16,107 +16,71 @@
 
 package com.google.i18n.phonenumbers;
 
-import com.google.i18n.phonenumbers.PhoneNumberUtil.PhoneNumberType;
 import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber;
-import com.google.i18n.phonenumbers.metadata.DefaultMetadataDependenciesProvider;
-import com.google.i18n.phonenumbers.prefixmapper.PrefixFileReader;
 import java.util.Locale;
 
 /**
  * A phone prefix mapper which provides carrier information related to a phone number.
  *
  * @author Cecilia Roes
+ * @deprecated Use {@link com.google.i18n.phonenumbers.carrier.PhoneNumberToCarrierMapper} instead,
+ *     which is the same class, but in a different package.
  */
+@Deprecated
 public class PhoneNumberToCarrierMapper {
+
   private static PhoneNumberToCarrierMapper instance = null;
-  private final PrefixFileReader prefixFileReader;
+  private final com.google.i18n.phonenumbers.carrier.PhoneNumberToCarrierMapper delegate;
 
-  private final PhoneNumberUtil phoneUtil = PhoneNumberUtil.getInstance();
-
-  // @VisibleForTesting
-  PhoneNumberToCarrierMapper(String phonePrefixDataDirectory) {
-    prefixFileReader = new PrefixFileReader(phonePrefixDataDirectory);
+  @Deprecated
+  public PhoneNumberToCarrierMapper(
+      com.google.i18n.phonenumbers.carrier.PhoneNumberToCarrierMapper delegate) {
+    this.delegate = delegate;
   }
 
   /**
-   * Gets a {@link PhoneNumberToCarrierMapper} instance to carry out international carrier lookup.
-   *
-   * <p> The {@link PhoneNumberToCarrierMapper} is implemented as a singleton. Therefore, calling
-   * this method multiple times will only result in one instance being created.
-   *
-   * @return  a {@link PhoneNumberToCarrierMapper} instance
+   * @deprecated Use
+   *     {@link com.google.i18n.phonenumbers.carrier.PhoneNumberToCarrierMapper#getInstance()}
+   *     instead
    */
   public static synchronized PhoneNumberToCarrierMapper getInstance() {
     if (instance == null) {
-      instance = new PhoneNumberToCarrierMapper(DefaultMetadataDependenciesProvider.getInstance()
-          .getCarrierDataDirectory());
+      instance = new PhoneNumberToCarrierMapper(
+          com.google.i18n.phonenumbers.carrier.PhoneNumberToCarrierMapper.getInstance());
     }
     return instance;
   }
 
   /**
-   * Returns a carrier name for the given phone number, in the language provided. The carrier name
-   * is the one the number was originally allocated to, however if the country supports mobile
-   * number portability the number might not belong to the returned carrier anymore. If no mapping
-   * is found an empty string is returned.
-   *
-   * <p>This method assumes the validity of the number passed in has already been checked, and that
-   * the number is suitable for carrier lookup. We consider mobile and pager numbers possible
-   * candidates for carrier lookup.
-   *
-   * @param number  a valid phone number for which we want to get a carrier name
-   * @param languageCode  the language code in which the name should be written
-   * @return  a carrier name for the given phone number
+   * @deprecated Use
+   *     {@link
+   *     com.google.i18n.phonenumbers.carrier.PhoneNumberToCarrierMapper#getNameForValidNumber(PhoneNumber,
+   *     Locale)} instead.
    */
+  @Deprecated
   public String getNameForValidNumber(PhoneNumber number, Locale languageCode) {
-    String langStr = languageCode.getLanguage();
-    String scriptStr = "";  // No script is specified
-    String regionStr = languageCode.getCountry();
-
-    return prefixFileReader.getDescriptionForNumber(number, langStr, scriptStr, regionStr);
+    return delegate.getNameForValidNumber(number, languageCode);
   }
 
   /**
-   * Gets the name of the carrier for the given phone number, in the language provided. As per
-   * {@link #getNameForValidNumber(PhoneNumber, Locale)} but explicitly checks the validity of
-   * the number passed in.
-   *
-   * @param number  the phone number for which we want to get a carrier name
-   * @param languageCode  the language code in which the name should be written
-   * @return  a carrier name for the given phone number, or empty string if the number passed in is
-   *     invalid
+   * @deprecated Use
+   *     {@link
+   *     com.google.i18n.phonenumbers.carrier.PhoneNumberToCarrierMapper#getNameForNumber(PhoneNumber,
+   *     Locale)} instead.
    */
+  @Deprecated
   public String getNameForNumber(PhoneNumber number, Locale languageCode) {
-    PhoneNumberType numberType = phoneUtil.getNumberType(number);
-    if (isMobile(numberType)) {
-      return getNameForValidNumber(number, languageCode);
-    }
-    return "";
+    return delegate.getNameForNumber(number, languageCode);
   }
 
   /**
-   * Gets the name of the carrier for the given phone number only when it is 'safe' to display to
-   * users. A carrier name is considered safe if the number is valid and for a region that doesn't
-   * support
-   * <a href="http://en.wikipedia.org/wiki/Mobile_number_portability">mobile number portability</a>.
-   *
-   * @param number  the phone number for which we want to get a carrier name
-   * @param languageCode  the language code in which the name should be written
-   * @return  a carrier name that is safe to display to users, or the empty string
+   * @deprecated Use
+   *     {@link
+   *     com.google.i18n.phonenumbers.carrier.PhoneNumberToCarrierMapper#getSafeDisplayName(PhoneNumber,
+   *     Locale)} instead.
    */
+  @Deprecated
   public String getSafeDisplayName(PhoneNumber number, Locale languageCode) {
-    if (phoneUtil.isMobileNumberPortableRegion(phoneUtil.getRegionCodeForNumber(number))) {
-      return "";
-    }
-    return getNameForNumber(number, languageCode);
-  }
-
-  /**
-   * Checks if the supplied number type supports carrier lookup.
-   */
-  private boolean isMobile(PhoneNumberType numberType) {
-    return (numberType == PhoneNumberType.MOBILE
-        || numberType == PhoneNumberType.FIXED_LINE_OR_MOBILE
-        || numberType == PhoneNumberType.PAGER);
+    return delegate.getSafeDisplayName(number, languageCode);
   }
 }
