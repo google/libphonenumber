@@ -1878,8 +1878,11 @@ public class PhoneNumberUtil {
     String regionCode = getRegionCodeForCountryCode(countryCode);
     // Metadata cannot be null because the country calling code is valid.
     PhoneMetadata metadataForRegion = getMetadataForRegionOrCallingCode(countryCode, regionCode);
-    maybeAppendFormattedExtension(number, metadataForRegion,
-                                  PhoneNumberFormat.INTERNATIONAL, formattedNumber);
+    // Strip any extension
+    maybeStripExtension(formattedNumber);
+    // Append the formatted extension
+    maybeAppendFormattedExtension(
+        number, metadataForRegion, PhoneNumberFormat.INTERNATIONAL, formattedNumber);
     if (internationalPrefixForFormatting.length() > 0) {
       formattedNumber.insert(0, " ").insert(0, countryCode).insert(0, " ")
           .insert(0, internationalPrefixForFormatting);
