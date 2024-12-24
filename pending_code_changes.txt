@@ -1,2 +1,3 @@
 Code changes:
  - Fixed a bug where the extension was appended twice in formatOutOfCountryKeepingAlphaChars in the Java version and updated FormatOutOfCountryKeepingAlphaChars in the C++ version to format the extension.
+ - Deprecated com.google.phonenumbers versions of PhoneNumberToCarrierMapper and PhoneNumberToTimeZonesMapper in favour of counterparts in their respective packages.
