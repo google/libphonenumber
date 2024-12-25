@@ -1,4 +1,17 @@
-<p align="right">
+<p<phoneNumberMetadata>
+  <territories>
+    <!-- Andorra -->
+    <territory id="AD" countryCode="376" internationalPrefix="00">
+      <generalDesc>
+        <nationalNumberPattern>\d{6}</nationalNumberPattern>
+      </generalDesc>
+      <fixedLine>
+        <nationalNumberPattern>\d{6}</nationalNumberPattern>
+        <possibleLengths national="6"/>
+        <exampleNumber>123456</exampleNumber>
+      </fixedLine>
+    </territory>
+ align="right">
 <img src="https://travis-ci.org/google/libphonenumber.svg?branch=master">
 </p>
 
