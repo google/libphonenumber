@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.google.i18n.phonenumbers;
+package com.google.i18n.phonenumbers.carrier;
 
 import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber;
 import junit.framework.TestCase;
@@ -26,8 +26,11 @@ import java.util.Locale;
  * @author Cecilia Roes
  */
 public class PhoneNumberToCarrierMapperTest extends TestCase {
-  private final PhoneNumberToCarrierMapper carrierMapper =
-      new PhoneNumberToCarrierMapper(TEST_MAPPING_DATA_DIRECTORY);
+
+  private final com.google.i18n.phonenumbers.PhoneNumberToCarrierMapper carrierMapper =
+      new com.google.i18n.phonenumbers.PhoneNumberToCarrierMapper(
+          new com.google.i18n.phonenumbers.carrier.PhoneNumberToCarrierMapper(
+              TEST_MAPPING_DATA_DIRECTORY));
   private static final String TEST_MAPPING_DATA_DIRECTORY =
       "/com/google/i18n/phonenumbers/carrier/testing_data/";
 
@@ -63,20 +66,20 @@ public class PhoneNumberToCarrierMapperTest extends TestCase {
 
   public void testGetNameForMobilePortableRegion() {
     assertEquals("British carrier",
-                 carrierMapper.getNameForNumber(UK_MOBILE1, Locale.ENGLISH));
+        carrierMapper.getNameForNumber(UK_MOBILE1, Locale.ENGLISH));
     assertEquals("Brittisk operat\u00F6r",
-                 carrierMapper.getNameForNumber(UK_MOBILE1, new Locale("sv", "SE")));
+        carrierMapper.getNameForNumber(UK_MOBILE1, new Locale("sv", "SE")));
     assertEquals("British carrier",
-                 carrierMapper.getNameForNumber(UK_MOBILE1, Locale.FRENCH));
+        carrierMapper.getNameForNumber(UK_MOBILE1, Locale.FRENCH));
     // Returns an empty string because the UK implements mobile number portability.
     assertEquals("", carrierMapper.getSafeDisplayName(UK_MOBILE1, Locale.ENGLISH));
   }
 
   public void testGetNameForNonMobilePortableRegion() {
     assertEquals("Angolan carrier",
-                 carrierMapper.getNameForNumber(AO_MOBILE1, Locale.ENGLISH));
+        carrierMapper.getNameForNumber(AO_MOBILE1, Locale.ENGLISH));
     assertEquals("Angolan carrier",
-                 carrierMapper.getSafeDisplayName(AO_MOBILE1, Locale.ENGLISH));
+        carrierMapper.getSafeDisplayName(AO_MOBILE1, Locale.ENGLISH));
   }
 
   public void testGetNameForFixedLineNumber() {
@@ -85,13 +88,13 @@ public class PhoneNumberToCarrierMapperTest extends TestCase {
     // If the carrier information is present in the files and the method that assumes a valid
     // number is used, a carrier is returned.
     assertEquals("Angolan fixed line carrier",
-                 carrierMapper.getNameForValidNumber(AO_FIXED2, Locale.ENGLISH));
+        carrierMapper.getNameForValidNumber(AO_FIXED2, Locale.ENGLISH));
     assertEquals("", carrierMapper.getNameForValidNumber(UK_FIXED2, Locale.ENGLISH));
   }
 
   public void testGetNameForFixedOrMobileNumber() {
     assertEquals("US carrier", carrierMapper.getNameForNumber(US_FIXED_OR_MOBILE,
-                                                                     Locale.ENGLISH));
+        Locale.ENGLISH));
   }
 
   public void testGetNameForPagerNumber() {
@@ -100,13 +103,13 @@ public class PhoneNumberToCarrierMapperTest extends TestCase {
 
   public void testGetNameForNumberWithNoDataFile() {
     assertEquals("", carrierMapper.getNameForNumber(NUMBER_WITH_INVALID_COUNTRY_CODE,
-                                                           Locale.ENGLISH));
+        Locale.ENGLISH));
     assertEquals("", carrierMapper.getNameForNumber(INTERNATIONAL_TOLL_FREE,
-                                                           Locale.ENGLISH));
+        Locale.ENGLISH));
     assertEquals("", carrierMapper.getNameForValidNumber(NUMBER_WITH_INVALID_COUNTRY_CODE,
-                                                                Locale.ENGLISH));
+        Locale.ENGLISH));
     assertEquals("", carrierMapper.getNameForValidNumber(INTERNATIONAL_TOLL_FREE,
-                                                                Locale.ENGLISH));
+        Locale.ENGLISH));
   }
 
   public void testGetNameForNumberWithMissingPrefix() {

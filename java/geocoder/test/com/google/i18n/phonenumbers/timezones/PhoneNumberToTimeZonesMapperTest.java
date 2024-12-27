@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.google.i18n.phonenumbers;
+package com.google.i18n.phonenumbers.timezones;
 
 import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber;
 import junit.framework.TestCase;
@@ -28,8 +28,10 @@ import java.util.List;
  * @author Walter Erquinigo
  */
 public class PhoneNumberToTimeZonesMapperTest extends TestCase {
-  private final PhoneNumberToTimeZonesMapper prefixTimeZonesMapper =
-      new PhoneNumberToTimeZonesMapper(TEST_MAPPING_DATA_DIRECTORY);
+
+  private final com.google.i18n.phonenumbers.PhoneNumberToTimeZonesMapper prefixTimeZonesMapper =
+      new com.google.i18n.phonenumbers.PhoneNumberToTimeZonesMapper(
+          new PhoneNumberToTimeZonesMapper(TEST_MAPPING_DATA_DIRECTORY));
   private static final String TEST_MAPPING_DATA_DIRECTORY =
       "/com/google/i18n/phonenumbers/timezones/testing_data/";
   // Set up some test numbers to re-use.
@@ -63,7 +65,7 @@ public class PhoneNumberToTimeZonesMapperTest extends TestCase {
   private static final String SEOUL_TZ = "Asia/Seoul";
   private static final String SYDNEY_TZ = "Australia/Sydney";
 
-  static List<String> buildListOfTimeZones(String ... timezones) {
+  static List<String> buildListOfTimeZones(String... timezones) {
     ArrayList<String> timezonesList = new ArrayList<String>(timezones.length);
     for (String timezone : timezones) {
       timezonesList.add(timezone);
@@ -78,59 +80,59 @@ public class PhoneNumberToTimeZonesMapperTest extends TestCase {
   public void testGetTimeZonesForNumber() {
     // Test with invalid numbers even when their country code prefixes exist in the mapper.
     assertEquals(PhoneNumberToTimeZonesMapper.UNKNOWN_TIME_ZONE_LIST,
-                 prefixTimeZonesMapper.getTimeZonesForNumber(US_INVALID_NUMBER));
+        prefixTimeZonesMapper.getTimeZonesForNumber(US_INVALID_NUMBER));
     assertEquals(PhoneNumberToTimeZonesMapper.UNKNOWN_TIME_ZONE_LIST,
-                 prefixTimeZonesMapper.getTimeZonesForNumber(KO_INVALID_NUMBER));
+        prefixTimeZonesMapper.getTimeZonesForNumber(KO_INVALID_NUMBER));
     // Test with valid prefixes.
     assertEquals(buildListOfTimeZones(SYDNEY_TZ),
-                 prefixTimeZonesMapper.getTimeZonesForNumber(AU_NUMBER));
+        prefixTimeZonesMapper.getTimeZonesForNumber(AU_NUMBER));
     assertEquals(buildListOfTimeZones(SEOUL_TZ),
-                 prefixTimeZonesMapper.getTimeZonesForNumber(KO_NUMBER));
+        prefixTimeZonesMapper.getTimeZonesForNumber(KO_NUMBER));
     assertEquals(buildListOfTimeZones(WINNIPEG_TZ),
-                 prefixTimeZonesMapper.getTimeZonesForNumber(CA_NUMBER));
+        prefixTimeZonesMapper.getTimeZonesForNumber(CA_NUMBER));
     assertEquals(buildListOfTimeZones(LOS_ANGELES_TZ),
-                 prefixTimeZonesMapper.getTimeZonesForNumber(US_NUMBER1));
+        prefixTimeZonesMapper.getTimeZonesForNumber(US_NUMBER1));
     assertEquals(buildListOfTimeZones(NEW_YORK_TZ),
-                 prefixTimeZonesMapper.getTimeZonesForNumber(US_NUMBER2));
+        prefixTimeZonesMapper.getTimeZonesForNumber(US_NUMBER2));
     // Test with an invalid country code.
     assertEquals(PhoneNumberToTimeZonesMapper.UNKNOWN_TIME_ZONE_LIST,
-                 prefixTimeZonesMapper.getTimeZonesForNumber(NUMBER_WITH_INVALID_COUNTRY_CODE));
+        prefixTimeZonesMapper.getTimeZonesForNumber(NUMBER_WITH_INVALID_COUNTRY_CODE));
     // Test with a non geographical phone number.
     assertEquals(PhoneNumberToTimeZonesMapper.UNKNOWN_TIME_ZONE_LIST,
-                 prefixTimeZonesMapper.getTimeZonesForNumber(INTERNATIONAL_TOLL_FREE));
+        prefixTimeZonesMapper.getTimeZonesForNumber(INTERNATIONAL_TOLL_FREE));
   }
 
   public void testGetTimeZonesForValidNumber() {
     // Test with invalid numbers even when their country code prefixes exist in the mapper.
     assertEquals(getNanpaTimeZonesList(),
-                 prefixTimeZonesMapper.getTimeZonesForGeographicalNumber(US_INVALID_NUMBER));
+        prefixTimeZonesMapper.getTimeZonesForGeographicalNumber(US_INVALID_NUMBER));
     assertEquals(buildListOfTimeZones(SEOUL_TZ),
-                 prefixTimeZonesMapper.getTimeZonesForGeographicalNumber(KO_INVALID_NUMBER));
+        prefixTimeZonesMapper.getTimeZonesForGeographicalNumber(KO_INVALID_NUMBER));
     // Test with valid prefixes.
     assertEquals(buildListOfTimeZones(SYDNEY_TZ),
-                 prefixTimeZonesMapper.getTimeZonesForGeographicalNumber(AU_NUMBER));
+        prefixTimeZonesMapper.getTimeZonesForGeographicalNumber(AU_NUMBER));
     assertEquals(buildListOfTimeZones(SEOUL_TZ),
-                 prefixTimeZonesMapper.getTimeZonesForGeographicalNumber(KO_NUMBER));
+        prefixTimeZonesMapper.getTimeZonesForGeographicalNumber(KO_NUMBER));
     assertEquals(buildListOfTimeZones(WINNIPEG_TZ),
-                 prefixTimeZonesMapper.getTimeZonesForGeographicalNumber(CA_NUMBER));
+        prefixTimeZonesMapper.getTimeZonesForGeographicalNumber(CA_NUMBER));
     assertEquals(buildListOfTimeZones(LOS_ANGELES_TZ),
-                 prefixTimeZonesMapper.getTimeZonesForGeographicalNumber(US_NUMBER1));
+        prefixTimeZonesMapper.getTimeZonesForGeographicalNumber(US_NUMBER1));
     assertEquals(buildListOfTimeZones(NEW_YORK_TZ),
-                 prefixTimeZonesMapper.getTimeZonesForGeographicalNumber(US_NUMBER2));
+        prefixTimeZonesMapper.getTimeZonesForGeographicalNumber(US_NUMBER2));
     // Test with an invalid country code.
     assertEquals(PhoneNumberToTimeZonesMapper.UNKNOWN_TIME_ZONE_LIST,
-                 prefixTimeZonesMapper.getTimeZonesForGeographicalNumber(
-                     NUMBER_WITH_INVALID_COUNTRY_CODE));
+        prefixTimeZonesMapper.getTimeZonesForGeographicalNumber(
+            NUMBER_WITH_INVALID_COUNTRY_CODE));
     // Test with a non geographical phone number.
     assertEquals(PhoneNumberToTimeZonesMapper.UNKNOWN_TIME_ZONE_LIST,
-                 prefixTimeZonesMapper.getTimeZonesForGeographicalNumber(
-                     INTERNATIONAL_TOLL_FREE));
+        prefixTimeZonesMapper.getTimeZonesForGeographicalNumber(
+            INTERNATIONAL_TOLL_FREE));
   }
 
   public void testGetTimeZonesForValidNumberSearchingAtCountryCodeLevel() {
     // Test that the country level time zones are returned when the number passed in is valid but
     // not covered by any non-country level prefixes in the mapper.
     assertEquals(prefixTimeZonesMapper.getTimeZonesForNumber(US_NUMBER3),
-                 getNanpaTimeZonesList());
+        getNanpaTimeZonesList());
   }
 }
