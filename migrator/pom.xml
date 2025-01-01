@@ -60,30 +60,30 @@
         <dependency>
             <groupId>com.google.truth</groupId>
             <artifactId>truth</artifactId>
-            <version>1.0.1</version>
+            <version>1.4.4</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>info.picocli</groupId>
             <artifactId>picocli</artifactId>
-            <version>4.7.4</version>
+            <version>4.7.6</version>
         </dependency>
         <dependency>
             <groupId>com.google.truth.extensions</groupId>
             <artifactId>truth-java8-extension</artifactId>
-            <version>1.0.1</version>
+            <version>1.4.4</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>com.google.auto.value</groupId>
             <artifactId>auto-value</artifactId>
-            <version>1.10.2</version>
+            <version>1.11.0</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.google.auto.value</groupId>
             <artifactId>auto-value-annotations</artifactId>
-            <version>1.10.2</version>
+            <version>1.11.0</version>
         </dependency>
     </dependencies>
 </project>
