@@ -3,3 +3,8 @@ target/
 build/
 lib/
 generated/
+.gradle
+cpp/test/phonenumbers/geocoding/geocoding_test_data.cc
+cpp/src/phonenumbers/geocoding/geocoding_data.cc
+cpp/**/*.pb.cc
+cpp/**/*.pb.h
