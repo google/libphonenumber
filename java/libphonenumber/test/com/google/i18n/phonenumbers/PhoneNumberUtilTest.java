@@ -481,7 +481,7 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
     String expectedOutput = "03456234";
     assertEquals("Conversion did not correctly remove alpha character",
                  expectedOutput,
-                 PhoneNumberUtil.normalizeDigitsOnly(inputNumber));
+                 PhoneNumberNormalizer.normalizeDigitsOnly(inputNumber));
   }
 
   public void testNormaliseStripNonDiallableCharacters() {
