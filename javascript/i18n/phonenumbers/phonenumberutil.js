@@ -3584,6 +3584,12 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.testNumberLengthForType_ =
  * numbers), it will return false for the subscriber-number-only version.
  * </ol>
  *
+ * <p>There is a known <a href="https://issuetracker.google.com/issues/335892662">issue</a> with this
+ * method: if a number is possible only in a certain region among several regions that share the
+ * same country calling code, this method will consider only the "main" region. For example,
+ * +1310xxxx are valid numbers in Canada. However, they are not possible in the US. As a result,
+ * this method will return IS_POSSIBLE_LOCAL_ONLY for +1310xxxx.
+ *
  * @param {i18n.phonenumbers.PhoneNumber} number the number that needs to be
  *     checked
  * @return {i18n.phonenumbers.PhoneNumberUtil.ValidationResult} a
@@ -3612,6 +3618,12 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.isPossibleNumberWithReason =
  * codes) and length (obviously includes the length of area codes for fixed line
  * numbers), it will return false for the subscriber-number-only version.
  * </ol>
+ *
+ * <p>There is a known <a href="https://issuetracker.google.com/issues/335892662">issue</a> with this
+ * method: if a number is possible only in a certain region among several regions that share the
+ * same country calling code, this method will consider only the "main" region. For example,
+ * +1310xxxx are valid numbers in Canada. However, they are not possible in the US. As a result,
+ * this method will return IS_POSSIBLE_LOCAL_ONLY for +1310xxxx.
  *
  * @param {i18n.phonenumbers.PhoneNumber} number the number that needs to be
  *     checked
@@ -4759,8 +4771,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.canBeInternationallyDialled =
  */
 i18n.phonenumbers.PhoneNumberUtil.matchesEntirely = function(regex, str) {
   /** @type {Array.<string>} */
-  var matchedGroups = (typeof regex == 'string') ?
-      str.match('^(?:' + regex + ')$') : str.match(regex);
+  var matchedGroups = str.match(new RegExp('^(?:' + (typeof regex == 'string' ? regex : regex.source) + ')$', 'i'));
   if (matchedGroups && matchedGroups[0].length == str.length) {
     return true;
   }
