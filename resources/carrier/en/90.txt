@@ -19,6 +19,7 @@
 90510221|Netgsm
 90510222|Netgsm
 90510223|Netgsm
+90510224|Netgsm
 90510227|Netgsm
 90510232|Foniv Telecommunications Services
 90510244|Nida Telekomunikasyon
@@ -40,10 +41,6 @@
 9053386|Kuzey Kibris Turkcell
 9053387|Kuzey Kibris Turkcell
 9054|Vodafone
-9054285|KKTC Telsim
-9054286|KKTC Telsim
-9054287|KKTC Telsim
-9054288|KKTC Telsim
 9055|Turk Telekom
 905610|Selam Mobile
 905616|Turkcell
