@@ -88,7 +88,7 @@ Prefix       ; Length ; Type       ; Tariff        ; Area Code Length ; National
 72[23]       ; 9      ; VOIP       ; STANDARD_RATE ;                  ; false         ;                    ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; GOVERNMENT
 73[237]      ; 9      ; VOIP       ; STANDARD_RATE ;                  ; false         ;                    ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; GOVERNMENT
 7380         ; 9      ; VOIP       ; STANDARD_RATE ;                  ; false         ;                    ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; GOVERNMENT
-7385[0-2569] ; 9      ; VOIP       ; STANDARD_RATE ;                  ; false         ;                    ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; GOVERNMENT
+7385[0-3569] ; 9      ; VOIP       ; STANDARD_RATE ;                  ; false         ;                    ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; GOVERNMENT
 73888        ; 9      ; VOIP       ; STANDARD_RATE ;                  ; false         ;                    ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; GOVERNMENT
 747          ; 9      ; VOIP       ; STANDARD_RATE ;                  ; false         ;                    ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; GOVERNMENT
 76[258]      ; 9      ; VOIP       ; STANDARD_RATE ;                  ; false         ;                    ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; GOVERNMENT

@@ -104,11 +104,11 @@ Prefix        ; Length ; Type            ; Tariff        ; Operator     ; Format
 92[5-7]       ; 9      ; MOBILE          ; STANDARD_RATE ; "meo"        ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; IR21       ; "IR21 dated 4/2/2019"
 928[01]       ; 9      ; MOBILE          ; STANDARD_RATE ; "nowo"       ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; GOVERNMENT ; "Mobile Section updated 4/15/2019"
 9282          ; 9      ; MOBILE          ; STANDARD_RATE ; "digi"       ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; IR21
-928[346-9]    ; 9      ; MOBILE          ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"
+928[34]       ; 9      ; MOBILE          ; STANDARD_RATE ; "digi"       ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; GOVERNMENT
 9285          ; 9      ; MOBILE          ; STANDARD_RATE ; "onitelecom" ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; GOVERNMENT ; "Mobile Section updated 4/15/2019"
+92[89][6-9]   ; 9      ; MOBILE          ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"
 929[0-4]      ; 9      ; MOBILE          ; STANDARD_RATE ; "nos"        ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; IR21       ; "IR21 dated 2/27/2019"
 9295          ; 9      ; MOBILE          ; STANDARD_RATE ; "suma-movil" ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; GOVERNMENT
-929[6-9]      ; 9      ; MOBILE          ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"
 93            ; 9      ; MOBILE          ; STANDARD_RATE ; "nos"        ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; IR21       ; "IR21 dated 2/27/2019"
 9480          ; 9      ; MOBILE          ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"
 96            ; 9      ; MOBILE          ; STANDARD_RATE ; "meo"        ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; IR21       ; "IR21 dated 4/2/2019"
