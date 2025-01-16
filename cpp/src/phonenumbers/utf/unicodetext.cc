@@ -371,11 +371,11 @@ void UnicodeText::push_back(char32 c) {
     if (UniLib::IsInterchangeValid(buf, len)) {
       repr_.append(buf, len);
     } else {
-      fprintf(stderr, "Unicode value 0x%x is not valid for interchange\n", c);
+      LOG(WARNING) << "Unicode value 0x" << hex << c << " is not valid for interchange";
       repr_.append(" ", 1);
     }
   } else {
-    fprintf(stderr, "Illegal Unicode value: 0x%x\n", c);
+    LOG(WARNING) << "Illegal Unicode value: 0x" << hex << c;
     repr_.append(" ", 1);
   }
 }
