@@ -47,7 +47,7 @@
 #include "phonenumbers/stringutil.h"
 #include "phonenumbers/utf/unicodetext.h"
 #include "phonenumbers/utf/utf.h"
-
+#include "absl/strings/string_view.h" 
 
 namespace i18n {
 namespace phonenumbers {
@@ -2134,9 +2134,9 @@ PhoneNumberUtil::ErrorType PhoneNumberUtil::Parse(const string& number_to_parse,
                           number);
 }
 
-PhoneNumberUtil::ErrorType PhoneNumberUtil::ParseWithOptions(
-    absl::string_view number_to_parse, const ParsingOptions& options,
-    PhoneNumber* number) const {
+PhoneNumberUtil::ErrorType PhoneNumberUtil::ParseWithOptions(const absl::string_view number_to_parse,
+                                                             const ParsingOptions& options,
+                                                             PhoneNumber* number) const {
   DCHECK(number);
   return ParseHelper(number_to_parse, options.default_region_,
                      options.keep_raw_input_, /*check_region=*/true, number);

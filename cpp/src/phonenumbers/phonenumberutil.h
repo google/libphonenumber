@@ -32,7 +32,9 @@
 #include "phonenumbers/parsingoptions.h"
 #include "absl/container/node_hash_set.h"
 #include "absl/container/node_hash_map.h"
-#include "third_party/absl/base/macros.h"
+#include "absl/base/macros.h"
+#include "absl/strings/str_cat.h" 
+#include "absl/strings/string_view.h" 
 
 class TelephoneNumber;
 
@@ -706,10 +708,10 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   // from Parse() in that it always populates the raw_input field of the
   // protocol buffer with number_to_parse as well as the country_code_source
   // field.
-  ABSL_DEPRECATE_AND_INLINE()
+  // ABSL_DEPRECATE_AND_INLINE()
   ErrorType ParseAndKeepRawInput(
-      absl::string_view number_to_parse,
-      i18n_identifiers::RegionCode default_region
+      const string& number_to_parse,
+      const string& default_region,
       PhoneNumber* number) const {
     return ParseWithOptions(number_to_parse,
                            ParsingOptions()
@@ -721,7 +723,7 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   // Parses a string and returns it in proto buffer format. This method differs
   // from Parse() in that it allows the caller to change the behavior of the
   // parser. See ParsingOptions for more details.
-  ErrorType ParseWithOptions(absl::string_view number_to_parse,
+  ErrorType ParseWithOptions(const absl::string_view number_to_parse,
                             const ParsingOptions& options,
                             PhoneNumber* number) const;
 
@@ -974,6 +976,12 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
       const string& default_region) const;
 
   ErrorType ParseHelper(const string& number_to_parse,
+                        const string& default_region,
+                        bool keep_raw_input,
+                        bool check_region,
+                        PhoneNumber* phone_number) const;
+
+  ErrorType ParseHelper(const absl::string_view number_to_parse,
                         const string& default_region,
                         bool keep_raw_input,
                         bool check_region,

@@ -74,7 +74,7 @@ TEST_F(AsYouTypeFormatterTest, ConvertUnicodeStringPosition) {
 }
 
 TEST_F(AsYouTypeFormatterTest, Constructor) {
-  formatter_.reset(phone_util_.GetAsYouTypeFormatter(RegionCode::US()));
+  formatter_.reset(phone_util_.GetAsYouTypeFormatter(const RegionCode::US()));
 
   EXPECT_TRUE(GetCurrentMetadata() != NULL);
 }
