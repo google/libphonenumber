@@ -27,19 +27,21 @@
 
 #include <ctype.h>
 #include <stddef.h>
+#include <unicode/uchar.h>
+
 #include <limits>
 #include <map>
 #include <memory>
 #include <string>
 #include <utility>
 #include <vector>
-#include <unicode/uchar.h>
 
 #include "phonenumbers/alternate_format.h"
 #include "phonenumbers/base/logging.h"
 #include "phonenumbers/base/memory/scoped_ptr.h"
 #include "phonenumbers/base/memory/singleton.h"
 #include "phonenumbers/callback.h"
+#include "phonenumbers/constants.h"
 #include "phonenumbers/default_logger.h"
 #include "phonenumbers/encoding_utils.h"
 #include "phonenumbers/normalize_utf8.h"
@@ -283,10 +285,10 @@ class PhoneNumberMatcherRegExps : public Singleton<PhoneNumberMatcherRegExps> {
         digit_block_limit_(PhoneNumberUtil::kMaxLengthForNsn +
                            PhoneNumberUtil::kMaxLengthCountryCode),
         block_limit_(Limit(0, digit_block_limit_)),
-        punctuation_(StrCat("[", PhoneNumberUtil::kValidPunctuation, "]",
+        punctuation_(StrCat("[", Constants::kValidPunctuation, "]",
                             punctuation_limit_)),
         digit_sequence_(StrCat("\\p{Nd}", Limit(1, digit_block_limit_))),
-        lead_class_chars_(StrCat(opening_parens_, PhoneNumberUtil::kPlusChars)),
+        lead_class_chars_(StrCat(opening_parens_, Constants::kPlusChars)),
         lead_class_(StrCat("[", lead_class_chars_, "]")),
         regexp_factory_for_pattern_(new ICURegExpFactory()),
 #ifdef I18N_PHONENUMBERS_USE_RE2
@@ -314,7 +316,7 @@ class PhoneNumberMatcherRegExps : public Singleton<PhoneNumberMatcherRegExps> {
         inner_matches_(new std::vector<const RegExp*>()),
         capture_up_to_second_number_start_pattern_(
             regexp_factory_->CreateRegExp(
-                PhoneNumberUtil::kCaptureUpToSecondNumberStart)),
+                Constants::kCaptureUpToSecondNumberStart)),
         capturing_ascii_digits_pattern_(
             regexp_factory_->CreateRegExp("(\\d+)")),
         lead_class_pattern_(regexp_factory_->CreateRegExp(lead_class_)),
