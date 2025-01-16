@@ -371,14 +371,19 @@ void UnicodeText::push_back(char32 c) {
     if (UniLib::IsInterchangeValid(buf, len)) {
       repr_.append(buf, len);
     } else {
-      LOG(WARNING) << "Unicode value 0x" << hex << c << " is not valid for interchange";
+      std::ostringstream oss;
+      oss << "Unicode value 0x" << std::hex << c << " is not valid for interchange";
+      LOG(WARNING) << oss.str();
       repr_.append(" ", 1);
     }
   } else {
-    LOG(WARNING) << "Illegal Unicode value: 0x" << hex << c;
+    std::ostringstream oss;
+    oss << "Illegal Unicode value: 0x" << std::hex << c;
+    LOG(WARNING) << oss.str();
     repr_.append(" ", 1);
   }
 }
+
 
 int UnicodeText::size() const {
   return CodepointCount(repr_.data_, repr_.size_);
