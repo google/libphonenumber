@@ -128,11 +128,10 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size) {
   phone_util->GetCountryCodeForRegion(region);
   phone_util->IsPossibleNumberForString(number, region);
   phone_util->IsNumberGeographical(phone_number);
-  phone_util->IsNumberGeographical(number_type, country_calling_code);
   i18n::phonenumbers::PhoneNumberUtil::PhoneNumberType number_type = 
       ConsumePhoneNumberType(fuzzed_data);
+  phone_util->IsNumberGeographical(number_type, country_calling_code);
   phone_util->IsPossibleNumberForType(phone_number, number_type);
-
 
   i18n::phonenumbers::PhoneNumber example_number;
   phone_util->GetExampleNumberForType(region, number_type, &example_number);
