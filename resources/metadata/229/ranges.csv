@@ -4,8 +4,7 @@ Prefix      ; Length ; Type                 ; Tariff        ; Operator  ; Format
 014[01347]  ; 10     ; MOBILE               ; STANDARD_RATE ; "sbin"    ; "fmt_2/2/2/2/2" ; "BJ"    ;                                        ;                                         ; ITU
 014[26]     ; 10     ; MOBILE               ; STANDARD_RATE ; "mtn"     ; "fmt_2/2/2/2/2" ; "BJ"    ;                                        ;                                         ; ITU
 0145        ; 10     ; MOBILE               ; STANDARD_RATE ; "moov"    ; "fmt_2/2/2/2/2" ; "BJ"    ;                                        ;                                         ; ITU
-0148        ; 10     ; MOBILE               ; STANDARD_RATE ; "sbin"    ; "fmt_2/2/2/2/2" ; "BJ"    ;                                        ;                                         ; IR21
-0149        ; 10     ; MOBILE               ; STANDARD_RATE ;           ; "fmt_2/2/2/2/2" ; "BJ"    ;                                        ;                                         ; ITU
+014[89]     ; 10     ; MOBILE               ; STANDARD_RATE ; "sbin"    ; "fmt_2/2/2/2/2" ; "BJ"    ;                                        ;                                         ; IR21
 015[0-4679] ; 10     ; MOBILE               ; STANDARD_RATE ; "mtn"     ; "fmt_2/2/2/2/2" ; "BJ"    ;                                        ;                                         ; ITU
 015[58]     ; 10     ; MOBILE               ; STANDARD_RATE ; "moov"    ; "fmt_2/2/2/2/2" ; "BJ"    ;                                        ;                                         ; ITU
 016[03-58]  ; 10     ; MOBILE               ; STANDARD_RATE ; "moov"    ; "fmt_2/2/2/2/2" ; "BJ"    ;                                        ;                                         ; ITU
@@ -62,7 +61,7 @@ Prefix      ; Length ; Type                 ; Tariff        ; Operator  ; Format
 5[1-37-9]   ; 8      ; MOBILE               ; STANDARD_RATE ; "mtn"     ; "fmt1_2/2/2/2"  ; "BJ"
 54          ; 8      ; MOBILE               ; STANDARD_RATE ; "mtn"     ; "fmt1_2/2/2/2"  ; "BJ"    ;                                        ;                                         ;            ; "User report"
 55          ; 8      ; MOBILE               ; STANDARD_RATE ; "moov"    ; "fmt1_2/2/2/2"  ; "BJ"    ;                                        ;                                         ; IR21
-56          ; 8      ; MOBILE               ; STANDARD_RATE ; "moov"    ; "fmt1_2/2/2/2"  ; "BJ"
+56          ; 8      ; MOBILE               ; STANDARD_RATE ; "mtn"     ; "fmt1_2/2/2/2"  ; "BJ"    ;                                        ;                                         ; ITU
 6[03-58]    ; 8      ; MOBILE               ; STANDARD_RATE ; "moov"    ; "fmt1_2/2/2/2"  ; "BJ"    ;                                        ;                                         ; IR21
 6[12679]    ; 8      ; MOBILE               ; STANDARD_RATE ; "mtn"     ; "fmt1_2/2/2/2"  ; "BJ"
 81          ; 8      ; UAN                  ; STANDARD_RATE ;           ; "fmt1_2/2/2/2"  ; "BJ"    ;                                        ;                                         ; ITU
