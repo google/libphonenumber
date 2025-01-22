@@ -10224,9 +10224,9 @@
             )|
             7(?:
               [0167]\d|
-              2[0-4]|
-              5[01]|
-              8[0-3]
+              2[0-467]|
+              5[0-3]|
+              8[0-5]
             )
           )\d{6}
         </nationalNumberPattern>
@@ -14435,7 +14435,7 @@
           7(?:
             38(?:
               0\d|
-              5[0-2569]|
+              5[0-3569]|
               88
             )|
             8(?:
@@ -19940,16 +19940,13 @@
         <possibleLengths national="8"/>
         <exampleNumber>21234567</exampleNumber>
         <nationalNumberPattern>
-          23(?:
-            23[0-57-9]|
-            33[0238]
-          )\d{3}|
+          2333[0-8]\d{3}|
           2(?:
             [0-24-9]\d\d|
             3(?:
               0[07]|
               [14-9]\d|
-              2[024-9]|
+              2[02-9]|
               3[0-24-9]
             )
           )\d{4}
@@ -20120,9 +20117,9 @@
             )|
             7(?:
               [0167]\d|
-              2[0-4]|
-              5[01]|
-              8[0-3]
+              2[0-467]|
+              5[0-3]|
+              8[0-5]
             )
           )\d{6}
         </nationalNumberPattern>
@@ -20708,9 +20705,8 @@
           7(?:
             [0-25-8]\d\d|
             3(?:
-              [1-48]\d|
-              6[01]|
-              7[01578]
+              [1-478]\d|
+              6[01]
             )|
             4(?:
               2\d|
@@ -21226,10 +21222,7 @@
       <voip>
         <possibleLengths national="8"/>
         <exampleNumber>13331234</exampleNumber>
-        <nationalNumberPattern>
-          1333\d{4}|
-          [12]468\d{4}
-        </nationalNumberPattern>
+        <nationalNumberPattern>1333\d{4}</nationalNumberPattern>
       </voip>
     </territory>
 
@@ -21962,7 +21955,8 @@
             4(?:
               [013568]\d|
               2[4-8]|
-              71
+              71|
+              90
             )|
             54(?:
               [3-5]\d|
@@ -25391,7 +25385,10 @@
               46|
               83
             )[0-5]|
-            6[2-4689]0
+            (?:
+              6[2-4689]|
+              78
+            )0
           )\d{4}|
           (?:
             45|
@@ -27563,7 +27560,7 @@
             1|
             28|
             6[0-35-9]|
-            77|
+            7[67]|
             9[2-9]
           </leadingDigits>
           <format>$1 $2</format>
@@ -27614,7 +27611,7 @@
                 3[59]|
                 4[89]|
                 6\d|
-                7[79]|
+                7[679]|
                 8[08]
               )\d|
               9(?:
@@ -28797,7 +28794,7 @@
     <!-- Türkiye (TR) -->
     <!-- http://en.wikipedia.org/wiki/%2B90 -->
     <!-- http://www.itu.int/oth/T02020000D6/en -->
-    <!-- https://eng.btk.gov.tr/en-US/Pages/National-Numbering-Plan -->
+    <!-- https://www.btk.gov.tr/genel-numaralandirma-plani -->
     <!-- https://www.btk.gov.tr/tr-TR/Sayfalar/Isletmecilere-Tahsisli-Numaralar -->
     <territory id="TR" countryCode="90" internationalPrefix="00" nationalPrefix="0"
                mobileNumberPortableRegion="true">

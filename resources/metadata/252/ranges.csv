@@ -31,6 +31,7 @@ Prefix    ; Length ; Type       ; Tariff        ; Operator          ; Format    
 7[02]     ; 8      ; MOBILE     ; STANDARD_RATE ; "golis_telecom"   ; "mobile_1/7"   ; "SO"    ;             ; IR21
 71        ; 8      ; MOBILE     ; STANDARD_RATE ; "amtel"           ; "mobile_1/7"   ; "SO"
 7[3-8]    ; 8      ; MOBILE     ; STANDARD_RATE ;                   ; "mobile_1/7"   ; "SO"
+76        ; 9      ; MOBILE     ; STANDARD_RATE ; "somtel"          ; "mobile_2/5-7" ; "SO"    ;             ; IR21
 77        ; 9      ; MOBILE     ; STANDARD_RATE ;                   ; "mobile_2/5-7" ; "SO"
 79        ; 8      ; MOBILE     ; STANDARD_RATE ; "somtel"          ; "mobile_1/7"   ; "SO"    ;             ;            ; "Added per client's request."
 79        ; 9      ; MOBILE     ; STANDARD_RATE ; "somtel"          ; "mobile_3/3/3" ; "SO"

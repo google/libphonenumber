@@ -1,12 +1,13 @@
 Prefix        ; Length ; Type       ; Tariff        ; Operator   ; Format       ; Regions ; Provenance ; Comment
 20[03-5]      ; 8      ; MOBILE     ; STANDARD_RATE ; "tele2"    ; "fmt1_2/3/3" ; "LV"    ; IR21       ; "IR dated 12/19/2018"
 201[0-79]     ; 8      ; MOBILE     ; STANDARD_RATE ; "bite"     ; "fmt1_2/3/3" ; "LV"    ; IR21       ; "IR dated 2/8/2019"
-2018          ; 8      ; MOBILE     ; STANDARD_RATE ;            ; "fmt1_2/3/3" ; "LV"    ; ITU        ; "Fillup to support master range"
+2018          ; 8      ; MOBILE     ; STANDARD_RATE ; "tele2"    ; "fmt1_2/3/3" ; "LV"    ; GOVERNMENT
 202           ; 8      ; MOBILE     ; STANDARD_RATE ; "lmt"      ; "fmt1_2/3/3" ; "LV"    ; IR21       ; "IR dated 2/6/2019"
 20[67]        ; 8      ; MOBILE     ; STANDARD_RATE ; "bite"     ; "fmt1_2/3/3" ; "LV"    ; IR21       ; "IR dated 2/8/2019"
 208[0-8]      ; 8      ; MOBILE     ; STANDARD_RATE ; "bite"     ; "fmt1_2/3/3" ; "LV"    ; IR21       ; "IR dated 2/8/2019"
-2089          ; 8      ; MOBILE     ; STANDARD_RATE ;            ; "fmt1_2/3/3" ; "LV"    ; ITU        ; "Fillup to support master range"
-209[0-35-9]   ; 8      ; MOBILE     ; STANDARD_RATE ;            ; "fmt1_2/3/3" ; "LV"    ; ITU        ; "Fillup to support master range"
+2089          ; 8      ; MOBILE     ; STANDARD_RATE ; "tele2"    ; "fmt1_2/3/3" ; "LV"    ; GOVERNMENT
+209[089]      ; 8      ; MOBILE     ; STANDARD_RATE ;            ; "fmt1_2/3/3" ; "LV"    ; ITU        ; "Fillup to support master range"
+209[1-35-7]   ; 8      ; MOBILE     ; STANDARD_RATE ; "tele2"    ; "fmt1_2/3/3" ; "LV"    ; GOVERNMENT
 2094          ; 8      ; MOBILE     ; STANDARD_RATE ; "triatel"  ; "fmt1_2/3/3" ; "LV"    ; GOVERNMENT ; "Regulator Allocated Numbering File (3/2019)"
 21            ; 8      ; MOBILE     ; STANDARD_RATE ; "bite"     ; "fmt1_2/3/3" ; "LV"    ; IR21       ; "IR dated 2/8/2019"
 220[0-4]      ; 8      ; MOBILE     ; STANDARD_RATE ; "lmt"      ; "fmt1_2/3/3" ; "LV"    ; IR21       ; "IR dated 2/6/2019"
@@ -34,11 +35,12 @@ Prefix        ; Length ; Type       ; Tariff        ; Operator   ; Format       
 231[17]       ; 8      ; MOBILE     ; STANDARD_RATE ; "bite"     ; "fmt1_2/3/3" ; "LV"    ; IR21       ; "IR dated 2/8/2019"
 231[2-689]    ; 8      ; MOBILE     ; STANDARD_RATE ;            ; "fmt1_2/3/3" ; "LV"    ; ITU        ; "Fillup to support master range"
 232[027]      ; 8      ; MOBILE     ; STANDARD_RATE ; "bite"     ; "fmt1_2/3/3" ; "LV"    ; IR21       ; "IR dated 2/8/2019"
-23[23]3[0238] ; 8      ; MOBILE     ; STANDARD_RATE ; "tele2"    ; "fmt1_2/3/3" ; "LV"    ; IR21       ; "IR dated 12/19/2018"
-2323[14579]   ; 8      ; MOBILE     ; STANDARD_RATE ;            ; "fmt1_2/3/3" ; "LV"    ; ITU        ; "Fillup to support master range"
+2323          ; 8      ; MOBILE     ; STANDARD_RATE ; "tele2"    ; "fmt1_2/3/3" ; "LV"    ; GOVERNMENT
 232[4-69]     ; 8      ; MOBILE     ; STANDARD_RATE ;            ; "fmt1_2/3/3" ; "LV"    ; ITU        ; "Fillup to support master range"
 2328          ; 8      ; MOBILE     ; STANDARD_RATE ; "lmt"      ; "fmt1_2/3/3" ; "LV"    ; IR21       ; "IR dated 2/6/2019"
 233[124-689]  ; 8      ; MOBILE     ; STANDARD_RATE ;            ; "fmt1_2/3/3" ; "LV"    ; ITU        ; "Fillup to support master range"
+2333[0238]    ; 8      ; MOBILE     ; STANDARD_RATE ; "tele2"    ; "fmt1_2/3/3" ; "LV"    ; IR21       ; "IR dated 12/19/2018"
+2333[14-7]    ; 8      ; MOBILE     ; STANDARD_RATE ; "tele2"    ; "fmt1_2/3/3" ; "LV"    ; GOVERNMENT
 23400         ; 8      ; MOBILE     ; STANDARD_RATE ; "bite"     ; "fmt1_2/3/3" ; "LV"    ; IR21       ; "IR dated 2/8/2019"
 2340[13-9]    ; 8      ; MOBILE     ; STANDARD_RATE ;            ; "fmt1_2/3/3" ; "LV"    ; ITU        ; "Fillup to support master range"
 23402         ; 8      ; MOBILE     ; STANDARD_RATE ; "tele2"    ; "fmt1_2/3/3" ; "LV"    ; IR21       ; "IR dated 12/19/2018"
