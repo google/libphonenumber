@@ -2968,14 +2968,6 @@ TEST_F(PhoneNumberUtilTest, NormaliseOtherDigits) {
       << "Conversion did not correctly replace non-latin digits";
 }
 
-TEST_F(PhoneNumberUtilTest, NormaliseStripAlphaCharacters) {
-  string input_number("034-56&+a#234");
-  phone_util_.NormalizeDigitsOnly(&input_number);
-  static const string kExpectedOutput("03456234");
-  EXPECT_EQ(kExpectedOutput, input_number)
-      << "Conversion did not correctly remove alpha characters";
-}
-
 TEST_F(PhoneNumberUtilTest, NormaliseStripNonDiallableCharacters) {
   string input_number("03*4-56&+1a#234");
   phone_util_.NormalizeDiallableCharsOnly(&input_number);

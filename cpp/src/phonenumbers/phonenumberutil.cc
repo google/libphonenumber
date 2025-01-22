@@ -22,6 +22,7 @@
 #include <cstring>
 #include <iterator>
 #include <map>
+#include <optional>
 #include <utility>
 #include <vector>
 
@@ -33,10 +34,10 @@
 #include "phonenumbers/default_logger.h"
 #include "phonenumbers/matcher_api.h"
 #include "phonenumbers/metadata.h"
-#include "phonenumbers/normalize_utf8.h"
 #include "phonenumbers/phonemetadata.pb.h"
 #include "phonenumbers/phonenumber.h"
 #include "phonenumbers/phonenumber.pb.h"
+#include "phonenumbers/phonenumbernormalizer.h"
 #include "phonenumbers/regex_based_matcher.h"
 #include "phonenumbers/regexp_adapter.h"
 #include "phonenumbers/regexp_cache.h"
@@ -56,7 +57,6 @@ using gtl::OrderByFirst;
 
 // static constants
 const size_t PhoneNumberUtil::kMaxLengthForNsn;
-const size_t PhoneNumberUtil::kMaxLengthCountryCode;
 const int PhoneNumberUtil::kNanpaCountryCode;
 
 // static
@@ -65,7 +65,6 @@ const char PhoneNumberUtil::kRegionCodeForNonGeoEntity[] = "001";
 namespace {
 
 const char kRfc3966Prefix[] = "tel:";
-const char kRfc3966PhoneContext[] = ";phone-context=";
 const char kRfc3966IsdnSubaddress[] = ";isub=";
 
 // Default extension prefix to use when formatting. This will be put in front of
@@ -346,7 +345,8 @@ PhoneNumberUtil::PhoneNumberUtil()
       nanpa_regions_(new absl::node_hash_set<string>()),
       region_to_metadata_map_(new absl::node_hash_map<string, PhoneMetadata>()),
       country_code_to_non_geographical_metadata_map_(
-          new absl::node_hash_map<int, PhoneMetadata>) {
+          new absl::node_hash_map<int, PhoneMetadata>),
+      phone_number_normalizer_(new PhoneNumberNormalizer(reg_exps_)) {
   Logger::set_logger_impl(logger_.get());
   // TODO: Update the java version to put the contents of the init
   // method inside the constructor as well to keep both in sync.
@@ -392,6 +392,19 @@ PhoneNumberUtil::PhoneNumberUtil()
     if (country_calling_code == kNanpaCountryCode) {
         nanpa_regions_->insert(region_code);
     }
+
+    // Create a vector of country calling codes to be used by the phone context
+    // parser.
+    auto country_calling_codes_ = std::make_unique<std::vector<int>>();
+    for (std::vector<IntRegionsPair>::const_iterator it =
+             country_calling_code_to_region_code_map_->begin();
+         it != country_calling_code_to_region_code_map_->end(); ++it) {
+      country_calling_codes_->push_back(it->first);
+    }
+
+    phone_context_parser_ = std::unique_ptr<PhoneContextParser>(
+        new PhoneContextParser(std::move(country_calling_codes_), reg_exps_,
+                               phone_number_normalizer_));
   }
 
   country_calling_code_to_region_code_map_->insert(
@@ -1049,7 +1062,7 @@ void PhoneNumberUtil::FormatInOriginalFormat(const PhoneNumber& number,
           break;
         }
         candidate_national_prefix_rule.erase(index_of_first_group);
-        NormalizeDigitsOnly(&candidate_national_prefix_rule);
+        phone_number_normalizer_->NormalizeDigitsOnly(&candidate_national_prefix_rule);
       }
       if (candidate_national_prefix_rule.empty()) {
         // National prefix not used when formatting this number.
@@ -1085,7 +1098,7 @@ bool PhoneNumberUtil::RawInputContainsNationalPrefix(
     const string& national_prefix,
     const string& region_code) const {
   string normalized_national_number(raw_input);
-  NormalizeDigitsOnly(&normalized_national_number);
+  phone_number_normalizer_->NormalizeDigitsOnly(&normalized_national_number);
   if (HasPrefixString(normalized_national_number, national_prefix)) {
     // Some Japanese numbers (e.g. 00777123) might be mistaken to contain
     // the national prefix when written without it (e.g. 0777123) if we just
@@ -1671,78 +1684,29 @@ bool PhoneNumberUtil::CheckRegionForParsing(
   return true;
 }
 
-// Extracts the value of the phone-context parameter of number_to_extract_from
-// where the index of ";phone-context=" is parameter index_of_phone_context,
-// following the syntax defined in RFC3966.
-// Returns the extracted string_view (possibly empty), or a nullopt if no
-// phone-context parameter is found.
-absl::optional<string> PhoneNumberUtil::ExtractPhoneContext(
-    const string& number_to_extract_from,
-    const size_t index_of_phone_context) const {
-  // If no phone-context parameter is present
-  if (index_of_phone_context == std::string::npos) {
-    return absl::nullopt;
-  }
-
-  size_t phone_context_start =
-      index_of_phone_context + strlen(kRfc3966PhoneContext);
-  // If phone-context parameter is empty
-  if (phone_context_start >= number_to_extract_from.length()) {
-    return "";
-  }
-
-  size_t phone_context_end =
-      number_to_extract_from.find(';', phone_context_start);
-  // If phone-context is not the last parameter
-  if (phone_context_end != std::string::npos) {
-    return number_to_extract_from.substr(
-        phone_context_start, phone_context_end - phone_context_start);
-  } else {
-    return number_to_extract_from.substr(phone_context_start);
-  }
-}
-
-// Returns whether the value of phoneContext follows the syntax defined in
-// RFC3966.
-bool PhoneNumberUtil::IsPhoneContextValid(
-    const absl::optional<string> phone_context) const {
-  if (!phone_context.has_value()) {
-    return true;
-  }
-  if (phone_context.value().empty()) {
-    return false;
-  }
-
-  // Does phone-context value match pattern of global-number-digits or
-  // domainname
-  return reg_exps_->rfc3966_global_number_digits_pattern_->FullMatch(
-      std::string{phone_context.value()}) ||
-      reg_exps_->rfc3966_domainname_pattern_->FullMatch(
-          std::string{phone_context.value()});
-}
-
 // Converts number_to_parse to a form that we can parse and write it to
-// national_number if it is written in RFC3966; otherwise extract a possible
-// number out of it and write to national_number.
+// output_number if it is written in RFC3966; otherwise extract a possible
+// number out of it and write to output_number.
 PhoneNumberUtil::ErrorType PhoneNumberUtil::BuildNationalNumberForParsing(
-    const string& number_to_parse, string* national_number) const {
-  size_t index_of_phone_context = number_to_parse.find(kRfc3966PhoneContext);
+    const string& number_to_parse, string* output_number) const {
+  size_t index_of_phone_context = number_to_parse.find(Constants::kRfc3966PhoneContext);
 
-  absl::optional<string> phone_context =
-      ExtractPhoneContext(number_to_parse, index_of_phone_context);
-  if (!IsPhoneContextValid(phone_context)) {
+  absl::StatusOr<std::optional<PhoneContextParser::PhoneContext>>
+      phone_context = phone_context_parser_->Parse(number_to_parse);
+
+  if (!phone_context.ok()) {
     VLOG(2) << "The phone-context value is invalid.";
     return NOT_A_NUMBER;
   }
 
-  if (phone_context.has_value()) {
+  if (phone_context->has_value()) {
     // If the phone context contains a phone number prefix, we need to capture
     // it, whereas domains will be ignored.
-    if (phone_context.value().at(0) == Constants::kPlusSign[0]) {
+    if (phone_context->value().raw_context.at(0) == Constants::kPlusSign[0]) {
       // Additional parameters might follow the phone context. If so, we will
       // remove them here because the parameters after phone context are not
       // important for parsing the phone number.
-      StrAppend(national_number, phone_context.value());
+      StrAppend(output_number, phone_context->value().raw_context);
     }
 
     // Now append everything between the "tel:" prefix and the phone-context.
@@ -1751,25 +1715,25 @@ PhoneNumberUtil::ErrorType PhoneNumberUtil::BuildNationalNumberForParsing(
     // missing, as we have seen in some of the phone number inputs. In that
     // case, we append everything from the beginning.
     size_t index_of_rfc_prefix = number_to_parse.find(kRfc3966Prefix);
-    int index_of_national_number = (index_of_rfc_prefix != string::npos) ?
+    int index_of_number = (index_of_rfc_prefix != string::npos) ?
         static_cast<int>(index_of_rfc_prefix + strlen(kRfc3966Prefix)) : 0;
     StrAppend(
-        national_number,
+        output_number,
         number_to_parse.substr(
-            index_of_national_number,
-            index_of_phone_context - index_of_national_number));
+            index_of_number,
+            index_of_phone_context - index_of_number));
   } else {
     // Extract a possible number from the string passed in (this strips leading
     // characters that could not be the start of a phone number.)
-    ExtractPossibleNumber(number_to_parse, national_number);
+    ExtractPossibleNumber(number_to_parse, output_number);
   }
 
   // Delete the isdn-subaddress and everything after it if it is present. Note
   // extension won't appear at the same time with isdn-subaddress according to
   // paragraph 5.3 of the RFC3966 spec.
-  size_t index_of_isdn = national_number->find(kRfc3966IsdnSubaddress);
+  size_t index_of_isdn = output_number->find(kRfc3966IsdnSubaddress);
   if (index_of_isdn != string::npos) {
-    national_number->erase(index_of_isdn);
+    output_number->erase(index_of_isdn);
   }
   // If both phone context and isdn-subaddress are absent but other parameters
   // are present, the parameters are left in nationalNumber. This is because
@@ -2285,13 +2249,7 @@ void PhoneNumberUtil::GetCountryMobileToken(int country_calling_code,
 }
 
 void PhoneNumberUtil::NormalizeDigitsOnly(string* number) const {
-  DCHECK(number);
-  const RegExp& non_digits_pattern = reg_exps_->regexp_cache_->GetRegExp(
-      StrCat("[^", Constants::kDigits, "]"));
-  // Delete everything that isn't valid digits.
-  non_digits_pattern.GlobalReplace(number, "");
-  // Normalize all decimal digits to ASCII digits.
-  number->assign(NormalizeUTF8::NormalizeDecimalDigits(*number));
+  phone_number_normalizer_->NormalizeDigitsOnly(number);
 }
 
 void PhoneNumberUtil::NormalizeDiallableCharsOnly(string* number) const {
@@ -2334,7 +2292,7 @@ void PhoneNumberUtil::Normalize(string* number) const {
   if (reg_exps_->valid_alpha_phone_pattern_->PartialMatch(*number)) {
     NormalizeHelper(reg_exps_->alpha_phone_mappings_, true, number);
   }
-  NormalizeDigitsOnly(number);
+  phone_number_normalizer_->NormalizeDigitsOnly(number);
 }
 
 // Checks to see if the string of characters could possibly be a phone number at
@@ -2365,7 +2323,7 @@ bool PhoneNumberUtil::ParsePrefixAsIdd(const RegExp& idd_pattern,
     string extracted_digit;
     if (reg_exps_->capturing_digit_pattern_->PartialMatch(
             number_copy->ToString(), &extracted_digit)) {
-      NormalizeDigitsOnly(&extracted_digit);
+      phone_number_normalizer_->NormalizeDigitsOnly(&extracted_digit);
       if (extracted_digit == "0") {
         return false;
       }
@@ -2553,7 +2511,7 @@ int PhoneNumberUtil::ExtractCountryCode(string* national_number) const {
     // Country codes do not begin with a '0'.
     return 0;
   }
-  for (size_t i = 1; i <= kMaxLengthCountryCode; ++i) {
+  for (size_t i = 1; i <= Constants::kMaxLengthCountryCode; ++i) {
     safe_strto32(national_number->substr(0, i), &potential_country_code);
     string region_code;
     GetRegionCodeForCountryCode(potential_country_code, &region_code);

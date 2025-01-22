@@ -30,7 +30,11 @@ namespace i18n {
 namespace phonenumbers {
 
 class PhoneNumberRegExpsAndMappings {
+  friend class PhoneContextParser;
+  friend class PhoneNumberNormalizer;
   friend class PhoneNumberUtil;
+  friend class PhoneContextParserTest;
+  friend class PhoneNumberNormalizerTest;
 
  private:
   void InitializeMapsAndSets();
