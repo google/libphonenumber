@@ -79,43 +79,6 @@ bool IsInvalidPunctuationSymbol(char32 character) {
   return character == '%' || u_charType(character) == U_CURRENCY_SYMBOL;
 }
 
-bool ContainsOnlyValidXChars(const PhoneNumber& number, const string& candidate,
-                             const PhoneNumberUtil& util) {
-  // The characters 'x' and 'X' can be (1) a carrier code, in which case they
-  // always precede the national significant number or (2) an extension sign,
-  // in which case they always precede the extension number. We assume a
-  // carrier code is more than 1 digit, so the first case has to have more than
-  // 1 consecutive 'x' or 'X', whereas the second case can only have exactly 1
-  // 'x' or 'X'.
-  size_t found;
-  found = candidate.find_first_of("xX");
-  // We ignore the character if 'x' or 'X' appears as the last character of
-  // the string.
-  while (found != string::npos && found < candidate.length() - 1) {
-    // We only look for 'x' or 'X' in ASCII form.
-    char next_char = candidate[found + 1];
-    if (next_char == 'x' || next_char == 'X') {
-      // This is the carrier code case, in which the 'X's always precede the
-      // national significant number.
-      ++found;
-      if (util.IsNumberMatchWithOneString(
-              number, candidate.substr(found, candidate.length() - found))
-          != PhoneNumberUtil::NSN_MATCH) {
-        return false;
-      }
-    } else {
-      string normalized_extension(candidate.substr(found,
-                                                   candidate.length() - found));
-      util.NormalizeDigitsOnly(&normalized_extension);
-      if (normalized_extension != number.extension()) {
-        return false;
-      }
-    }
-    found = candidate.find_first_of("xX", found + 1);
-  }
-  return true;
-}
-
 bool AllNumberGroupsRemainGrouped(
     const PhoneNumberUtil& util,
     const PhoneNumber& number,
@@ -283,7 +246,7 @@ class PhoneNumberMatcherRegExps : public Singleton<PhoneNumberMatcherRegExps> {
         lead_limit_(Limit(0, 2)),
         punctuation_limit_(Limit(0, 4)),
         digit_block_limit_(PhoneNumberUtil::kMaxLengthForNsn +
-                           PhoneNumberUtil::kMaxLengthCountryCode),
+                           Constants::kMaxLengthCountryCode),
         block_limit_(Limit(0, digit_block_limit_)),
         punctuation_(StrCat("[", Constants::kValidPunctuation, "]",
                             punctuation_limit_)),
@@ -393,6 +356,46 @@ class AlternateFormats : public Singleton<AlternateFormats> {
 
  private:
   DISALLOW_COPY_AND_ASSIGN(AlternateFormats);
+};
+
+class XCharValidator {
+ public:
+  static bool ContainsOnlyValidXChars(const PhoneNumber& number, const string& candidate,
+                              const PhoneNumberUtil& util) {
+    // The characters 'x' and 'X' can be (1) a carrier code, in which case they
+    // always precede the national significant number or (2) an extension sign,
+    // in which case they always precede the extension number. We assume a
+    // carrier code is more than 1 digit, so the first case has to have more than
+    // 1 consecutive 'x' or 'X', whereas the second case can only have exactly 1
+    // 'x' or 'X'.
+    size_t found;
+    found = candidate.find_first_of("xX");
+    // We ignore the character if 'x' or 'X' appears as the last character of
+    // the string.
+    while (found != string::npos && found < candidate.length() - 1) {
+      // We only look for 'x' or 'X' in ASCII form.
+      char next_char = candidate[found + 1];
+      if (next_char == 'x' || next_char == 'X') {
+        // This is the carrier code case, in which the 'X's always precede the
+        // national significant number.
+        ++found;
+        if (util.IsNumberMatchWithOneString(
+                number, candidate.substr(found, candidate.length() - found))
+            != PhoneNumberUtil::NSN_MATCH) {
+          return false;
+        }
+      } else {
+        string normalized_extension(candidate.substr(found,
+                                                    candidate.length() - found));
+        util.phone_number_normalizer_->NormalizeDigitsOnly(&normalized_extension);
+        if (normalized_extension != number.extension()) {
+          return false;
+        }
+      }
+      found = candidate.find_first_of("xX", found + 1);
+    }
+    return true;
+  }
 };
 
 PhoneNumberMatcher::PhoneNumberMatcher(const PhoneNumberUtil& util,
@@ -531,13 +534,13 @@ bool PhoneNumberMatcher::VerifyAccordingToLeniency(
       return phone_util_.IsPossibleNumber(number);
     case PhoneNumberMatcher::VALID:
       if (!phone_util_.IsValidNumber(number) ||
-          !ContainsOnlyValidXChars(number, candidate, phone_util_)) {
+          !XCharValidator::ContainsOnlyValidXChars(number, candidate, phone_util_)) {
         return false;
       }
       return IsNationalPrefixPresentIfRequired(number);
     case PhoneNumberMatcher::STRICT_GROUPING: {
       if (!phone_util_.IsValidNumber(number) ||
-          !ContainsOnlyValidXChars(number, candidate, phone_util_) ||
+          !XCharValidator::ContainsOnlyValidXChars(number, candidate, phone_util_) ||
           ContainsMoreThanOneSlashInNationalNumber(
               number, candidate, phone_util_) ||
           !IsNationalPrefixPresentIfRequired(number)) {
@@ -552,7 +555,7 @@ bool PhoneNumberMatcher::VerifyAccordingToLeniency(
     }
     case PhoneNumberMatcher::EXACT_GROUPING: {
       if (!phone_util_.IsValidNumber(number) ||
-          !ContainsOnlyValidXChars(number, candidate, phone_util_) ||
+          !XCharValidator::ContainsOnlyValidXChars(number, candidate, phone_util_) ||
           ContainsMoreThanOneSlashInNationalNumber(
               number, candidate, phone_util_) ||
           !IsNationalPrefixPresentIfRequired(number)) {
@@ -815,7 +818,7 @@ bool PhoneNumberMatcher::IsNationalPrefixPresentIfRequired(
     string raw_input_copy(number.raw_input());
     // Check if we found a national prefix and/or carrier code at the start of
     // the raw input, and return the result.
-    phone_util_.NormalizeDigitsOnly(&raw_input_copy);
+    phone_util_.phone_number_normalizer_->NormalizeDigitsOnly(&raw_input_copy);
     return phone_util_.MaybeStripNationalPrefixAndCarrierCode(
         *metadata,
         &raw_input_copy,
@@ -898,7 +901,7 @@ bool PhoneNumberMatcher::ContainsMoreThanOneSlashInNationalNumber(
           PhoneNumber::FROM_NUMBER_WITHOUT_PLUS_SIGN) {
     string normalized_country_code =
         candidate.substr(0, first_slash_in_body);
-    util.NormalizeDigitsOnly(&normalized_country_code);
+    util.phone_number_normalizer_->NormalizeDigitsOnly(&normalized_country_code);
     if (normalized_country_code == SimpleItoa(number.country_code())) {
       // Any more slashes and this is illegal.
       return candidate.find('/', second_slash_in_body + 1) != string::npos;

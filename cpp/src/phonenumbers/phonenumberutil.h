@@ -29,7 +29,9 @@
 #include "phonenumbers/base/basictypes.h"
 #include "phonenumbers/base/memory/scoped_ptr.h"
 #include "phonenumbers/base/memory/singleton.h"
+#include "phonenumbers/phonecontextparser.h"
 #include "phonenumbers/phonenumber.pb.h"
+#include "phonenumbers/phonenumbernormalizer.h"
 #include "phonenumbers/regexpsandmappings.h"
 
 class TelephoneNumber;
@@ -64,6 +66,7 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   friend class ShortNumberInfo;
   friend class ShortNumberInfoTest;
   friend class Singleton<PhoneNumberUtil>;
+  friend class XCharValidator;
 
  public:
   // This type is neither copyable nor movable.
@@ -789,8 +792,6 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   // The ITU says the maximum length should be 15, but we have found longer
   // numbers in Germany.
   static const size_t kMaxLengthForNsn = 17;
-  // The maximum length of the country calling code.
-  static const size_t kMaxLengthCountryCode = 3;
 
   // Regular expression of characters typically used to start a second phone
   // number for the purposes of parsing. This allows us to strip off parts of
@@ -806,7 +807,7 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   scoped_ptr<MatcherApi> matcher_api_;
 
   // Helper class holding useful regular expressions and character mappings.
-  scoped_ptr<PhoneNumberRegExpsAndMappings> reg_exps_;
+  std::shared_ptr<PhoneNumberRegExpsAndMappings> reg_exps_;
 
   // A mapping from a country calling code to a RegionCode object which denotes
   // the region represented by that country calling code. Note regions under
@@ -830,6 +831,12 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   // (International Shared Cost Service).
   scoped_ptr<absl::node_hash_map<int, PhoneMetadata> >
       country_code_to_non_geographical_metadata_map_;
+
+  // An instance of PhoneContextParser.
+  std::unique_ptr<PhoneContextParser> phone_context_parser_;
+
+  // An instance of PhoneNumberNormalizer.
+  std::shared_ptr<PhoneNumberNormalizer> phone_number_normalizer_;
 
   PhoneNumberUtil();
 
@@ -968,14 +975,8 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
                         bool check_region,
                         PhoneNumber* phone_number) const;
 
-  absl::optional<string> ExtractPhoneContext(
-      const string& number_to_extract_from,
-      size_t index_of_phone_context) const;
-
-  bool IsPhoneContextValid(absl::optional<string> phone_context) const;
-
   ErrorType BuildNationalNumberForParsing(const string& number_to_parse,
-                                          string* national_number) const;
+                                          string* output_number) const;
 
   bool IsShorterThanPossibleNormalNumber(const PhoneMetadata* country_metadata,
                                          const string& number) const;

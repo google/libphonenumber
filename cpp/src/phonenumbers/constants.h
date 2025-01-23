@@ -21,7 +21,9 @@ namespace i18n {
 namespace phonenumbers {
 
 class Constants {
+  friend class PhoneContextParser;
   friend class PhoneNumberMatcherRegExps;
+  friend class PhoneNumberNormalizer;
   friend class PhoneNumberRegExpsAndMappings;
   friend class PhoneNumberUtil;
 
@@ -33,6 +35,7 @@ class Constants {
 
   static constexpr char kRfc3966ExtnPrefix[] = ";ext=";
   static constexpr char kRfc3966VisualSeparator[] = "[\\-\\.\\(\\)]?";
+  static constexpr char kRfc3966PhoneContext[] = ";phone-context=";
 
   static constexpr char kDigits[] = "\\p{Nd}";
 
@@ -53,6 +56,8 @@ class Constants {
 
   // The minimum and maximum length of the national significant number.
   static constexpr size_t kMinLengthForNsn = 2;
+  // The maximum length of the country calling code.
+  static constexpr size_t kMaxLengthCountryCode = 3;
 
   static constexpr char kPlusChars[] = "+\xEF\xBC\x8B"; /* "+＋" */
 

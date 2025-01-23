@@ -711,7 +711,7 @@ char AsYouTypeFormatter::NormalizeAndAccrueDigitsAndPlusSign(
   } else {
     string number;
     UnicodeString(next_char).toUTF8String(number);
-    phone_util_.NormalizeDigitsOnly(&number);
+    phone_util_.phone_number_normalizer_->NormalizeDigitsOnly(&number);
     accrued_input_without_formatting_.append(next_char);
     national_number_.append(number);
     normalized_char = number[0];
