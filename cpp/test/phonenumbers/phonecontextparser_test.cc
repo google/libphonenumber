@@ -31,8 +31,7 @@ class PhoneContextParserTest : public testing::Test {
 
  protected:
   PhoneContextParserTest()
-      : country_calling_codes_(
-            std::make_unique<std::vector<int>>(std::vector<int>{64})),
+      : country_calling_codes_(new std::vector<int>{64}),
         reg_exps_(new PhoneNumberRegExpsAndMappings()),
         normalizer_(new PhoneNumberNormalizer(reg_exps_)),
         context_parser_(new PhoneContextParser(
