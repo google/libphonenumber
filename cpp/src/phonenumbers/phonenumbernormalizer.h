@@ -23,6 +23,7 @@
 namespace i18n {
 namespace phonenumbers {
 
+// Util class to normalize phone numbers.
 class PhoneNumberNormalizer {
   friend class AsYouTypeFormatter;
   friend class PhoneContextParser;

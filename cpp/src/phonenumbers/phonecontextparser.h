@@ -27,6 +27,7 @@
 namespace i18n {
 namespace phonenumbers {
 
+// Parses the phone-context parameter of a phone number in RFC3966 format.
 class PhoneContextParser {
   friend class PhoneNumberUtil;
   friend class PhoneContextParserTest;
@@ -45,6 +46,13 @@ class PhoneContextParser {
                      std::shared_ptr<PhoneNumberRegExpsAndMappings> reg_exps,
                      std::shared_ptr<PhoneNumberNormalizer> normalizer);
 
+  // Parses the phone-context parameter of a phone number in RFC3966 format.
+  // If the phone-context parameter is not present, returns std::nullopt. If it
+  // is present but invalid, returns an error status. If it is present and
+  // valid, returns a PhoneContext object. This object contains the raw value of
+  // the phone-context parameter. Additionally, if the phone-context is exactly
+  // and only a + followed by a valid country code, it also contains the country
+  // code.
   absl::StatusOr<std::optional<PhoneContextParser::PhoneContext>> Parse(
       absl::string_view phone_number);
 
