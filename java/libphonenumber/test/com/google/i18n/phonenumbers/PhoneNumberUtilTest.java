@@ -2954,6 +2954,9 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
     assertThrowsForInvalidPhoneContext("tel:033316005;phone-context=3phone");
     assertThrowsForInvalidPhoneContext("tel:033316005;phone-context=a-.nz");
     assertThrowsForInvalidPhoneContext("tel:033316005;phone-context=a{b}c");
+
+    // The phone-context parameter comes before the phone number.
+    assertThrowsForInvalidPhoneContext(";phone-context=+64;tel:03-331-6005");
   }
 
   private void assertThrowsForInvalidPhoneContext(String numberToParse) {

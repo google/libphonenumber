@@ -3232,9 +3232,8 @@ public class PhoneNumberUtil {
     int numberEnd = numberToParse.indexOf(";", numberStart);
 
     if (numberEnd < 0) {
-      // If there is no semicolon, we assume the rest of the string is the national number.
-      // This should not happen, since we expect to find a semicolon if there is a phone-context.
-      numberEnd = numberToParse.length();
+      throw new NumberParseException(NumberParseException.ErrorType.NOT_A_NUMBER,
+          "The string supplied did not seem to be a phone number.");
     }
 
     String numberPart = numberToParse.substring(numberStart, numberEnd);
