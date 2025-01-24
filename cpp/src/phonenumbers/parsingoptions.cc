@@ -1,12 +1,10 @@
-#include "i18n/phonenumbers/parsingoptions.h"
-
-#include "phonenumbers/region_code.h"
+#include "phonenumbers/parsingoptions.h"
 
 namespace i18n {
 namespace phonenumbers {
 
 ParsingOptions& ParsingOptions::SetDefaultRegion(
-    const string& default_region) {
+    const std::string& default_region) {
   default_region_ = default_region;
   return *this;
 }

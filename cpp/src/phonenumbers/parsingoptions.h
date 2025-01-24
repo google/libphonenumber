@@ -1,7 +1,7 @@
 #ifndef I18N_PHONENUMBERS_PARSINGOPTIONS_H_
 #define I18N_PHONENUMBERS_PARSINGOPTIONS_H_
 
-#include "phonenumbers/test_util.h"
+#include <string>
 
 namespace i18n {
 namespace phonenumbers {
@@ -12,11 +12,11 @@ namespace phonenumbers {
 //   ParsingOptions().SetDefaultRegion(RegionCode::US()).SetKeepRawInput(true);
 class ParsingOptions {
  public:
-  ParsingOptions() = default;
+  ParsingOptions() : default_region_("ZZ"), keep_raw_input_(false) {};
 
   // Set the value for default_region_.
   ParsingOptions& SetDefaultRegion(
-      const string& default_region);
+      const std::string& default_region);
 
   // Set the value for keep_raw_input_.
   ParsingOptions& SetKeepRawInput(bool keep_raw_input);
@@ -29,11 +29,11 @@ class ParsingOptions {
   // format, the country_code will be set to the one of this default region. If
   // the number is guaranteed to start with a '+' followed by the country
   // calling code, then RegionCode.ZZ or null can be supplied.
-  const string& default_region_ = RegionCode::ZZ();
+  std::string default_region_;
 
   // Whether the raw input should be kept in the PhoneNumber object. If true,
   // the raw_input field and country_code_source fields will be populated.
-  bool keep_raw_input_ = false;
+  bool keep_raw_input_;
 };
 
 }  // namespace phonenumbers
