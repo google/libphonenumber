@@ -129,7 +129,7 @@ final class PhoneContextParser {
   /** Represents the parsed phone-context parameter of an RFC3966 tel-URI. */
   static class PhoneContext {
     /** The raw value of the phone-context parameter. */
-    private String rawContext_ = null;
+    private String rawContext = null;
 
     /**
      * The country code of the phone-context parameter if the phone-context parameter is exactly
@@ -139,27 +139,27 @@ final class PhoneContextParser {
      * For example, if the phone-context parameter is "+1", the country code is 1. If the
      * phone-context parameter is "+123", the country code is null.
      */
-    private Integer countryCode_ = null;
+    private Integer countryCode = null;
 
-    /** Get the value for {@link #rawContext_} */
+    /** Get the value for {@link #rawContext} */
     String getRawContext() {
-      return rawContext_;
+      return rawContext;
     }
 
-    /** Set the value for {@link #rawContext_} */
+    /** Set the value for {@link #rawContext} */
     PhoneContext setRawContext(String value) {
-      rawContext_ = value;
+      rawContext = value;
       return this;
     }
 
-    /** Get the value for {@link #countryCode_} */
+    /** Get the value for {@link #countryCode} */
     Integer getCountryCode() {
-      return countryCode_;
+      return countryCode;
     }
 
-    /** Set the value for {@link #countryCode_} */
+    /** Set the value for {@link #countryCode} */
     PhoneContext setCountryCode(Integer value) {
-      countryCode_ = value;
+      countryCode = value;
       return this;
     }
   }
