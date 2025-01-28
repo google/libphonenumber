@@ -251,7 +251,7 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   // Gets the national significant number of a phone number. Note a national
   // significant number doesn't contain a national prefix or any formatting.
   void GetNationalSignificantNumber(const PhoneNumber& number,
-                                    string* national_significant_num) const;
+                                    string* national_number) const;
 
   // Gets the length of the geographical area code from the PhoneNumber object
   // passed in, so that clients could use it to split a national significant
@@ -930,7 +930,7 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
       const PhoneNumber& number,
       const PhoneMetadata& metadata,
       PhoneNumberFormat number_format,
-      string* extension) const;
+      string* formatted_number) const;
 
   void GetRegionCodeForNumberFromRegionList(
       const PhoneNumber& number,
@@ -962,7 +962,7 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   int ExtractCountryCode(string* national_number) const;
   ErrorType MaybeExtractCountryCode(
       const PhoneMetadata* default_region_metadata,
-      bool keepRawInput,
+      bool keep_raw_input,
       string* national_number,
       PhoneNumber* phone_number) const;
 
