@@ -1,42 +1,22 @@
-# Copyright (C) 2013 The Libphonenumber Authors
-
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-
-# http://www.apache.org/licenses/LICENSE-2.0
-
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-
-# Prefixes include those from http://en.wikipedia.org/wiki/+212 and
-# http://www.telecomjahiz.com/Assistance/Liste-des-prefixes-des-operateurs-de-telephonie-Mobile-et-Fixe-au-Maroc.php
-# and http://www.anrt.ma/sites/default/files/Blocs_de_numeros_par_operateur.pdf
-# This last file refers to Méditel as Medi Telecom, Maroc Telecom as Itissalat
-# Al-Maghrib and Inwi as WANA Corporate (its old name, according to wikipedia).
-
 21260|Inwi
 21261|Maroc Telecom
-212612|Méditel
-212614|Méditel
-212617|Méditel
-212619|Méditel
-212620|Méditel
-212621|Méditel
+212612|Orange
+212614|Orange
+212617|Orange
+212619|Orange
+212620|Orange
+212621|Orange
 212622|Maroc Telecom
 212623|Maroc Telecom
 212624|Maroc Telecom
-212625|Méditel
+212625|Orange
 212626|Inwi
 212627|Inwi
 212628|Maroc Telecom
 212629|Inwi
 212630|Inwi
-212631|Méditel
-212632|Méditel
+212631|Orange
+212632|Orange
 212633|Inwi
 212634|Inwi
 212635|Inwi
@@ -48,42 +28,42 @@
 212641|Maroc Telecom
 212642|Maroc Telecom
 212643|Maroc Telecom
-212644|Méditel
-212645|Méditel
+212644|Orange
+212645|Orange
 212646|Inwi
 212647|Inwi
 212648|Maroc Telecom
-212649|Méditel
+212649|Orange
 21265|Maroc Telecom
-212656|Méditel
-212657|Méditel
-212660|Méditel
+212656|Orange
+212657|Orange
+212660|Orange
 212661|Maroc Telecom
 212662|Maroc Telecom
-212663|Méditel
-212664|Méditel
-212665|Méditel
+212663|Orange
+212664|Orange
+212665|Orange
 212666|Maroc Telecom
 212667|Maroc Telecom
 212668|Maroc Telecom
-212669|Méditel
+212669|Orange
 21267|Maroc Telecom
-212674|Méditel
-212675|Méditel
-212679|Méditel
+212674|Orange
+212675|Orange
+212679|Orange
 212680|Inwi
 212681|Inwi
 212682|Maroc Telecom
-212684|Méditel
+212684|Orange
 212687|Inwi
-212688|Méditel
+212688|Orange
 212689|Maroc Telecom
 212690|Inwi
-212691|Méditel
+212691|Orange
 2126921|Al Hourria Telecom
 2126922|Al Hourria Telecom
-212693|Méditel
-212694|Méditel
+212693|Orange
+212694|Orange
 212695|Inwi
 212696|Maroc Telecom
 212697|Maroc Telecom
@@ -94,5 +74,5 @@
 21272|Inwi
 21275|Maroc Telecom
 21276|Maroc Telecom
-21277|Méditel
-21278|Méditel
+21277|Orange
+21278|Orange
