@@ -1,8 +1,8 @@
 Region ; Prefix    ; Length ; Type               ; Tariff
 DK     ; 11[24]    ; 3      ; EMERGENCY          ; TOLL_FREE
-DK     ; 11[38]    ; 3      ; COMMERCIAL
 DK     ; 11600[06] ; 6      ; EXPANDED_EMERGENCY ; TOLL_FREE
 DK     ; 116111    ; 6      ; EXPANDED_EMERGENCY ; TOLL_FREE
+DK     ; 118       ; 3      ; COMMERCIAL
 DK     ; 1619[0-2] ; 5      ; COMMERCIAL
 DK     ; 1801      ; 4      ; COMMERCIAL
 DK     ; 181[0238] ; 4      ; COMMERCIAL

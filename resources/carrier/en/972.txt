@@ -14,12 +14,14 @@
 9725531|019mobile
 9725532|Free Telecom
 9725533|Free Telecom
+9725540|Rami Levy
 9725541|Merkaziya
 9725543|Maskyoo
 9725544|Cellran Cellular Communications
 97255440|Merkaziya
 97255442|Xphone
 97255443|Yossi
+9725545|Maskyoo
 9725550|Annatel
 9725551|Annatel
 9725552|Annatel

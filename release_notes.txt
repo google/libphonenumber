@@ -1,3 +1,32 @@
+Jan 29, 2025: v8.13.54
+Metadata changes:
+ - Updated phone metadata for region code(s): HK, ML, NC, PL, US
+ - New geocoding data for country calling code(s): 1274 (en)
+ - Updated carrier data for country calling code(s):
+   41 (en), 48 (en), 51 (en), 223 (en), 268 (en), 852 (en, zh)
+ - Updated / refreshed time zone meta data.
+
+Jan 13, 2025: v8.13.53
+Code changes:
+ - Fixed a bug where the extension was appended twice in formatOutOfCountryKeepingAlphaChars in the Java version and updated FormatOutOfCountryKeepingAlphaChars in the C++ version to format the extension.
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   EH, IL, LV, MA, MK, MM, MU, PW, SO
+ - Updated carrier data for country calling code(s):
+   90 (en), 92 (en), 212 (en), 229 (en), 252 (en), 351 (en), 371 (en), 389 (en),
+   597 (en), 680 (en)
+ - Updated / refreshed time zone meta data.
+
+Dec 11, 2024: v8.13.52
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   CA, DE, DK, IL, JP, KY, MN, UG, US, UZ
+ - Updated short number metadata for region code(s): DK
+ - Updated geocoding data for country calling code(s): 86 (en, zh), 1345 (en)
+ - Updated carrier data for country calling code(s):
+   45 (en), 229 (en), 972 (en), 976 (en)
+ - Updated / refreshed time zone meta data.
+
 Nov 28, 2024: v8.13.51
 Code changes:
  - Reverted the std:: qualifier to string throughout phonenumberutil.

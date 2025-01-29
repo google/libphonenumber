@@ -35,8 +35,20 @@ jobs:
   scan-scheduled:
     if: ${{ github.event_name == 'push' || github.event_name == 'schedule' }}
     # If you want to copy this config, highly suggest pinning this version to a release rather than tracking the main branch
-    uses: google/osv-scanner-action/.github/workflows/osv-scanner-reusable.yml@c80d3cb8d7bfabae9f047f6b8ea68792dd2ebcf6 # v1.9.0
+    uses: "google/osv-scanner-action/.github/workflows/osv-scanner-reusable.yml@8bd1ce1c4be9d98053ffd9e6e14585276a36762c" # v1.9.1
+    with:
+       # Just scan the root directory and docs, since everything else is fixtures
+      scan-args: |-
+        -r
+        --skip-git
+        ./
   scan-pr:
     if: ${{ github.event_name == 'pull_request' || github.event_name == 'merge_group' }}
     # If you want to copy this config, highly suggest pinning this version to a release rather than tracking the main branch
-    uses: google/osv-scanner-action/.github/workflows/osv-scanner-reusable-pr.yml@c80d3cb8d7bfabae9f047f6b8ea68792dd2ebcf6 # v1.9.0
+    uses: "google/osv-scanner-action/.github/workflows/osv-scanner-reusable-pr.yml@8bd1ce1c4be9d98053ffd9e6e14585276a36762c" # v1.9.1
+    with:
+      # Just scan the root directory and docs, since everything else is fixtures
+      scan-args: |-
+        -r
+        --skip-git
+        ./

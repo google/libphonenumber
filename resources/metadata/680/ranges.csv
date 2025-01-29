@@ -16,6 +16,7 @@ Prefix     ; Length ; Type       ; Tariff        ; Operator   ; Format     ; Reg
 733        ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/4" ; "PW"    ; "Ngaremlengui State"
 747        ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/4" ; "PW"    ; "Ngardmau State"
 77         ; 7      ; MOBILE     ; STANDARD_RATE ; "palaucel" ; "fmt1_3/4" ; "PW"
+780        ; 7      ; MOBILE     ; STANDARD_RATE ; "palaucel" ; "fmt1_3/4" ; "PW"    ;                                      ; ITU
 824        ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/4" ; "PW"    ; "Ngaraard State"
 83[0-5]    ; 7      ; MOBILE     ; STANDARD_RATE ; "pmci"     ; "fmt1_3/4" ; "PW"    ;                                      ; IR21
 855        ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/4" ; "PW"    ; "Ngarchelong State"
