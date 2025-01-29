@@ -3233,7 +3233,7 @@ public class PhoneNumberUtil {
 
     if (numberEnd < 0) {
       throw new NumberParseException(NumberParseException.ErrorType.NOT_A_NUMBER,
-          "The string supplied did not seem to be a phone number.");
+          "The string supplied does not form a valid RFC3966 number.");
     }
 
     String numberPart = numberToParse.substring(numberStart, numberEnd);
