@@ -723,7 +723,7 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   // Parses a string and returns it in proto buffer format. This method differs
   // from Parse() in that it allows the caller to change the behavior of the
   // parser. See ParsingOptions for more details.
-  ErrorType ParseWithOptions(const absl::string_view number_to_parse,
+  ErrorType ParseWithOptions(const string& number_to_parse,
                             const ParsingOptions& options,
                             PhoneNumber* number) const;
 
@@ -981,11 +981,13 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
                         bool check_region,
                         PhoneNumber* phone_number) const;
 
+  
   ErrorType ParseHelper(const absl::string_view number_to_parse,
                         const string& default_region,
                         bool keep_raw_input,
                         bool check_region,
                         PhoneNumber* phone_number) const;
+  
 
   absl::optional<string> ExtractPhoneContext(
       const string& number_to_extract_from,

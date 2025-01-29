@@ -2134,7 +2134,7 @@ PhoneNumberUtil::ErrorType PhoneNumberUtil::Parse(const string& number_to_parse,
                           number);
 }
 
-PhoneNumberUtil::ErrorType PhoneNumberUtil::ParseWithOptions(const absl::string_view number_to_parse,
+PhoneNumberUtil::ErrorType PhoneNumberUtil::ParseWithOptions(const string& number_to_parse,
                                                              const ParsingOptions& options,
                                                              PhoneNumber* number) const {
   DCHECK(number);
