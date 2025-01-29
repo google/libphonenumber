@@ -16,8 +16,13 @@
 
 package com.google.i18n.phonenumbers;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertThrows;
-
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 import com.google.i18n.phonenumbers.PhoneNumberUtil.PhoneNumberFormat;
 import com.google.i18n.phonenumbers.PhoneNumberUtil.PhoneNumberType;
 import com.google.i18n.phonenumbers.PhoneNumberUtil.ValidationResult;
@@ -2949,6 +2954,10 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
     assertThrowsForInvalidPhoneContext("tel:033316005;phone-context=3phone");
     assertThrowsForInvalidPhoneContext("tel:033316005;phone-context=a-.nz");
     assertThrowsForInvalidPhoneContext("tel:033316005;phone-context=a{b}c");
+
+    // The phone-context parameter comes before the phone number.
+    assertThrowsForInvalidPhoneContext(";phone-context=+64;tel:03-331-6005");
+    assertThrowsForInvalidPhoneContext("phone-context=+64;tel:03-331-6005");
   }
 
   private void assertThrowsForInvalidPhoneContext(String numberToParse) {
@@ -3278,5 +3287,30 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
             phoneNumberUtilWithMissingMetadata.getMetadataForNonGeographicalRegion(800);
           }
         });
+  }
+
+  public void testBuildNationalNumberForParsing() throws Exception {
+    // Test that the national prefix is stripped from the numberPart when the phone context is a
+    // country code.
+    StringBuilder nationalNumber = new StringBuilder();
+    phoneUtil.buildNationalNumberForParsing("tel:033316005;phone-context=+64", nationalNumber);
+    assertEquals("+6433316005", nationalNumber.toString());
+    nationalNumber.setLength(0);
+    // Test that the phone context is ignored if it is not a country code.
+    phoneUtil.buildNationalNumberForParsing("tel:033316005;phone-context=abc.nz", nationalNumber);
+    assertEquals("033316005", nationalNumber.toString());
+    // Test that extensions are correctly parsed.
+    nationalNumber.setLength(0);
+    phoneUtil.buildNationalNumberForParsing("tel:033316005;ext=1234;phone-context=+64",
+        nationalNumber);
+    assertEquals("+6433316005 ext. 1234", nationalNumber.toString());
+    nationalNumber.setLength(0);
+    phoneUtil.buildNationalNumberForParsing("tel:033316005;phone-context=+64;ext=1234",
+        nationalNumber);
+    assertEquals("+6433316005 ext. 1234", nationalNumber.toString());
+    // Test that the isub parameter is removed.
+    nationalNumber.setLength(0);
+    phoneUtil.buildNationalNumberForParsing("tel:033316005;isub=1234", nationalNumber);
+    assertEquals("033316005", nationalNumber.toString());
   }
 }
