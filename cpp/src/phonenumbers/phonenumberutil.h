@@ -531,6 +531,13 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   //      would most likely be area codes) and length (obviously includes the
   //      length of area codes for fixed line numbers), it will return false for
   //      the subscriber-number-only version.
+  //
+  // There is a known issue with this method: if a number is possible only in a
+  // certain region among several regions that share the same country calling
+  // code, this method will consider only the "main" region. For example,
+  // +1310xxxx are valid numbers in Canada. However, they are not possible in
+  // the US. As a result, this method will return false for +1310xxxx. See
+  // https://issuetracker.google.com/issues/335892662 for more details.
   ValidationResult IsPossibleNumberWithReason(const PhoneNumber& number) const;
 
   // Convenience wrapper around IsPossibleNumberWithReason(). Instead of
@@ -565,6 +572,13 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   //      would most likely be area codes) and length (obviously includes the
   //      length of area codes for fixed line numbers), it will return false for
   //      the subscriber-number-only version.
+  //
+  // There is a known issue with this method: if a number is possible only in a
+  // certain region among several regions that share the same country calling
+  // code, this method will consider only the "main" region. For example,
+  // +1310xxxx are valid numbers in Canada. However, they are not possible in
+  // the US. As a result, this method will return false for +1310xxxx. See
+  // https://issuetracker.google.com/issues/335892662 for more details.
   ValidationResult IsPossibleNumberForTypeWithReason(
       const PhoneNumber& number, PhoneNumberType type) const;
 

@@ -17,9 +17,8 @@ Prefix        ; Length ; Type            ; Tariff        ; Area Code Length ; Op
 29[2-6][2-9]  ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 3                ;              ; "fixed_3/6-7"     ; "PK"
 297[2-9]      ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 3                ;              ; "fixed_3/6-7"     ; "PK"    ; "Badin"                ; ITU
 298[2-9]      ; 9,10   ; FIXED_LINE      ; STANDARD_RATE ; 3                ;              ; "fixed_3/6-7"     ; "PK"    ; "Thatta"               ; ITU
-30            ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "mobilink"   ; "mobile_3/7"      ; "PK"
+3[02]         ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "jazz"       ; "mobile_3/7"      ; "PK"    ;                        ; IR21
 31            ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "zong"       ; "mobile_3/7"      ; "PK"
-32            ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "warid"      ; "mobile_3/7"      ; "PK"    ;                        ; IR21
 33[0-7]       ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "ufone"      ; "mobile_3/7"      ; "PK"
 339           ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "ufone"      ; "mobile_3/7"      ; "PK"    ;                        ; IR21
 34            ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "telenor"    ; "mobile_3/7"      ; "PK"
