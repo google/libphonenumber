@@ -36,12 +36,12 @@
     <dependency>
       <artifactId>soy</artifactId>
       <groupId>com.google.template</groupId>
-      <version>2022-07-20</version>
+      <version>v20160111</version>
     </dependency>
     <dependency>
       <artifactId>appengine-maven-plugin</artifactId>
       <groupId>com.google.cloud.tools</groupId>
-      <version>2.4.4</version>
+      <version>2.8.3</version>
     </dependency>
     <dependency>
       <groupId>javax.servlet</groupId>
@@ -53,7 +53,7 @@
     <dependency>
       <groupId>commons-io</groupId>
       <artifactId>commons-io</artifactId>
-      <version>2.13.0</version>
+      <version>2.18.0</version>
     </dependency>
     <dependency>
       <groupId>commons-fileupload</groupId>
@@ -89,7 +89,7 @@
       <plugin>
         <groupId>com.google.cloud.tools</groupId>
         <artifactId>appengine-maven-plugin</artifactId>
-        <version>2.4.4</version>
+        <version>2.8.3</version>
         <configuration>
         </configuration>
       </plugin>
@@ -109,7 +109,7 @@
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>exec-maven-plugin</artifactId>
-        <version>3.1.0</version>
+        <version>3.5.0</version>
         <executions>
           <execution>
             <!-- soy-parser generates template classes in
@@ -164,7 +164,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-javadoc-plugin</artifactId>
-        <version>3.5.0</version>
+        <version>3.11.2</version>
         <configuration>
           <!-- SoyInfoParser does not generate valid javadoc and
           <excludePackageNames> does not work for /generated-sources for
