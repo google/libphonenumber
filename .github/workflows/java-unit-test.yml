@@ -45,6 +45,6 @@ jobs:
 
     - uses: actions/checkout@ee0669bd1cc54295c223e0bb666b733df41de1c5 # v2.7.0
     - name: Install ascii-safe-cli
-      run: npm install -g is-ascii-safe-cli
+      run: npm install -g -d is-ascii-safe-cli
     - name: Check whether .js api files are ascii safe or not.
       run: find . -name '*.js' ! -name '*_test.js' | xargs is-ascii-safe
