@@ -1,3 +1,10 @@
+Feb 13, 2025: v8.13.55
+Metadata changes:
+ - Updated phone metadata for region code(s): BE, CZ, SR
+ - Updated short number metadata for region code(s): NO
+ - Updated carrier data for country calling code(s):
+   33 (en), 41 (en), 255 (en), 351 (en), 503 (en), 597 (en)
+
 Jan 29, 2025: v8.13.54
 Metadata changes:
  - Updated phone metadata for region code(s): HK, ML, NC, PL, US

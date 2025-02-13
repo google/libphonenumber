@@ -9,4 +9,5 @@ Prefix  ; Length ; Type       ; Tariff        ; Operator  ; Format       ; Regio
 75      ; 7      ; MOBILE     ; STANDARD_RATE ; "telesur" ; "fmt3_3/4"   ; "SR"
 77      ; 7      ; MOBILE     ; STANDARD_RATE ; "telesur" ; "fmt3_3/4"   ; "SR"    ; IR21
 8[12]   ; 7      ; MOBILE     ; STANDARD_RATE ; "digicel" ; "fmt3_3/4"   ; "SR"
+83      ; 7      ; MOBILE     ; STANDARD_RATE ; "digicel" ; "fmt3_3/4"   ; "SR"    ; IR21
 8[4-9]  ; 7      ; MOBILE     ; STANDARD_RATE ; "telesur" ; "fmt3_3/4"   ; "SR"
