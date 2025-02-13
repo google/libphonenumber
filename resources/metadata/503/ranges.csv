@@ -3,27 +3,30 @@ Prefix        ; Length ; Type       ; Tariff        ; Operator   ; Format       
 21[03][4-9]   ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
 21[14-9]      ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
 212[02-9]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
-2121          ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+2121          ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; IR21
 220[0-2]      ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
-220[3-689]    ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+220[3-69]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 2207[01]      ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
-2207[2-9]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+2207[2-9]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; IR21
+2208          ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; IR21
 221[0157]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
 221[2-46]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 2218[0-4]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
 2218[5-9]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 2219[0-57-9]  ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
-22196         ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+22196         ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; IR21
 222           ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
 223[0368]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
 223[12459]    ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 2237[0-5]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 2237[6-9]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
-224[0-3568]   ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+224[0-358]    ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 224[47]       ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
+2246          ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; IR21
 2249[0-4]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 2249[5-9]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
-225[0-38]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+225[0138]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+2252          ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; IR21
 2254[0-4]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 2254[5-9]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
 2255[0-6]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
@@ -31,34 +34,40 @@ Prefix        ; Length ; Type       ; Tariff        ; Operator   ; Format       
 225[69]       ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
 2257[0-7]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
 2257[89]      ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
-226[013467]   ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+226[01347]    ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 2262[0-6]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 2262[7-9]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
 2265          ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
+2266          ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; IR21
 2268[0-278]   ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
-2268[3-69]    ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+2268[3-6]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+22689         ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; IR21
 2269[0-26-9]  ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
-2269[3-5]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+2269[3-5]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; IR21
 227[0-46-9]   ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 2275          ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
-228[0-24689]  ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+2280          ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; IR21
+228[124689]   ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 2283[0-7]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
-2283[89]      ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+2283[89]      ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; IR21
 228[57]       ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
 229           ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
-230[049]      ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+230[09]       ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 230[12578]    ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
 2303[0-26-9]  ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
-2303[3-5]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
-2306[0-8]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+2303[3-5]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; IR21
+2304          ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; IR21
+2306[0-3]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; IR21
+2306[4-8]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 23069         ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
 231[0139]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
 231[267][0-4] ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
-231[267][5-9] ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
-2314[0-46]    ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+231[267][5-9] ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; IR21
+2314[0-4]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 2314[57-9]    ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
+23146         ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; IR21
 2315[015-9]   ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
-2315[2-4]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+2315[2-4]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; IR21
 2318          ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 232[04689]    ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
 2321[0-36-9]  ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
@@ -73,10 +82,10 @@ Prefix        ; Length ; Type       ; Tariff        ; Operator   ; Format       
 2332[14-9]    ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
 2334          ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 2337[0-35-9]  ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
-23374         ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+23374         ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; IR21
 2339[0-6]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
 2339[7-9]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
-234[0679]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+2340          ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; IR21
 2341[0-25-9]  ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
 2341[34]      ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 2342[03]      ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
@@ -84,21 +93,25 @@ Prefix        ; Length ; Type       ; Tariff        ; Operator   ; Format       
 234[348]      ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
 2345[0-2]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
 2345[3-9]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+234[679]      ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 235[0236-9]   ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
 235[145]      ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
-236[058]0     ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+236[05]0      ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 236[058][1-9] ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
 236[1-4679]   ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
+23680         ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; IR21
 237[013-7]    ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
 237[29]       ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 2378[01]      ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 2378[2-9]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
 238           ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
 239[0-24-68]  ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
-239[379]      ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+239[39]       ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+2397          ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; IR21
 2400[0-46-9]  ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
-24005         ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
-240[1-467]    ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+24005         ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; IR21
+240[12]       ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+240[3467]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; IR21
 240[59]       ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
 2408[0-5]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 2408[6-9]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
@@ -119,12 +132,13 @@ Prefix        ; Length ; Type       ; Tariff        ; Operator   ; Format       
 247[12457-9]  ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
 2473[0-6]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
 2473[7-9]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
-2476          ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+2476          ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; IR21
 248[0-2589]   ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
 248[3467]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 249[0-689]    ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
-2497          ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
-250[0-257-9]  ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+2497          ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; IR21
+250[0157-9]   ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; IR21
+2502          ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 250[346]      ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
 251[0-29]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 251[3-8]      ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
@@ -134,24 +148,26 @@ Prefix        ; Length ; Type       ; Tariff        ; Operator   ; Format       
 2538[7-9]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 25[478]       ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
 255[0-47-9]   ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
-255[56]       ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+255[56]       ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; IR21
 256[0189]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
-256[2-7]      ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+256[2-7]      ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; IR21
 259[024-9]    ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
 2591[02-6]    ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
 2591[17-9]    ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
-2593[0167]    ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+25930         ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+2593[167]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; IR21
 2593[2-589]   ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
 260[0-248]    ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
-260[369]      ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+260[369]      ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; IR21
 26050         ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
-2605[1-9]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
-2607[01]      ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+2605[1-9]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; IR21
+2607[01]      ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; IR21
 2607[2-9]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
 261[0-46-9]   ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
 2615          ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 262[0-25-9]   ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
-262[34]       ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+2623          ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; IR21
+2624          ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 263[0-35-8]   ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
 263[49]       ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 264[0-47-9]   ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
@@ -167,7 +183,7 @@ Prefix        ; Length ; Type       ; Tariff        ; Operator   ; Format       
 268[0134]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 268[25-9]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
 269[0-689]    ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
-2697          ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+2697          ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; IR21
 27[0-8]       ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
 2790[0347-9]  ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
 279[1-9]      ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
@@ -190,16 +206,18 @@ Prefix        ; Length ; Type       ; Tariff        ; Operator   ; Format       
 64[019]       ; 8      ; MOBILE     ; STANDARD_RATE ; "siget"    ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
 642           ; 8      ; MOBILE     ; STANDARD_RATE ; "movistar" ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
 643[01]       ; 8      ; MOBILE     ; STANDARD_RATE ; "movistar" ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
-643[2-9]      ; 8      ; MOBILE     ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"
+643[2-9]      ; 8      ; MOBILE     ; STANDARD_RATE ; "tigo"     ; "fmt1_4/4"   ; "SV"    ; IR21
 64[45]        ; 8      ; MOBILE     ; STANDARD_RATE ; "tigo"     ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
-64[6-8]       ; 8      ; MOBILE     ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"
+646           ; 8      ; MOBILE     ; STANDARD_RATE ; "tigo"     ; "fmt1_4/4"   ; "SV"    ; IR21
+64[78]        ; 8      ; MOBILE     ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"
 6[57]         ; 8      ; MOBILE     ; STANDARD_RATE ; "siget"    ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
 66[02-9]      ; 8      ; MOBILE     ; STANDARD_RATE ; "siget"    ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
 661[02-9]     ; 8      ; MOBILE     ; STANDARD_RATE ; "siget"    ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
 6611[0-57-9]  ; 8      ; MOBILE     ; STANDARD_RATE ; "siget"    ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
 66116         ; 8      ; MOBILE     ; STANDARD_RATE ; "movistar" ; "fmt1_4/4"   ; "SV"    ; IR21
 68            ; 8      ; MOBILE     ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"
-69[01]        ; 8      ; MOBILE     ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"
+690           ; 8      ; MOBILE     ; STANDARD_RATE ; "tigo"     ; "fmt1_4/4"   ; "SV"    ; IR21
+691           ; 8      ; MOBILE     ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"
 69[2-6]       ; 8      ; MOBILE     ; STANDARD_RATE ; "tigo"     ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
 69[7-9]       ; 8      ; MOBILE     ; STANDARD_RATE ; "claro"    ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
 70[0-689]     ; 8      ; MOBILE     ; STANDARD_RATE ; "claro"    ; "fmt1_4/4"   ; "SV"

@@ -357,8 +357,9 @@ Prefix         ; Length ; Type       ; Tariff        ; Operator                 
 757[01]7       ; 9      ; MOBILE     ; STANDARD_RATE ; "keyyo"                        ; "fmt_1/2/2/2/2"   ; "FR"    ; GOVERNMENT
 7570[89]       ; 9      ; MOBILE     ; STANDARD_RATE ; "sfr"                          ; "fmt_1/2/2/2/2"   ; "FR"    ; IR21
 7571[0-24]     ; 9      ; MOBILE     ; STANDARD_RATE ; "sfr"                          ; "fmt_1/2/2/2/2"   ; "FR"    ; IR21
-7571[3689]     ; 9      ; MOBILE     ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+7571[368]      ; 9      ; MOBILE     ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 75715          ; 9      ; MOBILE     ; STANDARD_RATE ; "aif"                          ; "fmt_1/2/2/2/2"   ; "FR"    ; IR21
+75719          ; 9      ; MOBILE     ; STANDARD_RATE ; "orange_france"                ; "fmt_1/2/2/2/2"   ; "FR"    ; IR21
 757[23]        ; 9      ; MOBILE     ; STANDARD_RATE ; "mobiquithings"                ; "fmt_1/2/2/2/2"   ; "FR"    ; GOVERNMENT
 7574           ; 9      ; MOBILE     ; STANDARD_RATE ; "coriolis"                     ; "fmt_1/2/2/2/2"   ; "FR"    ; GOVERNMENT
 7575[0-6]      ; 9      ; MOBILE     ; STANDARD_RATE ; "coriolis"                     ; "fmt_1/2/2/2/2"   ; "FR"    ; GOVERNMENT
