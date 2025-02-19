@@ -96,7 +96,16 @@
       <artifactId>guava</artifactId>
       <version>32.1.2-jre</version>
     </dependency>
-
+    <dependency>
+      <groupId>commons-io</groupId>
+      <artifactId>commons-io</artifactId>
+      <version>2.18.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.codehaus.plexus</groupId>
+      <artifactId>plexus-utils</artifactId>
+      <version>4.0.2</version>
+    </dependency>
     <!-- https://mvnrepository.com/artifact/com.ibm.icu/icu4j -->
     <dependency>
       <groupId>com.ibm.icu</groupId>
