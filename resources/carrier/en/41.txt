@@ -29,7 +29,11 @@
 417552|Swisscom
 417553|Swisscom
 417557|Swisscom
+41757|Swisscom
 417600|Sunrise
+417603|Sunrise
+417604|Sunrise
+417605|Sunrise
 41762|Sunrise
 41763|Sunrise
 41764|Sunrise

@@ -83,6 +83,7 @@
 852469|China Mobile
 8524699|South China Telecommunications
 852470|Hutchison Telecom
+852471|Hutchison Telecom
 852474|China Mobile
 852475|Hutchison Telecom
 852476|China Mobile
@@ -306,6 +307,7 @@
 852702|Hutchison Telecom
 852703|Hutchison Telecom
 852704|Hutchison Telecom
+852705|Hutchison Telecom
 8527071|SmarTone
 8527072|SmarTone
 8527073|SmarTone
