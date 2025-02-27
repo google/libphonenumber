@@ -76,16 +76,18 @@ Prefix        ; Length ; Type       ; Tariff        ; Operator                  
 703[0457]     ; 8      ; FIXED_LINE ; PREMIUM_RATE  ;                                  ; "fmt3_2/2/2/2" ; "BE"
 7036          ; 8      ; FIXED_LINE ; PREMIUM_RATE  ;                                  ; "fmt3_2/2/2/2" ; "BE"    ;                      ;                      ;                      ;                      ; GOVERNMENT
 7044          ; 8      ; FIXED_LINE ; PREMIUM_RATE  ;                                  ; "fmt3_2/2/2/2" ; "BE"
-7064          ; 8      ; FIXED_LINE ; PREMIUM_RATE  ;                                  ; "fmt3_2/2/2/2" ; "BE"    ;                      ;                      ;                      ;                      ; GOVERNMENT
+706[04]       ; 8      ; FIXED_LINE ; PREMIUM_RATE  ;                                  ; "fmt3_2/2/2/2" ; "BE"    ;                      ;                      ;                      ;                      ; GOVERNMENT
 706[569]      ; 8      ; FIXED_LINE ; PREMIUM_RATE  ;                                  ; "fmt3_2/2/2/2" ; "BE"
 707[0579]     ; 8      ; FIXED_LINE ; PREMIUM_RATE  ;                                  ; "fmt3_2/2/2/2" ; "BE"
 71            ; 8      ; FIXED_LINE ; STANDARD_RATE ;                                  ; "fmt3_2/2/2/2" ; "BE"    ; "Charleroi"          ; "Charleroi"          ; "Charleroi"          ; "Charleroi"
 780[57]       ; 8      ; UAN        ; STANDARD_RATE ;                                  ; "fmt3_2/2/2/2" ; "BE"
+7808          ; 8      ; UAN        ; STANDARD_RATE ;                                  ; "fmt3_2/2/2/2" ; "BE"    ;                      ;                      ;                      ;                      ; GOVERNMENT
 781[014-8]    ; 8      ; UAN        ; STANDARD_RATE ;                                  ; "fmt3_2/2/2/2" ; "BE"
 782[25]       ; 8      ; UAN        ; STANDARD_RATE ;                                  ; "fmt3_2/2/2/2" ; "BE"
 783[15-8]     ; 8      ; UAN        ; STANDARD_RATE ;                                  ; "fmt3_2/2/2/2" ; "BE"
 7848          ; 8      ; UAN        ; STANDARD_RATE ;                                  ; "fmt3_2/2/2/2" ; "BE"
 78[56]0       ; 8      ; UAN        ; STANDARD_RATE ;                                  ; "fmt3_2/2/2/2" ; "BE"
+7855          ; 8      ; UAN        ; STANDARD_RATE ;                                  ; "fmt3_2/2/2/2" ; "BE"    ;                      ;                      ;                      ;                      ; GOVERNMENT
 787[078]      ; 8      ; UAN        ; STANDARD_RATE ;                                  ; "fmt3_2/2/2/2" ; "BE"
 7876          ; 8      ; UAN        ; STANDARD_RATE ;                                  ; "fmt3_2/2/2/2" ; "BE"    ;                      ;                      ;                      ;                      ; GOVERNMENT
 7879          ; 8      ; FIXED_LINE ; SHARED_COST   ;                                  ; "fmt3_2/2/2/2" ; "BE"
