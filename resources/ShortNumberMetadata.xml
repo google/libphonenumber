@@ -10560,7 +10560,7 @@
               [59]
             )|
             7[57]|
-            8[5-9]\d|
+            8\d\d|
             90
           )
         </nationalNumberPattern>
