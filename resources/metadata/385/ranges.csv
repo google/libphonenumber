@@ -24,7 +24,7 @@ Prefix   ; Length ; Type            ; Tariff        ; Area Code Length ; Operato
 62       ; 8,9    ; UAN             ; STANDARD_RATE ;                  ;                    ; "fmt_2/3/3-4"     ; "HR"
 72       ; 8      ; UAN             ; STANDARD_RATE ;                  ;                    ; "fmt_2/3/3-4"     ; "HR"    ;                        ; GOVERNMENT ; "HAKOM monthly file"
 7[45]    ; 8      ; PERSONAL_NUMBER ; STANDARD_RATE ;                  ;                    ; "fmt_2/3/3-4"     ; "HR"
-76       ; 8      ; ISP             ; STANDARD_RATE ;                  ;                    ; "fixed_2/3/3-4"   ; "HR"    ;                        ; GOVERNMENT
+7[67]    ; 8      ; ISP             ; STANDARD_RATE ;                  ;                    ; "fixed_2/3/3-4"   ; "HR"    ;                        ; GOVERNMENT
 80[01]   ; 7,8    ; FIXED_LINE      ; TOLL_FREE     ;                  ;                    ; "toll_3/2/2-3"    ; "HR"
 80[01]   ; 9      ; FIXED_LINE      ; TOLL_FREE     ;                  ;                    ; "toll_3/3/3"      ; "HR"
 80[2-9]  ; 7,8    ; FIXED_LINE      ; TOLL_FREE     ;                  ;                    ; "toll_3/2/2-3"    ; "HR"    ;                        ; GOVERNMENT
