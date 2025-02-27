@@ -64,6 +64,6 @@ Prefix       ; Length ; Type       ; Tariff        ; Operator           ; Format
 80[0-5]      ; 9      ; FIXED_LINE ; TOLL_FREE     ;                    ; "varcost_3/2/2/2" ; "BL,GP,MF" ;            ; "ARCEP"
 9395         ; 9      ; VOIP       ; STANDARD_RATE ;                    ; "fmt1_3/2/2/2"    ; "BL,GP,MF" ; ITU
 939[67]      ; 9      ; VOIP       ; STANDARD_RATE ;                    ; "fmt1_3/2/2/2"    ; "BL,GP,MF" ; IR21
-9475[0-5]    ; 9      ; VOIP       ; STANDARD_RATE ;                    ; "fmt1_3/2/2/2"    ; "BL,GP,MF" ; GOVERNMENT
+9475[0-6]    ; 9      ; VOIP       ; STANDARD_RATE ;                    ; "fmt1_3/2/2/2"    ; "BL,GP,MF" ; GOVERNMENT
 976[01]      ; 9      ; VOIP       ; STANDARD_RATE ;                    ; "fmt1_3/2/2/2"    ; "BL,GP,MF" ; GOVERNMENT ; "Regulator Monthly Report (Arcep)"
 9768         ; 9      ; VOIP       ; STANDARD_RATE ;                    ; "fmt1_3/2/2/2"    ; "BL,GP,MF" ; ITU

@@ -95,7 +95,7 @@ Prefix         ; Length ; Type                 ; Tariff        ; Area Code Lengt
 2625[4-6]      ; 10     ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; 4                ; false         ; "geo_4/2/4" ; "AR"    ; "General Alvear, Mendoza"                             ; "General Alvear, Mendoza"
 26264          ; 10     ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; 4                ; false         ; "geo_4/2/4" ; "AR"    ; "La Paz, Mendoza"                                     ; "La Paz, Mendoza"
 263[45]        ; 10     ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; 3                ; false         ; "geo_3/3/4" ; "AR"    ; "San Martín, Mendoza"                                 ; "San Martín, Mendoza"
-2643[0-3]      ; 10     ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; 3                ; false         ; "geo_3/3/4" ; "AR"    ; "San Juan, San Juan"                                  ; "San Juan, San Juan"                                  ; GOVERNMENT
+2643[0-4]      ; 10     ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; 3                ; false         ; "geo_3/3/4" ; "AR"    ; "San Juan, San Juan"                                  ; "San Juan, San Juan"                                  ; GOVERNMENT
 264[45]        ; 10     ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; 3                ; false         ; "geo_3/3/4" ; "AR"    ; "San Juan, San Juan"                                  ; "San Juan, San Juan"
 2646[0-35-9]   ; 10     ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; 3                ; false         ; "geo_3/3/4" ; "AR"    ; "Villa San Agustín, San Juan"                         ; "Villa San Agustín, San Juan"
 26464          ; 10     ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; 4                ; false         ; "geo_4/2/4" ; "AR"    ; "Villa San Agustín, San Juan"                         ; "Villa San Agustín, San Juan"
@@ -198,6 +198,7 @@ Prefix         ; Length ; Type                 ; Tariff        ; Area Code Lengt
 3460[4-6]      ; 10     ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; 4                ; false         ; "geo_4/2/4" ; "AR"    ; "Santa Teresa, Santa Fe"                              ; "Santa Teresa, Santa Fe"
 3462[2-6]      ; 10     ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; 4                ; false         ; "geo_4/2/4" ; "AR"    ; "Venado Tuerto, Santa Fe"                             ; "Venado Tuerto, Santa Fe"
 3463[4-6]      ; 10     ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; 4                ; false         ; "geo_4/2/4" ; "AR"    ; "Canals, Córdoba"                                     ; "Canals, Córdoba"
+34643          ; 10     ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; 4                ; false         ; "geo_4/2/4" ; "AR"    ; "Casilda, Santa Fe"                                   ; "Casilda, Santa Fe"                                   ; GOVERNMENT
 3464[4-6]      ; 10     ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; 4                ; false         ; "geo_4/2/4" ; "AR"    ; "Casilda, Santa Fe"                                   ; "Casilda, Santa Fe"
 3465[4-6]      ; 10     ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; 4                ; false         ; "geo_4/2/4" ; "AR"    ; "Firmat, Santa Fe"                                    ; "Firmat, Santa Fe"
 3466[4-6]      ; 10     ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; 4                ; false         ; "geo_4/2/4" ; "AR"    ; "Barrancas, Santa Fe"                                 ; "Barrancas, Santa Fe"

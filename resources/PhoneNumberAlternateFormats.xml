@@ -2512,7 +2512,7 @@
         <numberFormat pattern="(\d{2})(\d{2})(\d{4})">
           <leadingDigits>
             [2-69]|
-            76
+            7[67]
           </leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
