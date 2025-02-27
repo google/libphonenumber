@@ -416,8 +416,8 @@ Prefix         ; Length ; Type       ; Tariff        ; Operator                 
 8011[459]      ; 9      ; FIXED_LINE ; TOLL_FREE     ;                                ; "varcost_3/2/2/2" ; "FR"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 8012[0-7]      ; 9      ; FIXED_LINE ; TOLL_FREE     ;                                ; "varcost_3/2/2/2" ; "FR"    ; GOVERNMENT
 8012[89]       ; 9      ; FIXED_LINE ; TOLL_FREE     ;                                ; "varcost_3/2/2/2" ; "FR"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
-8013[038]      ; 9      ; FIXED_LINE ; TOLL_FREE     ;                                ; "varcost_3/2/2/2" ; "FR"    ; GOVERNMENT
-8013[124-79]   ; 9      ; FIXED_LINE ; TOLL_FREE     ;                                ; "varcost_3/2/2/2" ; "FR"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+8013[0378]     ; 9      ; FIXED_LINE ; TOLL_FREE     ;                                ; "varcost_3/2/2/2" ; "FR"    ; GOVERNMENT
+8013[124-69]   ; 9      ; FIXED_LINE ; TOLL_FREE     ;                                ; "varcost_3/2/2/2" ; "FR"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 801[4-6]       ; 9      ; FIXED_LINE ; TOLL_FREE     ;                                ; "varcost_3/2/2/2" ; "FR"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 8017[0-6]      ; 9      ; FIXED_LINE ; TOLL_FREE     ;                                ; "varcost_3/2/2/2" ; "FR"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 8017[7-9]      ; 9      ; FIXED_LINE ; TOLL_FREE     ;                                ; "varcost_3/2/2/2" ; "FR"    ; GOVERNMENT
@@ -766,8 +766,8 @@ Prefix         ; Length ; Type       ; Tariff        ; Operator                 
 973[0-79]      ; 9      ; VOIP       ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ; GOVERNMENT
 9738[0-7]      ; 9      ; VOIP       ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ; GOVERNMENT
 9738[89]       ; 9      ; VOIP       ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
-9740[037]      ; 9      ; VOIP       ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ; GOVERNMENT
-9740[124-689]  ; 9      ; VOIP       ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+9740[037-9]    ; 9      ; VOIP       ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ; GOVERNMENT
+9740[124-6]    ; 9      ; VOIP       ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 97410          ; 9      ; VOIP       ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 9741[1-9]      ; 9      ; VOIP       ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ; GOVERNMENT
 974[2-8]       ; 9      ; VOIP       ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ; GOVERNMENT

@@ -43,6 +43,7 @@ Prefix   ; Length ; Type       ; Tariff        ; Area Code Length ; Operator    
 4[12]4   ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "movistar"    ; "fmt_3/7" ; "VE"
 41[578]  ; 10     ; MOBILE     ; STANDARD_RATE ;                  ;               ; "fmt_3/7" ; "VE"
 4[12]6   ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "movilnet"    ; "fmt_3/7" ; "VE"
+422      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "digitel_gsm" ; "fmt_3/7" ; "VE"    ;                              ;                                   ; IR21
 500      ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;               ; "fmt_3/7" ; "VE"    ;                              ;                                   ; GOVERNMENT ; "Dated: December2016"
 501      ; 10     ; UAN        ; STANDARD_RATE ; 3                ;               ; "fmt_3/7" ; "VE"    ;                              ;                                   ; GOVERNMENT ; "Dated: December2016"
 800      ; 10     ; FIXED_LINE ; TOLL_FREE     ;                  ;               ; "fmt_3/7" ; "VE"
