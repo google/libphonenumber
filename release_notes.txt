@@ -1,3 +1,9 @@
+Mar 13, 2025: v9.0.1
+Metadata changes:
+ - Updated phone metadata for region code(s): AR, MM, SG, US, ZM
+ - Updated carrier data for country calling code(s):
+   36 (en), 65 (en), 260 (en), 855 (en)
+
 Feb 27, 2025: v9.0.0
 Metadata changes:
  - Updated alternate formatting data for country calling code(s): 385

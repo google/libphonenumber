@@ -17,19 +17,19 @@ Prefix        ; Length ; Type       ; Tariff        ; Area Code Length ; Nationa
 3120[1-9]     ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ;                  ; "fmt_2/3/3-4" ; "HU"    ;                     ;                     ; UNKNOWN
 312[1-9]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ;                  ; "fmt_2/3/3-4" ; "HU"    ;                     ;                     ; UNKNOWN
 313[0457-9]   ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ;                  ; "fmt_2/3/3-4" ; "HU"    ;                     ;                     ; UNKNOWN
-3131[0-8]     ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ; "vodafone"       ; "fmt_2/3/3-4" ; "HU"    ;                     ;                     ; IR21
-31319[0-79]   ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ; "vodafone"       ; "fmt_2/3/3-4" ; "HU"    ;                     ;                     ; IR21
+3131[0-8]     ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ; "one"            ; "fmt_2/3/3-4" ; "HU"    ;                     ;                     ; IR21
+31319[0-79]   ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ; "one"            ; "fmt_2/3/3-4" ; "HU"    ;                     ;                     ; IR21
 313198        ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ;                  ; "fmt_2/3/3-4" ; "HU"    ;                     ;                     ; UNKNOWN
-3132[0-8]     ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ; "vodafone"       ; "fmt_2/3/3-4" ; "HU"    ;                     ;                     ; IR21
-31329[0-2]    ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ; "vodafone"       ; "fmt_2/3/3-4" ; "HU"    ;                     ;                     ; IR21
+3132[0-8]     ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ; "one"            ; "fmt_2/3/3-4" ; "HU"    ;                     ;                     ; IR21
+31329[0-2]    ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ; "one"            ; "fmt_2/3/3-4" ; "HU"    ;                     ;                     ; IR21
 31329[3-9]    ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ;                  ; "fmt_2/3/3-4" ; "HU"    ;                     ;                     ; UNKNOWN
-3133[0-2]     ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ; "vodafone"       ; "fmt_2/3/3-4" ; "HU"    ;                     ;                     ; IR21
+3133[0-2]     ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ; "one"            ; "fmt_2/3/3-4" ; "HU"    ;                     ;                     ; IR21
 31333[01]     ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ; "vidanet"        ; "fmt_2/3/3-4" ; "HU"    ;                     ;                     ; GOVERNMENT
 31333[2-9]    ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ;                  ; "fmt_2/3/3-4" ; "HU"    ;                     ;                     ; UNKNOWN
 3133[4-9]     ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ;                  ; "fmt_2/3/3-4" ; "HU"    ;                     ;                     ; UNKNOWN
 3136[0-57-9]  ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ;                  ; "fmt_2/3/3-4" ; "HU"    ;                     ;                     ; UNKNOWN
 31366[0-57-9] ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ;                  ; "fmt_2/3/3-4" ; "HU"    ;                     ;                     ; UNKNOWN
-313666        ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ; "vodafone"       ; "fmt_2/3/3-4" ; "HU"    ;                     ;                     ; IR21
+313666        ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ; "one"            ; "fmt_2/3/3-4" ; "HU"    ;                     ;                     ; IR21
 31700[0-4]    ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ; "tarr"           ; "fmt_2/3/3-4" ; "HU"    ;                     ;                     ; IR21
 31700[5-9]    ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ;                  ; "fmt_2/3/3-4" ; "HU"    ;                     ;                     ; UNKNOWN
 3170[1-9]     ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ;                  ; "fmt_2/3/3-4" ; "HU"    ;                     ;                     ; UNKNOWN
@@ -70,7 +70,7 @@ Prefix        ; Length ; Type       ; Tariff        ; Area Code Length ; Nationa
 68            ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                  ; "fixed_2/3/3" ; "HU"    ; "Oroshaza"          ; "Orosháza"
 680[29]       ; 9      ; FIXED_LINE ; TOLL_FREE     ;                  ; true          ;                  ; "fmt_2/3/3-4" ; "HU"
 69            ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                  ; "fixed_2/3/3" ; "HU"    ; "Mohacs"            ; "Mohács"
-70            ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ; "vodafone"       ; "fmt_2/3/3-4" ; "HU"    ;                     ;                     ; GOVERNMENT
+70            ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ; "one"            ; "fmt_2/3/3-4" ; "HU"    ;                     ;                     ; GOVERNMENT
 72            ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                  ; "fixed_2/3/3" ; "HU"    ; "Pecs"              ; "Pécs"
 73            ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                  ; "fixed_2/3/3" ; "HU"    ; "Szigetvar"         ; "Szigetvár"
 74            ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                  ; "fixed_2/3/3" ; "HU"    ; "Szekszard"         ; "Szekszárd"
