@@ -11149,7 +11149,7 @@
         </nationalNumberPattern>
       </generalDesc>
       <!-- Gabon has undergone renumbering in November 2019 where the prefix 01 is changed to 011;
-           and intial "0" is no more needed when dialled internationally. Thus they become 7 digit
+           and initial "0" is no more needed when dialled internationally. Thus they become 7 digit
            to 8 digit excluding 0. -->
       <!-- About numbers in older version, which may soon get invalid:
            A 7-digit fixed-line plan was scheduled to be implemented on June 17, 2012 to unify fixed
@@ -11163,7 +11163,7 @@
         <nationalNumberPattern>[01]1\d{6}</nationalNumberPattern>
       </fixedLine>
       <!-- Gabon has undergone renumbering in November 2019 where the prefixes 0[256] are changed
-           to 6[256] respectively and similarly 0[47] changed to 7[47]. The intial "0" is no more
+           to 6[256] respectively and similarly 0[47] changed to 7[47]. The initial "0" is no more
            needed when dialled internationally. Thus they become 7 digit to 8 digit excluding 0. -->
       <!-- About old numbers, which may soon get invalid: Mobile numbers can be 7 or 8 digits
            (with or without a leading zero). -->
@@ -16909,7 +16909,7 @@
     <!-- https://www.itu.int/oth/T020200006D/en -->
     <!-- http://www.numberingplans.com/?page=dialling&sub=areacodes&ac=JP -->
     <!-- nationalPrefixTransformRule is used here for purpose of capturing 0005999999 kind of
-         short codes without dropping intial '0' as national prefix. As we are using this field, the
+         short codes without dropping initial '0' as national prefix. As we are using this field, the
          library is unable to capture domestic carrier codes used, example input:
          003768-0XX-YYYY-ZZZZ. Due to historic reasons, the parts that we captured in
          nationalPrefixTransform rule can either be used to transform or to capture in fields like
