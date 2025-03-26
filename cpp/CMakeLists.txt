@@ -16,7 +16,7 @@
 
 cmake_minimum_required (VERSION 3.11)
 
-project (libphonenumber VERSION 8.13.0)
+project (libphonenumber VERSION 9.0.0)
 
 if (32BIT)
   set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -m32")

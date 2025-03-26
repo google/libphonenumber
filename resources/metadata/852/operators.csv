@@ -3,6 +3,7 @@ Id                ; International Dialling Codes ; Name:en                      
 3                 ;                              ; "3"                              ; "3"              ; "3"
 __unknown         ; "00[126-9],0030,005[09]"
 china_mobile      ;                              ; "China Mobile"                   ; "中国移动"           ; "中國移動"
+china_telecom     ;                              ; "China Telecom Global Limited"
 china_unicom      ;                              ; "China Unicom"                   ; "中国联通"           ; "中國聯通"
 citic             ;                              ; "CITIC"                          ; "中信国际电讯"         ; "中信國際電訊"
 hkbn              ;                              ; "Hong Kong Broadband Network"    ; "香港寬頻企業方案有限公司"
