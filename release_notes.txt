@@ -1,3 +1,12 @@
+Mar 27, 2025: v9.0.2
+Metadata changes:
+ - Updated phone metadata for region code(s): NR, US, UZ, ZA
+ - New geocoding data for country calling code(s): 1821 (en)
+ - Updated geocoding data for country calling code(s): 27 (en)
+ - Updated carrier data for country calling code(s):
+   27 (en), 389 (en), 674 (en)
+ - Updated / refreshed time zone meta data.
+
 Mar 13, 2025: v9.0.1
 Metadata changes:
  - Updated phone metadata for region code(s): AR, MM, SG, US, ZM

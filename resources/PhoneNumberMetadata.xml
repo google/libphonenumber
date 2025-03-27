@@ -11149,7 +11149,7 @@
         </nationalNumberPattern>
       </generalDesc>
       <!-- Gabon has undergone renumbering in November 2019 where the prefix 01 is changed to 011;
-           and intial "0" is no more needed when dialled internationally. Thus they become 7 digit
+           and initial "0" is no more needed when dialled internationally. Thus they become 7 digit
            to 8 digit excluding 0. -->
       <!-- About numbers in older version, which may soon get invalid:
            A 7-digit fixed-line plan was scheduled to be implemented on June 17, 2012 to unify fixed
@@ -11163,7 +11163,7 @@
         <nationalNumberPattern>[01]1\d{6}</nationalNumberPattern>
       </fixedLine>
       <!-- Gabon has undergone renumbering in November 2019 where the prefixes 0[256] are changed
-           to 6[256] respectively and similarly 0[47] changed to 7[47]. The intial "0" is no more
+           to 6[256] respectively and similarly 0[47] changed to 7[47]. The initial "0" is no more
            needed when dialled internationally. Thus they become 7 digit to 8 digit excluding 0. -->
       <!-- About old numbers, which may soon get invalid: Mobile numbers can be 7 or 8 digits
            (with or without a leading zero). -->
@@ -16909,8 +16909,8 @@
     <!-- https://www.itu.int/oth/T020200006D/en -->
     <!-- http://www.numberingplans.com/?page=dialling&sub=areacodes&ac=JP -->
     <!-- nationalPrefixTransformRule is used here for purpose of capturing 0005999999 kind of
-         short codes without dropping intial '0' as national prefix. As we are using this field, the
-         library is unable to capture domestic carrier codes used, example input:
+         short codes without dropping initial '0' as national prefix. As we are using this field,
+         the library is unable to capture domestic carrier codes used, example input:
          003768-0XX-YYYY-ZZZZ. Due to historic reasons, the parts that we captured in
          nationalPrefixTransform rule can either be used to transform or to capture in fields like
          preferred_domestic_carrier_code; schema is designed this way. -->
@@ -23551,19 +23551,22 @@
     <territory id="NR" countryCode="674" internationalPrefix="00">
       <availableFormats>
         <numberFormat pattern="(\d{3})(\d{4})">
-          <leadingDigits>[4-68]</leadingDigits>
+          <leadingDigits>[24-9]</leadingDigits>
           <format>$1 $2</format>
         </numberFormat>
       </availableFormats>
       <generalDesc>
         <nationalNumberPattern>
           (?:
+            222|
             444|
             (?:
               55|
               8\d
             )\d|
-            666
+            666|
+            777|
+            999
           )\d{4}
         </nationalNumberPattern>
       </generalDesc>
@@ -23577,9 +23580,12 @@
         <exampleNumber>5551234</exampleNumber>
         <nationalNumberPattern>
           (?:
+            222|
             55[3-9]|
             666|
-            8\d\d
+            777|
+            8\d\d|
+            999
           )\d{4}
         </nationalNumberPattern>
       </mobile>
@@ -29865,7 +29871,7 @@
             8(?:
               0[1-68]|
               1[02-8]|
-              2[068]|
+              2[0168]|
               3[0-2589]|
               4[03578]|
               5[046-9]|
@@ -29975,7 +29981,7 @@
             8(?:
               0[1-68]|
               1[02-8]|
-              2[068]|
+              2[0168]|
               3[0-2589]|
               4[03578]|
               5[046-9]|
@@ -30221,10 +30227,7 @@
                 7[124-6]|
                 9[135-8]
               )|
-              (?:
-                1[12]|
-                [68]\d
-              )\d|
+              [168]\d\d|
               2(?:
                 22|
                 3[13-57-9]|
@@ -30363,16 +30366,6 @@
             )|
             7(?:
               [07]\d{3}|
-              1(?:
-                13[01]|
-                6(?:
-                  0[47]|
-                  1[67]|
-                  66
-                )|
-                71[3-69]|
-                98\d
-              )|
               2(?:
                 2(?:
                   2[79]|
@@ -31689,7 +31682,6 @@
         <possibleLengths national="9"/>
         <exampleNumber>101234567</exampleNumber>
         <nationalNumberPattern>
-          50[0-2]\d{6}|
           (?:
             2(?:
               0330|
@@ -31741,6 +31733,7 @@
               9[12]\d\d
             )|
             (?:
+              50[0-2]|
               6\d\d|
               7(?:
                 [0-46-9]\d|
