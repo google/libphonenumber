@@ -224,7 +224,7 @@ Prefix        ; Length ; Type                 ; Tariff        ; Operator        
 494920        ; 9      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "vodacom"       ; "all_types_2/3/4"  ; "ZA"    ; "Graaff-Reinet/Western part of Eastern Cape"
 49492[1-9]    ; 9      ; FIXED_LINE           ; STANDARD_RATE ;                 ; "all_types_2/3/4"  ; "ZA"    ; "Graaff-Reinet/Western part of Eastern Cape"                                                    ;            ; "Fillup To Support Master Range"
 49[568]       ; 9      ; FIXED_LINE           ; STANDARD_RATE ;                 ; "all_types_2/3/4"  ; "ZA"    ; "Graaff-Reinet/Western part of Eastern Cape"                                                    ;            ; "Fillup To Support Master Range"
-50[0-2]       ; 9      ; FIXED_LINE           ; STANDARD_RATE ;                 ; "all_types_2/3/4"  ; "ZA"    ; "Aliwal North/Bloemfontein/Far eastern part of Eastern Cape/Southern and Central Free State"    ; GOVERNMENT
+50[0-2]       ; 9      ; MOBILE               ; STANDARD_RATE ; "rain"          ; "all_types_2/3/4"  ; "ZA"    ;                                                                                                 ; IR21
 51[0-3589]    ; 9      ; FIXED_LINE           ; STANDARD_RATE ;                 ; "all_types_2/3/4"  ; "ZA"    ; "Aliwal North/Bloemfontein/Far eastern part of Eastern Cape/Southern and Central Free State"    ; GOVERNMENT
 514[0-578]    ; 9      ; FIXED_LINE           ; STANDARD_RATE ;                 ; "all_types_2/3/4"  ; "ZA"    ; "Aliwal North/Bloemfontein/Far eastern part of Eastern Cape/Southern and Central Free State"    ;            ; "Fillup To Support Master Range"
 5146          ; 9      ; FIXED_LINE           ; STANDARD_RATE ;                 ; "all_types_2/3/4"  ; "ZA"    ; "Aliwal North/Bloemfontein/Far eastern part of Eastern Cape/Southern and Central Free State"    ; GOVERNMENT
@@ -308,7 +308,7 @@ Prefix        ; Length ; Type                 ; Tariff        ; Operator        
 81[1-57]      ; 9      ; MOBILE               ; STANDARD_RATE ; "telkom_mobile" ; "all_types_2/3/4"  ; "ZA"    ;                                                                                                 ; IR21       ; "IR21 dated 1/9/2019 (all 81x are 9 digits)"
 816           ; 5,6    ; MOBILE               ; STANDARD_RATE ; "wbs_mobile"    ; "mobile_2/3-4"     ; "ZA"
 816           ; 7,8    ; MOBILE               ; STANDARD_RATE ; "wbs_mobile"    ; "mobile_2/3/2-3"   ; "ZA"
-816           ; 9      ; MOBILE               ; STANDARD_RATE ; "wbs_mobile"    ; "all_types_2/3/4"  ; "ZA"    ;                                                                                                 ; IR21       ; "IR21 dated 10/30/2017 (all 816 are 9 digits)"
+816           ; 9      ; MOBILE               ; STANDARD_RATE ; "wbs_mobile"    ; "all_types_2/3/4"  ; "ZA"    ;                                                                                                 ; IR21
 818           ; 5,6    ; MOBILE               ; STANDARD_RATE ; "vodacom"       ; "mobile_2/3-4"     ; "ZA"
 818           ; 7,8    ; MOBILE               ; STANDARD_RATE ; "vodacom"       ; "mobile_2/3/2-3"   ; "ZA"
 818           ; 9      ; MOBILE               ; STANDARD_RATE ; "vodacom"       ; "all_types_2/3/4"  ; "ZA"    ;                                                                                                 ; IR21       ; "IR21 dated 12/11/2018 (all 818 are 9 digits)"

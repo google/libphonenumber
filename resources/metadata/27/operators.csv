@@ -1,6 +1,7 @@
 Id            ; Name:en
 cell_c        ; "Cell C"
 mtn           ; "MTN"
+rain          ; "Rain"
 telafrica     ; "TelAfrica (Wirles Connect)"
 telkom_mobile ; "Telkom Mobile"
 vodacom       ; "Vodacom"
