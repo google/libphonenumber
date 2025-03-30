@@ -1,7 +1,13 @@
 Prefix     ; Length ; Type       ; Tariff        ; Operator ; Format           ; Regions ; Geocode:en         ; Geocode:fr         ; Provenance
 01         ; 10     ; MOBILE     ; STANDARD_RATE ; "moov"   ; "mobile_2/2/2/4" ; "CI"    ;                    ;                    ; IR21
+02         ; 10     ; MOBILE     ; STANDARD_RATE ; "moov"   ; "mobile_2/2/2/4" ; "CI"    ;                    ;                    ; IR21
+03         ; 10     ; MOBILE     ; STANDARD_RATE ; "moov"   ; "mobile_2/2/2/4" ; "CI"    ;                    ;                    ; IR21
+04         ; 10     ; MOBILE     ; STANDARD_RATE ; "mtn"    ; "mobile_2/2/2/4" ; "CI"    ;                    ;                    ; IR21
 05         ; 10     ; MOBILE     ; STANDARD_RATE ; "mtn"    ; "mobile_2/2/2/4" ; "CI"    ;                    ;                    ; IR21
+06         ; 10     ; MOBILE     ; STANDARD_RATE ; "mtn"    ; "mobile_2/2/2/4" ; "CI"    ;                    ;                    ; IR21
 07         ; 10     ; MOBILE     ; STANDARD_RATE ; "orange" ; "mobile_2/2/2/4" ; "CI"    ;                    ;                    ; IR21
+08         ; 10     ; MOBILE     ; STANDARD_RATE ; "orange" ; "mobile_2/2/2/4" ; "CI"    ;                    ;                    ; IR21
+09         ; 10     ; MOBILE     ; STANDARD_RATE ; "orange" ; "mobile_2/2/2/4" ; "CI"    ;                    ;                    ; IR21
 21[014-9]  ; 10     ; FIXED_LINE ; STANDARD_RATE ;          ; "fixed_2/2/1/5"  ; "CI"    ;                    ;                    ; ITU
 2120       ; 10     ; FIXED_LINE ; STANDARD_RATE ;          ; "fixed_2/2/1/5"  ; "CI"    ; "Plateau, Abidjan" ; "Plateau, Abidjan" ; ITU
 2121       ; 10     ; FIXED_LINE ; STANDARD_RATE ;          ; "fixed_2/2/1/5"  ; "CI"    ; "Abidjan-sud"      ; "Abidjan-sud"      ; ITU
@@ -57,3 +63,16 @@ Prefix     ; Length ; Type       ; Tariff        ; Operator ; Format           ;
 27347      ; 10     ; FIXED_LINE ; STANDARD_RATE ;          ; "fixed_2/2/1/5"  ; "CI"    ; "San-Pédro"        ; "San-Pédro"        ; ITU
 27357      ; 10     ; FIXED_LINE ; STANDARD_RATE ;          ; "fixed_2/2/1/5"  ; "CI"    ; "Abengourou"       ; "Abengourou"       ; ITU
 27367      ; 10     ; FIXED_LINE ; STANDARD_RATE ;          ; "fixed_2/2/1/5"  ; "CI"    ; "Korhogo"          ; "Korhogo"          ; ITU
+4[0-3]     ; 10     ; FIXED_LINE ; STANDARD_RATE ; "moov"   ; "fixed_2/2/1/5"  ; "CI"    ;                    ;                    ; IR21
+4[4-6]     ; 10     ; FIXED_LINE ; STANDARD_RATE ; "mtn"    ; "fixed_2/2/1/5"  ; "CI"    ;                    ;                    ; IR21
+4[7-9]     ; 10     ; FIXED_LINE ; STANDARD_RATE ; "orange" ; "fixed_2/2/1/5"  ; "CI"    ;                    ;                    ; IR21
+5[0-3]     ; 10     ; FIXED_LINE ; STANDARD_RATE ; "moov"   ; "fixed_2/2/1/5"  ; "CI"    ;                    ;                    ; IR21
+5[4-6]     ; 10     ; FIXED_LINE ; STANDARD_RATE ; "mtn"    ; "fixed_2/2/1/5"  ; "CI"    ;                    ;                    ; IR21
+5[7-9]     ; 10     ; FIXED_LINE ; STANDARD_RATE ; "orange" ; "fixed_2/2/1/5"  ; "CI"    ;                    ;                    ; IR21
+6[4-6]     ; 10     ; FIXED_LINE ; STANDARD_RATE ; "mtn"    ; "fixed_2/2/1/5"  ; "CI"    ;                    ;                    ; IR21
+6[7-9]     ; 10     ; FIXED_LINE ; STANDARD_RATE ; "orange" ; "fixed_2/2/1/5"  ; "CI"    ;                    ;                    ; IR21
+7[0-3]     ; 10     ; FIXED_LINE ; STANDARD_RATE ; "moov"   ; "fixed_2/2/1/5"  ; "CI"    ;                    ;                    ; IR21
+7[4-6]     ; 10     ; FIXED_LINE ; STANDARD_RATE ; "mtn"    ; "fixed_2/2/1/5"  ; "CI"    ;                    ;                    ; IR21
+7[7-9]     ; 10     ; FIXED_LINE ; STANDARD_RATE ; "orange" ; "fixed_2/2/1/5"  ; "CI"    ;                    ;                    ; IR21
+8[3-6]     ; 10     ; FIXED_LINE ; STANDARD_RATE ; "mtn"    ; "fixed_2/2/1/5"  ; "CI"    ;                    ;                    ; IR21
+8[7-9]     ; 10     ; FIXED_LINE ; STANDARD_RATE ; "orange" ; "fixed_2/2/1/5"  ; "CI"    ;                    ;                    ; IR21
