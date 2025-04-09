@@ -6229,12 +6229,16 @@
     <!-- http://en.wikipedia.org/wiki/%2B385 -->
     <territory id="HR">
       <generalDesc>
-        <nationalNumberPattern>[19]\d{1,5}</nationalNumberPattern>
+        <nationalNumberPattern>[016-9]\d{1,5}</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="[2-6]"/>
         <exampleNumber>93</exampleNumber>
         <nationalNumberPattern>
+          (?:
+            06|
+            [6-8]\d{4}
+          )\d|
           1(?:
             1(?:
               2|
@@ -6275,9 +6279,15 @@
            / premium rate. Adding 118XX to premium rate so that products are aware of the
            possibility of premium rate numbers under 118 range. -->
       <premiumRate>
-        <possibleLengths national="5"/>
-        <exampleNumber>11800</exampleNumber>
-        <nationalNumberPattern>118\d\d</nationalNumberPattern>
+        <possibleLengths national="3,5,6"/>
+        <exampleNumber>060</exampleNumber>
+        <nationalNumberPattern>
+          06\d|
+          (?:
+            118|
+            [6-8]\d{3}
+          )\d\d
+        </nationalNumberPattern>
       </premiumRate>
       <!-- Bonbon users can send free SMS to 13977 short code.
            http://www.bonbon.hr/ponuda/pretplata/paketi/ -->

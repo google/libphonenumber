@@ -62,6 +62,7 @@
 8524699|South China Telecommunications
 852470|Hutchison Telecom
 852471|Hutchison Telecom
+852472|China Mobile
 8524740|China Mobile
 8524741|China Mobile
 8524742|China Mobile
@@ -267,6 +268,7 @@
 852675|HKT
 852676|China Mobile
 852677|HKT
+852678|China Mobile
 852679|3
 852680|HKT
 852681|China Unicom
