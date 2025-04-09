@@ -1,3 +1,12 @@
+Apr 09, 2025: v9.0.3
+Metadata changes:
+ - Updated alternate formatting data for country calling code(s): 43
+ - Updated phone metadata for region code(s): AT, GD, HK, HR, MX, RE
+ - Updated short number metadata for region code(s): HR
+ - Updated geocoding data for country calling code(s): 52 (en)
+ - Updated carrier data for country calling code(s):
+   43 (en), 229 (en), 262 (en), 852 (en, zh)
+
 Mar 27, 2025: v9.0.2
 Metadata changes:
  - Updated phone metadata for region code(s): NR, US, UZ, ZA

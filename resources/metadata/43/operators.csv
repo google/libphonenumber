@@ -1,7 +1,7 @@
-Id                     ; Name:en
-a1_ta                  ; "A1 TA"
-hutchison_drei_austria ; "Hutchison Drei Austria"
-orange_at              ; "Orange AT"
-spusu                  ; "spusu"
-t_mobile_at            ; "T-Mobile AT"
-telering               ; "tele.ring"
+Id          ; Name:en
+a1_ta       ; "A1 TA"
+orange_at   ; "Orange AT"
+spusu       ; "spusu"
+t_mobile_at ; "T-Mobile AT"
+telering    ; "tele.ring"
+three       ; "Three"

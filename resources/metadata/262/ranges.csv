@@ -39,6 +39,7 @@ Prefix       ; Length ; Type       ; Tariff        ; Operator ; Format         ;
 693[06]5     ; 9      ; MOBILE     ; STANDARD_RATE ; "zeop"   ; "fmt1_3/2/2/2" ; "Indian/Reunion"                ; "RE"    ; GOVERNMENT
 6931[03]     ; 9      ; MOBILE     ; STANDARD_RATE ; "sfr"    ; "fmt1_3/2/2/2" ; "Indian/Reunion"                ; "RE"    ; IR21       ; "IR21 dated 10/8/2016"
 69311        ; 9      ; MOBILE     ; STANDARD_RATE ; "orange" ; "fmt1_3/2/2/2" ; "Indian/Reunion"                ; "RE"    ; GOVERNMENT ; "ARCEP 4/9/2019"
+69312        ; 9      ; MOBILE     ; STANDARD_RATE ; "zeop"   ; "fmt1_3/2/2/2" ; "Indian/Reunion"                ; "RE"    ; IR21
 69320        ; 9      ; MOBILE     ; STANDARD_RATE ; "sfr"    ; "fmt1_3/2/2/2" ; "Indian/Reunion"                ; "RE"    ; IR21       ; "IR21 dated 10/8/2016"
 6932[12]     ; 9      ; MOBILE     ; STANDARD_RATE ; "orange" ; "fmt1_3/2/2/2" ; "Indian/Reunion"                ; "RE"    ; GOVERNMENT ; "ARCEP 4/9/2019"
 6933[0-2]    ; 9      ; MOBILE     ; STANDARD_RATE ; "telco"  ; "fmt1_3/2/2/2" ; "Indian/Reunion"                ; "RE"    ; IR21
