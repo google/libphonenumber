@@ -129,7 +129,7 @@ class AsYouTypeFormatter {
   // Check to see if there is an exact pattern match for these digits. If so, we
   // should use this instead of any other formatting template whose
   // leadingDigitsPattern also matches the input.
-  void AttemptToFormatAccruedDigits(string* formatted_number);
+  void AttemptToFormatAccruedDigits(string* formatted_result);
 
   // Combines the national number with any prefix (IDD/+ and country code or
   // national prefix) that was collected. A space will be inserted between them
