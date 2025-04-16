@@ -13,6 +13,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 #include "phonenumbers/phonenumbermatcher.h"
+#include <memory>
 #include <string>
 #include <vector>
 #include <limits>
@@ -78,7 +79,8 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size) {
   // fuzz the matching with the icu adapter
   std::string matched_string;
   i18n::phonenumbers::ICURegExpFactory factory;
-  i18n::phonenumbers::RegExp* regexp = factory.CreateRegExp(regexp_string);
+  std::unique_ptr<i18n::phonenumbers::RegExp> regexp(
+    factory.CreateRegExp(regexp_string));
   regexp->Match(text, full_match, &matched_string);
 
   return 0;
