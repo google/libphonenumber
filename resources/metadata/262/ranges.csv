@@ -39,6 +39,7 @@ Prefix       ; Length ; Type       ; Tariff        ; Operator ; Format         ;
 693[06]5     ; 9      ; MOBILE     ; STANDARD_RATE ; "zeop"   ; "fmt1_3/2/2/2" ; "Indian/Reunion"                ; "RE"    ; GOVERNMENT
 6931[03]     ; 9      ; MOBILE     ; STANDARD_RATE ; "sfr"    ; "fmt1_3/2/2/2" ; "Indian/Reunion"                ; "RE"    ; IR21       ; "IR21 dated 10/8/2016"
 69311        ; 9      ; MOBILE     ; STANDARD_RATE ; "orange" ; "fmt1_3/2/2/2" ; "Indian/Reunion"                ; "RE"    ; GOVERNMENT ; "ARCEP 4/9/2019"
+69312        ; 9      ; MOBILE     ; STANDARD_RATE ; "zeop"   ; "fmt1_3/2/2/2" ; "Indian/Reunion"                ; "RE"    ; IR21
 69320        ; 9      ; MOBILE     ; STANDARD_RATE ; "sfr"    ; "fmt1_3/2/2/2" ; "Indian/Reunion"                ; "RE"    ; IR21       ; "IR21 dated 10/8/2016"
 6932[12]     ; 9      ; MOBILE     ; STANDARD_RATE ; "orange" ; "fmt1_3/2/2/2" ; "Indian/Reunion"                ; "RE"    ; GOVERNMENT ; "ARCEP 4/9/2019"
 6933[0-2]    ; 9      ; MOBILE     ; STANDARD_RATE ; "telco"  ; "fmt1_3/2/2/2" ; "Indian/Reunion"                ; "RE"    ; IR21
@@ -56,6 +57,13 @@ Prefix       ; Length ; Type       ; Tariff        ; Operator ; Format         ;
 69388        ; 9      ; MOBILE     ; STANDARD_RATE ; "orange" ; "fmt1_3/2/2/2" ; "Indian/Reunion"                ; "RE"    ; GOVERNMENT ; "ARCEP 4/9/2019"
 6939[0-39]   ; 9      ; MOBILE     ; STANDARD_RATE ; "orange" ; "fmt1_3/2/2/2" ; "Indian/Reunion"                ; "RE"    ; GOVERNMENT ; "ARCEP 4/9/2019"
 6939[47]     ; 9      ; MOBILE     ; STANDARD_RATE ; "sfr"    ; "fmt1_3/2/2/2" ; "Indian/Reunion"                ; "RE"    ; IR21       ; "IR21 dated 10/8/2016"
+70920        ; 9      ; MOBILE     ; STANDARD_RATE ; "sfr"    ; "fmt1_3/2/2/2" ; "Indian/Reunion"                ; "RE"    ; GOVERNMENT
+70921        ; 9      ; MOBILE     ; STANDARD_RATE ; "orange" ; "fmt1_3/2/2/2" ; "Indian/Reunion"                ; "RE"    ; GOVERNMENT
+70922        ; 9      ; MOBILE     ; STANDARD_RATE ; "telco"  ; "fmt1_3/2/2/2" ; "Indian/Reunion"                ; "RE"    ; GOVERNMENT
+70923        ; 9      ; MOBILE     ; STANDARD_RATE ; "zeop"   ; "fmt1_3/2/2/2" ; "Indian/Reunion"                ; "RE"    ; GOVERNMENT
+70935        ; 9      ; MOBILE     ; STANDARD_RATE ; "sfr"    ; "fmt1_3/2/2/2" ; "Indian/Mayotte"                ; "YT"    ; GOVERNMENT
+70936        ; 9      ; MOBILE     ; STANDARD_RATE ; "telco"  ; "fmt1_3/2/2/2" ; "Indian/Mayotte"                ; "YT"    ; GOVERNMENT
+70937        ; 9      ; MOBILE     ; STANDARD_RATE ; "orange" ; "fmt1_3/2/2/2" ; "Indian/Mayotte"                ; "YT"    ; GOVERNMENT
 80           ; 9      ; FIXED_LINE ; TOLL_FREE     ;          ; "fmt1_3/2/2/2" ; "Indian/Mayotte&Indian/Reunion" ; "RE,YT"
 81[019]      ; 9      ; FIXED_LINE ; SHARED_COST   ;          ; "fmt1_3/2/2/2" ; "Indian/Reunion"                ; "RE"
 82[0156]     ; 9      ; FIXED_LINE ; SHARED_COST   ;          ; "fmt1_3/2/2/2" ; "Indian/Reunion"                ; "RE"
@@ -65,7 +73,7 @@ Prefix       ; Length ; Type       ; Tariff        ; Operator ; Format         ;
 9398[01]     ; 9      ; VOIP       ; STANDARD_RATE ;          ; "fmt1_3/2/2/2" ; "Indian/Mayotte"                ; "YT"    ; GOVERNMENT
 9399[0-3]    ; 9      ; VOIP       ; STANDARD_RATE ;          ; "fmt1_3/2/2/2" ; "Indian/Reunion"                ; "RE"    ; GOVERNMENT
 9478[01]     ; 9      ; VOIP       ; STANDARD_RATE ;          ; "fmt1_3/2/2/2" ; "Indian/Mayotte"                ; "YT"    ; GOVERNMENT
-9479[0-5]    ; 9      ; VOIP       ; STANDARD_RATE ;          ; "fmt1_3/2/2/2" ; "Indian/Reunion"                ; "RE"    ; GOVERNMENT
+9479[0-6]    ; 9      ; VOIP       ; STANDARD_RATE ;          ; "fmt1_3/2/2/2" ; "Indian/Reunion"                ; "RE"    ; GOVERNMENT
 9762[278]    ; 9      ; VOIP       ; STANDARD_RATE ;          ; "fmt1_3/2/2/2" ; "Indian/Reunion"                ; "RE"    ; GOVERNMENT
 9763[0-37]   ; 9      ; VOIP       ; STANDARD_RATE ;          ; "fmt1_3/2/2/2" ; "Indian/Reunion"                ; "RE"    ; GOVERNMENT
 9769         ; 9      ; VOIP       ; STANDARD_RATE ;          ; "fmt1_3/2/2/2" ; "Indian/Mayotte"                ; "YT"    ; GOVERNMENT

@@ -12,10 +12,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+436485|Three
 43650|tele.ring
-43660|Hutchison Drei Austria
+43660|Three
 43664|A1 TA
+43665|Three
+43668|Three
 43670|spusu
+43672|Three
 43676|T-Mobile AT
 436770|T-Mobile AT
 436771|T-Mobile AT
@@ -24,7 +28,11 @@
 436779|T-Mobile AT
 4368181|A1 TA
 4368182|A1 TA
-4368183|Orange AT
+4368183|Three
 4368184|A1 TA
+436819|Three
+43686|Three
 43688|Orange AT
+43690|Three
+43696|Three
 43699|Orange AT

@@ -31,15 +31,16 @@ Prefix            ; Length ; Type       ; Tariff        ; Area Code Length ; Ope
 [56][2-5]48       ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "tc"       ; "fmt_2/3/3-4"   ; "KH"
 [5-7][2-5][56]    ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fmt_2/3/3-4"   ; "KH"
 6[06-8]           ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "metfone"  ; "fmt_2/3/3-4"   ; "KH"    ; GOVERNMENT ; "3/1/2018"
-61                ; 8      ; MOBILE     ; STANDARD_RATE ;                  ;            ; "fmt_2/3/3-4"   ; "KH"    ; GOVERNMENT ; "3/1/2018"
+61                ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "cellcard" ; "fmt_2/3/3-4"   ; "KH"    ; IR21
 69                ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "smart"    ; "fmt_2/3/3-4"   ; "KH"    ; GOVERNMENT ; "3/1/2018"
 71                ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "metfone"  ; "fmt_2/3/3-4"   ; "KH"    ; GOVERNMENT ; "3/1/2018"
 7[2-5]48          ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "metfone"  ; "fmt_2/3/3-4"   ; "KH"
-76                ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;            ; "fmt_2/3/3-4"   ; "KH"    ; GOVERNMENT ; "3/1/2018"
+76                ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "cellcard" ; "fmt_2/3/3-4"   ; "KH"    ; IR21
 7[78]             ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "cellcard" ; "fmt_2/3/3-4"   ; "KH"    ; GOVERNMENT ; "3/1/2018"
 79                ; 8      ; MOBILE     ; STANDARD_RATE ;                  ;            ; "fmt_2/3/3-4"   ; "KH"    ; GOVERNMENT ; "3/1/2018"
-8[03-57]          ; 8      ; MOBILE     ; STANDARD_RATE ;                  ;            ; "fmt_2/3/3-4"   ; "KH"    ; GOVERNMENT ; "3/1/2018"
+8[0347]           ; 8      ; MOBILE     ; STANDARD_RATE ;                  ;            ; "fmt_2/3/3-4"   ; "KH"    ; GOVERNMENT ; "3/1/2018"
 8[16]             ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "smart"    ; "fmt_2/3/3-4"   ; "KH"    ; GOVERNMENT ; "3/1/2018"
+85                ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "cellcard" ; "fmt_2/3/3-4"   ; "KH"    ; IR21
 88                ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "metfone"  ; "fmt_2/3/3-4"   ; "KH"    ; GOVERNMENT ; "3/1/2018"
 89                ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "cellcard" ; "fmt_2/3/3-4"   ; "KH"    ; GOVERNMENT ; "3/1/2018"
 90                ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "metfone"  ; "fmt_2/3/3-4"   ; "KH"    ; GOVERNMENT ; "3/1/2018"

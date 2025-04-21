@@ -1,16 +1,15 @@
 <?xml version="1.0"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>com.googlecode.libphonenumber</groupId>
   <artifactId>libphonenumber</artifactId>
-  <version>8.13.50-SNAPSHOT</version>
+  <version>9.0.4-SNAPSHOT</version>
   <packaging>jar</packaging>
   <url>https://github.com/google/libphonenumber/</url>
 
   <parent>
     <groupId>com.googlecode.libphonenumber</groupId>
     <artifactId>libphonenumber-parent</artifactId>
-    <version>8.13.50-SNAPSHOT</version>
+    <version>9.0.4-SNAPSHOT</version>
   </parent>
 
   <build>
@@ -35,20 +34,26 @@
         <version>5.1.9</version>
         <configuration>
           <instructions>
-          	<Eclipse-ExtensibleAPI>true</Eclipse-ExtensibleAPI>
+            <Eclipse-ExtensibleAPI>true</Eclipse-ExtensibleAPI>
             <Export-Package>com.google.i18n.phonenumbers</Export-Package>
           </instructions>
         </configuration>
       </plugin>
       <plugin>
         <artifactId>maven-jar-plugin</artifactId>
-        <version>3.3.0</version>
         <executions>
           <execution>
             <id>default-jar</id>
             <configuration>
               <archive>
-                <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
+                <manifestFile>
+                  ${project.build.outputDirectory}/META-INF/MANIFEST.MF
+                </manifestFile>
+                <manifestEntries>
+                  <Automatic-Module-Name>
+                    com.google.i18n.phonenumbers.libphonenumber
+                  </Automatic-Module-Name>
+                </manifestEntries>
               </archive>
             </configuration>
           </execution>
@@ -61,7 +66,14 @@
             <configuration>
               <classifier>no-metadata</classifier>
               <archive>
-                <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
+                <manifestFile>
+                  ${project.build.outputDirectory}/META-INF/MANIFEST.MF
+                </manifestFile>
+                <manifestEntries>
+                  <Automatic-Module-Name>
+                    com.google.i18n.phonenumbers.libphonenumber
+                  </Automatic-Module-Name>
+                </manifestEntries>
               </archive>
               <excludes>
                 <exclude>com/google/i18n/phonenumbers/data/*</exclude>

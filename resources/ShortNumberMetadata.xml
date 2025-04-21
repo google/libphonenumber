@@ -1558,21 +1558,29 @@
       </generalDesc>
       <shortCode>
         <possibleLengths national="3,4"/>
-        <exampleNumber>117</exampleNumber>
+        <exampleNumber>105</exampleNumber>
         <nationalNumberPattern>
           1(?:
-            1[78]|
+            05|
+            1[24-8]|
             2[02-5]|
-            60
+            3[126-8]|
+            5[05]|
+            6[06]|
+            89
           )|
           7[0-5]\d\d
         </nationalNumberPattern>
       </shortCode>
       <tollFree>
         <possibleLengths national="3,4"/>
-        <exampleNumber>117</exampleNumber>
+        <exampleNumber>112</exampleNumber>
         <nationalNumberPattern>
-          11[78]|
+          1(?:
+            1[246-8]|
+            3[68]|
+            6[06]
+          )|
           7[3-5]\d\d
         </nationalNumberPattern>
       </tollFree>
@@ -1583,9 +1591,19 @@
       </carrierSpecific>
       <emergency>
         <possibleLengths national="3"/>
-        <exampleNumber>117</exampleNumber>
-        <nationalNumberPattern>11[78]</nationalNumberPattern>
+        <exampleNumber>112</exampleNumber>
+        <nationalNumberPattern>11[246-8]</nationalNumberPattern>
       </emergency>
+      <expandedEmergency>
+        <possibleLengths national="3"/>
+        <exampleNumber>136</exampleNumber>
+        <nationalNumberPattern>
+          1(?:
+            3[68]|
+            6[06]
+          )
+        </nationalNumberPattern>
+      </expandedEmergency>
     </territory>
 
     <!-- St. Barthélemy (BL) -->
@@ -3659,7 +3677,8 @@
     </territory>
 
     <!-- Denmark (DK) -->
-    <!-- http://www.dba.erhvervsstyrelsen.dk/numbering-lists -->
+    <!-- https://www.klimadatastyrelsen.dk/digital-infrastruktur/telefoni/numre/den-samlede-danske-nummerplan -->
+    <!-- https://nummerregister.sdfi.dk -->
     <territory id="DK">
       <generalDesc>
         <nationalNumberPattern>1\d{2,5}</nationalNumberPattern>
@@ -3670,7 +3689,7 @@
         <nationalNumberPattern>
           1(?:
             1(?:
-              [2-48]|
+              [248]|
               6(?:
                 00[06]|
                 111
@@ -4725,7 +4744,7 @@
             )
           )|
           (?:
-            1[235-8]\d|
+            1[2-8]\d|
             75[12]
           )\d\d
         </nationalNumberPattern>
@@ -4743,7 +4762,7 @@
       <standardRate>
         <possibleLengths national="5"/>
         <exampleNumber>12000</exampleNumber>
-        <nationalNumberPattern>1[235-8]\d{3}</nationalNumberPattern>
+        <nationalNumberPattern>1[2-8]\d{3}</nationalNumberPattern>
       </standardRate>
       <emergency>
         <possibleLengths national="3"/>
@@ -6210,12 +6229,16 @@
     <!-- http://en.wikipedia.org/wiki/%2B385 -->
     <territory id="HR">
       <generalDesc>
-        <nationalNumberPattern>[19]\d{1,5}</nationalNumberPattern>
+        <nationalNumberPattern>[016-9]\d{1,5}</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="[2-6]"/>
         <exampleNumber>93</exampleNumber>
         <nationalNumberPattern>
+          (?:
+            06|
+            [6-8]\d{4}
+          )\d|
           1(?:
             1(?:
               2|
@@ -6256,9 +6279,15 @@
            / premium rate. Adding 118XX to premium rate so that products are aware of the
            possibility of premium rate numbers under 118 range. -->
       <premiumRate>
-        <possibleLengths national="5"/>
-        <exampleNumber>11800</exampleNumber>
-        <nationalNumberPattern>118\d\d</nationalNumberPattern>
+        <possibleLengths national="3,5,6"/>
+        <exampleNumber>060</exampleNumber>
+        <nationalNumberPattern>
+          06\d|
+          (?:
+            118|
+            [6-8]\d{3}
+          )\d\d
+        </nationalNumberPattern>
       </premiumRate>
       <!-- Bonbon users can send free SMS to 13977 short code.
            http://www.bonbon.hr/ponuda/pretplata/paketi/ -->
@@ -10541,7 +10570,7 @@
               [59]
             )|
             7[57]|
-            8[5-9]\d|
+            8\d\d|
             90
           )
         </nationalNumberPattern>
@@ -12224,6 +12253,7 @@
 
     <!-- Slovakia (SK) -->
     <!-- http://www.itu.int/oth/T02020000BD/en -->
+    <!-- https://www.ezd.sk/dbpc/databazacisel.php -->
     <!-- http://www.teleoff.gov.sk/data/files/25211.pdf -->
     <territory id="SK">
       <generalDesc>
