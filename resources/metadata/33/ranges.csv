@@ -331,7 +331,8 @@ Prefix         ; Length ; Type       ; Tariff        ; Operator                 
 75430          ; 9      ; MOBILE     ; STANDARD_RATE ; "tdf"                          ; "fmt_1/2/2/2/2"   ; "FR"    ; GOVERNMENT
 75431          ; 9      ; MOBILE     ; STANDARD_RATE ; "legos"                        ; "fmt_1/2/2/2/2"   ; "FR"    ; GOVERNMENT
 75432          ; 9      ; MOBILE     ; STANDARD_RATE ; "euroinformation_telecom"      ; "fmt_1/2/2/2/2"   ; "FR"    ; IR21
-7543[3-9]      ; 9      ; MOBILE     ; STANDARD_RATE ; "prixtel"                      ; "fmt_1/2/2/2/2"   ; "FR"    ; GOVERNMENT
+75433          ; 9      ; MOBILE     ; STANDARD_RATE ; "sfr"                          ; "fmt_1/2/2/2/2"   ; "FR"    ; IR21
+7543[4-9]      ; 9      ; MOBILE     ; STANDARD_RATE ; "prixtel"                      ; "fmt_1/2/2/2/2"   ; "FR"    ; GOVERNMENT
 7546           ; 9      ; MOBILE     ; STANDARD_RATE ; "mobiquithings"                ; "fmt_1/2/2/2/2"   ; "FR"    ; GOVERNMENT
 7547           ; 9      ; MOBILE     ; STANDARD_RATE ; "can_france"                   ; "fmt_1/2/2/2/2"   ; "FR"    ; IR21
 754[89]        ; 9      ; MOBILE     ; STANDARD_RATE ; "completel"                    ; "fmt_1/2/2/2/2"   ; "FR"    ; IR21
@@ -366,14 +367,15 @@ Prefix         ; Length ; Type       ; Tariff        ; Operator                 
 7575[78]       ; 9      ; MOBILE     ; STANDARD_RATE ; "euroinformation_telecom"      ; "fmt_1/2/2/2/2"   ; "FR"    ; GOVERNMENT
 75759          ; 9      ; MOBILE     ; STANDARD_RATE ; "twilio_ireland"               ; "fmt_1/2/2/2/2"   ; "FR"    ; GOVERNMENT
 75760          ; 9      ; MOBILE     ; STANDARD_RATE ; "twilio_ireland"               ; "fmt_1/2/2/2/2"   ; "FR"    ; GOVERNMENT
-7576[1289]     ; 9      ; MOBILE     ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+75761          ; 9      ; MOBILE     ; STANDARD_RATE ; "sfr"                          ; "fmt_1/2/2/2/2"   ; "FR"    ; IR21
+7576[289]      ; 9      ; MOBILE     ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 7576[37]       ; 9      ; MOBILE     ; STANDARD_RATE ; "euroinformation_telecom"      ; "fmt_1/2/2/2/2"   ; "FR"    ; GOVERNMENT
 7576[45]       ; 9      ; MOBILE     ; STANDARD_RATE ; "bouygues"                     ; "fmt_1/2/2/2/2"   ; "FR"    ; IR21
 75766          ; 9      ; MOBILE     ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ; GOVERNMENT
 7577[0-4]      ; 9      ; MOBILE     ; STANDARD_RATE ; "sfr"                          ; "fmt_1/2/2/2/2"   ; "FR"
 7577[56]       ; 9      ; MOBILE     ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 757[78]7       ; 9      ; MOBILE     ; STANDARD_RATE ; "euroinformation_telecom"      ; "fmt_1/2/2/2/2"   ; "FR"    ; IR21
-75778          ; 9      ; MOBILE     ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ; IR21
+75778          ; 9      ; MOBILE     ; STANDARD_RATE ; "sfr"                          ; "fmt_1/2/2/2/2"   ; "FR"    ; IR21
 75779          ; 9      ; MOBILE     ; STANDARD_RATE ; "halys"                        ; "fmt_1/2/2/2/2"   ; "FR"    ; GOVERNMENT
 7578[0-5]      ; 9      ; MOBILE     ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 75786          ; 9      ; MOBILE     ; STANDARD_RATE ; "orange_france"                ; "fmt_1/2/2/2/2"   ; "FR"    ; GOVERNMENT

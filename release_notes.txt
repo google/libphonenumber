@@ -1,3 +1,11 @@
+Apr 23, 2025: v9.0.4
+Metadata changes:
+ - Updated phone metadata for region code(s): BI, BR, LB, MU, NG, SG, SY
+ - Updated geocoding data for country calling code(s):
+   55 (en), 230 (en, es, fr), 234 (en)
+ - Updated carrier data for country calling code(s):
+   33 (en), 65 (en), 230 (en), 961 (en), 963 (en)
+
 Apr 09, 2025: v9.0.3
 Metadata changes:
  - Updated alternate formatting data for country calling code(s): 43
