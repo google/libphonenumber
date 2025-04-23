@@ -401,6 +401,7 @@
 658963|SingTel
 658964|SingTel
 658965|SingTel
+65897|Simba
 659001|StarHub
 659002|StarHub
 659003|StarHub
