@@ -229,6 +229,7 @@
 3375430|TDF
 3375431|Legos
 3375432|Euroinformation Telecom
+3375433|SFR
 337544|Lebara France Limited
 337545|Lebara France Limited
 337546|Mobiquithings
@@ -296,6 +297,7 @@
 3375758|Euroinformation Telecom
 3375759|Twilio Ireland Limited
 3375760|Twilio Ireland Limited
+3375761|SFR
 3375763|Euroinformation Telecom
 3375764|Bouygues
 3375765|Bouygues
@@ -306,6 +308,7 @@
 3375773|SFR
 3375774|SFR
 3375777|Euroinformation Telecom
+3375778|SFR
 3375779|Halys
 3375786|Orange France
 3375787|Euroinformation Telecom

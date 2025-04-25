@@ -9777,7 +9777,7 @@
     </territory>
 
     <!-- Mauritius (MU) -->
-    <!-- http://www.icta.mu/telecommunications/numbering.htm -->
+    <!-- https://www.icta.mu/telecom-numbering/ -->
     <territory id="MU">
       <generalDesc>
         <nationalNumberPattern>[189]\d{2,4}</nationalNumberPattern>
