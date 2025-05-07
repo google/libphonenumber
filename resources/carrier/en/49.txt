@@ -30,6 +30,7 @@
 491531|Mtel
 4915510|LEBARA
 4915511|LEBARA
+491555|1&1 Mobilfunk
 491556|1&1 Mobilfunk
 4915630|Multiconnect
 4915678|Argon Networks

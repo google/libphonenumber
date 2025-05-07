@@ -18,10 +18,10 @@ Prefix        ; Length    ; Type            ; Tariff        ; Area Code Length ;
 152[478]      ; 11        ; MOBILE          ; STANDARD_RATE ;                  ;                             ; "mobile_4/7"        ; "DE"
 1529          ; 11        ; MOBILE          ; STANDARD_RATE ;                  ; "vodafone_truphone"         ; "mobile_4/7"        ; "DE"
 15310         ; 11        ; MOBILE          ; STANDARD_RATE ;                  ; "mtel"                      ; "mobile_5/6"        ; "DE"    ;                                      ;                                      ; IR21
-155[02-57-9]  ; 11        ; MOBILE          ; STANDARD_RATE ;                  ;                             ; "mobile_5/6"        ; "DE"
+155[02-47-9]  ; 11        ; MOBILE          ; STANDARD_RATE ;                  ;                             ; "mobile_5/6"        ; "DE"
 1551[01]      ; 11        ; MOBILE          ; STANDARD_RATE ;                  ; "lebara"                    ; "mobile_5/6"        ; "DE"    ;                                      ;                                      ; GOVERNMENT
 1551[2-9]     ; 11        ; MOBILE          ; STANDARD_RATE ;                  ;                             ; "mobile_5/6"        ; "DE"
-1556          ; 11        ; MOBILE          ; STANDARD_RATE ;                  ; "1&1"                       ; "mobile_5/6"        ; "DE"    ;                                      ;                                      ; IR21
+155[56]       ; 11        ; MOBILE          ; STANDARD_RATE ;                  ; "1&1"                       ; "mobile_5/6"        ; "DE"    ;                                      ;                                      ; IR21
 156[0-24-689] ; 11        ; MOBILE          ; STANDARD_RATE ;                  ;                             ; "mobile_5/6"        ; "DE"
 15630         ; 11        ; MOBILE          ; STANDARD_RATE ;                  ; "multiconnect"              ; "mobile_5/6"        ; "DE"
 1563[1-9]     ; 11        ; MOBILE          ; STANDARD_RATE ;                  ;                             ; "mobile_5/6"        ; "DE"
