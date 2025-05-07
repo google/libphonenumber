@@ -1,6 +1,7 @@
 Prefix    ; Length ; Type       ; Tariff        ; Operator   ; Format     ; Regions ; Provenance ; Comment
 0080[01]  ; 11     ; FIXED_LINE ; TOLL_FREE     ;            ;            ; "QA"    ; GOVERNMENT
 21        ; 7      ; PAGER      ; STANDARD_RATE ;            ; "fmt1_3/4" ; "QA"    ; GOVERNMENT
+23        ; 7      ; PAGER      ; STANDARD_RATE ;            ; "fmt1_3/4" ; "QA"    ; IR21
 26        ; 7      ; PAGER      ; STANDARD_RATE ;            ; "fmt1_3/4" ; "QA"    ; ITU
 30        ; 8      ; MOBILE     ; STANDARD_RATE ; "vodafone" ; "fmt2_4/4" ; "QA"    ; IR21       ; "IR21 dated 11/20/2018"
 31[0-6]   ; 8      ; MOBILE     ; STANDARD_RATE ; "vodafone" ; "fmt2_4/4" ; "QA"    ; IR21       ; "IR21 dated 11/20/2018"
