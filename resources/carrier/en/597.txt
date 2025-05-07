@@ -18,7 +18,12 @@
 59775|Telesur
 59776|Digicel
 59777|Telesur
-5978|Telesur
 59781|Digicel
 59782|Digicel
 59783|Digicel
+59784|Telesur
+59785|Telesur
+59786|Telesur
+59787|Telesur
+59788|Telesur
+59789|Telesur

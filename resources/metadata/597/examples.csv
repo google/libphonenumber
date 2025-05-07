@@ -1,4 +1,6 @@
-Region ; Type       ; Number
-SR     ; FIXED_LINE ; "211234"
-SR     ; MOBILE     ; "7412345"
-SR     ; VOIP       ; "561234"
+Region ; Type         ; Number
+SR     ; FIXED_LINE   ; "211234"
+SR     ; MOBILE       ; "7412345"
+SR     ; TOLL_FREE    ; "8012345"
+SR     ; PREMIUM_RATE ; "9012345"
+SR     ; VOIP         ; "561234"
