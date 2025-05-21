@@ -19151,7 +19151,7 @@
         <possibleLengths national="7,8"/>
         <exampleNumber>71123456</exampleNumber>
         <nationalNumberPattern>
-          787\d{4}|
+          787\d{5}|
           (?:
             (?:
               3|
