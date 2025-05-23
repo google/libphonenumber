@@ -1,3 +1,14 @@
+May 23, 2025: v9.0.6
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   BI, CA, CO, HK, IR, LI, LR, MY, SA, US
+ - New geocoding data for country calling code(s): 1257 (en)
+ - Updated geocoding data for country calling code(s): 57 (en)
+ - Updated carrier data for country calling code(s):
+   33 (en), 57 (en), 61 (en), 81 (en), 98 (en, fa), 229 (en), 370 (en),
+   423 (en), 852 (en, zh)
+ - Updated / refreshed time zone meta data.
+
 May 07, 2025: v9.0.5
 Metadata changes:
  - Updated phone metadata for region code(s): EH, IL, LA, MA, ML, QA, SG, SR

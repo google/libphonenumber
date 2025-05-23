@@ -99,7 +99,7 @@ Prefix         ; Length ; Type       ; Tariff        ; Area Code Length ; Operat
 60105[0-4]     ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "Cundinamarca"                     ; "Cundinamarca"                     ; GOVERNMENT
 601055[0-4]    ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "Cundinamarca"                     ; "Cundinamarca"                     ; GOVERNMENT
 60105550       ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "Cundinamarca"                     ; "Cundinamarca"                     ; GOVERNMENT
-601[2-7]       ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "Bogotá"                           ; "Bogotá"
+601[1-7]       ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "Bogotá"                           ; "Bogotá"
 6018[015-9]    ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"
 601820         ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "Madrid"                           ; "Madrid"
 60182[126]     ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "Funza"                            ; "Funza"
@@ -226,3 +226,4 @@ Prefix         ; Length ; Type       ; Tariff        ; Area Code Length ; Operat
 6088[67]       ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;                 ; "fixed_3/7"     ; "CO"    ; "Neiva"                            ; "Neiva"
 901            ; 10     ; FIXED_LINE ; PREMIUM_RATE  ;                  ;                 ; "fixed_3/7"     ; "CO"    ;                                    ;                                    ; GOVERNMENT
 9101           ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "movistar"      ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; IR21
+9408           ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "hablame"       ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; GOVERNMENT

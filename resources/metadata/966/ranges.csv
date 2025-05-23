@@ -18,6 +18,5 @@ Prefix      ; Length ; Type       ; Tariff        ; Area Code Length ; Operator 
 579[01]     ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "mobily"         ; "mobile_2/3/4"   ; "SA"    ;                                        ;                            ; IR21
 5[89]       ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "zain"           ; "mobile_2/3/4"   ; "SA"
 800         ; 10     ; FIXED_LINE ; TOLL_FREE     ;                  ;                  ; "tollfree_3/3/4" ; "SA"
-811         ; 10     ; UAN        ; STANDARD_RATE ;                  ;                  ; "uan_3/3/3-4"    ; "SA"
 920         ; 9      ; FIXED_LINE ; SHARED_COST   ;                  ;                  ; "varcost_4/5"    ; "SA"
 925         ; 9      ; FIXED_LINE ; PREMIUM_RATE  ;                  ;                  ; "varcost_4/5"    ; "SA"
