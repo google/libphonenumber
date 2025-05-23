@@ -11,8 +11,7 @@ Prefix       ; Length ; Type       ; Tariff        ; Operator       ; Format    
 29           ; 8      ; MOBILE     ; STANDARD_RATE ; "leo"          ; "fmt1_2/2/2/2" ; "BI"
 31           ; 8      ; FIXED_LINE ; STANDARD_RATE ;                ; "fmt1_2/2/2/2" ; "BI"    ;                     ; GOVERNMENT
 6[1257-9]    ; 8      ; MOBILE     ; STANDARD_RATE ; "viettel"      ; "fmt1_2/2/2/2" ; "BI"    ;                     ; TELECOMS   ; "Received confirmation from carrier"
-64[0-2]      ; 8      ; MOBILE     ; STANDARD_RATE ; "viettel"      ; "fmt1_2/2/2/2" ; "BI"    ;                     ; ITU
-66           ; 8      ; MOBILE     ; STANDARD_RATE ; "viettel"      ; "fmt1_2/2/2/2" ; "BI"    ;                     ; IR21
+6[46]        ; 8      ; MOBILE     ; STANDARD_RATE ; "viettel"      ; "fmt1_2/2/2/2" ; "BI"    ;                     ; IR21
 7[1269]      ; 8      ; MOBILE     ; STANDARD_RATE ; "leo"          ; "fmt1_2/2/2/2" ; "BI"
 7[58]        ; 8      ; MOBILE     ; STANDARD_RATE ; "smart_mobile" ; "fmt1_2/2/2/2" ; "BI"
 77           ; 8      ; MOBILE     ; STANDARD_RATE ; "onatel"       ; "fmt1_2/2/2/2" ; "BI"

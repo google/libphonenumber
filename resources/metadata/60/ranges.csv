@@ -652,7 +652,7 @@ Prefix         ; Length ; Type       ; Tariff        ; Area Code Length ; Operat
 425[67]        ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                 ; "fixed_1/3/4"     ; "MY"
 426[0-47-9]    ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                 ; "fixed_1/3/4"     ; "MY"    ; GOVERNMENT
 426[56]        ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                 ; "fixed_1/3/4"     ; "MY"
-4270           ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                 ; "fixed_1/3/4"     ; "MY"    ;            ; "User report"
+427[01]        ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                 ; "fixed_1/3/4"     ; "MY"    ;            ; "User report"
 428[0-389]     ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                 ; "fixed_1/3/4"     ; "MY"    ; GOVERNMENT
 428[4-7]       ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                 ; "fixed_1/3/4"     ; "MY"
 429[0-38]      ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                 ; "fixed_1/3/4"     ; "MY"    ; GOVERNMENT
