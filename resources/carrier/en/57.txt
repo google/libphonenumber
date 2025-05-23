@@ -293,3 +293,4 @@
 573508|Avantel
 57351|Avantel
 5791|Movistar
+5794|Hablame

@@ -61,16 +61,19 @@ Prefix       ; Length ; Type            ; Tariff        ; Operator   ; Format   
 6610[0-46-9] ; 8      ; MOBILE          ; STANDARD_RATE ; "tele_2"   ; "fmt_3/5"      ; "LT"    ;                      ; IR21
 66105        ; 8      ; MOBILE          ; STANDARD_RATE ; "bite"     ; "fmt_3/5"      ; "LT"    ;                      ; IR21
 661[1-79]    ; 8      ; MOBILE          ; STANDARD_RATE ; "bite"     ; "fmt_3/5"      ; "LT"    ;                      ; IR21
-6618[0-57-9] ; 8      ; MOBILE          ; STANDARD_RATE ; "bite"     ; "fmt_3/5"      ; "LT"
+6618[0-578]  ; 8      ; MOBILE          ; STANDARD_RATE ; "bite"     ; "fmt_3/5"      ; "LT"
 66186        ; 8      ; MOBILE          ; STANDARD_RATE ; "lancelot" ; "fmt_3/5"      ; "LT"    ;                      ; IR21
+66189        ; 8      ; MOBILE          ; STANDARD_RATE ;            ; "fmt_3/5"      ; "LT"
 66[29]       ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"    ; "fmt_3/5"      ; "LT"    ;                      ; IR21
 6630         ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"    ; "fmt_3/5"      ; "LT"    ;                      ; IR21
-6631[0-2]    ; 8      ; MOBILE          ; STANDARD_RATE ;            ; "fmt_3/5"      ; "LT"    ;                      ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+6631[02]     ; 8      ; MOBILE          ; STANDARD_RATE ;            ; "fmt_3/5"      ; "LT"    ;                      ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+66311        ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"    ; "fmt_3/5"      ; "LT"    ;                      ; IR21
 6631[3-9]    ; 8      ; MOBILE          ; STANDARD_RATE ; "bite"     ; "fmt_3/5"      ; "LT"    ;                      ; IR21
 6632[03]     ; 8      ; MOBILE          ; STANDARD_RATE ; "bite"     ; "fmt_3/5"      ; "LT"    ;                      ; IR21
 6632[14-9]   ; 8      ; MOBILE          ; STANDARD_RATE ; "lancelot" ; "fmt_3/5"      ; "LT"    ;                      ; IR21
-66322        ; 8      ; MOBILE          ; STANDARD_RATE ;            ; "fmt_3/5"      ; "LT"
-663[3-9]     ; 8      ; MOBILE          ; STANDARD_RATE ;            ; "fmt_3/5"      ; "LT"    ;                      ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+66322        ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"    ; "fmt_3/5"      ; "LT"    ;                      ; IR21
+663[35-79]   ; 8      ; MOBILE          ; STANDARD_RATE ;            ; "fmt_3/5"      ; "LT"    ;                      ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+663[48]      ; 8      ; MOBILE          ; STANDARD_RATE ;            ; "fmt_3/5"      ; "LT"    ;                      ; IR21
 664          ; 8      ; MOBILE          ; STANDARD_RATE ;            ; "fmt_3/5"      ; "LT"
 665[013]     ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"    ; "fmt_3/5"      ; "LT"    ;                      ; IR21
 6652[01]     ; 8      ; MOBILE          ; STANDARD_RATE ;            ; "fmt_3/5"      ; "LT"    ;                      ;            ; "FILLUP TO SUPPORT MASTER RANGE"
@@ -82,14 +85,16 @@ Prefix       ; Length ; Type            ; Tariff        ; Operator   ; Format   
 6662[2-9]    ; 8      ; MOBILE          ; STANDARD_RATE ; "bite"     ; "fmt_3/5"      ; "LT"    ;                      ; IR21
 666[34]      ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"    ; "fmt_3/5"      ; "LT"    ;                      ; IR21
 6666         ; 8      ; MOBILE          ; STANDARD_RATE ; "tele_2"   ; "fmt_3/5"      ; "LT"    ;                      ; IR21
-667[06-9]    ; 8      ; MOBILE          ; STANDARD_RATE ; "bite"     ; "fmt_3/5"      ; "LT"    ;                      ; IR21
+667[036-9]   ; 8      ; MOBILE          ; STANDARD_RATE ; "bite"     ; "fmt_3/5"      ; "LT"    ;                      ; IR21
 6671[02-8]   ; 8      ; MOBILE          ; STANDARD_RATE ;            ; "fmt_3/5"      ; "LT"    ;                      ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 6671[19]     ; 8      ; MOBILE          ; STANDARD_RATE ; "bite"     ; "fmt_3/5"      ; "LT"    ;                      ; IR21
-6672[0-7]    ; 8      ; MOBILE          ; STANDARD_RATE ;            ; "fmt_3/5"      ; "LT"    ;                      ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+6672[017]    ; 8      ; MOBILE          ; STANDARD_RATE ;            ; "fmt_3/5"      ; "LT"    ;                      ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+6672[2-6]    ; 8      ; MOBILE          ; STANDARD_RATE ; "tele_2"   ; "fmt_3/5"      ; "LT"    ;                      ; IR21
 6672[89]     ; 8      ; MOBILE          ; STANDARD_RATE ; "bite"     ; "fmt_3/5"      ; "LT"    ;                      ; IR21
-667[3-5]     ; 8      ; MOBILE          ; STANDARD_RATE ;            ; "fmt_3/5"      ; "LT"    ;                      ;            ; "FILLUP TO SUPPORT MASTER RANGE"
-6680         ; 8      ; MOBILE          ; STANDARD_RATE ; "tele_2"   ; "fmt_3/5"      ; "LT"    ;                      ; IR21
-668[12589]   ; 8      ; MOBILE          ; STANDARD_RATE ;            ; "fmt_3/5"      ; "LT"    ;                      ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+6674         ; 8      ; MOBILE          ; STANDARD_RATE ;            ; "fmt_3/5"      ; "LT"    ;                      ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+6675         ; 8      ; MOBILE          ; STANDARD_RATE ; "tele_2"   ; "fmt_3/5"      ; "LT"    ;                      ; IR21
+668[0159]    ; 8      ; MOBILE          ; STANDARD_RATE ; "tele_2"   ; "fmt_3/5"      ; "LT"    ;                      ; IR21
+668[28]      ; 8      ; MOBILE          ; STANDARD_RATE ;            ; "fmt_3/5"      ; "LT"    ;                      ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 6683[0-8]    ; 8      ; MOBILE          ; STANDARD_RATE ;            ; "fmt_3/5"      ; "LT"    ;                      ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 66839        ; 8      ; MOBILE          ; STANDARD_RATE ; "tele_2"   ; "fmt_3/5"      ; "LT"    ;                      ; IR21
 6684[0-2]    ; 8      ; MOBILE          ; STANDARD_RATE ; "tele_2"   ; "fmt_3/5"      ; "LT"    ;                      ; IR21

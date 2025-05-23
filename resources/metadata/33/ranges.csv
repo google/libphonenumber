@@ -348,9 +348,10 @@ Prefix         ; Length ; Type       ; Tariff        ; Operator                 
 756[0-2]       ; 9      ; MOBILE     ; STANDARD_RATE ; "euroinformation_telecom"      ; "fmt_1/2/2/2/2"   ; "FR"    ; GOVERNMENT
 7563[0-4]      ; 9      ; MOBILE     ; STANDARD_RATE ; "euroinformation_telecom"      ; "fmt_1/2/2/2/2"   ; "FR"    ; GOVERNMENT
 7563[5-9]      ; 9      ; MOBILE     ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
-7564[08]       ; 9      ; MOBILE     ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ; GOVERNMENT
+75640          ; 9      ; MOBILE     ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ; GOVERNMENT
 7564[1-3679]   ; 9      ; MOBILE     ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 7564[45]       ; 9      ; MOBILE     ; STANDARD_RATE ; "sfr"                          ; "fmt_1/2/2/2/2"   ; "FR"    ; IR21
+75648          ; 9      ; MOBILE     ; STANDARD_RATE ; "bouygues"                     ; "fmt_1/2/2/2/2"   ; "FR"    ; IR21
 756[5-9]       ; 9      ; MOBILE     ; STANDARD_RATE ; "transatel"                    ; "fmt_1/2/2/2/2"   ; "FR"    ; GOVERNMENT
 75700          ; 9      ; MOBILE     ; STANDARD_RATE ; "sewan"                        ; "fmt_1/2/2/2/2"   ; "FR"    ; GOVERNMENT
 7570[1-5]      ; 9      ; MOBILE     ; STANDARD_RATE ; "mobiweb"                      ; "fmt_1/2/2/2/2"   ; "FR"    ; GOVERNMENT

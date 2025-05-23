@@ -94,8 +94,7 @@ Prefix     ; Length ; Type       ; Tariff        ; Area Code Length ; National O
 87[289]    ; 6,7    ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                 ; "fixed_2/4-5"    ; "IR"    ; "Kurdistan"                  ; "کردستان"
 900        ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "irancell"      ; "nongeo_3/3/3-4" ; "IR"    ;                              ;                       ; TELECOMS
 90[1-35]   ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "irancell"      ; "nongeo_3/3/3-4" ; "IR"
-9044       ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "irancell"      ; "nongeo_3/3/3-4" ; "IR"
-904[56]    ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "irancell"      ; "nongeo_3/3/3-4" ; "IR"    ;                              ;                       ; IR21
+904        ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "irancell"      ; "nongeo_3/3/3-4" ; "IR"    ;                              ;                       ; IR21
 91         ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "ir_mci"        ; "nongeo_3/3/3-4" ; "IR"
 92[0-3]    ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "rightel"       ; "nongeo_3/3/3-4" ; "IR"
 93[035-9]  ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "irancell"      ; "nongeo_3/3/3-4" ; "IR"
@@ -127,7 +126,7 @@ Prefix     ; Length ; Type       ; Tariff        ; Area Code Length ; National O
 993        ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; false         ;                 ; "nongeo_3/3/3-4" ; "IR"
 99[46]     ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "ir_mci"        ; "nongeo_3/3/3-4" ; "IR"    ;                              ;                       ; IR21
 99510      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; false         ;                 ; "nongeo_3/3/3-4" ; "IR"
-99550      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; false         ;                 ; "nongeo_3/3/3-4" ; "IR"    ;                              ;                       ; ITU
+9955       ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "irancell"      ; "nongeo_3/3/3-4" ; "IR"    ;                              ;                       ; IR21
 9981       ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "shatel_mobile" ; "nongeo_3/3/3-4" ; "IR"    ;                              ;                       ; TELECOMS   ; "Confirmation of 9981 range with carrier"
 9982       ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "shatel_mobile" ; "nongeo_3/3/3-4" ; "IR"    ;                              ;                       ; ITU
 99888      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; false         ;                 ; "nongeo_3/3/3-4" ; "IR"
