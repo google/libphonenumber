@@ -1,5 +1,6 @@
 Prefix       ; Length ; Type                 ; Tariff        ; Operator  ; Format          ; Regions ; Geocode:en                             ; Geocode:fr                              ; Provenance ; Comment
-012[0-4]     ; 10     ; FIXED_LINE           ; STANDARD_RATE ;           ; "fmt_2/2/2/2/2" ; "BJ"    ;                                        ;                                         ; ITU
+012[0-3]     ; 10     ; FIXED_LINE           ; STANDARD_RATE ;           ; "fmt_2/2/2/2/2" ; "BJ"    ;                                        ;                                         ; ITU
+0124         ; 10     ; FIXED_LINE           ; STANDARD_RATE ;           ; "fmt_2/2/2/2/2" ; "BJ"    ;                                        ;                                         ; IR21
 012[5-9]     ; 10     ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ;           ; "fmt_2/2/2/2/2" ; "BJ"    ;                                        ;                                         ; ITU
 014[01347-9] ; 10     ; MOBILE               ; STANDARD_RATE ; "celtiis" ; "fmt_2/2/2/2/2" ; "BJ"    ;                                        ;                                         ; IR21
 014[26]      ; 10     ; MOBILE               ; STANDARD_RATE ; "mtn"     ; "fmt_2/2/2/2/2" ; "BJ"    ;                                        ;                                         ; ITU
@@ -9,8 +10,7 @@ Prefix       ; Length ; Type                 ; Tariff        ; Operator  ; Forma
 016[03-58]   ; 10     ; MOBILE               ; STANDARD_RATE ; "moov"    ; "fmt_2/2/2/2/2" ; "BJ"    ;                                        ;                                         ; ITU
 016[12679]   ; 10     ; MOBILE               ; STANDARD_RATE ; "mtn"     ; "fmt_2/2/2/2/2" ; "BJ"    ;                                        ;                                         ; ITU
 019[0167]    ; 10     ; MOBILE               ; STANDARD_RATE ; "mtn"     ; "fmt_2/2/2/2/2" ; "BJ"    ;                                        ;                                         ; ITU
-0192         ; 10     ; MOBILE               ; STANDARD_RATE ; "celtiis" ; "fmt_2/2/2/2/2" ; "BJ"    ;                                        ;                                         ; IR21
-0193         ; 10     ; MOBILE               ; STANDARD_RATE ;           ; "fmt_2/2/2/2/2" ; "BJ"    ;                                        ;                                         ; ITU
+019[23]      ; 10     ; MOBILE               ; STANDARD_RATE ; "celtiis" ; "fmt_2/2/2/2/2" ; "BJ"    ;                                        ;                                         ; IR21
 019[4589]    ; 10     ; MOBILE               ; STANDARD_RATE ; "moov"    ; "fmt_2/2/2/2/2" ; "BJ"    ;                                        ;                                         ; ITU
 202[038]     ; 8      ; FIXED_LINE           ; STANDARD_RATE ;           ; "fmt1_2/2/2/2"  ; "BJ"
 2021         ; 8      ; FIXED_LINE           ; STANDARD_RATE ;           ; "fmt1_2/2/2/2"  ; "BJ"    ; "Ongala"                               ; "Ongala"                                ; ITU

@@ -527,9 +527,11 @@ Prefix        ; Length ; Type            ; Tariff        ; National Only ; Opera
 707[0-389]    ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "nttdocomo"              ; "fmt10_2/4/4"      ;              ; "JP"    ;                             ;            ; GOVERNMENT
 707[4-6]      ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "kddi"                   ; "fmt10_2/4/4"      ;              ; "JP"    ;                             ;            ; GOVERNMENT
 7077          ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "kddi"                   ; "fmt10_2/4/4"      ;              ; "JP"    ;                             ;            ; IR21
-708[01]       ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "nttdocomo"              ; "fmt10_2/4/4"      ;              ; "JP"    ;                             ;            ; GOVERNMENT
-7082[0-3]     ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "nttdocomo"              ; "fmt10_2/4/4"      ;              ; "JP"    ;                             ;            ; GOVERNMENT
-7082[4-9]     ; 10     ; MOBILE          ; STANDARD_RATE ; false         ;                          ; "fmt10_2/4/4"      ;              ; "JP"    ;                             ;            ; GOVERNMENT
+7080          ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "nttdocomo"              ; "fmt10_2/4/4"      ;              ; "JP"    ;                             ;            ; GOVERNMENT
+7081[0-2]     ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "nttdocomo"              ; "fmt10_2/4/4"      ;              ; "JP"    ;                             ;            ; GOVERNMENT
+7081[3-6]     ; 10     ; MOBILE          ; STANDARD_RATE ; false         ;                          ; "fmt10_2/4/4"      ;              ; "JP"
+7081[7-9]     ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "kddi"                   ; "fmt10_2/4/4"      ;              ; "JP"    ;                             ;            ; IR21
+7082          ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "kddi"                   ; "fmt10_2/4/4"      ;              ; "JP"    ;                             ;            ; GOVERNMENT
 708[34]       ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "rakuten_communications" ; "fmt10_2/4/4"      ;              ; "JP"    ;                             ;            ; GOVERNMENT
 7085[0-8]     ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "rakuten_communications" ; "fmt10_2/4/4"      ;              ; "JP"    ;                             ;            ; GOVERNMENT
 70859         ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "rakuten_communications" ; "fmt10_2/4/4"      ; "Asia/Tokyo" ; "JP"    ;                             ;            ; IR21

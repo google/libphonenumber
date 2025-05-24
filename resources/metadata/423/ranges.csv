@@ -3,6 +3,7 @@ Prefix     ; Length ; Type       ; Tariff        ; Operator                ; For
 21[27]     ; 7      ; FIXED_LINE ; STANDARD_RATE ;                         ; "fmt_3/2/2"         ; "LI"    ; GOVERNMENT ; "Regulator File dated 4/1/2019"
 [23]20     ; 7      ; FIXED_LINE ; STANDARD_RATE ;                         ; "fmt_3/2/2"         ; "LI"    ; GOVERNMENT ; "Regulator File dated 29/4/2020"
 222        ; 7      ; FIXED_LINE ; STANDARD_RATE ;                         ; "fmt_3/2/2"         ; "LI"    ; GOVERNMENT ; "Regulator File dated 4/1/2019"
+224        ; 7      ; FIXED_LINE ; STANDARD_RATE ;                         ; "fmt_3/2/2"         ; "LI"    ; GOVERNMENT
 23         ; 7      ; FIXED_LINE ; STANDARD_RATE ;                         ; "fmt_3/2/2"         ; "LI"    ; GOVERNMENT ; "Regulator File dated 4/1/2019"
 26[02-578] ; 7      ; FIXED_LINE ; STANDARD_RATE ;                         ; "fmt_3/2/2"         ; "LI"    ; GOVERNMENT ; "Regulator File dated 4/1/2019"
 296        ; 7      ; FIXED_LINE ; STANDARD_RATE ;                         ; "fmt_3/2/2"         ; "LI"    ; GOVERNMENT ; "Regulator File dated 4/1/2019"
@@ -15,7 +16,7 @@ Prefix     ; Length ; Type       ; Tariff        ; Operator                ; For
 64[7-9]    ; 9      ; MOBILE     ; STANDARD_RATE ; "soracom"               ; "intl_mobile_3/3/3" ; "LI"    ; IR21
 650        ; 9      ; MOBILE     ; STANDARD_RATE ; "telecom_liechtenstein" ; "intl_mobile_3/3/3" ; "LI"    ; GOVERNMENT ; "Regulator File dated 4/1/2019"
 65[1-3]    ; 9      ; MOBILE     ; STANDARD_RATE ; "cubic"                 ; "intl_mobile_3/3/3" ; "LI"    ; GOVERNMENT ; "Regulator File dated 4/1/2019"
-65[46]     ; 9      ; MOBILE     ; STANDARD_RATE ; "cubic"                 ; "intl_mobile_3/3/3" ; "LI"    ; GOVERNMENT
+65[46-8]   ; 9      ; MOBILE     ; STANDARD_RATE ; "cubic"                 ; "intl_mobile_3/3/3" ; "LI"    ; GOVERNMENT
 659        ; 9      ; MOBILE     ; STANDARD_RATE ; "telecom_liechtenstein" ; "intl_mobile_3/3/3" ; "LI"    ; GOVERNMENT
 66[024]    ; 9      ; MOBILE     ; STANDARD_RATE ; "telecom_liechtenstein" ; "intl_mobile_3/3/3" ; "LI"    ; IR21
 6610       ; 9      ; MOBILE     ; STANDARD_RATE ; "dimoco"                ; "intl_mobile_3/3/3" ; "LI"    ; GOVERNMENT ; "Regulator File dated 4/1/2019"

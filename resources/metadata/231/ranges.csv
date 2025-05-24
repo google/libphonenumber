@@ -11,5 +11,6 @@ Prefix     ; Length ; Type       ; Tariff        ; Operator              ; Forma
 555        ; 7      ; MOBILE     ; STANDARD_RATE ;                       ; "fmt2_1/3/3" ; "LR"    ;            ; "Added per client's request."
 555        ; 9      ; MOBILE     ; STANDARD_RATE ; "lonestar_cell"       ; "fmt3_2/3/4" ; "LR"    ; IR21
 6          ; 7      ; MOBILE     ; STANDARD_RATE ; "lonestar_cell"       ; "fmt2_1/3/3" ; "LR"    ; IR21
+76[01]     ; 9      ; MOBILE     ; STANDARD_RATE ; "orange"              ; "fmt3_2/3/4" ; "LR"    ; ITU
 77         ; 9      ; MOBILE     ; STANDARD_RATE ; "orange"              ; "fmt3_2/3/4" ; "LR"    ; IR21
 88         ; 9      ; MOBILE     ; STANDARD_RATE ; "lonestar_cell"       ; "fmt3_2/3/4" ; "LR"    ; IR21

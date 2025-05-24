@@ -15,12 +15,8 @@
 # http://www.llv.li/#/1344/liechtenstein-numbering-plan
 
 42364|Soracom
+42365|Cubic
 423650|Telecom Liechtenstein
-423651|Cubic
-423652|Cubic
-423653|Cubic
-423654|Cubic
-423656|Cubic
 423659|Telecom Liechtenstein
 42366|Telecom Liechtenstein
 423661|Dimoco
