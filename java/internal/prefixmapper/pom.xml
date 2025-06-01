@@ -29,7 +29,7 @@
       <plugin>
         <groupId>org.apache.felix</groupId>
         <artifactId>maven-bundle-plugin</artifactId>
-        <version>5.1.9</version>
+        <version>6.0.0</version>
         <configuration>
           <instructions>
             <Fragment-Host>com.googlecode.libphonenumber</Fragment-Host>
