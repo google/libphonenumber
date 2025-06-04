@@ -3603,7 +3603,7 @@
     <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_germany -->
     <territory id="DE">
       <generalDesc>
-        <nationalNumberPattern>[13]\d{2,5}</nationalNumberPattern>
+        <nationalNumberPattern>[137]\d{2,5}</nationalNumberPattern>
       </generalDesc>
       <!-- 118xx short numbers are used for directory services and 1180xx are used for call
            connect services. -->
@@ -3623,6 +3623,7 @@
             800\d
           )|
           3311|
+          7464|
           118\d\d
         </nationalNumberPattern>
       </shortCode>
@@ -3639,7 +3640,12 @@
       <carrierSpecific>
         <possibleLengths national="4"/>
         <exampleNumber>3310</exampleNumber>
-        <nationalNumberPattern>331\d</nationalNumberPattern>
+        <nationalNumberPattern>
+          (?:
+            331|
+            746
+          )\d
+        </nationalNumberPattern>
       </carrierSpecific>
       <emergency>
         <possibleLengths national="3"/>
@@ -3651,6 +3657,11 @@
         <exampleNumber>116000</exampleNumber>
         <nationalNumberPattern>116\d{3}</nationalNumberPattern>
       </expandedEmergency>
+      <smsServices>
+        <possibleLengths national="4"/>
+        <exampleNumber>7460</exampleNumber>
+        <nationalNumberPattern>746\d</nationalNumberPattern>
+      </smsServices>
     </territory>
 
     <!-- Djibouti (DJ) -->

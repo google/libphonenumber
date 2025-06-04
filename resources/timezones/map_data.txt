@@ -2992,6 +2992,7 @@
 6185128|Australia/Adelaide&Australia/Perth
 6185129|Australia/Adelaide&Australia/Perth
 618513|Australia/Sydney
+618514|Australia/Sydney
 6186|Australia/Adelaide&Australia/Perth
 6187|Australia/Adelaide&Australia/Perth
 6188|Australia/Adelaide&Australia/Perth
