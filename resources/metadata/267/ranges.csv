@@ -48,7 +48,7 @@ Prefix     ; Length ; Type       ; Tariff        ; Operator     ; Format        
 791[01]    ; 8      ; VOIP       ; STANDARD_RATE ;              ; "fmt_2/3/3"       ; "BW"    ;                      ; ITU
 7912[0-7]  ; 8      ; VOIP       ; STANDARD_RATE ;              ; "fmt_2/3/3"       ; "BW"    ;                      ; ITU
 7912[89]   ; 8      ; VOIP       ; STANDARD_RATE ;              ; "fmt_2/3/3"       ; "BW"    ;                      ; GOVERNMENT
-7913[0-3]  ; 8      ; VOIP       ; STANDARD_RATE ;              ; "fmt_2/3/3"       ; "BW"    ;                      ; GOVERNMENT
+7913[0-8]  ; 8      ; VOIP       ; STANDARD_RATE ;              ; "fmt_2/3/3"       ; "BW"    ;                      ; GOVERNMENT
 792[0-4]   ; 8      ; VOIP       ; STANDARD_RATE ;              ; "fmt_2/3/3"       ; "BW"    ;                      ; ITU
 792[5-7]   ; 8      ; VOIP       ; STANDARD_RATE ;              ; "fmt_2/3/3"       ; "BW"    ;                      ; IR21
 800        ; 10     ; FIXED_LINE ; TOLL_FREE     ;              ; "toll_free_3/4/3" ; "BW"    ;                      ;            ; "User report"

@@ -101,6 +101,7 @@
 817086|KDDI
 817087|KDDI
 817088|KDDI
+81709|Rakuten Communications
 81801|NTT Docomo
 81802|NTT Docomo
 81803|Softbank

@@ -48,8 +48,8 @@ Prefix       ; Length ; Type       ; Tariff        ; Operator                   
 4319         ; 7      ; FIXED_LINE ; STANDARD_RATE ;                             ; "fixed_2/2/3"       ; "PL"    ; "Sieradz"              ; "Sieradz"
 44           ; 9      ; FIXED_LINE ; STANDARD_RATE ;                             ; "fixed_2/3/2/2"     ; "PL"    ; "Piotrków Trybunalski" ; "Piotrków Trybunalski"
 4419         ; 7      ; FIXED_LINE ; STANDARD_RATE ;                             ; "fixed_2/2/3"       ; "PL"    ; "Piotrków Trybunalski" ; "Piotrków Trybunalski"
-450          ; 9      ; MOBILE     ; STANDARD_RATE ; "play"                      ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; IR21
-45[1-35-8]   ; 9      ; MOBILE     ; STANDARD_RATE ;                             ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; GOVERNMENT
+45[06]       ; 9      ; MOBILE     ; STANDARD_RATE ; "play"                      ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; IR21
+45[1-3578]   ; 9      ; MOBILE     ; STANDARD_RATE ;                             ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; GOVERNMENT
 454          ; 9      ; MOBILE     ; STANDARD_RATE ; "orange"                    ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; IR21
 459[03]      ; 9      ; MOBILE     ; STANDARD_RATE ; "play"                      ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; IR21
 4591[0-4]    ; 9      ; MOBILE     ; STANDARD_RATE ; "play"                      ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; IR21

@@ -216,7 +216,7 @@
 4790|telenor norge
 479042|svea billing services
 479043|svea billing services
-479044|svea billing services
+479044|telia
 479048|telavox
 479049|telavox
 4791|telenor norge
@@ -337,16 +337,11 @@
 47961|telenor norge
 47962|telenor norge
 47965|telenor norge
+47966|telia
 479660|erate
 479661|erate
 479662|erate
 479663|erate
-479664|erate
-479665|telia
-479666|telia
-479667|telia
-479668|telia
-479669|telia
 479670|telia
 479671|telia
 479672|telia
@@ -358,7 +353,7 @@
 479689|telenor norge
 479690|erate
 479691|erate
-479692|erate
+479692|telia
 479693|telenor norge
 479694|telia
 479695|lyca mobile
