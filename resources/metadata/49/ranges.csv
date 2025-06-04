@@ -49,8 +49,9 @@ Prefix        ; Length    ; Type            ; Tariff        ; Area Code Length ;
 16[89]        ; 4-9,12-14 ; PAGER           ; STANDARD_RATE ;                  ;                             ;                     ; "DE"
 17[015]       ; 10        ; MOBILE          ; STANDARD_RATE ;                  ; "t_mobile"                  ; "mobile_3/7-8"      ; "DE"    ;                                      ;                                      ; GOVERNMENT
 17[015]13     ; 12,13     ; VOICEMAIL       ; STANDARD_RATE ;                  ;                             ; "voicemail_3/2/7-8" ; "DE"
-17[2-4]       ; 10        ; MOBILE          ; STANDARD_RATE ;                  ; "vodafone"                  ; "mobile_3/7-8"      ; "DE"    ;                                      ;                                      ; GOVERNMENT
+172           ; 10,11     ; MOBILE          ; STANDARD_RATE ;                  ; "vodafone"                  ; "mobile_3/7-8"      ; "DE"    ;                                      ;                                      ; GOVERNMENT
 17[2-4]55     ; 12,13     ; VOICEMAIL       ; STANDARD_RATE ;                  ;                             ; "voicemail_3/2/7-8" ; "DE"
+17[34]        ; 10        ; MOBILE          ; STANDARD_RATE ;                  ; "vodafone"                  ; "mobile_3/7-8"      ; "DE"    ;                                      ;                                      ; GOVERNMENT
 176           ; 10        ; MOBILE          ; STANDARD_RATE ;                  ; "o2"                        ; "mobile_3/7-8"      ; "DE"    ;                                      ;                                      ;            ; "User report"
 176           ; 11        ; MOBILE          ; STANDARD_RATE ;                  ; "o2"                        ; "mobile_3/7-8"      ; "DE"
 17[69]33      ; 12,13     ; VOICEMAIL       ; STANDARD_RATE ;                  ;                             ; "voicemail_3/2/7-8" ; "DE"

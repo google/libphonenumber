@@ -537,7 +537,7 @@ Prefix        ; Length ; Type            ; Tariff        ; National Only ; Opera
 70859         ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "rakuten_communications" ; "fmt10_2/4/4"      ; "Asia/Tokyo" ; "JP"    ;                             ;            ; IR21
 708[6-8]      ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "kddi"                   ; "fmt10_2/4/4"      ;              ; "JP"    ;                             ;            ; IR21
 7089          ; 10     ; MOBILE          ; STANDARD_RATE ; false         ;                          ; "fmt10_2/4/4"      ;              ; "JP"    ;                             ;            ; GOVERNMENT
-709           ; 10     ; MOBILE          ; STANDARD_RATE ; false         ;                          ; "fmt10_2/4/4"      ;              ; "JP"    ;                             ;            ; GOVERNMENT
+709           ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "rakuten_communications" ; "fmt10_2/4/4"      ;              ; "JP"    ;                             ;            ; IR21
 720           ; 9      ; FIXED_LINE      ; STANDARD_RATE ; false         ;                          ; "fixed_2/3/4"      ;              ; "JP"
 721           ; 9      ; FIXED_LINE      ; STANDARD_RATE ; false         ;                          ; "fixed_3/2/4"      ;              ; "JP"    ; "Tondabayashi, Osaka"       ; "富田林"
 722           ; 9      ; FIXED_LINE      ; STANDARD_RATE ; false         ;                          ; "fixed_2/3/4"      ;              ; "JP"    ; "Sakai, Osaka"              ; "堺"

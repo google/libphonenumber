@@ -17,7 +17,7 @@ Prefix      ; Length ; Type       ; Tariff        ; Operator ; Format       ; Re
 76[13-5]    ; 8      ; MOBILE     ; STANDARD_RATE ; "alfa"   ; "fmt2_2/3/3" ; "LB"    ;                    ; IR21       ; "IR21 dated 10/23/2018"
 762         ; 7      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt1_1/3/3" ; "LB"    ;                    ; ITU
 78[0-6]     ; 7      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt1_1/3/3" ; "LB"    ;                    ; ITU
-787         ; 7      ; MOBILE     ; STANDARD_RATE ; "touch"  ; "fmt1_1/3/3" ; "LB"    ;                    ; IR21
+787         ; 8      ; MOBILE     ; STANDARD_RATE ; "touch"  ; "fmt2_2/3/3" ; "LB"    ;                    ; IR21
 78[89]      ; 8      ; MOBILE     ; STANDARD_RATE ; "touch"  ; "fmt2_2/3/3" ; "LB"    ;                    ; IR21       ; "IR21 dated 6/26/2018"
 79[04-9]    ; 7      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt1_1/3/3" ; "LB"    ;                    ; ITU
 791         ; 8      ; MOBILE     ; STANDARD_RATE ; "alfa"   ; "fmt2_2/3/3" ; "LB"    ;                    ; IR21       ; "IR21 dated 10/23/2018"

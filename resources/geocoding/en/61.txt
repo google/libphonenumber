@@ -834,6 +834,7 @@
 6124091|Newcastle/Maitland
 6124092|Newcastle
 6124099|Newcastle
+61241|Clarence Town/Dungog/Eccleston/East Gresford/Maitland/Mulbring/Karuah/Laguna/Wards River/Wootton/Tea Gardens/Swansea/Newcastle/Nelson Bay/Raymond Terrace/Stroud/Newcastle
 6124200|Wollongong
 6124201|Wollongong
 61242020|Helensburgh
@@ -41990,6 +41991,7 @@
 61851293|Wittenoom
 61851294|Wyndham
 618513|Marble Bar/Millstream/Mitchell/Mount Bruce/Newman/Onslow/Ord/Pannawonica/Paraburdoo/Port Hedland/Roebuck/Sandfire/Telfer/Tom Price/Whaleback/Wittenoom/Wyndham/Derby/Broome/Christmas Island/Cocos Island/Dampier/De Grey/Fitzroy Crossing/Great Sandy/Hall's Creek/Karratha/Kununurra/Leopold
+618514|Roebuck /Sandfire /Tom Price/Telfer/Wyndham/Whaleback /Wittenoom/Wyndham
 61860000|Kalgoorlie
 61860001|Burracoppin
 61860002|Burracoppin
