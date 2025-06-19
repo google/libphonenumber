@@ -147,6 +147,10 @@
 4473692|Sky
 4473697|Wave Mobile
 4473699|Anywhere Sim
+447370|Vodafone
+447371|Vodafone
+447372|Vodafone
+447373|Vodafone
 447375|EE
 447376|EE
 447377|EE

@@ -639,16 +639,10 @@
     <!-- http://www.rtr.at/en/tk/E129 -->
     <territory id="AT">
       <generalDesc>
-        <nationalNumberPattern>
-          [1268]\d\d(?:
-            \d(?:
-              \d{2}
-            )?
-          )?
-        </nationalNumberPattern>
+        <nationalNumberPattern>[1268]\d{2,5}</nationalNumberPattern>
       </generalDesc>
       <shortCode>
-        <possibleLengths national="3,4,6"/>
+        <possibleLengths national="[3-6]"/>
         <exampleNumber>112</exampleNumber>
         <nationalNumberPattern>
           1(?:
@@ -671,7 +665,10 @@
             )
           )|
           (?:
-            220|
+            2(?:
+              066|
+              20
+            )|
             61|
             8108[1-3]
           )0
@@ -696,14 +693,15 @@
       <!-- Added yesss! numbers 810810 , 810820 and 810830 based on their website. 
            Added Georg number 610 based on their website. -->
       <carrierSpecific>
-        <possibleLengths national="3,4,6"/>
+        <possibleLengths national="[3-6]"/>
         <exampleNumber>610</exampleNumber>
         <nationalNumberPattern>
+          220\d|
+          610|
           (?:
-            220|
-            810\d\d
-          )\d|
-          610
+            206|
+            810\d
+          )\d\d
         </nationalNumberPattern>
       </carrierSpecific>
       <emergency>
@@ -732,6 +730,11 @@
           )
         </nationalNumberPattern>
       </expandedEmergency>
+      <smsServices>
+        <possibleLengths national="5"/>
+        <exampleNumber>20600</exampleNumber>
+        <nationalNumberPattern>206\d\d</nationalNumberPattern>
+      </smsServices>
     </territory>
 
     <!-- Australia (AU) -->

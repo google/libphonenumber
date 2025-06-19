@@ -3753,12 +3753,17 @@
         <!-- The national numbering plan from ITU suggests grouping of 2, 2 and 4, but we have
              chosen to use the standard from numbers found on the internet instead. -->
         <numberFormat pattern="(\d{2})(\d{2})(\d{2})(\d{2})">
-          <leadingDigits>[025-7]</leadingDigits>
+          <leadingDigits>[024-7]</leadingDigits>
           <format>$1 $2 $3 $4</format>
         </numberFormat>
       </availableFormats>
       <generalDesc>
-        <nationalNumberPattern>[025-7]\d{7}</nationalNumberPattern>
+        <nationalNumberPattern>
+          (?:
+            [025-7]\d|
+            44
+          )\d{6}
+        </nationalNumberPattern>
       </generalDesc>
       <fixedLine>
         <possibleLengths national="8"/>
@@ -3791,6 +3796,7 @@
         <nationalNumberPattern>
           (?:
             0[1-7]|
+            44|
             5[0-8]|
             [67]\d
           )\d{6}
@@ -9300,17 +9306,15 @@
         <possibleLengths national="10,11"/>
         <exampleNumber>15123456789</exampleNumber>
         <nationalNumberPattern>
+          15310\d{6}|
           1(?:
-            (?:
-              5(?:
-                [0-25-9]\d\d|
-                310
-              )|
-              7[26]\d\d
-            )\d{6}|
-            6[023]\d{7,8}
-          )|
-          17\d{8}
+            5[0-25-9]\d|
+            7[013-5]
+          )\d{7}|
+          1(?:
+            6[023]|
+            7[26-9]
+          )\d{7,8}
         </nationalNumberPattern>
       </mobile>
       <pager>
@@ -10267,7 +10271,7 @@
             )|
             7(?:
               [0167]\d|
-              2[0-467]|
+              2[0-8]|
               5[0-3]|
               8[0-7]
             )
@@ -13253,7 +13257,8 @@
             6\d\d|
             7(?:
               [0-5]\d|
-              6[01]
+              6[019]|
+              70
             )
           )\d{4}
         </nationalNumberPattern>
@@ -13364,16 +13369,17 @@
             4(?:
               44[0-35-9]|
               6(?:
-                1[0-79]|
                 4[0-57-9]|
                 6[0-4]
               )|
               7(?:
-                [26][0-5]|
-                4[0-48]
+                30|
+                4[0-48]|
+                6[0-5]
               )
             )|
             5(?:
+              35[4-8]|
               73[0-6]|
               95[0-8]
             )|
@@ -13402,8 +13408,8 @@
           (?:
             4(?:
               4[0-35-9]|
-              6[02357-9]|
-              7[015]
+              6[0-357-9]|
+              7[0-25]
             )|
             5(?:
               [1-59][0-46-9]|
@@ -13753,12 +13759,7 @@
         </numberFormat>
       </availableFormats>
       <generalDesc>
-        <nationalNumberPattern>
-          (?:
-            [2-489]\d|
-            55
-          )\d{6}
-        </nationalNumberPattern>
+        <nationalNumberPattern>[2-589]\d{7}</nationalNumberPattern>
       </generalDesc>
       <!-- Digicel reported 281 and 29[149] belong to them, the more recent ITU doc 20.I.2017
            agrees and classifies them as fixedLine so we follow that here. -->
@@ -13782,7 +13783,7 @@
         <nationalNumberPattern>
           (?:
             [34]\d|
-            55
+            5[56]
           )\d{6}
         </nationalNumberPattern>
       </mobile>
@@ -18871,7 +18872,7 @@
     <!-- Calling code and formatting shared with 'RU' -->
     <!-- http://www.itu.int/oth/T020200006F/en -->
     <!-- https://telecom.kz/en/catalog/kazahstan.171777/5 -->
-    <territory id="KZ" countryCode="7" leadingDigits="33|7" preferredInternationalPrefix="8~10"
+    <territory id="KZ" countryCode="7" leadingDigits="33622|7" preferredInternationalPrefix="8~10"
                internationalPrefix="810" nationalPrefix="8" mobileNumberPortableRegion="true">
       <generalDesc>
         <nationalNumberPattern>
@@ -20144,7 +20145,7 @@
             )|
             7(?:
               [0167]\d|
-              2[0-467]|
+              2[0-8]|
               5[0-3]|
               8[0-7]
             )
@@ -25986,9 +25987,8 @@
     <!-- Formatting from wikipedia, confirmed on government websites such as
          http://www.minjust.ru/ru/structure/contact/. Contains formatting instructions for
          Kazakhstan as well. -->
-    <territory id="RU" mainCountryForCode="true" countryCode="7" leadingDigits="3[04-689]|[489]"
-               preferredInternationalPrefix="8~10" internationalPrefix="810" nationalPrefix="8"
-               mobileNumberPortableRegion="true">
+    <territory id="RU" mainCountryForCode="true" countryCode="7" preferredInternationalPrefix="8~10"
+               internationalPrefix="810" nationalPrefix="8" mobileNumberPortableRegion="true">
       <availableFormats>
         <numberFormat pattern="(\d{3})(\d{2})(\d{2})">
           <leadingDigits>[0-79]</leadingDigits>
@@ -26143,6 +26143,10 @@
         <possibleLengths national="10" localOnly="7"/>
         <exampleNumber>3011234567</exampleNumber>
         <nationalNumberPattern>
+          336(?:
+            [013-9]\d|
+            2[013-9]
+          )\d{5}|
           (?:
             3(?:
               0[12]|
@@ -26165,8 +26169,8 @@
               2[01]|
               3[13-6]|
               4[0-8]|
-              5[15]|
-              6[1-35-79]|
+              5[15-7]|
+              6[0-35-79]|
               7[1-37-9]
             )
           )\d{7}
@@ -29729,10 +29733,9 @@
         <nationalNumberPattern>
           72[48]0\d{5}|
           7(?:
-            [015-8]\d|
+            [014-8]\d|
             2[067]|
             36|
-            4[0-8]|
             9[0189]
           )\d{6}
         </nationalNumberPattern>

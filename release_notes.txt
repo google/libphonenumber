@@ -1,3 +1,14 @@
+Jun 19, 2025: v9.0.8
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   BF, DE, EH, GY, HK, HT, KZ, MA, RU, UG
+ - Updated short number metadata for region code(s): AT
+ - Updated geocoding data for country calling code(s): 7 (en, ru)
+ - Updated carrier data for country calling code(s):
+   34 (en), 44 (en), 46 (en), 47 (en), 226 (en), 592 (en), 852 (en, zh),
+   966 (en), 996 (en)
+ - Updated / refreshed time zone meta data.
+
 Jun 04, 2025: v9.0.7
 Metadata changes:
  - Updated phone metadata for region code(s):
