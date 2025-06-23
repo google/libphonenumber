@@ -253,6 +253,7 @@
 46724008|Telavox AB
 4672401|Telavox AB
 4672402|Telavox AB
+4672409|Telenor Sverige
 467242|WIFOG AB
 467243|WIFOG AB
 467244|Telenor Sverige
@@ -269,6 +270,7 @@
 46726005|Tele2 Sverige
 46726006|Telavox AB
 46726008|Global Telefoni Sve
+46726009|Telenor Sverige
 4672601|Telavox AB
 4672603|Tele2 Sverige
 4672604|Tele2 Sverige
@@ -291,11 +293,13 @@
 46726428|Global Telefoni Sve
 46726429|Global Telefoni Sve
 4672644|Telenor Sverige
+4672647|Telenor Sverige
 4672648|Telavox AB
 4672649|Soatso AB
 467265|TeliaSonera
 4672660|Telenor Sverige
 4672666|Telenor Sverige
+4672667|Telenor Sverige
 4672669|Nortech
 467267|TeliaSonera
 467268|TeliaSonera
@@ -415,7 +419,7 @@
 467342|Telenor Sverige
 467343|Telenor Sverige
 467344|Telenor Sverige
-4673450|Weelia Enterprise A
+4673450|Telenor Sverige
 4673451|CELLIP AB
 46734520|Soatso AB
 46734521|Soatso AB
@@ -777,7 +781,9 @@
 4679552|Tele2 Sverige
 4679553|Tele2 Sverige
 4679554|Tele2 Sverige
+4679559|Telenor Sverige
 4679580|Borderlight
 4679581|Borderlight
 4679585|Telavox AB
+4679588|Telenor Sverige
 467997|Telenor Sverige

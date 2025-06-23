@@ -23,7 +23,7 @@
 
 7301|Republic of Buryatia
 7302|Chita
-733|Baikonur
+733622|Baikonur
 7341|Udmurtian Republic
 7342|Perm
 7343|Ekaterinburg
@@ -391,6 +391,9 @@
 7848|Tolyatti
 7851|Astrakhan
 7855|Naberezhnye Chelny
+7856|Donetsk People's Republic
+7857|Luhansk People's Republic
+7860|Kherson Region
 7861|Krasnodar Territory
 7862|Sochi
 7863|Rostov

@@ -22,6 +22,7 @@
 8524615|China Unicom
 8524616|China Unicom
 8524617|China Mobile
+8524618|China Mobile
 8524619|China Telecom Global Limited
 8524620|China Mobile
 8524621|China Mobile
@@ -63,6 +64,11 @@
 852470|Hutchison Telecom
 852471|Hutchison Telecom
 852472|China Mobile
+8524726|Hutchison Telecom
+8524727|Hutchison Telecom
+8524728|Hutchison Telecom
+8524729|Hutchison Telecom
+852473|Hutchison Telecom
 8524740|China Mobile
 8524741|China Mobile
 8524742|China Mobile
@@ -112,6 +118,7 @@
 852532|HKT
 852533|3
 852534|China Mobile
+852535|Hutchison Telecom
 852536|HKT
 852537|China Mobile
 852538|China Unicom
