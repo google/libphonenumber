@@ -114,9 +114,9 @@
 47463|telia
 47464|NetCom
 47465|telia
-474651|ice norge
-474652|ice norge
-474653|ice norge
+474651|Lyse Tele
+474652|Lyse Tele
+474653|Lyse Tele
 47466|telia
 474666|telenor norge
 474667|telenor norge
@@ -179,8 +179,8 @@
 474834|telia
 474835|telia
 474836|telia
-474838|ice norge
-474839|ice norge
+474838|Lyse Tele
+474839|Lyse Tele
 47484|telia
 474841|telenor norge
 474842|telenor norge
@@ -204,9 +204,9 @@
 474886|telia
 474888|telia
 474889|telia
-474890|ice norge
-474891|ice norge
-474892|ice norge
+474890|Lyse Tele
+474891|Lyse Tele
+474892|Lyse Tele
 474893|telia
 474894|telenor norge
 474895|telia
@@ -238,7 +238,7 @@
 479258|telenor norge
 479259|telenor norge
 47927|telenor norge
-47929|ice norge
+47929|Lyse Tele
 479290|telenor norge
 47930|telia
 479310|telenor norge
@@ -292,10 +292,10 @@
 479403|telenor norge
 479404|com4
 479405|telenor norge
-479406|ice norge
-479407|ice norge
-479408|ice norge
-479409|ice norge
+479406|Lyse Tele
+479407|Lyse Tele
+479408|Lyse Tele
+479409|Lyse Tele
 47941|telenor norge
 479410|telia
 479411|telia
@@ -306,9 +306,9 @@
 479441|telenor norge
 479442|telia
 479443|telia
-479444|ice norge
-479445|ice norge
-479446|ice norge
+479444|Lyse Tele
+479445|Lyse Tele
+479446|Lyse Tele
 479447|telia
 479448|telia
 479449|telia
@@ -362,14 +362,16 @@
 479698|lyca mobile
 479699|lyca mobile
 4797|telenor norge
-479727|ice norge
-479728|ice norge
-479729|ice norge
-479730|ice norge
-479731|ice norge
-479732|ice norge
-479733|ice norge
-479734|ice norge
+479725|Lyse Tele
+479726|Lyse Tele
+479727|Lyse Tele
+479728|Lyse Tele
+479729|Lyse Tele
+479730|Lyse Tele
+479731|Lyse Tele
+479732|Lyse Tele
+479733|Lyse Tele
+479734|Lyse Tele
 479735|lyca mobile
 479736|lyca mobile
 479737|lyca mobile

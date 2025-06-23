@@ -30,6 +30,7 @@ Prefix      ; Length ; Type       ; Tariff        ; Operator       ; Format     
 2544        ; 8      ; FIXED_LINE ; STANDARD_RATE ;                ; "fmt1_2/2/2/2" ; "BF"    ; "Koudougou"
 2550        ; 8      ; FIXED_LINE ; STANDARD_RATE ;                ; "fmt1_2/2/2/2" ; "BF"
 256[5-7]    ; 8      ; FIXED_LINE ; STANDARD_RATE ;                ; "fmt1_2/2/2/2" ; "BF"
+44          ; 8      ; MOBILE     ; STANDARD_RATE ; "orange"       ; "fmt1_2/2/2/2" ; "BF"    ;                         ; IR21
 50          ; 8      ; MOBILE     ; STANDARD_RATE ; "onatel"       ; "fmt1_2/2/2/2" ; "BF"    ;                         ; IR21
 5[12]       ; 8      ; MOBILE     ; STANDARD_RATE ; "onatel"       ; "fmt1_2/2/2/2" ; "BF"    ;                         ; IR21       ; "IR21 dated 9/8/2019"
 53          ; 8      ; MOBILE     ; STANDARD_RATE ; "onatel"       ; "fmt1_2/2/2/2" ; "BF"    ;                         ; IR21       ; "Updated Per IR21"

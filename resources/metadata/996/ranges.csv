@@ -71,8 +71,7 @@ Prefix        ; Length ; Type       ; Tariff        ; Area Code Length ; Operato
 3947          ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;                 ; "fixed_4/5"      ; "KG"    ; "Bokombaevo/Kadji-Say, Issyk-Ko region"
 3948          ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;                 ; "fixed_4/5"      ; "KG"    ; "Ak-Suu, Issyk-Ko region"
 396           ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;                 ; "fixed_4/5"      ; "KG"
-50[0-57-9]    ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "nur_telecom"   ; "fmt_3/3/3"      ; "KG"    ;                                           ; IR21       ; "IR21 dated 11/1/2018"
-506           ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "winline"       ; "fmt_3/3/3"      ; "KG"
+50            ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "nur_telecom"   ; "fmt_3/3/3"      ; "KG"    ;                                           ; IR21
 51            ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "katel"         ; "fmt_3/3/3"      ; "KG"
 52            ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;                 ; "fmt_3/3/3"      ; "KG"
 54            ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "aktel"         ; "fmt_3/3/3"      ; "KG"
