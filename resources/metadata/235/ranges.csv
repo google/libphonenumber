@@ -2,6 +2,7 @@ Prefix    ; Length ; Type       ; Tariff        ; Operator ; Format         ; Re
 22[37-9]0 ; 8      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt1_2/2/2/2" ; "TD"    ; ITU
 225[0-5]  ; 8      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt1_2/2/2/2" ; "TD"    ; ITU
 226[89]   ; 8      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt1_2/2/2/2" ; "TD"    ; ITU
+30        ; 8      ; MOBILE     ; STANDARD_RATE ; "moov"   ; "fmt1_2/2/2/2" ; "TD"    ; IR21
 6[023568] ; 8      ; MOBILE     ; STANDARD_RATE ; "airtel" ; "fmt1_2/2/2/2" ; "TD"    ; GOVERNMENT
 6[14]     ; 8      ; MOBILE     ; STANDARD_RATE ; "airtel" ; "fmt1_2/2/2/2" ; "TD"
 67        ; 8      ; MOBILE     ; STANDARD_RATE ; "airtel" ; "fmt1_2/2/2/2" ; "TD"    ; IR21

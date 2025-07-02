@@ -73,8 +73,14 @@
 9955335|Silknet
 995535|Globalcell
 995540|Silknet
+9955440|Cellfie
+9955441|Cellfie
+9955442|Cellfie
+9955443|Cellfie
 99554444|MagtiCom
 9955445|Silknet
+9955447|Cellfie
+9955449|Cellfie
 995545|Globalcell
 995550|MagtiCom
 99555000|Silknet
