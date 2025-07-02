@@ -32,7 +32,7 @@ Prefix        ; Length ; Type            ; Tariff        ; Operator             
 7055          ; 9      ; MOBILE          ; STANDARD_RATE ;                            ; "fmt1_3/3/3"   ; "CZ"    ;                            ;            ; "Fillup To Support Master Range"
 705[6-9]      ; 9      ; MOBILE          ; STANDARD_RATE ; "t_mobile"                 ; "fmt1_3/3/3"   ; "CZ"    ;                            ; GOVERNMENT
 7060          ; 9      ; MOBILE          ; STANDARD_RATE ; "datacell"                 ; "fmt1_3/3/3"   ; "CZ"    ;                            ; GOVERNMENT
-719[0-2]      ; 9      ; MOBILE          ; STANDARD_RATE ; "o2"                       ; "fmt1_3/3/3"   ; "CZ"    ;                            ; GOVERNMENT
+719[0-4]      ; 9      ; MOBILE          ; STANDARD_RATE ; "o2"                       ; "fmt1_3/3/3"   ; "CZ"    ;                            ; GOVERNMENT
 72            ; 9      ; MOBILE          ; STANDARD_RATE ; "o2"                       ; "fmt1_3/3/3"   ; "CZ"    ;                            ; IR21
 730[0-25689]  ; 9      ; MOBILE          ; STANDARD_RATE ; "t_mobile"                 ; "fmt1_3/3/3"   ; "CZ"    ;                            ; IR21
 73030         ; 9      ; MOBILE          ; STANDARD_RATE ; "t_mobile"                 ; "fmt1_3/3/3"   ; "CZ"    ;                            ; IR21
