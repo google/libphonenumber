@@ -1445,6 +1445,7 @@
 1742|America/Toronto
 1743|America/New_York
 1747|America/Los_Angeles
+1748|America/Denver
 1753|America/Toronto
 1754|America/New_York
 1757|America/New_York
@@ -2047,6 +2048,7 @@
 1971|America/Los_Angeles
 1972|America/Chicago
 1973|America/New_York
+1975|America/Chicago
 1978|America/New_York
 1979|America/Chicago
 1980|America/New_York

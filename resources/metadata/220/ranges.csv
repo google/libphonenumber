@@ -30,6 +30,7 @@ Prefix       ; Length ; Type       ; Tariff        ; Operator   ; Format    ; Re
 5545         ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt_3/4" ; "GM"    ; "Pakaliba"                                                            ; ITU
 5546         ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt_3/4" ; "GM"    ; "Kudang"                                                              ; ITU
 5547         ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt_3/4" ; "GM"    ; "Jareng"                                                              ; ITU
+556          ; 7      ; MOBILE     ; STANDARD_RATE ; "qcell"    ; "fmt_3/4" ; "GM"
 566[0-47-9]  ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt_3/4" ; "GM"    ; "Baja Kunda/Basse/Fatoto/Gambisara/Garawol/Misera/Sambakunda/Sudowol" ; ITU
 5665         ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt_3/4" ; "GM"    ; "Kuntaur"                                                             ; ITU
 5666         ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt_3/4" ; "GM"    ; "Numeyel"                                                             ; ITU

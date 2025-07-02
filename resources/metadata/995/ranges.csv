@@ -121,10 +121,11 @@ Prefix          ; Length ; Type       ; Tariff        ; Area Code Length ; Natio
 53333[0-4]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "magticom"         ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21       ; "IR21 dated 3/1/2019"
 53353[0-4]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "silknet"          ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
 540[04]0[0-4]   ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "silknet"          ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
-544[0-36-9]     ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ;                    ; "mobile_3/2/2/2" ; "GE"
+544[0-379]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "cellfie"          ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
 5444[0-35-9]    ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ;                    ; "mobile_3/2/2/2" ; "GE"
 54444           ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "magticom"         ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21       ; "IR21 dated 3/1/2019"
 5445            ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "silknet"          ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
+544[68]         ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ;                    ; "mobile_3/2/2/2" ; "GE"
 5500[05]        ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "silknet"          ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
 550[05][1-46-9] ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "magticom"         ; "mobile_3/2/2/2" ; "GE"    ;                         ; ITU
 550[1-46-9]     ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "magticom"         ; "mobile_3/2/2/2" ; "GE"    ;                         ; ITU

@@ -1,3 +1,11 @@
+Jul 02, 2025: v9.0.9
+Metadata changes:
+ - Updated phone metadata for region code(s): CZ, GM, HK, KW, TD, US, WS
+ - New geocoding data for country calling code(s): 1748 (en), 1975 (en)
+ - Updated carrier data for country calling code(s):
+   220 (en), 235 (en), 237 (en), 685 (en), 852 (en, zh), 995 (en)
+ - Updated / refreshed time zone meta data.
+
 Jun 19, 2025: v9.0.8
 Metadata changes:
  - Updated phone metadata for region code(s):

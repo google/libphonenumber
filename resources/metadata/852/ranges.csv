@@ -17,7 +17,7 @@ Prefix       ; Length ; Type            ; Tariff        ; Operator            ; 
 37[14-69]    ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                     ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
 384[0-8]     ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                     ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
 38[57]       ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                     ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
-386[0-2]     ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                     ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+386[0-5]     ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                     ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
 389          ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                     ; "fmt1_4/4"     ; "HK"
 39[0-246-9]  ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                     ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
 395          ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                     ; "fmt1_4/4"     ; "HK"
@@ -54,6 +54,7 @@ Prefix       ; Length ; Type            ; Tariff        ; Operator            ; 
 472[0-5]     ; 8      ; MOBILE          ; STANDARD_RATE ; "china_mobile"      ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
 472[6-9]     ; 8      ; MOBILE          ; STANDARD_RATE ; "hutchison_telecom" ; "fmt1_4/4"     ; "HK"    ; IR21
 4730         ; 8      ; MOBILE          ; STANDARD_RATE ; "hutchison_telecom" ; "fmt1_4/4"     ; "HK"    ; IR21
+473[1-4]     ; 8      ; MOBILE          ; STANDARD_RATE ; "smartone"          ; "fmt1_4/4"     ; "HK"    ; IR21
 474[0-2]     ; 8      ; MOBILE          ; STANDARD_RATE ; "china_mobile"      ; "fmt1_4/4"     ; "HK"
 474[34]      ; 8      ; MOBILE          ; STANDARD_RATE ; "hkt"               ; "fmt1_4/4"     ; "HK"    ; IR21
 4748         ; 8      ; MOBILE          ; STANDARD_RATE ; "china_telecom"     ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
@@ -163,6 +164,7 @@ Prefix       ; Length ; Type            ; Tariff        ; Operator            ; 
 7076         ; 8      ; MOBILE          ; STANDARD_RATE ; "china_mobile"      ; "fmt1_4/4"     ; "HK"    ; IR21
 707[78]      ; 8      ; MOBILE          ; STANDARD_RATE ; "hutchison_telecom" ; "fmt1_4/4"     ; "HK"    ; IR21
 708[0-4]     ; 8      ; MOBILE          ; STANDARD_RATE ; "hkt"               ; "fmt1_4/4"     ; "HK"    ; IR21
+708[5-8]     ; 8      ; MOBILE          ; STANDARD_RATE ; "smartone"          ; "fmt1_4/4"     ; "HK"    ; IR21
 710[0-38]    ; 8      ; PAGER           ; STANDARD_RATE ;                     ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
 711[0-3679]  ; 8      ; PAGER           ; STANDARD_RATE ;                     ; "fmt1_4/4"     ; "HK"
 713[013]     ; 8      ; PAGER           ; STANDARD_RATE ;                     ; "fmt1_4/4"     ; "HK"
