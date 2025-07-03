@@ -7,12 +7,6 @@
   <packaging>pom</packaging>
   <url>https://github.com/google/libphonenumber/</url>
 
-  <parent>
-    <groupId>org.sonatype.oss</groupId>
-    <artifactId>oss-parent</artifactId>
-    <version>7</version>
-  </parent>
-
   <description>
     Google's common Java library for parsing, formatting, storing and validating
     international phone numbers.
@@ -173,15 +167,12 @@
         </configuration>
       </plugin>
       <plugin>
-        <groupId>org.sonatype.plugins</groupId>
-        <artifactId>nexus-staging-maven-plugin</artifactId>
-        <version>1.6.13</version>
+        <groupId>org.sonatype.central</groupId>
+        <artifactId>central-publishing-maven-plugin</artifactId>
+        <version>0.8.0</version>
         <extensions>true</extensions>
         <configuration>
-          <serverId>sonatype-nexus-staging</serverId>
-          <nexusUrl>https://oss.sonatype.org/</nexusUrl>
-          <stagingProfileId>23ed8fbc71e875</stagingProfileId>
-          <skipStagingRepositoryClose>true</skipStagingRepositoryClose>
+          <publishingServerId>central</publishingServerId>
         </configuration>
       </plugin>
     </plugins>
