@@ -17,7 +17,6 @@
 #ifndef I18N_PHONENUMBERS_LOGGER_H_
 #define I18N_PHONENUMBERS_LOGGER_H_
 
-#include <cstdio>
 #include <string>
 
 namespace i18n {
@@ -25,79 +24,78 @@ namespace phonenumbers {
 
 using std::string;
 
-enum {
-  LOG_FATAL = 1,
-  LOG_ERROR,
-  LOG_WARNING,
-  LOG_INFO,
-  LOG_DEBUG,
+// Log levels used to control the verbosity of logging output.
+enum LogLevel {
+  LOG_FATAL = 1,  // Critical errors that terminate the program
+  LOG_ERROR,      // Non-critical errors
+  LOG_WARNING,    // Potential issues or warnings
+  LOG_INFO,       // Informational messages
+  LOG_DEBUG,      // Debugging messages
 };
 
+// Aliases for log levels to improve readability and compatibility.
 enum {
   DFATAL = LOG_FATAL,
-// ERROR seems to be defined on MSVC, therefore don't overwrite it.
-#ifndef ERROR
+#ifndef ERROR  // Avoid redefinition if ERROR is defined (e.g., in MSVC)
   ERROR = LOG_ERROR,
 #endif
   WARNING = LOG_WARNING,
 };
 
-// Subclass this abstract class to override the way logging is handled in the
-// library. You can then call the PhoneNumberUtil::SetLogger() method.
+// Abstract base class for custom logging implementations.
+// Subclass this to define how logs are handled and use PhoneNumberUtil::SetLogger() to apply it.
 class Logger {
  public:
-  Logger() : level_(LOG_ERROR) {}
+  Logger() : level_(LOG_WARNING) {}  // Default level set to LOG_WARNING for broader visibility
   virtual ~Logger() {}
 
-  // Writes the message level to the underlying output stream.
+  // Writes the log level prefix to the output stream (optional override).
   virtual void WriteLevel() {}
-  // Writes the provided message to the underlying output stream.
+  
+  // Writes the provided message to the output stream (must be implemented by subclasses).
   virtual void WriteMessage(const string& msg) = 0;
 
-  // Note that if set_verbosity_level has been used to set the level to a value
-  // that is not represented by an enum, the result here will be a log
-  // level that is higher than LOG_DEBUG.
+  // Returns the current log level.
   inline int level() const {
     return level_;
   }
 
+  // Sets the log level to control which messages are displayed.
   inline void set_level(int level) {
     level_ = level;
   }
 
-  // If you want to see verbose logs in addition to other logs, use this method.
-  // This will result in all log messages at the levels above being shown, along
-  // with calls to VLOG with the verbosity level set to this level or lower.
-  // For example, set_verbosity_level(2) will show calls of VLOG(1) and VLOG(2)
-  // but not VLOG(3), along with all calls to LOG().
+  // Sets verbosity level for detailed logging. Shows all messages up to LOG_DEBUG plus
+  // verbose logs up to the specified level (e.g., set_verbosity_level(2) shows VLOG(1) and VLOG(2)).
   inline void set_verbosity_level(int verbose_logs_level) {
     set_level(LOG_DEBUG + verbose_logs_level);
   }
 
+  // Sets the global logger instance and returns it.
   static inline Logger* set_logger_impl(Logger* logger) {
     impl_ = logger;
     return logger;
   }
 
+  // Retrieves the current global logger instance.
   static inline Logger* mutable_logger_impl() {
     return impl_;
   }
 
  private:
-  static Logger* impl_;
-  int level_;
+  static Logger* impl_;  // Global logger instance
+  int level_;            // Current log level
 };
 
-// Logger that does not log anything. It could be useful to "mute" the
-// phonenumber library.
+// A logger that discards all messages, useful for muting logs in the phonenumber library.
 class NullLogger : public Logger {
  public:
   virtual ~NullLogger() {}
 
-  virtual void WriteMessage(const string& /* msg */) {}
+  virtual void WriteMessage(const string& /* msg */) {}  // Does nothing
 };
 
 }  // namespace phonenumbers
 }  // namespace i18n
 
-#endif  // I18N_PHONENUMBERS_LOGGER_ADAPTER_H_
+#endif  // I18N_PHONENUMBERS_LOGGER_H_
