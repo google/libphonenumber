@@ -573,7 +573,7 @@ public class AsYouTypeFormatter {
    */
   private boolean attemptToExtractIdd() {
     Pattern internationalPrefix =
-        regexCache.getPatternForRegex("\\" + PhoneNumberUtil.PLUS_SIGN + "|"
+        regexCache.getPatternForRegex("\\" + Constants.PLUS_SIGN + "|"
             + currentMetadata.getInternationalPrefix());
     Matcher iddMatcher = internationalPrefix.matcher(accruedInputWithoutFormatting);
     if (iddMatcher.lookingAt()) {
@@ -584,7 +584,7 @@ public class AsYouTypeFormatter {
       prefixBeforeNationalNumber.setLength(0);
       prefixBeforeNationalNumber.append(
           accruedInputWithoutFormatting.substring(0, startOfCountryCallingCode));
-      if (accruedInputWithoutFormatting.charAt(0) != PhoneNumberUtil.PLUS_SIGN) {
+      if (accruedInputWithoutFormatting.charAt(0) != Constants.PLUS_SIGN) {
         prefixBeforeNationalNumber.append(SEPARATOR_BEFORE_NATIONAL_NUMBER);
       }
       return true;
@@ -631,7 +631,7 @@ public class AsYouTypeFormatter {
   // digit or the plus sign.
   private char normalizeAndAccrueDigitsAndPlusSign(char nextChar, boolean rememberPosition) {
     char normalizedChar;
-    if (nextChar == PhoneNumberUtil.PLUS_SIGN) {
+    if (nextChar == Constants.PLUS_SIGN) {
       normalizedChar = nextChar;
       accruedInputWithoutFormatting.append(nextChar);
     } else {
