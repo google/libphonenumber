@@ -5,6 +5,7 @@
   <artifactId>demo</artifactId>
   <version>9.0.9-SNAPSHOT</version>
   <packaging>war</packaging>
+  <name>demo</name>
   <url>https://github.com/google/libphonenumber/</url>
   <parent>
     <groupId>com.googlecode.libphonenumber</groupId>
