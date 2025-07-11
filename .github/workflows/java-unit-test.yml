@@ -28,7 +28,7 @@ jobs:
 # it's safe to remove the first line entirely.
     - name: Test Build Tools with Maven
       run: |
-        mvn install -P github-actions -DskipTests=true -Dgpg.skip=true -Dmaven.javadoc.skip=true -B -V
+        mvn install -P github-actions -DskipTests=true  -Dmaven.javadoc.skip=true -B -V
         mvn -P github-actions test
     - name: Test Java API with Ant
       run: |
