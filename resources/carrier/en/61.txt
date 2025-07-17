@@ -68,14 +68,10 @@
 61448|Telstra
 61449|Vodafone
 614493|Soul Pattinson
+6145|Telstra
 61450|Vodafone
 61451|Vodafone
 61452|Vodafone
-61455|Telstra
-61456|Telstra
-61457|Telstra
-61458|Telstra
-61459|Telstra
 6146|Telstra
 61466|Optus
 61468|Optus

@@ -7776,12 +7776,14 @@
       <generalDesc>
         <nationalNumberPattern>
           [01]\d\d(?:
-            \d{7}
+            \d{5}(?:
+              \d{2}
+            )?
           )?
         </nationalNumberPattern>
       </generalDesc>
       <shortCode>
-        <possibleLengths national="3,10"/>
+        <possibleLengths national="3,8,10"/>
         <exampleNumber>102</exampleNumber>
         <nationalNumberPattern>
           000[259]\d{6}|
@@ -7790,7 +7792,8 @@
             1[089]|
             44|
             89
-          )
+          )|
+          000[2569]\d{4}
         </nationalNumberPattern>
       </shortCode>
       <tollFree>
@@ -7806,9 +7809,12 @@
       <!-- As per confirmations from the carrier (NTTDocomo), these are SMS only short codes,
            which are used to interact with respective companies i.e. after scanning the code. -->
       <smsServices>
-        <possibleLengths national="10"/>
-        <exampleNumber>0002000000</exampleNumber>
-        <nationalNumberPattern>000[259]\d{6}</nationalNumberPattern>
+        <possibleLengths national="8,10"/>
+        <exampleNumber>00020000</exampleNumber>
+        <nationalNumberPattern>
+          000[259]\d{6}|
+          000[2569]\d{4}
+        </nationalNumberPattern>
       </smsServices>
     </territory>
 
