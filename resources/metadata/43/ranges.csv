@@ -812,8 +812,9 @@ Prefix      ; Length ; Type       ; Tariff        ; Area Code Length ; Operator 
 6483        ; 7-13   ; FIXED_LINE ; STANDARD_RATE ; 4                ;               ; "fixed_4/3-9"  ; "AT"    ; "Göriach"                           ; "Göriach"                           ; GOVERNMENT
 6484        ; 7-13   ; FIXED_LINE ; STANDARD_RATE ; 4                ;               ; "fixed_4/3-9"  ; "AT"    ; "Lessach"                           ; "Lessach"                           ; GOVERNMENT
 6485        ; 7-13   ; MOBILE     ; STANDARD_RATE ;                  ; "three"       ; "fixed_3/3-10" ; "AT"    ;                                     ;                                     ; IR21
-650         ; 7-13   ; MOBILE     ; STANDARD_RATE ;                  ; "telering"    ; "fixed_3/3-10" ; "AT"    ;                                     ;                                     ; IR21
-65[1-3579]  ; 7-13   ; MOBILE     ; STANDARD_RATE ;                  ;               ; "fixed_3/3-10" ; "AT"
+65[05]      ; 7-13   ; MOBILE     ; STANDARD_RATE ;                  ; "t_mobile_at" ; "fixed_3/3-10" ; "AT"    ;                                     ;                                     ; IR21
+65[12]      ; 7-13   ; MOBILE     ; STANDARD_RATE ;                  ;               ; "fixed_3/3-10" ; "AT"
+65[379]     ; 7-13   ; MOBILE     ; STANDARD_RATE ;                  ; "a1_ta"       ; "fixed_3/3-10" ; "AT"    ;                                     ;                                     ; IR21
 6541        ; 7-13   ; FIXED_LINE ; STANDARD_RATE ; 4                ;               ; "fixed_4/3-9"  ; "AT"    ; "Saalbach"                          ; "Saalbach"                          ; GOVERNMENT
 6542        ; 7-13   ; FIXED_LINE ; STANDARD_RATE ; 4                ;               ; "fixed_4/3-9"  ; "AT"    ; "Zell am See"                       ; "Zell am See"                       ; GOVERNMENT
 6543        ; 7-13   ; FIXED_LINE ; STANDARD_RATE ; 4                ;               ; "fixed_4/3-9"  ; "AT"    ; "Taxenbach"                         ; "Taxenbach"                         ; GOVERNMENT
@@ -834,9 +835,10 @@ Prefix      ; Length ; Type       ; Tariff        ; Area Code Length ; Operator 
 6588        ; 7-13   ; FIXED_LINE ; STANDARD_RATE ; 4                ;               ; "fixed_4/3-9"  ; "AT"    ; "Lofer"                             ; "Lofer"                             ; GOVERNMENT
 6589        ; 7-13   ; FIXED_LINE ; STANDARD_RATE ; 4                ;               ; "fixed_4/3-9"  ; "AT"    ; "Unken"                             ; "Unken"                             ; GOVERNMENT
 66[058]     ; 7-13   ; MOBILE     ; STANDARD_RATE ;                  ; "three"       ; "fixed_3/3-10" ; "AT"    ;                                     ;                                     ; IR21
-66[13679]   ; 7-13   ; MOBILE     ; STANDARD_RATE ;                  ;               ; "fixed_3/3-10" ; "AT"
+661         ; 7-13   ; MOBILE     ; STANDARD_RATE ;                  ; "t_mobile_at" ; "fixed_3/3-10" ; "AT"    ;                                     ;                                     ; IR21
 662         ; 6-13   ; FIXED_LINE ; STANDARD_RATE ; 3                ;               ; "fixed_3/3-10" ; "AT"    ; "Salzburg"                          ; "Salzburg"                          ; GOVERNMENT
-664         ; 7-13   ; MOBILE     ; STANDARD_RATE ;                  ; "a1_ta"       ; "fixed_3/3-10" ; "AT"    ;                                     ;                                     ; IR21
+66[3479]    ; 7-13   ; MOBILE     ; STANDARD_RATE ;                  ; "a1_ta"       ; "fixed_3/3-10" ; "AT"    ;                                     ;                                     ; IR21
+666         ; 7-13   ; MOBILE     ; STANDARD_RATE ;                  ;               ; "fixed_3/3-10" ; "AT"
 670         ; 7-13   ; MOBILE     ; STANDARD_RATE ;                  ; "spusu"       ; "fixed_3/3-10" ; "AT"    ;                                     ;                                     ; IR21
 67[13-589]  ; 7-13   ; MOBILE     ; STANDARD_RATE ;                  ;               ; "fixed_3/3-10" ; "AT"
 672         ; 7-13   ; MOBILE     ; STANDARD_RATE ;                  ; "three"       ; "fixed_3/3-10" ; "AT"    ;                                     ;                                     ; IR21
