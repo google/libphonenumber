@@ -29,9 +29,12 @@
 #include "phonenumbers/base/memory/scoped_ptr.h"
 #include "phonenumbers/base/memory/singleton.h"
 #include "phonenumbers/phonenumber.pb.h"
-
+#include "phonenumbers/parsingoptions.h"
 #include "absl/container/node_hash_set.h"
 #include "absl/container/node_hash_map.h"
+#include "absl/base/macros.h"
+#include "absl/strings/str_cat.h" 
+#include "absl/strings/string_view.h" 
 
 class TelephoneNumber;
 
@@ -714,13 +717,29 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   ErrorType Parse(const string& number_to_parse,
                   const string& default_region,
                   PhoneNumber* number) const;
+
   // Parses a string and returns it in proto buffer format. This method differs
   // from Parse() in that it always populates the raw_input field of the
   // protocol buffer with number_to_parse as well as the country_code_source
   // field.
-  ErrorType ParseAndKeepRawInput(const string& number_to_parse,
-                                 const string& default_region,
-                                 PhoneNumber* number) const;
+  // ABSL_DEPRECATE_AND_INLINE()
+  ErrorType ParseAndKeepRawInput(
+      const string& number_to_parse,
+      const string& default_region,
+      PhoneNumber* number) const {
+    return ParseWithOptions(number_to_parse,
+                           ParsingOptions()
+                               .SetDefaultRegion(default_region)
+                               .SetKeepRawInput(true),
+                           number);
+  }
+
+  // Parses a string and returns it in proto buffer format. This method differs
+  // from Parse() in that it allows the caller to change the behavior of the
+  // parser. See ParsingOptions for more details.
+  ErrorType ParseWithOptions(const string& number_to_parse,
+                            const ParsingOptions& options,
+                            PhoneNumber* number) const;
 
   // Takes two phone numbers and compares them for equality.
   //
@@ -975,6 +994,14 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
                         bool keep_raw_input,
                         bool check_region,
                         PhoneNumber* phone_number) const;
+
+  
+  ErrorType ParseHelper(const absl::string_view number_to_parse,
+                        const string& default_region,
+                        bool keep_raw_input,
+                        bool check_region,
+                        PhoneNumber* phone_number) const;
+  
 
   absl::optional<string> ExtractPhoneContext(
       const string& number_to_extract_from,
