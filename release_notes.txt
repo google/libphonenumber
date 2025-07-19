@@ -1,3 +1,11 @@
+Jul 17, 2025: v9.0.10
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   AU, CC, CL, CX, ET, JP, NP, SY, SZ
+ - Updated short number metadata for region code(s): JP
+ - Updated carrier data for country calling code(s):
+   43 (en), 48 (en), 56 (en), 61 (en), 268 (en), 963 (en), 977 (en)
+
 Jul 02, 2025: v9.0.9
 Metadata changes:
  - Updated phone metadata for region code(s): CZ, GM, HK, KW, TD, US, WS

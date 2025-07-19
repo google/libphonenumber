@@ -13,11 +13,19 @@
 # limitations under the License.
 
 436485|Three
-43650|tele.ring
+43650|T-Mobile AT
+43653|A1 TA
+43655|T-Mobile AT
+43657|A1 TA
+43659|A1 TA
 43660|Three
+43661|T-Mobile AT
+43663|A1 TA
 43664|A1 TA
 43665|Three
+43667|A1 TA
 43668|Three
+43669|A1 TA
 43670|spusu
 43672|Three
 43676|T-Mobile AT

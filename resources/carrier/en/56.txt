@@ -519,7 +519,11 @@
 5623371|Movistar
 5623372|Movistar
 5623373|Movistar
-562338|Claro
+5623380|Claro
+5623381|Claro
+5623382|Claro
+5623383|Claro
+56235|Gtd Telesat S.A.
 56236|Entel
 56322162|Entel
 56322163|Entel
@@ -2669,6 +2673,8 @@
 56752978|Comunicacion Y Telefonia Rural S.A.
 56752979|Comunicacion Y Telefonia Rural S.A.
 5675298|Vtr Banda Ancha (Chile) S.A.
+569100|WOM
+569101|Pacifico Cable S.P.A.
 56930|WOM
 569304|Claro
 569310|WOM
@@ -2852,6 +2858,7 @@
 5696768|Entel
 5696769|Entel
 5696770|Celupago
+5696774|Telefonica Del Sur S.A.
 5696775|Entel
 5696776|Entel
 5696777|Entel

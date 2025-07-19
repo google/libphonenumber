@@ -53,16 +53,15 @@ Prefix       ; Length ; Type       ; Tariff        ; Operator                   
 454          ; 9      ; MOBILE     ; STANDARD_RATE ; "orange"                    ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; IR21
 459[03]      ; 9      ; MOBILE     ; STANDARD_RATE ; "play"                      ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; IR21
 4591[0-4]    ; 9      ; MOBILE     ; STANDARD_RATE ; "play"                      ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; IR21
-45915        ; 9      ; MOBILE     ; STANDARD_RATE ; "plus"                      ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; IR21
-4591[6-9]    ; 9      ; MOBILE     ; STANDARD_RATE ;                             ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; GOVERNMENT
+4591[578]    ; 9      ; MOBILE     ; STANDARD_RATE ; "plus"                      ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; IR21
+4591[69]     ; 9      ; MOBILE     ; STANDARD_RATE ;                             ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; GOVERNMENT
 459[25]0     ; 9      ; MOBILE     ; STANDARD_RATE ; "sia_ntel_solutions"        ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; GOVERNMENT
 4592[1-9]    ; 9      ; MOBILE     ; STANDARD_RATE ;                             ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; GOVERNMENT
 4594[02-49]  ; 9      ; MOBILE     ; STANDARD_RATE ;                             ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; GOVERNMENT
 4594[15-8]   ; 9      ; MOBILE     ; STANDARD_RATE ; "plus"                      ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; IR21
 4595[1-689]  ; 9      ; MOBILE     ; STANDARD_RATE ; "plus"                      ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; IR21
 45957        ; 9      ; MOBILE     ; STANDARD_RATE ; "bsg_estonia_ou"            ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; GOVERNMENT
-459[689]     ; 9      ; MOBILE     ; STANDARD_RATE ; "plus"                      ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; IR21
-4597         ; 9      ; MOBILE     ; STANDARD_RATE ;                             ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; GOVERNMENT
+459[6-9]     ; 9      ; MOBILE     ; STANDARD_RATE ; "plus"                      ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; IR21
 46           ; 9      ; FIXED_LINE ; STANDARD_RATE ;                             ; "fixed_2/3/2/2"     ; "PL"    ; "Skierniewice"         ; "Skierniewice"
 4619         ; 7      ; FIXED_LINE ; STANDARD_RATE ;                             ; "fixed_2/2/3"       ; "PL"    ; "Skierniewice"         ; "Skierniewice"
 47           ; 9      ; FIXED_LINE ; STANDARD_RATE ;                             ; "fixed_2/3/2/2"     ; "PL"

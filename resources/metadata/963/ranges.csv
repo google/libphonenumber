@@ -1,4 +1,4 @@
-Prefix ; Length ; Type       ; Tariff        ; Area Code Length ; Operator   ; Format          ; Regions ; Geocode:en                 ; Provenance
+Prefix ; Length ; Type       ; Tariff        ; Area Code Length ; Operator   ; Format          ; Regions ; Geocode:en                 ; Provenance ; Comment
 11     ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fixed_2/3/3-4" ; "SY"    ; "Damascus and rural areas" ; ITU
 12     ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fixed_2/3/3-4" ; "SY"    ; "Al-Nebek"                 ; ITU
 13     ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fixed_2/3/3-4" ; "SY"    ; "Al-Zabadani"              ; ITU
@@ -15,6 +15,7 @@ Prefix ; Length ; Type       ; Tariff        ; Area Code Length ; Operator   ; F
 41     ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fixed_2/3/3-4" ; "SY"    ; "Lattakia"                 ; ITU
 43     ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fixed_2/3/3-4" ; "SY"    ; "Tartous"                  ; ITU
 44     ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fixed_2/3/3-4" ; "SY"    ; "Hamah"                    ; ITU
+50     ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "rcell"    ; "mobile_3/3/3"  ; "SY"    ;                            ; IR21       ; "IR21 received from carrier"
 51     ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fixed_2/3/3-4" ; "SY"    ; "Deir Ezzour"              ; ITU
 52     ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fixed_2/3/3-4" ; "SY"    ; "Alhasakah"                ; ITU
 53     ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fixed_2/3/3-4" ; "SY"    ; "Al-Kameshli"              ; ITU
