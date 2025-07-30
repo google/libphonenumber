@@ -494,6 +494,11 @@ Prefix        ; Length ; Type            ; Tariff        ; National Only ; Opera
 599[4-8]      ; 9      ; FIXED_LINE      ; STANDARD_RATE ; false         ;                          ; "fixed_3/2/4"      ;              ; "JP"    ; "Ago, Mie"                  ; "阿児"
 5999          ; 9      ; FIXED_LINE      ; STANDARD_RATE ; false         ;                          ; "fixed_2/3/4"      ;              ; "JP"    ; "Tsu, Mie"                  ; "津"
 60            ; 9      ; PERSONAL_NUMBER ; STANDARD_RATE ; false         ;                          ; "personal_2/3/4"   ;              ; "JP"
+60100         ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "softbank"               ; "fmt10_2/4/4"      ;              ; "JP"    ;                             ;            ; GOVERNMENT
+60110         ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "kddi"                   ; "fmt10_2/4/4"      ;              ; "JP"    ;                             ;            ; GOVERNMENT
+60120         ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "rakuten_communications" ; "fmt10_2/4/4"      ;              ; "JP"    ;                             ;            ; GOVERNMENT
+60130         ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "okinawa_cellular"       ; "fmt10_2/4/4"      ;              ; "JP"    ;                             ;            ; GOVERNMENT
+60140         ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "nttdocomo"              ; "fmt10_2/4/4"      ;              ; "JP"    ;                             ;            ; GOVERNMENT
 6[1-9]        ; 9      ; FIXED_LINE      ; STANDARD_RATE ; false         ;                          ; "fixed_1/4/4"      ;              ; "JP"    ; "Osaka, Osaka"              ; "大阪"
 7010          ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "nttdocomo"              ; "fmt10_2/4/4"      ;              ; "JP"    ;                             ;            ; GOVERNMENT
 701[1-9]      ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "softbank"               ; "fmt10_2/4/4"      ;              ; "JP"    ;                             ;            ; GOVERNMENT

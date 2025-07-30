@@ -3626,7 +3626,10 @@
             800\d
           )|
           3311|
-          7464|
+          7(?:
+            0\d{3}|
+            464
+          )|
           118\d\d
         </nationalNumberPattern>
       </shortCode>
@@ -3641,12 +3644,15 @@
         </nationalNumberPattern>
       </tollFree>
       <carrierSpecific>
-        <possibleLengths national="4"/>
+        <possibleLengths national="4,5"/>
         <exampleNumber>3310</exampleNumber>
         <nationalNumberPattern>
           (?:
             331|
-            746
+            7(?:
+              0\d\d|
+              46
+            )
           )\d
         </nationalNumberPattern>
       </carrierSpecific>
@@ -3661,9 +3667,14 @@
         <nationalNumberPattern>116\d{3}</nationalNumberPattern>
       </expandedEmergency>
       <smsServices>
-        <possibleLengths national="4"/>
+        <possibleLengths national="4,5"/>
         <exampleNumber>7460</exampleNumber>
-        <nationalNumberPattern>746\d</nationalNumberPattern>
+        <nationalNumberPattern>
+          7(?:
+            0\d\d|
+            46
+          )\d
+        </nationalNumberPattern>
       </smsServices>
     </territory>
 
@@ -4504,6 +4515,7 @@
     </territory>
 
     <!-- Spain (ES) -->
+    <!-- https://avance.digital.gob.es/es-ES/Servicios/Numeracion/Documents/Presentation_NNP_Spain.pdf -->
     <!-- http://www.minetur.gob.es/telecomunicaciones/es-ES/Servicios/Numeracion/Documents/2012_09_10_Presentation_E164_Numbering_plan_Spain.pdf -->
     <!-- http://www.minetur.gob.es/telecomunicaciones/es-ES/Servicios/Numeracion/Documents/Descripcion_plan_20101216.pdf -->
     <!-- http://www.minetur.gob.es/telecomunicaciones/es-ES/Servicios/Numeracion/Documents/13-01-11_Gu%C3%ADa_Numeracion.pdf -->
@@ -7776,24 +7788,21 @@
       <generalDesc>
         <nationalNumberPattern>
           [01]\d\d(?:
-            \d{5}(?:
-              \d{2}
-            )?
+            \d{5,7}
           )?
         </nationalNumberPattern>
       </generalDesc>
       <shortCode>
-        <possibleLengths national="3,8,10"/>
+        <possibleLengths national="3,[8-10]"/>
         <exampleNumber>102</exampleNumber>
         <nationalNumberPattern>
-          000[259]\d{6}|
+          000[2569]\d{4,6}|
           1(?:
             0[24]|
             1[089]|
             44|
             89
-          )|
-          000[2569]\d{4}
+          )
         </nationalNumberPattern>
       </shortCode>
       <tollFree>
@@ -7809,12 +7818,9 @@
       <!-- As per confirmations from the carrier (NTTDocomo), these are SMS only short codes,
            which are used to interact with respective companies i.e. after scanning the code. -->
       <smsServices>
-        <possibleLengths national="8,10"/>
+        <possibleLengths national="[8-10]"/>
         <exampleNumber>00020000</exampleNumber>
-        <nationalNumberPattern>
-          000[259]\d{6}|
-          000[2569]\d{4}
-        </nationalNumberPattern>
+        <nationalNumberPattern>000[2569]\d{4,6}</nationalNumberPattern>
       </smsServices>
     </territory>
 

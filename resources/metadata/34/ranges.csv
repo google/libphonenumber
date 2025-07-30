@@ -218,7 +218,7 @@ Prefix           ; Length ; Type            ; Tariff        ; Operator          
 [89]78           ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                   ; "all_3/2/2/2"    ; "Europe/Madrid"   ; "ES"    ; "Teruel"           ; "Teruel"
 [89]79           ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                   ; "all_3/2/2/2"    ; "Europe/Madrid"   ; "ES"    ; "Palencia"         ; "Palencia"
 [89]80           ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                   ; "all_3/2/2/2"    ; "Europe/Madrid"   ; "ES"    ; "Zamora"           ; "Zamora"
-881              ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                   ; "all_3/2/2/2"    ; "Europe/Madrid"   ; "ES"    ; "La Coruña"        ; "La Coruña"
+[89]81           ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                   ; "all_3/2/2/2"    ; "Europe/Madrid"   ; "ES"    ; "A Coruña"         ; "A Coruña"
 [89]82           ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                   ; "all_3/2/2/2"    ; "Europe/Madrid"   ; "ES"    ; "Lugo"             ; "Lugo"
 [89]83           ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                   ; "all_3/2/2/2"    ; "Europe/Madrid"   ; "ES"    ; "Valladolid"       ; "Valladolid"
 [89]8[45]        ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                   ; "all_3/2/2/2"    ; "Europe/Madrid"   ; "ES"    ; "Asturias"         ; "Asturias"
@@ -240,4 +240,3 @@ Prefix           ; Length ; Type            ; Tariff        ; Operator          
 973[0-8]         ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                   ; "all_3/2/2/2"    ; "Europe/Madrid"   ; "ES"    ; "Lleida"           ; "Lérida"
 97390            ; 9      ; MOBILE          ; STANDARD_RATE ;                   ; "all_3/2/2/2"    ; "Europe/Madrid"   ; "ES"    ;                    ;               ; GOVERNMENT
 9739[1-9]        ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                   ; "all_3/2/2/2"    ; "Europe/Madrid"   ; "ES"    ; "Lleida"           ; "Lérida"
-981              ; 9      ; FIXED_LINE      ; STANDARD_RATE ;                   ; "all_3/2/2/2"    ; "Europe/Madrid"   ; "ES"    ; "La Coruña"        ; "A Coruña"

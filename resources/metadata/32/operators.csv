@@ -1,4 +1,5 @@
 Id                             ; Name:en
+citymesh                       ; "Citymesh"
 digi                           ; "DIGI Communications"
 ericsson                       ; "Ericsson NV"
 febo_telecom                   ; "Febo Telecom"
@@ -18,4 +19,3 @@ tismi_bv                       ; "TISMI BV"
 vectone                        ; "Vectone"
 voo                            ; "VOO"
 voxbone_sa                     ; "Voxbone SA"
-voyacom_sprl                   ; "Voyacom SPRL"
