@@ -59,7 +59,7 @@
     <dependency>
       <groupId>commons-fileupload</groupId>
       <artifactId>commons-fileupload</artifactId>
-      <version>1.5</version>
+      <version>1.6.0</version>
     </dependency>
     <dependency>
       <groupId>commons-lang</groupId>
