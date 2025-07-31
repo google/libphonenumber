@@ -15,6 +15,7 @@ Prefix     ; Length ; Type       ; Tariff        ; Operator   ; Format       ; R
 26         ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_2/6"   ; "OM"    ; "Al Batinah & Musandam"                ; GOVERNMENT
 500        ; 7      ; FIXED_LINE ; TOLL_FREE     ;            ; "fmt3_3/4-6" ; "OM"    ;                                        ; INTERNAL   ; "Added based on client's request"
 7[12]      ; 8      ; MOBILE     ; STANDARD_RATE ; "omantel"  ; "fmt2_4/4"   ; "OM"    ;                                        ; IR21
+741        ; 8      ; MOBILE     ; STANDARD_RATE ; "ooredoo"  ; "fmt2_4/4"   ; "OM"    ;                                        ; IR21
 7[67]      ; 8      ; MOBILE     ; STANDARD_RATE ; "vodafone" ; "fmt2_4/4"   ; "OM"    ;                                        ; IR21
 78         ; 8      ; MOBILE     ; STANDARD_RATE ; "ooredoo"  ; "fmt2_4/4"   ; "OM"    ;                                        ; IR21
 79[0-6]    ; 8      ; MOBILE     ; STANDARD_RATE ; "ooredoo"  ; "fmt2_4/4"   ; "OM"    ;                                        ; IR21

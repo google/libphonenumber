@@ -8,4 +8,5 @@ DE     ; 11800      ; 5,6    ; COMMERCIAL
 DE     ; 1180[1-9]  ; 5      ; COMMERCIAL
 DE     ; 118[1-9]   ; 5      ; COMMERCIAL
 DE     ; 3311       ; 4      ; COMMERCIAL         ;           ;      ; true
+DE     ; 70         ; 5      ; COMMERCIAL         ;           ; true ; true
 DE     ; 7464       ; 4      ; COMMERCIAL         ;           ; true ; true

@@ -65,7 +65,7 @@
 34878|Teruel
 34879|Palencia
 34880|Zamora
-34881|La Coruña
+34881|A Coruña
 34882|Lugo
 34883|Valladolid
 34884|Asturias
