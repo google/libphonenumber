@@ -27,4 +27,6 @@
 22059|QCell
 2206|Comium
 2207|Africell
+22086|Comium
+22087|Comium
 2209|Gamcel

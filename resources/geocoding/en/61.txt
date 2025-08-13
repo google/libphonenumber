@@ -8607,7 +8607,7 @@
 61260374|Ournie
 61260375|Ournie
 61260380|Albury
-61260381|Balldale
+61260381|Albury
 61260382|Barnawartha
 61260383|Coppabella
 61260384|Corowa
@@ -30313,10 +30313,10 @@
 6173493|Brisbane
 6173494|Samford
 61734950|Redcliffe
-61734951|Cleveland
-61734952|Ipswich
-61734953|Redcliffe
-61734954|Samford
+61734951|Brisbane
+61734952|Brisbane
+61734953|Brisbane
+61734954|Brisbane
 61734955|Beenleigh
 61734956|Cleveland
 61734957|Ipswich

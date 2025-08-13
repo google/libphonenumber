@@ -62,6 +62,7 @@ Prefix     ; Length ; Type       ; Tariff        ; Operator          ; Format   
 456        ; 7      ; FIXED_LINE ; STANDARD_RATE ;                   ; "fmt1_3/4" ; "GY"    ; "Mahdia"                                        ; ITU
 50[0-6]    ; 7      ; FIXED_LINE ; STANDARD_RATE ;                   ; "fmt1_3/4" ; "GY"    ;                                                 ; ITU
 510        ; 7      ; MOBILE     ; STANDARD_RATE ; "digicel_guyana"  ; "fmt1_3/4" ; "GY"    ;                                                 ; IR21
+511        ; 7      ; MOBILE     ; STANDARD_RATE ; "digicel_guyana"  ; "fmt1_3/4" ; "GY"    ;                                                 ; ITU
 515        ; 7      ; VOIP       ; STANDARD_RATE ;                   ; "fmt1_3/4" ; "GY"    ;                                                 ; ITU
 60[0-48]   ; 7      ; MOBILE     ; STANDARD_RATE ; "digicel_guyana"  ; "fmt1_3/4" ; "GY"    ;                                                 ; IR21
 60[56]     ; 7      ; MOBILE     ; STANDARD_RATE ;                   ; "fmt1_3/4" ; "GY"    ;                                                 ; ITU

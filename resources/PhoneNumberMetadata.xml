@@ -11275,7 +11275,8 @@
     <!-- http://en.wikipedia.org/wiki/List_of_United_Kingdom_dialling_codes -->
     <!-- http://www.numberingplans.com/?page=dialling&sub=areacodes&ac=GB -->
     <territory id="GB" mainCountryForCode="true" countryCode="44" internationalPrefix="00"
-               nationalPrefix="0" preferredExtnPrefix=" x" mobileNumberPortableRegion="true">
+               nationalPrefix="0" nationalPrefixForParsing="0|180020" preferredExtnPrefix=" x"
+               mobileNumberPortableRegion="true">
       <availableFormats>
         <!-- Special case: 800 1111 (UK Child Line). -->
         <numberFormat pattern="(\d{3})(\d{4})" nationalPrefixFormattingRule="$NP$FG">
@@ -12213,7 +12214,8 @@
     <!-- http://static.ofcom.org.uk/static/numbering/ -->
     <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_the_United_Kingdom -->
     <territory id="GG" countryCode="44" internationalPrefix="00" nationalPrefix="0"
-               nationalPrefixForParsing="([25-9]\d{5})$|0" nationalPrefixTransformRule="1481$1">
+               nationalPrefixForParsing="([25-9]\d{5})$|0|180020"
+               nationalPrefixTransformRule="1481$1">
       <generalDesc>
         <nationalNumberPattern>
           (?:
@@ -12565,10 +12567,11 @@
                 48
               )
             )|
-            8\d{3}
+            8[0-589]\d\d
           )\d{3}
         </nationalNumberPattern>
       </fixedLine>
+      <!-- Prefix 8[67] is moved here based on the user report. -->
       <mobile>
         <possibleLengths national="7"/>
         <exampleNumber>3012345</exampleNumber>
@@ -12577,7 +12580,8 @@
           (?:
             [23679]\d|
             4[015]|
-            5[0-489]
+            5[0-489]|
+            8[67]
           )\d{5}
         </nationalNumberPattern>
       </mobile>
@@ -13291,7 +13295,7 @@
         <exampleNumber>6091234</exampleNumber>
         <nationalNumberPattern>
           (?:
-            510|
+            51[01]|
             6\d\d|
             7(?:
               [0-5]\d|
@@ -14565,7 +14569,8 @@
     <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_the_United_Kingdom -->
     <territory id="IM" countryCode="44" leadingDigits="74576|(?:16|7[56])24"
                internationalPrefix="00" nationalPrefix="0"
-               nationalPrefixForParsing="([25-8]\d{5})$|0" nationalPrefixTransformRule="1624$1">
+               nationalPrefixForParsing="([25-8]\d{5})$|0|180020"
+               nationalPrefixTransformRule="1624$1">
       <generalDesc>
         <nationalNumberPattern>
           1624\d{6}|
@@ -16472,7 +16477,8 @@
     <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_the_United_Kingdom -->
     <!-- http://www.jcra.je/cms3/v2/public/cmsChild.asp?pageID=1024&childID=1036 -->
     <territory id="JE" countryCode="44" internationalPrefix="00" nationalPrefix="0"
-               nationalPrefixForParsing="([0-24-8]\d{5})$|0" nationalPrefixTransformRule="1534$1">
+               nationalPrefixForParsing="([0-24-8]\d{5})$|0|180020"
+               nationalPrefixTransformRule="1534$1">
       <generalDesc>
         <nationalNumberPattern>
           1534\d{6}|

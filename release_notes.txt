@@ -1,3 +1,10 @@
+Aug 13, 2025: v9.0.12
+Metadata changes:
+ - Updated phone metadata for region code(s): GB, GG, GM, GY, IM, JE
+ - Updated geocoding data for country calling code(s): 61 (en), 81 (en, ja)
+ - Updated carrier data for country calling code(s):
+   220 (en), 370 (en), 592 (en)
+
 Jul 30, 2025: v9.0.11
 Metadata changes:
  - Updated phone metadata for region code(s):
