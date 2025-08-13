@@ -48,5 +48,6 @@ Prefix       ; Length ; Type       ; Tariff        ; Operator   ; Format    ; Re
 5748         ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt_3/4" ; "GM"    ; "Kaur"                                                                ; ITU
 5[89]        ; 7      ; MOBILE     ; STANDARD_RATE ; "qcell"    ; "fmt_3/4" ; "GM"    ;                                                                       ;            ; "Added per client's request."
 6            ; 7      ; MOBILE     ; STANDARD_RATE ; "comium"   ; "fmt_3/4" ; "GM"    ;                                                                       ; IR21
-8            ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt_3/4" ; "GM"    ;                                                                       ; ITU
+8[0-589]     ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt_3/4" ; "GM"    ;                                                                       ; ITU
+8[67]        ; 7      ; MOBILE     ; STANDARD_RATE ; "comium"   ; "fmt_3/4" ; "GM"    ;                                                                       ; TELECOMS
 9            ; 7      ; MOBILE     ; STANDARD_RATE ; "gamcel"   ; "fmt_3/4" ; "GM"    ;                                                                       ; ITU

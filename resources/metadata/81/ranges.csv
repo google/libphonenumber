@@ -704,7 +704,7 @@ Prefix        ; Length ; Type            ; Tariff        ; National Only ; Opera
 8493[03-9]    ; 9      ; FIXED_LINE      ; STANDARD_RATE ; false         ;                          ; "fixed_2/3/4"      ;              ; "JP"    ; "Onomichi, Hiroshima"       ; "尾道"
 8493[12]      ; 9      ; FIXED_LINE      ; STANDARD_RATE ; false         ;                          ; "fixed_2/3/4"      ;              ; "JP"    ; "Fukuyama, Hiroshima"       ; "福山"
 851[01]       ; 9      ; FIXED_LINE      ; STANDARD_RATE ; false         ;                          ; "fixed_2/3/4"      ;              ; "JP"
-8512          ; 9      ; FIXED_LINE      ; STANDARD_RATE ; false         ;                          ; "fixed_4/1/4"      ;              ; "JP"    ; "Nishigo, Fukushima"        ; "西郷"
+8512          ; 9      ; FIXED_LINE      ; STANDARD_RATE ; false         ;                          ; "fixed_4/1/4"      ;              ; "JP"    ; "Okinoshima, Shimane"       ; "隠岐の島"
 851[35-9]     ; 9      ; FIXED_LINE      ; STANDARD_RATE ; false         ;                          ; "fixed_4/1/4"      ;              ; "JP"
 8514          ; 9      ; FIXED_LINE      ; STANDARD_RATE ; false         ;                          ; "fixed_4/1/4"      ;              ; "JP"    ; "Ama, Shimane"              ; "海士"
 852           ; 9      ; FIXED_LINE      ; STANDARD_RATE ; false         ;                          ; "fixed_3/2/4"      ;              ; "JP"    ; "Matsue, Shimane"           ; "松江"

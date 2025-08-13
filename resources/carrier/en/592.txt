@@ -13,6 +13,7 @@
 # limitations under the License.
 
 592510|Digicel Guyana
+592511|Digicel Guyana
 592600|Digicel Guyana
 592601|Digicel Guyana
 592602|Digicel Guyana
