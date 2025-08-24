@@ -27537,19 +27537,9 @@
         <exampleNumber>701234567</exampleNumber>
         <nationalNumberPattern>
           7(?:
-            (?:
-              [06-8]\d|
-              [19]0|
-              21
-            )\d|
-            5(?:
-              0[01]|
-              [19]0|
-              2[25]|
-              3[356]|
-              [4-7]\d|
-              8[35]
-            )
+            [0678]\d|        <!-- 70, 76, 77, 78 -->
+            1\d|             <!-- 71 -->
+            5\d{2}           <!-- 75 -->
           )\d{5}
         </nationalNumberPattern>
       </mobile>
