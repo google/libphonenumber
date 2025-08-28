@@ -11940,7 +11940,7 @@
     </territory>
 
     <!-- Sweden (SE) -->
-    <!-- http://www.pts.se/upload/Ovrigt/Tele/Nummerfragor/Nrplansammanst%C3%A4llning-2013-07-05.pdf -->
+    <!-- https://pts.se/en/internet-and-telephony/numbering-and-addressing/ -->
     <!-- http://www.etiskaradet.se/sidor/om-sms-tjanster.aspx -->
     <territory id="SE">
       <generalDesc>
@@ -14003,7 +14003,7 @@
     <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_Uruguay -->
     <territory id="UY">
       <generalDesc>
-        <nationalNumberPattern>[129]\d{2,4}</nationalNumberPattern>
+        <nationalNumberPattern>[19]\d{2,4}</nationalNumberPattern>
       </generalDesc>
       <shortCode>
         <possibleLengths national="[3-5]"/>
@@ -14016,7 +14016,6 @@
             787|
             997\d?
           )|
-          21997|
           911
         </nationalNumberPattern>
       </shortCode>

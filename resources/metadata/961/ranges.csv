@@ -19,10 +19,11 @@ Prefix      ; Length ; Type       ; Tariff        ; Operator ; Format       ; Re
 78[0-6]     ; 7      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt1_1/3/3" ; "LB"    ;                    ; ITU
 787         ; 8      ; MOBILE     ; STANDARD_RATE ; "touch"  ; "fmt2_2/3/3" ; "LB"    ;                    ; IR21
 78[89]      ; 8      ; MOBILE     ; STANDARD_RATE ; "touch"  ; "fmt2_2/3/3" ; "LB"    ;                    ; IR21       ; "IR21 dated 6/26/2018"
-79[04-9]    ; 7      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt1_1/3/3" ; "LB"    ;                    ; ITU
+790         ; 7      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt1_1/3/3" ; "LB"    ;                    ; IR21
 791         ; 8      ; MOBILE     ; STANDARD_RATE ; "alfa"   ; "fmt2_2/3/3" ; "LB"    ;                    ; IR21       ; "IR21 dated 10/23/2018"
 792         ; 8      ; MOBILE     ; STANDARD_RATE ;          ; "fmt2_2/3/3" ; "LB"
 793         ; 8      ; MOBILE     ; STANDARD_RATE ; "alfa"   ; "fmt2_2/3/3" ; "LB"    ;                    ; ITU
+79[4-9]     ; 7      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt1_1/3/3" ; "LB"    ;                    ; ITU
 8[02-9]     ; 7      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt1_1/3/3" ; "LB"    ;                    ; ITU
 80          ; 8      ; FIXED_LINE ; SHARED_COST   ;          ; "fmt2_2/3/3" ; "LB"    ;                    ; ITU
 81[06-9]    ; 8      ; MOBILE     ; STANDARD_RATE ; "touch"  ; "fmt2_2/3/3" ; "LB"    ;                    ; IR21       ; "IR21 dated 6/26/2018"

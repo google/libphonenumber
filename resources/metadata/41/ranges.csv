@@ -1653,7 +1653,8 @@ Prefix            ; Length ; Type            ; Tariff        ; Operator         
 75[689]           ; 9      ; MOBILE          ; STANDARD_RATE ;                         ; "fmt1_2/3/2/2"   ; "CH"
 757               ; 9      ; MOBILE          ; STANDARD_RATE ; "swisscom"              ; "fmt1_2/3/2/2"   ; "CH"    ;                                 ;                                 ;                                 ;                                  ; GOVERNMENT
 760[03-5]         ; 9      ; MOBILE          ; STANDARD_RATE ; "sunrise"               ; "fmt1_2/3/2/2"   ; "CH"    ;                                 ;                                 ;                                 ;                                  ; GOVERNMENT
-760[126-9]        ; 9      ; MOBILE          ; STANDARD_RATE ;                         ; "fmt1_2/3/2/2"   ; "CH"
+760[12]           ; 9      ; MOBILE          ; STANDARD_RATE ; "sunrise"               ; "fmt1_2/3/2/2"   ; "CH"    ;                                 ;                                 ;                                 ;                                  ; IR21
+760[6-9]          ; 9      ; MOBILE          ; STANDARD_RATE ;                         ; "fmt1_2/3/2/2"   ; "CH"
 761               ; 9      ; MOBILE          ; STANDARD_RATE ;                         ; "fmt1_2/3/2/2"   ; "CH"
 76[2-7]           ; 9      ; MOBILE          ; STANDARD_RATE ; "sunrise"               ; "fmt1_2/3/2/2"   ; "CH"    ;                                 ;                                 ;                                 ;                                  ; IR21
 76[89]            ; 9      ; MOBILE          ; STANDARD_RATE ; "sunrise"               ; "fmt1_2/3/2/2"   ; "CH"    ;                                 ;                                 ;                                 ;                                  ; GOVERNMENT

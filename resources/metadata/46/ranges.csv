@@ -847,7 +847,10 @@ Prefix          ; Length ; Type            ; Tariff        ; Operator           
 790[1-7]        ; 9      ; MOBILE          ; STANDARD_RATE ; "tele2"                     ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; IR21
 790[89]         ; 9      ; MOBILE          ; STANDARD_RATE ; "tele2"                     ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
 7910            ; 9      ; MOBILE          ; STANDARD_RATE ; "tell_ess_ab"               ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
-791[1-9]        ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"
+7911[0-4]       ; 9      ; MOBILE          ; STANDARD_RATE ; "setera"                    ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+79115           ; 9      ; MOBILE          ; STANDARD_RATE ; "telavox"                   ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
+7911[6-9]       ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"
+791[2-9]        ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"
 79[246-8]       ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"
 793[0-4]        ; 9      ; MOBILE          ; STANDARD_RATE ; "hutchison"                 ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
 793[5-9]        ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"
