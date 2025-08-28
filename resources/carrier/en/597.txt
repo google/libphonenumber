@@ -12,6 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+5976|Telesur
 59771|Digicel
 59772|Digicel
 59774|Digicel
