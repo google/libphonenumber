@@ -1,8 +1,8 @@
 Prefix       ; Length ; Type       ; Tariff        ; Operator             ; Format           ; Regions ; Provenance
 00800        ; 11     ; FIXED_LINE ; TOLL_FREE     ;                      ;                  ; "PA"
 10           ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
+11[0479]     ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
 111          ; 7      ; MOBILE     ; STANDARD_RATE ; "claro"              ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
-11[479]      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
 123          ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
 1[23]7       ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"
 13[013]      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT

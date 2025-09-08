@@ -1,3 +1,29 @@
+Aug 28, 2025: v9.0.13
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   BT, DE, GY, IL, OM, PA, SG, SR, UY
+ - Updated short number metadata for region code(s): UY
+ - Updated geocoding data for country calling code(s): 975 (en)
+ - Updated carrier data for country calling code(s):
+   30 (en), 41 (en), 46 (en), 49 (en), 65 (en), 86 (en, zh), 372 (en), 597 (en),
+   968 (en), 975 (en)
+
+Aug 13, 2025: v9.0.12
+Metadata changes:
+ - Updated phone metadata for region code(s): GB, GG, GM, GY, IM, JE
+ - Updated geocoding data for country calling code(s): 61 (en), 81 (en, ja)
+ - Updated carrier data for country calling code(s):
+   220 (en), 370 (en), 592 (en)
+
+Jul 30, 2025: v9.0.11
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   DO, EH, IL, JP, MA, MN, OM, PG, SG, US
+ - Updated short number metadata for region code(s): DE, JP
+ - Updated geocoding data for country calling code(s): 34 (en, es)
+ - Updated carrier data for country calling code(s):
+   27 (en), 32 (en), 65 (en), 81 (en), 675 (en), 968 (en), 976 (en), 996 (en)
+
 Jul 17, 2025: v9.0.10
 Metadata changes:
  - Updated phone metadata for region code(s):

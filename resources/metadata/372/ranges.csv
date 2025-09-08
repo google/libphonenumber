@@ -4,9 +4,8 @@ Prefix       ; Length ; Type            ; Tariff        ; National Only ; Operat
 4[3-8]       ; 7      ; FIXED_LINE      ; STANDARD_RATE ; false         ;               ; "all_3/4"              ; "EE"    ; ITU
 5[02]        ; 7      ; MOBILE          ; STANDARD_RATE ; false         ; "telia_eesti" ; "all_3/4"              ; "EE"    ; IR21
 5[02]        ; 8      ; MOBILE          ; STANDARD_RATE ; false         ;               ; "mobile_varcost_4/3-4" ; "EE"    ;            ; "Added per client's request."
+51           ; 8      ; MOBILE          ; STANDARD_RATE ; false         ; "telia_eesti" ; "mobile_varcost_4/3-4" ; "EE"    ; IR21
 51[0-8]      ; 7      ; MOBILE          ; STANDARD_RATE ; false         ;               ; "all_3/4"              ; "EE"
-51[0-8]      ; 8      ; MOBILE          ; STANDARD_RATE ; false         ;               ; "mobile_varcost_4/3-4" ; "EE"
-519          ; 8      ; MOBILE          ; STANDARD_RATE ; false         ; "telia_eesti" ; "mobile_varcost_4/3-4" ; "EE"    ; IR21
 5195         ; 7      ; MOBILE          ; STANDARD_RATE ; false         ; "telia_eesti" ; "all_3/4"              ; "EE"    ; IR21
 53[0346-9]   ; 8      ; MOBILE          ; STANDARD_RATE ; false         ; "telia_eesti" ; "mobile_varcost_4/3-4" ; "EE"    ; IR21
 53[125]      ; 8      ; MOBILE          ; STANDARD_RATE ; false         ;               ; "mobile_varcost_4/3-4" ; "EE"

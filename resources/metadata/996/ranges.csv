@@ -89,5 +89,4 @@ Prefix        ; Length ; Type       ; Tariff        ; Area Code Length ; Operato
 88[08]        ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "alfa_telecom"  ; "fmt_3/3/3"      ; "KG"    ;                                           ; IR21
 912           ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "smart_connect" ; "fmt_3/3/3"      ; "KG"    ;                                           ; GOVERNMENT
 99[05]        ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "alfa_telecom"  ; "fmt_3/3/3"      ; "KG"
-996           ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "sky_mobile"    ; "fmt_3/3/3"      ; "KG"    ;                                           ; IR21       ; "IR21 dated 10/11/2018 - updated range"
-99[7-9]       ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "alfa_telecom"  ; "fmt_3/3/3"      ; "KG"    ;                                           ; IR21
+99[6-9]       ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "alfa_telecom"  ; "fmt_3/3/3"      ; "KG"    ;                                           ; IR21

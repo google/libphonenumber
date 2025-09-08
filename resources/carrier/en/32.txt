@@ -24,6 +24,7 @@
 324510|DIGI Communications
 32455|VOO
 32456|Mobile Vikings/JIM Mobile
+32458|Citymesh
 32460|Proximus
 324618|N.M.B.S.
 324630|Lancelot Telecom
@@ -57,7 +58,7 @@
 3247|Proximus
 324802|TISMI BV
 324803|Lancelot Telecom
-324805|Voyacom SPRL
+324805|Citymesh
 324806|Telenet
 324807|MessageBird BV
 324809|Ericsson NV

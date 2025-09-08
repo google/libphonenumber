@@ -12,6 +12,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+8160100|Softbank
+8160110|KDDI
+8160120|Rakuten Communications
+8160130|Okinawa Cellular
+8160140|NTT Docomo
 81701|Softbank
 817010|NTT Docomo
 81702|KDDI

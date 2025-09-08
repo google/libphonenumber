@@ -13,7 +13,7 @@
 # limitations under the License.
 
 37250|Telia Eesti AS
-372519|Telia Eesti AS
+37251|Telia Eesti AS
 37252|Telia Eesti AS
 372530|Telia Eesti AS
 372533|Telia Eesti AS
