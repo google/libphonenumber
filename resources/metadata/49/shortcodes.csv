@@ -1,4 +1,4 @@
-Region ; Prefix     ; Length ; Type               ; Tariff    ; Sms  ; Carrier Specific
+Region ; Prefix     ; Length ; Type               ; Tariff    ; Sms  ; Carrier Specific ; Format
 DE     ; 11[02]     ; 3      ; EMERGENCY          ; TOLL_FREE
 DE     ; 115        ; 3      ; COMMERCIAL
 DE     ; 11600[06]  ; 6      ; EXPANDED_EMERGENCY ; TOLL_FREE
@@ -7,6 +7,14 @@ DE     ; 116123     ; 6      ; EXPANDED_EMERGENCY ; TOLL_FREE
 DE     ; 11800      ; 5,6    ; COMMERCIAL
 DE     ; 1180[1-9]  ; 5      ; COMMERCIAL
 DE     ; 118[1-9]   ; 5      ; COMMERCIAL
+DE     ; 22044      ; 5      ; COMMERCIAL         ;           ; true ; true
+DE     ; 22543      ; 5      ; COMMERCIAL         ;           ; true ; true
+DE     ; 22580      ; 5      ; COMMERCIAL         ;           ; true ; true
+DE     ; 227700     ; 6      ; COMMERCIAL         ;           ; true ; true             ; "shortnumber_6"
+DE     ; 22922      ; 5      ; COMMERCIAL         ;           ; true ; true
 DE     ; 3311       ; 4      ; COMMERCIAL         ;           ;      ; true
+DE     ; 333[34]    ; 4      ; COMMERCIAL         ;           ; true ; true
+DE     ; 44844      ; 5      ; COMMERCIAL         ;           ; true ; true
 DE     ; 70         ; 5      ; COMMERCIAL         ;           ; true ; true
 DE     ; 7464       ; 4      ; COMMERCIAL         ;           ; true ; true
+DE     ; 80808      ; 5      ; COMMERCIAL         ;           ; true ; true

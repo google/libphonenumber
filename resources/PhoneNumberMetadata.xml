@@ -8887,17 +8887,20 @@
         <possibleLengths national="9"/>
         <exampleNumber>601123456</exampleNumber>
         <nationalNumberPattern>
-          (?:
-            60[1-8]\d|
-            7(?:
-              0(?:
-                [2-5]\d|
-                60
-              )|
-              19[0-4]|
-              [2379]\d\d
+          7(?:
+            060\d|
+            19(?:
+              [0-4]\d|
+              50
             )
-          )\d{5}
+          )\d{4}|
+          (?:
+            60[1-8]|
+            7(?:
+              0[2-5]|
+              [2379]\d
+            )
+          )\d{6}
         </nationalNumberPattern>
       </mobile>
       <tollFree>
@@ -8975,6 +8978,13 @@
             [68]9
           </leadingDigits>
           <format>$1 $2</format>
+        </numberFormat>
+        <!-- Short code with 6 digit length -->
+        <numberFormat pattern="(\d{6})">
+          <leadingDigits>227</leadingDigits>
+          <leadingDigits>2277</leadingDigits>
+          <format>$1</format>
+          <intlFormat>NA</intlFormat>
         </numberFormat>
         <!-- Fixed line, 3 digit area codes. -->
         <numberFormat pattern="(\d{3})(\d{3,12})" nationalPrefixFormattingRule="$NP$FG">
@@ -16287,13 +16297,13 @@
           <format>$1 $2 $3</format>
         </numberFormat>
         <numberFormat pattern="(\d{3})(\d{4})(\d{4,5})">
-          <leadingDigits>3</leadingDigits>
+          <leadingDigits>[03]</leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
       </availableFormats>
       <generalDesc>
         <nationalNumberPattern>
-          0\d{5,10}|
+          0\d{5,11}|
           1\d{8,10}|
           3(?:
             [0-8]\d{7,10}|
@@ -16318,10 +16328,13 @@
            found with other prefixes that are 11 digits long as well, so we allow it for all the
            three and four digit area codes. -->
       <fixedLine>
-        <possibleLengths national="[6-11]"/>
+        <possibleLengths national="[6-12]"/>
         <exampleNumber>0212345678</exampleNumber>
         <nationalNumberPattern>
-          0669[0-79]\d{1,6}|
+          0(?:
+            669[0-79]\d{1,6}|
+            831\d{2,8}
+          )|
           0(?:
             1(?:
               [0159]\d|
@@ -16373,7 +16386,7 @@
             8(?:
               [0159]\d|
               2[3-578]|
-              3[1-356]|
+              3[2356]|
               [6-8][1-5]
             )|
             9(?:
@@ -19462,7 +19475,7 @@
             6(?:
               (?:
                 4[5-9]|
-                5[0-46-9]
+                5\d
               )\d|
               6(?:
                 [024-6]\d|
@@ -20009,7 +20022,7 @@
       <availableFormats>
         <numberFormat pattern="(\d{2})(\d{3})(\d{3})">
           <leadingDigits>
-            [269]|
+            [2679]|
             8[01]
           </leadingDigits>
           <format>$1 $2 $3</format>
@@ -20019,6 +20032,7 @@
         <nationalNumberPattern>
           (?:
             [268]\d|
+            78|
             90
           )\d{6}
         </nationalNumberPattern>
@@ -20475,7 +20489,7 @@
            reports and online examples. -->
       <mobile>
         <possibleLengths national="8"/>
-        <exampleNumber>67622901</exampleNumber>
+        <exampleNumber>60123456</exampleNumber>
         <nationalNumberPattern>
           6(?:
             [07-9]\d|
@@ -26960,7 +26974,7 @@
         <possibleLengths national="8"/>
         <exampleNumber>81234567</exampleNumber>
         <nationalNumberPattern>
-          8980\d{4}|
+          898[02-8]\d{4}|
           (?:
             8(?:
               0[1-9]|
@@ -29944,7 +29958,7 @@
               5[01679]|
               6[0-279]|
               78|
-              8[0-29]
+              8[0-269]
             )|
             7(?:
               0[1-46-8]|
@@ -30056,7 +30070,7 @@
               5[01679]|
               6[0-279]|
               78|
-              8[0-29]
+              8[0-269]
             )|
             7(?:
               0[1-46-8]|

@@ -772,6 +772,7 @@
 4679113|Setera
 4679114|Setera
 4679115|Telavox AB
+467915|TeliaSonera
 467930|HI3G Access
 467931|HI3G Access
 467932|HI3G Access

@@ -242,6 +242,8 @@
 61238214|Tuena
 61238215|Wombeyan Caves
 61238216|Yerrinbool
+61238217|Yerrinbool
+61238218|Yerrinbool
 61238219|Woodhouselee
 6123822|Wombeyan Caves/Yerrinbool/Woodhouselee/Bowral/Braidwood/Breadalbane/Bundanoon/Bungonia/Crookwell
 6123823|Golspie/Gunning/Taralga/Goulburn/Nerriga/Paddys/River/Reidsdale/Robertson/Rugby/Tarago
@@ -731,6 +733,8 @@
 61240687|Cessnock
 61240688|Cessnock
 61240689|Cessnock
+61240690|Newcastle
+61240691|Newcastle
 61240692|Bandon Grove
 61240693|Branxton
 61240694|Bulahdelah
@@ -814,6 +818,7 @@
 61240772|Tea Gardens
 61240773|Newcastle
 61240774|Newcastle
+61240775|Newcastle
 61240776|Newcastle
 6124078|Swansea
 6124079|Swansea
@@ -910,8 +915,8 @@
 61242147|Wollongong
 61242148|Helensburgh
 61242149|Kiama
+6124215|Wollongong
 61242150|Helensburgh
-61242151|Wollongong
 6124216|Kiama/Wollongong
 6124217|Helensburgh/Kiama/Wollongong
 612422|Wollongong
@@ -934,6 +939,8 @@
 61242492|Wollongong
 61242493|Wollongong
 61242494|Wollongong
+61242495|Wollongong
+61242496|Wollongong
 612425|Wollongong
 61242550|Helensburgh
 6124256|Kiama
@@ -30331,6 +30338,8 @@
 61734966|Russell Island
 61734967|Ipswich
 61734968|Ipswich
+61734969|Brisbane
+61734970|Brisbane
 61734971|Dayboro
 61734972|Dayboro
 61734973|Brisbane
@@ -30357,27 +30366,11 @@
 6173503|Brisbane
 6173504|Brisbane
 6173505|Brisbane
-61735060|Brisbane
-61735061|Brisbane
-61735062|Brisbane
-61735063|Brisbane
-61735064|Brisbane
-61735065|Brisbane
-61735066|Brisbane
-61735067|Brisbane
-6173530|Brisbane
-6173531|Brisbane
-6173532|Brisbane
-6173533|Brisbane
-6173534|Brisbane
-6173535|Brisbane
-6173536|Brisbane
-6173538|Brisbane
-6173539|Brisbane
-6173540|Brisbane
-6173546|Brisbane
-6173547|Brisbane
-6173548|Brisbane
+6173506|Brisbane
+61735069|Russell Island
+617353|Brisbane
+617354|Brisbane
+6173549|Dunwich
 6173550|Brisbane
 6173551|Brisbane
 6173552|Brisbane

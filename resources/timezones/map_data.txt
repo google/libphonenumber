@@ -1224,6 +1224,7 @@
 1682|America/Chicago
 1683|America/Toronto
 1684|Pacific/Pago_Pago
+1686|America/New_York
 1689|America/Chicago
 1701|America/Denver&America/North_Dakota/Center
 1701200|America/Chicago
@@ -2877,10 +2878,7 @@
 61734976|Australia/Brisbane
 617350|Australia/Brisbane
 617353|Australia/Brisbane
-6173540|Australia/Brisbane
-6173546|Australia/Brisbane
-6173547|Australia/Brisbane
-6173548|Australia/Brisbane
+617354|Australia/Brisbane
 617355|Australia/Brisbane
 61735678|Australia/Brisbane
 617360|Australia/Brisbane
