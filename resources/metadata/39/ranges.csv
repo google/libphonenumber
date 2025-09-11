@@ -364,6 +364,7 @@ Prefix      ; Length ; Type            ; Tariff        ; National Only ; Operato
 0828        ; 11     ; FIXED_LINE      ; STANDARD_RATE ; false         ;               ; "fmt6_4/3/4"    ; "Europe/Rome"                ; "IT"    ;                          ; "Battipaglia"
 0831        ; 6-10   ; FIXED_LINE      ; STANDARD_RATE ; false         ;               ; "fmt7_4/2-6"    ; "Europe/Rome"                ; "IT"    ;                          ; "Brindisi"
 0831        ; 11     ; FIXED_LINE      ; STANDARD_RATE ; false         ;               ; "fmt6_4/3/4"    ; "Europe/Rome"                ; "IT"    ;                          ; "Brindisi"
+0831        ; 12     ; FIXED_LINE      ; STANDARD_RATE ; false         ;               ; "fmt10_3/4/4-5" ; "Europe/Rome"                ; "IT"    ; "Brindisi"               ; "Brindisi"
 0832        ; 6-10   ; FIXED_LINE      ; STANDARD_RATE ; false         ;               ; "fmt7_4/2-6"    ; "Europe/Rome"                ; "IT"    ; "Lecce"                  ; "Lecce"
 0832        ; 11     ; FIXED_LINE      ; STANDARD_RATE ; false         ;               ; "fmt6_4/3/4"    ; "Europe/Rome"                ; "IT"    ; "Lecce"                  ; "Lecce"
 0833        ; 6-10   ; FIXED_LINE      ; STANDARD_RATE ; false         ;               ; "fmt7_4/2-6"    ; "Europe/Rome"                ; "IT"    ;                          ; "Gallipoli"

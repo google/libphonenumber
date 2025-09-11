@@ -406,7 +406,14 @@
 658972|SingTel
 658976|SingTel
 658977|SingTel
-65898|Simba
+658980|Simba
+658982|SingTel
+658983|SingTel
+658984|SingTel
+658985|SingTel
+658986|Simba
+658987|Simba
+658988|Simba
 659001|StarHub
 659002|StarHub
 659003|StarHub

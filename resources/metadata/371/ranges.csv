@@ -121,6 +121,7 @@ Prefix        ; Length ; Type       ; Tariff        ; Operator   ; Format       
 29[1-4]       ; 8      ; MOBILE     ; STANDARD_RATE ; "lmt"      ; "fmt1_2/3/3" ; "LV"    ; IR21       ; "IR dated 2/6/2019"
 29[5-9]       ; 8      ; MOBILE     ; STANDARD_RATE ; "tele2"    ; "fmt1_2/3/3" ; "LV"    ; IR21       ; "IR dated 12/19/2018"
 6             ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_2/3/3" ; "LV"
+78            ; 8      ; ISP        ; STANDARD_RATE ;            ; "fmt1_2/3/3" ; "LV"    ; GOVERNMENT
 80            ; 8      ; FIXED_LINE ; TOLL_FREE     ;            ; "fmt1_2/3/3" ; "LV"
 81            ; 8      ; FIXED_LINE ; SHARED_COST   ;            ; "fmt1_2/3/3" ; "LV"
 90            ; 8      ; FIXED_LINE ; PREMIUM_RATE  ;            ; "fmt1_2/3/3" ; "LV"

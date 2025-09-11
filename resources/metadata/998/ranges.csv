@@ -209,8 +209,8 @@ Prefix         ; Length ; Type                 ; Tariff        ; Operator    ; F
 79787          ; 9      ; MOBILE               ; STANDARD_RATE ; "mobiuz"    ; "fmt_2/3/2/2" ; "UZ"
 7979[07]       ; 9      ; MOBILE               ; STANDARD_RATE ; "mobiuz"    ; "fmt_2/3/2/2" ; "UZ"
 8[78]          ; 9      ; MOBILE               ; STANDARD_RATE ; "mobiuz"    ; "fmt_2/3/2/2" ; "UZ"    ; IR21
-9[01]          ; 9      ; MOBILE               ; STANDARD_RATE ; "beeline"   ; "fmt_2/3/2/2" ; "UZ"    ; IR21
-9[27]          ; 9      ; MOBILE               ; STANDARD_RATE ; "mobiuz"    ; "fmt_2/3/2/2" ; "UZ"
+9[0-2]         ; 9      ; MOBILE               ; STANDARD_RATE ; "beeline"   ; "fmt_2/3/2/2" ; "UZ"    ; IR21
 9[34]          ; 9      ; MOBILE               ; STANDARD_RATE ; "ucell"     ; "fmt_2/3/2/2" ; "UZ"    ; IR21
 9[59]          ; 9      ; MOBILE               ; STANDARD_RATE ; "uzmobile"  ; "fmt_2/3/2/2" ; "UZ"    ; IR21
+97             ; 9      ; MOBILE               ; STANDARD_RATE ; "mobiuz"    ; "fmt_2/3/2/2" ; "UZ"
 98             ; 9      ; MOBILE               ; STANDARD_RATE ; "perfectum" ; "fmt_2/3/2/2" ; "UZ"    ; ITU

@@ -3606,7 +3606,7 @@
     <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_germany -->
     <territory id="DE">
       <generalDesc>
-        <nationalNumberPattern>[137]\d{2,5}</nationalNumberPattern>
+        <nationalNumberPattern>[1-478]\d{2,5}</nationalNumberPattern>
       </generalDesc>
       <!-- 118xx short numbers are used for directory services and 1180xx are used for call
            connect services. -->
@@ -3625,11 +3625,25 @@
             )|
             800\d
           )|
-          3311|
+          22(?:
+            044|
+            5(?:
+              43|
+              80
+            )|
+            7700|
+            922
+          )|
+          33(?:
+            11|
+            3[34]
+          )|
+          44844|
           7(?:
             0\d{3}|
             464
           )|
+          80808|
           118\d\d
         </nationalNumberPattern>
       </shortCode>
@@ -3644,16 +3658,24 @@
         </nationalNumberPattern>
       </tollFree>
       <carrierSpecific>
-        <possibleLengths national="4,5"/>
+        <possibleLengths national="[4-6]"/>
         <exampleNumber>3310</exampleNumber>
         <nationalNumberPattern>
           (?:
-            331|
-            7(?:
-              0\d\d|
-              46
-            )
-          )\d
+            33[13]|
+            746
+          )\d|
+          (?:
+            22(?:
+              [059]|
+              7\d
+            )|
+            (?:
+              44|
+              80
+            )8|
+            70\d
+          )\d\d
         </nationalNumberPattern>
       </carrierSpecific>
       <emergency>
@@ -3667,13 +3689,24 @@
         <nationalNumberPattern>116\d{3}</nationalNumberPattern>
       </expandedEmergency>
       <smsServices>
-        <possibleLengths national="4,5"/>
-        <exampleNumber>7460</exampleNumber>
+        <possibleLengths national="[4-6]"/>
+        <exampleNumber>3330</exampleNumber>
         <nationalNumberPattern>
-          7(?:
-            0\d\d|
-            46
-          )\d
+          (?:
+            333|
+            746
+          )\d|
+          (?:
+            22(?:
+              [059]|
+              7\d
+            )|
+            (?:
+              44|
+              80
+            )8|
+            70\d
+          )\d\d
         </nationalNumberPattern>
       </smsServices>
     </territory>

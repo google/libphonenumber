@@ -433,8 +433,8 @@ Prefix        ; Length ; Type            ; Tariff        ; Area Code Length ; Op
 35563         ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Queenstown"
 3556[4-9]     ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "South Island"
 355[7-9]      ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "South Island"                                           ;            ; "FILLUP TO SUPPORT MASTER RANGE"
-356[0-24]     ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "South Island"                                           ;            ; "FILLUP TO SUPPORT MASTER RANGE"
-3563          ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "South Island"                                           ; GOVERNMENT
+356[014]      ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "South Island"                                           ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+356[23]       ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "South Island"                                           ; GOVERNMENT
 35650         ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Greymouth"
 3565[1-9]     ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "South Island"
 35660         ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Haast"
@@ -1739,7 +1739,8 @@ Prefix        ; Length ; Type            ; Tariff        ; Area Code Length ; Op
 77887         ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Te Awamutu"
 77888         ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Taupo"
 77889         ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Whakatane"
-780[0-6]      ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ;                                                          ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+780[0-5]      ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ;                                                          ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+7806          ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ;                                                          ; GOVERNMENT
 78070         ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Morrinsville"
 78071         ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Otorohanga"
 78072         ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Paeroa"
