@@ -1,6 +1,7 @@
 Region ; Prefix      ; Length ; Type               ; Tariff        ; Sms  ; Carrier Specific ; Format
-ES     ; 01[0-2]     ; 3      ; COMMERCIAL         ; STANDARD_RATE
+ES     ; 01[0-27]    ; 3      ; COMMERCIAL         ; STANDARD_RATE
 ES     ; 016         ; 3      ; EXPANDED_EMERGENCY ; TOLL_FREE
+ES     ; 02[148]     ; 3      ; COMMERCIAL         ; STANDARD_RATE
 ES     ; 060         ; 3      ; COMMERCIAL         ; STANDARD_RATE
 ES     ; 0[69][12]   ; 3      ; EXPANDED_EMERGENCY ; STANDARD_RATE
 ES     ; 06[57]      ; 3      ; COMMERCIAL         ; TOLL_FREE
