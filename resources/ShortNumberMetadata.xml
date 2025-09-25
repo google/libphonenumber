@@ -3606,7 +3606,7 @@
     <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_germany -->
     <territory id="DE">
       <generalDesc>
-        <nationalNumberPattern>[1-478]\d{2,5}</nationalNumberPattern>
+        <nationalNumberPattern>[1-46-8]\d{2,5}</nationalNumberPattern>
       </generalDesc>
       <!-- 118xx short numbers are used for directory services and 1180xx are used for call
            connect services. -->
@@ -3639,6 +3639,7 @@
             3[34]
           )|
           44844|
+          600\d\d|
           7(?:
             0\d{3}|
             464
@@ -3674,6 +3675,7 @@
               44|
               80
             )8|
+            600|
             70\d
           )\d\d
         </nationalNumberPattern>
@@ -3705,6 +3707,7 @@
               44|
               80
             )8|
+            600|
             70\d
           )\d\d
         </nationalNumberPattern>
@@ -4563,7 +4566,8 @@
         <exampleNumber>010</exampleNumber>
         <nationalNumberPattern>
           0(?:
-            1[0-26]|
+            1[0-267]|
+            2[148]|
             6[0-257]|
             8[058]|
             9[12]
@@ -4630,7 +4634,9 @@
         <exampleNumber>010</exampleNumber>
         <nationalNumberPattern>
           0(?:
-            [16][0-2]|
+            1[0-27]|
+            2[148]|
+            6[0-2]|
             80|
             9[12]
           )|

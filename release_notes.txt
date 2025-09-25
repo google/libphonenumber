@@ -1,3 +1,9 @@
+Sep 24, 2025: v9.0.15
+Metadata changes:
+ - Updated phone metadata for region code(s): KE, UG, US
+ - Updated short number metadata for region code(s): DE, ES
+ - Updated carrier data for country calling code(s): 254 (en), 256 (en)
+
 Sep 11, 2025: v9.0.14
 Metadata changes:
  - Updated phone metadata for region code(s): CZ, DE, IT, LI, LV, ME, SG, US
