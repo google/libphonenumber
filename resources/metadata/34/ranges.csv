@@ -2,7 +2,7 @@ Prefix           ; Length ; Type            ; Tariff        ; Operator          
 510              ; 9      ; UAN             ; STANDARD_RATE ;                   ; "all_3/2/2/2"    ; "Europe/Madrid"   ; "ES"    ;                    ;               ;            ; "."
 51[15]           ; 9      ; UAN             ; STANDARD_RATE ;                   ; "all_3/2/2/2"    ; "Europe/Madrid"   ; "ES"    ;                    ;               ; GOVERNMENT
 51[2-46-9]       ; 9      ; UAN             ; STANDARD_RATE ;                   ; "all_3/2/2/2"    ; "Europe/Madrid"   ; "ES"
-590100           ; 9      ; MOBILE          ; STANDARD_RATE ; "movistar"        ; "all_3/2/2/2"    ; "Europe/Madrid"   ; "ES"    ;                    ;               ; IR21
+59010[0-2]       ; 9      ; MOBILE          ; STANDARD_RATE ; "movistar"        ; "all_3/2/2/2"    ; "Europe/Madrid"   ; "ES"    ;                    ;               ; IR21
 590600           ; 9      ; MOBILE          ; STANDARD_RATE ; "vodafone"        ; "all_3/2/2/2"    ; "Europe/Madrid"   ; "ES"    ;                    ;               ; IR21
 60[07]           ; 9      ; MOBILE          ; STANDARD_RATE ; "vodafone"        ; "all_3/2/2/2"    ; "Europe/Madrid"   ; "ES"    ;                    ;               ; GOVERNMENT
 601[0-57]        ; 9      ; MOBILE          ; STANDARD_RATE ; "vodafone"        ; "all_3/2/2/2"    ; "Europe/Madrid"   ; "ES"    ;                    ;               ; GOVERNMENT
@@ -143,11 +143,13 @@ Prefix           ; Length ; Type            ; Tariff        ; Operator          
 71[03-689]       ; 9      ; MOBILE          ; STANDARD_RATE ;                   ; "all_3/2/2/2"    ; "Europe/Madrid"   ; "ES"    ;                    ;               ; GOVERNMENT
 7110             ; 9      ; MOBILE          ; STANDARD_RATE ; "zinnia"          ; "all_3/2/2/2"    ; "Europe/Madrid"   ; "ES"    ;                    ;               ; GOVERNMENT
 711[17]          ; 9      ; MOBILE          ; STANDARD_RATE ; "vodafone"        ; "all_3/2/2/2"    ; "Europe/Madrid"   ; "ES"    ;                    ;               ; GOVERNMENT
-71[17][2-689]    ; 9      ; MOBILE          ; STANDARD_RATE ;                   ; "all_3/2/2/2"    ; "Europe/Madrid"   ; "ES"    ;                    ;               ; GOVERNMENT
+711[25]          ; 9      ; MOBILE          ; STANDARD_RATE ; "orange"          ; "all_3/2/2/2"    ; "Europe/Madrid"   ; "ES"    ;                    ;               ; GOVERNMENT
+711[34689]       ; 9      ; MOBILE          ; STANDARD_RATE ;                   ; "all_3/2/2/2"    ; "Europe/Madrid"   ; "ES"    ;                    ;               ; GOVERNMENT
 712[09]          ; 9      ; MOBILE          ; STANDARD_RATE ;                   ; "all_3/2/2/2"    ; "Europe/Madrid"   ; "ES"    ;                    ;               ; GOVERNMENT
 712[1-8]         ; 9      ; MOBILE          ; STANDARD_RATE ; "yoigo"           ; "all_3/2/2/2"    ; "Europe/Madrid"   ; "ES"    ;                    ;               ; GOVERNMENT
 7170             ; 9      ; MOBILE          ; STANDARD_RATE ; "movistar"        ; "all_3/2/2/2"    ; "Europe/Madrid"   ; "ES"    ;                    ;               ; GOVERNMENT
 7171             ; 9      ; MOBILE          ; STANDARD_RATE ; "vodafone"        ; "all_3/2/2/2"    ; "Europe/Madrid"   ; "ES"    ;                    ;               ; GOVERNMENT
+717[2-689]       ; 9      ; MOBILE          ; STANDARD_RATE ;                   ; "all_3/2/2/2"    ; "Europe/Madrid"   ; "ES"    ;                    ;               ; GOVERNMENT
 7177[017]        ; 9      ; MOBILE          ; STANDARD_RATE ; "pepephone"       ; "all_3/2/2/2"    ; "Europe/Madrid"   ; "ES"    ;                    ;               ; GOVERNMENT
 7177[2-689]      ; 9      ; MOBILE          ; STANDARD_RATE ; "movistar"        ; "all_3/2/2/2"    ; "Europe/Madrid"   ; "ES"    ;                    ;               ; GOVERNMENT
 72[013-689]      ; 9      ; MOBILE          ; STANDARD_RATE ;                   ; "all_3/2/2/2"    ; "Europe/Madrid"   ; "ES"    ;                    ;               ; GOVERNMENT

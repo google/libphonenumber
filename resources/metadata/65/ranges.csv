@@ -213,8 +213,9 @@ Prefix       ; Length ; Type       ; Tariff        ; Operator      ; Format     
 884[79]      ; 8      ; MOBILE     ; STANDARD_RATE ; "simba"       ; "fmt1_4/4"   ; "SG"    ; IR21
 885[0-4679]  ; 8      ; MOBILE     ; STANDARD_RATE ; "simba"       ; "fmt1_4/4"   ; "SG"    ; IR21
 885[58]      ; 8      ; MOBILE     ; STANDARD_RATE ; "m1"          ; "fmt1_4/4"   ; "SG"
-886[013-57]  ; 8      ; MOBILE     ; STANDARD_RATE ;               ; "fmt1_4/4"   ; "SG"
+886[01347]   ; 8      ; MOBILE     ; STANDARD_RATE ;               ; "fmt1_4/4"   ; "SG"
 886[268]     ; 8      ; MOBILE     ; STANDARD_RATE ; "m1"          ; "fmt1_4/4"   ; "SG"
+8865         ; 8      ; MOBILE     ; STANDARD_RATE ; "simba"       ; "fmt1_4/4"   ; "SG"    ; IR21
 8869         ; 8      ; MOBILE     ; STANDARD_RATE ; "singtel"     ; "fmt1_4/4"   ; "SG"
 887[0-589]   ; 8      ; MOBILE     ; STANDARD_RATE ;               ; "fmt1_4/4"   ; "SG"
 8876         ; 8      ; MOBILE     ; STANDARD_RATE ; "singtel"     ; "fmt1_4/4"   ; "SG"

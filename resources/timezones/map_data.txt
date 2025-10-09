@@ -692,6 +692,7 @@
 1320|America/Chicago
 1321|America/New_York
 1323|America/Los_Angeles
+1324|America/New_York
 1325|America/Chicago
 1326|America/New_York
 1327|America/Chicago
@@ -930,7 +931,7 @@
 1432|America/Chicago
 1434|America/New_York
 1435|America/Denver
-1437|America/Winnipeg
+1437|America/Toronto
 1438|America/Toronto
 1440|America/New_York
 1441|Atlantic/Bermuda
