@@ -6948,6 +6948,7 @@
 1323971|Los Angeles, CA
 1323980|Los Angeles, CA
 1323982|Los Angeles, CA
+1324|Florida
 1325|Texas
 1325223|San Angelo, TX
 1325224|San Angelo, TX
@@ -11223,7 +11224,7 @@
 1435896|Richfield, UT
 1435946|Garden City, UT
 1435986|St. George, UT
-1437|Ontario
+1437|Toronto
 1438|Quebec
 1438380|Montreal, QC
 1440|Ohio

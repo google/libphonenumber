@@ -1,5 +1,5 @@
 Prefix      ; Length ; Type       ; Tariff        ; Area Code Length ; National Only ; Operator            ; Format      ; Regions ; Geocode:en             ; Provenance ; Comment
-[25]0       ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "vodafone"          ; "fmt_2/3/4" ; "GH"    ;                        ; GOVERNMENT
+[25]0       ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "telecel"           ; "fmt_2/3/4" ; "GH"    ;                        ; GOVERNMENT
 2[367]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "airteltigo"        ; "fmt_2/3/4" ; "GH"    ;                        ; IR21
 24          ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "mtn"               ; "fmt_2/3/4" ; "GH"    ;                        ; GOVERNMENT
 25[67]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "mtn"               ; "fmt_2/3/4" ; "GH"    ;                        ; IR21

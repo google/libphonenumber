@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-23320|Vodafone
+23320|Telecel
 23323|airteltiGO
 23324|MTN
 23325|MTN
@@ -20,7 +20,7 @@
 23327|airteltiGO
 23328|Expresso
 23329|National Security
-23350|Vodafone
+23350|Telecel
 23353|MTN
 23354|MTN
 23355|MTN
