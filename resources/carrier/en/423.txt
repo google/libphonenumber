@@ -19,8 +19,10 @@
 423650|Telecom Liechtenstein
 423659|Telecom Liechtenstein
 42366|Telecom Liechtenstein
-423661|Dimoco
+4236610|Dimoco
+4236611|FL1
 423666|Datamobile AG
+423668|Velos IoT
 42373|Telecom Liechtenstein
 42374|First Mobile
 42377|Swisscom

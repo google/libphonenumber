@@ -1,3 +1,20 @@
+# Copyright (C) 2016 The Libphonenumber Authors
+
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+
+# http://www.apache.org/licenses/LICENSE-2.0
+
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# Translations of en/852.txt from each carrier's wikipedia page and in
+# some cases the carrier's own home page.
+
 852440|中国移动
 852441|香港移动通讯
 852442|和記電話有限公司
@@ -23,7 +40,7 @@
 8524616|中国联通
 8524617|中国移动
 8524618|中国移动
-8524619|
+8524619|China Telecom Global Limited
 8524620|中国移动
 8524621|中国移动
 8524622|中国移动
@@ -54,7 +71,13 @@
 8524657|香港移动通讯
 8524658|香港移动通讯
 8524659|中国移动
-852466|中国移动
+8524660|中国移动
+8524661|中国移动
+8524662|中国移动
+8524663|中国移动
+8524664|中国移动
+8524665|China Telecom Global Limited
+8524666|China Telecom Global Limited
 852467|中国移动
 8524678|香港移动通讯
 8524679|香港移动通讯
@@ -78,7 +101,7 @@
 8524742|中国移动
 8524743|香港移动通讯
 8524744|香港移动通讯
-8524748|
+8524748|China Telecom Global Limited
 852475|和記電話有限公司
 852476|中国移动
 852510|中国移动
@@ -403,7 +426,13 @@
 852956|中国联通
 852957|3
 852958|中国移动
-852959|香港移动通讯
+8529590|香港移动通讯
+8529591|香港移动通讯
+8529592|香港移动通讯
+8529593|香港移动通讯
+8529594|香港移动通讯
+8529596|China Telecom Global Limited
+8529597|China Telecom Global Limited
 852960|中国移动
 852961|香港移动通讯
 852962|香港移动通讯
