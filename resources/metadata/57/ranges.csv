@@ -2,19 +2,20 @@ Prefix         ; Length ; Type       ; Tariff        ; Area Code Length ; Operat
 1800           ; 11     ; FIXED_LINE ; TOLL_FREE     ;                  ;                 ; "varcost_1/3/7" ; "CO"
 190[01]        ; 11     ; FIXED_LINE ; PREMIUM_RATE  ;                  ;                 ; "varcost_1/3/7" ; "CO"
 194[78]        ; 11     ; FIXED_LINE ; PREMIUM_RATE  ;                  ;                 ; "varcost_1/3/7" ; "CO"
-300[01]        ; 10     ; MOBILE     ; STANDARD_RATE ;                  ;                 ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; GOVERNMENT
+30[01]0        ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "tigo"          ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; IR21
+30[02]1        ; 10     ; MOBILE     ; STANDARD_RATE ;                  ;                 ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; GOVERNMENT
 300[2-8]       ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "tigo"          ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; IR21       ; "5/13/2019"
 3009           ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "tigo"          ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; GOVERNMENT
-301[0189]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ;                 ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; GOVERNMENT
+301[189]       ; 10     ; MOBILE     ; STANDARD_RATE ;                  ;                 ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; GOVERNMENT
 301[2-7]       ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "tigo"          ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; IR21       ; "5/13/2019"
-302[019]       ; 10     ; MOBILE     ; STANDARD_RATE ;                  ;                 ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; GOVERNMENT
+302[09]        ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "tigo"          ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; IR21
 302[23]        ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "tigo"          ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; IR21       ; "5/13/2019"
 3024[0-6]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "tigo"          ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; IR21       ; "5/13/2019"
 3024[7-9]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "wom"           ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; GOVERNMENT
 302[56]        ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "wom"           ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; GOVERNMENT
 3027           ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "wom"           ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; IR21
 3028[0-6]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "wom"           ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; IR21
-3028[7-9]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ;                 ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; GOVERNMENT
+3028[7-9]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "tigo"          ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; IR21
 303            ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "uff"           ; "mobile_3/7"    ; "CO"
 304[089]       ; 10     ; MOBILE     ; STANDARD_RATE ;                  ;                 ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; GOVERNMENT
 3041[0-8]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "tigo"          ; "mobile_3/7"    ; "CO"    ;                                    ;                                    ; GOVERNMENT

@@ -16,16 +16,16 @@
 
 25561|Viettel
 25562|Viettel
-25565|tiGO
+25565|Yas
 25566|SMILE
-25567|tiGO
+25567|Yas
 25568|Airtel
 25569|Airtel
-25571|tiGO
+25571|Yas
 25573|Tanzania Telecom
 25574|Vodacom
 25575|Vodacom
 25576|Vodacom
-25577|tiGO
+25577|Yas
 25578|Airtel
 25579|Vodacom

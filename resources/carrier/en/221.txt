@@ -1,28 +1,7 @@
-# Copyright (C) 2013 The Libphonenumber Authors
-
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-
-# http://www.apache.org/licenses/LICENSE-2.0
-
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-
-# Note CSU SA is a consortium that seems to be behind the HAYO brand.
-# https://www.facebook.com/media/set/?set=a.556554534376057.1073741825.516491468382364&type=1
-
 22170|Expresso
 22171|Orange
 22172|HAYO
 22175|Promobile
-2217535|Orange
-2217536|Orange
-221757|Origines
-2217585|Orange
 22176|Free
 22177|Orange
 22178|Orange

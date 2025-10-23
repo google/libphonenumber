@@ -2879,7 +2879,10 @@
 61734976|Australia/Brisbane
 617350|Australia/Brisbane
 617353|Australia/Brisbane
-617354|Australia/Brisbane
+6173540|Australia/Brisbane
+6173546|Australia/Brisbane
+6173547|Australia/Brisbane
+6173548|Australia/Brisbane
 617355|Australia/Brisbane
 61735678|Australia/Brisbane
 617360|Australia/Brisbane

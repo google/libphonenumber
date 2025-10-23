@@ -10,13 +10,12 @@ Prefix ; Length ; Type       ; Tariff        ; National Only ; Operator         
 5      ; 9      ; ISP        ; STANDARD_RATE ; false         ;                    ; "fmt_2/7"       ; "TZ"    ;                                                    ; ITU
 61     ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "viettel"          ; "mobile_3/3/3"  ; "TZ"    ;                                                    ; ITU        ; "."
 62     ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "viettel"          ; "mobile_3/3/3"  ; "TZ"
-6[57]  ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "tigo"             ; "mobile_3/3/3"  ; "TZ"
+6[57]  ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "yas"              ; "mobile_3/3/3"  ; "TZ"    ;                                                    ; IR21
 66     ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "smile"            ; "mobile_3/3/3"  ; "TZ"
 6[89]  ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "airtel"           ; "mobile_3/3/3"  ; "TZ"
-71     ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "tigo"             ; "mobile_3/3/3"  ; "TZ"
+7[17]  ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "yas"              ; "mobile_3/3/3"  ; "TZ"    ;                                                    ; IR21
 73     ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "tanzania_telecom" ; "mobile_3/3/3"  ; "TZ"
 7[4-6] ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "vodacom"          ; "mobile_3/3/3"  ; "TZ"
-77     ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "tigo"             ; "mobile_3/3/3"  ; "TZ"    ;                                                    ; ITU
 78     ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "airtel"           ; "mobile_3/3/3"  ; "TZ"
 79     ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "vodacom"          ; "mobile_3/3/3"  ; "TZ"    ;                                                    ; IR21
 800    ; 9      ; FIXED_LINE ; TOLL_FREE     ; true          ;                    ; "special_3/2/4" ; "TZ"

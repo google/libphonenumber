@@ -2582,15 +2582,14 @@
         <nationalNumberPattern>
           4(?:
             79[01]|
-            83[0-389]|
-            94[0-478]
+            83[0-36-9]
           )\d{5}|
           4(?:
             [0-36]\d|
             4[047-9]|
             [58][0-24-9]|
             7[02-8]|
-            9[0-37-9]
+            9[0-47-9]
           )\d{6}
         </nationalNumberPattern>
       </mobile>
@@ -5697,15 +5696,14 @@
         <nationalNumberPattern>
           4(?:
             79[01]|
-            83[0-389]|
-            94[0-478]
+            83[0-36-9]
           )\d{5}|
           4(?:
             [0-36]\d|
             4[047-9]|
             [58][0-24-9]|
             7[02-8]|
-            9[0-37-9]
+            9[0-47-9]
           )\d{6}
         </nationalNumberPattern>
       </mobile>
@@ -8712,15 +8710,14 @@
         <nationalNumberPattern>
           4(?:
             79[01]|
-            83[0-389]|
-            94[0-478]
+            83[0-36-9]
           )\d{5}|
           4(?:
             [0-36]\d|
             4[047-9]|
             [58][0-24-9]|
             7[02-8]|
-            9[0-37-9]
+            9[0-47-9]
           )\d{6}
         </nationalNumberPattern>
       </mobile>
@@ -11287,8 +11284,7 @@
     <!-- Note that this excludes Isle of Man, Jersey and Guernsey prefixes for the purposes of
          validation, although the formatting rules are shared. Also numbers are fine-grained where
          needed in order to disambiguate between the 4 regions. -->
-    <!-- http://static.ofcom.org.uk/static/numbering/ -->
-    <!-- http://stakeholders.ofcom.org.uk/telecoms/numbering/ -->
+    <!-- https://www.ofcom.org.uk/phones-and-broadband/phone-numbers/numbering-data -->
     <!-- http://en.wikipedia.org/wiki/List_of_United_Kingdom_dialling_codes -->
     <!-- http://www.numberingplans.com/?page=dialling&sub=areacodes&ac=GB -->
     <territory id="GB" mainCountryForCode="true" countryCode="44" internationalPrefix="00"
@@ -11432,7 +11428,7 @@
               1(?:
                 3(?:
                   [0-58]\d\d|
-                  73[0-35]
+                  73[0-5]
                 )|
                 4(?:
                   (?:
@@ -11448,7 +11444,7 @@
                   )\d|
                   6(?:
                     [0-4]\d|
-                    50
+                    5[01]
                   )
                 )\d
               )|
@@ -19254,7 +19250,7 @@
               [01]\d|
               6[013-9]|
               8[7-9]|
-              9[1-3]
+              9[0-3]
             )
           )\d{5}
         </nationalNumberPattern>
@@ -20666,7 +20662,7 @@
       <mobile>
         <possibleLengths national="9"/>
         <exampleNumber>321234567</exampleNumber>
-        <nationalNumberPattern>3[2-47-9]\d{7}</nationalNumberPattern>
+        <nationalNumberPattern>3[2-46-9]\d{7}</nationalNumberPattern>
       </mobile>
       <!-- Putting VSAT numbers here. -->
       <voip>
@@ -27565,20 +27561,10 @@
         <exampleNumber>701234567</exampleNumber>
         <nationalNumberPattern>
           7(?:
-            (?:
-              [06-8]\d|
-              [19]0|
-              21
-            )\d|
-            5(?:
-              0[01]|
-              [19]0|
-              2[25]|
-              3[356]|
-              [4-7]\d|
-              8[35]
-            )
-          )\d{5}
+            [05-8]\d|
+            [19]0|
+            21
+          )\d{6}
         </nationalNumberPattern>
       </mobile>
       <tollFree>
