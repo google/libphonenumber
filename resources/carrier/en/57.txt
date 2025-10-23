@@ -15,6 +15,7 @@
 # Note that Claro was formed from the merger of Comcel and Telmex - so
 # ranges attributed to "Comcel" should instead return "Claro" as the carrier.
 
+573000|Tigo
 573002|Tigo
 573003|Tigo
 573004|Tigo
@@ -23,12 +24,14 @@
 573007|Tigo
 573008|Tigo
 573009|Tigo
+573010|Tigo
 573012|Tigo
 573013|Tigo
 573014|Tigo
 573015|Tigo
 573016|Tigo
 573017|Tigo
+573020|Tigo
 573022|Tigo
 573023|Tigo
 573024|Tigo
@@ -38,13 +41,11 @@
 573025|Partners Telecom Colombia
 573026|Partners Telecom Colombia
 573027|Partners Telecom Colombia
-5730280|Partners Telecom Colombia
-5730281|Partners Telecom Colombia
-5730282|Partners Telecom Colombia
-5730283|Partners Telecom Colombia
-5730284|Partners Telecom Colombia
-5730285|Partners Telecom Colombia
-5730286|Partners Telecom Colombia
+573028|Partners Telecom Colombia
+5730287|Tigo
+5730288|Tigo
+5730289|Tigo
+573029|Tigo
 57303|Uff!
 5730410|Tigo
 5730411|Tigo

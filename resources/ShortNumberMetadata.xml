@@ -11567,7 +11567,7 @@
         <nationalNumberPattern>
           1(?:
             1(?:
-              2|
+              [23]|
               6(?:
                 000|
                 1(?:
@@ -11605,7 +11605,7 @@
         <exampleNumber>112</exampleNumber>
         <nationalNumberPattern>
           11(?:
-            2|
+            [23]|
             6\d{3}
           )
         </nationalNumberPattern>
@@ -11629,14 +11629,20 @@
         <nationalNumberPattern>112</nationalNumberPattern>
       </emergency>
       <expandedEmergency>
-        <possibleLengths national="6"/>
-        <exampleNumber>116000</exampleNumber>
-        <nationalNumberPattern>116\d{3}</nationalNumberPattern>
+        <possibleLengths national="3,6"/>
+        <exampleNumber>113</exampleNumber>
+        <nationalNumberPattern>
+          11(?:
+            3|
+            6\d{3}
+          )
+        </nationalNumberPattern>
       </expandedEmergency>
       <smsServices>
-        <possibleLengths national="4"/>
-        <exampleNumber>1200</exampleNumber>
+        <possibleLengths national="3,4"/>
+        <exampleNumber>113</exampleNumber>
         <nationalNumberPattern>
+          113|
           (?:
             1[24]|
             8[48]

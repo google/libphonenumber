@@ -1954,8 +1954,7 @@ Prefix        ; Length ; Type            ; Tariff        ; Area Code Length ; Op
 92008         ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Hibiscus Coast"
 92009         ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Pukekohe"
 920[1-9]      ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Auckland"                                               ;            ; "FILLUP TO SUPPORT MASTER RANGE"
-921[0-8]      ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Auckland"
-9219          ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Auckland"                                               ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+921           ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Auckland"                                               ; GOVERNMENT
 9220          ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Auckland"
 922[13-9]     ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Auckland"                                               ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 9222[0-4]     ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Auckland"
