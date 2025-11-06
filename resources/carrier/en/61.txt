@@ -121,3 +121,4 @@
 6148985|MessageBird
 614899|Pivotel Satellite
 6149|Telstra
+61495|Optus

@@ -1,3 +1,14 @@
+Nov 06, 2025: v9.0.18
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   AU, BJ, CC, CX, ET, IL, IR, MC, PY, QA, SG, SV, TJ, UG, ZA
+ - Updated short number metadata for region code(s): PY
+ - Updated geocoding data for country calling code(s): 61 (en)
+ - Updated carrier data for country calling code(s):
+   61 (en), 65 (en), 98 (en, fa), 229 (en), 256 (en), 372 (en), 377 (en),
+   503 (en), 972 (en), 992 (en)
+ - Updated / refreshed time zone meta data.
+
 Oct 23, 2025: v9.0.17
 Metadata changes:
  - Updated phone metadata for region code(s): AU, CC, CX, GB, LB, MG, SN

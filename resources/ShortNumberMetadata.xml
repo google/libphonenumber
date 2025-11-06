@@ -11445,14 +11445,22 @@
     <!-- Paraguay (PY) -->
     <territory id="PY">
       <generalDesc>
-        <nationalNumberPattern>[19]\d\d</nationalNumberPattern>
+        <nationalNumberPattern>
+          [159]\d\d(?:
+            \d{4}
+          )?
+        </nationalNumberPattern>
       </generalDesc>
       <shortCode>
-        <possibleLengths national="3"/>
+        <possibleLengths national="3,7"/>
         <exampleNumber>110</exampleNumber>
         <nationalNumberPattern>
-          1[1-9]\d|
-          911
+          (?:
+            1[01]|
+            51
+          )\d{5}|
+          911|
+          1[1-9]\d
         </nationalNumberPattern>
       </shortCode>
       <tollFree>
@@ -11463,6 +11471,16 @@
           911
         </nationalNumberPattern>
       </tollFree>
+      <carrierSpecific>
+        <possibleLengths national="7"/>
+        <exampleNumber>1000000</exampleNumber>
+        <nationalNumberPattern>
+          (?:
+            1[01]|
+            51
+          )\d{5}
+        </nationalNumberPattern>
+      </carrierSpecific>
       <emergency>
         <possibleLengths national="3"/>
         <exampleNumber>128</exampleNumber>
@@ -11471,6 +11489,16 @@
           911
         </nationalNumberPattern>
       </emergency>
+      <smsServices>
+        <possibleLengths national="7"/>
+        <exampleNumber>1000000</exampleNumber>
+        <nationalNumberPattern>
+          (?:
+            1[01]|
+            51
+          )\d{5}
+        </nationalNumberPattern>
+      </smsServices>
     </territory>
 
     <!-- Qatar (QA) -->

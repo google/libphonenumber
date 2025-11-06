@@ -15,13 +15,7 @@
 37250|Telia Eesti AS
 37251|Telia Eesti AS
 37252|Telia Eesti AS
-372530|Telia Eesti AS
-372533|Telia Eesti AS
-372534|Telia Eesti AS
-372536|Telia Eesti AS
-372537|Telia Eesti AS
-372538|Telia Eesti AS
-372539|Telia Eesti AS
+37253|Telia Eesti AS
 37254|Telia Eesti AS
 372545|Elisa
 3725461|Elisa

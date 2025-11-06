@@ -99,8 +99,8 @@ Prefix     ; Length ; Type       ; Tariff        ; Area Code Length ; National O
 92[0-3]    ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "rightel"       ; "nongeo_3/3/3-4" ; "IR"
 93[035-9]  ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "irancell"      ; "nongeo_3/3/3-4" ; "IR"
 931        ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "mtce"          ; "nongeo_3/3/3-4" ; "IR"
-932        ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "taliya"        ; "nongeo_3/3/3-4" ; "IR"
-934        ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "telekish"      ; "nongeo_3/3/3-4" ; "IR"
+932        ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "ir_mci"        ; "nongeo_3/3/3-4" ; "IR"    ;                              ;                       ; IR21
+934        ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "telekish"      ; "nongeo_3/3/3-4" ; "IR"    ;                              ;                       ; IR21
 94000[09]  ; 10     ; FIXED_LINE ; STANDARD_RATE ;                  ; false         ;                 ; "nongeo_3/3/3-4" ; "IR"
 9412       ; 10     ; FIXED_LINE ; STANDARD_RATE ;                  ; false         ;                 ; "nongeo_3/3/3-4" ; "IR"    ;                              ;                       ; ITU
 942121     ; 10     ; FIXED_LINE ; STANDARD_RATE ;                  ; false         ;                 ; "nongeo_3/3/3-4" ; "IR"
@@ -121,21 +121,17 @@ Prefix     ; Length ; Type       ; Tariff        ; Area Code Length ; National O
 966[89]    ; 4      ; UAN        ; STANDARD_RATE ;                  ; true          ;                 ; "uan_4-5"        ; "IR"
 9686       ; 4      ; UAN        ; STANDARD_RATE ;                  ; true          ;                 ; "uan_4-5"        ; "IR"
 969[19]    ; 4      ; UAN        ; STANDARD_RATE ;                  ; true          ;                 ; "uan_4-5"        ; "IR"
-99[01]     ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "ir_mci"        ; "nongeo_3/3/3-4" ; "IR"
-992        ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; false         ;                 ; "nongeo_3/3/3-4" ; "IR"    ;                              ;                       ; ITU
-993        ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; false         ;                 ; "nongeo_3/3/3-4" ; "IR"
-99[46]     ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "ir_mci"        ; "nongeo_3/3/3-4" ; "IR"    ;                              ;                       ; IR21
+99[0-46]   ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "ir_mci"        ; "nongeo_3/3/3-4" ; "IR"    ;                              ;                       ; IR21
 99510      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; false         ;                 ; "nongeo_3/3/3-4" ; "IR"
 9955       ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "irancell"      ; "nongeo_3/3/3-4" ; "IR"    ;                              ;                       ; IR21
 9981       ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "shatel_mobile" ; "nongeo_3/3/3-4" ; "IR"    ;                              ;                       ; TELECOMS   ; "Confirmation of 9981 range with carrier"
 9982       ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "shatel_mobile" ; "nongeo_3/3/3-4" ; "IR"    ;                              ;                       ; ITU
 99888      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; false         ;                 ; "nongeo_3/3/3-4" ; "IR"
-99900      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "lotustel"      ; "nongeo_3/3/3-4" ; "IR"
-9990[13]   ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; false         ;                 ; "nongeo_3/3/3-4" ; "IR"
-99902      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "ir_mci"        ; "nongeo_3/3/3-4" ; "IR"
+9990       ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "ir_mci"        ; "nongeo_3/3/3-4" ; "IR"    ;                              ;                       ; IR21
 9991       ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "irancell"      ; "nongeo_3/3/3-4" ; "IR"    ;                              ;                       ; IR21
 99921      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; false         ;                 ; "nongeo_3/3/3-4" ; "IR"
-99969      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; false         ;                 ; "nongeo_3/3/3-4" ; "IR"    ;                              ;                       ; ITU
+9995       ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "ir_mci"        ; "nongeo_3/3/3-4" ; "IR"    ;                              ;                       ; TELECOMS
+99969      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "ir_mci"        ; "nongeo_3/3/3-4" ; "IR"    ;                              ;                       ; TELECOMS
 99977      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; false         ;                 ; "nongeo_3/3/3-4" ; "IR"
 9998[7-9]  ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "rightel"       ; "nongeo_3/3/3-4" ; "IR"    ;                              ;                       ; IR21
 9999[0-5]  ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; false         ;                 ; "nongeo_3/3/3-4" ; "IR"    ;                              ;                       ; ITU

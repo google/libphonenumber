@@ -299,7 +299,7 @@ Prefix        ; Length ; Type                 ; Tariff        ; Operator        
 7[38]         ; 9      ; MOBILE               ; STANDARD_RATE ; "mtn"           ; "all_types_2/3/4"  ; "ZA"    ;                                                                                                 ; IR21       ; "IR21 dated 12/14/2018"
 74[02-9]      ; 9      ; MOBILE               ; STANDARD_RATE ; "cell_c"        ; "all_types_2/3/4"  ; "ZA"    ;                                                                                                 ; IR21       ; "IR21 dated 4/30/2018"
 741           ; 9      ; MOBILE               ; STANDARD_RATE ; "cell_c"        ; "all_types_2/3/4"  ; "ZA"    ;                                                                                                 ; IR21
-75[0-4]       ; 9      ; MOBILE               ; STANDARD_RATE ; "telkom_mobile" ; "all_types_2/3/4"  ; "ZA"    ;                                                                                                 ; IR21
+75            ; 9      ; MOBILE               ; STANDARD_RATE ; "telkom_mobile" ; "all_types_2/3/4"  ; "ZA"    ;                                                                                                 ; IR21
 80            ; 9      ; FIXED_LINE           ; TOLL_FREE     ;                 ; "all_types_2/3/4"  ; "ZA"
 810           ; 5,6    ; MOBILE               ; STANDARD_RATE ; "mtn"           ; "mobile_2/3-4"     ; "ZA"
 810           ; 7,8    ; MOBILE               ; STANDARD_RATE ; "mtn"           ; "mobile_2/3/2-3"   ; "ZA"
