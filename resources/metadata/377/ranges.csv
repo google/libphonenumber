@@ -4,6 +4,7 @@ Prefix    ; Length ; Type       ; Tariff        ; National Only ; Operator      
 45[1-9]   ; 8      ; MOBILE     ; STANDARD_RATE ; false         ; "monaco_telecom" ; "mobile_2/3/3"     ; "MC"    ; ITU
 49        ; 8      ; MOBILE     ; STANDARD_RATE ; false         ; "monaco_telecom" ; "mobile_2/3/3"     ; "MC"    ; IR21
 6         ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "monaco_telecom" ; "mobile_1/2/2/2/2" ; "MC"    ; ITU
+7         ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "monaco_telecom" ; "mobile_1/2/2/2/2" ; "MC"    ; GOVERNMENT
 800       ; 8      ; FIXED_LINE ; TOLL_FREE     ; true          ;                  ; "fmt_2/2/2/2"      ; "MC"    ; ITU
 870       ; 8      ; FIXED_LINE ; STANDARD_RATE ; true          ;                  ; "fixed_3/3/2"      ; "MC"    ; ITU
 90        ; 8      ; FIXED_LINE ; TOLL_FREE     ; false         ;                  ; "fmt_2/2/2/2"      ; "MC"

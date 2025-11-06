@@ -64,13 +64,14 @@ Prefix      ; Length ; Type       ; Tariff        ; Area Code Length ; National 
 552[4-9]    ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "019mobile"        ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; IR21
 553[01]     ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "019mobile"        ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; IR21
 553[23]     ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "free_telecom"     ; "mobile_2/3/4"        ; "IL"
-5540[01]    ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "rami_levy"        ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; GOVERNMENT
+5540[0-2]   ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "rami_levy"        ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; GOVERNMENT
 554[14]0    ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "merkaziya"        ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; GOVERNMENT
 5543        ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "maskyoo"          ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; ITU
 5544[14-9]  ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "cellran_cellular" ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; GOVERNMENT
 55442       ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "xphone"           ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; GOVERNMENT
 55443       ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "yossi"            ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; GOVERNMENT
 5545[0-7]   ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "maskyoo"          ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; GOVERNMENT
+55460       ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "xphone"           ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; GOVERNMENT
 555[0-2]    ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "annatel"          ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; GOVERNMENT
 5555        ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "rami_levy"        ; "mobile_2/3/4"        ; "IL"
 555[689]    ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ;                    ; "mobile_2/3/4"        ; "IL"

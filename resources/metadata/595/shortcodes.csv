@@ -1,5 +1,7 @@
-Region ; Prefix   ; Length ; Type       ; Tariff
+Region ; Prefix   ; Length ; Type       ; Tariff    ; Sms  ; Carrier Specific ; Format
+PY     ; 1[01]    ; 7      ; COMMERCIAL ;           ; true ; true             ; "shortcode_7"
 PY     ; 1[13-9]  ; 3      ; COMMERCIAL
 PY     ; 12[0-79] ; 3      ; COMMERCIAL
 PY     ; 128      ; 3      ; EMERGENCY  ; TOLL_FREE
+PY     ; 51       ; 7      ; COMMERCIAL ;           ; true ; true             ; "shortcode_7"
 PY     ; 911      ; 3      ; EMERGENCY  ; TOLL_FREE

@@ -1,9 +1,10 @@
 25670|Airtel
 25671|UTL
 256720|Smile
+256721|LycaMobile
 256724|Hamilton Telecom
-256726|Tangerine
-256727|Tangerine
+256726|LycaMobile
+256727|LycaMobile
 256728|Talkio
 25673|Hamilton Telecom
 25674|Airtel

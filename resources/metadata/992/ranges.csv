@@ -87,6 +87,7 @@ Prefix      ; Length ; Type       ; Tariff        ; Area Code Length ; Operator 
 3555        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/1/4" ; "TJ"    ; "Roshtkala"         ; ITU
 3556        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/1/4" ; "TJ"    ; "Rushan"            ; ITU
 372         ; 9      ; FIXED_LINE ; STANDARD_RATE ; 3                ;              ; "fmt_3/2/4"   ; "TJ"    ; "Dushanbe"          ; ITU
+38          ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "zet_mobile" ; "fmt_2/3/4"   ; "TJ"    ;                     ; IR21
 40          ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "zet_mobile" ; "fmt_2/3/4"   ; "TJ"    ;                     ; IR21
 41[18]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "megafon"    ; "fmt_2/3/4"   ; "TJ"
 44[02-479]  ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "zet_mobile" ; "fmt_3/2/4"   ; "TJ"    ;                     ; IR21
@@ -95,6 +96,7 @@ Prefix      ; Length ; Type       ; Tariff        ; Area Code Length ; Operator 
 487         ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fmt_2/3/4"   ; "TJ"    ;                     ; ITU
 50          ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "tcell"      ; "fmt_2/3/4"   ; "TJ"    ;                     ; IR21
 55          ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "megafon"    ; "fmt_2/3/4"   ; "TJ"
+66          ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "zet_mobile" ; "fmt_2/3/4"   ; "TJ"    ;                     ; IR21
 7[07]       ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "tcell"      ; "fmt_2/3/4"   ; "TJ"    ;                     ; IR21
 7[15]       ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "babilon_m"  ; "fmt_2/3/4"   ; "TJ"    ;                     ; IR21
 78          ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "megafon"    ; "fmt_2/3/4"   ; "TJ"    ;                     ; IR21
