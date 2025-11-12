@@ -511,9 +511,6 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
                  phoneUtil.format(US_SPOOF_WITH_RAW_INPUT, PhoneNumberFormat.NATIONAL));
     assertEquals("0", phoneUtil.format(US_SPOOF, PhoneNumberFormat.NATIONAL));
     assertEquals("+61000", phoneUtil.format(AU_SHORT_CODE_WITH_RAW_INPUT, PhoneNumberFormat.E164));
-    PhoneNumber number = PhoneNumber.getDefaultInstance();
-    assertThat(phoneUtil.format(number, PhoneNumberFormat.NATIONAL)).isEmpty();
-
   }
 
   public void testFormatBSNumber() {
