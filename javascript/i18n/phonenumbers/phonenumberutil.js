@@ -1781,15 +1781,25 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.hasValidCountryCallingCode_ =
 i18n.phonenumbers.PhoneNumberUtil.prototype.format =
     function(number, numberFormat) {
 
-  if (number.getNationalNumber() == 0 && number.hasRawInput()) {
+  if (number.getNationalNumber() == 0 ) {
     // Unparseable numbers that kept their raw input just use that.
-    // This is the only case where a number can be formatted as E164 without a
-    // leading '+' symbol (but the original number wasn't parseable anyway).
-    // TODO: Consider removing the 'if' above so that unparseable strings
-    // without raw input format to the empty string instead of "+00"
     /** @type {string} */
     var rawInput = number.getRawInputOrDefault();
-    if (rawInput.length > 0) {
+    if (rawInput.length > 0 && number.hasCountryCode()) {
+      /** @type {string} */
+      let rawInputwithoutCountryCode = rawInput;
+      //The country calling code must be stripped from the rawInput if it starts with '+'. 
+      //This is necessary because the national formatting function will add the country calling code by default."
+      if (rawInput.startsWith('+')) {
+        const countryCallingCode = String.valueOf(number.getCountryCode()).length();
+        rawInputwithoutCountryCode = rawInput.substring(countryCallingCode + 1);
+      }
+      if (numberFormat == i18n.phonenumbers.PhoneNumberFormat.NATIONAL) {
+        return rawInputwithoutCountryCode;
+      } else {
+        return '+' + number.getCountryCode() + rawInputwithoutCountryCode;
+      }
+    } else if (rawInput.length > 0 || !number.hasCountryCode()) {
       return rawInput;
     }
   }

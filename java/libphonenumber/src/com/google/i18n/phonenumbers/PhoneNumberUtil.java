@@ -1289,10 +1289,22 @@ public class PhoneNumberUtil {
   public String format(PhoneNumber number, PhoneNumberFormat numberFormat) {
     if (number.getNationalNumber() == 0) {
       // Unparseable numbers that kept their raw input just use that.
-      // This is the only case where a number can be formatted as E164 without a
-      // leading '+' symbol (but the original number wasn't parseable anyway).
       String rawInput = number.getRawInput();
-      if (rawInput.length() > 0 || !number.hasCountryCode()) {
+      if (rawInput.length() > 0 && number.hasCountryCode()) {
+        String rawInputwithoutCountryCode = rawInput;
+        // The country calling code must be stripped from the rawInput if it starts with '+'.
+        // This is necessary because the national formatting function will add the country calling
+        // code by default."
+        if (rawInput.startsWith("+")) {
+          int countryCallingCode = String.valueOf(number.getCountryCode()).length();
+          rawInputwithoutCountryCode = rawInput.substring(countryCallingCode + 1);
+        }
+        if (numberFormat == PhoneNumberFormat.NATIONAL) {
+          return rawInputwithoutCountryCode;
+        } else {
+          return "+" + number.getCountryCode() + rawInputwithoutCountryCode;
+        }
+      } else if (rawInput.length() > 0 || !number.hasCountryCode()) {
         return rawInput;
       }
     }

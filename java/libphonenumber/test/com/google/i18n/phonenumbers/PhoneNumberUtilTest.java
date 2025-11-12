@@ -108,7 +108,10 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
       new PhoneNumber().setCountryCode(1).setNationalNumber(8002530000L);
   private static final PhoneNumber US_SPOOF =
       new PhoneNumber().setCountryCode(1).setNationalNumber(0L);
-  private static final PhoneNumber US_SPOOF_WITH_RAW_INPUT =
+  private static final PhoneNumber AU_SHORT_CODE_WITH_RAW_INPUT =
+      new PhoneNumber().setCountryCode(61).setNationalNumber(0L)
+          .setRawInput("000");
+          private static final PhoneNumber US_SPOOF_WITH_RAW_INPUT =
       new PhoneNumber().setCountryCode(1).setNationalNumber(0L)
           .setRawInput("000-000-0000");
   private static final PhoneNumber UZ_FIXED_LINE =
@@ -507,6 +510,10 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
     assertEquals("000-000-0000",
                  phoneUtil.format(US_SPOOF_WITH_RAW_INPUT, PhoneNumberFormat.NATIONAL));
     assertEquals("0", phoneUtil.format(US_SPOOF, PhoneNumberFormat.NATIONAL));
+    assertEquals("+61000", phoneUtil.format(AU_SHORT_CODE_WITH_RAW_INPUT, PhoneNumberFormat.E164));
+    PhoneNumber number = PhoneNumber.getDefaultInstance();
+    assertThat(phoneUtil.format(number, PhoneNumberFormat.NATIONAL)).isEmpty();
+
   }
 
   public void testFormatBSNumber() {
