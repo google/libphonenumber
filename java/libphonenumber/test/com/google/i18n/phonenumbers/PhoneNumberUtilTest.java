@@ -108,9 +108,6 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
       new PhoneNumber().setCountryCode(1).setNationalNumber(8002530000L);
   private static final PhoneNumber US_SPOOF =
       new PhoneNumber().setCountryCode(1).setNationalNumber(0L);
-  private static final PhoneNumber AU_SHORT_CODE_WITH_RAW_INPUT =
-      new PhoneNumber().setCountryCode(61).setNationalNumber(0L)
-          .setRawInput("000");
           private static final PhoneNumber US_SPOOF_WITH_RAW_INPUT =
       new PhoneNumber().setCountryCode(1).setNationalNumber(0L)
           .setRawInput("000-000-0000");
@@ -510,7 +507,19 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
     assertEquals("000-000-0000",
                  phoneUtil.format(US_SPOOF_WITH_RAW_INPUT, PhoneNumberFormat.NATIONAL));
     assertEquals("0", phoneUtil.format(US_SPOOF, PhoneNumberFormat.NATIONAL));
-    assertEquals("+61000", phoneUtil.format(AU_SHORT_CODE_WITH_RAW_INPUT, PhoneNumberFormat.E164));
+  }
+  
+  public void testFormatAUShortCodeNumber() throws Exception {
+    PhoneNumber auShortCodeNumber = phoneUtil.parse("000", RegionCode.AU);
+    assertEquals("+61000", phoneUtil.format(auShortCodeNumber, PhoneNumberFormat.E164));
+
+    PhoneNumber pgShortCodeNumber =
+        PhoneNumber.newBuilder()
+            .setCountryCode(675)
+            .setNationalNumber(0L)
+            .setRawInput("+675000")
+            .build();
+    assertEquals("+675000", phoneUtil.format(pgShortCodeNumber, PhoneNumberFormat.E164));
   }
 
   public void testFormatBSNumber() {

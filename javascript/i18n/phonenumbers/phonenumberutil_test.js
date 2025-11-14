@@ -225,11 +225,6 @@ US_SPOOF_WITH_RAW_INPUT.setCountryCode(1);
 US_SPOOF_WITH_RAW_INPUT.setNationalNumber(0);
 US_SPOOF_WITH_RAW_INPUT.setRawInput('000-000-0000');
 
-/** @type {!i18n.phonenumbers.PhoneNumber} */
-var AU_SHORT_CODE_WITH_RAW_INPUT = new i18n.phonenumbers.PhoneNumber();
-AU_SHORT_CODE_WITH_RAW_INPUT.setCountryCode(61);
-AU_SHORT_CODE_WITH_RAW_INPUT.setNationalNumber(0);
-AU_SHORT_CODE_WITH_RAW_INPUT.setRawInput('000');
 
 /** @type {!i18n.phonenumbers.PhoneNumber} */
 var UZ_FIXED_LINE = new i18n.phonenumbers.PhoneNumber();
@@ -679,8 +674,18 @@ function testFormatUSNumber() {
   assertEquals(
       '000-000-0000', phoneUtil.format(US_SPOOF_WITH_RAW_INPUT, PNF.NATIONAL));
   assertEquals('0', phoneUtil.format(US_SPOOF, PNF.NATIONAL));
-  assertEquals('+61000', phoneUtil.format(AU_SHORT_CODE_WITH_RAW_INPUT, PNF.E164));
-  assertEquals('', phoneUtil.format(new i18n.phonenumbers.PhoneNumber(), PNF.NATIONAL));
+}
+
+function testFormatAUShortCodeNumber() {
+  const auShortCodeNumber = phoneUtil.parse("000", RegionCode.AU);
+  const PNF = i18n.phonenumbers.PhoneNumberFormat;
+  assertEquals('+61000', phoneUtil.format(auShortCodeNumber, PNF.E164));
+  
+  const pgShortCodeNumber = new i18n.phonenumbers.PhoneNumber();
+  pgShortCodeNumber.setCountryCode(675);
+  pgShortCodeNumber.setNationalNumber(0);
+  pgShortCodeNumber.setRawInput('+675000');
+  assertEquals('+675000', phoneUtil.format(pgShortCodeNumber, PNF.E164));
 }
 
 function testFormatBSNumber() {

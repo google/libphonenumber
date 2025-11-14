@@ -1288,22 +1288,18 @@ public class PhoneNumberUtil {
    */
   public String format(PhoneNumber number, PhoneNumberFormat numberFormat) {
     if (number.getNationalNumber() == 0) {
-      // Unparseable numbers that kept their raw input just use that.
+      // Unparseable numbers that kept their raw input just use that, unless default country was
+      // specified and the format is E164. In that case, we prepend the raw input with the country
+      // code
       String rawInput = number.getRawInput();
-      if (rawInput.length() > 0 && number.hasCountryCode()) {
-        String rawInputwithoutCountryCode = rawInput;
-        // The country calling code must be stripped from the rawInput if it starts with '+'.
-        // This is necessary because the national formatting function will add the country calling
-        // code by default."
-        if (rawInput.startsWith("+")) {
-          int countryCallingCode = String.valueOf(number.getCountryCode()).length();
-          rawInputwithoutCountryCode = rawInput.substring(countryCallingCode + 1);
-        }
-        if (numberFormat == PhoneNumberFormat.NATIONAL) {
-          return rawInputwithoutCountryCode;
-        } else {
-          return "+" + number.getCountryCode() + rawInputwithoutCountryCode;
-        }
+      if (rawInput.length() > 0
+          && number.hasCountryCode()
+          && number.getCountryCodeSource() == CountryCodeSource.FROM_DEFAULT_COUNTRY
+          && numberFormat == PhoneNumberFormat.E164) {
+        int countryCallingCode = number.getCountryCode();
+        StringBuilder formattedNumber = new StringBuilder(rawInput);
+        prefixNumberWithCountryCallingCode(countryCallingCode, numberFormat, formattedNumber);
+        return formattedNumber.toString();
       } else if (rawInput.length() > 0 || !number.hasCountryCode()) {
         return rawInput;
       }

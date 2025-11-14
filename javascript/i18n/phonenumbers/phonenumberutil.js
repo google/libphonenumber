@@ -1781,24 +1781,19 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.hasValidCountryCallingCode_ =
 i18n.phonenumbers.PhoneNumberUtil.prototype.format =
     function(number, numberFormat) {
 
-  if (number.getNationalNumber() == 0 ) {
-    // Unparseable numbers that kept their raw input just use that.
+  if (number.getNationalNumber() == 0  && number.hasRawInput()) {
+    // Unparseable numbers that kept their raw input just use that, unless
+    // default country was specified and the format is E164. In that case, we
+    // prepend the raw input with the country code.
     /** @type {string} */
-    var rawInput = number.getRawInputOrDefault();
-    if (rawInput.length > 0 && number.hasCountryCode()) {
-      /** @type {string} */
-      let rawInputwithoutCountryCode = rawInput;
-      //The country calling code must be stripped from the rawInput if it starts with '+'. 
-      //This is necessary because the national formatting function will add the country calling code by default."
-      if (rawInput.startsWith('+')) {
-        const countryCallingCode = String.valueOf(number.getCountryCode()).length();
-        rawInputwithoutCountryCode = rawInput.substring(countryCallingCode + 1);
-      }
-      if (numberFormat == i18n.phonenumbers.PhoneNumberFormat.NATIONAL) {
-        return rawInputwithoutCountryCode;
-      } else {
-        return '+' + number.getCountryCode() + rawInputwithoutCountryCode;
-      }
+    const rawInput = number.getRawInputOrDefault();
+    if (rawInput.length > 0 && number.hasCountryCode() 
+        && number.getCountryCodeSource() == i18n.phonenumbers.PhoneNumber.CountryCodeSource.FROM_DEFAULT_COUNTRY 
+        && numberFormat == i18n.phonenumbers.PhoneNumberFormat.E164) {
+      const countryCallingCode = number.getCountryCode();
+      let formattedNumber = new StringBuilder(rawInput);
+      this.prefixNumberWithCountryCallingCode(countryCallingCode, numberFormat, formattedNumber);
+      return formattedNumber.toString();
     } else if (rawInput.length > 0 || !number.hasCountryCode()) {
       return rawInput;
     }
