@@ -512,13 +512,10 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
   public void testFormatAUShortCodeNumber() throws Exception {
     PhoneNumber auShortCodeNumber = phoneUtil.parse("000", RegionCode.AU);
     assertEquals("+61000", phoneUtil.format(auShortCodeNumber, PhoneNumberFormat.E164));
-
+    
     PhoneNumber pgShortCodeNumber =
-        PhoneNumber.newBuilder()
-            .setCountryCode(675)
-            .setNationalNumber(0L)
-            .setRawInput("+675000")
-            .build();
+        new PhoneNumber().setCountryCode(675).setNationalNumber(0L)
+          .setRawInput("+675000");
     assertEquals("+675000", phoneUtil.format(pgShortCodeNumber, PhoneNumberFormat.E164));
   }
 
