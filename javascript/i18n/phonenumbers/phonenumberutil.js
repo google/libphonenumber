@@ -1791,9 +1791,8 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.format =
         && number.getCountryCodeSource() == i18n.phonenumbers.PhoneNumber.CountryCodeSource.FROM_DEFAULT_COUNTRY 
         && numberFormat == i18n.phonenumbers.PhoneNumberFormat.E164) {
       const countryCallingCode = number.getCountryCode();
-      let formattedNumber = new StringBuilder(rawInput);
-      this.prefixNumberWithCountryCallingCode(countryCallingCode, numberFormat, formattedNumber);
-      return formattedNumber.toString();
+      let formattedNumber =rawInput;
+      return this.prefixNumberWithCountryCallingCode_(countryCallingCode, numberFormat, formattedNumber,'');
     } else if (rawInput.length > 0 || !number.hasCountryCode()) {
       return rawInput;
     }
