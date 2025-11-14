@@ -108,7 +108,7 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
       new PhoneNumber().setCountryCode(1).setNationalNumber(8002530000L);
   private static final PhoneNumber US_SPOOF =
       new PhoneNumber().setCountryCode(1).setNationalNumber(0L);
-          private static final PhoneNumber US_SPOOF_WITH_RAW_INPUT =
+  private static final PhoneNumber US_SPOOF_WITH_RAW_INPUT =
       new PhoneNumber().setCountryCode(1).setNationalNumber(0L)
           .setRawInput("000-000-0000");
   private static final PhoneNumber UZ_FIXED_LINE =
@@ -508,7 +508,7 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
                  phoneUtil.format(US_SPOOF_WITH_RAW_INPUT, PhoneNumberFormat.NATIONAL));
     assertEquals("0", phoneUtil.format(US_SPOOF, PhoneNumberFormat.NATIONAL));
   }
-  
+
   public void testFormatAUShortCodeNumber() throws Exception {
     PhoneNumber auShortCodeNumber = phoneUtil.parse("000", RegionCode.AU);
     assertEquals("+61000", phoneUtil.format(auShortCodeNumber, PhoneNumberFormat.E164));
