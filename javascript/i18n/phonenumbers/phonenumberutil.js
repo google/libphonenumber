@@ -1790,7 +1790,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.format =
     if (rawInput.length > 0 && number.hasCountryCode() 
         && number.getCountryCodeSource() == i18n.phonenumbers.PhoneNumber.CountryCodeSource.FROM_DEFAULT_COUNTRY 
         && numberFormat == i18n.phonenumbers.PhoneNumberFormat.E164) {
-      const countryCallingCode = number.getCountryCode();
+      const countryCallingCode = number.getCountryCodeOrDefault();
       let formattedNumber =rawInput;
       return this.prefixNumberWithCountryCallingCode_(countryCallingCode, numberFormat, formattedNumber,'');
     } else if (rawInput.length > 0 || !number.hasCountryCode()) {
