@@ -30580,7 +30580,7 @@
          to telephone numbers in Rome, with "698" following the "06" for Rome.
          A Vatican telephone number is in the form of 06 698x xxxx. -->
     <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_Vatican_City -->
-    <territory id="VA" countryCode="39" leadingDigits="06698" internationalPrefix="00"
+    <territory id="VA" countryCode="379" leadingDigits="06698" internationalPrefix="00"
                mobileNumberPortableRegion="true">
       <generalDesc>
         <nationalNumberPattern>
@@ -30592,7 +30592,7 @@
           )?|
           (?:
             1\d|
-            39
+            379
           )\d{7,8}
         </nationalNumberPattern>
       </generalDesc>
