@@ -4625,10 +4625,6 @@
 917622|Katni, Madhya Pradesh
 917623|Kundam, Madhya Pradesh
 917624|Sihora, Madhya Pradesh
-9176240|Sihora, Madhya Pradesh
-9176241|Sihora, Madhya Pradesh
-9176248|Sihora, Madhya Pradesh
-9176249|Sihora, Madhya Pradesh
 9176250|Umariapan, Madhya Pradesh
 9176252|Umariapan, Madhya Pradesh
 9176253|Umariapan, Madhya Pradesh
@@ -5231,10 +5227,6 @@
 918191|Holalkere, Karnataka
 918192|Davangere, Karnataka
 918193|Hiriyur, Karnataka
-9181930|Hiriyur, Karnataka
-9181931|Hiriyur, Karnataka
-9181938|Hiriyur, Karnataka
-9181939|Hiriyur, Karnataka
 918194|Chitradurga, Karnataka
 918195|Challakere, Karnataka
 918196|Jagalur, Karnataka
@@ -5537,10 +5529,6 @@
 918584|Piler, Andhra Pradesh
 918585|Pakala, Andhra Pradesh
 918586|Vayalpad, Andhra Pradesh
-9185860|Vayalpad, Andhra Pradesh
-9185861|Vayalpad, Andhra Pradesh
-9185868|Vayalpad, Andhra Pradesh
-9185869|Vayalpad, Andhra Pradesh
 918587|Venkatgirikota, Andhra Pradesh
 918588|Vaimpalli, Andhra Pradesh
 918589|Siddavattam, Andhra Pradesh

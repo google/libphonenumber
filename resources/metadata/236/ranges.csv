@@ -10,7 +10,7 @@ Prefix      ; Length ; Type       ; Tariff        ; Operator     ; Format       
 708[1-46-9] ; 8      ; MOBILE     ; STANDARD_RATE ; "a_cell"     ; "fmt1_2/2/2/2" ; "CF"    ;            ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 709[05-9]   ; 8      ; MOBILE     ; STANDARD_RATE ; "a_cell"     ; "fmt1_2/2/2/2" ; "CF"    ;            ; ITU
 709[1-4]    ; 8      ; MOBILE     ; STANDARD_RATE ; "a_cell"     ; "fmt1_2/2/2/2" ; "CF"    ;            ;            ; "FILLUP TO SUPPORT MASTER RANGE"
-72          ; 8      ; MOBILE     ; STANDARD_RATE ; "orange"     ; "fmt1_2/2/2/2" ; "CF"    ;            ; ITU
+7[23]       ; 8      ; MOBILE     ; STANDARD_RATE ; "orange"     ; "fmt1_2/2/2/2" ; "CF"    ;            ; ITU
 74          ; 8      ; MOBILE     ; STANDARD_RATE ; "orange"     ; "fmt1_2/2/2/2" ; "CF"    ;            ; IR21
 750[0-26-9] ; 8      ; MOBILE     ; STANDARD_RATE ; "telecel"    ; "fmt1_2/2/2/2" ; "CF"    ;            ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 750[3-5]    ; 8      ; MOBILE     ; STANDARD_RATE ; "telecel"    ; "fmt1_2/2/2/2" ; "CF"    ;            ; ITU

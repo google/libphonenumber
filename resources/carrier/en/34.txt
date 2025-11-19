@@ -286,6 +286,7 @@
 346938|Yoigo
 346939|Yoigo
 34694|Movistar
+346942|Orange
 346944|Yoigo
 346945|Yoigo
 346946|Yoigo

@@ -17,7 +17,8 @@
 # Telemovil, CTE Telecom and Telefonica operates as Tigo, Movistar and Claro
 # respectively.
 
-5035|Claro
+50350|Claro
+50351|Tigo
 503600|Tigo
 503601|Tigo
 503602|Tigo
