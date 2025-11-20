@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.googlecode.libphonenumber</groupId>
   <artifactId>libphonenumber-parent</artifactId>
-  <version>9.0.19</version>
+  <version>9.0.20-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>libphonenumber-parent</name>
   <url>https://github.com/google/libphonenumber/</url>
@@ -32,7 +32,7 @@
     <developerConnection>scm:git:git@github.com:googlei18n/libphonenumber.git
     </developerConnection>
     <url>https://github.com/google/libphonenumber/</url>
-    <tag>v9.0.19</tag>
+    <tag>v9.0.16</tag>
   </scm>
 
   <properties>
