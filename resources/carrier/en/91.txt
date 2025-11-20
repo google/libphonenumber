@@ -52,6 +52,7 @@
 916391|Vodafone
 916399|Idea
 9167479|Idea
+9168284|Vodafone
 91690|Airtel
 91691|Vodafone
 91700|Reliance Jio
@@ -2771,6 +2772,7 @@
 91918|BSNL MOBILE
 919182|Reliance Jio
 91919|BSNL MOBILE
+919190|Reliance Jio
 919198|Airtel
 919199|Airtel
 9192|Tata Docomo

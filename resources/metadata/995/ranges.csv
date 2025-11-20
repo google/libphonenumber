@@ -79,7 +79,7 @@ Prefix          ; Length ; Type       ; Tariff        ; Area Code Length ; Natio
 50002           ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "icell"            ; "mobile_3/2/2/2" ; "GE"    ;                         ; ITU
 50005[0-4]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "silknet"          ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
 50005[5-9]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "cellfie"          ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
-50010[0-4]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "cellfie"          ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
+5001[09][0-4]   ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "cellfie"          ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
 5001[12]        ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "silknet"          ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
 50022           ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "silknet"          ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
 5003[0-24-6]    ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "unicell"          ; "mobile_3/2/2/2" ; "GE"    ;                         ; ITU

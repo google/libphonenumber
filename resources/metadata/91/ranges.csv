@@ -1995,9 +1995,11 @@ Prefix            ; Length ; Type                 ; Tariff        ; Area Code Le
 6817[2-7]         ; 10     ; FIXED_LINE           ; STANDARD_RATE ; 4                ; false         ;                ; "fixed_4/3/3"      ; "IN"    ; "R.Udayigiri, Odisha"
 6818[2-7]         ; 10     ; FIXED_LINE           ; STANDARD_RATE ; 4                ; false         ;                ; "fixed_4/3/3"      ; "IN"    ; "Buguda, Odisha"
 6819[2-7]         ; 10     ; FIXED_LINE           ; STANDARD_RATE ; 4                ; false         ;                ; "fixed_4/3/3"      ; "IN"    ; "Surada, Odisha"
-682[03-9][2-7]    ; 10     ; FIXED_LINE           ; STANDARD_RATE ; 4                ; false         ;                ; "fixed_4/3/3"      ; "IN"
+682[03-79][2-7]   ; 10     ; FIXED_LINE           ; STANDARD_RATE ; 4                ; false         ;                ; "fixed_4/3/3"      ; "IN"
 6821[2-7]         ; 10     ; FIXED_LINE           ; STANDARD_RATE ; 4                ; false         ;                ; "fixed_4/3/3"      ; "IN"    ; "Bhanjanagar, Odisha"
 6822[2-7]         ; 10     ; FIXED_LINE           ; STANDARD_RATE ; 4                ; false         ;                ; "fixed_4/3/3"      ; "IN"    ; "Aska, Odisha"
+6828[235-7]       ; 10     ; FIXED_LINE           ; STANDARD_RATE ; 4                ; false         ;                ; "fixed_4/3/3"      ; "IN"
+68284             ; 10     ; MOBILE               ; STANDARD_RATE ;                  ; false         ; "vodafone"     ; "mobile_5/5"       ; "IN"
 683               ; 10     ; FIXED_LINE           ; STANDARD_RATE ; 4                ; false         ;                ; "fixed_4/3/3"      ; "IN"
 6840[2-7]         ; 10     ; FIXED_LINE           ; STANDARD_RATE ; 4                ; false         ;                ; "fixed_4/3/3"      ; "IN"    ; "Tumudibandha, Odisha"
 6841[2-7]         ; 10     ; FIXED_LINE           ; STANDARD_RATE ; 4                ; false         ;                ; "fixed_4/3/3"      ; "IN"    ; "Boudh, Odisha"
@@ -2571,7 +2573,7 @@ Prefix            ; Length ; Type                 ; Tariff        ; Area Code Le
 74540             ; 10     ; MOBILE               ; STANDARD_RATE ;                  ; false         ; "telenor"      ; "mobile_5/5"       ; "IN"    ; "Chhipaborad, Rajasthan"
 7454[2-7]         ; 10     ; FIXED_LINE           ; STANDARD_RATE ; 4                ; false         ;                ; "fixed_4/3/3"      ; "IN"    ; "Chhipaborad, Rajasthan"
 7454[89]          ; 10     ; MOBILE               ; STANDARD_RATE ;                  ; false         ; "airtel"       ; "mobile_5/5"       ; "IN"    ; "Chhipaborad, Rajasthan"                       ; IR21
-7455[089]         ; 10     ; MOBILE               ; STANDARD_RATE ;                  ; false         ; "airtel"       ; "mobile_5/5"       ; "IN"    ; "Digod/Sultanpur, Rajasthan"                 ; IR21
+7455[089]         ; 10     ; MOBILE               ; STANDARD_RATE ;                  ; false         ; "airtel"       ; "mobile_5/5"       ; "IN"    ; "Digod/Sultanpur, Rajasthan"                   ; IR21
 7455[2-7]         ; 10     ; FIXED_LINE           ; STANDARD_RATE ; 4                ; false         ;                ; "fixed_4/3/3"      ; "IN"    ; "Digod/Sultanpur, Rajasthan"
 7456[089]         ; 10     ; MOBILE               ; STANDARD_RATE ;                  ; false         ; "airtel"       ; "mobile_5/5"       ; "IN"    ; "Kishanganj/Bhanwargarh, Rajasthan"            ; IR21
 7456[2-7]         ; 10     ; FIXED_LINE           ; STANDARD_RATE ; 4                ; false         ;                ; "fixed_4/3/3"      ; "IN"    ; "Kishanganj/Bhanwargarh, Rajasthan"
@@ -2895,10 +2897,10 @@ Prefix            ; Length ; Type                 ; Tariff        ; Area Code Le
 7622[2-7]         ; 10     ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ;                  ; false         ; "idea"         ; "mobile_5/5"       ; "IN"    ; "Katni, Madhya Pradesh"
 7623[0189]        ; 10     ; MOBILE               ; STANDARD_RATE ;                  ; false         ; "idea"         ; "mobile_5/5"       ; "IN"    ; "Kundam, Madhya Pradesh"                       ; IR21
 7623[2-7]         ; 10     ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ;                  ; false         ; "idea"         ; "mobile_5/5"       ; "IN"    ; "Kundam, Madhya Pradesh"
-76240             ; 10     ; MOBILE               ; STANDARD_RATE ;                  ; false         ; "idea"         ; "mobile_5/5"       ; "IN"    ; "Sihora, Madhya Pradesh"                     ; IR21
+76240             ; 10     ; MOBILE               ; STANDARD_RATE ;                  ; false         ; "idea"         ; "mobile_5/5"       ; "IN"    ; "Sihora, Madhya Pradesh"                       ; IR21
 76241             ; 10     ; MOBILE               ; STANDARD_RATE ;                  ; false         ; "idea"         ; "mobile_5/5"       ; "IN"    ; "Sihora, Madhya Pradesh"
 7624[2-7]         ; 10     ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ;                  ; false         ; "idea"         ; "mobile_5/5"       ; "IN"    ; "Sihora, Madhya Pradesh"
-7624[89]          ; 10     ; MOBILE               ; STANDARD_RATE ;                  ; false         ; "airtel"       ; "mobile_5/5"       ; "IN"    ; "Sihora, Madhya Pradesh"                     ; IR21
+7624[89]          ; 10     ; MOBILE               ; STANDARD_RATE ;                  ; false         ; "airtel"       ; "mobile_5/5"       ; "IN"    ; "Sihora, Madhya Pradesh"                       ; IR21
 76250             ; 10     ; MOBILE               ; STANDARD_RATE ;                  ; false         ; "airtel"       ; "mobile_5/5"       ; "IN"    ; "Umariapan, Madhya Pradesh"                    ; IR21
 76251             ; 10     ; MOBILE               ; STANDARD_RATE ;                  ; false         ;                ; "mobile_5/5"       ; "IN"    ;                                                ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 7625[2-7]         ; 10     ; FIXED_LINE           ; STANDARD_RATE ; 4                ; false         ;                ; "fixed_4/3/3"      ; "IN"    ; "Umariapan, Madhya Pradesh"
@@ -3730,7 +3732,7 @@ Prefix            ; Length ; Type                 ; Tariff        ; Area Code Le
 8191[2-7]         ; 10     ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ;                  ; false         ; "idea"         ; "mobile_5/5"       ; "IN"    ; "Holalkere, Karnataka"
 8192[0189]        ; 10     ; MOBILE               ; STANDARD_RATE ;                  ; false         ; "idea"         ; "mobile_5/5"       ; "IN"    ; "Davangere, Karnataka"                         ; IR21
 8192[2-7]         ; 10     ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ;                  ; false         ; "idea"         ; "mobile_5/5"       ; "IN"    ; "Davangere, Karnataka"
-8193[0189]        ; 10     ; MOBILE               ; STANDARD_RATE ;                  ; false         ; "idea"         ; "mobile_5/5"       ; "IN"    ; "Hiriyur, Karnataka"                         ; IR21
+8193[0189]        ; 10     ; MOBILE               ; STANDARD_RATE ;                  ; false         ; "idea"         ; "mobile_5/5"       ; "IN"    ; "Hiriyur, Karnataka"                           ; IR21
 8193[2-7]         ; 10     ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ;                  ; false         ; "idea"         ; "mobile_5/5"       ; "IN"    ; "Hiriyur, Karnataka"
 8194[0189]        ; 10     ; MOBILE               ; STANDARD_RATE ;                  ; false         ; "idea"         ; "mobile_5/5"       ; "IN"    ; "Chitradurga, Karnataka"                       ; IR21
 8194[2-7]         ; 10     ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ;                  ; false         ; "idea"         ; "mobile_5/5"       ; "IN"    ; "Chitradurga, Karnataka"
@@ -4995,7 +4997,8 @@ Prefix            ; Length ; Type                 ; Tariff        ; Area Code Le
 9176              ; 10     ; MOBILE               ; STANDARD_RATE ;                  ; false         ; "vodafone"     ; "mobile_5/5"       ; "IN"
 918[013-9]        ; 10     ; MOBILE               ; STANDARD_RATE ;                  ; false         ; "bsnl_mobile"  ; "mobile_5/5"       ; "IN"
 9182              ; 10     ; MOBILE               ; STANDARD_RATE ;                  ; false         ; "reliance_jio" ; "mobile_5/5"       ; "IN"    ;                                                ; IR21
-919[0-7]          ; 10     ; MOBILE               ; STANDARD_RATE ;                  ; false         ; "bsnl_mobile"  ; "mobile_5/5"       ; "IN"
+9190              ; 10     ; MOBILE               ; STANDARD_RATE ;                  ; false         ; "reliance_jio" ; "mobile_5/5"       ; "IN"    ;                                                ; IR21
+919[1-7]          ; 10     ; MOBILE               ; STANDARD_RATE ;                  ; false         ; "bsnl_mobile"  ; "mobile_5/5"       ; "IN"
 919[89]           ; 10     ; MOBILE               ; STANDARD_RATE ;                  ; false         ; "airtel"       ; "mobile_5/5"       ; "IN"    ;                                                ; IR21
 920[0-489]        ; 10     ; MOBILE               ; STANDARD_RATE ;                  ; false         ; "tata_docomo"  ; "mobile_5/5"       ; "IN"
 9205              ; 10     ; MOBILE               ; STANDARD_RATE ;                  ; false         ; "airtel"       ; "mobile_5/5"       ; "IN"    ;                                                ; IR21

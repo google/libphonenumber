@@ -1,4 +1,5 @@
 Prefix     ; Length ; Type       ; Tariff        ; Operator             ; Format         ; Regions ; Geocode:en                                       ; Geocode:fr                                       ; Provenance ; Comment
+518        ; 9      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt2_4/5"     ; "MA"    ; "Rabat/Tanger/Fès/Meknès"                        ; "Rabat/Tanger/Fès/Meknès"                        ; GOVERNMENT
 520        ; 9      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/6"     ; "MA"    ; "Casablanca"                                     ; "Casablanca"                                     ; GOVERNMENT ; "Regulatory - 06/2018"
 521        ; 9      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/6"     ; "MA"    ; "Casablanca/Central Morocco"                     ; "Casablanca/Maroc Central"                       ; GOVERNMENT ; "Regulatory - 06/2018"
 5220       ; 9      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt2_4/5"     ; "MA"    ; "Casablanca"                                     ; "Casablanca"
@@ -65,6 +66,7 @@ Prefix     ; Length ; Type       ; Tariff        ; Operator             ; Format
 5398       ; 9      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt2_4/5"     ; "MA"    ; "Al Hoceima/Chefchaouen"                         ; "Al Hoceima/Chefchaouen"                         ; GOVERNMENT ; "Regulatory - 06/2018"
 5399       ; 9      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt2_4/5"     ; "MA"    ; "Al Hoceima/Larache/Tangier"                     ; "Tanger/Larache/Al Hoceima"                      ; GOVERNMENT ; "Regulatory - 06/2018"
 54[067]    ; 9      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt4_3/2/2/2" ; "MA"    ;                                                  ;                                                  ; IR21       ; "IR21 - 3/13/2018"
+549        ; 9      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt4_3/2/2/2" ; "MA"    ; "Casablanca/Marrakech/Agadir"                    ; "Casablanca/Marrakech/Agadir"                    ; GOVERNMENT
 55[03]     ; 9      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt4_3/2/2/2" ; "MA"    ;                                                  ;                                                  ; IR21       ; "IR21 - 3/13/2018"
 5924[0-2]  ; 9      ; VOIP       ; STANDARD_RATE ;                      ; "fmt2_4/5"     ; "EH,MA" ;                                                  ;                                                  ; GOVERNMENT ; "Regulatory - 06/2018"
 59293      ; 9      ; VOIP       ; STANDARD_RATE ;                      ; "fmt2_4/5"     ; "EH,MA"
@@ -97,8 +99,7 @@ Prefix     ; Length ; Type       ; Tariff        ; Operator             ; Format
 72[0-8]    ; 9      ; MOBILE     ; STANDARD_RATE ; "inwi"               ; "fmt1_3/6"     ; "EH,MA" ;                                                  ;                                                  ; IR21
 75[0-5]    ; 9      ; MOBILE     ; STANDARD_RATE ; "maroc_telecom"      ; "fmt1_3/6"     ; "EH,MA" ;                                                  ;                                                  ; IR21
 76         ; 9      ; MOBILE     ; STANDARD_RATE ; "maroc_telecom"      ; "fmt1_3/6"     ; "EH,MA" ;                                                  ;                                                  ; IR21
-77         ; 9      ; MOBILE     ; STANDARD_RATE ; "orange"             ; "fmt1_3/6"     ; "EH,MA" ;                                                  ;                                                  ; IR21
-78[0-7]    ; 9      ; MOBILE     ; STANDARD_RATE ; "orange"             ; "fmt1_3/6"     ; "EH,MA" ;                                                  ;                                                  ; IR21
+7[78]      ; 9      ; MOBILE     ; STANDARD_RATE ; "orange"             ; "fmt1_3/6"     ; "EH,MA" ;                                                  ;                                                  ; IR21
 80[0-7]    ; 9      ; FIXED_LINE ; TOLL_FREE     ;                      ; "fmt5_2/7"     ; "EH,MA"
 80[89]     ; 9      ; VOIP       ; STANDARD_RATE ;                      ; "fmt2_4/5"     ; "EH,MA" ;                                                  ;                                                  ; GOVERNMENT
 89[013-9]  ; 9      ; FIXED_LINE ; PREMIUM_RATE  ;                      ; "fmt5_2/7"     ; "EH,MA"

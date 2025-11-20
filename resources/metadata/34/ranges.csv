@@ -132,7 +132,8 @@ Prefix           ; Length ; Type            ; Tariff        ; Operator          
 693[57-9]        ; 9      ; MOBILE          ; STANDARD_RATE ; "yoigo"           ; "all_3/2/2/2"    ; "Europe/Madrid"   ; "ES"    ;                    ;               ; GOVERNMENT
 6936[56]         ; 9      ; MOBILE          ; STANDARD_RATE ; "carrefour"       ; "all_3/2/2/2"    ; "Europe/Madrid"   ; "ES"    ;                    ;               ; GOVERNMENT
 6936[7-9]        ; 9      ; MOBILE          ; STANDARD_RATE ; "yoigo"           ; "all_3/2/2/2"    ; "Europe/Madrid"   ; "ES"    ;                    ;               ; GOVERNMENT
-694[0-37-9]      ; 9      ; MOBILE          ; STANDARD_RATE ; "movistar"        ; "all_3/2/2/2"    ; "Europe/Madrid"   ; "ES"    ;                    ;               ; GOVERNMENT
+694[0137-9]      ; 9      ; MOBILE          ; STANDARD_RATE ; "movistar"        ; "all_3/2/2/2"    ; "Europe/Madrid"   ; "ES"    ;                    ;               ; GOVERNMENT
+6942             ; 9      ; MOBILE          ; STANDARD_RATE ; "orange"          ; "all_3/2/2/2"    ; "Europe/Madrid"   ; "ES"    ;                    ;               ; IR21
 694[4-6]         ; 9      ; MOBILE          ; STANDARD_RATE ; "yoigo"           ; "all_3/2/2/2"    ; "Europe/Madrid"   ; "ES"    ;                    ;               ; GOVERNMENT
 695              ; 9      ; MOBILE          ; STANDARD_RATE ; "orange"          ; "all_3/2/2/2"    ; "Europe/Madrid"   ; "ES"    ;                    ;               ; GOVERNMENT
 697              ; 9      ; MOBILE          ; STANDARD_RATE ; "vodafone"        ; "all_3/2/2/2"    ; "Europe/Madrid"   ; "ES"    ;                    ;               ; GOVERNMENT

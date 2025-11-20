@@ -704,10 +704,10 @@
 459381|tdc
 459382|tdc
 45939|3
-459440|tdc
-459441|tdc
-459442|tdc
-459481|tdc
+459440|Nuuday
+459441|Nuuday
+459442|Nuuday
+459481|Nuuday
 4596|telenor
 45971|telenor
 45972|telenor
