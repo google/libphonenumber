@@ -1,16 +1,60 @@
-Prefix       ; Length ; Type                 ; Tariff        ; Operator  ; Format          ; Regions ; Provenance
-012[0-3]     ; 10     ; FIXED_LINE           ; STANDARD_RATE ;           ; "fmt_2/2/2/2/2" ; "BJ"    ; ITU
-0124         ; 10     ; FIXED_LINE           ; STANDARD_RATE ;           ; "fmt_2/2/2/2/2" ; "BJ"    ; IR21
-012[5-9]     ; 10     ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ;           ; "fmt_2/2/2/2/2" ; "BJ"    ; ITU
-014[01347-9] ; 10     ; MOBILE               ; STANDARD_RATE ; "celtiis" ; "fmt_2/2/2/2/2" ; "BJ"    ; IR21
-014[26]      ; 10     ; MOBILE               ; STANDARD_RATE ; "mtn"     ; "fmt_2/2/2/2/2" ; "BJ"    ; ITU
-0145         ; 10     ; MOBILE               ; STANDARD_RATE ; "moov"    ; "fmt_2/2/2/2/2" ; "BJ"    ; ITU
-015[0-4679]  ; 10     ; MOBILE               ; STANDARD_RATE ; "mtn"     ; "fmt_2/2/2/2/2" ; "BJ"    ; ITU
-015[58]      ; 10     ; MOBILE               ; STANDARD_RATE ; "moov"    ; "fmt_2/2/2/2/2" ; "BJ"    ; ITU
-016[03-58]   ; 10     ; MOBILE               ; STANDARD_RATE ; "moov"    ; "fmt_2/2/2/2/2" ; "BJ"    ; ITU
-016[12679]   ; 10     ; MOBILE               ; STANDARD_RATE ; "mtn"     ; "fmt_2/2/2/2/2" ; "BJ"    ; ITU
-019[0167]    ; 10     ; MOBILE               ; STANDARD_RATE ; "mtn"     ; "fmt_2/2/2/2/2" ; "BJ"    ; ITU
-019[23]      ; 10     ; MOBILE               ; STANDARD_RATE ; "celtiis" ; "fmt_2/2/2/2/2" ; "BJ"    ; IR21
-019[4589]    ; 10     ; MOBILE               ; STANDARD_RATE ; "moov"    ; "fmt_2/2/2/2/2" ; "BJ"    ; ITU
-81           ; 8      ; UAN                  ; STANDARD_RATE ;           ; "fmt1_2/2/2/2"  ; "BJ"    ; ITU
-857[58]      ; 8      ; VOIP                 ; STANDARD_RATE ;           ; "fmt1_2/2/2/2"  ; "BJ"    ; ITU
+Prefix        ; Length ; Type                 ; Tariff        ; Operator  ; Format          ; Regions ; Geocode:en                             ; Geocode:fr                             ; Provenance
+0120[013-9]   ; 10     ; FIXED_LINE           ; STANDARD_RATE ;           ; "fmt_2/2/2/2/2" ; "BJ"
+01202[038]    ; 10     ; FIXED_LINE           ; STANDARD_RATE ;           ; "fmt_2/2/2/2/2" ; "BJ"
+012021        ; 10     ; FIXED_LINE           ; STANDARD_RATE ;           ; "fmt_2/2/2/2/2" ; "BJ"    ; "Ongala"                               ; "Ongala"
+012022        ; 10     ; FIXED_LINE           ; STANDARD_RATE ;           ; "fmt_2/2/2/2/2" ; "BJ"    ; "Kandiévé"                             ; "Kandiévé"
+012024        ; 10     ; FIXED_LINE           ; STANDARD_RATE ;           ; "fmt_2/2/2/2/2" ; "BJ"    ; "Sèmè"                                 ; "Sèmè"
+012025        ; 10     ; FIXED_LINE           ; STANDARD_RATE ;           ; "fmt_2/2/2/2/2" ; "BJ"    ; "Pobè/Kétou"                           ; "Pobè/Kétou"
+012026        ; 10     ; FIXED_LINE           ; STANDARD_RATE ;           ; "fmt_2/2/2/2/2" ; "BJ"    ; "Sakété/Igolo"                         ; "Sakété/Igolo"
+012027        ; 10     ; FIXED_LINE           ; STANDARD_RATE ;           ; "fmt_2/2/2/2/2" ; "BJ"    ; "Adjohoun"                             ; "Adjohoun"
+012029        ; 10     ; FIXED_LINE           ; STANDARD_RATE ;           ; "fmt_2/2/2/2/2" ; "BJ"    ; "Ouémé/Plateau departments"            ; "Ouémé/Plateau departments"
+0121[0-24-9]  ; 10     ; FIXED_LINE           ; STANDARD_RATE ;           ; "fmt_2/2/2/2/2" ; "BJ"
+012130        ; 10     ; FIXED_LINE           ; STANDARD_RATE ;           ; "fmt_2/2/2/2/2" ; "BJ"    ; "Cadjehoun"                            ; "Cadjehoun"
+012131        ; 10     ; FIXED_LINE           ; STANDARD_RATE ;           ; "fmt_2/2/2/2/2" ; "BJ"    ; "Ganhi"                                ; "Ganhi"
+012132        ; 10     ; FIXED_LINE           ; STANDARD_RATE ;           ; "fmt_2/2/2/2/2" ; "BJ"    ; "Jéricho"                              ; "Jéricho"
+012133        ; 10     ; FIXED_LINE           ; STANDARD_RATE ;           ; "fmt_2/2/2/2/2" ; "BJ"    ; "Akpakpa"                              ; "Akpakpa"
+012134        ; 10     ; FIXED_LINE           ; STANDARD_RATE ;           ; "fmt_2/2/2/2/2" ; "BJ"    ; "Ouidah"                               ; "Ouidah"
+012135        ; 10     ; FIXED_LINE           ; STANDARD_RATE ;           ; "fmt_2/2/2/2/2" ; "BJ"    ; "Godomey"                              ; "Godomey"
+012136        ; 10     ; FIXED_LINE           ; STANDARD_RATE ;           ; "fmt_2/2/2/2/2" ; "BJ"    ; "Abomey-Calaci"                        ; "Abomey-Calaci"
+012137        ; 10     ; FIXED_LINE           ; STANDARD_RATE ;           ; "fmt_2/2/2/2/2" ; "BJ"    ; "Allada"                               ; "Allada"
+012138        ; 10     ; FIXED_LINE           ; STANDARD_RATE ;           ; "fmt_2/2/2/2/2" ; "BJ"    ; "Kouhounou"                            ; "Kouhounou"
+012139        ; 10     ; FIXED_LINE           ; STANDARD_RATE ;           ; "fmt_2/2/2/2/2" ; "BJ"    ; "Littoral/Atlantique departments"      ; "Littoral/Atlantique departments"
+0122[0-36-9]  ; 10     ; FIXED_LINE           ; STANDARD_RATE ;           ; "fmt_2/2/2/2/2" ; "BJ"
+01224[024578] ; 10     ; FIXED_LINE           ; STANDARD_RATE ;           ; "fmt_2/2/2/2/2" ; "BJ"
+012241        ; 10     ; FIXED_LINE           ; STANDARD_RATE ;           ; "fmt_2/2/2/2/2" ; "BJ"    ; "Lokossa"                              ; "Lokossa"
+012243        ; 10     ; FIXED_LINE           ; STANDARD_RATE ;           ; "fmt_2/2/2/2/2" ; "BJ"    ; "Come"                                 ; "Come"
+012246        ; 10     ; FIXED_LINE           ; STANDARD_RATE ;           ; "fmt_2/2/2/2/2" ; "BJ"    ; "Dogbo"                                ; "Dogbo"
+0122[45]9     ; 10     ; FIXED_LINE           ; STANDARD_RATE ;           ; "fmt_2/2/2/2/2" ; "BJ"    ; "Mono/Kouffo/Zou/Collines departments" ; "Mono/Kouffo/Zou/Collines departments"
+012250        ; 10     ; FIXED_LINE           ; STANDARD_RATE ;           ; "fmt_2/2/2/2/2" ; "BJ"    ; "Abomey"                               ; "Abomey"
+012251        ; 10     ; FIXED_LINE           ; STANDARD_RATE ;           ; "fmt_2/2/2/2/2" ; "BJ"    ; "Bohicon"                              ; "Bohicon"
+012252        ; 10     ; FIXED_LINE           ; STANDARD_RATE ;           ; "fmt_2/2/2/2/2" ; "BJ"    ; "Covè"                                 ; "Covè"
+012253        ; 10     ; FIXED_LINE           ; STANDARD_RATE ;           ; "fmt_2/2/2/2/2" ; "BJ"    ; "Dassa-Zoumé"                          ; "Dassa-Zoumé"
+012254        ; 10     ; FIXED_LINE           ; STANDARD_RATE ;           ; "fmt_2/2/2/2/2" ; "BJ"    ; "Savalou"                              ; "Savalou"
+012255        ; 10     ; FIXED_LINE           ; STANDARD_RATE ;           ; "fmt_2/2/2/2/2" ; "BJ"    ; "Savè"                                 ; "Savè"
+01225[6-8]    ; 10     ; FIXED_LINE           ; STANDARD_RATE ;           ; "fmt_2/2/2/2/2" ; "BJ"
+0123[0-579]   ; 10     ; FIXED_LINE           ; STANDARD_RATE ;           ; "fmt_2/2/2/2/2" ; "BJ"
+01236[04689]  ; 10     ; FIXED_LINE           ; STANDARD_RATE ;           ; "fmt_2/2/2/2/2" ; "BJ"
+012361        ; 10     ; FIXED_LINE           ; STANDARD_RATE ;           ; "fmt_2/2/2/2/2" ; "BJ"    ; "Parakou"                              ; "Parakou"
+012362        ; 10     ; FIXED_LINE           ; STANDARD_RATE ;           ; "fmt_2/2/2/2/2" ; "BJ"    ; "Nikki/Ndali"                          ; "Nikki/Ndali"
+012363        ; 10     ; FIXED_LINE           ; STANDARD_RATE ;           ; "fmt_2/2/2/2/2" ; "BJ"    ; "Kandi/Gogounou/Ségbana"               ; "Kandi/Gogounou/Ségbana"
+012365        ; 10     ; FIXED_LINE           ; STANDARD_RATE ;           ; "fmt_2/2/2/2/2" ; "BJ"    ; "Banikoara"                            ; "Banikoara"
+012367        ; 10     ; FIXED_LINE           ; STANDARD_RATE ;           ; "fmt_2/2/2/2/2" ; "BJ"    ; "Malanville"                           ; "Malanville"
+012380        ; 10     ; FIXED_LINE           ; STANDARD_RATE ;           ; "fmt_2/2/2/2/2" ; "BJ"    ; "Djougou"                              ; "Djougou"
+01238[14-9]   ; 10     ; FIXED_LINE           ; STANDARD_RATE ;           ; "fmt_2/2/2/2/2" ; "BJ"
+012382        ; 10     ; FIXED_LINE           ; STANDARD_RATE ;           ; "fmt_2/2/2/2/2" ; "BJ"    ; "Natitingou"                           ; "Natitingou"
+012383        ; 10     ; FIXED_LINE           ; STANDARD_RATE ;           ; "fmt_2/2/2/2/2" ; "BJ"    ; "Tanguiéta"                            ; "Tanguiéta"
+0124          ; 10     ; FIXED_LINE           ; STANDARD_RATE ;           ; "fmt_2/2/2/2/2" ; "BJ"    ; "Tanguiéta"                            ; "Tanguiéta"
+012[5-9]      ; 10     ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ;           ; "fmt_2/2/2/2/2" ; "BJ"    ;                                        ;                                        ; ITU
+014[01347-9]  ; 10     ; MOBILE               ; STANDARD_RATE ; "celtiis" ; "fmt_2/2/2/2/2" ; "BJ"    ;                                        ;                                        ; IR21
+014[26]       ; 10     ; MOBILE               ; STANDARD_RATE ; "mtn"     ; "fmt_2/2/2/2/2" ; "BJ"    ;                                        ;                                        ; ITU
+0145          ; 10     ; MOBILE               ; STANDARD_RATE ; "moov"    ; "fmt_2/2/2/2/2" ; "BJ"    ;                                        ;                                        ; ITU
+015[0-4679]   ; 10     ; MOBILE               ; STANDARD_RATE ; "mtn"     ; "fmt_2/2/2/2/2" ; "BJ"    ;                                        ;                                        ; ITU
+015[58]       ; 10     ; MOBILE               ; STANDARD_RATE ; "moov"    ; "fmt_2/2/2/2/2" ; "BJ"    ;                                        ;                                        ; ITU
+016[03-58]    ; 10     ; MOBILE               ; STANDARD_RATE ; "moov"    ; "fmt_2/2/2/2/2" ; "BJ"    ;                                        ;                                        ; ITU
+016[12679]    ; 10     ; MOBILE               ; STANDARD_RATE ; "mtn"     ; "fmt_2/2/2/2/2" ; "BJ"    ;                                        ;                                        ; ITU
+019[0167]     ; 10     ; MOBILE               ; STANDARD_RATE ; "mtn"     ; "fmt_2/2/2/2/2" ; "BJ"    ;                                        ;                                        ; ITU
+019[23]       ; 10     ; MOBILE               ; STANDARD_RATE ; "celtiis" ; "fmt_2/2/2/2/2" ; "BJ"    ;                                        ;                                        ; IR21
+019[45]       ; 10     ; MOBILE               ; STANDARD_RATE ; "moov"    ; "fmt_2/2/2/2/2" ; "BJ"    ;                                        ;                                        ; ITU
+019[89]       ; 10     ; MOBILE               ; STANDARD_RATE ; "moov"    ; "fmt_2/2/2/2/2" ; "BJ"
+81            ; 8      ; UAN                  ; STANDARD_RATE ;           ; "fmt1_2/2/2/2"  ; "BJ"    ;                                        ;                                        ; ITU
+857[58]       ; 8      ; VOIP                 ; STANDARD_RATE ;           ; "fmt1_2/2/2/2"  ; "BJ"    ;                                        ;                                        ; ITU
