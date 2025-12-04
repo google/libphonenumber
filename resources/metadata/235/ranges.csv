@@ -8,5 +8,5 @@ Prefix    ; Length ; Type       ; Tariff        ; Operator ; Format         ; Re
 67        ; 8      ; MOBILE     ; STANDARD_RATE ; "airtel" ; "fmt1_2/2/2/2" ; "TD"    ; IR21
 69        ; 8      ; MOBILE     ; STANDARD_RATE ; "airtel" ; "fmt1_2/2/2/2" ; "TD"    ;            ; "User report"
 77        ; 8      ; MOBILE     ; STANDARD_RATE ; "sotel"  ; "fmt1_2/2/2/2" ; "TD"    ; GOVERNMENT
-8[56]     ; 8      ; MOBILE     ; STANDARD_RATE ; "airtel" ; "fmt1_2/2/2/2" ; "TD"    ; IR21
+8[5-7]    ; 8      ; MOBILE     ; STANDARD_RATE ; "airtel" ; "fmt1_2/2/2/2" ; "TD"    ; IR21
 9         ; 8      ; MOBILE     ; STANDARD_RATE ; "tigo"   ; "fmt1_2/2/2/2" ; "TD"    ; GOVERNMENT

@@ -40,6 +40,7 @@ Prefix     ; Length ; Type                 ; Tariff        ; Operator   ; Format
 70[056]    ; 8      ; MOBILE               ; STANDARD_RATE ; "cellplus" ; "fmt2_4/4" ; "MU"    ;                  ;                  ;                   ; ITU
 70[134]    ; 8      ; MOBILE               ; STANDARD_RATE ; "emtel"    ; "fmt2_4/4" ; "MU"    ;                  ;                  ;                   ; IR21
 702        ; 8      ; MOBILE               ; STANDARD_RATE ; "mtml"     ; "fmt2_4/4" ; "MU"    ;                  ;                  ;                   ; ITU
+707        ; 8      ; MOBILE               ; STANDARD_RATE ; "emtel"    ; "fmt2_4/4" ; "MU"    ;                  ;                  ;                   ; ITU
 730        ; 8      ; MOBILE               ; STANDARD_RATE ; "emtel"    ; "fmt2_4/4" ; "MU"    ;                  ;                  ;                   ; IR21
 731        ; 8      ; MOBILE               ; STANDARD_RATE ; "mtml"     ; "fmt2_4/4" ; "MU"    ;                  ;                  ;                   ; ITU
 733        ; 8      ; MOBILE               ; STANDARD_RATE ; "cellplus" ; "fmt2_4/4" ; "MU"    ;                  ;                  ;                   ; ITU

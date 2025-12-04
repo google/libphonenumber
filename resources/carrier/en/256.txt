@@ -6,7 +6,8 @@
 256726|LycaMobile
 256727|LycaMobile
 256728|Talkio
-25673|Hamilton Telecom
+256730|Airtel
+256736|Hamilton Telecom
 25674|Airtel
 25675|Airtel
 25676|MTN

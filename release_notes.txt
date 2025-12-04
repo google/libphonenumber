@@ -1,3 +1,10 @@
+Dec 04, 2025: v9.0.20
+Metadata changes:
+ - Updated phone metadata for region code(s): GY, IL, MU, TD, TZ, UG, UZ
+ - New geocoding data for country calling code(s): 229 (en)
+ - Updated carrier data for country calling code(s):
+   34 (en), 230 (en), 255 (en), 256 (en), 998 (en)
+
 Nov 19, 2025: v9.0.19
 Metadata changes:
  - Updated phone metadata for region code(s):
