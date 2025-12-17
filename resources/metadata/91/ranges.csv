@@ -210,7 +210,7 @@ Prefix            ; Length ; Type                 ; Tariff        ; Area Code Le
 1595[2-7]         ; 10     ; FIXED_LINE           ; STANDARD_RATE ; 4                ; false         ;                ; "fixed_4/3/3"      ; "IN"    ; "Jhunjhunu/Bissau, Rajasthan"
 1596[2-7]         ; 10     ; FIXED_LINE           ; STANDARD_RATE ; 4                ; false         ;                ; "fixed_4/3/3"      ; "IN"    ; "Chirawa, Rajasthan"
 159[7-9][2-7]     ; 10     ; FIXED_LINE           ; STANDARD_RATE ; 4                ; false         ;                ; "fixed_4/3/3"      ; "IN"
-1600              ; 10     ; FIXED_LINE           ; TOLL_FREE     ;                  ; true          ;                ; "varcost_4/2-4/4"  ; "IN"
+160[01]           ; 10     ; MOBILE               ; STANDARD_RATE ;                  ; false         ;                ; "mobile_5/5"       ; "IN"
 160[2-7]          ; 10     ; FIXED_LINE           ; STANDARD_RATE ; 3                ; false         ;                ; "fixed_3/3/4"      ; "IN"    ; "Kharar, Punjab"
 161[2-7]          ; 10     ; FIXED_LINE           ; STANDARD_RATE ; 3                ; false         ;                ; "fixed_3/3/4"      ; "IN"    ; "Ludhiana, Punjab"
 162[0-35-79][2-7] ; 10     ; FIXED_LINE           ; STANDARD_RATE ; 3                ; false         ;                ; "fixed_3/3/4"      ; "IN"

@@ -2675,6 +2675,7 @@
 5675298|Vtr Banda Ancha (Chile) S.A.
 569100|WOM
 569101|Pacifico Cable S.P.A.
+569102|Pacifico Cable S.P.A.
 56930|WOM
 569304|Claro
 569310|WOM

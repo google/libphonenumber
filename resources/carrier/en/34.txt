@@ -129,6 +129,7 @@
 346214|Republica Movil
 346215|Aire Networks
 346216|Republica Movil
+346218|Vodafone
 34622|Yoigo
 346230|Yoigo
 346231|Yoigo

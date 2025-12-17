@@ -30,15 +30,12 @@ Prefix        ; Length ; Type       ; Tariff        ; Area Code Length ; Nationa
 3136[0-57-9]  ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ;                  ; "fmt_2/3/3-4" ; "HU"    ;                     ;                     ; UNKNOWN
 31366[0-57-9] ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ;                  ; "fmt_2/3/3-4" ; "HU"    ;                     ;                     ; UNKNOWN
 313666        ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ; "one"            ; "fmt_2/3/3-4" ; "HU"    ;                     ;                     ; IR21
-31700[0-4]    ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ; "tarr"           ; "fmt_2/3/3-4" ; "HU"    ;                     ;                     ; IR21
-31700[5-9]    ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ;                  ; "fmt_2/3/3-4" ; "HU"    ;                     ;                     ; UNKNOWN
-3170[1-9]     ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ;                  ; "fmt_2/3/3-4" ; "HU"    ;                     ;                     ; UNKNOWN
+317[09]0      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ; "one"            ; "fmt_2/3/3-4" ; "HU"    ;                     ;                     ; IR21
+317[09][1-9]  ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ;                  ; "fmt_2/3/3-4" ; "HU"    ;                     ;                     ; UNKNOWN
 317[1-6]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ;                  ; "fmt_2/3/3-4" ; "HU"    ;                     ;                     ; UNKNOWN
-3177[01]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ; "upc"            ; "fmt_2/3/3-4" ; "HU"    ;                     ;                     ; GOVERNMENT
+3177[01]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ; "one"            ; "fmt_2/3/3-4" ; "HU"    ;                     ;                     ; IR21
 3177[2-9]     ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ;                  ; "fmt_2/3/3-4" ; "HU"    ;                     ;                     ; UNKNOWN
-3178          ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ; "upc"            ; "fmt_2/3/3-4" ; "HU"    ;                     ;                     ; GOVERNMENT
-31790         ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ; "upc"            ; "fmt_2/3/3-4" ; "HU"    ;                     ;                     ; GOVERNMENT
-3179[1-9]     ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ;                  ; "fmt_2/3/3-4" ; "HU"    ;                     ;                     ; UNKNOWN
+3178          ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ; "one"            ; "fmt_2/3/3-4" ; "HU"    ;                     ;                     ; IR21
 32            ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                  ; "fixed_2/3/3" ; "HU"    ; "Salgotarjan"       ; "Salgótarján"
 33            ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                  ; "fixed_2/3/3" ; "HU"    ; "Esztergom"         ; "Esztergom"
 34            ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                  ; "fixed_2/3/3" ; "HU"    ; "Tatabanya"         ; "Tatabánya"
@@ -55,7 +52,7 @@ Prefix        ; Length ; Type       ; Tariff        ; Area Code Length ; Nationa
 48            ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                  ; "fixed_2/3/3" ; "HU"    ; "Ozd"               ; "Ózd"
 49            ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                  ; "fixed_2/3/3" ; "HU"    ; "Mezokovesd"        ; "Mezőkövesd"
 50[03-7]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ;                  ; "fmt_2/3/3-4" ; "HU"    ;                     ;                     ; UNKNOWN
-50[12]        ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ; "digi"           ; "fmt_2/3/3-4" ; "HU"    ;                     ;                     ; IR21
+50[12]        ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ; "one"            ; "fmt_2/3/3-4" ; "HU"    ;                     ;                     ; IR21
 50[89]        ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ; "mvm_net"        ; "fmt_2/3/3-4" ; "HU"
 52            ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                  ; "fixed_2/3/3" ; "HU"    ; "Debrecen"          ; "Debrecen"
 53            ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                  ; "fixed_2/3/3" ; "HU"    ; "Cegled"            ; "Cegléd"

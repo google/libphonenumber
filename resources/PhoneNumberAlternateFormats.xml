@@ -2601,6 +2601,7 @@
              been seen online. Some common ones are listed below. -->
         <numberFormat pattern="(\d{2})(\d{2})(\d{6})">
           <leadingDigits>
+            160[01]|
             6(?:
               [09]|
               2(?:
@@ -2701,6 +2702,7 @@
         </numberFormat>
         <numberFormat pattern="(\d{2})(\d{2})(\d{2})(\d{2})(\d{2})">
           <leadingDigits>
+            160[01]|
             6(?:
               [09]|
               2(?:
