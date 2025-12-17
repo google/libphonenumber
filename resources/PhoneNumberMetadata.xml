@@ -6205,46 +6205,30 @@
                 160|
                 962
               )|
-              2\d{3}|
               3(?:
                 (?:
                   2\d|
                   50
                 )\d|
                 3(?:
-                  [03467]\d|
+                  [034679]\d|
                   1[0-35-9]|
                   2[1-9]|
                   5[0-24-9]|
-                  8[0-389]|
-                  9[0-8]
+                  8[0-389]
                 )|
                 600
               )|
               646[59]
             )|
             (?:
-              (?:
-                3[2-5]|
-                [47][1-35]|
-                5[1-3578]
-              )\d|
-              6(?:
-                00|
-                [13-57]\d
-              )|
-              8(?:
-                0[1-9]|
-                [1-9]\d
-              )
+              600|
+              80[1-9]
             )\d\d|
             9(?:
               (?:
-                10[01]|
-                (?:
-                  [2458]\d|
-                  7[1-9]
-                )\d
+                10[0-2]|
+                7[1-9]\d
               )\d|
               3(?:
                 [0-57-9]\d\d|
@@ -6272,7 +6256,16 @@
                 )
               )
             )
-          )\d{4}
+          )\d{4}|
+          (?:
+            22|
+            3[2-5]|
+            [47][1-35]|
+            5[1-3578]|
+            6[13-57]|
+            8[1-9]|
+            9[2458]
+          )\d{7}
         </nationalNumberPattern>
       </fixedLine>
       <!-- Supported 9[23] mobile ranges as per user report. -->
@@ -6290,43 +6283,27 @@
                 160|
                 962
               )|
-              2\d{3}|
               3(?:
                 (?:
                   2\d|
                   50
                 )\d|
                 3(?:
-                  [03467]\d|
+                  [034679]\d|
                   1[0-35-9]|
                   2[1-9]|
                   5[0-24-9]|
-                  8[0-389]|
-                  9[0-8]
+                  8[0-389]
                 )|
                 600
               )|
               646[59]
             )|
-            (?:
-              (?:
-                3[2-5]|
-                [47][1-35]|
-                5[1-3578]|
-                6[13-57]
-              )\d|
-              8(?:
-                0[1-8]|
-                [1-9]\d
-              )
-            )\d\d|
+            80[1-8]\d\d|
             9(?:
               (?:
-                10[01]|
-                (?:
-                  [2458]\d|
-                  7[1-9]
-                )\d
+                10[0-2]|
+                7[1-9]\d
               )\d|
               3(?:
                 [0-57-9]\d\d|
@@ -6354,7 +6331,16 @@
                 )
               )
             )
-          )\d{4}
+          )\d{4}|
+          (?:
+            22|
+            3[2-5]|
+            [47][1-35]|
+            5[1-3578]|
+            6[13-57]|
+            8[1-9]|
+            9[2458]
+          )\d{7}
         </nationalNumberPattern>
       </mobile>
       <!-- Toll free patterns have been collected by looking at numbers on the internet, rather than
@@ -10116,10 +10102,7 @@
                     0[2-6]|
                     1\d
                   )|
-                  (?:
-                    2[0-59]|
-                    [3-79]\d
-                  )\d
+                  [2-79]\d\d
                 )\d
               )|
               2(?:
@@ -10514,50 +10497,21 @@
         <possibleLengths national="9" localOnly="7"/>
         <exampleNumber>111112345</exampleNumber>
         <nationalNumberPattern>
-          11667[01]\d{3}|
           (?:
             11(?:
-              1(?:
-                1[1-468]|
-                2[2-7]|
-                3[1-5]|
-                5[5-8]|
-                8[6-8]
-              )|
-              2(?:
-                13|
-                3[6-8]|
-                5[89]|
-                7[05-9]|
-                8[2-6]
-              )|
+              [124]\d\d|
               3(?:
-                2[01]|
-                3[0-289]|
-                4[1289]|
-                7[1-4]|
-                87
-              )|
-              4(?:
-                1[69]|
-                3[2-49]|
-                4[0-3]|
-                6[5-8]|
-                7\d
+                [0-79]\d|
+                8[0-7]
               )|
               5(?:
-                1[578]|
-                44|
-                5[0-4]
+                [02-9]\d|
+                1[0-57-9]
               )|
               6(?:
-                1[578]|
-                2[69]|
-                39|
-                4[5-7]|
-                5[0-5]|
-                6[0-59]|
-                8[015-8]
+                [02-79]\d|
+                1[0-57-9]|
+                8[0-8]
               )
             )|
             2(?:
@@ -12055,7 +12009,7 @@
                   [03][01]|
                   [124]\d|
                   5[2-6]|
-                  7[0-4]
+                  7[0-6]
                 )|
                 4\d\d
               )|
@@ -13297,7 +13251,7 @@
             6\d\d|
             7(?:
               [0-5]\d|
-              6[0-49]|
+              6[0-59]|
               70
             )
           )\d{4}
@@ -13413,12 +13367,12 @@
                 6[0-6]
               )|
               7(?:
-                3[0-4]|
                 4[0-48]|
                 6[0-5]
               )
             )|
             5(?:
+              25[3-7]|
               35[4-8]|
               73[0-6]|
               95[0-8]
@@ -13449,7 +13403,7 @@
             4(?:
               4[0-35-9]|
               6[0-357-9]|
-              7[0-25]
+              7[0-35]
             )|
             5(?:
               [1-59][0-46-9]|
@@ -15235,23 +15189,16 @@
              in some ranges). -->
         <numberFormat pattern="(\d{5})(\d{5})" nationalPrefixFormattingRule="$NP$FG"
                       nationalPrefixOptionalWhenFormatting="true">
-          <leadingDigits>[6-9]</leadingDigits>
+          <leadingDigits>
+            16|
+            [6-9]
+          </leadingDigits>
           <format>$1 $2</format>
         </numberFormat>
         <!-- 10-12 digit toll free and shared cost numbers. -->
         <numberFormat pattern="(\d{4})(\d{2,4})(\d{4})" nationalPrefixOptionalWhenFormatting="true">
-          <leadingDigits>
-            1(?:
-              6|
-              8[06]
-            )
-          </leadingDigits>
-          <leadingDigits>
-            1(?:
-              6|
-              8[06]0
-            )
-          </leadingDigits>
+          <leadingDigits>18[06]</leadingDigits>
+          <leadingDigits>18[06]0</leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
         <!-- 13-digit ITFS -->
@@ -15279,10 +15226,7 @@
       <noInternationalDialling>
         <possibleLengths national="[8-13]"/>
         <nationalNumberPattern>
-          1(?:
-            600\d{6}|
-            800\d{4,9}
-          )|
+          1800\d{4,9}|
           (?:
             000800|
             18(?:
@@ -15544,6 +15488,7 @@
             )
           )\d{5}|
           (?:
+            160[01]|
             6(?:
               12|
               [2-47]1|
@@ -15712,12 +15657,9 @@
         <exampleNumber>1800123456</exampleNumber>
         <nationalNumberPattern>
           000800\d{7}|
-          1(?:
-            600\d{6}|
-            80(?:
-              0\d{4,9}|
-              3\d{9}
-            )
+          180(?:
+            0\d{4,9}|
+            3\d{9}
           )
         </nationalNumberPattern>
       </tollFree>
@@ -18634,6 +18576,7 @@
               22|
               33|
               44|
+              5[15]|
               66|
               77|
               88|
@@ -18647,8 +18590,11 @@
             )|
             8(?:
               00|
+              11|
               33|
+              44|
               55|
+              66|
               77|
               99
             )
@@ -20658,7 +20604,7 @@
       <mobile>
         <possibleLengths national="9"/>
         <exampleNumber>321234567</exampleNumber>
-        <nationalNumberPattern>3[2-46-9]\d{7}</nationalNumberPattern>
+        <nationalNumberPattern>3[2-9]\d{7}</nationalNumberPattern>
       </mobile>
       <!-- Putting VSAT numbers here. -->
       <voip>
@@ -26977,7 +26923,7 @@
         <nationalNumberPattern>
           89(?:
             8[02-9]|
-            90
+            9[0-4]
           )\d{4}|
           (?:
             8(?:
@@ -27913,15 +27859,7 @@
       <mobile>
         <possibleLengths national="8"/>
         <exampleNumber>70123456</exampleNumber>
-        <nationalNumberPattern>
-          (?:
-            5(?:
-              00[0-4]|
-              100
-            )|
-            [67]\d{3}
-          )\d{4}
-        </nationalNumberPattern>
+        <nationalNumberPattern>[5-7]\d{7}</nationalNumberPattern>
       </mobile>
       <!-- Toll free numbers are either 800 NNNN or 800 NNNN NNNN. -->
       <tollFree>
@@ -29925,7 +29863,7 @@
               2[013-79]|
               3[0-24679]|
               4[167]|
-              5[0-2]|
+              5[0-3]|
               6[01349]|
               8[056]
             )|
@@ -30030,7 +29968,7 @@
               2[013-79]|
               3[0-24679]|
               4[167]|
-              5[0-2]|
+              5[0-3]|
               6[01349]|
               8[056]
             )|
