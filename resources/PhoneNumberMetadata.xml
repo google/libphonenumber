@@ -3686,7 +3686,7 @@
       </fixedLine>
       <mobile>
         <possibleLengths national="9"/>
-        <exampleNumber>470123456</exampleNumber>
+        <exampleNumber>4120654321</exampleNumber>
         <nationalNumberPattern>4[5-9]\d{7}</nationalNumberPattern>
       </mobile>
       <tollFree>
