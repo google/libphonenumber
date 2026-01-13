@@ -15,6 +15,7 @@
 # Translations of en/852.txt from each carrier's wikipedia page and in
 # some cases the carrier's own home page.
 
+85240|中国移动
 852440|中国移动
 852441|香港移动通讯
 852442|和記電話有限公司
@@ -214,10 +215,10 @@
 852578|香港移动通讯
 852579|香港移动通讯
 852590|香港移动通讯
-8525906|21Vianet
-8525907|21Vianet
-8525908|Lycamobile
-8525909|Lycamobile
+8525906|中国移动
+8525907|中国移动
+8525908|中国移动
+8525909|中国移动
 852591|香港移动通讯
 852592|香港移动通讯
 852593|中国移动
