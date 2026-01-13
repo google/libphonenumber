@@ -497,7 +497,7 @@ Prefix        ; Length ; Type            ; Tariff        ; National Only ; Opera
 60100         ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "softbank"               ; "fmt10_2/4/4"      ;              ; "JP"    ;                             ;            ; GOVERNMENT
 60110         ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "kddi"                   ; "fmt10_2/4/4"      ;              ; "JP"    ;                             ;            ; GOVERNMENT
 60120         ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "rakuten_communications" ; "fmt10_2/4/4"      ;              ; "JP"    ;                             ;            ; GOVERNMENT
-60130         ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "okinawa_cellular"       ; "fmt10_2/4/4"      ;              ; "JP"    ;                             ;            ; GOVERNMENT
+60130         ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "kddi"                   ; "fmt10_2/4/4"      ;              ; "JP"    ;                             ;            ; IR21
 60140         ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "nttdocomo"              ; "fmt10_2/4/4"      ;              ; "JP"    ;                             ;            ; GOVERNMENT
 6[1-9]        ; 9      ; FIXED_LINE      ; STANDARD_RATE ; false         ;                          ; "fixed_1/4/4"      ;              ; "JP"    ; "Osaka, Osaka"              ; "大阪"
 7010          ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "nttdocomo"              ; "fmt10_2/4/4"      ;              ; "JP"    ;                             ;            ; GOVERNMENT

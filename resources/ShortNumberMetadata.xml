@@ -2446,7 +2446,7 @@
     </territory>
 
     <!-- Switzerland (CH) -->
-    <!-- http://www.bakom.admin.ch/themen/telekom/00479/00604/index.html?lang=en -->
+    <!-- https://www.bakom.admin.ch/en/numbering-and-telephony -->
     <!-- http://en.wikipedia.org/wiki/Telephone_numbers_in_Switzerland#Short_numbers -->
     <!-- http://csi.sunrise.ch/smartzone/_privat -->
     <territory id="CH">

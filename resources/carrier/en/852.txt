@@ -21,6 +21,7 @@
 # now on hold, so carrier details are removed for these prefixes. Prefix 9057 is
 # assigned to HKT based on user report.
 
+85240|China Mobile
 852440|China Mobile
 852441|HKT
 852442|Hutchison Telecom
@@ -220,10 +221,10 @@
 852578|HKT
 852579|HKT
 852590|HKT
-8525906|21Vianet
-8525907|21Vianet
-8525908|Lycamobile
-8525909|Lycamobile
+8525906|China Mobile
+8525907|China Mobile
+8525908|China Mobile
+8525909|China Mobile
 852591|HKT
 852592|HKT
 852593|China Mobile

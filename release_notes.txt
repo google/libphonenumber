@@ -1,3 +1,13 @@
+Jan 13, 2026: v9.0.22
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   AE, AG, AI, AS, BB, BM, BS, CA, DM, DO, GD, GU, HK, JM, KN, KR, KY, LC, MA,
+   MP, MS, PR, SG, SX, TC, TT, UG, US, VC, VG, VI
+ - Updated geocoding data for country calling code(s): 1305 (en)
+ - Updated carrier data for country calling code(s):
+   33 (en), 34 (en), 39 (en), 41 (en), 65 (en), 81 (en), 255 (en), 256 (en),
+   852 (en, zh, zh_Hant), 971 (en)
+
 Dec 17, 2025: v9.0.21
 Metadata changes:
  - Updated alternate formatting data for country calling code(s): 91

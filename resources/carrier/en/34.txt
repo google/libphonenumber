@@ -99,8 +99,7 @@
 346047|Lebara
 346048|Lebara
 346049|Lebara
-34605|Orange
-3460529|MasMovil
+34605|Vodafone
 34606|Movistar
 34607|Vodafone
 34608|Movistar

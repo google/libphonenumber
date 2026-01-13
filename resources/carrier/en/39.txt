@@ -23,6 +23,7 @@
 39377|Vodafone
 393780|spusu
 393784|Vodafone
+39379|Vodafone
 3938|WIND
 39383|Vodafone
 3939|3 Italia
