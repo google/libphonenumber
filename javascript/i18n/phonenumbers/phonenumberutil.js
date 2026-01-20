@@ -43,8 +43,8 @@ goog.require('i18n.phonenumbers.PhoneNumber');
 goog.require('i18n.phonenumbers.PhoneNumber.CountryCodeSource');
 goog.require('i18n.phonenumbers.PhoneNumberDesc');
 goog.require('i18n.phonenumbers.metadata');
-
-
+// XXX: closure wants this, but the tests fail with it. Circular ref?
+//goog.require('i18n.phonenumbers.PhoneNumberMatcher');
 
 /**
  * @constructor
@@ -102,6 +102,8 @@ i18n.phonenumbers.PhoneNumberUtil.NANPA_COUNTRY_CODE_ = 1;
  */
 i18n.phonenumbers.PhoneNumberUtil.MIN_LENGTH_FOR_NSN_ = 2;
 
+/** Flags to use when compiling regular expressions for phone numbers. */
+i18n.phonenumbers.PhoneNumberUtil.REGEX_FLAGS = 'i'; // XXX: need ES6 regex for 'u' flag.  Not sure about g...
 
 /**
  * The ITU says the maximum length should be 15, but we have found longer
@@ -931,6 +933,18 @@ i18n.phonenumbers.PhoneNumberUtil.createExtnPattern_ =
           + onlyCommasExtn;
 };
 
+// For parsing, we are slightly more lenient in our interpretation than for matching. Here we
+// allow "comma" and "semicolon" as possible extension indicators. When matching, these are
+// hardly ever used to indicate this.
+i18n.phonenumbers.PhoneNumberUtil.EXTN_PATTERNS_FOR_MATCHING =
+    i18n.phonenumbers.PhoneNumberUtil.RFC3966_EXTN_PREFIX_ +
+    i18n.phonenumbers.PhoneNumberUtil.CAPTURING_EXTN_DIGITS_ + '|' +
+    '[ \u00A0\\t,]*' +
+    '(?:e?xt(?:ensi(?:o\u0301?|\u00F3))?n?|\uFF45?\uFF58\uFF54\uFF4E?|' +
+    '[x\uFF58#\uFF03~\uFF5E]|int|anexo|\uFF49\uFF4E\uFF54)' +
+    '[:\\.\uFF0E]?[ \u00A0\\t,-]*' + 
+    i18n.phonenumbers.PhoneNumberUtil.CAPTURING_EXTN_DIGITS_ + '#?|' +
+    '[- ]+(' + i18n.phonenumbers.PhoneNumberUtil.VALID_DIGITS_ + '{1,5})#';
 
 /**
  * Regexp of all known extension prefixes used by different regions followed by
@@ -1134,6 +1148,104 @@ i18n.phonenumbers.PhoneNumberUtil.ValidationResult = {
   TOO_LONG: 3
 };
 
+/**
+ * Leniency when {@linkplain PhoneNumberUtil#findNumbers finding} potential phone numbers in text
+ * segments. The levels here are ordered in increasing strictness.
+ */
+ i18n.phonenumbers.PhoneNumberUtil.Leniency = {
+  /**
+   * Phone numbers accepted are {@linkplain PhoneNumberUtil#isPossibleNumber(PhoneNumber)
+   * possible}, but not necessarily {@linkplain PhoneNumberUtil#isValidNumber(PhoneNumber) valid}.
+   */
+  POSSIBLE: {
+    value: 0,
+    verify: function(number, candidate, util) {
+      return util.isPossibleNumber(number);
+    }
+  },
+  /**
+   * Phone numbers accepted are {@linkplain PhoneNumberUtil#isPossibleNumber(PhoneNumber)
+   * possible} and {@linkplain PhoneNumberUtil#isValidNumber(PhoneNumber) valid}. Numbers written
+   * in national format must have their national-prefix present if it is usually written for a
+   * number of this type.
+   */
+  VALID: {
+    value: 1,
+    verify: function(number, candidate, util) {
+      if (!util.isValidNumber(number)
+          || !i18n.phonenumbers.PhoneNumberMatcher.containsOnlyValidXChars(
+            number, candidate, util))
+      {
+        return false;
+      }
+      return i18n.phonenumbers.PhoneNumberMatcher.isNationalPrefixPresentIfRequired(
+        number, util
+      );
+    }
+  },
+  /**
+   * Phone numbers accepted are {@linkplain PhoneNumberUtil#isValidNumber(PhoneNumber) valid} and
+   * are grouped in a possible way for this locale. For example, a US number written as
+   * "65 02 53 00 00" and "650253 0000" are not accepted at this leniency level, whereas
+   * "650 253 0000", "650 2530000" or "6502530000" are.
+   * Numbers with more than one '/' symbol in the national significant number are also dropped at
+   * this level.
+   * <p>
+   * Warning: This level might result in lower coverage especially for regions outside of country
+   * code "+1". If you are not sure about which level to use, email the discussion group
+   * libphonenumber-discuss@googlegroups.com.
+   */
+  STRICT_GROUPING: {
+    value: 2,
+    verify: function(number, candidate, util) {
+      if (!util.isValidNumber(number)
+          || !i18n.phonenumbers.PhoneNumberMatcher.containsOnlyValidXChars(number, candidate, util)
+          || i18n.phonenumbers.PhoneNumberMatcher.containsMoreThanOneSlashInNationalNumber(number, candidate)
+          || !i18n.phonenumbers.PhoneNumberMatcher.isNationalPrefixPresentIfRequired(number, util))
+      {
+        return false;
+      }
+      return i18n.phonenumbers.PhoneNumberMatcher.checkNumberGroupingIsValid(
+        number, candidate, util, {
+          checkGroups: function(util, number, normalizedCandidate, expectedNumberGroups) {
+            return i18n.phonenumbers.PhoneNumberMatcher.allNumberGroupsRemainGrouped(
+              util, number, normalizedCandidate, expectedNumberGroups);
+          }
+        }
+      );
+    }
+  },
+  /**
+   * Phone numbers accepted are {@linkplain PhoneNumberUtil#isValidNumber(PhoneNumber) valid} and
+   * are grouped in the same way that we would have formatted it, or as a single block. For
+   * example, a US number written as "650 2530000" is not accepted at this leniency level, whereas
+   * "650 253 0000" or "6502530000" are.
+   * Numbers with more than one '/' symbol are also dropped at this level.
+   * <p>
+   * Warning: This level might result in lower coverage especially for regions outside of country
+   * code "+1". If you are not sure about which level to use, email the discussion group
+   * libphonenumber-discuss@googlegroups.com.
+   */
+  EXACT_GROUPING: {
+    value: 3,
+    verify: function(number, candidate, util) {
+      if (!util.isValidNumber(number)
+          || !i18n.phonenumbers.PhoneNumberMatcher.containsOnlyValidXChars(number, candidate, util)
+          || i18n.phonenumbers.PhoneNumberMatcher.containsMoreThanOneSlashInNationalNumber(number, candidate)
+          || !i18n.phonenumbers.PhoneNumberMatcher.isNationalPrefixPresentIfRequired(number, util)) {
+        return false;
+      }
+      return i18n.phonenumbers.PhoneNumberMatcher.checkNumberGroupingIsValid(
+          number, candidate, util, {
+            checkGroups: function(util, number, normalizedCandidate, expectedNumberGroups) {
+              return i18n.phonenumbers.PhoneNumberMatcher.allNumberGroupsAreExactlyPresent(
+                  util, number, normalizedCandidate, expectedNumberGroups);
+            }
+          }
+      );
+    }
+  }
+};
 
 /**
  * Attempts to extract a possible number from the string passed in. This
@@ -1259,6 +1371,19 @@ i18n.phonenumbers.PhoneNumberUtil.normalizeDigitsOnly = function(number) {
       i18n.phonenumbers.PhoneNumberUtil.DIGIT_MAPPINGS, true);
 };
 
+i18n.phonenumbers.PhoneNumberUtil.normalizeDigits = function(number, keepNonDigits) {
+  var normalizedDigits = "";
+  for (var i = 0; i < number.length; i++) {
+    var c = number.charAt(i);
+    var digit = parseInt(c, 10);
+    if (!isNaN(digit)) {
+      normalizedDigits += c;
+    } else if (keepNonDigits) {
+      normalizedDigits += c;
+    }
+  }
+  return normalizedDigits;
+}
 
 /**
  * Normalizes a string of characters representing a phone number. This strips
@@ -4394,6 +4519,21 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.parseHelper_ =
   return phoneNumber;
 };
 
+/**
+ * Parses a string and returns it in proto buffer format. This method differs from {@link #parse}
+ * in that it always populates the raw_input field of the protocol buffer with numberToParse as
+ * well as the country_code_source field.
+ *
+ * @param numberToParse  number that we are attempting to parse. This can contain formatting such
+ *     as +, ( and -, as well as a phone number extension.
+ * @param defaultRegion  region that we are expecting the number to be from. This is only used if
+ *     the number being parsed is not written in international format. The country calling code
+ *     for the number in this case would be stored as that of the default region supplied.
+ * @return  a phone number proto buffer filled with the parsed number
+ */
+i18n.phonenumbers.PhoneNumberUtil.prototype.parseAndKeepRawInput = function(numberToParse, defaultRegion) {
+  return this.parseHelper_(numberToParse, defaultRegion, true, true);
+};
 
 /**
  * Extracts the value of the phone-context parameter of numberToExtractFrom,
@@ -4731,6 +4871,36 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.isNationalNumberSuffixOfTheOther_ =
                               firstNumberNationalNumber);
 };
 
+/**
+ * Returns an iterable over all {@link PhoneNumberMatch PhoneNumberMatches} in {@code text}. This
+ * is a shortcut for {@link #findNumbers(CharSequence, String, Leniency, long)
+ * getMatcher(text, defaultRegion, Leniency.VALID, Long.MAX_VALUE)}.
+ *
+ * @param text  the text to search for phone numbers, null for no text
+ * @param defaultRegion  region that we are expecting the number to be from. This is only used if
+ *     the number being parsed is not written in international format. The country_code for the
+ *     number in this case would be stored as that of the default region supplied. May be null if
+ *     only international numbers are expected.
+ * @param leniency  the leniency to use when evaluating candidate phone numbers
+ * @param maxTries  the maximum number of invalid numbers to try before giving up on the text.
+ *     This is to cover degenerate cases where the text has a lot of false positives in it. Must
+ *     be {@code >= 0}.
+ */
+i18n.phonenumbers.PhoneNumberUtil.prototype.findNumbers = function(text, defaultRegion, leniency, maxTries) {
+  if (!this.isValidRegionCode_(defaultRegion)) {
+    throw new Error('Invalid region code: ' + defaultRegion);
+  }
+
+  leniency = leniency || i18n.phonenumbers.PhoneNumberUtil.Leniency.VALID;
+  maxTries = maxTries || 9223372036854775807; // Java Long.MAX_VALUE = 9,223,372,036,854,775,807
+  return new i18n.phonenumbers.PhoneNumberMatcher(
+    this,
+    text,
+    defaultRegion,
+    leniency,
+    maxTries
+  );
+};
 
 /**
  * Returns true if the number can be dialled from outside the region, or
