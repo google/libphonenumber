@@ -13,4 +13,4 @@ Prefix  ; Length ; Type       ; Tariff        ; Operator                   ; For
 8[36]   ; 9      ; MOBILE     ; STANDARD_RATE ; "vodacom"                  ; "fmt2_3/3/3"   ; "Africa/Kinshasa&Africa/Lubumbashi" ; "CD"    ;                                        ;                                         ; IR21
 88      ; 7      ; MOBILE     ; STANDARD_RATE ; "yozma_timeturns_sprl_ytt" ; "fmt3_2/2/3"   ; "Africa/Kinshasa&Africa/Lubumbashi" ; "CD"    ;                                        ;                                         ; WEB
 9[01]   ; 9      ; MOBILE     ; STANDARD_RATE ; "africell"                 ; "fmt2_3/3/3"   ; "Africa/Kinshasa&Africa/Lubumbashi" ; "CD"    ;                                        ;                                         ; IR21       ; "IR21 Date: 12/18/2018"
-9[7-9]  ; 9      ; MOBILE     ; STANDARD_RATE ; "airtel"                   ; "fmt2_3/3/3"   ; "Africa/Kinshasa&Africa/Lubumbashi" ; "CD"
+9[6-9]  ; 9      ; MOBILE     ; STANDARD_RATE ; "airtel"                   ; "fmt2_3/3/3"   ; "Africa/Kinshasa&Africa/Lubumbashi" ; "CD"

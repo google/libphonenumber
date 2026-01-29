@@ -9,7 +9,7 @@ Prefix     ; Length ; Type                 ; Tariff        ; Operator   ; Format
 320        ; 7      ; VOIP                 ; STANDARD_RATE ;            ; "fmt1_3/4" ; "MU"
 39         ; 7      ; VOIP                 ; STANDARD_RATE ;            ; "fmt1_3/4" ; "MU"
 4[013568]  ; 7      ; FIXED_LINE           ; STANDARD_RATE ;            ; "fmt1_3/4" ; "MU"    ; "Central Region" ; "Región Central" ; "Région Centrale"
-42[4-7]    ; 7      ; FIXED_LINE           ; STANDARD_RATE ;            ; "fmt1_3/4" ; "MU"    ; "Central Region" ; "Región Central" ; "Région Centrale"
+42[0-24-7] ; 7      ; FIXED_LINE           ; STANDARD_RATE ;            ; "fmt1_3/4" ; "MU"    ; "Central Region" ; "Región Central" ; "Région Centrale"
 428        ; 7      ; FIXED_LINE           ; STANDARD_RATE ;            ; "fmt1_3/4" ; "MU"    ; "Central Region" ; "Región Central" ; "Région Centrale" ;            ; "Added per client's request"
 471        ; 7      ; FIXED_LINE           ; STANDARD_RATE ;            ; "fmt1_3/4" ; "MU"    ; "Central Region" ; "Región Central" ; "Région Centrale" ;            ; "User report"
 490        ; 7      ; FIXED_LINE           ; STANDARD_RATE ;            ; "fmt1_3/4" ; "MU"    ; "Central Region" ; "Región Central" ; "Région Centrale" ;            ; "User report"

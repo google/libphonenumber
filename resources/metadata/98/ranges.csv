@@ -103,6 +103,7 @@ Prefix     ; Length ; Type       ; Tariff        ; Area Code Length ; National O
 934        ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "telekish"      ; "nongeo_3/3/3-4" ; "IR"    ;                              ;                       ; IR21
 94000[09]  ; 10     ; FIXED_LINE ; STANDARD_RATE ;                  ; false         ;                 ; "nongeo_3/3/3-4" ; "IR"
 9412       ; 10     ; FIXED_LINE ; STANDARD_RATE ;                  ; false         ;                 ; "nongeo_3/3/3-4" ; "IR"    ;                              ;                       ; ITU
+94200      ; 10     ; FIXED_LINE ; STANDARD_RATE ;                  ; false         ;                 ; "nongeo_3/3/3-4" ; "IR"    ;                              ;                       ; ITU
 942121     ; 10     ; FIXED_LINE ; STANDARD_RATE ;                  ; false         ;                 ; "nongeo_3/3/3-4" ; "IR"
 942[2689]0 ; 10     ; FIXED_LINE ; STANDARD_RATE ;                  ; false         ;                 ; "nongeo_3/3/3-4" ; "IR"
 9430[01]   ; 10     ; FIXED_LINE ; STANDARD_RATE ;                  ; false         ;                 ; "nongeo_3/3/3-4" ; "IR"
@@ -130,6 +131,7 @@ Prefix     ; Length ; Type       ; Tariff        ; Area Code Length ; National O
 9990       ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "ir_mci"        ; "nongeo_3/3/3-4" ; "IR"    ;                              ;                       ; IR21
 9991       ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "irancell"      ; "nongeo_3/3/3-4" ; "IR"    ;                              ;                       ; IR21
 99921      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; false         ;                 ; "nongeo_3/3/3-4" ; "IR"
+9993       ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "aptel"         ; "nongeo_3/3/3-4" ; "IR"    ;                              ;                       ; ITU
 9995       ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "ir_mci"        ; "nongeo_3/3/3-4" ; "IR"    ;                              ;                       ; TELECOMS
 99969      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "ir_mci"        ; "nongeo_3/3/3-4" ; "IR"    ;                              ;                       ; TELECOMS
 99977      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; false         ;                 ; "nongeo_3/3/3-4" ; "IR"
