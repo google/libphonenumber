@@ -166,8 +166,8 @@ Prefix         ; Length ; Type       ; Tariff        ; Operator                 
 4878[04-689]   ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ; GOVERNMENT
 4878[1-37]     ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 5[07]          ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ; GOVERNMENT
-51[01]         ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
-51[2-79]       ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ; GOVERNMENT
+51[02-79]      ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ; GOVERNMENT
+511            ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 518[02][0-7]   ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ; GOVERNMENT
 518[02][89]    ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 518[13-9]      ; 9      ; FIXED_LINE ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"

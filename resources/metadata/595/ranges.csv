@@ -1,6 +1,5 @@
 Prefix    ; Length ; Type       ; Tariff        ; Area Code Length ; Operator   ; Format           ; Regions ; Geocode:en                                                                                                   ; Provenance ; Comment
-[2-9]0    ; 6-9    ; UAN        ; STANDARD_RATE ;                  ;            ; "uan_3/3-6"      ; "PY"
-21        ; 7      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fixed_2/5"      ; "PY"    ; "Fernando De La Mora, Lambare, Limpio, Luque, Mariano Roque Alonso, San Antonio, Valle Pucu and Villa Elisa" ; ITU
+[2-9]0    ; 8,9    ; UAN        ; STANDARD_RATE ;                  ;            ; "uan_3/3-6"      ; "PY"
 21        ; 8,9    ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fixed_2/3/3-4"  ; "PY"    ; "Fernando De La Mora, Lambare, Limpio, Luque, Mariano Roque Alonso, San Antonio, Valle Pucu and Villa Elisa" ; ITU
 22[4-68]  ; 8      ; FIXED_LINE ; STANDARD_RATE ; 3                ;            ; "fixed_3/4-5"    ; "PY"
 22[4-68]  ; 9      ; FIXED_LINE ; STANDARD_RATE ; 3                ;            ; "fixed_3/3/3"    ; "PY"
@@ -22,6 +21,7 @@ Prefix    ; Length ; Type       ; Tariff        ; Area Code Length ; Operator   
 294       ; 9      ; FIXED_LINE ; STANDARD_RATE ; 3                ;            ; "fixed_3/3/3"    ; "PY"    ; "Itaugua"                                                                                                    ; ITU
 295       ; 8      ; FIXED_LINE ; STANDARD_RATE ; 3                ;            ; "fixed_3/4-5"    ; "PY"    ; "Jose Augusto Saldivar"                                                                                      ; ITU
 295       ; 9      ; FIXED_LINE ; STANDARD_RATE ; 3                ;            ; "fixed_3/3/3"    ; "PY"    ; "Jose Augusto Saldivar"                                                                                      ; ITU
+[36-9]0   ; 6,7    ; UAN        ; STANDARD_RATE ;                  ;            ; "uan_3/3-6"      ; "PY"
 318       ; 8      ; FIXED_LINE ; STANDARD_RATE ; 3                ;            ; "fixed_3/4-5"    ; "PY"    ; "Concepcion"                                                                                                 ; ITU
 318       ; 9      ; FIXED_LINE ; STANDARD_RATE ; 3                ;            ; "fixed_3/3/3"    ; "PY"    ; "Concepcion"                                                                                                 ; ITU
 32        ; 7      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fixed_2/5"      ; "PY"    ; "Horqueta"                                                                                                   ; ITU
@@ -40,7 +40,6 @@ Prefix    ; Length ; Type       ; Tariff        ; Area Code Length ; Operator   
 38        ; 8,9    ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fixed_2/3/3-4"  ; "PY"    ; "Bella Vista Norte"                                                                                          ; ITU
 39        ; 7      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fixed_2/5"      ; "PY"    ; "Yby Ja'U"                                                                                                   ; ITU
 39        ; 8,9    ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fixed_2/3/3-4"  ; "PY"    ; "Yby Ja'U"                                                                                                   ; ITU
-41        ; 7      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fixed_2/5"      ; "PY"    ; "Itacurubi Del Rosario"                                                                                      ; ITU
 41        ; 8,9    ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fixed_2/3/3-4"  ; "PY"    ; "Itacurubi Del Rosario"                                                                                      ; ITU
 42        ; 7      ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fixed_2/5"      ; "PY"    ; "San Pedro Del Ycua Mandyju"                                                                                 ; ITU
 42        ; 8,9    ; FIXED_LINE ; STANDARD_RATE ; 2                ;            ; "fixed_2/3/3-4"  ; "PY"    ; "San Pedro Del Ycua Mandyju"                                                                                 ; ITU
