@@ -315,7 +315,7 @@ to achieve this, please do so. Thanks!
 Certain countries' mobile and/or fixed line ranges may overlap or too granular,
 which may make accurate identification impossible. Eg: Argentina and Mexico.
 We tried incorporating such granular data (prefix of 7 digit for a 10 digit
-number). However, due to very high maintainance to keep the data fresh and
+number). However, due to very high maintenance to keep the data fresh and
 also leading to significant increase in metadata size, we are supporting
 ranges/prefixes only at higher level. More details in [Argentina](https://issuetracker.google.com/issues/78443410) and
 [Mexico](https://issuetracker.google.com/issues/74517266) triaged issues.
