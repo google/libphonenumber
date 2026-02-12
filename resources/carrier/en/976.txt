@@ -12,7 +12,16 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-97650|Unitel
+976500|Unitel
+976501|Unitel
+976502|Unitel
+976503|Unitel
+976504|Unitel
+976505|Mobicom
+976506|Mobicom
+976507|Mobicom
+976508|Mobicom
+976509|Mobicom
 97655|Unitel
 97660|ONDO
 97666|ONDO

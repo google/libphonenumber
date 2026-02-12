@@ -3023,12 +3023,7 @@
     <territory countryCode="352">
       <availableFormats>
         <numberFormat pattern="(\d{2})(\d{3})(\d{3})">
-          <leadingDigits>
-            2(?:
-              [0367]|
-              4[3-8]
-            )
-          </leadingDigits>
+          <leadingDigits>20</leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
       </availableFormats>

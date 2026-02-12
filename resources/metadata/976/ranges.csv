@@ -402,8 +402,10 @@ Prefix            ; Length ; Type       ; Tariff        ; Area Code Length ; Ope
 25849             ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Choibalsan"                  ; "MN"    ; "Khalkhgol, Dornod"               ; GOVERNMENT
 2592              ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 4                ;            ; "fixed_line_4/5-6" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Mandalgovi city, Dundgovi"       ; GOVERNMENT
 25953             ; 9,10   ; FIXED_LINE ; STANDARD_RATE ; 5                ;            ; "fixed_line_5/4-5" ; "Asia/Ulaanbaatar"                 ; "MN"    ; "Khuld, Dundgovi"                 ; GOVERNMENT
-5[05]             ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "unitel"   ; "fmt1_4/4"         ; "Asia/Ulaanbaatar"                 ; "MN"    ;                                   ; ITU
+50[0-4]           ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "unitel"   ; "fmt1_4/4"         ; "Asia/Ulaanbaatar"                 ; "MN"    ;                                   ; IR21
+50[5-9]           ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "mobicom"  ; "fmt1_4/4"         ; "Asia/Ulaanbaatar"                 ; "MN"    ;                                   ; IR21
 53                ; 8      ; FIXED_LINE ; STANDARD_RATE ; 4                ;            ; "fmt1_4/4"         ; "Asia/Ulaanbaatar"                 ; "MN"    ;                                   ; IR21
+55                ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "unitel"   ; "fmt1_4/4"         ; "Asia/Ulaanbaatar"                 ; "MN"    ;                                   ; ITU
 5[68]             ; 8      ; FIXED_LINE ; STANDARD_RATE ; 4                ;            ; "fmt1_4/4"         ; "Asia/Ulaanbaatar"                 ; "MN"
 6[06]             ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "ondo"     ; "fmt1_4/4"         ; "Asia/Ulaanbaatar"                 ; "MN"
 69                ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "skytel"   ; "fmt1_4/4"         ; "Asia/Ulaanbaatar"                 ; "MN"    ;                                   ; ITU
