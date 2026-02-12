@@ -11191,7 +11191,7 @@
 1435896|Richfield, UT
 1435946|Garden City, UT
 1435986|St. George, UT
-1437|Toronto
+1437|Toronto, ON
 1438|Quebec
 1438380|Montreal, QC
 1440|Ohio
@@ -11332,7 +11332,7 @@
 1443944|Salisbury, MD
 1443949|Annapolis, MD
 1443977|Baltimore, MD
-1445|Philadelphia
+1445|Philadelphia, PA
 1447|Illinois
 1448|Florida
 1450|Quebec

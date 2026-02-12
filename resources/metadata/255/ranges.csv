@@ -13,7 +13,7 @@ Prefix ; Length ; Type       ; Tariff        ; National Only ; Operator         
 6[57]  ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "yas"              ; "mobile_3/3/3"  ; "TZ"    ;                                                    ; IR21
 66     ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "airtel"           ; "mobile_3/3/3"  ; "TZ"    ;                                                    ; IR21
 6[89]  ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "airtel"           ; "mobile_3/3/3"  ; "TZ"
-7[17]  ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "yas"              ; "mobile_3/3/3"  ; "TZ"    ;                                                    ; IR21
+7[017] ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "yas"              ; "mobile_3/3/3"  ; "TZ"    ;                                                    ; IR21
 73     ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "tanzania_telecom" ; "mobile_3/3/3"  ; "TZ"
 7[4-6] ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "vodacom"          ; "mobile_3/3/3"  ; "TZ"
 78     ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "airtel"           ; "mobile_3/3/3"  ; "TZ"    ;                                                    ; IR21

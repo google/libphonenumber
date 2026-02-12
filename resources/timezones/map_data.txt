@@ -3169,8 +3169,7 @@
 7|Asia/Almaty&Asia/Anadyr&Asia/Aqtobe&Asia/Irkutsk&Asia/Kamchatka&Asia/Krasnoyarsk&Asia/Magadan&Asia/Novosibirsk&Asia/Omsk&Asia/Sakhalin&Asia/Vladivostok&Asia/Yakutsk&Asia/Yekaterinburg&Europe/Bucharest&Europe/Moscow&Europe/Samara
 7301|Asia/Irkutsk
 7302|Asia/Yakutsk
-7336|Asia/Yekaterinburg
-733622|Asia/Almaty
+733|Asia/Yekaterinburg
 734|Asia/Yekaterinburg
 7341|Europe/Samara
 735|Asia/Yekaterinburg

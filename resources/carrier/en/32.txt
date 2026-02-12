@@ -22,6 +22,7 @@
 
 3245001|GATEWAY COMMUNICATIONS S.A.
 324510|DIGI Communications
+324511|DIGI Communications
 32455|VOO
 32456|Mobile Vikings/JIM Mobile
 32458|Citymesh

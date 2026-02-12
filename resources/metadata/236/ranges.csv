@@ -1,5 +1,6 @@
 Prefix      ; Length ; Type       ; Tariff        ; Operator     ; Format         ; Regions ; Geocode:en ; Provenance ; Comment
 2[12]       ; 8      ; FIXED_LINE ; STANDARD_RATE ;              ; "fmt1_2/2/2/2" ; "CF"    ; "Bangui"   ;            ; "Added based on client's request"
+61          ; 8      ; FIXED_LINE ; STANDARD_RATE ;              ; "fmt1_2/2/2/2" ; "CF"    ;            ; ITU
 700[04-9]   ; 8      ; MOBILE     ; STANDARD_RATE ; "a_cell"     ; "fmt1_2/2/2/2" ; "CF"    ;            ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 700[12]     ; 8      ; MOBILE     ; STANDARD_RATE ; "a_cell"     ; "fmt1_2/2/2/2" ; "CF"    ;            ; ITU
 7003        ; 8      ; MOBILE     ; STANDARD_RATE ; "a_cell"     ; "fmt1_2/2/2/2" ; "CF"    ;            ;            ; "Added based on client's request"
