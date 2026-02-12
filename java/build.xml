@@ -275,26 +275,30 @@
   <target name="junit" depends="test-jar">
     <mkdir dir="${report.dir}"/>
     <junit printsummary="yes"
+        fork="yes" forkmode="once"
         failureProperty="test.failed" errorProperty="test.failed">
+      <jvmarg value="--add-opens=java.base/java.lang=ALL-UNNAMED"/>
+      <jvmarg value="--add-opens=java.base/java.util=ALL-UNNAMED"/>
+      <jvmarg value="-XX:+EnableDynamicAgentLoading"/>
       <classpath refid="test.classpath"/>
       <formatter type="xml"/>
-      <batchtest fork="no" todir="${report.dir}">
+      <batchtest todir="${report.dir}">
         <fileset dir="${libphonenumber.test.dir}" includes="**/*Test.java"/>
       </batchtest>
-      <batchtest fork="no" todir="${report.dir}">
+      <batchtest todir="${report.dir}">
         <fileset dir="${carrier.test.dir}" includes="**/*Test.java"/>
       </batchtest>
-      <batchtest fork="no" todir="${report.dir}">
+      <batchtest todir="${report.dir}">
         <fileset dir="${geocoder.test.dir}" includes="**/*Test.java"/>
       </batchtest>
-      <batchtest fork="no" todir="${report.dir}">
+      <batchtest todir="${report.dir}">
         <fileset dir="${prefixmapper.test.dir}" includes="**/*Test.java"/>
       </batchtest>
     </junit>
     <fail message="Tests failed. Run 'ant junitreport' for more info."
         if="test.failed"/>
   </target>
-
+  
   <target name="junitreport">
     <junitreport todir="${report.dir}">
       <fileset dir="${report.dir}" includes="TEST-*.xml"/>
