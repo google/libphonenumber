@@ -1,1 +1,4 @@
-
+Code changes:
+ - Introduced new function parseWithOptions to customize the parser's behaviour
+ - Deprecated parseAndKeepRawInput in favor of parseWithOptions
+ - 
