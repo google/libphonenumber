@@ -19,13 +19,15 @@
 #include <iterator>
 #include <map>
 
+#include <boost/filesystem.hpp>
+
 #include "phonenumbers/default_logger.h"
 #include "phonenumbers/matcher_api.h"
-#include "phonenumbers/phonemetadata.pb.h"
 #include "phonenumbers/phonenumberutil.h"
 #include "phonenumbers/regex_based_matcher.h"
 #include "phonenumbers/region_code.h"
 #include "phonenumbers/short_metadata.h"
+#include <fstream>
 
 namespace i18n {
 namespace phonenumbers {
@@ -34,6 +36,69 @@ using google::protobuf::RepeatedField;
 using std::map;
 using std::string;
 
+
+#ifdef ISTREAM_DATA_PROVIDER
+
+const string METADATA_SHORT_FILE_NAME = "metadata_short.dat";
+
+bool LoadMetadataFromFile(string fileName, PhoneMetadataCollection* metadata) {
+  std::fstream input(fileName.c_str(), std::ios::in | std::ios::binary);
+  if (!input) {
+    LOG(ERROR) << "metadata file not found.";
+  } else if (!metadata->ParseFromIstream(&input)) {
+    LOG(ERROR) << "Could not parse binary data from file.";
+    return false;
+  }
+
+  return true;
+}
+
+void ShortNumberInfo::ClearMetadata(){
+  region_to_short_metadata_map_->clear();
+  regions_where_emergency_numbers_must_be_exact_->clear();
+}
+
+bool UpdateShortMetadataFile(const string& filepath) {
+
+  boost::filesystem::path path_to(METADATA_PATH);
+  path_to += "/";
+  path_to += METADATA_SHORT_FILE_NAME;
+  boost::filesystem::path path_bk = path_to;
+  path_bk += ".bak";
+  boost::system::error_code ec;
+
+  boost::filesystem::copy(path_to.string(), path_bk.string(), ec);
+  if (ec) {
+    LOG(DFATAL) << "Could not create backup copy of metadata file." << ec.message();
+    return false;
+  }
+  boost::filesystem::rename(filepath, path_to.string(), ec);
+  if(ec) {
+    LOG(DFATAL) << "Could not rename metadata file." << ec.message();
+    return false;
+  }
+  boost::filesystem::remove(path_bk, ec);
+  if(ec) {
+    LOG(DFATAL) << "Could not remove metadata file." << ec.message();
+  }
+  return true;
+}
+
+bool ShortNumberInfo::ReloadMetadata(const string& filename) {
+  ClearMetadata();
+  PhoneMetadataCollection metadata_collection;
+  if (!LoadMetadataFromFile(filename, &metadata_collection)) {
+    LOG(DFATAL) << "Could not parse metadata from file.";
+    return false;
+  }
+  LoadMetadataFromCollection(metadata_collection);
+  if(!UpdateShortMetadataFile(filename)){
+    LOG(DFATAL) << "Could not update metadata file.";
+    return false;
+  }
+  return true;
+}
+#else
 bool LoadCompiledInMetadata(PhoneMetadataCollection* metadata) {
   if (!metadata->ParseFromArray(short_metadata_get(), short_metadata_size())) {
     LOG(ERROR) << "Could not parse binary data.";
@@ -41,17 +106,9 @@ bool LoadCompiledInMetadata(PhoneMetadataCollection* metadata) {
   }
   return true;
 }
+#endif // ISTREAM_DATA_PROVIDER
 
-ShortNumberInfo::ShortNumberInfo()
-    : phone_util_(*PhoneNumberUtil::GetInstance()),
-      matcher_api_(new RegexBasedMatcher()),
-      region_to_short_metadata_map_(new absl::flat_hash_map<string, PhoneMetadata>()),
-      regions_where_emergency_numbers_must_be_exact_(new absl::flat_hash_set<string>()) {
-  PhoneMetadataCollection metadata_collection;
-  if (!LoadCompiledInMetadata(&metadata_collection)) {
-    LOG(DFATAL) << "Could not parse compiled-in metadata.";
-    return;
-  }
+void ShortNumberInfo::LoadMetadataFromCollection(const PhoneMetadataCollection& metadata_collection) {
   for (const auto& metadata : metadata_collection.metadata()) {
     const string& region_code = metadata.id();
     region_to_short_metadata_map_->insert(std::make_pair(region_code, metadata));
@@ -59,6 +116,30 @@ ShortNumberInfo::ShortNumberInfo()
   regions_where_emergency_numbers_must_be_exact_->insert("BR");
   regions_where_emergency_numbers_must_be_exact_->insert("CL");
   regions_where_emergency_numbers_must_be_exact_->insert("NI");
+}
+
+ShortNumberInfo::ShortNumberInfo()
+    : phone_util_(*PhoneNumberUtil::GetInstance()),
+      matcher_api_(new RegexBasedMatcher()),
+      region_to_short_metadata_map_(new absl::flat_hash_map<string, PhoneMetadata>()),
+      regions_where_emergency_numbers_must_be_exact_(new absl::flat_hash_set<string>()) {
+
+  PhoneMetadataCollection metadata_collection;
+#ifdef ISTREAM_DATA_PROVIDER
+  boost::filesystem::path path_to(METADATA_PATH);
+  path_to += "/";
+  path_to += METADATA_SHORT_FILE_NAME;
+  if (!LoadMetadataFromFile(path_to.string(), &metadata_collection)) {
+    LOG(DFATAL) << "Could not parse metadata from file.";
+    return;
+  }
+#else
+  if (!LoadCompiledInMetadata(&metadata_collection)) {
+    LOG(DFATAL) << "Could not parse compiled-in metadata.";
+    return;
+  }
+#endif // ISTREAM_DATA_PROVIDER
+  LoadMetadataFromCollection(metadata_collection);
 }
 
 ShortNumberInfo::~ShortNumberInfo() {}

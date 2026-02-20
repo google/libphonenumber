@@ -52,7 +52,7 @@ class ShortNumberInfoTest : public testing::Test {
   }
 
   const PhoneNumberUtil phone_util_;
-  const ShortNumberInfo short_info_;
+  ShortNumberInfo short_info_;
 
 };
 
@@ -98,6 +98,14 @@ TEST_F(ShortNumberInfoTest, IsValidShortNumber) {
   shared_number.set_national_number(uint64{18001});
   EXPECT_TRUE(short_info_.IsValidShortNumber(shared_number));
 }
+
+#ifdef ISTREAM_DATA_PROVIDER
+TEST_F(ShortNumberInfoTest, ReloadMetadata) {
+  string path(METADATA_PATH);
+  path.append("/metadata_short.dat");
+  EXPECT_TRUE(short_info_.ReloadMetadata(path));
+}
+#endif
 
 TEST_F(ShortNumberInfoTest, IsCarrierSpecific) {
   PhoneNumber carrier_specific_number;
