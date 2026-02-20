@@ -161,7 +161,7 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
 
   public void testGetInstanceLoadBadMetadata() {
     assertNull(phoneUtil.getMetadataForRegion("No Such Region"));
-    assertNull(phoneUtil.getMetadataForNonGeographicalRegion(-1));
+    assertNull(phoneUtil.getMetadataForNonGeographicalEntity(-1));
   }
 
   public void testGetSupportedTypesForRegion() {
@@ -262,7 +262,7 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
   }
 
   public void testGetInstanceLoadInternationalTollFreeMetadata() {
-    PhoneMetadata metadata = phoneUtil.getMetadataForNonGeographicalRegion(800);
+    PhoneMetadata metadata = phoneUtil.getMetadataForNonGeographicalEntity(800);
     assertEquals("001", metadata.getId());
     assertEquals(800, metadata.getCountryCode());
     assertEquals("$1 $2", metadata.getNumberFormat(0).getFormat());
@@ -3254,8 +3254,8 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
     assertNull(phoneUtil.getMetadataForRegion(RegionCode.ZZ));
   }
 
-  public void testGetMetadataForNonGeographicalRegionForGeoRegion_shouldBeNull() {
-    assertNull(phoneUtil.getMetadataForNonGeographicalRegion(/* countryCallingCode = */ 1));
+  public void testGetMetadataForNonGeographicalEntityForGeoRegion_shouldBeNull() {
+    assertNull(phoneUtil.getMetadataForNonGeographicalEntity(/* countryCallingCode = */ 1));
   }
 
   public void testGetMetadataForRegionForMissingMetadata() {
@@ -3269,13 +3269,13 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
         });
   }
 
-  public void testGetMetadataForNonGeographicalRegionForMissingMetadata() {
+  public void testGetMetadataForNonGeographicalEntityForMissingMetadata() {
     assertThrows(
         MissingMetadataException.class,
         new ThrowingRunnable() {
           @Override
           public void run() {
-            phoneNumberUtilWithMissingMetadata.getMetadataForNonGeographicalRegion(800);
+            phoneNumberUtilWithMissingMetadata.getMetadataForNonGeographicalEntity(800);
           }
         });
   }

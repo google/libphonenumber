@@ -688,7 +688,7 @@ bool AsYouTypeFormatter::AttemptToExtractCountryCode() {
   phone_util_.GetRegionCodeForCountryCode(country_code, &new_region_code);
   if (PhoneNumberUtil::kRegionCodeForNonGeoEntity == new_region_code) {
     current_metadata_ =
-        phone_util_.GetMetadataForNonGeographicalRegion(country_code);
+        phone_util_.GetMetadataForNonGeographicalEntity(country_code);
   } else if (new_region_code != default_country_) {
     current_metadata_ = GetMetadataForRegion(new_region_code);
   }
