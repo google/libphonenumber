@@ -7,10 +7,13 @@
  * or modification of this software and in all copies of the supporting
  * documentation for such software.
  * THIS SOFTWARE IS BEING PROVIDED "AS IS", WITHOUT ANY EXPRESS OR IMPLIED
- * WARRANTY.  IN PARTICULAR, NEITHER THE AUTHORS NOR LUCENT TECHNOLOGIES MAKE ANY
- * REPRESENTATION OR WARRANTY OF ANY KIND CONCERNING THE MERCHANTABILITY
- * OF THIS SOFTWARE OR ITS FITNESS FOR ANY PARTICULAR PURPOSE.
+ * WARRANTY.  IN PARTICULAR, NEITHER THE AUTHORS NOR LUCENT TECHNOLOGIES MAKE
+ * ANY REPRESENTATION OR WARRANTY OF ANY KIND CONCERNING THE MERCHANTABILITY OF
+ * THIS SOFTWARE OR ITS FITNESS FOR ANY PARTICULAR PURPOSE.
  */
+
+#ifndef UTIL_UTF8_UTFDEF_H__
+#define UTIL_UTF8_UTFDEF_H__
 
 #define uchar _utfuchar
 #define ushort _utfushort
@@ -19,9 +22,11 @@
 #define vlong _utfvlong
 #define uvlong _utfuvlong
 
-typedef unsigned char		uchar;
-typedef unsigned short		ushort;
-typedef unsigned int		uint;
-typedef unsigned long		ulong;
+typedef unsigned char uchar;
+typedef unsigned short ushort;
+typedef unsigned int uint;
+typedef unsigned long ulong;
 
-#define nelem(x) (sizeof(x)/sizeof((x)[0]))
+#define nelem(x) (sizeof(x) / sizeof((x)[0]))
+
+#endif  // UTIL_UTF8_UTFDEF_H__
