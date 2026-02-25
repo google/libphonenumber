@@ -845,7 +845,8 @@ Prefix            ; Length ; Type            ; Tariff        ; Area Code Length 
 7349              ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "vodafone"                 ; "mobile_4/6"   ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB"          ;                                             ; ITU
 735[0-3]          ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "vodafone"                 ; "mobile_4/6"   ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB"          ;                                             ; ITU
 735[457-9]        ; 10     ; MOBILE          ; STANDARD_RATE ;                  ;                            ; "mobile_4/6"   ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB"          ;                                             ; ITU
-7356[0-579]       ; 10     ; MOBILE          ; STANDARD_RATE ;                  ;                            ; "mobile_4/6"   ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB"          ;                                             ; ITU
+7356[024579]      ; 10     ; MOBILE          ; STANDARD_RATE ;                  ;                            ; "mobile_4/6"   ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB"          ;                                             ; ITU
+7356[13]          ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "gamma_telecom"            ; "mobile_4/6"   ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB"          ;                                             ; IR21
 73566             ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "wireless_logic"           ; "mobile_4/6"   ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB"          ;                                             ; ITU
 73568             ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "tata_communications"      ; "mobile_4/6"   ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB"          ;                                             ; IR21
 736[0-7]          ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "three"                    ; "mobile_4/6"   ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB"
@@ -857,7 +858,7 @@ Prefix            ; Length ; Type            ; Tariff        ; Area Code Length 
 73692             ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "sky"                      ; "mobile_4/6"   ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB"          ;                                             ; GOVERNMENT
 7369[3-68]        ; 10     ; MOBILE          ; STANDARD_RATE ;                  ;                            ; "mobile_4/6"   ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB"
 73697             ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "wavemobile"               ; "mobile_4/6"   ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB"          ;                                             ; ITU
-73699             ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "anywhere_sim"             ; "mobile_4/6"   ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB"
+73699             ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "gamma_telecom"            ; "mobile_4/6"   ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB"          ;                                             ; IR21
 737[0-3]          ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "vodafone"                 ; "mobile_4/6"   ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB"          ;                                             ; GOVERNMENT
 7374              ; 10     ; MOBILE          ; STANDARD_RATE ;                  ;                            ; "mobile_4/6"   ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB"
 737[5-7]          ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "ee"                       ; "mobile_4/6"   ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB"
@@ -871,7 +872,7 @@ Prefix            ; Length ; Type            ; Tariff        ; Area Code Length 
 738[4-8]          ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "vodafone"                 ; "mobile_4/6"   ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB"
 7389[01]          ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "three"                    ; "mobile_4/6"   ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB"
 7389[2-5]         ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "talktalk"                 ; "mobile_4/6"   ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB"
-73896             ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "hanhaa"                   ; "mobile_4/6"   ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB"
+73896             ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "gamma_telecom"            ; "mobile_4/6"   ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB"          ;                                             ; IR21
 7389[78]          ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "vodafone"                 ; "mobile_4/6"   ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB"
 73899             ; 10     ; MOBILE          ; STANDARD_RATE ;                  ;                            ; "mobile_4/6"   ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB"
 73900             ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "home_office"              ; "mobile_4/6"   ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB"
@@ -933,7 +934,7 @@ Prefix            ; Length ; Type            ; Tariff        ; Area Code Length 
 7441[57]          ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "synectiv"                 ; "mobile_4/6"   ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB"
 74416             ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "vodafone"                 ; "mobile_4/6"   ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB"
 74418             ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "core_telecom"             ; "mobile_4/6"   ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB"
-74419             ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "voxbone"                  ; "mobile_4/6"   ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB"
+74419             ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "gamma_telecom"            ; "mobile_4/6"   ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB"          ;                                             ; IR21
 744[2-4]          ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "vodafone"                 ; "mobile_4/6"   ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB"
 744[5-79]         ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "three"                    ; "mobile_4/6"   ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB"
 7448              ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "lycamobile"               ; "mobile_4/6"   ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB"
@@ -975,7 +976,7 @@ Prefix            ; Length ; Type            ; Tariff        ; Area Code Length 
 7488[23]          ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "sky"                      ; "mobile_4/6"   ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB"
 7488[4579]        ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "three"                    ; "mobile_4/6"   ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB"
 74886             ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "lanonyx"                  ; "mobile_4/6"   ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB"
-74888             ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "ziron"                    ; "mobile_4/6"   ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB"
+74888             ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "gamma_telecom"            ; "mobile_4/6"   ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB"          ;                                             ; IR21
 74[89]9           ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "o2"                       ; "mobile_4/6"   ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB"
 749[0-2]          ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "three"                    ; "mobile_4/6"   ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB"
 7493              ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "vodafone"                 ; "mobile_4/6"   ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB"
@@ -1026,7 +1027,7 @@ Prefix            ; Length ; Type            ; Tariff        ; Area Code Length 
 75596             ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "lleidanet"                ; "mobile_4/6"   ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB"
 75597             ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "core_telecom"             ; "mobile_4/6"   ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB"
 75598             ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "nodemax"                  ; "mobile_4/6"   ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB"
-75599             ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "resilient"                ; "mobile_4/6"   ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB"
+75599             ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "gamma_telecom"            ; "mobile_4/6"   ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB"          ;                                             ; IR21
 7570              ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "vodafone"                 ; "mobile_4/6"   ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB"
 75710             ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "09_mobile"                ; "mobile_4/6"   ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB"
 7571[1-79]        ; 10     ; MOBILE          ; STANDARD_RATE ;                  ;                            ; "mobile_4/6"   ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB"
@@ -1069,7 +1070,7 @@ Prefix            ; Length ; Type            ; Tariff        ; Area Code Length 
 7691              ; 10     ; PAGER           ; STANDARD_RATE ;                  ;                            ; "fixed_2/4/4"  ;                                                    ; "GB,GG,JE"
 769[39]           ; 10     ; PAGER           ; STANDARD_RATE ;                  ;                            ; "fixed_2/4/4"  ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB,GG,JE"
 77000             ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "cloud9"                   ; "mobile_4/6"   ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB"
-77001             ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "nationwide_telephone"     ; "mobile_4/6"   ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB"
+77001             ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "gamma_telecom"            ; "mobile_4/6"   ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB"          ;                                             ; IR21
 7700[378]         ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "sure"                     ; "mobile_4/6"   ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "JE"
 770[1-9]          ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "o2"                       ; "mobile_4/6"   ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB"
 771[0-689]        ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "o2"                       ; "mobile_4/6"   ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB"
@@ -1170,7 +1171,7 @@ Prefix            ; Length ; Type            ; Tariff        ; Area Code Length 
 7893[24-7]        ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "o2"                       ; "mobile_4/6"   ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB"
 78933             ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "yim_siam"                 ; "mobile_4/6"   ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB"
 78938             ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "aql"                      ; "mobile_4/6"   ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB"
-78939             ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "citrus"                   ; "mobile_4/6"   ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB"
+78939             ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "gamma_telecom"            ; "mobile_4/6"   ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB"          ;                                             ; IR21
 789[45]           ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "o2"                       ; "mobile_4/6"   ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB"
 7899              ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "vodafone"                 ; "mobile_4/6"   ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB"
 790[019]          ; 10     ; MOBILE          ; STANDARD_RATE ;                  ; "vodafone"                 ; "mobile_4/6"   ; "Europe/Guernsey&Europe/Isle_of_Man&Europe/London" ; "GB"

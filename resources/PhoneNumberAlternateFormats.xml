@@ -3403,7 +3403,7 @@
           <leadingDigits>
             [2-4]|
             5(?:
-              [02-69]|
+              [02-79]|
               1[06]
             )
           </leadingDigits>

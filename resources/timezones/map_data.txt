@@ -2305,7 +2305,7 @@
 508|America/Miquelon
 509|America/Port-au-Prince
 51|America/Lima
-52|America/Hermosillo&America/Mazatlan&America/Mexico_City&America/New_York&America/Tijuana
+52|America/Cancun&America/Ciudad_Juarez&America/Matamoros&America/Mazatlan&America/Mexico_City&America/New_York&America/Ojinaga&America/Tijuana
 522|America/Mexico_City
 52200|America/Mexico_City&America/Tijuana
 52201|America/Mexico_City&America/New_York
@@ -2326,7 +2326,7 @@
 52616|America/Tijuana
 52618|America/Mexico_City
 5262|America/Mazatlan
-52626|America/Hermosillo
+52626|America/Ojinaga
 5263|America/Mazatlan
 5264|America/Mazatlan
 52646|America/Tijuana
@@ -2334,7 +2334,7 @@
 52651|America/Mazatlan
 52652|America/Mazatlan
 52653|America/Mazatlan
-52656|America/Hermosillo
+52656|America/Ciudad_Juarez
 52657|America/Mazatlan
 52658|America/Tijuana
 52659|America/Mazatlan
@@ -2359,11 +2359,16 @@
 5269|America/Mazatlan
 527|America/Mexico_City
 528|America/Mexico_City
+52867|America/Matamoros
+52877|America/Matamoros
+52878|America/Matamoros
+52894|America/Matamoros
+52899|America/Matamoros
 529|America/Mexico_City
-52983|America/New_York
-52984|America/New_York
-52987|America/New_York
-52998|America/New_York
+52983|America/Cancun
+52984|America/Cancun
+52987|America/Cancun
+52998|America/Cancun
 53|America/Havana
 54|America/Buenos_Aires
 55|America/Manaus&America/Noronha&America/Rio_Branco&America/Sao_Paulo

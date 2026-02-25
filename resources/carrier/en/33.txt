@@ -321,7 +321,27 @@
 3375789|BJT
 337579|Legos
 33758|Lycamobile
-33759|Vectone mobile
+337590|Free Mobile
+337591|Free Mobile
+337592|Lycamobile
+337593|Lycamobile
+337594|Lycamobile
+337595|Free Mobile
+337596|Free Mobile
+337597|Free Mobile
+3375976|SFR
+3375977|SFR
+3375978|SFR
+3375979|SFR
+337598|Lycamobile
+3375990|SFR
+3375993|Free Mobile
+3375994|Free Mobile
+3375995|Free Mobile
+3375996|Free Mobile
+3375997|Free Mobile
+3375998|Free Mobile
+3375999|Free Mobile
 3376|Bouygues
 33766|Free Mobile
 33767|Free Mobile

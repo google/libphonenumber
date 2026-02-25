@@ -44,3 +44,4 @@
 9055|Turk Telekom
 905610|Selam Mobile
 905616|Turkcell
+9057|Vodafone
