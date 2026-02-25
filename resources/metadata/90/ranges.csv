@@ -124,7 +124,8 @@ Prefix           ; Length ; Type            ; Tariff        ; National Only ; Op
 54               ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "vodafone"                           ; "mobile_3/3/2/2"   ; "TR"    ;                       ;                       ; IR21
 55[1-59]         ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "turk_telekom"                       ; "mobile_3/3/2/2"   ; "TR"
 561011           ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "selam"                              ; "mobile_3/3/2/2"   ; "TR"    ;                       ;                       ; GOVERNMENT
-56161            ; 10     ; MOBILE          ; STANDARD_RATE ;               ; "turkcell"                           ; "mobile_3/3/2/2"   ; "TR"    ;                       ;                       ; GOVERNMENT
+56161            ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "turkcell"                           ; "mobile_3/3/2/2"   ; "TR"    ;                       ;                       ; GOVERNMENT
+574              ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "vodafone"                           ; "mobile_3/3/2/2"   ; "TR"    ;                       ;                       ; IR21
 59221[12]        ; 10     ; PERSONAL_NUMBER ; STANDARD_RATE ; false         ;                                      ; "mobile_3/3/2/2"   ; "TR"
 592461           ; 10     ; PERSONAL_NUMBER ; STANDARD_RATE ; false         ;                                      ; "mobile_3/3/2/2"   ; "TR"
 59[46]           ; 10     ; MOBILE          ; STANDARD_RATE ; false         ;                                      ; "mobile_3/3/2/2"   ; "TR"

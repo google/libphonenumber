@@ -1,3 +1,14 @@
+Feb 25, 2026: v9.0.25
+Metadata changes:
+ - Updated alternate formatting data for country calling code(s): 90
+ - Updated phone metadata for region code(s): 882, HK, MY, PA, SL, TG, TR
+ - Updated short number metadata for region code(s): KR
+ - New geocoding data for country calling code(s): 1728 (en)
+ - Updated carrier data for country calling code(s):
+   33 (en), 44 (en), 55 (en), 60 (en), 81 (en), 90 (en), 228 (en), 232 (en),
+   420 (en), 852 (en, zh)
+ - Updated / refreshed time zone meta data.
+
 Feb 12, 2026: v9.0.24
 Metadata changes:
  - Updated alternate formatting data for country calling code(s): 352

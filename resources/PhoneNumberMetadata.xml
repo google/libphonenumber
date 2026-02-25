@@ -13369,7 +13369,10 @@
         <nationalNumberPattern>
           (?:
             4(?:
-              09[3-6]|
+              (?:
+                09|
+                24
+              )[3-6]|
               44[0-35-9]|
               6(?:
                 4[0-57-9]|
@@ -22570,7 +22573,8 @@
               )|
               7(?:
                 [0-4]\d|
-                5[0-7]
+                5[0-79]|
+                6[02-4]
               )
             )|
             (?:
@@ -23940,7 +23944,7 @@
               1[0479]|
               2[37]|
               3[0137]|
-              4[17]|
+              4[147]|
               5[05]|
               6[058]|
               7[0167]|
@@ -23954,11 +23958,9 @@
               8[02-9]
             )|
             3(?:
-              [047-9]\d|
-              1[0-8]|
-              2[0-5]|
+              [0147-9]\d|
+              [25][0-5]|
               33|
-              5[0-35]|
               6[068]
             )|
             4(?:
@@ -27377,7 +27379,7 @@
             25|
             3[0-5]|
             66|
-            7[1-9]|
+            7\d|
             8[08]|
             9[09]
           )\d{6}
@@ -28308,7 +28310,7 @@
         <exampleNumber>90112345</exampleNumber>
         <nationalNumberPattern>
           (?:
-            7[0-29]|
+            7[0-289]|
             9[0-36-9]
           )\d{6}
         </nationalNumberPattern>
@@ -28868,19 +28870,19 @@
                       nationalPrefixOptionalWhenFormatting="true">
           <leadingDigits>
             5(?:
-              [0-59]|
+              [0-579]|
               61
             )
           </leadingDigits>
           <leadingDigits>
             5(?:
-              [0-59]|
+              [0-579]|
               61[06]
             )
           </leadingDigits>
           <leadingDigits>
             5(?:
-              [0-59]|
+              [0-579]|
               61[06]1
             )
           </leadingDigits>
@@ -28965,7 +28967,7 @@
           5(?:
             0[15-7]|
             1[06]|
-            24|
+            [27]4|
             [34]\d|
             5[1-59]|
             9[46]
@@ -32421,6 +32423,7 @@
     <!-- Oration Technologies +88237 -->
     <!-- Telespazio S.p.A. +88213 -->
     <!-- Thuraya +88216 -->
+    <!-- China Telecommunications Corporation Satellite Communications Branch +88252 -->
     <!-- https://www.itu.int/net/itu-t/inrdb/e164_intlsharedcc.aspx?cc=-1 -->
     <!-- http://www.itu.int/oth/T0202000054/en -->
     <!-- http://www.gsm.aq/numberplan.php -->
@@ -32429,6 +32432,7 @@
     <!-- http://www.itu.int/oth/T02020000A0/en -->
     <!-- http://www.itu.int/oth/T02020000CC/en -->
     <!-- http://www.itu.int/oth/T02020000CF/en -->
+    <!-- https://www.itu.int/oth/T0202000100/en -->
     <territory id="001" countryCode="882">
       <availableFormats>
         <!-- For 7 digit numbers in general -->
@@ -32472,7 +32476,7 @@
               4[57]
             )|
             4|
-            51
+            5[12]
           </leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
@@ -32519,7 +32523,10 @@
               47|
               7\d{3}
             )|
-            50\d{3}
+            5(?:
+              0\d{3}|
+              2[0-2]
+            )
           )\d{7}
         </nationalNumberPattern>
       </mobile>

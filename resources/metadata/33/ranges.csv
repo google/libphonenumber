@@ -377,7 +377,13 @@ Prefix         ; Length ; Type       ; Tariff        ; Operator                 
 75786          ; 9      ; MOBILE     ; STANDARD_RATE ; "orange_france"                ; "fmt_1/2/2/2/2"   ; "FR"    ; GOVERNMENT
 7578[89]       ; 9      ; MOBILE     ; STANDARD_RATE ; "bjtpartners"                  ; "fmt_1/2/2/2/2"   ; "FR"    ; GOVERNMENT
 7579           ; 9      ; MOBILE     ; STANDARD_RATE ; "legos"                        ; "fmt_1/2/2/2/2"   ; "FR"    ; GOVERNMENT
-759            ; 9      ; MOBILE     ; STANDARD_RATE ; "vectonemobile"                ; "fmt_1/2/2/2/2"   ; "FR"    ; GOVERNMENT
+759[0156]      ; 9      ; MOBILE     ; STANDARD_RATE ; "free"                         ; "fmt_1/2/2/2/2"   ; "FR"    ; IR21
+759[2-48]      ; 9      ; MOBILE     ; STANDARD_RATE ; "lycamobile"                   ; "fmt_1/2/2/2/2"   ; "FR"    ; IR21
+7597[0-5]      ; 9      ; MOBILE     ; STANDARD_RATE ; "free"                         ; "fmt_1/2/2/2/2"   ; "FR"    ; IR21
+7597[6-9]      ; 9      ; MOBILE     ; STANDARD_RATE ; "sfr"                          ; "fmt_1/2/2/2/2"   ; "FR"    ; IR21
+75990          ; 9      ; MOBILE     ; STANDARD_RATE ; "sfr"                          ; "fmt_1/2/2/2/2"   ; "FR"    ; IR21
+7599[12]       ; 9      ; MOBILE     ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+7599[3-9]      ; 9      ; MOBILE     ; STANDARD_RATE ; "free"                         ; "fmt_1/2/2/2/2"   ; "FR"    ; IR21
 760            ; 9      ; MOBILE     ; STANDARD_RATE ; "bouygues"                     ; "fmt_1/2/2/2/2"   ; "FR"    ; GOVERNMENT
 76[1-5]        ; 9      ; MOBILE     ; STANDARD_RATE ; "bouygues"                     ; "fmt_1/2/2/2/2"   ; "FR"    ; IR21
 766            ; 9      ; MOBILE     ; STANDARD_RATE ; "free"                         ; "fmt_1/2/2/2/2"   ; "FR"    ; GOVERNMENT

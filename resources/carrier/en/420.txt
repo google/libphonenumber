@@ -189,6 +189,7 @@
 4207952|O2
 4207953|O2
 4207954|Tesco Mobile CR
+4207955|Tesco Mobile CR
 42079750|Dial Telecom
 4207976|T-Mobile
 42079770|T-Mobile

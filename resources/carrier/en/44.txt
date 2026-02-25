@@ -126,6 +126,8 @@
 447351|Vodafone
 447352|Vodafone
 447353|Vodafone
+4473561|Gamma Telecom
+4473563|Gamma Telecom
 4473566|Wireless Logic
 4473568|TATA Communications
 447360|Three
@@ -146,7 +148,7 @@
 4473691|Telet Research
 4473692|Sky
 4473697|Wave Mobile
-4473699|Anywhere Sim
+4473699|Gamma Telecom
 447370|Vodafone
 447371|Vodafone
 447372|Vodafone
@@ -173,7 +175,7 @@
 4473893|TalkTalk
 4473894|TalkTalk
 4473895|TalkTalk
-4473896|Hanhaa
+4473896|Gamma Telecom
 4473897|Vodafone
 4473898|Vodafone
 4473900|Home Office
@@ -274,7 +276,7 @@
 4474416|Vodafone
 4474417|Synectiv
 4474418|Core Telecom
-4474419|Voxbone
+4474419|Gamma Telecom
 447442|Vodafone
 447443|Vodafone
 447444|Vodafone
@@ -351,7 +353,7 @@
 4474885|Three
 4474886|Lanonyx
 4474887|Three
-4474888|Ziron
+4474888|Gamma Telecom
 4474889|Three
 447489|O2
 447490|Three
@@ -443,7 +445,7 @@
 4475596|Lleida.net
 4475597|Core Telecom
 4475598|Nodemax
-4475599|Resilient
+4475599|Gamma Telecom
 44756|O2
 447570|Vodafone
 4475710|09 Mobile
@@ -481,7 +483,7 @@
 44762456|Sure
 44770|O2
 4477000|Cloud9
-4477001|Nationwide Telephone
+4477001|Gamma Telecom
 4477003|Sure
 4477007|Sure
 4477008|Sure
@@ -687,7 +689,7 @@
 4478936|O2
 4478937|O2
 4478938|aql
-4478939|Citrus
+4478939|Gamma Telecom
 447894|O2
 447895|O2
 447896|Orange

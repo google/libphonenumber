@@ -15,12 +15,13 @@
 22870|Togo Telecom
 22871|Togo Telecom
 22872|Togo Telecom
+22878|Moov
 22879|Moov
 22890|Togo Telecom
 22891|Togo Telecom
 22892|Togo Telecom
 22893|Togo Telecom
 22896|Moov
-22897|TOGOCEL
+22897|Moov
 22898|Moov
 22899|Moov
