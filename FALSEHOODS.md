@@ -58,16 +58,6 @@ surprising how many false assumptions programmers continue to make about them.
     The USA, Canada, and several Caribbean islands share the country calling
     code +1. Russia and Kazakhstan share +7. These are not the only examples!
 
-1.  **Each country has only one country calling code**
-
-    As of this present moment (in Mar. 2016), phones in the disputed territory
-    and partially recognised state of Kosovo may be reached by dialing the
-    country calling code for Serbia (+381), Slovenia (+386), or Monaco (+377),
-    depending on where and when one obtained the number.
-
-    **Tip:** Use a phone widget to encourage users to enter their phone number
-    in an international format such that it can be unambiguously understood.
-
 1.  **A phone number is dialable from anywhere**
 
     Some numbers can only be dialed within the country. Some can only be dialled
