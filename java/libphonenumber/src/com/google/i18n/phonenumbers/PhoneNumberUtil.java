@@ -3048,9 +3048,12 @@ public class PhoneNumberUtil {
       if (transformRule == null || transformRule.length() == 0
           || prefixMatcher.group(numOfGroups) == null) {
         // If the original number was viable, and the resultant number is not, we return.
-        if (isViableOriginalNumber
+        if ((isViableOriginalNumber
             && !matcherApi.matchNationalNumber(
-                number.substring(prefixMatcher.end()), generalDesc, false)) {
+                number.substring(prefixMatcher.end()), generalDesc, false))|| 
+                (getNumberTypeHelper(number.toString(), metadata) != PhoneNumberType.UNKNOWN
+                && getNumberTypeHelper(number.substring(prefixMatcher.end()), metadata)
+                    == PhoneNumberType.UNKNOWN)) {
           return false;
         }
         if (carrierCode != null && numOfGroups > 0 && prefixMatcher.group(numOfGroups) != null) {
