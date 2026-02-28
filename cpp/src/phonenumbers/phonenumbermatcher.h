@@ -22,12 +22,12 @@
 #ifndef I18N_PHONENUMBERS_PHONENUMBERMATCHER_H_
 #define I18N_PHONENUMBERS_PHONENUMBERMATCHER_H_
 
+#include <functional>
 #include <string>
 #include <vector>
 
 #include "phonenumbers/base/basictypes.h"
 #include "phonenumbers/base/memory/scoped_ptr.h"
-#include "phonenumbers/callback.h"
 #include "phonenumbers/regexp_adapter.h"
 
 namespace i18n {
@@ -134,10 +134,10 @@ class PhoneNumberMatcher {
                       PhoneNumberMatch* match);
 
   bool CheckNumberGroupingIsValid(
-    const PhoneNumber& phone_number,
-    const string& candidate,
-    ResultCallback4<bool, const PhoneNumberUtil&, const PhoneNumber&,
-                    const string&, const vector<string>&>* checker) const;
+      const PhoneNumber &phone_number, const string &candidate,
+      std::function<bool(const PhoneNumberUtil &, const PhoneNumber &,
+                         const std::string &, const std::vector<std::string> &)>
+          checker) const;
 
   // Helper method to get the national-number part of a number, formatted
   // without any national prefix, and return it as a set of digit blocks that
