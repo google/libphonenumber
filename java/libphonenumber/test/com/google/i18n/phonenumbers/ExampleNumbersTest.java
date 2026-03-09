@@ -94,6 +94,12 @@ public class ExampleNumbersTest extends TestCase {
     assertEquals(0, wrongTypeCases.size());
   }
 
+  public void testChinaBroadnet1610IsValidMobile() throws NumberParseException {
+    PhoneNumber exampleNumber = phoneNumberUtil.parse("16100000001", "CN");
+    assertTrue(phoneNumberUtil.isValidNumber(exampleNumber));
+    assertEquals(PhoneNumberType.MOBILE, phoneNumberUtil.getNumberType(exampleNumber));
+  }
+
   public void testTollFree() {
     Set<PhoneNumberType> tollFreeTypes = EnumSet.of(PhoneNumberType.TOLL_FREE);
     checkNumbersValidAndCorrectType(PhoneNumberType.TOLL_FREE, tollFreeTypes);
