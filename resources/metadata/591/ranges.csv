@@ -27,20 +27,23 @@ Prefix        ; Length ; Type       ; Tariff        ; Area Code Length ; Nationa
 46[24689]     ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;               ;            ; "fixed_1/7"      ; "BO"
 4672          ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;               ;            ; "fixed_1/7"      ; "BO"
 50            ; 8      ; VOIP       ; STANDARD_RATE ; 1                ;               ;            ; "fixed_1/7"      ; "BO"
-6             ; 8      ; MOBILE     ; STANDARD_RATE ;                  ;               ; "tigo"     ; "mobile_8"       ; "BO"    ; IR21       ; "IR21 dated 11/28/2018"
-7[0-25-9]     ; 8      ; MOBILE     ; STANDARD_RATE ;                  ;               ; "tigo"     ; "mobile_8"       ; "BO"    ; IR21       ; "IR21 dated 11/28/2018"
-73            ; 8      ; MOBILE     ; STANDARD_RATE ;                  ;               ; "tigo"     ; "mobile_8"       ; "BO"
+6[015]        ; 8      ; MOBILE     ; STANDARD_RATE ;                  ;               ; "nuevatel" ; "mobile_8"       ; "BO"    ; IR21
+6[29]         ; 8      ; MOBILE     ; STANDARD_RATE ;                  ;               ; "tigo"     ; "mobile_8"       ; "BO"    ; IR21
+6[3478]       ; 8      ; MOBILE     ; STANDARD_RATE ;                  ;               ; "entel"    ; "mobile_8"       ; "BO"    ; IR21
+66            ; 8      ; MOBILE     ; STANDARD_RATE ;                  ;               ;            ; "mobile_8"       ; "BO"
+7[09]         ; 8      ; MOBILE     ; STANDARD_RATE ;                  ;               ; "nuevatel" ; "mobile_8"       ; "BO"    ; IR21
+7[1-3]        ; 8      ; MOBILE     ; STANDARD_RATE ;                  ;               ; "entel"    ; "mobile_8"       ; "BO"    ; IR21
 74[06]        ; 8      ; MOBILE     ; STANDARD_RATE ;                  ;               ; "entel"    ; "mobile_8"       ; "BO"    ; IR21       ; "IR21 dated 9/30/2018"
 74[1245][0-5] ; 8      ; MOBILE     ; STANDARD_RATE ;                  ;               ; "entel"    ; "mobile_8"       ; "BO"    ; IR21       ; "IR21 dated 9/30/2018"
-741[67]       ; 8      ; MOBILE     ; STANDARD_RATE ;                  ;               ; "entel"    ; "mobile_8"       ; "BO"
-7418          ; 8      ; MOBILE     ; STANDARD_RATE ;                  ;               ; "tigo"     ; "mobile_8"       ; "BO"    ; IR21       ; "IR21 dated 11/28/2018"
+74[1245][6-8] ; 8      ; MOBILE     ; STANDARD_RATE ;                  ;               ; "tigo"     ; "mobile_8"       ; "BO"    ; IR21
 74[1245]9     ; 8      ; MOBILE     ; STANDARD_RATE ;                  ;               ; "nuevatel" ; "mobile_8"       ; "BO"    ; IR21       ; "IR21 dated 10/11/2018"
-74[245][6-8]  ; 8      ; MOBILE     ; STANDARD_RATE ;                  ;               ; "entel"    ; "mobile_8"       ; "BO"
 743[0-7]      ; 8      ; MOBILE     ; STANDARD_RATE ;                  ;               ; "entel"    ; "mobile_8"       ; "BO"    ; IR21       ; "IR21 dated 9/30/2018"
 743[89]       ; 8      ; MOBILE     ; STANDARD_RATE ;                  ;               ; "nuevatel" ; "mobile_8"       ; "BO"    ; IR21       ; "IR21 dated 10/11/2018"
 747[0-25-7]   ; 8      ; MOBILE     ; STANDARD_RATE ;                  ;               ; "entel"    ; "mobile_8"       ; "BO"    ; IR21       ; "IR21 dated 9/30/2018"
-747[38]       ; 8      ; MOBILE     ; STANDARD_RATE ;                  ;               ; "entel"    ; "mobile_8"       ; "BO"
+747[38]       ; 8      ; MOBILE     ; STANDARD_RATE ;                  ;               ; "tigo"     ; "mobile_8"       ; "BO"    ; IR21
 747[49]       ; 8      ; MOBILE     ; STANDARD_RATE ;                  ;               ; "nuevatel" ; "mobile_8"       ; "BO"    ; IR21       ; "IR21 dated 10/11/2018"
-74[89][0-6]   ; 8      ; MOBILE     ; STANDARD_RATE ;                  ;               ; "entel"    ; "mobile_8"       ; "BO"    ; IR21       ; "IR21 dated 9/30/2018"
-74[89][7-9]   ; 8      ; MOBILE     ; STANDARD_RATE ;                  ;               ; "nuevatel" ; "mobile_8"       ; "BO"    ; IR21       ; "IR21 dated 10/11/2018"
+748[0-6]      ; 8      ; MOBILE     ; STANDARD_RATE ;                  ;               ; "entel"    ; "mobile_8"       ; "BO"    ; IR21       ; "IR21 dated 9/30/2018"
+748[7-9]      ; 8      ; MOBILE     ; STANDARD_RATE ;                  ;               ; "nuevatel" ; "mobile_8"       ; "BO"    ; IR21       ; "IR21 dated 10/11/2018"
+749           ; 8      ; MOBILE     ; STANDARD_RATE ;                  ;               ; "entel"    ; "mobile_8"       ; "BO"    ; IR21
+7[5-8]        ; 8      ; MOBILE     ; STANDARD_RATE ;                  ;               ; "tigo"     ; "mobile_8"       ; "BO"    ; IR21       ; "IR21 dated 11/28/2018"
 8001[07]      ; 9      ; FIXED_LINE ; TOLL_FREE     ;                  ; true          ;            ; "tollfree_3/2/4" ; "BO"

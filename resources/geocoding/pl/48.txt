@@ -27,6 +27,7 @@
 4824|Płock
 4825|Siedlce
 4829|Ostrołęka
+4830|Kraków
 4832|Katowice
 4833|Bielsko-Biała
 4834|Częstochowa

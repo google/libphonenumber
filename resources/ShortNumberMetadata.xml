@@ -1613,18 +1613,45 @@
     <!-- http://www.itu.int/oth/T0202000058/en -->
     <territory id="BL">
       <generalDesc>
-        <nationalNumberPattern>1\d</nationalNumberPattern>
+        <nationalNumberPattern>
+          [13]\d(?:
+            \d\d(?:
+              \d{2}
+            )?
+          )?
+        </nationalNumberPattern>
       </generalDesc>
       <shortCode>
-        <possibleLengths national="2"/>
+        <possibleLengths national="2,4,6"/>
         <exampleNumber>18</exampleNumber>
-        <nationalNumberPattern>18</nationalNumberPattern>
+        <nationalNumberPattern>
+          18|
+          3(?:
+            00[0-79]|
+            1[0-689]\d
+          )|
+          (?:
+            118[02-9]|
+            3[2469]
+          )\d\d
+        </nationalNumberPattern>
       </shortCode>
       <tollFree>
-        <possibleLengths national="2"/>
+        <possibleLengths national="2,4"/>
         <exampleNumber>18</exampleNumber>
-        <nationalNumberPattern>18</nationalNumberPattern>
+        <nationalNumberPattern>
+          18|
+          3(?:
+            00|
+            1[0-689]
+          )\d
+        </nationalNumberPattern>
       </tollFree>
+      <premiumRate>
+        <possibleLengths national="4"/>
+        <exampleNumber>3200</exampleNumber>
+        <nationalNumberPattern>3[2469]\d\d</nationalNumberPattern>
+      </premiumRate>
       <!-- http://www.comstbarth.fr/urgences.asp -->
       <emergency>
         <possibleLengths national="2"/>
@@ -5499,18 +5526,46 @@
     <!-- http://www.arcep.fr/uploads/tx_gsavis/11-1297.pdf -->
     <territory id="GF">
       <generalDesc>
-        <nationalNumberPattern>1\d</nationalNumberPattern>
+        <nationalNumberPattern>
+          [13]\d(?:
+            \d\d(?:
+              \d{2}
+            )?
+          )?
+        </nationalNumberPattern>
       </generalDesc>
       <shortCode>
-        <possibleLengths national="2"/>
+        <possibleLengths national="2,4,6"/>
         <exampleNumber>15</exampleNumber>
-        <nationalNumberPattern>1[578]</nationalNumberPattern>
+        <nationalNumberPattern>
+          1[578]|
+          300[0-79]|
+          (?:
+            118[02-9]\d|
+            3(?:
+              0[1-9]|
+              1[0-689]|
+              [2469]\d
+            )
+          )\d
+        </nationalNumberPattern>
       </shortCode>
       <tollFree>
-        <possibleLengths national="2"/>
+        <possibleLengths national="2,4"/>
         <exampleNumber>15</exampleNumber>
-        <nationalNumberPattern>1[578]</nationalNumberPattern>
+        <nationalNumberPattern>
+          1[578]|
+          3(?:
+            0\d|
+            1[0-689]
+          )\d
+        </nationalNumberPattern>
       </tollFree>
+      <premiumRate>
+        <possibleLengths national="4"/>
+        <exampleNumber>3200</exampleNumber>
+        <nationalNumberPattern>3[2469]\d\d</nationalNumberPattern>
+      </premiumRate>
       <emergency>
         <possibleLengths national="2"/>
         <exampleNumber>15</exampleNumber>
@@ -5850,18 +5905,45 @@
     <!-- http://www.guadeloupe.franceantilles.fr/pratique/urgences/numeros-urgence-guadeloupe-14950.php -->
     <territory id="GP">
       <generalDesc>
-        <nationalNumberPattern>1\d</nationalNumberPattern>
+        <nationalNumberPattern>
+          [13]\d(?:
+            \d\d(?:
+              \d{2}
+            )?
+          )?
+        </nationalNumberPattern>
       </generalDesc>
       <shortCode>
-        <possibleLengths national="2"/>
+        <possibleLengths national="2,4,6"/>
         <exampleNumber>15</exampleNumber>
-        <nationalNumberPattern>1[578]</nationalNumberPattern>
+        <nationalNumberPattern>
+          1[578]|
+          3(?:
+            00[0-79]|
+            1[0-689]\d
+          )|
+          (?:
+            118[02-9]|
+            3[2469]
+          )\d\d
+        </nationalNumberPattern>
       </shortCode>
       <tollFree>
-        <possibleLengths national="2"/>
+        <possibleLengths national="2,4"/>
         <exampleNumber>15</exampleNumber>
-        <nationalNumberPattern>1[578]</nationalNumberPattern>
+        <nationalNumberPattern>
+          1[578]|
+          3(?:
+            00|
+            1[0-689]
+          )\d
+        </nationalNumberPattern>
       </tollFree>
+      <premiumRate>
+        <possibleLengths national="4"/>
+        <exampleNumber>3200</exampleNumber>
+        <nationalNumberPattern>3[2469]\d\d</nationalNumberPattern>
+      </premiumRate>
       <emergency>
         <possibleLengths national="2"/>
         <exampleNumber>15</exampleNumber>
@@ -6096,13 +6178,13 @@
             443|
             5[568]
           )|
-          91[1-3]
+          91[1-4]
         </nationalNumberPattern>
       </shortCode>
       <tollFree>
         <possibleLengths national="3"/>
         <exampleNumber>911</exampleNumber>
-        <nationalNumberPattern>91[1-3]</nationalNumberPattern>
+        <nationalNumberPattern>91[1-4]</nationalNumberPattern>
       </tollFree>
       <!-- https://support.twitter.com/articles/20170024 -->
       <carrierSpecific>
@@ -6115,6 +6197,11 @@
         <exampleNumber>911</exampleNumber>
         <nationalNumberPattern>91[1-3]</nationalNumberPattern>
       </emergency>
+      <expandedEmergency>
+        <possibleLengths national="3"/>
+        <exampleNumber>914</exampleNumber>
+        <nationalNumberPattern>914</nationalNumberPattern>
+      </expandedEmergency>
       <!-- https://support.twitter.com/articles/20170024 -->
       <smsServices>
         <possibleLengths national="4"/>
@@ -9295,18 +9382,45 @@
     <!-- http://www.arcep.fr/index.php?id=interactivenumeros - ZABPQ-ZNE.xls -->
     <territory id="MF">
       <generalDesc>
-        <nationalNumberPattern>1\d</nationalNumberPattern>
+        <nationalNumberPattern>
+          [13]\d(?:
+            \d\d(?:
+              \d{2}
+            )?
+          )?
+        </nationalNumberPattern>
       </generalDesc>
       <shortCode>
-        <possibleLengths national="2"/>
+        <possibleLengths national="2,4,6"/>
         <exampleNumber>15</exampleNumber>
-        <nationalNumberPattern>1[578]</nationalNumberPattern>
+        <nationalNumberPattern>
+          1[578]|
+          3(?:
+            00[0-79]|
+            1[0-689]\d
+          )|
+          (?:
+            118[02-9]|
+            3[2469]
+          )\d\d
+        </nationalNumberPattern>
       </shortCode>
       <tollFree>
-        <possibleLengths national="2"/>
+        <possibleLengths national="2,4"/>
         <exampleNumber>15</exampleNumber>
-        <nationalNumberPattern>1[578]</nationalNumberPattern>
+        <nationalNumberPattern>
+          1[578]|
+          3(?:
+            00|
+            1[0-689]
+          )\d
+        </nationalNumberPattern>
       </tollFree>
+      <premiumRate>
+        <possibleLengths national="4"/>
+        <exampleNumber>3200</exampleNumber>
+        <nationalNumberPattern>3[2469]\d\d</nationalNumberPattern>
+      </premiumRate>
       <!-- http://www.leshotelsdesaintmartin.com/fr/saint-martin-antilles/informations-saint-martin/infos-pratiques-sxm.html -->
       <emergency>
         <possibleLengths national="2"/>
@@ -11242,8 +11356,8 @@
         <nationalNumberPattern>
           1[578]|
           31(?:
-            03|
-            [689]\d
+            0[0-5]|
+            [1-689]\d
           )|
           (?:
             118[02-9]|
@@ -11256,9 +11370,10 @@
         <exampleNumber>15</exampleNumber>
         <nationalNumberPattern>
           1[578]|
+          310[0-245]|
           3(?:
             0\d|
-            1[689]
+            1[1-689]
           )\d
         </nationalNumberPattern>
       </tollFree>
@@ -11274,8 +11389,8 @@
       </premiumRate>
       <carrierSpecific>
         <possibleLengths national="4"/>
-        <exampleNumber>3100</exampleNumber>
-        <nationalNumberPattern>310\d</nationalNumberPattern>
+        <exampleNumber>3103</exampleNumber>
+        <nationalNumberPattern>3103</nationalNumberPattern>
       </carrierSpecific>
       <emergency>
         <possibleLengths national="2"/>

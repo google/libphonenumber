@@ -32,6 +32,7 @@ Prefix       ; Length ; Type       ; Tariff        ; Operator                   
 2619         ; 7      ; FIXED_LINE ; STANDARD_RATE ;                             ; "fixed_2/2/3"       ; "PL"
 29           ; 9      ; FIXED_LINE ; STANDARD_RATE ;                             ; "fixed_2/3/2/2"     ; "PL"    ; "Ostrolęka"            ; "Ostrołęka"
 2919         ; 7      ; FIXED_LINE ; STANDARD_RATE ;                             ; "fixed_2/2/3"       ; "PL"    ; "Ostrolęka"            ; "Ostrołęka"
+30           ; 7      ; FIXED_LINE ; STANDARD_RATE ;                             ; "fixed_2/2/3"       ; "PL"    ; "Kraków"               ; "Kraków"
 32           ; 9      ; FIXED_LINE ; STANDARD_RATE ;                             ; "fixed_2/3/2/2"     ; "PL"    ; "Katowice"             ; "Katowice"
 3219         ; 7      ; FIXED_LINE ; STANDARD_RATE ;                             ; "fixed_2/2/3"       ; "PL"    ; "Katowice"             ; "Katowice"
 33           ; 9      ; FIXED_LINE ; STANDARD_RATE ;                             ; "fixed_2/3/2/2"     ; "PL"    ; "Bielsko-Biala"        ; "Bielsko-Biała"
