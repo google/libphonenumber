@@ -1,3 +1,12 @@
+Mar 12, 2026: v9.0.26
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   BL, GF, GP, GY, KY, MF, PL, PM, VU
+ - Updated short number metadata for region code(s): BL, GF, GP, GY, MF, PM
+ - Updated geocoding data for country calling code(s): 48 (en)
+ - Updated carrier data for country calling code(s):
+   33 (en), 44 (en), 229 (en), 591 (en), 1345 (en)
+
 Feb 25, 2026: v9.0.25
 Metadata changes:
  - Updated alternate formatting data for country calling code(s): 90

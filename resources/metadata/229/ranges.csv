@@ -44,7 +44,8 @@ Prefix        ; Length ; Type                 ; Tariff        ; Operator  ; Form
 012382        ; 10     ; FIXED_LINE           ; STANDARD_RATE ;           ; "fmt_2/2/2/2/2" ; "BJ"    ; "Natitingou"                           ; "Natitingou"
 012383        ; 10     ; FIXED_LINE           ; STANDARD_RATE ;           ; "fmt_2/2/2/2/2" ; "BJ"    ; "Tanguiéta"                            ; "Tanguiéta"
 0124          ; 10     ; FIXED_LINE           ; STANDARD_RATE ;           ; "fmt_2/2/2/2/2" ; "BJ"    ; "Tanguiéta"                            ; "Tanguiéta"
-012[5-9]      ; 10     ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ;           ; "fmt_2/2/2/2/2" ; "BJ"    ;                                        ;                                        ; ITU
+012[5-79]     ; 10     ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ;           ; "fmt_2/2/2/2/2" ; "BJ"    ;                                        ;                                        ; ITU
+0128          ; 10     ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "celtiis" ; "fmt_2/2/2/2/2" ; "BJ"    ;                                        ;                                        ; IR21
 014[01347-9]  ; 10     ; MOBILE               ; STANDARD_RATE ; "celtiis" ; "fmt_2/2/2/2/2" ; "BJ"    ;                                        ;                                        ; IR21
 014[26]       ; 10     ; MOBILE               ; STANDARD_RATE ; "mtn"     ; "fmt_2/2/2/2/2" ; "BJ"    ;                                        ;                                        ; ITU
 0145          ; 10     ; MOBILE               ; STANDARD_RATE ; "moov"    ; "fmt_2/2/2/2/2" ; "BJ"    ;                                        ;                                        ; ITU

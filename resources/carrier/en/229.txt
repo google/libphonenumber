@@ -15,6 +15,7 @@
 # Libercom is brand name of Benintelecoms and Moov is brand name of Etisalat.
 # Celtiis is brand name of SBIN.
 
+2290128|Celtiis
 229014|Celtiis
 2290142|MTN
 2290145|Moov

@@ -178,6 +178,7 @@
 4473896|Gamma Telecom
 4473897|Vodafone
 4473898|Vodafone
+4473899|Wireless Logic
 4473900|Home Office
 447391|Vodafone
 447392|Vodafone

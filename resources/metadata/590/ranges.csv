@@ -62,6 +62,8 @@ Prefix       ; Length ; Type       ; Tariff        ; Operator           ; Format
 70903        ; 9      ; MOBILE     ; STANDARD_RATE ; "orange"           ; "fmt1_3/2/2/2"    ; "BL,GP,MF" ; GOVERNMENT
 70904        ; 9      ; MOBILE     ; STANDARD_RATE ; "dauphin_telecom"  ; "fmt1_3/2/2/2"    ; "BL,GP,MF" ; GOVERNMENT
 80[0-5]      ; 9      ; FIXED_LINE ; TOLL_FREE     ;                    ; "varcost_3/2/2/2" ; "BL,GP,MF" ;            ; "ARCEP"
+80[6-9]      ; 9      ; FIXED_LINE ; TOLL_FREE     ;                    ; "varcost_3/2/2/2" ; "BL,GP,MF" ; ITU
+8[129]       ; 9      ; FIXED_LINE ; PREMIUM_RATE  ;                    ; "varcost_3/2/2/2" ; "BL,GP,MF" ; ITU
 9395         ; 9      ; VOIP       ; STANDARD_RATE ;                    ; "fmt1_3/2/2/2"    ; "BL,GP,MF" ; ITU
 939[67]      ; 9      ; VOIP       ; STANDARD_RATE ;                    ; "fmt1_3/2/2/2"    ; "BL,GP,MF" ; IR21
 9475[0-6]    ; 9      ; VOIP       ; STANDARD_RATE ;                    ; "fmt1_3/2/2/2"    ; "BL,GP,MF" ; GOVERNMENT
