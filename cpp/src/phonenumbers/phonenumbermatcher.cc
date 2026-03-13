@@ -26,14 +26,15 @@
 #endif  // I18N_PHONENUMBERS_USE_ICU_REGEXP
 
 #include <ctype.h>
-#include <stddef.h>
+#include <functional>
 #include <limits>
 #include <map>
 #include <memory>
+#include <stddef.h>
 #include <string>
+#include <unicode/uchar.h>
 #include <utility>
 #include <vector>
-#include <unicode/uchar.h>
 
 #include "phonenumbers/alternate_format.h"
 #include "phonenumbers/base/logging.h"
@@ -409,7 +410,7 @@ PhoneNumberMatcher::PhoneNumberMatcher(const PhoneNumberUtil& util,
       last_match_(NULL),
       search_index_(0),
       is_input_valid_utf8_(true) {
-  is_input_valid_utf8_ = IsInputUtf8(); 
+  is_input_valid_utf8_ = IsInputUtf8();
 }
 
 PhoneNumberMatcher::PhoneNumberMatcher(const string& text,
@@ -541,12 +542,8 @@ bool PhoneNumberMatcher::VerifyAccordingToLeniency(
           !IsNationalPrefixPresentIfRequired(number)) {
         return false;
       }
-      ResultCallback4<bool, const PhoneNumberUtil&, const PhoneNumber&,
-                      const string&, const std::vector<string>&>* callback =
-          NewPermanentCallback(&AllNumberGroupsRemainGrouped);
-      bool is_valid = CheckNumberGroupingIsValid(number, candidate, callback);
-      delete(callback);
-      return is_valid;
+      return CheckNumberGroupingIsValid(number, candidate,
+                                        &AllNumberGroupsRemainGrouped);
     }
     case PhoneNumberMatcher::EXACT_GROUPING: {
       if (!phone_util_.IsValidNumber(number) ||
@@ -556,13 +553,10 @@ bool PhoneNumberMatcher::VerifyAccordingToLeniency(
           !IsNationalPrefixPresentIfRequired(number)) {
         return false;
       }
-      ResultCallback4<bool, const PhoneNumberUtil&, const PhoneNumber&,
-                      const string&, const std::vector<string>&>* callback =
-          NewPermanentCallback(
-              this, &PhoneNumberMatcher::AllNumberGroupsAreExactlyPresent);
-      bool is_valid = CheckNumberGroupingIsValid(number, candidate, callback);
-      delete(callback);
-      return is_valid;
+      return CheckNumberGroupingIsValid(
+          number, candidate,
+          std::bind_front(&PhoneNumberMatcher::AllNumberGroupsAreExactlyPresent,
+                          this));
     }
     default:
       LOG(ERROR) << "No implementation defined for verification for leniency "
@@ -691,17 +685,16 @@ bool PhoneNumberMatcher::Find(int index, PhoneNumberMatch* match) {
 }
 
 bool PhoneNumberMatcher::CheckNumberGroupingIsValid(
-    const PhoneNumber& phone_number,
-    const string& candidate,
-    ResultCallback4<bool, const PhoneNumberUtil&, const PhoneNumber&,
-                    const string&, const std::vector<string>&>* checker) const {
-  DCHECK(checker);
+    const PhoneNumber &phone_number, const string &candidate,
+    std::function<bool(const PhoneNumberUtil &, const PhoneNumber &,
+                       const std::string &, const std::vector<std::string> &)>
+        checker) const {
   string normalized_candidate =
       NormalizeUTF8::NormalizeDecimalDigits(candidate);
   std::vector<string> formatted_number_groups;
   GetNationalNumberGroups(phone_number, &formatted_number_groups);
-  if (checker->Run(phone_util_, phone_number, normalized_candidate,
-                   formatted_number_groups)) {
+  if (checker(phone_util_, phone_number, normalized_candidate,
+              formatted_number_groups)) {
     return true;
   }
   // If this didn't pass, see if there are any alternate formats that match, and
@@ -730,8 +723,8 @@ bool PhoneNumberMatcher::CheckNumberGroupingIsValid(
       formatted_number_groups.clear();
       GetNationalNumberGroupsForPattern(phone_number, &*it,
                                         &formatted_number_groups);
-      if (checker->Run(phone_util_, phone_number, normalized_candidate,
-                       formatted_number_groups)) {
+      if (checker(phone_util_, phone_number, normalized_candidate,
+                  formatted_number_groups)) {
         return true;
       }
     }
