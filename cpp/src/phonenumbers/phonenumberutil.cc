@@ -2285,6 +2285,16 @@ PhoneNumberUtil::ErrorType PhoneNumberUtil::ParseHelper(
     PhoneNumber* phone_number) const {
   DCHECK(phone_number);
 
+  // We don't allow input strings for parsing to be longer than 250 chars.
+  // This prevents malicious input from consuming excessive CPU in the
+  // regular-expression engine. This matches the check in the Java and
+  // JavaScript implementations.
+  static const size_t kMaxInputStringLength = 250;
+  if (number_to_parse.length() > kMaxInputStringLength) {
+    VLOG(2) << "Input string is too long for parsing.";
+    return NOT_A_NUMBER;
+  }
+
   string national_number;
   PhoneNumberUtil::ErrorType build_national_number_for_parsing_return =
       BuildNationalNumberForParsing(number_to_parse, &national_number);
