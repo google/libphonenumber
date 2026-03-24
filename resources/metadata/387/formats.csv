@@ -1,0 +1,4 @@
+Id          ; National        ; International  ; Local     ; Comment
+fixed_2/3/3 ; "#XX XXX-XXX"   ; "XX XXX-XXX"   ; "XXX-XXX"
+fmt_2/2/2/3 ; "#XX XX XX XXX" ; "XX XX XX XXX" ;           ; "9-digit mobile."
+fmt_2/3/3   ; "#XX XXX XXX"   ; "XX XXX XXX"

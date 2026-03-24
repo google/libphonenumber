@@ -1,0 +1,7 @@
+Region ; Type         ; Number
+LI     ; FIXED_LINE   ; "2345678"
+LI     ; MOBILE       ; "660234567"
+LI     ; TOLL_FREE    ; "8002222"
+LI     ; PREMIUM_RATE ; "9002222"
+LI     ; UAN          ; "8702812"
+LI     ; VOICEMAIL    ; "697861234"

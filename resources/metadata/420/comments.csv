@@ -1,0 +1,7 @@
+Region ; Label            ; Comment
+CZ     ; SC               ; "http://www.itu.int/oth/T0202000035/en"
+CZ     ; SC               ; "http://en.wikipedia.org/wiki/%2B420"
+CZ     ; XML              ; "http://www.itu.int/oth/T0202000035/en"
+CZ     ; XML              ; "http://en.wikipedia.org/wiki/%2B420"
+CZ     ; XML_PREMIUM_RATE ; "Includes premium rate dial-up."
+CZ     ; XML_UAN          ; "Numbers belonging to private communication networks are included here. These are\nclassified as Institutional networks, belonging to institutions like the police, armed\nforces and railways, along with a couple of formerly government-owned banks. These\nnumbers are reachable by the public."

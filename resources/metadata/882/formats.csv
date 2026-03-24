@@ -1,0 +1,9 @@
+Id               ; National         ; International    ; Comment
+fmt_2/4-5/5      ; "XX XXXX* XXXXX" ; "XX XXXX* XXXXX" ; "For 11 and 12 digit numbers except voice mail."
+fmt_2/4/4        ; "XX XXXX XXXX"   ; "XX XXXX XXXX"   ; "For 10 digit numbers in general."
+fmt_2/5          ; "XX XXXXX"       ; "XX XXXXX"       ; "For 7 digit numbers in general"
+mobile_2/4/3     ; "XX XXXX XXX"    ; "XX XXXX XXX"    ; "For 9 digit mobile numbers."
+mobile_2/6       ; "XX XXXXXX"      ; "XX XXXXXX"      ; "For 8 digit mobile numbers."
+voice_mail_3/4/4 ; "XXX XXXX XXXX"  ; "XXX XXXX XXXX"  ; "For voice mail numbers."
+voip_2/2/4       ; "XX XX XXXX"     ; "XX XX XXXX"     ; "For 8 digit VOIP numbers."
+voip_2/3-4/4     ; "XX XXX* XXXX"   ; "XX XXX* XXXX"   ; "For 9 and 10 digit VOIP numbers."

@@ -1,0 +1,7 @@
+Region ; Type         ; Number
+AT     ; FIXED_LINE   ; "1234567890"
+AT     ; MOBILE       ; "664123456"
+AT     ; TOLL_FREE    ; "800123456"
+AT     ; PREMIUM_RATE ; "900123456"
+AT     ; SHARED_COST  ; "810123456"
+AT     ; VOIP         ; "780123456"

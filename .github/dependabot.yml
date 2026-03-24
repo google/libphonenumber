@@ -1,0 +1,145 @@
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
+    groups:
+      github-actions:
+        patterns:
+          - "*"
+
+  - package-ecosystem: maven
+    directory: /java/carrier
+    schedule:
+      interval: monthly
+    groups:
+      java-carrier:
+        patterns:
+          - "*"
+
+  - package-ecosystem: maven
+    directory: /java/demo
+    schedule:
+      interval: monthly
+    groups:
+      java-demo:
+        patterns:
+          - "*"
+
+  - package-ecosystem: maven
+    directory: /java/geocoder
+    schedule:
+      interval: monthly
+    groups:
+      geocoder:
+        patterns:
+          - "*"
+
+  - package-ecosystem: maven
+    directory: /java/internal/prefixmapper
+    schedule:
+      interval: monthly
+    groups:
+      prefixmapper:
+        patterns:
+          - "*"
+
+  - package-ecosystem: maven
+    directory: /java/libphonenumber
+    schedule:
+      interval: monthly
+    groups:
+      java-libphonenumber:
+        patterns:
+          - "*"
+
+  - package-ecosystem: maven
+    directory: /java
+    schedule:
+      interval: monthly
+    groups:
+      java:
+        patterns:
+          - "*"
+
+  - package-ecosystem: maven
+    directory: /metadata
+    schedule:
+      interval: monthly
+    groups:
+      metadata:
+        patterns:
+          - "*"
+
+  - package-ecosystem: maven
+    directory: /migrator/migrator-servlet
+    schedule:
+      interval: monthly
+    groups:
+      migrator-servlet:
+        patterns:
+          - "*"
+
+  - package-ecosystem: maven
+    directory: /migrator
+    schedule:
+      interval: monthly
+    groups:
+      migrator:
+        patterns:
+          - "*"
+
+  - package-ecosystem: maven
+    directory: /
+    schedule:
+      interval: monthly
+    groups:
+      root:
+        patterns:
+          - "*"
+
+  - package-ecosystem: maven
+    directory: /tools/java/common
+    schedule:
+      interval: monthly
+    groups:
+      tools-java-common:
+        patterns:
+          - "*"
+
+  - package-ecosystem: maven
+    directory: /tools/java/cpp-build
+    schedule:
+      interval: monthly
+    groups:
+      tools-java-cpp-build:
+        patterns:
+          - "*"
+
+  - package-ecosystem: maven
+    directory: /tools/java/data
+    schedule:
+      interval: monthly
+    groups:
+      tools-java-data:
+        patterns:
+          - "*"
+
+  - package-ecosystem: maven
+    directory: /tools/java/java-build
+    schedule:
+      interval: monthly
+    groups:
+      java-build:
+        patterns:
+          - "*"
+
+  - package-ecosystem: maven
+    directory: /tools/java
+    schedule:
+      interval: monthly
+    groups:
+      tools-java:
+        patterns:
+          - "*"

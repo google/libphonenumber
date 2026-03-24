@@ -1,0 +1,5 @@
+Region ; Prefix    ; Length ; Type       ; Tariff    ; Carrier Specific
+KW     ; 1[02-7]   ; 3      ; COMMERCIAL
+KW     ; 11[013-9] ; 3      ; COMMERCIAL
+KW     ; 112       ; 3      ; EMERGENCY  ; TOLL_FREE
+KW     ; 89887     ; 5      ; COMMERCIAL ;           ; true

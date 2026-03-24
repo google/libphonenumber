@@ -1,0 +1,9 @@
+Region ; Type                 ; Number
+ZA     ; FIXED_LINE           ; "101234567"
+ZA     ; MOBILE               ; "711234567"
+ZA     ; FIXED_LINE_OR_MOBILE ; "104920123"
+ZA     ; TOLL_FREE            ; "801234567"
+ZA     ; PREMIUM_RATE         ; "862345678"
+ZA     ; SHARED_COST          ; "860123456"
+ZA     ; VOIP                 ; "871234567"
+ZA     ; UAN                  ; "861123456"

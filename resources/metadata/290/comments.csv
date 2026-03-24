@@ -1,0 +1,9 @@
+Region ; Label          ; Comment
+SH     ; SC_EMERGENCY   ; "http://www.sthelenatourism.com/pages/fast_facts.html#Emergencies"
+SH     ; XML            ; "http://www.itu.int/oth/T02020000AF/en"
+SH     ; XML_FIXED_LINE ; "There is a bug in the way the library calculates whether numbers are ""possible"" for a\nregion in that it uses the ""main"" country if multiple countries share a country calling\ncode. Trista da Cuñha shares a country calling code with Saint Helena but has only 4\ndigit numbers, so we include 4 as a possible length here."
+SH     ; XML_FIXED_LINE ; "St Helena has changed to 5 digits on October 1. 2013"
+SH     ; XML_FIXED_LINE ; "Using St Helena Tourism as the example number."
+SH     ; XML_MOBILE     ; "Effective 1st August 2015"
+SH     ; XML_VOIP       ; "The ITU doc reserves prefixes 260 and 261 for Information Service and prefix 263 for\nFlexible access. We do not support these prefixes as we do not have any information\nabout their usage."
+TA     ; XML            ; "http://www.itu.int/oth/T02020000AF/en"

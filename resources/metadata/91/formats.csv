@@ -1,0 +1,12 @@
+Id               ; National           ; International      ; National Prefix Optional ; Comment
+fixed_2/4/4      ; "#XX XXXX XXXX"    ; "XX XXXX XXXX"     ; true                     ; "2-digit area codes."
+fixed_3/3/4      ; "#XXX XXX XXXX"    ; "XXX XXX XXXX"     ; true                     ; "3-digit area codes."
+fixed_4/3/3      ; "#XXXX XXX XXX"    ; "XXXX XXX XXX"     ; true                     ; "4-digit area codes."
+mobile_5/5       ; "#XXXXX XXXXX"     ; "XXXXX XXXXX"      ; true                     ; "Mobile format (this can include some fixed-line ranges due to limited precision\nin some ranges)."
+shortcode_7      ; "XXXXXXX"          ;                    ;                          ; "7-digit ""short"" numbers."
+shortcode_8_np   ; "XXXXXXXX"         ; "XXXXXXXX"         ; true                     ; "8-digit ""short"" numbers (optionally diallable with a national prefix)."
+tollfree_3/3/3/4 ; "XXX XXX XXX XXXX" ;                    ;                          ; "13-digit ITFS"
+tollfree_4/4-5   ; "XXXX XXXX*"       ; "XXXX XXXX*"       ; true                     ; "8,9-digit toll free numbers"
+uan_3/3/4        ; "XXX XXX XXXX"     ; "XXX XXX XXXX"     ; true                     ; "10 digit UAN numbers"
+varcost_4/2-4/4  ; "XXXX XX** XXXX"   ; "XXXX XX** XXXX"   ; true                     ; "10-12 digit toll free and shared cost numbers."
+varcost_4/3/3/3  ; "XXXX XXX XXX XXX" ; "XXXX XXX XXX XXX" ; true                     ; "13 digit toll free and premium rate numbers"

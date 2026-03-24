@@ -1,0 +1,9 @@
+Id              ; National             ; International     ; Comment
+fixed_2/7-8     ; "(#XX) XXXXXXX*"     ; "XX XXXXXXX*"     ; "Fixed-line numbers with 2 digits in first group."
+fixed_3/6-7     ; "(#XXX) XXXXXX*"     ; "XXX XXXXXX*"     ; "Fixed-line numbers with 3 digits in first group."
+fixed_5/5       ; "(#XXXXX) XXXXX"     ; "XXXXX XXXXX"     ; "Fixed-line numbers with 5 digits in first group.\n586 was seen in this format online.\n581 and 582 are added here because our best is guess is they behave like 586, given\nthese are the only fixed-line numbers where the second group doesn't start with [2-9]."
+mobile_3/7      ; "#XXX XXXXXXX"       ; "XXX XXXXXXX"     ; "Mobile numbers."
+personal_4/5    ; "XXXX XXXXX"         ; "XXXX XXXXX"      ; "Personal numbers.\nhttps://propakistani.pk/2010/06/10/ptcl-launches-personal-global-number/ has it\nlisted as being dialled without the national prefix."
+uan_2/3/3/3     ; "(#XX) XXX XXX XXX"  ; "XX XXX XXX XXX"  ; "11-digit UAN numbers (formatted to imply an area code but since there's not enough evidence that\nthe first group is actually optional, we don't assign an area code length to these ranges yet)."
+uan_3/3/3/3     ; "(#XXX) XXX XXX XXX" ; "XXX XXX XXX XXX" ; "12-digit UAN numbers (formatted to imply an area code but it's not optional)."
+varcost_3/3/2-5 ; "#XXX XXX XX*****"   ; "XXX XXX XX*****" ; "Toll-free and premium-rate numbers."

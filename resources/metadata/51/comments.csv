@@ -1,0 +1,7 @@
+Region ; Label          ; Comment
+PE     ; SC             ; "http://www.itu.int/oth/T02020000A6/en"
+PE     ; SC             ; "http://en.wikipedia.org/wiki/+51"
+PE     ; XML            ; "http://www.itu.int/oth/T02020000A6/en"
+PE     ; XML            ; "http://en.wikipedia.org/wiki/+51"
+PE     ; XML            ; "http://www.assistbook.com/South%20America/Peru/widecodes"
+PE     ; XML_FIXED_LINE ; "Looks like not all 1X numbers are land-line numbers in Lima, some of them are allotted\nas IDDs. As it effects parsing of these numbers and no valid numbers found online, not\nsupporting 8 digit 191[124], 1977 and 1990 ranges."

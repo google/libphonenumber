@@ -1,0 +1,10 @@
+Region ; Type            ; Number
+CH     ; FIXED_LINE      ; "212345678"
+CH     ; MOBILE          ; "781234567"
+CH     ; PAGER           ; "740123456"
+CH     ; TOLL_FREE       ; "800123456"
+CH     ; PREMIUM_RATE    ; "900123456"
+CH     ; SHARED_COST     ; "840123456"
+CH     ; PERSONAL_NUMBER ; "878123456"
+CH     ; UAN             ; "581234567"
+CH     ; VOICEMAIL       ; "860123456789"

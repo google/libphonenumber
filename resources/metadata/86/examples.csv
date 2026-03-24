@@ -1,0 +1,6 @@
+Region ; Type         ; Number
+CN     ; FIXED_LINE   ; "1012345678"
+CN     ; MOBILE       ; "13123456789"
+CN     ; TOLL_FREE    ; "8001234567"
+CN     ; PREMIUM_RATE ; "16812345"
+CN     ; SHARED_COST  ; "4001234567"

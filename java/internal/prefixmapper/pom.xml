@@ -1,16 +1,16 @@
 <?xml version="1.0"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>com.googlecode.libphonenumber</groupId>
   <artifactId>prefixmapper</artifactId>
-  <version>2.161-SNAPSHOT</version>
+  <version>3.27-SNAPSHOT</version>
   <packaging>jar</packaging>
+  <name>prefixmapper</name>
   <url>https://github.com/google/libphonenumber/</url>
 
   <parent>
     <groupId>com.googlecode.libphonenumber</groupId>
     <artifactId>libphonenumber-parent</artifactId>
-    <version>8.12.25-SNAPSHOT</version>
+    <version>9.0.27-SNAPSHOT</version>
     <relativePath>../../pom.xml</relativePath>
   </parent>
 
@@ -19,11 +19,45 @@
     <testSourceDirectory>test</testSourceDirectory>
     <testResources>
       <testResource>
-        <directory>../../geocoder/test/com/google/i18n/phonenumbers/geocoding/testing_data</directory>
-        <targetPath>com/google/i18n/phonenumbers/geocoding/testing_data</targetPath>
+        <directory>
+          ../../geocoder/test/com/google/i18n/phonenumbers/geocoding/testing_data
+        </directory>
+        <targetPath>com/google/i18n/phonenumbers/geocoding/testing_data
+        </targetPath>
       </testResource>
     </testResources>
     <plugins>
+      <plugin>
+        <groupId>org.apache.felix</groupId>
+        <artifactId>maven-bundle-plugin</artifactId>
+        <version>5.1.9</version>
+        <configuration>
+          <instructions>
+            <Fragment-Host>com.googlecode.libphonenumber</Fragment-Host>
+          </instructions>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-jar-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>default-jar</id>
+            <configuration>
+              <archive>
+                <manifestFile>
+                  ${project.build.outputDirectory}/META-INF/MANIFEST.MF
+                </manifestFile>
+                <manifestEntries>
+                  <Automatic-Module-Name>
+                    com.google.i18n.phonenumbers.prefixmapper
+                  </Automatic-Module-Name>
+                </manifestEntries>
+              </archive>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>animal-sniffer-maven-plugin</artifactId>
@@ -50,7 +84,7 @@
     <dependency>
       <groupId>com.googlecode.libphonenumber</groupId>
       <artifactId>libphonenumber</artifactId>
-      <version>8.12.25-SNAPSHOT</version>
+      <version>9.0.27-SNAPSHOT</version>
     </dependency>
   </dependencies>
 

@@ -1,0 +1,5 @@
+Region ; Type       ; Number
+ZM     ; FIXED_LINE ; "211234567"
+ZM     ; MOBILE     ; "955123456"
+ZM     ; TOLL_FREE  ; "800123456"
+ZM     ; VOIP       ; "630123456"

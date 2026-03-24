@@ -1,0 +1,21 @@
+Prefix ; Length ; Type       ; Tariff        ; Area Code Length ; Operator                            ; Format          ; Regions ; Geocode:en          ; Provenance
+1700   ; 10     ; FIXED_LINE ; SHARED_COST   ;                  ;                                     ; "varcost_4/3/3" ; "PS"
+1800   ; 10     ; FIXED_LINE ; TOLL_FREE     ;                  ;                                     ; "varcost_4/3/3" ; "PS"
+222    ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                                     ; "fixed_1/3/4"   ; "PS"    ; "Jericho/Hebron"    ; WEB
+223    ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                                     ; "fixed_1/3/4"   ; "PS"    ; "Jerusalem"         ; WEB
+22[48] ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                                     ; "fixed_1/3/4"   ; "PS"    ;                     ; WEB
+227    ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                                     ; "fixed_1/3/4"   ; "PS"    ; "Bethlehem"         ; WEB
+229    ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                                     ; "fixed_1/3/4"   ; "PS"    ; "Ramallah/Al-Bireh" ; WEB
+424    ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                                     ; "fixed_1/3/4"   ; "PS"    ; "Jenin"             ; WEB
+425    ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                                     ; "fixed_1/3/4"   ; "PS"    ;                     ; WEB
+56     ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "ooredoo"                           ; "mobile_3/3/3"  ; "PS"
+59     ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "palestine_cellular_communications" ; "mobile_3/3/3"  ; "PS"
+820    ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                                     ; "fixed_1/3/4"   ; "PS"    ; "Khan Yunis"        ; WEB
+821    ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                                     ; "fixed_1/3/4"   ; "PS"    ; "Rafah"             ; WEB
+824    ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                                     ; "fixed_1/3/4"   ; "PS"    ; "North Gaza"        ; WEB
+825    ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                                     ; "fixed_1/3/4"   ; "PS"    ; "Deir al-Balah"     ; WEB
+82[68] ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                                     ; "fixed_1/3/4"   ; "PS"    ; "Gaza"              ; WEB
+923    ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                                     ; "fixed_1/3/4"   ; "PS"    ; "Nablus"            ; WEB
+925    ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                                     ; "fixed_1/3/4"   ; "PS"    ; "Tubas"             ; WEB
+926    ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                                     ; "fixed_1/3/4"   ; "PS"    ; "Tulkarm"           ; WEB
+929    ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                                     ; "fixed_1/3/4"   ; "PS"    ; "Qalqilya/Salfit"   ; WEB

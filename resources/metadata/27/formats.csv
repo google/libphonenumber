@@ -1,0 +1,6 @@
+Id               ; National        ; International  ; Comment
+all_types_2/3/4  ; "#XX XXX XXXX"  ; "XX XXX XXXX"
+mobile_2/3-4     ; "#XX XXX*"      ; "XX XXX*"
+mobile_2/3/2-3   ; "#XX XXX XX*"   ; "XX XXX XX*"
+sharedcost_3/3/3 ; "#XXX XXX XXX"  ; "XXX XXX XXX"
+var_cost_3/3/4   ; "#XXX XXX XXXX" ; "XXX XXX XXXX" ; "10-digit uan numbers."

@@ -1,0 +1,7 @@
+Region ; Type         ; Number
+SG     ; FIXED_LINE   ; "61234567"
+SG     ; MOBILE       ; "81234567"
+SG     ; TOLL_FREE    ; "18001234567"
+SG     ; PREMIUM_RATE ; "19001234567"
+SG     ; VOIP         ; "31234567"
+SG     ; UAN          ; "70001234567"

@@ -1,0 +1,5 @@
+Region ; Label         ; Comment
+FK     ; SC            ; "http://www.itu.int/oth/T0202000046/en"
+FK     ; SC_EMERGENCY  ; "http://studentsabroad.state.gov/content/pdfs/911_ABROAD.pdf"
+FK     ; SC_SHORT_CODE ; "Service numbers use 3 digit short codes"
+FK     ; XML           ; "http://www.itu.int/oth/T0202000046/en"

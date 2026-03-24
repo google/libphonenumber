@@ -1,0 +1,9 @@
+Id           ; National        ; International  ; Comment
+fixed_2/4/4  ; "#XX XXXX XXXX" ; "XX XXXX XXXX" ; "2-digit area codes and other 2-4-4 formats (pager, uan etc.)\n2d, 55, 56, 70 and 76 pager numbers (excludes 7624) with 10 digits."
+fixed_3/3/4  ; "#XXX XXX XXXX" ; "XXX XXX XXXX" ; "3-digit area codes and other 3-3-4 formats (fixed line, premium rate, toll free etc.)\nFor geographic area codes: 11d, 1d1, 3dd, 9dd"
+fixed_4/5-6  ; "#XXXX XXXXX*"  ; "XXXX XXXXX*"  ; "4-digit area codes (9 or 10 digit numbers)."
+fixed_5/4-5  ; "#XXXXX XXXX*"  ; "XXXXX XXXX*"  ; "5-digit area codes (9 or 10 digit numbers).\nThese area codes are very rare in GB, and are only available in the following places:\n13873(Langholm), 15242(Hornby), 15394(Hawkshead), 15395(Grange-over-Sands),\n15396(Sedbergh), 16973(Wigton), 16974(Raughton Head), 16977(Brampton),\n17683(Appleby), 17684(Pooley Bridge), 17687(Keswick), 19467(Gosforth)."
+mobile_4/6   ; "#XXXX XXXXXX"  ; "XXXX XXXXXX"  ; "7ddd (not 70, 76) with 10 digits. Includes 7624 for IM."
+nhs_3/2/2    ; "#XXX XX XX"    ; "XXX XX XX"    ; "Special case: 845 46 47 (UK NHS Direct)."
+tollfree_3/4 ; "#XXX XXXX"     ; "XXX XXXX"     ; "Special case: 800 1111 (UK Child Line)."
+tollfree_3/6 ; "#XXX XXXXXX"   ; "XXX XXXXXX"   ; "Shorter than normal toll-free numbers (9-digits)."

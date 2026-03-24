@@ -15,6 +15,7 @@
 22723|Orange
 22770|Orange
 22774|Moov
+22777|Airtel
 22780|Orange
 22781|Orange
 22782|Orange

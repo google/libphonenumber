@@ -20,6 +20,7 @@ import com.google.i18n.phonenumbers.NumberParseException;
 import com.google.i18n.phonenumbers.PhoneNumberUtil;
 import com.google.i18n.phonenumbers.PhoneNumberUtil.PhoneNumberType;
 import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber;
+import com.google.i18n.phonenumbers.metadata.DefaultMetadataDependenciesProvider;
 import com.google.i18n.phonenumbers.prefixmapper.PrefixFileReader;
 
 import java.util.List;
@@ -32,9 +33,7 @@ import java.util.Locale;
  */
 public class PhoneNumberOfflineGeocoder {
   private static PhoneNumberOfflineGeocoder instance = null;
-  private static final String MAPPING_DATA_DIRECTORY =
-      "/com/google/i18n/phonenumbers/geocoding/data/";
-  private PrefixFileReader prefixFileReader = null;
+  private final PrefixFileReader prefixFileReader;
 
   private final PhoneNumberUtil phoneUtil = PhoneNumberUtil.getInstance();
 
@@ -54,7 +53,8 @@ public class PhoneNumberOfflineGeocoder {
    */
   public static synchronized PhoneNumberOfflineGeocoder getInstance() {
     if (instance == null) {
-      instance = new PhoneNumberOfflineGeocoder(MAPPING_DATA_DIRECTORY);
+      instance = new PhoneNumberOfflineGeocoder(DefaultMetadataDependenciesProvider.getInstance()
+          .getGeocodingDataDirectory());
     }
     return instance;
   }

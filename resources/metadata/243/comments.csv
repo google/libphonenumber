@@ -1,0 +1,7 @@
+Region ; Label               ; Comment
+CD     ; SC                  ; "http://www.itu.int/net/itu-t/inrdb/e129_important_numbers.aspx?country=47&pg_size=50"
+CD     ; SC_CARRIER_SPECIFIC ; "https://support.twitter.com/articles/20170024"
+CD     ; SC_EMERGENCY        ; "No national emergency numbers were located for Congo."
+CD     ; SC_SMS_SERVICES     ; "https://support.twitter.com/articles/20170024"
+CD     ; XML                 ; "http://www.itu.int/oth/T0202000037/en"
+CD     ; XML_MOBILE          ; "As of May'13 the 88 range looks as if it is defunct. The ITU document lists ""Yozma\nTimeturns"" as the operator, but their website (http://www.ytt.cd) is offline and the\nholdings company http://www.timeturnsholdings.com/products does not show a link for\nDRC. While there are still numbers of the form ""88\\d{5}"" online, none of the ones\ntried were valid. If the holdings company does not respond to requests about this\nrange and unless we receive further information, we will remove this range."

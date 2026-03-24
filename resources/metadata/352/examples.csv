@@ -1,0 +1,7 @@
+Region ; Type         ; Number
+LU     ; FIXED_LINE   ; "27123456"
+LU     ; MOBILE       ; "628123456"
+LU     ; TOLL_FREE    ; "80012345"
+LU     ; PREMIUM_RATE ; "90012345"
+LU     ; SHARED_COST  ; "80112345"
+LU     ; VOIP         ; "20201234"

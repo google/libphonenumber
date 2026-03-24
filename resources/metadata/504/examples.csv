@@ -1,0 +1,4 @@
+Region ; Type       ; Number
+HN     ; FIXED_LINE ; "22123456"
+HN     ; MOBILE     ; "91234567"
+HN     ; TOLL_FREE  ; "80021234567"

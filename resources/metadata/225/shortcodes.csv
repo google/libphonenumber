@@ -1,0 +1,4 @@
+Region ; Prefix ; Length ; Type       ; Tariff    ; Sms  ; Carrier Specific
+CI     ; 11[01] ; 3      ; EMERGENCY  ; TOLL_FREE
+CI     ; 1[78]0 ; 3      ; EMERGENCY  ; TOLL_FREE
+CI     ; 4443   ; 4      ; COMMERCIAL ;           ; true ; true

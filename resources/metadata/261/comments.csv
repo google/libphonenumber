@@ -1,0 +1,7 @@
+Region ; Label          ; Comment
+MG     ; SC             ; "http://www.itu.int/oth/T020200007F/en"
+MG     ; SC_EMERGENCY   ; "http://www.commerce.gov.mg/index.php/infos-services"
+MG     ; XML            ; "http://www.itu.int/oth/T020200007F/en"
+MG     ; XML_FIXED_LINE ; "Added the prefixes 20 44 and 20 47 as they seem popular on the internet - the plan says\n20 4 is for the rest of the province of Antanarivo, but then fails to mention any area\ncodes beginning with 4."
+MG     ; XML_MOBILE     ; "The numbering plan suggests the third digit, Z, should be 24-9, but this is not borne\nout by reality."
+MG     ; XML_VOIP       ; "Putting VSAT numbers here."

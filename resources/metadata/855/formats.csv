@@ -1,0 +1,3 @@
+Id            ; National       ; International  ; Comment
+fmt_2/3/3-4   ; "#XX XXX XXX*" ; "XX XXX XXX*"  ; "General format for most number ranges"
+varcost_4/3/3 ; "XXXX XXX XXX" ; "XXXX XXX XXX" ; "Toll-free and premium rate numbers"

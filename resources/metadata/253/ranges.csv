@@ -1,0 +1,4 @@
+Prefix  ; Length ; Type       ; Tariff        ; Operator ; Format         ; Regions
+21[2-5] ; 8      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt1_2/2/2/2" ; "DJ"
+27[45]  ; 8      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt1_2/2/2/2" ; "DJ"
+77      ; 8      ; MOBILE     ; STANDARD_RATE ; "evatis" ; "fmt1_2/2/2/2" ; "DJ"

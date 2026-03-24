@@ -332,7 +332,7 @@
 492623|Ransbach-Baumbach
 492624|Höhr-Grenzhausen
 492625|Ochtendung
-492626|Selters Westferwald
+492626|Selters Westerwald
 492627|Braubach
 492628|Rhens
 492630|Mülheim-Kärlich
@@ -3258,6 +3258,11 @@
 496207|Wald-Michelbach
 496209|Mörlenbach
 49621|Mannheim
+496215|Ludwigshafen
+496216|Ludwigshafen
+4962195|Ludwigshafen
+4962196|Ludwigshafen
+4962199|Ludwigshafen
 496220|Wilhelmsfeld
 496221|Heidelberg
 496222|Wiesloch

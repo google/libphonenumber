@@ -73,6 +73,7 @@ import java.util.TreeSet;
 public abstract class NumberingScheme {
   // Bitmask for [1-9] (bits 1..9 set, bit 0 clear).
   private static final int NOT_ZERO_MASK = 0x3FE;
+  private static final String JAPAN_COUNTRY_CODE = "81";
 
   /** Top level information about a numbering scheme. */
   @AutoValue
@@ -416,9 +417,15 @@ public abstract class NumberingScheme {
               || spec.carrier().map(FormatTemplate::hasNationalPrefix).orElse(false);
       nationalPrefixSometimesOptional |= spec.nationalPrefixOptional();
     }
-    checkMetadata(attributes.getCarrierPrefixes().isEmpty() || carrierTemplatesExist,
-        "[%s] carrier prefixes exist but no formats have carrier templates: %s",
-        cc, formats.values());
+     // Only if the present region is not JP do this check as in Japan we are not capturing domestic
+    // carrier codes.
+    if (!cc.toString().equals(JAPAN_COUNTRY_CODE)) {
+      checkMetadata(
+          attributes.getCarrierPrefixes().isEmpty() || carrierTemplatesExist,
+          "[%s] carrier prefixes exist but no formats have carrier templates: %s",
+          cc,
+          formats.values());
+    }
     checkMetadata(!attributes.getNationalPrefixes().isEmpty() || !nationalPrefixExistsForFormatting,
         "[%s] if no national prefix exists, it cannot be specified in any format template: %s",
         cc, formats.values());

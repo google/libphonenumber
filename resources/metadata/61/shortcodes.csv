@@ -1,0 +1,39 @@
+Region ; Prefix         ; Length ; Type       ; Tariff        ; Sms  ; Carrier Specific ; Format
+AU     ; 000            ; 3      ; EMERGENCY  ; TOLL_FREE
+AU     ; 106            ; 3      ; EMERGENCY  ; TOLL_FREE
+AU     ; 1100           ; 4      ; COMMERCIAL ; STANDARD_RATE
+AU     ; 112            ; 3      ; EMERGENCY  ; TOLL_FREE
+AU     ; 119[46]        ; 4      ; COMMERCIAL ; STANDARD_RATE
+AU     ; 12014[1-3]     ; 6      ; COMMERCIAL
+AU     ; 122            ; 4      ; COMMERCIAL
+AU     ; 123[0-35-9]    ; 4      ; COMMERCIAL
+AU     ; 1234           ; 4      ; COMMERCIAL ; PREMIUM_RATE
+AU     ; 124[0-4689]    ; 5      ; COMMERCIAL
+AU     ; 124[0-689]     ; 6      ; COMMERCIAL
+AU     ; 1245[0-57-9]   ; 5      ; COMMERCIAL
+AU     ; 12456          ; 5      ; COMMERCIAL ; PREMIUM_RATE
+AU     ; 1247[0-24-9]   ; 5,6    ; COMMERCIAL
+AU     ; 12473          ; 5      ; COMMERCIAL
+AU     ; 12473[0-24-9]  ; 6      ; COMMERCIAL
+AU     ; 124733         ; 6      ; COMMERCIAL ; STANDARD_RATE
+AU     ; 125[0-79]      ; 6,7    ; COMMERCIAL
+AU     ; 1258[0-79]     ; 6,7    ; COMMERCIAL
+AU     ; 12588[0-79]    ; 6,7    ; COMMERCIAL
+AU     ; 125888         ; 6      ; COMMERCIAL
+AU     ; 125888[0-46-9] ; 7      ; COMMERCIAL
+AU     ; 1258885        ; 7      ; COMMERCIAL ; TOLL_FREE     ;      ; true
+AU     ; 1268[689]      ; 5      ; COMMERCIAL
+AU     ; 127220         ; 6      ; COMMERCIAL
+AU     ; 12723          ; 7      ; COMMERCIAL
+AU     ; 128[013-9]     ; 5      ; COMMERCIAL
+AU     ; 1282           ; 4      ; COMMERCIAL
+AU     ; 1555           ; 4      ; COMMERCIAL ; TOLL_FREE     ;      ; true
+AU     ; 19             ; 6      ; COMMERCIAL ; PREMIUM_RATE  ; true ;                  ; "sms_3/3"
+AU     ; 19             ; 7,8    ; COMMERCIAL ; PREMIUM_RATE  ; true ;                  ; "sms_4/3-4"
+AU     ; 225            ; 3      ; COMMERCIAL ; STANDARD_RATE
+AU     ; 733            ; 3      ; COMMERCIAL ; TOLL_FREE
+AU     ; 767            ; 3      ; COMMERCIAL ; STANDARD_RATE
+CC     ; 000            ; 3      ; EMERGENCY  ; TOLL_FREE
+CC     ; 112            ; 3      ; EMERGENCY  ; TOLL_FREE
+CX     ; 000            ; 3      ; EMERGENCY  ; TOLL_FREE
+CX     ; 112            ; 3      ; EMERGENCY  ; TOLL_FREE

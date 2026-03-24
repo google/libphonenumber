@@ -1,0 +1,6 @@
+Region ; Label          ; Comment
+MC     ; SC             ; "http://www.itu.int/oth/T020200008D/en"
+MC     ; XML            ; "We support Kosovo mobile numbers (044, 045) with a Monaco calling code here, while Kosovo\nnumbers all move over to the +383 plan. Kosovo numbers are still under several calling\ncodes. It also seems that the national prefix is only used for mobile numbers, not\nfixed-line."
+MC     ; XML            ; "http://www.itu.int/oth/T020200008D/en"
+MC     ; XML_FIXED_LINE ; "Restricted to this as no numbers with the prefix of 91, 95 or 96 have been found."
+MC     ; XML_MOBILE     ; "4X mobile numbers are actually used by Kosovo."

@@ -1,0 +1,13 @@
+Prefix    ; Length ; Type       ; Tariff        ; National Only ; Operator   ; Format            ; Timezone                                           ; Regions ; Geocode:en                ; Provenance ; Comment
+40[45]    ; 8      ; FIXED_LINE ; STANDARD_RATE ; false         ;            ; "fmt_2/2/2/2"     ; "Pacific/Tahiti"                                   ; "PF"    ; "Îles du Vent(IDV)"       ; ITU
+406       ; 8      ; FIXED_LINE ; STANDARD_RATE ; false         ;            ; "fmt_2/2/2/2"     ; "Pacific/Tahiti"                                   ; "PF"    ; "Îles Sous-le-vent(ISLV)" ; ITU
+408[0-79] ; 8      ; FIXED_LINE ; STANDARD_RATE ; false         ;            ; "fmt_2/2/2/2"     ; "Pacific/Tahiti"                                   ; "PF"    ; "Îles du Vent(IDV)"       ; ITU
+4088      ; 8      ; FIXED_LINE ; STANDARD_RATE ; false         ;            ; "fmt_2/2/2/2"     ; "Pacific/Tahiti"                                   ; "PF"    ; "Polynesia"               ; ITU
+409       ; 8      ; FIXED_LINE ; STANDARD_RATE ; false         ;            ; "fmt_2/2/2/2"     ; "Pacific/Tahiti"                                   ; "PF"    ; "Remote Archipelago"      ; ITU
+44        ; 6      ; UAN        ; STANDARD_RATE ; true          ;            ; "fmt_2/2/2"       ; "Pacific/Tahiti"                                   ; "PF"    ;                           ; ITU
+49[4-68]  ; 8      ; FIXED_LINE ; STANDARD_RATE ; false         ;            ; "fmt_2/2/2/2"     ; "Pacific/Tahiti"                                   ; "PF"    ; "Polynesia"               ; ITU
+499       ; 8      ; VOIP       ; STANDARD_RATE ; false         ;            ; "fmt_2/2/2/2"     ; "Pacific/Tahiti"                                   ; "PF"    ;                           ; ITU
+80[0-5]   ; 9      ; FIXED_LINE ; TOLL_FREE     ;               ;            ; "varcost_3/2/2/2" ; "Pacific/Gambier&Pacific/Marquesas&Pacific/Tahiti" ; "PF"    ;                           ;            ; "ARCEP"
+87        ; 8      ; MOBILE     ; STANDARD_RATE ; false         ; "vini"     ; "fmt_2/2/2/2"     ; "Pacific/Gambier&Pacific/Marquesas&Pacific/Tahiti" ; "PF"    ;                           ; ITU
+88        ; 8      ; MOBILE     ; STANDARD_RATE ; false         ; "viti"     ; "fmt_2/2/2/2"     ; "Pacific/Tahiti"                                   ; "PF"    ;                           ; ITU
+89        ; 8      ; MOBILE     ; STANDARD_RATE ; false         ; "vodafone" ; "fmt_2/2/2/2"     ; "Pacific/Tahiti"                                   ; "PF"    ;                           ; ITU

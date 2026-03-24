@@ -1,0 +1,8 @@
+Region ; Label        ; Comment
+YE     ; SC           ; "http://www.itu.int/oth/T02020000E7/en"
+YE     ; SC_EMERGENCY ; "http://www.yemenypages.com/en/emergency_numbers.aspx"
+YE     ; SC_EMERGENCY ; "http://studentsabroad.state.gov/content/pdfs/911_ABROAD.pdf"
+YE     ; SC_EMERGENCY ; "http://www.netglobers.com/asia/yemen-emergency-numbers-in-yemen.html"
+YE     ; XML          ; "No tollFree or premiumRate information can be found."
+YE     ; XML          ; "http://www.itu.int/oth/T02020000E7/en"
+YE     ; XML_MOBILE   ; "Adding 70 from numbers found online."

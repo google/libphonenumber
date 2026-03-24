@@ -1,0 +1,4 @@
+Region ; Label         ; Comment
+001    ; XML           ; "Universal International Toll Free Number"
+001    ; XML           ; "http://www.itu.int/en/ITU-T/inr/unum/Pages/uifn.aspx"
+001    ; XML_TOLL_FREE ; "SN number starting with '00' is added based on number mentioned in\nhttps://www.lectra.com/en/contact and it is diallable from France (Orange network)\nhttps://www.bio-rad.com/contact-us?field_custom_metadata_country=39&field_custom_metadata_vertical_code=All (country = France)"

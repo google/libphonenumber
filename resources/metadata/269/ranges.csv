@@ -1,0 +1,15 @@
+Prefix  ; Length ; Type       ; Tariff        ; Area Code Length ; Operator          ; Format       ; Regions ; Geocode:en    ; Geocode:fr    ; Provenance
+3       ; 7      ; MOBILE     ; STANDARD_RATE ;                  ; "comores_telecom" ; "fmt1_3/2/2" ; "KM"    ;               ;               ; IR21
+4       ; 7      ; MOBILE     ; STANDARD_RATE ;                  ; "telco"           ; "fmt1_3/2/2" ; "KM"    ;               ;               ; ITU
+7[45]   ; 7      ; FIXED_LINE ; STANDARD_RATE ; 3                ;                   ; "fmt1_3/2/2" ; "KM"    ;               ;               ; ITU
+7[67]0  ; 7      ; FIXED_LINE ; STANDARD_RATE ; 3                ;                   ; "fmt1_3/2/2" ; "KM"    ; "Domoni"      ; "Domoni"      ; ITU
+7[67]1  ; 7      ; FIXED_LINE ; STANDARD_RATE ; 3                ;                   ; "fmt1_3/2/2" ; "KM"    ; "Mutsamudu"   ; "Mutsamudu"   ; ITU
+7[67]2  ; 7      ; FIXED_LINE ; STANDARD_RATE ; 3                ;                   ; "fmt1_3/2/2" ; "KM"    ; "Mohéli"      ; "Mohéli"      ; ITU
+763     ; 7      ; FIXED_LINE ; STANDARD_RATE ; 3                ;                   ; "fmt1_3/2/2" ; "KM"    ; "Moroni"      ; "Moroni"      ; ITU
+76[4-6] ; 7      ; FIXED_LINE ; STANDARD_RATE ; 3                ;                   ; "fmt1_3/2/2" ; "KM"    ;               ;               ; ITU
+7[67]7  ; 7      ; FIXED_LINE ; STANDARD_RATE ; 3                ;                   ; "fmt1_3/2/2" ; "KM"    ; "Mbéni"       ; "Mbéni"       ; ITU
+7[67]8  ; 7      ; FIXED_LINE ; STANDARD_RATE ; 3                ;                   ; "fmt1_3/2/2" ; "KM"    ; "Mitsamiouli" ; "Mitsamiouli" ; ITU
+7[67]9  ; 7      ; FIXED_LINE ; STANDARD_RATE ; 3                ;                   ; "fmt1_3/2/2" ; "KM"    ; "Foumbouni"   ; "Foumbouni"   ; ITU
+77[3-5] ; 7      ; FIXED_LINE ; STANDARD_RATE ; 3                ;                   ; "fmt1_3/2/2" ; "KM"    ; "Moroni"      ; "Moroni"      ; ITU
+776     ; 7      ; FIXED_LINE ; STANDARD_RATE ; 3                ;                   ; "fmt1_3/2/2" ; "KM"    ;               ;               ; ITU
+8       ; 7      ; FIXED_LINE ; PREMIUM_RATE  ;                  ;                   ; "fmt1_3/2/2" ; "KM"    ;               ;               ; ITU

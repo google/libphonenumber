@@ -1,0 +1,5 @@
+Region ; Prefix ; Length ; Type               ; Tariff
+CY     ; 112    ; 3      ; EMERGENCY          ; TOLL_FREE
+CY     ; 116000 ; 6      ; EXPANDED_EMERGENCY ; TOLL_FREE
+CY     ; 116111 ; 6      ; EXPANDED_EMERGENCY ; TOLL_FREE
+CY     ; 199    ; 3      ; EMERGENCY          ; TOLL_FREE

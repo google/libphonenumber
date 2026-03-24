@@ -1,0 +1,19 @@
+Prefix    ; Length ; Type       ; Tariff        ; Operator           ; Format       ; Regions ; Geocode:en               ; Geocode:fr               ; Provenance ; Comment
+01        ; 9      ; MOBILE     ; STANDARD_RATE ; "equateur_telecom" ; "fmt2_2/3/4" ; "CG"
+0240      ; 9      ; MOBILE     ; STANDARD_RATE ; "congo_telecom"    ; "fmt2_2/3/4" ; "CG"    ;                          ;                          ; ITU
+025[5-8]  ; 9      ; MOBILE     ; STANDARD_RATE ; "congo_telecom"    ; "fmt2_2/3/4" ; "CG"    ;                          ;                          ; ITU
+026[07-9] ; 9      ; MOBILE     ; STANDARD_RATE ; "congo_telecom"    ; "fmt2_2/3/4" ; "CG"    ;                          ;                          ; ITU
+0261[0-5] ; 9      ; MOBILE     ; STANDARD_RATE ; "congo_telecom"    ; "fmt2_2/3/4" ; "CG"    ;                          ;                          ; ITU
+0266[6-9] ; 9      ; MOBILE     ; STANDARD_RATE ; "congo_telecom"    ; "fmt2_2/3/4" ; "CG"    ;                          ;                          ; ITU
+04        ; 9      ; MOBILE     ; STANDARD_RATE ; "warid"            ; "fmt2_2/3/4" ; "CG"
+05        ; 9      ; MOBILE     ; STANDARD_RATE ; "airtel"           ; "fmt2_2/3/4" ; "CG"
+06        ; 9      ; MOBILE     ; STANDARD_RATE ; "mtn"              ; "fmt2_2/3/4" ; "CG"
+2221      ; 9      ; FIXED_LINE ; STANDARD_RATE ;                    ; "fmt2_2/3/4" ; "CG"    ; "Cuvette"                ; "Cuvette"                ; GOVERNMENT ; "Regulator Monthly File"
+2222      ; 9      ; FIXED_LINE ; STANDARD_RATE ;                    ; "fmt2_2/3/4" ; "CG"    ; "Likouala/Sangha"        ; "Likouala/Sangha"        ; GOVERNMENT ; "Regulator Monthly File"
+2223      ; 9      ; FIXED_LINE ; STANDARD_RATE ;                    ; "fmt2_2/3/4" ; "CG"    ; "Pool"                   ; "Pool"                   ; GOVERNMENT ; "Regulator Monthly File"
+2224      ; 9      ; FIXED_LINE ; STANDARD_RATE ;                    ; "fmt2_2/3/4" ; "CG"    ; "Plateaux"               ; "Plateaux"               ; GOVERNMENT ; "Regulator Monthly File"
+2225      ; 9      ; FIXED_LINE ; STANDARD_RATE ;                    ; "fmt2_2/3/4" ; "CG"    ; "Bouenza/Lekoumou/Niari" ; "Bouenza/Lekoumou/Niari" ; GOVERNMENT ; "Regulator Monthly File"
+2228      ; 9      ; FIXED_LINE ; STANDARD_RATE ;                    ; "fmt2_2/3/4" ; "CG"    ; "Brazzaville"            ; "Brazzaville"            ; GOVERNMENT ; "Regulator Monthly File"
+2229      ; 9      ; FIXED_LINE ; STANDARD_RATE ;                    ; "fmt2_2/3/4" ; "CG"    ; "Pointe-Noire"           ; "Pointe-Noire"           ; GOVERNMENT ; "Regulator Monthly File"
+800       ; 9      ; FIXED_LINE ; PREMIUM_RATE  ;                    ; "fmt3_1/4/4" ; "CG"
+80[12]    ; 9      ; FIXED_LINE ; PREMIUM_RATE  ;                    ; "fmt3_1/4/4" ; "CG"    ;                          ;                          ; ITU

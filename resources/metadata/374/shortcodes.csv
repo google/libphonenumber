@@ -1,0 +1,6 @@
+Region ; Prefix   ; Length ; Type       ; Tariff    ; Sms  ; Carrier Specific
+AM     ; 10[04-9] ; 3      ; COMMERCIAL
+AM     ; 10[1-3]  ; 3      ; EMERGENCY  ; TOLL_FREE
+AM     ; 1[1-9]   ; 3      ; COMMERCIAL
+AM     ; 40404    ; 5      ; COMMERCIAL ;           ; true ; true
+AM     ; 8[1-7]   ; 4      ; COMMERCIAL

@@ -60,11 +60,15 @@
 27474950|Vodacom
 27484920|Vodacom
 27494920|Vodacom
+2750|Rain
 2751492|Vodacom
 27544950|Vodacom
 27564920|Vodacom
 27574920|Vodacom
 27584920|Vodacom
+27600|Liquid Intelligent Technology
+27601|Telkom Mobile
+27602|Telkom Mobile
 27603|MTN
 27604|MTN
 27605|MTN
@@ -104,14 +108,15 @@
 27663|Vodacom
 27664|Vodacom
 27665|Vodacom
-27670|Telkom Mobile
-27671|Telkom Mobile
-27672|Telkom Mobile
+2767|Telkom Mobile
 27673|Vodacom
 27674|Vodacom
 27675|Vodacom
-27676|Telkom Mobile
-27677|Telkom Mobile
+2768|Telkom Mobile
+27686|MTN
+27687|MTN
+27688|MTN
+27689|MTN
 2771|Vodacom
 27710|MTN
 27717|MTN
@@ -120,7 +125,7 @@
 2772|Vodacom
 2773|MTN
 2774|Cell C
-27741|Virgin Mobile
+2775|Telkom Mobile
 2776|Vodacom
 2778|MTN
 2779|Vodacom

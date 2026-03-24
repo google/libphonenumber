@@ -1,0 +1,3 @@
+Id              ; Domestic Selection Codes ; Name:en           ; Comment
+faroese_telecom ; "1088"                   ; "Faroese Telecom"
+vodafone        ; "1001,10[12]0"           ; "Vodafone"        ; "Previously know as Kall https://en.wikipedia.org/wiki/Vodafone_Faroe_Islands"

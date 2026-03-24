@@ -1,0 +1,8 @@
+Region ; Type                 ; Number
+IN     ; FIXED_LINE           ; "7410410123"
+IN     ; MOBILE               ; "8123456789"
+IN     ; FIXED_LINE_OR_MOBILE ; "7410410123"
+IN     ; TOLL_FREE            ; "1800123456"
+IN     ; PREMIUM_RATE         ; "1861123456789"
+IN     ; SHARED_COST          ; "18603451234"
+IN     ; UAN                  ; "1409305260"

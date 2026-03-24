@@ -1,19 +1,7 @@
-# Copyright (C) 2013 The Libphonenumber Authors
-
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-
-# http://www.apache.org/licenses/LICENSE-2.0
-
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-
+5190|Entel
 51900|Claro
 51901|Claro
+51909|Americatel
 51910|Claro
 51912|Entel
 51913|Claro
@@ -32,32 +20,21 @@
 5191925|Claro
 5191926|Claro
 5191927|Claro
+519198|Entel
+519199|Intermax
+5192|Claro
 51920|Movistar
-51921|Claro
 51922|Entel
 51923|Entel
 51924|Entel
-51925|Claro
-519260|Claro
-519261|Claro
-519262|Claro
-5192630|Claro
-5192631|Claro
-5192632|Claro
-5192633|Claro
-5192634|Claro
-5192635|Claro
+5192636|Dolphin Telecom
+5192637|Dolphin Telecom
 5192638|Entel
 5192639|Entel
-519264|Claro
-519265|Claro
 519266|Entel
 519267|Entel
 519268|Entel
 519269|Entel
-51927|Claro
-51928|Claro
-51929|Claro
 51930|Claro
 51931|Claro
 51932|Claro

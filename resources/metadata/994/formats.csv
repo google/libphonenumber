@@ -1,0 +1,4 @@
+Id             ; National          ; International  ; Local       ; Comment
+fixed_2/3/2/2  ; "(#XX) XXX XX XX" ; "XX XXX XX XX" ; "XXX XX XX"
+fmt_3/2/2/2    ; "#XXX XX XX XX"   ; "XXX XX XX XX" ;             ; "Premium rate (and maybe other special ranges)."
+mobile_2/3/2/2 ; "#XX XXX XX XX"   ; "XX XXX XX XX" ;             ; "ITU uses XX XXX XXXX for mobile numbers, but numbers online typically\nuse XX XXX XX XX."

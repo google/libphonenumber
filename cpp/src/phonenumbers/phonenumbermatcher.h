@@ -87,7 +87,8 @@ class PhoneNumberMatcher {
 
   ~PhoneNumberMatcher();
 
-  // Returns true if the text sequence has another match.
+  // Returns true if the text sequence has another match. Return false if not.
+  // Always returns false when input contains non UTF-8 characters.
   bool HasNext();
 
   // Gets next match from text sequence.
@@ -100,6 +101,9 @@ class PhoneNumberMatcher {
     READY,
     DONE,
   };
+
+  // Checks if the to check if the provided text_ is in UTF-8 or not.
+  bool IsInputUtf8();
 
   // Attempts to extract a match from a candidate string. Returns true if a
   // match is found, otherwise returns false. The value "offset" refers to the
@@ -201,6 +205,9 @@ class PhoneNumberMatcher {
 
   // The next index to start searching at. Undefined in State.DONE.
   int search_index_;
+
+  // Flag to set or check if input text is in UTF-8 or not.
+  bool is_input_valid_utf8_;
 
   DISALLOW_COPY_AND_ASSIGN(PhoneNumberMatcher);
 };

@@ -1,0 +1,8 @@
+Region ; Type         ; Number
+IS     ; FIXED_LINE   ; "4101234"
+IS     ; MOBILE       ; "6111234"
+IS     ; TOLL_FREE    ; "8001234"
+IS     ; PREMIUM_RATE ; "9001234"
+IS     ; VOIP         ; "4921234"
+IS     ; UAN          ; "8091234"
+IS     ; VOICEMAIL    ; "6891234"

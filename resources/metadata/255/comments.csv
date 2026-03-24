@@ -1,0 +1,4 @@
+Region ; Label        ; Comment
+TZ     ; SC           ; "http://www.itu.int/oth/T02020000CB/en"
+TZ     ; SC_EMERGENCY ; "http://travel.state.gov/travel/cis_pa_tw/cis/cis_1038.html\nhttp://in2eastafrica.net/emergency-numbers-in-tanzania"
+TZ     ; XML          ; "http://www.itu.int/oth/T02020000CB/en"

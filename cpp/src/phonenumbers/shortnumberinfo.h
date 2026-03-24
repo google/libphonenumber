@@ -26,6 +26,8 @@
 
 #include "phonenumbers/base/basictypes.h"
 #include "phonenumbers/base/memory/scoped_ptr.h"
+#include "absl/container/flat_hash_set.h"
+#include "absl/container/flat_hash_map.h"
 
 namespace i18n {
 namespace phonenumbers {
@@ -43,6 +45,11 @@ class PhoneNumberUtil;
 class ShortNumberInfo {
  public:
   ShortNumberInfo();
+
+  // This type is neither copyable nor movable.
+  ShortNumberInfo(const ShortNumberInfo&) = delete;
+  ShortNumberInfo& operator=(const ShortNumberInfo&) = delete;
+
   ~ShortNumberInfo();
 
   // Cost categories of short numbers.
@@ -179,12 +186,12 @@ class ShortNumberInfo {
   const scoped_ptr<const MatcherApi> matcher_api_;
 
   // A mapping from a RegionCode to the PhoneMetadata for that region.
-  scoped_ptr<map<string, PhoneMetadata> >
+  scoped_ptr<absl::flat_hash_map<string, PhoneMetadata> >
       region_to_short_metadata_map_;
 
   // In these countries, if extra digits are added to an emergency number, it no
   // longer connects to the emergency service.
-  scoped_ptr<set<string> >
+  scoped_ptr<absl::flat_hash_set<string> >
       regions_where_emergency_numbers_must_be_exact_;
 
   const i18n::phonenumbers::PhoneMetadata* GetMetadataForRegion(
@@ -204,8 +211,6 @@ class ShortNumberInfo {
   bool MatchesEmergencyNumberHelper(const string& number,
                                     const string& region_code,
                                     bool allow_prefix_match) const;
-
-  DISALLOW_COPY_AND_ASSIGN(ShortNumberInfo);
 };
 
 }  // namespace phonenumbers

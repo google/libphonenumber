@@ -1,0 +1,5 @@
+Region ; Type       ; Number
+SH     ; FIXED_LINE ; "22158"
+SH     ; MOBILE     ; "51234"
+SH     ; VOIP       ; "26212"
+TA     ; FIXED_LINE ; "8999"

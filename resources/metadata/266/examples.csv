@@ -1,0 +1,4 @@
+Region ; Type       ; Number
+LS     ; FIXED_LINE ; "22123456"
+LS     ; MOBILE     ; "50123456"
+LS     ; TOLL_FREE  ; "80021234"

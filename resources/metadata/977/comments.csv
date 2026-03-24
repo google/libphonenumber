@@ -1,0 +1,9 @@
+Region ; Label          ; Comment
+NP     ; SC             ; "http://www.itu.int/oth/T0202000095/en"
+NP     ; SC             ; "http://www.ntc.net.np/mobile/mob_postpaid_number_scheme.php"
+NP     ; XML            ; "http://www.itu.int/oth/T0202000095/en"
+NP     ; XML            ; "http://www.ntc.net.np/mobile/mob_postpaid_number_scheme.php"
+NP     ; XML            ; "http://www.nta.gov.np/en/2012-06-01-11-45-17/2012-06-04-04-26-59/numbering-plan"
+NP     ; XML_FIXED_LINE ; "We don't support Rural Telecommunication Service at the moment since\nwe are not sure what type it is."
+NP     ; XML_MOBILE     ; "Added prefix 982 per IR21 from the carrier."
+NP     ; XML_TOLL_FREE  ; "Added prefix 166001 based on https://ntc.net.np/post/toll-free-phone.\nPrefix 1800 is added based on user report."

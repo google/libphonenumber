@@ -1,0 +1,11 @@
+Region ; Label            ; Comment
+ME     ; SC               ; "http://www.itu.int/oth/T02020000DA/en"
+ME     ; SC               ; "http://en.wikipedia.org/wiki/Telephone_numbers_in_Montenegro"
+ME     ; SC               ; "http://www.ekip.me/numeracija/dodijeljena.php"
+ME     ; XML              ; "According to EKIP, the detailed phone number assignments are published on their\nwebsite (regulation:\nhttp://www.ekip.me/download/Law%20on%20Electronic%20Communications%20(updated)%204.9.2013%20(1)nova%20verzija.pdf\n). Thus ITU updates always need to be combined with the information at the below ekip.me source URL."
+ME     ; XML              ; "http://www.itu.int/oth/T02020000DA/en"
+ME     ; XML              ; "http://en.wikipedia.org/wiki/Telephone_numbers_in_Montenegro"
+ME     ; XML              ; "http://www.ekip.me/numeracija/dodijeljena.php"
+ME     ; XML_FIXED_LINE   ; "Fixed line numbers have prefix 20,30,31,32,33,40,41,50,51,52 followed by 6 digits.\nThe valid options for the third digit were from\nhttp://www.ekip.me/numeracija/dodijeljena.php"
+ME     ; XML_MOBILE       ; "According to ITU it is possible for mobile numbers to be 4-12 digits long\n(http://www.itu.int/oth/T02020000DA/en). However, in reality they seem to be 8 digits\nlong. In particular, http://www.ekip.me/numeracija/dodijeljena.php mentions 67[0-2]\nnumbers to be 9 digits long but this seems to be no longer the case, based on user\nreports and online examples."
+ME     ; XML_PREMIUM_RATE ; "Numbers with prefix 94 or 95 are services with additional charges."

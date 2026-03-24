@@ -1,0 +1,4 @@
+Region ; Type       ; Number
+NP     ; FIXED_LINE ; "14567890"
+NP     ; MOBILE     ; "9841234567"
+NP     ; TOLL_FREE  ; "16600101234"

@@ -1,0 +1,5 @@
+Region ; Prefix ; Length ; Type      ; Tariff
+EH     ; 1[59]  ; 2      ; EMERGENCY ; TOLL_FREE
+EH     ; 177    ; 3      ; EMERGENCY ; TOLL_FREE
+MA     ; 1[59]  ; 2      ; EMERGENCY ; TOLL_FREE
+MA     ; 177    ; 3      ; EMERGENCY ; TOLL_FREE

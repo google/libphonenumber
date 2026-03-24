@@ -96,8 +96,10 @@ license](http://github.com/google/libphonenumber/blob/master/LICENSE).**
 
 ## Pull requests
 
-We do not accept pull requests for validation, formatting, or timezone metadata
-updates.
+Since all metadata (XML and mapping files) is generated automatically from other
+sources, we cannot accept pull requests to edit these files directly. This includes
+validation, formatting, geocoding, operator or timezone metadata. However this does
+not mean you cannot raise issues for this data.
 
 For changes specific to windows builds, see [Filing a code
 issue](#filing-a-code-issue) and make sure you have found a reviewer and tester
@@ -107,8 +109,6 @@ specific to your build/setup, please prefer [creating a code bug](#filing-a-code
 
 We are happy to review and accept pull requests for the following:
 
-*   Carrier updates
-*   Geocoding updates
 *   Bug fixes
 *   Documentation and code hygiene cleanups
 

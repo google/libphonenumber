@@ -1,0 +1,7 @@
+Region ; Label          ; Comment
+LU     ; SC             ; "http://www.ilr.public.lu/communications_electroniques/numerotation/index.html"
+LU     ; XML            ; "https://web.ilr.lu/FR/Professionnels/Communications-electroniques/Pages/HomePage.aspx"
+LU     ; XML            ; "http://legilux.public.lu/eli/etat/leg/rilr/2014/07/14/n2/jo"
+LU     ; XML_FIXED_LINE ; "Even though 20 is listed in the fixed-line plan, other documentation clarify that it is\nfor VOIP. Furthermore, even though the plan says that numbers beginning with 2[346-8]\nby default are 8 digits, from information found online it seems that they can actually\nbe 4 up to 11 digits long."
+LU     ; XML_MOBILE     ; "679 (9 digit) are mentioned as ""special mobile services"" in ilr.lu's doc. Supporting here\nas per Luxembourg Regulation doc of 14 July 2014 which says all mobile ranges start with\ndigit 6."
+LU     ; XML_VOIP       ; "The document says the normal length will be 8 digits, but many numbers found online\ndeviate from that. The prefixes from the following document have been added:\nhttp://www.ilr.public.lu/communications_electroniques/numerotation/plan_nat_num/numeros_geographiques_geo.pdf\n201 has also been added since a diallable number was found online, and it says in\nhttp://www.ilr.public.lu/communications_electroniques/decisions/2004/0479.pdf that no\nnumbers will be issued that begin with 200, numbers beginning with 201 will be issued\none at a time, and 202-209 in blocks."

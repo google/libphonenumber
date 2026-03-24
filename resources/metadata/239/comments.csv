@@ -1,0 +1,8 @@
+Region ; Label        ; Comment
+ST     ; SC           ; "http://www.itu.int/oth/T02020000B6/en"
+ST     ; SC_EMERGENCY ; "http://www.netglobers.com/africa/s%C3%A3o-tome-and-principe-emergency-numbers-in-s%C3%A3o-tome-and-principe.html"
+ST     ; SC_EMERGENCY ; "http://travel.state.gov/travel/cis_pa_tw/cis/cis_1010.html"
+ST     ; SC_EMERGENCY ; "http://www.tipredaktion.net/consumer/lufthansa_en/tip-ST-1.html"
+ST     ; SC_EMERGENCY ; "Emergency numbers longer than 3 digits covered by fixed-line."
+ST     ; XML          ; "http://www.itu.int/oth/T02020000B6/en"
+ST     ; XML_MOBILE   ; "Added prefix 90 per IR21 from the carrier"

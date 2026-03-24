@@ -35,6 +35,11 @@ class RegExpCache;
 class RegexBasedMatcher : public MatcherApi {
  public:
   RegexBasedMatcher();
+
+  // This type is neither copyable nor movable.
+  RegexBasedMatcher(const RegexBasedMatcher&) = delete;
+  RegexBasedMatcher& operator=(const RegexBasedMatcher&) = delete;
+
   ~RegexBasedMatcher();
 
   bool MatchNationalNumber(const string& number,
@@ -48,7 +53,6 @@ class RegexBasedMatcher : public MatcherApi {
   const scoped_ptr<const AbstractRegExpFactory> regexp_factory_;
   const scoped_ptr<RegExpCache> regexp_cache_;
 
-  DISALLOW_COPY_AND_ASSIGN(RegexBasedMatcher);
 };
 
 }  // namespace phonenumbers

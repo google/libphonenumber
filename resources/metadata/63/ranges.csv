@@ -1,0 +1,113 @@
+Prefix         ; Length ; Type       ; Tariff        ; Area Code Length ; Operator ; Format               ; Regions ; Geocode:en                                             ; Provenance ; Comment
+1800           ; 11     ; FIXED_LINE ; TOLL_FREE     ;                  ;          ; "tollfree_4/3/4"     ; "PH"
+1800           ; 12,13  ; FIXED_LINE ; TOLL_FREE     ;                  ;          ; "tollfree_4/1-2/3/4" ; "PH"
+2              ; 6      ; FIXED_LINE ; STANDARD_RATE ; 1                ;          ; "fixed_1/5"          ; "PH"
+2[3-8]         ; 9      ; FIXED_LINE ; STANDARD_RATE ; 1                ;          ; "fixed_1/4/4"        ; "PH"
+32[0-24-9]     ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;          ; "fixed_2/3/4"        ; "PH"    ; "Cebu"                                                 ;            ; "Added per client's request."
+3230           ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;          ; "fixed_4/4-6"        ; "PH"    ; "Cebu"                                                 ;            ; "Added per client's request."
+323[1-9]       ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;          ; "fixed_2/3/4"        ; "PH"    ; "Cebu"                                                 ;            ; "Added per client's request."
+33[0-8]        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;          ; "fixed_2/3/4"        ; "PH"    ; "Iloilo"                                               ;            ; "Added per client's request."
+339[0-689]     ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;          ; "fixed_2/3/4"        ; "PH"    ; "Iloilo"                                               ;            ; "Added per client's request."
+3397           ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;          ; "fixed_4/4-6"        ; "PH"    ; "Iloilo"                                               ;            ; "Added per client's request."
+34[0-57-9]     ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;          ; "fixed_2/3/4"        ; "PH"
+3460           ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;          ; "fixed_2/3/4"        ; "PH"
+3461           ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;          ; "fixed_4/4-6"        ; "PH"    ; "Negros Occidental"                                    ; ITU
+346[2-8]       ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;          ; "fixed_2/3/4"        ; "PH"    ;                                                        ;            ; "Added per client's request."
+3469           ; 9      ; FIXED_LINE ; STANDARD_RATE ; 5                ;          ; "fixed_5/4"          ; "PH"    ;                                                        ;            ; "Added per client's request."
+35             ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;          ; "fixed_2/3/4"        ; "PH"    ; "Negros Oriental"                                      ; ITU
+36             ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;          ; "fixed_2/3/4"        ; "PH"    ; "Antique/Aklan/Capiz"                                  ; ITU
+38             ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;          ; "fixed_2/3/4"        ; "PH"    ; "Bohol"                                                ; ITU
+42[0-289]      ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;          ; "fixed_2/3/4"        ; "PH"
+423[0-46-9]    ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;          ; "fixed_2/3/4"        ; "PH"
+4235           ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;          ; "fixed_4/4-6"        ; "PH"    ; "Quezon"                                               ; ITU
+42[46][0-35-9] ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;          ; "fixed_2/3/4"        ; "PH"
+42[46]4        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;          ; "fixed_4/4-6"        ; "PH"    ; "Quezon"                                               ; ITU
+425[02-9]      ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;          ; "fixed_2/3/4"        ; "PH"
+4251           ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;          ; "fixed_4/4-6"        ; "PH"    ; "Quezon"                                               ; ITU
+427[0-8]       ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;          ; "fixed_2/3/4"        ; "PH"
+4279           ; 9      ; FIXED_LINE ; STANDARD_RATE ; 5                ;          ; "fixed_5/4"          ; "PH"    ; "Quezon"                                               ; ITU
+43[0-8]        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;          ; "fixed_2/3/4"        ; "PH"
+439[0-57-9]    ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;          ; "fixed_2/3/4"        ; "PH"
+4396           ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;          ; "fixed_4/4-6"        ; "PH"    ; "Batangas"                                             ; ITU
+44[013-57-9]   ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;          ; "fixed_2/3/4"        ; "PH"
+442[013-9]     ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;          ; "fixed_2/3/4"        ; "PH"
+4422           ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;          ; "fixed_4/4-6"        ; "PH"    ; "Bulacan"                                              ; ITU
+446[0-24-9]    ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;          ; "fixed_2/3/4"        ; "PH"
+4463           ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;          ; "fixed_4/4-6"        ; "PH"    ; "Bulacan"                                              ; ITU
+45[0-8]        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;          ; "fixed_2/3/4"        ; "PH"
+459[0-25689]   ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;          ; "fixed_2/3/4"        ; "PH"
+459[347]       ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;          ; "fixed_4/4-6"        ; "PH"    ; "Pampanga"                                             ; ITU
+46             ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;          ; "fixed_2/3/4"        ; "PH"    ; "Cavite"                                               ; ITU
+47[0-57-9]     ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;          ; "fixed_2/3/4"        ; "PH"
+476[02-46-9]   ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;          ; "fixed_2/3/4"        ; "PH"
+476[15]        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;          ; "fixed_4/4-6"        ; "PH"    ; "Zambales"                                             ; ITU
+48             ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;          ; "fixed_2/3/4"        ; "PH"    ; "Palawan"                                              ; ITU
+49[0-246-9]    ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;          ; "fixed_2/3/4"        ; "PH"    ;                                                        ;            ; "Added per client's request."
+4930           ; 9      ; FIXED_LINE ; STANDARD_RATE ; 5                ;          ; "fixed_5/4"          ; "PH"
+493[1-9]       ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;          ; "fixed_2/3/4"        ; "PH"    ;                                                        ;            ; "Added per client's request."
+495[0-57-9]    ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;          ; "fixed_2/3/4"        ; "PH"    ;                                                        ;            ; "Added per client's request."
+4956           ; 9      ; FIXED_LINE ; STANDARD_RATE ; 5                ;          ; "fixed_5/4"          ; "PH"    ;                                                        ;            ; "Added per client's request."
+52[013-9]      ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;          ; "fixed_2/3/4"        ; "PH"
+522[02-9]      ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;          ; "fixed_2/3/4"        ; "PH"
+5221           ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;          ; "fixed_4/4-6"        ; "PH"    ; "Albay"                                                ; ITU
+53             ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;          ; "fixed_2/3/4"        ; "PH"    ; "Leyte"                                                ; ITU
+54[0-35-9]     ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;          ; "fixed_2/3/4"        ; "PH"
+544[0-57-9]    ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;          ; "fixed_2/3/4"        ; "PH"
+5446           ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;          ; "fixed_4/4-6"        ; "PH"    ; "Camarines Sur"                                        ; ITU
+55             ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;          ; "fixed_2/3/4"        ; "PH"    ; "Western Samar"                                        ; ITU
+56             ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;          ; "fixed_2/3/4"        ; "PH"    ; "Sorsogon/Masbate"                                     ; ITU
+62             ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;          ; "fixed_2/3/4"        ; "PH"    ; "Zamboanga del Sur"                                    ; ITU
+63             ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;          ; "fixed_2/3/4"        ; "PH"    ; "Lanao del Norte/Lanao del Sur"                        ; ITU
+64[013-9]      ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;          ; "fixed_2/3/4"        ; "PH"
+642[014-9]     ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;          ; "fixed_2/3/4"        ; "PH"
+642[23]        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;          ; "fixed_4/4-6"        ; "PH"    ; "North Cotabato"                                       ; ITU
+65             ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;          ; "fixed_2/3/4"        ; "PH"    ; "Zamboanga del Norte/Zamboanga del Sur"                ; ITU
+68             ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;          ; "fixed_2/3/4"        ; "PH"
+72             ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;          ; "fixed_2/3/4"        ; "PH"    ; "La Union"                                             ; ITU
+74             ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;          ; "fixed_2/3/4"        ; "PH"    ; "Abra/Benguet/Kalinga-Apayao/Ifugao/Mountain Province" ; ITU
+75             ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;          ; "fixed_2/3/4"        ; "PH"    ; "Pangasinan"                                           ; ITU
+77             ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;          ; "fixed_2/3/4"        ; "PH"    ; "Ilocos Sur/Ilocos Norte"                              ; ITU
+78             ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;          ; "fixed_2/3/4"        ; "PH"    ; "Isabela/Quirino/Batanes/Nueva Vizcaya/Cagayan Valley" ; ITU
+813            ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "smart"  ; "mobile_3/3/4"       ; "PH"    ;                                                        ; IR21
+817            ; 10     ; MOBILE     ; STANDARD_RATE ;                  ;          ; "mobile_3/3/4"       ; "PH"
+82             ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;          ; "fixed_2/3/4"        ; "PH"    ; "Davao del Sur/Davao"                                  ; ITU
+83             ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;          ; "fixed_2/3/4"        ; "PH"    ; "South Cotabato"                                       ; ITU
+84             ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;          ; "fixed_2/3/4"        ; "PH"    ; "Davao del Norte"                                      ; ITU
+85             ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;          ; "fixed_2/3/4"        ; "PH"    ; "Agusan del Sur/Agusan del Norte"                      ; ITU
+86[013-9]      ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;          ; "fixed_2/3/4"        ; "PH"
+862[013-9]     ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;          ; "fixed_2/3/4"        ; "PH"
+8622           ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;          ; "fixed_4/4-6"        ; "PH"    ; "Surigao del Sur"                                      ; ITU
+87             ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;          ; "fixed_2/3/4"        ; "PH"    ; "Davao Oriental"                                       ; ITU
+88[016-9]      ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;          ; "fixed_2/3/4"        ; "PH"
+88[24][013-9]  ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;          ; "fixed_2/3/4"        ; "PH"
+88[24]2        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;          ; "fixed_4/4-6"        ; "PH"    ; "Misamis Oriental"                                     ; ITU
+8822           ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;          ; "fixed_4/4-6"        ; "PH"    ;                                                        ;            ; "Added per client's request."
+883[0-35-9]    ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;          ; "fixed_2/3/4"        ; "PH"
+8834           ; 9      ; FIXED_LINE ; STANDARD_RATE ; 5                ;          ; "fixed_5/4"          ; "PH"    ; "Misamis Occidental"                                   ; ITU
+8842           ; 8      ; FIXED_LINE ; STANDARD_RATE ; 4                ;          ; "fixed_4/4-6"        ; "PH"    ; "Misamis Oriental"                                     ; ITU
+885[024-9]     ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;          ; "fixed_2/3/4"        ; "PH"
+885[13]        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;          ; "fixed_4/4-6"        ; "PH"    ; "Bukidnon"                                             ; ITU
+89[5-8]        ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "dito"   ; "mobile_3/3/4"       ; "PH"    ;                                                        ;            ; "Wikipedia"
+90[56]         ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "globe"  ; "mobile_3/3/4"       ; "PH"    ;                                                        ; IR21
+90[7-9]        ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "smart"  ; "mobile_3/3/4"       ; "PH"    ;                                                        ; IR21
+91[0-289]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "smart"  ; "mobile_3/3/4"       ; "PH"    ;                                                        ; IR21
+91[4-7]        ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "globe"  ; "mobile_3/3/4"       ; "PH"    ;                                                        ; IR21
+92[0-3589]     ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "smart"  ; "mobile_3/3/4"       ; "PH"    ;                                                        ; IR21
+9[24]4         ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "dito"   ; "mobile_3/3/4"       ; "PH"    ;                                                        ; IR21
+92[67]         ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "globe"  ; "mobile_3/3/4"       ; "PH"    ;                                                        ; IR21
+93[0-389]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "smart"  ; "mobile_3/3/4"       ; "PH"    ;                                                        ; IR21
+9[39]4         ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "dito"   ; "mobile_3/3/4"       ; "PH"
+9[369][5-7]    ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "globe"  ; "mobile_3/3/4"       ; "PH"    ;                                                        ; IR21
+94[236-9]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "smart"  ; "mobile_3/3/4"       ; "PH"    ;                                                        ; IR21
+945            ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "globe"  ; "mobile_3/3/4"       ; "PH"    ;                                                        ; IR21
+95[018]        ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "smart"  ; "mobile_3/3/4"       ; "PH"    ;                                                        ; IR21
+95[2-79]       ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "globe"  ; "mobile_3/3/4"       ; "PH"    ;                                                        ; IR21
+96[0-489]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "smart"  ; "mobile_3/3/4"       ; "PH"    ;                                                        ; IR21
+970            ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "smart"  ; "mobile_3/3/4"       ; "PH"    ;                                                        ; IR21
+97[125-8]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "globe"  ; "mobile_3/3/4"       ; "PH"    ;                                                        ; IR21
+97[349]        ; 10     ; MOBILE     ; STANDARD_RATE ;                  ;          ; "mobile_3/3/4"       ; "PH"
+98[158]        ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "smart"  ; "mobile_3/3/4"       ; "PH"    ;                                                        ; IR21
+98[367]        ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "globe"  ; "mobile_3/3/4"       ; "PH"    ;                                                        ; IR21
+989            ; 10     ; MOBILE     ; STANDARD_RATE ;                  ;          ; "mobile_3/3/4"       ; "PH"
+99[1-3]        ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "dito"   ; "mobile_3/3/4"       ; "PH"    ;                                                        ; IR21
+99[89]         ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "smart"  ; "mobile_3/3/4"       ; "PH"    ;                                                        ; IR21

@@ -1,0 +1,4 @@
+Region ; Label          ; Comment
+RS     ; XML            ; "http://www.itu.int/oth/T02020000B9/en"
+RS     ; XML            ; "http://registar.ratel.rs/en/reg202"
+RS     ; XML_FIXED_LINE ; "Most subscriber numbers may not start with 0 or 1. Exceptionally, the prefix 11 1[5-7]\nhas been issused, so we allow 11 1X here."

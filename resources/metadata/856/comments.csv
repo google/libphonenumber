@@ -1,0 +1,9 @@
+Region ; Label        ; Comment
+LA     ; SC           ; "http://www.itu.int/oth/T0202000075/en (Seems incomplete)"
+LA     ; SC           ; "http://en.wikipedia.org/wiki/+856"
+LA     ; SC_EMERGENCY ; "http://travel.state.gov/travel/cis_pa_tw/cis/cis_946.html"
+LA     ; XML          ; "Seems incomplete"
+LA     ; XML          ; "http://www.itu.int/oth/T0202000075/en"
+LA     ; XML          ; "http://en.wikipedia.org/wiki/+856"
+LA     ; XML_MOBILE   ; "Adding 202[89], 205[289], 207[68] and 209[135-7] from numbers found online."
+LA     ; XML_UAN      ; "The Lonely Planet says that newer WIN phones (fixed phones without a physical landline)\nstart with 030. There are plenty of examples online as customer care numbers. As these\nare available accross nation, supporting them as UAN."

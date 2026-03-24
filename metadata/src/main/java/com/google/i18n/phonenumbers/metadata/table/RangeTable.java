@@ -628,7 +628,7 @@ public final class RangeTable {
       RangeTree include = getRanges(column, value);
       map.put(value, PrefixTree.minimal(include, allRanges.subtract(include), minPrefixLength));
     }
-    return map.build();
+    return map.buildOrThrow();
   }
 
   // Constants for the simplification routine below.

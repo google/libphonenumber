@@ -1,0 +1,22 @@
+Prefix   ; Length ; Type       ; Tariff        ; Operator  ; Format     ; Regions ; Provenance ; Comment
+28       ; 7      ; VOIP       ; STANDARD_RATE ;           ; "fmt1_3/4" ; "AW"
+290      ; 7      ; MOBILE     ; STANDARD_RATE ; "digicel" ; "fmt1_3/4" ; "AW"
+501      ; 7      ; VOIP       ; STANDARD_RATE ;           ; "fmt1_3/4" ; "AW"
+52       ; 7      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_3/4" ; "AW"
+5[69]    ; 7      ; MOBILE     ; STANDARD_RATE ; "setar"   ; "fmt1_3/4" ; "AW"
+58[1-9]  ; 7      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_3/4" ; "AW"
+600      ; 7      ; MOBILE     ; STANDARD_RATE ; "setar"   ; "fmt1_3/4" ; "AW"
+622      ; 7      ; MOBILE     ; STANDARD_RATE ; "mio"     ; "fmt1_3/4" ; "AW"    ; ITU
+630      ; 7      ; MOBILE     ; STANDARD_RATE ; "mio"     ; "fmt1_3/4" ; "AW"    ; ITU
+64[0-2]  ; 7      ; MOBILE     ; STANDARD_RATE ; "digicel" ; "fmt1_3/4" ; "AW"
+66       ; 7      ; MOBILE     ; STANDARD_RATE ; "setar"   ; "fmt1_3/4" ; "AW"
+690      ; 7      ; MOBILE     ; STANDARD_RATE ; "setar"   ; "fmt1_3/4" ; "AW"    ; IR21
+69[1-8]  ; 7      ; MOBILE     ; STANDARD_RATE ;           ; "fmt1_3/4" ; "AW"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+699      ; 7      ; MOBILE     ; STANDARD_RATE ; "setar"   ; "fmt1_3/4" ; "AW"    ; TELECOMS   ; "4/29/2019"
+7[34]    ; 7      ; MOBILE     ; STANDARD_RATE ; "digicel" ; "fmt1_3/4" ; "AW"
+77[07]   ; 7      ; MOBILE     ; STANDARD_RATE ; "setar"   ; "fmt1_3/4" ; "AW"
+800      ; 7      ; FIXED_LINE ; TOLL_FREE     ;           ; "fmt1_3/4" ; "AW"
+900      ; 7      ; FIXED_LINE ; PREMIUM_RATE  ;           ; "fmt1_3/4" ; "AW"
+96[45]   ; 7      ; MOBILE     ; STANDARD_RATE ;           ; "fmt1_3/4" ; "AW"
+99[46-8] ; 7      ; MOBILE     ; STANDARD_RATE ;           ; "fmt1_3/4" ; "AW"
+995      ; 7      ; MOBILE     ; STANDARD_RATE ; "setar"   ; "fmt1_3/4" ; "AW"    ; IR21

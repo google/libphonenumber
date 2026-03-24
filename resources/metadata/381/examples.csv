@@ -1,0 +1,6 @@
+Region ; Type         ; Number
+RS     ; FIXED_LINE   ; "10234567"
+RS     ; MOBILE       ; "601234567"
+RS     ; TOLL_FREE    ; "80012345"
+RS     ; PREMIUM_RATE ; "90012345"
+RS     ; UAN          ; "700123456"

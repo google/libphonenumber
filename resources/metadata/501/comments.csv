@@ -1,0 +1,8 @@
+Region ; Label          ; Comment
+BZ     ; SC             ; "http://www.itu.int/oth/T0202000016/en"
+BZ     ; SC_EMERGENCY   ; "http://studentsabroad.state.gov/content/pdfs/911_ABROAD.pdf"
+BZ     ; XML            ; "The trunk prefix, formally 0, was dropped in the last reorganisation of the numbering plan."
+BZ     ; XML            ; "http://www.itu.int/oth/T0202000016/en"
+BZ     ; XML_FIXED_LINE ; "Wikipedia and ITU seem out of date, but say that for a number in the format ZNY-XXXX\nZ represents the district code (or 6 for mobile), N the type of number and Y the first\ndigit of the customer's number. Only N = 0 and 2 are supposedly in use, but we have\nfound some numbers with N = 3 online (prefixes 732 and 236). When emailed,\nBelize Telemedia Ltd confirmed numbers with prefix 732 belong to the Landline Postpaid\nPSTN category."
+BZ     ; XML_MOBILE     ; "62[6-9], 63X, 65X and 6[67][2-9] were added as we have been able to successfully\nsend SMSs to these numbers or many numbers have been found online."
+BZ     ; XML_TOLL_FREE  ; "We don't know how these would be dialled internationally - it is possible that they can't\nbe dialled internationally at all - so we represent the leading 0 as part of the number.\nInformation from http://www.belizetelemedia.net."

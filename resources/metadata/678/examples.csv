@@ -1,0 +1,6 @@
+Region ; Type       ; Number
+VU     ; FIXED_LINE ; "22123"
+VU     ; MOBILE     ; "5912345"
+VU     ; TOLL_FREE  ; "81123"
+VU     ; VOIP       ; "9010123"
+VU     ; UAN        ; "30123"

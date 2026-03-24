@@ -1,0 +1,14 @@
+Format           ; Parent Format ; Comment
+X XXX XX XX*     ; fixed_1/3-12  ; "Vienna."
+X XXXX**         ; voip_2/3-5
+X XXXXXXX*       ; voip_2/3/3-4
+XX XX XX XX*     ; voip_2/3/3-4
+XX XXXXXX*       ; voip_2/3/3-4
+X XXXXXXXXX***   ; voip_2/4/4-7
+XX XX XX XXXX    ; voip_2/4/4-7
+XX XX XX XX XX** ; voip_2/4/4-7
+XX XXXXX XXXX**  ; voip_2/4/4-7
+XXX XXX XXX XXX* ; fixed_3/3-10
+XXX XXX XX XX*   ; fixed_3/3-10
+XXX XX XX XX*    ; fixed_3/3-10
+XXXX XXX XXX*    ; fixed_4/3-9

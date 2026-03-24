@@ -1,0 +1,4 @@
+Region ; Label ; Comment
+001    ; XML   ; "United Nations- OCHA"
+001    ; XML   ; "Numbers here are classified as UAN, as they are non-geographical and universally\naccessible. In addition, the end-user tariff to reach these numbers is lower or similar to\nthe tariff of a national call."
+001    ; XML   ; "http://www.itu.int/oth/T02020000FA/en"

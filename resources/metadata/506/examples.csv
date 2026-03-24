@@ -1,0 +1,6 @@
+Region ; Type         ; Number
+CR     ; FIXED_LINE   ; "22123456"
+CR     ; MOBILE       ; "83123456"
+CR     ; TOLL_FREE    ; "8001234567"
+CR     ; PREMIUM_RATE ; "9001234567"
+CR     ; VOIP         ; "40001234"

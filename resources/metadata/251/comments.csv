@@ -1,0 +1,10 @@
+Region ; Label          ; Comment
+ET     ; SC             ; "http://www.itu.int/oth/T0202000044/en"
+ET     ; SC_EMERGENCY   ; "http://www.addisculturetourism.gov.et/en/component/k2/itemlist/category/64.html?layout=category"
+ET     ; SC_EMERGENCY   ; "http://www.netglobers.com/africa/ethiopia-emergency-numbers-in-ethiopia-.html"
+ET     ; SC_EMERGENCY   ; "http://www.addisababacity.gov.et/index.php?option=com_content&view=article&id=139&Itemid=136"
+ET     ; SC_EMERGENCY   ; "http://studentsabroad.state.gov/content/pdfs/911_ABROAD.pdf"
+ET     ; SC_EMERGENCY   ; "The 91, 92, and 93 numbers are for the city of Addis Ababa."
+ET     ; XML            ; "http://www.itu.int/oth/T0202000044/en"
+ET     ; XML_FIXED_LINE ; "Found valid fixed-line numbers online that starts with prefix 11 617, 11 639 and\n11 667[01]."
+ET     ; XML_MOBILE     ; "The data here is not regularly updated by the Ethiopian authorities, and many more\nnumbers are visible online than are reported in the ITU document. We have also\nreferred to IR 21 docs as they are frequently updated."

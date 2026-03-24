@@ -1,0 +1,18 @@
+Prefix ; Length ; Type       ; Tariff        ; Operator  ; Format         ; Regions ; Geocode:en  ; Geocode:pt  ; Provenance
+21     ; 8      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_2/3/3-4" ; "MZ"    ; "Maputo"    ; "Maputo"    ; ITU
+23     ; 8      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_2/3/3-4" ; "MZ"    ; "Beira"     ; "Beira"     ; ITU
+24     ; 8      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_2/3/3-4" ; "MZ"    ; "Quelimane" ; "Quelimane" ; ITU
+250    ; 8      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_2/3/3-4" ; "MZ"    ;             ;             ; ITU
+251    ; 8      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_2/3/3-4" ; "MZ"    ; "Manica"    ; "Manica"    ; ITU
+252    ; 8      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_2/3/3-4" ; "MZ"    ; "Tete"      ; "Tete"      ; ITU
+26     ; 8      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_2/3/3-4" ; "MZ"    ; "Nampula"   ; "Nampula"   ; ITU
+271    ; 8      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_2/3/3-4" ; "MZ"    ; "Lichinga"  ; "Lichinga"  ; ITU
+272    ; 8      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_2/3/3-4" ; "MZ"    ; "Pemba"     ; "Pemba"     ; ITU
+281    ; 8      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_2/3/3-4" ; "MZ"    ; "Chokwe"    ; "Chokwé"    ; ITU
+282    ; 8      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_2/3/3-4" ; "MZ"    ; "Xai-Xai"   ; "Xai-Xai"   ; ITU
+293    ; 8      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_2/3/3-4" ; "MZ"    ; "Inhambane" ; "Inhambane" ; ITU
+800    ; 9      ; FIXED_LINE ; TOLL_FREE     ;           ; "fmt2_3/3/3"   ; "MZ"
+8[23]  ; 9      ; MOBILE     ; STANDARD_RATE ; "mcel"    ; "fmt1_2/3/3-4" ; "MZ"    ;             ;             ; ITU
+8[45]  ; 9      ; MOBILE     ; STANDARD_RATE ; "vodacom" ; "fmt1_2/3/3-4" ; "MZ"    ;             ;             ; IR21
+8[67]  ; 9      ; MOBILE     ; STANDARD_RATE ; "movitel" ; "fmt1_2/3/3-4" ; "MZ"    ;             ;             ; ITU
+89     ; 9      ; MOBILE     ; STANDARD_RATE ; "gmpcs"   ; "fmt1_2/3/3-4" ; "MZ"    ;             ;             ; ITU

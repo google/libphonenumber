@@ -1,0 +1,8 @@
+Region ; Label        ; Comment
+LY     ; SC_EMERGENCY ; "This information may or may not apply to the new government."
+LY     ; SC_EMERGENCY ; "Most of the gov.ly domain is down (checked on 2011-11-07)."
+LY     ; SC_EMERGENCY ; "http://travel.state.gov/travel/cis_pa_tw/cis/cis_951.html"
+LY     ; SC_EMERGENCY ; "http://www.lookoutlibya.com/Look_Out_Libya_%7C_Health_and_Safety_03.html"
+LY     ; XML          ; "Status as of 21 Jan 2011: a lot of outdated information on the web including on wikipedia\nand itu.int. The new area codes are on the Arabic website of the main telecommunication\noperator (Hatef Libya). A new mobile operator Aljeel Aljadeed for Technology will start\nusing 096 (they are allowing customers to register numbers currently), so their code has\nalso been added."
+LY     ; XML          ; "http://hlc.ly/price.php"
+LY     ; XML_MOBILE   ; "The prefix 094 has been added on the strength of numbers found online, and numbers\nwhere SMS messages have been apparently successfully received."

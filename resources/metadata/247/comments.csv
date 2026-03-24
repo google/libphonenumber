@@ -1,0 +1,6 @@
+Region ; Label        ; Comment
+AC     ; SC           ; "www.itu.int/oth/T02020000AF"
+AC     ; SC_EMERGENCY ; "http://studentsabroad.state.gov/content/pdfs/911_ABROAD.pdf\nhttp://www.noonsite.com/Countries/AscensionIsland/?rc=GeneralInfo\nNote the 4-digit emergency numbers fit the fixed-line pattern, therefore are not\nincluded. This is consistent with how we handle such numbers in other countries."
+AC     ; XML          ; "http://www.itu.int/oth/T02020000AF/en"
+AC     ; XML_MOBILE   ; "Note prefix 4 is reserved for mobile use , not currently in use"
+AC     ; XML_UAN      ; "Omit '00' as a prefix since that's the IDD prefix."

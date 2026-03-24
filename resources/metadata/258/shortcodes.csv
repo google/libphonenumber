@@ -1,0 +1,4 @@
+Region ; Prefix  ; Length ; Type       ; Tariff
+MZ     ; 1[02-5] ; 4      ; COMMERCIAL
+MZ     ; 11[79]  ; 3      ; EMERGENCY  ; TOLL_FREE
+MZ     ; 19[78]  ; 3      ; EMERGENCY  ; TOLL_FREE

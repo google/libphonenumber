@@ -1,0 +1,4 @@
+Id           ; National        ; International  ; Comment
+fmt1_2/2/2/2 ; "#XX XX XX XX"  ; "XX XX XX XX"  ; "Formatting from http://www.pagesjaunes-dz.com."
+fmt2_3/2/2/2 ; "#XXX XX XX XX" ; "XXX XX XX XX"
+fmt3_2/3/2/2 ; "#XX XXX XX XX" ; "XX XXX XX XX"

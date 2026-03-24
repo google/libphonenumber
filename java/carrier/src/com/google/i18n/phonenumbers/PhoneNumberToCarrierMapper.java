@@ -16,11 +16,10 @@
 
 package com.google.i18n.phonenumbers;
 
-import com.google.i18n.phonenumbers.PhoneNumberUtil;
 import com.google.i18n.phonenumbers.PhoneNumberUtil.PhoneNumberType;
 import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber;
+import com.google.i18n.phonenumbers.metadata.DefaultMetadataDependenciesProvider;
 import com.google.i18n.phonenumbers.prefixmapper.PrefixFileReader;
-
 import java.util.Locale;
 
 /**
@@ -30,9 +29,7 @@ import java.util.Locale;
  */
 public class PhoneNumberToCarrierMapper {
   private static PhoneNumberToCarrierMapper instance = null;
-  private static final String MAPPING_DATA_DIRECTORY =
-      "/com/google/i18n/phonenumbers/carrier/data/";
-  private PrefixFileReader prefixFileReader = null;
+  private final PrefixFileReader prefixFileReader;
 
   private final PhoneNumberUtil phoneUtil = PhoneNumberUtil.getInstance();
 
@@ -51,7 +48,8 @@ public class PhoneNumberToCarrierMapper {
    */
   public static synchronized PhoneNumberToCarrierMapper getInstance() {
     if (instance == null) {
-      instance = new PhoneNumberToCarrierMapper(MAPPING_DATA_DIRECTORY);
+      instance = new PhoneNumberToCarrierMapper(DefaultMetadataDependenciesProvider.getInstance()
+          .getCarrierDataDirectory());
     }
     return instance;
   }

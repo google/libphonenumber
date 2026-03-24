@@ -1,0 +1,4 @@
+Id             ; National      ; Carrier          ; International
+fixed_1/7      ; "X XXXXXXX"   ; "#@ X XXXXXXX"   ; "X XXXXXXX"
+mobile_8       ; "XXXXXXXX"    ; "#@ XXXXXXXX"    ; "XXXXXXXX"
+tollfree_3/2/4 ; "XXX XX XXXX" ; "#@ XXX XX XXXX" ; "XXX XX XXXX"

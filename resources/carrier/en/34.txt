@@ -64,9 +64,9 @@
 3460228|Orange
 3460229|Boutique
 346023|Lycamobile
-346024|Lebara
-346025|Lebara
-346026|Lebara
+346024|Yoigo
+346025|Yoigo
+346026|Yoigo
 346027|Lebara
 346028|Lycamobile
 346029|DIA
@@ -80,20 +80,26 @@
 3460307|Lebara
 3460308|Lebara
 3460309|Lebara
-346031|Lebara
-346032|Lebara
-346033|Lebara
+346031|Yoigo
+346032|Yoigo
+346033|Yoigo
 346034|Vodafone
 346035|Vodafone
 346036|Vodafone
 346037|Vodafone
 346038|Vodafone
 346039|Lebara
-34604|Lebara
 346040|Orange
+346041|Yoigo
+346042|Yoigo
+346043|Yoigo
+346044|Lebara
 346045|Orange
-34605|Orange
-3460529|MasMovil
+346046|Lebara
+346047|Lebara
+346048|Lebara
+346049|Lebara
+34605|Vodafone
 34606|Movistar
 34607|Vodafone
 34608|Movistar
@@ -101,12 +107,14 @@
 34610|Vodafone
 34611|Republica Movil
 346110|Orange
-346112|Lebara
-346113|Lebara
+346112|Yoigo
+346113|Yoigo
 34612|Syma
 346122|Lycamobile
 346124|Lycamobile
 346125|Lycamobile
+34613|Yoigo
+34614|DigiMobil
 34615|Orange
 34616|Movistar
 34617|Vodafone
@@ -118,12 +126,14 @@
 346212|Movistar
 346213|Republica Movil
 346214|Republica Movil
-346215|Republica Movil
+346215|Aire Networks
 346216|Republica Movil
+346218|Vodafone
 34622|Yoigo
 346230|Yoigo
 346231|Yoigo
 346236|Altecom
+34624|DigiMobil
 34625|Orange
 3462529|Yoigo
 34626|Movistar
@@ -146,16 +156,9 @@
 34638|Movistar
 34639|Movistar
 34640|Orange
-34641|Movistar
+34641|DigiMobil
 34642|DigiMobil
-346430|DigiMobil
-346431|DigiMobil
-346432|DigiMobil
-346433|DigiMobil
-346434|DigiMobil
-346435|DigiMobil
-346436|DigiMobil
-346437|DigiMobil
+34643|DigiMobil
 34644|Orange
 34645|Orange
 3464529|Yoigo
@@ -216,6 +219,7 @@
 3468448|Nethits
 346845|Movistar
 346846|Telecable
+346848|Euskaltel
 34685|Orange
 3468529|Carrefour
 34686|Movistar
@@ -283,6 +287,7 @@
 346938|Yoigo
 346939|Yoigo
 34694|Movistar
+346942|Orange
 346944|Yoigo
 346945|Yoigo
 346946|Yoigo
@@ -295,6 +300,8 @@
 34699|Movistar
 347110|Zinnia
 347111|Vodafone
+347112|Orange
+347115|Orange
 347117|Vodafone
 347121|Yoigo
 347122|Yoigo
@@ -321,11 +328,14 @@
 347227|Yoigo
 347228|Yoigo
 347277|Vodafone
+347440|Alai
+347442|PTV
 3474442|Deion
 3474443|InfoVOIP
 3474447|Jetnet
 3474448|Aire Networks
 3474449|Alai
 347446|PTV
+347449|Alai
 347477|Orange
 347478|Orange

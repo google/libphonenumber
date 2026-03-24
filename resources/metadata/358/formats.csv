@@ -1,0 +1,8 @@
+Id          ; National         ; International   ; Comment
+fmt_1/4-9   ; "#X XXXX*****"   ; "X XXXX*****"   ; "General format for 1-digit prefix (5-10 digit numbers)."
+fmt_2/4-8   ; "#XX XXXX****"   ; "XX XXXX****"   ; "General format for 2-digit prefix (6-10 digit numbers)."
+fmt_2/6-10  ; "#XX XXXXXX****" ; "XX XXXXXX****"
+fmt_3/3-7   ; "#XXX XXX****"   ; "XXX XXX****"   ; "General format for 3-digit prefix (6-10 digit numbers)."
+fmt_5       ; "#XXXXX"         ; "XXXXX"         ; "Format for 5 digit UAN numbers."
+shortcode_5 ; "#XXXXX"         ;                 ; "Most service numbers are included under UAN in PhoneNumberMetadata.xml (and also in\nthe no-international-dialling block) but prefixes 75[12] are always short and used\nfor directory services so are covered in ShortNumberMetadata.xml intead. However,\nthey still need a national prefix so we have a formatting rule here."
+shortcode_6 ; "XXXXXX"         ;                 ; "Format for 6 digit short codes."

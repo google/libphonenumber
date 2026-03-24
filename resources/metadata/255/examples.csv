@@ -1,0 +1,7 @@
+Region ; Type         ; Number
+TZ     ; FIXED_LINE   ; "222345678"
+TZ     ; MOBILE       ; "621234567"
+TZ     ; TOLL_FREE    ; "800123456"
+TZ     ; PREMIUM_RATE ; "900123456"
+TZ     ; SHARED_COST  ; "840123456"
+TZ     ; VOIP         ; "412345678"

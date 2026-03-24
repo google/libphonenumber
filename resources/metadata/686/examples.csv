@@ -1,0 +1,4 @@
+Region ; Type       ; Number
+KI     ; FIXED_LINE ; "31234"
+KI     ; MOBILE     ; "72001234"
+KI     ; VOIP       ; "30010000"

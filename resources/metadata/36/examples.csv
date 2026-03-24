@@ -1,0 +1,7 @@
+Region ; Type         ; Number
+HU     ; FIXED_LINE   ; "12345678"
+HU     ; MOBILE       ; "201234567"
+HU     ; TOLL_FREE    ; "80123456"
+HU     ; PREMIUM_RATE ; "90123456"
+HU     ; VOIP         ; "211234567"
+HU     ; UAN          ; "381234567"

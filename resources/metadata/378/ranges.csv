@@ -1,0 +1,8 @@
+Prefix      ; Length ; Type       ; Tariff        ; Area Code Length ; Operator  ; Format           ; Regions ; Provenance
+05498[0157] ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;           ; "fixed_4/6"      ; "SM"    ; ITU
+05498[89]   ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;           ; "fixed_4/6"      ; "SM"
+05499       ; 10     ; FIXED_LINE ; STANDARD_RATE ; 4                ;           ; "fixed_4/6"      ; "SM"
+5[158]      ; 8      ; VOIP       ; STANDARD_RATE ;                  ;           ; "nongeo_2/2/2/2" ; "SM"    ; ITU
+61          ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "telenet" ; "nongeo_2/2/2/2" ; "SM"    ; ITU
+66          ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "tism"    ; "nongeo_2/2/2/2" ; "SM"    ; ITU
+7[178]      ; 8      ; FIXED_LINE ; PREMIUM_RATE  ;                  ;           ; "nongeo_2/2/2/2" ; "SM"    ; ITU

@@ -1,0 +1,5 @@
+Region ; Type         ; Number
+NE     ; FIXED_LINE   ; "20201234"
+NE     ; MOBILE       ; "93123456"
+NE     ; TOLL_FREE    ; "08123456"
+NE     ; PREMIUM_RATE ; "09123456"

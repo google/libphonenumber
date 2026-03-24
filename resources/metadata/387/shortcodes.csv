@@ -1,0 +1,12 @@
+Region ; Prefix    ; Length ; Type       ; Tariff
+BA     ; 11600[06] ; 6      ; COMMERCIAL ; TOLL_FREE
+BA     ; 11611[17] ; 6      ; COMMERCIAL ; TOLL_FREE
+BA     ; 116123    ; 6      ; COMMERCIAL ; TOLL_FREE
+BA     ; 118       ; 4,5    ; COMMERCIAL
+BA     ; 120[0-7]  ; 4      ; COMMERCIAL
+BA     ; 12[2-4]   ; 3      ; EMERGENCY  ; TOLL_FREE
+BA     ; 125       ; 3      ; COMMERCIAL
+BA     ; 126[0-26] ; 4      ; COMMERCIAL
+BA     ; 12[78]    ; 4,5    ; COMMERCIAL
+BA     ; 1[3-5]    ; 4      ; COMMERCIAL
+BA     ; 17        ; 5      ; COMMERCIAL

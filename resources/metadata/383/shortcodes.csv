@@ -1,0 +1,3 @@
+Region ; Prefix  ; Length ; Type      ; Tariff    ; Provenance
+XK     ; 112     ; 3      ; EMERGENCY ; TOLL_FREE ; ITU
+XK     ; 19[2-4] ; 3      ; EMERGENCY ; TOLL_FREE ; ITU

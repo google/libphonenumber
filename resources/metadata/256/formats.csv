@@ -1,0 +1,4 @@
+Id        ; National      ; International ; Comment
+fixed_2/7 ; "#XX XXXXXXX" ; "XX XXXXXXX"  ; "2-digit area codes"
+fixed_4/5 ; "#XXXX XXXXX" ; "XXXX XXXXX"  ; "4-digit area codes"
+fmt_3/6   ; "#XXX XXXXXX" ; "XXX XXXXXX"  ; "Fixed and mobile format."

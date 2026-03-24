@@ -1,0 +1,8 @@
+Region ; Label               ; Comment
+IQ     ; SC_CARRIER_SPECIFIC ; "https://support.twitter.com/articles/20170024"
+IQ     ; SC_EMERGENCY        ; "http://www.itu.int/net/itu-t/inrdb/e129_important_numbers.aspx?country=112"
+IQ     ; SC_SMS_SERVICES     ; "https://support.twitter.com/articles/20170024"
+IQ     ; XML                 ; "No tollFree or premiumRate information can be found."
+IQ     ; XML                 ; "https://www.itu.int/oth/T0202000067/en"
+IQ     ; XML                 ; "http://en.wikipedia.org/wiki/%2B964"
+IQ     ; XML                 ; "http://wtng.info/wtng-964-ik.html"

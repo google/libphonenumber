@@ -1,0 +1,11 @@
+Prefix  ; Length ; Type       ; Tariff        ; Operator  ; Format         ; Regions ; Geocode:en        ; Geocode:es           ; Geocode:fr            ; Provenance
+22[2-7] ; 8      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_2/2/2/2" ; "TG"    ; "Lome"            ; "Lomé"               ; "Lomé"
+23[23]  ; 8      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_2/2/2/2" ; "TG"    ; "Maritime region" ; "Región Marítima"    ; "Région Maritime"
+24[45]  ; 8      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_2/2/2/2" ; "TG"    ; "Plateaux region" ; "Región Plateaux"    ; "Région des Plateaux"
+255     ; 8      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_2/2/2/2" ; "TG"    ; "Central region"  ; "Región Central"     ; "Région Centrale"
+26[67]  ; 8      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_2/2/2/2" ; "TG"    ; "Kara region"     ; "Región de Kara"     ; "Région de la Kara"
+277     ; 8      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_2/2/2/2" ; "TG"    ; "Savannah region" ; "Región de Savannah" ; "Région des Savanes"
+7[0-2]  ; 8      ; MOBILE     ; STANDARD_RATE ; "togocom" ; "fmt1_2/2/2/2" ; "TG"    ;                   ;                      ;                       ; IR21
+7[89]   ; 8      ; MOBILE     ; STANDARD_RATE ; "moov"    ; "fmt1_2/2/2/2" ; "TG"    ;                   ;                      ;                       ; IR21
+9[0-3]  ; 8      ; MOBILE     ; STANDARD_RATE ; "togocom" ; "fmt1_2/2/2/2" ; "TG"    ;                   ;                      ;                       ; IR21
+9[6-9]  ; 8      ; MOBILE     ; STANDARD_RATE ; "moov"    ; "fmt1_2/2/2/2" ; "TG"    ;                   ;                      ;                       ; IR21

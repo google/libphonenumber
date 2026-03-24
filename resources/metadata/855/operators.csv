@@ -1,0 +1,8 @@
+Id        ; International Dialling Codes ; Name:en
+__unknown ; "00[14-9]"
+cellcard  ;                              ; "Cellcard"
+metfone   ;                              ; "Metfone"
+qb        ;                              ; "qbmore/Cadcomms"
+seatel    ;                              ; "Seatel"
+smart     ;                              ; "Smart"
+tc        ;                              ; "Telecom Cambodia"

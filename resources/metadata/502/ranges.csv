@@ -1,0 +1,164 @@
+Prefix       ; Length ; Type       ; Tariff        ; Operator   ; Format       ; Regions ; Provenance ; Comment
+18[01]       ; 11     ; FIXED_LINE ; TOLL_FREE     ;            ; "fmt2_4/3/4" ; "GT"
+19           ; 11     ; FIXED_LINE ; PREMIUM_RATE  ;            ; "fmt2_4/3/4" ; "GT"
+22[0-29]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "GT"    ; GOVERNMENT
+223[02-589]  ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "GT"    ; GOVERNMENT
+223[167]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "GT"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+224[01]      ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "GT"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+224[2-9]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "GT"    ; GOVERNMENT
+225[013-9]   ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "GT"    ; GOVERNMENT
+2252         ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "GT"
+226[0137-9]  ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "GT"    ; GOVERNMENT
+226[24-6]    ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "GT"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+227[07-9]    ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "GT"    ; GOVERNMENT
+227[1-6]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "GT"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+228[0-247]   ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "GT"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+228[35689]   ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "GT"    ; GOVERNMENT
+23[0168]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "GT"    ; GOVERNMENT
+232[0-46-9]  ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "GT"    ; GOVERNMENT
+2325         ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "GT"
+2330         ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "GT"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+233[1-9]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "GT"    ; GOVERNMENT
+234[0-79]    ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "GT"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+2348         ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "GT"    ; GOVERNMENT
+23[59][0-2]  ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "GT"    ; GOVERNMENT
+23[59][3-9]  ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "GT"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+237[0-3]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "GT"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+237[4-9]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "GT"    ; GOVERNMENT
+24[0-379]    ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "GT"    ; GOVERNMENT
+244[0-589]   ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "GT"    ; GOVERNMENT
+244[67]      ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "GT"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+245[089]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "GT"    ; GOVERNMENT
+245[1-7]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "GT"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+246[0-4]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "GT"    ; GOVERNMENT
+246[5-9]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "GT"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+248[03-5]    ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "GT"    ; GOVERNMENT
+248[126-9]   ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "GT"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+250          ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "GT"    ; GOVERNMENT
+25[1-9]      ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "GT"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+2[6-9]       ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "GT"
+3[013]       ; 8      ; MOBILE     ; STANDARD_RATE ; "tigo"     ; "fmt1_4/4"   ; "GT"    ; IR21
+32[013-9]    ; 8      ; MOBILE     ; STANDARD_RATE ; "tigo"     ; "fmt1_4/4"   ; "GT"    ; IR21
+322[0-8]     ; 8      ; MOBILE     ; STANDARD_RATE ; "tigo"     ; "fmt1_4/4"   ; "GT"    ; IR21
+3229         ; 8      ; MOBILE     ; STANDARD_RATE ; "telgua"   ; "fmt1_4/4"   ; "GT"    ; GOVERNMENT
+34           ; 8      ; MOBILE     ; STANDARD_RATE ; "movistar" ; "fmt1_4/4"   ; "GT"    ; IR21
+35[0-6]      ; 8      ; MOBILE     ; STANDARD_RATE ; "movistar" ; "fmt1_4/4"   ; "GT"    ; IR21
+35[7-9]      ; 8      ; MOBILE     ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "GT"
+3[68]        ; 8      ; MOBILE     ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "GT"
+37[0-5]      ; 8      ; MOBILE     ; STANDARD_RATE ; "tigo"     ; "fmt1_4/4"   ; "GT"    ; IR21
+37[6-9]      ; 8      ; MOBILE     ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "GT"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+39[0-3]      ; 8      ; MOBILE     ; STANDARD_RATE ; "tigo"     ; "fmt1_4/4"   ; "GT"    ; IR21
+39[4-9]      ; 8      ; MOBILE     ; STANDARD_RATE ; "telgua"   ; "fmt1_4/4"   ; "GT"    ; IR21
+400          ; 8      ; MOBILE     ; STANDARD_RATE ; "movistar" ; "fmt1_4/4"   ; "GT"    ; IR21
+40[1-9]      ; 8      ; MOBILE     ; STANDARD_RATE ; "tigo"     ; "fmt1_4/4"   ; "GT"    ; GOVERNMENT
+4[12]        ; 8      ; MOBILE     ; STANDARD_RATE ; "telgua"   ; "fmt1_4/4"   ; "GT"    ; IR21
+43           ; 8      ; MOBILE     ; STANDARD_RATE ; "movistar" ; "fmt1_4/4"   ; "GT"    ; IR21
+44[0-6]      ; 8      ; MOBILE     ; STANDARD_RATE ; "movistar" ; "fmt1_4/4"   ; "GT"    ; IR21
+447[0-5]     ; 8      ; MOBILE     ; STANDARD_RATE ; "movistar" ; "fmt1_4/4"   ; "GT"    ; IR21
+447[6-9]     ; 8      ; MOBILE     ; STANDARD_RATE ; "tigo"     ; "fmt1_4/4"   ; "GT"    ; IR21
+44[89]       ; 8      ; MOBILE     ; STANDARD_RATE ; "tigo"     ; "fmt1_4/4"   ; "GT"    ; IR21
+4[5689]      ; 8      ; MOBILE     ; STANDARD_RATE ; "tigo"     ; "fmt1_4/4"   ; "GT"    ; IR21
+47[0-6]      ; 8      ; MOBILE     ; STANDARD_RATE ; "telgua"   ; "fmt1_4/4"   ; "GT"    ; IR21
+477[0-2]     ; 8      ; MOBILE     ; STANDARD_RATE ; "telgua"   ; "fmt1_4/4"   ; "GT"    ; IR21
+477[3-9]     ; 8      ; MOBILE     ; STANDARD_RATE ; "tigo"     ; "fmt1_4/4"   ; "GT"    ; IR21
+47[89]       ; 8      ; MOBILE     ; STANDARD_RATE ; "tigo"     ; "fmt1_4/4"   ; "GT"    ; IR21
+50[03-6]     ; 8      ; MOBILE     ; STANDARD_RATE ; "tigo"     ; "fmt1_4/4"   ; "GT"    ; IR21
+501          ; 8      ; MOBILE     ; STANDARD_RATE ; "telgua"   ; "fmt1_4/4"   ; "GT"    ; IR21
+50[27-9]     ; 8      ; MOBILE     ; STANDARD_RATE ; "movistar" ; "fmt1_4/4"   ; "GT"    ; IR21
+51[04]       ; 8      ; MOBILE     ; STANDARD_RATE ; "movistar" ; "fmt1_4/4"   ; "GT"    ; IR21
+51[1-3]      ; 8      ; MOBILE     ; STANDARD_RATE ; "telgua"   ; "fmt1_4/4"   ; "GT"    ; GOVERNMENT
+51[5-9]      ; 8      ; MOBILE     ; STANDARD_RATE ; "tigo"     ; "fmt1_4/4"   ; "GT"    ; IR21
+520          ; 8      ; MOBILE     ; STANDARD_RATE ; "tigo"     ; "fmt1_4/4"   ; "GT"    ; IR21
+52[1-9]      ; 8      ; MOBILE     ; STANDARD_RATE ; "movistar" ; "fmt1_4/4"   ; "GT"    ; IR21
+53[02-8]     ; 8      ; MOBILE     ; STANDARD_RATE ; "tigo"     ; "fmt1_4/4"   ; "GT"    ; IR21
+531[01]      ; 8      ; MOBILE     ; STANDARD_RATE ; "telgua"   ; "fmt1_4/4"   ; "GT"    ; IR21
+531[23]      ; 8      ; MOBILE     ; STANDARD_RATE ; "movistar" ; "fmt1_4/4"   ; "GT"    ; IR21
+531[4-9]     ; 8      ; MOBILE     ; STANDARD_RATE ; "tigo"     ; "fmt1_4/4"   ; "GT"    ; IR21
+539          ; 8      ; MOBILE     ; STANDARD_RATE ; "movistar" ; "fmt1_4/4"   ; "GT"    ; IR21
+540          ; 8      ; MOBILE     ; STANDARD_RATE ; "movistar" ; "fmt1_4/4"   ; "GT"    ; GOVERNMENT
+54[1-9]      ; 8      ; MOBILE     ; STANDARD_RATE ; "telgua"   ; "fmt1_4/4"   ; "GT"    ; IR21
+550          ; 8      ; MOBILE     ; STANDARD_RATE ; "movistar" ; "fmt1_4/4"   ; "GT"    ; IR21
+551[0-7]     ; 8      ; MOBILE     ; STANDARD_RATE ; "telgua"   ; "fmt1_4/4"   ; "GT"    ; IR21
+551[89]      ; 8      ; MOBILE     ; STANDARD_RATE ; "movistar" ; "fmt1_4/4"   ; "GT"    ; IR21
+552          ; 8      ; MOBILE     ; STANDARD_RATE ; "tigo"     ; "fmt1_4/4"   ; "GT"    ; IR21
+5530         ; 8      ; MOBILE     ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "GT"
+553[1-9]     ; 8      ; MOBILE     ; STANDARD_RATE ; "telgua"   ; "fmt1_4/4"   ; "GT"    ; IR21
+554[0-25-9]  ; 8      ; MOBILE     ; STANDARD_RATE ; "movistar" ; "fmt1_4/4"   ; "GT"    ; IR21
+554[34]      ; 8      ; MOBILE     ; STANDARD_RATE ; "telgua"   ; "fmt1_4/4"   ; "GT"    ; IR21
+555[0-3]     ; 8      ; MOBILE     ; STANDARD_RATE ; "tigo"     ; "fmt1_4/4"   ; "GT"    ; IR21
+555[4-9]     ; 8      ; MOBILE     ; STANDARD_RATE ; "telgua"   ; "fmt1_4/4"   ; "GT"    ; IR21
+55[679]      ; 8      ; MOBILE     ; STANDARD_RATE ; "telgua"   ; "fmt1_4/4"   ; "GT"    ; IR21
+558[01]      ; 8      ; MOBILE     ; STANDARD_RATE ; "tigo"     ; "fmt1_4/4"   ; "GT"    ; IR21
+558[2-9]     ; 8      ; MOBILE     ; STANDARD_RATE ; "telgua"   ; "fmt1_4/4"   ; "GT"    ; IR21
+56[04-8]     ; 8      ; MOBILE     ; STANDARD_RATE ; "movistar" ; "fmt1_4/4"   ; "GT"    ; IR21
+56[1-39]     ; 8      ; MOBILE     ; STANDARD_RATE ; "telgua"   ; "fmt1_4/4"   ; "GT"    ; IR21
+57[02-8]     ; 8      ; MOBILE     ; STANDARD_RATE ; "tigo"     ; "fmt1_4/4"   ; "GT"    ; IR21
+571[0-8]     ; 8      ; MOBILE     ; STANDARD_RATE ; "telgua"   ; "fmt1_4/4"   ; "GT"    ; IR21
+5719         ; 8      ; MOBILE     ; STANDARD_RATE ; "tigo"     ; "fmt1_4/4"   ; "GT"    ; IR21
+579          ; 8      ; MOBILE     ; STANDARD_RATE ; "movistar" ; "fmt1_4/4"   ; "GT"    ; GOVERNMENT
+58[089]      ; 8      ; MOBILE     ; STANDARD_RATE ; "tigo"     ; "fmt1_4/4"   ; "GT"    ; IR21
+581[0-8]     ; 8      ; MOBILE     ; STANDARD_RATE ; "telgua"   ; "fmt1_4/4"   ; "GT"    ; IR21
+5819         ; 8      ; MOBILE     ; STANDARD_RATE ; "tigo"     ; "fmt1_4/4"   ; "GT"    ; IR21
+58[2-7]      ; 8      ; MOBILE     ; STANDARD_RATE ; "telgua"   ; "fmt1_4/4"   ; "GT"    ; IR21
+59[09]       ; 8      ; MOBILE     ; STANDARD_RATE ; "tigo"     ; "fmt1_4/4"   ; "GT"    ; GOVERNMENT
+591[0-4]     ; 8      ; MOBILE     ; STANDARD_RATE ; "telgua"   ; "fmt1_4/4"   ; "GT"    ; IR21
+591[5-7]     ; 8      ; MOBILE     ; STANDARD_RATE ; "movistar" ; "fmt1_4/4"   ; "GT"    ; IR21
+591[89]      ; 8      ; MOBILE     ; STANDARD_RATE ; "tigo"     ; "fmt1_4/4"   ; "GT"    ; IR21
+59[2-8]      ; 8      ; MOBILE     ; STANDARD_RATE ; "telgua"   ; "fmt1_4/4"   ; "GT"    ; IR21
+6[2-57-9]    ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "GT"
+66[09]       ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "GT"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+6610         ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "GT"    ; GOVERNMENT
+661[1-9]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "GT"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+662[013-9]   ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "GT"    ; GOVERNMENT
+6622         ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "GT"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+66[36]       ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "GT"    ; GOVERNMENT
+664[0-689]   ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "GT"    ; GOVERNMENT
+6647         ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "GT"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+665[0589]    ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "GT"    ; GOVERNMENT
+665[1-467]   ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "GT"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+667[0-79]    ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "GT"    ; GOVERNMENT
+6678         ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "GT"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+668[0-247-9] ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "GT"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+668[356]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "GT"    ; GOVERNMENT
+7[2-6]       ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "GT"
+77[01]       ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "GT"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+77[26]       ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "GT"    ; GOVERNMENT
+773[0-5]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "GT"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+773[6-9]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "GT"    ; GOVERNMENT
+774[0-4]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "GT"    ; GOVERNMENT
+774[5-9]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "GT"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+775[0-47]    ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "GT"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+775[5689]    ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "GT"    ; GOVERNMENT
+777[0-79]    ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "GT"    ; GOVERNMENT
+7778         ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "GT"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+778[035]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "GT"    ; GOVERNMENT
+778[1246-9]  ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "GT"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+779[0-7]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "GT"    ; GOVERNMENT
+779[89]      ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "GT"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+78[09]       ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "GT"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+7810         ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "GT"    ; GOVERNMENT
+781[1-9]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "GT"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+78[28]       ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "GT"    ; GOVERNMENT
+783[0-489]   ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "GT"    ; GOVERNMENT
+783[5-7]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "GT"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+784[0-689]   ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "GT"    ; GOVERNMENT
+7847         ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "GT"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+785[013-7]   ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "GT"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+785[289]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "GT"    ; GOVERNMENT
+786[02569]   ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "GT"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+786[13478]   ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "GT"    ; GOVERNMENT
+787[0-49]    ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "GT"    ; GOVERNMENT
+787[5-8]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "GT"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+79[09]       ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "GT"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+791[0-4]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "GT"    ; GOVERNMENT
+791[5-9]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "GT"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+792[02-9]    ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "GT"    ; GOVERNMENT
+7921         ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "GT"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+79[3-5]      ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "GT"    ; GOVERNMENT
+796[0-589]   ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "GT"    ; GOVERNMENT
+796[67]      ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "GT"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+797[0-8]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "GT"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+7979         ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "GT"    ; GOVERNMENT
+798[0-24-9]  ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "GT"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+7983         ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "GT"    ; GOVERNMENT
+80[0-4]      ; 8      ; MOBILE     ; STANDARD_RATE ; "tigo"     ; "fmt1_4/4"   ; "GT"    ; IR21

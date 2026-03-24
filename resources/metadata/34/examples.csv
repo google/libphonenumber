@@ -1,0 +1,8 @@
+Region ; Type            ; Number
+ES     ; FIXED_LINE      ; "810123456"
+ES     ; MOBILE          ; "612345678"
+ES     ; TOLL_FREE       ; "800123456"
+ES     ; PREMIUM_RATE    ; "803123456"
+ES     ; SHARED_COST     ; "901123456"
+ES     ; PERSONAL_NUMBER ; "701234567"
+ES     ; UAN             ; "511234567"

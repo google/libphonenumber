@@ -1,0 +1,10 @@
+Id                     ; National         ; Carrier            ; International    ; Comment
+fixed_line_2/2/2       ; "XX XX XX"       ; "@ XX XX XX"       ; "XX XX XX"       ; "Patterns overlap because of variable number length. This format is for 6 digit\nfixed-line ranges."
+fixed_line_2/2/2/1-2   ; "XX XX XX X*"    ; "@ XX XX XX X*"    ; "XX XX XX X*"    ; "This format is for 7 and 8 digit fixed-line ranges."
+fixed_line_2/2/2/1-5   ; "XX XX XX X****" ; "@ XX XX XX X****" ; "XX XX XX X****" ; "This format is for 7 to 11 digit fixed-line ranges."
+fixed_line_2/2/2/2/1-2 ; "XX XX XX XX X*" ; "@ XX XX XX XX X*" ; "XX XX XX XX X*" ; "This format is for some 9 or 10 digit fixed-line ranges."
+fixed_line_2/2/2/3     ; "XX XX XX XXX"   ; "@ XX XX XX XXX"   ; "XX XX XX XXX"   ; "This format is for 9 digit fixed-line ranges."
+fixed_line_2/2/3       ; "XX XX XXX"      ; "@ XX XX XXX"      ; "XX XX XXX"      ; "This format is for 7 digit fixed-line ranges"
+fixed_line_2/3         ; "XX XXX"         ; "@ XX XXX"         ; "XX XXX"         ; "This format is for 5 digit fixed-line ranges."
+mobile_3/3/3           ; "XXX XXX XXX"    ; "@ XXX XXX XXX"    ; "XXX XXX XXX"    ; "Format for mobile numbers."
+var_cost_3/2/3         ; "XXX XX XXX"     ; "@ XXX XX XXX"     ; "XXX XX XXX"     ; "Format for variable cost types like premium-rate, toll-free."

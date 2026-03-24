@@ -13,15 +13,9 @@
 # limitations under the License.
 
 37250|Telia Eesti AS
-372519|Telia Eesti AS
+37251|Telia Eesti AS
 37252|Telia Eesti AS
-372530|Telia Eesti AS
-372533|Telia Eesti AS
-372534|Telia Eesti AS
-372536|Telia Eesti AS
-372537|Telia Eesti AS
-372538|Telia Eesti AS
-372539|Telia Eesti AS
+37253|Telia Eesti AS
 37254|Telia Eesti AS
 372545|Elisa
 3725461|Elisa
@@ -49,8 +43,10 @@
 37281|Telia Eesti AS
 3728110|Tele 2
 3728111|Elisa
+3728123|Elisa
 37282|Elisa
 3728200|Telia Eesti AS
+3728203|Telia Eesti AS
 3728204|Tele 2
 37282056|Tele 2
 37282057|Tele 2
@@ -61,7 +57,15 @@
 3728217|Tele 2
 3728218|Tele 2
 37282199|Tele 2
+3728270|Telia Eesti AS
+3728271|Telia Eesti AS
+3728272|Telia Eesti AS
+3728273|Telia Eesti AS
 3728282|Telia Eesti AS
+3728285|Tele 2
+3728286|Tele 2
+3728287|Tele 2
+372829|Tele 2
 37283|Tele 2
 37284|Tele 2
 37284510|Telia Eesti AS

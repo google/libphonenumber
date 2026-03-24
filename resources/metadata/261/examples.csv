@@ -1,0 +1,4 @@
+Region ; Type       ; Number
+MG     ; FIXED_LINE ; "202123456"
+MG     ; MOBILE     ; "321234567"
+MG     ; VOIP       ; "221234567"

@@ -1,0 +1,5 @@
+Region ; Label           ; Comment
+AE     ; SC              ; "http://www.itu.int/oth/T02020000DC/en"
+AE     ; SC_SMS_SERVICES ; "As per online evidences, 4451 and 4456 are SMS-able short codes."
+AE     ; XML             ; "http://www.itu.int/oth/T02020000DC/en"
+AE     ; XML_MOBILE      ; "Prefixes 54 and 58 are mentioned on Wikipedia,\nhttps://en.wikipedia.org/wiki/Telephone_numbers_in_the_United_Arab_Emirates."

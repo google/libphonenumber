@@ -1,0 +1,49 @@
+/*
+ * Copyright (C) 2017 The Libphonenumber Authors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+syntax = "proto3";
+
+package i18n.phonenumbers.internal.finitestatematcher.compiler;
+
+option java_package = "com.google.i18n.phonenumbers.internal.finitestatematcher.compiler";
+option java_outer_classname = "RegressionTestProto";
+
+// A set of regression tests.
+message Tests {
+  repeated TestCase test_case = 1;
+}
+
+// A single regression test entry.
+message TestCase {
+  // A name for the test, ideally unique.
+  string name = 1;
+  // If set true, expect that the test will fail 100% of the time. This is
+  // useful to test that test numbers have enough coverage to force a failure
+  // and is typically achieved by modifying an input range after generating a
+  // passing test (or carefully modifying the output bytecodes). Note that not
+  // all changes will make a test fail 100% of the time, so care must be taken
+  // to avoid creating a flaky test (e.g. don't change a "[0-3]" to "[0-5]", as
+  // this only fails if the test number contains a 4 or 5 at the corresponding
+  // index, change it to "[4-6]" so there's no overlap and at least one test
+  // number that's valid for that range will not be accepted by the matcher).
+  bool should_fail = 2;
+  // The input ranges (in the form of range specifications) which form the DFA
+  // to be tested (e.g. "1[2-5]678xxxxx" etc...).
+  repeated string range = 3;
+  // The expected output bytes, encoded in test files using C-style hex notation
+  // (i.e. \xHH). This can be split over multiple lines for readability.
+  repeated bytes expected = 4;
+}

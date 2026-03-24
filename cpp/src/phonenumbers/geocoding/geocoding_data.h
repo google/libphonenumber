@@ -17,7 +17,7 @@
 #ifndef I18N_PHONENUMBERS_GEOCODING_DATA
 #define I18N_PHONENUMBERS_GEOCODING_DATA
 
-#include "phonenumbers/base/basictypes.h"
+#include <cstdint>
 
 namespace i18n {
 namespace phonenumbers {
@@ -32,7 +32,7 @@ struct CountryLanguages {
 
 struct PrefixDescriptions {
   // Sorted array of phone number prefixes.
-  const int32* prefixes;
+  const int32_t* prefixes;
 
   // Number of elements in prefixes.
   const int prefixes_size;
@@ -42,7 +42,7 @@ struct PrefixDescriptions {
   const char** descriptions;
 
   // Sorted array of unique prefix lengths in base 10.
-  const int32* possible_lengths;
+  const int32_t* possible_lengths;
 
   // Number of elements in possible_lengths.
   const int possible_lengths_size;

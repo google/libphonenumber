@@ -1,0 +1,6 @@
+Region ; Prefix ; Length ; Type       ; Tariff    ; Sms  ; Carrier Specific
+LR     ; 355    ; 3      ; EMERGENCY  ; TOLL_FREE
+LR     ; 4040   ; 4      ; COMMERCIAL ;           ; true ; true
+LR     ; 8400   ; 4      ; COMMERCIAL ;           ; true ; true
+LR     ; 8933   ; 4      ; COMMERCIAL ;           ; true ; true
+LR     ; 911    ; 3      ; EMERGENCY  ; TOLL_FREE

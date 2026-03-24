@@ -1,0 +1,11 @@
+Prefix    ; Length ; Type       ; Tariff        ; Operator ; Regions ; Geocode:en                  ; Provenance ; Comment
+0[1-7]    ; 6      ; UAN        ; STANDARD_RATE ;          ; "AC"    ;                             ;            ; "Marked non-geographic in 2015 plan."
+0[89]     ; 6      ; UAN        ; STANDARD_RATE ;          ; "AC"    ;                             ;            ; "Added per client's request."
+[15]      ; 6      ; UAN        ; STANDARD_RATE ;          ; "AC"    ;                             ; ITU
+4[049]    ; 5      ; MOBILE     ; STANDARD_RATE ;          ; "AC"    ;                             ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+4[1-35-8] ; 5      ; MOBILE     ; STANDARD_RATE ; "sure"   ; "AC"    ;                             ; IR21       ; "Dated: 3/12/2019"
+62        ; 5      ; FIXED_LINE ; STANDARD_RATE ;          ; "AC"    ; "US Base"
+63        ; 5      ; FIXED_LINE ; STANDARD_RATE ;          ; "AC"    ; "Travellers Hill & Airhead"
+64        ; 5      ; FIXED_LINE ; STANDARD_RATE ;          ; "AC"    ; "Two Boats"
+6[67]     ; 5      ; FIXED_LINE ; STANDARD_RATE ;          ; "AC"    ; "Georgetown"
+[89]      ; 6      ; UAN        ; STANDARD_RATE ;          ; "AC"    ;                             ;            ; "Marked non-geographic in 2015 plan"

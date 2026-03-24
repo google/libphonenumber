@@ -1,0 +1,3 @@
+Format       ; Parent Format ; Comment
+XX XXXX XXX  ; fixed_2/3/4   ; "Numbers with a two-digit area code are often written with the second and third group as 3-4 rather than 4-3"
+XXX XX XX XX ; fixed_3/3/3   ; "Numbers with a three-digit area code are often written with the subscriber number as groups of two rather than three"

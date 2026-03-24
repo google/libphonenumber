@@ -16,6 +16,6 @@
 # services to its subscribers on 01.01.2018. The existing subscribers are
 # advised to port to other networks. http://www.plus.al/
 
-35567|ALBtelecom
-35568|Telekom
+35567|One
+35568|One
 35569|Vodafone

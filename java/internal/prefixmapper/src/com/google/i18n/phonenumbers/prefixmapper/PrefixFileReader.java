@@ -16,8 +16,10 @@
 
 package com.google.i18n.phonenumbers.prefixmapper;
 
+import com.google.i18n.phonenumbers.MetadataLoader;
 import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber;
 
+import com.google.i18n.phonenumbers.metadata.DefaultMetadataDependenciesProvider;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.ObjectInputStream;
@@ -40,17 +42,17 @@ public class PrefixFileReader {
   private MappingFileProvider mappingFileProvider = new MappingFileProvider();
   // A mapping from countryCallingCode_lang to the corresponding phone prefix map that has been
   // loaded.
-  private Map<String, PhonePrefixMap> availablePhonePrefixMaps =
-      new HashMap<String, PhonePrefixMap>();
+  private Map<String, PhonePrefixMap> availablePhonePrefixMaps = new HashMap<>();
+  private final MetadataLoader metadataLoader;
 
   public PrefixFileReader(String phonePrefixDataDirectory) {
     this.phonePrefixDataDirectory = phonePrefixDataDirectory;
+    this.metadataLoader = DefaultMetadataDependenciesProvider.getInstance().getMetadataLoader();
     loadMappingFileProvider();
   }
 
   private void loadMappingFileProvider() {
-    InputStream source =
-        PrefixFileReader.class.getResourceAsStream(phonePrefixDataDirectory + "config");
+    InputStream source = metadataLoader.loadMetadata(phonePrefixDataDirectory + "config");
     ObjectInputStream in = null;
     try {
       in = new ObjectInputStream(source);
@@ -75,8 +77,7 @@ public class PrefixFileReader {
   }
 
   private void loadPhonePrefixMapFromFile(String fileName) {
-    InputStream source =
-        PrefixFileReader.class.getResourceAsStream(phonePrefixDataDirectory + fileName);
+    InputStream source = metadataLoader.loadMetadata(phonePrefixDataDirectory + fileName);
     ObjectInputStream in = null;
     try {
       in = new ObjectInputStream(source);

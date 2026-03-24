@@ -1,0 +1,32 @@
+Region ; Prefix      ; Length ; Type       ; Tariff    ; Sms
+CR     ; 1000        ; 4      ; COMMERCIAL
+CR     ; 1015        ; 4      ; COMMERCIAL
+CR     ; 102[2-4679] ; 4      ; COMMERCIAL
+CR     ; 111[0-35-9] ; 4      ; COMMERCIAL
+CR     ; 112         ; 3      ; EMERGENCY  ; TOLL_FREE
+CR     ; 1137        ; 4      ; COMMERCIAL
+CR     ; 11[46]6     ; 4      ; COMMERCIAL
+CR     ; 117[57]     ; 4      ; COMMERCIAL
+CR     ; 118[79]     ; 4      ; COMMERCIAL
+CR     ; 119[0-379]  ; 4      ; COMMERCIAL
+CR     ; 1200        ; 4      ; COMMERCIAL
+CR     ; 12[12]2     ; 4      ; COMMERCIAL
+CR     ; 1234        ; 4      ; COMMERCIAL
+CR     ; 1255        ; 4      ; COMMERCIAL
+CR     ; 1321        ; 4      ; COMMERCIAL
+CR     ; 1333        ; 4      ; COMMERCIAL
+CR     ; 140[06]     ; 4      ; COMMERCIAL
+CR     ; 141[4-6]    ; 4      ; COMMERCIAL
+CR     ; 1515        ; 4      ; COMMERCIAL
+CR     ; 155[15]     ; 4      ; COMMERCIAL
+CR     ; 1693        ; 4      ; COMMERCIAL
+CR     ; 1700        ; 4      ; COMMERCIAL
+CR     ; 171[7-9]    ; 4      ; COMMERCIAL
+CR     ; 172[02]     ; 4      ; COMMERCIAL
+CR     ; 17[67]7     ; 4      ; COMMERCIAL
+CR     ; 1975        ; 4      ; COMMERCIAL
+CR     ; 3855        ; 4      ; COMMERCIAL ;           ; true
+CR     ; 5030        ; 4      ; COMMERCIAL ;           ; true
+CR     ; 5049        ; 4      ; COMMERCIAL ;           ; true
+CR     ; 5510        ; 4      ; COMMERCIAL ;           ; true
+CR     ; 911         ; 3      ; EMERGENCY  ; TOLL_FREE

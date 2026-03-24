@@ -23,13 +23,13 @@ import static java.util.Comparator.comparing;
 import static java.util.function.Function.identity;
 import static java.util.stream.Collectors.joining;
 
-import com.google.common.base.Splitter;
 import com.google.common.collect.ContiguousSet;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableRangeSet;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.ImmutableSortedSet;
 import com.google.common.collect.Range;
+import com.google.i18n.phonenumbers.metadata.LengthsParser;
 import com.google.i18n.phonenumbers.metadata.RangeSpecification;
 import com.google.i18n.phonenumbers.metadata.i18n.PhoneRegion;
 import com.google.i18n.phonenumbers.metadata.i18n.SimpleLanguageTag;
@@ -49,18 +49,18 @@ import com.google.i18n.phonenumbers.metadata.table.RangeTable.OverwriteMode;
 import com.google.i18n.phonenumbers.metadata.table.Schema;
 import java.time.ZoneId;
 import java.util.List;
-import java.util.NavigableSet;
 import java.util.Optional;
 import java.util.TreeSet;
 import java.util.stream.Stream;
 
 /**
  * The schema of the standard "Ranges" table with rows keyed by {@link RangeKey} and columns:
+ *
  * <ol>
- *   <li>{@link #TYPE}: The semantic type of numbers in a range (note that this is not
- *       the same a XmlNumberType or ValidNumberType). All ranges should be assigned a type.
- *   <li>{@link #TARIFF}: The expected cost of numbers in a range (combining TYPE and TARIFF
- *       can yield the internal ValidNumberType). All ranges should be assigned a tariff.
+ *   <li>{@link #TYPE}: The semantic type of numbers in a range (note that this is not the same a
+ *       XmlNumberType or ValidNumberType). All ranges should be assigned a type.
+ *   <li>{@link #TARIFF}: The expected cost of numbers in a range (combining TYPE and TARIFF can
+ *       yield the internal ValidNumberType). All ranges should be assigned a tariff.
  *   <li>{@link #AREA_CODE_LENGTH}: The length of an optional prefix which may be removed from
  *       numbers in a range for local dialling. Local only lengths are derived using this column.
  *   <li>{@link #NATIONAL_ONLY}: True if numbers in a range cannot be dialled from outside its
@@ -72,8 +72,8 @@ import java.util.stream.Stream;
  *       applied).
  *   <li>{@link #TIMEZONE}: The timezone names for a range (or empty to imply the default
  *       timezones). Multiple timezones can be specific if separated by {@code '&'}.
- *   <li>{@link #REGIONS}: A group of boolean columns in the form "Region:XX", where ranges are
- *       set {@code true} that range is valid within the region {@code XX}.
+ *   <li>{@link #REGIONS}: A group of boolean columns in the form "Region:XX", where ranges are set
+ *       {@code true} that range is valid within the region {@code XX}.
  *   <li>{@link #GEOCODES}: A group of String columns in the form "Geocode:XXX" containing the
  *       geocode string for a range, where {@code XXX} is the language code of the string.
  *   <li>{@link #PROVENANCE}: Indicates the most important reason for a range to be valid.
@@ -81,6 +81,7 @@ import java.util.stream.Stream;
  * </ol>
  *
  * <p>Rows keys are serialized via the marshaller and produce leading columns:
+ *
  * <ol>
  *   <li>{@code Prefix}: The prefix (RangeSpecification) for the ranges in a row (e.g. "12[3-6]").
  *   <li>{@code Length}: A set of lengths for the ranges in a row (e.g. "9", "8,9" or "5,7-9").
@@ -88,16 +89,16 @@ import java.util.stream.Stream;
  */
 public final class RangesTableSchema {
   /**
-   * External number type enum. This is technically much better than ValidNumberType since it
-   * splits type and cost properly. Unfortunately the internal logic of the phonenumber library
-   * doesn't really cope with this, which is why we convert to {@code XmlRangesSchema} before
-   * creating legacy data structures.
+   * External number type enum. This is technically much better than ValidNumberType since it splits
+   * type and cost properly. Unfortunately the internal logic of the phonenumber library doesn't
+   * really cope with this, which is why we convert to {@code XmlRangesSchema} before creating
+   * legacy data structures.
    *
-   * <p>This enum can be modified as new types are requested from data providers, providing the
-   * type mapping to ValidNumberType is updated appropriately. Note that until it's clear that
-   * mapping types such as {@link #M2M} to {@link ValidNumberType#UNKNOWN} will work okay, we
-   * should be very careful about using the additional types. Additional types need to be removed
-   * before the generated table can be turned into a {@link NumberingScheme}.
+   * <p>This enum can be modified as new types are requested from data providers, providing the type
+   * mapping to ValidNumberType is updated appropriately. Note that until it's clear that mapping
+   * types such as {@link #M2M} to {@link ValidNumberType#UNKNOWN} will work okay, we should be very
+   * careful about using the additional types. Additional types need to be removed before the
+   * generated table can be turned into a {@link NumberingScheme}.
    */
   public enum ExtType {
     /** Default value not permitted in real data. */
@@ -125,14 +126,14 @@ public final class RangesTableSchema {
 
     private static final ImmutableMap<ExtType, ValidNumberType> TYPE_MAP =
         Stream.of(
-            ExtType.FIXED_LINE,
-            ExtType.MOBILE,
-            ExtType.FIXED_LINE_OR_MOBILE,
-            ExtType.PAGER,
-            ExtType.PERSONAL_NUMBER,
-            ExtType.UAN,
-            ExtType.VOICEMAIL,
-            ExtType.VOIP)
+                ExtType.FIXED_LINE,
+                ExtType.MOBILE,
+                ExtType.FIXED_LINE_OR_MOBILE,
+                ExtType.PAGER,
+                ExtType.PERSONAL_NUMBER,
+                ExtType.UAN,
+                ExtType.VOICEMAIL,
+                ExtType.VOIP)
             .collect(toImmutableMap(identity(), v -> ValidNumberType.valueOf(v.name())));
 
     public Optional<ValidNumberType> toValidNumberType() {
@@ -185,9 +186,9 @@ public final class RangesTableSchema {
       Column.of(ExtTariff.class, "Tariff", ExtTariff.STANDARD_RATE);
 
   /**
-   * The "Area Code Length" column in the range table, denoting the length of a prefix which can
-   * be removed from all numbers in a range to obtain locally diallable numbers. If an
-   * "area code" is not optional for dialling, then no value should be set here.
+   * The "Area Code Length" column in the range table, denoting the length of a prefix which can be
+   * removed from all numbers in a range to obtain locally diallable numbers. If an "area code" is
+   * not optional for dialling, then no value should be set here.
    */
   public static final Column<Integer> AREA_CODE_LENGTH =
       Column.ofUnsignedInteger("Area Code Length");
@@ -226,12 +227,13 @@ public final class RangesTableSchema {
   public static final Column<String> COMMENT = Column.ofString("Comment");
 
   /** Marshaller for constructing CsvTable from RangeTable. */
-  private static final CsvKeyMarshaller<RangeKey> MARSHALLER = new CsvKeyMarshaller<>(
-      RangesTableSchema::write,
-      RangesTableSchema::read,
-      Optional.of(RangeKey.ORDERING),
-      "Prefix",
-      "Length");
+  private static final CsvKeyMarshaller<RangeKey> MARSHALLER =
+      new CsvKeyMarshaller<>(
+          RangesTableSchema::write,
+          RangesTableSchema::read,
+          Optional.of(RangeKey.ORDERING),
+          "Prefix",
+          "Length");
 
   /** The non-key columns of a range table. */
   public static final Schema TABLE_COLUMNS =
@@ -251,10 +253,10 @@ public final class RangesTableSchema {
           .build();
 
   /**
-   * The columns for the serialized CSV table. Note that the "REGIONS" column group is replaced
-   * by the CSV regions multi-value. This allows region codes to be serialize in a single column
-   * (which is far nicer when looking at data in a spreadsheet). In the range table, this is
-   * normalized into the boolean column group (because that's far nicer to work with).
+   * The columns for the serialized CSV table. Note that the "REGIONS" column group is replaced by
+   * the CSV regions multi-value. This allows region codes to be serialize in a single column (which
+   * is far nicer when looking at data in a spreadsheet). In the range table, this is normalized
+   * into the boolean column group (because that's far nicer to work with).
    */
   private static final Schema CSV_COLUMNS =
       Schema.builder()
@@ -289,17 +291,21 @@ public final class RangesTableSchema {
     for (Change c : table.toChanges()) {
       for (RangeKey k : RangeKey.decompose(c.getRanges())) {
         regions.clear();
-        c.getAssignments().forEach(a -> {
-          // We special case the regions column, converting a group of boolean columns into a
-          // multi-value of region codes. If the column is in the group, it must hold Booleans.
-          if (regionColumns.contains(a.column())) {
-            if (a.value().map(((Column<Boolean>) a.column())::cast).orElse(Boolean.FALSE)) {
-              regions.add(REGIONS.getKey(a.column()));
-            }
-          } else {
-            csv.put(k, a);
-          }
-        });
+        c.getAssignments()
+            .forEach(
+                a -> {
+                  // We special case the regions column, converting a group of boolean columns into
+                  // a
+                  // multi-value of region codes. If the column is in the group, it must hold
+                  // Booleans.
+                  if (regionColumns.contains(a.column())) {
+                    if (a.value().map(((Column<Boolean>) a.column())::cast).orElse(Boolean.FALSE)) {
+                      regions.add(REGIONS.getKey(a.column()));
+                    }
+                  } else {
+                    csv.put(k, a);
+                  }
+                });
         // We can do this out-of-sequence because the table will order its columns.
         if (!regions.isEmpty()) {
           csv.put(k, CSV_REGIONS, Regions.of(regions));
@@ -311,22 +317,28 @@ public final class RangesTableSchema {
 
   /**
    * Converts a {@link RangeKey} based {@link CsvTable} to a {@link RangeTable}, preserving the
-   * original table columns. The {@link CsvSchema} of the returned table is not guaranteed to be
-   * the {@link #SCHEMA} instance if the given table had different columns.
+   * original table columns. The {@link CsvSchema} of the returned table is not guaranteed to be the
+   * {@link #SCHEMA} instance if the given table had different columns.
    */
   public static RangeTable toRangeTable(CsvTable<RangeKey> csv) {
     RangeTable.Builder out = RangeTable.builder(TABLE_COLUMNS);
     for (RangeKey k : csv.getKeys()) {
       Change.Builder change = Change.builder(k.asRangeTree());
-      csv.getRow(k).forEach((c, v) -> {
-        // We special case the regions column, converting a comma separated list of region codes
-        // into a series of boolean column assignments.
-        if (c.equals(CSV_REGIONS)) {
-          CSV_REGIONS.cast(v).getValues().forEach(r -> change.assign(REGIONS.getColumn(r), true));
-        } else {
-          change.assign(c, v);
-        }
-      });
+      csv.getRow(k)
+          .forEach(
+              (c, v) -> {
+                // We special case the regions column, converting a comma separated list of region
+                // codes
+                // into a series of boolean column assignments.
+                if (c.equals(CSV_REGIONS)) {
+                  CSV_REGIONS
+                      .cast(v)
+                      .getValues()
+                      .forEach(r -> change.assign(REGIONS.getColumn(r), true));
+                } else {
+                  change.assign(c, v);
+                }
+              });
       out.apply(change.build(), OverwriteMode.NEVER);
     }
     return out.build();
@@ -339,7 +351,8 @@ public final class RangesTableSchema {
 
   // Shared by ShortcodeTableSchema
   public static RangeKey read(List<String> parts) {
-    return RangeKey.create(RangeSpecification.parse(parts.get(0)), parseLengths(parts.get(1)));
+    return RangeKey.create(
+        RangeSpecification.parse(parts.get(0)), LengthsParser.parseLengths(parts.get(1)));
   }
 
   private static String formatLength(ImmutableSortedSet<Integer> lengthSet) {
@@ -364,33 +377,5 @@ public final class RangesTableSchema {
     }
   }
 
-  private static final Splitter COMMA_SPLITTER = Splitter.on(',').trimResults();
-  private static final Splitter RANGE_SPLITTER = Splitter.on('-').trimResults().limit(2);
-
-  private static NavigableSet<Integer> parseLengths(String s) {
-    NavigableSet<Integer> lengths = new TreeSet<>();
-    for (String lengthOrRange : COMMA_SPLITTER.split(s)) {
-      if (lengthOrRange.contains("-")) {
-        List<String> lohi = RANGE_SPLITTER.splitToList(lengthOrRange);
-        int lo = parseInt(lohi.get(0));
-        int hi = parseInt(lohi.get(1));
-        checkArgument(lo < hi, "Invalid range: %s-%s", lo, hi);
-        checkArgument(lengths.isEmpty() || lo > lengths.last(), "Overlapping ranges: %s", s);
-        lengths.addAll(ContiguousSet.closed(lo, hi));
-      } else {
-        int length = parseInt(lengthOrRange);
-        checkArgument(lengths.isEmpty() || length > lengths.last(), "Overlapping ranges: %s", s);
-        lengths.add(length);
-      }
-    }
-    return lengths;
-  }
-
-  private static int parseInt(String s) {
-    return Integer.parseUnsignedInt(s, 10);
-  }
-
   private RangesTableSchema() {}
 }
-
-

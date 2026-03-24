@@ -1,0 +1,5 @@
+Region ; Type         ; Number
+CO     ; FIXED_LINE   ; "6012345678"
+CO     ; MOBILE       ; "3211234567"
+CO     ; TOLL_FREE    ; "18001234567"
+CO     ; PREMIUM_RATE ; "19001234567"

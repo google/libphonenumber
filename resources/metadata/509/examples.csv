@@ -1,0 +1,5 @@
+Region ; Type       ; Number
+HT     ; FIXED_LINE ; "22453300"
+HT     ; MOBILE     ; "34101234"
+HT     ; TOLL_FREE  ; "80012345"
+HT     ; VOIP       ; "98901234"

@@ -1,0 +1,7 @@
+Region ; Type        ; Number
+BQ     ; FIXED_LINE  ; "7151234"
+BQ     ; MOBILE      ; "3181234"
+CW     ; FIXED_LINE  ; "94351234"
+CW     ; MOBILE      ; "95181234"
+CW     ; PAGER       ; "95581234"
+CW     ; SHARED_COST ; "6001234"

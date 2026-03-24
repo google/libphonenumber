@@ -1,0 +1,3 @@
+Region ; Prefix ; Length ; Type      ; Tariff    ; Provenance
+AC     ; 911    ; 3      ; EMERGENCY ; TOLL_FREE
+AC     ; 999    ; 3      ; EMERGENCY ; TOLL_FREE ; GOVERNMENT

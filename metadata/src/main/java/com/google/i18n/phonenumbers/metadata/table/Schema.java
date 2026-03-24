@@ -55,7 +55,7 @@ public abstract class Schema {
     }
 
     public Schema build() {
-      return new AutoValue_Schema(names.build(), columns.build(), groups.build());
+      return new AutoValue_Schema(names.build(), columns.buildOrThrow(), groups.buildOrThrow());
     }
   }
 

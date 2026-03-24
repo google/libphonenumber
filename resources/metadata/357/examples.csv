@@ -1,0 +1,8 @@
+Region ; Type            ; Number
+CY     ; FIXED_LINE      ; "22345678"
+CY     ; MOBILE          ; "96123456"
+CY     ; TOLL_FREE       ; "80001234"
+CY     ; PREMIUM_RATE    ; "90012345"
+CY     ; SHARED_COST     ; "80112345"
+CY     ; PERSONAL_NUMBER ; "70012345"
+CY     ; UAN             ; "77123456"

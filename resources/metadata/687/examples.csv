@@ -1,0 +1,5 @@
+Region ; Type         ; Number
+NC     ; FIXED_LINE   ; "201234"
+NC     ; MOBILE       ; "751234"
+NC     ; TOLL_FREE    ; "050012"
+NC     ; PREMIUM_RATE ; "366711"

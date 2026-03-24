@@ -1,0 +1,5 @@
+Id        ; International Dialling Codes ; Name:en
+__unknown ; "01[3-9]x"
+antel     ;                              ; "Antel"
+claro     ;                              ; "Claro"
+movistar  ;                              ; "Movistar"

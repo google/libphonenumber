@@ -1,0 +1,6 @@
+Region ; Type         ; Number
+LV     ; FIXED_LINE   ; "63123456"
+LV     ; MOBILE       ; "21234567"
+LV     ; TOLL_FREE    ; "80123456"
+LV     ; PREMIUM_RATE ; "90123456"
+LV     ; SHARED_COST  ; "81123456"

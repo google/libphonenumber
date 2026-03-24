@@ -1,0 +1,8 @@
+Region ; Label          ; Comment
+VE     ; SC             ; "http://www.itu.int/oth/T02020000E3/en"
+VE     ; SC             ; "http://en.wikipedia.org/wiki/+58"
+VE     ; SC             ; "http://wikitravel.org/en/Venezuela"
+VE     ; XML            ; "1XX specifies a particular carrier to route a call to, but none of these have been\nimplemented."
+VE     ; XML            ; "http://www.itu.int/oth/T02020000E3/en"
+VE     ; XML            ; "http://en.wikipedia.org/wiki/+58"
+VE     ; XML_FIXED_LINE ; "Including region-free 500 calls here, since these are treated as local calls. Wikipedia\nmentions these as 5XX, but online examples that can be found are seemingly restricted\nto 50[01]."

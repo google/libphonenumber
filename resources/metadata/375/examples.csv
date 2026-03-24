@@ -1,0 +1,6 @@
+Region ; Type         ; Number
+BY     ; FIXED_LINE   ; "152450911"
+BY     ; MOBILE       ; "294911911"
+BY     ; TOLL_FREE    ; "8011234567"
+BY     ; PREMIUM_RATE ; "9021234567"
+BY     ; VOIP         ; "249123456"

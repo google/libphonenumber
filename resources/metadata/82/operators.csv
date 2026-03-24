@@ -1,0 +1,9 @@
+Id                 ; Domestic Selection Codes ; International Dialling Codes ; Name:en            ; Name:ko            ; Comment
+__onse_telecom     ; "83"                     ; "008"                        ; "Onse Telecom"     ; "온세"
+__samsung_networks ;                          ; "00755"                      ; "Samsung networks" ; "Samsung networks"
+__sejong_telecom   ;                          ; "00365"                      ; "Sejong Telecom"   ; "Sejong Telecom"
+__skb              ; "84"                     ; "005,0076[126]"              ; "SKB"              ; "SKB"
+__unknown          ; "85xx,87,88"             ; "009,00391"                  ;                    ;                    ; "Common IDDs for minor carriers. 85XX: Domestic long-distance Value Added Service (VAS)"
+kt                 ; "81"                     ; "001,00727,0073,00345"       ; "KT"               ; "KT"
+lg                 ; "82"                     ; "002"                        ; "LG U+"            ; "데이콤"
+sk_tellink         ; "86"                     ; "006,00700"                  ; "SKTellink"        ; "SK 텔링크"

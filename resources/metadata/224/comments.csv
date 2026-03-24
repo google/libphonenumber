@@ -1,0 +1,7 @@
+Region ; Label               ; Comment
+GN     ; SC_CARRIER_SPECIFIC ; "https://support.twitter.com/articles/20170024"
+GN     ; SC_SMS_SERVICES     ; "No national emergency numbers were located for Guinea."
+GN     ; SC_SMS_SERVICES     ; "https://support.twitter.com/articles/20170024"
+GN     ; XML                 ; "http://www.itu.int/oth/T020200005B/en"
+GN     ; XML_MOBILE          ; "Prefixes here match those assigned to carriers, as per the ITU communication Jan 23rd\n2013."
+GN     ; XML_VOIP            ; "Gamma concept network is being listed as VoIP as per\nhttp://www.gammaconcept.com/internet%20sat.html"

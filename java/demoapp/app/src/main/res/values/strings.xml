@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <!-- App (app_) -->
+  <string name="app_name" translatable="false">E.164</string>
+  <string name="app_name_long" translatable="false">E.164 Formatter</string>
+
+  <!-- Main activity (main_activity_) -->
+  <string name="main_activity_country_dropdown_label_text">Select the country to use</string>
+  <string name="main_activity_country_dropdown_hint">Country</string>
+  <string name="main_activity_country_dropdown_error">Choose dropdown item</string>
+  <string name="main_activity_country_dropdown_reset_text">Reset to SIM country</string>
+  <string name="main_activity_ignore_whitespace_text">Treat as E.164 if only difference is whitespace</string>
+
+  <string name="main_activity_error_text_grant_in_app">To use this functionality, the app needs access to Contacts.</string>
+  <string name="main_activity_error_cta_grant_in_app">Allow access</string>
+  <string name="main_activity_error_text_grant_in_settings">The app does not have permission to access Contacts. In Settings, tap Permissions and enable Contacts.</string>
+  <string name="main_activity_error_cta_grant_in_settings">Go to Settings</string>
+
+  <string name="main_activity_start_text_default">Start</string>
+  <string name="main_activity_start_text_processing">Process started…</string>
+
+  <string name="main_activity_no_contacts_exist_text">No contacts exist</string>
+
+  <!-- Result activity: Formattable (formattable_) -->
+  <string name="formattable_formattable_text">Formattable</string>
+
+  <string name="formattable_arrow_text" translatable="false">&#160;—>&#160;</string>
+
+  <string name="formattable_update_selected_text_default">Update selected</string>
+  <string name="formattable_update_selected_text_processing">Updating selected…</string>
+
+  <string name="formattable_no_numbers_selected_text">No numbers selected</string>
+  <string name="formattable_contacts_write_success_text">Successfully updated selected</string>
+  <string name="formattable_error_text">An error occurred. Please try again</string>
+
+  <!-- Result activity: Not formattable (not_formattable_) -->
+  <string name="not_formattable_not_formattable_text">Not formattable</string>
+
+  <string name="not_formattable_colon_text" translatable="false">:&#160;</string>
+
+  <string name="not_formattable_parsing_error_text">Parsing error</string>
+  <string name="not_formattable_short_number_text">Short number</string>
+  <string name="not_formattable_already_e164_text">Already E.164</string>
+  <string name="not_formattable_invalid_number_text">Invalid number</string>
+  <string name="not_formattable_unknown_error_text">Unknown error</string>
+
+  <string name="not_formattable_no_numbers_match_filters_text">No numbers match the selected filters</string>
+</resources>

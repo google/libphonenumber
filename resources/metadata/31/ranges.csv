@@ -1,0 +1,201 @@
+Prefix       ; Length ; Type       ; Tariff        ; National Only ; Operator                         ; Format         ; Regions ; Geocode:en              ; Geocode:nl              ; Provenance
+10           ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_2/3/4"  ; "NL"    ; "Rotterdam"             ; "Rotterdam"             ; GOVERNMENT
+111          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Zierikzee"             ; "Zierikzee"             ; GOVERNMENT
+113          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Goes"                  ; "Goes"                  ; GOVERNMENT
+114          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Hulst"                 ; "Hulst"                 ; GOVERNMENT
+115          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Terneuzen"             ; "Terneuzen"             ; GOVERNMENT
+117          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Oostburg"              ; "Oostburg"              ; GOVERNMENT
+118          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Middelburg"            ; "Middelburg"            ; GOVERNMENT
+13           ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_2/3/4"  ; "NL"    ; "Tilburg"               ; "Tilburg"               ; GOVERNMENT
+1401[035]    ; 5      ; UAN        ; STANDARD_RATE ; true          ;                                  ; "uan_2/3-4"    ; "NL"
+1401[16-8]   ; 6      ; UAN        ; STANDARD_RATE ; true          ;                                  ; "uan_2/3-4"    ; "NL"
+1402[0346]   ; 5      ; UAN        ; STANDARD_RATE ; true          ;                                  ; "uan_2/3-4"    ; "NL"
+1402[259]    ; 6      ; UAN        ; STANDARD_RATE ; true          ;                                  ; "uan_2/3-4"    ; "NL"
+1403[03568]  ; 5      ; UAN        ; STANDARD_RATE ; true          ;                                  ; "uan_2/3-4"    ; "NL"
+1403[124]    ; 6      ; UAN        ; STANDARD_RATE ; true          ;                                  ; "uan_2/3-4"    ; "NL"
+1404[0356]   ; 5      ; UAN        ; STANDARD_RATE ; true          ;                                  ; "uan_2/3-4"    ; "NL"
+1404[17-9]   ; 6      ; UAN        ; STANDARD_RATE ; true          ;                                  ; "uan_2/3-4"    ; "NL"
+1405[0358]   ; 5      ; UAN        ; STANDARD_RATE ; true          ;                                  ; "uan_2/3-4"    ; "NL"
+1405[124679] ; 6      ; UAN        ; STANDARD_RATE ; true          ;                                  ; "uan_2/3-4"    ; "NL"
+1407         ; 5      ; UAN        ; STANDARD_RATE ; true          ;                                  ; "uan_2/3-4"    ; "NL"
+1408[458]    ; 5      ; UAN        ; STANDARD_RATE ; true          ;                                  ; "uan_2/3-4"    ; "NL"
+15           ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_2/3/4"  ; "NL"    ; "Delft"                 ; "Delft"                 ; GOVERNMENT
+161          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Rijen"                 ; "Rijen"                 ; GOVERNMENT
+162          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Oosterhout"            ; "Oosterhout"            ; GOVERNMENT
+164          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Bergen op Zoom"        ; "Bergen op Zoom"        ; GOVERNMENT
+165          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Roosendaal"            ; "Roosendaal"            ; GOVERNMENT
+166          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Tholen"                ; "Tholen"                ; GOVERNMENT
+167          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Steenbergen"           ; "Steenbergen"           ; GOVERNMENT
+168          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Zevenbergen"           ; "Zevenbergen"           ; GOVERNMENT
+172          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Alphen aan den Rijn"   ; "Alphen aan den Rijn"   ; GOVERNMENT
+174          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Naaldwijk"             ; "Naaldwijk"             ; GOVERNMENT
+180          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Barendrecht"           ; "Barendrecht"           ; GOVERNMENT
+181          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Spijkenisse"           ; "Spijkenisse"           ; GOVERNMENT
+182          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Gouda"                 ; "Gouda"                 ; GOVERNMENT
+183          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Gorinchem"             ; "Gorinchem"             ; GOVERNMENT
+184          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Sliedrecht"            ; "Sliedrecht"            ; GOVERNMENT
+186          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Oud-Beijerland"        ; "Oud-Beijerland"        ; GOVERNMENT
+187          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Middelharnis"          ; "Middelharnis"          ; GOVERNMENT
+20           ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_2/3/4"  ; "NL"    ; "Amsterdam"             ; "Amsterdam"             ; GOVERNMENT
+222          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Den Burg"              ; "Den Burg"              ; GOVERNMENT
+223          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Den Helder"            ; "Den Helder"            ; GOVERNMENT
+224          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Schagen"               ; "Schagen"               ; GOVERNMENT
+226          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Noord Scharwoude"      ; "Noord Scharwoude"      ; GOVERNMENT
+227          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Medemblik"             ; "Medemblik"             ; GOVERNMENT
+228          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Enkhuizen"             ; "Enkhuizen"             ; GOVERNMENT
+229          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Horn"                  ; "Hoorn"                 ; GOVERNMENT
+23           ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_2/3/4"  ; "NL"    ; "Haarlem"               ; "Haarlem"               ; GOVERNMENT
+24           ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_2/3/4"  ; "NL"    ; "Nijmegen"              ; "Nijmegen"              ; GOVERNMENT
+251          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Beverwijk"             ; "Beverwijk"             ; GOVERNMENT
+252          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Nieuw-Vennep"          ; "Nieuw-Vennep"          ; GOVERNMENT
+255          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "IJmuiden"              ; "IJmuiden"              ; GOVERNMENT
+26           ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_2/3/4"  ; "NL"    ; "Arnhem"                ; "Arnhem"                ; GOVERNMENT
+294          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Weesp"                 ; "Weesp"                 ; GOVERNMENT
+297          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Aalsmeer"              ; "Aalsmeer"              ; GOVERNMENT
+299          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Purmerend"             ; "Purmerend"             ; GOVERNMENT
+30           ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_2/3/4"  ; "NL"    ; "Utrecht"               ; "Utrecht"               ; GOVERNMENT
+313          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Dieren"                ; "Dieren"                ; GOVERNMENT
+314          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Doetinchem"            ; "Doetinchem"            ; GOVERNMENT
+315          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Terborg"               ; "Terborg"               ; GOVERNMENT
+316          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Zevenaar"              ; "Zevenaar"              ; GOVERNMENT
+317          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Wageningen"            ; "Wageningen"            ; GOVERNMENT
+318          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Veenendaal"            ; "Veenendaal"            ; GOVERNMENT
+320          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Lelystad"              ; "Lelystad"              ; GOVERNMENT
+321          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Dronten"               ; "Dronten"               ; GOVERNMENT
+33           ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_2/3/4"  ; "NL"    ; "Amersfoort"            ; "Amersfoort"            ; GOVERNMENT
+341          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Harderwijk"            ; "Harderwijk"            ; GOVERNMENT
+342          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Barneveld"             ; "Barneveld"             ; GOVERNMENT
+343          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Driebergen-Rijsenburg" ; "Driebergen-Rijsenburg" ; GOVERNMENT
+344          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Tiel"                  ; "Tiel"                  ; GOVERNMENT
+345          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Culemborg"             ; "Culemborg"             ; GOVERNMENT
+346          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Maarssen"              ; "Maarssen"              ; GOVERNMENT
+347          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Vianen"                ; "Vianen"                ; GOVERNMENT
+348          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Woerden"               ; "Woerden"               ; GOVERNMENT
+35           ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_2/3/4"  ; "NL"    ; "Hilversum"             ; "Hilversum"             ; GOVERNMENT
+36           ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_2/3/4"  ; "NL"    ; "Almere"                ; "Almere"                ; GOVERNMENT
+38           ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_2/3/4"  ; "NL"    ; "Zwolle"                ; "Zwolle"                ; GOVERNMENT
+40           ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_2/3/4"  ; "NL"    ; "Eindhoven"             ; "Eindhoven"             ; GOVERNMENT
+411          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Boxtel"                ; "Boxtel"                ; GOVERNMENT
+412          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Oss"                   ; "Oss"                   ; GOVERNMENT
+413          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Uden"                  ; "Uden"                  ; GOVERNMENT
+416          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Waalwijk"              ; "Waalwijk"              ; GOVERNMENT
+418          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Zaltbommel"            ; "Zaltbommel"            ; GOVERNMENT
+43           ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_2/3/4"  ; "NL"    ; "Maastricht"            ; "Maastricht"            ; GOVERNMENT
+45           ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_2/3/4"  ; "NL"    ; "Heerlen"               ; "Heerlen"               ; GOVERNMENT
+46           ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_2/3/4"  ; "NL"    ; "Sittard"               ; "Sittard"               ; GOVERNMENT
+475          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Roermond"              ; "Roermond"              ; GOVERNMENT
+478          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Venray"                ; "Venray"                ; GOVERNMENT
+481          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Bemmel"                ; "Elst"                  ; GOVERNMENT
+485          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Cuyk"                  ; "Cuyk"                  ; GOVERNMENT
+486          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Grave"                 ; "Schaijk"               ; GOVERNMENT
+487          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Druten"                ; "Druten"                ; GOVERNMENT
+488          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Zetten"                ; "Zetten"                ; GOVERNMENT
+492          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Helmond"               ; "Helmond"               ; GOVERNMENT
+493          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Deurne"                ; "Deurne"                ; GOVERNMENT
+495          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Weert"                 ; "Weert"                 ; GOVERNMENT
+497          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Eersel"                ; "Eersel"                ; GOVERNMENT
+499          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Best"                  ; "Best"                  ; GOVERNMENT
+50           ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_2/3/4"  ; "NL"    ; "Groningen"             ; "Groningen"
+511          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Veenwouden"            ; "Veenwouden"
+512          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Drachten"              ; "Drachten"
+513          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Heerenveen"            ; "Heerenveen"
+514          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Lemmer"                ; "Lemmer"
+515          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Sneek"                 ; "Sneek"
+516          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Oosterwolde"           ; "Oosterwolde"
+517          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Harlingen"             ; "Harlingen"
+518          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "St. Annaparochie"      ; "St. Annaparochie"
+519          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Dokkum"                ; "Dokkum"
+521          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Steenwijk"             ; "Steenwijk"
+522          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Meppel"                ; "Meppel"
+523          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Hardenberg"            ; "Hardenberg"
+524          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Coevorden"             ; "Coevorden"
+525          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Elburg"                ; "Elburg"
+527          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Emmeloord"             ; "Emmeloord"
+528          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Hoogeveen"             ; "Hoogeveen"
+529          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Dalfsen"               ; "Dalfsen"
+53           ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_2/3/4"  ; "NL"    ; "Enschede"              ; "Enschede"
+541          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Oldenzaal"             ; "Oldenzaal"
+543          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Winterswijk"           ; "Winterswijk"
+544          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Lichtenvoorde"         ; "Lichtenvoorde"
+545          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Eibergen"              ; "Eibergen"
+546          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Almelo"                ; "Almelo"
+547          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Goor"                  ; "Goor"
+548          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Rijssen"               ; "Rijssen"
+55           ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_2/3/4"  ; "NL"    ; "Apeldoorn"             ; "Apeldoorn"
+561          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Wolvega"               ; "Wolvega"
+562          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "West-Terschelling"     ; "West-Terschelling"
+566          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Grou"                  ; "Grou"
+570          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Deventer"              ; "Deventer"
+571          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Twello"                ; "Twello"
+572          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Raalte"                ; "Raalte"
+573          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Lochem"                ; "Lochem"
+575          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Zutphen"               ; "Zutphen"
+577          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Elspeet"               ; "Elspeet"
+578          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Epe"                   ; "Epe"
+58           ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_2/3/4"  ; "NL"    ; "Leeuwarden"            ; "Leeuwarden"
+591          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Emmen"                 ; "Emmen"
+592          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Assen"                 ; "Assen"
+593          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Beilen"                ; "Beilen"
+594          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Zuidhorn"              ; "Zuidhorn"
+595          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Warffum"               ; "Warffum"
+596          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Delfzijl"              ; "Delfzijl"
+597          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Winschoten"            ; "Winschoten"
+598          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Veendam"               ; "Veendam"
+599          ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_3/3/3"  ; "NL"    ; "Stadskanaal"           ; "Stadskanaal"
+61[0239]     ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "kpn"                            ; "mobile_1/8"   ; "NL"    ;                         ;                         ; IR21
+61[15]       ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "vodafone_libertel_bv"           ; "mobile_1/8"   ; "NL"    ;                         ;                         ; IR21
+6[1-3]4      ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "t_mobile"                       ; "mobile_1/8"   ; "NL"    ;                         ;                         ; IR21
+61[67]       ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "kpn"                            ; "mobile_1/8"   ; "NL"    ;                         ;                         ; GOVERNMENT
+6[124]8      ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "t-mobile"                       ; "mobile_1/8"   ; "NL"    ;                         ;                         ; IR21
+62[023]      ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "kpn"                            ; "mobile_1/8"   ; "NL"    ;                         ;                         ; IR21
+62[1579]     ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "vodafone_libertel_bv"           ; "mobile_1/8"   ; "NL"    ;                         ;                         ; IR21
+626          ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "kpn"                            ; "mobile_1/8"   ; "NL"    ;                         ;                         ; GOVERNMENT
+630          ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "kpn"                            ; "mobile_1/8"   ; "NL"    ;                         ;                         ; IR21
+631          ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "vodafone_libertel_bv"           ; "mobile_1/8"   ; "NL"    ;                         ;                         ; IR21
+632          ; 9      ; MOBILE     ; STANDARD_RATE ; false         ;                                  ; "mobile_1/8"   ; "NL"    ;                         ;                         ; GOVERNMENT
+633          ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "kpn"                            ; "mobile_1/8"   ; "NL"    ;                         ;                         ; GOVERNMENT
+635[045]     ; 9      ; MOBILE     ; STANDARD_RATE ; false         ;                                  ; "mobile_1/8"   ; "NL"
+6351         ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "v_tell"                         ; "mobile_1/8"   ; "NL"    ;                         ;                         ; GOVERNMENT
+6352         ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "lancelot_telecom"               ; "mobile_1/8"   ; "NL"    ;                         ;                         ; IR21
+6353         ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "kpn"                            ; "mobile_1/8"   ; "NL"    ;                         ;                         ; GOVERNMENT
+635[6-9]     ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "aspider_solutions_nederland_bv" ; "mobile_1/8"   ; "NL"    ;                         ;                         ; IR21
+636          ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "tele2"                          ; "mobile_1/8"   ; "NL"    ;                         ;                         ; GOVERNMENT
+637          ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "teleena_mvne"                   ; "mobile_1/8"   ; "NL"    ;                         ;                         ; IR21
+63[89]       ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "t-mobile"                       ; "mobile_1/8"   ; "NL"    ;                         ;                         ; IR21
+640          ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "tele2"                          ; "mobile_1/8"   ; "NL"    ;                         ;                         ; IR21
+64[1-3]      ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "t_mobile"                       ; "mobile_1/8"   ; "NL"    ;                         ;                         ; IR21
+64[479]      ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "kpn"                            ; "mobile_1/8"   ; "NL"    ;                         ;                         ; GOVERNMENT
+645          ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "telfort"                        ; "mobile_1/8"   ; "NL"    ;                         ;                         ; IR21
+646          ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "vodafone_libertel_bv"           ; "mobile_1/8"   ; "NL"    ;                         ;                         ; IR21
+65[0245]     ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "vodafone_libertel_bv"           ; "mobile_1/8"   ; "NL"    ;                         ;                         ; IR21
+65[137]      ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "kpn"                            ; "mobile_1/8"   ; "NL"    ;                         ;                         ; IR21
+656          ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "t_mobile"                       ; "mobile_1/8"   ; "NL"    ;                         ;                         ; GOVERNMENT
+6580         ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "privatemobility"                ; "mobile_1/8"   ; "NL"    ;                         ;                         ; GOVERNMENT
+658[1-6]     ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "lebara"                         ; "mobile_1/8"   ; "NL"    ;                         ;                         ; GOVERNMENT
+658[7-9]     ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "kpn"                            ; "mobile_1/8"   ; "NL"    ;                         ;                         ; GOVERNMENT
+659[0-8]     ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "vectone_mobile_delight_mobile"  ; "mobile_1/8"   ; "NL"    ;                         ;                         ; GOVERNMENT
+6599         ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "motto"                          ; "mobile_1/8"   ; "NL"    ;                         ;                         ; GOVERNMENT
+66[0-46-9]   ; 9      ; PAGER      ; STANDARD_RATE ; false         ;                                  ; "pager_2/7"    ; "NL"
+665          ; 9      ; PAGER      ; STANDARD_RATE ; false         ;                                  ; "pager_2/7"    ; "NL"    ;                         ;                         ; GOVERNMENT
+680          ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "vodafone_libertel_bv"           ; "mobile_1/8"   ; "NL"    ;                         ;                         ; GOVERNMENT
+681          ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "t_mobile"                       ; "mobile_1/8"   ; "NL"    ;                         ;                         ; IR21
+68[23]       ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "kpn"                            ; "mobile_1/8"   ; "NL"    ;                         ;                         ; IR21
+68[457]      ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "lycamobile"                     ; "mobile_1/8"   ; "NL"    ;                         ;                         ; IR21
+686          ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "lycamobile"                     ; "mobile_1/8"   ; "NL"    ;                         ;                         ; GOVERNMENT
+68[89]       ; 9      ; MOBILE     ; STANDARD_RATE ; false         ;                                  ; "mobile_1/8"   ; "NL"    ;                         ;                         ; GOVERNMENT
+70           ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_2/3/4"  ; "NL"    ; "The Hague"             ; "Den Haag"
+71           ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_2/3/4"  ; "NL"    ; "Leiden"                ; "Leiden"
+72           ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_2/3/4"  ; "NL"    ; "Alkmaar"               ; "Alkmaar"
+73           ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_2/3/4"  ; "NL"    ; "'s-Hertogenbosch"      ; "'s-Hertogenbosch"
+74           ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_2/3/4"  ; "NL"    ; "Hengelo"               ; "Hengelo"
+75           ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_2/3/4"  ; "NL"    ; "Zaandam"               ; "Zaandam"
+76           ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_2/3/4"  ; "NL"    ; "Breda"                 ; "Breda"
+77           ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_2/3/4"  ; "NL"    ; "Venlo"                 ; "Venlo"
+78           ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_2/3/4"  ; "NL"    ; "Dordrecht"             ; "Dordrecht"
+79           ; 9      ; FIXED_LINE ; STANDARD_RATE ; false         ;                                  ; "fixed_2/3/4"  ; "NL"    ; "Zoetermeer"            ; "Zoetermeer"
+800          ; 7-10   ; FIXED_LINE ; TOLL_FREE     ; false         ;                                  ; "fmt_3/4-7"    ; "NL"
+8[478]       ; 9      ; UAN        ; STANDARD_RATE ; false         ;                                  ; "fixed_2/3/4"  ; "NL"
+85           ; 9      ; VOIP       ; STANDARD_RATE ; false         ;                                  ; "fixed_2/3/4"  ; "NL"    ;                         ;                         ; GOVERNMENT
+90[069]      ; 7-10   ; FIXED_LINE ; PREMIUM_RATE  ; false         ;                                  ; "fmt_3/4-7"    ; "NL"
+91           ; 9      ; VOIP       ; STANDARD_RATE ; false         ;                                  ; "fixed_2/3/4"  ; "NL"
+970          ; 11     ; MOBILE     ; STANDARD_RATE ; false         ;                                  ; "mobile_3/3/5" ; "NL"    ;                         ;                         ; GOVERNMENT

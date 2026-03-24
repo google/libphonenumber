@@ -1,0 +1,6 @@
+Region ; Type            ; Number
+EE     ; FIXED_LINE      ; "3212345"
+EE     ; MOBILE          ; "51234567"
+EE     ; TOLL_FREE       ; "80012345"
+EE     ; PREMIUM_RATE    ; "9001234"
+EE     ; PERSONAL_NUMBER ; "70012345"

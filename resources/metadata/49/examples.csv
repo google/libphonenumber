@@ -1,0 +1,10 @@
+Region ; Type            ; Number
+DE     ; FIXED_LINE      ; "30123456"
+DE     ; MOBILE          ; "15123456789"
+DE     ; PAGER           ; "16412345"
+DE     ; TOLL_FREE       ; "8001234567890"
+DE     ; PREMIUM_RATE    ; "9001234567"
+DE     ; SHARED_COST     ; "18012345"
+DE     ; PERSONAL_NUMBER ; "70012345678"
+DE     ; UAN             ; "18500123456"
+DE     ; VOICEMAIL       ; "177991234567"

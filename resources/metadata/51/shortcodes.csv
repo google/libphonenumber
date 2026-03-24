@@ -1,0 +1,3 @@
+Region ; Prefix ; Length ; Type      ; Tariff
+PE     ; 105    ; 3      ; EMERGENCY ; TOLL_FREE
+PE     ; 11[67] ; 3      ; EMERGENCY ; TOLL_FREE

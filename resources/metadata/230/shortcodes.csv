@@ -1,0 +1,8 @@
+Region ; Prefix     ; Length ; Type       ; Tariff
+MU     ; 1          ; 4,5    ; COMMERCIAL
+MU     ; 1[02-9]    ; 3      ; COMMERCIAL
+MU     ; 11[0-36-9] ; 3      ; COMMERCIAL
+MU     ; 11[45]     ; 3      ; EMERGENCY  ; TOLL_FREE
+MU     ; 8          ; 4      ; COMMERCIAL
+MU     ; 99[0-46-8] ; 3      ; COMMERCIAL
+MU     ; 99[59]     ; 3      ; EMERGENCY  ; TOLL_FREE

@@ -1,0 +1,8 @@
+Region ; Label           ; Comment
+BT     ; SC              ; "http://www.itu.int/oth/T0202000019/en"
+BT     ; SC_EMERGENCY    ; "http://www.rbp.gov.bt/requestpolice.php"
+BT     ; SC_EMERGENCY    ; "http://www.jdwnrh.gov.bt/sfo2011/?page_id=51"
+BT     ; SC_SMS_SERVICES ; "https://support.twitter.com/articles/20170024"
+BT     ; XML             ; "Universal personal telecommunication prefixes 700 and 878 are not\nadded as there is no information on length of numbers."
+BT     ; XML             ; "Pager service prefix 91 is not added as there is no information on\nlength of numbers."
+BT     ; XML             ; "http://www.itu.int/oth/T0202000019/en"

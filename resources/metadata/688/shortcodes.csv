@@ -1,0 +1,3 @@
+Region ; Prefix ; Length ; Type       ; Tariff
+TV     ; 1      ; 3      ; COMMERCIAL
+TV     ; 911    ; 3      ; EMERGENCY  ; TOLL_FREE

@@ -1,0 +1,9 @@
+Region ; Label               ; Comment
+KG     ; SC                  ; "http://www.itu.int/oth/T0202000074/en"
+KG     ; SC                  ; "http://www.iru-nelti.org/index/info-app/id.216"
+KG     ; SC_CARRIER_SPECIFIC ; "https://support.twitter.com/articles/20170024"
+KG     ; SC_SMS_SERVICES     ; "https://support.twitter.com/articles/20170024"
+KG     ; XML                 ; "No premiumRate information can be found."
+KG     ; XML                 ; "http://www.itu.int/oth/T0202000074/en"
+KG     ; XML_FIXED_LINE      ; "Extra area codes found on Web Search: 3147."
+KG     ; XML_TOLL_FREE       ; "Add an extra digit to the number pattern since the only toll-free number found on Web\nSearch contains 10 digits instead of the 9 digits specified in the ITU document."

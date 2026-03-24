@@ -1,0 +1,13 @@
+Region ; Label                         ; Comment
+ID     ; SC                            ; "http://en.wikipedia.org/wiki/%2B62"
+ID     ; SC_CARRIER_SPECIFIC           ; "https://support.google.com/plus/answer/1304917"
+ID     ; SC_CARRIER_SPECIFIC           ; "https://support.twitter.com/articles/20170024"
+ID     ; SC_SMS_SERVICES               ; "https://support.google.com/plus/answer/1304917"
+ID     ; XML                           ; "From 2001, very out of date."
+ID     ; XML                           ; "http://www.itu.int/oth/T0202000064/en"
+ID     ; XML                           ; "http://en.wikipedia.org/wiki/%2B62"
+ID     ; XML_FIXED_LINE                ; "Area codes taken from wikipedia, with missing ones added from\nhttp://www.telkom.co.id/customer-services/area-and-country-code/?type=area.\nWe also added 0770 after user feedback because it seems to be used on Bintan island.\nWhere known, fixed mobile prefixes have been represented as Mobile."
+ID     ; XML_FIXED_LINE                ; "Very short (5/6 digit) local numbers in Jakarta seem to be special cases for various\nwell known companies (Mc Donalds, KFC etc...). Some of these are listed in:\nhttp://cms.binus.edu/datapage/file/io/Spring2014SE/International_Student_Handbook_BINUS.pdf\nThere seem to be numbers of this length for area code 22 as well based on numbers found\nonline."
+ID     ; XML_FIXED_LINE                ; "The ITU doc is outdated (2001), and many numbers of different lengths were supported\nhere based on valid numbers found and user report."
+ID     ; XML_NO_INTERNATIONAL_DIALLING ; "00798 ITFS numbers can't be dialled internationally. Source:\nhttps://support.twilio.com/hc/en-us/articles/115007579027-Toll-free-phone-number-restrictions-and-limitations"
+ID     ; XML_PREMIUM_RATE              ; "The information below is provided by an Indonesian"

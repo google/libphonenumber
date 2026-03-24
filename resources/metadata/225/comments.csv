@@ -1,0 +1,8 @@
+Region ; Label               ; Comment
+CI     ; SC                  ; "http://www.itu.int/oth/T0202000031/en"
+CI     ; SC_CARRIER_SPECIFIC ; "https://support.twitter.com/articles/20170024"
+CI     ; SC_EMERGENCY        ; "http://studentsabroad.state.gov/content/pdfs/911_ABROAD.pdf"
+CI     ; SC_SMS_SERVICES     ; "https://support.twitter.com/articles/20170024"
+CI     ; XML                 ; "http://www.itu.int/oth/T0202000031/en"
+CI     ; XML                 ; "http://fr.wikipedia.org/wiki/Liste_des_indicatifs_téléphoniques_en_Côte_d’Ivoire"
+CI     ; XML_MOBILE          ; "Added the prefixes 4[0-2] (Moov), 5[7-9] and 61 because SMS messages have been\nsuccessfully delivered. Supported by numbers found on the internet. Also added 43\n(Moov) based on numbers found online. Added 8[456] MTN ranges based on Wikipedia page.\n50 has been removed since Warid seems to have stopped operation in Côte d'Ivoire.\nPrefix 73 and 97[0-3] are added based on user reports."

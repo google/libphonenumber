@@ -1,0 +1,7 @@
+Region ; Label           ; Comment
+BI     ; SC              ; "http://www.itu.int/oth/T0202000022/en"
+BI     ; SC_SMS_SERVICES ; "900 is used by Leo to buy a certain package, 710 by Tempo."
+BI     ; SC_TOLL_FREE    ; "Leo call centre (marked as free on their website)"
+BI     ; XML             ; "http://www.itu.int/oth/T0202000022/en"
+BI     ; XML_FIXED_LINE  ; "ITU update 17.IV.2015 assigns 22X completely to Onatel fixed line. Earlier  ITU\nupdates (11.IX.2013) were more detailed in that range and only half of it was\nassigned. Erring on the side of ITU and lenience for now, but we may have to make the\nrange stricter again."
+BI     ; XML_MOBILE      ; "Previous ITU doc (version: 11.IX.2013) says 29 range is assigned to\n""UCOM CDMA network"". As there is valid number online continuing support to this range\neventhough it is not listed in new ITU doc (version: 12.IV.2018)."

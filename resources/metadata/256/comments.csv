@@ -1,0 +1,6 @@
+Region ; Label          ; Comment
+UG     ; SC             ; "http://www.itu.int/oth/T02020000F1/en"
+UG     ; XML            ; "http://www.itu.int/oth/T02020000F1/en"
+UG     ; XML_FIXED_LINE ; "The ITU plan calls for all numbers to be exactly 9 digits. However, it's not clear if\nlocal dialing is still possible. We assume it is for now."
+UG     ; XML_FIXED_LINE ; "The prefix 202[5-9] was added as per the ITU update on Oct. 2011. It is not\nmentioned in the new ITU docs but they are still valid based on online\nevidence."
+UG     ; XML_MOBILE     ; "Supporting 7[09][89] based on carrier docs."

@@ -170,7 +170,7 @@
     </territory>
 
     <!-- Universal International Premium Rate Number -->
-    <territory id="001" countryCode="979" leadingZeroPossible="true">
+    <territory id="001" countryCode="979">
       <references>
         <sourceUrl>http://www.itu.int/rec/T-REC-E.169-200205-I/en</sourceUrl>
       </references>

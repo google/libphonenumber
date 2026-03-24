@@ -34,6 +34,11 @@ namespace phonenumbers {
 class PhoneMetadata;
 
 class AsYouTypeFormatterTest : public testing::Test {
+ public:
+  // This type is neither copyable nor movable.
+  AsYouTypeFormatterTest(const AsYouTypeFormatterTest&) = delete;
+  AsYouTypeFormatterTest& operator=(const AsYouTypeFormatterTest&) = delete;
+
  protected:
   AsYouTypeFormatterTest() : phone_util_(*PhoneNumberUtil::GetInstance()) {
     PhoneNumberUtil::GetInstance()->SetLogger(new StdoutLogger());
@@ -55,8 +60,6 @@ class AsYouTypeFormatterTest : public testing::Test {
   scoped_ptr<AsYouTypeFormatter> formatter_;
   string result_;
 
- private:
-  DISALLOW_COPY_AND_ASSIGN(AsYouTypeFormatterTest);
 };
 
 TEST_F(AsYouTypeFormatterTest, ConvertUnicodeStringPosition) {
@@ -698,6 +701,21 @@ TEST_F(AsYouTypeFormatterTest, AYTF_MX) {
   EXPECT_EQ("+52 800 123 45", formatter_->InputDigit('5', &result_));
   EXPECT_EQ("+52 800 123 456", formatter_->InputDigit('6', &result_));
   EXPECT_EQ("+52 800 123 4567", formatter_->InputDigit('7', &result_));
+  
+  // +529011234567, proactively ensuring that no formatting is applied,
+  // where a format is chosen that would otherwise have led to some digits
+  // being dropped.
+  formatter_->Clear();
+  EXPECT_EQ("9", formatter_->InputDigit('9', &result_));
+  EXPECT_EQ("90", formatter_->InputDigit('0', &result_));
+  EXPECT_EQ("901", formatter_->InputDigit('1', &result_));
+  EXPECT_EQ("9011", formatter_->InputDigit('1', &result_));
+  EXPECT_EQ("90112", formatter_->InputDigit('2', &result_));
+  EXPECT_EQ("901123", formatter_->InputDigit('3', &result_));
+  EXPECT_EQ("9011234", formatter_->InputDigit('4', &result_));
+  EXPECT_EQ("90112345", formatter_->InputDigit('5', &result_));
+  EXPECT_EQ("901123456", formatter_->InputDigit('6', &result_));
+  EXPECT_EQ("9011234567", formatter_->InputDigit('7', &result_));
 
   // +52 55 1234 5678
   formatter_->Clear();
@@ -896,6 +914,22 @@ TEST_F(AsYouTypeFormatterTest, AYTF_LongIDD_AU) {
   EXPECT_EQ("0011 244 250 253 2", formatter_->InputDigit('2', &result_));
   EXPECT_EQ("0011 244 250 253 22", formatter_->InputDigit('2', &result_));
   EXPECT_EQ("0011 244 250 253 222", formatter_->InputDigit('2', &result_));
+}
+
+TEST_F(AsYouTypeFormatterTest, AYTF_With_Special_Characters) {
+  formatter_.reset(phone_util_.GetAsYouTypeFormatter(RegionCode::JP()));
+  // +81००23456
+  formatter_->Clear();
+  EXPECT_EQ("+", formatter_->InputDigit('+', &result_));
+  EXPECT_EQ("+8", formatter_->InputDigit('8', &result_));
+  EXPECT_EQ("+81 ", formatter_->InputDigit('1', &result_));
+  EXPECT_EQ("+81 0", formatter_->InputDigit(UnicodeString("\u0966")[0], &result_));
+  EXPECT_EQ("+81 00", formatter_->InputDigit(UnicodeString("\u0966")[0], &result_));
+  EXPECT_EQ("+81००2", formatter_->InputDigit('2', &result_));
+  EXPECT_EQ("+81००23", formatter_->InputDigit('3', &result_));
+  EXPECT_EQ("+81००234", formatter_->InputDigit('4', &result_));
+  EXPECT_EQ("+81००2345", formatter_->InputDigit('5', &result_));
+  EXPECT_EQ("+81००23456", formatter_->InputDigit('6', &result_));
 }
 
 TEST_F(AsYouTypeFormatterTest, AYTF_LongIDD_KR) {

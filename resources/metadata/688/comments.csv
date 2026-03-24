@@ -1,0 +1,6 @@
+Region ; Label      ; Comment
+TV     ; SC         ; "http://www.itu.int/oth/T02020000D9/en"
+TV     ; SC         ; "http://en.wikipedia.org/wiki/Telephone_numbers_in_Tuvalu"
+TV     ; XML        ; "http://www.itu.int/oth/T02020000D9/en"
+TV     ; XML        ; "http://en.wikipedia.org/wiki/Telephone_numbers_in_Tuvalu"
+TV     ; XML_MOBILE ; "Some numbers online can be found that are 5-digits long, and start with 90 or 91. We\ndon't know if these are valid or not - the ITU document excludes them - so are not\ncovering these for now."

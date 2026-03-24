@@ -1,0 +1,6 @@
+Region ; Label      ; Comment
+TD     ; SC         ; "http://www.itu.int/oth/T0202000029/en"
+TD     ; XML        ; "The international prefix includes 16 as the international manual exchange."
+TD     ; XML        ; "http://www.itu.int/oth/T0202000029/en"
+TD     ; XML_MOBILE ; "Sotel Tchad ""SALAM"" (77 XX XX XX) is classified as a fixed operator in the plan, but it\nalso says numbers starting with 7 are mobile numbers. Putting under mobile for now.\nAlso adding 6[028] and 63[5-9] which are operated by Airtel."
+TD     ; XML_MOBILE ; "Adding entire 9 prefix based on information from carrier."

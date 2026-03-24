@@ -12,7 +12,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-35794|Lemontel
+35791|Cytamobile-Vodafone
+357940|Cablenet
+357941|Cablenet
+357942|Epic
+357943|Epic
+357944|Cablenet
+357945|Cablenet
+357946|Epic
 35795|PrimeTel
 35796|MTN
 35797|Cytamobile-Vodafone

@@ -1,0 +1,4 @@
+Region ; Prefix ; Length ; Type      ; Tariff
+GA     ; 13     ; 4      ; EMERGENCY ; TOLL_FREE
+GA     ; 1730   ; 4      ; EMERGENCY ; TOLL_FREE
+GA     ; 18     ; 2      ; EMERGENCY ; TOLL_FREE

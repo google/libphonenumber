@@ -1,0 +1,6 @@
+Region ; Label               ; Comment
+EG     ; SC                  ; "http://www.itu.int/oth/T020200003E/en"
+EG     ; SC_CARRIER_SPECIFIC ; "https://support.google.com/plus/answer/1304917"
+EG     ; SC_SMS_SERVICES     ; "https://support.google.com/plus/answer/1304917"
+EG     ; XML                 ; "http://www.itu.int/oth/T020200003E/en"
+EG     ; XML_FIXED_LINE      ; "Subscriber numbers starting with 5 are also permitted for the area codes 040, with 5, 6\nand 7 for the area code 050, with 5 and 7 for 082, with 6 for 084, with 7 for 086 and\n092 and with 5 and 6 for 96."

@@ -1,0 +1,5 @@
+Id            ; National       ; International ; Comment
+fixed_2/3/4   ; "#XX XXX XXXX" ; "XX XXX XXXX"
+fmt_2/7       ; "XX XXXXXXX"   ; "XX XXXXXXX"  ; "ITU format: +255 5X XXXXXXX"
+mobile_3/3/3  ; "#XXX XXX XXX" ; "XXX XXX XXX"
+special_3/2/4 ; "#XXX XX XXXX" ; "XXX XX XXXX" ; "Formatting for special numbers from http://www.tcra.go.tz"

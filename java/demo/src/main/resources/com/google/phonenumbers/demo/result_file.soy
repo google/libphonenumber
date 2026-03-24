@@ -1,0 +1,44 @@
+{namespace com.google.phonenumbers.demo.file}
+{template file}
+ {@param rows: list<[id: int, numberStr: string, prettyFormat: string|null, internationalFormat: string|null, error: string|null]>}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="/stylesheets/main.css" />
+  <title>Results generated from phone numbers in the file provided</title>
+</head>
+<body>
+
+<h2>Results generated from phone numbers in the file provided:</h2>
+
+<table>
+  <tr>
+    <th>Id</th>
+    <th>Raw phone number</th>
+    <th>Pretty formatting</th>
+    <th>International format</th>
+  </tr>
+  {for $row in $rows}
+  <tr>
+      <td>{$row.id}</td>
+      <td>{$row.numberStr}</td>
+    {if $row.error == null}
+      <td>{$row.prettyFormat}</td>
+      <td>{$row.internationalFormat}</td>
+    {else}
+      <td colspan=2>{$row.error}</td>
+    {/if}
+  </tr>
+  {ifempty}
+  <tr>
+   <td colspan=4>No data in file detected!</td>
+  </tr>
+  {/for}
+
+
+</table>
+
+</body>
+</html>
+{/template}

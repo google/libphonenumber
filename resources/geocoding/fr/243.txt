@@ -21,4 +21,5 @@
 2433|Bas-Congo/Bandundu
 2434|Kasai-Oriental/Kasai-Occidental
 2435|Province Orientale (Kisanga/Mbandaka)
+243573|Oriental Province (Kisanga/Mbandaka)
 2436|Nord-Kivu/Sud-Kivu/Maniema

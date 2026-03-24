@@ -1,0 +1,5 @@
+Region ; Type         ; Number
+RW     ; FIXED_LINE   ; "250123456"
+RW     ; MOBILE       ; "720123456"
+RW     ; TOLL_FREE    ; "800123456"
+RW     ; PREMIUM_RATE ; "900123456"

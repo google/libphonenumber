@@ -1,0 +1,7 @@
+Region ; Label               ; Comment
+HN     ; SC                  ; "http://www.itu.int/oth/T020200005F/en"
+HN     ; SC_CARRIER_SPECIFIC ; "https://support.twitter.com/articles/20170024"
+HN     ; SC_SMS_SERVICES     ; "https://support.twitter.com/articles/20170024"
+HN     ; XML                 ; "It seems there is no longer a trunk prefix in use, based on websites like\nhttp://www.howtocallabroad.com/codes.html and on seeing how locals write their numbers in\nnational format."
+HN     ; XML                 ; "http://www.itu.int/oth/T020200005F/en"
+HN     ; XML_FIXED_LINE      ; "Extra prefixes 2244, 226[24], 227[0135689], 228X, 2292, 2407, 250[78], 2516, 2540,\n256[014], 2570, 2580, 260X, 2617, 262[067], 263[04], 2780 and 2791 were added from numbers\nfound online and user reports."

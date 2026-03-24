@@ -1,0 +1,27 @@
+Prefix       ; Length ; Type       ; Tariff        ; Operator   ; Format         ; Regions ; Geocode:en    ; Provenance
+3024         ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_2/2/2/2" ; "GN"    ; "Fria"        ; WEB
+3031         ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_2/2/2/2" ; "GN"    ; "Boké"        ; WEB
+3032         ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_2/2/2/2" ; "GN"    ; "Kamsar"      ; WEB
+304[1357]    ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_2/2/2/2" ; "GN"    ; "Conakry"     ; WEB
+3042         ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_2/2/2/2" ; "GN"    ; "Sangoya"     ; WEB
+3046         ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_2/2/2/2" ; "GN"    ; "Boussoura"   ; WEB
+3051         ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_2/2/2/2" ; "GN"    ; "Labé"        ; WEB
+3053         ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_2/2/2/2" ; "GN"    ; "Pita"        ; WEB
+3061[0-24-9] ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_2/2/2/2" ; "GN"    ; "Kindia"      ; WEB
+30613        ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_2/2/2/2" ; "GN"    ; "Télimélé"    ; WEB
+3068         ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_2/2/2/2" ; "GN"    ; "Mamou"       ; WEB
+3069         ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_2/2/2/2" ; "GN"    ; "Dalaba"      ; WEB
+3071         ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_2/2/2/2" ; "GN"    ; "Kankan"      ; WEB
+3081         ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_2/2/2/2" ; "GN"    ; "Faranah"     ; WEB
+3091         ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_2/2/2/2" ; "GN"    ; "N'Zérékoré"  ; WEB
+3094         ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_2/2/2/2" ; "GN"    ; "Macenta"     ; WEB
+3097         ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_2/2/2/2" ; "GN"    ; "Guéckédou"   ; WEB
+3098         ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_2/2/2/2" ; "GN"    ; "Kissidougou" ; WEB
+31           ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_2/2/2/2" ; "GN"    ;               ; ITU
+60           ; 9      ; MOBILE     ; STANDARD_RATE ; "sotelgui" ; "fmt2_3/2/2/2" ; "GN"    ;               ; ITU
+61           ; 9      ; MOBILE     ; STANDARD_RATE ; "orange"   ; "fmt2_3/2/2/2" ; "GN"
+62           ; 9      ; MOBILE     ; STANDARD_RATE ; "orange"   ; "fmt2_3/2/2/2" ; "GN"    ;               ; ITU
+63           ; 9      ; MOBILE     ; STANDARD_RATE ; "intercel" ; "fmt2_3/2/2/2" ; "GN"    ;               ; ITU
+65           ; 9      ; MOBILE     ; STANDARD_RATE ; "cellcom"  ; "fmt2_3/2/2/2" ; "GN"    ;               ; ITU
+66           ; 9      ; MOBILE     ; STANDARD_RATE ; "areeba"   ; "fmt2_3/2/2/2" ; "GN"    ;               ; ITU
+722          ; 9      ; VOIP       ; STANDARD_RATE ;            ; "fmt2_3/2/2/2" ; "GN"

@@ -3,20 +3,16 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.googlecode.libphonenumber</groupId>
   <artifactId>libphonenumber</artifactId>
-  <version>8.12.25-4p</version>
+  <version>9.0.27-4p</version>
   <packaging>jar</packaging>
+  <name>libphonenumber</name>
   <url>https://github.com/google/libphonenumber/</url>
 
   <parent>
     <groupId>com.googlecode.libphonenumber</groupId>
     <artifactId>libphonenumber-parent</artifactId>
-    <version>8.12.25</version>
+    <version>9.0.27-SNAPSHOT</version>
   </parent>
-
-  <properties>
-    <maven.compiler.source>1.8</maven.compiler.source>
-    <maven.compiler.target>1.8</maven.compiler.target>
-  </properties>
 
   <build>
 
@@ -27,7 +23,7 @@
         <version>1.8</version>
       </extension>
     </extensions>
-    
+
     <sourceDirectory>src</sourceDirectory>
     <testSourceDirectory>test</testSourceDirectory>
     <resources>
@@ -46,22 +42,29 @@
       <plugin>
         <groupId>org.apache.felix</groupId>
         <artifactId>maven-bundle-plugin</artifactId>
-        <version>3.2.0</version>
+        <version>5.1.9</version>
         <configuration>
           <instructions>
+            <Eclipse-ExtensibleAPI>true</Eclipse-ExtensibleAPI>
             <Export-Package>com.google.i18n.phonenumbers</Export-Package>
           </instructions>
         </configuration>
       </plugin>
       <plugin>
         <artifactId>maven-jar-plugin</artifactId>
-        <version>3.0.2</version>
         <executions>
           <execution>
             <id>default-jar</id>
             <configuration>
               <archive>
-                <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
+                <manifestFile>
+                  ${project.build.outputDirectory}/META-INF/MANIFEST.MF
+                </manifestFile>
+                <manifestEntries>
+                  <Automatic-Module-Name>
+                    com.google.i18n.phonenumbers.libphonenumber
+                  </Automatic-Module-Name>
+                </manifestEntries>
               </archive>
             </configuration>
           </execution>
@@ -74,7 +77,14 @@
             <configuration>
               <classifier>no-metadata</classifier>
               <archive>
-                <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
+                <manifestFile>
+                  ${project.build.outputDirectory}/META-INF/MANIFEST.MF
+                </manifestFile>
+                <manifestEntries>
+                  <Automatic-Module-Name>
+                    com.google.i18n.phonenumbers.libphonenumber
+                  </Automatic-Module-Name>
+                </manifestEntries>
               </archive>
               <excludes>
                 <exclude>com/google/i18n/phonenumbers/data/*</exclude>
@@ -137,7 +147,7 @@
 
   <distributionManagement>
     <repository>
-      <!--       
+      <!--
       <id>maven-4p</id>
       <url>s3://4p-maven/snapshots</url>
       -->
@@ -145,10 +155,10 @@
       <id>public-maven-4p</id>
       <url>s3://4p-public-artifacts/baikal/releases</url>
 
-      <!-- 
+      <!--
       <id>my-maven-4p</id>
       <name>4P My Maven repo Snapshots</name>
-      <url>${env.BAIKAL_PUBLIC_MAVEN}</url> 
+      <url>${env.BAIKAL_PUBLIC_MAVEN}</url>
       -->
     </repository>
     <snapshotRepository>

@@ -1,0 +1,3 @@
+Id             ; National        ; International   ; Comment
+fmt1_1/2/2/2/2 ; "X XX XX XX XX" ; "X XX XX XX XX" ; "Formatting in the ITU update document aligns with formatting online (all 2 digit\ngroups). For the new number format with 9 digits the first digit has it's own group."
+fmt2_2/2/2/2   ; "XX XX XX XX"   ; "XX XX XX XX"

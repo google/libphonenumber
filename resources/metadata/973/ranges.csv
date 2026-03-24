@@ -1,0 +1,38 @@
+Prefix     ; Length ; Type                 ; Tariff        ; Operator      ; Format     ; Regions ; Provenance ; Comment
+13[1356]   ; 8      ; FIXED_LINE           ; STANDARD_RATE ;               ; "fmt1_4/4" ; "BH"
+16[0156]   ; 8      ; FIXED_LINE           ; STANDARD_RATE ;               ; "fmt1_4/4" ; "BH"
+17         ; 8      ; FIXED_LINE           ; STANDARD_RATE ;               ; "fmt1_4/4" ; "BH"
+30         ; 8      ; MOBILE               ; STANDARD_RATE ; "tra"         ; "fmt1_4/4" ; "BH"    ; GOVERNMENT
+31         ; 8      ; MOBILE               ; STANDARD_RATE ; "royal_court" ; "fmt1_4/4" ; "BH"    ; IR21       ; "IR21 dated 11/26/2018"
+3[29]      ; 8      ; MOBILE               ; STANDARD_RATE ; "batelco"     ; "fmt1_4/4" ; "BH"    ; IR21       ; "IR21 dated 11/26/2018"
+3[3-5]     ; 8      ; MOBILE               ; STANDARD_RATE ; "viva"        ; "fmt1_4/4" ; "BH"    ; IR21       ; "Updated ranges per IR21 dated 11/29/2018"
+3[67]      ; 8      ; MOBILE               ; STANDARD_RATE ; "zain_bh"     ; "fmt1_4/4" ; "BH"    ; IR21       ; "IR21 dated 8/26/2018"
+38[0-47-9] ; 8      ; MOBILE               ; STANDARD_RATE ; "batelco"     ; "fmt1_4/4" ; "BH"    ; IR21       ; "IR21 dated 11/26/2018"
+385        ; 8      ; MOBILE               ; STANDARD_RATE ; "tra"         ; "fmt1_4/4" ; "BH"    ; GOVERNMENT
+61[16]     ; 8      ; FIXED_LINE           ; STANDARD_RATE ;               ; "fmt1_4/4" ; "BH"
+6300       ; 8      ; MOBILE               ; STANDARD_RATE ; "viva"        ; "fmt1_4/4" ; "BH"    ; IR21       ; "IR21 dated 11/29/2018"
+6333       ; 8      ; MOBILE               ; STANDARD_RATE ; "viva"        ; "fmt1_4/4" ; "BH"    ; IR21       ; "IR21 dated 11/29/2018"
+636[16]    ; 8      ; MOBILE               ; STANDARD_RATE ; "viva"        ; "fmt1_4/4" ; "BH"    ; IR21       ; "IR21 dated 11/29/2018"
+6441       ; 8      ; MOBILE               ; STANDARD_RATE ; "batelco"     ; "fmt1_4/4" ; "BH"    ; ITU
+6500       ; 8      ; FIXED_LINE           ; STANDARD_RATE ;               ; "fmt1_4/4" ; "BH"
+660        ; 8      ; FIXED_LINE           ; STANDARD_RATE ;               ; "fmt1_4/4" ; "BH"
+663[03-9]  ; 8      ; MOBILE               ; STANDARD_RATE ; "zain_bh"     ; "fmt1_4/4" ; "BH"    ; IR21       ; "IR21 dated 8/26/2018"
+663[12]    ; 8      ; FIXED_LINE           ; STANDARD_RATE ;               ; "fmt1_4/4" ; "BH"
+6644       ; 8      ; FIXED_LINE           ; STANDARD_RATE ;               ; "fmt1_4/4" ; "BH"
+6655       ; 8      ; FIXED_LINE           ; STANDARD_RATE ;               ; "fmt1_4/4" ; "BH"    ; ITU
+66[69]     ; 8      ; MOBILE               ; STANDARD_RATE ; "zain_bh"     ; "fmt1_4/4" ; "BH"    ; IR21       ; "IR21 dated 8/26/2018"
+667[0-6]   ; 8      ; MOBILE               ; STANDARD_RATE ; "batelco"     ; "fmt1_4/4" ; "BH"    ; IR21       ; "IR21 dated 11/26/2018"
+6677       ; 8      ; FIXED_LINE           ; STANDARD_RATE ;               ; "fmt1_4/4" ; "BH"    ; ITU
+667[89]    ; 8      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "batelco"     ; "fmt1_4/4" ; "BH"    ; ITU
+6688       ; 8      ; FIXED_LINE           ; STANDARD_RATE ;               ; "fmt1_4/4" ; "BH"    ; ITU
+69[69][69] ; 8      ; FIXED_LINE           ; STANDARD_RATE ;               ; "fmt1_4/4" ; "BH"
+70         ; 8      ; FIXED_LINE           ; STANDARD_RATE ;               ; "fmt1_4/4" ; "BH"    ; GOVERNMENT
+7111       ; 8      ; FIXED_LINE           ; STANDARD_RATE ;               ; "fmt1_4/4" ; "BH"
+7178       ; 8      ; FIXED_LINE           ; STANDARD_RATE ;               ; "fmt1_4/4" ; "BH"
+77         ; 8      ; FIXED_LINE           ; STANDARD_RATE ;               ; "fmt1_4/4" ; "BH"
+80         ; 8      ; FIXED_LINE           ; TOLL_FREE     ;               ; "fmt1_4/4" ; "BH"
+8[2369]    ; 8      ; FIXED_LINE           ; TOLL_FREE     ;               ; "fmt1_4/4" ; "BH"    ; GOVERNMENT
+84         ; 8      ; FIXED_LINE           ; SHARED_COST   ;               ; "fmt1_4/4" ; "BH"
+87         ; 8      ; FIXED_LINE           ; PREMIUM_RATE  ;               ; "fmt1_4/4" ; "BH"
+9[014578]  ; 8      ; FIXED_LINE           ; PREMIUM_RATE  ;               ; "fmt1_4/4" ; "BH"
+9[236]     ; 8      ; FIXED_LINE           ; PREMIUM_RATE  ;               ; "fmt1_4/4" ; "BH"    ; GOVERNMENT

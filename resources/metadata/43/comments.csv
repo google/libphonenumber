@@ -1,0 +1,6 @@
+Region ; Label               ; Comment
+AT     ; SC                  ; "http://www.rtr.at/en/tk/E129"
+AT     ; SC_CARRIER_SPECIFIC ; "Added yesss! numbers 810810 , 810820 and 810830 based on their website. \nAdded Georg number 610 based on their website."
+AT     ; XML                 ; "http://www.rtr.at/en/tk/E129"
+AT     ; XML_FIXED_LINE      ; "Note that the full area code is not validated - just the first 3 digits. This also\nmeans that even though for most Austrian numbers the minimum length is 7, we allow 6\nsince we don't differentiate below between 3 and 4 digit area codes for reasons of\nefficiency."
+AT     ; XML_VOIP            ; "Convergent service numbers 780 are supported here as VOIP is closest match for such\nnumbers. All location independent corporate numbers are supported as we found these\nare dialled via IP."

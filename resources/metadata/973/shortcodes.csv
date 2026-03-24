@@ -1,0 +1,21 @@
+Region ; Prefix       ; Length ; Type               ; Tariff       ; Sms  ; Carrier Specific
+BH     ; [08]1        ; 5      ; COMMERCIAL         ; TOLL_FREE
+BH     ; 0[67]        ; 5      ; COMMERCIAL         ; TOLL_FREE    ;      ; true
+BH     ; 1[02]        ; 3      ; COMMERCIAL
+BH     ; 112          ; 3      ; EXPANDED_EMERGENCY
+BH     ; 14[01]       ; 3      ; COMMERCIAL
+BH     ; 151          ; 3      ; COMMERCIAL
+BH     ; 18[18]       ; 3      ; COMMERCIAL
+BH     ; 19[16]       ; 3      ; COMMERCIAL
+BH     ; [19]99       ; 3      ; EMERGENCY          ; TOLL_FREE
+BH     ; 85           ; 5      ; COMMERCIAL
+BH     ; 88000        ; 5      ; COMMERCIAL         ;              ; true ; true
+BH     ; 8800[1-9]    ; 5      ; COMMERCIAL
+BH     ; 880[1-9]     ; 5      ; COMMERCIAL
+BH     ; 88[1-9]      ; 5      ; COMMERCIAL
+BH     ; 9[14]        ; 5      ; COMMERCIAL         ; PREMIUM_RATE
+BH     ; 98[0-46-9]   ; 5      ; COMMERCIAL         ; PREMIUM_RATE
+BH     ; 985[0-46-9]  ; 5      ; COMMERCIAL         ; PREMIUM_RATE
+BH     ; 9855[0-46-9] ; 5      ; COMMERCIAL         ; PREMIUM_RATE
+BH     ; 98555        ; 5      ; COMMERCIAL         ; PREMIUM_RATE ; true ; true
+BH     ; 99[0248]     ; 3      ; EXPANDED_EMERGENCY

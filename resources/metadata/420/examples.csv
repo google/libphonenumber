@@ -1,0 +1,10 @@
+Region ; Type            ; Number
+CZ     ; FIXED_LINE      ; "212345678"
+CZ     ; MOBILE          ; "601123456"
+CZ     ; TOLL_FREE       ; "800123456"
+CZ     ; PREMIUM_RATE    ; "900123456"
+CZ     ; SHARED_COST     ; "811234567"
+CZ     ; PERSONAL_NUMBER ; "700123456"
+CZ     ; VOIP            ; "910123456"
+CZ     ; UAN             ; "972123456"
+CZ     ; VOICEMAIL       ; "93123456789"

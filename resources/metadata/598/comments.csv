@@ -1,0 +1,9 @@
+Region ; Label          ; Comment
+UY     ; SC             ; "http://www.itu.int/oth/T02020000E0/en"
+UY     ; SC             ; "http://www.ursec.gub.uy"
+UY     ; SC             ; "http://en.wikipedia.org/wiki/Telephone_numbers_in_Uruguay"
+UY     ; XML            ; "International long-distance providers can be dialled by dialling 01 followed by a carrier\ncode JK, where J = [3-9] and K is any digit."
+UY     ; XML            ; "http://www.itu.int/oth/T02020000E0/en"
+UY     ; XML            ; "http://www.ursec.gub.uy"
+UY     ; XML            ; "http://en.wikipedia.org/wiki/Telephone_numbers_in_Uruguay"
+UY     ; XML_FIXED_LINE ; "Prefix 1770 and 1987 are added based on online numbers."

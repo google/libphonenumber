@@ -1,0 +1,6 @@
+Region ; Type       ; Number
+PF     ; FIXED_LINE ; "40412345"
+PF     ; MOBILE     ; "87123456"
+PF     ; TOLL_FREE  ; "800012345"
+PF     ; VOIP       ; "49901234"
+PF     ; UAN        ; "440123"

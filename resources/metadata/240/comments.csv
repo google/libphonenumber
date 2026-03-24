@@ -1,0 +1,3 @@
+Region ; Label         ; Comment
+GQ     ; XML           ; "http://www.itu.int/oth/T0202000041/en"
+GQ     ; XML_TOLL_FREE ; "Note that personal and sharedCost numbers are said to go under here too - hopefully when\nthey start allocating them there will be a differentiation of prefixes, but this is not\nclear now."

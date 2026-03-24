@@ -1,0 +1,7 @@
+Region ; Prefix ; Length ; Type               ; Tariff
+LU     ; 11[23] ; 3      ; EMERGENCY          ; TOLL_FREE
+LU     ; 116000 ; 6      ; EXPANDED_EMERGENCY ; TOLL_FREE
+LU     ; 116111 ; 6      ; EXPANDED_EMERGENCY ; TOLL_FREE
+LU     ; 118    ; 5      ; COMMERCIAL
+LU     ; 1[25]  ; 5      ; COMMERCIAL
+LU     ; 13     ; 4      ; COMMERCIAL

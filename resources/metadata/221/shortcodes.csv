@@ -1,0 +1,16 @@
+Region ; Prefix      ; Length ; Type               ; Tariff        ; Sms  ; Carrier Specific
+SN     ; 11[69]      ; 3      ; EXPANDED_EMERGENCY
+SN     ; 12          ; 2      ; COMMERCIAL
+SN     ; 12[013-9]   ; 4      ; COMMERCIAL
+SN     ; 122[02-9]   ; 4      ; COMMERCIAL
+SN     ; 1221        ; 4      ; EXPANDED_EMERGENCY
+SN     ; 1[46]       ; 4      ; COMMERCIAL         ;               ;      ; true
+SN     ; 151[0-46-9] ; 4      ; COMMERCIAL
+SN     ; 1515        ; 4      ; EXPANDED_EMERGENCY ; TOLL_FREE
+SN     ; 1[78]       ; 2      ; EMERGENCY          ; TOLL_FREE
+SN     ; 200         ; 6      ; COMMERCIAL         ; TOLL_FREE
+SN     ; 201         ; 6      ; COMMERCIAL         ; STANDARD_RATE
+SN     ; 20[246]     ; 6      ; COMMERCIAL         ; PREMIUM_RATE
+SN     ; 21          ; 5      ; COMMERCIAL         ; TOLL_FREE
+SN     ; 22          ; 5      ; COMMERCIAL         ; STANDARD_RATE
+SN     ; 2[468]      ; 5      ; COMMERCIAL         ; PREMIUM_RATE  ; true

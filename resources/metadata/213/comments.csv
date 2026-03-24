@@ -1,0 +1,11 @@
+Region ; Label               ; Comment
+DZ     ; SC                  ; "http://www.itu.int/oth/T0202000003/en"
+DZ     ; SC                  ; "www.arpt.dz"
+DZ     ; SC_CARRIER_SPECIFIC ; "https://support.twitter.com/articles/20170024"
+DZ     ; SC_SMS_SERVICES     ; "https://support.twitter.com/articles/20170024"
+DZ     ; XML                 ; "http://www.itu.int/oth/T0202000003/en"
+DZ     ; XML                 ; "http://www.arpt.dz"
+DZ     ; XML_FIXED_LINE      ; "We include the VSAT lines here."
+DZ     ; XML_FIXED_LINE      ; "Added prefix 23 found online."
+DZ     ; XML_MOBILE          ; "Adding 65 and 78 from numbers found online. Also, prefix 670 is added since the carrier\nMobilis Algeria provided it, and 54 for Nedjma. Prefixes 67[1-4] were also added for\nMobilis Algeria based on evidence found online. Added new ranges 675 and 676 as\nper IR21 received."
+DZ     ; XML_SHARED_COST     ; "The Algerian plan doesn't specify where the costs start to be considered ""premium"", so we\ndraw an arbitrary line here and say that from 50 Da up they will be considered premium."

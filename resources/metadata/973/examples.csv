@@ -1,0 +1,7 @@
+Region ; Type                 ; Number
+BH     ; FIXED_LINE           ; "17001234"
+BH     ; MOBILE               ; "36001234"
+BH     ; FIXED_LINE_OR_MOBILE ; "66781234"
+BH     ; TOLL_FREE            ; "80123456"
+BH     ; PREMIUM_RATE         ; "90123456"
+BH     ; SHARED_COST          ; "84123456"

@@ -1,0 +1,6 @@
+Region ; Label            ; Comment
+LV     ; SC               ; "http://en.wikipedia.org/wiki/+371"
+LV     ; SC_STANDARD_RATE ; "http://www.ldz.lv/?object_id=2568 - 0.177 LVL per minute."
+LV     ; SC_TOLL_FREE     ; "http://116000.lv/en/about"
+LV     ; XML              ; "http://www.itu.int/oth/T0202000076/en"
+LV     ; XML              ; "http://en.wikipedia.org/wiki/+371"

@@ -1,0 +1,5 @@
+Region ; Prefix ; Length ; Type       ; Tariff    ; Sms
+PG     ; 000    ; 3      ; EMERGENCY  ; TOLL_FREE
+PG     ; 11[01] ; 3      ; EMERGENCY  ; TOLL_FREE
+PG     ; 15     ; 4      ; COMMERCIAL
+PG     ; 16     ; 4-7    ; COMMERCIAL ;           ; true

@@ -31,6 +31,9 @@ import java.util.logging.Logger;
  */
 public class GenerateTimeZonesMapDataEntryPoint extends Command {
   private static final Logger logger = Logger.getLogger(GenerateTimeZonesMapData.class.getName());
+  private static final String USAGE_DESCRIPTION =
+      "usage: GenerateTimeZonesMapData /path/to/input/directory /path/to/output/directory"
+          + " [outputJarName]";
 
   @Override
   public String getCommandName() {
@@ -41,15 +44,19 @@ public class GenerateTimeZonesMapDataEntryPoint extends Command {
   public boolean start() {
     String[] args = getArgs();
 
-    if (args.length != 3) {
-      logger.log(Level.SEVERE,
-                 "usage: GenerateTimeZonesMapData /path/to/input/text_file "
-                 + "/path/to/output/directory");
+    if (args.length < 3 || args.length > 4) {
+      logger.log(Level.SEVERE, USAGE_DESCRIPTION);
       return false;
     }
     try {
-      GenerateTimeZonesMapData generateTimeZonesMapData = new GenerateTimeZonesMapData(
-          new File(args[1]), new PhonePrefixDataIOHandler(new File(args[2])));
+      File inputPath = new File(args[1]);
+      File outputPath = new File(args[2]);
+      AbstractPhonePrefixDataIOHandler ioHandler =
+          args.length == 3
+              ? new PhonePrefixDataIOHandler(outputPath)
+              : new JarPhonePrefixDataIOHandler(
+                  outputPath, args[3], GeneratePhonePrefixData.class.getPackage());
+      GenerateTimeZonesMapData generateTimeZonesMapData = new GenerateTimeZonesMapData(inputPath, ioHandler);
       generateTimeZonesMapData.run();
     } catch (IOException e) {
       logger.log(Level.SEVERE, e.getMessage());

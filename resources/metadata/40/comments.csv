@@ -1,0 +1,11 @@
+Region ; Label           ; Comment
+RO     ; SC              ; "http://www.itu.int/oth/T02020000AC/en"
+RO     ; SC              ; "https://en.wikipedia.org/wiki/Telephone_numbers_in_Romania"
+RO     ; XML             ; "Extension prefix found online, confirmed by a Romanian."
+RO     ; XML             ; "http://www.itu.int/oth/T02020000AC/en"
+RO     ; XML             ; "http://en.wikipedia.org/wiki/Telephone_numbers_in_Romania"
+RO     ; XML             ; "http://www.ancom.org.ro/en/presentation-of-romanian-national-numbering-plan-according-to-itu-t-recommendation-e129-_5523"
+RO     ; XML_FIXED_LINE  ; "We exclude three-digit short numbers for Bucharest (219\\d{2}) and four-digit short\nnumbers outside Bucharest (2[36]\\d9\\d{3}) even though ITU suggests these exist. We do\nthis based on numbers found online and the wikipedia article which indicate that these\nare four digits long in Bucharest only, and three digits elsewhere."
+RO     ; XML_MOBILE      ; "http://www.enigma-system.net/business/customized-phone-number.html confirms that the\nnumbers are restricted to those starting with 07000. Mobile prefix 0799 added based on\nopen-source report and confirmation by existence of such numbers online.\nAs per Ancom official doc, mobile numbers can also begin with 6. However, we didn't\nfind any numbers online with this prefix, and the wikipedia source doesn't mention it,\nso we do not support it for now."
+RO     ; XML_SHARED_COST ; "803\\d{6} shared cost number pattern is not included as we couldn't find any working\nnumbers online."
+RO     ; XML_UAN         ; "http://www.ancom.org.ro/pnn_1300 refers to numbers beginning with 37, 38 or 39 as\nlocation-independent national numbers. Only numbers beginning with 37 have been seen so\nthese are the only ones supported for now."

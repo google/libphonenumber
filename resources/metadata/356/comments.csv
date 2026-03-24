@@ -1,0 +1,7 @@
+Region ; Label    ; Comment
+MT     ; SC       ; "www.itu.int/oth/T0202000084/en"
+MT     ; XML      ; "Numbering link in the LHS menu - has more up-to-date allocations"
+MT     ; XML      ; "http://www.itu.int/oth/T0202000084/en"
+MT     ; XML      ; "http://www.mca.org.mt/regulatory/numbering/numbering-plans"
+MT     ; XML_UAN  ; "Using this for governmental numbers."
+MT     ; XML_VOIP ; "In the plan as Non-PATS ECS."

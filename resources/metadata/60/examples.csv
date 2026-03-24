@@ -1,0 +1,6 @@
+Region ; Type         ; Number
+MY     ; FIXED_LINE   ; "323856789"
+MY     ; MOBILE       ; "123456789"
+MY     ; TOLL_FREE    ; "1300123456"
+MY     ; PREMIUM_RATE ; "1600123456"
+MY     ; VOIP         ; "1546012345"

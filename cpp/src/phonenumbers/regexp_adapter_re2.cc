@@ -27,6 +27,7 @@
 #include "phonenumbers/base/logging.h"
 #include "phonenumbers/stringutil.h"
 
+#include "absl/strings/string_view.h"
 namespace i18n {
 namespace phonenumbers {
 
@@ -128,7 +129,7 @@ class RE2RegExp : public RegExp {
                              matched_string, NULL, NULL, NULL, NULL, NULL);
     } else {
       return DispatchRE2Call(RE2::PartialMatchN, input_string, utf8_regexp_,
-                             matched_string, NULL, NULL), NULL, NULL, NULL);
+                             matched_string, NULL, NULL, NULL, NULL, NULL);
     }
   }
 

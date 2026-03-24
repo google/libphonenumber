@@ -12,7 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+231220|Liberia Telecom
 231330|West Africa Telecom
+23142|Connect
 231555|Lonestar Cell
 2316|Lonestar Cell
 2317|Orange

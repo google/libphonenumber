@@ -1,0 +1,5 @@
+Region ; Type                 ; Number
+AR     ; FIXED_LINE_OR_MOBILE ; "1123456789"
+AR     ; TOLL_FREE            ; "8001234567"
+AR     ; PREMIUM_RATE         ; "6001234567"
+AR     ; UAN                  ; "8101234567"

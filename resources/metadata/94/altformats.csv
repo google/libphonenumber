@@ -1,0 +1,4 @@
+Format      ; Parent Format    ; Comment
+XX X XXXXXX ; fixed_line_3/3/3
+XXX XXXXXX  ; fixed_line_3/3/3
+XXX XXX XXX ; mobile_2/3/4     ; "Alternate mobile format."

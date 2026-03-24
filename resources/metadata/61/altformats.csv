@@ -1,0 +1,5 @@
+Format        ; Parent Format ; Comment
+XXXX XX XX XX ; varcost_4/3/3 ; "Alternate formatting for toll-free & premium-rate numbers"
+XXXX XXXXXX   ; varcost_4/3/3 ; "Alternate formatting for toll-free & premium-rate numbers"
+X XXX XXX XXX ; varcost_4/3/3 ; "Alternate formatting for toll-free & premium-rate numbers"
+X XXXXXXXX    ; fixed_1/4/4

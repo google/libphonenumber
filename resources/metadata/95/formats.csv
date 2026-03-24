@@ -1,0 +1,10 @@
+Id              ; National         ; International   ; Comment
+fixed_1/2/3     ; "#X XX XXX"      ; "X XX XXX"      ; "1-digit area codes (short format)."
+fixed_1/3/3-4   ; "#X XXX XXX*"    ; "X XXX XXX*"    ; "1-digit area codes."
+fixed_1/4/4     ; "#X XXXX XXXX"   ; "X XXXX XXXX"   ; "1-digit area codes (long format)."
+fixed_2/2/3     ; "#XX XX XXX"     ; "XX XX XXX"     ; "2-digit area codes (short format)."
+fixed_2/3/3-4   ; "#XX XXX XXX*"   ; "XX XXX XXX*"   ; "2-digit area codes."
+mobile_1/3/3/3  ; "#X XXX XXX XXX" ; "X XXX XXX XXX" ; "Following majority of numbers found online."
+mobile_1/3/4-6  ; "#X XXX XXXX**"  ; "X XXX XXXX**"
+mobile_1/5/4    ; "#X XXXXX XXXX"  ; "X XXXXX XXXX"
+toll_free_3/3/4 ; "#XXX XXX XXXX"  ; "XXX XXX XXXX"  ; "Toll-free, see: http://mpt.com.mm/en/first-toll-free-call-service-myanmar-mpt/"

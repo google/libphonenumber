@@ -1,0 +1,7 @@
+Region ; Prefix  ; Length ; Type               ; Tariff    ; Provenance
+MK     ; 112     ; 3      ; EMERGENCY          ; TOLL_FREE
+MK     ; 116     ; 6      ; EXPANDED_EMERGENCY ; TOLL_FREE ; ITU
+MK     ; 118     ; 4      ; COMMERCIAL         ;           ; ITU
+MK     ; 12      ; 6      ; COMMERCIAL         ;           ; ITU
+MK     ; 13      ; 3      ; COMMERCIAL         ;           ; ITU
+MK     ; 19[2-4] ; 3      ; EMERGENCY          ; TOLL_FREE

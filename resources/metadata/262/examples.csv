@@ -1,0 +1,11 @@
+Region ; Type         ; Number
+RE     ; FIXED_LINE   ; "262161234"
+RE     ; MOBILE       ; "692123456"
+RE     ; TOLL_FREE    ; "801234567"
+RE     ; PREMIUM_RATE ; "891123456"
+RE     ; SHARED_COST  ; "810123456"
+RE     ; VOIP         ; "939901234"
+YT     ; FIXED_LINE   ; "269601234"
+YT     ; MOBILE       ; "639012345"
+YT     ; TOLL_FREE    ; "801234567"
+YT     ; VOIP         ; "939801234"

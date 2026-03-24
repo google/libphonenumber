@@ -1,0 +1,4 @@
+Region ; Label        ; Comment
+GW     ; SC           ; "http://www.itu.int/oth/T020200005C/en"
+GW     ; SC_EMERGENCY ; "https://www.osac.gov/pages/ContentReportDetails.aspx?cid=10970"
+GW     ; XML          ; "http://www.itu.int/oth/T020200005C/en"

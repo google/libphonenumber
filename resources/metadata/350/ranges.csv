@@ -1,0 +1,18 @@
+Prefix      ; Length ; Type       ; Tariff        ; Operator   ; Format      ; Regions ; Provenance ; Comment
+200         ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fixed_3/5" ; "GI"    ; INTERNAL   ; "Carrier Partner Confimation"
+202         ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fixed_3/5" ; "GI"    ; ITU
+203[01]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fixed_3/5" ; "GI"    ; GOVERNMENT
+216[24-7]   ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fixed_3/5" ; "GI"    ; INTERNAL   ; "Carrier Partner Confimation"
+216[89]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fixed_3/5" ; "GI"    ; GOVERNMENT
+2190[0-2]   ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fixed_3/5" ; "GI"
+222[013689] ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fixed_3/5" ; "GI"    ; INTERNAL   ; "Client added based on Carrier Partner Confirmation"
+222[2457]   ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fixed_3/5" ; "GI"    ; INTERNAL   ; "Carrier Partner Confimation"
+22[34]      ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fixed_3/5" ; "GI"    ; GOVERNMENT
+2250        ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fixed_3/5" ; "GI"    ; INTERNAL   ; "Carrier Partner Confimation"
+225[1-9]    ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fixed_3/5" ; "GI"    ; INTERNAL   ; "Client added based on Carrier Partner Confirmation T#04478053"
+51          ; 8      ; MOBILE     ; STANDARD_RATE ; "gibfibre" ;             ; "GI"    ; ITU
+5250        ; 8      ; MOBILE     ; STANDARD_RATE ; "gibfibre" ;             ; "GI"    ; GOVERNMENT
+5251[0-4]   ; 8      ; MOBILE     ; STANDARD_RATE ; "gibfibre" ;             ; "GI"    ; GOVERNMENT
+5[46-8]     ; 8      ; MOBILE     ; STANDARD_RATE ; "gibtel"   ;             ; "GI"
+601[01]     ; 8      ; MOBILE     ; STANDARD_RATE ; "mcom"     ;             ; "GI"    ; GOVERNMENT
+606         ; 8      ; MOBILE     ; STANDARD_RATE ; "gibtel"   ;             ; "GI"    ; IR21       ; "IR21 dated 1/17/2019"

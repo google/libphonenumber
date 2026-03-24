@@ -1,0 +1,7 @@
+Format      ; Parent Format  ; Comment
+X XXX XXXX  ; fixed_1/4/3
+X XXX XX XX ; fixed_1/4/3
+XX XX XXXX  ; mobile_2/3/3-4
+XX XX XXXX  ; fixed_2/3/3-4
+6X XXX XXXX ; fmt_2/3/3-4
+6X XX XXXX  ; fmt_2/3/3-4

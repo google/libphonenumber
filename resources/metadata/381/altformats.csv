@@ -1,0 +1,5 @@
+Format           ; Parent Format ; Comment
+[1-3]X XXX XXX   ; fmt_2/5-10    ; "Alternate format for fixed-line numbers with a two-digit area code"
+[1-3]X XX XX XXX ; fmt_2/5-10    ; "Alternate format for fixed-line numbers with a two-digit area code"
+6X XXX XX XX     ; fmt_2/5-10    ; "Alternate format for mobile numbers"
+6X XXX XXX       ; fmt_2/5-10    ; "Alternate format for mobile numbers"

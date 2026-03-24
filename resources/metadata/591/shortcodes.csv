@@ -1,0 +1,3 @@
+Region ; Prefix  ; Length ; Type       ; Tariff    ; Sms
+BO     ; 11[089] ; 3      ; EMERGENCY  ; TOLL_FREE
+BO     ; 40404   ; 5      ; COMMERCIAL ;           ; true

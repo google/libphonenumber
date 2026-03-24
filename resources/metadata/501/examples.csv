@@ -1,0 +1,4 @@
+Region ; Type       ; Number
+BZ     ; FIXED_LINE ; "2221234"
+BZ     ; MOBILE     ; "6221234"
+BZ     ; TOLL_FREE  ; "08001234123"

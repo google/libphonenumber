@@ -1,0 +1,5 @@
+Region ; Type       ; Number
+EC     ; FIXED_LINE ; "22123456"
+EC     ; MOBILE     ; "991234567"
+EC     ; TOLL_FREE  ; "18001234567"
+EC     ; VOIP       ; "28901234"

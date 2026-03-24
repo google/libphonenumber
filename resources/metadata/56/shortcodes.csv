@@ -1,0 +1,59 @@
+Region ; Prefix    ; Length ; Type               ; Tariff        ; Sms  ; Format
+CL     ; 100       ; 3      ; EXPANDED_EMERGENCY
+CL     ; 1[05]60   ; 4      ; COMMERCIAL         ; PREMIUM_RATE  ; true ; "shortcode_4"
+CL     ; 1211      ; 4      ; COMMERCIAL         ; PREMIUM_RATE  ; true ; "shortcode_4"
+CL     ; 1213      ; 4      ; COMMERCIAL         ; TOLL_FREE     ; true ; "shortcode_4"
+CL     ; 13[04-9]  ; 3      ; EXPANDED_EMERGENCY
+CL     ; 13[1-3]   ; 3      ; EMERGENCY          ; TOLL_FREE
+CL     ; 1313      ; 4      ; COMMERCIAL         ; PREMIUM_RATE  ; true ; "shortcode_4"
+CL     ; 13[348]0  ; 4      ; COMMERCIAL         ; PREMIUM_RATE  ; true ; "shortcode_4"
+CL     ; 135[01]   ; 4      ; COMMERCIAL         ; PREMIUM_RATE  ; true ; "shortcode_4"
+CL     ; 140[02-6] ; 4      ; EXPANDED_EMERGENCY ;               ; true ; "shortcode_4"
+CL     ; 1417      ; 4      ; COMMERCIAL         ; PREMIUM_RATE  ; true ; "shortcode_4"
+CL     ; 14[379]   ; 3      ; EXPANDED_EMERGENCY
+CL     ; 1818      ; 4      ; COMMERCIAL         ; PREMIUM_RATE  ; true ; "shortcode_4"
+CL     ; 1919      ; 4      ; COMMERCIAL         ; PREMIUM_RATE  ; true ; "shortcode_4"
+CL     ; 1980      ; 4      ; COMMERCIAL         ; PREMIUM_RATE  ; true ; "shortcode_4"
+CL     ; 2001      ; 4      ; COMMERCIAL         ; STANDARD_RATE ; true ; "shortcode_4"
+CL     ; 20122     ; 5      ; COMMERCIAL         ; PREMIUM_RATE  ; true
+CL     ; 222[47]   ; 4      ; COMMERCIAL         ; PREMIUM_RATE  ; true
+CL     ; 2323      ; 4      ; COMMERCIAL         ; PREMIUM_RATE  ; true
+CL     ; 2777      ; 4      ; COMMERCIAL         ; PREMIUM_RATE  ; true
+CL     ; 2882      ; 4      ; COMMERCIAL         ; PREMIUM_RATE  ; true
+CL     ; 3051      ; 4      ; COMMERCIAL         ; PREMIUM_RATE  ; true
+CL     ; 3099      ; 4      ; COMMERCIAL         ; PREMIUM_RATE  ; true
+CL     ; 3132      ; 4      ; COMMERCIAL         ; PREMIUM_RATE  ; true
+CL     ; 3329      ; 4      ; COMMERCIAL         ; PREMIUM_RATE  ; true
+CL     ; 3337      ; 4      ; COMMERCIAL         ; STANDARD_RATE ; true
+CL     ; 3377      ; 4      ; COMMERCIAL         ; PREMIUM_RATE  ; true
+CL     ; 3390      ; 4      ; COMMERCIAL         ; PREMIUM_RATE  ; true
+CL     ; 3665      ; 4      ; COMMERCIAL         ; PREMIUM_RATE  ; true
+CL     ; 4142      ; 4      ; COMMERCIAL         ; PREMIUM_RATE  ; true
+CL     ; 4243      ; 4      ; COMMERCIAL         ; PREMIUM_RATE  ; true
+CL     ; 4342      ; 4      ; COMMERCIAL         ; TOLL_FREE     ; true
+CL     ; 43656     ; 5      ; COMMERCIAL         ; PREMIUM_RATE  ; true
+CL     ; 4402      ; 4      ; COMMERCIAL         ; PREMIUM_RATE  ; true
+CL     ; 4415      ; 4      ; COMMERCIAL         ; PREMIUM_RATE  ; true
+CL     ; 4477      ; 4      ; COMMERCIAL         ; PREMIUM_RATE  ; true
+CL     ; 4554      ; 4      ; COMMERCIAL         ; PREMIUM_RATE  ; true
+CL     ; 5004      ; 4      ; COMMERCIAL         ; PREMIUM_RATE  ; true
+CL     ; 54154     ; 5      ; COMMERCIAL         ; PREMIUM_RATE  ; true
+CL     ; 5566      ; 4      ; COMMERCIAL         ; PREMIUM_RATE  ; true
+CL     ; 5577      ; 4      ; COMMERCIAL         ; PREMIUM_RATE  ; true
+CL     ; 5995      ; 4      ; COMMERCIAL         ; PREMIUM_RATE  ; true
+CL     ; 60700     ; 5      ; COMMERCIAL         ; PREMIUM_RATE  ; true
+CL     ; 6131      ; 4      ; COMMERCIAL         ; PREMIUM_RATE  ; true
+CL     ; 6222      ; 4      ; COMMERCIAL         ; PREMIUM_RATE  ; true
+CL     ; 6300      ; 4      ; COMMERCIAL         ; PREMIUM_RATE  ; true
+CL     ; 6366      ; 4      ; COMMERCIAL         ; PREMIUM_RATE  ; true
+CL     ; 6500      ; 4      ; COMMERCIAL         ; PREMIUM_RATE  ; true
+CL     ; 6699      ; 4      ; COMMERCIAL         ; PREMIUM_RATE  ; true
+CL     ; 7878      ; 4      ; COMMERCIAL         ; PREMIUM_RATE  ; true ; "shortcode_4"
+CL     ; 8011      ; 4      ; COMMERCIAL         ; PREMIUM_RATE  ; true
+CL     ; 811[28]   ; 4      ; COMMERCIAL         ; PREMIUM_RATE  ; true
+CL     ; 8482      ; 4      ; COMMERCIAL         ; PREMIUM_RATE  ; true
+CL     ; 8889      ; 4      ; COMMERCIAL         ; PREMIUM_RATE  ; true
+CL     ; 9011      ; 4      ; COMMERCIAL         ; PREMIUM_RATE  ; true ; "shortcode_4"
+CL     ; 9[12]00   ; 4      ; COMMERCIAL         ; PREMIUM_RATE  ; true
+CL     ; 911       ; 3      ; EMERGENCY          ; TOLL_FREE
+CL     ; 9330      ; 4      ; COMMERCIAL         ; PREMIUM_RATE  ; true

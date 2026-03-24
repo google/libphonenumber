@@ -1,0 +1,6 @@
+Region ; Label   ; Comment
+LT     ; SC      ; "http://www.itu.int/oth/T020200007C/en"
+LT     ; XML     ; "Note that Lithuania switched to national prefix 0. The former prefix\n8 will continue to be operational until 28 February 2025."
+LT     ; XML     ; "http://www.itu.int/oth/T020200007C/en"
+LT     ; XML     ; "National Prefix formatting rule from http://www.yellowpages.lt"
+LT     ; XML_UAN ; "Including government service numbers here too."

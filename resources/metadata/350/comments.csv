@@ -1,0 +1,5 @@
+Region ; Label           ; Comment
+GI     ; SC              ; "http://www.gra.gi/communications/numbering-plan"
+GI     ; SC_PREMIUM_RATE ; "Prefix 88 is not included here as it inconsistent in the doc provided by www.gra.gi.\nHence we will continue to treat it as 8 digit premiumRate number in\nPhoneNumberMetadata.xml unless we hear otherwise."
+GI     ; SC_SHORT_CODE   ; "Supporting all Type B short codes (used to access services of other carriers as well) as\nthe status is not clear in GRA's doc."
+GI     ; XML             ; "http://www.gra.gi/communications/numbering-plan"

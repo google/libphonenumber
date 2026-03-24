@@ -1,0 +1,7 @@
+Region ; Label               ; Comment
+MV     ; SC_CARRIER_SPECIFIC ; "Dhiraagu carrier uses 141 and 151 short codes.\nhttps://www.dhiraagu.com.mv/Personal_Mobile_Prepaid_Recharge.aspx"
+MV     ; XML                 ; "http://www.itu.int/oth/T0202000082/en"
+MV     ; XML                 ; "http://www.dhiraagu.com.mv"
+MV     ; XML_FIXED_LINE      ; "Prefix 690 is mentioned in old ITU doc dated 2011 however it is not mentioned in\nhttp://www.cam.gov.mv/ which has newer update 2017. Also no online numbers found, so\nnot supporting it."
+MV     ; XML_MOBILE          ; "46[46] are new prefixes for Dhiraagu and Ooredoo, used currently for SMS-based\nservices."
+MV     ; XML_UAN             ; "400 and 450 numbers are mentioned in the ITU document as ""Non Geographic Fixed Service""\nand seem to be used by businesses."

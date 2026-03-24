@@ -1,0 +1,13 @@
+Region ; Label          ; Comment
+PL     ; SC             ; "http://en.wikipedia.org/wiki/%2B48"
+PL     ; SC             ; "http://www.itu.int/oth/T02020000A8/en"
+PL     ; SC             ; "http://www.uke.gov.pl/tablice/home.do?execution=e1s1"
+PL     ; SC_SHORT_CODE  ; "19XXX short codes are mentioned as customer service numbers in the ITU doc. These are\nprobably the same numbers as the verified ""+48 <area-code> 19XXX"" numbers. We follow\nthe ITU doc here, but it could be wrong (we may need to remove 19XXX here or we may\nneed to move it to PhoneNumberMetadata.xml (e.g. with possibleLengths localOnly=5)."
+PL     ; SC_TOLL_FREE   ; "All 116XXX, ""European harmonized services of social"" value are toll-free.\nSee: https://ec.europa.eu/digital-single-market/116-helplines."
+PL     ; XML            ; "Source is in Polish."
+PL     ; XML            ; "http://en.wikipedia.org/wiki/%2B48"
+PL     ; XML            ; "http://www.itu.int/oth/T02020000A8/en"
+PL     ; XML            ; "http://www.uke.gov.pl/tablice/home.do?execution=e1s1"
+PL     ; XML            ; "http://www.sgwp.wp.mil.pl/pl/1_1225.html"
+PL     ; XML_FIXED_LINE ; "The plan says all geographical numbers are 9 digits; but we found customer service\nnumbers 19XXX that can be diallable along with valid area code and are 7 digits\ninstead, so we support those numbers too. See:\nhttp://www.polskasiectaxi.pl/pst/pst-partnerzy.\nNumbers which start with 26 are allocated for the military, see:\nhttp://www.sgwp.wp.mil.pl/pl/1_1225.html.\nNumbers which start with 47 are allocated for police, see:\nhttps://policja.pl/pol/aktualnosci/185570,Uwaga-Zmieniaja-sie-numery-telefonow-do-jednostek-Policji-w-calym-kraju.html"
+PL     ; XML_TOLL_FREE  ; "Prefix 800 with 10 digits added based on user report."

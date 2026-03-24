@@ -1,0 +1,7 @@
+Id            ; National        ; International
+fixed_1/2/3-4 ; "#X XX XXX*"    ; "X XX XXX*"
+fixed_1/3/3/2 ; "#X/XXX XXX XX" ; "X/XXX XXX XX"
+fixed_2/2/2-3 ; "#XX XX XX*"    ; "XX XX XX*"
+fixed_2/3/2/2 ; "#XX/XXX XX XX" ; "XX/XXX XX XX"
+fmt_3/3/3     ; "#XXX XXX XXX"  ; "XXX XXX XXX"
+pager_4/3     ; "#XXXX XXX"

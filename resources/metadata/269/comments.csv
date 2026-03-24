@@ -1,0 +1,6 @@
+Region ; Label            ; Comment
+KM     ; SC               ; "http://www.itu.int/oth/T020200002D/en"
+KM     ; SC_EMERGENCY     ; "http://www.comstbarth.fr/urgences.asp"
+KM     ; XML              ; "http://www.itu.int/oth/T020200002D/en"
+KM     ; XML_FIXED_LINE   ; "CDMA phones are included here, as they are considered as an extension of fixed line:\nhttp://www.comorestelecom.km/presentationcdma.php"
+KM     ; XML_PREMIUM_RATE ; "These are referred to as value-added services in the plan and no further information\ncan be found."

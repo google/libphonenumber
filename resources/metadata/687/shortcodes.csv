@@ -1,0 +1,19 @@
+Region ; Prefix       ; Length ; Type       ; Tariff        ; Format
+NC     ; 1000         ; 4      ; COMMERCIAL ; TOLL_FREE
+NC     ; 1006         ; 4      ; COMMERCIAL
+NC     ; 101[046]     ; 4      ; COMMERCIAL
+NC     ; 101[23]      ; 4      ; COMMERCIAL ; TOLL_FREE
+NC     ; 1020         ; 4      ; COMMERCIAL
+NC     ; 103[0-2]     ; 4      ; COMMERCIAL ; TOLL_FREE
+NC     ; 1035         ; 4      ; COMMERCIAL
+NC     ; 1042         ; 4      ; COMMERCIAL
+NC     ; 105[058]     ; 4      ; COMMERCIAL
+NC     ; 1077         ; 4      ; COMMERCIAL
+NC     ; 1088         ; 4      ; COMMERCIAL ; TOLL_FREE
+NC     ; 1[5-8]       ; 2      ; EMERGENCY  ; TOLL_FREE
+NC     ; 3631         ; 4      ; COMMERCIAL ; TOLL_FREE
+NC     ; 5[67][0-689] ; 3      ; COMMERCIAL ;               ; "shortcode_3"
+NC     ; 567          ; 3      ; COMMERCIAL ; STANDARD_RATE ; "shortcode_3"
+NC     ; 577          ; 3      ; COMMERCIAL ; TOLL_FREE     ; "shortcode_3"
+NC     ; 58[0-79]     ; 3      ; COMMERCIAL ;               ; "shortcode_3"
+NC     ; 588          ; 3      ; COMMERCIAL ; STANDARD_RATE ; "shortcode_3"

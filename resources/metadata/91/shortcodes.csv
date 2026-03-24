@@ -1,0 +1,151 @@
+Region ; Prefix         ; Length ; Type               ; Tariff        ; Sms  ; Carrier Specific ; Format
+IN     ; 10[0-28]       ; 3      ; EMERGENCY          ; TOLL_FREE
+IN     ; 103[39]        ; 4      ; COMMERCIAL         ; TOLL_FREE
+IN     ; 104            ; 3      ; COMMERCIAL         ; TOLL_FREE
+IN     ; 105010         ; 6      ; COMMERCIAL         ; TOLL_FREE
+IN     ; 1056           ; 4      ; EXPANDED_EMERGENCY ; TOLL_FREE
+IN     ; 105[79]        ; 6      ; COMMERCIAL         ; TOLL_FREE
+IN     ; 106[3468]      ; 4      ; COMMERCIAL         ; TOLL_FREE
+IN     ; 107[01357]     ; 4      ; COMMERCIAL         ; TOLL_FREE
+IN     ; 107[28]        ; 4      ; COMMERCIAL         ; TOLL_FREE
+IN     ; 107[28]0       ; 5      ; COMMERCIAL         ; TOLL_FREE
+IN     ; 1074[01]       ; 5      ; COMMERCIAL         ; TOLL_FREE
+IN     ; 109[016]       ; 4      ; EXPANDED_EMERGENCY ; TOLL_FREE
+IN     ; 109[357-9]     ; 4      ; COMMERCIAL         ; TOLL_FREE
+IN     ; 1100           ; 4      ; COMMERCIAL         ; TOLL_FREE
+IN     ; 112            ; 3      ; EMERGENCY          ; TOLL_FREE
+IN     ; 11[67][0-2]    ; 7      ; COMMERCIAL         ; PREMIUM_RATE  ;      ; true
+IN     ; 1[19][89]      ; 3      ; COMMERCIAL         ; TOLL_FREE     ;      ; true
+IN     ; 121            ; 3      ; COMMERCIAL         ; TOLL_FREE     ;      ; true
+IN     ; 1298           ; 4      ; EMERGENCY          ; TOLL_FREE
+IN     ; 1311           ; 4      ; COMMERCIAL         ; TOLL_FREE
+IN     ; 132[0-2]       ; 4      ; COMMERCIAL         ; TOLL_FREE
+IN     ; 1363           ; 4      ; COMMERCIAL         ; TOLL_FREE
+IN     ; 138            ; 3      ; COMMERCIAL         ; TOLL_FREE
+IN     ; 139            ; 3      ; COMMERCIAL         ; TOLL_FREE     ; true
+IN     ; 14[01]         ; 3      ; COMMERCIAL         ; TOLL_FREE     ;      ; true
+IN     ; 1510[0-36]     ; 5      ; COMMERCIAL         ; TOLL_FREE
+IN     ; 151[127]       ; 4      ; COMMERCIAL         ; TOLL_FREE
+IN     ; 155200         ; 6      ; EXPANDED_EMERGENCY ; TOLL_FREE
+IN     ; 15520[1-9]     ; 6      ; COMMERCIAL         ; TOLL_FREE
+IN     ; 1552[1-9]      ; 6      ; COMMERCIAL         ; TOLL_FREE
+IN     ; 1553[0-24-9]   ; 6      ; COMMERCIAL         ; TOLL_FREE
+IN     ; 155330         ; 6      ; COMMERCIAL         ; TOLL_FREE     ;      ; true
+IN     ; 15533[1-9]     ; 6      ; COMMERCIAL         ; TOLL_FREE
+IN     ; 1554           ; 4      ; COMMERCIAL         ; TOLL_FREE
+IN     ; 161            ; 3      ; COMMERCIAL         ; TOLL_FREE
+IN     ; 166            ; 3      ; COMMERCIAL         ; TOLL_FREE
+IN     ; 166[01]        ; 4      ; COMMERCIAL         ; TOLL_FREE
+IN     ; 17000          ; 5      ; COMMERCIAL         ; TOLL_FREE     ;      ; true
+IN     ; 1802           ; 7      ; COMMERCIAL
+IN     ; 181            ; 3      ; EXPANDED_EMERGENCY ; TOLL_FREE
+IN     ; 182            ; 3      ; COMMERCIAL         ; TOLL_FREE
+IN     ; 190[01]        ; 4      ; COMMERCIAL         ; TOLL_FREE     ; true
+IN     ; 190[3-5]       ; 4      ; COMMERCIAL         ; TOLL_FREE
+IN     ; 1909           ; 4      ; COMMERCIAL         ; TOLL_FREE     ; true ; true
+IN     ; 1912           ; 4      ; COMMERCIAL         ; TOLL_FREE
+IN     ; 1925           ; 4      ; COMMERCIAL         ; TOLL_FREE
+IN     ; 194[4-9]       ; 4,5    ; COMMERCIAL         ; TOLL_FREE
+IN     ; 1950           ; 4      ; COMMERCIAL         ; TOLL_FREE
+IN     ; 196[1347]      ; 4      ; COMMERCIAL         ; TOLL_FREE
+IN     ; 2611           ; 4      ; EMERGENCY          ; TOLL_FREE
+IN     ; 5000           ; 5,7    ; COMMERCIAL
+IN     ; 5001           ; 4,6    ; COMMERCIAL
+IN     ; 5002           ; 4      ; COMMERCIAL
+IN     ; 50020          ; 5      ; COMMERCIAL
+IN     ; 50325          ; 5      ; COMMERCIAL
+IN     ; 5040           ; 5,6    ; COMMERCIAL
+IN     ; 5050           ; 5-7    ; COMMERCIAL
+IN     ; 505[0-79]      ; 8      ; COMMERCIAL         ;               ;      ;                  ; "shortcode_8_np"
+IN     ; 5051           ; 6      ; COMMERCIAL
+IN     ; 505[1-79]      ; 7,9    ; COMMERCIAL
+IN     ; 510[12]        ; 5      ; COMMERCIAL
+IN     ; 51234          ; 5      ; COMMERCIAL
+IN     ; 5142[0-4]      ; 5      ; COMMERCIAL
+IN     ; 5142[5-9]      ; 5      ; COMMERCIAL         ; STANDARD_RATE ; true
+IN     ; 514[34]        ; 5      ; COMMERCIAL         ; STANDARD_RATE ; true
+IN     ; 51555          ; 5      ; COMMERCIAL
+IN     ; 51717          ; 5      ; COMMERCIAL
+IN     ; 51818          ; 5      ; COMMERCIAL
+IN     ; 5196[49]       ; 5      ; COMMERCIAL
+IN     ; 5200[01]       ; 5      ; COMMERCIAL
+IN     ; 520[14]0       ; 5      ; COMMERCIAL
+IN     ; 52151          ; 5      ; COMMERCIAL
+IN     ; 522[0267]      ; 5,6    ; COMMERCIAL
+IN     ; 5221           ; 5-7    ; COMMERCIAL
+IN     ; 52[23]1        ; 8      ; COMMERCIAL         ;               ;      ;                  ; "shortcode_8_np"
+IN     ; 522[3589]      ; 5      ; COMMERCIAL
+IN     ; 523[16]        ; 5,6    ; COMMERCIAL
+IN     ; 5232           ; 5      ; COMMERCIAL
+IN     ; 524[04]        ; 5      ; COMMERCIAL
+IN     ; 52555          ; 5      ; COMMERCIAL
+IN     ; 52666          ; 5      ; COMMERCIAL
+IN     ; 527[78]        ; 5      ; COMMERCIAL
+IN     ; 52888          ; 5      ; COMMERCIAL
+IN     ; 52906          ; 5      ; COMMERCIAL
+IN     ; 52999          ; 5,6    ; COMMERCIAL
+IN     ; 53000          ; 5      ; COMMERCIAL         ;               ;      ; true
+IN     ; 53010          ; 5      ; COMMERCIAL
+IN     ; 5303           ; 5-7    ; COMMERCIAL
+IN     ; 530[34]        ; 8      ; COMMERCIAL         ;               ;      ;                  ; "shortcode_8_np"
+IN     ; 53131          ; 5      ; COMMERCIAL
+IN     ; 533[23]        ; 5-7    ; COMMERCIAL
+IN     ; 533[23]        ; 8      ; COMMERCIAL         ;               ;      ;                  ; "shortcode_8_np"
+IN     ; 53553          ; 5      ; COMMERCIAL
+IN     ; 53666          ; 5      ; COMMERCIAL
+IN     ; 53776          ; 5      ; COMMERCIAL
+IN     ; 5404           ; 5      ; COMMERCIAL
+IN     ; 541[04]        ; 5,6    ; COMMERCIAL
+IN     ; 5420           ; 5,6    ; COMMERCIAL
+IN     ; 5424           ; 5      ; COMMERCIAL
+IN     ; 5430           ; 5,6    ; COMMERCIAL
+IN     ; 5432           ; 5,6,9  ; COMMERCIAL
+IN     ; 544[04]        ; 5      ; COMMERCIAL
+IN     ; 5464           ; 5-7    ; COMMERCIAL
+IN     ; 5499           ; 5      ; COMMERCIAL
+IN     ; 551[25]        ; 5      ; COMMERCIAL
+IN     ; 553[16]        ; 5,6    ; COMMERCIAL
+IN     ; 5535           ; 5      ; COMMERCIAL
+IN     ; 554[45]        ; 5      ; COMMERCIAL
+IN     ; 555[05]        ; 5-7    ; COMMERCIAL
+IN     ; 5565           ; 5      ; COMMERCIAL
+IN     ; 5567           ; 5,6    ; COMMERCIAL
+IN     ; 5593           ; 5      ; COMMERCIAL
+IN     ; 5606           ; 5,6    ; COMMERCIAL
+IN     ; 56070          ; 5      ; COMMERCIAL
+IN     ; 5616[02-9]     ; 8      ; COMMERCIAL         ;               ;      ;                  ; "shortcode_8_np"
+IN     ; 56161[02-46-9] ; 8      ; COMMERCIAL         ;               ;      ;                  ; "shortcode_8_np"
+IN     ; 561611[0-689]  ; 8      ; COMMERCIAL         ;               ;      ;                  ; "shortcode_8_np"
+IN     ; 5616117[0-7]   ; 8      ; COMMERCIAL         ;               ;      ;                  ; "shortcode_8_np"
+IN     ; 5616117[89]    ; 8      ; COMMERCIAL         ;               ; true ; true             ; "shortcode_8_np"
+IN     ; 561615[0-57-9] ; 8      ; COMMERCIAL         ;               ;      ;                  ; "shortcode_8_np"
+IN     ; 5616156[02-9]  ; 8      ; COMMERCIAL         ;               ;      ;                  ; "shortcode_8_np"
+IN     ; 56161561       ; 8      ; COMMERCIAL         ; PREMIUM_RATE  ; true ; true             ; "shortcode_8_np"
+IN     ; 563[68]        ; 4      ; COMMERCIAL
+IN     ; 5643           ; 4      ; COMMERCIAL
+IN     ; 56[67]         ; 5,6    ; COMMERCIAL
+IN     ; 57[127]7       ; 5      ; COMMERCIAL
+IN     ; 5717           ; 8      ; COMMERCIAL         ;               ;      ;                  ; "shortcode_8_np"
+IN     ; 5757[0-46-9]   ; 7      ; COMMERCIAL         ;               ;      ;                  ; "shortcode_7"
+IN     ; 57575[0-46-9]  ; 7      ; COMMERCIAL         ;               ;      ;                  ; "shortcode_7"
+IN     ; 575755[0-46-9] ; 7      ; COMMERCIAL         ;               ;      ;                  ; "shortcode_7"
+IN     ; 5757555        ; 7      ; COMMERCIAL         ; STANDARD_RATE ; true ;                  ; "shortcode_7"
+IN     ; 5787           ; 5,6    ; COMMERCIAL
+IN     ; 5788           ; 5      ; COMMERCIAL
+IN     ; 583[4-69]      ; 5      ; COMMERCIAL
+IN     ; 584[01]        ; 5      ; COMMERCIAL
+IN     ; 585[58]        ; 5      ; COMMERCIAL
+IN     ; 5880           ; 5,6    ; COMMERCIAL
+IN     ; 58888          ; 8      ; COMMERCIAL         ;               ;      ;                  ; "shortcode_8_np"
+IN     ; 58889          ; 6      ; COMMERCIAL
+IN     ; 5899           ; 5      ; COMMERCIAL
+IN     ; 5900           ; 5      ; COMMERCIAL
+IN     ; 5902           ; 8      ; COMMERCIAL
+IN     ; 5955           ; 5      ; COMMERCIAL
+IN     ; 5964           ; 5,6    ; COMMERCIAL
+IN     ; 596[67]        ; 5      ; COMMERCIAL
+IN     ; 5977           ; 5      ; COMMERCIAL
+IN     ; 5988           ; 5      ; COMMERCIAL
+IN     ; 5990           ; 5,6    ; COMMERCIAL
+IN     ; 777            ; 3      ; COMMERCIAL         ; TOLL_FREE
+IN     ; 800            ; 3      ; COMMERCIAL         ; TOLL_FREE

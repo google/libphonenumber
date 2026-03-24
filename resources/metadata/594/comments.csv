@@ -1,0 +1,12 @@
+Region ; Label         ; Comment
+GF     ; SC            ; "http://www.itu.int/oth/T020200004C/en"
+GF     ; SC            ; "http://www.arcep.fr/index.php?id=2137&bloc=0594&CMD=RESULTS_NUMEROTATION"
+GF     ; SC            ; "http://www.arcep.fr/uploads/tx_gsavis/11-1297.pdf"
+GF     ; XML           ; "Using a national prefix here as online numbers are formatted with it."
+GF     ; XML           ; "The 876 prefix is mentioned in the plan, but the plan is from 2006 and in France VOIP\nnumbers were changed from 087 to the 09 prefix in 2009. It is likely this occurred here\ntoo."
+GF     ; XML           ; "http://www.itu.int/oth/T020200004C/en"
+GF     ; XML           ; "http://www.arcep.fr/index.php?id=2137&bloc=0594&CMD=RESULTS_NUMEROTATION"
+GF     ; XML           ; "http://www.arcep.fr/uploads/tx_gsavis/11-1297.pdf"
+GF     ; XML           ; "https://extranet.arcep.fr/portail/Op%C3%A9rateursCE/Num%C3%A9rotation.aspx"
+GF     ; XML_MOBILE    ; "As per Wikipedia Guyane Téléphone Mobile operator is no longer functioning. However we\nsupport these ranges as they are still mentioned in ARCEP numbering plan doc."
+GF     ; XML_TOLL_FREE ; "As per ARCEP, mainland France and overseas territories use 0800 to 0805 as\nToll-free numbers."

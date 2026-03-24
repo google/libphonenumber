@@ -1,0 +1,7 @@
+Region ; Prefix ; Length ; Type       ; Tariff    ; Sms  ; Carrier Specific
+IQ     ; 10[04] ; 3      ; EMERGENCY  ; TOLL_FREE
+IQ     ; 115    ; 3      ; EMERGENCY  ; TOLL_FREE
+IQ     ; 122    ; 3      ; EMERGENCY  ; TOLL_FREE
+IQ     ; 4432   ; 4      ; COMMERCIAL ;           ; true ; true
+IQ     ; 71117  ; 5      ; COMMERCIAL ;           ; true ; true
+IQ     ; 9988   ; 4      ; COMMERCIAL ;           ; true ; true

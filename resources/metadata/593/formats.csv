@@ -1,0 +1,4 @@
+Id                ; National        ; International   ; Local      ; Comment
+fixed_1/3/4       ; "(#X) XXX-XXXX" ; "X-XXX-XXXX"    ; "XXX-XXXX"
+mobile_2/3/4      ; "#XX XXX XXXX"  ; "XX XXX XXXX"   ;            ; "Formatting for the new longer mobile numbers comes from the advertisements about the\nchange on the http://www.conatel.gob.ec site."
+toll_free_4/3/3-4 ; "XXXX XXX XXX*" ; "XXXX XXX XXX*"

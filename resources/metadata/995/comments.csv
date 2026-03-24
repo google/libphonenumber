@@ -1,0 +1,13 @@
+Region ; Label                         ; Comment
+GE     ; SC                            ; "http://www.itu.int/oth/T0202000050/en"
+GE     ; SC                            ; "http://en.wikipedia.org/wiki/Telephone_numbers_in_Georgia."
+GE     ; SC_CARRIER_SPECIFIC           ; "https://support.twitter.com/articles/20170024"
+GE     ; SC_EMERGENCY                  ; "According to Wikipedia, 011, 022 and 033 will be replaced by 111, 122, 113 and 114 in\n2011. We are not sure if that has happened, so we support both versions for now."
+GE     ; SC_SMS_SERVICES               ; "https://support.twitter.com/articles/20170024"
+GE     ; XML                           ; "It seems there may be special 6 digit numbers beginning with 91, but we are not sure, so\nthese are omitted for now."
+GE     ; XML                           ; "http://www.itu.int/oth/T0202000050/en"
+GE     ; XML                           ; "http://en.wikipedia.org/wiki/Telephone_numbers_in_Georgia_(country)"
+GE     ; XML_MOBILE                    ; "54444 is the only assigned range we have found, but we support all of 544 to keep the\nregex simple."
+GE     ; XML_NO_INTERNATIONAL_DIALLING ; "Online numbers mention that this is not internationally diallable."
+GE     ; XML_TOLL_FREE                 ; "Information from http://www.yell.ge, examples such as Wissol Petroleum Georgia\nhotline."
+GE     ; XML_VOIP                      ; "http://www.mydivert.com/virtual-numbers/995-virtual-number-National.html"

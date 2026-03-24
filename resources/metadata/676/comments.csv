@@ -1,0 +1,7 @@
+Region ; Label        ; Comment
+TO     ; SC           ; "http://www.itu.int/oth/T02020000D3/en"
+TO     ; SC           ; "http://www.wtng.info/wtng-676-to.html"
+TO     ; SC_EMERGENCY ; "http://www.tongaholiday.com/?page_id=2034"
+TO     ; XML          ; "http://www.itu.int/oth/T02020000D3/en"
+TO     ; XML          ; "http://www.wtng.info/wtng-676-to.html"
+TO     ; XML_MOBILE   ; "TCC mobile numbers were given a prefix of ""77"" in 2009, although this is not mentioned\nin their ITU document. Numbers with a prefix of 75, 84 and 86 have also been found."

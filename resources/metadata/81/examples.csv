@@ -1,0 +1,9 @@
+Region ; Type            ; Number
+JP     ; FIXED_LINE      ; "312345678"
+JP     ; MOBILE          ; "9012345678"
+JP     ; PAGER           ; "2012345678"
+JP     ; TOLL_FREE       ; "120123456"
+JP     ; PREMIUM_RATE    ; "990123456"
+JP     ; PERSONAL_NUMBER ; "601234567"
+JP     ; VOIP            ; "5012345678"
+JP     ; UAN             ; "570123456"

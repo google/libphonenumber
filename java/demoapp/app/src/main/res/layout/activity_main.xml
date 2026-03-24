@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".main.MainActivity">
+
+  <TextView
+      android:id="@+id/tv_country_dropdown_label"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="150dp"
+      android:text="@string/main_activity_country_dropdown_label_text"
+      android:textAppearance="?attr/textAppearanceBodyLarge"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+
+  <com.google.phonenumbers.demoapp.main.CountryDropdown
+      android:id="@+id/country_dropdown"
+      android:layout_width="@dimen/main_activity_default_width_item"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="@dimen/app_default_spacing_between_items"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@id/tv_country_dropdown_label" />
+
+  <Button
+      android:id="@+id/btn_country_dropdown_reset"
+      style="@style/Widget.Material3.Button.TextButton"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="@string/main_activity_country_dropdown_reset_text"
+      app:layout_constraintStart_toStartOf="@id/country_dropdown"
+      app:layout_constraintTop_toBottomOf="@id/country_dropdown" />
+
+  <CheckBox
+      android:id="@+id/cb_ignore_whitespace"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="@dimen/app_default_spacing_between_items"
+      android:checked="true"
+      android:text="@string/main_activity_ignore_whitespace_text"
+      android:textAppearance="?attr/textAppearanceBodyMedium"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@id/btn_country_dropdown_reset" />
+
+  <TextView
+      android:id="@+id/tv_error"
+      android:layout_width="@dimen/main_activity_default_width_item"
+      android:layout_height="wrap_content"
+      android:gravity="center"
+      android:text=""
+      android:textAppearance="?attr/textAppearanceBodyLarge"
+      android:textColor="?colorError"
+      app:layout_constraintBottom_toTopOf="@id/btn_error"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent" />
+
+  <Button
+      android:id="@+id/btn_error"
+      style="@style/Widget.Material3.Button.TextButton"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="@dimen/app_default_spacing_between_items"
+      android:text=""
+      app:layout_constraintBottom_toTopOf="@id/btn_start"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent" />
+
+  <Button
+      android:id="@+id/btn_start"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="@dimen/app_default_spacing_between_items"
+      android:text="@string/main_activity_start_text_default"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,5 @@
+Region ; Type       ; Number
+SB     ; FIXED_LINE ; "40123"
+SB     ; MOBILE     ; "7421234"
+SB     ; TOLL_FREE  ; "18123"
+SB     ; VOIP       ; "51123"

@@ -1,0 +1,4 @@
+Region ; Type       ; Number
+MC     ; FIXED_LINE ; "99123456"
+MC     ; MOBILE     ; "612345678"
+MC     ; TOLL_FREE  ; "90123456"

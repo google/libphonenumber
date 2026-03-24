@@ -1,0 +1,8 @@
+Region ; Label          ; Comment
+IS     ; SC             ; "https://www.pfs.is/english/telecom-affairs/numbering/"
+IS     ; XML            ; "http://www.pta.is/default.aspx?cat_id=85"
+IS     ; XML            ; "http://www.pfs.is/default.aspx?cat_id=14&module_id=210&element_id=4"
+IS     ; XML            ; "http://www.pfs.is/english/telecom-affairs/numbering/"
+IS     ; XML_FIXED_LINE ; "Including 87[23] XXXX here as it is listed as a fax number."
+IS     ; XML_MOBILE     ; "TETRA = TErrestrial Trunked RAdio is included under mobile."
+IS     ; XML_TOLL_FREE  ; "The UIFN numbers mentioned in the Excel document are not yet included since no real\nnumbers can be found online, and it is not clear what these are; the standard\ndefinition would have them under the +800 country code instead of Iceland."

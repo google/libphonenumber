@@ -1,0 +1,5 @@
+Region ; Label        ; Comment
+SZ     ; SC           ; "http://www.itu.int/oth/T02020000C6/en"
+SZ     ; SC_EMERGENCY ; "http://travel.state.gov/travel/cis_pa_tw/cis/cis_1031.html"
+SZ     ; SC_EMERGENCY ; "http://swaziland.usembassy.gov/information_for_travelers.html"
+SZ     ; XML          ; "http://www.itu.int/oth/T02020000C6/en"

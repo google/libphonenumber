@@ -1,0 +1,3 @@
+Region ; Prefix ; Length ; Type       ; Tariff    ; Sms  ; Carrier Specific
+HN     ; 199    ; 3      ; EMERGENCY  ; TOLL_FREE
+HN     ; 40404  ; 5      ; COMMERCIAL ;           ; true ; true

@@ -1,0 +1,10 @@
+Region ; Label           ; Comment
+TN     ; SC              ; "http://www.itu.int/oth/T02020000D5/en"
+TN     ; SC              ; "http://www.tunisietelecom.tn/tt/wcm/connect/?MOD=PDMProxy&TYPE=personalization&ID=NONE&KEY=NONE&LIBRARY=%2FcontentRoot%2Ficm%3Alibraries%5B16%5D&FOLDER=%2F&DOC_NAME=%2FcontentRoot%2Ficm%3Alibraries%5B16%5D%2FOTTI+2011.pdf"
+TN     ; XML             ; "http://www.itu.int/oth/T02020000D5/en"
+TN     ; XML             ; "http://www.tunisietelecom.tn/tt/wcm/connect/?MOD=PDMProxy&TYPE=personalization&ID=NONE&KEY=NONE&LIBRARY=%2FcontentRoot%2Ficm%3Alibraries%5B16%5D&FOLDER=%2F&DOC_NAME=%2FcontentRoot%2Ficm%3Alibraries%5B16%5D%2FOTTI+2011.pdf"
+TN     ; XML             ; "http://www.tunisietelecom.tn/tt/internet/fr/pme/fixe/numeros_acceuil"
+TN     ; XML_FIXED_LINE  ; "All 3[0-2] range numbers are mentioned as fixed-line in 20.II.2012 ITU doc. Few of\nthese are supported in mobile also as 28.IX.2015 ITU doc mentions these as ""Restricted\nMobility"" numbers."
+TN     ; XML_MOBILE      ; "All Restricted Mobility numbers mentioned in ITU doc are supported as mobile based on\nuser report."
+TN     ; XML_SHARED_COST ; "8110xxxx numbers are listed as being ""discounted non-geographical numbers"" and are put\nhere for now. In the future we might consider them as UAN.\nITU lists 82 xx xx xx, but the document published by Tunisie Telecom has more specific\ninformation which is followed here."
+TN     ; XML_TOLL_FREE   ; "ITU lists 80 xx xx xx, but the document published by Tunisie Telecom has more specific\ninformation which is followed here."

@@ -1078,6 +1078,23 @@ TEST_F(PhoneNumberMatcherTest, NoMatchIfNoNumber) {
   EXPECT_FALSE(matcher->HasNext());
 }
 
+TEST_F(PhoneNumberMatcherTest, NoErrorWithSpecialCharacters) {
+  string stringWithSpecialCharacters =
+      "Myfuzzvar1152: \"My info:%415-666-7777 123 fake street\"\nfuzzvar1155: "
+      "47\nfuzzvar1158: %415-666-1234 "
+      "i18n_phonenumbers_Pho\356eNumberMatcher_Leniency_VALID_1"
+      "\nfuzzvar1159: 20316 info:%415-666-7777 123 fake str79ee\nt";
+  string Numbers;
+  for (int i = 0; i < 100; ++i)
+    Numbers.append(stringWithSpecialCharacters);
+  scoped_ptr<PhoneNumberMatcher> matcher(
+      GetMatcherWithLeniency(Numbers, RegionCode::US(),
+                             PhoneNumberMatcher::POSSIBLE));
+  // Since the input text contains invalid UTF-8, we do not return
+  // any matches.
+  EXPECT_FALSE(matcher->HasNext());
+}
+
 TEST_F(PhoneNumberMatcherTest, Sequences) {
   // Test multiple occurrences.
   const string text = "Call 033316005  or 032316005!";

@@ -1,0 +1,30 @@
+Prefix     ; Length ; Type       ; Tariff        ; Operator ; Format         ; Regions ; Geocode:en   ; Provenance ; Comment
+0800       ; 7      ; FIXED_LINE ; TOLL_FREE     ;          ; "tollfree_4/3" ; "TO"
+2[0-8]     ; 5      ; FIXED_LINE ; STANDARD_RATE ;          ; "fixed_2/3"    ; "TO"    ; "Nuku'alofa"
+29         ; 5      ; FIXED_LINE ; STANDARD_RATE ;          ; "fixed_2/3"    ; "TO"    ; "Pea"
+30         ; 5      ; FIXED_LINE ; STANDARD_RATE ;          ; "fixed_2/3"    ; "TO"    ; "Pea"
+3[12]      ; 5      ; FIXED_LINE ; STANDARD_RATE ;          ; "fixed_2/3"    ; "TO"    ; "Muʻa"
+3[34]      ; 5      ; FIXED_LINE ; STANDARD_RATE ;          ; "fixed_2/3"    ; "TO"    ; "Kolonga"
+3[56]      ; 5      ; FIXED_LINE ; STANDARD_RATE ;          ; "fixed_2/3"    ; "TO"    ; "Nakolo"
+3[78]      ; 5      ; FIXED_LINE ; STANDARD_RATE ;          ; "fixed_2/3"    ; "TO"    ; "Vaini"
+40         ; 5      ; FIXED_LINE ; STANDARD_RATE ;          ; "fixed_2/3"    ; "TO"    ; "Kolovai"
+4[12]      ; 5      ; FIXED_LINE ; STANDARD_RATE ;          ; "fixed_2/3"    ; "TO"    ; "Masilamea"
+43         ; 5      ; FIXED_LINE ; STANDARD_RATE ;          ; "fixed_2/3"    ; "TO"    ; "Matangiake"
+44         ; 5      ; FIXED_LINE ; STANDARD_RATE ;          ; "fixed_2/3"    ; "TO"
+50         ; 5      ; FIXED_LINE ; STANDARD_RATE ;          ; "fixed_2/3"    ; "TO"    ; "‘Eua"
+54[0-5]    ; 7      ; MOBILE     ; STANDARD_RATE ; "toko"   ; "fmt_3/4"      ; "TO"    ;              ; ITU
+54[6-9]    ; 7      ; ISP        ; STANDARD_RATE ; "toko"   ; "fmt_3/4"      ; "TO"    ;              ; ITU
+55[0-37-9] ; 7      ; VOIP       ; STANDARD_RATE ;          ; "fmt_3/4"      ; "TO"
+55[4-6]    ; 7      ; MOBILE     ; STANDARD_RATE ; "toko"   ; "fmt_3/4"      ; "TO"
+6[09]      ; 5      ; FIXED_LINE ; STANDARD_RATE ;          ; "fixed_2/3"    ; "TO"    ; "Ha’apai"
+6[09]      ; 7      ; MOBILE     ; STANDARD_RATE ;          ; "fmt_3/4"      ; "TO"
+63[02]     ; 7      ; MOBILE     ; STANDARD_RATE ;          ; "fmt_3/4"      ; "TO"
+681        ; 7      ; MOBILE     ; STANDARD_RATE ; "digi"   ; "fmt_3/4"      ; "TO"    ;              ; IR21
+68[5-9]    ; 7      ; MOBILE     ; STANDARD_RATE ; "digi"   ; "fmt_3/4"      ; "TO"    ;              ; IR21       ; "IR21 dated 5/13/2019"
+7[0-24-69] ; 5      ; FIXED_LINE ; STANDARD_RATE ;          ; "fixed_2/3"    ; "TO"    ; "Vava’u"
+70         ; 7      ; MOBILE     ; STANDARD_RATE ; "digi"   ; "fmt_3/4"      ; "TO"    ;              ; IR21       ; "IR21 dated 5/13/2019"
+71         ; 7      ; MOBILE     ; STANDARD_RATE ;          ; "fmt_3/4"      ; "TO"
+7[2-9]     ; 7      ; MOBILE     ; STANDARD_RATE ; "ucall"  ; "fmt_3/4"      ; "TO"    ;              ; INTERNAL   ; "3rd party carrier partner"
+8[05]      ; 5      ; FIXED_LINE ; STANDARD_RATE ;          ; "fixed_2/3"    ; "TO"    ; "Niuas"
+8[46-9]    ; 7      ; MOBILE     ; STANDARD_RATE ; "digi"   ; "fmt_3/4"      ; "TO"    ;              ; IR21       ; "IR21 dated 5/13/2019"
+999        ; 7      ; MOBILE     ; STANDARD_RATE ; "digi"   ; "fmt_3/4"      ; "TO"    ;              ; IR21

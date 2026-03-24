@@ -1,0 +1,7 @@
+Region ; Label           ; Comment
+BG     ; SC              ; "http://www.itu.int/oth/T0202000020/en"
+BG     ; XML             ; "http://www.itu.int/oth/T0202000020/en"
+BG     ; XML             ; "https://en.wikipedia.org/wiki/Telephone_numbers_in_Bulgaria"
+BG     ; XML_FIXED_LINE  ; "We found evidence at least for ranges 28 and 29 followed by 4 digits in 2016, although\nthe latest ITU doc doesn't mention that."
+BG     ; XML_MOBILE      ; "The range 99\\d{7} is marked as mobile in the ITU doc, but only 996 and 999 seem to be in\nuse, the former based on user reports and online numbers, and the latter based on\nwikipedia and information received from MAX telecom."
+BG     ; XML_SHARED_COST ; "Prefix 700 is marked as Personal number in the ITU doc, but as per many websites they\nare shared cost and are charged at a standard price."

@@ -1,0 +1,29 @@
+Prefix   ; Length ; Type       ; Tariff        ; Operator             ; Format       ; Timezone               ; Regions ; Geocode:en         ; Provenance
+19       ; 6      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_2/2/2" ; "America/Godthab"      ; "GL"    ;                    ; ITU
+[245]    ; 6      ; MOBILE     ; STANDARD_RATE ; "tele_greenland_a_s" ; "fmt1_2/2/2" ; "America/Godthab"      ; "GL"    ;                    ; IR21
+3[1-7]   ; 6      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_2/2/2" ; "America/Godthab"      ; "GL"    ; "Nuuk"             ; ITU
+3[89]    ; 6      ; VOIP       ; STANDARD_RATE ;                      ; "fmt1_2/2/2" ; "America/Godthab"      ; "GL"    ;                    ; ITU
+61       ; 6      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_2/2/2" ; "America/Godthab"      ; "GL"    ; "Nanortalik"       ; ITU
+6[2357]  ; 6      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_2/2/2" ; "America/Godthab"      ; "GL"    ;                    ; ITU
+64       ; 6      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_2/2/2" ; "America/Godthab"      ; "GL"    ; "Qaqortoq"         ; ITU
+66       ; 6      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_2/2/2" ; "America/Godthab"      ; "GL"    ; "Narsaq"           ; ITU
+68       ; 6      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_2/2/2" ; "America/Godthab"      ; "GL"    ; "Paamiut"          ; ITU
+69[02-9] ; 6      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_2/2/2" ; "America/Godthab"      ; "GL"
+691      ; 6      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_2/2/2" ; "America/Godthab"      ; "GL"    ; "Ivittuut"         ; ITU
+70       ; 6      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_2/2/2" ;                        ; "GL"    ;                    ; ITU
+80       ; 6      ; FIXED_LINE ; TOLL_FREE     ;                      ; "fmt1_2/2/2" ; "America/Godthab"      ; "GL"
+81       ; 6      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_2/2/2" ; "America/Godthab"      ; "GL"    ; "Maniitsoq"        ; ITU
+8[238]   ; 6      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_2/2/2" ; "America/Godthab"      ; "GL"    ;                    ; ITU
+84       ; 6      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_2/2/2" ; "America/Godthab"      ; "GL"    ; "Kangerlussuaq"    ; ITU
+8[56]    ; 6      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_2/2/2" ; "America/Godthab"      ; "GL"    ; "Sisimiut"         ; ITU
+87       ; 6      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_2/2/2" ; "America/Godthab"      ; "GL"    ; "Kangaatsiaq"      ; ITU
+89       ; 6      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_2/2/2" ; "America/Godthab"      ; "GL"    ; "Aasiaat"          ; ITU
+9[03]    ; 6      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_2/2/2" ; "America/Godthab"      ; "GL"
+91       ; 6      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_2/2/2" ; "America/Godthab"      ; "GL"    ; "Qasigannguit"     ; ITU
+92       ; 6      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_2/2/2" ; "America/Godthab"      ; "GL"    ; "Qeqertasuaq"      ; ITU
+94       ; 6      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_2/2/2" ; "America/Godthab"      ; "GL"    ; "Ilulissat"        ; ITU
+95       ; 6      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_2/2/2" ; "America/Godthab"      ; "GL"    ; "Uummannaq"        ; ITU
+96       ; 6      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_2/2/2" ; "America/Godthab"      ; "GL"    ; "Upernavik"        ; ITU
+97       ; 6      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_2/2/2" ; "America/Thule"        ; "GL"    ; "Qaanaaq"          ; ITU
+98       ; 6      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_2/2/2" ; "America/Godthab"      ; "GL"    ; "Tasiilaq"         ; ITU
+99       ; 6      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_2/2/2" ; "America/Scoresbysund" ; "GL"    ; "Ittoqqortoormiit" ; ITU

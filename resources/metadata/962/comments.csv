@@ -1,0 +1,11 @@
+Region ; Label               ; Comment
+JO     ; SC                  ; "http://www.trc.gov.jo/images/stories/pdf/NNP_ver200[1].pdf?lang=english"
+JO     ; SC                  ; "http://www.itu.int/oth/T020200006E/en"
+JO     ; SC                  ; "http://en.wikipedia.org/wiki/%2B962"
+JO     ; SC_CARRIER_SPECIFIC ; "https://support.twitter.com/articles/20170024"
+JO     ; SC_EMERGENCY        ; "192 is only available in Amman, 197 in the suburbs."
+JO     ; SC_SMS_SERVICES     ; "https://support.twitter.com/articles/20170024"
+JO     ; XML                 ; "http://www.trc.gov.jo/images/stories/pdf/NNP_ver200[1].pdf?lang=english"
+JO     ; XML                 ; "http://www.itu.int/oth/T020200006E/en"
+JO     ; XML                 ; "http://en.wikipedia.org/wiki/%2B962"
+JO     ; XML_UAN             ; "These numbers are Location Independent Services / Fixed cost according to\nhttp://www.trc.gov.jo"

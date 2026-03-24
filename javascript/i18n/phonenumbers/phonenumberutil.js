@@ -33,7 +33,6 @@ goog.provide('i18n.phonenumbers.PhoneNumberUtil');
 goog.provide('i18n.phonenumbers.PhoneNumberUtil.MatchType');
 goog.provide('i18n.phonenumbers.PhoneNumberUtil.ValidationResult');
 
-goog.require('goog.array');
 goog.require('goog.object');
 goog.require('goog.proto2.PbLiteSerializer');
 goog.require('goog.string');
@@ -68,9 +67,10 @@ goog.addSingletonGetter(i18n.phonenumbers.PhoneNumberUtil);
  */
 i18n.phonenumbers.Error = {
   INVALID_COUNTRY_CODE: 'Invalid country calling code',
-  // This generally indicates the string passed in had less than 3 digits in it.
+  // This indicates the string passed is not a valid number. Either the string
+  // had less than 3 digits in it or had an invalid phone-context parameter.
   // More specifically, the number failed to match the regular expression
-  // VALID_PHONE_NUMBER.
+  // VALID_PHONE_NUMBER, RFC3966_GLOBAL_NUMBER_DIGITS, or RFC3966_DOMAINNAME.
   NOT_A_NUMBER: 'The string supplied did not seem to be a phone number',
   // This indicates the string started with an international dialing prefix, but
   // after this was stripped from the number, had less digits than any valid
@@ -143,17 +143,6 @@ i18n.phonenumbers.PhoneNumberUtil.MAX_INPUT_STRING_LENGTH_ = 250;
  * @private
  */
 i18n.phonenumbers.PhoneNumberUtil.UNKNOWN_REGION_ = 'ZZ';
-
-
-/**
- * The prefix that needs to be inserted in front of a Colombian landline number
- * when dialed from a mobile phone in Colombia.
- *
- * @const
- * @type {string}
- * @private
- */
-i18n.phonenumbers.PhoneNumberUtil.COLOMBIA_MOBILE_TO_FIXED_LINE_PREFIX_ = '3';
 
 
 /**
@@ -742,6 +731,90 @@ i18n.phonenumbers.PhoneNumberUtil.VALID_PHONE_NUMBER_ =
  */
 i18n.phonenumbers.PhoneNumberUtil.DEFAULT_EXTN_PREFIX_ = ' ext. ';
 
+/**
+ * @const
+ * @type {string}
+ * @private
+ */
+i18n.phonenumbers.PhoneNumberUtil.RFC3966_VISUAL_SEPARATOR_ = '[\\-\\.\\(\\)]?';
+
+/**
+ * @const
+ * @type {string}
+ * @private
+ */
+i18n.phonenumbers.PhoneNumberUtil.RFC3966_PHONE_DIGIT_ = '(['
+    + i18n.phonenumbers.PhoneNumberUtil.VALID_DIGITS_ + ']|'
+    + i18n.phonenumbers.PhoneNumberUtil.RFC3966_VISUAL_SEPARATOR_ + ')';
+
+/**
+ * @const
+ * @type {string}
+ * @private
+ */
+i18n.phonenumbers.PhoneNumberUtil.RFC3966_GLOBAL_NUMBER_DIGITS_ = '^\\'
+    + i18n.phonenumbers.PhoneNumberUtil.PLUS_SIGN
+    + i18n.phonenumbers.PhoneNumberUtil.RFC3966_PHONE_DIGIT_ + '*['
+    + i18n.phonenumbers.PhoneNumberUtil.VALID_DIGITS_ + ']'
+    + i18n.phonenumbers.PhoneNumberUtil.RFC3966_PHONE_DIGIT_ + '*$';
+
+/**
+ * Regular expression of valid global-number-digits for the phone-context
+ * parameter, following the syntax defined in RFC3966.
+ *
+ * @const
+ * @type {RegExp}
+ * @private
+ */
+i18n.phonenumbers.PhoneNumberUtil.RFC3966_GLOBAL_NUMBER_DIGITS_PATTERN_ =
+    new RegExp(i18n.phonenumbers.PhoneNumberUtil.RFC3966_GLOBAL_NUMBER_DIGITS_);
+
+/**
+ * @const
+ * @type {string}
+ * @private
+ */
+i18n.phonenumbers.PhoneNumberUtil.ALPHANUM_ =
+    i18n.phonenumbers.PhoneNumberUtil.VALID_ALPHA_
+    + i18n.phonenumbers.PhoneNumberUtil.VALID_DIGITS_;
+
+/**
+ * @const
+ * @type {string}
+ * @private
+ */
+i18n.phonenumbers.PhoneNumberUtil.RFC3966_DOMAINLABEL_ = '['
+    + i18n.phonenumbers.PhoneNumberUtil.ALPHANUM_ + ']+((\\-)*['
+    + i18n.phonenumbers.PhoneNumberUtil.ALPHANUM_ + '])*';
+
+/**
+ * @const
+ * @type {string}
+ * @private
+ */
+i18n.phonenumbers.PhoneNumberUtil.RFC3966_TOPLABEL_ = '['
+    + i18n.phonenumbers.PhoneNumberUtil.VALID_ALPHA_ + ']+((\\-)*['
+    + i18n.phonenumbers.PhoneNumberUtil.ALPHANUM_ + '])*';
+
+/**
+ * @const
+ * @type {string}
+ * @private
+ */
+i18n.phonenumbers.PhoneNumberUtil.RFC3966_DOMAINNAME_ = '^('
+    + i18n.phonenumbers.PhoneNumberUtil.RFC3966_DOMAINLABEL_ + '\\.)*'
+    + i18n.phonenumbers.PhoneNumberUtil.RFC3966_TOPLABEL_ + '\\.?$';
+
+/**
+ * Regular expression of valid domainname for the phone-context parameter,
+ * following the syntax defined in RFC3966.
+ *
+ * @const
+ * @type {RegExp}
+ * @private
+ */
+i18n.phonenumbers.PhoneNumberUtil.RFC3966_DOMAINNAME_PATTERN_ =
+    new RegExp(i18n.phonenumbers.PhoneNumberUtil.RFC3966_DOMAINNAME_);
 
 /**
  * Helper method for constructing regular expressions for parsing. Creates
@@ -1406,9 +1479,8 @@ i18n.phonenumbers.PhoneNumberUtil.getCountryMobileToken =
  *     region the library supports.
  */
 i18n.phonenumbers.PhoneNumberUtil.prototype.getSupportedRegions = function() {
-  return goog.array.filter(
-      Object.keys(i18n.phonenumbers.metadata.countryToMetadata),
-      function(regionCode) {
+  return Object.keys(i18n.phonenumbers.metadata.countryToMetadata)
+      .filter(function(regionCode) {
         return isNaN(regionCode);
       });
 };
@@ -1420,17 +1492,16 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.getSupportedRegions = function() {
  * @return {!Array.<number>} the country calling codes for every
  *     non-geographical entity the library supports.
  */
-i18n.phonenumbers.PhoneNumberUtil.prototype.
-    getSupportedGlobalNetworkCallingCodes = function() {
-  var callingCodesAsStrings = goog.array.filter(
-      Object.keys(i18n.phonenumbers.metadata.countryToMetadata),
-      function(regionCode) {
-        return !isNaN(regionCode);
-      });
-  return goog.array.map(callingCodesAsStrings,
-      function(callingCode) {
-        return parseInt(callingCode, 10);
-      });
+i18n.phonenumbers.PhoneNumberUtil.prototype
+    .getSupportedGlobalNetworkCallingCodes = function() {
+  var callingCodesAsStrings =
+      Object.keys(i18n.phonenumbers.metadata.countryToMetadata)
+          .filter(function(regionCode) {
+            return !isNaN(regionCode);
+          });
+  return callingCodesAsStrings.map(function(callingCode) {
+    return parseInt(callingCode, 10);
+  });
 };
 
 
@@ -1447,12 +1518,12 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.getSupportedCallingCodes =
     function() {
   var countryCodesAsStrings =
       Object.keys(i18n.phonenumbers.metadata.countryCodeToRegionCodeMap);
-  return goog.array.join(
-      this.getSupportedGlobalNetworkCallingCodes(),
-      goog.array.map(countryCodesAsStrings,
-      function(callingCode) {
-        return parseInt(callingCode, 10);
-      }));
+  return [
+    ...this.getSupportedGlobalNetworkCallingCodes(),
+    ...countryCodesAsStrings.map(function(callingCode) {
+      return parseInt(callingCode, 10);
+    })
+  ];
 };
 
 
@@ -1645,9 +1716,8 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.isNumberGeographical =
 
   return numberType == i18n.phonenumbers.PhoneNumberType.FIXED_LINE ||
       numberType == i18n.phonenumbers.PhoneNumberType.FIXED_LINE_OR_MOBILE ||
-      (goog.array.contains(
-          i18n.phonenumbers.PhoneNumberUtil.GEO_MOBILE_COUNTRIES_,
-          phoneNumber.getCountryCodeOrDefault()) &&
+      (i18n.phonenumbers.PhoneNumberUtil.GEO_MOBILE_COUNTRIES_.includes(
+           phoneNumber.getCountryCodeOrDefault()) &&
        numberType == i18n.phonenumbers.PhoneNumberType.MOBILE);
 };
 
@@ -1989,13 +2059,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.formatNumberForMobileDialing =
         (numberType == i18n.phonenumbers.PhoneNumberType.MOBILE) ||
         (numberType == i18n.phonenumbers.PhoneNumberType.FIXED_LINE_OR_MOBILE);
     // Carrier codes may be needed in some countries. We handle this here.
-    if (regionCode == 'CO' &&
-        numberType == i18n.phonenumbers.PhoneNumberType.FIXED_LINE) {
-      formattedNumber = this.formatNationalNumberWithCarrierCode(
-          numberNoExt,
-          i18n.phonenumbers.PhoneNumberUtil
-              .COLOMBIA_MOBILE_TO_FIXED_LINE_PREFIX_);
-    } else if (regionCode == 'BR' && isFixedLineOrMobile) {
+    if (regionCode == 'BR' && isFixedLineOrMobile) {
       formattedNumber =
           // Historically, we set this to an empty string when parsing with raw
           // input if none was found in the input string. However, this doesn't
@@ -2793,16 +2857,15 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.getExampleNumberForNonGeoEntity =
   var metadata =
       this.getMetadataForNonGeographicalRegion(countryCallingCode);
   if (metadata != null) {
-    /** @type {i18n.phonenumbers.PhoneNumberDesc} */
-    var numberTypeWithExampleNumber = goog.array.find(
-        [metadata.getMobile(), metadata.getTollFree(),
-         metadata.getSharedCost(), metadata.getVoip(),
-         metadata.getVoicemail(), metadata.getUan(),
-         metadata.getPremiumRate()],
-        function(desc, index) {
-          return (desc.hasExampleNumber());
-        });
-    if (numberTypeWithExampleNumber != null) {
+    /** @type {!i18n.phonenumbers.PhoneNumberDesc|undefined} */
+    var numberTypeWithExampleNumber = [
+      metadata.getMobile(), metadata.getTollFree(), metadata.getSharedCost(),
+      metadata.getVoip(), metadata.getVoicemail(), metadata.getUan(),
+      metadata.getPremiumRate()
+    ].find(function(desc, index) {
+      return desc.hasExampleNumber();
+    });
+    if (numberTypeWithExampleNumber !== undefined) {
       try {
         return this.parse('+' + countryCallingCode +
             numberTypeWithExampleNumber.getExampleNumber(), 'ZZ');
@@ -3031,8 +3094,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.isNumberMatchingDesc_ =
   // already checked before a specific number type.
   var actualLength = nationalNumber.length;
   if (numberDesc.possibleLengthCount() > 0 &&
-      goog.array.indexOf(numberDesc.possibleLengthArray(),
-          actualLength) == -1) {
+      numberDesc.possibleLengthArray().indexOf(actualLength) == -1) {
     return false;
   }
   return i18n.phonenumbers.PhoneNumberUtil.matchesEntirely(
@@ -3304,13 +3366,13 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.getNddPrefixForRegion = function(
  * @param {?string} regionCode the CLDR two-letter region code.
  * @return {boolean} true if regionCode is one of the regions under NANPA.
  */
-i18n.phonenumbers.PhoneNumberUtil.prototype.isNANPACountry =
-    function(regionCode) {
-
-  return regionCode != null && goog.array.contains(
-      i18n.phonenumbers.metadata.countryCodeToRegionCodeMap[
-          i18n.phonenumbers.PhoneNumberUtil.NANPA_COUNTRY_CODE_],
-      regionCode.toUpperCase());
+i18n.phonenumbers.PhoneNumberUtil.prototype.isNANPACountry = function(
+    regionCode) {
+  return regionCode != null &&
+      i18n.phonenumbers.metadata
+          .countryCodeToRegionCodeMap[i18n.phonenumbers.PhoneNumberUtil
+                                          .NANPA_COUNTRY_CODE_]
+          .includes(regionCode.toUpperCase());
 };
 
 
@@ -3462,14 +3524,14 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.testNumberLengthForType_ =
         // The current list is sorted; we need to merge in the new list and
         // re-sort (duplicates are okay). Sorting isn't so expensive because the
         // lists are very small.
-        goog.array.sort(possibleLengths);
+        possibleLengths.sort();
 
         if (localLengths.length == 0) {
           localLengths = mobileDesc.possibleLengthLocalOnlyArray();
         } else {
           localLengths = localLengths.concat(
               mobileDesc.possibleLengthLocalOnlyArray());
-          goog.array.sort(localLengths);
+          localLengths.sort();
         }
       }
     }
@@ -3483,7 +3545,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.testNumberLengthForType_ =
   var actualLength = number.length;
   // This is safe because there is never an overlap beween the possible lengths
   // and the local-only lengths; this is checked at build time.
-  if (goog.array.indexOf(localLengths, actualLength) > -1) {
+  if (localLengths.indexOf(actualLength) > -1) {
     return i18n.phonenumbers.PhoneNumberUtil.ValidationResult
         .IS_POSSIBLE_LOCAL_ONLY;
   }
@@ -3496,7 +3558,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.testNumberLengthForType_ =
     return i18n.phonenumbers.PhoneNumberUtil.ValidationResult.TOO_LONG;
   }
   // We skip the first element since we've already checked it.
-  return (goog.array.indexOf(possibleLengths, actualLength, 1) > -1) ?
+  return (possibleLengths.indexOf(actualLength, 1) > -1) ?
       i18n.phonenumbers.PhoneNumberUtil.ValidationResult.IS_POSSIBLE :
       i18n.phonenumbers.PhoneNumberUtil.ValidationResult.INVALID_LENGTH;
 };
@@ -3521,6 +3583,12 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.testNumberLengthForType_ =
  * codes) and length (obviously includes the length of area codes for fixed line
  * numbers), it will return false for the subscriber-number-only version.
  * </ol>
+ *
+ * <p>There is a known <a href="https://issuetracker.google.com/issues/335892662">issue</a> with this
+ * method: if a number is possible only in a certain region among several regions that share the
+ * same country calling code, this method will consider only the "main" region. For example,
+ * +1310xxxx are valid numbers in Canada. However, they are not possible in the US. As a result,
+ * this method will return IS_POSSIBLE_LOCAL_ONLY for +1310xxxx.
  *
  * @param {i18n.phonenumbers.PhoneNumber} number the number that needs to be
  *     checked
@@ -3550,6 +3618,12 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.isPossibleNumberWithReason =
  * codes) and length (obviously includes the length of area codes for fixed line
  * numbers), it will return false for the subscriber-number-only version.
  * </ol>
+ *
+ * <p>There is a known <a href="https://issuetracker.google.com/issues/335892662">issue</a> with this
+ * method: if a number is possible only in a certain region among several regions that share the
+ * same country calling code, this method will consider only the "main" region. For example,
+ * +1310xxxx are valid numbers in Canada. However, they are not possible in the US. As a result,
+ * this method will return IS_POSSIBLE_LOCAL_ONLY for +1310xxxx.
  *
  * @param {i18n.phonenumbers.PhoneNumber} number the number that needs to be
  *     checked
@@ -4322,6 +4396,74 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.parseHelper_ =
 
 
 /**
+ * Extracts the value of the phone-context parameter of numberToExtractFrom,
+ * following the syntax defined in RFC3966.
+ * @param {?string} numberToExtractFrom
+ * @return {string|null} the extracted string (possibly empty), or null if no
+ * phone-context parameter is found.
+ * @private
+ */
+i18n.phonenumbers.PhoneNumberUtil.prototype.extractPhoneContext_ =
+    function (numberToExtractFrom) {
+      /** @type {number} */
+      var indexOfPhoneContext = numberToExtractFrom.indexOf(i18n
+          .phonenumbers.PhoneNumberUtil.RFC3966_PHONE_CONTEXT_);
+      // If no phone-context parameter is present
+      if (indexOfPhoneContext === -1) {
+        return null;
+      }
+
+      /** @type {number} */
+      var phoneContextStart = indexOfPhoneContext + i18n
+          .phonenumbers.PhoneNumberUtil.RFC3966_PHONE_CONTEXT_.length;
+      // If phone-context parameter is empty
+      if (phoneContextStart >= numberToExtractFrom.length) {
+        return "";
+      }
+
+      /** @type {number} */
+      var phoneContextEnd = numberToExtractFrom.indexOf(';', phoneContextStart);
+      // If phone-context is not the last parameter
+      if (phoneContextEnd !== -1) {
+        return numberToExtractFrom.substring(phoneContextStart,
+            phoneContextEnd);
+      } else {
+        return numberToExtractFrom.substring(phoneContextStart);
+      }
+    }
+
+
+/**
+ * Returns whether the value of phoneContext follows the syntax defined in
+ * RFC3966.
+ *
+ * @param {string|null} phoneContext
+ * @return {boolean}
+ * @private
+ */
+i18n.phonenumbers.PhoneNumberUtil.prototype.isPhoneContextValid_ =
+    function (phoneContext) {
+      if (phoneContext == null) {
+        return true;
+      }
+
+      if (phoneContext.length === 0) {
+        return false;
+      }
+
+      var globalNumberDigitsMatcher =
+          i18n.phonenumbers.PhoneNumberUtil.RFC3966_GLOBAL_NUMBER_DIGITS_PATTERN_.exec(
+              phoneContext);
+      var domainnameMatcher =
+          i18n.phonenumbers.PhoneNumberUtil.RFC3966_DOMAINNAME_PATTERN_.exec(
+              phoneContext);
+      // Does phone-context value match pattern of global-number-digits or
+      // domainname
+      return globalNumberDigitsMatcher !== null || domainnameMatcher !== null;
+    }
+
+
+/**
  * Converts numberToParse to a form that we can parse and write it to
  * nationalNumber if it is written in RFC3966; otherwise extract a possible
  * number out of it and write to nationalNumber.
@@ -4331,71 +4473,66 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.parseHelper_ =
  *     extension.
  * @param {!goog.string.StringBuffer} nationalNumber a string buffer for storing
  *     the national significant number.
+ * @throws {Error}
  * @private
  */
 i18n.phonenumbers.PhoneNumberUtil.prototype.buildNationalNumberForParsing_ =
-    function(numberToParse, nationalNumber) {
+    function (numberToParse, nationalNumber) {
+      var phoneContext =
+          i18n.phonenumbers.PhoneNumberUtil.prototype.extractPhoneContext_(
+              numberToParse);
 
-  /** @type {number} */
-  var indexOfPhoneContext = numberToParse.indexOf(
-      i18n.phonenumbers.PhoneNumberUtil.RFC3966_PHONE_CONTEXT_);
-  if (indexOfPhoneContext >= 0) {
-    var phoneContextStart = indexOfPhoneContext +
-        i18n.phonenumbers.PhoneNumberUtil.RFC3966_PHONE_CONTEXT_.length;
-    // If the phone context contains a phone number prefix, we need to capture
-    // it, whereas domains will be ignored.
-    // No length check is necessary, as per C++ or Java, since out-of-bounds
-    // requests to charAt return an empty string.
-    if (numberToParse.charAt(phoneContextStart) ==
-        i18n.phonenumbers.PhoneNumberUtil.PLUS_SIGN) {
-      // Additional parameters might follow the phone context. If so, we will
-      // remove them here because the parameters after phone context are not
-      // important for parsing the phone number.
-      var phoneContextEnd = numberToParse.indexOf(';', phoneContextStart);
-      if (phoneContextEnd > 0) {
-        nationalNumber.append(numberToParse.substring(phoneContextStart,
-            phoneContextEnd));
-      } else {
-        nationalNumber.append(numberToParse.substring(phoneContextStart));
+      if (!i18n.phonenumbers.PhoneNumberUtil.prototype.isPhoneContextValid_(
+          phoneContext)) {
+        throw new Error(i18n.phonenumbers.Error.NOT_A_NUMBER);
       }
-    }
+      if (phoneContext != null) {
+        // If the phone context contains a phone number prefix, we need to capture
+        // it, whereas domains will be ignored.
+        if (phoneContext.charAt(0) ===
+            i18n.phonenumbers.PhoneNumberUtil.PLUS_SIGN) {
+          nationalNumber.append(phoneContext);
+        }
 
-    // Now append everything between the "tel:" prefix and the phone-context.
-    // This should include the national number, an optional extension or
-    // isdn-subaddress component. Note we also handle the case when "tel:" is
-    // missing, as we have seen in some of the phone number inputs.
-    // In that case, we append everything from the beginning.
-    var indexOfRfc3966Prefix = numberToParse.indexOf(
-        i18n.phonenumbers.PhoneNumberUtil.RFC3966_PREFIX_);
-    var indexOfNationalNumber = (indexOfRfc3966Prefix >= 0) ?
-        indexOfRfc3966Prefix +
-        i18n.phonenumbers.PhoneNumberUtil.RFC3966_PREFIX_.length : 0;
-    nationalNumber.append(numberToParse.substring(indexOfNationalNumber,
-        indexOfPhoneContext));
-  } else {
-    // Extract a possible number from the string passed in (this strips leading
-    // characters that could not be the start of a phone number.)
-    nationalNumber.append(
-        i18n.phonenumbers.PhoneNumberUtil.extractPossibleNumber(numberToParse));
-  }
+        // Now append everything between the "tel:" prefix and the phone-context.
+        // This should include the national number, an optional extension or
+        // isdn-subaddress component. Note we also handle the case when "tel:" is
+        // missing, as we have seen in some of the phone number inputs.
+        // In that case, we append everything from the beginning.
+        var indexOfRfc3966Prefix = numberToParse.indexOf(
+            i18n.phonenumbers.PhoneNumberUtil.RFC3966_PREFIX_);
+        var indexOfNationalNumber = (indexOfRfc3966Prefix >= 0) ?
+            indexOfRfc3966Prefix +
+            i18n.phonenumbers.PhoneNumberUtil.RFC3966_PREFIX_.length : 0;
+        var indexOfPhoneContext = numberToParse.indexOf(
+            i18n.phonenumbers.PhoneNumberUtil.RFC3966_PHONE_CONTEXT_);
+        nationalNumber.append(numberToParse.substring(indexOfNationalNumber,
+            indexOfPhoneContext));
+      } else {
+        // Extract a possible number from the string passed in (this strips leading
+        // characters that could not be the start of a phone number.)
+        nationalNumber.append(
+            i18n.phonenumbers.PhoneNumberUtil.extractPossibleNumber(
+                numberToParse ?? ""));
+      }
 
-  // Delete the isdn-subaddress and everything after it if it is present.
-  // Note extension won't appear at the same time with isdn-subaddress
-  // according to paragraph 5.3 of the RFC3966 spec,
-  /** @type {string} */
-  var nationalNumberStr = nationalNumber.toString();
-  var indexOfIsdn = nationalNumberStr.indexOf(
-      i18n.phonenumbers.PhoneNumberUtil.RFC3966_ISDN_SUBADDRESS_);
-  if (indexOfIsdn > 0) {
-    nationalNumber.clear();
-    nationalNumber.append(nationalNumberStr.substring(0, indexOfIsdn));
-  }
-  // If both phone context and isdn-subaddress are absent but other
-  // parameters are present, the parameters are left in nationalNumber. This
-  // is because we are concerned about deleting content from a potential
-  // number string when there is no strong evidence that the number is
-  // actually written in RFC3966.
-};
+      // Delete the isdn-subaddress and everything after it if it is present.
+      // Note extension won't appear at the same time with isdn-subaddress
+      // according to paragraph 5.3 of the RFC3966 spec,
+      /** @type {string} */
+      var nationalNumberStr = nationalNumber.toString();
+      var indexOfIsdn = nationalNumberStr.indexOf(
+          i18n.phonenumbers.PhoneNumberUtil.RFC3966_ISDN_SUBADDRESS_);
+      if (indexOfIsdn > 0) {
+        nationalNumber.clear();
+        nationalNumber.append(nationalNumberStr.substring(0, indexOfIsdn));
+      }
+      // If both phone context and isdn-subaddress are absent but other
+      // parameters are present, the parameters are left in nationalNumber. This
+      // is because we are concerned about deleting content from a potential
+      // number string when there is no strong evidence that the number is
+      // actually written in RFC3966.
+    };
 
 
 /**
@@ -4634,8 +4771,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.canBeInternationallyDialled =
  */
 i18n.phonenumbers.PhoneNumberUtil.matchesEntirely = function(regex, str) {
   /** @type {Array.<string>} */
-  var matchedGroups = (typeof regex == 'string') ?
-      str.match('^(?:' + regex + ')$') : str.match(regex);
+  var matchedGroups = str.match(new RegExp('^(?:' + (typeof regex == 'string' ? regex : regex.source) + ')$', 'i'));
   if (matchedGroups && matchedGroups[0].length == str.length) {
     return true;
   }

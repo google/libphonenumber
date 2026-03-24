@@ -1,0 +1,3 @@
+Id       ; National    ; International ; Comment
+fmt1_3/4 ; "XXX XXXX"  ; "XXX XXXX"
+fmt2_4/4 ; "XXXX XXXX" ; "XXXX XXXX"   ; "Since numbers grew an extra digit, we have no indication of how people are formatting\nthem. If we see another pattern being used, we should change this later."

@@ -582,7 +582,7 @@ public abstract class CsvTable<K> {
           .put('r', '\r')
           .put('t', '\t')
           .put('\\', '\\')
-          .build();
+          .buildOrThrow();
 
   // Visible for AutoValue only.
   CsvTable() {}

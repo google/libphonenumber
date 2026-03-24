@@ -1,0 +1,6 @@
+Region ; Type         ; Number
+MK     ; FIXED_LINE   ; "22012345"
+MK     ; MOBILE       ; "72345678"
+MK     ; TOLL_FREE    ; "80012345"
+MK     ; PREMIUM_RATE ; "50012345"
+MK     ; SHARED_COST  ; "80123456"

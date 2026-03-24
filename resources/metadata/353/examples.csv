@@ -1,0 +1,10 @@
+Region ; Type            ; Number
+IE     ; FIXED_LINE      ; "2212345"
+IE     ; MOBILE          ; "850123456"
+IE     ; TOLL_FREE       ; "1800123456"
+IE     ; PREMIUM_RATE    ; "1520123456"
+IE     ; SHARED_COST     ; "1850123456"
+IE     ; PERSONAL_NUMBER ; "700123456"
+IE     ; VOIP            ; "761234567"
+IE     ; UAN             ; "818123456"
+IE     ; VOICEMAIL       ; "8551234567"

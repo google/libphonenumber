@@ -1,0 +1,11 @@
+Region ; Label            ; Comment
+NZ     ; SC               ; "http://www.itu.int/oth/T0202000099/en"
+NZ     ; SC               ; "Includes Ross Dependency, Antarctica"
+NZ     ; SC               ; "https://www.skinny.co.nz/assets/pdf/skinny-premium-SMS-prices-Sheet14.pdf"
+NZ     ; SC               ; "https://www.vodafone.co.nz/cms/documents/premium-txt-codes.pdf"
+NZ     ; XML              ; "Includes Ross Dependency, Antarctica"
+NZ     ; XML              ; "Does not currently support 083 ""Enhanced voice services"", New Zealand direct service\nnumbers and 050 ""Nation-Wide Service""."
+NZ     ; XML              ; "http://www.itu.int/oth/T0202000099/en"
+NZ     ; XML_MOBILE       ; "Includes mobile radio service numbers (e.g. TeamTalk)."
+NZ     ; XML_PREMIUM_RATE ; "The ITU doc says the lengths are 9 to 11, but wikipedia says 8. Online numbers can only\nbe found with lengths 8 and 9. 7 digit 'Nation-Wide Service' numbers are also included\nhere."
+NZ     ; XML_TOLL_FREE    ; "These are the toll free patterns used, by Telecom and Telstra/Clear, but they are\nreferred to as 'Value-added service' in the phone plan for some reason. 85 numbers are\nnot covered, as telecom companies don't seem to support them yet."

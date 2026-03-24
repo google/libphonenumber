@@ -1,0 +1,10 @@
+Region ; Label               ; Comment
+BW     ; SC                  ; "http://www.itu.int/oth/T020200001C/en"
+BW     ; SC_CARRIER_SPECIFIC ; "https://support.twitter.com/articles/20170024"
+BW     ; SC_EMERGENCY        ; "http://www.gov.bw/en/Ministries%2D%2DAuthorities/Ministries/State-President/Botswana-Police-Service-/About-the-BPS/Toll-Free-Numbers/"
+BW     ; SC_EMERGENCY        ; "http://travel.state.gov/travel/cis_pa_tw/cis/cis_1071.html"
+BW     ; SC_SMS_SERVICES     ; "https://support.twitter.com/articles/20170024"
+BW     ; XML                 ; "http://www.itu.int/oth/T020200001C/en"
+BW     ; XML_FIXED_LINE      ; "Number range 373 is been supported based on user report and online evidence."
+BW     ; XML_MOBILE          ; "Added prefixes 748, 749, 778 after getting confirmation from the carriers who\nown them."
+BW     ; XML_TOLL_FREE       ; "BOCRA (official authority) and many Government websites mention 0800 XXX XXX range."

@@ -1,0 +1,8 @@
+Region ; Label                 ; Comment
+SN     ; SC                    ; "http://www.itu.int/dms_pub/itu-t/oth/02/02/T02020000B80001PDFE.pdf"
+SN     ; SC                    ; "http://www.artpsenegal.net/images/documents/document_Structure_plan_national_de_numerotation_PNN_2012_231.pdf"
+SN     ; SC_EXPANDED_EMERGENCY ; "1515 is added as expanded emergency according to official documentation at\nwww.artpsenegal.net, and www.samu.sn suggesting that it's for disaster management."
+SN     ; XML                   ; "http://www.itu.int/oth/T02020000B8/en"
+SN     ; XML                   ; "http://www.artpsenegal.net/index.php?option=com_content&view=article&id=50"
+SN     ; XML_PREMIUM_RATE      ; "Revenu Partagé in the plan."
+SN     ; XML_VOIP              ; "Also covers satellite telephony ranges."

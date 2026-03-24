@@ -1,0 +1,11 @@
+Region ; Type         ; Number
+AX     ; FIXED_LINE   ; "181234567"
+AX     ; MOBILE       ; "412345678"
+AX     ; TOLL_FREE    ; "800123456"
+AX     ; PREMIUM_RATE ; "600123456"
+AX     ; UAN          ; "10112345"
+FI     ; FIXED_LINE   ; "131234567"
+FI     ; MOBILE       ; "412345678"
+FI     ; TOLL_FREE    ; "800123456"
+FI     ; PREMIUM_RATE ; "600123456"
+FI     ; UAN          ; "10112345"

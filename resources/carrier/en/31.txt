@@ -12,29 +12,24 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-31610|KPN
+3161|KPN
 31611|Vodafone Libertel B.V.
-31612|KPN
-31613|KPN
 31614|T-Mobile
 31615|Vodafone Libertel B.V.
-31616|Telfort
-31617|Telfort
 31618|T-Mobile Thuis
-31619|KPN
 31620|KPN
 31621|Vodafone Libertel B.V.
 31622|KPN
 31623|KPN
 31624|T-Mobile
 31625|Vodafone Libertel B.V.
-31626|Telfort
+31626|KPN
 31627|Vodafone Libertel B.V.
 31628|T-Mobile Thuis
 31629|Vodafone Libertel B.V.
 31630|KPN
 31631|Vodafone Libertel B.V.
-31633|Telfort
+31633|KPN
 31634|T-Mobile
 316351|Glotell B.V (V-Tell NL)
 316352|Lancelot
@@ -51,12 +46,12 @@
 31641|T-Mobile
 31642|T-Mobile
 31643|T-Mobile
-31644|Telfort
+31644|KPN
 31645|Telfort
 31646|Vodafone Libertel B.V.
-31647|Telfort
+31647|KPN
 31648|T-Mobile Thuis
-31649|Telfort
+31649|KPN
 31650|Vodafone Libertel B.V.
 31651|KPN
 31652|Vodafone Libertel B.V.
@@ -65,8 +60,11 @@
 31655|Vodafone Libertel B.V.
 31656|T-Mobile
 31657|KPN
-31658|Telfort
+31658|Lebara
 316580|Private Mobility Nederland
+316587|KPN
+316588|KPN
+316589|KPN
 31659|Vectone Mobile/Delight Mobile
 316599|Motto
 31680|Vodafone Libertel B.V.

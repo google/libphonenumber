@@ -1,0 +1,353 @@
+Region ; Prefix            ; Length ; Type               ; Tariff       ; Sms
+EE     ; 11[02]            ; 3      ; EMERGENCY          ; TOLL_FREE
+EE     ; 11[3-579]         ; 3      ; COMMERCIAL
+EE     ; 116000            ; 6      ; EXPANDED_EMERGENCY ; TOLL_FREE
+EE     ; 116111            ; 6      ; EXPANDED_EMERGENCY ; TOLL_FREE
+EE     ; 11800             ; 5      ; COMMERCIAL         ; PREMIUM_RATE
+EE     ; 1180[1-9]         ; 5      ; COMMERCIAL
+EE     ; 118[1258]         ; 4      ; COMMERCIAL         ; PREMIUM_RATE ; true
+EE     ; 118[367]          ; 4      ; COMMERCIAL
+EE     ; 1184              ; 4      ; COMMERCIAL         ; PREMIUM_RATE
+EE     ; 1189              ; 5      ; COMMERCIAL
+EE     ; 120[02378]        ; 4      ; COMMERCIAL         ; PREMIUM_RATE
+EE     ; 120[02-9]         ; 5      ; COMMERCIAL
+EE     ; 1201              ; 4      ; COMMERCIAL
+EE     ; 1201[036]         ; 5      ; COMMERCIAL         ; PREMIUM_RATE ; true
+EE     ; 1201[12]          ; 5      ; COMMERCIAL         ; PREMIUM_RATE
+EE     ; 1201[457-9]       ; 5      ; COMMERCIAL
+EE     ; 120[46]           ; 4      ; COMMERCIAL         ; PREMIUM_RATE ; true
+EE     ; 1205              ; 4      ; COMMERCIAL         ; TOLL_FREE
+EE     ; 1209              ; 4      ; COMMERCIAL
+EE     ; 121[0-4]          ; 4      ; COMMERCIAL         ; PREMIUM_RATE
+EE     ; 121[0-57-9]       ; 5      ; COMMERCIAL
+EE     ; 121[57-9]         ; 4      ; COMMERCIAL
+EE     ; 1216              ; 4      ; COMMERCIAL
+EE     ; 12160             ; 5      ; COMMERCIAL         ; PREMIUM_RATE
+EE     ; 1216[1-57-9]      ; 5      ; COMMERCIAL
+EE     ; 12166             ; 5      ; COMMERCIAL         ; PREMIUM_RATE ; true
+EE     ; 122[02-4]         ; 4      ; COMMERCIAL         ; PREMIUM_RATE
+EE     ; 122[0-46-9]       ; 5      ; COMMERCIAL
+EE     ; 1221              ; 4      ; COMMERCIAL         ; PREMIUM_RATE ; true
+EE     ; 1225              ; 4      ; COMMERCIAL
+EE     ; 1225[01346-9]     ; 5      ; COMMERCIAL
+EE     ; 1225[25]          ; 5      ; COMMERCIAL         ; PREMIUM_RATE
+EE     ; 122[679]          ; 4      ; COMMERCIAL
+EE     ; 1228              ; 4      ; COMMERCIAL         ; TOLL_FREE
+EE     ; 123               ; 3      ; COMMERCIAL         ; PREMIUM_RATE
+EE     ; 1240              ; 4      ; COMMERCIAL
+EE     ; 1240[04]          ; 5      ; COMMERCIAL         ; PREMIUM_RATE ; true
+EE     ; 1240[1-35-9]      ; 5      ; COMMERCIAL
+EE     ; 1241              ; 4      ; COMMERCIAL         ; PREMIUM_RATE ; true
+EE     ; 124[1-36-9]       ; 5      ; COMMERCIAL
+EE     ; 1242              ; 4      ; COMMERCIAL         ; PREMIUM_RATE
+EE     ; 124[36-9]         ; 4      ; COMMERCIAL
+EE     ; 1244              ; 4      ; COMMERCIAL
+EE     ; 1244[0135-9]      ; 5      ; COMMERCIAL
+EE     ; 1244[24]          ; 5      ; COMMERCIAL         ; PREMIUM_RATE
+EE     ; 1245              ; 4      ; COMMERCIAL
+EE     ; 1245[0-35689]     ; 5      ; COMMERCIAL
+EE     ; 12454             ; 5      ; COMMERCIAL         ; PREMIUM_RATE ; true
+EE     ; 12457             ; 5      ; COMMERCIAL         ;              ; true
+EE     ; 125[0-46-9]       ; 4,5    ; COMMERCIAL
+EE     ; 1255              ; 4      ; COMMERCIAL
+EE     ; 1255[03689]       ; 5      ; COMMERCIAL
+EE     ; 1255[12457]       ; 5      ; COMMERCIAL         ; PREMIUM_RATE
+EE     ; 12[67]            ; 3      ; COMMERCIAL         ; PREMIUM_RATE ; true
+EE     ; 12[89]            ; 3      ; COMMERCIAL
+EE     ; 1300              ; 4      ; COMMERCIAL         ; PREMIUM_RATE
+EE     ; 130[024-9]        ; 5      ; COMMERCIAL
+EE     ; 1301              ; 4      ; COMMERCIAL
+EE     ; 1301[0269]        ; 5      ; COMMERCIAL
+EE     ; 1301[13578]       ; 5      ; COMMERCIAL         ; PREMIUM_RATE ; true
+EE     ; 13014             ; 5      ; COMMERCIAL         ; TOLL_FREE    ; true
+EE     ; 1302              ; 4      ; COMMERCIAL         ; PREMIUM_RATE ; true
+EE     ; 1303              ; 4      ; COMMERCIAL
+EE     ; 1303[0-247-9]     ; 5      ; COMMERCIAL
+EE     ; 13033             ; 5      ; COMMERCIAL         ; PREMIUM_RATE
+EE     ; 1303[56]          ; 5      ; COMMERCIAL         ; PREMIUM_RATE ; true
+EE     ; 130[4-9]          ; 4      ; COMMERCIAL
+EE     ; 13[12]            ; 5      ; COMMERCIAL
+EE     ; 131[02689]        ; 4      ; COMMERCIAL
+EE     ; 1311              ; 4      ; COMMERCIAL         ; PREMIUM_RATE ; true
+EE     ; 131[347]          ; 4      ; COMMERCIAL         ; PREMIUM_RATE
+EE     ; 1315              ; 4      ; COMMERCIAL         ;              ; true
+EE     ; 132[045]          ; 4      ; COMMERCIAL         ; PREMIUM_RATE ; true
+EE     ; 132[16-9]         ; 4      ; COMMERCIAL
+EE     ; 132[23]           ; 4      ; COMMERCIAL         ; PREMIUM_RATE
+EE     ; 133[047]          ; 4      ; COMMERCIAL         ; PREMIUM_RATE
+EE     ; 133[013-79]       ; 5      ; COMMERCIAL
+EE     ; 133[13]           ; 4      ; COMMERCIAL         ; PREMIUM_RATE ; true
+EE     ; 1332              ; 4      ; COMMERCIAL
+EE     ; 1332[02]          ; 5      ; COMMERCIAL         ; PREMIUM_RATE
+EE     ; 13321             ; 5      ; COMMERCIAL         ; TOLL_FREE    ; true
+EE     ; 13323             ; 5      ; COMMERCIAL         ; PREMIUM_RATE ; true
+EE     ; 1332[4-9]         ; 5      ; COMMERCIAL
+EE     ; 1335              ; 4      ; COMMERCIAL         ; TOLL_FREE
+EE     ; 133[69]           ; 4      ; COMMERCIAL
+EE     ; 1338              ; 4      ; COMMERCIAL
+EE     ; 1338[0-79]        ; 5      ; COMMERCIAL
+EE     ; 13388             ; 5      ; COMMERCIAL         ; PREMIUM_RATE
+EE     ; 134[0-26-9]       ; 4      ; COMMERCIAL
+EE     ; 134[0-35-9]       ; 5      ; COMMERCIAL
+EE     ; 1343              ; 4      ; COMMERCIAL         ; PREMIUM_RATE ; true
+EE     ; 1344              ; 4      ; COMMERCIAL
+EE     ; 1344[0-25-9]      ; 5      ; COMMERCIAL
+EE     ; 1344[34]          ; 5      ; COMMERCIAL         ; PREMIUM_RATE
+EE     ; 1345              ; 4      ; COMMERCIAL         ; PREMIUM_RATE
+EE     ; 1350              ; 4      ; COMMERCIAL
+EE     ; 13500             ; 5      ; COMMERCIAL         ;              ; true
+EE     ; 1350[1-9]         ; 5      ; COMMERCIAL
+EE     ; 135[1246-9]       ; 4,5    ; COMMERCIAL
+EE     ; 1353              ; 4      ; COMMERCIAL
+EE     ; 1353[025-9]       ; 5      ; COMMERCIAL
+EE     ; 13531             ; 5      ; COMMERCIAL         ; PREMIUM_RATE
+EE     ; 1353[34]          ; 5      ; COMMERCIAL         ; PREMIUM_RATE ; true
+EE     ; 1355              ; 4      ; COMMERCIAL
+EE     ; 1355[05]          ; 5      ; COMMERCIAL         ; PREMIUM_RATE
+EE     ; 1355[1246-9]      ; 5      ; COMMERCIAL
+EE     ; 13553             ; 5      ; COMMERCIAL         ; PREMIUM_RATE ; true
+EE     ; 136[0-57-9]       ; 4,5    ; COMMERCIAL
+EE     ; 1366              ; 4      ; COMMERCIAL
+EE     ; 13660             ; 5      ; COMMERCIAL         ; TOLL_FREE
+EE     ; 1366[1-57-9]      ; 5      ; COMMERCIAL
+EE     ; 13666             ; 5      ; COMMERCIAL         ; PREMIUM_RATE
+EE     ; 13[7-9]           ; 3      ; COMMERCIAL
+EE     ; 14[05-7]          ; 3      ; COMMERCIAL
+EE     ; 14[138]           ; 4,5    ; COMMERCIAL
+EE     ; 142[0-35-9]       ; 4      ; COMMERCIAL
+EE     ; 14[29]00          ; 5      ; COMMERCIAL         ; PREMIUM_RATE
+EE     ; 14[29]0[1-9]      ; 5      ; COMMERCIAL
+EE     ; 14[29][1-9]       ; 5      ; COMMERCIAL
+EE     ; 1424              ; 4      ; COMMERCIAL         ; PREMIUM_RATE
+EE     ; 1440              ; 4      ; COMMERCIAL
+EE     ; 1440[0135]        ; 5      ; COMMERCIAL         ; PREMIUM_RATE ; true
+EE     ; 1440[24679]       ; 5      ; COMMERCIAL
+EE     ; 14408             ; 5      ; COMMERCIAL         ; PREMIUM_RATE
+EE     ; 1441              ; 4      ; COMMERCIAL
+EE     ; 1441[02]          ; 5      ; COMMERCIAL         ; PREMIUM_RATE
+EE     ; 1441[135-9]       ; 5      ; COMMERCIAL
+EE     ; 14414             ; 5      ; COMMERCIAL         ; PREMIUM_RATE ; true
+EE     ; 144[2-4689]       ; 4      ; COMMERCIAL
+EE     ; 144[2-46-9]       ; 5      ; COMMERCIAL
+EE     ; 1445              ; 4      ; COMMERCIAL
+EE     ; 14450             ; 5      ; COMMERCIAL         ; PREMIUM_RATE ; true
+EE     ; 1445[1-9]         ; 5      ; COMMERCIAL
+EE     ; 1447              ; 4      ; COMMERCIAL         ; PREMIUM_RATE ; true
+EE     ; 149[013-9]        ; 4      ; COMMERCIAL
+EE     ; 1492              ; 4      ; COMMERCIAL         ; TOLL_FREE
+EE     ; 150               ; 5      ; COMMERCIAL
+EE     ; 150[0-3]          ; 4      ; COMMERCIAL         ; PREMIUM_RATE
+EE     ; 150[46-9]         ; 4      ; COMMERCIAL
+EE     ; 15[04]5           ; 4      ; COMMERCIAL         ; PREMIUM_RATE ; true
+EE     ; 151[03]           ; 4      ; COMMERCIAL         ; TOLL_FREE
+EE     ; 151[0-4679]       ; 5      ; COMMERCIAL
+EE     ; 151[12]           ; 4      ; COMMERCIAL         ; PREMIUM_RATE ; true
+EE     ; 151[49]           ; 4      ; COMMERCIAL
+EE     ; 1515              ; 4      ; COMMERCIAL
+EE     ; 1515[0357]        ; 5      ; COMMERCIAL         ; PREMIUM_RATE
+EE     ; 1515[1246]        ; 5      ; COMMERCIAL         ; PREMIUM_RATE ; true
+EE     ; 1515[89]          ; 5      ; COMMERCIAL
+EE     ; 151[67]           ; 4      ; COMMERCIAL         ; PREMIUM_RATE
+EE     ; 1518              ; 4      ; COMMERCIAL
+EE     ; 1518[03-9]        ; 5      ; COMMERCIAL
+EE     ; 15181             ; 5      ; COMMERCIAL         ;              ; true
+EE     ; 15182             ; 5      ; COMMERCIAL         ; PREMIUM_RATE ; true
+EE     ; 152[01]           ; 4      ; COMMERCIAL         ; PREMIUM_RATE ; true
+EE     ; 152[013-9]        ; 5      ; COMMERCIAL
+EE     ; 1522              ; 4      ; COMMERCIAL
+EE     ; 1522[013-9]       ; 5      ; COMMERCIAL
+EE     ; 15222             ; 5      ; COMMERCIAL         ; PREMIUM_RATE ; true
+EE     ; 152[37-9]         ; 4      ; COMMERCIAL
+EE     ; 152[4-6]          ; 4      ; COMMERCIAL         ; PREMIUM_RATE
+EE     ; 1530              ; 4      ; COMMERCIAL
+EE     ; 15300             ; 5      ; COMMERCIAL         ;              ; true
+EE     ; 1530[1-9]         ; 5      ; COMMERCIAL
+EE     ; 153[124-9]        ; 4,5    ; COMMERCIAL
+EE     ; 1533              ; 4      ; COMMERCIAL
+EE     ; 15330             ; 5      ; COMMERCIAL         ; PREMIUM_RATE ; true
+EE     ; 1533[124-9]       ; 5      ; COMMERCIAL
+EE     ; 15333             ; 5      ; COMMERCIAL         ;              ; true
+EE     ; 154[026-9]        ; 4      ; COMMERCIAL
+EE     ; 154[0235-9]       ; 5      ; COMMERCIAL
+EE     ; 1541              ; 4      ; COMMERCIAL
+EE     ; 15410             ; 5      ; COMMERCIAL         ; TOLL_FREE
+EE     ; 1541[1-46-9]      ; 5      ; COMMERCIAL
+EE     ; 15415             ; 5      ; COMMERCIAL         ;              ; true
+EE     ; 1543              ; 4      ; COMMERCIAL         ; PREMIUM_RATE
+EE     ; 1544              ; 4      ; COMMERCIAL
+EE     ; 1544[0-35-9]      ; 5      ; COMMERCIAL
+EE     ; 15444             ; 5      ; COMMERCIAL         ; PREMIUM_RATE
+EE     ; 1550              ; 4      ; COMMERCIAL
+EE     ; 15500             ; 5      ; COMMERCIAL         ; PREMIUM_RATE ; true
+EE     ; 15501             ; 5      ; COMMERCIAL         ; TOLL_FREE
+EE     ; 1550[2-9]         ; 5      ; COMMERCIAL
+EE     ; 155[1-69]         ; 4      ; COMMERCIAL         ; PREMIUM_RATE
+EE     ; 155[1-9]          ; 5      ; COMMERCIAL
+EE     ; 155[78]           ; 4      ; COMMERCIAL
+EE     ; 15[6-8]           ; 3      ; COMMERCIAL
+EE     ; 159[0246]         ; 4      ; COMMERCIAL
+EE     ; 159[0-24-69]      ; 5      ; COMMERCIAL
+EE     ; 159[19]           ; 4      ; COMMERCIAL         ; PREMIUM_RATE
+EE     ; 159[38]           ; 4      ; COMMERCIAL
+EE     ; 15930             ; 5      ; COMMERCIAL         ; PREMIUM_RATE
+EE     ; 159[38][1-9]      ; 5      ; COMMERCIAL
+EE     ; 1595              ; 4      ; COMMERCIAL         ; PREMIUM_RATE ; true
+EE     ; 1597              ; 4      ; COMMERCIAL
+EE     ; 1597[0-689]       ; 5      ; COMMERCIAL
+EE     ; 15977             ; 5      ; COMMERCIAL         ; PREMIUM_RATE ; true
+EE     ; 15980             ; 5      ; COMMERCIAL         ; PREMIUM_RATE ; true
+EE     ; 160               ; 3      ; COMMERCIAL
+EE     ; 1610              ; 4      ; COMMERCIAL
+EE     ; 16100             ; 5      ; COMMERCIAL         ; PREMIUM_RATE
+EE     ; 1610[1-9]         ; 5      ; COMMERCIAL
+EE     ; 1611              ; 4      ; COMMERCIAL
+EE     ; 1611[03-8]        ; 5      ; COMMERCIAL
+EE     ; 1611[19]          ; 5      ; COMMERCIAL         ; PREMIUM_RATE
+EE     ; 16112             ; 5      ; COMMERCIAL         ; TOLL_FREE
+EE     ; 161[24]           ; 4      ; COMMERCIAL
+EE     ; 161[2-9]          ; 5      ; COMMERCIAL
+EE     ; 161[35-8]         ; 4      ; COMMERCIAL         ; PREMIUM_RATE ; true
+EE     ; 1619              ; 4      ; COMMERCIAL         ; PREMIUM_RATE
+EE     ; 162[013-579]      ; 4      ; COMMERCIAL
+EE     ; 162[013-9]        ; 5      ; COMMERCIAL
+EE     ; 1622              ; 4      ; COMMERCIAL
+EE     ; 1622[013-57-9]    ; 5      ; COMMERCIAL
+EE     ; 16222             ; 5      ; COMMERCIAL         ; PREMIUM_RATE
+EE     ; 16226             ; 5      ; COMMERCIAL         ; PREMIUM_RATE ; true
+EE     ; 162[68]           ; 4      ; COMMERCIAL         ; PREMIUM_RATE
+EE     ; 163[01457-9]      ; 4,5    ; COMMERCIAL
+EE     ; 1632              ; 4      ; COMMERCIAL
+EE     ; 1632[013-9]       ; 5      ; COMMERCIAL
+EE     ; 16322             ; 5      ; COMMERCIAL         ; PREMIUM_RATE ; true
+EE     ; 163[36]           ; 4      ; COMMERCIAL
+EE     ; 163[36][0-2457-9] ; 5      ; COMMERCIAL
+EE     ; 16333             ; 5      ; COMMERCIAL         ; TOLL_FREE    ; true
+EE     ; 163[36]6          ; 5      ; COMMERCIAL         ; PREMIUM_RATE ; true
+EE     ; 16363             ; 5      ; COMMERCIAL         ; PREMIUM_RATE
+EE     ; 16[48]            ; 4,5    ; COMMERCIAL
+EE     ; 165               ; 3      ; COMMERCIAL         ; PREMIUM_RATE
+EE     ; 166[0-359]        ; 4      ; COMMERCIAL         ; PREMIUM_RATE
+EE     ; 166[0-357-9]      ; 5      ; COMMERCIAL
+EE     ; 1664              ; 4      ; COMMERCIAL
+EE     ; 1664[0-35-9]      ; 5      ; COMMERCIAL
+EE     ; 16644             ; 5      ; COMMERCIAL         ; TOLL_FREE    ; true
+EE     ; 1666              ; 4      ; COMMERCIAL
+EE     ; 1666[0-26]        ; 5      ; COMMERCIAL         ; PREMIUM_RATE
+EE     ; 1666[3-57-9]      ; 5      ; COMMERCIAL
+EE     ; 166[78]           ; 4      ; COMMERCIAL
+EE     ; 1670              ; 4      ; COMMERCIAL
+EE     ; 16700             ; 5      ; COMMERCIAL         ; PREMIUM_RATE ; true
+EE     ; 1670[1-9]         ; 5      ; COMMERCIAL
+EE     ; 167[1-469]        ; 4      ; COMMERCIAL
+EE     ; 167[1-4679]       ; 5      ; COMMERCIAL
+EE     ; 1675              ; 4      ; COMMERCIAL
+EE     ; 1675[0-46-9]      ; 5      ; COMMERCIAL
+EE     ; 16755             ; 5      ; COMMERCIAL         ; PREMIUM_RATE
+EE     ; 1677              ; 4      ; COMMERCIAL         ; PREMIUM_RATE ; true
+EE     ; 1678              ; 4      ; COMMERCIAL
+EE     ; 1678[0-7]         ; 5      ; COMMERCIAL
+EE     ; 16788             ; 5      ; COMMERCIAL         ; PREMIUM_RATE
+EE     ; 16789             ; 5      ; COMMERCIAL         ; PREMIUM_RATE ; true
+EE     ; 1690              ; 4      ; COMMERCIAL
+EE     ; 16900             ; 5      ; COMMERCIAL         ; PREMIUM_RATE ; true
+EE     ; 1690[1-9]         ; 5      ; COMMERCIAL
+EE     ; 1691              ; 4      ; COMMERCIAL         ; PREMIUM_RATE
+EE     ; 169[1-57-9]       ; 5      ; COMMERCIAL
+EE     ; 169[2-57-9]       ; 4      ; COMMERCIAL
+EE     ; 1696              ; 4      ; COMMERCIAL
+EE     ; 1696[0-8]         ; 5      ; COMMERCIAL
+EE     ; 16969             ; 5      ; COMMERCIAL         ; PREMIUM_RATE ; true
+EE     ; 170[023]          ; 4      ; COMMERCIAL         ; PREMIUM_RATE
+EE     ; 170[02-9]         ; 5      ; COMMERCIAL
+EE     ; 1701              ; 4      ; COMMERCIAL
+EE     ; 1701[07]          ; 5      ; COMMERCIAL         ; PREMIUM_RATE
+EE     ; 1701[13469]       ; 5      ; COMMERCIAL
+EE     ; 17012             ; 5      ; COMMERCIAL         ; TOLL_FREE    ; true
+EE     ; 1701[58]          ; 5      ; COMMERCIAL         ; PREMIUM_RATE ; true
+EE     ; 170[4-9]          ; 4      ; COMMERCIAL
+EE     ; 1710              ; 4      ; COMMERCIAL
+EE     ; 17100             ; 5      ; COMMERCIAL         ; PREMIUM_RATE ; true
+EE     ; 1710[1-9]         ; 5      ; COMMERCIAL
+EE     ; 1711              ; 4      ; COMMERCIAL         ;              ; true
+EE     ; 171[13-9]         ; 5      ; COMMERCIAL
+EE     ; 1712              ; 4      ; COMMERCIAL
+EE     ; 1712[034]         ; 5      ; COMMERCIAL         ; PREMIUM_RATE
+EE     ; 1712[125689]      ; 5      ; COMMERCIAL
+EE     ; 17127             ; 5      ; COMMERCIAL         ; TOLL_FREE
+EE     ; 1713              ; 4      ; COMMERCIAL
+EE     ; 171[46-9]         ; 4      ; COMMERCIAL         ; PREMIUM_RATE
+EE     ; 1715              ; 4      ; COMMERCIAL         ; PREMIUM_RATE ; true
+EE     ; 1720              ; 4      ; COMMERCIAL         ; PREMIUM_RATE
+EE     ; 172[0135-9]       ; 5      ; COMMERCIAL
+EE     ; 172[135689]       ; 4      ; COMMERCIAL
+EE     ; 1722              ; 4      ; COMMERCIAL
+EE     ; 17220             ; 5      ; COMMERCIAL         ; PREMIUM_RATE
+EE     ; 1722[1-9]         ; 5      ; COMMERCIAL
+EE     ; 1724              ; 4      ; COMMERCIAL
+EE     ; 1724[0-35-9]      ; 5      ; COMMERCIAL
+EE     ; 17244             ; 5      ; COMMERCIAL         ; PREMIUM_RATE ; true
+EE     ; 1727              ; 4      ; COMMERCIAL         ; PREMIUM_RATE ; true
+EE     ; 17[3-6]           ; 3      ; COMMERCIAL
+EE     ; 177[0-57]         ; 4      ; COMMERCIAL         ; PREMIUM_RATE
+EE     ; 177[0-8]          ; 5      ; COMMERCIAL
+EE     ; 177[68]           ; 4      ; COMMERCIAL
+EE     ; 1779              ; 4      ; COMMERCIAL
+EE     ; 1779[0-68]        ; 5      ; COMMERCIAL
+EE     ; 1779[79]          ; 5      ; COMMERCIAL         ; PREMIUM_RATE
+EE     ; 1780              ; 4      ; COMMERCIAL
+EE     ; 17800             ; 5      ; COMMERCIAL         ; PREMIUM_RATE ; true
+EE     ; 1780[1-79]        ; 5      ; COMMERCIAL
+EE     ; 17808             ; 5      ; COMMERCIAL         ; PREMIUM_RATE
+EE     ; 178[13-7]         ; 4      ; COMMERCIAL
+EE     ; 178[1-79]         ; 5      ; COMMERCIAL
+EE     ; 1782              ; 4      ; COMMERCIAL         ; PREMIUM_RATE
+EE     ; 1788              ; 4      ; COMMERCIAL
+EE     ; 1788[018]         ; 5      ; COMMERCIAL         ; PREMIUM_RATE
+EE     ; 1788[2-69]        ; 5      ; COMMERCIAL
+EE     ; 17887             ; 5      ; COMMERCIAL         ; PREMIUM_RATE ; true
+EE     ; 1789              ; 4      ; COMMERCIAL         ; TOLL_FREE    ; true
+EE     ; 1790              ; 4      ; COMMERCIAL
+EE     ; 17900             ; 5      ; COMMERCIAL         ; PREMIUM_RATE
+EE     ; 1790[1-9]         ; 5      ; COMMERCIAL
+EE     ; 179[1-8]          ; 4,5    ; COMMERCIAL
+EE     ; 1799              ; 4      ; COMMERCIAL
+EE     ; 1799[0-689]       ; 5      ; COMMERCIAL
+EE     ; 17997             ; 5      ; COMMERCIAL         ; PREMIUM_RATE
+EE     ; 18[02-7]          ; 3      ; COMMERCIAL
+EE     ; 18[18]            ; 5      ; COMMERCIAL
+EE     ; 1810              ; 4      ; COMMERCIAL         ; TOLL_FREE
+EE     ; 181[12]           ; 4      ; COMMERCIAL         ; PREMIUM_RATE ; true
+EE     ; 181[3-69]         ; 4      ; COMMERCIAL
+EE     ; 1817              ; 4      ; COMMERCIAL         ; PREMIUM_RATE
+EE     ; 1818              ; 4      ; COMMERCIAL         ;              ; true
+EE     ; 188[0349]         ; 4      ; COMMERCIAL
+EE     ; 188[128]          ; 4      ; COMMERCIAL         ; PREMIUM_RATE
+EE     ; 1885              ; 4      ; COMMERCIAL         ; TOLL_FREE    ; true
+EE     ; 1886              ; 4      ; COMMERCIAL         ; PREMIUM_RATE ; true
+EE     ; 1887              ; 4      ; COMMERCIAL         ; TOLL_FREE
+EE     ; 189[013-58]       ; 4      ; COMMERCIAL
+EE     ; 189[0-689]        ; 5      ; COMMERCIAL
+EE     ; 189[26]           ; 4      ; COMMERCIAL         ; PREMIUM_RATE ; true
+EE     ; 1897              ; 4      ; COMMERCIAL
+EE     ; 1897[0-689]       ; 5      ; COMMERCIAL
+EE     ; 18977             ; 5      ; COMMERCIAL         ;              ; true
+EE     ; 1899              ; 4      ; COMMERCIAL         ; PREMIUM_RATE
+EE     ; 1900              ; 4      ; COMMERCIAL         ; PREMIUM_RATE
+EE     ; 190[0-578]        ; 5      ; COMMERCIAL
+EE     ; 190[134]          ; 4      ; COMMERCIAL         ; TOLL_FREE
+EE     ; 1902              ; 4      ; COMMERCIAL         ; PREMIUM_RATE ; true
+EE     ; 190[578]          ; 4      ; COMMERCIAL
+EE     ; 1906              ; 4      ; COMMERCIAL
+EE     ; 1906[0-8]         ; 5      ; COMMERCIAL
+EE     ; 19069             ; 5      ; COMMERCIAL         ; PREMIUM_RATE ; true
+EE     ; 1909              ; 4      ; COMMERCIAL
+EE     ; 1909[069]         ; 5      ; COMMERCIAL         ; PREMIUM_RATE
+EE     ; 1909[13-578]      ; 5      ; COMMERCIAL
+EE     ; 19092             ; 5      ; COMMERCIAL         ; PREMIUM_RATE ; true
+EE     ; 19[12]            ; 5      ; COMMERCIAL
+EE     ; 191[057]          ; 4      ; COMMERCIAL
+EE     ; 191[1-3689]       ; 4      ; COMMERCIAL         ; PREMIUM_RATE
+EE     ; 1914              ; 4      ; COMMERCIAL         ; TOLL_FREE
+EE     ; 192[02-9]         ; 4      ; COMMERCIAL
+EE     ; 1921              ; 4      ; COMMERCIAL         ; PREMIUM_RATE
+EE     ; 19[3-9]           ; 3      ; COMMERCIAL

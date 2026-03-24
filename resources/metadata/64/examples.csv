@@ -1,0 +1,7 @@
+Region ; Type            ; Number
+NZ     ; FIXED_LINE      ; "32345678"
+NZ     ; MOBILE          ; "211234567"
+NZ     ; TOLL_FREE       ; "800123456"
+NZ     ; PREMIUM_RATE    ; "900123456"
+NZ     ; PERSONAL_NUMBER ; "701234567"
+NZ     ; UAN             ; "83012378"

@@ -120,16 +120,39 @@
 447340|Vodafone
 447341|Vodafone
 447342|Vodafone
+447343|Lebara
+447349|Vodafone
+447350|Vodafone
+447351|Vodafone
+447352|Vodafone
+447353|Vodafone
+4473561|Gamma Telecom
+4473563|Gamma Telecom
+4473566|Wireless Logic
+4473568|TATA Communications
+447360|Three
+447361|Three
+447362|Three
+447363|Three
+447364|Three
 447365|Three
 447366|Three
 447367|Three
-4473680|Teleena
+4473680|TATA Communications
 4473682|Sky
 4473683|Sky
 4473684|Sky
 4473685|Sky
 4473686|Sky
-4473699|Anywhere Sim
+4473690|Telet Research
+4473691|Telet Research
+4473692|Sky
+4473697|Wave Mobile
+4473699|Gamma Telecom
+447370|Vodafone
+447371|Vodafone
+447372|Vodafone
+447373|Vodafone
 447375|EE
 447376|EE
 447377|EE
@@ -152,9 +175,10 @@
 4473893|TalkTalk
 4473894|TalkTalk
 4473895|TalkTalk
-4473896|Hanhaa
+4473896|Gamma Telecom
 4473897|Vodafone
 4473898|Vodafone
+4473899|Wireless Logic
 4473900|Home Office
 447391|Vodafone
 447392|Vodafone
@@ -183,7 +207,7 @@
 4474061|Cheers
 4474062|Cheers
 4474065|Telecom2
-4474066|24 Seven
+4474066|Sure
 4474067|TGL
 4474068|08Direct
 4474069|CardBoardFish
@@ -191,6 +215,7 @@
 4474080|Truphone
 4474081|Truphone
 4474082|Truphone
+4474086|Truphone
 4474088|Truphone
 4474089|Truphone
 447409|Orange
@@ -215,8 +240,8 @@
 4474184|Manx Telecom
 4474185|Telna
 4474186|Ace Call
-4474187|Teleena
-4474189|Teleena
+4474187|TATA Communications
+4474189|TATA Communications
 447419|Orange
 447420|Orange
 447421|Orange
@@ -252,7 +277,7 @@
 4474416|Vodafone
 4474417|Synectiv
 4474418|Core Telecom
-4474419|Voxbone
+4474419|Gamma Telecom
 447442|Vodafone
 447443|Vodafone
 447444|Vodafone
@@ -287,7 +312,7 @@
 4474579|CardBoardFish
 4474580|Gamma Telecom
 4474581|Gamma Telecom
-4474582|Premium Routing
+4474582|Lancelot Telecom
 4474583|Virgin Mobile
 4474584|Airwave
 4474585|Marathon Telecom
@@ -329,7 +354,7 @@
 4474885|Three
 4474886|Lanonyx
 4474887|Three
-4474888|Ziron
+4474888|Gamma Telecom
 4474889|Three
 447489|O2
 447490|Three
@@ -421,7 +446,7 @@
 4475596|Lleida.net
 4475597|Core Telecom
 4475598|Nodemax
-4475599|Resilient
+4475599|Gamma Telecom
 44756|O2
 447570|Vodafone
 4475710|09 Mobile
@@ -459,7 +484,7 @@
 44762456|Sure
 44770|O2
 4477000|Cloud9
-4477001|Nationwide Telephone
+4477001|Gamma Telecom
 4477003|Sure
 4477007|Sure
 4477008|Sure
@@ -657,7 +682,7 @@
 4478928|O2
 4478929|O2
 4478930|Magrathea
-4478931|24 Seven
+4478931|Sure
 4478932|O2
 4478933|Yim Siam
 4478934|O2
@@ -665,7 +690,7 @@
 4478936|O2
 4478937|O2
 4478938|aql
-4478939|Citrus
+4478939|Gamma Telecom
 447894|O2
 447895|O2
 447896|Orange
@@ -685,9 +710,9 @@
 447910|EE
 4479110|Marathon Telecom
 4479111|JT
-4479112|24 Seven
+4479112|Sure
 4479117|JT
-4479118|24 Seven
+4479118|Sure
 447912|O2
 447913|EE
 447914|EE

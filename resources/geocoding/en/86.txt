@@ -89249,6 +89249,22 @@
 861769513|Wuzhong, Ningxia
 861769514|Guyuan, Ningxia
 861769515|Zhongwei, Ningxia
+861769530|Wuzhong, Ningxia
+861769531|Wuzhong, Ningxia
+861769532|Shizuishan, Ningxia
+861769533|Wuzhong, Ningxia
+861769534|Wuzhong, Ningxia
+861769535|Zhongwei, Ningxia
+861769536|Yinchuan, Ningxia
+861769537|Yinchuan, Ningxia
+861769538|Yinchuan, Ningxia
+861769539|Yinchuan, Ningxia
+86176954|Tianjin
+86176955|Tianjin
+86176956|Tianjin
+86176957|Tianjin
+86176958|Tianjin
+86176959|Tianjin
 86176960|Taiyuan, Shanxi
 861769610|Taiyuan, Shanxi
 861769611|Taiyuan, Shanxi

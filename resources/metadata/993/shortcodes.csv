@@ -1,0 +1,4 @@
+Region ; Prefix ; Length ; Type       ; Tariff    ; Provenance ; Comment
+TM     ; 0[1-3] ; 2      ; EMERGENCY  ; TOLL_FREE
+TM     ; 04     ; 2      ; COMMERCIAL ; TOLL_FREE ; WEB        ; "Natural Gas Hotline"
+TM     ; 09     ; 2      ; COMMERCIAL ; TOLL_FREE ; WEB        ; "Telephone Directory Services"

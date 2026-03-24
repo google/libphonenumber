@@ -1,0 +1,22 @@
+Region ; Prefix    ; Length ; Type               ; Tariff        ; Carrier Specific
+SA     ; 1100      ; 4      ; COMMERCIAL         ;               ; true
+SA     ; 112       ; 3      ; EMERGENCY          ; TOLL_FREE
+SA     ; 116111    ; 6      ; COMMERCIAL         ; TOLL_FREE
+SA     ; 1410      ; 4      ; COMMERCIAL         ; STANDARD_RATE ; true
+SA     ; 1900      ; 4      ; COMMERCIAL
+SA     ; 191[89]   ; 4      ; COMMERCIAL
+SA     ; 199099    ; 6      ; COMMERCIAL
+SA     ; 19922     ; 5      ; COMMERCIAL
+SA     ; 1999[0-3] ; 5      ; COMMERCIAL
+SA     ; 90[24679] ; 3      ; COMMERCIAL         ;               ; true
+SA     ; 905       ; 3      ; COMMERCIAL
+SA     ; 911       ; 3      ; EMERGENCY          ; TOLL_FREE
+SA     ; 93[39]    ; 3      ; COMMERCIAL
+SA     ; 937       ; 3      ; EXPANDED_EMERGENCY ; TOLL_FREE
+SA     ; 940       ; 3      ; COMMERCIAL
+SA     ; 9[69]6    ; 3      ; EXPANDED_EMERGENCY
+SA     ; 98[5689]  ; 3      ; COMMERCIAL
+SA     ; 987       ; 3      ; EXPANDED_EMERGENCY
+SA     ; 99[02-5]  ; 3      ; COMMERCIAL
+SA     ; 99[79]    ; 3      ; EMERGENCY          ; TOLL_FREE
+SA     ; 998       ; 3      ; EXPANDED_EMERGENCY ; TOLL_FREE

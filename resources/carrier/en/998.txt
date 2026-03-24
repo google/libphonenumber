@@ -12,8 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-9983|Uzbektelecom
-998555|Uzbektelecom
+9982|Beeline
+9983|HUMANS
+99850|Ucell
 99861220|MobiUZ
 99861221|MobiUZ
 9986129|MobiUZ
@@ -94,14 +95,6 @@
 99867790|MobiUZ
 99867797|MobiUZ
 998679|MobiUZ
-9986921|MobiUZ
-9986923|MobiUZ
-9986925|MobiUZ
-9986927|MobiUZ
-998695|MobiUZ
-9986962|MobiUZ
-9986968|MobiUZ
-998697|MobiUZ
 99870|MobiUZ
 99872227|MobiUZ
 99872229|MobiUZ
@@ -194,17 +187,6 @@
 99875528|MobiUZ
 99875529|MobiUZ
 998757|MobiUZ
-99876221|MobiUZ
-99876222|MobiUZ
-99876224|MobiUZ
-99876225|MobiUZ
-9987624|MobiUZ
-9987639|MobiUZ
-99876411|MobiUZ
-99876417|MobiUZ
-99876419|MobiUZ
-998765|MobiUZ
-998767|MobiUZ
 99877|Uzbektelecom
 99879221|MobiUZ
 99879222|MobiUZ
@@ -216,10 +198,12 @@
 99879576|MobiUZ
 99879579|MobiUZ
 998797|MobiUZ
-9988|MobiUZ
+99880|Perfectum
+99887|MobiUZ
+99888|MobiUZ
 99890|Beeline
 99891|Beeline
-99892|MobiUZ
+99892|Beeline
 99893|Ucell
 99894|Ucell
 99895|Uzbektelecom

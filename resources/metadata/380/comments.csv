@@ -1,0 +1,10 @@
+Region ; Label            ; Comment
+UA     ; SC               ; "http://www.itu.int/oth/T02020000DB/en"
+UA     ; SC               ; "http://en.wikipedia.org/wiki/%2B380"
+UA     ; XML              ; "http://www.itu.int/oth/T02020000DB/en"
+UA     ; XML              ; "http://en.wikipedia.org/wiki/%2B380"
+UA     ; XML              ; "No definitive list has been found of what constitutes the area code for formatting.\nhttp://www.ua.all-biz.info/guide/phonecodes is useful but not error-free.\nHave used local yellow pages guidelines, Google searches, regression tests\nand bugs to reverse-engineer the formatting rules."
+UA     ; XML_FIXED_LINE   ; "Official numbering plan https://regulation.gov.ua/documents/id89506 (Dated: 23.11.2006)\nmentions that xx[018] (xx represents valid area code) fixed-line numbers as invalid and\nwe are also unable to find valid numbers online. This doc is already outdated and\ncontradicted (Eg: length of NSN) by some more recent evidence. Considering the impact\nwe choose not to mark those ranges as invalid."
+UA     ; XML_MOBILE       ; "Added 71 prefix based on user report and 72 based on online numbers. "
+UA     ; XML_PREMIUM_RATE ; "4th digit added based on\nhttp://www.mts.ua/ru/support/services/200-tarify-na-nomera-0-800-0-900-0-703/"
+UA     ; XML_VOIP         ; "89[1-579] ranges are mentioned as ""Non-geographic number – mobile services assigned"" in\nthe ITU doc. All the 89X phone numbers found online are listed as conference calls and\nskype calls which are actually VOIP. And also the companies to which these ranges are\nassigned (as per ITU doc) are more of VOIP service providers. So supporting them under\nVOIP."

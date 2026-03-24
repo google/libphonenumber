@@ -1,0 +1,6 @@
+Region ; Type         ; Number
+GY     ; FIXED_LINE   ; "2201234"
+GY     ; MOBILE       ; "6091234"
+GY     ; TOLL_FREE    ; "2891234"
+GY     ; PREMIUM_RATE ; "9008123"
+GY     ; VOIP         ; "5151234"

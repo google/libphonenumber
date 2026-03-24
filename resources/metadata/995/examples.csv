@@ -1,0 +1,5 @@
+Region ; Type       ; Number
+GE     ; FIXED_LINE ; "322123456"
+GE     ; MOBILE     ; "555123456"
+GE     ; TOLL_FREE  ; "800123456"
+GE     ; VOIP       ; "706123456"

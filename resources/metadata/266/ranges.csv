@@ -1,0 +1,7 @@
+Prefix   ; Length ; Type       ; Tariff        ; Operator  ; Format     ; Regions ; Geocode:en ; Provenance ; Comment
+2[013-9] ; 8      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_4/4" ; "LS"    ;            ; ITU
+22       ; 8      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_4/4" ; "LS"    ; "Maseru"   ; ITU
+5        ; 8      ; MOBILE     ; STANDARD_RATE ; "vodacom" ; "fmt1_4/4" ; "LS"    ;            ; IR21
+6        ; 8      ; MOBILE     ; STANDARD_RATE ; "econet"  ; "fmt1_4/4" ; "LS"    ;            ; ITU
+8001     ; 8      ; FIXED_LINE ; TOLL_FREE     ;           ; "fmt1_4/4" ; "LS"    ;            ;            ; "User report"
+800[256] ; 8      ; FIXED_LINE ; TOLL_FREE     ;           ; "fmt1_4/4" ; "LS"    ;            ; ITU

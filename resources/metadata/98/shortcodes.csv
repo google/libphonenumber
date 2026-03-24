@@ -1,0 +1,38 @@
+Region ; Prefix     ; Length ; Type               ; Tariff        ; Sms  ; Carrier Specific
+IR     ; 11[025]    ; 3      ; EMERGENCY          ; TOLL_FREE
+IR     ; 11[1348]   ; 3      ; COMMERCIAL         ; TOLL_FREE
+IR     ; 116        ; 3      ; EXPANDED_EMERGENCY ; TOLL_FREE
+IR     ; 12[0-3]    ; 3      ; EXPANDED_EMERGENCY ; TOLL_FREE
+IR     ; 12[49]     ; 3      ; COMMERCIAL         ; TOLL_FREE
+IR     ; 125        ; 3      ; EMERGENCY          ; TOLL_FREE
+IR     ; 13[346-8]  ; 3      ; COMMERCIAL
+IR     ; 14[014]    ; 3      ; COMMERCIAL
+IR     ; 14[289]0   ; 4      ; COMMERCIAL
+IR     ; 147        ; 3      ; EXPANDED_EMERGENCY
+IR     ; 150[14]    ; 4      ; COMMERCIAL         ; STANDARD_RATE ;      ; true
+IR     ; 151[02479] ; 4      ; COMMERCIAL         ; STANDARD_RATE ;      ; true
+IR     ; 152[0-3]   ; 4      ; COMMERCIAL         ; STANDARD_RATE ;      ; true
+IR     ; 1539       ; 4      ; COMMERCIAL         ; STANDARD_RATE ;      ; true
+IR     ; 15[49]0    ; 4      ; COMMERCIAL         ; STANDARD_RATE ;      ; true
+IR     ; 1565       ; 4      ; COMMERCIAL         ; STANDARD_RATE ;      ; true
+IR     ; 16[16]6    ; 4      ; COMMERCIAL
+IR     ; 16[27]     ; 3      ; COMMERCIAL
+IR     ; 1690       ; 4      ; COMMERCIAL
+IR     ; 1803       ; 4      ; COMMERCIAL         ; STANDARD_RATE ;      ; true
+IR     ; 181[18]    ; 4      ; COMMERCIAL         ; STANDARD_RATE ;      ; true
+IR     ; 1822       ; 4      ; COMMERCIAL         ; STANDARD_RATE ;      ; true
+IR     ; 183[37]    ; 4      ; COMMERCIAL         ; STANDARD_RATE ;      ; true
+IR     ; 184[28]    ; 4      ; COMMERCIAL         ; STANDARD_RATE ;      ; true
+IR     ; 1888       ; 4      ; COMMERCIAL         ; STANDARD_RATE ;      ; true
+IR     ; 1899       ; 4      ; COMMERCIAL         ; STANDARD_RATE ;      ; true
+IR     ; 19[0-3579] ; 3      ; COMMERCIAL         ; TOLL_FREE
+IR     ; 194        ; 3      ; EXPANDED_EMERGENCY ; TOLL_FREE
+IR     ; 20[09]0    ; 4      ; COMMERCIAL
+IR     ; 201[038]   ; 4      ; COMMERCIAL
+IR     ; 2011[079]  ; 5      ; COMMERCIAL
+IR     ; 20126      ; 5      ; COMMERCIAL
+IR     ; 2019[69]   ; 5      ; COMMERCIAL
+IR     ; 202[01]    ; 4      ; COMMERCIAL
+IR     ; 911        ; 3      ; EMERGENCY          ; TOLL_FREE
+IR     ; 990009     ; 6      ; COMMERCIAL         ;               ; true ; true
+IR     ; 9990       ; 4      ; COMMERCIAL         ;               ;      ; true

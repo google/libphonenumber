@@ -21,6 +21,7 @@
 #include <string>
 
 #include <unicode/locid.h>  // NOLINT(build/include_order)
+#include "absl/synchronization/mutex.h"
 
 #include "phonenumbers/base/basictypes.h"
 #include "phonenumbers/base/memory/scoped_ptr.h"
@@ -59,6 +60,11 @@ class PhoneNumberOfflineGeocoder {
       const char** prefix_language_code_pairs,
       int prefix_language_code_pairs_size,
       prefix_descriptions_getter get_prefix_descriptions);
+
+  // This type is neither copyable nor movable.
+  PhoneNumberOfflineGeocoder(const PhoneNumberOfflineGeocoder&) = delete;
+  PhoneNumberOfflineGeocoder& operator=(const PhoneNumberOfflineGeocoder&) =
+      delete;
 
   virtual ~PhoneNumberOfflineGeocoder();
 
@@ -115,11 +121,12 @@ class PhoneNumberOfflineGeocoder {
             int prefix_language_code_pairs_size,
             prefix_descriptions_getter get_prefix_descriptions);
 
-  const AreaCodeMap* GetPhonePrefixDescriptions(int prefix,
-      const string& language, const string& script, const string& region) const;
+  const AreaCodeMap* LoadAreaCodeMapFromFile(
+      const string& filename) const ABSL_EXCLUSIVE_LOCKS_REQUIRED(mu_);
 
-  AreaCodeMaps::const_iterator LoadAreaCodeMapFromFile(
-      const string& filename) const;
+  const AreaCodeMap* GetPhonePrefixDescriptions(
+      int prefix, const string& language, const string& script,
+      const string& region) const ABSL_EXCLUSIVE_LOCKS_REQUIRED(mu_);
 
   // Returns the customary display name in the given language for the given
   // region.
@@ -143,7 +150,7 @@ class PhoneNumberOfflineGeocoder {
   // 3166-1.
   const char* GetAreaDescription(const PhoneNumber& number, const string& lang,
                                  const string& script,
-                                 const string& region) const;
+                                 const string& region) const ABSL_LOCKS_EXCLUDED(mu_);
 
   bool MayFallBackToEnglish(const string& lang) const;
 
@@ -160,9 +167,8 @@ class PhoneNumberOfflineGeocoder {
 
   // A mapping from country calling codes languages pairs to the corresponding
   // phone prefix map that has been loaded.
-  mutable AreaCodeMaps available_maps_;
-
-  DISALLOW_COPY_AND_ASSIGN(PhoneNumberOfflineGeocoder);
+  mutable absl::Mutex mu_;
+  mutable AreaCodeMaps available_maps_ ABSL_GUARDED_BY(mu_);
 };
 
 }  // namespace phonenumbers

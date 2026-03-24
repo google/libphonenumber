@@ -1,0 +1,3 @@
+Id        ; National         ; International  ; Local      ; National Prefix Optional ; Comment
+fmt_3/3/4 ; "(XXX) XXX-XXXX" ; "XXX-XXX-XXXX" ; "XXX-XXXX" ; true                     ; "A different pattern is used when formatting internationally, as the area code is no\nlonger optional and should not be in brackets."
+fmt_3/4   ; "XXX-XXXX"       ; "XXX-XXXX"     ;            ; true                     ; "310-xxxx (7 digit) UAN numbers ."

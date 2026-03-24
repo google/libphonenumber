@@ -1,0 +1,18 @@
+Region ; Prefix    ; Length ; Type               ; Tariff
+SI     ; 1100[146] ; 5      ; EXPANDED_EMERGENCY ; TOLL_FREE
+SI     ; 11[23]    ; 3      ; EMERGENCY          ; TOLL_FREE
+SI     ; 116000    ; 6      ; EXPANDED_EMERGENCY ; TOLL_FREE
+SI     ; 116111    ; 6      ; EXPANDED_EMERGENCY ; TOLL_FREE
+SI     ; 116123    ; 6      ; EXPANDED_EMERGENCY ; TOLL_FREE
+SI     ; 118[08]   ; 4      ; EXPANDED_EMERGENCY ; TOLL_FREE
+SI     ; 11899     ; 5      ; EXPANDED_EMERGENCY ; TOLL_FREE
+SI     ; 19059     ; 5      ; COMMERCIAL
+SI     ; 1908[09]  ; 5      ; COMMERCIAL
+SI     ; 1910[12]  ; 5      ; COMMERCIAL
+SI     ; 19116     ; 5      ; COMMERCIAL
+SI     ; 195       ; 3      ; COMMERCIAL
+SI     ; 1970      ; 4      ; COMMERCIAL
+SI     ; 1981[09]  ; 5      ; COMMERCIAL
+SI     ; 1987      ; 4      ; COMMERCIAL
+SI     ; 19900     ; 5      ; COMMERCIAL
+SI     ; 199[149]  ; 4      ; COMMERCIAL

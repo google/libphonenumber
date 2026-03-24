@@ -1,0 +1,8 @@
+Region ; Type            ; Number
+HK     ; FIXED_LINE      ; "21234567"
+HK     ; MOBILE          ; "51234567"
+HK     ; PAGER           ; "71123456"
+HK     ; TOLL_FREE       ; "800123456"
+HK     ; PREMIUM_RATE    ; "90012345678"
+HK     ; PERSONAL_NUMBER ; "81123456"
+HK     ; UAN             ; "30161234"

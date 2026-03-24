@@ -1,0 +1,5 @@
+Id           ; National       ; International ; Comment
+fixed_1/7    ; "(#X) XXXXXXX" ; "X XXXXXXX"
+fixed_2/6    ; "(#XX) XXXXXX" ; "XX XXXXXX"
+fixed_3/5    ; "(#XXX) XXXXX" ; "XXX XXXXX"
+mobile_3/3/3 ; "XXX XXX XXX"  ; "XXX XXX XXX" ; "Formatting from common usage found on the internet, supported by ITU doc."

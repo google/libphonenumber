@@ -1,0 +1,5 @@
+Region ; Type       ; Number
+MM     ; FIXED_LINE ; "1234567"
+MM     ; MOBILE     ; "92123456"
+MM     ; TOLL_FREE  ; "8008001234"
+MM     ; VOIP       ; "13331234"

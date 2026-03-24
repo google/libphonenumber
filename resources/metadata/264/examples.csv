@@ -1,0 +1,6 @@
+Region ; Type         ; Number
+NA     ; FIXED_LINE   ; "61221234"
+NA     ; MOBILE       ; "811234567"
+NA     ; TOLL_FREE    ; "800123456"
+NA     ; PREMIUM_RATE ; "870123456"
+NA     ; VOIP         ; "88612345"

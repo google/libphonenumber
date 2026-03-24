@@ -1,0 +1,4 @@
+Region ; Label      ; Comment
+MM     ; SC         ; "http://www.itu.int/oth/T0202000092/en"
+MM     ; XML        ; "http://www.itu.int/oth/T0202000092/en"
+MM     ; XML_MOBILE ; "Added 99[089] (8 digits), 961 (9 digits), 996 and 997 (10 digits) from bug\nreports/numbers found online."

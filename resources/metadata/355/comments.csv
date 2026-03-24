@@ -1,0 +1,8 @@
+Region ; Label                 ; Comment
+AL     ; SC                    ; "http://www.itu.int/oth/T0202000002/en"
+AL     ; SC_CARRIER_SPECIFIC   ; "123 is a ALBtelecom customer service number."
+AL     ; SC_EXPANDED_EMERGENCY ; "According to http://www.itu.int/net/itu-t/inrdb/e129_important_numbers.aspx this is for\nsea emergencies and 126 for traffic emergencies."
+AL     ; SC_TOLL_FREE          ; "All 116XXX, ""European harmonized services of social"" value are toll-free.\nSee: https://ec.europa.eu/digital-single-market/116-helplines."
+AL     ; XML                   ; "http://www.itu.int/oth/T0202000002/en"
+AL     ; XML_MOBILE            ; "More specific prefixes from the 1.NumraAlokuar.rar file linked from the ITU doc.\nThough 677 is mentioned as unallocated in\nhttp://akep.al/images/stories/AKEP/plani-numracionit/1.NumraAlokuar.rar,\nadding support for 67[7-9] based on carrier doc."
+AL     ; XML_PREMIUM_RATE      ; "It is named ""Shared Revenue Services"" in the plan, but as there is a separate ""Shared\nCost Services"", it is highly likely these numbers are premium rate numbers. No\ninformation/example is found in the Internet."

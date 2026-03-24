@@ -1,0 +1,16 @@
+Region ; Prefix    ; Length ; Type       ; Tariff
+BL     ; 118[02-9] ; 6      ; COMMERCIAL
+BL     ; 18        ; 2      ; EMERGENCY  ; TOLL_FREE
+BL     ; 300[0-79] ; 4      ; COMMERCIAL ; TOLL_FREE
+BL     ; 31[0-689] ; 4      ; COMMERCIAL ; TOLL_FREE
+BL     ; 3[2469]   ; 4      ; COMMERCIAL ; PREMIUM_RATE
+GP     ; 118[02-9] ; 6      ; COMMERCIAL
+GP     ; 1[578]    ; 2      ; EMERGENCY  ; TOLL_FREE
+GP     ; 300[0-79] ; 4      ; COMMERCIAL ; TOLL_FREE
+GP     ; 31[0-689] ; 4      ; COMMERCIAL ; TOLL_FREE
+GP     ; 3[2469]   ; 4      ; COMMERCIAL ; PREMIUM_RATE
+MF     ; 118[02-9] ; 6      ; COMMERCIAL
+MF     ; 1[578]    ; 2      ; EMERGENCY  ; TOLL_FREE
+MF     ; 300[0-79] ; 4      ; COMMERCIAL ; TOLL_FREE
+MF     ; 31[0-689] ; 4      ; COMMERCIAL ; TOLL_FREE
+MF     ; 3[2469]   ; 4      ; COMMERCIAL ; PREMIUM_RATE

@@ -828,22 +828,6 @@ public final class Phonemetadata {
       return this;
     }
 
-    // optional bool leading_zero_possible = 26 [default = false];
-    private boolean hasLeadingZeroPossible;
-    private boolean leadingZeroPossible_ = false;
-    public boolean hasLeadingZeroPossible() { return hasLeadingZeroPossible; }
-    public boolean isLeadingZeroPossible() { return leadingZeroPossible_; }
-    public PhoneMetadata setLeadingZeroPossible(boolean value) {
-      hasLeadingZeroPossible = true;
-      leadingZeroPossible_ = value;
-      return this;
-    }
-    public PhoneMetadata clearLeadingZeroPossible() {
-      hasLeadingZeroPossible = false;
-      leadingZeroPossible_ = false;
-      return this;
-    }
-
     // optional bool mobile_number_portable_region = 32 [default = false];
     private boolean hasMobileNumberPortableRegion;
     private boolean mobileNumberPortableRegion_ = false;
@@ -981,8 +965,6 @@ public final class Phonemetadata {
       if (hasLeadingDigits) {
         objectOutput.writeUTF(leadingDigits_);
       }
-
-      objectOutput.writeBoolean(leadingZeroPossible_);
 
       objectOutput.writeBoolean(mobileNumberPortableRegion_);
     }
@@ -1142,8 +1124,6 @@ public final class Phonemetadata {
       if (hasString) {
         setLeadingDigits(objectInput.readUTF());
       }
-
-      setLeadingZeroPossible(objectInput.readBoolean());
 
       setMobileNumberPortableRegion(objectInput.readBoolean());
     }

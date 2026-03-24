@@ -1,0 +1,3 @@
+Region ; Prefix  ; Length ; Type      ; Tariff
+ZM     ; 112     ; 3      ; EMERGENCY ; TOLL_FREE
+ZM     ; 99[139] ; 3      ; EMERGENCY ; TOLL_FREE

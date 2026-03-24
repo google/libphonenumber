@@ -1,0 +1,11 @@
+Region ; Label               ; Comment
+CM     ; SC                  ; "http://www.itu.int/oth/T0202000024/en"
+CM     ; SC_CARRIER_SPECIFIC ; "https://support.twitter.com/articles/20170024"
+CM     ; SC_EMERGENCY        ; "http://www.diplomatie.gouv.fr/fr/conseils-aux-voyageurs_909/conseils-par-pays_12191/cameroun_12221/index.html"
+CM     ; SC_EMERGENCY        ; "Numbers must be prefixed with a 1 when dialled from a mobile."
+CM     ; SC_SMS_SERVICES     ; "https://support.twitter.com/articles/20170024"
+CM     ; XML                 ; "http://www.itu.int/oth/T0202000024/en"
+CM     ; XML                 ; "http://www.itu.int/dms_pub/itu-t/opb/sp/T-SP-OB.1063-2014-OAS-PDF-E.pdf"
+CM     ; XML_FIXED_LINE      ; "CDMA numbers are described in a subcategory to fixed line numbers in the ITU update\ndocument, so those prefixes are added to fixed line (24[23])."
+CM     ; XML_MOBILE          ; "68 was added based on info found online."
+CM     ; XML_TOLL_FREE       ; "Numbers starting with 8 are listed as value-added in the ITU doc, but only numbers\nstarting with 88 have been found online. These are all listed as being ""numéro vert"",\n""ligne verte"" or ""gratuit"" (free)."

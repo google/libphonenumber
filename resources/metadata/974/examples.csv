@@ -1,0 +1,5 @@
+Region ; Type       ; Number
+QA     ; FIXED_LINE ; "44123456"
+QA     ; MOBILE     ; "33123456"
+QA     ; PAGER      ; "2123456"
+QA     ; TOLL_FREE  ; "8001234"

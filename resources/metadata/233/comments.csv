@@ -1,0 +1,10 @@
+Region ; Label               ; Comment
+GH     ; SC                  ; "http://www.itu.int/oth/T0202000052/en"
+GH     ; SC                  ; "http://www.nca.org.gh/index.php?option=com_content&view=article&id=90&Itemid=65"
+GH     ; SC_CARRIER_SPECIFIC ; "https://support.twitter.com/articles/20170024"
+GH     ; SC_CARRIER_SPECIFIC ; "https://support.google.com/plus/answer/1304917"
+GH     ; SC_SMS_SERVICES     ; "https://support.twitter.com/articles/20170024"
+GH     ; XML                 ; "No premiumRate information can be found."
+GH     ; XML                 ; "http://www.itu.int/oth/T0202000052/en"
+GH     ; XML                 ; "http://www.nca.org.gh/index.php?option=com_content&view=article&id=90&Itemid=65"
+GH     ; XML_TOLL_FREE       ; "Found online references to these numbers, although they are not in the plan since they\nare not internationally diallable."

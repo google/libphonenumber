@@ -1,0 +1,4 @@
+Region ; Label        ; Comment
+LS     ; SC           ; "http://www.itu.int/oth/T0202000078/en"
+LS     ; SC_EMERGENCY ; "http://www.nul.ls/students/students_Home/emergency_Nos/\nhttp://www.voyage.gc.ca/countries_pays/report_rapport-eng.asp?id=160000"
+LS     ; XML          ; "http://www.itu.int/oth/T0202000078/en"

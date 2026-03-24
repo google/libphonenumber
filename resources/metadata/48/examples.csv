@@ -1,0 +1,9 @@
+Region ; Type         ; Number
+PL     ; FIXED_LINE   ; "123456789"
+PL     ; MOBILE       ; "512345678"
+PL     ; PAGER        ; "641234567"
+PL     ; TOLL_FREE    ; "800123456"
+PL     ; PREMIUM_RATE ; "701234567"
+PL     ; SHARED_COST  ; "801234567"
+PL     ; VOIP         ; "391234567"
+PL     ; UAN          ; "804123456"

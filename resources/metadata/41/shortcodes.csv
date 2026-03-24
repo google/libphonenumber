@@ -1,0 +1,39 @@
+Region ; Prefix     ; Length ; Type               ; Tariff        ; Sms  ; Carrier Specific ; Provenance
+CH     ; 10[78]     ; 5      ; COMMERCIAL
+CH     ; 11[278]    ; 3      ; EMERGENCY          ; TOLL_FREE
+CH     ; 1145       ; 4      ; COMMERCIAL         ; PREMIUM_RATE
+CH     ; 116000     ; 6      ; COMMERCIAL         ; TOLL_FREE
+CH     ; 116111     ; 6      ; EXPANDED_EMERGENCY ; TOLL_FREE
+CH     ; 14[035]    ; 3      ; EXPANDED_EMERGENCY ; STANDARD_RATE
+CH     ; 141[01]    ; 4      ; EXPANDED_EMERGENCY ; STANDARD_RATE ;      ;                  ; GOVERNMENT
+CH     ; 141[45]    ; 4      ; EXPANDED_EMERGENCY ; STANDARD_RATE
+CH     ; 144        ; 3      ; EMERGENCY          ; TOLL_FREE
+CH     ; 147        ; 3      ; EXPANDED_EMERGENCY ; TOLL_FREE
+CH     ; 1600       ; 4      ; COMMERCIAL         ; STANDARD_RATE
+CH     ; 16[1-46]   ; 3      ; COMMERCIAL         ; STANDARD_RATE
+CH     ; 1802       ; 4      ; COMMERCIAL         ; PREMIUM_RATE
+CH     ; 181[189]   ; 4      ; COMMERCIAL         ; PREMIUM_RATE
+CH     ; 1820       ; 4      ; COMMERCIAL         ; PREMIUM_RATE  ;      ;                  ; GOVERNMENT
+CH     ; 1850       ; 4      ; COMMERCIAL         ; PREMIUM_RATE
+CH     ; 187        ; 3      ; COMMERCIAL
+CH     ; 188[08]    ; 4      ; COMMERCIAL         ; PREMIUM_RATE
+CH     ; 1899       ; 4      ; COMMERCIAL         ; PREMIUM_RATE
+CH     ; [2-4679]   ; 3,4    ; COMMERCIAL         ;               ; true
+CH     ; [2-79]     ; 5      ; COMMERCIAL         ;               ; true
+CH     ; 5[015-9]   ; 3      ; COMMERCIAL         ;               ; true
+CH     ; 5[013-9]   ; 4      ; COMMERCIAL         ;               ; true
+CH     ; 520        ; 3      ; COMMERCIAL         ;               ; true
+CH     ; 5200       ; 4      ; COMMERCIAL         ; TOLL_FREE     ; true ; true
+CH     ; 520[1-9]   ; 4      ; COMMERCIAL         ;               ; true
+CH     ; 52[1-9]    ; 3,4    ; COMMERCIAL         ;               ; true
+CH     ; 53[0-46-9] ; 3      ; COMMERCIAL         ;               ; true
+CH     ; 535        ; 3      ; COMMERCIAL         ;               ; true ; true
+CH     ; 54[0-24-9] ; 3      ; COMMERCIAL         ;               ; true
+CH     ; 543        ; 3      ; COMMERCIAL         ; PREMIUM_RATE  ; true
+CH     ; 8[0-24-9]  ; 3-5    ; COMMERCIAL         ;               ; true
+CH     ; 83[02-9]   ; 3-5    ; COMMERCIAL         ;               ; true
+CH     ; 831        ; 3      ; COMMERCIAL         ;               ; true
+CH     ; 831[02-9]  ; 4,5    ; COMMERCIAL         ;               ; true
+CH     ; 8311       ; 4      ; COMMERCIAL         ;               ; true
+CH     ; 8311[02-9] ; 5      ; COMMERCIAL         ;               ; true
+CH     ; 83111      ; 5      ; COMMERCIAL         ; PREMIUM_RATE  ; true

@@ -1,0 +1,13 @@
+Region ; Label          ; Comment
+TH     ; SC             ; "http://www.itu.int/oth/T02020000CD/en"
+TH     ; SC             ; "http://www.barascientific.com/bscnews/variety/emergency/Tel-4Digi.pdf"
+TH     ; SC             ; "http://en.wikipedia.org/wiki/+66"
+TH     ; SC             ; "Other numbers found in online searches."
+TH     ; XML            ; "Subscribers can use respective carrier's IDD when calling abroad. We have not configured\nany preferredInternationalPrefix as there is no official evidence for it."
+TH     ; XML            ; "http://www.itu.int/oth/T02020000CD/en"
+TH     ; XML            ; "http://www.barascientific.com/bscnews/variety/emergency/Tel-4Digi.pdf"
+TH     ; XML            ; "https://en.wikipedia.org/wiki/Telephone_numbers_in_Thailand"
+TH     ; XML_FIXED_LINE ; "Numbers online have been found that start with 20, despite the ITU doc not covering\nthese."
+TH     ; XML_MOBILE     ; "Numbers found online starting with 62 and 64. 14, 63 and 65 are from an open-source bug\nreport, we couldn't find evidence of these specifically being in use but this article\nhttp://www.prachachat.net/news_detail.php?newsid=1395732787 talks about prefix 6 and 1\nbeing cleared for mobile use."
+TH     ; XML_TOLL_FREE  ; "http://en.wikipedia.org/wiki/Toll-free_telephone_number. Prefix 001800 of length\n13-digit is added based on user report."
+TH     ; XML_VOIP       ; "The ITU document says that the 89 prefix is also VOIP but there are lots of numbers\nonline to suggest they are actually used as mobile numbers."

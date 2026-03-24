@@ -1,0 +1,6 @@
+Id           ; National           ; International      ; Comment
+fmt1_3/3/3   ; "XXX XXX XXX"      ; "XXX XXX XXX"
+fmt2_3/3/3/3 ; "XXX XXX XXX XXX"  ; "XXX XXX XXX XXX"
+fmt3_4/4/4   ; "XXXX XXXX XXXX"   ; "XXXX XXXX XXXX"   ; "When only 8 digits follow the area code formatting as XXXX XXXX\nseems preferred (see Bandwidth.com and SipMe)"
+fmt4_3/3/4   ; "XXX XXX XXXX"     ; "XXX XXX XXXX"
+fmt5_3/3/2-6 ; "XXX XXX XX******" ; "XXX XXX XX******"

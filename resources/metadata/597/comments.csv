@@ -1,0 +1,3 @@
+Region ; Label          ; Comment
+SR     ; XML            ; "http://www.itu.int/oth/T02020000C5/en"
+SR     ; XML_FIXED_LINE ; "Includes non-geographic WLL-CDMA Fixed Lines."

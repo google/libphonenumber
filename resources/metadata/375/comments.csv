@@ -1,0 +1,11 @@
+Region ; Label                         ; Comment
+BY     ; SC                            ; "http://www.eng.beltelecom.by/en/subscribers/phone-codes"
+BY     ; SC_SHORT_CODE                 ; "Wikipedia notes not all numbers are active everywhere."
+BY     ; XML                           ; "Information on national prefix provided by a Belarussian person."
+BY     ; XML                           ; "http://www.eng.beltelecom.by/en/subscribers/phone-codes"
+BY     ; XML_FIXED_LINE                ; "Using test number for Grodno from the plan."
+BY     ; XML_MOBILE                    ; "Using test number for BelCel from the plan."
+BY     ; XML_NO_INTERNATIONAL_DIALLING ; "Toll-free and premium rate numbers are not available from abroad."
+BY     ; XML_PREMIUM_RATE              ; "Putting Interactive Polling Service (paid) here too."
+BY     ; XML_TOLL_FREE                 ; "Putting Interactive Polling Service (free) here too."
+BY     ; XML_VOIP                      ; "249 prefix for Beltelcom's Maxiphone added based on online info."

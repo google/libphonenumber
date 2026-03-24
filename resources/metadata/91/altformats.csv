@@ -1,0 +1,9 @@
+Format           ; Parent Format ; Comment
+XX XX XXXXXX     ; mobile_5/5    ; "Mobile numbers. These are typically written XXXXX-XXXXX but other formats have\nbeen seen online. Some common ones are listed below."
+XX XX XX XX XX   ; mobile_5/5
+79 XXXX XXXX     ; mobile_5/5    ; "Two-digit area code fixed-line prefixes that may overlap with mobile, and hence may be formatted as\nXXXXX-XXXXX by default, instead of how they would be if they were recognised as\ngeographical numbers."
+80 XXXX XXXX     ; mobile_5/5    ; "Two-digit area code fixed-line prefixes that may overlap with mobile, and hence may be formatted as\nXXXXX-XXXXX by default, instead of how they would be if they were recognised as\ngeographical numbers."
+7[1-8]X XXX XXXX ; mobile_5/5    ; "Three-digit area code fixed-line prefixes that may overlap with mobile, and hence may be formatted as\nXXXXX-XXXXX by default, instead of how they would be if they were recognised as\ngeographical numbers."
+8[1-9]X XXX XXXX ; mobile_5/5    ; "Three-digit area code fixed-line prefixes that may overlap with mobile, and hence may be formatted as\nXXXXX-XXXXX by default, instead of how they would be if they were recognised as\ngeographical numbers."
+7[1-7]XX XXX XXX ; mobile_5/5    ; "Four-digit area code fixed-line prefixes that may overlap with mobile, and hence may be formatted as\nXXXXX-XXXXX by default, instead of how they would be if they were recognised as\ngeographical numbers."
+80XX XXX XXX     ; mobile_5/5    ; "Four-digit area code fixed-line prefixes that may overlap with mobile, and hence may be formatted as\nXXXXX-XXXXX by default, instead of how they would be if they were recognised as\ngeographical numbers."

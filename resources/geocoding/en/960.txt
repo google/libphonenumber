@@ -33,6 +33,7 @@
 960301|Malé/Hulhulé/Aarah
 960302|Malé Region
 960303|Malé Region
+960304|Malé Region
 960330|Malé/Hulhulé/Aarah
 960331|Malé/Hulhulé/Aarah
 960332|Malé/Hulhulé/Aarah
@@ -45,6 +46,7 @@
 960654|Shaviyani
 960656|Noonu
 960658|Raa
+960659|Raa
 960660|Baa
 960662|Lhaviyani
 960664|Kaafu

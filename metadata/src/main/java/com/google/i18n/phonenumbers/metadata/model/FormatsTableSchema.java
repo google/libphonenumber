@@ -81,7 +81,7 @@ public final class FormatsTableSchema {
               formats.getOrDefault(id, NATIONAL_PREFIX_OPTIONAL),
               toComment(formats.getOrDefault(id, COMMENT))));
     }
-    return specs.build();
+    return specs.buildOrThrow();
   }
 
   private static Optional<String> toOptional(String s) {

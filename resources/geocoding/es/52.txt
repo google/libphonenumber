@@ -15,6 +15,7 @@
 # Generated from:
 # https://www.itu.int/dms_pub/itu-t/oth/02/02/T020200008A0002PDFS.pdf
 
+52220|Puebla
 52221|Puebla
 52222|Puebla
 52223|Puebla
@@ -142,6 +143,7 @@
 52447|Contepec/Maravatío, MICH
 52448|Querétaro
 52449|Aguascalientes/Jesús María, AGS
+52450|Morelia
 52451|Michoacán
 52452|Nuevo San Juan Parangaricutiro/Uruapan, MICH
 52453|Apatzingán, MICH
@@ -223,8 +225,10 @@
 52652|Chihuahua
 52653|Luis B. Sánchez/San Luis Río Colorado, SON
 52656|Chihuahua
+52657|Chihuahua
 52658|Baja California
 52659|Chihuahua
+52660|Culiacán
 52661|Primo Tapia/Rosarito, BCN
 52662|Sonora
 52665|Tecate, BCN
@@ -250,6 +254,7 @@
 52717|Estado de México
 52718|Estado de México
 52719|San Francisco Xonacatlán/Temoaya, MEX
+52720|Toluca
 52721|Ixtapan de la Sal, MEX
 52722|Estado de México
 52723|Coatepec Harinas, MEX
@@ -294,6 +299,7 @@
 52767|Guerrero
 52768|Veracruz
 52769|Morelos
+52770|Cuernavaca/Emiliano Zapata/Temixco/Xochitepec/Jiutepec
 52771|Pachuca/Real del Monte, HGO
 52772|Actopan, HGO
 52773|Hidalgo
@@ -338,6 +344,7 @@
 52867|Nuevo León/Tamaulipas
 52868|Tamaulipas
 52869|Cuatro Ciénegas/San Buenaventura, COAH
+52870|Coahuila/Durango
 52871|Coahuila
 52872|Coahuila/Durango
 52873|Nuevo León
@@ -366,6 +373,7 @@
 52938|Ciudad del Carmen, CAMP
 5295|Oaxaca
 5296|Chiapas
+52960|Tuxtla Gutierrez
 52966|Arriaga/Tonalá, CHIS
 52967|San Cristóbal de las Casas, CHIS
 52969|Flamboyanes/Yucalpeten, YUC
@@ -378,6 +386,7 @@
 52986|Yucatán
 52987|Cozumel, QRO
 52988|Yucatán
+52990|Merida
 52991|Yucatán
 52992|Chiapas
 52993|Tabasco

@@ -1,0 +1,9 @@
+Region ; Type         ; Number
+IL     ; FIXED_LINE   ; "21234567"
+IL     ; MOBILE       ; "502345678"
+IL     ; TOLL_FREE    ; "1800123456"
+IL     ; PREMIUM_RATE ; "1919123456"
+IL     ; SHARED_COST  ; "1700123456"
+IL     ; VOIP         ; "771234567"
+IL     ; UAN          ; "1599123456"
+IL     ; VOICEMAIL    ; "15112340000"

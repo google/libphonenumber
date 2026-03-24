@@ -1,0 +1,7 @@
+Region ; Prefix ; Length ; Type       ; Tariff    ; Sms  ; Carrier Specific
+BQ     ; 112    ; 3      ; EMERGENCY  ; TOLL_FREE
+BQ     ; 176    ; 3      ; COMMERCIAL ;           ; true ; true
+BQ     ; 911    ; 3      ; EMERGENCY  ; TOLL_FREE
+CW     ; 112    ; 3      ; EMERGENCY  ; TOLL_FREE
+CW     ; 176    ; 3      ; COMMERCIAL ;           ; true ; true
+CW     ; 911    ; 3      ; EMERGENCY  ; TOLL_FREE

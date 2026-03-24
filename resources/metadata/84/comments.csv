@@ -1,0 +1,10 @@
+Region ; Label          ; Comment
+VN     ; SC             ; "http://www.itu.int/oth/T02020000E4/en"
+VN     ; SC             ; "http://en.wikipedia.org/wiki/%2B84"
+VN     ; XML            ; "http://www.itu.int/oth/T02020000E4/en"
+VN     ; XML            ; "http://en.wikipedia.org/wiki/%2B84"
+VN     ; XML_FIXED_LINE ; "While 24 and 28 are the new area codes for Hanoi and Ho Chi Minh respectively, currently\nonly 24[2-8] and 28[2-7] are in use. Reporter mentioned prefix 866 is Mobile but was\nunable to receive SMS so for now supporting in both Mobile and Fixed-line. Range 289 is\nadded based on user report."
+VN     ; XML_MOBILE     ; "For the 8\\d{8} range, we have clearer & more recent information available from IR.21\ndocs than from ITU. Thus we consider 88x, 868, 89[89] as mobile ranges. 86[259] has been\nadded to Mobile as per a user report."
+VN     ; XML_TOLL_FREE  ; "As per the user and update from carrier it seems that numbers starting with 1800 are\nrenumbered to 1228. Because we don't have complete update,supporting both the ranges\nat present.\nPrefix 120[13] is toll free number and is diallable from Orange Business Services based\non user report. As we do not have official document mentioning the cost of the range,\nwe have added it here for now."
+VN     ; XML_UAN        ; "These include non-geographic fixed numbers, such as for government ministries. While\nlisted as ""private networks"", they may actually be callable from within Vietnam. (They\nare ""private"" in the sense that ordinary people could not be assigned these numbers.)"
+VN     ; XML_VOIP       ; "672 is a VSAT numbering range as per ITU doc."

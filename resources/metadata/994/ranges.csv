@@ -1,0 +1,97 @@
+Prefix      ; Length ; Type       ; Tariff        ; Area Code Length ; Operator     ; Format           ; Regions ; Geocode:en              ; Provenance ; Comment
+10          ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "azercell"   ; "mobile_2/3/2/2" ; "AZ"    ;                         ; IR21
+12          ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_2/3/2/2"  ; "AZ"    ; "Baku"                  ; ITU
+18          ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_2/3/2/2"  ; "AZ"    ; "Sumgayit"              ; ITU
+2020        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_2/3/2/2"  ; "AZ"    ; "Barda"                 ; ITU
+2021        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_2/3/2/2"  ; "AZ"    ; "Ujar"                  ; ITU
+2022        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_2/3/2/2"  ; "AZ"    ; "Agsu"                  ; ITU
+2023        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_2/3/2/2"  ; "AZ"    ; "Agdash"                ; ITU
+2024        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_2/3/2/2"  ; "AZ"    ; "Gobustan"              ; ITU
+2025        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_2/3/2/2"  ; "AZ"    ; "Kurdamir"              ; ITU
+2026        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_2/3/2/2"  ; "AZ"    ; "Shamakhi"              ; ITU
+2027        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_2/3/2/2"  ; "AZ"    ; "Goychay"               ; ITU
+2028        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_2/3/2/2"  ; "AZ"    ; "Ismayilli"             ; ITU
+2029        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_2/3/2/2"  ; "AZ"    ; "Zardab"                ; ITU
+2120        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_2/3/2/2"  ; "AZ"    ; "Hajigabul"             ; ITU
+2121        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_2/3/2/2"  ; "AZ"    ; "Shirvan"               ; ITU
+2122        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_2/3/2/2"  ; "AZ"    ; "Beylagan"              ; ITU
+2123        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_2/3/2/2"  ; "AZ"    ; "Sabirabad"             ; ITU
+2124        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_2/3/2/2"  ; "AZ"    ; "Imishli"               ; ITU
+2125        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_2/3/2/2"  ; "AZ"    ; "Salyan"                ; ITU
+2126        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_2/3/2/2"  ; "AZ"    ; "Neftchala"             ; ITU
+2127        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_2/3/2/2"  ; "AZ"    ; "Agjabadi"              ; ITU
+2128        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_2/3/2/2"  ; "AZ"    ; "Saatli"                ; ITU
+2129        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_2/3/2/2"  ; "AZ"    ;                         ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+21428       ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_2/3/2/2"  ; "AZ"    ; "Hajigabul"             ; ITU
+2220        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_2/3/2/2"  ; "AZ"    ; "Goygol"                ; ITU
+2221        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_2/3/2/2"  ; "AZ"    ; "Dashkasan"             ; ITU
+2222        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_2/3/2/2"  ; "AZ"    ; "Agstafa"               ; ITU
+2223        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_2/3/2/2"  ; "AZ"    ; "Tartar"                ; ITU
+2224        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_2/3/2/2"  ; "AZ"    ; "Goranboy"              ; ITU
+222[56]     ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_2/3/2/2"  ; "AZ"    ; "Ganja"                 ; ITU
+2227        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_2/3/2/2"  ; "AZ"    ; "Samukh"                ; ITU
+2229        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_2/3/2/2"  ; "AZ"    ; "Gazakh"                ; ITU
+2230        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_2/3/2/2"  ; "AZ"    ; "Shamkir"               ; ITU
+2231        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_2/3/2/2"  ; "AZ"    ; "Tovuz"                 ; ITU
+2232        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_2/3/2/2"  ; "AZ"    ; "Gadabay"               ; ITU
+2233        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_2/3/2/2"  ; "AZ"    ; "Yevlakh"               ; ITU
+223[46-9]   ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_2/3/2/2"  ; "AZ"    ;                         ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+2235        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_2/3/2/2"  ; "AZ"    ; "Naftalan"              ; ITU
+22428       ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_2/3/2/2"  ; "AZ"    ; "Agstafa/Ganja/Yevlakh" ; ITU
+2330        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_2/3/2/2"  ; "AZ"    ; "Siyazan"               ; ITU
+2331        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_2/3/2/2"  ; "AZ"    ; "Khizi"                 ; ITU
+2332        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_2/3/2/2"  ; "AZ"    ; "Khachmaz"              ; ITU
+2333        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_2/3/2/2"  ; "AZ"    ; "Guba"                  ; ITU
+233[4679]   ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_2/3/2/2"  ; "AZ"    ;                         ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+2335        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_2/3/2/2"  ; "AZ"    ; "Shabran"               ; ITU
+2338        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_2/3/2/2"  ; "AZ"    ; "Gusar"                 ; ITU
+2420        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_2/3/2/2"  ; "AZ"    ; "Gabala"                ; ITU
+2421        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_2/3/2/2"  ; "AZ"    ; "Oguz"                  ; ITU
+2422        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_2/3/2/2"  ; "AZ"    ; "Zagatala"              ; ITU
+2[45]2[368] ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_2/3/2/2"  ; "AZ"    ;                         ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+2424        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_2/3/2/2"  ; "AZ"    ; "Shaki"                 ; ITU
+2425        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_2/3/2/2"  ; "AZ"    ; "Gakh"                  ; ITU
+2427        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_2/3/2/2"  ; "AZ"    ; "Mingachevir"           ; ITU
+2429        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_2/3/2/2"  ; "AZ"    ; "Balakan"               ; ITU
+2520        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_2/3/2/2"  ; "AZ"    ; "Yardimli"              ; ITU
+2521        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_2/3/2/2"  ; "AZ"    ; "Masalli"               ; ITU
+2522        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_2/3/2/2"  ; "AZ"    ; "Astara"                ; ITU
+2524        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_2/3/2/2"  ; "AZ"    ; "Jalilabad"             ; ITU
+2525        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_2/3/2/2"  ; "AZ"    ; "Lankaran"              ; ITU
+2527        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_2/3/2/2"  ; "AZ"    ; "Lerik"                 ; ITU
+2529        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_2/3/2/2"  ; "AZ"    ; "Bilasuvar"             ; ITU
+2620        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_2/3/2/2"  ; "AZ"    ; "Khojali"               ; ITU
+2621        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_2/3/2/2"  ; "AZ"    ; "Lachin"                ; ITU
+2622        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_2/3/2/2"  ; "AZ"    ; "Khankandi"             ; ITU
+2623        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_2/3/2/2"  ; "AZ"    ; "Qubadli"               ; ITU
+2624        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_2/3/2/2"  ; "AZ"    ; "Askaran"               ; ITU
+2625        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_2/3/2/2"  ; "AZ"    ; "Zangilan"              ; ITU
+2626        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_2/3/2/2"  ; "AZ"    ; "Shusha"                ; ITU
+2627        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_2/3/2/2"  ; "AZ"    ; "Kalbajar"              ; ITU
+2628        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_2/3/2/2"  ; "AZ"    ; "Agdara"                ; ITU
+2629        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_2/3/2/2"  ; "AZ"    ; "Khojavand"             ; ITU
+2630        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_2/3/2/2"  ; "AZ"    ; "Hadrut"                ; ITU
+2631        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_2/3/2/2"  ; "AZ"    ; "Fuzuli"                ; ITU
+2632        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_2/3/2/2"  ; "AZ"    ; "Agdam"                 ; ITU
+2638        ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_2/3/2/2"  ; "AZ"    ; "Jabrayil"              ; ITU
+3654[05]    ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_2/3/2/2"  ; "AZ"    ;                         ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+36541       ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_2/3/2/2"  ; "AZ"    ; "Babek"                 ; ITU
+365[45]2    ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_2/3/2/2"  ; "AZ"    ; "Sharur"                ; ITU
+36543       ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_2/3/2/2"  ; "AZ"    ; "Shahbuz"               ; ITU
+36544       ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_2/3/2/2"  ; "AZ"    ; "Nakhchivan city"       ; ITU
+36546       ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_2/3/2/2"  ; "AZ"    ; "Julfa"                 ; ITU
+36547       ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_2/3/2/2"  ; "AZ"    ; "Ordubad"               ; ITU
+36548       ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_2/3/2/2"  ; "AZ"    ; "Kangarli"              ; ITU
+36549       ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_2/3/2/2"  ; "AZ"    ; "Sadarak"               ; ITU
+36550       ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_2/3/2/2"  ; "AZ"    ; "Nakhchivan city"       ; ITU
+36554       ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "naxtel"     ; "mobile_2/3/2/2" ; "AZ"    ;                         ; ITU        ; "https://b.corp.google.com/issues/28510398#comment15"
+40          ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "fonex"      ; "mobile_2/3/2/2" ; "AZ"    ;                         ; ITU
+44          ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "aztelekom"  ; "mobile_2/3/2/2" ; "AZ"    ;                         ; ITU
+46          ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_2/3/2/2"  ; "AZ"    ;                         ; ITU
+5[01]       ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "azercell"   ; "mobile_2/3/2/2" ; "AZ"    ;                         ; ITU
+55          ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "bakcell"    ; "mobile_2/3/2/2" ; "AZ"    ;                         ; ITU
+60          ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "naxtel"     ; "mobile_2/3/2/2" ; "AZ"    ;                         ; ITU
+7[07]       ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "nar_mobile" ; "mobile_2/3/2/2" ; "AZ"    ;                         ; ITU
+88          ; 9      ; FIXED_LINE ; TOLL_FREE     ;                  ;              ; "mobile_2/3/2/2" ; "AZ"    ;                         ; ITU
+900200      ; 9      ; FIXED_LINE ; PREMIUM_RATE  ;                  ;              ; "fmt_3/2/2/2"    ; "AZ"
+99          ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "bakcell"    ; "mobile_2/3/2/2" ; "AZ"    ;                         ; ITU

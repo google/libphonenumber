@@ -1,0 +1,11 @@
+Id            ; National         ; Carrier           ; International  ; Comment
+fixed_1/4/4   ; "(#X) XXXX XXXX" ; "@ (X) XXXX XXXX" ; "X XXXX XXXX"  ; "Fixed line"
+mobile_3/3/3  ; "#XXX XXX XXX"   ;                   ; "XXX XXX XXX"  ; "Mobile and VOIP"
+pager_2/3-4   ; "#XX XXX*"       ;                   ; "XX XXX*"      ; "Pager (5-6 digits)"
+pager_2/3/2-4 ; "#XX XXX XX**"   ;                   ; "XX XXX XX**"  ; "Pager (7-9 digits)"
+sms_3/3       ; "XXX XXX"        ;                   ;                ; "Premium rate SMS (6 digit)"
+sms_4/3-4     ; "XXXX XXX*"      ;                   ;                ; "Premium rate SMS (7-8 digit)"
+varcost_2/2/2 ; "XX XX XX"       ;                   ;                ; "6-digit variable cost fixed line (toll free, premium rate, shared cost)"
+varcost_3/4   ; "XXX XXXX"       ;                   ;                ; "7-digit variable cost fixed line (toll free, premium rate, shared cost)"
+varcost_4/3/3 ; "XXXX XXX XXX"   ;                   ; "XXXX XXX XXX" ; "10-digit variable cost fixed line (toll free, premium rate, shared cost)"
+varcost_4/4/4 ; "XXXX XXXX XXXX"

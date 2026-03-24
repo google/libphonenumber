@@ -1,0 +1,5 @@
+Prefix   ; Length ; Type       ; Tariff        ; Operator       ; Format     ; Regions ; Provenance ; Comment
+[47]     ; 4      ; FIXED_LINE ; STANDARD_RATE ;                ;            ; "NU"    ; ITU        ; "Dated 04/25/2018"
+[56]     ; 4      ; MOBILE     ; STANDARD_RATE ; "telecom_niue" ;            ; "NU"    ; ITU
+888[1-3] ; 7      ; MOBILE     ; STANDARD_RATE ; "telecom_niue" ; "fmt1_3/4" ; "NU"    ; ITU
+888[4-9] ; 7      ; MOBILE     ; STANDARD_RATE ; "telecom_niue" ; "fmt1_3/4" ; "NU"    ; ITU        ; "Dated 04/25/2018"

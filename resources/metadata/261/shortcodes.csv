@@ -1,0 +1,3 @@
+Region ; Prefix ; Length ; Type      ; Tariff
+MG     ; 11[78] ; 3      ; EMERGENCY ; TOLL_FREE
+MG     ; 1[78]  ; 2      ; EMERGENCY ; TOLL_FREE

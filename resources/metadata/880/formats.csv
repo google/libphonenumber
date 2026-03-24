@@ -1,0 +1,5 @@
+Id              ; National       ; International ; Comment
+fixedline_1/7-8 ; "#X-XXXXXXX*"  ; "X-XXXXXXX*"
+fixedline_2/4-6 ; "#XX-XXXX**"   ; "XX-XXXX**"
+fixedline_3/3-7 ; "#XXX-XXX****" ; "XXX-XXX****"
+fmt_4/3-6       ; "#XXXX-XXX***" ; "XXXX-XXX***" ; "Mobile numbers, VOIP, and four-digit fixed-line area codes. We use the same format for\nall VOIP numbers as they are not consistent and these ranges are assigned at 4 digit\ngranularity."

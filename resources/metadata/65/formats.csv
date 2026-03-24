@@ -1,0 +1,6 @@
+Id            ; National        ; International
+fmt1_4/4      ; "XXXX XXXX"     ; "XXXX XXXX"
+fmt2_4/3/4    ; "XXXX XXX XXXX" ; "XXXX XXX XXXX"
+fmt3_4/4/3    ; "XXXX XXXX XXX" ; "XXXX XXXX XXX"
+fmt4_3/3/4    ; "XXX XXX XXXX"  ; "XXX XXX XXXX"
+shortcode_4-5 ; "XXXX*"

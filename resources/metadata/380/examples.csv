@@ -1,0 +1,6 @@
+Region ; Type         ; Number
+UA     ; FIXED_LINE   ; "311234567"
+UA     ; MOBILE       ; "501234567"
+UA     ; TOLL_FREE    ; "800123456"
+UA     ; PREMIUM_RATE ; "900212345"
+UA     ; VOIP         ; "891234567"

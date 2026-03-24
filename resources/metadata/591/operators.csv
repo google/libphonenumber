@@ -1,0 +1,5 @@
+Id        ; Domestic Selection Codes ; International Dialling Codes ; Name:en    ; Comment
+__unknown ; "1x"                     ; "00,001x"                    ;            ; "The '1x' ranges can probably be assigned to carriers."
+entel     ;                          ;                              ; "Entel"
+nuevatel  ;                          ;                              ; "Nuevatel"
+tigo      ;                          ;                              ; "Tigo"

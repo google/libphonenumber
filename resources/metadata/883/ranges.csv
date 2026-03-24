@@ -1,0 +1,13 @@
+Prefix     ; Length ; Type ; Tariff        ; Format         ; Regions ; Provenance
+1[013-79]0 ; 8-12   ; VOIP ; STANDARD_RATE ; "fmt5_3/3/2-6" ; "001"   ; ITU
+120        ; 8-12   ; VOIP ; STANDARD_RATE ; "fmt5_3/3/2-6" ; "001"   ; IR21
+200        ; 12     ; VOIP ; STANDARD_RATE ; "fmt2_3/3/3/3" ; "001"   ; IR21
+210        ; 10     ; VOIP ; STANDARD_RATE ; "fmt4_3/3/4"   ; "001"   ; IR21
+2[24-689]0 ; 8-12   ; VOIP ; STANDARD_RATE ; "fmt5_3/3/2-6" ; "001"   ; ITU
+3[02-689]0 ; 8-12   ; VOIP ; STANDARD_RATE ; "fmt5_3/3/2-6" ; "001"   ; ITU
+370[1-9]   ; 12     ; VOIP ; STANDARD_RATE ; "fmt2_3/3/3/3" ; "001"   ; IR21
+4[0-4]0    ; 8-12   ; VOIP ; STANDARD_RATE ; "fmt5_3/3/2-6" ; "001"   ; ITU
+5100       ; 9      ; VOIP ; STANDARD_RATE ; "fmt1_3/3/3"   ; "001"   ; ITU
+5100       ; 12     ; VOIP ; STANDARD_RATE ; "fmt2_3/3/3/3" ; "001"   ; ITU
+51[13]0    ; 12     ; VOIP ; STANDARD_RATE ; "fmt3_4/4/4"   ; "001"   ; ITU
+51[24-9]0  ; 8-12   ; VOIP ; STANDARD_RATE ; "fmt5_3/3/2-6" ; "001"   ; ITU

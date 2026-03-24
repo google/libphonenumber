@@ -134,6 +134,8 @@
 79010134|Tele2
 79010135|Tele2
 79010136|Tele2
+79010138|Multiregional Transit Telecom (MTT)
+79010139|Multiregional Transit Telecom (MTT)
 7901014|Tele2
 7901015|Tele2
 7901016|Tele2

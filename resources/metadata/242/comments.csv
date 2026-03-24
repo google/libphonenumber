@@ -1,0 +1,4 @@
+Region ; Label            ; Comment
+CG     ; XML              ; "http://www.itu.int/oth/T020200002E/en"
+CG     ; XML_PREMIUM_RATE ; "Referred to as a ""Green number"" in the telephone plan."
+CG     ; XML_PREMIUM_RATE ; "Using this to represent Value Added Service in the plan."

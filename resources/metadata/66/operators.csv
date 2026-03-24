@@ -1,0 +1,7 @@
+Id          ; International Dialling Codes ; Name:en
+__unknown   ; "00[1-9]"
+ais         ;                              ; "AIS"
+dtac        ;                              ; "DTAC"
+penguin_sim ;                              ; "Penguin SIM"
+tot         ;                              ; "TOT Mobile"
+true_move   ;                              ; "True Move"

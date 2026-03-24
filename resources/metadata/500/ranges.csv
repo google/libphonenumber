@@ -1,0 +1,3 @@
+Prefix ; Length ; Type       ; Tariff        ; Operator ; Regions
+[2-47] ; 5      ; FIXED_LINE ; STANDARD_RATE ;          ; "FK"
+[56]   ; 5      ; MOBILE     ; STANDARD_RATE ; "sure"   ; "FK"

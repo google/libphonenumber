@@ -30,6 +30,9 @@
 #include "phonenumbers/base/memory/singleton.h"
 #include "phonenumbers/phonenumber.pb.h"
 
+#include "absl/container/node_hash_set.h"
+#include "absl/container/node_hash_map.h"
+
 class TelephoneNumber;
 
 namespace i18n {
@@ -65,6 +68,10 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   friend class Singleton<PhoneNumberUtil>;
 
  public:
+  // This type is neither copyable nor movable.
+  PhoneNumberUtil(const PhoneNumberUtil&) = delete;
+  PhoneNumberUtil& operator=(const PhoneNumberUtil&) = delete;
+
   ~PhoneNumberUtil();
   static const char kRegionCodeForNonGeoEntity[];
 
@@ -244,7 +251,7 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   // Gets the national significant number of a phone number. Note a national
   // significant number doesn't contain a national prefix or any formatting.
   void GetNationalSignificantNumber(const PhoneNumber& number,
-                                    string* national_significant_num) const;
+                                    string* national_number) const;
 
   // Gets the length of the geographical area code from the PhoneNumber object
   // passed in, so that clients could use it to split a national significant
@@ -394,15 +401,15 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
       const string& calling_from,
       string* formatted_number) const;
 
-  // Formats a phone number using the original phone number format that the
-  // number is parsed from. The original format is embedded in the
-  // country_code_source field of the PhoneNumber object passed in. If such
-  // information is missing, the number will be formatted into the NATIONAL
-  // format by default. When we don't have a formatting pattern for the number,
-  // the method returns the raw input when it is available.
-  //
-  // Note this method guarantees no digit will be inserted, removed or modified
-  // as a result of formatting.
+  // Formats a phone number using the original phone number format (e.g.
+  // INTERNATIONAL or NATIONAL) that the number is parsed from, provided that
+  // the number has been parsed with ParseAndKeepRawInput. Otherwise the number
+  // will be formatted in NATIONAL format. The original format is embedded in
+  // the country_code_source field of the PhoneNumber object passed in, which is
+  // only set when parsing keeps the raw input. When we don't have a formatting
+  // pattern for the number, the method falls back to returning the raw input.
+  // When the number is an invalid number, the method returns the raw input when
+  // it is available.
   void FormatInOriginalFormat(const PhoneNumber& number,
                               const string& region_calling_from,
                               string* formatted_number) const;
@@ -524,6 +531,13 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   //      would most likely be area codes) and length (obviously includes the
   //      length of area codes for fixed line numbers), it will return false for
   //      the subscriber-number-only version.
+  //
+  // There is a known issue with this method: if a number is possible only in a
+  // certain region among several regions that share the same country calling
+  // code, this method will consider only the "main" region. For example,
+  // +1310xxxx are valid numbers in Canada. However, they are not possible in
+  // the US. As a result, this method will return false for +1310xxxx. See
+  // https://issuetracker.google.com/issues/335892662 for more details.
   ValidationResult IsPossibleNumberWithReason(const PhoneNumber& number) const;
 
   // Convenience wrapper around IsPossibleNumberWithReason(). Instead of
@@ -558,6 +572,13 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   //      would most likely be area codes) and length (obviously includes the
   //      length of area codes for fixed line numbers), it will return false for
   //      the subscriber-number-only version.
+  //
+  // There is a known issue with this method: if a number is possible only in a
+  // certain region among several regions that share the same country calling
+  // code, this method will consider only the "main" region. For example,
+  // +1310xxxx are valid numbers in Canada. However, they are not possible in
+  // the US. As a result, this method will return false for +1310xxxx. See
+  // https://issuetracker.google.com/issues/335892662 for more details.
   ValidationResult IsPossibleNumberForTypeWithReason(
       const PhoneNumber& number, PhoneNumberType type) const;
 
@@ -805,17 +826,17 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
       country_calling_code_to_region_code_map_;
 
   // The set of regions that share country calling code 1.
-  scoped_ptr<std::set<string> > nanpa_regions_;
+  scoped_ptr<absl::node_hash_set<string> > nanpa_regions_;
   static const int kNanpaCountryCode = 1;
 
   // A mapping from a region code to a PhoneMetadata for that region.
-  scoped_ptr<std::map<string, PhoneMetadata> > region_to_metadata_map_;
+  scoped_ptr<absl::node_hash_map<string, PhoneMetadata> > region_to_metadata_map_;
 
   // A mapping from a country calling code for a non-geographical entity to the
   // PhoneMetadata for that country calling code. Examples of the country
   // calling codes include 800 (International Toll Free Service) and 808
   // (International Shared Cost Service).
-  scoped_ptr<std::map<int, PhoneMetadata> >
+  scoped_ptr<absl::node_hash_map<int, PhoneMetadata> >
       country_code_to_non_geographical_metadata_map_;
 
   PhoneNumberUtil();
@@ -909,7 +930,7 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
       const PhoneNumber& number,
       const PhoneMetadata& metadata,
       PhoneNumberFormat number_format,
-      string* extension) const;
+      string* formatted_number) const;
 
   void GetRegionCodeForNumberFromRegionList(
       const PhoneNumber& number,
@@ -941,7 +962,7 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   int ExtractCountryCode(string* national_number) const;
   ErrorType MaybeExtractCountryCode(
       const PhoneMetadata* default_region_metadata,
-      bool keepRawInput,
+      bool keep_raw_input,
       string* national_number,
       PhoneNumber* phone_number) const;
 
@@ -955,13 +976,18 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
                         bool check_region,
                         PhoneNumber* phone_number) const;
 
-  void BuildNationalNumberForParsing(const string& number_to_parse,
-                                     string* national_number) const;
+  absl::optional<string> ExtractPhoneContext(
+      const string& number_to_extract_from,
+      size_t index_of_phone_context) const;
+
+  bool IsPhoneContextValid(absl::optional<string> phone_context) const;
+
+  ErrorType BuildNationalNumberForParsing(const string& number_to_parse,
+                                          string* national_number) const;
 
   bool IsShorterThanPossibleNormalNumber(const PhoneMetadata* country_metadata,
                                          const string& number) const;
 
-  DISALLOW_COPY_AND_ASSIGN(PhoneNumberUtil);
 };
 
 }  // namespace phonenumbers

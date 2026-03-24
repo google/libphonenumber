@@ -71,7 +71,7 @@ public final class Types {
           .put(XML_VOIP, VOIP)
           .put(XML_UAN, UAN)
           .put(XML_VOICEMAIL, VOICEMAIL)
-          .build();
+          .buildOrThrow();
 
   /** Returns the set of valid XML type names. */
   public static ImmutableSet<String> getXmlNames() {

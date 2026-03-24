@@ -1,0 +1,7 @@
+Region ; Label               ; Comment
+AW     ; SC                  ; "http://www.itu.int/oth/T020200000B/en"
+AW     ; SC_CARRIER_SPECIFIC ; "https://support.twitter.com/articles/20170024"
+AW     ; SC_EMERGENCY        ; "http://www.yellowpages-aruba.com/home/emergency-numbers"
+AW     ; SC_SMS_SERVICES     ; "https://support.twitter.com/articles/20170024"
+AW     ; XML                 ; "http://www.itu.int/oth/T020200000B/en"
+AW     ; XML_MOBILE          ; "The prefixes 994 and 96[45], while not in the plan, seem to be used in mobile numbers\nfound online."

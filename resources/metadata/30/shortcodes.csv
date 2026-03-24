@@ -1,0 +1,11 @@
+Region ; Prefix    ; Length ; Type               ; Tariff        ; Provenance
+GR     ; 100       ; 3      ; EMERGENCY          ; TOLL_FREE
+GR     ; 10[89]    ; 3      ; EXPANDED_EMERGENCY ; TOLL_FREE
+GR     ; 112       ; 3      ; EMERGENCY          ; TOLL_FREE
+GR     ; 11320     ; 5      ; COMMERCIAL         ; STANDARD_RATE ; GOVERNMENT
+GR     ; 116000    ; 6      ; EXPANDED_EMERGENCY ; TOLL_FREE
+GR     ; 11611[17] ; 6      ; EXPANDED_EMERGENCY ; TOLL_FREE
+GR     ; 116123    ; 6      ; EXPANDED_EMERGENCY ; TOLL_FREE
+GR     ; 13899     ; 5      ; COMMERCIAL
+GR     ; 166       ; 3      ; EMERGENCY          ; TOLL_FREE
+GR     ; 199       ; 3      ; EMERGENCY          ; TOLL_FREE

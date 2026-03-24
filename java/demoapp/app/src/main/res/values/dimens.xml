@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <!-- App (app_) -->
+  <dimen name="app_default_spacing_from_layout_outline">15dp</dimen>
+  <dimen name="app_default_spacing_between_items">30dp</dimen>
+
+  <!-- Main activity (main_activity_) -->
+  <dimen name="main_activity_default_width_item">300dp</dimen>
+</resources>

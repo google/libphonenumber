@@ -1,0 +1,3 @@
+Id             ; National      ; International ; Local    ; Comment
+fixed_4/6      ; "XXXX XXXXXX" ; "XXXX XXXXXX" ; "XXXXXX" ; "We follow the guidelines of the yellow-pages when formatting in national format."
+nongeo_2/2/2/2 ; "XX XX XX XX" ; "XX XX XX XX" ;          ; "Non-geographic numbers (without 0549 prefix)."

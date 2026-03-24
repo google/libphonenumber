@@ -1,0 +1,13 @@
+Region ; Label               ; Comment
+BH     ; SC                  ; "http://www.itu.int/oth/T0202000011/en"
+BH     ; SC                  ; "http://www.tra.org.bh/media/document/National%20Numbering%20Plan.pdf"
+BH     ; SC_CARRIER_SPECIFIC ; "https://support.twitter.com/articles/20170024"
+BH     ; SC_SHORT_CODE       ; "As per official numbering plan, 85xxx shortcodes are shared cost numbers. As the cost\ndetails are not clear, categorized them as unknown cost numbers."
+BH     ; SC_SMS_SERVICES     ; "https://support.twitter.com/articles/20170024"
+BH     ; XML                 ; "http://www.itu.int/oth/T0202000011/en"
+BH     ; XML                 ; "http://www.tra.org.bh/en/marketNumbering.aspx"
+BH     ; XML                 ; "http://en.wikipedia.org/wiki/Telephone_numbers_in_Bahrain"
+BH     ; XML_FIXED_LINE      ; "Some ranges were previously described as ""universal"", but in subsequent versions of the\nITU doc they have been specified to be mobile or fixed-line. We follow the ITU\ndesignations, even though some publications still refer to them as universal."
+BH     ; XML_FIXED_LINE      ; "According to http://en.wikipedia.org/wiki/Telephone_numbers_in_Bahrain, the ranges\n""6966-6969, 6996, 6999"" are assigned to Rapid. However this contradicts the ITU doc\nwhich lists ""6966, 6969, 6996, 6999"". We follow ITU here."
+BH     ; XML_MOBILE          ; "31 is assigned to Royal Court, as per documents on Bahrain's own telecom site, even\nthough it is omitted from the ITU document. Based on online evidences added prefix\n354 to mobile."
+BH     ; XML_PREMIUM_RATE    ; "87 numbers are ""wholly paid by the caller"", so they are slotted under premium-rate for\nnow."

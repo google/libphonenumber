@@ -1,0 +1,12 @@
+Id                 ; Domestic Selection Codes ; International Dialling Codes ; Name:en
+__algar            ; "12"                     ; "0012"                       ; "Algar Telecom"
+__gvt              ; "25"                     ; "0025"                       ; "GVT"
+__intelig_telecom  ; "23"                     ; "0023"                       ; "Intelig Telecom"
+__sercomtel        ; "43"                     ; "0043"                       ; "Sercomtel"
+__unknown          ; "22,[56]5,99"            ; "0022,00[56]5,0099"
+brasil_telecom_gsm ;                          ;                              ; "Brasil Telecom GSM"
+claro              ; "21"                     ; "0021"                       ; "Claro"
+oi                 ; "14, 31"                 ; "0014, 0031"                 ; "Oi"
+telemig_celular    ;                          ;                              ; "Telemig Celular"
+tim                ; "41"                     ; "0041"                       ; "TIM"
+vivo               ; "15"                     ; "0015"                       ; "Vivo"

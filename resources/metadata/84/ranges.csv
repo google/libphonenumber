@@ -1,0 +1,93 @@
+Prefix   ; Length ; Type       ; Tariff        ; National Only ; Operator            ; Format           ; Regions ; Geocode:en                 ; Geocode:vi              ; Provenance ; Comment
+120[13]  ; 8      ; FIXED_LINE ; TOLL_FREE     ; false         ;                     ; "fixed_4/4-6"    ; "VN"    ;                            ;                         ; INTERNAL   ; "Added per client's request."
+1228     ; 8      ; FIXED_LINE ; TOLL_FREE     ; false         ;                     ; "fixed_4/4-6"    ; "VN"
+1800     ; 8-10   ; FIXED_LINE ; TOLL_FREE     ; false         ;                     ; "fixed_4/4-6"    ; "VN"    ;                            ;                         ; IR21
+1900     ; 8-10   ; FIXED_LINE ; PREMIUM_RATE  ; false         ;                     ; "fixed_4/4-6"    ; "VN"    ;                            ;                         ; IR21
+199      ; 7      ; UAN        ; STANDARD_RATE ; true          ;                     ; "uan_3/4"        ; "VN"    ;                            ;                         ;            ; "It is very odd that moving from 7-digits to 10-digits changes the type.\nThere are probably disjoint subranges for each length (even if we don't have that data)."
+203      ; 10     ; FIXED_LINE ; STANDARD_RATE ; false         ;                     ; "fixed_3/4/3"    ; "VN"    ; "Quang Ninh province"      ; "Quảng Ninh"            ; ITU
+204      ; 10     ; FIXED_LINE ; STANDARD_RATE ; false         ;                     ; "fixed_3/4/3"    ; "VN"    ; "Bac Giang province"       ; "Bắc Giang"             ; ITU
+205      ; 10     ; FIXED_LINE ; STANDARD_RATE ; false         ;                     ; "fixed_3/4/3"    ; "VN"    ; "Lang Son province"        ; "Lạng Sơn"              ; ITU
+206      ; 10     ; FIXED_LINE ; STANDARD_RATE ; false         ;                     ; "fixed_3/4/3"    ; "VN"    ; "Cao Bang province"        ; "Cao Bằng"              ; ITU
+207      ; 10     ; FIXED_LINE ; STANDARD_RATE ; false         ;                     ; "fixed_3/4/3"    ; "VN"    ; "Tuyen Quang province"     ; "Tuyên Quang"           ; ITU
+208      ; 10     ; FIXED_LINE ; STANDARD_RATE ; false         ;                     ; "fixed_3/4/3"    ; "VN"    ; "Thai Nguyen province"     ; "Thái Nguyên"           ; ITU
+209      ; 10     ; FIXED_LINE ; STANDARD_RATE ; false         ;                     ; "fixed_3/4/3"    ; "VN"    ; "Bac Can province"         ; "Tỉnh Bắc Kạn"          ; ITU
+210      ; 10     ; FIXED_LINE ; STANDARD_RATE ; false         ;                     ; "fixed_3/4/3"    ; "VN"    ; "Phu Tho province"         ; "Phú Thọ"
+211      ; 10     ; FIXED_LINE ; STANDARD_RATE ; false         ;                     ; "fixed_3/4/3"    ; "VN"    ; "Vinh Phuc province"       ; "Vĩnh Phúc"
+212      ; 10     ; FIXED_LINE ; STANDARD_RATE ; false         ;                     ; "fixed_3/4/3"    ; "VN"    ; "Son La province"          ; "Sơn La"                ; ITU
+213      ; 10     ; FIXED_LINE ; STANDARD_RATE ; false         ;                     ; "fixed_3/4/3"    ; "VN"    ; "Lai Chau province"        ; "Lai Châu"              ; ITU
+214      ; 10     ; FIXED_LINE ; STANDARD_RATE ; false         ;                     ; "fixed_3/4/3"    ; "VN"    ; "Lao Cai province"         ; "Lào Cai"               ; ITU
+215      ; 10     ; FIXED_LINE ; STANDARD_RATE ; false         ;                     ; "fixed_3/4/3"    ; "VN"    ; "Dien Bien province"       ; "Điện Biên"             ; ITU
+216      ; 10     ; FIXED_LINE ; STANDARD_RATE ; false         ;                     ; "fixed_3/4/3"    ; "VN"    ; "Yen Bai province"         ; "Yên Bái"               ; ITU
+218      ; 10     ; FIXED_LINE ; STANDARD_RATE ; false         ;                     ; "fixed_3/4/3"    ; "VN"    ; "Hoa Binh province"        ; "Hòa Bình"
+219      ; 10     ; FIXED_LINE ; STANDARD_RATE ; false         ;                     ; "fixed_3/4/3"    ; "VN"    ; "Ha Giang province"        ; "Hà Giang"
+220      ; 10     ; FIXED_LINE ; STANDARD_RATE ; false         ;                     ; "fixed_3/4/3"    ; "VN"    ; "Hai Duong province"       ; "Hải Dương"             ; ITU
+221      ; 10     ; FIXED_LINE ; STANDARD_RATE ; false         ;                     ; "fixed_3/4/3"    ; "VN"    ; "Hung Yen province"        ; "Hưng Yên"              ; ITU
+222      ; 10     ; FIXED_LINE ; STANDARD_RATE ; false         ;                     ; "fixed_3/4/3"    ; "VN"    ; "Bac Ninh province"        ; "Bắc Ninh"              ; ITU
+225      ; 10     ; FIXED_LINE ; STANDARD_RATE ; false         ;                     ; "fixed_3/4/3"    ; "VN"    ; "Hai Phong City"           ; "Thành phố Hải Phòng"   ; ITU
+226      ; 10     ; FIXED_LINE ; STANDARD_RATE ; false         ;                     ; "fixed_3/4/3"    ; "VN"    ; "Ha Nam province"          ; "Hà Nam"                ; ITU
+227      ; 10     ; FIXED_LINE ; STANDARD_RATE ; false         ;                     ; "fixed_3/4/3"    ; "VN"    ; "Thai Binh province"       ; "Thái Bình"             ; ITU
+228      ; 10     ; FIXED_LINE ; STANDARD_RATE ; false         ;                     ; "fixed_3/4/3"    ; "VN"    ; "Nam Dinh province"        ; "Nam Định"              ; ITU
+229      ; 10     ; FIXED_LINE ; STANDARD_RATE ; false         ;                     ; "fixed_3/4/3"    ; "VN"    ; "Ninh Binh province"       ; "Ninh Bình"             ; ITU
+232      ; 10     ; FIXED_LINE ; STANDARD_RATE ; false         ;                     ; "fixed_3/4/3"    ; "VN"    ; "Quang Binh province"      ; "Quảng Bình"            ; ITU
+233      ; 10     ; FIXED_LINE ; STANDARD_RATE ; false         ;                     ; "fixed_3/4/3"    ; "VN"    ; "Quang Tri province"       ; "Quảng Trị"             ; ITU
+234      ; 10     ; FIXED_LINE ; STANDARD_RATE ; false         ;                     ; "fixed_3/4/3"    ; "VN"    ; "Thua Thien-Hue province"  ; "Thừa Thiên-Huế"        ; ITU
+235      ; 10     ; FIXED_LINE ; STANDARD_RATE ; false         ;                     ; "fixed_3/4/3"    ; "VN"    ; "Quang Nam province"       ; "Quảng Nam"             ; ITU
+236      ; 10     ; FIXED_LINE ; STANDARD_RATE ; false         ;                     ; "fixed_3/4/3"    ; "VN"    ; "Da Nang"                  ; "TP Đà Nẵng"            ; ITU
+237      ; 10     ; FIXED_LINE ; STANDARD_RATE ; false         ;                     ; "fixed_3/4/3"    ; "VN"    ; "Thanh Hoa province"       ; "Thanh Hóa"             ; ITU
+238      ; 10     ; FIXED_LINE ; STANDARD_RATE ; false         ;                     ; "fixed_3/4/3"    ; "VN"    ; "Nghe An province"         ; "Nghệ An"               ; ITU
+239      ; 10     ; FIXED_LINE ; STANDARD_RATE ; false         ;                     ; "fixed_3/4/3"    ; "VN"    ; "Ha Tinh province"         ; "Hà Tĩnh"               ; ITU
+24[2-8]  ; 10     ; FIXED_LINE ; STANDARD_RATE ; false         ;                     ; "fixed_2/4/4"    ; "VN"    ; "Hanoi City"               ; "Thủ đô Hà Nội"         ;            ; "Added per client's request."
+251      ; 10     ; FIXED_LINE ; STANDARD_RATE ; false         ;                     ; "fixed_3/4/3"    ; "VN"    ; "Dong Nai province"        ; "Đồng Nai"              ; ITU
+252      ; 10     ; FIXED_LINE ; STANDARD_RATE ; false         ;                     ; "fixed_3/4/3"    ; "VN"    ; "Binh Thuan province"      ; "Bình Thuận"            ; ITU
+254      ; 10     ; FIXED_LINE ; STANDARD_RATE ; false         ;                     ; "fixed_3/4/3"    ; "VN"    ; "Ba Ria Vung Tau province" ; "Bà Rịa-Vũng Tàu"       ; ITU
+255      ; 10     ; FIXED_LINE ; STANDARD_RATE ; false         ;                     ; "fixed_3/4/3"    ; "VN"    ; "Quang Ngai province"      ; "Quảng Ngãi"            ; ITU
+256      ; 10     ; FIXED_LINE ; STANDARD_RATE ; false         ;                     ; "fixed_3/4/3"    ; "VN"    ; "Binh Dinh province"       ; "Bình Định"             ; ITU
+257      ; 10     ; FIXED_LINE ; STANDARD_RATE ; false         ;                     ; "fixed_3/4/3"    ; "VN"    ; "Phu Yen province"         ; "Phú Yên"               ; ITU
+258      ; 10     ; FIXED_LINE ; STANDARD_RATE ; false         ;                     ; "fixed_3/4/3"    ; "VN"    ; "Khanh Hoa province"       ; "Khánh Hòa"             ; ITU
+259      ; 10     ; FIXED_LINE ; STANDARD_RATE ; false         ;                     ; "fixed_3/4/3"    ; "VN"    ; "Ninh Thuan province"      ; "Ninh Thuận"            ; ITU
+260      ; 10     ; FIXED_LINE ; STANDARD_RATE ; false         ;                     ; "fixed_3/4/3"    ; "VN"    ; "Kon Tum province"         ; "Kon Tum"               ; ITU
+261      ; 10     ; FIXED_LINE ; STANDARD_RATE ; false         ;                     ; "fixed_3/4/3"    ; "VN"    ; "Dak Nong province"        ; "Đăk Nông"              ; ITU
+262      ; 10     ; FIXED_LINE ; STANDARD_RATE ; false         ;                     ; "fixed_3/4/3"    ; "VN"    ; "Dak Lak province"         ; "Đăk Lăk"               ; ITU
+263      ; 10     ; FIXED_LINE ; STANDARD_RATE ; false         ;                     ; "fixed_3/4/3"    ; "VN"    ; "Lam Dong province"        ; "Lâm Đồng"              ; ITU
+269      ; 10     ; FIXED_LINE ; STANDARD_RATE ; false         ;                     ; "fixed_3/4/3"    ; "VN"    ; "Gia Lai province"         ; "Gia Lai"               ; ITU
+270      ; 10     ; FIXED_LINE ; STANDARD_RATE ; false         ;                     ; "fixed_3/4/3"    ; "VN"    ; "Ving Long province"       ; "Vĩnh Long"             ; ITU
+271      ; 10     ; FIXED_LINE ; STANDARD_RATE ; false         ;                     ; "fixed_3/4/3"    ; "VN"    ; "Binh Phuoc province"      ; "Bình Phước"            ; ITU
+272      ; 10     ; FIXED_LINE ; STANDARD_RATE ; false         ;                     ; "fixed_3/4/3"    ; "VN"    ; "Long An province"         ; "Long An"               ; ITU
+273      ; 10     ; FIXED_LINE ; STANDARD_RATE ; false         ;                     ; "fixed_3/4/3"    ; "VN"    ; "Tien Giang province"      ; "Tiền Giang"            ; ITU
+274      ; 10     ; FIXED_LINE ; STANDARD_RATE ; false         ;                     ; "fixed_3/4/3"    ; "VN"    ; "Binh Duong province"      ; "Bình Dương"            ; ITU
+275      ; 10     ; FIXED_LINE ; STANDARD_RATE ; false         ;                     ; "fixed_3/4/3"    ; "VN"    ; "Ben Tre province"         ; "Bến Tre"               ; ITU
+276      ; 10     ; FIXED_LINE ; STANDARD_RATE ; false         ;                     ; "fixed_3/4/3"    ; "VN"    ; "Tay Ninh province"        ; "Tây Ninh"              ; ITU
+277      ; 10     ; FIXED_LINE ; STANDARD_RATE ; false         ;                     ; "fixed_3/4/3"    ; "VN"    ; "Dong Thap province"       ; "Đồng Tháp"             ; ITU
+28[2-9]  ; 10     ; FIXED_LINE ; STANDARD_RATE ; false         ;                     ; "fixed_2/4/4"    ; "VN"    ; "Ho Chi Minh City"         ; "Thành phố Hồ Chí Minh" ;            ; "Added per client's request."
+290      ; 10     ; FIXED_LINE ; STANDARD_RATE ; false         ;                     ; "fixed_3/4/3"    ; "VN"    ; "Ca Mau province"          ; "Cà Mau"                ; ITU
+291      ; 10     ; FIXED_LINE ; STANDARD_RATE ; false         ;                     ; "fixed_3/4/3"    ; "VN"    ; "Bac Lieu province"        ; "Bạc Liêu"              ; ITU
+292      ; 10     ; FIXED_LINE ; STANDARD_RATE ; false         ;                     ; "fixed_3/4/3"    ; "VN"    ; "Can Tho City"             ; "Thành phố Cần Thơ"     ; ITU
+293      ; 10     ; FIXED_LINE ; STANDARD_RATE ; false         ;                     ; "fixed_3/4/3"    ; "VN"    ; "Hau Giang province"       ; "Hậu Giang"             ; ITU
+294      ; 10     ; FIXED_LINE ; STANDARD_RATE ; false         ;                     ; "fixed_3/4/3"    ; "VN"    ; "Tra Vinh province"        ; "Trà Vinh"              ; ITU
+296      ; 10     ; FIXED_LINE ; STANDARD_RATE ; false         ;                     ; "fixed_3/4/3"    ; "VN"    ; "An Giang province"        ; "An Giang"              ; ITU
+297      ; 10     ; FIXED_LINE ; STANDARD_RATE ; false         ;                     ; "fixed_3/4/3"    ; "VN"    ; "Kien Giang province"      ; "Kiên Giang"            ; ITU
+299      ; 10     ; FIXED_LINE ; STANDARD_RATE ; false         ;                     ; "fixed_3/4/3"    ; "VN"    ; "Soc Trang province"       ; "Sóc Trăng"             ; ITU
+30       ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "mobifone"          ; "mobile_3/3/3"   ; "VN"    ;                            ;                         ; IR21
+3[1-9]   ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "viettel"           ; "mobile_3/3/3"   ; "VN"    ;                            ;                         ; IR21
+51       ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "mobifone"          ; "mobile_3/3/3"   ; "VN"    ;                            ;                         ; IR21
+52[238]  ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "vietnamobile"      ; "mobile_3/3/3"   ; "VN"    ;                            ;                         ; IR21
+559      ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "reddi"             ; "mobile_3/3/3"   ; "VN"    ;                            ;                         ; GOVERNMENT
+5[68]    ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "vietnamobile"      ; "mobile_3/3/3"   ; "VN"    ;                            ;                         ; IR21
+59       ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "g_mobile"          ; "mobile_3/3/3"   ; "VN"    ;                            ;                         ; ITU
+672      ; 9      ; VOIP       ; STANDARD_RATE ; false         ;                     ; "mobile_2/3/2/2" ; "VN"    ;                            ;                         ; ITU
+69       ; 7,8    ; UAN        ; STANDARD_RATE ; true          ;                     ; "uan_3/4-5"      ; "VN"
+7[06-9]  ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "mobifone"          ; "mobile_3/3/3"   ; "VN"    ;                            ;                         ; ITU
+799      ; 7      ; UAN        ; STANDARD_RATE ; true          ;                     ; "uan_3/4"        ; "VN"
+80       ; 7      ; UAN        ; STANDARD_RATE ; false         ;                     ; "uan_2/5"        ; "VN"
+8[1-578] ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "vinaphone"         ; "mobile_3/3/3"   ; "VN"    ;                            ;                         ; IR21
+86       ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "viettel"           ; "mobile_3/3/3"   ; "VN"    ;                            ;                         ; IR21
+89[689]  ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "mobifone"          ; "mobile_3/3/3"   ; "VN"    ;                            ;                         ; IR21
+897      ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "mobifone"          ; "mobile_3/3/3"   ; "VN"
+9[03]    ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "mobifone"          ; "mobile_3/3/3"   ; "VN"    ;                            ;                         ; IR21
+9[14]    ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "vinaphone"         ; "mobile_3/3/3"   ; "VN"    ;                            ;                         ; IR21
+92       ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "vietnamobile"      ; "mobile_3/3/3"   ; "VN"    ;                            ;                         ; IR21
+95       ; 9      ; MOBILE     ; STANDARD_RATE ; false         ;                     ; "mobile_3/3/3"   ; "VN"
+9[6-8]   ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "viettel"           ; "mobile_3/3/3"   ; "VN"    ;                            ;                         ; IR21
+99[01]   ; 9      ; MOBILE     ; STANDARD_RATE ; false         ;                     ; "mobile_3/3/3"   ; "VN"
+99[3-7]  ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "g_mobile"          ; "mobile_3/3/3"   ; "VN"
+99[89]   ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "indochina_telecom" ; "mobile_3/3/3"   ; "VN"

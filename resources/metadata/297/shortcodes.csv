@@ -1,0 +1,6 @@
+Region ; Prefix ; Length ; Type       ; Tariff    ; Sms  ; Carrier Specific
+AW     ; 100    ; 3      ; EMERGENCY  ; TOLL_FREE
+AW     ; 118    ; 3      ; COMMERCIAL
+AW     ; 176    ; 3      ; COMMERCIAL ;           ; true ; true
+AW     ; 911    ; 3      ; EMERGENCY  ; TOLL_FREE
+AW     ; 913    ; 3      ; COMMERCIAL

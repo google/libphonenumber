@@ -1,0 +1,4 @@
+Region ; Type                 ; Number
+UZ     ; FIXED_LINE           ; "669050123"
+UZ     ; MOBILE               ; "912345678"
+UZ     ; FIXED_LINE_OR_MOBILE ; "669050123"

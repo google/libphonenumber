@@ -1,0 +1,7 @@
+Region ; Prefix    ; Length ; Type       ; Tariff
+GF     ; 118[02-9] ; 6      ; COMMERCIAL
+GF     ; 1[578]    ; 2      ; EMERGENCY  ; TOLL_FREE
+GF     ; 300[0-79] ; 4      ; COMMERCIAL ; TOLL_FREE
+GF     ; 30[1-9]   ; 4      ; COMMERCIAL ; TOLL_FREE
+GF     ; 31[0-689] ; 4      ; COMMERCIAL ; TOLL_FREE
+GF     ; 3[2469]   ; 4      ; COMMERCIAL ; PREMIUM_RATE

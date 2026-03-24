@@ -1,0 +1,6 @@
+Region ; Label          ; Comment
+SD     ; SC             ; "http://www.itu.int/oth/T02020000C4/en"
+SD     ; XML            ; "http://www.itu.int/oth/T02020000C4/en"
+SD     ; XML            ; "https://en.wikipedia.org/wiki/Telephone_numbers_in_Sudan"
+SD     ; XML_FIXED_LINE ; "Retaining previous prefix as 18 since it seems still to be used. ITU doc says 12 is a\nfixed-line range but we are supporting 1[0-2] under mobile as Sudatel mentions that\nthese mobile ranges are assigned to them."
+SD     ; XML_FIXED_LINE ; "The third digit here is an area code as per Wikipedia. Added 154 range based on valid\nnumbers found online."

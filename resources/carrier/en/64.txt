@@ -18,8 +18,17 @@
 64204|Sure (Guernsey) New Zealand Limited
 64205|Vodafone
 64206|Voyager Internet Limted
+64208|Vodafone
 6421|Vodafone
 6422|2degrees
+64260|2degrees
+64261|Spark
+64262|Spark
+64263|Spark
+64264|Spark
+64266|2degrees
+64268|Spark
+64269|Spark
 6427|Spark
 64280|Vodafone
 64281|Sure (Guernsey) New Zealand Limited

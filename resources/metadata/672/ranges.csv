@@ -1,0 +1,8 @@
+Prefix ; Length ; Type       ; Tariff        ; Area Code Length ; Operator          ; Format           ; Regions ; Geocode:en         ; Provenance
+106    ; 6      ; FIXED_LINE ; STANDARD_RATE ;                  ;                   ; "fixed_line_2/4" ; "NF"    ; "Davis"            ; ITU
+117    ; 6      ; FIXED_LINE ; STANDARD_RATE ;                  ;                   ; "fixed_line_2/4" ; "NF"    ; "Mawson"           ; ITU
+128    ; 6      ; FIXED_LINE ; STANDARD_RATE ;                  ;                   ; "fixed_line_2/4" ; "NF"    ; "Casey"            ; ITU
+139    ; 6      ; FIXED_LINE ; STANDARD_RATE ;                  ;                   ; "fixed_line_2/4" ; "NF"    ; "Macquarie Island" ; ITU
+14     ; 6      ; MOBILE     ; STANDARD_RATE ;                  ; "reach"           ; "fmt1_1/5"       ; "NF"    ;                    ; GOVERNMENT
+3[0-2] ; 6      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                   ; "fmt1_1/5"       ; "NF"    ;                    ; ITU
+3[58]  ; 6      ; MOBILE     ; STANDARD_RATE ; 1                ; "norfolk_telecom" ; "fmt1_1/5"       ; "NF"    ;                    ; ITU

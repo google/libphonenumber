@@ -1,0 +1,43 @@
+Region ; Prefix    ; Length ; Type               ; Tariff       ; Sms  ; Provenance
+BE     ; 10[01]    ; 3      ; EMERGENCY          ; TOLL_FREE
+BE     ; 10[235-8] ; 3      ; EXPANDED_EMERGENCY ; TOLL_FREE
+BE     ; 104       ; 3      ; COMMERCIAL
+BE     ; 110       ; 3      ; EXPANDED_EMERGENCY ; TOLL_FREE
+BE     ; 112       ; 3      ; EMERGENCY          ; TOLL_FREE
+BE     ; 116       ; 3      ; COMMERCIAL         ; TOLL_FREE    ;      ; GOVERNMENT
+BE     ; 116000    ; 6      ; EXPANDED_EMERGENCY ; TOLL_FREE
+BE     ; 116117    ; 6      ; COMMERCIAL         ; TOLL_FREE
+BE     ; 117       ; 3      ; COMMERCIAL
+BE     ; 119       ; 3      ; EXPANDED_EMERGENCY ; TOLL_FREE    ;      ; GOVERNMENT
+BE     ; 12[03]4   ; 4      ; COMMERCIAL         ; PREMIUM_RATE
+BE     ; 1207      ; 4      ; COMMERCIAL
+BE     ; 1212      ; 4      ; COMMERCIAL         ; PREMIUM_RATE
+BE     ; 123[0-2]  ; 4      ; COMMERCIAL
+BE     ; 1299      ; 4      ; COMMERCIAL
+BE     ; 130[47]   ; 4      ; COMMERCIAL         ; PREMIUM_RATE
+BE     ; 1313      ; 4      ; COMMERCIAL         ; PREMIUM_RATE
+BE     ; 1399      ; 4      ; COMMERCIAL
+BE     ; 14[01]4   ; 4      ; COMMERCIAL         ; PREMIUM_RATE
+BE     ; 1407      ; 4      ; COMMERCIAL
+BE     ; 1450      ; 4      ; COMMERCIAL
+BE     ; 1499      ; 4      ; COMMERCIAL
+BE     ; 151[05]   ; 4      ; COMMERCIAL
+BE     ; 155[15]   ; 4      ; COMMERCIAL
+BE     ; 1566      ; 4      ; COMMERCIAL
+BE     ; 1595      ; 4      ; COMMERCIAL
+BE     ; 161[167]  ; 4      ; COMMERCIAL
+BE     ; 1636      ; 4      ; COMMERCIAL
+BE     ; 166[16]   ; 4      ; COMMERCIAL
+BE     ; 170[017]  ; 4      ; COMMERCIAL
+BE     ; 1712      ; 4      ; COMMERCIAL         ; TOLL_FREE
+BE     ; 171[7-9]  ; 4      ; COMMERCIAL
+BE     ; 1722      ; 4      ; COMMERCIAL
+BE     ; 1733      ; 4      ; COMMERCIAL
+BE     ; 1765      ; 4      ; COMMERCIAL
+BE     ; 177[01]   ; 4      ; COMMERCIAL
+BE     ; 1777      ; 4      ; COMMERCIAL         ; TOLL_FREE
+BE     ; 1789      ; 4      ; COMMERCIAL
+BE     ; 1813      ; 4      ; COMMERCIAL         ; TOLL_FREE
+BE     ; 1819      ; 4      ; COMMERCIAL
+BE     ; [2-79]    ; 4      ; COMMERCIAL         ; PREMIUM_RATE ; true
+BE     ; 8         ; 4      ; COMMERCIAL         ; TOLL_FREE    ; true

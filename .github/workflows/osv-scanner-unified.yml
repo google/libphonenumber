@@ -1,0 +1,54 @@
+
+# Copyright 2024 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+name: OSV-Scanner
+
+on:
+  pull_request:
+    branches: ["master"]
+  schedule:
+  - cron: "12 12 * * 1"
+  push:
+    branches: ["master"]
+
+permissions:
+  # Required to upload SARIF file to CodeQL. See: https://github.com/github/codeql-action/issues/2117
+  actions: read
+  # Require writing security events to upload SARIF file to security tab
+  security-events: write
+  # Read commit contents
+  contents: read
+
+jobs:
+  scan-scheduled:
+    if: ${{ github.event_name == 'push' || github.event_name == 'schedule' }}
+    # If you want to copy this config, highly suggest pinning this version to a release rather than tracking the main branch
+    uses: "google/osv-scanner-action/.github/workflows/osv-scanner-reusable.yml@8bd1ce1c4be9d98053ffd9e6e14585276a36762c" # v1.9.1
+    with:
+       # Just scan the root directory and docs, since everything else is fixtures
+      scan-args: |-
+        -r
+        --skip-git
+        ./
+  scan-pr:
+    if: ${{ github.event_name == 'pull_request' || github.event_name == 'merge_group' }}
+    # If you want to copy this config, highly suggest pinning this version to a release rather than tracking the main branch
+    uses: "google/osv-scanner-action/.github/workflows/osv-scanner-reusable-pr.yml@8bd1ce1c4be9d98053ffd9e6e14585276a36762c" # v1.9.1
+    with:
+      # Just scan the root directory and docs, since everything else is fixtures
+      scan-args: |-
+        -r
+        --skip-git
+        ./

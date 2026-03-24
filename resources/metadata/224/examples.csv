@@ -1,0 +1,4 @@
+Region ; Type       ; Number
+GN     ; FIXED_LINE ; "30241234"
+GN     ; MOBILE     ; "601123456"
+GN     ; VOIP       ; "722123456"

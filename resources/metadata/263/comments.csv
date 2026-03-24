@@ -1,0 +1,10 @@
+Region ; Label               ; Comment
+ZW     ; SC                  ; "http://www.itu.int/oth/T02020000E9/en"
+ZW     ; SC_CARRIER_SPECIFIC ; "114 emergency short code works only for NetOne subscribers. 95[023] and 96[0-25] short\ncodes can be dialled only from fixed-line. So adding here to alarm that they do not\nwork for all."
+ZW     ; SC_TOLL_FREE        ; "95[023] and 961 are toll-free as per official articles."
+ZW     ; XML                 ; "http://www.itu.int/oth/T02020000E9/en"
+ZW     ; XML                 ; "https://telone.co.zw/sites/default/files/TelOneNewAreaCodesUpdated.pdf"
+ZW     ; XML_FIXED_LINE      ; "The first block has the new renumbering format <New_Area_Code>+<New_Prefix>+<SN>. We are\nnot aware of the tranisition period yet, so supporting both formats until further\nnotice. These new numbers are 3 to 6 digit granularity as per telone.co.zw but for\nmaintainability we are storing 4 digits."
+ZW     ; XML_FIXED_LINE      ; "Old fixed-line ranges are grouped by subscriber-number length."
+ZW     ; XML_FIXED_LINE      ; "The new organisation is used for both formatting and validation\n1. First we have 3 digit area code with SN(3,4,5).\n2. Then we have 3 digit area code with SN(6,7).\n3. Then we have 2 digit area code with SN(3,4,5).\n4. Then we have 2 digit area code with SN(6,7).\n5. Then we have 4 digit area code.\n6. Then we have 1 digit area code with SN(6,7)."
+ZW     ; XML_VOIP            ; "No premiumRate information can be found."

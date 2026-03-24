@@ -1,0 +1,8 @@
+Region ; Label          ; Comment
+TW     ; SC             ; "http://www.itu.int/oth/T02020000EB/en"
+TW     ; SC             ; "Extension symbols found on the internet so far have been #, X and Ext - so # has been\nchosen as the preferred extension prefix."
+TW     ; XML            ; "Extension symbols found on the internet so far have been #, X and Ext - so # has been\nchosen as the preferred extension prefix."
+TW     ; XML            ; "http://www.itu.int/oth/T02020000EB/en"
+TW     ; XML            ; "https://www.ncc.gov.tw/chinese/files/07080/265_1037_070808_1.doc"
+TW     ; XML_FIXED_LINE ; "Prefix 24 added due to numbers found online for two major commercial companies; it\nis possible they aren't fixed-line, but adding them here since we don't have better\ninformation for now. Prefix 90 is mentioned as reserved in http://www.ncc.gov.tw/\nand wikipedea states it as M2M, but we still support in Mobile as we were able to\nfind working online number. Prefix 64 is added on the basis of user report."
+TW     ; XML_VOIP       ; "http://www.chief.com.tw/telecom_eng/front/bin/ptlist.phtml?Category=107"

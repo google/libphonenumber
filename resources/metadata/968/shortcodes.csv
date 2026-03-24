@@ -1,0 +1,13 @@
+Region ; Prefix    ; Length ; Type       ; Tariff    ; Provenance
+OM     ; 1111      ; 4      ; COMMERCIAL ;           ; GOVERNMENT
+OM     ; 1222      ; 4      ; COMMERCIAL ;           ; GOVERNMENT
+OM     ; 12[3-5]   ; 4      ; COMMERCIAL ;           ; GOVERNMENT
+OM     ; 13[0-2]   ; 4      ; COMMERCIAL ;           ; GOVERNMENT
+OM     ; 144[0-35] ; 4      ; COMMERCIAL ;           ; GOVERNMENT
+OM     ; 1444      ; 4      ; EMERGENCY  ; TOLL_FREE ; GOVERNMENT
+OM     ; 1450      ; 4      ; COMMERCIAL ;           ; GOVERNMENT
+OM     ; 1466      ; 4      ; COMMERCIAL ;           ; GOVERNMENT
+OM     ; 147[7-9]  ; 4      ; COMMERCIAL ;           ; GOVERNMENT
+OM     ; 150       ; 4      ; COMMERCIAL ;           ; GOVERNMENT
+OM     ; 151[0-8]  ; 4      ; COMMERCIAL ;           ; GOVERNMENT
+OM     ; 9999      ; 4      ; EMERGENCY  ; TOLL_FREE

@@ -1,0 +1,12 @@
+Region ; Prefix    ; Length ; Type               ; Tariff       ; Sms  ; Carrier Specific ; Provenance
+JO     ; 10[235]   ; 3      ; COMMERCIAL         ; TOLL_FREE    ;      ;                  ; GOVERNMENT
+JO     ; 109       ; 3      ; COMMERCIAL
+JO     ; 11[018]   ; 3      ; COMMERCIAL
+JO     ; 112       ; 3      ; EMERGENCY          ; TOLL_FREE
+JO     ; 11[356]   ; 3      ; COMMERCIAL         ; TOLL_FREE    ;      ;                  ; GOVERNMENT
+JO     ; 114       ; 3      ; EXPANDED_EMERGENCY ; TOLL_FREE
+JO     ; 190       ; 3      ; EXPANDED_EMERGENCY
+JO     ; 19[127]   ; 3      ; EMERGENCY          ; TOLL_FREE
+JO     ; 19[4-69]  ; 3      ; COMMERCIAL
+JO     ; 9[0-4689] ; 5      ; COMMERCIAL         ; PREMIUM_RATE ; true ; true             ; GOVERNMENT
+JO     ; 911       ; 3      ; EMERGENCY          ; TOLL_FREE

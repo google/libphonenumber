@@ -1,0 +1,5 @@
+Id           ; National         ; International ; National Prefix Optional ; Comment
+fixed_1/3/4  ; "(#-X) XXX XXXX" ; "X XXX XXXX"  ; true                     ; "1 digit area code (fixed line only)"
+fixed_2/6    ; "(#-XX) XXXXXX"  ; "XX XXXXXX"   ; true                     ; "2 digit area codes (fixed line only)"
+fmt_3/5      ; "(#-XXX) XXXXX"  ; "XXX XXXXX"   ; true                     ; "3 digit area codes and other formats (mobile etc.)"
+nongeo_3/2/3 ; "# XXX XX XXX"   ; "XXX XX XXX"  ; true                     ; "Non-geographic numbers (toll free, UAN etc.)"

@@ -1,0 +1,10 @@
+Region ; Label                 ; Comment
+CO     ; SC                    ; "Information primarily obtained from:\n  http://en.wikipedia.org/wiki/Telephone_numbers_in_Colombia\nand:\n  http://en.wikipedia.org/wiki/Emergency_telephone_number\nThe ""civil defense"" line (144) was found in:\n  http://www.icsu.unal.edu.co/ciudad.html\n\nThe Wikipedia page states:\n  ""More specialized three-digit numbers are available; check the local Yellow Pages for\n   more information"". See: http://sites.paginasamarillas.com/directorio/colombia.html\n\nFor examples of local Yellow Pages information see:\n* http://images.paginasamarillas.com/flipping/colombia/bogota/Book/index.html#/20/\n* http://images.paginasamarillas.com/flipping/colombia/amazonia/index.html#/2/\n* http://images.paginasamarillas.com/flipping/colombia/cali/index.html#/18/\n\nCurrently not all short numbers from all local Yellow Pages have been included and we don't\nknow the cost for any of them. Current local short numbers are (* = urgent services):\nChild Helpline:      106 *\nEnergy (Claims):     115 (the description for this is not very clear)\nWater pipes (leaks): 116 *\nHealth Secretary     125\nHospital (Urgent)    137 *\nCooperation Network: 146\nGaula (Military)     147 *\nDept. of Security:   153\nGas emergencies:     164 *\nInformation:         195"
+CO     ; SC_CARRIER_SPECIFIC   ; "https://support.twitter.com/articles/20170024"
+CO     ; SC_CARRIER_SPECIFIC   ; "85432 is used for customer complaints - found on mobile websites - and will go to your\ncarrier specifically."
+CO     ; SC_EMERGENCY          ; "Police, medical and fire plus general emergency numbers (112,123)."
+CO     ; SC_EXPANDED_EMERGENCY ; "Traffic accidents, civil defense, GAULA and urgent local short numbers from above."
+CO     ; SC_SMS_SERVICES       ; "https://support.twitter.com/articles/20170024"
+CO     ; XML                   ; "http://www.itu.int/oth/T020200002C/en"
+CO     ; XML                   ; "http://en.wikipedia.org/wiki/Telephone_numbers_in_Colombia"
+CO     ; XML_MOBILE            ; "Added prefix 323 based on user report and online evidences."

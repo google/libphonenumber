@@ -1,0 +1,7 @@
+Region ; Label           ; Comment
+BO     ; SC              ; "http://www.itu.int/oth/T020200001A/en"
+BO     ; SC              ; "http://www.bolivia.com/Servicios/Plandenumeracion.pdf"
+BO     ; SC_SMS_SERVICES ; "https://support.twitter.com/articles/20170024"
+BO     ; XML             ; "http://www.itu.int/oth/T020200001A/en"
+BO     ; XML             ; "http://www.bolivia.com/Servicios/Plandenumeracion.pdf"
+BO     ; XML_TOLL_FREE   ; "Added prefix 8001[07] based on user report."

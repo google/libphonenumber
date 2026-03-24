@@ -1,0 +1,5 @@
+Id          ; National        ; International  ; Comment
+fixed_3/3/3 ; "#XXX XXX XXX"  ; "XXX XXX XXX"  ; "Fixed line"
+fixed_4/5   ; "#XXXX XXXXX"   ; "XXXX XXXXX"   ; "Fixed line (4-digit area code)."
+fmt_2/3/4   ; "#XX XXX XXXX"  ; "XX XXX XXXX"  ; "General format (fixed line, mobile, voip etc.)"
+fmt_3/3/3-4 ; "#XXX XXX XXX*" ; "XXX XXX XXX*" ; "Premium Rate and Toll Free"

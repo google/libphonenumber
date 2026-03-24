@@ -1,0 +1,13 @@
+Prefix       ; Length ; Type       ; Tariff        ; Operator ; Format       ; Regions ; Geocode:en                      ; Provenance
+222          ; 9      ; MOBILE     ; STANDARD_RATE ; "getesa" ; "fmt1_3/3/3" ; "GQ"    ;                                 ; IR21
+33[0-24-9]x4 ; 9      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt1_3/3/3" ; "GQ"    ; "Bioko"
+33[0-24-9]x6 ; 9      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt1_3/3/3" ; "GQ"    ; "Continental Region"
+333x7        ; 9      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt1_3/3/3" ; "GQ"    ; "Centro-Sur/Kié-Ntem/Wele-Nzás" ; ITU
+333x8        ; 9      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt1_3/3/3" ; "GQ"    ; "Litoral/Annobón"               ; ITU
+333x9        ; 9      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt1_3/3/3" ; "GQ"    ; "Bioko"                         ; ITU
+35xx7        ; 9      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt1_3/3/3" ; "GQ"    ; "Centro-Sur/Kié-Ntem/Wele-Nzás" ; ITU
+35xx8        ; 9      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt1_3/3/3" ; "GQ"    ; "Litoral/Annobón"               ; ITU
+35xx9        ; 9      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt1_3/3/3" ; "GQ"    ; "Bioko"                         ; ITU
+55           ; 9      ; MOBILE     ; STANDARD_RATE ; "muni"   ; "fmt1_3/3/3" ; "GQ"    ;                                 ; IR21
+80x[1-9]     ; 9      ; FIXED_LINE ; TOLL_FREE     ;          ; "fmt2_3/6"   ; "GQ"
+90x[1-9]     ; 9      ; FIXED_LINE ; PREMIUM_RATE  ;          ; "fmt2_3/6"   ; "GQ"

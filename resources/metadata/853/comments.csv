@@ -1,0 +1,6 @@
+Region ; Label          ; Comment
+MO     ; SC             ; "http://www.itu.int/oth/T020200007E/en"
+MO     ; XML            ; "No tollFree or premiumRate information can be found."
+MO     ; XML            ; "http://www.itu.int/oth/T020200007E/en"
+MO     ; XML            ; "http://www.dsrt.gov.mo/web/en/generalinfo/allocatednum"
+MO     ; XML_FIXED_LINE ; "Added support to specific 811 sub range(3 digit granularity) based on info in\ntelecommunications.ctt.gov.mo. Other ranges are from ITU doc."

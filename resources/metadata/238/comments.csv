@@ -1,0 +1,5 @@
+Region ; Label        ; Comment
+CV     ; SC           ; "http://www.itu.int/oth/T0202000026/en"
+CV     ; SC_EMERGENCY ; "http://www.capeverde.com/travel-tips/safety.html"
+CV     ; XML          ; "http://www.itu.int/oth/T0202000026/en"
+CV     ; XML_MOBILE   ; "It seems, contrary to their numbering plan, the entire 9X range is used for mobile\nphones. SMS messages has been successfully sent to numbers starting with 95 and 97 for\nexample, and there are plenty of numbers on the internet that start with these\nprefixes."

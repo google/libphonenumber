@@ -1,0 +1,6 @@
+Region ; Type         ; Number
+FO     ; FIXED_LINE   ; "201234"
+FO     ; MOBILE       ; "211234"
+FO     ; TOLL_FREE    ; "802123"
+FO     ; PREMIUM_RATE ; "901123"
+FO     ; VOIP         ; "601234"

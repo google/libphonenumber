@@ -1,0 +1,8 @@
+Region ; Label           ; Comment
+NL     ; SC              ; "http://en.wikipedia.org/wiki/%2B31"
+NL     ; SC              ; "http://wetten.overheid.nl/BWBR0010198"
+NL     ; SC_SMS_SERVICES ; "3000 and 4000 are SMS only shortcodes as per online evidence."
+NL     ; XML             ; "http://en.wikipedia.org/wiki/%2B31"
+NL     ; XML             ; "http://wetten.overheid.nl/BWBR0010198"
+NL     ; XML_MOBILE      ; "As per this government.nl's doc some sub ranges of existing 06[1-58] mobile numbers are\nused for M2M purposes (that use mobile networks). But there is no information about these\nsub ranges. The other way is also true, 12 digit 097 M2M numbers are used for mobile\npurposes. More information in https://www.acm.nl/en/publications/information-about-dutch-097-numbers-non-dutch-providers\nAdded support just for subrange 970X as these only mentioned as assigned/live."
+NL     ; XML_UAN         ; "These numbers are used for local government. They are formed by the appending the local\ndialling code (including the national prefix 0) after the leading digits ""14"".\ngovernment.nl's doc says 88 range is for premium rate services but only for a period of\n6 months after its enforcement. Online results and Wikipedia says these are of standard\ncost to end users."

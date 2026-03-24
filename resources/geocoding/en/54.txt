@@ -190,6 +190,7 @@
 543409|Moisés Ville, Santa Fe
 54341|Rosario, Santa Fe
 54342|Santa Fe, Santa Fe
+543433|Paraná, Entre Ríos
 543434|Paraná, Entre Ríos
 543435|Nogoyá, Entre Ríos
 543436|Victoria, Entre Ríos
@@ -304,6 +305,7 @@
 543832|Recreo, Catamarca
 543834|San Fernando del Valle de Catamarca, Catamarca
 543835|Andalgalá, Catamarca
+543836|Andalgalá, Catamarca
 543837|Tinogasta, Catamarca
 543838|Santa María, Catamarca
 543841|Monte Quemado, Santiago del Estero
@@ -325,13 +327,7 @@
 543868|Cafayate, Salta
 543869|Ranchillos y San Miguel, Tucumán
 543872|Salta, Salta
-5438730|Tartagal, Salta
-5438731|Tartagal, Salta
-5438732|Tartagal, Salta
-5438733|Tartagal, Salta
-5438734|Tartagal, Salta
-5438735|Tartagal, Salta
-5438736|Tartagal, Salta
+543873|Tartagal, Salta
 543874|Salta, Salta
 543875|Salta, Salta
 543876|San José de Metán, Salta

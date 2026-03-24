@@ -1,0 +1,9 @@
+Region ; Label           ; Comment
+FJ     ; SC              ; "http://www.itu.int/oth/T0202000048/en"
+FJ     ; SC              ; "www.tfl.com.fj"
+FJ     ; SC_SHORT_CODE   ; "From the Emergency Numbers page on the Telecom Fiji website:\nhttp://www.tfl.com.fj/index.cfm?go=tfl.support&id=B5B4EDF6-05EC-069A-38162D21274B90BC&category=support"
+FJ     ; SC_SMS_SERVICES ; "https://support.twitter.com/articles/20170024"
+FJ     ; XML             ; "http://www.itu.int/oth/T0202000048/en"
+FJ     ; XML             ; "http://www.tfl.com.fj"
+FJ     ; XML_FIXED_LINE  ; "Adding the prefixes 30X, 31X and 62X, since numbers with these prefixes have been found\nonline, including in the white pages. 35X and 85X were found in the exchanges listed on\nhttp://www.tfl.com.fj. Prefix 603 is added based on user report and online results."
+FJ     ; XML_TOLL_FREE   ; "Information found on http://www.tfl.com.fj. It is not clear if these are\ninternationally diallable, or if so, how."

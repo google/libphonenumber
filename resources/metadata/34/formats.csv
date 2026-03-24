@@ -1,0 +1,5 @@
+Id             ; National       ; International  ; Comment
+all_3/2/2/2    ; "XXX XX XX XX" ; "XXX XX XX XX"
+shortcode_4    ; "XXXX"         ;                ; "4-digit shortcodes which would otherwise be formatted as 'XXX X'"
+shortcode_6    ; "XXXXXX"       ;                ; "6-digit shortcodes which would otherwise be formatted as 'XXX XX X'"
+tollfree_3/3/3 ; "XXX XXX XXX"  ; "XXX XXX XXX"  ; "Toll free numbers."

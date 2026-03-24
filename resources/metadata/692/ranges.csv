@@ -1,0 +1,11 @@
+Prefix ; Length ; Type       ; Tariff        ; Operator ; Format     ; Regions ; Provenance ; Comment
+235    ; 7      ; MOBILE     ; STANDARD_RATE ; "nta"    ; "fmt1_3/4" ; "MH"
+247    ; 7      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt1_3/4" ; "MH"
+329    ; 7      ; MOBILE     ; STANDARD_RATE ; "nta"    ; "fmt1_3/4" ; "MH"
+453    ; 7      ; MOBILE     ; STANDARD_RATE ; "nta"    ; "fmt1_3/4" ; "MH"    ; GOVERNMENT
+45[56] ; 7      ; MOBILE     ; STANDARD_RATE ; "nta"    ; "fmt1_3/4" ; "MH"
+45[78] ; 7      ; MOBILE     ; STANDARD_RATE ; "nta"    ; "fmt1_3/4" ; "MH"    ; WEB
+528    ; 7      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt1_3/4" ; "MH"
+545    ; 7      ; MOBILE     ; STANDARD_RATE ; "nta"    ; "fmt1_3/4" ; "MH"
+625    ; 7      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt1_3/4" ; "MH"
+635    ; 7      ; VOIP       ; STANDARD_RATE ;          ; "fmt1_3/4" ; "MH"    ;            ; "DAMA Service for outer Islands"

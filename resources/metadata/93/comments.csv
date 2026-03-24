@@ -1,0 +1,6 @@
+Region ; Label               ; Comment
+AF     ; SC                  ; "http://www.itu.int/oth/T0202000001/en"
+AF     ; SC_CARRIER_SPECIFIC ; "https://support.twitter.com/articles/20170024"
+AF     ; SC_SMS_SERVICES     ; "https://support.twitter.com/articles/20170024"
+AF     ; XML                 ; "http://www.itu.int/oth/T0202000001/en"
+AF     ; XML_MOBILE          ; "731 range is supported based on user report."

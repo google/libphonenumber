@@ -1,0 +1,7 @@
+Region ; Label        ; Comment
+MR     ; SC           ; "http://www.itu.int/oth/T0202000087/en"
+MR     ; SC           ; "http://www.are.mr/com-1-4-1.html"
+MR     ; SC_EMERGENCY ; "http://www.lemoci.com/Mauritanie/14-Donnees-generales.htm"
+MR     ; XML          ; "http://www.itu.int/oth/T0202000087/en"
+MR     ; XML          ; "http://are.mr/pdfs/pnn2010.pdf"
+MR     ; XML_MOBILE   ; "Added ""49\\d"" in response to https://github.com/google/libphonenumber/issues/529\nwhich might be overly permissive, but we don't have an official documentation for this\nand only a small number of numbers were found online. At least 492 and 495 are valid."

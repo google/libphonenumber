@@ -1,0 +1,5 @@
+Region ; Type         ; Number
+AZ     ; FIXED_LINE   ; "123123456"
+AZ     ; MOBILE       ; "401234567"
+AZ     ; TOLL_FREE    ; "881234567"
+AZ     ; PREMIUM_RATE ; "900200123"

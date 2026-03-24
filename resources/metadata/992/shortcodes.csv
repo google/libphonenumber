@@ -1,0 +1,3 @@
+Region ; Prefix  ; Length ; Type      ; Tariff
+TJ     ; 10[1-3] ; 3      ; EMERGENCY ; TOLL_FREE
+TJ     ; 112     ; 3      ; EMERGENCY ; TOLL_FREE

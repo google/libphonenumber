@@ -1,0 +1,20 @@
+Prefix       ; Length ; Type       ; Tariff        ; Operator   ; Format     ; Regions ; Geocode:en                      ; Geocode:pt                    ; Provenance
+22[01]       ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/4" ; "ST"
+2220         ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/4" ; "ST"    ; "Santo Amaro"                   ; "Santo Amaro"                 ; ITU
+222[1-8]     ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/4" ; "ST"    ; "Água Grande"                   ; "Água Grande"                 ; ITU
+2229         ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/4" ; "ST"
+223[024-9]   ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/4" ; "ST"
+2231         ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/4" ; "ST"    ; "Guadalupe"                     ; "Guadalupe"                   ; ITU
+2233         ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/4" ; "ST"    ; "Neves, Santa Catarina"         ; "Neves, Santa Catarina"       ; ITU
+22[489]      ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/4" ; "ST"    ; "Água Grande"                   ; "Água Grande"                 ; ITU
+225[02-9]    ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/4" ; "ST"
+2251         ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/4" ; "ST"    ; "Autonomous Region of Príncipe" ; "Região Autonoma do Príncipe" ; ITU
+226[02-46-9] ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/4" ; "ST"
+2261         ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/4" ; "ST"    ; "Angolares, Porto Alegre"       ; "Angolares, Porto Alegre"     ; ITU
+2265         ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/4" ; "ST"    ; "Santana, Ribeira Afonso"       ; "Santana, Ribeira Afonso"     ; ITU
+227[03-9]    ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/4" ; "ST"
+2271         ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/4" ; "ST"    ; "Trindade"                      ; "Trindade"                    ; ITU
+2272         ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/4" ; "ST"    ; "Madalena"                      ; "Madalena"                    ; ITU
+900[5-9]     ; 7      ; MOBILE     ; STANDARD_RATE ; "unitel"   ; "fmt1_3/4" ; "ST"    ;                                 ;                               ; IR21
+90[1-9]      ; 7      ; MOBILE     ; STANDARD_RATE ; "unitel"   ; "fmt1_3/4" ; "ST"    ;                                 ;                               ; IR21
+9[89]        ; 7      ; MOBILE     ; STANDARD_RATE ; "cstmovel" ; "fmt1_3/4" ; "ST"    ;                                 ;                               ; IR21

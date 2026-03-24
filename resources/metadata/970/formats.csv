@@ -1,0 +1,4 @@
+Id            ; National       ; International
+fixed_1/3/4   ; "#X XXX XXXX"  ; "X XXX XXXX"
+mobile_3/3/3  ; "#XXX XXX XXX" ; "XXX XXX XXX"
+varcost_4/3/3 ; "XXXX XXX XXX" ; "XXXX XXX XXX"

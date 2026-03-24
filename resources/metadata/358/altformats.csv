@@ -1,0 +1,4 @@
+Format      ; Parent Format ; Comment
+X XXX XXX*  ; fmt_1/4-9     ; "Alternative format for one-digit prefix mid-length numbers."
+XX XXX XXX* ; fmt_2/4-8     ; "Alternative format for two-digit prefix mid-length numbers."
+X XXXX XXX  ; fmt_1/4-9     ; "Alternative format for one-digit prefix mid-length numbers."

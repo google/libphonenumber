@@ -1,0 +1,4 @@
+Id              ; National       ; International
+fmt_2/2/2       ; "XX XX XX"     ; "XX XX XX"
+fmt_2/2/2/2     ; "XX XX XX XX"  ; "XX XX XX XX"
+varcost_3/2/2/2 ; "XXX XX XX XX" ; "XXX XX XX XX"

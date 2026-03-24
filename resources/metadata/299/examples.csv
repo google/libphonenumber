@@ -1,0 +1,5 @@
+Region ; Type       ; Number
+GL     ; FIXED_LINE ; "321000"
+GL     ; MOBILE     ; "221234"
+GL     ; TOLL_FREE  ; "801234"
+GL     ; VOIP       ; "381234"

@@ -1,0 +1,7 @@
+Region ; Prefix   ; Length ; Type       ; Tariff
+PK     ; 112      ; 3      ; EMERGENCY  ; TOLL_FREE
+PK     ; 1122     ; 4      ; EMERGENCY  ; TOLL_FREE
+PK     ; 11[47-9] ; 3      ; COMMERCIAL
+PK     ; 115      ; 3      ; EMERGENCY  ; TOLL_FREE
+PK     ; 13[014]  ; 3      ; COMMERCIAL
+PK     ; 1[56]    ; 2      ; EMERGENCY  ; TOLL_FREE

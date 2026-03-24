@@ -1,0 +1,6 @@
+Region ; Label          ; Comment
+MK     ; SC             ; "http://www.itu.int/oth/T02020000CE/en"
+MK     ; XML            ; "http://www.itu.int/oth/T02020000CE/en"
+MK     ; XML            ; "https://e-agencija.aek.mk/aek-crm-portal/Pages/Public/PublicFreeSeries/PublicFreeSeries"
+MK     ; XML_FIXED_LINE ; "For easier maintenance, supporting ranges at 3 digit granularity vs 5 digit granular\nranges mentioned in AEK's web portal."
+MK     ; XML_MOBILE     ; "79300-79375 were the only ranges assigned to one.Vip according to IR.21 docs. We support\nall of 793 to keep the regex simple. As info in AEK's portal is not complete, supporting\nranges at 4 digit granularity vs 5 digit granular ranges mentioned."

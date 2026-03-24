@@ -1,0 +1,4 @@
+Region ; Prefix ; Length ; Type               ; Tariff
+CF     ; 114    ; 3      ; EXPANDED_EMERGENCY
+CF     ; 11[78] ; 3      ; EMERGENCY          ; TOLL_FREE
+CF     ; 1220   ; 4      ; EMERGENCY          ; TOLL_FREE

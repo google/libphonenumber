@@ -1,0 +1,11 @@
+Region ; Prefix    ; Length ; Type               ; Tariff    ; Sms  ; Carrier Specific
+SV     ; 112       ; 3      ; COMMERCIAL
+SV     ; 116111    ; 6      ; EXPANDED_EMERGENCY ; TOLL_FREE
+SV     ; 12[136-8] ; 3      ; COMMERCIAL
+SV     ; 13[0-6]   ; 3      ; COMMERCIAL
+SV     ; 19[05]    ; 3      ; COMMERCIAL
+SV     ; 40404     ; 5      ; COMMERCIAL         ;           ; true ; true
+SV     ; 91[024-9] ; 3      ; COMMERCIAL
+SV     ; 911       ; 3      ; EMERGENCY          ; TOLL_FREE
+SV     ; 913       ; 3      ; EMERGENCY
+SV     ; 929       ; 3      ; COMMERCIAL

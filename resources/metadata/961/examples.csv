@@ -1,0 +1,5 @@
+Region ; Type         ; Number
+LB     ; FIXED_LINE   ; "1123456"
+LB     ; MOBILE       ; "71123456"
+LB     ; PREMIUM_RATE ; "90123456"
+LB     ; SHARED_COST  ; "80123456"

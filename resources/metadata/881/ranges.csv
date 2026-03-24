@@ -1,0 +1,6 @@
+Prefix ; Length ; Type   ; Tariff        ; Operator            ; Format         ; Regions ; Provenance ; Comment
+[01]   ; 9      ; MOBILE ; STANDARD_RATE ; "ico_satellite"     ; "fmt1_1/3/5"   ; "001"   ; WEB        ; "wiki"
+[23]   ; 9      ; MOBILE ; STANDARD_RATE ; "ellipso_satellite" ; "fmt1_1/3/5"   ; "001"   ; WEB        ; "wiki"
+6      ; 9,10   ; MOBILE ; STANDARD_RATE ; "iridium_satellite" ; "fmt2_1/3/5-6" ; "001"   ; ITU
+7      ; 9      ; MOBILE ; STANDARD_RATE ; "iridium_satellite" ; "fmt1_1/3/5"   ; "001"   ; ITU        ; "."
+[89]   ; 9      ; MOBILE ; STANDARD_RATE ; "globalstar"        ; "fmt1_1/3/5"   ; "001"   ; WEB        ; "wiki"

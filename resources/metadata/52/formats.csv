@@ -1,0 +1,4 @@
+Id          ; National       ; International  ; Comment
+fmt_2/4/4   ; "XX XXXX XXXX" ; "XX XXXX XXXX" ; "Fixed line (2-digit area codes) and Mobile."
+fmt_3/3/4   ; "XXX XXX XXXX" ; "XXX XXX XXXX" ; "Fixed line (3-digit area codes), Mobile and all other non geographic numbers."
+shortcode_5 ; "XXXXX"        ;                ; "5-digit shortcodes (very rare)."

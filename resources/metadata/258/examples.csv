@@ -1,0 +1,4 @@
+Region ; Type       ; Number
+MZ     ; FIXED_LINE ; "21123456"
+MZ     ; MOBILE     ; "821234567"
+MZ     ; TOLL_FREE  ; "800123456"

@@ -1,0 +1,4 @@
+Region ; Type       ; Number
+LK     ; FIXED_LINE ; "112345678"
+LK     ; MOBILE     ; "712345678"
+LK     ; UAN        ; "197312345"

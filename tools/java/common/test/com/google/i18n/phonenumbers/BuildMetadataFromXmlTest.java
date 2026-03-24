@@ -116,7 +116,7 @@ public class BuildMetadataFromXmlTest extends TestCase {
         + "  preferredInternationalPrefix='00~11' nationalPrefixForParsing='0'"
         + "  nationalPrefixTransformRule='9$1'"  // nationalPrefix manually injected.
         + "  preferredExtnPrefix=' x' mainCountryForCode='true'"
-        + "  leadingZeroPossible='true' mobileNumberPortableRegion='true'>"
+        + "  mobileNumberPortableRegion='true'>"
         + "</territory>";
     Element territoryElement = parseXmlString(xmlInput);
     PhoneMetadata.Builder phoneMetadata =

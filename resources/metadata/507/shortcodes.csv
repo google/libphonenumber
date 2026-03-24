@@ -1,0 +1,3 @@
+Region ; Prefix  ; Length ; Type       ; Tariff
+PA     ; 10[2-4] ; 3      ; COMMERCIAL
+PA     ; 911     ; 3      ; EMERGENCY  ; TOLL_FREE

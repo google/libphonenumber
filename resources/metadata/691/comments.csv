@@ -1,0 +1,5 @@
+Region ; Label        ; Comment
+FM     ; SC           ; "http://www.itu.int/oth/T020200008B/en"
+FM     ; SC_EMERGENCY ; "http://travel.state.gov/travel/cis_pa_tw/cis/cis_971.html"
+FM     ; XML          ; "http://www.itu.int/oth/T020200008B/en"
+FM     ; XML_MOBILE   ; "Note that most ranges are used for both fixed and mobile but numbers starting with 97X\nare exclusively mobile."

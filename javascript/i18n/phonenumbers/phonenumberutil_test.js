@@ -27,7 +27,6 @@
 goog.provide('i18n.phonenumbers.PhoneNumberUtilTest');
 goog.setTestOnly();
 
-goog.require('goog.array');
 goog.require('goog.string.StringBuffer');
 goog.require('goog.testing.jsunit');
 goog.require('i18n.phonenumbers.Error');
@@ -90,6 +89,10 @@ var BS_NUMBER = new i18n.phonenumbers.PhoneNumber();
 BS_NUMBER.setCountryCode(1);
 BS_NUMBER.setNationalNumber(2423651234);
 
+/** @type {!i18n.phonenumbers.PhoneNumber} */
+var CO_FIXED_LINE = new i18n.phonenumbers.PhoneNumber();
+CO_FIXED_LINE.setCountryCode(57);
+CO_FIXED_LINE.setNationalNumber(6012345678);
 
 // Note that this is the same as the example number for DE in the metadata.
 /** @type {!i18n.phonenumbers.PhoneNumber} */
@@ -449,63 +452,55 @@ function testGetCountryMobileToken() {
 
 function testGetSupportedRegions() {
   assertTrue(phoneUtil.getSupportedRegions().length > 0);
-  assertTrue(
-      goog.array.contains(phoneUtil.getSupportedRegions(), RegionCode.US));
-  assertFalse(
-      goog.array.contains(phoneUtil.getSupportedRegions(), RegionCode.UN001));
-  assertFalse(goog.array.contains(phoneUtil.getSupportedRegions(), '800'));
+  assertTrue(phoneUtil.getSupportedRegions().includes(RegionCode.US));
+  assertFalse(phoneUtil.getSupportedRegions().includes(RegionCode.UN001));
+  assertFalse(phoneUtil.getSupportedRegions().includes('800'));
 }
 
 function testGetSupportedGlobalNetworkCallingCodes() {
   assertTrue(phoneUtil.getSupportedGlobalNetworkCallingCodes().length > 0);
-  assertFalse(goog.array.contains(
-      phoneUtil.getSupportedGlobalNetworkCallingCodes(), RegionCode.US));
-  assertTrue(goog.array.contains(
-      phoneUtil.getSupportedGlobalNetworkCallingCodes(), 800));
-  goog.array.forEach(
-      phoneUtil.getSupportedGlobalNetworkCallingCodes(),
-      function(countryCallingCode) {
-        assertEquals(
-            RegionCode.UN001,
-            phoneUtil.getRegionCodeForCountryCode(countryCallingCode));
-      });
+  assertFalse(phoneUtil.getSupportedGlobalNetworkCallingCodes().includes(1));
+  assertTrue(phoneUtil.getSupportedGlobalNetworkCallingCodes().includes(800));
+  phoneUtil.getSupportedGlobalNetworkCallingCodes().forEach(function(
+      countryCallingCode) {
+    assertEquals(
+        RegionCode.UN001,
+        phoneUtil.getRegionCodeForCountryCode(countryCallingCode));
+  });
 }
 
 function testGetSupportedCallingCodes() {
   assertTrue(phoneUtil.getSupportedCallingCodes().length > 0);
-  goog.array.forEach(
-      phoneUtil.getSupportedCallingCodes(), function(callingCode) {
-        assertTrue(callingCode > 0);
-        assertFalse(
-            phoneUtil.getRegionCodeForCountryCode(callingCode) ==
-            RegionCode.ZZ);
-      });
+  phoneUtil.getSupportedCallingCodes().forEach(function(callingCode) {
+    assertTrue(callingCode > 0);
+    assertFalse(
+        phoneUtil.getRegionCodeForCountryCode(callingCode) == RegionCode.ZZ);
+  });
   // There should be more than just the global network calling codes in this
   // set.
   assertTrue(
       phoneUtil.getSupportedCallingCodes().length >
       phoneUtil.getSupportedGlobalNetworkCallingCodes().length);
   // But they should be included. Testing one of them.
-  assertTrue(goog.array.contains(
-      phoneUtil.getSupportedGlobalNetworkCallingCodes(), 979));
+  assertTrue(phoneUtil.getSupportedGlobalNetworkCallingCodes().includes(979));
 }
 
 function testGetSupportedTypesForRegion() {
   var PNT = i18n.phonenumbers.PhoneNumberType;
   var types = phoneUtil.getSupportedTypesForRegion(RegionCode.BR);
-  assertTrue(goog.array.contains(types, PNT.FIXED_LINE));
+  assertTrue(types.includes(PNT.FIXED_LINE));
   // Our test data has no mobile numbers for Brazil.
-  assertFalse(goog.array.contains(types, PNT.MOBILE));
+  assertFalse(types.includes(PNT.MOBILE));
   // UNKNOWN should never be returned.
-  assertFalse(goog.array.contains(types, PNT.UNKNOWN));
+  assertFalse(types.includes(PNT.UNKNOWN));
 
   // In the US, many numbers are classified as FIXED_LINE_OR_MOBILE; but we
   // don't want to expose this as a supported type, instead we say FIXED_LINE
   // and MOBILE are both present.
   types = phoneUtil.getSupportedTypesForRegion(RegionCode.US);
-  assertTrue(goog.array.contains(types, PNT.FIXED_LINE));
-  assertTrue(goog.array.contains(types, PNT.MOBILE));
-  assertFalse(goog.array.contains(types, PNT.FIXED_LINE_OR_MOBILE));
+  assertTrue(types.includes(PNT.FIXED_LINE));
+  assertTrue(types.includes(PNT.MOBILE));
+  assertFalse(types.includes(PNT.FIXED_LINE_OR_MOBILE));
 
   types = phoneUtil.getSupportedTypesForRegion(RegionCode.ZZ);
   assertTrue(types.length == 0);
@@ -518,11 +513,11 @@ function testGetSupportedTypesForNonGeoEntity() {
   assertTrue(types.length == 0);
 
   types = phoneUtil.getSupportedTypesForNonGeoEntity(979);
-  assertTrue(goog.array.contains(types, PNT.PREMIUM_RATE));
+  assertTrue(types.includes(PNT.PREMIUM_RATE));
   // Our test data has no mobile numbers for Brazil.
-  assertFalse(goog.array.contains(types, PNT.MOBILE));
+  assertFalse(types.includes(PNT.MOBILE));
   // UNKNOWN should never be returned.
-  assertFalse(goog.array.contains(types, PNT.UNKNOWN));
+  assertFalse(types.includes(PNT.UNKNOWN));
 }
 
 function testGetNationalSignificantNumber() {
@@ -901,7 +896,7 @@ function testFormatOutOfCountryWithPreferredIntlPrefix() {
   assertEquals(
       '0011 39 02 3661 8300',
       phoneUtil.formatOutOfCountryCallingNumber(IT_NUMBER, RegionCode.AU));
-      
+
   // Testing preferred international prefixes with ~ are supported (designates
   // waiting).
   assertEquals(
@@ -1112,6 +1107,9 @@ function testFormatWithPreferredCarrierCode() {
 function testFormatNumberForMobileDialing() {
   // Numbers are normally dialed in national format in-country, and
   // international format from outside the country.
+  assertEquals(
+      '6012345678',
+      phoneUtil.formatNumberForMobileDialing(CO_FIXED_LINE, RegionCode.CO, false));
   assertEquals(
       '030123456',
       phoneUtil.formatNumberForMobileDialing(DE_NUMBER, RegionCode.DE, false));
@@ -1833,16 +1831,16 @@ function testGetRegionCodeForNumber() {
 function testGetRegionCodesForCountryCode() {
   /** @type {!Array.<string>} */
   var regionCodesForNANPA = phoneUtil.getRegionCodesForCountryCode(1);
-  assertTrue(goog.array.contains(regionCodesForNANPA, RegionCode.US));
-  assertTrue(goog.array.contains(regionCodesForNANPA, RegionCode.BS));
-  assertTrue(goog.array.contains(
-      phoneUtil.getRegionCodesForCountryCode(44), RegionCode.GB));
-  assertTrue(goog.array.contains(
-      phoneUtil.getRegionCodesForCountryCode(49), RegionCode.DE));
-  assertTrue(goog.array.contains(
-      phoneUtil.getRegionCodesForCountryCode(800), RegionCode.UN001));
+  assertTrue(regionCodesForNANPA.includes(RegionCode.US));
+  assertTrue(regionCodesForNANPA.includes(RegionCode.BS));
+  assertTrue(
+      phoneUtil.getRegionCodesForCountryCode(44).includes(RegionCode.GB));
+  assertTrue(
+      phoneUtil.getRegionCodesForCountryCode(49).includes(RegionCode.DE));
+  assertTrue(
+      phoneUtil.getRegionCodesForCountryCode(800).includes(RegionCode.UN001));
   // Test with invalid country calling code.
-  assertTrue(goog.array.isEmpty(phoneUtil.getRegionCodesForCountryCode(-1)));
+  assertTrue((phoneUtil.getRegionCodesForCountryCode(-1).length === 0));
 }
 
 function testGetCountryCodeForRegion() {
@@ -2820,11 +2818,6 @@ function testParseNationalNumber() {
       'tel:253-0000;phone-context=www.google.com', RegionCode.US)));
   assertTrue(US_LOCAL_NUMBER.equals(phoneUtil.parse(
       'tel:253-0000;isub=12345;phone-context=www.google.com', RegionCode.US)));
-  // This is invalid because no "+" sign is present as part of phone-context.
-  // The phone context is simply ignored in this case just as if it contains a
-  // domain.
-  assertTrue(US_LOCAL_NUMBER.equals(phoneUtil.parse(
-      'tel:2530000;isub=12345;phone-context=1-650', RegionCode.US)));
   assertTrue(US_LOCAL_NUMBER.equals(phoneUtil.parse(
       'tel:2530000;isub=12345;phone-context=1234.com', RegionCode.US)));
 
@@ -3332,20 +3325,19 @@ function testFailedParseOnInvalidNumbers() {
     /** @type {string} */
     var invalidRfcPhoneContext = 'tel:555-1234;phone-context=1-331';
     phoneUtil.parse(invalidRfcPhoneContext, RegionCode.ZZ);
-    fail('"Unknown" region code not allowed: should fail.');
+    fail('phone-context is missing "+" sign: should fail.');
   } catch (e) {
     // Expected this exception.
     assertEquals(
         'Wrong error type stored in exception.',
-        i18n.phonenumbers.Error.INVALID_COUNTRY_CODE, e.message);
+        i18n.phonenumbers.Error.NOT_A_NUMBER, e.message);
   }
   try {
     // Only the phone-context symbol is present, but no data.
     invalidRfcPhoneContext = ';phone-context=';
     phoneUtil.parse(invalidRfcPhoneContext, RegionCode.ZZ);
     fail(
-        'Should have thrown an exception, no valid country calling code ' +
-        'present.');
+        'phone-context can\'t be empty: should fail.');
   } catch (e) {
     // Expected.
     assertEquals(
@@ -3792,6 +3784,68 @@ function testParseItalianLeadingZeros() {
   threeZeros.setItalianLeadingZero(true);
   threeZeros.setNumberOfLeadingZeros(3);
   assertTrue(threeZeros.equals(phoneUtil.parse('0000', RegionCode.AU)));
+}
+
+function testParseWithPhoneContext() {
+  // context    = ";phone-context=" descriptor
+  // descriptor = domainname / global-number-digits
+
+  // Valid global-phone-digits
+  assertTrue(NZ_NUMBER.equals(
+      phoneUtil.parse("tel:033316005;phone-context=+64", RegionCode.ZZ)));
+  assertTrue(NZ_NUMBER.equals(phoneUtil.parse(
+      "tel:033316005;phone-context=+64;{this isn't part of phone-context anymore!}",
+      RegionCode.ZZ)));
+  /** @type {!i18n.phonenumbers.PhoneNumber} */
+  var nzFromPhoneContext = new i18n.phonenumbers.PhoneNumber();
+  nzFromPhoneContext.setCountryCode(64);
+  nzFromPhoneContext.setNationalNumber(3033316005);
+  assertTrue(nzFromPhoneContext.equals(
+      phoneUtil.parse("tel:033316005;phone-context=+64-3", RegionCode.ZZ)));
+  /** @type {!i18n.phonenumbers.PhoneNumber} */
+  var brFromPhoneContext = new i18n.phonenumbers.PhoneNumber();
+  brFromPhoneContext.setCountryCode(55);
+  brFromPhoneContext.setNationalNumber(5033316005);
+  assertTrue(brFromPhoneContext.equals(
+      phoneUtil.parse("tel:033316005;phone-context=+(555)", RegionCode.ZZ)));
+  /** @type {!i18n.phonenumbers.PhoneNumber} */
+  var usFromPhoneContext = new i18n.phonenumbers.PhoneNumber();
+  usFromPhoneContext.setCountryCode(1);
+  usFromPhoneContext.setNationalNumber(23033316005);
+  assertTrue(usFromPhoneContext.equals(
+      phoneUtil.parse("tel:033316005;phone-context=+-1-2.3()", RegionCode.ZZ)));
+
+  // Valid domainname
+  assertTrue(NZ_NUMBER.equals(
+      phoneUtil.parse("tel:033316005;phone-context=abc.nz", RegionCode.NZ)));
+  assertTrue(NZ_NUMBER.equals(
+      phoneUtil.parse("tel:033316005;phone-context=www.PHONE-numb3r.com",
+          RegionCode.NZ)));
+  assertTrue(NZ_NUMBER.equals(
+      phoneUtil.parse("tel:033316005;phone-context=a", RegionCode.NZ)));
+  assertTrue(NZ_NUMBER.equals(
+      phoneUtil.parse("tel:033316005;phone-context=3phone.J.", RegionCode.NZ)));
+  assertTrue(NZ_NUMBER.equals(
+      phoneUtil.parse("tel:033316005;phone-context=a--z", RegionCode.NZ)));
+
+  // Invalid descriptor
+  assertThrowsForInvalidPhoneContext("tel:033316005;phone-context=");
+  assertThrowsForInvalidPhoneContext("tel:033316005;phone-context=+");
+  assertThrowsForInvalidPhoneContext("tel:033316005;phone-context=64");
+  assertThrowsForInvalidPhoneContext("tel:033316005;phone-context=++64");
+  assertThrowsForInvalidPhoneContext("tel:033316005;phone-context=+abc");
+  assertThrowsForInvalidPhoneContext("tel:033316005;phone-context=.");
+  assertThrowsForInvalidPhoneContext("tel:033316005;phone-context=3phone");
+  assertThrowsForInvalidPhoneContext("tel:033316005;phone-context=a-.nz");
+  assertThrowsForInvalidPhoneContext("tel:033316005;phone-context=a{b}c");
+}
+
+function assertThrowsForInvalidPhoneContext(numberToParse) {
+  try {
+    phoneUtil.parse(numberToParse, RegionCode.ZZ);
+  } catch (e) {
+    assertEquals(i18n.phonenumbers.Error.NOT_A_NUMBER, e.message);
+  }
 }
 
 function testCountryWithNoNumberDesc() {

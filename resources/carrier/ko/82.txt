@@ -12,6 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+82100|데이콤
 821020|SK 텔링크
 821021|SK 텔링크
 821022|데이콤

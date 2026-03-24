@@ -1,0 +1,9 @@
+Region ; Label               ; Comment
+HR     ; SC                  ; "http://www.itu.int/oth/T0202000032/en"
+HR     ; SC                  ; "http://en.wikipedia.org/wiki/%2B385"
+HR     ; SC_CARRIER_SPECIFIC ; "Bonbon users can send free SMS to 13977 short code.\nhttp://www.bonbon.hr/ponuda/pretplata/paketi/"
+HR     ; SC_EMERGENCY        ; "93 (fire dep) and 94 (ambulance) don't appear in the latest ITU document, but still on\nvarious websites. Need to verify that they are no longer valid before removing."
+HR     ; SC_PREMIUM_RATE     ; "ITU doc says 118XX short codes are directory enquiry services and cost is standard\n/ premium rate. Adding 118XX to premium rate so that products are aware of the\npossibility of premium rate numbers under 118 range."
+HR     ; XML                 ; "http://www.itu.int/oth/T0202000032/en"
+HR     ; XML                 ; "http://en.wikipedia.org/wiki/%2B385"
+HR     ; XML_UAN             ; "ITU numbering specifies the length of the numbers with prefix 62 as 8, but there\nare numbers on the internet with 7 digits after the prefix too."

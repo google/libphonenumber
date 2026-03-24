@@ -1,0 +1,21 @@
+Prefix    ; Length ; Type       ; Tariff        ; Area Code Length ; National Only ; Operator    ; Format         ; Regions ; Geocode:en  ; Provenance
+19[12]    ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "koryolink" ; "mobile_3/3/4" ; "KP"    ;             ; ITU
+193       ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "kptc"      ; "mobile_3/3/4" ; "KP"    ;             ; WEB
+195       ; 10     ; FIXED_LINE ; STANDARD_RATE ; 3                ;               ;             ; "mobile_3/3/4" ; "KP"    ; "Pyongyang"
+2[024-69] ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ; true          ;             ; "fixed_1/3/4"  ; "KP"
+2[178]    ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ; true          ;             ; "fixed_1/3/4"  ; "KP"    ; "Pyongyang" ; ITU
+23[0-79]  ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ; true          ;             ; "fixed_1/3/4"  ; "KP"
+238[02-9] ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ; true          ;             ; "fixed_1/3/4"  ; "KP"
+2381      ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ; false         ;             ; "fixed_1/3/4"  ; "KP"    ; "Pyongyang" ; ITU
+31        ; 8      ; FIXED_LINE ; STANDARD_RATE ;                  ;               ;             ; "fixed_1/3/4"  ; "KP"    ; "Pyongyang" ; ITU
+39        ; 8      ; FIXED_LINE ; STANDARD_RATE ;                  ;               ;             ; "fixed_1/3/4"  ; "KP"    ; "Nampo"     ; ITU
+41        ; 8      ; FIXED_LINE ; STANDARD_RATE ;                  ;               ;             ; "fixed_1/3/4"  ; "KP"    ; "Sariwon"   ; ITU
+45        ; 8      ; FIXED_LINE ; STANDARD_RATE ;                  ;               ;             ; "fixed_1/3/4"  ; "KP"    ; "Haeju"     ; ITU
+49        ; 8      ; FIXED_LINE ; STANDARD_RATE ;                  ;               ;             ; "fixed_1/3/4"  ; "KP"    ; "Kaesong"   ; ITU
+53        ; 8      ; FIXED_LINE ; STANDARD_RATE ;                  ;               ;             ; "fixed_1/3/4"  ; "KP"    ; "Hamhung"   ; ITU
+57        ; 8      ; FIXED_LINE ; STANDARD_RATE ;                  ;               ;             ; "fixed_1/3/4"  ; "KP"    ; "Wonsan"    ; ITU
+61        ; 8      ; FIXED_LINE ; STANDARD_RATE ;                  ;               ;             ; "fixed_1/3/4"  ; "KP"    ; "Sinuiju"   ; ITU
+67        ; 8      ; FIXED_LINE ; STANDARD_RATE ;                  ;               ;             ; "fixed_1/3/4"  ; "KP"    ; "Kanggye"   ; ITU
+73        ; 8      ; FIXED_LINE ; STANDARD_RATE ;                  ;               ;             ; "fixed_1/3/4"  ; "KP"    ; "Chongjin"  ; ITU
+79        ; 8      ; FIXED_LINE ; STANDARD_RATE ;                  ;               ;             ; "fixed_1/3/4"  ; "KP"    ; "Hyesan"    ; ITU
+85        ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;             ; "fixed_2/3/3"  ; "KP"    ; "Rason"     ; ITU

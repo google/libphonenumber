@@ -12,13 +12,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+8160100|Softbank
+8160110|KDDI
+8160120|Rakuten Communications
+8160130|KDDI
+8160140|NTT Docomo
 81701|Softbank
 817010|NTT Docomo
-817020|KDDI
-817021|KDDI
-817022|KDDI
-817023|KDDI
-817024|KDDI
+81702|KDDI
 8170250|Softbank
 817026|NTT Docomo
 817027|NTT Docomo
@@ -28,12 +29,13 @@
 817031|Softbank
 817032|Softbank
 817033|Softbank
+817034|KDDI
 8170340|Softbank
 8170341|Softbank
 817035|KDDI
 817036|KDDI
 817037|KDDI
-817038|KDDI
+817038|Okinawa Cellular
 817039|NTT Docomo
 81704|NTT Docomo
 817045|KDDI
@@ -55,6 +57,16 @@
 817055|Softbank
 817056|Softbank
 8170581|Softbank
+8170582|KDDI
+8170583|KDDI
+8170584|KDDI
+8170585|KDDI
+8170586|KDDI
+8170587|KDDI
+8170588|KDDI
+8170589|KDDI
+817059|KDDI
+817060|KDDI
 817061|Softbank
 817062|Softbank
 8170630|Softbank
@@ -67,6 +79,7 @@
 817064|Softbank
 817065|Softbank
 817066|Softbank
+817067|KDDI
 8170680|Softbank
 8170681|Softbank
 8170682|Softbank
@@ -80,35 +93,27 @@
 817076|KDDI
 817077|KDDI
 817080|NTT Docomo
-817081|NTT Docomo
-8170820|NTT Docomo
-8170821|NTT Docomo
-8170822|NTT Docomo
-8170823|NTT Docomo
+8170810|NTT Docomo
+8170811|NTT Docomo
+8170812|NTT Docomo
+8170817|KDDI
+8170818|KDDI
+8170819|KDDI
+817082|KDDI
 817083|Rakuten Communications
 817084|Rakuten Communications
-8170850|Rakuten Communications
-8170851|Rakuten Communications
-8170852|Rakuten Communications
-8170853|Rakuten Communications
-8170854|Rakuten Communications
-8170855|Rakuten Communications
-8170856|Rakuten Communications
-8170857|Rakuten Communications
-8170858|Rakuten Communications
+817085|Rakuten Communications
 817086|KDDI
 817087|KDDI
-8170880|KDDI
-8170881|KDDI
-8170882|KDDI
-8170883|KDDI
-8170884|KDDI
+817088|KDDI
+817089|Rakuten Communications
+81709|Rakuten Communications
 81801|NTT Docomo
 81802|NTT Docomo
 81803|Softbank
 81804|Softbank
 81805|KDDI
-81806|KDDI
+81806|Okinawa Cellular
 81807|Softbank
 8180769|NTT Docomo
 818077|NTT Docomo
@@ -125,7 +130,7 @@
 818095|NTT Docomo
 818096|Softbank
 818097|Softbank
-818098|KDDI
+818098|Okinawa Cellular
 818099|NTT Docomo
 819010|NTT Docomo
 819011|KDDI
@@ -143,6 +148,7 @@
 8190188|NTT Docomo
 8190189|NTT Docomo
 819019|KDDI
+8190194|Okinawa Cellular
 8190198|NTT Docomo
 8190199|NTT Docomo
 81902|NTT Docomo
@@ -169,7 +175,7 @@
 8190349|NTT Docomo
 819035|KDDI
 819036|KDDI
-819037|KDDI
+819037|Okinawa Cellular
 819038|KDDI
 819039|Softbank
 8190398|KDDI
@@ -186,7 +192,7 @@
 8190427|Softbank
 8190428|Softbank
 8190429|Softbank
-819044|KDDI
+819044|Okinawa Cellular
 81905|NTT Docomo
 819060|Softbank
 819061|KDDI
@@ -204,7 +210,7 @@
 819068|NTT Docomo
 8190683|KDDI
 8190685|KDDI
-8190686|KDDI
+8190686|Okinawa Cellular
 8190687|KDDI
 819069|NTT Docomo
 81907|NTT Docomo
@@ -220,7 +226,7 @@
 8190808|KDDI
 8190809|Softbank
 819081|KDDI
-819082|KDDI
+819082|Okinawa Cellular
 819083|KDDI
 8190834|Softbank
 8190835|Softbank
@@ -250,6 +256,6 @@
 8190965|Softbank
 8190968|Softbank
 8190969|Softbank
-819097|KDDI
+819097|Okinawa Cellular
 819098|Softbank
 819099|Softbank

@@ -1,0 +1,3 @@
+Id         ; National         ; International   ; Comment
+fmt_2/5-10 ; "#XX XXXXX*****" ; "XX XXXXX*****" ; "2-digit prefix (fixed line and mobile)."
+fmt_3/3-9  ; "#XXX XXX******" ; "XXX XXX******" ; "3-digit prefix (fixed and mobile)."

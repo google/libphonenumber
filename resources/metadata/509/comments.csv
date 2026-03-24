@@ -1,0 +1,11 @@
+Region ; Label               ; Comment
+HT     ; SC                  ; "http://www.itu.int/oth/T020200005E/en"
+HT     ; SC_CARRIER_SPECIFIC ; "https://support.twitter.com/articles/20170024"
+HT     ; SC_EMERGENCY        ; "http://studentsabroad.state.gov/content/pdfs/911_ABROAD.pdf"
+HT     ; SC_SMS_SERVICES     ; "https://support.twitter.com/articles/20170024"
+HT     ; XML                 ; "http://www.itu.int/oth/T020200005E/en"
+HT     ; XML                 ; "http://www.numberingplans.com/"
+HT     ; XML_FIXED_LINE      ; "Digicel reported 281 and 29[149] belong to them, the more recent ITU doc 20.I.2017\nagrees and classifies them as fixedLine so we follow that here."
+HT     ; XML_MOBILE          ; "32, 33, 35 are kept even though they are not in the ITU doc because numbers found\nonline are working."
+HT     ; XML_TOLL_FREE       ; "ITU document says numbers with prefix 8 are ""value-added services and free numbers\nwithout making any further distinction. However, http://www.numberingplans.com/ seems\nto suggest they are free."
+HT     ; XML_VOIP            ; "ITU document suggests 98\\d{6}, but http://www.numberingplans.com/ restricts it to\n98[89]\\d{5}."

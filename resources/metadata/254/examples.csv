@@ -1,0 +1,5 @@
+Region ; Type         ; Number
+KE     ; FIXED_LINE   ; "202012345"
+KE     ; MOBILE       ; "712123456"
+KE     ; TOLL_FREE    ; "800223456"
+KE     ; PREMIUM_RATE ; "900223456"

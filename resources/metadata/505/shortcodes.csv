@@ -1,0 +1,10 @@
+Region ; Prefix  ; Length ; Type       ; Tariff
+NI     ; 11[58]  ; 3      ; EMERGENCY  ; TOLL_FREE
+NI     ; 12[08]  ; 3      ; EMERGENCY  ; TOLL_FREE
+NI     ; 1[29]00 ; 4      ; COMMERCIAL
+NI     ; 12[15]  ; 3      ; COMMERCIAL
+NI     ; [26]100 ; 4      ; COMMERCIAL
+NI     ; 4878    ; 4      ; COMMERCIAL
+NI     ; 7010    ; 4      ; COMMERCIAL
+NI     ; 7100    ; 4      ; COMMERCIAL
+NI     ; 7373    ; 4      ; COMMERCIAL ; TOLL_FREE

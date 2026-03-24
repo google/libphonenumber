@@ -1,0 +1,7 @@
+Id               ; National          ; International   ; Comment
+fixed_3/2/2/2    ; "# 0XXX XX-XX-XX" ; "XXX XX-XX-XX"  ; "3 digit area codes (fixed line only)."
+fixed_4/2/3      ; "# 0XXXX XX-XXX"  ; "XXXX XX-XXX"   ; "4 digit area codes (fixed line only)."
+fmt_2/3/2/2      ; "# 0XX XXX-XX-XX" ; "XX XXX-XX-XX"  ; "2 digit ""area codes"" (mostly mobile, but some fixed line ranges)."
+tollfree_3/2/2-4 ; "# XXX XX XX**"   ; "XXX XX XX**"   ; "7-9 digit toll-free numbers."
+tollfree_3/3     ; "# XXX XXX"       ; "XXX XXX"       ; "6 digit toll-free numbers."
+varcost_3/3-4/4  ; "# XXX XXX* XXXX" ; "XXX XXX* XXXX" ; "10-11 digit toll-free / premium rate numbers."
