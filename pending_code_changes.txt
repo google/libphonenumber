@@ -1,1 +1,1 @@
-
+- Decreased the number of invocations of chooseFormattingPatternForNumber in PhoneNumberUtil#formatInOriginalFormat
