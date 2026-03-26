@@ -118,7 +118,7 @@ Prefix           ; Length ; Type       ; Tariff        ; National Only ; Operato
 23349[89]        ; 9      ; FIXED_LINE ; STANDARD_RATE ;               ;                ; "fmt1_1/2/2/2/2" ; "CM"
 24[23]           ; 9      ; MOBILE     ; STANDARD_RATE ;               ; "camtel"       ; "fmt1_1/2/2/2/2" ; "CM"    ;                       ; IR21
 62               ; 9      ; MOBILE     ; STANDARD_RATE ;               ; "camtel"       ; "fmt1_1/2/2/2/2" ; "CM"    ;                       ; TELECOMS
-640              ; 9      ; MOBILE     ; STANDARD_RATE ;               ; "orange"       ; "fmt1_1/2/2/2/2" ; "CM"    ;                       ; IR21
+64[01]           ; 9      ; MOBILE     ; STANDARD_RATE ;               ; "orange"       ; "fmt1_1/2/2/2/2" ; "CM"    ;                       ; IR21
 65[0-4]          ; 9      ; MOBILE     ; STANDARD_RATE ;               ; "mtn_cameroon" ; "fmt1_1/2/2/2/2" ; "CM"    ;                       ; IR21       ; "IR21 dated 7/16/2018"
 65[5-9]          ; 9      ; MOBILE     ; STANDARD_RATE ;               ; "orange"       ; "fmt1_1/2/2/2/2" ; "CM"
 66               ; 9      ; MOBILE     ; STANDARD_RATE ;               ; "nexttel"      ; "fmt1_1/2/2/2/2" ; "CM"
