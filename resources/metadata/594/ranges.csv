@@ -8,6 +8,7 @@ Prefix      ; Length ; Type       ; Tariff        ; Operator  ; Format          
 5946[0-3]   ; 9      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_3/2/2/2"    ; "GF"
 59480       ; 9      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_3/2/2/2"    ; "GF"
 5949        ; 9      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_3/2/2/2"    ; "GF"    ; GOVERNMENT
+5988        ; 9      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_3/2/2/2"    ; "GF"    ; GOVERNMENT
 6940[0-7]   ; 9      ; MOBILE     ; STANDARD_RATE ; "sfr"     ; "fmt1_3/2/2/2"    ; "GF"
 6940[89]    ; 9      ; MOBILE     ; STANDARD_RATE ; "digicel" ; "fmt1_3/2/2/2"    ; "GF"
 6941[01]    ; 9      ; MOBILE     ; STANDARD_RATE ;           ; "fmt1_3/2/2/2"    ; "GF"

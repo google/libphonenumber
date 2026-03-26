@@ -10,6 +10,7 @@ Prefix       ; Length ; Type       ; Tariff        ; Operator       ; Format    
 5968[1-3]    ; 9      ; FIXED_LINE ; STANDARD_RATE ;                ; "fmt1_3/2/2/2"    ; "MQ"    ; GOVERNMENT
 5969[09]     ; 9      ; FIXED_LINE ; STANDARD_RATE ;                ; "fmt1_3/2/2/2"    ; "MQ"    ; GOVERNMENT
 5969[4-8]    ; 9      ; FIXED_LINE ; STANDARD_RATE ;                ; "fmt1_3/2/2/2"    ; "MQ"
+5989         ; 9      ; FIXED_LINE ; STANDARD_RATE ;                ; "fmt1_3/2/2/2"    ; "MQ"    ; GOVERNMENT
 6960         ; 9      ; MOBILE     ; STANDARD_RATE ; "sfr_rife"     ; "fmt1_3/2/2/2"    ; "MQ"
 6961[016-9]  ; 9      ; MOBILE     ; STANDARD_RATE ; "digicel"      ; "fmt1_3/2/2/2"    ; "MQ"
 6961[2-5]    ; 9      ; MOBILE     ; STANDARD_RATE ;                ; "fmt1_3/2/2/2"    ; "MQ"

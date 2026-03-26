@@ -1,3 +1,13 @@
+Mar 26, 2026: v9.0.27
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   BF, BL, CM, GF, GH, GP, GU, KE, MF, MQ, MY, SX, TD, TJ, US
+ - New geocoding data for country calling code(s): 1738 (en)
+ - New carrier data for country calling code(s): 1721 (en)
+ - Updated carrier data for country calling code(s):
+   60 (en), 599 (en), 992 (en)
+ - Updated / refreshed time zone meta data.
+
 Mar 12, 2026: v9.0.26
 Metadata changes:
  - Updated phone metadata for region code(s):
