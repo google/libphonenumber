@@ -91,6 +91,7 @@ Prefix         ; Length ; Type       ; Tariff        ; Area Code Length ; Operat
 11757          ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "u_mobile"      ; "mobile_2/4/4"    ; "MY"    ; IR21
 11759          ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "eastel"        ; "mobile_2/4/4"    ; "MY"    ; IR21
 1176[02-4]     ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "eastel"        ; "mobile_2/4/4"    ; "MY"    ; IR21
+1178[02-5]     ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "eastel"        ; "mobile_2/4/4"    ; "MY"    ; IR21
 11888[69]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "u_mobile"      ; "mobile_2/4/4"    ; "MY"    ; IR21
 118888         ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "red_one"       ; "mobile_2/4/4"    ; "MY"    ; GOVERNMENT
 12             ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "maxis"         ; "fmt_2/3/3-4"     ; "MY"    ; IR21

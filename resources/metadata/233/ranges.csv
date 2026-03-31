@@ -90,3 +90,4 @@ Prefix      ; Length ; Type       ; Tariff        ; Area Code Length ; National 
 59[1-6]     ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ; "mtn"               ; "fmt_2/3/4" ; "GH"    ;                        ; IR21       ; "Client asked to add based on IR21. T#04478034"
 59[7-9]     ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "mtn"               ; "fmt_2/3/4" ; "GH"    ;                        ; IR21
 800         ; 8      ; FIXED_LINE ; TOLL_FREE     ;                  ; true          ;                     ; "toll_3/5"  ; "GH"
+800         ; 9      ; FIXED_LINE ; TOLL_FREE     ;                  ; true          ;                     ; "fmt_2/3/4" ; "GH"    ;                        ; ITU
