@@ -38,6 +38,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.StringTokenizer;
+import java.util.UUID;
 
 @WebServlet(name = "Migrate", value = "/migrate")
 public class ServletMain extends HttpServlet {
@@ -67,6 +68,8 @@ public class ServletMain extends HttpServlet {
     String file = "";
     String fileName = "";
     String customRecipe = "";
+    String sessionToken = (String) req.getSession().getAttribute("csrf_token");
+    boolean isTokenValid = false;
 
     try {
       upload.setSizeMax(MAX_UPLOAD_SIZE);
@@ -79,9 +82,11 @@ public class ServletMain extends HttpServlet {
                 || item.getFieldName().equals("fileCountryCode"))) {
           countryCode = Streams.asString(in);
 
-        } else if (item.isFormField() && item.getFieldName().equals("number")) {
-          number = Streams.asString(in);
-
+        } else if (item.isFormField() && item.getFieldName().equals("csrf_token")) {
+          String providedToken = Streams.asString(in);
+          if (sessionToken != null && sessionToken.equals(providedToken)) {
+            isTokenValid = true;
+          }
         } else if (item.getFieldName().equals("file")) {
           fileName = item.getName();
           try {
@@ -100,6 +105,11 @@ public class ServletMain extends HttpServlet {
       }
     } catch (FileUploadException e) {
       e.printStackTrace();
+    }
+
+    if (!isTokenValid) {
+      resp.sendError(HttpServletResponse.SC_FORBIDDEN, "Invalid or missing CSRF token.");
+      return;
     }
 
     if (!number.isEmpty() && !countryCode.isEmpty()) {
@@ -130,6 +140,17 @@ public class ServletMain extends HttpServlet {
     String fileName = "+" + matcher.removeFrom(req.getParameter("countryCode")) + "_Migration_ " +
             matcher.removeFrom(req.getParameter("fileName"));
     String fileContent = req.getParameter("fileContent");
+
+    if (fileContent == null) {
+      String csrfToken = (String) req.getSession().getAttribute("csrf_token");
+      if (csrfToken == null) {
+        csrfToken = UUID.randomUUID().toString();
+        req.getSession().setAttribute("csrf_token", csrfToken);
+      }
+      req.setAttribute("csrf_token", csrfToken);
+      req.getRequestDispatcher("index.jsp").forward(req, resp);
+      return;
+    }
 
     resp.setContentType("text/plain");
     resp.setHeader("Content-Disposition", "attachment; filename=" + fileName);
