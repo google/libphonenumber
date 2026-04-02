@@ -1,8 +1,10 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
   <head><meta http-equiv="content-type" content="text/html; charset=UTF-8"></head>
 
   <body>
     <form action="/combine" method="post" accept-charset="UTF-8">
+      <input type="hidden" name="csrf_token" value="<%= request.getAttribute("csrf_token") %>">
       <h2>Geocoding Prefix Reducer</h2>
 
       <p>Please paste your geocoding data below. Each line should be in the format
