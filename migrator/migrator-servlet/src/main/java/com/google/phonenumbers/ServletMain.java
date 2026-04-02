@@ -107,7 +107,7 @@ public class ServletMain extends HttpServlet {
       e.printStackTrace();
     }
 
-    if (!isTokenValid) {
+    if (!isTokenValid(req)) {
       resp.sendError(HttpServletResponse.SC_FORBIDDEN, "Invalid or missing CSRF token.");
       return;
     }
@@ -142,12 +142,7 @@ public class ServletMain extends HttpServlet {
     String fileContent = req.getParameter("fileContent");
 
     if (fileContent == null) {
-      String csrfToken = (String) req.getSession().getAttribute("csrf_token");
-      if (csrfToken == null) {
-        csrfToken = UUID.randomUUID().toString();
-        req.getSession().setAttribute("csrf_token", csrfToken);
-      }
-      req.setAttribute("csrf_token", csrfToken);
+      req.setAttribute("csrf_token", getOrGenerateCsrfToken(req));
       req.getRequestDispatcher("index.jsp").forward(req, resp);
       return;
     }
@@ -278,5 +273,37 @@ public class ServletMain extends HttpServlet {
   public static ImmutableList<String> getMigrationResultOutputList(ImmutableList<MigrationResult> resultList) {
     if (resultList == null) return ImmutableList.of();
     return resultList.stream().map(MigrationResult::toString).collect(ImmutableList.toImmutableList());
+  }
+
+  protected String getOrGenerateCsrfToken(HttpServletRequest req) {
+    String csrfToken = (String) req.getSession().getAttribute("csrf_token");
+    if (csrfToken == null) {
+      csrfToken = UUID.randomUUID().toString();
+      req.getSession().setAttribute("csrf_token", csrfToken);
+    }
+    return csrfToken;
+  }
+
+  protected boolean isTokenValid(HttpServletRequest req) {
+    String sessionToken = (String) req.getSession().getAttribute("csrf_token");
+    if (sessionToken == null) {
+      return false;
+    }
+
+    try {
+      ServletFileUpload upload = new ServletFileUpload();
+      FileItemIterator iterator = upload.getItemIterator(req);
+      while (iterator.hasNext()) {
+        FileItemStream item = iterator.next();
+        if (item.isFormField() && item.getFieldName().equals("csrf_token")) {
+          try (InputStream in = item.openStream()) {
+            return sessionToken.equals(Streams.asString(in));
+          }
+        }
+      }
+    } catch (FileUploadException | IOException e) {
+      return false;
+    }
+    return false;
   }
 }
