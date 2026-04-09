@@ -1,3 +1,11 @@
+Apr 09, 2026: v9.0.28
+- Decreased the number of invocations of chooseFormattingPatternForNumber in PhoneNumberUtil#formatInOriginalFormat
+Metadata changes:
+ - Updated phone metadata for region code(s): BW, IL, MN, RE, SR, YT
+ - Updated carrier data for country calling code(s):
+   34 (en), 267 (en), 359 (en), 972 (en), 976 (en)
+ - Updated / refreshed time zone meta data.
+
 Mar 26, 2026: v9.0.27
 Metadata changes:
  - Updated phone metadata for region code(s):
