@@ -790,9 +790,9 @@ class PhoneNumberRegExpsAndMappings {
             StrCat("(", kDigits, "|", kRfc3966VisualSeparator, ")")),
         alphanum_(StrCat(kValidAlphaInclUppercase, kDigits)),
         rfc3966_domainlabel_(
-            StrCat("[", alphanum_, "]+(-[", alphanum_, "]+)*")),
+            StrCat("[", alphanum_, "]+(-+[", alphanum_, "]+)*")),
         rfc3966_toplabel_(StrCat("[", kValidAlphaInclUppercase,
-                                 "]+(-[", alphanum_, "]+)*")),
+                                 "]+(-+[", alphanum_, "]+)*")),
         regexp_factory_(new RegExpFactory()),
         regexp_cache_(new RegExpCache(*regexp_factory_.get(), 128)),
         diallable_char_mappings_(),
