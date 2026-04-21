@@ -110,9 +110,10 @@
 346112|Yoigo
 346113|Yoigo
 34612|Syma
-346122|Lycamobile
-346124|Lycamobile
-346125|Lycamobile
+346122|Yoigo
+346124|Yoigo
+346125|Yoigo
+346126|Sarenet
 34613|Yoigo
 34614|DigiMobil
 34615|Orange
