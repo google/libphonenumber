@@ -18,7 +18,7 @@ Prefix        ; Length ; Type       ; Tariff        ; Operator                  
 451[2-9]      ; 9      ; MOBILE     ; STANDARD_RATE ;                                  ; "fmt1_3/2/2/2" ; "BE"
 45[2-479]     ; 9      ; MOBILE     ; STANDARD_RATE ;                                  ; "fmt1_3/2/2/2" ; "BE"
 455           ; 9      ; MOBILE     ; STANDARD_RATE ; "voo"                            ; "fmt1_3/2/2/2" ; "BE"    ;                      ;                      ;                      ;                      ; GOVERNMENT
-456           ; 9      ; MOBILE     ; STANDARD_RATE ; "mobile_vikings_or_jim"          ; "fmt1_3/2/2/2" ; "BE"    ;                      ;                      ;                      ;                      ; GOVERNMENT
+456           ; 9      ; MOBILE     ; STANDARD_RATE ; "proximus"                       ; "fmt1_3/2/2/2" ; "BE"    ;                      ;                      ;                      ;                      ; IR21
 458           ; 9      ; MOBILE     ; STANDARD_RATE ; "citymesh"                       ; "fmt1_3/2/2/2" ; "BE"    ;                      ;                      ;                      ;                      ; GOVERNMENT
 460           ; 9      ; MOBILE     ; STANDARD_RATE ; "proximus"                       ; "fmt1_3/2/2/2" ; "BE"    ;                      ;                      ;                      ;                      ; IR21
 461[0-79]     ; 9      ; MOBILE     ; STANDARD_RATE ;                                  ; "fmt1_3/2/2/2" ; "BE"

@@ -144,6 +144,7 @@ Prefix         ; Length ; Type       ; Tariff        ; Area Code Length ; Operat
 189[014-8]     ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "u_mobile"      ; "fmt_2/3/3-4"     ; "MY"    ; GOVERNMENT
 189[23]        ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "ytl"           ; "fmt_2/3/3-4"     ; "MY"    ; GOVERNMENT
 19             ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "celcom"        ; "fmt_2/3/3-4"     ; "MY"    ; IR21
+19             ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "celcom"        ; "mobile_2/4/4"    ; "MY"    ; IR21
 320[046]       ; 9      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                 ; "fixed_1/4/4"     ; "MY"
 3201[02-9]     ; 9      ; FIXED_LINE ; STANDARD_RATE ;                  ;                 ; "fixed_1/4/4"     ; "MY"
 32011          ; 9      ; FIXED_LINE ; STANDARD_RATE ;                  ;                 ; "fixed_1/4/4"     ; "MY"    ; GOVERNMENT
