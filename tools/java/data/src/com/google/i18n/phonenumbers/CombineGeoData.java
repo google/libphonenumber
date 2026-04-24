@@ -265,9 +265,31 @@ public class CombineGeoData {
     phonePrefixMap = combineMultipleTimes(phonePrefixMap);
     PrintWriter printWriter = new PrintWriter(new BufferedOutputStream(outputStream));
     for (Map.Entry<String, String> mapping : phonePrefixMap.entrySet()) {
-      printWriter.printf("%s|%s%s", mapping.getKey(), mapping.getValue(), outputLineSeparator);
+      printWriter.printf("%s|%s%s", 
+          escapeHtml(mapping.getKey()), 
+          escapeHtml(mapping.getValue()), 
+          outputLineSeparator);
     }
     printWriter.flush();
+  }
+
+  private static String escapeHtml(String input) {
+    if (input == null) {
+      return null;
+    }
+    StringBuilder sb = new StringBuilder();
+    for (int i = 0; i < input.length(); i++) {
+      char c = input.charAt(i);
+      switch (c) {
+        case '<': sb.append("&lt;"); break;
+        case '>': sb.append("&gt;"); break;
+        case '&': sb.append("&amp;"); break;
+        case '"': sb.append("&quot;"); break;
+        case '\'': sb.append("&#39;"); break;
+        default: sb.append(c);
+      }
+    }
+    return sb.toString();
   }
 
   public static void main(String[] args) {
