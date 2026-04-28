@@ -8062,6 +8062,7 @@
         <possibleLengths national="11"/>
         <exampleNumber>13123456789</exampleNumber>
         <nationalNumberPattern>
+          1610\d{7}|
           1740[0-5]\d{6}|
           1(?:
             [38]\d|

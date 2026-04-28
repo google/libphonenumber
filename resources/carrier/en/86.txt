@@ -42,6 +42,7 @@
 86153|China Telecom
 86155|China Unicom
 86156|China Unicom
+861610|China Broadnet
 86166|China Unicom
 86167|China Unicom
 861700|China Telecom
