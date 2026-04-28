@@ -1288,11 +1288,19 @@ public class PhoneNumberUtil {
    */
   public String format(PhoneNumber number, PhoneNumberFormat numberFormat) {
     if (number.getNationalNumber() == 0) {
-      // Unparseable numbers that kept their raw input just use that.
-      // This is the only case where a number can be formatted as E164 without a
-      // leading '+' symbol (but the original number wasn't parseable anyway).
+      // Unparseable numbers that kept their raw input just use that, unless default country was
+      // specified and the format is E164. In that case, we prepend the raw input with the country
+      // code
       String rawInput = number.getRawInput();
-      if (rawInput.length() > 0 || !number.hasCountryCode()) {
+      if (rawInput.length() > 0
+          && number.hasCountryCode()
+          && number.getCountryCodeSource() == CountryCodeSource.FROM_DEFAULT_COUNTRY
+          && numberFormat == PhoneNumberFormat.E164) {
+        int countryCallingCode = number.getCountryCode();
+        StringBuilder formattedNumber = new StringBuilder(rawInput);
+        prefixNumberWithCountryCallingCode(countryCallingCode, numberFormat, formattedNumber);
+        return formattedNumber.toString();
+      } else if (rawInput.length() > 0 || !number.hasCountryCode()) {
         return rawInput;
       }
     }
