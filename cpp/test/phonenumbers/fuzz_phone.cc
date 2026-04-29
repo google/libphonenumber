@@ -28,7 +28,9 @@ limitations under the License.
 #include "phonenumbers/stringutil.h"
 #include "phonenumbers/asyoutypeformatter.h"
 #include "phonenumbers/shortnumberinfo.h"
+#include "phonenumbers/geocoding/phonenumber_offline_geocoder.h"
 #include <fuzzer/FuzzedDataProvider.h>
+#include <unicode/locid.h>
 
 using google::protobuf::RepeatedPtrField;
 
@@ -204,6 +206,22 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size) {
   // fuzz FormatByPattern
   phone_util->FormatByPattern(phone_number, number_format, number_formats, &formatted);
   formatted.clear();
+
+  // Fuzz with OfflineGeocoder
+  i18n::phonenumbers::PhoneNumberOfflineGeocoder geocoder;
+  std::string language = fuzzed_data.ConsumeRandomLengthString(3);
+  std::string country = fuzzed_data.ConsumeRandomLengthString(3);
+  icu::Locale locale(language.c_str(), country.c_str());
+
+  geocoder.GetDescriptionForNumber(phone_number, locale);
+
+  std::string user_region = fuzzed_data.ConsumeBytesAsString(2);
+  geocoder.GetDescriptionForNumber(phone_number, locale, user_region);
+
+  if (phone_util->IsValidNumber(phone_number)) {
+    geocoder.GetDescriptionForValidNumber(phone_number, locale);
+    geocoder.GetDescriptionForValidNumber(phone_number, locale, user_region);
+  }
 
   return 0;
 }
