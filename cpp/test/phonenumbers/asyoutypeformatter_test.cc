@@ -1267,5 +1267,73 @@ TEST_F(AsYouTypeFormatterTest,
   EXPECT_EQ("+8698812345", formatter_->InputDigit('5', &result_));
 }
 
+// Tests for the AsYouTypeFormatter parens-from-rule fix
+// (https://issuetracker.google.com/issues/437456062): countries whose national
+// format derives parens from the nationalPrefixFormattingRule (e.g. "($FG)"
+// for BR fixed-line, "$NP ($FG)" for RU mobile) must render those parens as
+// the user types, matching what PhoneNumberUtil::Format(num, NATIONAL) emits
+// for the same number.
+
+TEST_F(AsYouTypeFormatterTest, AYTF_BRFixedLineWithParens) {
+  formatter_.reset(phone_util_.GetAsYouTypeFormatter(RegionCode::BR()));
+  EXPECT_EQ("1", formatter_->InputDigit('1', &result_));
+  EXPECT_EQ("11", formatter_->InputDigit('1', &result_));
+  EXPECT_EQ("(11) 3", formatter_->InputDigit('3', &result_));
+  EXPECT_EQ("(11) 32", formatter_->InputDigit('2', &result_));
+  EXPECT_EQ("(11) 323", formatter_->InputDigit('3', &result_));
+  EXPECT_EQ("(11) 3234", formatter_->InputDigit('4', &result_));
+  EXPECT_EQ("(11) 3234-5", formatter_->InputDigit('5', &result_));
+  EXPECT_EQ("(11) 3234-56", formatter_->InputDigit('6', &result_));
+  EXPECT_EQ("(11) 3234-567", formatter_->InputDigit('7', &result_));
+  EXPECT_EQ("(11) 3234-5678", formatter_->InputDigit('8', &result_));
+}
+
+TEST_F(AsYouTypeFormatterTest, AYTF_RUMobileWithParens) {
+  // Trunk "8" stays attached via prefix_before_national_number_; the closing
+  // ')' renders only after a later digit fills past it.
+  formatter_.reset(phone_util_.GetAsYouTypeFormatter(RegionCode::RU()));
+  EXPECT_EQ("8", formatter_->InputDigit('8', &result_));
+  EXPECT_EQ("89", formatter_->InputDigit('9', &result_));
+  EXPECT_EQ("891", formatter_->InputDigit('1', &result_));
+  EXPECT_EQ("8 (912", formatter_->InputDigit('2', &result_));
+  EXPECT_EQ("8 (912) 3", formatter_->InputDigit('3', &result_));
+  EXPECT_EQ("8 (912) 34", formatter_->InputDigit('4', &result_));
+  EXPECT_EQ("8 (912) 345", formatter_->InputDigit('5', &result_));
+  EXPECT_EQ("8 (912) 345-6", formatter_->InputDigit('6', &result_));
+  EXPECT_EQ("8 (912) 345-67", formatter_->InputDigit('7', &result_));
+  EXPECT_EQ("8 (912) 345-67-8", formatter_->InputDigit('8', &result_));
+  EXPECT_EQ("8 (912) 345-67-89", formatter_->InputDigit('9', &result_));
+}
+
+TEST_F(AsYouTypeFormatterTest, AYTF_COWithParens) {
+  // 10-digit "$1 $2" pattern with the same "($FG)" rule shape.
+  formatter_.reset(phone_util_.GetAsYouTypeFormatter(RegionCode::CO()));
+  EXPECT_EQ("6", formatter_->InputDigit('6', &result_));
+  EXPECT_EQ("60", formatter_->InputDigit('0', &result_));
+  EXPECT_EQ("(601", formatter_->InputDigit('1', &result_));
+  EXPECT_EQ("(601) 1", formatter_->InputDigit('1', &result_));
+  EXPECT_EQ("(601) 12", formatter_->InputDigit('2', &result_));
+  EXPECT_EQ("(601) 123", formatter_->InputDigit('3', &result_));
+  EXPECT_EQ("(601) 1234", formatter_->InputDigit('4', &result_));
+  EXPECT_EQ("(601) 12345", formatter_->InputDigit('5', &result_));
+  EXPECT_EQ("(601) 123456", formatter_->InputDigit('6', &result_));
+  EXPECT_EQ("(601) 1234567", formatter_->InputDigit('7', &result_));
+}
+
+TEST_F(AsYouTypeFormatterTest, AYTF_InternationalFormatNoRuleApplication) {
+  // When the user types in international format (leading "+"), AYTF must NOT
+  // apply the nationalPrefixFormattingRule's parens, matching what
+  // Format(num, INTERNATIONAL) emits. For BR: Format(NATIONAL) yields
+  // "(11) 3234-5678" but Format(INTERNATIONAL) yields "+55 11 3234-5678" (no
+  // parens).
+  formatter_.reset(
+      phone_util_.GetAsYouTypeFormatter(RegionCode::GetUnknown()));
+  const char input[] = "+551132345678";
+  for (size_t i = 0; input[i] != '\0'; ++i) {
+    formatter_->InputDigit(input[i], &result_);
+  }
+  EXPECT_EQ("+55 11 3234-5678", result_);
+}
+
 }  // namespace phonenumbers
 }  // namespace i18n
