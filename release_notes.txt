@@ -1,3 +1,11 @@
+May 06, 2026: v9.0.30
+Metadata changes:
+ - Updated alternate formatting data for country calling code(s): 91
+ - Updated phone metadata for region code(s): CL, CZ, DE, IN, SG
+ - Updated geocoding data for country calling code(s): 91 (en)
+ - Updated carrier data for country calling code(s):
+   56 (en), 65 (en), 91 (en), 594 (en), 596 (en), 855 (en)
+
 Apr 22, 2026: v9.0.29
 Metadata changes:
  - Updated phone metadata for region code(s):

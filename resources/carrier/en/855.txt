@@ -21,6 +21,7 @@
 85516|Smart
 85517|Cellcard
 85518|Seatel
+85531|Metfone
 8553248|Telecom Cambodia
 8553348|Telecom Cambodia
 8553448|Telecom Cambodia
