@@ -24,7 +24,7 @@
 324510|DIGI Communications
 324511|DIGI Communications
 32455|VOO
-32456|Mobile Vikings/JIM Mobile
+32456|Proximus
 32458|Citymesh
 32460|Proximus
 324618|N.M.B.S.

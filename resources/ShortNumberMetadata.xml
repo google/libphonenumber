@@ -2497,7 +2497,7 @@
               )
             )|
             4(?:
-              [03-57]|
+              [02-57]|
               1[0145]
             )|
             6(?:
@@ -2525,7 +2525,7 @@
               [278]|
               6\d{3}
             )|
-            4[47]
+            4[247]
           )|
           5200
         </nationalNumberPattern>
@@ -2587,7 +2587,7 @@
         <possibleLengths national="3,4,6"/>
         <exampleNumber>140</exampleNumber>
         <nationalNumberPattern>
-          14[0357]|
+          14[02357]|
           1(?:
             161\d|
             41
