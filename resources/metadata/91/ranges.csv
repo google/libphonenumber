@@ -1971,7 +1971,7 @@ Prefix            ; Length ; Type                 ; Tariff        ; Area Code Le
 6781[2-7]         ; 10     ; FIXED_LINE           ; STANDARD_RATE ; 4                ; false         ;                ; "fixed_4/3/3"      ; "IN"    ; "Basta, Odisha"
 6782[2-7]         ; 10     ; FIXED_LINE           ; STANDARD_RATE ; 4                ; false         ;                ; "fixed_4/3/3"      ; "IN"    ; "Balasore, Odisha"
 6784[2-7]         ; 10     ; FIXED_LINE           ; STANDARD_RATE ; 4                ; false         ;                ; "fixed_4/3/3"      ; "IN"    ; "Bhadrak, Odisha"
-6786[2-7]         ; 10     ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; 4                ; false         ;                ; "mobile_5/5"       ; "IN"    ; "Chandbali, Odisha"
+6786[2-7]         ; 10     ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ;                  ; false         ;                ; "mobile_5/5"       ; "IN"    ; "Chandbali, Odisha"
 6788[2-7]         ; 10     ; FIXED_LINE           ; STANDARD_RATE ; 4                ; false         ;                ; "fixed_4/3/3"      ; "IN"    ; "Soro, Odisha"
 679[089][2-7]     ; 10     ; FIXED_LINE           ; STANDARD_RATE ; 4                ; false         ;                ; "fixed_4/3/3"      ; "IN"
 6791[2-7]         ; 10     ; FIXED_LINE           ; STANDARD_RATE ; 4                ; false         ;                ; "fixed_4/3/3"      ; "IN"    ; "Bangiriposi, Odisha"
