@@ -12,6 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+59157|Entel
 59160|Nuevatel
 59161|Nuevatel
 59162|Tigo
