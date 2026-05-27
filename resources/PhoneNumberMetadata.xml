@@ -25200,10 +25200,16 @@
           </leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
+        <!-- For M2M numbers in the 49 range (12 digits). -->
+        <numberFormat pattern="(\d{2})(\d{4})(\d{3})(\d{3})">
+          <leadingDigits>49</leadingDigits>
+          <format>$1 $2 $3 $4</format>
+        </numberFormat>
       </availableFormats>
       <generalDesc>
         <nationalNumberPattern>
           1693\d{5}|
+          49\d{10}|
           (?:
             [26-9]\d|
             30
@@ -25226,9 +25232,13 @@
         </nationalNumberPattern>
       </fixedLine>
       <mobile>
-        <possibleLengths national="9"/>
+        <!-- 9-digit ranges for mobile, and 12-digit 49 range for M2M services that use mobile
+             networks. ANACOM regulation designates the 49 range in the E.164 PNN for M2M
+             communications, with 12 digits in national format. -->
+        <possibleLengths national="9,12"/>
         <exampleNumber>912345678</exampleNumber>
         <nationalNumberPattern>
+          49\d{10}|
           6(?:
             [06]92(?:
               30|
