@@ -25201,7 +25201,7 @@
           <format>$1 $2 $3</format>
         </numberFormat>
         <!-- For M2M numbers in the 49 range (12 digits). -->
-        <numberFormat pattern="(\d{2})(\d{4})(\d{3})(\d{3})">
+        <numberFormat pattern="(\d{2})(\d{3})(\d{4})(\d{3})">
           <leadingDigits>49</leadingDigits>
           <format>$1 $2 $3 $4</format>
         </numberFormat>
