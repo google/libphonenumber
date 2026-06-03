@@ -9884,7 +9884,7 @@
         <nationalNumberPattern>
           5(?:
             4[0-29]|
-            6[0-3]
+            6[0-4]
           )\d{6}|
           (?:
             55|
@@ -17598,12 +17598,7 @@
       <mobile>
         <possibleLengths national="10"/>
         <exampleNumber>9012345678</exampleNumber>
-        <nationalNumberPattern>
-          (?:
-            601[0-4]0|
-            [7-9]0[1-9]\d\d
-          )\d{5}
-        </nationalNumberPattern>
+        <nationalNumberPattern>[6-9]0[1-9]\d{7}</nationalNumberPattern>
       </mobile>
       <pager>
         <possibleLengths national="10"/>
@@ -23396,12 +23391,7 @@
       <mobile>
         <possibleLengths national="8"/>
         <exampleNumber>40612345</exampleNumber>
-        <nationalNumberPattern>
-          (?:
-            4[015-8]|
-            9\d
-          )\d{6}
-        </nationalNumberPattern>
+        <nationalNumberPattern>[49]\d{7}</nationalNumberPattern>
       </mobile>
       <tollFree>
         <possibleLengths national="8"/>
@@ -27118,12 +27108,7 @@
       <mobile>
         <possibleLengths national="8"/>
         <exampleNumber>41234567</exampleNumber>
-        <nationalNumberPattern>
-          (?:
-            4[015-8]|
-            9\d
-          )\d{6}
-        </nationalNumberPattern>
+        <nationalNumberPattern>[49]\d{7}</nationalNumberPattern>
       </mobile>
       <tollFree>
         <possibleLengths national="8"/>
@@ -27545,34 +27530,24 @@
           </leadingDigits>
           <format>$1 $2</format>
         </numberFormat>
-        <numberFormat pattern="(\d)(\d{7})">
-          <leadingDigits>
-            (?:
-              2|
-              90
-            )4|
-            [67]
-          </leadingDigits>
-          <format>$1 $2</format>
-        </numberFormat>
-        <numberFormat pattern="(\d{3})(\d{3})(\d{3})">
-          <leadingDigits>
-            [348]|
-            64|
-            79|
-            90
-          </leadingDigits>
-          <format>$1 $2 $3</format>
-        </numberFormat>
         <numberFormat pattern="(\d{2})(\d{5,7})">
           <leadingDigits>
             1|
             28|
-            6[0-35-9]|
-            7[67]|
             9[2-9]
           </leadingDigits>
           <format>$1 $2</format>
+        </numberFormat>
+        <numberFormat pattern="(\d)(\d{7})">
+          <leadingDigits>
+            [267]|
+            904
+          </leadingDigits>
+          <format>$1 $2</format>
+        </numberFormat>
+        <numberFormat pattern="(\d{2})(\d{3})(\d{4})">
+          <leadingDigits>[346-9]</leadingDigits>
+          <format>$1 $2 $3</format>
         </numberFormat>
       </availableFormats>
       <generalDesc>
@@ -27620,7 +27595,7 @@
                 3[59]|
                 4[89]|
                 6\d|
-                7[679]|
+                7[0-35-9]|
                 8[08]
               )\d|
               9(?:
@@ -29746,7 +29721,7 @@
           7(?:
             [014-8]\d|
             2[0167]|
-            3[06]|
+            3[016]|
             9[0-589]
           )\d{6}
         </nationalNumberPattern>
