@@ -88,6 +88,9 @@
 474119|telia
 47412|telia
 47413|telia
+4742|telenor norge
+4743|telenor norge
+4744|telenor norge
 4745|telia
 47453|telenor norge
 474536|nkom (nasjonal kommunikasjonsmyndighet)
@@ -213,6 +216,7 @@
 474896|telenor norge
 474898|telenor norge
 474899|telia
+4749|telenor norge
 4790|telenor norge
 479042|svea billing services
 479043|svea billing services

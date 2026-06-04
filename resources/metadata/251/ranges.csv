@@ -417,5 +417,6 @@ Prefix          ; Length ; Type       ; Tariff        ; Area Code Length ; Opera
 777             ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "safaricom"     ; "fmt_2/3/4" ; "ET"    ;                                          ; IR21
 786             ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "safaricom"     ; "fmt_2/3/4" ; "ET"    ;                                          ; IR21
 799             ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "safaricom"     ; "fmt_2/3/4" ; "ET"    ;                                          ; IR21
+8[01]           ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "ethio_telecom" ; "fmt_2/3/4" ; "ET"    ;                                          ; IR21
 9[02-8]         ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "ethio_telecom" ; "fmt_2/3/4" ; "ET"    ;                                          ; IR21       ; "IR21 11/21/2018"
 9[19]           ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "ethio_telecom" ; "fmt_2/3/4" ; "ET"
