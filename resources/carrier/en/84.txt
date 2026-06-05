@@ -12,6 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+84121|MobiFone
+8416|Viettel
 843|Viettel
 8430|MobiFone
 8451|MobiFone

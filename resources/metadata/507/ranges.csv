@@ -6,7 +6,7 @@ Prefix       ; Length ; Type       ; Tariff        ; Operator             ; Form
 123          ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
 1[23]7       ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"
 13[013]      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
-14[17]       ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
+14[147]      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
 15[05]       ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
 16[058]      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
 161          ; 7      ; MOBILE     ; STANDARD_RATE ; "cable_wireless"     ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
@@ -19,12 +19,11 @@ Prefix       ; Length ; Type       ; Tariff        ; Operator             ; Form
 21[89]       ; 7      ; MOBILE     ; STANDARD_RATE ; "telefonica_moviles" ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
 24[013-9]    ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
 28[02-9]     ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
-3[047-9]     ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
-31[0-8]      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
+3[0147-9]    ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
 32[0-4]      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
 325          ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"
 333          ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
-35[0-35]     ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
+35[0-5]      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
 36[068]      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
 400          ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
 43[0-579]    ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT

@@ -198,7 +198,9 @@
 99879576|MobiUZ
 99879579|MobiUZ
 998797|MobiUZ
-9988|MobiUZ
+99880|Perfectum
+99887|MobiUZ
+99888|MobiUZ
 99890|Beeline
 99891|Beeline
 99892|Beeline

@@ -8,7 +8,7 @@ Prefix    ; Length ; Type       ; Tariff        ; Operator    ; Format         ;
 3611      ; 9      ; FIXED_LINE ; STANDARD_RATE ;             ; "fmt1_2/3/2/2" ; "SN"    ;                 ; ITU
 39[01]    ; 9      ; VOIP       ; STANDARD_RATE ;             ; "fmt1_2/3/2/2" ; "SN"    ;                 ; ITU
 70        ; 9      ; MOBILE     ; STANDARD_RATE ; "expresso"  ; "fmt1_2/3/2/2" ; "SN"    ;                 ; IR21
-710       ; 9      ; MOBILE     ; STANDARD_RATE ; "orange"    ; "fmt1_2/3/2/2" ; "SN"    ;                 ; IR21
+71        ; 9      ; MOBILE     ; STANDARD_RATE ; "orange"    ; "fmt1_2/3/2/2" ; "SN"    ;                 ; IR21
 721       ; 9      ; MOBILE     ; STANDARD_RATE ; "hayo"      ; "fmt1_2/3/2/2" ; "SN"    ;                 ; ITU
 75        ; 9      ; MOBILE     ; STANDARD_RATE ; "promobile" ; "fmt1_2/3/2/2" ; "SN"    ;                 ; IR21
 76        ; 9      ; MOBILE     ; STANDARD_RATE ; "free"      ; "fmt1_2/3/2/2" ; "SN"    ;                 ; IR21

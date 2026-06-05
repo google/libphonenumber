@@ -79,7 +79,7 @@ Prefix          ; Length ; Type       ; Tariff        ; Area Code Length ; Natio
 50002           ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "icell"            ; "mobile_3/2/2/2" ; "GE"    ;                         ; ITU
 50005[0-4]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "silknet"          ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
 50005[5-9]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "cellfie"          ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
-50010[0-4]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "cellfie"          ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
+5001[09][0-4]   ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "cellfie"          ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
 5001[12]        ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "silknet"          ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
 50022           ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "silknet"          ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
 5003[0-24-6]    ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "unicell"          ; "mobile_3/2/2/2" ; "GE"    ;                         ; ITU
@@ -108,6 +108,7 @@ Prefix          ; Length ; Type       ; Tariff        ; Area Code Length ; Natio
 51151[0-4]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "silknet"          ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
 5115[2-6]       ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "magticom"         ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
 5117[0-4]       ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "magticom"         ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
+5117[56]        ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "magticom"         ; "mobile_3/2/2/2" ; "GE"    ;                         ; GOVERNMENT
 51177[5-9]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "magticom"         ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
 514             ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "silknet"          ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
 51555[5-9]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "magticom"         ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
@@ -136,6 +137,7 @@ Prefix          ; Length ; Type       ; Tariff        ; Area Code Length ; Natio
 55222[0-4]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "asanet"           ; "mobile_3/2/2/2" ; "GE"    ;                         ; ITU
 55333           ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "silknet"          ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
 55444           ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "silknet"          ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
+55455           ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "silknet"          ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
 55[578]         ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "silknet"          ; "mobile_3/2/2/2" ; "GE"    ;                         ; IR21
 559[0-8]        ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "globalcell"       ; "mobile_3/2/2/2" ; "GE"    ;                         ; ITU
 5599[0-8]       ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "globalcell"       ; "mobile_3/2/2/2" ; "GE"    ;                         ; ITU

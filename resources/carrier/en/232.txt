@@ -21,6 +21,7 @@
 23235|IPTEL
 2326|Onlime
 2327|Orange
+23270|Africell
 23277|Africell
 2328|Africell
 2329|Africell

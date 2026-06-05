@@ -23,7 +23,7 @@
 
 7301|Republic of Buryatia
 7302|Chita
-733622|Baikonur
+733|Baikonur
 7341|Udmurtian Republic
 7342|Perm
 7343|Ekaterinburg

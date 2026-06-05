@@ -45,6 +45,7 @@ Prefix     ; Length ; Type       ; Tariff        ; Operator     ; Format        
 77[39]     ; 8      ; MOBILE     ; STANDARD_RATE ; "orange"     ; "fmt_2/3/3"       ; "BW"    ;                      ;            ; "Added per client's request."
 77[45]     ; 8      ; MOBILE     ; STANDARD_RATE ; "orange"     ; "fmt_2/3/3"       ; "BW"    ;                      ; ITU
 78         ; 8      ; MOBILE     ; STANDARD_RATE ; "orange"     ; "fmt_2/3/3"       ; "BW"    ;                      ; GOVERNMENT
+79[03]     ; 8      ; MOBILE     ; STANDARD_RATE ; "orange"     ; "fmt_2/3/3"       ; "BW"    ;                      ; IR21
 791[01]    ; 8      ; VOIP       ; STANDARD_RATE ;              ; "fmt_2/3/3"       ; "BW"    ;                      ; ITU
 7912[0-7]  ; 8      ; VOIP       ; STANDARD_RATE ;              ; "fmt_2/3/3"       ; "BW"    ;                      ; ITU
 7912[89]   ; 8      ; VOIP       ; STANDARD_RATE ;              ; "fmt_2/3/3"       ; "BW"    ;                      ; GOVERNMENT

@@ -29,6 +29,7 @@
 99550010|Cellfie
 99550011|Silknet
 99550012|Silknet
+99550019|Cellfie
 9955002|Silknet
 9955003|Unicell Mobile
 99550033|Silknet

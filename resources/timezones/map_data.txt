@@ -713,6 +713,7 @@
 1350|America/Los_Angeles
 1351|America/New_York
 1352|America/New_York
+1353|America/Chicago
 1354|America/Toronto
 1360|America/Los_Angeles
 1361|America/Chicago
@@ -1443,6 +1444,7 @@
 1732|America/New_York
 1734|America/New_York
 1737|America/Chicago
+1738|America/Los_Angeles
 1740|America/New_York
 1742|America/Toronto
 1743|America/New_York
@@ -2117,6 +2119,8 @@
 262|Indian/Mayotte&Indian/Reunion
 262262|Indian/Reunion
 262263|Indian/Reunion
+2622688|Indian/Reunion
+2622689|Indian/Mayotte
 262269|Indian/Mayotte
 26263|Indian/Mayotte
 26269|Indian/Reunion
@@ -2304,7 +2308,7 @@
 508|America/Miquelon
 509|America/Port-au-Prince
 51|America/Lima
-52|America/Hermosillo&America/Mazatlan&America/Mexico_City&America/New_York&America/Tijuana
+52|America/Cancun&America/Ciudad_Juarez&America/Matamoros&America/Mazatlan&America/Mexico_City&America/New_York&America/Ojinaga&America/Tijuana
 522|America/Mexico_City
 52200|America/Mexico_City&America/Tijuana
 52201|America/Mexico_City&America/New_York
@@ -2325,7 +2329,7 @@
 52616|America/Tijuana
 52618|America/Mexico_City
 5262|America/Mazatlan
-52626|America/Hermosillo
+52626|America/Ojinaga
 5263|America/Mazatlan
 5264|America/Mazatlan
 52646|America/Tijuana
@@ -2333,7 +2337,7 @@
 52651|America/Mazatlan
 52652|America/Mazatlan
 52653|America/Mazatlan
-52656|America/Hermosillo
+52656|America/Ciudad_Juarez
 52657|America/Mazatlan
 52658|America/Tijuana
 52659|America/Mazatlan
@@ -2358,11 +2362,16 @@
 5269|America/Mazatlan
 527|America/Mexico_City
 528|America/Mexico_City
+52867|America/Matamoros
+52877|America/Matamoros
+52878|America/Matamoros
+52894|America/Matamoros
+52899|America/Matamoros
 529|America/Mexico_City
-52983|America/New_York
-52984|America/New_York
-52987|America/New_York
-52998|America/New_York
+52983|America/Cancun
+52984|America/Cancun
+52987|America/Cancun
+52998|America/Cancun
 53|America/Havana
 54|America/Buenos_Aires
 55|America/Manaus&America/Noronha&America/Rio_Branco&America/Sao_Paulo
@@ -3168,8 +3177,7 @@
 7|Asia/Almaty&Asia/Anadyr&Asia/Aqtobe&Asia/Irkutsk&Asia/Kamchatka&Asia/Krasnoyarsk&Asia/Magadan&Asia/Novosibirsk&Asia/Omsk&Asia/Sakhalin&Asia/Vladivostok&Asia/Yakutsk&Asia/Yekaterinburg&Europe/Bucharest&Europe/Moscow&Europe/Samara
 7301|Asia/Irkutsk
 7302|Asia/Yakutsk
-7336|Asia/Yekaterinburg
-733622|Asia/Almaty
+733|Asia/Yekaterinburg
 734|Asia/Yekaterinburg
 7341|Europe/Samara
 735|Asia/Yekaterinburg
@@ -3287,6 +3295,7 @@
 97624|Asia/Hovd
 97625|Asia/Ulaanbaatar
 976258|Asia/Choibalsan
+97626|Asia/Ulaanbaatar
 9765|Asia/Ulaanbaatar
 9766|Asia/Ulaanbaatar
 9767|Asia/Ulaanbaatar

@@ -41294,6 +41294,7 @@
 61756482|Tweed Heads
 61756483|Southport
 61756484|Southport
+6175651|Southport
 61756550|Southport
 61756551|Southport
 61756552|Southport
@@ -41334,7 +41335,7 @@
 61756662|Jimboomba
 61756663|Kerry
 61756664|Ormeau
-61756665|Rathdowney
+61756665|Southport
 61756666|Southport
 61756667|Tamborine Mountain
 61756668|Tweed Heads
