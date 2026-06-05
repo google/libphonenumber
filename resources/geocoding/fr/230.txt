@@ -15,7 +15,21 @@
 # Generated from:
 # http://www.itu.int/oth/T0202000088/en [2011-06-05]
 
-2302|Région Nord
+23020|Région Nord
+230210|Région Nord
+230211|Région Nord
+230212|Région Nord
+230213|Région Nord
+230214|Région Nord
+230215|Région Nord
+230216|Région Nord
+230217|Région Nord
+230218|Región Nord
+23023|Région Nord
+23024|Région Nord
+23026|Région Nord
+23027|Région Nord
+23028|Région Nord
 2304|Région Centrale
 2306|Région Sud
 23081|Agalega

@@ -2,19 +2,20 @@ Prefix      ; Length ; Type                 ; Tariff        ; Operator          
 3100[67]    ; 7      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ;                                      ; "fmt1_3/4" ; "Pacific/Truk"                               ; "FM"
 31208       ; 7      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ;                                      ; "fmt1_3/4" ; "Pacific/Truk"                               ; "FM"
 31309       ; 7      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ;                                      ; "fmt1_3/4" ; "Pacific/Truk"                               ; "FM"
-320[1-9]    ; 7      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ;                                      ; "fmt1_3/4" ; "Pacific/Ponape"                             ; "FM"    ; ITU
-3[35]0[1-9] ; 7      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ;                                      ; "fmt1_3/4" ; "Pacific/Truk"                               ; "FM"    ; ITU
+320[1-9]    ; 7      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "fsm_telecommunications_corporation" ; "fmt1_3/4" ; "Pacific/Ponape"                             ; "FM"    ; ITU
+3[35]0[1-9] ; 7      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "fsm_telecommunications_corporation" ; "fmt1_3/4" ; "Pacific/Truk"                               ; "FM"    ; ITU
 3602        ; 7      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ;                                      ; "fmt1_3/4" ; "Pacific/Truk"                               ; "FM"
-370[1-9]    ; 7      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ;                                      ; "fmt1_3/4" ; "Pacific/Kosrae"                             ; "FM"    ; ITU
+370[1-9]    ; 7      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "fsm_telecommunications_corporation" ; "fmt1_3/4" ; "Pacific/Kosrae"                             ; "FM"    ; ITU
 3804        ; 7      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ;                                      ; "fmt1_3/4" ; "Pacific/Truk"                               ; "FM"
 3905        ; 7      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ;                                      ; "fmt1_3/4" ; "Pacific/Truk"                               ; "FM"
 820         ; 7      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "fsm_telecommunications_corporation" ; "fmt1_3/4" ; "Pacific/Kosrae&Pacific/Ponape&Pacific/Truk" ; "FM"    ; IR21
 92[0146]    ; 7      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "fsm_telecommunications_corporation" ; "fmt1_3/4" ; "Pacific/Ponape"                             ; "FM"    ; IR21
 92[235]     ; 7      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "fsm_telecommunications_corporation" ; "fmt1_3/4" ; "Pacific/Kosrae&Pacific/Ponape&Pacific/Truk" ; "FM"    ; IR21
-92[7-9]     ; 7      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ;                                      ; "fmt1_3/4" ; "Pacific/Kosrae&Pacific/Ponape&Pacific/Truk" ; "FM"
+92[7-9]     ; 7      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "fsm_telecommunications_corporation" ; "fmt1_3/4" ; "Pacific/Kosrae&Pacific/Ponape&Pacific/Truk" ; "FM"    ; ITU
 93[0-2]     ; 7      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "fsm_telecommunications_corporation" ; "fmt1_3/4" ; "Pacific/Kosrae&Pacific/Ponape&Pacific/Truk" ; "FM"    ; IR21
 933         ; 7      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "fsm_telecommunications_corporation" ; "fmt1_3/4" ; "Pacific/Truk"                               ; "FM"    ; IR21
-93[4-9]     ; 7      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ;                                      ; "fmt1_3/4" ; "Pacific/Kosrae&Pacific/Ponape&Pacific/Truk" ; "FM"
-9[46]       ; 7      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ;                                      ; "fmt1_3/4" ; "Pacific/Kosrae&Pacific/Ponape&Pacific/Truk" ; "FM"
+93[4-9]     ; 7      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "fsm_telecommunications_corporation" ; "fmt1_3/4" ; "Pacific/Kosrae&Pacific/Ponape&Pacific/Truk" ; "FM"    ; ITU
+94          ; 7      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "fsm_telecommunications_corporation" ; "fmt1_3/4" ; "Pacific/Kosrae&Pacific/Ponape&Pacific/Truk" ; "FM"    ; ITU
 95          ; 7      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "fsm_telecommunications_corporation" ; "fmt1_3/4" ; "Pacific/Kosrae&Pacific/Ponape&Pacific/Truk" ; "FM"    ; IR21
+96          ; 7      ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ; "boom!"                              ; "fmt1_3/4" ; "Pacific/Kosrae&Pacific/Ponape&Pacific/Truk" ; "FM"    ; ITU
 97          ; 7      ; MOBILE               ; STANDARD_RATE ; "fsm_telecommunications_corporation" ; "fmt1_3/4" ; "Pacific/Kosrae&Pacific/Ponape&Pacific/Truk" ; "FM"    ; IR21

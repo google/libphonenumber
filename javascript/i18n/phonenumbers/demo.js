@@ -58,52 +58,50 @@ function phoneNumberParser() {
     output.append('\nResult from isPossibleNumber(): ');
     output.append(isPossible);
     var validationResult = i18n.phonenumbers.PhoneNumberUtil.ValidationResult;
-    var isPossibleReason = phoneUtil_.isPossibleNumberWithReason(number)
-    var hasRegionCode = regionCode && regionCode != 'ZZ';
-    if (isPossible) {
-      // Checking as isValid() fails if possible local only.
-      if (isPossibleReason == validationResult.IS_POSSIBLE_LOCAL_ONLY) {
-        output.append('\nResult from isPossibleNumberWithReason(): ');
+    var isPossibleReason = phoneUtil_.isPossibleNumberWithReason(number);
+    output.append('\nResult from isPossibleNumberWithReason(): ');
+    switch (isPossibleReason) {
+      case validationResult.IS_POSSIBLE:
+        output.append('IS_POSSIBLE');
+        break;
+      case validationResult.IS_POSSIBLE_LOCAL_ONLY:
         output.append('IS_POSSIBLE_LOCAL_ONLY');
+        break;
+      case validationResult.INVALID_COUNTRY_CODE:
+        output.append('INVALID_COUNTRY_CODE');
+        break;
+      case validationResult.TOO_SHORT:
+        output.append('TOO_SHORT');
+        break;
+      case validationResult.TOO_LONG:
+        output.append('TOO_LONG');
+        break;
+      case validationResult.INVALID_LENGTH:
+        output.append('INVALID_LENGTH');
+        break;
+      }
+    var hasRegionCode = regionCode && regionCode != 'ZZ';
+    var isNumberValid = phoneUtil_.isValidNumber(number);
+    output.append('\nResult from isValidNumber(): ');
+    output.append(isNumberValid);
+    if (isNumberValid) {
+      if (isPossibleReason != validationResult.IS_POSSIBLE) {
         output.append(
-            '\nNumber is considered invalid as it is ' +
-            'not a possible national number.');
-      } else {
-        var isNumberValid = phoneUtil_.isValidNumber(number);
-        output.append('\nResult from isValidNumber(): ');
-        output.append(isNumberValid);
-        if (isNumberValid && hasRegionCode) {
+            '\nWarning: This number represents a known edge case - it is ' +
+            'a valid number, but it is not considered (strictly) possible. ' +
+            'See https://issuetracker.google.com/issues/335892662 for more details.');
+      }
+      if (hasRegionCode) {
           output.append('\nResult from isValidNumberForRegion(): ');
           output.append(phoneUtil_.isValidNumberForRegion(number, regionCode));
-        }
-        output.append('\nPhone Number region: ');
-        output.append(phoneUtil_.getRegionCodeForNumber(number));
-        output.append('\nResult from getNumberType(): ');
-        output.append(getNumberTypeString(number));
       }
+      output.append('\nPhone Number region: ');
+      output.append(phoneUtil_.getRegionCodeForNumber(number));
+      output.append('\nResult from getNumberType(): ');
+      output.append(getNumberTypeString(number));
     } else {
-      output.append('\nResult from isPossibleNumberWithReason(): ');
-      switch (isPossibleReason) {
-        case validationResult.INVALID_COUNTRY_CODE:
-          output.append('INVALID_COUNTRY_CODE');
-          break;
-        case validationResult.TOO_SHORT:
-          output.append('TOO_SHORT');
-          break;
-        case validationResult.TOO_LONG:
-          output.append('TOO_LONG');
-          break;
-        case validationResult.INVALID_LENGTH:
-          output.append('INVALID_LENGTH');
-          break;
-      }
-      // IS_POSSIBLE shouldn't happen, since we only call this if _not_
-      // possible.
       output.append(
-          '\nNote: Numbers that are not possible have type UNKNOWN,' +
-          ' an unknown region, and are considered invalid.');
-    }
-    if (!isNumberValid) {
+          '\nNote: Invalid numbers have type UNKNOWN and no region.');
       var shortInfo = i18n.phonenumbers.ShortNumberInfo.getInstance();
       output.append('\n\n****ShortNumberInfo Results:****');
       output.append('\nResult from isPossibleShortNumber: ');

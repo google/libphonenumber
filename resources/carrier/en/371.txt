@@ -13,31 +13,23 @@
 # limitations under the License.
 
 371200|Tele2
-3712010|Bite Latvia
-3712011|Bite Latvia
-3712012|Bite Latvia
-3712013|Bite Latvia
-3712014|Bite Latvia
-3712015|Bite Latvia
-3712016|Bite Latvia
-3712017|Bite Latvia
-3712019|Bite Latvia
+371201|Bite Latvia
+3712018|Tele2
 371202|LMT
 371203|Tele2
 371204|Tele2
 371205|Tele2
 371206|Bite Latvia
 371207|Bite Latvia
-3712080|Bite Latvia
-3712081|Bite Latvia
-3712082|Bite Latvia
-3712083|Bite Latvia
-3712084|Bite Latvia
-3712085|Bite Latvia
-3712086|Bite Latvia
-3712087|Bite Latvia
-3712088|Bite Latvia
+371208|Bite Latvia
+3712089|Tele2
+3712091|Tele2
+3712092|Tele2
+3712093|Tele2
 3712094|Triatel
+3712095|Tele2
+3712096|Tele2
+3712097|Tele2
 37121|Bite Latvia
 3712200|LMT
 3712201|LMT
@@ -75,10 +67,7 @@
 3712317|Bite Latvia
 3712320|Bite Latvia
 3712322|Bite Latvia
-37123230|Tele2
-37123232|Tele2
-37123233|Tele2
-37123238|Tele2
+3712323|Tele2
 3712327|Bite Latvia
 3712328|LMT
 3712330|Bite Latvia

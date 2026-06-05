@@ -1,5 +1,6 @@
-Region ; Type       ; Number
-BJ     ; FIXED_LINE ; "20211234"
-BJ     ; MOBILE     ; "90011234"
-BJ     ; VOIP       ; "85751234"
-BJ     ; UAN        ; "81123456"
+Region ; Type                 ; Number
+BJ     ; FIXED_LINE           ; "0120211234"
+BJ     ; MOBILE               ; "0195123456"
+BJ     ; FIXED_LINE_OR_MOBILE ; "0125012345"
+BJ     ; VOIP                 ; "85751234"
+BJ     ; UAN                  ; "81123456"

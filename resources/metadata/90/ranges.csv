@@ -7,6 +7,7 @@ Prefix           ; Length ; Type            ; Tariff        ; National Only ; Op
 228              ; 10     ; FIXED_LINE      ; STANDARD_RATE ; false         ;                                      ; "fixed_3/3/2/2"    ; "TR"    ; "Bilecik"             ; "Bilecik"             ; GOVERNMENT
 232              ; 10     ; FIXED_LINE      ; STANDARD_RATE ; false         ;                                      ; "fixed_3/3/2/2"    ; "TR"    ; "Izmir"               ; "İzmir"               ; GOVERNMENT
 236              ; 10     ; FIXED_LINE      ; STANDARD_RATE ; false         ;                                      ; "fixed_3/3/2/2"    ; "TR"    ; "Manisa"              ; "Manisa"              ; GOVERNMENT
+238              ; 10     ; FIXED_LINE      ; STANDARD_RATE ; false         ;                                      ; "fixed_3/3/2/2"    ; "TR"    ;                       ;                       ; GOVERNMENT
 242              ; 10     ; FIXED_LINE      ; STANDARD_RATE ; false         ;                                      ; "fixed_3/3/2/2"    ; "TR"    ; "Antalya"             ; "Antalya"             ; GOVERNMENT
 246              ; 10     ; FIXED_LINE      ; STANDARD_RATE ; false         ;                                      ; "fixed_3/3/2/2"    ; "TR"    ; "Isparta"             ; "Isparta"             ; GOVERNMENT
 248              ; 10     ; FIXED_LINE      ; STANDARD_RATE ; false         ;                                      ; "fixed_3/3/2/2"    ; "TR"    ; "Burdur"              ; "Burdur"              ; GOVERNMENT
@@ -83,13 +84,14 @@ Prefix           ; Length ; Type            ; Tariff        ; National Only ; Op
 484              ; 10     ; FIXED_LINE      ; STANDARD_RATE ; false         ;                                      ; "fixed_3/3/2/2"    ; "TR"    ; "Stirt"               ; "Siirt"               ; GOVERNMENT
 486              ; 10     ; FIXED_LINE      ; STANDARD_RATE ; false         ;                                      ; "fixed_3/3/2/2"    ; "TR"    ; "Sirnak"              ; "Şırnak"              ; GOVERNMENT
 488              ; 10     ; FIXED_LINE      ; STANDARD_RATE ; false         ;                                      ; "fixed_3/3/2/2"    ; "TR"    ; "Batman"              ; "Batman"              ; GOVERNMENT
+50[02-489]       ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "turk_telekom"                       ; "mobile_3/3/2/2"   ; "TR"    ;                       ;                       ; IR21
 50[15-7]         ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "turk_telekom"                       ; "mobile_3/3/2/2"   ; "TR"    ;                       ;                       ; GOVERNMENT
 510[015-9]       ; 10     ; MOBILE          ; STANDARD_RATE ; false         ;                                      ; "mobile_3/3/2/2"   ; "TR"
 5102[07-9]       ; 10     ; MOBILE          ; STANDARD_RATE ; false         ;                                      ; "mobile_3/3/2/2"   ; "TR"
 510210           ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "pasifik_telekom"                    ; "mobile_3/3/2/2"   ; "TR"    ;                       ;                       ; GOVERNMENT
 51021[1-9]       ; 10     ; MOBILE          ; STANDARD_RATE ; false         ;                                      ; "mobile_3/3/2/2"   ; "TR"
-51022[0-37]      ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "netgsm"                             ; "mobile_3/3/2/2"   ; "TR"    ;                       ;                       ; GOVERNMENT
-51022[4-689]     ; 10     ; MOBILE          ; STANDARD_RATE ; false         ;                                      ; "mobile_3/3/2/2"   ; "TR"
+51022[0-47]      ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "netgsm"                             ; "mobile_3/3/2/2"   ; "TR"    ;                       ;                       ; GOVERNMENT
+51022[5689]      ; 10     ; MOBILE          ; STANDARD_RATE ; false         ;                                      ; "mobile_3/3/2/2"   ; "TR"
 51023[013-9]     ; 10     ; MOBILE          ; STANDARD_RATE ; false         ;                                      ; "mobile_3/3/2/2"   ; "TR"
 510232           ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "Foniv_telecommunications_services"  ; "mobile_3/3/2/2"   ; "TR"    ;                       ;                       ; GOVERNMENT
 51024[0-35-9]    ; 10     ; MOBILE          ; STANDARD_RATE ; false         ;                                      ; "mobile_3/3/2/2"   ; "TR"
@@ -117,17 +119,16 @@ Prefix           ; Length ; Type            ; Tariff        ; National Only ; Op
 5161[0-57-9]     ; 10     ; MOBILE          ; STANDARD_RATE ; false         ;                                      ; "mobile_3/3/2/2"   ; "TR"    ;                       ;                       ; GOVERNMENT
 51616            ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "turkcell"                           ; "mobile_3/3/2/2"   ; "TR"    ;                       ;                       ; IR21
 524              ; 10     ; MOBILE          ; STANDARD_RATE ; false         ;                                      ; "mobile_3/3/2/2"   ; "TR"    ;                       ;                       ; ITU
-53[0-24-9]       ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "turkcell"                           ; "mobile_3/3/2/2"   ; "TR"    ;                       ;                       ; IR21
-533[0-79]        ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "turkcell"                           ; "mobile_3/3/2/2"   ; "TR"    ;                       ;                       ; IR21
-5338[0-289]      ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "turkcell"                           ; "mobile_3/3/2/2"   ; "TR"    ;                       ;                       ; IR21
-5338[3-7]        ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "kuzey_kibris_turkcell"              ; "mobile_3/3/2/2"   ; "TR"
-54[013-9]        ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "vodafone"                           ; "mobile_3/3/2/2"   ; "TR"    ;                       ;                       ; IR21
-542[0-79]        ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "vodafone"                           ; "mobile_3/3/2/2"   ; "TR"    ;                       ;                       ; IR21
-5428[0-49]       ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "vodafone"                           ; "mobile_3/3/2/2"   ; "TR"    ;                       ;                       ; IR21
-5428[5-8]        ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "kktc_telsim"                        ; "mobile_3/3/2/2"   ; "TR"
+53               ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "turkcell"                           ; "mobile_3/3/2/2"   ; "TR"    ;                       ;                       ; IR21
+54               ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "vodafone"                           ; "mobile_3/3/2/2"   ; "TR"    ;                       ;                       ; IR21
+55[06-8]         ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "turk_telekom"                       ; "mobile_3/3/2/2"   ; "TR"    ;                       ;                       ; IR21
 55[1-59]         ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "turk_telekom"                       ; "mobile_3/3/2/2"   ; "TR"
 561011           ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "selam"                              ; "mobile_3/3/2/2"   ; "TR"    ;                       ;                       ; GOVERNMENT
-56161            ; 10     ; MOBILE          ; STANDARD_RATE ;               ; "turkcell"                           ; "mobile_3/3/2/2"   ; "TR"    ;                       ;                       ; GOVERNMENT
+56161            ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "turkcell"                           ; "mobile_3/3/2/2"   ; "TR"    ;                       ;                       ; GOVERNMENT
+56[24]           ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "turkcell"                           ; "mobile_3/3/2/2"   ; "TR"    ;                       ;                       ; GOVERNMENT
+572              ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "turkcell"                           ; "mobile_3/3/2/2"   ; "TR"    ;                       ;                       ; IR21
+574              ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "vodafone"                           ; "mobile_3/3/2/2"   ; "TR"    ;                       ;                       ; IR21
+575              ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "turk_telekom"                       ; "mobile_3/3/2/2"   ; "TR"    ;                       ;                       ; IR21
 59221[12]        ; 10     ; PERSONAL_NUMBER ; STANDARD_RATE ; false         ;                                      ; "mobile_3/3/2/2"   ; "TR"
 592461           ; 10     ; PERSONAL_NUMBER ; STANDARD_RATE ; false         ;                                      ; "mobile_3/3/2/2"   ; "TR"
 59[46]           ; 10     ; MOBILE          ; STANDARD_RATE ; false         ;                                      ; "mobile_3/3/2/2"   ; "TR"

@@ -1,4 +1,5 @@
-Id         ; National       ; International
-fmt1_2/3/3 ; "#XX XXX XXX"  ; "XX XXX XXX"
-fmt2_3/5   ; "#XXX XXXXX"   ; "XXX XXXXX"
-fmt3_3/3/3 ; "#XXX XXX XXX" ; "XXX XXX XXX"
+Id          ; National         ; International
+fmt1_2/3/3  ; "#XX XXX XXX"    ; "XX XXX XXX"
+fmt2_3/5    ; "#XXX XXXXX"     ; "XXX XXXXX"
+fmt3_3/3/3  ; "#XXX XXX XXX"   ; "XXX XXX XXX"
+fmt4_2/7-10 ; "#XX XXXXXXX***" ; "XX XXXXXXX***"

@@ -31,6 +31,11 @@
 25270|Golis Telecom
 25271|Amtel
 25272|Golis Telecom
+25273|Telesom
+25275|Amtel
+25276|Somtel
+25277|Hormuud
+25278|Hormuud
 25279|Somtel
 25280|Somali Networks
 25288|Somali Networks

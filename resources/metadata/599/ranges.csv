@@ -1,10 +1,10 @@
 Prefix     ; Length ; Type       ; Tariff        ; Operator    ; Format       ; Timezone             ; Regions ; Geocode:en      ; Provenance
 318[023]   ; 7      ; FIXED_LINE ; STANDARD_RATE ;             ; "fmt1_3/4"   ; "America/Kralendijk" ; "BQ"    ; "St. Eustatius" ; ITU
 318[14-8]  ; 7      ; MOBILE     ; STANDARD_RATE ; "telcell"   ; "fmt1_3/4"   ; "America/Kralendijk" ; "BQ"    ;                 ; IR21
-319[14578] ; 7      ; MOBILE     ; STANDARD_RATE ; "wic"       ; "fmt1_3/4"   ; "America/Kralendijk" ; "BQ"    ;                 ; IR21
+319[14578] ; 7      ; MOBILE     ; STANDARD_RATE ; "chippie"   ; "fmt1_3/4"   ; "America/Kralendijk" ; "BQ"    ;                 ; IR21
 416[023]   ; 7      ; FIXED_LINE ; STANDARD_RATE ;             ; "fmt1_3/4"   ; "America/Kralendijk" ; "BQ"    ; "Saba"          ; ITU
 4161       ; 7      ; MOBILE     ; STANDARD_RATE ; "telcell"   ; "fmt1_3/4"   ; "America/Kralendijk" ; "BQ"    ;                 ; IR21
-416[4-8]   ; 7      ; MOBILE     ; STANDARD_RATE ; "wic"       ; "fmt1_3/4"   ; "America/Kralendijk" ; "BQ"    ;                 ; IR21
+416[4-8]   ; 7      ; MOBILE     ; STANDARD_RATE ; "chippie"   ; "fmt1_3/4"   ; "America/Kralendijk" ; "BQ"    ;                 ; IR21
 4169       ; 7      ; MOBILE     ; STANDARD_RATE ; "satel"     ; "fmt1_3/4"   ; "America/Kralendijk" ; "BQ"    ;                 ; ITU
 4170       ; 7      ; FIXED_LINE ; STANDARD_RATE ;             ; "fmt1_3/4"   ; "America/Kralendijk" ; "BQ"    ; "Saba"          ; ITU
 60[0-2]    ; 7      ; FIXED_LINE ; SHARED_COST   ;             ; "fmt1_3/4"   ; "America/Curacao"    ; "CW"

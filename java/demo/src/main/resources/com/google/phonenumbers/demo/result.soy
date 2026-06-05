@@ -101,44 +101,42 @@
       <TH>Result from isPossibleNumber()</TH>
       <TD>{$isPossibleNumber}</TD>
     </TR>
-{if $isPossibleNumber}
-  {if $validationResult == "IS_POSSIBLE_LOCAL_ONLY"}
     <TR>
       <TH>Result from isPossibleNumberWithReason()</TH>
       <TD>{$validationResult}</TD>
     </TR>
     <TR>
-      <TD colspan=2>Number is considered invalid as it is not a possible national number.</TD>
-    </TR>
-  {else}
-    <TR>
       <TH>Result from isValidNumber()</TH>
       <TD>{$isValidNumber}</TD>
     </TR>
+    {if $isValidNumber}
+     {if $validationResult != "IS_POSSIBLE"}
+      <TR>
+        <TD colspan=2 style="color:red">
+          Warning: This number represents a known <a href="https://issuetracker.google.com/issues/335892662">
+          edge case</a> - it is a valid number, but it is not considered (strictly) possible
+        </TD>
+      </TR>
+    {/if}
     {if $isValidNumberForRegion != null}
-    <TR>
-      <TH>Result from isValidNumberForRegion()</TH>
-      <TD>{$isValidNumberForRegion}</TD>
-    </TR>
+      <TR>
+        <TH>Result from isValidNumberForRegion()</TH>
+        <TD>{$isValidNumberForRegion}</TD>
+      </TR>
     {/if}
     <TR>
       <TH>Phone Number region</TH>
-      <TD>{$phoneNumberRegion ?: ""}</TD>
+      <TD>{$phoneNumberRegion}</TD>
     </TR>
     <TR>
       <TH>Result from getNumberType()</TH>
       <TD>{$numberType}</TD>
     </TR>
-  {/if}
-{else}
-    <TR>
-      <TH>Result from isPossibleNumberWithReason()</TH>
-      <TD>{$validationResult}</TD>
-    </TR>
-    <TR>
-      <TD colspan=2>Note: Numbers that are not possible have type UNKNOWN, an unknown region, and are considered invalid.</TD>
-    </TR>
-{/if}
+    {else}
+     <TR>
+       <TD colspan=2>Note: Invalid numbers have type UNKNOWN and no region.</TD>
+     </TR>
+     {/if}
   </TABLE>
 </DIV>
 

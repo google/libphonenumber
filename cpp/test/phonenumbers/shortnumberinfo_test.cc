@@ -31,6 +31,11 @@
 namespace i18n {
 namespace phonenumbers {
 class ShortNumberInfoTest : public testing::Test {
+ public:
+  // This type is neither copyable nor movable.
+  ShortNumberInfoTest(const ShortNumberInfoTest&) = delete;
+  ShortNumberInfoTest& operator=(const ShortNumberInfoTest&) = delete;
+
  protected:
   PhoneNumber ParseNumberForTesting(const string& number,
                                     const string& region_code) {
@@ -49,8 +54,6 @@ class ShortNumberInfoTest : public testing::Test {
   const PhoneNumberUtil phone_util_;
   const ShortNumberInfo short_info_;
 
- private:
-  DISALLOW_COPY_AND_ASSIGN(ShortNumberInfoTest);
 };
 
 TEST_F(ShortNumberInfoTest, IsPossibleShortNumber) {

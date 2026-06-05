@@ -55,7 +55,7 @@ Cream Sandwich).
 The [Java demo](https://libphonenumber.appspot.com/) is updated with a slight
 delay after the GitHub release.
 
-Last demo update: v8.13.25.
+Last demo update: v9.0.32.
 
 Note: Even though the library (main branch/[maven release](https://repo1.maven.org/maven2/com/googlecode/libphonenumber/libphonenumber/8.12.56/))
 is at v8.12.57, because of some deployment issues, we were unable to update the
@@ -240,13 +240,15 @@ maintenance processes.
 *   Ruby: https://github.com/ianks/mini_phone
 *   Ruby: https://github.com/daddyz/phonelib
 *   Ruby: https://github.com/mobi/telephone_number
+*   Rust: https://github.com/vloldik/rlibphonenumber
 *   Rust: https://github.com/1aim/rust-phonenumber
 *   Erlang: https://github.com/marinakr/libphonenumber_erlang
 *   Clojure: https://github.com/randomseed-io/phone-number
 *   R: https://github.com/socialresearchcentre/dialr/
 *   Elixir: https://github.com/socialpaymentsbv/ex_phone_number
 *   Salesforce: https://appexchange.salesforce.com/appxListingDetail?listingId=a0N3A00000G12oJUAR
-
+*   Dart: https://github.com/superakabo/dlibphonenumber
+  
 Alternatives to our own versions:
 
 *   Android-optimized: Our Java version loads the metadata from

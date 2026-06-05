@@ -49,6 +49,11 @@ using google::protobuf::RepeatedPtrField;
 static const int kInvalidCountryCode = 2;
 
 class PhoneNumberUtilTest : public testing::Test {
+ public:
+  // This type is neither copyable nor movable.
+  PhoneNumberUtilTest(const PhoneNumberUtilTest&) = delete;
+  PhoneNumberUtilTest& operator=(const PhoneNumberUtilTest&) = delete;
+
  protected:
   PhoneNumberUtilTest() : phone_util_(*PhoneNumberUtil::GetInstance()) {
     PhoneNumberUtil::GetInstance()->SetLogger(new StdoutLogger());
@@ -120,8 +125,6 @@ class PhoneNumberUtilTest : public testing::Test {
 
   const PhoneNumberUtil& phone_util_;
 
- private:
-  DISALLOW_COPY_AND_ASSIGN(PhoneNumberUtilTest);
 };
 
 TEST_F(PhoneNumberUtilTest, ContainsOnlyValidDigits) {
@@ -932,6 +935,16 @@ TEST_F(PhoneNumberUtilTest, FormatOutOfCountryKeepingAlphaChars) {
                                                   &formatted_number);
   EXPECT_EQ("1 800 SIX-FLAG", formatted_number);
 
+  // Testing a number with extension.
+  formatted_number.clear();
+  PhoneNumber alpha_numeric_number_with_extn;
+  phone_util_.ParseAndKeepRawInput("800 SIX-flag ext. 1234", RegionCode::US(),
+                                   &alpha_numeric_number_with_extn);
+  // preferredExtnPrefix for US is " extn. " (in test metadata)
+  phone_util_.FormatOutOfCountryKeepingAlphaChars(
+      alpha_numeric_number_with_extn, RegionCode::AU(), &formatted_number);
+  EXPECT_EQ("0011 1 800 SIX-FLAG extn. 1234", formatted_number);
+
   // Testing that if the raw input doesn't exist, it is formatted using
   // FormatOutOfCountryCallingNumber.
   alpha_numeric_number.clear_raw_input();
@@ -1461,6 +1474,12 @@ TEST_F(PhoneNumberUtilTest, GetLengthOfGeographicalAreaCode) {
   number.set_country_code(61);
   number.set_national_number(uint64{293744000});
   EXPECT_EQ(1, phone_util_.GetLengthOfGeographicalAreaCode(number));
+
+  // Mexico numbers - there is no national prefix, but it still has an area
+  // code.
+  number.set_country_code(52);
+  number.set_national_number(uint64_t{3312345678});
+  EXPECT_EQ(2, phone_util_.GetLengthOfGeographicalAreaCode(number));
 
   // Italian numbers - there is no national prefix, but it still has an area
   // code.

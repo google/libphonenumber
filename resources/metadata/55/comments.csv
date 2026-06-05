@@ -15,4 +15,4 @@ BR     ; XML                   ; "90 is an additional dialling token used in pla
 BR     ; XML_FIXED_LINE        ; "52 is not added as an area code even though ITU mentions it, since it is not yet\nassigned as per ANATEL and Wikipedia."
 BR     ; XML_MOBILE            ; "Mobile radio services were not migrated and remain 10 digits long, where the 3rd digit is\n7. "
 BR     ; XML_MOBILE            ; "52 is not included as a valid area code even though ITU mentions it, since it is not\nassigned as per ANATEL and Wikipedia."
-BR     ; XML_SHARED_COST       ; "Supported 4370 as shared cost based on user report."
+BR     ; XML_SHARED_COST       ; "Supported 4370 & 4864 as shared cost based on user report."

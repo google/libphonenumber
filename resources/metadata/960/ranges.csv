@@ -1,6 +1,6 @@
 Prefix  ; Length ; Type       ; Tariff        ; Operator   ; Format       ; Regions ; Geocode:en           ; Provenance
 30[01]  ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/4"   ; "MV"    ; "Malé/Hulhulé/Aarah" ; GOVERNMENT
-30[23]  ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/4"   ; "MV"    ; "Malé Region"        ; GOVERNMENT
+30[2-4] ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/4"   ; "MV"    ; "Malé Region"        ; GOVERNMENT
 33[0-4] ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/4"   ; "MV"    ; "Malé/Hulhulé/Aarah" ; GOVERNMENT
 335     ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/4"   ; "MV"    ; "Hulhumalé"          ; GOVERNMENT
 339     ; 7      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_3/4"   ; "MV"    ; "Vilimalé"           ; GOVERNMENT

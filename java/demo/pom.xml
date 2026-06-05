@@ -3,21 +3,22 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.googlecode.libphonenumber</groupId>
   <artifactId>demo</artifactId>
-  <version>8.13.26-SNAPSHOT</version>
+  <version>9.0.33-SNAPSHOT</version>
   <packaging>war</packaging>
+  <name>demo</name>
   <url>https://github.com/google/libphonenumber/</url>
   <parent>
     <groupId>com.googlecode.libphonenumber</groupId>
     <artifactId>libphonenumber-parent</artifactId>
-    <version>8.13.26-SNAPSHOT</version>
+    <version>9.0.33-SNAPSHOT</version>
   </parent>
 
   <properties>
     <app.deploy.project>libphonenumber-hrd</app.deploy.project>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    <maven.compiler.source>1.8</maven.compiler.source>
-    <maven.compiler.target>1.8</maven.compiler.target>
+    <maven.compiler.source>17</maven.compiler.source>
+    <maven.compiler.target>17</maven.compiler.target>
     <maven.compiler.showDeprecation>true</maven.compiler.showDeprecation>
     <archiveClasses>true</archiveClasses>
     <soy.root>${project.basedir}/src/main/resources/com/google/phonenumbers/demo</soy.root>
@@ -53,7 +54,7 @@
     <dependency>
       <groupId>commons-io</groupId>
       <artifactId>commons-io</artifactId>
-      <version>2.13.0</version>
+      <version>2.14.0</version>
     </dependency>
     <dependency>
       <groupId>commons-fileupload</groupId>
@@ -68,17 +69,17 @@
     <dependency>
       <groupId>com.googlecode.libphonenumber</groupId>
       <artifactId>libphonenumber</artifactId>
-      <version>8.13.26-SNAPSHOT</version>
+      <version>9.0.33-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>com.googlecode.libphonenumber</groupId>
       <artifactId>geocoder</artifactId>
-      <version>2.220-SNAPSHOT</version>
+      <version>3.33-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>com.googlecode.libphonenumber</groupId>
       <artifactId>carrier</artifactId>
-      <version>1.210-SNAPSHOT</version>
+      <version>2.33-SNAPSHOT</version>
     </dependency>
   </dependencies>
 

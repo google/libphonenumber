@@ -9,6 +9,7 @@ Prefix   ; Length ; Type       ; Tariff        ; Operator  ; Format    ; Regions
 48[4-9]  ; 5      ; FIXED_LINE ; STANDARD_RATE ;           ;           ; "VU"    ; "Malampa"          ; ITU
 5        ; 7      ; MOBILE     ; STANDARD_RATE ; "digicel" ; "fmt_3/4" ; "VU"    ;                    ; IR21       ; "IR21 dated 5/13/2019"
 7[013-7] ; 7      ; MOBILE     ; STANDARD_RATE ; "tvl"     ; "fmt_3/4" ; "VU"    ;                    ; IR21       ; "IR21 dated 3/29/2018"
+72       ; 7      ; MOBILE     ; STANDARD_RATE ; "tvl"     ; "fmt_3/4" ; "VU"    ;                    ; IR21
 8        ; 7      ; MOBILE     ; STANDARD_RATE ; "wan_tok" ; "fmt_3/4" ; "VU"    ;                    ; ITU
 81[18]   ; 5      ; FIXED_LINE ; TOLL_FREE     ;           ;           ; "VU"    ;                    ; ITU
 88       ; 5      ; FIXED_LINE ; STANDARD_RATE ;           ;           ; "VU"    ; "Tafea"            ; ITU

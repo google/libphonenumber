@@ -1,6 +1,5 @@
 Region ; Type                 ; Number
 MX     ; FIXED_LINE           ; "2001234567"
-MX     ; MOBILE               ; "12221234567"
 MX     ; FIXED_LINE_OR_MOBILE ; "2221234567"
 MX     ; TOLL_FREE            ; "8001234567"
 MX     ; PREMIUM_RATE         ; "9001234567"

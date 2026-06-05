@@ -74,6 +74,10 @@ class PhoneNumberMatch {
   // Default constructor.
   PhoneNumberMatch();
 
+  // This type is neither copyable nor movable.
+  PhoneNumberMatch(const PhoneNumberMatch&) = delete;
+  PhoneNumberMatch& operator=(const PhoneNumberMatch&) = delete;
+
   ~PhoneNumberMatch() {}
 
   // Returns the phone number matched by the receiver.
@@ -116,7 +120,6 @@ class PhoneNumberMatch {
   // The matched phone number.
   PhoneNumber number_;
 
-  DISALLOW_COPY_AND_ASSIGN(PhoneNumberMatch);
 };
 
 }  // namespace phonenumbers

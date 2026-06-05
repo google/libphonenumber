@@ -6,12 +6,12 @@ Prefix        ; Length ; Type            ; Tariff        ; Area Code Length ; Op
 20[36]        ; 9,10   ; MOBILE          ; STANDARD_RATE ;                  ; "voyager"                ; "mobile_2/3-4/4" ; "Pacific/Auckland" ; "NZ"
 204           ; 9,10   ; MOBILE          ; STANDARD_RATE ;                  ; "sure"                   ; "mobile_2/3-4/4" ; "Pacific/Auckland" ; "NZ"
 205           ; 9,10   ; MOBILE          ; STANDARD_RATE ;                  ; "vodafone"               ; "mobile_2/3-4/4" ; "Pacific/Auckland" ; "NZ"
-208           ; 9,10   ; MOBILE          ; STANDARD_RATE ;                  ;                          ; "mobile_2/3-4/4" ; "Pacific/Auckland" ; "NZ"    ;                                                          ; GOVERNMENT
+208           ; 9,10   ; MOBILE          ; STANDARD_RATE ;                  ; "vodafone"               ; "mobile_2/3-4/4" ; "Pacific/Auckland" ; "NZ"    ;                                                          ; GOVERNMENT
 210           ; 8      ; MOBILE          ; STANDARD_RATE ;                  ; "vodafone"               ; "mobile_2/3/3-5" ; "Pacific/Auckland" ; "NZ"    ;                                                          ;            ; "Added per client's request"
 210           ; 9,10   ; MOBILE          ; STANDARD_RATE ;                  ; "vodafone"               ; "fmt_3/3/3-4"    ; "Pacific/Auckland" ; "NZ"    ;                                                          ;            ; "Added per client's request"
 21[1-9]       ; 8-10   ; MOBILE          ; STANDARD_RATE ;                  ; "vodafone"               ; "mobile_2/3/3-5" ; "Pacific/Auckland" ; "NZ"    ;                                                          ;            ; "Added per client's request"
 22            ; 9,10   ; MOBILE          ; STANDARD_RATE ;                  ; "2degrees"               ; "mobile_2/3-4/4" ; "Pacific/Auckland" ; "NZ"
-24099         ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Scott Base"
+240           ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Scott Base"                                             ; GOVERNMENT
 26[06]        ; 8,9    ; MOBILE          ; STANDARD_RATE ;                  ; "2degrees"               ; "mobile_2/3/3-5" ; "Pacific/Auckland" ; "NZ"    ;                                                          ; GOVERNMENT
 26[1-489]     ; 8,9    ; MOBILE          ; STANDARD_RATE ;                  ; "spark"                  ; "mobile_2/3/3-5" ; "Pacific/Auckland" ; "NZ"    ;                                                          ; GOVERNMENT
 26[57]        ; 8,9    ; MOBILE          ; STANDARD_RATE ;                  ;                          ; "mobile_2/3/3-5" ; "Pacific/Auckland" ; "NZ"    ;                                                          ;            ; "FILLUP TO SUPPORT MASTER RANGE"
@@ -58,7 +58,7 @@ Prefix        ; Length ; Type            ; Tariff        ; Area Code Length ; Op
 323[2378]     ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Riverton/Winton"                                        ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 3234          ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Riverton"
 3236          ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Winton"
-324[0157]     ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Tokanui/Lumsden/Te Anau"                                ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+324[015]      ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Tokanui/Lumsden/Te Anau"                                ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 32420         ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Christchurch"
 3242[12]      ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Tokanui/Lumsden/Te Anau"
 32423         ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Dunedin"
@@ -75,6 +75,7 @@ Prefix        ; Length ; Type            ; Tariff        ; Area Code Length ; Op
 32448         ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Dunedin"
 32449         ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Queenstown"
 3246          ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Tokanui"
+3247          ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Tokanui/Lumsden/Te Anau"                                ; GOVERNMENT
 3248          ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Lumsden"
 3249          ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Te Anau"
 3250          ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Christchurch"
@@ -205,7 +206,8 @@ Prefix        ; Length ; Type            ; Tariff        ; Area Code Length ; Op
 32815         ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Fairlie"
 32816         ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Waimate"
 3281[7-9]     ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Christchurch"
-328[2-79]     ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "South Island"                                           ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+328[2-69]     ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "South Island"                                           ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+3287          ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "South Island"                                           ; GOVERNMENT
 3288[0-6]     ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Christchurch"
 3288[78]      ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Nelson"
 32889         ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Blenheim"
@@ -432,7 +434,8 @@ Prefix        ; Length ; Type            ; Tariff        ; Area Code Length ; Op
 35563         ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Queenstown"
 3556[4-9]     ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "South Island"
 355[7-9]      ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "South Island"                                           ;            ; "FILLUP TO SUPPORT MASTER RANGE"
-356[0-4]      ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "South Island"                                           ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+356[014]      ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "South Island"                                           ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+356[23]       ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "South Island"                                           ; GOVERNMENT
 35650         ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Greymouth"
 3565[1-9]     ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "South Island"
 35660         ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Haast"
@@ -612,7 +615,7 @@ Prefix        ; Length ; Type            ; Tariff        ; Area Code Length ; Op
 36688         ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Waitangi (Chatham Is.)"
 368[05]       ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Fairlie"
 368[1346-8]   ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Timaru"
-3682          ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Timaru/Waimate/Fairlie"                                 ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+3682          ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Timaru/Waimate/Fairlie"                                 ; GOVERNMENT
 3689          ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Waimate"
 3690          ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Waimate"
 369[1458]     ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Geraldine"                                              ;            ; "FILLUP TO SUPPORT MASTER RANGE"
@@ -948,10 +951,11 @@ Prefix        ; Length ; Type            ; Tariff        ; Area Code Length ; Op
 422           ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"
 423           ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Wellington"
 424[05]       ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Wellington"
-424[1346-9]   ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ;                                                          ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+424[134689]   ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ;                                                          ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 42420         ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Wellington"
 4242[1-8]     ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"
 42429         ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Paraparaumu"
+42[48]7       ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ;                                                          ; GOVERNMENT
 4250          ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Wellington"
 42[56][1-9]   ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ;                                                          ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 4260[0-7]     ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Wellington"
@@ -960,7 +964,7 @@ Prefix        ; Length ; Type            ; Tariff        ; Area Code Length ; Op
 428[01]       ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Wellington"
 4282[01]      ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Wellington"
 4282[2-9]     ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"
-428[3-9]      ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ;                                                          ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+428[3-689]    ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ;                                                          ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 429[0236-9]   ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Paraparaumu"
 429[145]      ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Paraparaumu"                                            ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 43[0-24-6]    ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Wellington"                                             ;            ; "FILLUP TO SUPPORT MASTER RANGE"
@@ -1092,7 +1096,7 @@ Prefix        ; Length ; Type            ; Tariff        ; Area Code Length ; Op
 6222[67]      ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Napier"
 62228         ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Wanganui"
 62229         ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"
-624[04-9]     ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ;                                                          ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+624[04-689]   ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ;                                                          ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 6241[01]      ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "New Plymouth"
 6241[23]      ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Gisborne"
 62414         ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Napier"
@@ -1110,6 +1114,7 @@ Prefix        ; Length ; Type            ; Tariff        ; Area Code Length ; Op
 62426         ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Levin"
 6242[7-9]     ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"
 6243          ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"
+6247          ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ;                                                          ; GOVERNMENT
 6260[0-3]     ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Palmerston North"
 62604         ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Ohakune"
 62605         ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Marton"
@@ -1369,7 +1374,8 @@ Prefix        ; Length ; Type            ; Tariff        ; Area Code Length ; Op
 68826         ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Levin"
 68827         ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "New Plymouth"
 6882[89]      ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"
-688[3-79]     ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ;                                                          ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+688[35-79]    ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ;                                                          ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+6884          ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ;                                                          ; GOVERNMENT
 6888[0-2]     ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Napier/Hastings"
 6888[34]      ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Palmerston North"
 68885         ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "New Plymouth"
@@ -1543,14 +1549,14 @@ Prefix        ; Length ; Type            ; Tariff        ; Area Code Length ; Op
 72225         ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Rotorua"
 72226         ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Te Kuiti"
 7222[7-9]     ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"
-724[0146-9]   ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ;                                                          ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+724[014689]   ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ;                                                          ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 72420         ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Hamilton"
 7242[1-356]   ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"
 72424         ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Tauranga"
 72427         ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Rotorua"
 72428         ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Taupo"
 72429         ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Whakatane"
-7243          ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ;                                                          ; GOVERNMENT
+724[37]       ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ;                                                          ; GOVERNMENT
 7245[0-6]     ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Hamilton"
 7245[7-9]     ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Rotorua"
 7260[0-4]     ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Hamilton"
@@ -1572,7 +1578,7 @@ Prefix        ; Length ; Type            ; Tariff        ; Area Code Length ; Op
 72625         ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Opotiki"
 7262[67]      ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Rotorua"
 7262[89]      ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Taupo"
-72[68][3-9]   ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ;                                                          ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+726[3-9]      ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ;                                                          ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 72800         ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Thames"
 72801         ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Huntly"
 72802         ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Paeroa"
@@ -1594,6 +1600,8 @@ Prefix        ; Length ; Type            ; Tariff        ; Area Code Length ; Op
 72823         ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Whakatane"
 7282[45]      ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"
 7282[7-9]     ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Tauranga"
+728[3-689]    ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ;                                                          ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+7287          ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ;                                                          ; GOVERNMENT
 730[0-3]      ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Whakatane"                                              ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 730[4-9]      ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Whakatane"
 731[01346-9]  ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Whakatane/Opotiki"                                      ;            ; "FILLUP TO SUPPORT MASTER RANGE"
@@ -1733,7 +1741,8 @@ Prefix        ; Length ; Type            ; Tariff        ; Area Code Length ; Op
 77887         ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Te Awamutu"
 77888         ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Taupo"
 77889         ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Whakatane"
-780[0-6]      ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ;                                                          ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+780[0-5]      ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ;                                                          ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+7806          ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ;                                                          ; GOVERNMENT
 78070         ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Morrinsville"
 78071         ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Otorohanga"
 78072         ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Paeroa"
@@ -1756,7 +1765,8 @@ Prefix        ; Length ; Type            ; Tariff        ; Area Code Length ; Op
 78095         ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Taupo"
 7809[689]     ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"
 78097         ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Whakatane"
-781[015-9]    ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ;                                                          ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+781[05-9]     ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ;                                                          ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+7811          ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ;                                                          ; GOVERNMENT
 7812[0-7]     ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Hamilton"
 78128         ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Huntly"
 78129         ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Matamata"
@@ -1946,8 +1956,7 @@ Prefix        ; Length ; Type            ; Tariff        ; Area Code Length ; Op
 92008         ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Hibiscus Coast"
 92009         ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Pukekohe"
 920[1-9]      ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Auckland"                                               ;            ; "FILLUP TO SUPPORT MASTER RANGE"
-921[0-8]      ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Auckland"
-9219          ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Auckland"                                               ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+921           ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Auckland"                                               ; GOVERNMENT
 9220          ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Auckland"
 922[13-9]     ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Auckland"                                               ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 9222[0-4]     ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Auckland"
@@ -1958,13 +1967,13 @@ Prefix        ; Length ; Type            ; Tariff        ; Area Code Length ; Op
 92229         ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Hibiscus Coast"
 923[0235-9]   ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Pukekohe"
 923[14]       ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Pukekohe"                                               ;            ; "FILLUP TO SUPPORT MASTER RANGE"
-924[014-7]    ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Auckland"                                               ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+924[014-6]    ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Auckland"                                               ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 9242[0-5]     ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Auckland"
 92426         ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Whangarei"
 92427         ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Warkworth"
 92428         ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Hibiscus Coast"
 92429         ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Pukekohe"
-9243          ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Auckland"                                               ; GOVERNMENT
+924[37]       ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Auckland"                                               ; GOVERNMENT
 924[89]       ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Auckland"
 92[5-7]       ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Auckland"
 9280[0-6]     ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Auckland"
@@ -1982,7 +1991,8 @@ Prefix        ; Length ; Type            ; Tariff        ; Area Code Length ; Op
 92837         ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Hibiscus Coast"
 92838         ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Pukekohe"
 92839         ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Whangarei"
-928[4-9]      ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Auckland"                                               ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+928[4-689]    ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Auckland"                                               ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+9287          ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Auckland"                                               ; GOVERNMENT
 929[03]       ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Auckland"                                               ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 929[124-9]    ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Auckland"
 93[035-7]     ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Auckland"
@@ -2126,11 +2136,12 @@ Prefix        ; Length ; Type            ; Tariff        ; Area Code Length ; Op
 983           ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Auckland"
 984[0569]     ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Auckland"
 984[1-478]    ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Auckland"                                               ;            ; "FILLUP TO SUPPORT MASTER RANGE"
-98[57]        ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Auckland"                                               ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+985           ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Auckland"                                               ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 986[0-8]      ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Auckland"                                               ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 98690         ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Kawakawa"
 98691         ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Maungaturoto"
 9869[2-9]     ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Auckland"
+987           ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Auckland"                                               ; GOVERNMENT
 988[034679]   ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Auckland"
 9881[0-389]   ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Auckland"
 98814         ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Pukekohe"
@@ -2233,7 +2244,7 @@ Prefix        ; Length ; Type            ; Tariff        ; Area Code Length ; Op
 9957          ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Pukekohe"
 9958          ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Helensville"
 9959          ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Hibiscus Coast"
-996[01]       ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Auckland"                                               ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+996[01]       ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Auckland"                                               ; GOVERNMENT
 996[24-9]     ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Auckland"
 9963[01]      ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Pukekohe"
 9963[2-9]     ; 8      ; FIXED_LINE      ; STANDARD_RATE ; 1                ;                          ; "fixed_1/3/4"    ; "Pacific/Auckland" ; "NZ"    ; "Auckland"

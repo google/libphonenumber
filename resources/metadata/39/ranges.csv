@@ -364,6 +364,7 @@ Prefix      ; Length ; Type            ; Tariff        ; National Only ; Operato
 0828        ; 11     ; FIXED_LINE      ; STANDARD_RATE ; false         ;               ; "fmt6_4/3/4"    ; "Europe/Rome"                ; "IT"    ;                          ; "Battipaglia"
 0831        ; 6-10   ; FIXED_LINE      ; STANDARD_RATE ; false         ;               ; "fmt7_4/2-6"    ; "Europe/Rome"                ; "IT"    ;                          ; "Brindisi"
 0831        ; 11     ; FIXED_LINE      ; STANDARD_RATE ; false         ;               ; "fmt6_4/3/4"    ; "Europe/Rome"                ; "IT"    ;                          ; "Brindisi"
+0831        ; 12     ; FIXED_LINE      ; STANDARD_RATE ; false         ;               ; "fmt10_3/4/4-5" ; "Europe/Rome"                ; "IT"    ; "Brindisi"               ; "Brindisi"
 0832        ; 6-10   ; FIXED_LINE      ; STANDARD_RATE ; false         ;               ; "fmt7_4/2-6"    ; "Europe/Rome"                ; "IT"    ; "Lecce"                  ; "Lecce"
 0832        ; 11     ; FIXED_LINE      ; STANDARD_RATE ; false         ;               ; "fmt6_4/3/4"    ; "Europe/Rome"                ; "IT"    ; "Lecce"                  ; "Lecce"
 0833        ; 6-10   ; FIXED_LINE      ; STANDARD_RATE ; false         ;               ; "fmt7_4/2-6"    ; "Europe/Rome"                ; "IT"    ;                          ; "Gallipoli"
@@ -492,8 +493,8 @@ Prefix      ; Length ; Type            ; Tariff        ; National Only ; Operato
 34          ; 9,10   ; MOBILE          ; STANDARD_RATE ; false         ; "vodafone"    ; "fmt8_3/3/3-4"  ; "Europe/Rome&Europe/Vatican" ; "IT,VA"
 35          ; 9,10   ; MOBILE          ; STANDARD_RATE ; false         ;               ; "fmt8_3/3/3-4"  ; "Europe/Rome&Europe/Vatican" ; "IT,VA"
 370         ; 9,10   ; MOBILE          ; STANDARD_RATE ; false         ; "tim"         ; "fmt8_3/3/3-4"  ; "Europe/Rome&Europe/Vatican" ; "IT,VA"
-371         ; 9,10   ; MOBILE          ; STANDARD_RATE ; false         ; "vodafone"    ; "fmt8_3/3/3-4"  ; "Europe/Rome&Europe/Vatican" ; "IT,VA" ;                          ;                            ; IR21
-37[24-69]   ; 9,10   ; MOBILE          ; STANDARD_RATE ; false         ;               ; "fmt8_3/3/3-4"  ; "Europe/Rome&Europe/Vatican" ; "IT,VA"
+37[19]      ; 9,10   ; MOBILE          ; STANDARD_RATE ; false         ; "vodafone"    ; "fmt8_3/3/3-4"  ; "Europe/Rome&Europe/Vatican" ; "IT,VA" ;                          ;                            ; IR21
+37[24-6]    ; 9,10   ; MOBILE          ; STANDARD_RATE ; false         ;               ; "fmt8_3/3/3-4"  ; "Europe/Rome&Europe/Vatican" ; "IT,VA"
 373         ; 9,10   ; MOBILE          ; STANDARD_RATE ; false         ; "3_italia"    ; "fmt8_3/3/3-4"  ; "Europe/Rome&Europe/Vatican" ; "IT,VA" ;                          ;                            ; IR21       ; "IR21 Dated 4/6/2018"
 377         ; 9,10   ; MOBILE          ; STANDARD_RATE ; false         ; "vodafone"    ; "fmt8_3/3/3-4"  ; "Europe/Rome&Europe/Vatican" ; "IT,VA" ;                          ;                            ; IR21       ; "IR21 Dated 11/30/2018"
 3780        ; 9,10   ; MOBILE          ; STANDARD_RATE ; false         ; "spusu"       ; "fmt8_3/3/3-4"  ; "Europe/Rome&Europe/Vatican" ; "IT,VA" ;                          ;                            ; IR21
@@ -505,6 +506,7 @@ Prefix      ; Length ; Type            ; Tariff        ; National Only ; Operato
 383         ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "vodafone"    ; "fmt8_3/3/3-4"  ; "Europe/Rome&Europe/Vatican" ; "IT,VA" ;                          ;                            ; IR21       ; "IR21 Dated 11/30/2018"
 39[0-3]     ; 9,10   ; MOBILE          ; STANDARD_RATE ; false         ; "3_italia"    ; "fmt8_3/3/3-4"  ; "Europe/Rome&Europe/Vatican" ; "IT,VA" ;                          ;                            ; IR21       ; "IR21 Dated 4/6/2018"
 39[4-9]     ; 9,10   ; MOBILE          ; STANDARD_RATE ; false         ; "3_italia"    ; "fmt8_3/3/3-4"  ; "Europe/Rome&Europe/Vatican" ; "IT,VA" ;                          ;                            ; TELECOMS
+43          ; 10     ; MOBILE          ; STANDARD_RATE ; false         ;               ; "fmt8_3/3/3-4"  ; "Europe/Rome"                ; "IT"    ;                          ;                            ;            ; "User report"
 55          ; 10     ; VOIP            ; STANDARD_RATE ; false         ;               ; "fmt1_2/3-4/4"  ; "Europe/Rome&Europe/Vatican" ; "IT,VA"
 70          ; 10     ; ISP             ; STANDARD_RATE ;               ;               ; "fmt8_3/3/3-4"  ; "Europe/Rome"                ; "IT"    ;                          ;                            ; GOVERNMENT
 800         ; 9      ; FIXED_LINE      ; TOLL_FREE     ; false         ;               ; "fmt8_3/3/3-4"  ; "Europe/Rome&Europe/Vatican" ; "IT,VA"

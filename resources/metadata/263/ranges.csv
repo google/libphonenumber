@@ -397,6 +397,7 @@ Prefix           ; Length ; Type       ; Tariff        ; Area Code Length ; Oper
 698              ; 5      ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fixed_2/3-5"   ; "ZW"    ; "Trelawney"
 698              ; 6      ; FIXED_LINE ; STANDARD_RATE ; 3                ;           ; "fixed_3/3-5"   ; "ZW"    ; "Trelawney"
 71               ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "netone"  ; "mobile_2/3/4"  ; "ZW"
+72               ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "netone"  ; "mobile_2/3/4"  ; "ZW"    ;                                   ; IR21
 73[1-9]          ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "telecel" ; "mobile_2/3/4"  ; "ZW"
 77               ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "econet"  ; "mobile_2/3/4"  ; "ZW"    ;                                   ; IR21       ; "IR21 dated 4/26/2019"
 780              ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "econet"  ; "mobile_2/3/4"  ; "ZW"    ;                                   ; WEB

@@ -14,6 +14,8 @@
 
 # Data from ITU: http://www.itu.int/oth/T02020000BF/en
 
+67768|Satsol
+67769|Satsol
 6777|Solomon Telekom
 6778|BMobile
 6779|Smile
