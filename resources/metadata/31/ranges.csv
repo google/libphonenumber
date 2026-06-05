@@ -158,7 +158,8 @@ Prefix       ; Length ; Type       ; Tariff        ; National Only ; Operator   
 6351         ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "v_tell"                         ; "mobile_1/8"   ; "NL"    ;                         ;                         ; GOVERNMENT
 6352         ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "lancelot_telecom"               ; "mobile_1/8"   ; "NL"    ;                         ;                         ; IR21
 6353         ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "kpn"                            ; "mobile_1/8"   ; "NL"    ;                         ;                         ; GOVERNMENT
-635[6-9]     ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "aspider_solutions_nederland_bv" ; "mobile_1/8"   ; "NL"    ;                         ;                         ; IR21
+6356         ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "vodafone_libertel_bv"           ; "mobile_1/8"   ; "NL"    ;                         ;                         ; IR21
+635[7-9]     ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "aspider_solutions_nederland_bv" ; "mobile_1/8"   ; "NL"    ;                         ;                         ; IR21
 636          ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "tele2"                          ; "mobile_1/8"   ; "NL"    ;                         ;                         ; GOVERNMENT
 637          ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "teleena_mvne"                   ; "mobile_1/8"   ; "NL"    ;                         ;                         ; IR21
 63[89]       ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "t-mobile"                       ; "mobile_1/8"   ; "NL"    ;                         ;                         ; IR21

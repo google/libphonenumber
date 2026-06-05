@@ -1,49 +1,3 @@
-# Copyright (C) 2017 The Libphonenumber Authors
-
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-
-# http://www.apache.org/licenses/LICENSE-2.0
-
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-
-# Source https://numeracionyoperadores.cnmc.es/bd-num.zip, moviles.txt file.
-# CARRIER-E MOBILE => HITS
-# LEAST COST ROUTING TELECOM => Lcrcom
-# AIRE NETWORKS DEL MEDITERRÁNEO => Ion mobile
-# DISTRIBUIDORA INTERNACIONAL DE ALIMENTACIÓN => DIA
-# R CABLE Y TELECOMUNICACIONES GALICIA => R
-# TELEFÓNICA MÓVILES ESPAÑA => Movistar
-# REPÚBLICA DE COMUNICACIONES MÓVILES => Republica Movil
-# XFERA MÓVILES => Yoigo
-# CECOSA INSTITUCIONAL => Eroski movil
-# MASMÓVIL IBERCOM => Ibercom
-# DIGI SPAIN TELECOM => DigiMobil
-# ORANGE ESPAÑA VIRTUAL => Simyo
-# CARREFOURONLINE => Carrefour
-# PARLEM TELECOM COMPANYIA DE TELECOMUNICACIONS => Parlem
-# NETHITS TELECOM SOLUTIONS => Nethits
-# BB PHONE LEVANTE => Lemonvil
-# BT ESPAÑA COMPAÑÍA DE SERVICIOS GLOBALES DE TELECOMUNICACIONES => BT
-# TELECABLE DE ASTURIAS => Telecable
-# YOU MOBILE TELECOM SPAIN => YouMobile
-# OPEN CABLE TELECOMUNICACIONES => OpenMovil
-# ZINNIA TELECOMUNICACIONES => Zinnia
-# ALAI OPERADOR DE TELECOMUNICACIONES => Alai
-# PROCONO => PTV
-
-# Note: Three operators present in CNMC file have been excluded from this map
-# as they are not operators, but solution providers for those business that
-# want to operate a OMV:
-# VODAFONE ENABLER ESPAÑA
-# INGENIUM OUTSOURCING SERVICES
-# VODAFONE ROAMING SERVICES
-
 345901|Movistar
 345906|Vodafone
 34600|Vodafone
@@ -110,9 +64,10 @@
 346112|Yoigo
 346113|Yoigo
 34612|Syma
-346122|Lycamobile
-346124|Lycamobile
-346125|Lycamobile
+346122|Yoigo
+346124|Yoigo
+346125|Yoigo
+346126|Sarenet
 34613|Yoigo
 34614|DigiMobil
 34615|Orange
@@ -184,6 +139,8 @@
 34666|Vodafone
 34667|Vodafone
 346681|Truphone
+346682|Vodafone
+346683|Vodafone
 346685|Orange
 346686|Parlem
 346688|Parlem
@@ -313,6 +270,7 @@
 347128|Yoigo
 347170|Movistar
 347171|Vodafone
+347172|Suma Movil
 347177|Movistar
 3471770|PepePhone
 3471771|PepePhone

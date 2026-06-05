@@ -2119,6 +2119,8 @@
 262|Indian/Mayotte&Indian/Reunion
 262262|Indian/Reunion
 262263|Indian/Reunion
+2622688|Indian/Reunion
+2622689|Indian/Mayotte
 262269|Indian/Mayotte
 26263|Indian/Mayotte
 26269|Indian/Reunion
@@ -3293,6 +3295,7 @@
 97624|Asia/Hovd
 97625|Asia/Ulaanbaatar
 976258|Asia/Choibalsan
+97626|Asia/Ulaanbaatar
 9765|Asia/Ulaanbaatar
 9766|Asia/Ulaanbaatar
 9767|Asia/Ulaanbaatar

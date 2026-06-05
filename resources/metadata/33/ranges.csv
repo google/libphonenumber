@@ -396,7 +396,8 @@ Prefix         ; Length ; Type       ; Tariff        ; Operator                 
 7715[0-4]      ; 9      ; MOBILE     ; STANDARD_RATE ; "sfr"                          ; "fmt_1/2/2/2/2"   ; "FR"    ; IR21
 7715[5-9]      ; 9      ; MOBILE     ; STANDARD_RATE ; "euroinformation_telecom"      ; "fmt_1/2/2/2/2"   ; "FR"    ; GOVERNMENT
 7719[0-4]      ; 9      ; MOBILE     ; STANDARD_RATE ; "euroinformation_telecom"      ; "fmt_1/2/2/2/2"   ; "FR"    ; GOVERNMENT
-7719[5-9]      ; 9      ; MOBILE     ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+7719[5-8]      ; 9      ; MOBILE     ; STANDARD_RATE ;                                ; "fmt_1/2/2/2/2"   ; "FR"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+77199          ; 9      ; MOBILE     ; STANDARD_RATE ; "bouygues"                     ; "fmt_1/2/2/2/2"   ; "FR"    ; GOVERNMENT
 772            ; 9      ; MOBILE     ; STANDARD_RATE ; "orange_france"                ; "fmt_1/2/2/2/2"   ; "FR"    ; GOVERNMENT
 77[34]         ; 9      ; MOBILE     ; STANDARD_RATE ; "symamobile"                   ; "fmt_1/2/2/2/2"   ; "FR"    ; GOVERNMENT
 775[0-4]       ; 9      ; MOBILE     ; STANDARD_RATE ; "sfr"                          ; "fmt_1/2/2/2/2"   ; "FR"    ; IR21

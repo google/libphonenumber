@@ -51,12 +51,6 @@ Prefix       ; Length ; Type       ; Tariff        ; Operator           ; Format
 69129        ; 9      ; MOBILE     ; STANDARD_RATE ; "digicel"          ; "fmt1_3/2/2/2"    ; "BL,GP,MF"
 69130        ; 9      ; MOBILE     ; STANDARD_RATE ; "digicel"          ; "fmt1_3/2/2/2"    ; "BL,GP,MF" ; IR21       ; "IR21 Dated 5/2/2018"
 6913[1-5]    ; 9      ; MOBILE     ; STANDARD_RATE ; "orange"           ; "fmt1_3/2/2/2"    ; "BL,GP,MF" ; GOVERNMENT ; "Regulator Monthly Report (Arcep)"
-6940[89]     ; 9      ; MOBILE     ; STANDARD_RATE ; "digicel"          ; "fmt1_3/2/2/2"    ; "BL,GP,MF" ; IR21
-6941[2-6]    ; 9      ; MOBILE     ; STANDARD_RATE ; "digicel"          ; "fmt1_3/2/2/2"    ; "BL,GP,MF" ; IR21
-6949         ; 9      ; MOBILE     ; STANDARD_RATE ; "digicel"          ; "fmt1_3/2/2/2"    ; "BL,GP,MF" ; IR21
-6961[016-9]  ; 9      ; MOBILE     ; STANDARD_RATE ; "digicel"          ; "fmt1_3/2/2/2"    ; "BL,GP,MF" ; IR21
-6965[0-4]    ; 9      ; MOBILE     ; STANDARD_RATE ; "digicel"          ; "fmt1_3/2/2/2"    ; "BL,GP,MF" ; IR21
-696[67]      ; 9      ; MOBILE     ; STANDARD_RATE ; "digicel"          ; "fmt1_3/2/2/2"    ; "BL,GP,MF" ; IR21
 70900        ; 9      ; MOBILE     ; STANDARD_RATE ; "free_caraïbe"     ; "fmt1_3/2/2/2"    ; "BL,GP,MF" ; GOVERNMENT
 70901        ; 9      ; MOBILE     ; STANDARD_RATE ; "outremer_telecom" ; "fmt1_3/2/2/2"    ; "BL,GP,MF" ; GOVERNMENT
 70902        ; 9      ; MOBILE     ; STANDARD_RATE ; "digicel"          ; "fmt1_3/2/2/2"    ; "BL,GP,MF" ; GOVERNMENT
