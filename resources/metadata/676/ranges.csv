@@ -12,6 +12,8 @@ Prefix     ; Length ; Type       ; Tariff        ; Operator ; Format         ; R
 43         ; 5      ; FIXED_LINE ; STANDARD_RATE ;          ; "fixed_2/3"    ; "TO"    ; "Matangiake"
 44         ; 5      ; FIXED_LINE ; STANDARD_RATE ;          ; "fixed_2/3"    ; "TO"
 50         ; 5      ; FIXED_LINE ; STANDARD_RATE ;          ; "fixed_2/3"    ; "TO"    ; "‘Eua"
+54[0-5]    ; 7      ; MOBILE     ; STANDARD_RATE ; "toko"   ; "fmt_3/4"      ; "TO"    ;              ; ITU
+54[6-9]    ; 7      ; ISP        ; STANDARD_RATE ; "toko"   ; "fmt_3/4"      ; "TO"    ;              ; ITU
 55[0-37-9] ; 7      ; VOIP       ; STANDARD_RATE ;          ; "fmt_3/4"      ; "TO"
 55[4-6]    ; 7      ; MOBILE     ; STANDARD_RATE ; "toko"   ; "fmt_3/4"      ; "TO"
 6[09]      ; 5      ; FIXED_LINE ; STANDARD_RATE ;          ; "fixed_2/3"    ; "TO"    ; "Ha’apai"

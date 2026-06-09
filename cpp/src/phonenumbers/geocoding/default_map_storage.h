@@ -19,6 +19,7 @@
 #ifndef I18N_PHONENUMBERS_DEFAULT_MAP_STORAGE_H_
 #define I18N_PHONENUMBERS_DEFAULT_MAP_STORAGE_H_
 
+#include <cstdint>
 #include "phonenumbers/base/basictypes.h"
 
 namespace i18n {
@@ -33,10 +34,15 @@ struct PrefixDescriptions;
 class DefaultMapStorage {
  public:
   DefaultMapStorage();
+
+   // This type is neither copyable nor movable.
+  DefaultMapStorage(const DefaultMapStorage&) = delete;
+  DefaultMapStorage& operator=(const DefaultMapStorage&) = delete;
+
   virtual ~DefaultMapStorage();
 
   // Returns the phone number prefix located at the provided index.
-  int32 GetPrefix(int index) const;
+  int32_t GetPrefix(int index) const;
 
   // Gets the description corresponding to the phone number prefix located
   // at the provided index. If the description is not available in the current
@@ -59,15 +65,13 @@ class DefaultMapStorage {
 
  private:
   // Sorted sequence of phone number prefixes.
-  const int32* prefixes_;
+  const int32_t* prefixes_;
   int prefixes_size_;
   // Sequence of prefix descriptions, in the same order than prefixes_.
   const char** descriptions_;
   // Sequence of unique possible lengths in ascending order.
-  const int32* possible_lengths_;
+  const int32_t* possible_lengths_;
   int possible_lengths_size_;
-
-  DISALLOW_COPY_AND_ASSIGN(DefaultMapStorage);
 };
 
 }  // namespace phonenumbers

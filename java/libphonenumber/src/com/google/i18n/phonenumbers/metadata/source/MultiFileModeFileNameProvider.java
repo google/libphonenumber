@@ -16,7 +16,6 @@
 
 package com.google.i18n.phonenumbers.metadata.source;
 
-import java.util.regex.Pattern;
 
 /**
  * {@link PhoneMetadataFileNameProvider} implementation which appends key as a suffix to the
@@ -25,7 +24,6 @@ import java.util.regex.Pattern;
 public final class MultiFileModeFileNameProvider implements PhoneMetadataFileNameProvider {
 
   private final String phoneMetadataFileNamePrefix;
-  private static final Pattern ALPHANUMERIC = Pattern.compile("^[\\p{L}\\p{N}]+$");
 
   public MultiFileModeFileNameProvider(String phoneMetadataFileNameBase) {
     this.phoneMetadataFileNamePrefix = phoneMetadataFileNameBase + "_";
@@ -34,9 +32,27 @@ public final class MultiFileModeFileNameProvider implements PhoneMetadataFileNam
   @Override
   public String getFor(Object key) {
     String keyAsString = key.toString();
-    if (!ALPHANUMERIC.matcher(keyAsString).matches()) {
+    if (!isAlphanumeric(keyAsString)) {
       throw new IllegalArgumentException("Invalid key: " + keyAsString);
     }
     return phoneMetadataFileNamePrefix + key;
+  }
+
+  private boolean isAlphanumeric(String key) {
+    if (key == null || key.length() == 0) {
+      return false;
+    }
+    // String#length doesn't actually return the number of
+    // code points in the String, it returns the number
+    // of char values.
+    int size = key.length();
+    for (int charIdx = 0; charIdx < size; ) {
+      final int codePoint = key.codePointAt(charIdx);
+      if (!Character.isLetterOrDigit(codePoint)) {
+        return false;
+      }
+      charIdx += Character.charCount(codePoint);
+    }
+    return true;
   }
 }

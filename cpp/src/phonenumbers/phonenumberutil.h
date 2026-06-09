@@ -68,6 +68,10 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   friend class Singleton<PhoneNumberUtil>;
 
  public:
+  // This type is neither copyable nor movable.
+  PhoneNumberUtil(const PhoneNumberUtil&) = delete;
+  PhoneNumberUtil& operator=(const PhoneNumberUtil&) = delete;
+
   ~PhoneNumberUtil();
   static const char kRegionCodeForNonGeoEntity[];
 
@@ -247,7 +251,7 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   // Gets the national significant number of a phone number. Note a national
   // significant number doesn't contain a national prefix or any formatting.
   void GetNationalSignificantNumber(const PhoneNumber& number,
-                                    string* national_significant_num) const;
+                                    string* national_number) const;
 
   // Gets the length of the geographical area code from the PhoneNumber object
   // passed in, so that clients could use it to split a national significant
@@ -527,6 +531,13 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   //      would most likely be area codes) and length (obviously includes the
   //      length of area codes for fixed line numbers), it will return false for
   //      the subscriber-number-only version.
+  //
+  // There is a known issue with this method: if a number is possible only in a
+  // certain region among several regions that share the same country calling
+  // code, this method will consider only the "main" region. For example,
+  // +1310xxxx are valid numbers in Canada. However, they are not possible in
+  // the US. As a result, this method will return false for +1310xxxx. See
+  // https://issuetracker.google.com/issues/335892662 for more details.
   ValidationResult IsPossibleNumberWithReason(const PhoneNumber& number) const;
 
   // Convenience wrapper around IsPossibleNumberWithReason(). Instead of
@@ -561,6 +572,13 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   //      would most likely be area codes) and length (obviously includes the
   //      length of area codes for fixed line numbers), it will return false for
   //      the subscriber-number-only version.
+  //
+  // There is a known issue with this method: if a number is possible only in a
+  // certain region among several regions that share the same country calling
+  // code, this method will consider only the "main" region. For example,
+  // +1310xxxx are valid numbers in Canada. However, they are not possible in
+  // the US. As a result, this method will return false for +1310xxxx. See
+  // https://issuetracker.google.com/issues/335892662 for more details.
   ValidationResult IsPossibleNumberForTypeWithReason(
       const PhoneNumber& number, PhoneNumberType type) const;
 
@@ -912,7 +930,7 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
       const PhoneNumber& number,
       const PhoneMetadata& metadata,
       PhoneNumberFormat number_format,
-      string* extension) const;
+      string* formatted_number) const;
 
   void GetRegionCodeForNumberFromRegionList(
       const PhoneNumber& number,
@@ -944,7 +962,7 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   int ExtractCountryCode(string* national_number) const;
   ErrorType MaybeExtractCountryCode(
       const PhoneMetadata* default_region_metadata,
-      bool keepRawInput,
+      bool keep_raw_input,
       string* national_number,
       PhoneNumber* phone_number) const;
 
@@ -970,7 +988,6 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   bool IsShorterThanPossibleNormalNumber(const PhoneMetadata* country_metadata,
                                          const string& number) const;
 
-  DISALLOW_COPY_AND_ASSIGN(PhoneNumberUtil);
 };
 
 }  // namespace phonenumbers

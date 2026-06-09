@@ -42,7 +42,6 @@ CA     ; SC                  ; "Excluding local normal numbers from the general 
 CA     ; SC_CARRIER_SPECIFIC ; "https://en.wikipedia.org/wiki/6-1-1 says it is only partially supported, similar to\narticles on these other numbers. 7-1-1 is required to be supported by all carriers in\nthe US, but in Canada it is up to individual communities it seems."
 CA     ; SC_SMS_SERVICES     ; "https://support.twitter.com/articles/20170024"
 CA     ; SC_SMS_SERVICES     ; "http://www.txt.ca/en/shortcode-search/"
-CA     ; SC_SMS_SERVICES     ; "We also support so-called ""long codes"" (8 digits). Technically we know that 30000 is\nnot a valid short-code but this is too complex/not worth the time to exclude here."
 CA     ; XML                 ; "http://www.cnac.ca/canadian_dial_plan/canadian_dial_plan.htm"
 CA     ; XML_PERSONAL_NUMBER ; "https://www.nationalnanpa.com/number_resource_info/5XX_codes.html"
 CA     ; XML_UAN             ; "Prefix 310 (7 digit) is added based on user report and online documents."

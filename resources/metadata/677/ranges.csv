@@ -7,6 +7,7 @@ Prefix     ; Length ; Type       ; Tariff        ; Operator          ; Format   
 5[03]      ; 5      ; FIXED_LINE ; STANDARD_RATE ;                   ;            ; "SB"    ; ITU        ; "Dated 11/26/2016"
 5[12]      ; 5      ; VOIP       ; STANDARD_RATE ;                   ;            ; "SB"    ; ITU        ; "Dated 11/26/2016"
 6[0-37]    ; 5      ; FIXED_LINE ; STANDARD_RATE ;                   ;            ; "SB"    ; ITU        ; "Dated 11/26/2016"
+6[89]      ; 7      ; MOBILE     ; STANDARD_RATE ; "satsol"          ; "fmt1_2/5" ; "SB"    ; ITU
 7[1-9]     ; 7      ; MOBILE     ; STANDARD_RATE ; "solomon_telekom" ; "fmt1_2/5" ; "SB"    ; ITU        ; "Dated 11/26/2016"
 8[4-9]     ; 7      ; MOBILE     ; STANDARD_RATE ; "bmobile"         ; "fmt1_2/5" ; "SB"    ; ITU        ; "Dated 11/26/2016"
 91[2-9]    ; 7      ; MOBILE     ; STANDARD_RATE ; "satsol"          ; "fmt1_2/5" ; "SB"    ; ITU        ; "Dated 11/26/2016"

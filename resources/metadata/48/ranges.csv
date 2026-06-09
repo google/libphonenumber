@@ -14,10 +14,12 @@ Prefix       ; Length ; Type       ; Tariff        ; Operator                   
 18           ; 9      ; FIXED_LINE ; STANDARD_RATE ;                             ; "fixed_2/3/2/2"     ; "PL"    ; "Nowy Sącz"            ; "Nowy Sącz"
 1819         ; 7      ; FIXED_LINE ; STANDARD_RATE ;                             ; "fixed_2/2/3"       ; "PL"    ; "Nowy Sącz"            ; "Nowy Sącz"
 20           ; 6      ; ISP        ; STANDARD_RATE ;                             ; "shortcode_3/3"     ; "PL"    ;                        ;                        ; GOVERNMENT
+211[045]     ; 9      ; MOBILE     ; STANDARD_RATE ; "plus"                      ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; IR21
 2111         ; 9      ; MOBILE     ; STANDARD_RATE ; "polska"                    ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; GOVERNMENT
+2113[06-9]   ; 9      ; MOBILE     ; STANDARD_RATE ; "plus"                      ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; IR21
 2113[1-5]    ; 9      ; MOBILE     ; STANDARD_RATE ; "polska"                    ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; GOVERNMENT
-211[45]      ; 9      ; MOBILE     ; STANDARD_RATE ; "plus"                      ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; IR21
 212          ; 9      ; MOBILE     ; STANDARD_RATE ; "orange"                    ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; GOVERNMENT
+213[1-9]     ; 9      ; MOBILE     ; STANDARD_RATE ; "plus"                      ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; IR21
 22           ; 9      ; FIXED_LINE ; STANDARD_RATE ;                             ; "fixed_2/3/2/2"     ; "PL"    ; "Warsaw"               ; "Warszawa"
 2219         ; 7      ; FIXED_LINE ; STANDARD_RATE ;                             ; "fixed_2/2/3"       ; "PL"    ; "Warsaw"               ; "Warszawa"
 23           ; 9      ; FIXED_LINE ; STANDARD_RATE ;                             ; "fixed_2/3/2/2"     ; "PL"    ; "Ciechanów"            ; "Ciechanów"
@@ -30,6 +32,7 @@ Prefix       ; Length ; Type       ; Tariff        ; Operator                   
 2619         ; 7      ; FIXED_LINE ; STANDARD_RATE ;                             ; "fixed_2/2/3"       ; "PL"
 29           ; 9      ; FIXED_LINE ; STANDARD_RATE ;                             ; "fixed_2/3/2/2"     ; "PL"    ; "Ostrolęka"            ; "Ostrołęka"
 2919         ; 7      ; FIXED_LINE ; STANDARD_RATE ;                             ; "fixed_2/2/3"       ; "PL"    ; "Ostrolęka"            ; "Ostrołęka"
+30           ; 7      ; FIXED_LINE ; STANDARD_RATE ;                             ; "fixed_2/2/3"       ; "PL"    ; "Kraków"               ; "Kraków"
 32           ; 9      ; FIXED_LINE ; STANDARD_RATE ;                             ; "fixed_2/3/2/2"     ; "PL"    ; "Katowice"             ; "Katowice"
 3219         ; 7      ; FIXED_LINE ; STANDARD_RATE ;                             ; "fixed_2/2/3"       ; "PL"    ; "Katowice"             ; "Katowice"
 33           ; 9      ; FIXED_LINE ; STANDARD_RATE ;                             ; "fixed_2/3/2/2"     ; "PL"    ; "Bielsko-Biala"        ; "Bielsko-Biała"
@@ -45,22 +48,20 @@ Prefix       ; Length ; Type       ; Tariff        ; Operator                   
 4319         ; 7      ; FIXED_LINE ; STANDARD_RATE ;                             ; "fixed_2/2/3"       ; "PL"    ; "Sieradz"              ; "Sieradz"
 44           ; 9      ; FIXED_LINE ; STANDARD_RATE ;                             ; "fixed_2/3/2/2"     ; "PL"    ; "Piotrków Trybunalski" ; "Piotrków Trybunalski"
 4419         ; 7      ; FIXED_LINE ; STANDARD_RATE ;                             ; "fixed_2/2/3"       ; "PL"    ; "Piotrków Trybunalski" ; "Piotrków Trybunalski"
-450          ; 9      ; MOBILE     ; STANDARD_RATE ; "play"                      ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; IR21
-45[1-35-8]   ; 9      ; MOBILE     ; STANDARD_RATE ;                             ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; GOVERNMENT
+45[067]      ; 9      ; MOBILE     ; STANDARD_RATE ; "play"                      ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; IR21
+45[1-358]    ; 9      ; MOBILE     ; STANDARD_RATE ;                             ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; GOVERNMENT
 454          ; 9      ; MOBILE     ; STANDARD_RATE ; "orange"                    ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; IR21
 459[03]      ; 9      ; MOBILE     ; STANDARD_RATE ; "play"                      ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; IR21
 4591[0-4]    ; 9      ; MOBILE     ; STANDARD_RATE ; "play"                      ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; IR21
-45915        ; 9      ; MOBILE     ; STANDARD_RATE ; "plus"                      ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; IR21
-4591[6-9]    ; 9      ; MOBILE     ; STANDARD_RATE ;                             ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; GOVERNMENT
+4591[578]    ; 9      ; MOBILE     ; STANDARD_RATE ; "plus"                      ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; IR21
+4591[69]     ; 9      ; MOBILE     ; STANDARD_RATE ;                             ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; GOVERNMENT
 459[25]0     ; 9      ; MOBILE     ; STANDARD_RATE ; "sia_ntel_solutions"        ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; GOVERNMENT
 4592[1-9]    ; 9      ; MOBILE     ; STANDARD_RATE ;                             ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; GOVERNMENT
 4594[02-49]  ; 9      ; MOBILE     ; STANDARD_RATE ;                             ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; GOVERNMENT
 4594[15-8]   ; 9      ; MOBILE     ; STANDARD_RATE ; "plus"                      ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; IR21
-4595[1-6]    ; 9      ; MOBILE     ; STANDARD_RATE ; "plus"                      ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; IR21
+4595[1-689]  ; 9      ; MOBILE     ; STANDARD_RATE ; "plus"                      ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; IR21
 45957        ; 9      ; MOBILE     ; STANDARD_RATE ; "bsg_estonia_ou"            ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; GOVERNMENT
-4595[89]     ; 9      ; MOBILE     ; STANDARD_RATE ; "telestrada"                ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; GOVERNMENT
-459[679]     ; 9      ; MOBILE     ; STANDARD_RATE ;                             ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; GOVERNMENT
-4598         ; 9      ; MOBILE     ; STANDARD_RATE ; "plus"                      ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; IR21
+459[6-9]     ; 9      ; MOBILE     ; STANDARD_RATE ; "plus"                      ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; IR21
 46           ; 9      ; FIXED_LINE ; STANDARD_RATE ;                             ; "fixed_2/3/2/2"     ; "PL"    ; "Skierniewice"         ; "Skierniewice"
 4619         ; 7      ; FIXED_LINE ; STANDARD_RATE ;                             ; "fixed_2/2/3"       ; "PL"    ; "Skierniewice"         ; "Skierniewice"
 47           ; 9      ; FIXED_LINE ; STANDARD_RATE ;                             ; "fixed_2/3/2/2"     ; "PL"
@@ -102,7 +103,7 @@ Prefix       ; Length ; Type       ; Tariff        ; Operator                   
 5797[1-5]    ; 9      ; MOBILE     ; STANDARD_RATE ; "upc"                       ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; GOVERNMENT
 57976        ; 9      ; MOBILE     ; STANDARD_RATE ; "telenabler"                ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; GOVERNMENT
 57977        ; 9      ; MOBILE     ; STANDARD_RATE ; "im_consulting"             ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; GOVERNMENT
-5797[89]     ; 9      ; MOBILE     ; STANDARD_RATE ; "ez_mobile"                 ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; GOVERNMENT
+5797[89]     ; 9      ; MOBILE     ; STANDARD_RATE ; "plus"                      ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; IR21
 58           ; 9      ; FIXED_LINE ; STANDARD_RATE ;                             ; "fixed_2/3/2/2"     ; "PL"    ; "Gdańsk"               ; "Gdańsk"
 5819         ; 7      ; FIXED_LINE ; STANDARD_RATE ;                             ; "fixed_2/2/3"       ; "PL"    ; "Gdańsk"               ; "Gdańsk"
 59           ; 9      ; FIXED_LINE ; STANDARD_RATE ;                             ; "fixed_2/3/2/2"     ; "PL"    ; "Slupsk"               ; "Słupsk"
@@ -186,9 +187,8 @@ Prefix       ; Length ; Type       ; Tariff        ; Operator                   
 739[4-8]     ; 9      ; MOBILE     ; STANDARD_RATE ; "plus"                      ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; IR21
 7399[07-9]   ; 9      ; MOBILE     ; STANDARD_RATE ; "play"                      ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; IR21
 73991        ; 9      ; MOBILE     ; STANDARD_RATE ; "agile_telecom"             ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; GOVERNMENT
-73992        ; 9      ; MOBILE     ; STANDARD_RATE ; "mobiweb_telecom"           ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; GOVERNMENT
+7399[24-6]   ; 9      ; MOBILE     ; STANDARD_RATE ; "plus"                      ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; IR21
 73993        ; 9      ; MOBILE     ; STANDARD_RATE ; "sia_netbalt"               ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; GOVERNMENT
-7399[4-6]    ; 9      ; MOBILE     ; STANDARD_RATE ; "plus"                      ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; IR21
 74           ; 9      ; FIXED_LINE ; STANDARD_RATE ;                             ; "fixed_2/3/2/2"     ; "PL"    ; "Walbrzych"            ; "Wałbrzych"
 7419         ; 7      ; FIXED_LINE ; STANDARD_RATE ;                             ; "fixed_2/2/3"       ; "PL"    ; "Walbrzych"            ; "Wałbrzych"
 75           ; 9      ; FIXED_LINE ; STANDARD_RATE ;                             ; "fixed_2/3/2/2"     ; "PL"    ; "Jelenia Góra"         ; "Jelenia Góra"
@@ -209,14 +209,13 @@ Prefix       ; Length ; Type       ; Tariff        ; Operator                   
 7809         ; 9      ; MOBILE     ; STANDARD_RATE ;                             ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; GOVERNMENT
 78[1-35]     ; 9      ; MOBILE     ; STANDARD_RATE ; "plus"                      ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; IR21
 78[478]      ; 9      ; MOBILE     ; STANDARD_RATE ; "t_mobile"                  ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; IR21
-78600        ; 9      ; MOBILE     ; STANDARD_RATE ; "jmdi"                      ; "mobile_3/3/3"      ; "PL"
-7860[1-69]   ; 9      ; MOBILE     ; STANDARD_RATE ; "plus"                      ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; IR21
+7860[0-69]   ; 9      ; MOBILE     ; STANDARD_RATE ; "plus"                      ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; IR21
 7860[78]     ; 9      ; MOBILE     ; STANDARD_RATE ; "play"                      ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; IR21
 786[12]      ; 9      ; MOBILE     ; STANDARD_RATE ; "play"                      ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; IR21
 786[3-6]     ; 9      ; MOBILE     ; STANDARD_RATE ; "orange"                    ; "mobile_3/3/3"      ; "PL"
 78670        ; 9      ; MOBILE     ; STANDARD_RATE ; "lancelot"                  ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; IR21
-7867[1-3]    ; 9      ; MOBILE     ; STANDARD_RATE ; "plus"                      ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; IR21
-7867[4-79]   ; 9      ; MOBILE     ; STANDARD_RATE ;                             ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; GOVERNMENT
+7867[1-69]   ; 9      ; MOBILE     ; STANDARD_RATE ; "plus"                      ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; IR21
+78677        ; 9      ; MOBILE     ; STANDARD_RATE ;                             ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; GOVERNMENT
 78678        ; 9      ; MOBILE     ; STANDARD_RATE ; "play"                      ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; IR21
 786[89]      ; 9      ; MOBILE     ; STANDARD_RATE ; "orange"                    ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; GOVERNMENT
 789[0-4]     ; 9      ; MOBILE     ; STANDARD_RATE ; "orange"                    ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; GOVERNMENT
@@ -252,9 +251,10 @@ Prefix       ; Length ; Type       ; Tariff        ; Operator                   
 883[38]      ; 9      ; MOBILE     ; STANDARD_RATE ; "t_mobile"                  ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; IR21
 884[036-9]   ; 9      ; MOBILE     ; STANDARD_RATE ; "play"                      ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; IR21
 884[12]      ; 9      ; MOBILE     ; STANDARD_RATE ; "t_mobile"                  ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; IR21
-8844[0-35-9] ; 9      ; MOBILE     ; STANDARD_RATE ;                             ; "mobile_3/3/3"      ; "PL"
+8844[05]     ; 9      ; MOBILE     ; STANDARD_RATE ;                             ; "mobile_3/3/3"      ; "PL"
+8844[1-36-9] ; 9      ; MOBILE     ; STANDARD_RATE ; "plus"                      ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; IR21
 88444        ; 9      ; MOBILE     ; STANDARD_RATE ; "caritas"                   ; "mobile_3/3/3"      ; "PL"
-8845         ; 9      ; MOBILE     ; STANDARD_RATE ;                             ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; GOVERNMENT
+8845         ; 9      ; MOBILE     ; STANDARD_RATE ; "plus"                      ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; IR21
 88[57]       ; 9      ; MOBILE     ; STANDARD_RATE ; "plus"                      ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; IR21
 89           ; 9      ; FIXED_LINE ; STANDARD_RATE ;                             ; "fixed_2/3/2/2"     ; "PL"    ; "Olsztyn"              ; "Olsztyn"
 8919         ; 7      ; FIXED_LINE ; STANDARD_RATE ;                             ; "fixed_2/2/3"       ; "PL"    ; "Olsztyn"              ; "Olsztyn"

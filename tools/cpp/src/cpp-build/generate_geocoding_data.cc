@@ -289,7 +289,7 @@ void WriteCppHeader(const string& base_name, FILE* output) {
   fprintf(output, "#include \"phonenumbers/geocoding/%s.h\"\n",
           base_name.c_str());
   fprintf(output, "\n");
-  fprintf(output, "#include \"phonenumbers/base/basictypes.h\"\n");
+  fprintf(output, "#include <cstdint>\n");
   fprintf(output, "\n");
 }
 
@@ -324,7 +324,7 @@ void WritePrefixDescriptionsDefinition(
 // phone number prefix to description mapping "prefixes". Binds these arrays
 // in a single PrefixDescriptions variable named "var_name".
 //
-// const int32 ${var_name}_prefixes[] = {
+// const int32_t ${var_name}_prefixes[] = {
 //   1201,
 //   1650,
 // };
@@ -334,7 +334,7 @@ void WritePrefixDescriptionsDefinition(
 //   "Kalifornie",
 // };
 //
-// const int32 ${var_name}_possible_lengths[] = {
+// const int32_t ${var_name}_possible_lengths[] = {
 //   4,
 // };
 //
@@ -347,7 +347,7 @@ void WritePrefixDescriptions(const string& var_name,
                              FILE* output) {
   absl::btree_set<int> possible_lengths;
   const string prefixes_name = var_name + "_prefixes";
-  fprintf(output, "const int32 %s[] = {\n", prefixes_name.c_str());
+  fprintf(output, "const int32_t %s[] = {\n", prefixes_name.c_str());
   for (absl::btree_map<int, string>::const_iterator it = prefixes.begin();
        it != prefixes.end(); ++it) {
     fprintf(output, "  %d,\n", it->first);
@@ -370,7 +370,7 @@ void WritePrefixDescriptions(const string& var_name,
           "\n");
 
   const string possible_lengths_name = var_name + "_possible_lengths";
-  fprintf(output, "const int32 %s[] = {\n ", possible_lengths_name.c_str());
+  fprintf(output, "const int32_t %s[] = {\n ", possible_lengths_name.c_str());
   for (absl::btree_set<int>::const_iterator it = possible_lengths.begin();
        it != possible_lengths.end(); ++it) {
     fprintf(output, " %d,", *it);

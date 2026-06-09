@@ -108,6 +108,7 @@
 390823|Caserta
 390824|Benevento
 390825|Avellino
+390831|Brindisi
 390832|Lecce
 39085|Pescara
 390862|L'Aquila

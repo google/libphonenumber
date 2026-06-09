@@ -2334,6 +2334,7 @@
 1231995|Traverse City, MI
 1234|Ohio
 1234678|Akron, OH
+1235|Missouri
 1236|British Columbia
 1239|Florida
 1239200|Naples, FL
@@ -3383,6 +3384,7 @@
 1256971|Huntsville, AL
 1256974|Moulton, AL
 1256997|Fort Payne, AL
+1257|British Colombia
 1260|Indiana
 1260244|Columbia City, IN
 1260248|Columbia City, IN
@@ -3807,6 +3809,7 @@
 1270982|Elizabethtown, KY
 1270988|Salem, KY
 1272|Pennsylvania
+1274|Wisconsin
 1276|Virginia
 1276223|Wytheville, VA
 1276228|Wytheville, VA
@@ -6911,6 +6914,7 @@
 1323971|Los Angeles, CA
 1323980|Los Angeles, CA
 1323982|Los Angeles, CA
+1324|Florida
 1325|Texas
 1325223|San Angelo, TX
 1325224|San Angelo, TX
@@ -6967,6 +6971,7 @@
 1325947|San Angelo, TX
 1325949|San Angelo, TX
 1326|Ohio
+1327|Arkansas
 1329|New York
 1330|Ohio
 1330220|Brunswick, OH
@@ -7574,8 +7579,12 @@
 1339|Massachusetts
 1340200|Chtamstths, VI
 1340203|Chtamstths, VI
+1340204|Chtamstths, VI
+1340205|Chtamstths, VI
 1340206|St. Croix, VI
+1340207|Chtamstths, VI
 1340208|St. Croix, VI
+1340209|Chtamstths, VI
 1340423|Chtamstths, VI
 134044|Chtamstths, VI
 1340725|Chtamstths, VI
@@ -7590,7 +7599,7 @@
 13457|Cayman Islands
 134580|Cayman Islands
 134581|Cayman Islands
-1345848|Cayman Islands
+134584|Cayman Islands
 134588|Cayman Islands
 1345914|Cayman Islands
 134594|Cayman Islands
@@ -7769,6 +7778,7 @@
 1352872|Gainesville, FL
 1352873|Ocala, FL
 1352955|Gainesville, FL
+1353|Wisconsin
 1354|Quebec
 1360|Washington State
 1360210|Camas, WA
@@ -8106,6 +8116,7 @@
 1361992|Corpus Christi, TX
 1361993|Corpus Christi, TX
 1361994|Corpus Christi, TX
+1363|New York
 1364|Kentucky
 1365|Ontario
 1367|Quebec
@@ -11180,7 +11191,7 @@
 1435896|Richfield, UT
 1435946|Garden City, UT
 1435986|St. George, UT
-1437|Ontario
+1437|Toronto, ON
 1438|Quebec
 1438380|Montreal, QC
 1440|Ohio
@@ -11321,7 +11332,7 @@
 1443944|Salisbury, MD
 1443949|Annapolis, MD
 1443977|Baltimore, MD
-1445|Philadelphia
+1445|Philadelphia, PA
 1447|Illinois
 1448|Florida
 1450|Quebec
@@ -18848,6 +18859,7 @@
 1641932|Albia, IA
 1641939|Eldora, IA
 1641985|Riceville, IA
+1645|Florida
 1646|New York
 1646237|New York, NY
 1646336|New York, NY
@@ -19343,6 +19355,7 @@
 1682647|Fort Worth, TX
 1682885|Fort Worth, TX
 1683|Ontario
+1686|Virginia
 1689|Florida
 1701|North Dakota
 1701221|Bismarck, ND
@@ -22279,6 +22292,7 @@
 1727943|Tarpon Springs, FL
 1727944|Tarpon Springs, FL
 1727945|Tarpon Springs, FL
+1728|Palm Beach, FL
 1730|Illinois
 1731|Tennessee
 1731235|Greenfield, TN
@@ -22575,6 +22589,7 @@
 1734997|Ann Arbor, MI
 1734998|Ann Arbor, MI
 1737|Texas
+1738|California
 1740|Ohio
 1740223|Marion, OH
 1740246|Thornville, OH
@@ -22728,6 +22743,7 @@
 1742|Ontario
 1743|North Carolina
 1747|California
+1748|Colorado
 1753|Ontario
 1754|Florida
 1757|Virginia
@@ -24772,6 +24788,7 @@
 1807854|Geraldton, ON
 1807876|Longlac, ON
 1807887|Nipigon, ON
+1807933|Kaministiquia, ON
 1807934|Ignace, ON
 1807937|Oxdrift, ON
 1807939|Thunder Bay, ON
@@ -26036,6 +26053,7 @@
 1819985|Thurso, QC
 1819986|Gatineau, QC
 1820|California
+1821|South Carolina
 1825|Alberta
 1826|Virginia
 1828|North Carolina
@@ -27961,6 +27979,7 @@
 1873|Quebec
 1876957|Negril
 1878|Pennsylvania
+1879|Newfoundland and Labrador
 1901|Tennessee
 1901213|Memphis, TN
 1901226|Memphis, TN
@@ -31038,6 +31057,7 @@
 194195|Sarasota, FL
 1941964|Boca Grande, FL
 1941979|Port Charlotte, FL
+1942|Toronto, ON
 1943|Georgia
 1945|Texas
 1947|Michigan
@@ -32085,6 +32105,7 @@
 1973992|Livingston, NJ
 1973993|Morristown, NJ
 1973994|Livingston, NJ
+1975|Missouri
 1978|Massachusetts
 1978208|Lawrence, MA
 1978232|Beverly, MA

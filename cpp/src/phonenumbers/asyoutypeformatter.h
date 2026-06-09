@@ -52,6 +52,11 @@ class PhoneNumberUtil;
 
 class AsYouTypeFormatter {
  public:
+
+ // This type is neither copyable nor movable.
+  AsYouTypeFormatter(const AsYouTypeFormatter&) = delete;
+  AsYouTypeFormatter& operator=(const AsYouTypeFormatter&) = delete;
+
   ~AsYouTypeFormatter() {}
 
   // Formats a phone number on-the-fly as each digit is entered.
@@ -124,7 +129,7 @@ class AsYouTypeFormatter {
   // Check to see if there is an exact pattern match for these digits. If so, we
   // should use this instead of any other formatting template whose
   // leadingDigitsPattern also matches the input.
-  void AttemptToFormatAccruedDigits(string* formatted_number);
+  void AttemptToFormatAccruedDigits(string* formatted_result);
 
   // Combines the national number with any prefix (IDD/+ and country code or
   // national prefix) that was collected. A space will be inserted between them
@@ -233,7 +238,7 @@ class AsYouTypeFormatter {
 
   // Disallow copy and assign since this class uses RegExpCache which can't be
   // copied.
-  DISALLOW_COPY_AND_ASSIGN(AsYouTypeFormatter);
+  
 };
 
 }  // namespace phonenumbers

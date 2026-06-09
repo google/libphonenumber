@@ -15,3 +15,4 @@ Prefix      ; Length ; Type       ; Tariff        ; Operator                   ;
 60          ; 8      ; MOBILE     ; STANDARD_RATE ;                            ; "fmt2_2/6"     ; "TM"
 6[1-5]      ; 8      ; MOBILE     ; STANDARD_RATE ; "tm_cell"                  ; "fmt2_2/6"     ; "TM"    ;            ; GOVERNMENT ; "Ministry of Communications Verification"
 6[6-9]      ; 8      ; MOBILE     ; STANDARD_RATE ; "mts_barash_communication" ; "fmt2_2/6"     ; "TM"    ;            ; GOVERNMENT ; "Ministry of Communications Verification"
+71          ; 8      ; MOBILE     ; STANDARD_RATE ; "tm_cell"                  ; "fmt2_2/6"     ; "TM"

@@ -7,6 +7,7 @@ mobile_3/7-8      ; "#XXX XXXXXXX*"     ; "XXX XXXXXXX*"     ; "Mobile/pager for
 mobile_4/7        ; "#XXXX XXXXXXX"     ; "XXXX XXXXXXX"     ; "Mobile format for 15x mobile numbers."
 mobile_5/6        ; "#XXXXX XXXXXX"     ; "XXXXX XXXXXX"     ; "Some mobile numbers (carrier services etc..) have a 6 digit NSN and need to be formatted\nwith 5 leading digits (as opposed to the 4.7 format).\nThese are all in the ranges 150, 155, 156 and 158."
 personal_3/4/4    ; "#XXX XXXX XXXX"    ; "XXX XXXX XXXX"    ; "Personal numbers."
+shortnumber_6     ; "XXXXXX"            ;                    ; "Short code with 6 digit length"
 tollfree_3/7-12   ; "#XXX XXXXXXX*****" ; "XXX XXXXXXX*****" ; "Toll free (800) numbers."
 uan_3/5-11        ; "#XXX XXXXX******"  ; "XXX XXXXX******"  ; "UAN (181) numbers."
 uan_3/8           ; "#XXX XXXXXXXX"     ; "XXX XXXXXXXX"     ; "Various UAN numbers."

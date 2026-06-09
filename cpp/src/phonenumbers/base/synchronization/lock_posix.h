@@ -33,6 +33,10 @@ class Lock {
     DCHECK_EQ(0, ret);
   }
 
+  // This type is neither copyable nor movable.
+  Lock(const Lock&) = delete;
+  Lock& operator=(const Lock&) = delete;
+
   ~Lock() {
     const int ret = pthread_mutex_destroy(&mutex_);
     (void) ret;
@@ -52,8 +56,6 @@ class Lock {
   }
 
  private:
-  DISALLOW_COPY_AND_ASSIGN(Lock);
-
   mutable pthread_mutex_t mutex_;
 };
 

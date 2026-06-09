@@ -44,6 +44,10 @@ class MappingFileProvider {
                       int country_calling_code_size,
                       country_languages_getter get_country_languages);
 
+  // This type is neither copyable nor movable.
+  MappingFileProvider(const MappingFileProvider&) = delete;
+  MappingFileProvider& operator=(const MappingFileProvider&) = delete;
+
   // Returns the name of the file that contains the mapping data for the
   // country_calling_code in the language specified, or an empty string if no
   // such file can be found.
@@ -68,8 +72,6 @@ class MappingFileProvider {
   const int* const country_calling_codes_;
   const int country_calling_codes_size_;
   const country_languages_getter get_country_languages_;
-
-  DISALLOW_COPY_AND_ASSIGN(MappingFileProvider);
 };
 
 }  // namespace phonenumbers

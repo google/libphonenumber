@@ -59,6 +59,10 @@ class RegExpCache {
  public:
   explicit RegExpCache(const AbstractRegExpFactory& regexp_factory,
                        size_t min_items);
+  // This type is neither copyable nor movable.
+  RegExpCache(const RegExpCache&) = delete;
+  RegExpCache& operator=(const RegExpCache&) = delete;
+
   ~RegExpCache();
 
   const RegExp& GetRegExp(const string& pattern);
@@ -68,7 +72,6 @@ class RegExpCache {
   Lock lock_;  // protects cache_impl_
   scoped_ptr<CacheImpl> cache_impl_;  // protected by lock_
   friend class RegExpCacheTest_CacheConstructor_Test;
-  DISALLOW_COPY_AND_ASSIGN(RegExpCache);
 };
 
 }  // namespace phonenumbers

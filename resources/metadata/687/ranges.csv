@@ -4,7 +4,6 @@ Prefix  ; Length ; Type       ; Tariff        ; Operator ; Format      ; Regions
 3[0-5]  ; 6      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt_2/2/2" ; "NC"    ; ITU
 36      ; 6      ; FIXED_LINE ; PREMIUM_RATE  ;          ; "fmt_2/2/2" ; "NC"    ; ITU
 4[1-7]  ; 6      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt_2/2/2" ; "NC"    ; ITU
-5[0-4]  ; 6      ; MOBILE     ; STANDARD_RATE ; "opt_nc" ; "fmt_2/2/2" ; "NC"    ; IR21
-[79]    ; 6      ; MOBILE     ; STANDARD_RATE ; "opt_nc" ; "fmt_2/2/2" ; "NC"    ; IR21
+[579]   ; 6      ; MOBILE     ; STANDARD_RATE ; "opt_nc" ; "fmt_2/2/2" ; "NC"    ; IR21
 8[0-79] ; 6      ; MOBILE     ; STANDARD_RATE ; "opt_nc" ; "fmt_2/2/2" ; "NC"    ; IR21
 88      ; 6      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt_2/2/2" ; "NC"    ; ITU

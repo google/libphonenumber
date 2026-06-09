@@ -6,5 +6,6 @@ Prefix  ; Length ; Type       ; Tariff        ; Operator      ; Format       ; R
 64      ; 7      ; VOIP       ; STANDARD_RATE ;               ; "fmt1_1/3/3" ; "SC"    ; GOVERNMENT
 8000    ; 7      ; FIXED_LINE ; TOLL_FREE     ;               ;              ; "SC"    ; GOVERNMENT
 8008    ; 7      ; FIXED_LINE ; TOLL_FREE     ;               ;              ; "SC"    ; ITU
+85      ; 7      ; FIXED_LINE ; PREMIUM_RATE  ;               ;              ; "SC"    ; ITU
 95      ; 7      ; VOIP       ; STANDARD_RATE ;               ; "fmt1_1/3/3" ; "SC"    ; GOVERNMENT
 971     ; 7      ; VOIP       ; STANDARD_RATE ;               ; "fmt1_1/3/3" ; "SC"    ; GOVERNMENT

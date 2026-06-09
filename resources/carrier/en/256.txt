@@ -15,11 +15,24 @@
 25670|Airtel
 25671|UTL
 256720|Smile
-256726|Tangerine
-25673|Hamilton Telecom
-25674|Sure Telecom
+256721|LycaMobile
+256724|Hamilton Telecom
+256726|LycaMobile
+256727|LycaMobile
+256728|Talkio
+256730|Airtel
+256731|Airtel
+256736|Hamilton Telecom
+25674|Airtel
 25675|Airtel
 25676|MTN
 25677|MTN
 25678|MTN
-25679|Africell
+256790|MTN
+256791|MTN
+256792|MTN
+256793|MTN
+256794|MTN
+256795|Airtel
+256798|Africell
+256799|Africell

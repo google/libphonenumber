@@ -162,6 +162,17 @@ public class BuildMetadataFromXml {
     return countryCodeToRegionCodeMap;
   }
 
+  // Build a list of region codes from the metadata
+  public static List<String> buildRegionCodeList(
+      PhoneMetadataCollection metadataCollection) {
+    List<String> regionCodeList = new ArrayList<String>();
+    for (PhoneMetadata metadata : metadataCollection.getMetadataList()) {
+      String regionCode = metadata.getId();
+      regionCodeList.add(regionCode);
+    }
+    return regionCodeList;
+  }
+
   private static String validateRE(String regex) {
     return validateRE(regex, false);
   }

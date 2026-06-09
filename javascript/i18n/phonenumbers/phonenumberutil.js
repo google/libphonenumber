@@ -1781,15 +1781,19 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.hasValidCountryCallingCode_ =
 i18n.phonenumbers.PhoneNumberUtil.prototype.format =
     function(number, numberFormat) {
 
-  if (number.getNationalNumber() == 0 && number.hasRawInput()) {
-    // Unparseable numbers that kept their raw input just use that.
-    // This is the only case where a number can be formatted as E164 without a
-    // leading '+' symbol (but the original number wasn't parseable anyway).
-    // TODO: Consider removing the 'if' above so that unparseable strings
-    // without raw input format to the empty string instead of "+00"
+  if (number.getNationalNumber() == 0  && number.hasRawInput()) {
+    // Unparseable numbers that kept their raw input just use that, unless
+    // default country was specified and the format is E164. In that case, we
+    // prepend the raw input with the country code.
     /** @type {string} */
-    var rawInput = number.getRawInputOrDefault();
-    if (rawInput.length > 0) {
+    const rawInput = number.getRawInputOrDefault();
+    if (rawInput.length > 0 && number.hasCountryCode() 
+        && number.getCountryCodeSource() == i18n.phonenumbers.PhoneNumber.CountryCodeSource.FROM_DEFAULT_COUNTRY 
+        && numberFormat == i18n.phonenumbers.PhoneNumberFormat.E164) {
+      const countryCallingCode = number.getCountryCodeOrDefault();
+      let formattedNumber =rawInput;
+      return this.prefixNumberWithCountryCallingCode_(countryCallingCode, numberFormat, formattedNumber,'');
+    } else if (rawInput.length > 0 || !number.hasCountryCode()) {
       return rawInput;
     }
   }
@@ -3584,6 +3588,12 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.testNumberLengthForType_ =
  * numbers), it will return false for the subscriber-number-only version.
  * </ol>
  *
+ * <p>There is a known <a href="https://issuetracker.google.com/issues/335892662">issue</a> with this
+ * method: if a number is possible only in a certain region among several regions that share the
+ * same country calling code, this method will consider only the "main" region. For example,
+ * +1310xxxx are valid numbers in Canada. However, they are not possible in the US. As a result,
+ * this method will return IS_POSSIBLE_LOCAL_ONLY for +1310xxxx.
+ *
  * @param {i18n.phonenumbers.PhoneNumber} number the number that needs to be
  *     checked
  * @return {i18n.phonenumbers.PhoneNumberUtil.ValidationResult} a
@@ -3612,6 +3622,12 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.isPossibleNumberWithReason =
  * codes) and length (obviously includes the length of area codes for fixed line
  * numbers), it will return false for the subscriber-number-only version.
  * </ol>
+ *
+ * <p>There is a known <a href="https://issuetracker.google.com/issues/335892662">issue</a> with this
+ * method: if a number is possible only in a certain region among several regions that share the
+ * same country calling code, this method will consider only the "main" region. For example,
+ * +1310xxxx are valid numbers in Canada. However, they are not possible in the US. As a result,
+ * this method will return IS_POSSIBLE_LOCAL_ONLY for +1310xxxx.
  *
  * @param {i18n.phonenumbers.PhoneNumber} number the number that needs to be
  *     checked
@@ -4759,8 +4775,7 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.canBeInternationallyDialled =
  */
 i18n.phonenumbers.PhoneNumberUtil.matchesEntirely = function(regex, str) {
   /** @type {Array.<string>} */
-  var matchedGroups = (typeof regex == 'string') ?
-      str.match('^(?:' + regex + ')$') : str.match(regex);
+  var matchedGroups = str.match(new RegExp('^(?:' + (typeof regex == 'string' ? regex : regex.source) + ')$', 'i'));
   if (matchedGroups && matchedGroups[0].length == str.length) {
     return true;
   }

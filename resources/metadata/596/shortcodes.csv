@@ -1,3 +1,6 @@
-Region ; Prefix ; Length ; Type      ; Tariff
-MQ     ; 112    ; 3      ; EMERGENCY ; TOLL_FREE
-MQ     ; 1[578] ; 2      ; EMERGENCY ; TOLL_FREE
+Region ; Prefix    ; Length ; Type       ; Tariff
+MQ     ; 112       ; 3      ; EMERGENCY  ; TOLL_FREE
+MQ     ; 118[02-9] ; 6      ; COMMERCIAL ; STANDARD_RATE
+MQ     ; 1[578]    ; 2      ; EMERGENCY  ; TOLL_FREE
+MQ     ; 3[01]     ; 4      ; COMMERCIAL ; TOLL_FREE
+MQ     ; 3[2469]   ; 4      ; COMMERCIAL ; PREMIUM_RATE
