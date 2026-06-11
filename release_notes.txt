@@ -1,3 +1,28 @@
+Jun 03, 2026: v9.0.32
+Metadata changes:
+ - Updated phone metadata for region code(s): DZ, JP, NO, SJ, SO, UG
+ - Updated carrier data for country calling code(s):
+   33 (en), 47 (en), 233 (en), 252 (en), 256 (en)
+
+May 20, 2026: v9.0.31
+Metadata changes:
+ - Updated alternate formatting data for country calling code(s): 84
+ - Updated phone metadata for region code(s):
+   AI, BO, DZ, ET, GE, GM, IN, TR, UG, VN
+ - Updated short number metadata for region code(s): IT
+ - Updated geocoding data for country calling code(s): 213 (en)
+ - Updated carrier data for country calling code(s):
+   34 (en), 43 (en), 84 (en), 90 (en), 220 (en), 251 (en), 256 (en), 354 (en),
+   591 (en), 1264 (en)
+
+May 06, 2026: v9.0.30
+Metadata changes:
+ - Updated alternate formatting data for country calling code(s): 91
+ - Updated phone metadata for region code(s): CL, CZ, DE, IN, SG
+ - Updated geocoding data for country calling code(s): 91 (en)
+ - Updated carrier data for country calling code(s):
+   56 (en), 65 (en), 91 (en), 594 (en), 596 (en), 855 (en)
+
 Apr 22, 2026: v9.0.29
 Metadata changes:
  - Updated phone metadata for region code(s):
