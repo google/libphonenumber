@@ -16,7 +16,8 @@
 25671|UTL
 256720|Smile
 256721|LycaMobile
-256724|Hamilton Telecom
+256724|MTN
+2567240|Hamilton Telecom
 256726|LycaMobile
 256727|LycaMobile
 256728|Talkio

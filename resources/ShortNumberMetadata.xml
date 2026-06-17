@@ -5104,7 +5104,6 @@
           )\d\d
         </nationalNumberPattern>
       </tollFree>
-      <!-- 3646 is listed as being the same as a local call on www.ameli.fr. -->
       <standardRate>
         <possibleLengths national="3,4"/>
         <exampleNumber>611</exampleNumber>
@@ -5118,9 +5117,12 @@
         </nationalNumberPattern>
       </standardRate>
       <!-- SMS Services [4-8]\d{4} vary in price from 0.05 euro to 4.50 euro per SMS, based on
-           prefix - we consider these all premium rate for now. All 118 XYZ numbers are considered
-           here as it is given "libre" which does not mean zero cost instead it is up to the
-           provider http://www.telecom-infoconso.fr/les-numeros-08-et-les-numeros-courts/ -->
+           prefix - we consider these all premium rate for now.  -->
+      <!-- All 118 XYZ numbers are considered here as it is given "libre" which does not mean
+           zero cost instead it is up to the provider
+           http://www.telecom-infoconso.fr/les-numeros-08-et-les-numeros-courts/ -->
+      <!-- 3646 and 3949 are added here as they appear to be charged at a standard rate; however,
+           additional service fees are applied during the call, leading to a higher overall cost -->
       <premiumRate>
         <possibleLengths national="[4-6]"/>
         <exampleNumber>1000</exampleNumber>
