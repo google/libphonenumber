@@ -33,6 +33,7 @@ Prefix      ; Length ; Type       ; Tariff        ; Area Code Length ; Operator 
 720         ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "smile"      ; "fmt_3/6"   ; "UG"    ;                           ; ITU
 721         ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "lycamobile" ; "fmt_3/6"   ; "UG"
 7240        ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "hamilton"   ; "fmt_3/6"   ; "UG"    ;                           ; ITU
+724[1-9]    ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "mtn"        ; "fmt_3/6"   ; "UG"    ;                           ; IR21
 72[67]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "lycamobile" ; "fmt_3/6"   ; "UG"    ;                           ; IR21
 7280        ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "talkio"     ; "fmt_3/6"   ; "UG"    ;                           ; ITU
 73[01]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "airtel"     ; "fmt_3/6"   ; "UG"    ;                           ; IR21
