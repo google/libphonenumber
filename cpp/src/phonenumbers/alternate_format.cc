@@ -1589,12 +1589,8 @@ static const unsigned char data[] = {
 };
 }  // namespace
 
-int alternate_format_size() {
-  return sizeof(data) / sizeof(data[0]);
-}
-
-const void* alternate_format_get() {
-  return data;
+MetadataBytes GetAlternateFormat() {
+  return MetadataBytes(data, sizeof(data) / sizeof(data[0]));
 }
 
 }  // namespace phonenumbers

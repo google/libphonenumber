@@ -17,11 +17,14 @@
 #ifndef I18N_PHONENUMBERS_ALTERNATE_FORMAT_H_
 #define I18N_PHONENUMBERS_ALTERNATE_FORMAT_H_
 
+#include "phonenumbers/metadata_bytes.h"
+
 namespace i18n {
 namespace phonenumbers {
 
-int alternate_format_size();
-const void* alternate_format_get();
+// Returns the serialized alternate-format PhoneMetadataCollection used by
+// PhoneNumberMatcher. See metadata_bytes.h for ownership semantics.
+MetadataBytes GetAlternateFormat();
 
 }  // namespace phonenumbers
 }  // namespace i18n

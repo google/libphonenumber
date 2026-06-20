@@ -70,8 +70,8 @@ public class CppMetadataGeneratorTest {
     assertTrue(consumeUntil("#define I18N_PHONENUMBERS_METADATA_H_", lines));
     assertTrue(consumeUntil("namespace i18n {", lines));
     assertTrue(consumeUntil("namespace phonenumbers {", lines));
-    assertTrue(consumeUntil("int metadata_size();", lines));
-    assertTrue(consumeUntil("const void* metadata_get();", lines));
+    assertTrue(consumeUntil("#include \"phonenumbers/metadata_bytes.h\"", lines));
+    assertTrue(consumeUntil("MetadataBytes GetMetadata();", lines));
     assertTrue(consumeUntil("#endif  // I18N_PHONENUMBERS_METADATA_H_", lines));
   }
 
@@ -90,8 +90,7 @@ public class CppMetadataGeneratorTest {
     assertTrue(consumeUntil("namespace {", lines));
     assertTrue(consumeUntil("static const unsigned char data[] = {", lines));
     assertTrue(consumeUntil("  0xCA, 0xFE, 0xBA, 0xBE", lines));
-    assertTrue(consumeUntil("int alternate_format_size() {", lines));
-    assertTrue(consumeUntil("const void* alternate_format_get() {", lines));
+    assertTrue(consumeUntil("MetadataBytes GetAlternateFormat() {", lines));
   }
 
   /** Converts a string containing newlines into a list of lines. */
