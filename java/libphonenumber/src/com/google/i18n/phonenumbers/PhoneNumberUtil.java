@@ -2564,6 +2564,9 @@ public class PhoneNumberUtil {
    * @return  true if the number is a valid vanity number
    */
   public boolean isAlphaNumber(CharSequence number) {
+    if (number.length() > MAX_INPUT_STRING_LENGTH) {
+      return false;
+    }
     if (!isViablePhoneNumber(number)) {
       // Number is too short, or doesn't match the basic phone number pattern.
       return false;
