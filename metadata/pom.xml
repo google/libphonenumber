@@ -104,7 +104,7 @@
     <dependency>
       <groupId>org.codehaus.plexus</groupId>
       <artifactId>plexus-utils</artifactId>
-      <version>4.0.2</version>
+      <version>4.0.3</version>
     </dependency>
     <!-- https://mvnrepository.com/artifact/com.ibm.icu/icu4j -->
     <dependency>

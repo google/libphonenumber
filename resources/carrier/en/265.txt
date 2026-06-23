@@ -12,7 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# Zero2 is the brand name for Access Communications Ltd.
+
 26511|Malawi Telecom-munications Ltd (MTL)
+2652|Zero2
 2653|TNM
 2657|Globally Advanced Integrated Networks Ltd
 2658|TNM
