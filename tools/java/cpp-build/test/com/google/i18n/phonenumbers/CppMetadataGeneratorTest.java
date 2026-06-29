@@ -68,9 +68,9 @@ public class CppMetadataGeneratorTest {
     assertTrue(consumeUntil(" * Copyright (C) 2011 The Libphonenumber Authors", lines));
     assertTrue(consumeUntil("#ifndef I18N_PHONENUMBERS_METADATA_H_", lines));
     assertTrue(consumeUntil("#define I18N_PHONENUMBERS_METADATA_H_", lines));
+    assertTrue(consumeUntil("#include \"phonenumbers/metadata_bytes.h\"", lines));
     assertTrue(consumeUntil("namespace i18n {", lines));
     assertTrue(consumeUntil("namespace phonenumbers {", lines));
-    assertTrue(consumeUntil("#include \"phonenumbers/metadata_bytes.h\"", lines));
     assertTrue(consumeUntil("MetadataBytes GetMetadata();", lines));
     assertTrue(consumeUntil("#endif  // I18N_PHONENUMBERS_METADATA_H_", lines));
   }
