@@ -17,11 +17,14 @@
 #ifndef I18N_PHONENUMBERS_SHORT_METADATA_H_
 #define I18N_PHONENUMBERS_SHORT_METADATA_H_
 
+#include "phonenumbers/metadata_bytes.h"
+
 namespace i18n {
 namespace phonenumbers {
 
-int short_metadata_size();
-const void* short_metadata_get();
+// Returns the serialized short-number PhoneMetadataCollection used by
+// ShortNumberInfo. See metadata_bytes.h for ownership semantics.
+MetadataBytes GetShortMetadata();
 
 }  // namespace phonenumbers
 }  // namespace i18n
