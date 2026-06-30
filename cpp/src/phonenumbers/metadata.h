@@ -17,11 +17,15 @@
 #ifndef I18N_PHONENUMBERS_METADATA_H_
 #define I18N_PHONENUMBERS_METADATA_H_
 
+#include "phonenumbers/metadata_bytes.h"
+
 namespace i18n {
 namespace phonenumbers {
 
-int metadata_size();
-const void* metadata_get();
+// Returns the serialized PhoneMetadataCollection used by PhoneNumberUtil.
+// See metadata_bytes.h for ownership semantics. Default implementation
+// returns a non-owning view over a static array; embedders may override.
+MetadataBytes GetMetadata();
 
 }  // namespace phonenumbers
 }  // namespace i18n
