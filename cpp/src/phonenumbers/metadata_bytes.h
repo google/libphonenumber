@@ -19,6 +19,7 @@
 
 #include <cstdint>
 #include <memory>
+#include <utility>
 
 namespace i18n {
 namespace phonenumbers {
