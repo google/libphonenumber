@@ -243,9 +243,10 @@ Prefix       ; Length ; Type       ; Tariff        ; Operator      ; Format     
 8971         ; 8      ; MOBILE     ; STANDARD_RATE ; "circle_life" ; "fmt1_4/4"   ; "SG"    ; WEB
 897[267]     ; 8      ; MOBILE     ; STANDARD_RATE ; "singtel"     ; "fmt1_4/4"   ; "SG"    ; IR21
 898[06-9]    ; 8      ; MOBILE     ; STANDARD_RATE ; "simba"       ; "fmt1_4/4"   ; "SG"    ; IR21
+8981         ; 8      ; MOBILE     ; STANDARD_RATE ; "starhub"     ; "fmt1_4/4"   ; "SG"    ; TELECOMS
 898[2-5]     ; 8      ; MOBILE     ; STANDARD_RATE ; "singtel"     ; "fmt1_4/4"   ; "SG"    ; IR21
-899[06]      ; 8      ; MOBILE     ; STANDARD_RATE ; "singtel"     ; "fmt1_4/4"   ; "SG"    ; IR21
-899[15]      ; 8      ; MOBILE     ; STANDARD_RATE ; "m1"          ; "fmt1_4/4"   ; "SG"    ; IR21
+899[06-8]    ; 8      ; MOBILE     ; STANDARD_RATE ; "singtel"     ; "fmt1_4/4"   ; "SG"    ; IR21
+899[159]     ; 8      ; MOBILE     ; STANDARD_RATE ; "m1"          ; "fmt1_4/4"   ; "SG"    ; IR21
 899[2-4]     ; 8      ; MOBILE     ; STANDARD_RATE ; "simba"       ; "fmt1_4/4"   ; "SG"    ; IR21
 9000         ; 8      ; MOBILE     ; STANDARD_RATE ;               ; "fmt1_4/4"   ; "SG"
 900[1-9]     ; 8      ; MOBILE     ; STANDARD_RATE ; "starhub"     ; "fmt1_4/4"   ; "SG"
@@ -257,7 +258,8 @@ Prefix       ; Length ; Type       ; Tariff        ; Operator      ; Format     
 91[357]      ; 8      ; MOBILE     ; STANDARD_RATE ; "singtel"     ; "fmt1_4/4"   ; "SG"
 919[0-8]     ; 8      ; MOBILE     ; STANDARD_RATE ; "m1"          ; "fmt1_4/4"   ; "SG"
 9199         ; 8      ; MOBILE     ; STANDARD_RATE ; "starhub"     ; "fmt1_4/4"   ; "SG"
-92[01568]    ; 8      ; MOBILE     ; STANDARD_RATE ;               ; "fmt1_4/4"   ; "SG"
+920          ; 8      ; MOBILE     ; STANDARD_RATE ; "singtel"     ; "fmt1_4/4"   ; "SG"    ; IR21
+92[1568]     ; 8      ; MOBILE     ; STANDARD_RATE ;               ; "fmt1_4/4"   ; "SG"
 922          ; 8      ; MOBILE     ; STANDARD_RATE ; "m1"          ; "fmt1_4/4"   ; "SG"
 923[0-6]     ; 8      ; MOBILE     ; STANDARD_RATE ; "singtel"     ; "fmt1_4/4"   ; "SG"
 923[7-9]     ; 8      ; MOBILE     ; STANDARD_RATE ; "starhub"     ; "fmt1_4/4"   ; "SG"

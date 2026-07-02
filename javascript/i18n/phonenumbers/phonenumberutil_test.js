@@ -676,6 +676,18 @@ function testFormatUSNumber() {
   assertEquals('0', phoneUtil.format(US_SPOOF, PNF.NATIONAL));
 }
 
+function testFormatAUShortCodeNumber() {
+  const auShortCodeNumber = phoneUtil.parse("000", RegionCode.AU);
+  const PNF = i18n.phonenumbers.PhoneNumberFormat;
+  assertEquals('+61000', phoneUtil.format(auShortCodeNumber, PNF.E164));
+  
+  const pgShortCodeNumber = new i18n.phonenumbers.PhoneNumber();
+  pgShortCodeNumber.setCountryCode(675);
+  pgShortCodeNumber.setNationalNumber(0);
+  pgShortCodeNumber.setRawInput('+675000');
+  assertEquals('+675000', phoneUtil.format(pgShortCodeNumber, PNF.E164));
+}
+
 function testFormatBSNumber() {
   var PNF = i18n.phonenumbers.PhoneNumberFormat;
   assertEquals('242 365 1234', phoneUtil.format(BS_NUMBER, PNF.NATIONAL));
