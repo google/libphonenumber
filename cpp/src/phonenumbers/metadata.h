@@ -22,9 +22,6 @@
 namespace i18n {
 namespace phonenumbers {
 
-// Returns the serialized PhoneMetadataCollection used by PhoneNumberUtil.
-// See metadata_bytes.h for ownership semantics. Default implementation
-// returns a non-owning view over a static array; embedders may override.
 MetadataBytes GetMetadata();
 
 }  // namespace phonenumbers

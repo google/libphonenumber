@@ -1,3 +1,49 @@
+# Copyright (C) 2017 The Libphonenumber Authors
+
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+
+# http://www.apache.org/licenses/LICENSE-2.0
+
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# Source https://numeracionyoperadores.cnmc.es/bd-num.zip, moviles.txt file.
+# CARRIER-E MOBILE => HITS
+# LEAST COST ROUTING TELECOM => Lcrcom
+# AIRE NETWORKS DEL MEDITERRÁNEO => Ion mobile
+# DISTRIBUIDORA INTERNACIONAL DE ALIMENTACIÓN => DIA
+# R CABLE Y TELECOMUNICACIONES GALICIA => R
+# TELEFÓNICA MÓVILES ESPAÑA => Movistar
+# REPÚBLICA DE COMUNICACIONES MÓVILES => Republica Movil
+# XFERA MÓVILES => Yoigo
+# CECOSA INSTITUCIONAL => Eroski movil
+# MASMÓVIL IBERCOM => Ibercom
+# DIGI SPAIN TELECOM => DigiMobil
+# ORANGE ESPAÑA VIRTUAL => Simyo
+# CARREFOURONLINE => Carrefour
+# PARLEM TELECOM COMPANYIA DE TELECOMUNICACIONS => Parlem
+# NETHITS TELECOM SOLUTIONS => Nethits
+# BB PHONE LEVANTE => Lemonvil
+# BT ESPAÑA COMPAÑÍA DE SERVICIOS GLOBALES DE TELECOMUNICACIONES => BT
+# TELECABLE DE ASTURIAS => Telecable
+# YOU MOBILE TELECOM SPAIN => YouMobile
+# OPEN CABLE TELECOMUNICACIONES => OpenMovil
+# ZINNIA TELECOMUNICACIONES => Zinnia
+# ALAI OPERADOR DE TELECOMUNICACIONES => Alai
+# PROCONO => PTV
+
+# Note: Three operators present in CNMC file have been excluded from this map
+# as they are not operators, but solution providers for those business that
+# want to operate a OMV:
+# VODAFONE ENABLER ESPAÑA
+# INGENIUM OUTSOURCING SERVICES
+# VODAFONE ROAMING SERVICES
+
 345901|Movistar
 345906|Vodafone
 34600|Vodafone
