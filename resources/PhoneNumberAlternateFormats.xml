@@ -2323,7 +2323,7 @@
         <!-- Common formatting pattern seen for all numbers -->
         <numberFormat pattern="(\d{3})(\d{3})(\d{3})">
           <leadingDigits>
-            [5-7]|
+            [4-7]|
             80[367]|
             90[1289]|
             [89][1-8]

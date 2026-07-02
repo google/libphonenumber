@@ -37,8 +37,8 @@
 8869041|Taiwan Mobile
 8869042|Taiwan Mobile
 886905|Chunghwa Telecom
-886906|Asia-Pacific Telecom
-886907|Asia-Pacific Telecom
+886906|FarEasTone
+886907|FarEasTone
 886908|T Star
 886909|Taiwan Mobile
 886910|Chunghwa Telecom
@@ -126,12 +126,7 @@
 8869671|FarEasTone
 8869672|FarEasTone
 8869673|FarEasTone
-8869680|FarEasTone
-8869681|FarEasTone
-8869682|Asia-Pacific Telecom
-8869683|Asia-Pacific Telecom
-8869684|Asia-Pacific Telecom
-8869685|Asia-Pacific Telecom
+886968|FarEasTone
 8869686|T Star
 8869687|T Star
 8869688|T Star
@@ -156,19 +151,19 @@
 8869745|Taiwan Mobile
 886975|Chunghwa Telecom
 886976|FarEasTone
-8869770|Asia-Pacific Telecom
-8869771|Asia-Pacific Telecom
-8869772|Asia-Pacific Telecom
-8869773|Asia-Pacific Telecom
-8869774|Asia-Pacific Telecom
-8869775|Asia-Pacific Telecom
-8869776|Asia-Pacific Telecom
-8869777|Asia-Pacific Telecom
+8869770|FarEasTone
+8869771|FarEasTone
+8869772|FarEasTone
+8869773|FarEasTone
+8869774|FarEasTone
+8869775|FarEasTone
+8869776|FarEasTone
+8869777|FarEasTone
 886978|Chunghwa Telecom
 886979|Taiwan Mobile
-886980|Asia-Pacific Telecom
+886980|FarEasTone
 886981|FarEasTone
-886982|Asia-Pacific Telecom
+886982|FarEasTone
 886983|Taiwan Mobile
 8869840|FarEasTone
 8869841|FarEasTone
@@ -178,7 +173,7 @@
 8869845|Taiwan Mobile
 8869846|T Star
 8869847|T Star
-886985|Asia-Pacific Telecom
+886985|FarEasTone
 886986|T Star
 886987|Taiwan Mobile
 886988|Chunghwa Telecom
