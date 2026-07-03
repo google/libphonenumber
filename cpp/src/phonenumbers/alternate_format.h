@@ -22,8 +22,6 @@
 namespace i18n {
 namespace phonenumbers {
 
-// Returns the serialized alternate-format PhoneMetadataCollection used by
-// PhoneNumberMatcher. See metadata_bytes.h for ownership semantics.
 MetadataBytes GetAlternateFormat();
 
 }  // namespace phonenumbers

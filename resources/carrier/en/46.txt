@@ -298,6 +298,8 @@
 4672649|Soatso AB
 467265|TeliaSonera
 4672660|Telenor Sverige
+4672663|Telavox AB
+4672665|Telavox AB
 4672666|Telenor Sverige
 4672667|Telenor Sverige
 4672669|Nortech
