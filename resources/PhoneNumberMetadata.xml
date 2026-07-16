@@ -106,20 +106,20 @@
         <nationalNumberPattern>
           (?:
             [01589]\d|
-            [46]
+            [2-467]
           )\d{4}
         </nationalNumberPattern>
       </generalDesc>
       <fixedLine>
         <possibleLengths national="5"/>
         <exampleNumber>62889</exampleNumber>
-        <nationalNumberPattern>6[2-467]\d{3}</nationalNumberPattern>
+        <nationalNumberPattern>6\d{4}</nationalNumberPattern>
       </fixedLine>
       <!-- Note prefix 4 is reserved for mobile use , not currently in use -->
       <mobile>
         <possibleLengths national="5"/>
         <exampleNumber>40123</exampleNumber>
-        <nationalNumberPattern>4\d{4}</nationalNumberPattern>
+        <nationalNumberPattern>[2-47]\d{4}</nationalNumberPattern>
       </mobile>
       <!-- Omit '00' as a prefix since that's the IDD prefix. -->
       <uan>
@@ -8067,7 +8067,10 @@
         <possibleLengths national="11"/>
         <exampleNumber>13123456789</exampleNumber>
         <nationalNumberPattern>
-          1740[0-5]\d{6}|
+          1(?:
+            610\d|
+            740[0-5]
+          )\d{6}|
           1(?:
             [38]\d|
             4[57]|
@@ -10988,7 +10991,7 @@
           (?:
             [27][1-9]|
             5\d|
-            9[16]
+            9[136]
           )\d{4}
         </nationalNumberPattern>
       </mobile>
@@ -11892,13 +11895,29 @@
           <format>$1 $2 $3 $4</format>
         </numberFormat>
         <numberFormat pattern="(\d{3})(\d{2})(\d{2})(\d{2})">
-          <leadingDigits>[57]</leadingDigits>
+          <leadingDigits>
+            5(?:
+              [0-46-9]|
+              5[0-57-9]
+            )|
+            7
+          </leadingDigits>
+          <leadingDigits>
+            5(?:
+              [0-46-9]|
+              5(?:
+                [0-357-9]|
+                44
+              )
+            )|
+            7
+          </leadingDigits>
           <format>$1 $2 $3 $4</format>
         </numberFormat>
         <!-- Format isn't very strictly defined - the yellow pages omits area code and does 2 2 2
              the communications commission uses 2 3 3. Wikipedia says 3 2 3. Some use 2 6. -->
         <numberFormat pattern="(\d{3})(\d{2})(\d{2})(\d{2})" nationalPrefixFormattingRule="$NP$FG">
-          <leadingDigits>[348]</leadingDigits>
+          <leadingDigits>[3-58]</leadingDigits>
           <format>$1 $2 $3 $4</format>
         </numberFormat>
       </availableFormats>
@@ -12017,7 +12036,11 @@
                 )|
                 4\d\d
               )|
-              [23]555|
+              2(?:
+                228|
+                555
+              )|
+              3555|
               4(?:
                 4\d\d|
                 555
@@ -15933,6 +15956,7 @@
               )|
               8(?:
                 [12]\d|
+                3[0-2]|
                 88
               )|
               9(?:
@@ -17738,7 +17762,7 @@
           (?:
             1(?:
               0[0-8]|
-              1\d|
+              [18]\d|
               2[014]|
               30|
               4[0-5]
@@ -26205,7 +26229,7 @@
     <!-- According to ITU, there is no national prefix. However, this is still used. As of June 3rd
          2011, this was confirmed by a Rwandan local. It is also shown in this format on pages such
          as http://www.tigo.co.rw "Choose Your Number" service. -->
-    <!-- http://www.rura.gov.rw/docs/RWANDA_NATIONAL_NUMBERING_PLAN.pdf -->
+    <!-- https://www.rura.rw/sectors/ict/key-ict-documents -->
     <!-- http://en.wikipedia.org/wiki/+250 -->
     <territory id="RW" countryCode="250" internationalPrefix="00" nationalPrefix="0">
       <availableFormats>
@@ -26759,7 +26783,7 @@
       <mobile>
         <possibleLengths national="9"/>
         <exampleNumber>701234567</exampleNumber>
-        <nationalNumberPattern>7[02369]\d{7}</nationalNumberPattern>
+        <nationalNumberPattern>7[023689]\d{7}</nationalNumberPattern>
       </mobile>
       <pager>
         <possibleLengths national="9"/>
@@ -29719,7 +29743,7 @@
           7(?:
             [014-8]\d|
             2[01467]|
-            3[016]|
+            3[0167]|
             9[0-589]
           )\d{6}
         </nationalNumberPattern>
@@ -32195,7 +32219,8 @@
         <nationalNumberPattern>
           7(?:
             [1278]\d|
-            3[1-9]
+            3[1-9]|
+            9[01]
           )\d{6}
         </nationalNumberPattern>
       </mobile>
