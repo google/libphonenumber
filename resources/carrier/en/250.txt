@@ -14,4 +14,8 @@
 
 # Prefix 75 was assigned to Rwandatel but they had their license revoked.
 
-2507|KtRN
+25072|Airtel
+25073|Airtel
+25077|KtRN
+25078|MTN
+25079|MTN

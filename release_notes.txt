@@ -1,3 +1,14 @@
+Jul 16, 2026: v9.0.35
+Metadata changes:
+ - Updated alternate formatting data for country calling code(s): 995
+ - Updated phone metadata for region code(s):
+   AC, CN, FO, GE, IR, KE, SE, UG, ZW
+ - Updated short number metadata for region code(s): FR
+ - Updated geocoding data for country calling code(s): 86 (en, zh)
+ - Updated carrier data for country calling code(s):
+   61 (en), 86 (en, zh), 93 (en, fa), 247 (en), 250 (en), 254 (en), 256 (en),
+   263 (en), 298 (en), 420 (en), 976 (en), 995 (en)
+
 Jul 02, 2026: v9.0.34
 Metadata changes:
  - Updated alternate formatting data for country calling code(s): 34
