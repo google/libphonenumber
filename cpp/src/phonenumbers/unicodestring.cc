@@ -88,7 +88,7 @@ UnicodeString UnicodeString::tempSubString(int start, int length) const {
   if (length == std::numeric_limits<int>::max()) {
     length = unicodestring_length - start;
   }
-  if (start > unicodestring_length || length > unicodestring_length) {
+  if (start < 0 || length < 0 || start > unicodestring_length || length > unicodestring_length - start) {
     return UnicodeString("");
   }
   UnicodeText::const_iterator start_it = text_.begin();
