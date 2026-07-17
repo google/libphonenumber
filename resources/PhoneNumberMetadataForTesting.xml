@@ -204,8 +204,16 @@
     <!-- Brazil -->
     <!-- This country is used to test ShortNumberInfo, so at least the country calling code must be
          recognised by the library. It is also used for formatInOriginalFormat tests, so some length
-         metadata is needed. -->
+         metadata is needed. The numberFormat below exhibits the "($FG)" parens-from-rule shape used
+         to verify that AsYouTypeFormatter applies the nationalPrefixFormattingRule when building
+         its template (https://issuetracker.google.com/issues/437456062). -->
     <territory id="BR" countryCode="55" internationalPrefix="00">
+      <availableFormats>
+        <numberFormat pattern="(\d{2})(\d{4})(\d{4})" nationalPrefixFormattingRule="($FG)">
+          <leadingDigits>[1-9]</leadingDigits>
+          <format>$1 $2-$3</format>
+        </numberFormat>
+      </availableFormats>
       <generalDesc>
         <nationalNumberPattern>\d{8,10}</nationalNumberPattern>
       </generalDesc>
@@ -378,7 +386,7 @@
     <!-- Colombia (CO) -->
     <!-- Data is here to check formatForMobileDialling() API is no more considering CO as special
          i.e it returns regular E.164 format rather than using the 03 carrier code. -->
-    <territory id="CO" countryCode="57" nationalPrefix="0"
+    <territory id="CO" countryCode="57" internationalPrefix="00" nationalPrefix="0"
                nationalPrefixForParsing="0(4(?:[14]4|56)|[579])?" mobileNumberPortableRegion="true">
       <availableFormats>
         <numberFormat pattern="(\d{3})(\d{7})" nationalPrefixFormattingRule="($FG)"
@@ -1000,8 +1008,18 @@
     </territory>
 
     <!-- Russian Federation -->
+    <!-- The numberFormat below exhibits the "$NP ($FG)" parens-from-rule shape (parens supplied by
+         the territory-level nationalPrefixFormattingRule rather than by the format literal), used
+         to verify the same fix as BR above for a rule that also includes the trunk prefix
+         (https://issuetracker.google.com/issues/437456062). -->
     <territory id="RU" countryCode="7" internationalPrefix="810" nationalPrefix="8"
                nationalPrefixFormattingRule="$NP ($FG)" nationalPrefixOptionalWhenFormatting="true">
+      <availableFormats>
+        <numberFormat pattern="(\d{3})(\d{3})(\d{2})(\d{2})">
+          <leadingDigits>[3489]</leadingDigits>
+          <format>$1 $2-$3-$4</format>
+        </numberFormat>
+      </availableFormats>
       <generalDesc>
         <nationalNumberPattern>[347-9]\d{9}</nationalNumberPattern>
       </generalDesc>

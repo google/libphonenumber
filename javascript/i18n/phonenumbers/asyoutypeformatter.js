@@ -32,6 +32,7 @@
 
 goog.provide('i18n.phonenumbers.AsYouTypeFormatter');
 
+goog.require('goog.string');
 goog.require('goog.string.StringBuffer');
 goog.require('i18n.phonenumbers.NumberFormat');
 goog.require('i18n.phonenumbers.PhoneMetadata');
@@ -250,6 +251,17 @@ i18n.phonenumbers.AsYouTypeFormatter.MIN_LEADING_DIGITS_LENGTH_ = 3;
 
 
 /**
+ * Matches the first $N group reference in a format string. Local copy of the
+ * equivalent pattern in PhoneNumberUtil rather than widening that one's
+ * visibility.
+ * @const
+ * @type {RegExp}
+ * @private
+ */
+i18n.phonenumbers.AsYouTypeFormatter.FIRST_GROUP_PATTERN_ = /(\$\d)/;
+
+
+/**
  * The metadata needed by this class is the same for all regions sharing the
  * same country calling code. Therefore, we return the metadata for "main"
  * region for this country calling code.
@@ -417,13 +429,86 @@ i18n.phonenumbers.AsYouTypeFormatter.prototype.createFormattingTemplate_ =
 
   this.formattingTemplate_.clear();
   /** @type {string} */
-  var tempTemplate = this.getFormattingTemplate_(numberPattern,
-                                                 format.getFormatOrDefault());
+  var effectiveFormat = this.applyNationalPrefixFormattingRule_(format);
+  /** @type {string} */
+  var tempTemplate = this.getFormattingTemplate_(numberPattern, effectiveFormat);
   if (tempTemplate.length > 0) {
     this.formattingTemplate_.append(tempTemplate);
     return true;
   }
   return false;
+};
+
+
+/**
+ * Returns an "effective" format string with the national-prefix formatting
+ * rule applied, so any punctuation supplied by the rule (e.g. parens around
+ * the area code) survives into the formatting template. Mirrors the rule
+ * application in
+ * {@link i18n.phonenumbers.PhoneNumberUtil#formatNsnUsingPattern_}, but
+ * limited to the NATIONAL-format path: when the user is typing in
+ * international format (the country calling code is rendered via
+ * {@code prefixBeforeNationalNumber_}), the bare format is returned, matching
+ * what {@code format(num, INTERNATIONAL)} would emit.
+ *
+ * <p>Three branches:
+ * <ol>
+ *   <li>Rule is empty (or we are in international mode): return the bare
+ *       format unchanged.
+ *   <li>The rule begins with the national prefix (e.g. {@code "$NP $FG"}
+ *       after metadata-loader substitution -> {@code "8 $1"} for RU mobile):
+ *       strip the leading prefix and any adjacent separator, then splice the
+ *       remainder into the format. The trunk prefix continues to render
+ *       separately via {@code prefixBeforeNationalNumber_}, so this avoids
+ *       doubling it.
+ *   <li>The rule contains the prefix in a position we did not strip (e.g. GB
+ *       fixed-line's {@code "($NP$FG)"} -> {@code "(0$1)"}, which wraps the
+ *       prefix inside literal punctuation): return the bare format. Splicing
+ *       such a rule would duplicate the trunk prefix that AYTF renders
+ *       separately, and AYTF has no clean place to suppress that.
+ * </ol>
+ *
+ * <p>By the time this runs, {@code BuildMetadataFromXml} has already
+ * substituted {@code $NP} with the literal national prefix and {@code $FG}
+ * with {@code "$1"}, so the rule string is a regex-replacement string.
+ * Contents are trusted (built by metadata tooling) and are spliced via
+ * {@code String.prototype.replace} without re-quoting.
+ *
+ * @param {i18n.phonenumbers.NumberFormat} format
+ * @return {string}
+ * @private
+ */
+i18n.phonenumbers.AsYouTypeFormatter.prototype.
+    applyNationalPrefixFormattingRule_ = function(format) {
+
+  /** @type {string} */
+  var numberFormat = format.getFormatOrDefault();
+  /** @type {string} */
+  var rule = format.getNationalPrefixFormattingRuleOrDefault();
+  /** @type {boolean} */
+  var isInternationalMode =
+      this.isCompleteNumber_ && this.extractedNationalPrefix_.length == 0;
+  if (rule.length == 0 || isInternationalMode) {
+    return numberFormat;
+  }
+  /** @type {string} */
+  var nationalPrefix = this.currentMetadata_.getNationalPrefixOrDefault();
+  /** @type {boolean} */
+  var strippedPrefix = false;
+  if (nationalPrefix.length > 0 &&
+      goog.string.startsWith(rule, nationalPrefix)) {
+    rule = rule.substring(nationalPrefix.length);
+    if (rule.length > 0 && (rule.charAt(0) == ' ' || rule.charAt(0) == '-')) {
+      rule = rule.substring(1);
+    }
+    strippedPrefix = true;
+  }
+  if (!strippedPrefix && nationalPrefix.length > 0 &&
+      goog.string.contains(rule, nationalPrefix)) {
+    return numberFormat;
+  }
+  return numberFormat.replace(
+      i18n.phonenumbers.AsYouTypeFormatter.FIRST_GROUP_PATTERN_, rule);
 };
 
 
@@ -728,7 +813,7 @@ i18n.phonenumbers.AsYouTypeFormatter.prototype.attemptToFormatAccruedDigits_ =
               numberFormat.getNationalPrefixFormattingRule());
       /** @type {string} */
       var formattedNumber = nationalNumber.replace(new RegExp(pattern, 'g'),
-                                                   numberFormat.getFormat());
+          this.applyNationalPrefixFormattingRule_(numberFormat));
       // Check that we didn't remove nor add any extra digits when we matched
       // this formatting pattern. This usually happens after we entered the last
       // digit during AYTF. Eg: In case of MX, we swallow mobile token (1) when
@@ -1009,8 +1094,15 @@ i18n.phonenumbers.AsYouTypeFormatter.prototype.
   var newRegionCode = this.phoneUtil_.getRegionCodeForCountryCode(countryCode);
   if (i18n.phonenumbers.PhoneNumberUtil.REGION_CODE_FOR_NON_GEO_ENTITY ==
       newRegionCode) {
-    this.currentMetadata_ =
+    // Non-geographical metadata can be missing for unrecognised calling codes
+    // (e.g. the user typing "+999"); fall back to EMPTY_METADATA_ so
+    // subsequent reads such as getNationalPrefixOrDefault() don't NPE while
+    // we wait for further digits.
+    /** @type {i18n.phonenumbers.PhoneMetadata} */
+    var nonGeoMetadata =
         this.phoneUtil_.getMetadataForNonGeographicalRegion(countryCode);
+    this.currentMetadata_ = nonGeoMetadata != null ? nonGeoMetadata :
+        i18n.phonenumbers.AsYouTypeFormatter.EMPTY_METADATA_;
   } else if (newRegionCode != this.defaultCountry_) {
     this.currentMetadata_ = this.getMetadataForRegion_(newRegionCode);
   }
