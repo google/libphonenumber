@@ -151,8 +151,7 @@ final class PhoneNumberMatcher implements Iterator<PhoneNumberMatch> {
     /* The maximum number of digits allowed in a digit-separated block. As we allow all digits in a
      * single block, set high enough to accommodate the entire national number and the international
      * country code. */
-    int digitBlockLimit =
-        PhoneNumberUtil.MAX_LENGTH_FOR_NSN + PhoneNumberUtil.MAX_LENGTH_COUNTRY_CODE;
+    int digitBlockLimit = PhoneNumberUtil.MAX_LENGTH_FOR_NSN + Constants.MAX_LENGTH_COUNTRY_CODE;
     /* Limit on the number of blocks separated by punctuation. Uses digitBlockLimit since some
      * formats use spaces to separate each digit. */
     String blockLimit = limit(0, digitBlockLimit);
@@ -569,7 +568,7 @@ final class PhoneNumberMatcher implements Iterator<PhoneNumberMatch> {
       PhoneNumber number, CharSequence candidate, PhoneNumberUtil util,
       NumberGroupingChecker checker) {
     StringBuilder normalizedCandidate =
-        PhoneNumberUtil.normalizeDigits(candidate, true /* keep non-digits */);
+        PhoneNumberNormalizer.normalizeDigits(candidate, true /* keep non-digits */);
     String[] formattedNumberGroups = getNationalNumberGroups(util, number);
     if (checker.checkGroups(util, number, normalizedCandidate, formattedNumberGroups)) {
       return true;
@@ -618,7 +617,7 @@ final class PhoneNumberMatcher implements Iterator<PhoneNumberMatch> {
         (number.getCountryCodeSource() == CountryCodeSource.FROM_NUMBER_WITH_PLUS_SIGN
          || number.getCountryCodeSource() == CountryCodeSource.FROM_NUMBER_WITHOUT_PLUS_SIGN);
     if (candidateHasCountryCode
-        && PhoneNumberUtil.normalizeDigitsOnly(candidate.substring(0, firstSlashInBodyIndex))
+        && PhoneNumberNormalizer.normalizeDigitsOnly(candidate.substring(0, firstSlashInBodyIndex))
             .equals(Integer.toString(number.getCountryCode()))) {
       // Any more slashes and this is illegal.
       return candidate.substring(secondSlashInBodyIndex + 1).contains("/");
@@ -646,7 +645,7 @@ final class PhoneNumberMatcher implements Iterator<PhoneNumberMatch> {
           }
         // This is the extension sign case, in which the 'x' or 'X' should always precede the
         // extension number.
-        } else if (!PhoneNumberUtil.normalizeDigitsOnly(candidate.substring(index)).equals(
+        } else if (!PhoneNumberNormalizer.normalizeDigitsOnly(candidate.substring(index)).equals(
             number.getExtension())) {
           return false;
         }
@@ -685,7 +684,7 @@ final class PhoneNumberMatcher implements Iterator<PhoneNumberMatch> {
         return true;
       }
       // Normalize the remainder.
-      String rawInputCopy = PhoneNumberUtil.normalizeDigitsOnly(number.getRawInput());
+      String rawInputCopy = PhoneNumberNormalizer.normalizeDigitsOnly(number.getRawInput());
       StringBuilder rawInput = new StringBuilder(rawInputCopy);
       // Check if we found a national prefix and/or carrier code at the start of the raw input, and
       // return the result.

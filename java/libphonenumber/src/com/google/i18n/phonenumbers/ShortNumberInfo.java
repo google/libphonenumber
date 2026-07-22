@@ -458,7 +458,7 @@ public class ShortNumberInfo {
       return false;
     }
 
-    String normalizedNumber = PhoneNumberUtil.normalizeDigitsOnly(possibleNumber);
+    String normalizedNumber = PhoneNumberNormalizer.normalizeDigitsOnly(possibleNumber);
     boolean allowPrefixMatchForRegion =
         allowPrefixMatch && !REGIONS_WHERE_EMERGENCY_NUMBERS_MUST_BE_EXACT.contains(regionCode);
     return matcherApi.matchNationalNumber(normalizedNumber, metadata.getEmergency(),
