@@ -421,7 +421,7 @@ if (NOT WIN32)
   add_definitions ("-Wall -Werror")
 endif ()
 
-include_directories ("src")
+include_directories (BEFORE "src")
 
 #----------------------------------------------------------------
 # Collate dependencies
