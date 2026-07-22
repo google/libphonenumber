@@ -1227,6 +1227,11 @@
         <possibleLengths national="9"/>
         <exampleNumber>123456789</exampleNumber>
       </mobile>
+      <voicemail>
+        <possibleLengths national="11"/>
+        <exampleNumber>34851234567</exampleNumber>
+        <nationalNumberPattern>348[57]\d{7}</nationalNumberPattern>
+      </voicemail>
     </territory>
 
     <!-- Universal International Preium Rate Number -->
