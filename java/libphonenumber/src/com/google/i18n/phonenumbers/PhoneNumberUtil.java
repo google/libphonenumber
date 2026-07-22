@@ -3203,49 +3203,92 @@ public class PhoneNumberUtil {
   }
 
   /**
-   * Converts numberToParse to a form that we can parse and write it to nationalNumber if it is
-   * written in RFC3966; otherwise extract a possible number out of it and write to nationalNumber.
+   * Converts numberToParse to a form that we can parse and write it to outputNumber if it is
+   * written in RFC3966; otherwise extract a possible number out of it and write to outputNumber.
    */
-  private void buildNationalNumberForParsing(String numberToParse, StringBuilder nationalNumber)
+  // @VisibleForTesting
+  void buildNationalNumberForParsing(String numberToParse, StringBuilder outputNumber)
       throws NumberParseException {
-    int indexOfPhoneContext = numberToParse.indexOf(Constants.RFC3966_PHONE_CONTEXT);
-
     PhoneContext phoneContext = phoneContextParser.parse(numberToParse);
 
-    if (phoneContext != null) {
-      // If the phone context contains a phone number prefix, we need to capture it, whereas domains
-      // will be ignored.
-      if (phoneContext.getRawContext().charAt(0) == Constants.PLUS_SIGN) {
-        // Additional parameters might follow the phone context. If so, we will remove them here
-        // because the parameters after phone context are not important for parsing the phone
-        // number.
-        nationalNumber.append(phoneContext.getRawContext());
-      }
-
-      // Now append everything between the "tel:" prefix and the phone-context. This should include
-      // the national number, an optional extension or isdn-subaddress component. Note we also
-      // handle the case when "tel:" is missing, as we have seen in some of the phone number inputs.
-      // In that case, we append everything from the beginning.
-      int indexOfRfc3966Prefix = numberToParse.indexOf(RFC3966_PREFIX);
-      int indexOfNationalNumber =
-          (indexOfRfc3966Prefix >= 0) ? indexOfRfc3966Prefix + RFC3966_PREFIX.length() : 0;
-      nationalNumber.append(numberToParse.substring(indexOfNationalNumber, indexOfPhoneContext));
-    } else {
+    if (phoneContext == null) {
       // Extract a possible number from the string passed in (this strips leading characters that
       // could not be the start of a phone number.)
-      nationalNumber.append(extractPossibleNumber(numberToParse));
+      outputNumber.append(extractPossibleNumber(numberToParse));
+      
+      // Strip the isdn parameter if present
+      int idsnPrefixStart = outputNumber.indexOf(RFC3966_ISDN_SUBADDRESS);
+      if (idsnPrefixStart > 0) {
+        outputNumber.delete(idsnPrefixStart, outputNumber.length());
+      }
+      return;
     }
 
-    // Delete the isdn-subaddress and everything after it if it is present. Note extension won't
-    // appear at the same time with isdn-subaddress according to paragraph 5.3 of the RFC3966 spec,
-    int indexOfIsdn = nationalNumber.indexOf(RFC3966_ISDN_SUBADDRESS);
-    if (indexOfIsdn > 0) {
-      nationalNumber.delete(indexOfIsdn, nationalNumber.length());
+    // Note we also handle the case when "tel:" is missing. In that case, we consider the start of
+    // the string to be the start of the number.
+    int rfc3966PrefixStart = numberToParse.indexOf(RFC3966_PREFIX);
+    int numberStart =
+        (rfc3966PrefixStart >= 0) ? rfc3966PrefixStart + RFC3966_PREFIX.length() : 0;
+    int numberEnd = numberToParse.indexOf(";", numberStart);
+
+    if (numberEnd < 0) {
+      throw new NumberParseException(NumberParseException.ErrorType.NOT_A_NUMBER,
+          "The string supplied does not form a valid RFC3966 number.");
     }
-    // If both phone context and isdn-subaddress are absent but other parameters are present, the
-    // parameters are left in nationalNumber. This is because we are concerned about deleting
-    // content from a potential number string when there is no strong evidence that the number is
-    // actually written in RFC3966.
+
+    String numberPart = numberToParse.substring(numberStart, numberEnd);
+
+    outputNumber.append(constructE164(phoneContext, numberPart));
+
+    // Append the extension if present.
+    int extnPrefixStart = numberToParse.indexOf(RFC3966_EXTN_PREFIX);
+    if (extnPrefixStart >= 0) {
+      int extnStart = extnPrefixStart + RFC3966_EXTN_PREFIX.length();
+      int extnEnd = numberToParse.indexOf(";", extnStart);
+      if (extnEnd < 0) {
+        extnEnd = numberToParse.length();
+      }
+      outputNumber.append(DEFAULT_EXTN_PREFIX).append(numberToParse, extnStart, extnEnd);
+    }
+  }
+
+  /**
+   * Attempts to construct an E164 number from the parsed phone context and numberPart and returns
+   * it.
+   *
+   * If the phone context is a country code, the national prefix is stripped from the numberPart and
+   * the E164 number is constructed from the country code and the stripped number.
+   *
+   * If the phone context is more than just a country code, we fall back to concatenating the whole
+   * context with the numberPart.
+   */
+  private String constructE164(PhoneContext phoneContext, String numberPart) {
+    if (phoneContext.getRawContext().charAt(0) != Constants.PLUS_SIGN) {
+      return numberPart;
+    }
+
+    if (phoneContext.getCountryCode() == null) {
+      // Fall back to prefixing the national number with the country calling code if the context
+      // is more than just a country calling code.
+      return phoneContext.getRawContext() + numberPart;
+    }
+
+    // Get the region code and metadata from the phone context country code.
+    String regionCode = getRegionCodeForCountryCode(phoneContext.getCountryCode());
+    PhoneMetadata regionMetadata = getMetadataForRegionOrCallingCode(phoneContext.getCountryCode(), regionCode);
+
+    if (regionMetadata == null) {
+      // Fall back to prefixing the national number with the country calling code if the country
+      // code is invalid.
+      return phoneContext.getRawContext() + numberPart;
+    }
+
+    StringBuilder numberWithoutNationalPrefix = new StringBuilder(numberPart);
+    maybeStripNationalPrefixAndCarrierCode(numberWithoutNationalPrefix, regionMetadata,
+        new StringBuilder());
+
+    return Constants.PLUS_SIGN + phoneContext.getCountryCode().toString()
+        + numberWithoutNationalPrefix;
   }
 
   /**
