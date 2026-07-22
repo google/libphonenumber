@@ -2563,14 +2563,30 @@ public class PhoneNumberUtil {
    * @param number  the number that needs to be checked
    * @return  true if the number is a valid vanity number
    */
+  private static boolean hasAtLeastThreeAlphaChars(CharSequence number) {
+    int alphaCount = 0;
+    for (int i = 0; i < number.length(); i++) {
+      char c = number.charAt(i);
+      if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z')) {
+        if (++alphaCount >= 3) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+
   public boolean isAlphaNumber(CharSequence number) {
+    if (number.length() > MAX_INPUT_STRING_LENGTH) {
+      return false;
+    }
     if (!isViablePhoneNumber(number)) {
       // Number is too short, or doesn't match the basic phone number pattern.
       return false;
     }
     StringBuilder strippedNumber = new StringBuilder(number);
     maybeStripExtension(strippedNumber);
-    return VALID_ALPHA_PHONE_PATTERN.matcher(strippedNumber).matches();
+    return hasAtLeastThreeAlphaChars(strippedNumber);
   }
 
   /**
