@@ -2682,7 +2682,7 @@ void PhoneNumberUtil::GetNationalSignificantNumber(
   // from malicious input. Ensure the number of leading zeros is at least 0 so
   // we don't crash in the case of malicious input.
   StrAppend(national_number, number.italian_leading_zero() ?
-      string(std::min(std::max(number.number_of_leading_zeros(), 0), 3), '0') : "");
+      string(std::min(std::max(number.number_of_leading_zeros(), 0), 10), '0') : "");
   StrAppend(national_number, number.national_number());
 }
 
