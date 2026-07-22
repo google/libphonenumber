@@ -2323,7 +2323,7 @@
         <!-- Common formatting pattern seen for all numbers -->
         <numberFormat pattern="(\d{3})(\d{3})(\d{3})">
           <leadingDigits>
-            [5-7]|
+            [4-7]|
             80[367]|
             90[1289]|
             [89][1-8]
@@ -2462,13 +2462,19 @@
         <!-- * Sometimes Tblisi numbers are formatted in a way to match formatting elsewhere in the country (3-digit first group)
              * Sometimes the subscriber number is formatted in one groups of six digits -->
         <numberFormat pattern="(\d{3})(\d{6})">
-          <leadingDigits>[348]</leadingDigits>
+          <leadingDigits>
+            [348]|
+            5545
+          </leadingDigits>
           <format>$1 $2</format>
         </numberFormat>
         <!-- * Sometimes Tblisi numbers are formatted in a way to match formatting elsewhere in the country (3-digit first group)
              * Sometimes the subscriber number is formatted in two groups of three digits -->
         <numberFormat pattern="(\d{3})(\d{3})(\d{3})">
-          <leadingDigits>[348]</leadingDigits>
+          <leadingDigits>
+            [348]|
+            5545
+          </leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
         <!-- Wikipedia variant for Tblisi formatting -->

@@ -22,8 +22,6 @@
 namespace i18n {
 namespace phonenumbers {
 
-// Returns the serialized short-number PhoneMetadataCollection used by
-// ShortNumberInfo. See metadata_bytes.h for ownership semantics.
 MetadataBytes GetShortMetadata();
 
 }  // namespace phonenumbers

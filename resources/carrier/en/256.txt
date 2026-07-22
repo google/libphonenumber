@@ -16,6 +16,7 @@
 25671|UTL
 256720|Smile
 256721|LycaMobile
+2567210|Savanna
 256724|MTN
 2567240|Hamilton Telecom
 256726|LycaMobile
@@ -24,6 +25,7 @@
 256730|Airtel
 256731|Airtel
 256736|Hamilton Telecom
+256737|MTN
 25674|Airtel
 25675|Airtel
 25676|MTN
