@@ -17,7 +17,21 @@
 # http://en.wikipedia.org/wiki/+230 [444843696]
 # http://www.icta.mu/documents/numbering2.pdf [2010-11-12]
 
-2302|North Region
+23020|North Region
+230210|North Region
+230211|North Region
+230212|North Region
+230213|North Region
+230214|North Region
+230215|North Region
+230216|North Region
+230217|North Region
+230218|North Region
+23023|North Region
+23024|North Region
+23026|North Region
+23027|North Region
+23028|North Region
 2304|Central Region
 2306|South Region
 23081|Agalega

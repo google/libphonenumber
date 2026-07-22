@@ -35,12 +35,12 @@
 90510499|HATNET BILGI ILETISIM TEKNOLOJILERI
 9051616|Turkcell
 9053|Turkcell
-9053383|Kuzey Kibris Turkcell
-9053384|Kuzey Kibris Turkcell
-9053385|Kuzey Kibris Turkcell
-9053386|Kuzey Kibris Turkcell
-9053387|Kuzey Kibris Turkcell
 9054|Vodafone
 9055|Turk Telekom
 905610|Selam Mobile
 905616|Turkcell
+90562|Turkcell
+90564|Turkcell
+90572|Turkcell
+90574|Vodafone
+90575|Turk Telekom

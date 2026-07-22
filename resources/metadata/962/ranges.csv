@@ -23,6 +23,7 @@ Prefix       ; Length ; Type            ; Tariff        ; Operator  ; Format    
 3262         ; 8      ; FIXED_LINE      ; STANDARD_RATE ;           ; "fmt1_1/3/4" ; "JO"    ; "Southern Region" ; GOVERNMENT
 3263         ; 8      ; FIXED_LINE      ; STANDARD_RATE ;           ; "fmt1_1/3/4" ; "JO"    ;                   ; GOVERNMENT
 327[023]     ; 8      ; FIXED_LINE      ; STANDARD_RATE ;           ; "fmt1_1/3/4" ; "JO"    ; "Karak"           ; GOVERNMENT
+427          ; 9      ; MOBILE          ; STANDARD_RATE ; "orange"  ; "fmt2_1/4/4" ; "JO"    ;                   ; IR21
 530[0-3]     ; 8      ; FIXED_LINE      ; STANDARD_RATE ;           ; "fmt1_1/3/4" ; "JO"    ; "Zarqa"           ; GOVERNMENT
 531[023]     ; 8      ; FIXED_LINE      ; STANDARD_RATE ;           ; "fmt1_1/3/4" ; "JO"    ; "Madaba"          ; GOVERNMENT
 532[0-59]    ; 8      ; FIXED_LINE      ; STANDARD_RATE ;           ; "fmt1_1/3/4" ; "JO"    ; "Madaba"          ; GOVERNMENT

@@ -9,3 +9,4 @@ Prefix  ; Length ; Type       ; Tariff        ; Area Code Length ; Operator     
 7[246]  ; 7      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                               ; "fixed_1/3/3"    ; "BT"    ; "Samdrup Jongkhar"
 77      ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "tashicell_of_tashi_infocomm" ; "mobile_2/2/2/2" ; "BT"    ;                    ; IR21       ; "IR21 dated 7/30/2018"
 8[2-4]  ; 7      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                               ; "fixed_1/3/3"    ; "BT"    ; "Paro"
+87      ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "tashicell_of_tashi_infocomm" ; "mobile_2/2/2/2" ; "BT"    ;                    ; ITU

@@ -1,6 +1,9 @@
 Prefix    ; Length ; Type       ; Tariff        ; Operator  ; Format     ; Regions ; Provenance
+222       ; 7      ; MOBILE     ; STANDARD_RATE ; "neotel"  ; "fmt1_3/4" ; "NR"    ; IR21
 444       ; 7      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_3/4" ; "NR"    ; ITU
 55[346-9] ; 7      ; MOBILE     ; STANDARD_RATE ; "digicel" ; "fmt1_3/4" ; "NR"    ; IR21
 555       ; 7      ; MOBILE     ; STANDARD_RATE ;           ; "fmt1_3/4" ; "NR"    ; ITU
 666       ; 7      ; MOBILE     ; STANDARD_RATE ; "digicel" ; "fmt1_3/4" ; "NR"    ; IR21
-8         ; 7      ; MOBILE     ; STANDARD_RATE ; "fsmtc"   ; "fmt1_3/4" ; "NR"    ; IR21
+777       ; 7      ; MOBILE     ; STANDARD_RATE ; "neotel"  ; "fmt1_3/4" ; "NR"    ; IR21
+8         ; 7      ; MOBILE     ; STANDARD_RATE ; "neotel"  ; "fmt1_3/4" ; "NR"    ; IR21
+999       ; 7      ; MOBILE     ; STANDARD_RATE ; "neotel"  ; "fmt1_3/4" ; "NR"    ; IR21

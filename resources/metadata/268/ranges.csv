@@ -48,7 +48,7 @@ Prefix          ; Length ; Type       ; Tariff        ; National Only ; Operator
 34              ; 8      ; FIXED_LINE ; STANDARD_RATE ; false         ;                   ; "fmt1_4/4" ; "SZ"    ; "Hhohho"                          ; ITU
 35              ; 8      ; FIXED_LINE ; STANDARD_RATE ; false         ;                   ; "fmt1_4/4" ; "SZ"    ; "Manzini"                         ; ITU
 70              ; 8      ; VOIP       ; STANDARD_RATE ; false         ;                   ; "fmt1_4/4" ; "SZ"    ;                                   ; ITU
+7[59]           ; 8      ; MOBILE     ; STANDARD_RATE ; false         ; "eswatini_mobile" ; "fmt1_4/4" ; "SZ"    ;                                   ; IR21
 7[68]           ; 8      ; MOBILE     ; STANDARD_RATE ; false         ; "swazi_mtn"       ; "fmt1_4/4" ; "SZ"    ;                                   ; IR21
 77              ; 8      ; MOBILE     ; STANDARD_RATE ; false         ; "sptc"            ; "fmt1_4/4" ; "SZ"    ;                                   ; ITU
-79              ; 8      ; MOBILE     ; STANDARD_RATE ; false         ; "eswatini_mobile" ; "fmt1_4/4" ; "SZ"    ;                                   ; IR21
 900             ; 9      ; FIXED_LINE ; PREMIUM_RATE  ; false         ;                   ; "fmt2_5/4" ; "SZ"    ;                                   ; ITU

@@ -12,6 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+26875|Eswatini Mobile
 26876|Swazi MTN
 26877|SPTC
 26878|Swazi MTN

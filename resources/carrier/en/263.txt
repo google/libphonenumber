@@ -17,3 +17,4 @@
 26373|Telecel
 26377|Econet
 26378|Econet
+26379|Econet

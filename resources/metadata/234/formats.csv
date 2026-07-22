@@ -1,7 +1,6 @@
-Id                 ; National            ; International      ; Comment
-fixed_3/3/4        ; "#XXX XXX XXXX"     ; "XXX XXX XXXX"
-fixed_4/2/4        ; "#XXXX XX XXXX"     ; "XXXX XX XXXX"
-fixed_line_2/3/2-3 ; "#XX XXX XX*"       ; "XX XXX XX*"       ; "Fixed line format for 2 digit area code"
-fmt1_3/4/4-5       ; "#XXX XXXX XXXX*"   ; "XXX XXXX XXXX*"   ; "11-12 digit toll-free and UAN numbers."
-fmt2_3/5/5-6       ; "#XXX XXXXX XXXXX*" ; "XXX XXXXX XXXXX*" ; "13-14 digit toll-free and UAN numbers."
-non_geo_3/3/3-4    ; "#XXX XXX XXX*"     ; "XXX XXX XXX*"
+Id              ; National            ; International      ; Comment
+fixed_3/3/4     ; "#XXX XXX XXXX"     ; "XXX XXX XXXX"
+fixed_4/2/4     ; "#XXXX XX XXXX"     ; "XXXX XX XXXX"
+fmt1_3/4/4-5    ; "#XXX XXXX XXXX*"   ; "XXX XXXX XXXX*"   ; "11-12 digit toll-free and UAN numbers."
+fmt2_3/5/5-6    ; "#XXX XXXXX XXXXX*" ; "XXX XXXXX XXXXX*" ; "13-14 digit toll-free and UAN numbers."
+non_geo_3/3/3-4 ; "#XXX XXX XXX*"     ; "XXX XXX XXX*"

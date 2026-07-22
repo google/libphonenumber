@@ -6016,12 +6016,13 @@
 55474105|Itajaí - SC
 55474108|Balneário Camboriú - SC
 55474141|Itajaí - SC
-5548|Santa Catarina
+55482|Santa Catarina
 55482101|Criciúma - SC
 55482102|Criciúma - SC
 55482106|Florianópolis - SC
 55482107|Florianópolis - SC
 55482108|Florianópolis - SC
+55483|Santa Catarina
 55483003|Florianópolis - SC
 55483014|São João Batista - SC
 55483018|Florianópolis - SC
@@ -6223,6 +6224,7 @@
 55483906|Tubarão - SC
 55483952|Florianópolis - SC
 55483953|Florianópolis - SC
+55484|Santa Catarina
 55484001|Florianópolis - SC
 55484003|Florianópolis - SC
 55484004|Florianópolis - SC
@@ -6236,6 +6238,9 @@
 55484107|Palhoça - SC
 55484109|Biguaçu - SC
 55484141|Florianópolis - SC
+55485|Santa Catarina
+55487|Santa Catarina
+55489|Santa Catarina
 5549|Santa Catarina
 55492020|Chapecó - SC
 55492049|Chapecó - SC

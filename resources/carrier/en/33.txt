@@ -229,6 +229,7 @@
 3375430|TDF
 3375431|Legos
 3375432|Euroinformation Telecom
+3375433|SFR
 337544|Lebara France Limited
 337545|Lebara France Limited
 337546|Mobiquithings
@@ -264,8 +265,13 @@
 3375632|Euroinformation Telecom
 3375633|Euroinformation Telecom
 3375634|Euroinformation Telecom
+3375636|Orange France
+3375637|Orange France
+3375638|Orange France
+3375639|Orange France
 3375644|SFR
 3375645|SFR
+3375648|Bouygues
 337565|Transatel
 337566|Transatel
 337567|Transatel
@@ -287,6 +293,7 @@
 3375714|SFR
 3375715|AIF
 3375717|Keyyo
+3375719|Orange France
 337572|Mobiquithings
 337573|Mobiquithings
 337574|Coriolis Telecom
@@ -295,6 +302,7 @@
 3375758|Euroinformation Telecom
 3375759|Twilio Ireland Limited
 3375760|Twilio Ireland Limited
+3375761|SFR
 3375763|Euroinformation Telecom
 3375764|Bouygues
 3375765|Bouygues
@@ -305,6 +313,7 @@
 3375773|SFR
 3375774|SFR
 3375777|Euroinformation Telecom
+3375778|SFR
 3375779|Halys
 3375786|Orange France
 3375787|Euroinformation Telecom
@@ -312,7 +321,27 @@
 3375789|BJT
 337579|Legos
 33758|Lycamobile
-33759|Vectone mobile
+337590|Free Mobile
+337591|Free Mobile
+337592|Lycamobile
+337593|Lycamobile
+337594|Lycamobile
+337595|Free Mobile
+337596|Free Mobile
+337597|Free Mobile
+3375976|SFR
+3375977|SFR
+3375978|SFR
+3375979|SFR
+337598|Lycamobile
+3375990|SFR
+3375993|Free Mobile
+3375994|Free Mobile
+3375995|Free Mobile
+3375996|Free Mobile
+3375997|Free Mobile
+3375998|Free Mobile
+3375999|Free Mobile
 3376|Bouygues
 33766|Free Mobile
 33767|Free Mobile
@@ -351,6 +380,7 @@
 3377192|Euroinformation Telecom
 3377193|Euroinformation Telecom
 3377194|Euroinformation Telecom
+3377199|Bouygues
 33772|Orange France
 33773|Syma mobile
 33774|Syma mobile
@@ -362,6 +392,8 @@
 337755|Mobiquithings
 337756|Mobiquithings
 337757|Free Mobile
+337758|Bouygues
+337759|Bouygues
 33776|SFR
 33777|SFR
 33778|SFR

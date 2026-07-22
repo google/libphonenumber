@@ -26,8 +26,12 @@
 995500057|Cellfie
 995500058|Cellfie
 995500059|Cellfie
+99550008|Cellfie
+99550009|Cellfie
 99550010|Cellfie
 99550011|Silknet
+99550012|Silknet
+99550019|Cellfie
 9955002|Silknet
 9955003|Unicell Mobile
 99550033|Silknet
@@ -66,6 +70,7 @@
 995520|Silknet
 99552222|MagtiCom
 99552225|Silknet
+99552228|Cellfie
 9955225|Silknet
 995525|Globalcell
 995530|Silknet
@@ -73,8 +78,15 @@
 9955335|Silknet
 995535|Globalcell
 995540|Silknet
+9955440|Cellfie
+9955441|Cellfie
+9955442|Cellfie
+9955443|Cellfie
 99554444|MagtiCom
-9955445|Silknet
+99554454|Silknet
+99554455|Cellfie
+9955447|Cellfie
+9955449|Cellfie
 995545|Globalcell
 995550|MagtiCom
 99555000|Silknet
@@ -98,6 +110,7 @@
 99556|Cellfie
 995570|Silknet
 995571|Cellfie
+995572|Silknet
 995574|Cellfie
 9955750|Asanet
 9955755|Silknet

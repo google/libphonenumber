@@ -37,18 +37,25 @@ public final class CppMetadataGenerator {
    */
   public enum Type {
     /** The basic phone number metadata (expected to be written to metadata.[h/cc]). */
-    METADATA("metadata", 2011),
+    METADATA("metadata", "GetMetadata", 2011),
     /** The alternate format metadata (expected to be written to alternate_format.[h/cc]). */
-    ALTERNATE_FORMAT("alternate_format", 2012),
+    ALTERNATE_FORMAT("alternate_format", "GetAlternateFormat", 2012),
     /** Metadata for short numbers (expected to be written to short_metadata.[h/cc]). */
-    SHORT_NUMBERS("short_metadata", 2013);
+    SHORT_NUMBERS("short_metadata", "GetShortMetadata", 2013);
 
     private final String typeName;
+    private final String accessorName;
     private final int copyrightYear;
 
-    private Type(String typeName, int copyrightYear) {
+    private Type(String typeName, String accessorName, int copyrightYear) {
       this.typeName = typeName;
+      this.accessorName = accessorName;
       this.copyrightYear = copyrightYear;
+    }
+
+    /** Returns the name of the C++ accessor function for this metadata type. */
+    public String getAccessorName() {
+      return accessorName;
     }
 
     /** Returns the year in which this metadata type was first introduced. */
@@ -114,10 +121,11 @@ public final class CppMetadataGenerator {
     pw.println("#ifndef " + guardName);
     pw.println("#define " + guardName);
     pw.println();
+    pw.println("#include \"phonenumbers/metadata_bytes.h\"");
+    pw.println();
     emitNamespaceStart(pw);
     pw.println();
-    pw.println("int " + type + "_size();");
-    pw.println("const void* " + type + "_get();");
+    pw.println("MetadataBytes " + type.getAccessorName() + "();");
     pw.println();
     emitNamespaceEnd(pw);
     pw.println();
@@ -144,12 +152,8 @@ public final class CppMetadataGenerator {
     pw.println("};");
     pw.println("}  // namespace");
     pw.println();
-    pw.println("int " + type + "_size() {");
-    pw.println("  return sizeof(data) / sizeof(data[0]);");
-    pw.println("}");
-    pw.println();
-    pw.println("const void* " + type + "_get() {");
-    pw.println("  return data;");
+    pw.println("MetadataBytes " + type.getAccessorName() + "() {");
+    pw.println("  return MetadataBytes(data, sizeof(data) / sizeof(data[0]));");
     pw.println("}");
     pw.println();
     emitNamespaceEnd(pw);

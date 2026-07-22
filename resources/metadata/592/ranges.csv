@@ -62,6 +62,7 @@ Prefix     ; Length ; Type       ; Tariff        ; Operator          ; Format   
 456        ; 7      ; FIXED_LINE ; STANDARD_RATE ;                   ; "fmt1_3/4" ; "GY"    ; "Mahdia"                                        ; ITU
 50[0-6]    ; 7      ; FIXED_LINE ; STANDARD_RATE ;                   ; "fmt1_3/4" ; "GY"    ;                                                 ; ITU
 510        ; 7      ; MOBILE     ; STANDARD_RATE ; "digicel_guyana"  ; "fmt1_3/4" ; "GY"    ;                                                 ; IR21
+511        ; 7      ; MOBILE     ; STANDARD_RATE ; "digicel_guyana"  ; "fmt1_3/4" ; "GY"    ;                                                 ; ITU
 515        ; 7      ; VOIP       ; STANDARD_RATE ;                   ; "fmt1_3/4" ; "GY"    ;                                                 ; ITU
 60[0-48]   ; 7      ; MOBILE     ; STANDARD_RATE ; "digicel_guyana"  ; "fmt1_3/4" ; "GY"    ;                                                 ; IR21
 60[56]     ; 7      ; MOBILE     ; STANDARD_RATE ;                   ; "fmt1_3/4" ; "GY"    ;                                                 ; ITU
@@ -80,18 +81,21 @@ Prefix     ; Length ; Type       ; Tariff        ; Operator          ; Format   
 70[0-4]    ; 7      ; MOBILE     ; STANDARD_RATE ; "digicel_guyana"  ; "fmt1_3/4" ; "GY"    ;                                                 ; ITU
 7[02][5-9] ; 7      ; MOBILE     ; STANDARD_RATE ; "gtt"             ; "fmt1_3/4" ; "GY"    ;                                                 ; IR21
 71         ; 7      ; MOBILE     ; STANDARD_RATE ; "enet"            ; "fmt1_3/4" ; "GY"    ;                                                 ; ITU
-720        ; 7      ; MOBILE     ; STANDARD_RATE ; "enet"            ; "fmt1_3/4" ; "GY"    ;                                                 ; ITU
+7[27]0     ; 7      ; MOBILE     ; STANDARD_RATE ; "enet"            ; "fmt1_3/4" ; "GY"    ;                                                 ; ITU
 72[1-4]    ; 7      ; MOBILE     ; STANDARD_RATE ; "digicel_guyana"  ; "fmt1_3/4" ; "GY"    ;                                                 ; IR21
 73         ; 7      ; MOBILE     ; STANDARD_RATE ; "enet"            ; "fmt1_3/4" ; "GY"    ;                                                 ; IR21
 74[0-2]    ; 7      ; MOBILE     ; STANDARD_RATE ; "enet"            ; "fmt1_3/4" ; "GY"    ;                                                 ; IR21
 74[3-9]    ; 7      ; MOBILE     ; STANDARD_RATE ; "digicel_guyana"  ; "fmt1_3/4" ; "GY"    ;                                                 ; IR21
 750        ; 7      ; MOBILE     ; STANDARD_RATE ; "digicel_guyana"  ; "fmt1_3/4" ; "GY"    ;                                                 ; IR21
 75[1-9]    ; 7      ; MOBILE     ; STANDARD_RATE ; "gtt"             ; "fmt1_3/4" ; "GY"    ;                                                 ; IR21
+76[015-7]  ; 7      ; MOBILE     ; STANDARD_RATE ; "enet"            ; "fmt1_3/4" ; "GY"    ;                                                 ; IR21
+76[2-49]   ; 7      ; MOBILE     ; STANDARD_RATE ; "enet"            ; "fmt1_3/4" ; "GY"    ;                                                 ; ITU
 77[14]     ; 7      ; FIXED_LINE ; STANDARD_RATE ;                   ; "fmt1_3/4" ; "GY"
 772        ; 7      ; FIXED_LINE ; STANDARD_RATE ;                   ; "fmt1_3/4" ; "GY"    ; "Lethem"                                        ; ITU
 773        ; 7      ; FIXED_LINE ; STANDARD_RATE ;                   ; "fmt1_3/4" ; "GY"    ; "Aishalton"                                     ; ITU
 775        ; 7      ; FIXED_LINE ; STANDARD_RATE ;                   ; "fmt1_3/4" ; "GY"    ; "Matthews Ridge"                                ; ITU
 777        ; 7      ; FIXED_LINE ; STANDARD_RATE ;                   ; "fmt1_3/4" ; "GY"    ; "Mabaruma/Port Kaituma"                         ; ITU
+780        ; 7      ; MOBILE     ; STANDARD_RATE ; "gtt"             ; "fmt1_3/4" ; "GY"    ;                                                 ; IR21
 800        ; 7      ; FIXED_LINE ; TOLL_FREE     ;                   ; "fmt1_3/4" ; "GY"    ;                                                 ; ITU
 86[28]     ; 7      ; FIXED_LINE ; TOLL_FREE     ;                   ; "fmt1_3/4" ; "GY"    ;                                                 ; ITU
 888        ; 7      ; FIXED_LINE ; TOLL_FREE     ;                   ; "fmt1_3/4" ; "GY"    ;                                                 ; ITU

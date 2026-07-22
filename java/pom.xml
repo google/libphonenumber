@@ -3,15 +3,10 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.googlecode.libphonenumber</groupId>
   <artifactId>libphonenumber-parent</artifactId>
-  <version>8.13.54-SNAPSHOT</version>
+  <version>9.0.36-SNAPSHOT</version>
   <packaging>pom</packaging>
+  <name>libphonenumber-parent</name>
   <url>https://github.com/google/libphonenumber/</url>
-
-  <parent>
-    <groupId>org.sonatype.oss</groupId>
-    <artifactId>oss-parent</artifactId>
-    <version>7</version>
-  </parent>
 
   <description>
     Google's common Java library for parsing, formatting, storing and validating
@@ -37,7 +32,7 @@
     <developerConnection>scm:git:git@github.com:googlei18n/libphonenumber.git
     </developerConnection>
     <url>https://github.com/google/libphonenumber/</url>
-    <tag>v8.13.51</tag>
+    <tag>v9.0.33</tag>
   </scm>
 
   <properties>
@@ -109,7 +104,6 @@
         <plugin>
           <groupId>org.codehaus.mojo</groupId>
           <artifactId>animal-sniffer-maven-plugin</artifactId>
-          <version>1.15</version>
         </plugin>
         <plugin>
           <artifactId>maven-jar-plugin</artifactId>
@@ -168,21 +162,18 @@
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.11.0</version>
         <configuration>
-          <source>1.7</source>
-          <target>1.7</target>
+          <source>8</source>
+          <target>8</target>
           <encoding>UTF-8</encoding>
         </configuration>
       </plugin>
       <plugin>
-        <groupId>org.sonatype.plugins</groupId>
-        <artifactId>nexus-staging-maven-plugin</artifactId>
-        <version>1.6.13</version>
+        <groupId>org.sonatype.central</groupId>
+        <artifactId>central-publishing-maven-plugin</artifactId>
+        <version>0.8.0</version>
         <extensions>true</extensions>
         <configuration>
-          <serverId>sonatype-nexus-staging</serverId>
-          <nexusUrl>https://oss.sonatype.org/</nexusUrl>
-          <stagingProfileId>23ed8fbc71e875</stagingProfileId>
-          <skipStagingRepositoryClose>true</skipStagingRepositoryClose>
+          <publishingServerId>central</publishingServerId>
         </configuration>
       </plugin>
     </plugins>
@@ -217,7 +208,7 @@
       </build>
     </profile>
   </profiles>
-
+  
   <!-- Until 08. Dec 2016, this pom worked with maven-release-plugin at 2.2.1
        and default SCM dependencies. On 11. Jan, 2017 that was no longer the
        case, presumably because the default SCM version changed (cannot find

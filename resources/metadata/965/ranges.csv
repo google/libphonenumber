@@ -35,6 +35,7 @@ Prefix     ; Length ; Type       ; Tariff        ; Operator        ; Format     
 693[03]    ; 8      ; MOBILE     ; STANDARD_RATE ; "ooredoo"       ; "fmt1_4/3-4" ; "KW"    ; IR21       ; "IR21 dated 3/28/2019"
 6939       ; 8      ; MOBILE     ; STANDARD_RATE ; "ooredoo"       ; "fmt1_4/3-4" ; "KW"
 90         ; 8      ; MOBILE     ; STANDARD_RATE ; "zain"          ; "fmt1_4/3-4" ; "KW"    ; IR21
+9100       ; 8      ; MOBILE     ; STANDARD_RATE ; "zain"          ; "fmt1_4/3-4" ; "KW"    ; IR21
 911[01]    ; 8      ; MOBILE     ; STANDARD_RATE ; "zain"          ; "fmt1_4/3-4" ; "KW"    ; IR21       ; "IR21 dated 4/7/2019"
 9199       ; 8      ; MOBILE     ; STANDARD_RATE ; "zain"          ; "fmt1_4/3-4" ; "KW"    ; IR21
 9200       ; 8      ; MOBILE     ; STANDARD_RATE ; "zain"          ; "fmt1_4/3-4" ; "KW"    ; IR21

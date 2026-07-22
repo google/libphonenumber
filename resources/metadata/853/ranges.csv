@@ -1,19 +1,19 @@
 Prefix       ; Length ; Type       ; Tariff        ; Operator                     ; Format     ; Regions ; Provenance ; Comment
 0800         ; 7      ; FIXED_LINE ; TOLL_FREE     ;                              ; "fmt1_4/3" ; "MO"
 28[2-9]      ; 8      ; FIXED_LINE ; STANDARD_RATE ;                              ; "fmt1_4/4" ; "MO"    ; GOVERNMENT
-6200         ; 8      ; MOBILE     ; STANDARD_RATE ; "smartone"                   ; "fmt1_4/4" ; "MO"    ; IR21
+6200         ; 8      ; MOBILE     ; STANDARD_RATE ; "ctm"                        ; "fmt1_4/4" ; "MO"
 620[1-9]     ; 8      ; MOBILE     ; STANDARD_RATE ; "ctm"                        ; "fmt1_4/4" ; "MO"    ; GOVERNMENT
 621          ; 8      ; MOBILE     ; STANDARD_RATE ; "china_telecom"              ; "fmt1_4/4" ; "MO"    ; GOVERNMENT
 622          ; 8      ; MOBILE     ; STANDARD_RATE ; "3"                          ; "fmt1_4/4" ; "MO"    ; IR21
 62[38]       ; 8      ; MOBILE     ; STANDARD_RATE ; "ctm"                        ; "fmt1_4/4" ; "MO"    ; GOVERNMENT
 624[016-9]   ; 8      ; MOBILE     ; STANDARD_RATE ; "3"                          ; "fmt1_4/4" ; "MO"    ; IR21
 624[23]      ; 8      ; MOBILE     ; STANDARD_RATE ; "ctm"                        ; "fmt1_4/4" ; "MO"    ; IR21
-624[45]      ; 8      ; MOBILE     ; STANDARD_RATE ; "smartone"                   ; "fmt1_4/4" ; "MO"    ; IR21
+624[45]      ; 8      ; MOBILE     ; STANDARD_RATE ; "ctm"                        ; "fmt1_4/4" ; "MO"
 625[0-3]     ; 8      ; MOBILE     ; STANDARD_RATE ; "ctm"                        ; "fmt1_4/4" ; "MO"    ; GOVERNMENT
-625[4-9]     ; 8      ; MOBILE     ; STANDARD_RATE ; "smartone"                   ; "fmt1_4/4" ; "MO"    ; IR21
-626[0-389]   ; 8      ; MOBILE     ; STANDARD_RATE ; "smartone"                   ; "fmt1_4/4" ; "MO"    ; IR21
+625[4-9]     ; 8      ; MOBILE     ; STANDARD_RATE ; "ctm"                        ; "fmt1_4/4" ; "MO"
+626[0-389]   ; 8      ; MOBILE     ; STANDARD_RATE ; "ctm"                        ; "fmt1_4/4" ; "MO"
 626[4-7]     ; 8      ; MOBILE     ; STANDARD_RATE ; "ctm"                        ; "fmt1_4/4" ; "MO"    ; GOVERNMENT
-627[01]      ; 8      ; MOBILE     ; STANDARD_RATE ; "smartone"                   ; "fmt1_4/4" ; "MO"    ; IR21
+627[01]      ; 8      ; MOBILE     ; STANDARD_RATE ; "ctm"                        ; "fmt1_4/4" ; "MO"
 627[2-5]     ; 8      ; MOBILE     ; STANDARD_RATE ; "ctm"                        ; "fmt1_4/4" ; "MO"    ; GOVERNMENT
 627[6-9]     ; 8      ; MOBILE     ; STANDARD_RATE ; "3"                          ; "fmt1_4/4" ; "MO"    ; IR21
 629[016-9]   ; 8      ; MOBILE     ; STANDARD_RATE ; "ctm"                        ; "fmt1_4/4" ; "MO"    ; GOVERNMENT
@@ -30,7 +30,7 @@ Prefix       ; Length ; Type       ; Tariff        ; Operator                   
 6344         ; 8      ; MOBILE     ; STANDARD_RATE ; "3"                          ; "fmt1_4/4" ; "MO"    ; IR21
 634[5-9]     ; 8      ; MOBILE     ; STANDARD_RATE ; "ctm"                        ; "fmt1_4/4" ; "MO"    ; GOVERNMENT
 635          ; 8      ; MOBILE     ; STANDARD_RATE ; "china_telecom"              ; "fmt1_4/4" ; "MO"    ; GOVERNMENT
-636          ; 8      ; MOBILE     ; STANDARD_RATE ; "smartone"                   ; "fmt1_4/4" ; "MO"    ; IR21
+636          ; 8      ; MOBILE     ; STANDARD_RATE ; "ctm"                        ; "fmt1_4/4" ; "MO"
 637[0-7]     ; 8      ; MOBILE     ; STANDARD_RATE ; "china_telecom"              ; "fmt1_4/4" ; "MO"    ; GOVERNMENT
 63[79][89]   ; 8      ; MOBILE     ; STANDARD_RATE ; "3"                          ; "fmt1_4/4" ; "MO"    ; IR21
 638[0-5]     ; 8      ; MOBILE     ; STANDARD_RATE ; "3"                          ; "fmt1_4/4" ; "MO"    ; IR21
@@ -50,8 +50,8 @@ Prefix       ; Length ; Type       ; Tariff        ; Operator                   
 654[34]      ; 8      ; MOBILE     ; STANDARD_RATE ; "china_telecom"              ; "fmt1_4/4" ; "MO"    ; GOVERNMENT
 654[56]      ; 8      ; MOBILE     ; STANDARD_RATE ; "ctm"                        ; "fmt1_4/4" ; "MO"    ; GOVERNMENT
 6547[0-4]    ; 8      ; MOBILE     ; STANDARD_RATE ; "ctm"                        ; "fmt1_4/4" ; "MO"    ; GOVERNMENT
-6547[5-9]    ; 8      ; MOBILE     ; STANDARD_RATE ; "smartone"                   ; "fmt1_4/4" ; "MO"    ; IR21
-654[89]      ; 8      ; MOBILE     ; STANDARD_RATE ; "smartone"                   ; "fmt1_4/4" ; "MO"    ; IR21
+6547[5-9]    ; 8      ; MOBILE     ; STANDARD_RATE ; "ctm"                        ; "fmt1_4/4" ; "MO"
+654[89]      ; 8      ; MOBILE     ; STANDARD_RATE ; "ctm"                        ; "fmt1_4/4" ; "MO"
 655[0-5]     ; 8      ; MOBILE     ; STANDARD_RATE ; "ctm"                        ; "fmt1_4/4" ; "MO"    ; GOVERNMENT
 655[6-9]     ; 8      ; MOBILE     ; STANDARD_RATE ; "china_telecom"              ; "fmt1_4/4" ; "MO"    ; GOVERNMENT
 656          ; 8      ; MOBILE     ; STANDARD_RATE ; "china_telecom"              ; "fmt1_4/4" ; "MO"    ; GOVERNMENT
@@ -63,15 +63,15 @@ Prefix       ; Length ; Type       ; Tariff        ; Operator                   
 6600[02-9]   ; 8      ; MOBILE     ; STANDARD_RATE ;                              ; "fmt1_4/4" ; "MO"    ; GOVERNMENT
 66001        ; 8      ; MOBILE     ; STANDARD_RATE ; "ctm"                        ; "fmt1_4/4" ; "MO"    ; GOVERNMENT
 6601         ; 8      ; MOBILE     ; STANDARD_RATE ; "ctm"                        ; "fmt1_4/4" ; "MO"    ; GOVERNMENT
-660[24]      ; 8      ; MOBILE     ; STANDARD_RATE ; "smartone"                   ; "fmt1_4/4" ; "MO"    ; GOVERNMENT
+660[24]      ; 8      ; MOBILE     ; STANDARD_RATE ; "ctm"                        ; "fmt1_4/4" ; "MO"
 6603         ; 8      ; MOBILE     ; STANDARD_RATE ; "3"                          ; "fmt1_4/4" ; "MO"    ; IR21
 6605         ; 8      ; MOBILE     ; STANDARD_RATE ; "china_telecom"              ; "fmt1_4/4" ; "MO"    ; IR21
 661[0167]    ; 8      ; MOBILE     ; STANDARD_RATE ; "3"                          ; "fmt1_4/4" ; "MO"    ; IR21
 661[2389]    ; 8      ; MOBILE     ; STANDARD_RATE ; "ctm"                        ; "fmt1_4/4" ; "MO"    ; GOVERNMENT
-661[45]      ; 8      ; MOBILE     ; STANDARD_RATE ; "smartone"                   ; "fmt1_4/4" ; "MO"    ; IR21
-662          ; 8      ; MOBILE     ; STANDARD_RATE ; "smartone"                   ; "fmt1_4/4" ; "MO"    ; IR21
+661[45]      ; 8      ; MOBILE     ; STANDARD_RATE ; "ctm"                        ; "fmt1_4/4" ; "MO"
+662          ; 8      ; MOBILE     ; STANDARD_RATE ; "ctm"                        ; "fmt1_4/4" ; "MO"
 663          ; 8      ; MOBILE     ; STANDARD_RATE ; "3"                          ; "fmt1_4/4" ; "MO"    ; IR21
-664[01]      ; 8      ; MOBILE     ; STANDARD_RATE ; "smartone"                   ; "fmt1_4/4" ; "MO"    ; IR21
+664[01]      ; 8      ; MOBILE     ; STANDARD_RATE ; "ctm"                        ; "fmt1_4/4" ; "MO"
 664[2-68]    ; 8      ; MOBILE     ; STANDARD_RATE ; "3"                          ; "fmt1_4/4" ; "MO"    ; IR21
 6647         ; 8      ; MOBILE     ; STANDARD_RATE ; "ctm"                        ; "fmt1_4/4" ; "MO"    ; GOVERNMENT
 66[49]9      ; 8      ; MOBILE     ; STANDARD_RATE ; "china_telecom"              ; "fmt1_4/4" ; "MO"    ; GOVERNMENT
@@ -79,8 +79,8 @@ Prefix       ; Length ; Type       ; Tariff        ; Operator                   
 665[67]      ; 8      ; MOBILE     ; STANDARD_RATE ; "3"                          ; "fmt1_4/4" ; "MO"    ; IR21
 66[68]       ; 8      ; MOBILE     ; STANDARD_RATE ; "ctm"                        ; "fmt1_4/4" ; "MO"    ; GOVERNMENT
 667[01]      ; 8      ; MOBILE     ; STANDARD_RATE ; "china_telecom"              ; "fmt1_4/4" ; "MO"    ; GOVERNMENT
-667[2579]    ; 8      ; MOBILE     ; STANDARD_RATE ; "ctm"                        ; "fmt1_4/4" ; "MO"    ; GOVERNMENT
-667[38]      ; 8      ; MOBILE     ; STANDARD_RATE ; "smartone"                   ; "fmt1_4/4" ; "MO"    ; IR21
+667[257-9]   ; 8      ; MOBILE     ; STANDARD_RATE ; "ctm"                        ; "fmt1_4/4" ; "MO"    ; GOVERNMENT
+6673         ; 8      ; MOBILE     ; STANDARD_RATE ; "ctm"                        ; "fmt1_4/4" ; "MO"
 667[46]      ; 8      ; MOBILE     ; STANDARD_RATE ; "3"                          ; "fmt1_4/4" ; "MO"    ; IR21
 669[01]      ; 8      ; MOBILE     ; STANDARD_RATE ; "guangxing_communication_co" ; "fmt1_4/4" ; "MO"    ; GOVERNMENT
 669[2368]    ; 8      ; MOBILE     ; STANDARD_RATE ; "ctm"                        ; "fmt1_4/4" ; "MO"    ; GOVERNMENT
@@ -89,9 +89,9 @@ Prefix       ; Length ; Type       ; Tariff        ; Operator                   
 680[1-4]     ; 8      ; MOBILE     ; STANDARD_RATE ; "ctm"                        ; "fmt1_4/4" ; "MO"    ; GOVERNMENT
 68[07][5-9]  ; 8      ; MOBILE     ; STANDARD_RATE ; "3"                          ; "fmt1_4/4" ; "MO"    ; IR21
 68[18][0-4]  ; 8      ; MOBILE     ; STANDARD_RATE ; "ctm"                        ; "fmt1_4/4" ; "MO"    ; GOVERNMENT
-681[5-9]     ; 8      ; MOBILE     ; STANDARD_RATE ; "smartone"                   ; "fmt1_4/4" ; "MO"    ; IR21
+681[5-9]     ; 8      ; MOBILE     ; STANDARD_RATE ; "ctm"                        ; "fmt1_4/4" ; "MO"
 68[28][5-9]  ; 8      ; MOBILE     ; STANDARD_RATE ; "china_telecom"              ; "fmt1_4/4" ; "MO"    ; GOVERNMENT
-68[37][0-4]  ; 8      ; MOBILE     ; STANDARD_RATE ; "smartone"                   ; "fmt1_4/4" ; "MO"    ; IR21
+68[37][0-4]  ; 8      ; MOBILE     ; STANDARD_RATE ; "ctm"                        ; "fmt1_4/4" ; "MO"
 68[45][0-4]  ; 8      ; MOBILE     ; STANDARD_RATE ; "3"                          ; "fmt1_4/4" ; "MO"    ; IR21
 684[5-9]     ; 8      ; MOBILE     ; STANDARD_RATE ; "ctm"                        ; "fmt1_4/4" ; "MO"    ; GOVERNMENT
 685[5-9]     ; 8      ; MOBILE     ; STANDARD_RATE ; "ctm"                        ; "fmt1_4/4" ; "MO"    ; IR21

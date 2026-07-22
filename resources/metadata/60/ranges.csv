@@ -89,6 +89,9 @@ Prefix         ; Length ; Type       ; Tariff        ; Area Code Length ; Operat
 117[34]        ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "ytl"           ; "mobile_2/4/4"    ; "MY"    ; IR21
 1175[0-6]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "ytl"           ; "mobile_2/4/4"    ; "MY"    ; IR21
 11757          ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "u_mobile"      ; "mobile_2/4/4"    ; "MY"    ; IR21
+11759          ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "eastel"        ; "mobile_2/4/4"    ; "MY"    ; IR21
+1176[02-4]     ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "eastel"        ; "mobile_2/4/4"    ; "MY"    ; IR21
+1178[02-5]     ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "eastel"        ; "mobile_2/4/4"    ; "MY"    ; IR21
 11888[69]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "u_mobile"      ; "mobile_2/4/4"    ; "MY"    ; IR21
 118888         ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "red_one"       ; "mobile_2/4/4"    ; "MY"    ; GOVERNMENT
 12             ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "maxis"         ; "fmt_2/3/3-4"     ; "MY"    ; IR21
@@ -141,6 +144,7 @@ Prefix         ; Length ; Type       ; Tariff        ; Area Code Length ; Operat
 189[014-8]     ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "u_mobile"      ; "fmt_2/3/3-4"     ; "MY"    ; GOVERNMENT
 189[23]        ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "ytl"           ; "fmt_2/3/3-4"     ; "MY"    ; GOVERNMENT
 19             ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "celcom"        ; "fmt_2/3/3-4"     ; "MY"    ; IR21
+19             ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "celcom"        ; "mobile_2/4/4"    ; "MY"    ; IR21
 320[046]       ; 9      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                 ; "fixed_1/4/4"     ; "MY"
 3201[02-9]     ; 9      ; FIXED_LINE ; STANDARD_RATE ;                  ;                 ; "fixed_1/4/4"     ; "MY"
 32011          ; 9      ; FIXED_LINE ; STANDARD_RATE ;                  ;                 ; "fixed_1/4/4"     ; "MY"    ; GOVERNMENT
@@ -652,7 +656,7 @@ Prefix         ; Length ; Type       ; Tariff        ; Area Code Length ; Operat
 425[67]        ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                 ; "fixed_1/3/4"     ; "MY"
 426[0-47-9]    ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                 ; "fixed_1/3/4"     ; "MY"    ; GOVERNMENT
 426[56]        ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                 ; "fixed_1/3/4"     ; "MY"
-4270           ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                 ; "fixed_1/3/4"     ; "MY"    ;            ; "User report"
+427[01]        ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                 ; "fixed_1/3/4"     ; "MY"    ;            ; "User report"
 428[0-389]     ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                 ; "fixed_1/3/4"     ; "MY"    ; GOVERNMENT
 428[4-7]       ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                 ; "fixed_1/3/4"     ; "MY"
 429[0-38]      ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                 ; "fixed_1/3/4"     ; "MY"    ; GOVERNMENT

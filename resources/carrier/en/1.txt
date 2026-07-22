@@ -85,6 +85,7 @@
 124669|Ozone
 12468|Digicel
 1264469|Cable & Wireless
+1264477|Flow
 126453|Weblinks Limited
 126458|Digicel
 1264729|Cable & Wireless
@@ -127,6 +128,7 @@
 134044|GIGSKY Mobile
 1340725|Vitelcom Cellular
 134532|Digicel
+134541|Paradise Mobile
 134542|Digicel
 134551|Digicel
 134552|Digicel
@@ -164,7 +166,12 @@
 164924|Cable & Wireless
 16493|Digicel
 164943|Islandcom
-1658295|Cable & Wireless
+165820|Flow
+165821|Flow
+165822|Flow
+165823|Flow
+165824|Flow
+1658295|Flow
 1659200|Onvoy
 1659222|Onvoy
 1659300|Onvoy
@@ -205,6 +212,16 @@
 168425|Blue Sky
 168427|Blue Sky
 16847|ASTCA
+1721553|Flow
+1721554|Flow
+1721580|Flow
+1721581|Flow
+1721582|Flow
+1721584|Flow
+1721585|Flow
+1721586|Flow
+1721587|Flow
+1721588|Flow
 175828|Cable & Wireless
 17583|Cable & Wireless
 1758460|Cable & Wireless
@@ -509,9 +526,9 @@
 180999|Tricom
 186825|Digicel
 186826|Digicel
-186827|bmobile
-186828|bmobile
-186829|bmobile
+186827|Digicel
+186828|Digicel
+186829|Digicel
 18683|Digicel
 186843|Digicel
 186846|bmobile

@@ -99,8 +99,7 @@
 346047|Lebara
 346048|Lebara
 346049|Lebara
-34605|Orange
-3460529|MasMovil
+34605|Vodafone
 34606|Movistar
 34607|Vodafone
 34608|Movistar
@@ -111,10 +110,12 @@
 346112|Yoigo
 346113|Yoigo
 34612|Syma
-346122|Lycamobile
-346124|Lycamobile
-346125|Lycamobile
+346122|Yoigo
+346124|Yoigo
+346125|Yoigo
+346126|Sarenet
 34613|Yoigo
+34614|DigiMobil
 34615|Orange
 34616|Movistar
 34617|Vodafone
@@ -128,6 +129,7 @@
 346214|Republica Movil
 346215|Aire Networks
 346216|Republica Movil
+346218|Vodafone
 34622|Yoigo
 346230|Yoigo
 346231|Yoigo
@@ -183,6 +185,8 @@
 34666|Vodafone
 34667|Vodafone
 346681|Truphone
+346682|Vodafone
+346683|Vodafone
 346685|Orange
 346686|Parlem
 346688|Parlem
@@ -286,6 +290,7 @@
 346938|Yoigo
 346939|Yoigo
 34694|Movistar
+346942|Orange
 346944|Yoigo
 346945|Yoigo
 346946|Yoigo
@@ -298,6 +303,8 @@
 34699|Movistar
 347110|Zinnia
 347111|Vodafone
+347112|Orange
+347115|Orange
 347117|Vodafone
 347121|Yoigo
 347122|Yoigo
@@ -309,6 +316,7 @@
 347128|Yoigo
 347170|Movistar
 347171|Vodafone
+347172|Suma Movil
 347177|Movistar
 3471770|PepePhone
 3471771|PepePhone
@@ -324,6 +332,8 @@
 347227|Yoigo
 347228|Yoigo
 347277|Vodafone
+347440|Alai
+347442|PTV
 3474442|Deion
 3474443|InfoVOIP
 3474447|Jetnet

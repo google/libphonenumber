@@ -27,4 +27,5 @@ Prefix       ; Length ; Type      ; Tariff        ; Operator               ; For
 49           ; 8      ; MOBILE    ; STANDARD_RATE ; "monaco_telecom"       ; "mobile_2/6"       ; "001"   ; IR21
 50           ; 12     ; MOBILE    ; STANDARD_RATE ; "phonegroup"           ; "fmt_2/4-5/5"      ; "001"   ; ITU
 51           ; 10     ; VOIP      ; STANDARD_RATE ;                        ; "fmt_2/4/4"        ; "001"   ; ITU
+52[0-2]      ; 10     ; MOBILE    ; STANDARD_RATE ;                        ; "fmt_2/4/4"        ; "001"   ; ITU
 9[89]        ; 8      ; VOIP      ; STANDARD_RATE ;                        ; "voip_2/2/4"       ; "001"   ; IR21

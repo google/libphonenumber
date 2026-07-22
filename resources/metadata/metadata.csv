@@ -101,7 +101,7 @@ Calling Code ; Main Region ; Extra Regions                                      
 421          ; "SK"        ;                                                                           ; "0"             ; "00"       ; "Europe/Bratislava"                                   ; "SK"
 423          ; "LI"        ;                                                                           ; "0"             ; "00"       ; "Europe/Vaduz"
 43           ; "AT"        ;                                                                           ; "0"             ; "00"       ; "Europe/Vienna"                                       ; "AT"
-44           ; "GB"        ; "GG,IM,JE"                                                                ; "0"             ; "00"       ;                                                       ; "GB"                                                             ; """ x"""
+44           ; "GB"        ; "GG,IM,JE"                                                                ; "0,180020"      ; "00"       ;                                                       ; "GB"                                                             ; """ x"""
 45           ; "DK"        ;                                                                           ;                 ; "00"       ; "Europe/Copenhagen"                                   ; "DK"
 46           ; "SE"        ;                                                                           ; "0"             ; "00"       ; "Europe/Stockholm"                                    ; "SE"
 47           ; "NO"        ; "SJ"                                                                      ;                 ; "00"       ;                                                       ; "NO"

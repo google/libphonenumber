@@ -17,11 +17,12 @@
 #ifndef I18N_PHONENUMBERS_SHORT_METADATA_H_
 #define I18N_PHONENUMBERS_SHORT_METADATA_H_
 
+#include "phonenumbers/metadata_bytes.h"
+
 namespace i18n {
 namespace phonenumbers {
 
-int short_metadata_size();
-const void* short_metadata_get();
+MetadataBytes GetShortMetadata();
 
 }  // namespace phonenumbers
 }  // namespace i18n
