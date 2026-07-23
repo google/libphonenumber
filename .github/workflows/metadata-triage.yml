@@ -55,17 +55,19 @@ jobs:
               });
 
               // 2. Post standardized auto-rejection message
-              const rejectionComment = `Hi @${pr.user.login},
-
-Thank you for your contribution!
-
-Per the \`libphonenumber\` contribution guidelines, **metadata updates are not accepted directly via GitHub Pull Requests**. All numbering updates must go through our official, structured metadata validation pipeline.
-
-### How to submit metadata changes:
-1. Please visit the official metadata submission pipeline: [Official Metadata Issue Submission](https://github.com/google/libphonenumber/blob/master/CONTRIBUTING.md#submitting-metadata-changes).
-2. Report numbering changes using our tracker.
-
-This pull request will now be automatically closed. If you believe this is in error (e.g. this is a code change that happens to touch metadata test cases), please reply with a comment explaining your use case, and an operations engineer will review it manually.`;
+              const rejectionComment = [
+                `Hi @${pr.user.login},`,
+                "",
+                "Thank you for your contribution!",
+                "",
+                "Per the `libphonenumber` contribution guidelines, **metadata updates are not accepted directly via GitHub Pull Requests**. All numbering updates must go through our official, structured metadata validation pipeline.",
+                "",
+                "### How to submit metadata changes:",
+                "1. Please visit the official metadata submission pipeline: [Official Metadata Issue Submission](https://github.com/google/libphonenumber/blob/master/CONTRIBUTING.md#submitting-metadata-changes).",
+                "2. Report numbering changes using our tracker.",
+                "",
+                "This pull request will now be automatically closed. If you believe this is in error (e.g. this is a code change that happens to touch metadata test cases), please reply with a comment explaining your use case, and an operations engineer will review it manually."
+              ].join("\n");
 
               await github.rest.issues.createComment({
                 owner: context.repo.owner,
@@ -114,14 +116,16 @@ This pull request will now be automatically closed. If you believe this is in er
             const triggerUser = isComment ? context.payload.comment.user.login : context.payload.sender.login;
             const triggerAction = isComment ? 'commenting on this PR' : 'reopening this PR';
 
-            const escalationComment = `🔔 **Ops Notification**: The PR author has requested review by ${triggerAction}. 
-
-This thread has been reopened for Ops review. 
-- **Assigned to**: Weekly Ops PR Lead (Bangalore Ops 9x5 rotation)
-- **Target Review SLA**: 3–5 business days
-- **Escalated by**: @${triggerUser}
-
-_Ops Note: Please review the author's comments and manually merge/process if they provide a valid justification._`;
+            const escalationComment = [
+              `🔔 **Ops Notification**: The PR author has requested review by ${triggerAction}.`,
+              "",
+              "This thread has been reopened for Ops review. ",
+              "- **Assigned to**: Weekly Ops PR Lead (Bangalore Ops 9x5 rotation)",
+              "- **Target Review SLA**: 3–5 business days",
+              `- **Escalated by**: @${triggerUser}`,
+              "",
+              "_Ops Note: Please review the author's comments and manually merge/process if they provide a valid justification._"
+            ].join("\n");
 
             await github.rest.issues.createComment({
               owner: context.repo.owner,
