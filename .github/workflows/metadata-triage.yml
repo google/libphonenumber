@@ -1,0 +1,131 @@
+name: Metadata Auto-Rejection & Ops Triage
+
+on:
+  pull_request_target:
+    types: [opened, reopened, synchronize]
+  issue_comment:
+    types: [created]
+
+permissions:
+  pull-requests: write
+  issues: write
+
+jobs:
+  triage:
+    name: Metadata Triage & Escalation
+    runs-on: ubuntu-latest
+    steps:
+      - name: Auto-Reject Metadata PR
+        if: github.event_name == 'pull_request_target' && github.event.action != 'reopened'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { data: files } = await github.rest.pulls.listFiles({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.issue.number
+            });
+
+            // Identify if any metadata XML files are modified
+            const hasMetadataChanges = files.some(file => 
+              file.filename.endsWith('.xml') && file.filename.toLowerCase().includes('metadata')
+            );
+
+            if (hasMetadataChanges) {
+              const { data: pr } = await github.rest.pulls.get({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                pull_number: context.issue.number
+              });
+              const labels = (pr.labels || []).map(l => l.name);
+
+              if (labels.includes('status:ops-review-required')) {
+                console.log('Skipping auto-rejection: already escalated to Ops.');
+                return;
+              }
+
+              console.log('Metadata changes found. Tagging, commenting, and closing...');
+              
+              // 1. Tag with type:metadata
+              await github.rest.issues.addLabels({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                labels: ['type:metadata']
+              });
+
+              // 2. Post standardized auto-rejection message
+              const rejectionComment = `Hi @${pr.user.login},
+
+Thank you for your contribution!
+
+Per the \`libphonenumber\` contribution guidelines, **metadata updates are not accepted directly via GitHub Pull Requests**. All numbering updates must go through our official, structured metadata validation pipeline.
+
+### How to submit metadata changes:
+1. Please visit the official metadata submission pipeline: [Official Metadata Issue Submission](https://github.com/google/libphonenumber/blob/master/CONTRIBUTING.md#submitting-metadata-changes).
+2. Report numbering changes using our tracker.
+
+This pull request will now be automatically closed. If you believe this is in error (e.g. this is a code change that happens to touch metadata test cases), please reply with a comment explaining your use case, and an operations engineer will review it manually.`;
+
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body: rejectionComment
+              });
+
+              // 3. Close the PR
+              await github.rest.pulls.update({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                pull_number: context.issue.number,
+                state: 'closed'
+              });
+            }
+
+      - name: Escalate to Ops
+        if: |
+          (github.event_name == 'issue_comment' && github.event.issue.state == 'closed' && github.event.comment.user.type != 'Bot') ||
+          (github.event_name == 'pull_request_target' && github.event.action == 'reopened')
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { data: issue } = await github.rest.issues.get({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number
+            });
+            
+            const labels = (issue.labels || []).map(l => l.name);
+            if (!labels.includes('type:metadata')) return;
+
+            console.log('Follow-up activity on metadata PR. Escalating to Ops...');
+
+            // 1. Add status:ops-review-required label
+            await github.rest.issues.addLabels({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              labels: ['status:ops-review-required']
+            });
+
+            // 2. Post comment notifying Ops
+            const isComment = context.eventName === 'issue_comment';
+            const triggerUser = isComment ? context.payload.comment.user.login : context.payload.sender.login;
+            const triggerAction = isComment ? 'commenting on this PR' : 'reopening this PR';
+
+            const escalationComment = `🔔 **Ops Notification**: The PR author has requested review by ${triggerAction}. 
+
+This thread has been reopened for Ops review. 
+- **Assigned to**: Weekly Ops PR Lead (Bangalore Ops 9x5 rotation)
+- **Target Review SLA**: 3–5 business days
+- **Escalated by**: @${triggerUser}
+
+_Ops Note: Please review the author's comments and manually merge/process if they provide a valid justification._`;
+
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: escalationComment
+            });
