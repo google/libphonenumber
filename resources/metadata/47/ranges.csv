@@ -161,6 +161,7 @@ Prefix          ; Length ; Type            ; Tariff        ; Operator           
 61              ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fmt_2/2/2/2"   ; "Europe/Oslo"         ; "NO"    ; "Oppland"              ; GOVERNMENT
 62              ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fmt_2/2/2/2"   ; "Europe/Oslo"         ; "NO"    ; "Hedmark"              ; GOVERNMENT
 6[3467]         ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fmt_2/2/2/2"   ; "Europe/Oslo"         ; "NO"    ; "Akershus"             ; GOVERNMENT
+68              ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fmt_2/2/2/2"   ; "Europe/Oslo"         ; "NO"    ; "Østfold/Akershus"     ; GOVERNMENT
 69              ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fmt_2/2/2/2"   ; "Europe/Oslo"         ; "NO"    ; "Østfold"              ; GOVERNMENT
 7[01]           ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fmt_2/2/2/2"   ; "Europe/Oslo"         ; "NO"    ; "Møre og Romsdal"      ; GOVERNMENT
 7[23]           ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fmt_2/2/2/2"   ; "Europe/Oslo"         ; "NO"    ; "Sør-Trøndelag"        ; GOVERNMENT

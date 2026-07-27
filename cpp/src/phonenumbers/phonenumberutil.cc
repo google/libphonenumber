@@ -122,7 +122,8 @@ const char kPossibleCharsAfterExtLabel[] =
 const char kOptionalExtSuffix[] = "#?";
 
 bool LoadCompiledInMetadata(PhoneMetadataCollection* metadata) {
-  if (!metadata->ParseFromArray(metadata_get(), metadata_size())) {
+  MetadataBytes bytes = GetMetadata();
+  if (!metadata->ParseFromArray(bytes.data(), bytes.size())) {
     LOG(ERROR) << "Could not parse binary data.";
     return false;
   }

@@ -31,11 +31,12 @@ Prefix        ; Length ; Type       ; Tariff        ; Area Code Length ; Nationa
 31366[0-57-9] ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ;                  ; "fmt_2/3/3-4" ; "HU"    ;                     ;                     ; UNKNOWN
 313666        ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ; "one"            ; "fmt_2/3/3-4" ; "HU"    ;                     ;                     ; IR21
 317[09]0      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ; "one"            ; "fmt_2/3/3-4" ; "HU"    ;                     ;                     ; IR21
-317[09][1-9]  ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ;                  ; "fmt_2/3/3-4" ; "HU"    ;                     ;                     ; UNKNOWN
+31701         ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ; "tarr"           ; "fmt_2/3/3-4" ; "HU"    ;                     ;                     ; GOVERNMENT
+317[07][2-9]  ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ;                  ; "fmt_2/3/3-4" ; "HU"    ;                     ;                     ; UNKNOWN
 317[1-6]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ;                  ; "fmt_2/3/3-4" ; "HU"    ;                     ;                     ; UNKNOWN
 3177[01]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ; "one"            ; "fmt_2/3/3-4" ; "HU"    ;                     ;                     ; IR21
-3177[2-9]     ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ;                  ; "fmt_2/3/3-4" ; "HU"    ;                     ;                     ; UNKNOWN
 3178          ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ; "one"            ; "fmt_2/3/3-4" ; "HU"    ;                     ;                     ; IR21
+3179[1-9]     ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ;                  ; "fmt_2/3/3-4" ; "HU"    ;                     ;                     ; UNKNOWN
 32            ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                  ; "fixed_2/3/3" ; "HU"    ; "Salgotarjan"       ; "Salgótarján"
 33            ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                  ; "fixed_2/3/3" ; "HU"    ; "Esztergom"         ; "Esztergom"
 34            ; 8      ; FIXED_LINE ; STANDARD_RATE ; 2                ; false         ;                  ; "fixed_2/3/3" ; "HU"    ; "Tatabanya"         ; "Tatabánya"

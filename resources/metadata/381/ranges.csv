@@ -38,8 +38,7 @@ Prefix    ; Length ; Type       ; Tariff        ; Area Code Length ; Operator   
 6[4-6]    ; 8,9    ; MOBILE     ; STANDARD_RATE ;                  ; "mts"            ; "fmt_2/5-10" ; "RS"    ;                      ;                      ; IR21
 67[02-59] ; 9,10   ; MOBILE     ; STANDARD_RATE ;                  ;                  ; "fmt_2/5-10" ; "RS"
 671       ; 9,10   ; MOBILE     ; STANDARD_RATE ;                  ; "ringtel"        ; "fmt_2/5-10" ; "RS"    ;                      ;                      ; GOVERNMENT
-676       ; 9,10   ; MOBILE     ; STANDARD_RATE ;                  ; "globaltel"      ; "fmt_2/5-10" ; "RS"    ;                      ;                      ; IR21
-677       ; 9,10   ; MOBILE     ; STANDARD_RATE ;                  ; "globaltel"      ; "fmt_2/5-10" ; "RS"    ;                      ;                      ; GOVERNMENT
+67[67]    ; 9,10   ; MOBILE     ; STANDARD_RATE ;                  ; "mts"            ; "fmt_2/5-10" ; "RS"    ;                      ;                      ; IR21
 678       ; 9,10   ; MOBILE     ; STANDARD_RATE ;                  ; "vectone_mobile" ; "fmt_2/5-10" ; "RS"
 7[06]     ; 6-12   ; UAN        ; STANDARD_RATE ;                  ;                  ; "fmt_3/3-9"  ; "RS"    ;                      ;                      ; GOVERNMENT
 78        ; 6-10   ; FIXED_LINE ; PREMIUM_RATE  ;                  ;                  ; "fmt_3/3-9"  ; "RS"

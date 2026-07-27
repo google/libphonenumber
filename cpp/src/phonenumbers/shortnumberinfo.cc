@@ -35,7 +35,8 @@ using std::map;
 using std::string;
 
 bool LoadCompiledInMetadata(PhoneMetadataCollection* metadata) {
-  if (!metadata->ParseFromArray(short_metadata_get(), short_metadata_size())) {
+  MetadataBytes bytes = GetShortMetadata();
+  if (!metadata->ParseFromArray(bytes.data(), bytes.size())) {
     LOG(ERROR) << "Could not parse binary data.";
     return false;
   }

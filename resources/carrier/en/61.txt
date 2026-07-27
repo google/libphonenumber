@@ -37,10 +37,8 @@
 6142001|Rail Corporation NSW
 6142002|Dialogue Communications
 6142003|MessageBird
-6142004|Symbio Networks
-6142010|Pivotel Satellite
-6142011|Compatel Limited
-6142012|Soul Pattinson
+6142004|symbio networks
+614201|Pivotel Satellite
 61421|Optus
 61422|Optus
 61423|Optus
@@ -61,13 +59,13 @@
 61438|Telstra
 61439|Telstra
 61440|MessageBird
-614400|Aazad distribution discretionary trust
+614400|the trustee for aazad distribution discretionary trust
 614444|Telstra
 614445|Telstra
 61447|Telstra
 61448|Telstra
 61449|Vodafone
-614493|Soul Pattinson
+614493|soul pattinson
 6145|Telstra
 61450|Vodafone
 61451|Vodafone

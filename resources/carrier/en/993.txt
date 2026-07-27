@@ -12,6 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# TM CELL is the trade name for JSC "Altyn Asyr" 
+
 99361|TM-Cell
 99362|TM-Cell
 99363|TM-Cell

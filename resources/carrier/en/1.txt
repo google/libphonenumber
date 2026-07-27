@@ -526,9 +526,9 @@
 180999|Tricom
 186825|Digicel
 186826|Digicel
-186827|bmobile
-186828|bmobile
-186829|bmobile
+186827|Digicel
+186828|Digicel
+186829|Digicel
 18683|Digicel
 186843|Digicel
 186846|bmobile

@@ -172,8 +172,8 @@ bool AllNumberGroupsRemainGrouped(
 
 bool LoadAlternateFormats(PhoneMetadataCollection* alternate_formats) {
 #if defined(I18N_PHONENUMBERS_USE_ALTERNATE_FORMATS)
-  if (!alternate_formats->ParseFromArray(alternate_format_get(),
-                                         alternate_format_size())) {
+  MetadataBytes bytes = GetAlternateFormat();
+  if (!alternate_formats->ParseFromArray(bytes.data(), bytes.size())) {
     LOG(ERROR) << "Could not parse binary data.";
     return false;
   }
