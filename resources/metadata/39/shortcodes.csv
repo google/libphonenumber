@@ -7,7 +7,8 @@ IT     ; 116111      ; 6      ; EXPANDED_EMERGENCY ; TOLL_FREE    ;      ; "shor
 IT     ; 119         ; 3      ; COMMERCIAL
 IT     ; 12          ; 4      ; COMMERCIAL         ; PREMIUM_RATE
 IT     ; 13[39]      ; 3      ; COMMERCIAL
-IT     ; 14[0-7]     ; 3      ; COMMERCIAL
+IT     ; 14[0-57]    ; 3      ; COMMERCIAL
+IT     ; 146         ; 3      ; COMMERCIAL         ; TOLL_FREE
 IT     ; 148         ; 3      ; COMMERCIAL
 IT     ; 1482        ; 4      ; COMMERCIAL
 IT     ; 149         ; 3-6    ; COMMERCIAL

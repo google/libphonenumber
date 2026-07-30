@@ -97,6 +97,7 @@ Prefix     ; Length ; Type       ; Tariff        ; Operator             ; Format
 69[67]     ; 9      ; MOBILE     ; STANDARD_RATE ; "maroc_telecom"      ; "fmt_1_2_2_2_2" ; "EH,MA" ;                                                  ;                                                  ; IR21       ; "IR21 - 4/20/2018"
 7[01]      ; 9      ; MOBILE     ; STANDARD_RATE ; "inwi"               ; "fmt_1_2_2_2_2" ; "EH,MA" ;                                                  ;                                                  ; IR21
 72[0-8]    ; 9      ; MOBILE     ; STANDARD_RATE ; "inwi"               ; "fmt_1_2_2_2_2" ; "EH,MA" ;                                                  ;                                                  ; IR21
+73[01]     ; 9      ; MOBILE     ; STANDARD_RATE ; "orange"             ; "fmt_1_2_2_2_2" ; "EH,MA" ;                                                  ;                                                  ; IR21
 75[0-5]    ; 9      ; MOBILE     ; STANDARD_RATE ; "maroc_telecom"      ; "fmt_1_2_2_2_2" ; "EH,MA" ;                                                  ;                                                  ; IR21
 76         ; 9      ; MOBILE     ; STANDARD_RATE ; "maroc_telecom"      ; "fmt_1_2_2_2_2" ; "EH,MA" ;                                                  ;                                                  ; IR21
 7[78]      ; 9      ; MOBILE     ; STANDARD_RATE ; "orange"             ; "fmt_1_2_2_2_2" ; "EH,MA" ;                                                  ;                                                  ; IR21

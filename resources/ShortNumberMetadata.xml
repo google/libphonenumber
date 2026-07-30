@@ -4993,6 +4993,7 @@
 
     <!-- Faroe Islands (FO) -->
     <!-- http://www.itu.int/oth/T0202000047/en -->
+    <!-- https://www.fjarskiftiseftirlitid.fo/fo/fjarskifti/nummarskipan -->
     <territory id="FO">
       <generalDesc>
         <nationalNumberPattern>1\d{2,3}</nationalNumberPattern>
@@ -5002,14 +5003,12 @@
         <possibleLengths national="3,4"/>
         <exampleNumber>112</exampleNumber>
         <nationalNumberPattern>
-          1(?:
-            1[248]|
-            819
-          )|
+          11[248]|
           1(?:
             4[124]|
             71|
-            8[7-9]
+            8[17-9]|
+            9\d
           )\d
         </nationalNumberPattern>
       </shortCode>
@@ -5033,6 +5032,11 @@
         <exampleNumber>1810</exampleNumber>
         <nationalNumberPattern>181\d</nationalNumberPattern>
       </expandedEmergency>
+      <smsServices>
+        <possibleLengths national="4"/>
+        <exampleNumber>1900</exampleNumber>
+        <nationalNumberPattern>19\d\d</nationalNumberPattern>
+      </smsServices>
     </territory>
 
     <!-- France (FR) -->
@@ -7651,6 +7655,7 @@
               [2358]|
               6\d{3}
             )|
+            46|
             87
           )
         </nationalNumberPattern>
