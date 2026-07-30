@@ -68,7 +68,6 @@ Prefix          ; Length ; Type            ; Tariff        ; Operator           
 41[23]          ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"                  ; "fmt_2/2/2/2"   ; "Europe/Oslo"         ; "NO,SJ"
 41[4-7]         ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "fmt_2/2/2/2"   ; "Europe/Oslo"         ; "NO,SJ"
 41[89]          ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "fmt_2/2/2/2"   ; "Europe/Oslo"         ; "NO,SJ" ;                        ; IR21       ; "IR21  01/02/2019"
-4[2-49]         ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "fmt_2/2/2/2"   ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
 45[0167]        ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"                  ; "fmt_2/2/2/2"   ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
 45[24]          ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"                  ; "fmt_2/2/2/2"   ; "Europe/Oslo"         ; "NO,SJ"
 453[0-5]        ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "fmt_2/2/2/2"   ; "Europe/Oslo"         ; "NO,SJ" ;                        ; IR21       ; "IR21  01/02/2019"
@@ -155,6 +154,7 @@ Prefix          ; Length ; Type            ; Tariff        ; Operator           
 489[359]        ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"                  ; "fmt_2/2/2/2"   ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
 4894            ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "fmt_2/2/2/2"   ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
 489[68]         ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "fmt_2/2/2/2"   ; "Europe/Oslo"         ; "NO,SJ" ;                        ; IR21       ; "IR21  01/02/2019"
+49              ; 8      ; MOBILE          ; STANDARD_RATE ; "telenor"                ; "fmt_2/2/2/2"   ; "Europe/Oslo"         ; "NO,SJ" ;                        ; GOVERNMENT
 5[12]           ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fmt_2/2/2/2"   ; "Europe/Oslo"         ; "NO"    ; "Rogaland"             ; GOVERNMENT
 5[356]          ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fmt_2/2/2/2"   ; "Europe/Oslo"         ; "NO"    ; "Hordaland"            ; GOVERNMENT
 57              ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                          ; "fmt_2/2/2/2"   ; "Europe/Oslo"         ; "NO"    ; "Sogn og Fjordane"     ; GOVERNMENT

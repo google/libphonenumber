@@ -1,2 +1,2 @@
-Id    ; National ; Carrier    ; International
-fmt_6 ; "XXXXXX" ; "@ XXXXXX" ; "XXXXXX"
+Id        ; National   ; Carrier      ; International
+fmt_2/2/2 ; "XX XX XX" ; "@ XX XX XX" ; "XX XX XX"
