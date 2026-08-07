@@ -53,8 +53,10 @@
 5042244|Tegucigalpa
 5042245|La Vega, Tegucigalpa
 5042246|La Vega, Tegucigalpa
+5042248|Tegucigalpa
 5042255|El Hato
 5042257|Prados Universitarios
+5042268|Tegucigalpa
 5042281|Francisco Morazan
 5042283|Francisco Morazan
 5042290|Toncontin
@@ -84,18 +86,21 @@
 5042455|French Harbour
 5042458|Atlantida
 5042459|Atlantida
+504248|Atlantida
 5042502|Cortes
 5042503|Cortes
 5042505|Cortes
 5042511|Cortes
 5042512|San Pedro Sula, Cortés
 5042513|Cortes
+5042514|San Pedro Sula, Cortés
 5042515|Cortes
 5042516|San Pedro Sula, Cortés
 5042540|San Pedro Sula, Cortés
 5042543|Inalámbrica Sps
 5042544|Rdsi San Pedro Sula
 5042545|San Pedro Sula, Cortés
+5042548|San Pedro Sula, Cortés
 5042550|San Pedro Sula, Cortés
 5042551|Monte Prieto
 5042552|San Pedro Sula, Cortés
@@ -112,6 +117,7 @@
 5042569|Cortes
 5042570|Cortes
 5042574|Búfalo
+504258|San Pedro Sula, Cortés
 504261|Choloma, Cortés
 5042637|Santa Barbra
 5042640|C. Comunitarios
@@ -141,6 +147,8 @@
 5042690|El Negrito
 5042691|Morazán
 504270|Olancho
+5042720|Comayagua/Choluteca/El Paraíso/Valle/La Paz/Olancho/Intibucá/
+5042721|Comayagua/Francisco Morazán
 5042764|Amarat/Marcala
 5042766|Valle De Ángeles
 5042767|Ojojona

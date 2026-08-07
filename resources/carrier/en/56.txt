@@ -523,6 +523,7 @@
 5623381|Claro
 5623382|Claro
 5623383|Claro
+56234|Movistar
 56235|Gtd Telesat S.A.
 56236|Entel
 56322162|Entel
@@ -696,6 +697,9 @@
 563324324|Compania Chilena De Comunicaciones Parallel S.A.
 56332433|Entel
 56332434|Chile.Com
+56332437|Movistar
+56332438|Movistar
+56332439|Movistar
 5633244|Compania De Telecomunicaciones De Chile S.A.
 5633245|Vtr Banda Ancha (Chile) S.A.
 5633246|Claro
@@ -960,6 +964,11 @@
 56413382|Compania De Telecomunicaciones De Chile S.A.
 56413383|Compania De Telecomunicaciones De Chile S.A.
 56413384|Compania De Telecomunicaciones De Chile S.A.
+56413385|Movistar
+56413386|Movistar
+56413387|Movistar
+56413388|Movistar
+56413389|Movistar
 5641339|Telefonica Del Sur S.A.
 5641350|Entel
 5641351|Entel
@@ -1822,6 +1831,9 @@
 566122|Compania De Telecomunicaciones De Chile S.A.
 56612311|Compania De Telecomunicaciones De Chile S.A.
 56612315|Redvoiss
+56612317|Movistar
+56612318|Movistar
+56612319|Movistar
 5661232|Claro
 56612331|Compania De Telecomunicaciones De Chile S.A.
 566123330|Compania Chilena De Comunicaciones Parallel S.A.
@@ -1938,6 +1950,7 @@
 56632719|Entel
 5663272|Entel
 56632730|Redvoiss
+5663274|Movistar
 5663277|Telestar
 5663296|Telefonica Del Sur S.A.
 56632970|Comunicacion Y Telefonia Rural S.A.
@@ -2345,6 +2358,8 @@
 56722450|Compania De Telecomunicaciones De Chile S.A.
 56722451|Compania De Telecomunicaciones De Chile S.A.
 56722452|Compania De Telecomunicaciones De Chile S.A.
+56722453|Sociedad Comercial y de IngenierÃ­a Swedcom
+56722454|Sociedad Comercial y de IngenierÃ­a Swedcom
 56722455|Entel
 56722456|Entel
 56722457|Entel
@@ -2390,6 +2405,9 @@
 5672253|Vtr Banda Ancha (Chile) S.A.
 56722540|Compania De Telecomunicaciones De Chile S.A.
 56722541|Compania De Telecomunicaciones De Chile S.A.
+56722542|Claro
+56722543|Claro
+56722544|Claro
 56722545|Entel
 56722546|Entel
 56722547|Entel
@@ -2423,11 +2441,19 @@
 56722579|Entel
 5672258|Entel
 56722591|Compania De Telecomunicaciones De Chile S.A.
+56722592|Claro
+56722593|Claro
+56722594|Claro
+56722595|Claro
 56722596|Compania De Telecomunicaciones De Chile S.A.
+56722597|Claro
+56722598|Claro
+56722599|Claro
 567226|Complejo Manufacturero De Equipos Telefonicos S.A.C.I.
 5672260|Entel
 5672261|Claro
 5672269|Vtr Banda Ancha (Chile) S.A.
+5672270|Claro
 5672271|Compania De Telecomunicaciones De Chile S.A.
 5672272|Compania De Telecomunicaciones De Chile S.A.
 5672273|Claro
@@ -2443,16 +2469,21 @@
 56722810|Redvoiss
 56722817|Compania De Telecomunicaciones De Chile S.A.
 5672282|Compania De Telecomunicaciones De Chile S.A.
+56722830|Movistar
 56722831|Compania De Telecomunicaciones De Chile S.A.
+56722832|Movistar
 56722833|Compania Chilena De Comunicaciones Parallel S.A.
+56722834|Movistar
 56722835|Entel
 56722836|Entel
 56722837|Entel
 56722838|Entel
 56722839|Entel
+56722840|Movistar
 56722841|Compania De Telecomunicaciones De Chile S.A.
 56722842|Compania De Telecomunicaciones De Chile S.A.
 56722843|Compania De Telecomunicaciones De Chile S.A.
+56722844|Movistar
 56722845|Telefonica Del Sur S.A.
 56722846|Telefonica Del Sur S.A.
 56722847|Telefonica Del Sur S.A.
@@ -2464,6 +2495,7 @@
 56722858|Compania De Telecomunicaciones De Chile S.A.
 56722859|Compania De Telecomunicaciones De Chile S.A.
 56722861|Compania De Telecomunicaciones De Chile S.A.
+56722862|Claro
 56722865|Telefonica Del Sur S.A.
 56722866|Telefonica Del Sur S.A.
 56722867|Telefonica Del Sur S.A.

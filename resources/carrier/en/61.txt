@@ -38,9 +38,7 @@
 6142002|Dialogue Communications
 6142003|MessageBird
 6142004|Symbio Networks
-6142010|Pivotel Satellite
-6142011|Compatel Limited
-6142012|Soul Pattinson
+614201|Pivotel Satellite
 61421|Optus
 61422|Optus
 61423|Optus

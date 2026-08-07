@@ -2497,7 +2497,7 @@
               )
             )|
             4(?:
-              [03-57]|
+              [02-57]|
               1[0145]
             )|
             6(?:
@@ -2525,7 +2525,7 @@
               [278]|
               6\d{3}
             )|
-            4[47]
+            4[247]
           )|
           5200
         </nationalNumberPattern>
@@ -2587,7 +2587,7 @@
         <possibleLengths national="3,4,6"/>
         <exampleNumber>140</exampleNumber>
         <nationalNumberPattern>
-          14[0357]|
+          14[02357]|
           1(?:
             161\d|
             41
@@ -4993,6 +4993,7 @@
 
     <!-- Faroe Islands (FO) -->
     <!-- http://www.itu.int/oth/T0202000047/en -->
+    <!-- https://www.fjarskiftiseftirlitid.fo/fo/fjarskifti/nummarskipan -->
     <territory id="FO">
       <generalDesc>
         <nationalNumberPattern>1\d{2,3}</nationalNumberPattern>
@@ -5002,14 +5003,12 @@
         <possibleLengths national="3,4"/>
         <exampleNumber>112</exampleNumber>
         <nationalNumberPattern>
-          1(?:
-            1[248]|
-            819
-          )|
+          11[248]|
           1(?:
             4[124]|
             71|
-            8[7-9]
+            8[17-9]|
+            9\d
           )\d
         </nationalNumberPattern>
       </shortCode>
@@ -5033,6 +5032,11 @@
         <exampleNumber>1810</exampleNumber>
         <nationalNumberPattern>181\d</nationalNumberPattern>
       </expandedEmergency>
+      <smsServices>
+        <possibleLengths national="4"/>
+        <exampleNumber>1900</exampleNumber>
+        <nationalNumberPattern>19\d\d</nationalNumberPattern>
+      </smsServices>
     </territory>
 
     <!-- France (FR) -->
@@ -5052,8 +5056,8 @@
             1(?:
               [02459]|
               6(?:
-                000|
-                111
+                00[06]|
+                11[17]
               )|
               8\d{3}
             )|
@@ -5104,7 +5108,6 @@
           )\d\d
         </nationalNumberPattern>
       </tollFree>
-      <!-- 3646 is listed as being the same as a local call on www.ameli.fr. -->
       <standardRate>
         <possibleLengths national="3,4"/>
         <exampleNumber>611</exampleNumber>
@@ -5118,9 +5121,12 @@
         </nationalNumberPattern>
       </standardRate>
       <!-- SMS Services [4-8]\d{4} vary in price from 0.05 euro to 4.50 euro per SMS, based on
-           prefix - we consider these all premium rate for now. All 118 XYZ numbers are considered
-           here as it is given "libre" which does not mean zero cost instead it is up to the
-           provider http://www.telecom-infoconso.fr/les-numeros-08-et-les-numeros-courts/ -->
+           prefix - we consider these all premium rate for now.  -->
+      <!-- All 118 XYZ numbers are considered here as it is given "libre" which does not mean
+           zero cost instead it is up to the provider
+           http://www.telecom-infoconso.fr/les-numeros-08-et-les-numeros-courts/ -->
+      <!-- 3646 and 3949 are added here as they appear to be charged at a standard rate; however,
+           additional service fees are applied during the call, leading to a higher overall cost -->
       <premiumRate>
         <possibleLengths national="[4-6]"/>
         <exampleNumber>1000</exampleNumber>
@@ -7620,6 +7626,7 @@
             2323|
             5045
           )|
+          14\d|
           (?:
             1(?:
               2|
@@ -7648,6 +7655,7 @@
               [2358]|
               6\d{3}
             )|
+            46|
             87
           )
         </nationalNumberPattern>

@@ -1444,6 +1444,7 @@
 1732|America/New_York
 1734|America/New_York
 1737|America/Chicago
+1738|America/Los_Angeles
 1740|America/New_York
 1742|America/Toronto
 1743|America/New_York
@@ -2118,6 +2119,8 @@
 262|Indian/Mayotte&Indian/Reunion
 262262|Indian/Reunion
 262263|Indian/Reunion
+2622688|Indian/Reunion
+2622689|Indian/Mayotte
 262269|Indian/Mayotte
 26263|Indian/Mayotte
 26269|Indian/Reunion
@@ -2163,6 +2166,7 @@
 32|Europe/Brussels
 33|Europe/Paris
 34|Atlantic/Canary&Europe/Madrid
+344|Europe/Madrid
 345|Europe/Madrid
 346|Europe/Madrid
 347|Europe/Madrid
@@ -3292,6 +3296,7 @@
 97624|Asia/Hovd
 97625|Asia/Ulaanbaatar
 976258|Asia/Choibalsan
+97626|Asia/Ulaanbaatar
 9765|Asia/Ulaanbaatar
 9766|Asia/Ulaanbaatar
 9767|Asia/Ulaanbaatar

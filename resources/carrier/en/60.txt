@@ -281,6 +281,7 @@
 6011757|U Mobile
 6011759|Eastel
 601176|Eastel
+601178|Eastel
 60118886|U Mobile
 60118888|red ONE
 60118889|U Mobile

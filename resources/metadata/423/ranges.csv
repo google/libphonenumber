@@ -12,8 +12,7 @@ Prefix     ; Length ; Type       ; Tariff        ; Operator                ; For
 37[0135-7] ; 7      ; FIXED_LINE ; STANDARD_RATE ;                         ; "fmt_3/2/2"         ; "LI"    ; GOVERNMENT ; "Regulator File dated 4/1/2019"
 38[048]    ; 7      ; FIXED_LINE ; STANDARD_RATE ;                         ; "fmt_3/2/2"         ; "LI"    ; GOVERNMENT ; "Regulator File dated 4/1/2019"
 39[0269]   ; 7      ; FIXED_LINE ; STANDARD_RATE ;                         ; "fmt_3/2/2"         ; "LI"    ; GOVERNMENT ; "Regulator File dated 4/1/2019"
-64[56]     ; 9      ; MOBILE     ; STANDARD_RATE ; "soracom"               ; "intl_mobile_3/3/3" ; "LI"    ; GOVERNMENT
-64[7-9]    ; 9      ; MOBILE     ; STANDARD_RATE ; "soracom"               ; "intl_mobile_3/3/3" ; "LI"    ; IR21
+64[5-9]    ; 9      ; MOBILE     ; STANDARD_RATE ; "telecom_liechtenstein" ; "intl_mobile_3/3/3" ; "LI"    ; IR21
 650        ; 9      ; MOBILE     ; STANDARD_RATE ; "telecom_liechtenstein" ; "intl_mobile_3/3/3" ; "LI"    ; GOVERNMENT ; "Regulator File dated 4/1/2019"
 65[1-3]    ; 9      ; MOBILE     ; STANDARD_RATE ; "cubic"                 ; "intl_mobile_3/3/3" ; "LI"    ; GOVERNMENT ; "Regulator File dated 4/1/2019"
 65[46-8]   ; 9      ; MOBILE     ; STANDARD_RATE ; "cubic"                 ; "intl_mobile_3/3/3" ; "LI"    ; GOVERNMENT
@@ -25,7 +24,7 @@ Prefix     ; Length ; Type       ; Tariff        ; Operator                ; For
 663[7-9]   ; 9      ; MOBILE     ; STANDARD_RATE ; "telecom_liechtenstein" ; "intl_mobile_3/3/3" ; "LI"    ; IR21
 665        ; 9      ; MOBILE     ; STANDARD_RATE ; "telecom_liechtenstein" ; "intl_mobile_3/3/3" ; "LI"    ; GOVERNMENT
 666        ; 9      ; MOBILE     ; STANDARD_RATE ; "datamobile"            ; "intl_mobile_3/3/3" ; "LI"    ; GOVERNMENT
-6670       ; 9      ; MOBILE     ; STANDARD_RATE ; "telecom_liechtenstein" ; "intl_mobile_3/3/3" ; "LI"    ; IR21
+667[02]    ; 9      ; MOBILE     ; STANDARD_RATE ; "telecom_liechtenstein" ; "intl_mobile_3/3/3" ; "LI"    ; IR21
 668        ; 9      ; MOBILE     ; STANDARD_RATE ; "velos"                 ; "intl_mobile_3/3/3" ; "LI"    ; GOVERNMENT
 69742      ; 9      ; VOICEMAIL  ; STANDARD_RATE ;                         ; "voicemail_2/3/4"   ; "LI"
 69756      ; 9      ; VOICEMAIL  ; STANDARD_RATE ;                         ; "voicemail_2/3/4"   ; "LI"

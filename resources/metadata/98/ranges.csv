@@ -127,6 +127,7 @@ Prefix     ; Length ; Type       ; Tariff        ; Area Code Length ; National O
 9955       ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "irancell"      ; "nongeo_3/3/3-4" ; "IR"    ;                              ;                       ; IR21
 9981       ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "shatel_mobile" ; "nongeo_3/3/3-4" ; "IR"    ;                              ;                       ; TELECOMS   ; "Confirmation of 9981 range with carrier"
 9982       ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "shatel_mobile" ; "nongeo_3/3/3-4" ; "IR"    ;                              ;                       ; ITU
+9983[0-2]  ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; false         ;                 ; "nongeo_3/3/3-4" ; "IR"    ;                              ;                       ; ITU
 99888      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; false         ;                 ; "nongeo_3/3/3-4" ; "IR"
 9990       ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "ir_mci"        ; "nongeo_3/3/3-4" ; "IR"    ;                              ;                       ; IR21
 9991       ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "irancell"      ; "nongeo_3/3/3-4" ; "IR"    ;                              ;                       ; IR21

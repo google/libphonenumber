@@ -29,7 +29,8 @@ Prefix      ; Length ; Type       ; Tariff        ; Operator            ; Format
 63[7-9]     ; 7      ; MOBILE     ; STANDARD_RATE ; "oryggisfjarskipti" ; "fmt1_3/4"   ; "IS"    ;                                 ; GOVERNMENT ; "PTA document dated 3/8/2019"
 64[01]      ; 7      ; MOBILE     ; STANDARD_RATE ; "oryggisfjarskipti" ; "fmt1_3/4"   ; "IS"    ;                                 ; GOVERNMENT ; "PTA document dated 3/8/2019"
 644         ; 7      ; MOBILE     ; STANDARD_RATE ; "nova"              ; "fmt1_3/4"   ; "IS"    ;                                 ; IR21       ; "IR21 dated 11/26/2018"
-64[67]      ; 7      ; MOBILE     ; STANDARD_RATE ; "imc"               ; "fmt1_3/4"   ; "IS"    ;                                 ; IR21       ; "IR21 dated 10/30/2018"
+646         ; 7      ; MOBILE     ; STANDARD_RATE ; "imc"               ; "fmt1_3/4"   ; "IS"    ;                                 ; IR21       ; "IR21 dated 10/30/2018"
+647         ; 7      ; MOBILE     ; STANDARD_RATE ; "siminn"            ; "fmt1_3/4"   ; "IS"    ;                                 ; IR21
 649         ; 7      ; MOBILE     ; STANDARD_RATE ; "vodafone"          ; "fmt1_3/4"   ; "IS"    ;                                 ; IR21       ; "IR21 dated 4/9/2019"
 65[01]      ; 7      ; MOBILE     ; STANDARD_RATE ; "imc"               ; "fmt1_3/4"   ; "IS"    ;                                 ; IR21       ; "IR21 dated 10/30/2018"
 65[59]      ; 7      ; MOBILE     ; STANDARD_RATE ; "vodafone"          ; "fmt1_3/4"   ; "IS"    ;                                 ; IR21       ; "IR21 dated 4/9/2019"
@@ -48,7 +49,7 @@ Prefix      ; Length ; Type       ; Tariff        ; Operator            ; Format
 8[3-69]     ; 7      ; MOBILE     ; STANDARD_RATE ; "siminn"            ; "fmt1_3/4"   ; "IS"    ;                                 ; GOVERNMENT ; "PTA document dated 3/8/2019"
 87[18]      ; 7      ; VOICEMAIL  ; STANDARD_RATE ;                     ; "fmt1_3/4"   ; "IS"    ;                                 ; GOVERNMENT ; "PTA document dated 3/8/2019"
 872         ; 7      ; FIXED_LINE ; STANDARD_RATE ;                     ; "fmt1_3/4"   ; "IS"    ;                                 ; GOVERNMENT ; "PTA document dated 3/8/2019"
-880         ; 7      ; VOICEMAIL  ; STANDARD_RATE ;                     ; "fmt1_3/4"   ; "IS"    ;                                 ; GOVERNMENT ; "PTA document dated 3/8/2019"
+880         ; 7      ; VOICEMAIL  ; STANDARD_RATE ;                     ; "fmt1_3/4"   ; "IS"    ;                                 ; IR21
 88[28]      ; 7      ; MOBILE     ; STANDARD_RATE ; "siminn"            ; "fmt1_3/4"   ; "IS"    ;                                 ; GOVERNMENT ; "PTA document dated 3/8/2019"
 883         ; 7      ; MOBILE     ; STANDARD_RATE ; "siminn"            ; "fmt1_3/4"   ; "IS"    ;                                 ; GOVERNMENT
 900         ; 7      ; FIXED_LINE ; PREMIUM_RATE  ;                     ; "fmt1_3/4"   ; "IS"    ;                                 ; GOVERNMENT ; "PTA document dated 3/8/2019"

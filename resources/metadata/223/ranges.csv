@@ -13,7 +13,7 @@ Prefix   ; Length ; Type       ; Tariff        ; National Only ; Operator  ; For
 40[0-4]  ; 8      ; FIXED_LINE ; STANDARD_RATE ; false         ;           ; "fmt_2/2/2/2" ; "ML"    ;              ; ITU        ; "ITU_ 3.6.2018"
 441      ; 8      ; FIXED_LINE ; STANDARD_RATE ; false         ;           ; "fmt_2/2/2/2" ; "ML"    ;              ; ITU        ; "ITU_ 3.6.2018"
 44[239]  ; 8      ; FIXED_LINE ; STANDARD_RATE ; false         ;           ; "fmt_2/2/2/2" ; "ML"    ; "Bamako"     ; ITU        ; "ITU_ 3.6.2018"
-44[45]   ; 8      ; FIXED_LINE ; STANDARD_RATE ; false         ;           ; "fmt_2/2/2/2" ; "ML"    ;              ; IR21
+44[4-6]  ; 8      ; FIXED_LINE ; STANDARD_RATE ; false         ;           ; "fmt_2/2/2/2" ; "ML"    ;              ; IR21
 5[01]    ; 8      ; MOBILE     ; STANDARD_RATE ; false         ; "atel"    ; "fmt_2/2/2/2" ; "ML"
 5[23]    ; 8      ; MOBILE     ; STANDARD_RATE ; false         ; "atel"    ; "fmt_2/2/2/2" ; "ML"    ;              ; TELECOMS
 6        ; 8      ; MOBILE     ; STANDARD_RATE ; false         ; "sotelma" ; "fmt_2/2/2/2" ; "ML"

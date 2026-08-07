@@ -400,8 +400,8 @@ Prefix           ; Length ; Type       ; Tariff        ; Area Code Length ; Oper
 72               ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "netone"  ; "mobile_2/3/4"  ; "ZW"    ;                                   ; IR21
 73[1-9]          ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "telecel" ; "mobile_2/3/4"  ; "ZW"
 77               ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "econet"  ; "mobile_2/3/4"  ; "ZW"    ;                                   ; IR21       ; "IR21 dated 4/26/2019"
-780              ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "econet"  ; "mobile_2/3/4"  ; "ZW"    ;                                   ; WEB
-78[1-9]          ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "econet"  ; "mobile_2/3/4"  ; "ZW"
+78               ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "econet"  ; "mobile_2/3/4"  ; "ZW"    ;                                   ; IR21
+79[01]           ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "econet"  ; "mobile_2/3/4"  ; "ZW"    ;                                   ; GOVERNMENT
 80[01]           ; 7      ; FIXED_LINE ; TOLL_FREE     ;                  ;           ; "tollfree_3/4"  ; "ZW"
 8020             ; 7      ; FIXED_LINE ; TOLL_FREE     ;                  ;           ; "tollfree_3/4"  ; "ZW"
 808[0-8]         ; 7      ; FIXED_LINE ; TOLL_FREE     ;                  ;           ; "tollfree_3/4"  ; "ZW"

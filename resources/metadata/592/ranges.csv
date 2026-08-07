@@ -95,6 +95,7 @@ Prefix     ; Length ; Type       ; Tariff        ; Operator          ; Format   
 773        ; 7      ; FIXED_LINE ; STANDARD_RATE ;                   ; "fmt1_3/4" ; "GY"    ; "Aishalton"                                     ; ITU
 775        ; 7      ; FIXED_LINE ; STANDARD_RATE ;                   ; "fmt1_3/4" ; "GY"    ; "Matthews Ridge"                                ; ITU
 777        ; 7      ; FIXED_LINE ; STANDARD_RATE ;                   ; "fmt1_3/4" ; "GY"    ; "Mabaruma/Port Kaituma"                         ; ITU
+780        ; 7      ; MOBILE     ; STANDARD_RATE ; "gtt"             ; "fmt1_3/4" ; "GY"    ;                                                 ; IR21
 800        ; 7      ; FIXED_LINE ; TOLL_FREE     ;                   ; "fmt1_3/4" ; "GY"    ;                                                 ; ITU
 86[28]     ; 7      ; FIXED_LINE ; TOLL_FREE     ;                   ; "fmt1_3/4" ; "GY"    ;                                                 ; ITU
 888        ; 7      ; FIXED_LINE ; TOLL_FREE     ;                   ; "fmt1_3/4" ; "GY"    ;                                                 ; ITU

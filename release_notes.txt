@@ -1,3 +1,95 @@
+Jul 30, 2026: v9.0.36
+Metadata changes:
+ - Updated alternate formatting data for country calling code(s): 995
+ - Updated phone metadata for region code(s):
+   BD, EH, FO, GE, IL, LI, MA, ML, NO, SJ
+ - Updated short number metadata for region code(s): FO, IT
+ - Updated carrier data for country calling code(s):
+   47 (en), 61 (en), 212 (en), 256 (en), 298 (en), 423 (en), 972 (en), 995 (en)
+
+Jul 16, 2026: v9.0.35
+Metadata changes:
+ - Updated alternate formatting data for country calling code(s): 995
+ - Updated phone metadata for region code(s):
+   AC, CN, FO, GE, IR, KE, SE, UG, ZW
+ - Updated short number metadata for region code(s): FR
+ - Updated geocoding data for country calling code(s): 86 (en, zh)
+ - Updated carrier data for country calling code(s):
+   61 (en), 86 (en, zh), 93 (en, fa), 247 (en), 250 (en), 254 (en), 256 (en),
+   263 (en), 298 (en), 420 (en), 976 (en), 995 (en)
+
+Jul 02, 2026: v9.0.34
+Metadata changes:
+ - Updated alternate formatting data for country calling code(s): 34
+ - Updated phone metadata for region code(s):
+   CM, ES, GY, HN, MZ, SR, TM, TZ, US, UZ
+ - Updated geocoding data for country calling code(s): 504 (en)
+ - Updated carrier data for country calling code(s):
+   46 (en), 255 (en), 258 (en), 352 (en), 381 (en), 592 (en), 597 (en),
+   886 (en), 998 (en)
+ - Updated / refreshed time zone meta data.
+
+Jun 17, 2026: v9.0.33
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   BF, KE, MC, MW, NO, SG, SI, UG, VN
+ - Updated geocoding data for country calling code(s): 47 (en)
+ - Updated carrier data for country calling code(s):
+   36 (en), 40 (en), 65 (en), 84 (en), 232 (en), 235 (en), 250 (en), 256 (en),
+   265 (en), 386 (en), 503 (en), 1868 (en)
+
+Jun 03, 2026: v9.0.32
+Metadata changes:
+ - Updated phone metadata for region code(s): DZ, JP, NO, SJ, SO, UG
+ - Updated carrier data for country calling code(s):
+   33 (en), 47 (en), 233 (en), 252 (en), 256 (en)
+
+May 20, 2026: v9.0.31
+Metadata changes:
+ - Updated alternate formatting data for country calling code(s): 84
+ - Updated phone metadata for region code(s):
+   AI, BO, DZ, ET, GE, GM, IN, TR, UG, VN
+ - Updated short number metadata for region code(s): IT
+ - Updated geocoding data for country calling code(s): 213 (en)
+ - Updated carrier data for country calling code(s):
+   34 (en), 43 (en), 84 (en), 90 (en), 220 (en), 251 (en), 256 (en), 354 (en),
+   591 (en), 1264 (en)
+
+May 06, 2026: v9.0.30
+Metadata changes:
+ - Updated alternate formatting data for country calling code(s): 91
+ - Updated phone metadata for region code(s): CL, CZ, DE, IN, SG
+ - Updated geocoding data for country calling code(s): 91 (en)
+ - Updated carrier data for country calling code(s):
+   56 (en), 65 (en), 91 (en), 594 (en), 596 (en), 855 (en)
+
+Apr 22, 2026: v9.0.29
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   BI, BL, GP, MF, MY, SK, TH, TR, TW
+ - Updated short number metadata for region code(s): CH
+ - New geocoding data for country calling code(s): 7 (kk)
+ - Updated carrier data for country calling code(s):
+   7 (en, ru), 31 (en), 32 (en), 90 (en), 257 (en), 590 (en), 593 (en)
+
+Apr 09, 2026: v9.0.28
+- Decreased the number of invocations of chooseFormattingPatternForNumber in PhoneNumberUtil#formatInOriginalFormat
+Metadata changes:
+ - Updated phone metadata for region code(s): BW, IL, MN, RE, SR, YT
+ - Updated carrier data for country calling code(s):
+   34 (en), 267 (en), 359 (en), 972 (en), 976 (en)
+ - Updated / refreshed time zone meta data.
+
+Mar 26, 2026: v9.0.27
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   BF, BL, CM, GF, GH, GP, GU, KE, MF, MQ, MY, SX, TD, TJ, US
+ - New geocoding data for country calling code(s): 1738 (en)
+ - New carrier data for country calling code(s): 1721 (en)
+ - Updated carrier data for country calling code(s):
+   60 (en), 599 (en), 992 (en)
+ - Updated / refreshed time zone meta data.
+
 Mar 12, 2026: v9.0.26
 Metadata changes:
  - Updated phone metadata for region code(s):

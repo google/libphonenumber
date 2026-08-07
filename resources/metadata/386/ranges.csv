@@ -4,7 +4,7 @@ Prefix      ; Length ; Type       ; Tariff        ; Area Code Length ; Operator 
 [34]0       ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "a1"                ; "mobile_2/3/3"  ; "SI"
 [35]1       ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "telekom_slovenije" ; "mobile_2/3/3"  ; "SI"
 3[2-8]      ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                     ; "fixed_1/3/2/2" ; "SI"    ; "Celje/Trbovlje"
-4[139]      ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "telekom_slovenije" ; "mobile_2/3/3"  ; "SI"
+4[13]       ; 8      ; MOBILE     ; STANDARD_RATE ;                  ; "telekom_slovenije" ; "mobile_2/3/3"  ; "SI"
 4[24-8]     ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                     ; "fixed_1/3/2/2" ; "SI"    ; "Kranj"
 5[2-8]      ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                     ; "fixed_1/3/2/2" ; "SI"    ; "Gorica/Koper/Postojna"
 59          ; 8      ; VOIP       ; STANDARD_RATE ;                  ;                     ; "voip_3/5"      ; "SI"

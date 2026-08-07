@@ -15,4 +15,5 @@ Prefix ; Length ; Type       ; Tariff        ; Operator  ; Format         ; Regi
 8[23]  ; 9      ; MOBILE     ; STANDARD_RATE ; "mcel"    ; "fmt1_2/3/3-4" ; "MZ"    ;             ;             ; ITU
 8[45]  ; 9      ; MOBILE     ; STANDARD_RATE ; "vodacom" ; "fmt1_2/3/3-4" ; "MZ"    ;             ;             ; IR21
 8[67]  ; 9      ; MOBILE     ; STANDARD_RATE ; "movitel" ; "fmt1_2/3/3-4" ; "MZ"    ;             ;             ; ITU
+880    ; 9      ; MOBILE     ; STANDARD_RATE ; "movitel" ; "fmt1_2/3/3-4" ; "MZ"    ;             ;             ; ITU
 89     ; 9      ; MOBILE     ; STANDARD_RATE ; "gmpcs"   ; "fmt1_2/3/3-4" ; "MZ"    ;             ;             ; ITU
