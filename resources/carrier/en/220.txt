@@ -27,8 +27,16 @@
 22059|QCell
 2206|Comium
 2207|Africell
+220833|QCell
+220835|QCell
 22084|Comium
 22085|Comium
 22086|Comium
 22087|Comium
+220872|Africell
+2208740|Africell
+2208741|Africell
+2208745|Africell
+220877|Africell
+220899|Gamcel
 2209|Gamcel

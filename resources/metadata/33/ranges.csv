@@ -454,8 +454,8 @@ Prefix         ; Length ; Type       ; Tariff        ; Operator                 
 8060           ; 9      ; UAN        ; STANDARD_RATE ;                                ; "varcost_3/2/2/2" ; "FR"    ; GOVERNMENT
 8061[0-4]      ; 9      ; UAN        ; STANDARD_RATE ;                                ; "varcost_3/2/2/2" ; "FR"    ; GOVERNMENT
 8061[5-9]      ; 9      ; UAN        ; STANDARD_RATE ;                                ; "varcost_3/2/2/2" ; "FR"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
-8062[03]       ; 9      ; UAN        ; STANDARD_RATE ;                                ; "varcost_3/2/2/2" ; "FR"    ; GOVERNMENT
-8062[124-9]    ; 9      ; UAN        ; STANDARD_RATE ;                                ; "varcost_3/2/2/2" ; "FR"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
+8062[034]      ; 9      ; UAN        ; STANDARD_RATE ;                                ; "varcost_3/2/2/2" ; "FR"    ; GOVERNMENT
+8062[125-9]    ; 9      ; UAN        ; STANDARD_RATE ;                                ; "varcost_3/2/2/2" ; "FR"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 806[34]        ; 9      ; UAN        ; STANDARD_RATE ;                                ; "varcost_3/2/2/2" ; "FR"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 8065[0-59]     ; 9      ; UAN        ; STANDARD_RATE ;                                ; "varcost_3/2/2/2" ; "FR"    ; GOVERNMENT
 8065[67]       ; 9      ; UAN        ; STANDARD_RATE ;                                ; "varcost_3/2/2/2" ; "FR"    ;            ; "FILLUP TO SUPPORT MASTER RANGE"

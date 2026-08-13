@@ -6,6 +6,7 @@ Prefix  ; Length ; Type       ; Tariff        ; Operator  ; Format         ; Reg
 26[67]  ; 8      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_2/2/2/2" ; "TG"    ; "Kara region"     ; "Región de Kara"     ; "Région de la Kara"
 277     ; 8      ; FIXED_LINE ; STANDARD_RATE ;           ; "fmt1_2/2/2/2" ; "TG"    ; "Savannah region" ; "Región de Savannah" ; "Région des Savanes"
 7[0-2]  ; 8      ; MOBILE     ; STANDARD_RATE ; "togocom" ; "fmt1_2/2/2/2" ; "TG"    ;                   ;                      ;                       ; IR21
+73      ; 8      ; MOBILE     ; STANDARD_RATE ; "togocom" ; "fmt1_2/2/2/2" ; "TG"    ;                   ;                      ;                       ; TELECOMS
 7[89]   ; 8      ; MOBILE     ; STANDARD_RATE ; "moov"    ; "fmt1_2/2/2/2" ; "TG"    ;                   ;                      ;                       ; IR21
 9[0-3]  ; 8      ; MOBILE     ; STANDARD_RATE ; "togocom" ; "fmt1_2/2/2/2" ; "TG"    ;                   ;                      ;                       ; IR21
 9[6-9]  ; 8      ; MOBILE     ; STANDARD_RATE ; "moov"    ; "fmt1_2/2/2/2" ; "TG"    ;                   ;                      ;                       ; IR21

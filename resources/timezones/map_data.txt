@@ -2745,15 +2745,10 @@
 5596|America/Sao_Paulo
 5598|America/Sao_Paulo
 5599|America/Sao_Paulo
-56|America/Santiago&Pacific/Easter
+56|America/Santiago
 561|America/Santiago
 562|America/Santiago
-5632|Pacific/Easter
-56322|America/Santiago
-56323|America/Santiago
-5633|America/Santiago
-5634|America/Santiago
-5635|America/Santiago
+563|America/Santiago
 564|America/Santiago
 565|America/Santiago
 566|America/Santiago

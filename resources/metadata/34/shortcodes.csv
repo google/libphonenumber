@@ -26,6 +26,7 @@ ES     ; 21          ; 6      ; COMMERCIAL         ; STANDARD_RATE ; true
 ES     ; 22          ; 3,4    ; COMMERCIAL         ; PREMIUM_RATE  ;      ; true
 ES     ; 22          ; 5,6    ; COMMERCIAL         ; PREMIUM_RATE  ; true ; true
 ES     ; 2[357]      ; 5      ; COMMERCIAL         ; PREMIUM_RATE  ; true
+ES     ; 2373        ; 4      ; COMMERCIAL         ; TOLL_FREE
 ES     ; 280         ; 5      ; COMMERCIAL         ; PREMIUM_RATE  ; true
 ES     ; 3[357]      ; 5      ; COMMERCIAL         ; PREMIUM_RATE  ; true
 ES     ; [79]9[57]   ; 6      ; COMMERCIAL         ; PREMIUM_RATE  ; true ;                  ; "shortcode_6"

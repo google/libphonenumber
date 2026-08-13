@@ -44,3 +44,6 @@
 90572|Turkcell
 90574|Vodafone
 90575|Turk Telekom
+905822|Turkcell
+905823|Turkcell
+905824|Vodafone
