@@ -656,7 +656,7 @@
 5632377|Telestar
 5632380|Movistar
 5632381|Gtd Telesat S.A.
-56323820|Redvoiss
+5632382|Redvoiss
 5632383|Linksat Comunicaciones Spa.
 5632384|Linksat Comunicaciones Spa.
 5632385|Gtd Manquehue S.A.

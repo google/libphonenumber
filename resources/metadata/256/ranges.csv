@@ -1,6 +1,7 @@
 Prefix      ; Length ; Type       ; Tariff        ; Area Code Length ; Operator     ; Format      ; Regions ; Geocode:en                ; Provenance
 20[017]     ; 9      ; FIXED_LINE ; STANDARD_RATE ; 3                ;              ; "fmt_3/6"   ; "UG"    ;                           ; ITU
 20240       ; 9      ; FIXED_LINE ; STANDARD_RATE ; 4                ;              ; "fixed_4/5" ; "UG"    ;                           ; ITU
+20249       ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_2/7" ; "UG"    ;                           ; IR21
 202[5-9]    ; 9      ; FIXED_LINE ; STANDARD_RATE ; 3                ;              ; "fmt_3/6"   ; "UG"
 2030[67]    ; 9      ; FIXED_LINE ; STANDARD_RATE ; 3                ;              ; "fmt_3/6"   ; "UG"    ;                           ; ITU
 203[12]     ; 9      ; FIXED_LINE ; STANDARD_RATE ; 3                ;              ; "fmt_3/6"   ; "UG"    ;                           ; ITU
@@ -38,6 +39,7 @@ Prefix      ; Length ; Type       ; Tariff        ; Area Code Length ; Operator 
 72[67]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "lycamobile" ; "fmt_3/6"   ; "UG"    ;                           ; IR21
 7280        ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "talkio"     ; "fmt_3/6"   ; "UG"    ;                           ; ITU
 73[01]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "airtel"     ; "fmt_3/6"   ; "UG"    ;                           ; IR21
+7340        ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "roke"       ; "fmt_3/6"   ; "UG"    ;                           ; ITU
 736         ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "hamilton"   ; "fmt_3/6"   ; "UG"    ;                           ; ITU
 737         ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "mtn"        ; "fmt_3/6"   ; "UG"    ;                           ; IR21
 74          ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "airtel"     ; "fmt_3/6"   ; "UG"    ;                           ; IR21

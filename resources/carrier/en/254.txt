@@ -36,14 +36,7 @@
 254757|Safaricom
 254758|Safaricom
 254759|Safaricom
-254760|Mobile Pay
-254761|Airtel
-254762|Airtel
-254763|Finserve
-254764|Finserve
-254765|Finserve
-254766|Finserve
-254767|Sema Mobile
+25476|Airtel
 254768|Safaricom
 254769|Safaricom
 25477|Telkom
