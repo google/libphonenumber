@@ -13,6 +13,8 @@
 # limitations under the License.
 
 9624|Orange
+96271|Umniah
+96272|Zain JO
 96277|Orange
 96278|Umniah
 96279|Zain JO

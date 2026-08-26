@@ -3191,28 +3191,28 @@ Prefix            ; Length ; Type                 ; Tariff        ; Area Code Le
 793[02-9]         ; 10     ; FIXED_LINE           ; STANDARD_RATE ; 2                ; false         ;                ; "fixed_2/4/4"      ; "IN"    ; "Ahmedabad Local, Gujarat"
 7931[0-24-9]      ; 10     ; FIXED_LINE           ; STANDARD_RATE ; 2                ; false         ;                ; "fixed_2/4/4"      ; "IN"    ; "Ahmedabad Local, Gujarat"
 79313             ; 10     ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ;                  ; false         ; "reliance_jio" ; "mobile_5/5"       ; "IN"    ; "Ahmedabad Local, Gujarat"
-7970[0-2]         ; 10     ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ;                  ; false         ; "idea"         ; "mobile_5/5"       ; "IN"    ; "Ahmedabad Local, Gujarat"
-7970[3-9]         ; 10     ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ;                  ; false         ; "airtel"       ; "mobile_5/5"       ; "IN"    ; "Ahmedabad Local, Gujarat"
+7970[0-2]         ; 10     ; MOBILE               ; STANDARD_RATE ;                  ; false         ; "idea"         ; "mobile_5/5"       ; "IN"
+7970[3-9]         ; 10     ; MOBILE               ; STANDARD_RATE ;                  ; false         ; "airtel"       ; "mobile_5/5"       ; "IN"
 7971              ; 10     ; FIXED_LINE           ; STANDARD_RATE ; 2                ; false         ;                ; "fixed_2/4/4"      ; "IN"    ; "Ahmedabad Local, Gujarat"
-797[2-8]          ; 10     ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ;                  ; false         ; "reliance_jio" ; "mobile_5/5"       ; "IN"    ; "Ahmedabad Local, Gujarat"
-7979[07-9]        ; 10     ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ;                  ; false         ; "reliance_jio" ; "mobile_5/5"       ; "IN"    ; "Ahmedabad Local, Gujarat"
+797[2-8]          ; 10     ; MOBILE               ; STANDARD_RATE ;                  ; false         ; "reliance_jio" ; "mobile_5/5"       ; "IN"
+7979[07-9]        ; 10     ; MOBILE               ; STANDARD_RATE ;                  ; false         ; "reliance_jio" ; "mobile_5/5"       ; "IN"
 7979[1-6]         ; 10     ; FIXED_LINE           ; STANDARD_RATE ; 2                ; false         ;                ; "fixed_2/4/4"      ; "IN"    ; "Ahmedabad Local, Gujarat"
 798x[0189]        ; 10     ; MOBILE               ; STANDARD_RATE ;                  ; false         ; "reliance_jio" ; "mobile_5/5"       ; "IN"    ;                                             ; IR21
-798x[2-7]         ; 10     ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ;                  ; false         ; "reliance_jio" ; "mobile_5/5"       ; "IN"    ; "Ahmedabad Local, Gujarat"
+798x[2-7]         ; 10     ; MOBILE               ; STANDARD_RATE ;                  ; false         ; "reliance_jio" ; "mobile_5/5"       ; "IN"
 799[09][0189]     ; 10     ; MOBILE               ; STANDARD_RATE ;                  ; false         ; "reliance_jio" ; "mobile_5/5"       ; "IN"    ;                                             ; IR21
-799[09][2-7]      ; 10     ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ;                  ; false         ; "reliance_jio" ; "mobile_5/5"       ; "IN"    ; "Ahmedabad Local, Gujarat"
+799[09][2-7]      ; 10     ; MOBILE               ; STANDARD_RATE ;                  ; false         ; "reliance_jio" ; "mobile_5/5"       ; "IN"
 7991[089]         ; 10     ; MOBILE               ; STANDARD_RATE ;                  ; false         ; "airtel"       ; "mobile_5/5"       ; "IN"    ;                                             ; IR21
 79911             ; 10     ; MOBILE               ; STANDARD_RATE ;                  ; false         ; "reliance_jio" ; "mobile_5/5"       ; "IN"    ;                                             ; IR21
-799[13-5][2-7]    ; 10     ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ;                  ; false         ; "airtel"       ; "mobile_5/5"       ; "IN"    ; "Ahmedabad Local, Gujarat"
+799[13-5][2-7]    ; 10     ; MOBILE               ; STANDARD_RATE ;                  ; false         ; "airtel"       ; "mobile_5/5"       ; "IN"
 7992[01]          ; 10     ; MOBILE               ; STANDARD_RATE ;                  ; false         ; "airtel"       ; "mobile_5/5"       ; "IN"    ;                                             ; IR21
-7992[2-4]         ; 10     ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ;                  ; false         ; "reliance_jio" ; "mobile_5/5"       ; "IN"    ; "Ahmedabad Local, Gujarat"
-7992[5-7]         ; 10     ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ;                  ; false         ; "idea"         ; "mobile_5/5"       ; "IN"    ; "Ahmedabad Local, Gujarat"
+7992[2-4]         ; 10     ; MOBILE               ; STANDARD_RATE ;                  ; false         ; "reliance_jio" ; "mobile_5/5"       ; "IN"
+7992[5-7]         ; 10     ; MOBILE               ; STANDARD_RATE ;                  ; false         ; "idea"         ; "mobile_5/5"       ; "IN"
 7992[89]          ; 10     ; MOBILE               ; STANDARD_RATE ;                  ; false         ; "idea"         ; "mobile_5/5"       ; "IN"    ;                                             ; IR21
 799[3-5][0189]    ; 10     ; MOBILE               ; STANDARD_RATE ;                  ; false         ; "airtel"       ; "mobile_5/5"       ; "IN"    ;                                             ; IR21
 799[67][0189]     ; 10     ; MOBILE               ; STANDARD_RATE ;                  ; false         ; "idea"         ; "mobile_5/5"       ; "IN"    ;                                             ; IR21
-799[67][2-7]      ; 10     ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ;                  ; false         ; "idea"         ; "mobile_5/5"       ; "IN"    ; "Ahmedabad Local, Gujarat"
+799[67][2-7]      ; 10     ; MOBILE               ; STANDARD_RATE ;                  ; false         ; "idea"         ; "mobile_5/5"       ; "IN"
 7998[0189]        ; 10     ; MOBILE               ; STANDARD_RATE ;                  ; false         ; "aircel"       ; "mobile_5/5"       ; "IN"    ;                                             ; IR21
-7998[2-7]         ; 10     ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ;                  ; false         ; "aircel"       ; "mobile_5/5"       ; "IN"    ; "Ahmedabad Local, Gujarat"
+7998[2-7]         ; 10     ; MOBILE               ; STANDARD_RATE ;                  ; false         ; "aircel"       ; "mobile_5/5"       ; "IN"
 8000              ; 10     ; MOBILE               ; STANDARD_RATE ;                  ; false         ; "reliance_jio" ; "mobile_5/5"       ; "IN"    ;                                             ; IR21
 800[16]           ; 10     ; MOBILE               ; STANDARD_RATE ;                  ; false         ; "vodafone"     ; "mobile_5/5"       ; "IN"
 800[2389]         ; 10     ; MOBILE               ; STANDARD_RATE ;                  ; false         ; "airtel"       ; "mobile_5/5"       ; "IN"    ;                                             ; IR21

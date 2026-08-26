@@ -21,6 +21,7 @@ Prefix       ; Length ; Type            ; Tariff        ; Operator            ; 
 389          ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                     ; "fmt1_4/4"     ; "HK"
 39[0-246-9]  ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                     ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
 395          ; 8      ; FIXED_LINE      ; STANDARD_RATE ;                     ; "fmt1_4/4"     ; "HK"
+406[0-3]     ; 8      ; MOBILE          ; STANDARD_RATE ; "china_unicom"      ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
 409[3-6]     ; 8      ; MOBILE          ; STANDARD_RATE ; "china_mobile"      ; "fmt1_4/4"     ; "HK"    ; IR21
 424[3-6]     ; 8      ; MOBILE          ; STANDARD_RATE ; "china_telecom"     ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
 44[07]       ; 8      ; MOBILE          ; STANDARD_RATE ; "china_mobile"      ; "fmt1_4/4"     ; "HK"    ; IR21
@@ -168,7 +169,7 @@ Prefix       ; Length ; Type            ; Tariff        ; Operator            ; 
 707[78]      ; 8      ; MOBILE          ; STANDARD_RATE ; "hutchison_telecom" ; "fmt1_4/4"     ; "HK"    ; IR21
 708[0-4]     ; 8      ; MOBILE          ; STANDARD_RATE ; "hkt"               ; "fmt1_4/4"     ; "HK"    ; IR21
 708[5-8]     ; 8      ; MOBILE          ; STANDARD_RATE ; "smartone"          ; "fmt1_4/4"     ; "HK"    ; IR21
-710[0-38]    ; 8      ; PAGER           ; STANDARD_RATE ;                     ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+710[0-48]    ; 8      ; PAGER           ; STANDARD_RATE ;                     ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
 711[0-3679]  ; 8      ; PAGER           ; STANDARD_RATE ;                     ; "fmt1_4/4"     ; "HK"
 713[013]     ; 8      ; PAGER           ; STANDARD_RATE ;                     ; "fmt1_4/4"     ; "HK"
 7169         ; 8      ; PAGER           ; STANDARD_RATE ;                     ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT

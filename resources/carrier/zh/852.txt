@@ -15,7 +15,8 @@
 # Translations of en/852.txt from each carrier's wikipedia page and in
 # some cases the carrier's own home page.
 
-85240|中国移动
+852406|中国联通
+852409|中国移动
 85242|中国电信国际有限公司
 852440|中国移动
 852441|香港移动通讯
