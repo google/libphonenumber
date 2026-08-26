@@ -21,7 +21,8 @@
 # now on hold, so carrier details are removed for these prefixes. Prefix 9057 is
 # assigned to HKT based on user report.
 
-85240|China Mobile
+852406|China Unicom
+852409|China Mobile
 85242|China Telecom Global Limited
 852440|China Mobile
 852441|HKT

@@ -37,6 +37,7 @@
 254758|Safaricom
 254759|Safaricom
 25476|Airtel
+254761|Telkom
 254768|Safaricom
 254769|Safaricom
 25477|Telkom
