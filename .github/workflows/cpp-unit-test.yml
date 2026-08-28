@@ -1,7 +1,13 @@
 # This workflow builds and unit tests both main C++ API and also build/data tools for metadata generation.
 
 name: Testing C++ API
-on: pull_request
+on:
+  pull_request:
+    # Skip kotoba-only PRs; those run .github/workflows/kotoba-v1.yml.
+    paths:
+      - 'cpp/**'
+      - 'tools/cpp/**'
+      - 'resources/**'
 permissions:
   contents: read
 

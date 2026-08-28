@@ -18,6 +18,15 @@ name: OSV-Scanner
 on:
   pull_request:
     branches: ["master"]
+    # Skip kotoba-only PRs; those run .github/workflows/kotoba-v1.yml.
+    paths-ignore:
+      - 'kotoba/**'
+      - '.github/workflows/kotoba-v1.yml'
+      - '.github/workflows/java-unit-test.yml'
+      - '.github/workflows/cpp-unit-test.yml'
+      - '.github/workflows/codeql.yml'
+      - '.github/workflows/dependency-review.yml'
+      - '.github/workflows/osv-scanner-unified.yml'
   schedule:
   - cron: "12 12 * * 1"
   push:

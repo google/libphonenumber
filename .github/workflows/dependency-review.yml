@@ -7,7 +7,17 @@
 #
 # Source repository: https://github.com/actions/dependency-review-action
 name: 'Dependency Review'
-on: [pull_request]
+on:
+  pull_request:
+    # Skip kotoba-only PRs; those run .github/workflows/kotoba-v1.yml.
+    paths-ignore:
+      - 'kotoba/**'
+      - '.github/workflows/kotoba-v1.yml'
+      - '.github/workflows/java-unit-test.yml'
+      - '.github/workflows/cpp-unit-test.yml'
+      - '.github/workflows/codeql.yml'
+      - '.github/workflows/osv-scanner-unified.yml'
+      - '.github/workflows/dependency-review.yml'
 
 permissions:
   contents: read

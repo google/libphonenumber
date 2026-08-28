@@ -3,7 +3,13 @@ name: Kotoba v1
 on:
   push:
     branches: [master]
+    paths:
+      - 'kotoba/**'
+      - '.github/workflows/kotoba-v1.yml'
   pull_request:
+    paths:
+      - 'kotoba/**'
+      - '.github/workflows/kotoba-v1.yml'
 
 permissions:
   contents: read
