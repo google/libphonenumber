@@ -25,7 +25,7 @@ public interface FormattingMetadataSource {
    * Returns formatting phone metadata for provided country calling code.
    *
    * <p>This method is similar to the one in {@link
-   * NonGeographicalEntityMetadataSource#getMetadataForNonGeographicalRegion(int)}, except that it
+   * NonGeographicalEntityMetadataSourceV2#getMetadataForNonGeographicalEntity(int)}, except that it
    * will not fail for geographical regions, it can be used for both geo- and non-geo entities.
    *
    * <p>In case the provided {@code countryCallingCode} maps to several different regions, only one
