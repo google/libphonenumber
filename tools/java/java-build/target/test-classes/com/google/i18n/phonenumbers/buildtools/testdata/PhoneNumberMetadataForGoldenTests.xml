@@ -1,0 +1,192 @@
+<phoneNumberMetadata>
+  <territories>
+    <!-- Ascension Island -->
+    <territory id="AC" countryCode="247" internationalPrefix="00">
+      <references>
+        <sourceUrl>http://www.itu.int/oth/T02020000AF/en</sourceUrl>
+      </references>
+      <generalDesc>
+        <nationalNumberPattern>
+          [46]\d{4}|
+          [01589]\d{5}
+        </nationalNumberPattern>
+      </generalDesc>
+      <fixedLine>
+        <nationalNumberPattern>
+          6[2-467]\d{3}
+        </nationalNumberPattern>
+        <possibleLengths national="5"/>
+        <exampleNumber>62889</exampleNumber>
+      </fixedLine>
+      <mobile>
+        <nationalNumberPattern>4\d{4}</nationalNumberPattern>
+        <possibleLengths national="5"/>
+        <exampleNumber>40123</exampleNumber>
+      </mobile>
+      <uan>
+        <nationalNumberPattern>[01589]\d{5}</nationalNumberPattern>
+        <possibleLengths national="6"/>
+        <exampleNumber>542011</exampleNumber>
+      </uan>
+    </territory>
+
+    <!-- Argentina -->
+    <territory id="AR" countryCode="54" internationalPrefix="00" nationalPrefix="0"
+               nationalPrefixForParsing="0?(?:(11)?15)?"
+               nationalPrefixTransformRule="9$1" nationalPrefixFormattingRule="$NP$FG"
+               mobileNumberPortableRegion="true">
+      <references>
+        <sourceUrl>http://www.itu.int/oth/T0202000009/en</sourceUrl>
+      </references>
+      <availableFormats>
+        <numberFormat pattern="([68]\d{2})(\d{3})(\d{4})">
+          <leadingDigits>[68]</leadingDigits>
+          <format>$1-$2-$3</format>
+        </numberFormat>
+        <numberFormat pattern="(\d{2})(\d{4})" nationalPrefixFormattingRule="$FG">
+          <leadingDigits>[2-9]</leadingDigits>
+          <format>$1-$2</format>
+          <intlFormat>NA</intlFormat>
+        </numberFormat>
+        <numberFormat pattern="(9)(11)(\d{4})(\d{4})">
+          <leadingDigits>911</leadingDigits>
+          <format>$2 15-$3-$4</format>
+          <intlFormat>$1 $2 $3-$4</intlFormat>
+        </numberFormat>
+        <numberFormat pattern="(11)(\d{4})(\d{4})" nationalPrefixOptionalWhenFormatting="true">
+          <leadingDigits>1</leadingDigits>
+          <format>$1 $2-$3</format>
+        </numberFormat>
+      </availableFormats>
+      <generalDesc>
+        <nationalNumberPattern>
+          11\d{8}|
+          [2368]\d{9}|
+          9\d{10}
+        </nationalNumberPattern>
+      </generalDesc>
+      <noInternationalDialling>
+        <nationalNumberPattern>810\d{7}</nationalNumberPattern>
+        <possibleLengths national="10"/>
+        <exampleNumber>8101234567</exampleNumber>
+      </noInternationalDialling>
+      <fixedLine>
+        <nationalNumberPattern>11\d{8}</nationalNumberPattern>
+        <possibleLengths national="10" localOnly="[6-8]"/>
+        <exampleNumber>1123456789</exampleNumber>
+      </fixedLine>
+      <uan>
+        <nationalNumberPattern>810\d{7}</nationalNumberPattern>
+        <possibleLengths national="10"/>
+        <exampleNumber>8101234567</exampleNumber>
+      </uan>
+    </territory>
+
+    <!-- Guam -->
+    <territory id="GU" countryCode="1" leadingDigits="671" nationalPrefix="1"
+               internationalPrefix="011">
+      <references>
+        <sourceUrl>http://www.nationalnanpa.com/nas/public/assigned_code_query_step1.do?method=resetCodeQueryModel</sourceUrl>
+      </references>
+      <generalDesc>
+        <nationalNumberPattern>[5689]\d{9}</nationalNumberPattern>
+      </generalDesc>
+      <fixedLine>
+        <nationalNumberPattern>
+          671(?:
+            3(?:
+              00|
+              3[39]|
+              4[349]|
+              55|
+              6[26]
+            )|
+            4(?:
+              56|
+              7[1-9]|
+              8[236-9]
+            )
+          )\d{4}
+        </nationalNumberPattern>
+        <possibleLengths national="10" localOnly="7"/>
+        <exampleNumber>6713001234</exampleNumber>
+      </fixedLine>
+      <!-- We assume mobile phone numbers to be the same as fixed-line. -->
+      <mobile>
+        <nationalNumberPattern>
+          671(?:
+            3(?:
+              00|
+              3[39]|
+              4[349]|
+              55|
+              6[26]
+            )|
+            4(?:
+              56|
+              7[1-9]|
+              8[236-9]
+            )
+          )\d{4}
+        </nationalNumberPattern>
+        <possibleLengths national="10" localOnly="7"/>
+        <exampleNumber>6713001234</exampleNumber>
+      </mobile>
+      <tollFree>
+        <nationalNumberPattern>
+          8(?:
+            00|
+            33|
+            44|
+            55|
+            66|
+            77|
+            88
+          )[2-9]\d{6}
+        </nationalNumberPattern>
+        <possibleLengths national="10"/>
+        <exampleNumber>8002123456</exampleNumber>
+      </tollFree>
+      <premiumRate>
+        <nationalNumberPattern>900[2-9]\d{6}</nationalNumberPattern>
+        <possibleLengths national="10"/>
+        <exampleNumber>9002123456</exampleNumber>
+      </premiumRate>
+      <personalNumber>
+        <nationalNumberPattern>
+          5(?:
+            00|
+            22|
+            33|
+            44|
+            66|
+            77|
+            88
+          )[2-9]\d{6}
+        </nationalNumberPattern>
+        <possibleLengths national="10"/>
+        <exampleNumber>5002345678</exampleNumber>
+      </personalNumber>
+    </territory>
+
+    <!-- Universal International Premium Rate Number -->
+    <territory id="001" countryCode="979">
+      <references>
+        <sourceUrl>http://www.itu.int/rec/T-REC-E.169-200205-I/en</sourceUrl>
+      </references>
+      <availableFormats>
+        <numberFormat pattern="(\d)(\d{4})(\d{4})">
+          <format>$1 $2 $3</format>
+        </numberFormat>
+      </availableFormats>
+      <generalDesc>
+        <nationalNumberPattern>\d{9}</nationalNumberPattern>
+      </generalDesc>
+      <premiumRate>
+        <nationalNumberPattern>\d{9}</nationalNumberPattern>
+        <possibleLengths national="9"/>
+        <exampleNumber>123456789</exampleNumber>
+      </premiumRate>
+    </territory>
+  </territories>
+</phoneNumberMetadata>
