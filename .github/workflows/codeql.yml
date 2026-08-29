@@ -17,6 +17,14 @@ on:
   pull_request:
     # The branches below must be a subset of the branches above
     branches: ["master"]
+    # Skip kotoba-only PRs; those run .github/workflows/kotoba-v1.yml.
+    paths:
+      - 'java/**'
+      - 'javascript/**'
+      - 'cpp/**'
+      - 'resources/**'
+      - 'tools/**'
+      - 'pom.xml'
   schedule:
     - cron: "0 0 * * 1"
 
