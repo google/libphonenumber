@@ -453,6 +453,14 @@ TEST_F(PhoneNumberUtilTest, GetExampleNumber) {
       RegionCode::CS(), PhoneNumberUtil::MOBILE, &test_number));
   EXPECT_EQ(PhoneNumber::default_instance(), test_number);
 
+  // Make sure we can get an example number for a type that only exists for a
+  // non-geographical entity.
+  test_number.Clear();
+  EXPECT_TRUE(phone_util_.GetExampleNumberForType(PhoneNumberUtil::VOICEMAIL,
+                                                  &test_number));
+  EXPECT_EQ(882, test_number.country_code());
+  EXPECT_EQ(34851234567, test_number.national_number());
+
   // RegionCode 001 is reserved for supporting non-geographical country calling
   // code. We don't support getting an example number for it with this method.
   EXPECT_FALSE(phone_util_.GetExampleNumber(RegionCode::UN001(), &test_number));
