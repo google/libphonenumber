@@ -26,8 +26,9 @@
 38164|Telekom Srbija a.d.
 38165|Telekom Srbija a.d.
 38166|Telekom Srbija a.d.
-381676|GLOBALTEL
-381677|GLOBALTEL
+381671|Ringtel
+381676|Telekom Srbija a.d.
+381677|Telekom Srbija a.d.
 381678|Vectone Mobile
 38168|A1
 38169|Telenor

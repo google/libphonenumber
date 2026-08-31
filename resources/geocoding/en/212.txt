@@ -16,6 +16,7 @@
 # http://www.itu.int/oth/T0202000090/en [2010-09-22]
 # http://en.wikipedia.org/wiki/+212 [407497373]
 
+21251|Rabat/Tanger/Fès/Meknès
 212520|Casablanca
 212521|Casablanca/Central Morocco
 2125220|Casablanca
@@ -91,3 +92,4 @@
 2125397|Tétouan
 2125398|Al Hoceima/Chefchaouen
 2125399|Al Hoceima/Larache/Tangier
+212549|Casablanca/Marrakech/Agadir

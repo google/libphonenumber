@@ -23,6 +23,8 @@
 254121|Infura
 254124|Finserve
 25413|NRG Media Limited
+25414|Safaricom
+25418|Safaricom
 25470|Safaricom
 25471|Safaricom
 25472|Safaricom
@@ -34,14 +36,8 @@
 254757|Safaricom
 254758|Safaricom
 254759|Safaricom
-254760|Mobile Pay
-254761|Airtel
-254762|Airtel
-254763|Finserve
-254764|Finserve
-254765|Finserve
-254766|Finserve
-254767|Sema Mobile
+25476|Airtel
+254761|Telkom
 254768|Safaricom
 254769|Safaricom
 25477|Telkom

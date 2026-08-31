@@ -16,61 +16,140 @@
 # http://www.itu.int/oth/T0202000044/en [2005-09-12]
 # http://en.wikipedia.org/wiki/+251 [441952823]
 
+2511110|Addis Ababa
+25111110|Addis Ababa
 25111111|Arada I, Addis Ababa
 25111112|Arada II, Addis Ababa
 25111114|French Legasion, Addis Ababa
+25111115|Addis Ababa
+25111117|Addis Ababa
+25111119|Addis Ababa
+25111120|Addis Ababa
+25111121|Addis Ababa
 25111122|Sidist Kilo I, Addis Ababa
 25111123|Sidist Kilo II, Addis Ababa
 25111124|Sidist Kilo III, Addis Ababa
 25111125|Sidist Kilo Rss I, Addis Ababa
 25111127|Addisu Gebeya, Addis Ababa
+25111128|Addis Ababa
+25111129|Addis Ababa
+25111130|Addis Ababa
 25111131|Kuyu, Addis Ababa
 251111320|Alem Ketema, Addis Ababa
 251111330|Deber Tsige, Addis Ababa
 251111340|Muke Turi, Addis Ababa
 25111135|Fitche, Addis Ababa
+25111136|Addis Ababa
+25111137|Addis Ababa
+25111138|Addis Ababa
+25111139|Addis Ababa
+2511114|Addis Ababa
+2511115|Addis Ababa
 25111155|Arada III, Addis Ababa
 25111156|Arada IV, Addis Ababa
 25111157|Arada V, Addis Ababa
 25111158|Arada VI, Addis Ababa
+2511116|Addis Ababa
+2511117|Addis Ababa
+25111180|Addis Ababa
+25111181|Addis Ababa
+25111182|Addis Ababa
+25111183|Addis Ababa
+25111184|Addis Ababa
+25111185|Addis Ababa
 251111860|Sululta, Addis Ababa
 25111187|Goha Tsion, Addis Ababa
 25111188|Chancho, Addis Ababa
-2511121|Addis Ketema I, Addis Ababa
+25111189|Addis Ababa
+2511119|Addis Ababa
+2511120|Addis Ababa
+2511121|Addis Ababa
+25111213|Addis Ketema I, Addis Ababa
+2511122|Addis Ababa
+2511123|Addis Ababa
 25111236|Hagere Hiwot, Addis Ababa
 25111237|Holeta Gent, Addis Ababa
 25111238|Jeldu, Addis Ababa
+2511124|Addis Ababa
+25111250|Addis Ababa
+25111251|Addis Ababa
+25111252|Addis Ababa
+25111253|Addis Ababa
+25111254|Addis Ababa
+25111255|Addis Ababa
+25111256|Addis Ababa
+25111257|Addis Ababa
 251112580|Ginchi, Addis Ababa
 25111259|Shegole, Addis Ababa
+2511126|Addis Ababa
 25111270|Asko, Addis Ababa
+25111271|Addis Ababa
+25111272|Addis Ababa
+25111273|Addis Ababa
+25111274|Addis Ababa
 25111275|Addis Ketema II, Addis Ababa
 25111276|Addis Ketema III, Addis Ababa
 25111277|Addis Ketema IV, Addis Ababa
 25111278|Addis Ketema VI, Addis Ababa
 25111279|Kolfe, Addis Ababa
+25111280|Addis Ababa
+25111281|Addis Ababa
 251112820|Guder, Addis Ababa
 25111283|Addis Alem, Addis Ababa
 25111284|Burayu, Addis Ababa
 251112850|Wolenkomi, Addis Ababa
 251112860|Enchini, Addis Ababa
+25111287|Addis Ababa
+25111288|Addis Ababa
+25111289|Addis Ababa
+2511129|Addis Ababa
+2511130|Addis Ababa
+2511131|Addis Ababa
+2511132|Addis Ababa
 25111320|Old Airport I, Addis Ababa
 25111321|Mekanisa, Addis Ababa
 25111330|Wolkite, Addis Ababa
 251113310|Endibir, Addis Ababa
 251113320|Gunchire, Addis Ababa
+25111333|Addis Ababa
+25111334|Addis Ababa
+25111335|Addis Ababa
+25111336|Addis Ababa
+25111337|Addis Ababa
 251113380|Sebeta, Addis Ababa
 251113390|Teji, Addis Ababa
+25111340|Addis Ababa
 25111341|Ghion, Addis Ababa
 251113420|Tullu Bollo, Addis Ababa
+25111343|Addis Ababa
+25111344|Addis Ababa
+25111345|Addis Ababa
+25111346|Addis Ababa
+25111347|Addis Ababa
 25111348|Jimmaber (Ayer Tena), Addis Ababa
 25111349|Keranyo, Addis Ababa
+2511135|Addis Ababa
+2511136|Addis Ababa
+2511137|Addis Ababa
 25111371|Old Airport II, Addis Ababa
 25111372|Old Airport III, Addis Ababa
 25111373|Old Airport IV, Addis Ababa
 25111374|Old Airport V, Addis Ababa
+25111380|Addis Ababa
+25111381|Addis Ababa
+25111382|Addis Ababa
+25111383|Addis Ababa
+25111384|Addis Ababa
+25111385|Addis Ababa
+25111386|Addis Ababa
 251113870|Alem Gena, Addis Ababa
+2511139|Addis Ababa
+2511140|Addis Ababa
+2511141|Addis Ababa
 25111416|Keira I, Addis Ababa
 25111419|Hana Mariam, Addis Ababa
+2511142|Addis Ababa
+2511143|Addis Ababa
 25111432|Dukem, Addis Ababa
 25111433|Debre Zeit, Addis Ababa
 25111434|Akaki, Addis Ababa
@@ -78,23 +157,52 @@
 25111440|Nifas Silk III, Addis Ababa
 25111442|Nifas Silk I, Addis Ababa
 25111443|Nifas Silk II, Addis Ababa
+25111444|Addis Ababa
+25111445|Addis Ababa
+25111446|Addis Ababa
+25111447|Addis Ababa
+25111448|Addis Ababa
+25111449|Addis Ababa
+2511145|Addis Ababa
+2511146|Addis Ababa
 25111465|Keria II, Addis Ababa
 25111466|Keria III, Addis Ababa
 25111467|Keira IV, Addis Ababa
 25111468|Keria V, Addis Ababa
 2511147|Addis Ababa
+2511148|Addis Ababa
+2511149|Addis Ababa
+251115|Addis Ababa
 25111515|Filwoha II, Addis Ababa
 25111517|Sheraton/DID, Addis Ababa
 25111518|Addis Ababa Region
-2511154|ECA, Addis Ababa
+25111544|ECA, Addis Ababa
 25111550|Filwoha IV, Addis Ababa
 25111551|Filwoha III, Addis Ababa
 25111552|Filwha VI, Addis Ababa
 25111553|Filwha V, Addis Ababa
 25111554|Filwha VII, Addis Ababa
+2511160|Addis Ababa
+25111610|Addis Ababa
+25111611|Addis Ababa
+25111612|Addis Ababa
+25111613|Addis Ababa
+25111614|Addis Ababa
 25111618|Bole I, Addis Ababa
+25111619|Addis Ababa
+2511162|Addis Ababa
 25111626|Bole Michael, Addis Ababa
 25111629|Gerji, Addis Ababa
+25111630|Addis Ababa
+25111631|Addis Ababa
+25111632|Addis Ababa
+25111633|Addis Ababa
+25111634|Addis Ababa
+25111635|Addis Ababa
+25111636|Addis Ababa
+25111637|Addis Ababa
+25111638|Addis Ababa
+2511164|Addis Ababa
 25111645|Yeka I, Addis Ababa
 25111646|Yeka II, Addis Ababa
 25111647|Yeka Rss III, Addis Ababa
@@ -104,19 +212,38 @@
 25111653|South-West Addis Ababa Zone
 25111654|West Addis Ababa Zone
 25111655|Central & North Addis Ababa Zones
+25111656|Addis Ababa
+25111657|Addis Ababa
+25111658|Addis Ababa
+25111659|Addis Ababa
 25111660|Kotebe, Addis Ababa
 25111661|Bole II, Addis Ababa
 25111662|Bole III, Addis Ababa
 25111663|Bole IV, Addis Ababa
 251116640|Bole V, Addis Ababa
 251116650|Civil Aviation, Addis Ababa
+25111666|Addis Ababa
+251116672|Addis Ababa
+251116673|Addis Ababa
+251116674|Addis Ababa
+251116675|Addis Ababa
+251116676|Addis Ababa
+251116677|Addis Ababa
+251116678|Addis Ababa
+251116679|Addis Ababa
+25111668|Addis Ababa
 25111669|Bole VI, Addis Ababa
+2511167|Addis Ababa
 25111680|Debre Sina, Addis Ababa
 25111681|Debre Birehan, Addis Ababa
+25111682|Addis Ababa
+25111683|Addis Ababa
+25111684|Addis Ababa
 25111685|Mehal Meda, Addis Ababa
 251116860|Sendafa, Addis Ababa
 251116870|Sheno, Addis Ababa
 251116880|Enwari, Addis Ababa
+2511169|Addis Ababa
 25122111|Nazreth I, South-East Region
 25122112|Nazreth II, South-East Region
 25122113|Wolenchiti, South-East Region

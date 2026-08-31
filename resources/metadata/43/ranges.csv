@@ -844,7 +844,8 @@ Prefix      ; Length ; Type       ; Tariff        ; Area Code Length ; Operator 
 672         ; 7-13   ; MOBILE     ; STANDARD_RATE ;                  ; "three"       ; "fixed_3/3-10" ; "AT"    ;                                     ;                                     ; IR21
 676         ; 7-13   ; MOBILE     ; STANDARD_RATE ;                  ; "t_mobile_at" ; "fixed_3/3-10" ; "AT"    ;                                     ;                                     ; IR21
 677[0-289]  ; 7-13   ; MOBILE     ; STANDARD_RATE ;                  ; "t_mobile_at" ; "fixed_3/3-10" ; "AT"
-677[3-7]    ; 7-13   ; MOBILE     ; STANDARD_RATE ;                  ;               ; "fixed_3/3-10" ; "AT"
+677[3-57]   ; 7-13   ; MOBILE     ; STANDARD_RATE ;                  ;               ; "fixed_3/3-10" ; "AT"
+6776        ; 7-13   ; MOBILE     ; STANDARD_RATE ;                  ; "t_mobile_at" ; "fixed_3/3-10" ; "AT"    ;                                     ;                                     ; IR21
 68[02-579]  ; 7-13   ; MOBILE     ; STANDARD_RATE ;                  ;               ; "fixed_3/3-10" ; "AT"
 681[0-7]    ; 7-13   ; MOBILE     ; STANDARD_RATE ;                  ;               ; "fixed_3/3-10" ; "AT"
 6818[05-9]  ; 7-13   ; MOBILE     ; STANDARD_RATE ;                  ;               ; "fixed_3/3-10" ; "AT"
@@ -852,10 +853,12 @@ Prefix      ; Length ; Type       ; Tariff        ; Area Code Length ; Operator 
 68183       ; 7-13   ; MOBILE     ; STANDARD_RATE ;                  ; "three"       ; "fixed_3/3-10" ; "AT"    ;                                     ;                                     ; IR21
 6819        ; 7-13   ; MOBILE     ; STANDARD_RATE ;                  ; "three"       ; "fixed_3/3-10" ; "AT"    ;                                     ;                                     ; IR21
 686         ; 7-13   ; MOBILE     ; STANDARD_RATE ;                  ; "three"       ; "fixed_3/3-10" ; "AT"    ;                                     ;                                     ; IR21
-688         ; 7-13   ; MOBILE     ; STANDARD_RATE ;                  ; "orange_at"   ; "fixed_3/3-10" ; "AT"    ;                                     ;                                     ; IR21
+688         ; 7-13   ; MOBILE     ; STANDARD_RATE ;                  ; "a1_ta"       ; "fixed_3/3-10" ; "AT"    ;                                     ;                                     ; IR21
 69[06]      ; 7-13   ; MOBILE     ; STANDARD_RATE ;                  ; "three"       ; "fixed_3/3-10" ; "AT"    ;                                     ;                                     ; IR21
 69[1-578]   ; 7-13   ; MOBILE     ; STANDARD_RATE ;                  ;               ; "fixed_3/3-10" ; "AT"
-699         ; 7-13   ; MOBILE     ; STANDARD_RATE ;                  ; "orange_at"   ; "fixed_3/3-10" ; "AT"    ;                                     ;                                     ; IR21
+699[0-79]   ; 7-13   ; MOBILE     ; STANDARD_RATE ;                  ; "three"       ; "fixed_3/3-10" ; "AT"    ;                                     ;                                     ; IR21
+6998[03-7]  ; 7-13   ; MOBILE     ; STANDARD_RATE ;                  ; "three"       ; "fixed_3/3-10" ; "AT"    ;                                     ;                                     ; IR21
+6998[1289]  ; 7-13   ; MOBILE     ; STANDARD_RATE ;                  ; "a1_ta"       ; "fixed_3/3-10" ; "AT"    ;                                     ;                                     ; IR21
 7[28]0      ; 9-13   ; VOIP       ; STANDARD_RATE ;                  ;               ; "fixed_3/3-10" ; "AT"
 7211        ; 7-13   ; FIXED_LINE ; STANDARD_RATE ; 4                ;               ; "fixed_4/3-9"  ; "AT"    ; "Reichenau im Mühlkreis"            ; "Reichenau im Mühlkreis"            ; GOVERNMENT
 7212        ; 7-13   ; FIXED_LINE ; STANDARD_RATE ; 4                ;               ; "fixed_4/3-9"  ; "AT"    ; "Zwettl an der Rodl"                ; "Zwettl an der Rodl"                ; GOVERNMENT

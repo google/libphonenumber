@@ -1,5 +1,6 @@
 Region ; Prefix    ; Length ; Type               ; Tariff       ; Sms
 RO     ; 112       ; 3      ; EMERGENCY          ; TOLL_FREE
+RO     ; 113       ; 3      ; EXPANDED_EMERGENCY ; TOLL_FREE    ; true
 RO     ; 116000    ; 6      ; EXPANDED_EMERGENCY ; TOLL_FREE
 RO     ; 116111    ; 6      ; EXPANDED_EMERGENCY ; TOLL_FREE
 RO     ; 116123    ; 6      ; EXPANDED_EMERGENCY ; TOLL_FREE

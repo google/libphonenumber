@@ -1,3 +1,14 @@
+# Copyright (C) 2013 The Libphonenumber Authors
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+# http://www.apache.org/licenses/LICENSE-2.0
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
 97250|Pelephone
 97251|Xphone
 972510|Wecom
@@ -6,15 +17,18 @@
 97254|Orange
 972550|Beezz
 972552|019mobile
-9725520|BITIT
-9725521|BITIT
+9725520|Paycall Technologies
+9725521|Paycall Technologies
 9725522|Home Cellular
 9725523|Home Cellular
 9725530|019mobile
 9725531|019mobile
 9725532|Free Telecom
 9725533|Free Telecom
-9725540|Rami Levy
+97255400|Rami Levy
+97255401|Rami Levy
+97255402|Rami Levy
+97255403|Yossi
 9725541|Merkaziya
 9725543|Maskyoo
 9725544|Cellran Cellular Communications
@@ -22,6 +36,13 @@
 97255442|Xphone
 97255443|Yossi
 9725545|Maskyoo
+97255460|Xphone
+97255461|Merkaziya
+97255465|Pelephone
+97255466|Pelephone
+97255467|Pelephone
+97255468|Pelephone
+97255469|Pelephone
 9725550|Annatel
 9725551|Annatel
 9725552|Annatel
@@ -32,7 +53,15 @@
 9725571|Cellact
 9725572|Cellact
 9725577|019mobile
-972558|Pelephone
+97255800|Merkaziya
+97255801|019mobile
+97255802|Paycall Technologies
+97255860|Merkaziya
+97255861|019mobile
+97255862|Paycall Technologies
+9725587|Pelephone
+9725588|Pelephone
+9725589|Pelephone
 972559|019mobile
 97256|Ooredoo
 97258|Golan Telecom

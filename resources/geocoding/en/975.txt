@@ -20,4 +20,6 @@
 97572|Samdrup Jongkhar
 97574|Samdrup Jongkhar
 97576|Samdrup Jongkhar
-9758|Paro
+97582|Paro
+97583|Paro
+97584|Paro

@@ -85,9 +85,7 @@ Prefix       ; Length ; Type            ; Tariff        ; Operator   ; Format   
 6662[2-9]    ; 8      ; MOBILE          ; STANDARD_RATE ; "bite"     ; "fmt_3/5"      ; "LT"    ;                      ; IR21
 666[34]      ; 8      ; MOBILE          ; STANDARD_RATE ; "telia"    ; "fmt_3/5"      ; "LT"    ;                      ; IR21
 6666         ; 8      ; MOBILE          ; STANDARD_RATE ; "tele_2"   ; "fmt_3/5"      ; "LT"    ;                      ; IR21
-667[036-9]   ; 8      ; MOBILE          ; STANDARD_RATE ; "bite"     ; "fmt_3/5"      ; "LT"    ;                      ; IR21
-6671[02-8]   ; 8      ; MOBILE          ; STANDARD_RATE ;            ; "fmt_3/5"      ; "LT"    ;                      ;            ; "FILLUP TO SUPPORT MASTER RANGE"
-6671[19]     ; 8      ; MOBILE          ; STANDARD_RATE ; "bite"     ; "fmt_3/5"      ; "LT"    ;                      ; IR21
+667[0136-9]  ; 8      ; MOBILE          ; STANDARD_RATE ; "bite"     ; "fmt_3/5"      ; "LT"    ;                      ; IR21
 6672[017]    ; 8      ; MOBILE          ; STANDARD_RATE ;            ; "fmt_3/5"      ; "LT"    ;                      ;            ; "FILLUP TO SUPPORT MASTER RANGE"
 6672[2-6]    ; 8      ; MOBILE          ; STANDARD_RATE ; "tele_2"   ; "fmt_3/5"      ; "LT"    ;                      ; IR21
 6672[89]     ; 8      ; MOBILE          ; STANDARD_RATE ; "bite"     ; "fmt_3/5"      ; "LT"    ;                      ; IR21

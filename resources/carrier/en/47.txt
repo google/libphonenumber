@@ -90,7 +90,6 @@
 47413|telia
 4745|telia
 47453|telenor norge
-474536|nkom (nasjonal kommunikasjonsmyndighet)
 474537|erate
 474538|erate
 47455|lyca mobile

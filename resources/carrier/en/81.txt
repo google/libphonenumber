@@ -15,7 +15,7 @@
 8160100|Softbank
 8160110|KDDI
 8160120|Rakuten Communications
-8160130|Okinawa Cellular
+8160130|KDDI
 8160140|NTT Docomo
 81701|Softbank
 817010|NTT Docomo
@@ -106,6 +106,7 @@
 817086|KDDI
 817087|KDDI
 817088|KDDI
+817089|Rakuten Communications
 81709|Rakuten Communications
 81801|NTT Docomo
 81802|NTT Docomo

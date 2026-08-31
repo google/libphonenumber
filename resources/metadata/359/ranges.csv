@@ -2167,7 +2167,7 @@ Prefix        ; Length ; Type       ; Tariff        ; Area Code Length ; Operato
 8699          ; 7,8    ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fixed_2/3/2-3"  ; "BG"    ; "Търновци, Силистра"                 ; "Tarnovtsi, Silistra"                ; GOVERNMENT ; "Regulator Numbering Plan Dated 5/2/2014"
 87            ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "vivacom" ; "mobile_2/3/3-4" ; "BG"
 88            ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "A1"      ; "mobile_2/3/3-4" ; "BG"    ;                                      ;                                      ; IR21       ; "IR21 Dated 4/2/2018"
-89            ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "telenor" ; "mobile_2/3/3-4" ; "BG"
+89            ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "yettel"  ; "mobile_2/3/3-4" ; "BG"    ;                                      ;                                      ; IR21
 90            ; 8      ; FIXED_LINE ; PREMIUM_RATE  ;                  ;           ; "mobile_2/3/3-4" ; "BG"    ;                                      ;                                      ; GOVERNMENT ; "Regulator Numbering Plan Dated 5/2/2014"
 910           ; 7,8    ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fixed_2/3/2-3"  ; "BG"    ; "Мездра"                             ; "Mezdra"                             ; GOVERNMENT ; "Regulator Numbering Plan Dated 5/2/2014"
 9110          ; 7,8    ; FIXED_LINE ; STANDARD_RATE ; 2                ;           ; "fixed_2/3/2-3"  ; "BG"    ; "Вировско"                           ; "Virovsko"                           ; GOVERNMENT ; "Regulator Numbering Plan Dated 5/2/2014"
@@ -2392,8 +2392,8 @@ Prefix        ; Length ; Type       ; Tariff        ; Area Code Length ; Operato
 989           ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "A1"      ; "mobile_2/3/3-4" ; "BG"    ;                                      ;                                      ; IR21       ; "IR21 Dated 4/2/2018"
 996[0-2]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "A1"      ; "mobile_3/3/3"   ; "BG"    ;                                      ;                                      ; IR21
 9963          ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;           ; "mobile_3/3/3"   ; "BG"
-996[4-6]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "telenor" ; "mobile_3/3/3"   ; "BG"    ;                                      ;                                      ; IR21
+996[4-6]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "yettel"  ; "mobile_3/3/3"   ; "BG"    ;                                      ;                                      ; IR21
 996[7-9]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "vivacom" ; "mobile_3/3/3"   ; "BG"    ;                                      ;                                      ; IR21
 999[0-3]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "A1"      ; "mobile_3/3/3"   ; "BG"    ;                                      ;                                      ; IR21
-999[45]       ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "telenor" ; "mobile_3/3/3"   ; "BG"    ;                                      ;                                      ; IR21
+999[45]       ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "yettel"  ; "mobile_3/3/3"   ; "BG"    ;                                      ;                                      ; IR21
 999[6-9]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "vivacom" ; "mobile_3/3/3"   ; "BG"    ;                                      ;                                      ; IR21

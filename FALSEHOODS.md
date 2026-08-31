@@ -62,8 +62,8 @@ surprising how many false assumptions programmers continue to make about them.
 
     As of this present moment (in Mar. 2016), phones in the disputed territory
     and partially recognised state of Kosovo may be reached by dialing the
-    country calling code for Serbia (+381), Slovenia (+386), or Monaco (+377),
-    depending on where and when one obtained the number.
+    country calling code for Slovenia (+386), or Monaco (+377), depending
+    on where and when one obtained the number.
 
     **Tip:** Use a phone widget to encourage users to enter their phone number
     in an international format such that it can be unambiguously understood.

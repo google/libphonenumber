@@ -191,6 +191,13 @@ Prefix        ; Length ; Type       ; Tariff        ; Operator   ; Format       
 2890[024589]  ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
 289[1-9]      ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
 29            ; 8      ; FIXED_LINE ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
+500[0-4]      ; 8      ; MOBILE     ; STANDARD_RATE ; "claro"    ; "fmt1_4/4"   ; "SV"    ; IR21
+500[5-9]      ; 8      ; MOBILE     ; STANDARD_RATE ; "digicel"  ; "fmt1_4/4"   ; "SV"    ; IR21
+50[1-9]       ; 8      ; MOBILE     ; STANDARD_RATE ; "digicel"  ; "fmt1_4/4"   ; "SV"    ; IR21
+5100          ; 8      ; MOBILE     ; STANDARD_RATE ; "tigo"     ; "fmt1_4/4"   ; "SV"    ; IR21
+510[1-9]      ; 8      ; MOBILE     ; STANDARD_RATE ; "digicel"  ; "fmt1_4/4"   ; "SV"    ; IR21
+51[1-9]       ; 8      ; MOBILE     ; STANDARD_RATE ; "digicel"  ; "fmt1_4/4"   ; "SV"    ; IR21
+5[2-9]        ; 8      ; MOBILE     ; STANDARD_RATE ; "digicel"  ; "fmt1_4/4"   ; "SV"    ; IR21
 60[0-59]      ; 8      ; MOBILE     ; STANDARD_RATE ; "tigo"     ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
 60[67]        ; 8      ; MOBILE     ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"
 608           ; 8      ; MOBILE     ; STANDARD_RATE ; "movistar" ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
@@ -218,7 +225,8 @@ Prefix        ; Length ; Type       ; Tariff        ; Operator   ; Format       
 68            ; 8      ; MOBILE     ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"
 690           ; 8      ; MOBILE     ; STANDARD_RATE ; "tigo"     ; "fmt1_4/4"   ; "SV"    ; IR21
 691           ; 8      ; MOBILE     ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"
-69[2-6]       ; 8      ; MOBILE     ; STANDARD_RATE ; "tigo"     ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
+692           ; 8      ; MOBILE     ; STANDARD_RATE ; "movistar" ; "fmt1_4/4"   ; "SV"    ; IR21
+69[3-6]       ; 8      ; MOBILE     ; STANDARD_RATE ; "tigo"     ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
 69[7-9]       ; 8      ; MOBILE     ; STANDARD_RATE ; "claro"    ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
 70[0-689]     ; 8      ; MOBILE     ; STANDARD_RATE ; "claro"    ; "fmt1_4/4"   ; "SV"
 7070[03-57]   ; 8      ; MOBILE     ; STANDARD_RATE ; "claro"    ; "fmt1_4/4"   ; "SV"

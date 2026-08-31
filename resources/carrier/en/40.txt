@@ -41,11 +41,10 @@
 40775|Digi Mobil
 40776|Digi Mobil
 40777|Digi Mobil
-40780|Telekom
-40783|Orange
-40784|Telekom
-40785|Telekom
-40786|Telekom
+4078|Telekom
+407830|Orange
+407831|Orange
+407832|Orange
+407833|Orange
 40787|Orange
-40788|Telekom
 4079|Vodafone

@@ -309,9 +309,10 @@ Prefix          ; Length ; Type            ; Tariff        ; Operator           
 693             ; 10     ; MOBILE          ; STANDARD_RATE ; "wind"                      ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; GOVERNMENT
 694             ; 10     ; MOBILE          ; STANDARD_RATE ; "vodafone"                  ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; GOVERNMENT
 695[015-9]      ; 10     ; MOBILE          ; STANDARD_RATE ; "vodafone"                  ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; GOVERNMENT ; "goverment 1/12/2019"
-695200          ; 10     ; MOBILE          ; STANDARD_RATE ; "compatel"                  ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; GOVERNMENT
-6952[01][1-9]   ; 10     ; MOBILE          ; STANDARD_RATE ;                             ; "all_3/3/4"                 ; "GR"
+69520[0-3]      ; 10     ; MOBILE          ; STANDARD_RATE ; "vodafone"                  ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; IR21
+69520[4-9]      ; 10     ; MOBILE          ; STANDARD_RATE ;                             ; "all_3/3/4"                 ; "GR"
 695210          ; 10     ; MOBILE          ; STANDARD_RATE ;                             ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; WEB
+69521[1-9]      ; 10     ; MOBILE          ; STANDARD_RATE ;                             ; "all_3/3/4"                 ; "GR"
 6952[23]        ; 10     ; MOBILE          ; STANDARD_RATE ; "vodafone"                  ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; GOVERNMENT
 6952[49]        ; 10     ; MOBILE          ; STANDARD_RATE ; "bws"                       ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; GOVERNMENT
 6952[5-8]       ; 10     ; MOBILE          ; STANDARD_RATE ;                             ; "all_3/3/4"                 ; "GR"
@@ -325,12 +326,11 @@ Prefix          ; Length ; Type            ; Tariff        ; Operator           
 69535[0-46-9]   ; 10     ; MOBILE          ; STANDARD_RATE ;                             ; "all_3/3/4"                 ; "GR"
 695355          ; 10     ; MOBILE          ; STANDARD_RATE ; "cyta"                      ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; GOVERNMENT
 6953[6-9]       ; 10     ; MOBILE          ; STANDARD_RATE ;                             ; "all_3/3/4"                 ; "GR"
-695400          ; 10     ; MOBILE          ; STANDARD_RATE ; "amd_telecom"               ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; GOVERNMENT
-6954[01][1-9]   ; 10     ; MOBILE          ; STANDARD_RATE ;                             ; "all_3/3/4"                 ; "GR"
-6954[19]0       ; 10     ; MOBILE          ; STANDARD_RATE ; "mi_carrier_services"       ; "all_3/3/4"                 ; "GR"
-6954[2-46-8]    ; 10     ; MOBILE          ; STANDARD_RATE ;                             ; "all_3/3/4"                 ; "GR"
+6954[0-3]       ; 10     ; MOBILE          ; STANDARD_RATE ; "ote"                       ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; GOVERNMENT
+6954[46-8]      ; 10     ; MOBILE          ; STANDARD_RATE ;                             ; "all_3/3/4"                 ; "GR"
 69545[0-57-9]   ; 10     ; MOBILE          ; STANDARD_RATE ;                             ; "all_3/3/4"                 ; "GR"
 695456          ; 10     ; MOBILE          ; STANDARD_RATE ; "bws"                       ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; GOVERNMENT
+695490          ; 10     ; MOBILE          ; STANDARD_RATE ; "mi_carrier_services"       ; "all_3/3/4"                 ; "GR"
 69549[1-8]      ; 10     ; MOBILE          ; STANDARD_RATE ;                             ; "all_3/3/4"                 ; "GR"
 695499          ; 10     ; MOBILE          ; STANDARD_RATE ; "m_stat"                    ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; GOVERNMENT
 6960[02-9]      ; 10     ; MOBILE          ; STANDARD_RATE ;                             ; "all_3/3/4"                 ; "GR"

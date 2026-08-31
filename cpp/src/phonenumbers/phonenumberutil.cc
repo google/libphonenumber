@@ -122,7 +122,8 @@ const char kPossibleCharsAfterExtLabel[] =
 const char kOptionalExtSuffix[] = "#?";
 
 bool LoadCompiledInMetadata(PhoneMetadataCollection* metadata) {
-  if (!metadata->ParseFromArray(metadata_get(), metadata_size())) {
+  MetadataBytes bytes = GetMetadata();
+  if (!metadata->ParseFromArray(bytes.data(), bytes.size())) {
     LOG(ERROR) << "Could not parse binary data.";
     return false;
   }
@@ -2678,10 +2679,11 @@ void PhoneNumberUtil::GetNationalSignificantNumber(
     string* national_number) const {
   DCHECK(national_number);
   // If leading zero(s) have been set, we prefix this now. Note this is not a
-  // national prefix. Ensure the number of leading zeros is at least 0 so we
-  // don't crash in the case of malicious input.
+  // national prefix. Defensively cap the number of leading zeros to avoid OOM
+  // from malicious input. Ensure the number of leading zeros is at least 0 so
+  // we don't crash in the case of malicious input.
   StrAppend(national_number, number.italian_leading_zero() ?
-      string(std::max(number.number_of_leading_zeros(), 0), '0') : "");
+      string(std::min(std::max(number.number_of_leading_zeros(), 0), 10), '0') : "");
   StrAppend(national_number, number.national_number());
 }
 

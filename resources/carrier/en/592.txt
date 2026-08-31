@@ -13,6 +13,7 @@
 # limitations under the License.
 
 592510|Digicel Guyana
+592511|Digicel Guyana
 592600|Digicel Guyana
 592601|Digicel Guyana
 592602|Digicel Guyana
@@ -69,3 +70,6 @@
 592750|Digicel Guyana
 59276|E-Networks
 592770|E-Networks
+592780|GTT
+592786|Digicel Guyana
+592787|Digicel Guyana

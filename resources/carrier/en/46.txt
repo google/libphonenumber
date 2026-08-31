@@ -298,6 +298,8 @@
 4672649|Soatso AB
 467265|TeliaSonera
 4672660|Telenor Sverige
+4672663|Telavox AB
+4672665|Telavox AB
 4672666|Telenor Sverige
 4672667|Telenor Sverige
 4672669|Nortech
@@ -766,6 +768,13 @@
 467908|Tele2 Sverige
 467909|Tele2 Sverige
 467910|TELL ESS AB
+4679110|Setera
+4679111|Setera
+4679112|Setera
+4679113|Setera
+4679114|Setera
+4679115|Telavox AB
+467915|TeliaSonera
 467930|HI3G Access
 467931|HI3G Access
 467932|HI3G Access

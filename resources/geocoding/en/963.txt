@@ -20,9 +20,12 @@
 96314|Al-Quneitra
 96315|Dara
 96316|Al-Swedaa
+96317|Latakia
+96318|Tartus
 96321|Aleppo
 96322|Al-Rakkah
 96323|Edleb
+96324|Deir ezZor
 96325|Menbej
 96331|Homs
 96333|Hamah

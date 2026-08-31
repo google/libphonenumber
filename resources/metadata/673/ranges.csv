@@ -6,7 +6,7 @@ Prefix    ; Length ; Type       ; Tariff        ; Operator ; Format     ; Region
 4         ; 7      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt1_3/4" ; "BN"    ; "Tutong"       ; GOVERNMENT ; "Regulator Monthly File"
 5[0-25-9] ; 7      ; FIXED_LINE ; STANDARD_RATE ;          ; "fmt1_3/4" ; "BN"    ; "Temburong"    ; GOVERNMENT ; "Regulator Monthly File"
 5[34]     ; 7      ; VOIP       ; STANDARD_RATE ;          ; "fmt1_3/4" ; "BN"    ;                ; GOVERNMENT ; "Regulator Monthly File"
-7[058]    ; 7      ; MOBILE     ; STANDARD_RATE ;          ; "fmt1_3/4" ; "BN"
-7[1-4679] ; 7      ; MOBILE     ; STANDARD_RATE ; "unn"    ; "fmt1_3/4" ; "BN"    ;                ; IR21
+7[08]     ; 7      ; MOBILE     ; STANDARD_RATE ;          ; "fmt1_3/4" ; "BN"
+7[1-79]   ; 7      ; MOBILE     ; STANDARD_RATE ; "unn"    ; "fmt1_3/4" ; "BN"    ;                ; IR21
 8[05]     ; 7      ; MOBILE     ; STANDARD_RATE ;          ; "fmt1_3/4" ; "BN"
 8[1-46-9] ; 7      ; MOBILE     ; STANDARD_RATE ; "unn"    ; "fmt1_3/4" ; "BN"    ;                ; IR21

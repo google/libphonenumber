@@ -509,6 +509,16 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
     assertEquals("0", phoneUtil.format(US_SPOOF, PhoneNumberFormat.NATIONAL));
   }
 
+  public void testFormatAUShortCodeNumber() throws Exception {
+    PhoneNumber auShortCodeNumber = phoneUtil.parse("000", RegionCode.AU);
+    assertEquals("+61000", phoneUtil.format(auShortCodeNumber, PhoneNumberFormat.E164));
+    
+    PhoneNumber pgShortCodeNumber =
+        new PhoneNumber().setCountryCode(675).setNationalNumber(0L)
+          .setRawInput("+675000");
+    assertEquals("+675000", phoneUtil.format(pgShortCodeNumber, PhoneNumberFormat.E164));
+  }
+
   public void testFormatBSNumber() {
     assertEquals("242 365 1234", phoneUtil.format(BS_NUMBER, PhoneNumberFormat.NATIONAL));
     assertEquals("+1 242 365 1234", phoneUtil.format(BS_NUMBER, PhoneNumberFormat.INTERNATIONAL));
