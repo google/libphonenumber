@@ -4852,5 +4852,27 @@ TEST_F(PhoneNumberUtilTest, IsAlphaNumber) {
   EXPECT_FALSE(phone_util_.IsAlphaNumber("+800 1234-1234"));
 }
 
+TEST_F(PhoneNumberUtilTest, IsAlphaNumberEndsInDigit) {
+  // Vanity numbers that end in a digit still have at least three letters. The
+  // old anchored regex required the number to end in a letter, so these were
+  // rejected here while the Java and JavaScript ports accept them.
+  EXPECT_TRUE(phone_util_.IsAlphaNumber("1800FLOWERS7"));
+  EXPECT_TRUE(phone_util_.IsAlphaNumber("800 FLOWER7"));
+  EXPECT_TRUE(phone_util_.IsAlphaNumber("800 FLOWER7 ext. 1234"));
+}
+
+TEST_F(PhoneNumberUtilTest, IsAlphaNumberTooLong) {
+  // Over-long input is rejected up front, mirroring MAX_INPUT_STRING_LENGTH in
+  // the Java port. Without the bound, the number below would be accepted: it
+  // is viable and ends with letters.
+  string too_long;
+  too_long.append(251, '1');
+  too_long.append("FLOWERS");
+  EXPECT_FALSE(phone_util_.IsAlphaNumber(too_long));
+
+  // A long number with no letters is not an alpha number either.
+  EXPECT_FALSE(phone_util_.IsAlphaNumber(string(251, '1')));
+}
+
 }  // namespace phonenumbers
 }  // namespace i18n
