@@ -169,7 +169,8 @@ Prefix       ; Length ; Type            ; Tariff        ; Operator            ; 
 707[78]      ; 8      ; MOBILE          ; STANDARD_RATE ; "hutchison_telecom" ; "fmt1_4/4"     ; "HK"    ; IR21
 708[0-4]     ; 8      ; MOBILE          ; STANDARD_RATE ; "hkt"               ; "fmt1_4/4"     ; "HK"    ; IR21
 708[5-8]     ; 8      ; MOBILE          ; STANDARD_RATE ; "smartone"          ; "fmt1_4/4"     ; "HK"    ; IR21
-710[0-48]    ; 8      ; PAGER           ; STANDARD_RATE ;                     ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+710[08]      ; 8      ; PAGER           ; STANDARD_RATE ;                     ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+710[1-4]     ; 8      ; MOBILE          ; STANDARD_RATE ; "china_unicom"      ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
 711[0-3679]  ; 8      ; PAGER           ; STANDARD_RATE ;                     ; "fmt1_4/4"     ; "HK"
 713[013]     ; 8      ; PAGER           ; STANDARD_RATE ;                     ; "fmt1_4/4"     ; "HK"
 7169         ; 8      ; PAGER           ; STANDARD_RATE ;                     ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT

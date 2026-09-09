@@ -90,5 +90,5 @@ Prefix       ; Length ; Type       ; Tariff        ; Operator             ; Form
 96[05-9]     ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
 97[04-9]     ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
 981          ; 7      ; FIXED_LINE ; PREMIUM_RATE  ;                      ; "fmt1_3/4"       ; "PA"
-98[35-8]     ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
+98[235-8]    ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
 99           ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT

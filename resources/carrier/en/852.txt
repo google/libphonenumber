@@ -358,6 +358,10 @@
 8527087|SmarTone
 8527088|SmarTone
 852709|Hutchison Telecom
+8527101|China Unicom
+8527102|China Unicom
+8527103|China Unicom
+8527104|China Unicom
 852840|China Mobile
 852841|Hutchison Telecom
 852842|HKT
