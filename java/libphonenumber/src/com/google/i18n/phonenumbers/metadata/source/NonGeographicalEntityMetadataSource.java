@@ -19,29 +19,14 @@ package com.google.i18n.phonenumbers.metadata.source;
 import com.google.i18n.phonenumbers.Phonemetadata.PhoneMetadata;
 
 /**
- * A source of phone metadata for non-geographical entities.
- *
- * <p>Non-geographical entities are phone number ranges that have a country calling code, but either
- * do not belong to an actual country (some international services), or belong to a region which has
- * a different country calling code from the country it is part of. Examples of such ranges are
- * those starting with:
- *
- * <ul>
- *   <li>800 - country code assigned to the Universal International Freephone Service
- *   <li>808 - country code assigned to the International Shared Cost Service
- *   <li>870 - country code assigned to the Pitcairn Islands
- *   <li>...
- * </ul>
+ * @deprecated Use {@link NonGeographicalEntityMetadataSourceV2}
  */
+@Deprecated
 public interface NonGeographicalEntityMetadataSource {
 
   /**
-   * Gets phone metadata for a non-geographical entity.
-   *
-   * @param countryCallingCode the country calling code.
-   * @return the phone metadata for that entity, or null if there is none.
-   * @throws IllegalArgumentException if provided {@code countryCallingCode} does not belong to a
-   *     non-geographical entity
+   * @deprecated use {@link NonGeographicalEntityMetadataSourceV2#getMetadataForNonGeographicalEntity(int)}
    */
+  @Deprecated
   PhoneMetadata getMetadataForNonGeographicalRegion(int countryCallingCode);
 }

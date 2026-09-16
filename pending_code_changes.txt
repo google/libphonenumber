@@ -1,1 +1,3 @@
-
+Code changes:
+ - Renamed NonGeographicalRegion to NonGeographicalEntity.
+ - Created a new interface called NonGeographicalEntityMetadataSourceV2
