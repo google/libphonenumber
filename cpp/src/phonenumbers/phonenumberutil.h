@@ -17,7 +17,6 @@
 #ifndef I18N_PHONENUMBERS_PHONENUMBERUTIL_H_
 #define I18N_PHONENUMBERS_PHONENUMBERUTIL_H_
 
-#include <stddef.h>
 #include <list>
 #include <map>
 #include <set>
@@ -25,13 +24,13 @@
 #include <utility>
 #include <vector>
 
+#include "absl/container/node_hash_map.h"
+#include "absl/container/node_hash_set.h"
 #include "phonenumbers/base/basictypes.h"
 #include "phonenumbers/base/memory/scoped_ptr.h"
 #include "phonenumbers/base/memory/singleton.h"
 #include "phonenumbers/phonenumber.pb.h"
-
-#include "absl/container/node_hash_set.h"
-#include "absl/container/node_hash_map.h"
+#include "phonenumbers/regexpsandmappings.h"
 
 class TelephoneNumber;
 
@@ -47,7 +46,6 @@ class MatcherApi;
 class NumberFormat;
 class PhoneMetadata;
 class PhoneNumberDesc;
-class PhoneNumberRegExpsAndMappings;
 class RegExp;
 
 // NOTE: A lot of methods in this class require Region Code strings. These must
@@ -182,6 +180,11 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
   // geographical region the library supports
   void GetSupportedRegions(
       std::set<string>* regions) const;
+
+  // A helper function that is used by Format and FormatByPattern.
+  static void PrefixNumberWithCountryCallingCode(
+      int country_calling_code, PhoneNumberFormat number_format,
+      string* formatted_number);
 
   // Returns all global network calling codes the library has metadata for.
   // @returns an unordered set of the country calling codes for every
@@ -783,22 +786,11 @@ class PhoneNumberUtil : public Singleton<PhoneNumberUtil> {
 
   typedef std::pair<int, std::list<string>*> IntRegionsPair;
 
-  // The minimum and maximum length of the national significant number.
-  static const size_t kMinLengthForNsn = 2;
   // The ITU says the maximum length should be 15, but we have found longer
   // numbers in Germany.
   static const size_t kMaxLengthForNsn = 17;
   // The maximum length of the country calling code.
   static const size_t kMaxLengthCountryCode = 3;
-
-  static const char kPlusChars[];
-  // Regular expression of acceptable punctuation found in phone numbers. This
-  // excludes punctuation found as a leading character only. This consists of
-  // dash characters, white space characters, full stops, slashes, square
-  // brackets, parentheses and tildes. It also includes the letter 'x' as that
-  // is found as a placeholder for carrier information in some phone numbers.
-  // Full-width variants are also present.
-  static const char kValidPunctuation[];
 
   // Regular expression of characters typically used to start a second phone
   // number for the purposes of parsing. This allows us to strip off parts of
