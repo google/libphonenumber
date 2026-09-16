@@ -56,11 +56,12 @@ Prefix       ; Length ; Type            ; Tariff        ; Operator  ; Format    
 658[0-68]    ; 8      ; FIXED_LINE      ; STANDARD_RATE ;           ; "fmt1_1/3/4" ; "JO"    ; "Amman"           ; GOVERNMENT
 659[0239]    ; 8      ; FIXED_LINE      ; STANDARD_RATE ;           ; "fmt1_1/3/4" ; "JO"    ; "Amman"           ; GOVERNMENT
 70           ; 9      ; PERSONAL_NUMBER ; STANDARD_RATE ;           ; "fmt3_2/7"   ; "JO"    ;                   ; GOVERNMENT
+711          ; 9      ; MOBILE          ; STANDARD_RATE ; "umniah"  ; "fmt2_1/4/4" ; "JO"    ;                   ; IR21
+7[29]        ; 9      ; MOBILE          ; STANDARD_RATE ; "zain_jo" ; "fmt2_1/4/4" ; "JO"    ;                   ; IR21
 7466         ; 9      ; PAGER           ; STANDARD_RATE ;           ; "fmt2_1/4/4" ; "JO"    ;                   ; GOVERNMENT
 7477         ; 9      ; PAGER           ; STANDARD_RATE ;           ; "fmt2_1/4/4" ; "JO"    ;                   ; GOVERNMENT
 77[0-25-9]   ; 9      ; MOBILE          ; STANDARD_RATE ; "orange"  ; "fmt2_1/4/4" ; "JO"    ;                   ; IR21
 78[0-25-9]   ; 9      ; MOBILE          ; STANDARD_RATE ; "umniah"  ; "fmt2_1/4/4" ; "JO"    ;                   ; IR21
-79           ; 9      ; MOBILE          ; STANDARD_RATE ; "zain_jo" ; "fmt2_1/4/4" ; "JO"    ;                   ; IR21
 80           ; 8      ; FIXED_LINE      ; TOLL_FREE     ;           ; "fmt4_3/5-6" ; "JO"    ;                   ; GOVERNMENT
 810          ; 8      ; UAN             ; STANDARD_RATE ;           ; "fmt4_3/5-6" ; "JO"    ;                   ; GOVERNMENT
 85           ; 8      ; FIXED_LINE      ; SHARED_COST   ;           ; "fmt4_3/5-6" ; "JO"    ;                   ; GOVERNMENT

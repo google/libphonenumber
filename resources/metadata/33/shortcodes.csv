@@ -4,8 +4,8 @@ FR     ; 110          ; 3      ; COMMERCIAL         ; TOLL_FREE
 FR     ; 112          ; 3      ; EMERGENCY          ; TOLL_FREE
 FR     ; 114          ; 3      ; EXPANDED_EMERGENCY ; TOLL_FREE     ; true
 FR     ; 11[59]       ; 3      ; EXPANDED_EMERGENCY ; TOLL_FREE
-FR     ; 116000       ; 6      ; EXPANDED_EMERGENCY ; TOLL_FREE     ;      ;                  ; "shortcode_3/3"
-FR     ; 116111       ; 6      ; EXPANDED_EMERGENCY ; TOLL_FREE     ;      ;                  ; "shortcode_3/3"
+FR     ; 11600[06]    ; 6      ; EXPANDED_EMERGENCY ; TOLL_FREE     ;      ;                  ; "shortcode_3/3"
+FR     ; 11611[17]    ; 6      ; EXPANDED_EMERGENCY ; TOLL_FREE     ;      ;                  ; "shortcode_3/3"
 FR     ; 118[0-689]   ; 6      ; COMMERCIAL         ; PREMIUM_RATE  ;      ;                  ; "shortcode_3/3"
 FR     ; 1187[0-689]  ; 6      ; COMMERCIAL         ; PREMIUM_RATE  ;      ;                  ; "shortcode_3/3"
 FR     ; 11877[0-689] ; 6      ; COMMERCIAL         ; PREMIUM_RATE  ;      ;                  ; "shortcode_3/3"

@@ -35,7 +35,8 @@ using std::map;
 using std::string;
 
 bool LoadCompiledInMetadata(PhoneMetadataCollection* metadata) {
-  if (!metadata->ParseFromArray(short_metadata_get(), short_metadata_size())) {
+  MetadataBytes bytes = GetShortMetadata();
+  if (!metadata->ParseFromArray(bytes.data(), bytes.size())) {
     LOG(ERROR) << "Could not parse binary data.";
     return false;
   }
@@ -52,9 +53,9 @@ ShortNumberInfo::ShortNumberInfo()
     LOG(DFATAL) << "Could not parse compiled-in metadata.";
     return;
   }
-  for (const auto& metadata : metadata_collection.metadata()) {
-    const string& region_code = metadata.id();
-    region_to_short_metadata_map_->insert(std::make_pair(region_code, metadata));
+  for (auto& metadata : *(metadata_collection.mutable_metadata())) {
+    const string region_code = metadata.id();
+    region_to_short_metadata_map_->emplace(region_code, std::move(metadata));
   }
   regions_where_emergency_numbers_must_be_exact_->insert("BR");
   regions_where_emergency_numbers_must_be_exact_->insert("CL");

@@ -1,6 +1,9 @@
 Prefix   ; Length ; Type       ; Tariff        ; National Only ; Operator            ; Format           ; Regions ; Geocode:en                 ; Geocode:vi              ; Provenance ; Comment
-120[13]  ; 8      ; FIXED_LINE ; TOLL_FREE     ; false         ;                     ; "fixed_4/4-6"    ; "VN"    ;                            ;                         ; INTERNAL   ; "Added per client's request."
+1201     ; 8      ; FIXED_LINE ; TOLL_FREE     ; false         ;                     ; "fixed_4/4-6"    ; "VN"    ;                            ;                         ; INTERNAL   ; "Added per client's request."
+1203     ; 8      ; FIXED_LINE ; TOLL_FREE     ; false         ;                     ; "fixed_4/4-6"    ; "VN"    ;                            ;                         ; INTERNAL   ; "Added per client's request"
+121[0-3] ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "mobifone"          ; "mobile_2/3/2/2" ; "VN"
 1228     ; 8      ; FIXED_LINE ; TOLL_FREE     ; false         ;                     ; "fixed_4/4-6"    ; "VN"
+160      ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "viettel"           ; "mobile_2/3/2/2" ; "VN"
 1800     ; 8-10   ; FIXED_LINE ; TOLL_FREE     ; false         ;                     ; "fixed_4/4-6"    ; "VN"    ;                            ;                         ; IR21
 1900     ; 8-10   ; FIXED_LINE ; PREMIUM_RATE  ; false         ;                     ; "fixed_4/4-6"    ; "VN"    ;                            ;                         ; IR21
 199      ; 7      ; UAN        ; STANDARD_RATE ; true          ;                     ; "uan_3/4"        ; "VN"    ;                            ;                         ;            ; "It is very odd that moving from 7-digits to 10-digits changes the type.\nThere are probably disjoint subranges for each length (even if we don't have that data)."
@@ -78,7 +81,6 @@ Prefix   ; Length ; Type       ; Tariff        ; National Only ; Operator       
 69       ; 7,8    ; UAN        ; STANDARD_RATE ; true          ;                     ; "uan_3/4-5"      ; "VN"
 7[06-9]  ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "mobifone"          ; "mobile_3/3/3"   ; "VN"    ;                            ;                         ; ITU
 799      ; 7      ; UAN        ; STANDARD_RATE ; true          ;                     ; "uan_3/4"        ; "VN"
-80       ; 7      ; UAN        ; STANDARD_RATE ; false         ;                     ; "uan_2/5"        ; "VN"
 8[1-578] ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "vinaphone"         ; "mobile_3/3/3"   ; "VN"    ;                            ;                         ; IR21
 86       ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "viettel"           ; "mobile_3/3/3"   ; "VN"    ;                            ;                         ; IR21
 89[689]  ; 9      ; MOBILE     ; STANDARD_RATE ; false         ; "mobifone"          ; "mobile_3/3/3"   ; "VN"    ;                            ;                         ; IR21

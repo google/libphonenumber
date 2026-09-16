@@ -88,11 +88,9 @@ public class BuildMetadataCppFromXmlTest {
     command.start();
     // Sanity check the captured data (asserting implicitly that the mocked methods were called).
     String headerString = command.capturedHeaderFile();
-    assertTrue(headerString.contains("const void* metadata_get()"));
-    assertTrue(headerString.contains("int metadata_size()"));
+    assertTrue(headerString.contains("MetadataBytes GetMetadata()"));
     String sourceString = command.capturedSourceFile();
-    assertTrue(sourceString.contains("const void* metadata_get()"));
-    assertTrue(sourceString.contains("int metadata_size()"));
+    assertTrue(sourceString.contains("MetadataBytes GetMetadata()"));
     assertTrue(sourceString.contains(CPP_TEST_DATA));
   }
 
@@ -107,11 +105,9 @@ public class BuildMetadataCppFromXmlTest {
     command.start();
     // Sanity check the captured data (asserting implicitly that the mocked methods were called).
     String headerString = command.capturedHeaderFile();
-    assertTrue(headerString.contains("const void* metadata_get()"));
-    assertTrue(headerString.contains("int metadata_size()"));
+    assertTrue(headerString.contains("MetadataBytes GetMetadata()"));
     String sourceString = command.capturedSourceFile();
-    assertTrue(sourceString.contains("const void* metadata_get()"));
-    assertTrue(sourceString.contains("int metadata_size()"));
+    assertTrue(sourceString.contains("MetadataBytes GetMetadata()"));
     assertTrue(sourceString.contains(CPP_TEST_DATA));
   }
 
@@ -126,11 +122,9 @@ public class BuildMetadataCppFromXmlTest {
     command.start();
     // Sanity check the captured data (asserting implicitly that the mocked methods were called).
     String headerString = command.capturedHeaderFile();
-    assertTrue(headerString.contains("const void* alternate_format_get()"));
-    assertTrue(headerString.contains("int alternate_format_size()"));
+    assertTrue(headerString.contains("MetadataBytes GetAlternateFormat()"));
     String sourceString = command.capturedSourceFile();
-    assertTrue(sourceString.contains("const void* alternate_format_get()"));
-    assertTrue(sourceString.contains("int alternate_format_size()"));
+    assertTrue(sourceString.contains("MetadataBytes GetAlternateFormat()"));
     assertTrue(sourceString.contains(CPP_TEST_DATA));
   }
 

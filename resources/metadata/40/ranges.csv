@@ -101,7 +101,10 @@ Prefix    ; Length ; Type       ; Tariff        ; Operator        ; Format      
 77[0-7]   ; 9      ; MOBILE     ; STANDARD_RATE ; "digi_mobil"    ; "fmt3_3/3/3" ; "RO"    ;                              ;                              ; IR21
 77[89]    ; 9      ; MOBILE     ; STANDARD_RATE ;                 ; "fmt3_3/3/3" ; "RO"    ;                              ;                              ; GOVERNMENT
 78[04-68] ; 9      ; MOBILE     ; STANDARD_RATE ; "telekom"       ; "fmt3_3/3/3" ; "RO"    ;                              ;                              ; IR21
-78[37]    ; 9      ; MOBILE     ; STANDARD_RATE ; "orange"        ; "fmt3_3/3/3" ; "RO"    ;                              ;                              ; IR21
+783[0-3]  ; 9      ; MOBILE     ; STANDARD_RATE ; "orange"        ; "fmt3_3/3/3" ; "RO"    ;                              ;                              ; IR21
+783[4-9]  ; 9      ; MOBILE     ; STANDARD_RATE ; "telekom"       ; "fmt3_3/3/3" ; "RO"    ;                              ;                              ; IR21
+787[01]   ; 9      ; MOBILE     ; STANDARD_RATE ; "telekom"       ; "fmt3_3/3/3" ; "RO"    ;                              ;                              ; IR21
+787[2-9]  ; 9      ; MOBILE     ; STANDARD_RATE ; "orange"        ; "fmt3_3/3/3" ; "RO"    ;                              ;                              ; IR21
 79[0-29]  ; 9      ; MOBILE     ; STANDARD_RATE ; "vodafone"      ; "fmt3_3/3/3" ; "RO"    ;                              ;                              ; IR21
 793       ; 9      ; MOBILE     ; STANDARD_RATE ; "vodafone"      ; "fmt3_3/3/3" ; "RO"    ;                              ;                              ; GOVERNMENT
 800       ; 9      ; FIXED_LINE ; TOLL_FREE     ;                 ; "fmt3_3/3/3" ; "RO"    ;                              ;                              ; GOVERNMENT

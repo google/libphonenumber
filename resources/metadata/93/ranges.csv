@@ -39,6 +39,4 @@ Prefix    ; Length ; Type       ; Tariff        ; Area Code Length ; Operator   
 74[0-356] ; 9      ; MOBILE     ; STANDARD_RATE ; 2                ;                  ; "fmt_2/3/4" ; "AF"
 74[47-9]  ; 9      ; MOBILE     ; STANDARD_RATE ; 2                ; "afghan_telecom" ; "fmt_2/3/4" ; "AF"    ;             ;            ; ITU        ; "ITU 7/2/2017"
 75        ; 9      ; MOBILE     ; STANDARD_RATE ; 2                ; "afghan_telecom" ; "fmt_2/3/4" ; "AF"    ;             ;            ; ITU        ; "ITU 7/2/2017"
-76[0-389] ; 9      ; MOBILE     ; STANDARD_RATE ; 2                ; "mtn"            ; "fmt_2/3/4" ; "AF"
-76[4-7]   ; 9      ; MOBILE     ; STANDARD_RATE ; 2                ; "mtn"            ; "fmt_2/3/4" ; "AF"    ;             ;            ; ITU        ; "ITU 7/2/2017"
-77        ; 9      ; MOBILE     ; STANDARD_RATE ; 2                ; "mtn"            ; "fmt_2/3/4" ; "AF"    ;             ;            ; ITU        ; "ITU 7/2/2017"
+7[67]     ; 9      ; MOBILE     ; STANDARD_RATE ; 2                ; "atoma"          ; "fmt_2/3/4" ; "AF"    ;             ;            ; IR21

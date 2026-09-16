@@ -225,7 +225,8 @@ Prefix        ; Length ; Type       ; Tariff        ; Operator   ; Format       
 68            ; 8      ; MOBILE     ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"
 690           ; 8      ; MOBILE     ; STANDARD_RATE ; "tigo"     ; "fmt1_4/4"   ; "SV"    ; IR21
 691           ; 8      ; MOBILE     ; STANDARD_RATE ;            ; "fmt1_4/4"   ; "SV"
-69[2-6]       ; 8      ; MOBILE     ; STANDARD_RATE ; "tigo"     ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
+692           ; 8      ; MOBILE     ; STANDARD_RATE ; "movistar" ; "fmt1_4/4"   ; "SV"    ; IR21
+69[3-6]       ; 8      ; MOBILE     ; STANDARD_RATE ; "tigo"     ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
 69[7-9]       ; 8      ; MOBILE     ; STANDARD_RATE ; "claro"    ; "fmt1_4/4"   ; "SV"    ; GOVERNMENT
 70[0-689]     ; 8      ; MOBILE     ; STANDARD_RATE ; "claro"    ; "fmt1_4/4"   ; "SV"
 7070[03-57]   ; 8      ; MOBILE     ; STANDARD_RATE ; "claro"    ; "fmt1_4/4"   ; "SV"

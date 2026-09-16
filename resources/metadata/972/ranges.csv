@@ -27,8 +27,8 @@ Prefix      ; Length ; Type       ; Tariff        ; Area Code Length ; National 
 3[0-24]     ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ; false         ;                    ; "fixed_1/3/4"         ; "IL"    ; "Tel Aviv"                   ; "תל אביב-יפו והמרכז" ;            ; "Fill up to support master range"
 33[0-357]   ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ; false         ;                    ; "fixed_1/3/4"         ; "IL"    ; "Tel Aviv"                   ; "תל אביב-יפו והמרכז" ; GOVERNMENT
 33[469]     ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ; false         ;                    ; "fixed_1/3/4"         ; "IL"    ; "Tel Aviv"                   ; "תל אביב-יפו והמרכז" ;            ; "Fill up to support master range"
-338[0-2568] ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ; false         ;                    ; "fixed_1/3/4"         ; "IL"    ; "Tel Aviv"                   ; "תל אביב-יפו והמרכז" ; GOVERNMENT
-338[3479]   ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ; false         ;                    ; "fixed_1/3/4"         ; "IL"    ; "Tel Aviv"                   ; "תל אביב-יפו והמרכז" ;            ; "Fill up to support master range"
+338[0-25-8] ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ; false         ;                    ; "fixed_1/3/4"         ; "IL"    ; "Tel Aviv"                   ; "תל אביב-יפו והמרכז" ; GOVERNMENT
+338[349]    ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ; false         ;                    ; "fixed_1/3/4"         ; "IL"    ; "Tel Aviv"                   ; "תל אביב-יפו והמרכז" ;            ; "Fill up to support master range"
 35[0-7]     ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ; false         ;                    ; "fixed_1/3/4"         ; "IL"    ; "Tel Aviv"                   ; "תל אביב-יפו והמרכז" ; GOVERNMENT
 35[89]      ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ; false         ;                    ; "fixed_1/3/4"         ; "IL"    ; "Tel Aviv"                   ; "תל אביב-יפו והמרכז" ;            ; "Fill up to support master range"
 36[0-57-9]  ; 8      ; FIXED_LINE ; STANDARD_RATE ; 1                ; false         ;                    ; "fixed_1/3/4"         ; "IL"    ; "Tel Aviv"                   ; "תל אביב-יפו והמרכז" ; GOVERNMENT
@@ -73,6 +73,8 @@ Prefix      ; Length ; Type       ; Tariff        ; Area Code Length ; National 
 55442       ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "xphone"           ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; GOVERNMENT
 5545        ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "maskyoo"          ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; GOVERNMENT
 55460       ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "xphone"           ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; GOVERNMENT
+55461       ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "merkaziya"        ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; GOVERNMENT
+5546[5-9]   ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "pelephone"        ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; GOVERNMENT
 555[0-2]    ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "annatel"          ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; GOVERNMENT
 5555        ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "rami_levy"        ; "mobile_2/3/4"        ; "IL"
 555[689]    ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ;                    ; "mobile_2/3/4"        ; "IL"
@@ -81,6 +83,9 @@ Prefix      ; Length ; Type       ; Tariff        ; Area Code Length ; National 
 557[0-2]    ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "cellact"          ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; GOVERNMENT
 5576        ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ;                    ; "mobile_2/3/4"        ; "IL"
 5577        ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "019mobile"        ; "mobile_2/3/4"        ; "IL"
+558[06]0    ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "merkaziya"        ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; GOVERNMENT
+558[06]1    ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "019mobile"        ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; GOVERNMENT
+558[06]2    ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "paycall"          ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; GOVERNMENT
 558[7-9]    ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "pelephone"        ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; GOVERNMENT
 559[1-9]    ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "019mobile"        ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; GOVERNMENT
 56          ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "ooredoo"          ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; IR21
@@ -88,9 +93,10 @@ Prefix      ; Length ; Type       ; Tariff        ; Area Code Length ; National 
 59[2-9]     ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "jawwal"           ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; GOVERNMENT
 718         ; 9      ; VOIP       ; STANDARD_RATE ;                  ; false         ;                    ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; GOVERNMENT
 72[23]      ; 9      ; VOIP       ; STANDARD_RATE ;                  ; false         ;                    ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; GOVERNMENT
+7280[01]    ; 9      ; VOIP       ; STANDARD_RATE ;                  ; false         ;                    ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; GOVERNMENT
 73[237]     ; 9      ; VOIP       ; STANDARD_RATE ;                  ; false         ;                    ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; GOVERNMENT
 738[05]     ; 9      ; VOIP       ; STANDARD_RATE ;                  ; false         ;                    ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; GOVERNMENT
-7388[0138]  ; 9      ; VOIP       ; STANDARD_RATE ;                  ; false         ;                    ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; GOVERNMENT
+7388[01358] ; 9      ; VOIP       ; STANDARD_RATE ;                  ; false         ;                    ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; GOVERNMENT
 747         ; 9      ; VOIP       ; STANDARD_RATE ;                  ; false         ;                    ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; GOVERNMENT
 76[258]     ; 9      ; VOIP       ; STANDARD_RATE ;                  ; false         ;                    ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; GOVERNMENT
 77          ; 9      ; VOIP       ; STANDARD_RATE ;                  ; false         ;                    ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; GOVERNMENT

@@ -21,7 +21,7 @@
 93748|Afghan Telecom
 93749|Afghan Telecom
 9375|Afghan Telecom
-9376|MTN
-9377|MTN
+9376|ATOMA
+9377|ATOMA
 9378|Etisalat
 9379|Roshan

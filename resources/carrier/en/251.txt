@@ -13,4 +13,5 @@
 # limitations under the License.
 
 2517|Safaricom
+2518|Ethio Telecom
 2519|Ethio Telecom

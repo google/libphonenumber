@@ -1288,11 +1288,19 @@ public class PhoneNumberUtil {
    */
   public String format(PhoneNumber number, PhoneNumberFormat numberFormat) {
     if (number.getNationalNumber() == 0) {
-      // Unparseable numbers that kept their raw input just use that.
-      // This is the only case where a number can be formatted as E164 without a
-      // leading '+' symbol (but the original number wasn't parseable anyway).
+      // Unparseable numbers that kept their raw input just use that, unless default country was
+      // specified and the format is E164. In that case, we prepend the raw input with the country
+      // code
       String rawInput = number.getRawInput();
-      if (rawInput.length() > 0 || !number.hasCountryCode()) {
+      if (rawInput.length() > 0
+          && number.hasCountryCode()
+          && number.getCountryCodeSource() == CountryCodeSource.FROM_DEFAULT_COUNTRY
+          && numberFormat == PhoneNumberFormat.E164) {
+        int countryCallingCode = number.getCountryCode();
+        StringBuilder formattedNumber = new StringBuilder(rawInput);
+        prefixNumberWithCountryCallingCode(countryCallingCode, numberFormat, formattedNumber);
+        return formattedNumber.toString();
+      } else if (rawInput.length() > 0 || !number.hasCountryCode()) {
         return rawInput;
       }
     }
@@ -1920,9 +1928,11 @@ public class PhoneNumberUtil {
    */
   public String getNationalSignificantNumber(PhoneNumber number) {
     // If leading zero(s) have been set, we prefix this now. Note this is not a national prefix.
+    // Defensively cap the number of leading zeros to avoid OOM from malicious input.
     StringBuilder nationalNumber = new StringBuilder();
     if (number.isItalianLeadingZero() && number.getNumberOfLeadingZeros() > 0) {
-      char[] zeros = new char[number.getNumberOfLeadingZeros()];
+      int numberOfLeadingZeros = Math.min(number.getNumberOfLeadingZeros(), 10);
+      char[] zeros = new char[numberOfLeadingZeros];
       Arrays.fill(zeros, '0');
       nationalNumber.append(new String(zeros));
     }
@@ -2555,14 +2565,30 @@ public class PhoneNumberUtil {
    * @param number  the number that needs to be checked
    * @return  true if the number is a valid vanity number
    */
+  private static boolean hasAtLeastThreeAlphaChars(CharSequence number) {
+    int alphaCount = 0;
+    for (int i = 0; i < number.length(); i++) {
+      char c = number.charAt(i);
+      if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z')) {
+        if (++alphaCount >= 3) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+
   public boolean isAlphaNumber(CharSequence number) {
+    if (number.length() > MAX_INPUT_STRING_LENGTH) {
+      return false;
+    }
     if (!isViablePhoneNumber(number)) {
       // Number is too short, or doesn't match the basic phone number pattern.
       return false;
     }
     StringBuilder strippedNumber = new StringBuilder(number);
     maybeStripExtension(strippedNumber);
-    return VALID_ALPHA_PHONE_PATTERN.matcher(strippedNumber).matches();
+    return hasAtLeastThreeAlphaChars(strippedNumber);
   }
 
   /**
