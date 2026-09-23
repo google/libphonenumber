@@ -3252,8 +3252,7 @@
             )|
             6(?:
               [15]|
-              28|
-              4[14]
+              28
             )|
             7[2-589]|
             8(?:
@@ -3599,9 +3598,9 @@
         <exampleNumber>1812345678</exampleNumber>
         <nationalNumberPattern>
           (?:
-            1[13-9]\d|
-            644
-          )\d{7}|
+            1[13-9]|
+            64
+          )\d{8}|
           (?:
             3[78]|
             44|
@@ -5411,7 +5410,7 @@
               [23]6|
               [48]9|
               5[07]|
-              63
+              [67]3
             )|
             3(?:
               06|
@@ -5472,7 +5471,7 @@
               [23]6|
               [48]9|
               5[07]|
-              63
+              [67]3
             )|
             3(?:
               06|
@@ -5804,7 +5803,7 @@
         <nationalNumberPattern>
           88\d{5}|
           (?:
-            8[0-69]|
+            8[0-79]|
             9[016-9]
           )\d{7}
         </nationalNumberPattern>
@@ -10111,10 +10110,7 @@
                     00|
                     4\d
                   )|
-                  (?:
-                    19|
-                    [2-7]\d
-                  )\d
+                  [1-7]\d\d
                 )|
                 (?:
                   (?:
@@ -14485,7 +14481,7 @@
         <nationalNumberPattern>
           55(?:
             4(?:
-              0[0-3]|
+              0[0-4]|
               10|
               6[015-9]
             )|
@@ -14559,7 +14555,7 @@
             280[01]|
             38(?:
               [05]\d|
-              8[01358]
+              8[0-358]
             )|
             8(?:
               33|
@@ -19366,7 +19362,7 @@
     <!-- Liechtenstein (LI) -->
     <!-- The national prefix of "0" is only used for 0800 and 0900 numbers. Three carrier-selection
          codes are in use. -->
-    <!-- http://www.llv.li/#/11193 -->
+    <!-- https://www.llv.li/en/national-administration/office-for-communications/electronic-communication/numbering -->
     <!-- https://www.itu.int/oth/T020200007B/en -->
     <territory id="LI" countryCode="423" internationalPrefix="00" nationalPrefix="0"
                nationalPrefixForParsing="(1001)|0">
@@ -19429,7 +19425,7 @@
               2[024]|
               3\d|
               6[02-578]|
-              96
+              9[06]
             )|
             3(?:
               [24]0|
@@ -24023,7 +24019,7 @@
             )|
             9(?:
               0[5-9]|
-              1[0135-8]|
+              1[0-35-8]|
               2[036-9]|
               3[35-79]|
               40|
@@ -26408,7 +26404,7 @@
             7|
             8[4-9]|
             9(?:
-              [1-8]|
+              [0-8]|
               9[0-8]
             )
           </leadingDigits>
@@ -26440,24 +26436,16 @@
         <possibleLengths national="5,7"/>
         <exampleNumber>7421234</exampleNumber>
         <nationalNumberPattern>
-          48\d{3}|
           (?:
-            (?:
-              6[89]|
-              7[1-9]|
-              8[4-9]
-            )\d|
-            9(?:
-              1[2-9]|
-              2[013-9]|
-              3[0-2]|
-              [46]\d|
-              5[0-46-9]|
-              7[0-689]|
-              8[0-79]|
-              9[0-8]
-            )
-          )\d{4}
+            48|
+            99[0-8]\d
+          )\d{3}|
+          (?:
+            6[89]|
+            7[1-9]|
+            8[4-9]|
+            9[0-8]
+          )\d{5}
         </nationalNumberPattern>
       </mobile>
       <tollFree>
@@ -27715,7 +27703,7 @@
         <nationalNumberPattern>
           (?:
             6[08]|
-            7[1-7]|
+            7[1-79]|
             8[1-9]
           )\d{5}
         </nationalNumberPattern>
@@ -29789,7 +29777,7 @@
           7(?:
             [014-8]\d|
             2[01467]|
-            3[0167]|
+            3[0-267]|
             9[0-589]
           )\d{6}
         </nationalNumberPattern>
@@ -31175,7 +31163,7 @@
         </numberFormat>
         <numberFormat pattern="(\d{3})(\d{3})(\d{3})" nationalPrefixFormattingRule="$NP$FG"
                       nationalPrefixOptionalWhenFormatting="true">
-          <leadingDigits>[357-9]</leadingDigits>
+          <leadingDigits>[1357-9]</leadingDigits>
           <format>$1 $2 $3</format>
         </numberFormat>
         <!-- 2-digit area codes (big cities) -->
@@ -31236,7 +31224,7 @@
         <nationalNumberPattern>
           121[0-3]\d{5}|
           (?:
-            160|
+            1[46]0|
             (?:
               3\d|
               7[06-9]
@@ -31960,11 +31948,6 @@
           </leadingDigits>
           <format>$1 $2</format>
         </numberFormat>
-        <!-- One-digit area codes -->
-        <numberFormat pattern="(\d)(\d{3})(\d{2,4})" nationalPrefixFormattingRule="$NP$FG">
-          <leadingDigits>[49]</leadingDigits>
-          <format>$1 $2 $3</format>
-        </numberFormat>
         <!-- Tollfree Numbers -->
         <numberFormat pattern="(\d{3})(\d{4})" nationalPrefixFormattingRule="$NP$FG">
           <leadingDigits>80</leadingDigits>
@@ -32012,7 +31995,7 @@
             8\d{4}
           )\d{5}|
           [235-8]\d{8}|
-          [2-689]\d{6}
+          [23568]\d{6}
         </nationalNumberPattern>
       </generalDesc>
       <!-- The first block has the new renumbering format <New_Area_Code>+<New_Prefix>+<SN>. We are
@@ -32032,66 +32015,65 @@
         <exampleNumber>1312345</exampleNumber>
         <nationalNumberPattern>
           (?:
+            (?:
+              (?:
+                13|
+                6(?:
+                  [16-8]21|
+                  52[013]
+                )|
+                8(?:
+                  [1349]28|
+                  523
+                )
+              )\d|
+              3(?:
+                (?:
+                  123|
+                  92\d
+                )\d|
+                7[56]
+              )
+            )\d|
             2(?:
               (?:
                 (?:
                   02[014]|
-                  72[03]
+                  [56]20|
+                  72[03]|
+                  9\d\d
                 )\d|
-                48
+                4(?:
+                  2\d\d|
+                  8
+                )
               )\d|
               2(?:
                 [278]\d|
                 92
-              )|
-              583
+              )
             )|
-            (?:
-              37[56]|
-              6[78]21\d
-            )\d|
             5(?:
-              483|
+              4(?:
+                2\d{3}|
+                83
+              )|
               525\d\d
             )
           )\d{3}|
           (?:
             2(?:
-              0\d|
-              7[1-7]
+              (?:
+                0\d|
+                7[1-7]
+              )\d|
+              583
             )|
             (?:
               55|
               6[78]
-            )\d
-          )\d{4}|
-          (?:
-            13|
-            2(?:
-              (?:
-                42|
-                9\d
-              )\d|
-              [56]20
-            )|
-            3(?:
-              123|
-              92\d
-            )|
-            (?:
-              4|
-              542
-            )\d|
-            6(?:
-              [16]21|
-              52[013]
-            )|
-            8(?:
-              [1349]28|
-              523
-            )|
-            9[2-9]
-          )\d{5}
+            )\d\d
+          )\d{3}
         </nationalNumberPattern>
       </fixedLine>
       <mobile>
