@@ -80,7 +80,7 @@ Prefix       ; Length ; Type       ; Tariff        ; Operator             ; Form
 886          ; 7      ; FIXED_LINE ; PREMIUM_RATE  ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
 900          ; 7      ; FIXED_LINE ; PREMIUM_RATE  ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
 90[5-9]      ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
-91[03578]    ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
+91[023578]   ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
 91[16]       ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"
 92[036-9]    ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT
 93[3579]     ; 7      ; FIXED_LINE ; STANDARD_RATE ;                      ; "fmt1_3/4"       ; "PA"    ; GOVERNMENT

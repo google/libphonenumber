@@ -537,7 +537,7 @@ Prefix        ; Length ; Type            ; Tariff        ; National Only ; Opera
 7077          ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "kddi"                   ; "fmt10_2/4/4"      ;              ; "JP"    ;                             ;            ; IR21
 7080          ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "nttdocomo"              ; "fmt10_2/4/4"      ;              ; "JP"    ;                             ;            ; GOVERNMENT
 7081[0-2]     ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "nttdocomo"              ; "fmt10_2/4/4"      ;              ; "JP"    ;                             ;            ; GOVERNMENT
-7081[3-6]     ; 10     ; MOBILE          ; STANDARD_RATE ; false         ;                          ; "fmt10_2/4/4"      ;              ; "JP"
+7081[3-6]     ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "kddi"                   ; "fmt10_2/4/4"      ;              ; "JP"    ;                             ;            ; GOVERNMENT
 7081[7-9]     ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "kddi"                   ; "fmt10_2/4/4"      ;              ; "JP"    ;                             ;            ; IR21
 7082          ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "kddi"                   ; "fmt10_2/4/4"      ;              ; "JP"    ;                             ;            ; GOVERNMENT
 708[34]       ; 10     ; MOBILE          ; STANDARD_RATE ; false         ; "rakuten_communications" ; "fmt10_2/4/4"      ;              ; "JP"    ;                             ;            ; GOVERNMENT

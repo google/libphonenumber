@@ -1,3 +1,14 @@
+Sep 23, 2026: v9.0.40
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   BD, CA, CD, EE, IL, LI, PA, SB, SR, UG, VN, ZW
+ - New geocoding data for country calling code(s): 1273 (en)
+ - Updated geocoding data for country calling code(s): 263 (en)
+ - Updated carrier data for country calling code(s):
+   36 (en), 39 (en), 81 (en), 84 (en), 226 (en), 243 (en), 256 (en), 597 (en),
+   677 (en), 880 (en), 972 (en), 994 (en)
+ - Updated / refreshed time zone meta data.
+
 Sep 09, 2026: v9.0.39
 Metadata changes:
  - Updated alternate formatting data for country calling code(s): 91
