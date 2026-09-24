@@ -22,6 +22,7 @@
 37360|Orange
 373610|Orange
 373611|Orange
+373612|Orange
 373620|Orange
 373621|Orange
 37367|Moldtelecom
