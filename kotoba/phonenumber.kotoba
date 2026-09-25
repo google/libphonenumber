@@ -1,0 +1,142 @@
+;; Kotoba v1 libphonenumber surface (awai.network).
+;;
+;; Honest scope: well-formed E.164-looking check (plus prefix + digit length).
+;; Two accept fixtures and two reject fixtures are taken from this repository's
+;; own testdata (US_NUMBER / GB_NUMBER in java/.../PhoneNumberUtilTest.java).
+;;
+;; Not implemented: region metadata, carrier, geocoding, timezones,
+;; AsYouTypeFormatter, parse/format beyond the E.164-looking predicate,
+;; short numbers, or the PhoneNumber proto. Those need the metadata database
+;; this tree does not copy.
+;;
+;; i64-v1 only: integers and explicit byte values. No IEEE floats, no strings,
+;; no vectors (nth would leave i64-v1 and import kotoba:typed).
+
+(ns phonenumber.v1
+  (:export [main e164-looking accept-us accept-gb reject-spaces reject-nsn]))
+
+;; Fixture ids:
+;; 0 accept  +16502530000        US_NUMBER E.164 (CC 1 + NSN 6502530000)
+;; 1 accept  +442070313000       GB_NUMBER E.164 (CC 44 + NSN 2070313000)
+;; 2 reject  +1 650 253 0000     US_NUMBER INTERNATIONAL (spaces)
+;; 3 reject  6502530000          US_NUMBER national significant number (no plus)
+
+(defn fixture-len [id :i64] :i64
+  (cond
+    (= id 0) 12
+    (= id 1) 13
+    (= id 2) 15
+    :else 10))
+
+(defn fixture-byte [id :i64 i :i64] :i64
+  (cond
+    (= id 0)
+    (cond
+      (= i 0) 43
+      (= i 1) 49
+      (= i 2) 54
+      (= i 3) 53
+      (= i 4) 48
+      (= i 5) 50
+      (= i 6) 53
+      (= i 7) 51
+      (= i 8) 48
+      (= i 9) 48
+      (= i 10) 48
+      :else 48)
+    (= id 1)
+    (cond
+      (= i 0) 43
+      (= i 1) 52
+      (= i 2) 52
+      (= i 3) 50
+      (= i 4) 48
+      (= i 5) 55
+      (= i 6) 48
+      (= i 7) 51
+      (= i 8) 49
+      (= i 9) 51
+      (= i 10) 48
+      (= i 11) 48
+      :else 48)
+    (= id 2)
+    (cond
+      (= i 0) 43
+      (= i 1) 49
+      (= i 2) 32
+      (= i 3) 54
+      (= i 4) 53
+      (= i 5) 48
+      (= i 6) 32
+      (= i 7) 50
+      (= i 8) 53
+      (= i 9) 51
+      (= i 10) 32
+      (= i 11) 48
+      (= i 12) 48
+      (= i 13) 48
+      :else 48)
+    :else
+    (cond
+      (= i 0) 54
+      (= i 1) 53
+      (= i 2) 48
+      (= i 3) 50
+      (= i 4) 53
+      (= i 5) 51
+      (= i 6) 48
+      (= i 7) 48
+      (= i 8) 48
+      :else 48)))
+
+(defn- ascii-digit? [b :i64] :i64
+  (if (< b 48)
+    0
+    (if (< 57 b)
+      0
+      1)))
+
+;; Plus prefix, then 2..15 ASCII digits. Digit max is ITU E.164 (15).
+;; Digit min is this repo's PhoneNumberUtil.MIN_LENGTH_FOR_NSN (2), applied
+;; to the complete international digit string, not to a region NSN.
+(defn e164-looking [id :i64] :i64
+  (let [n (fixture-len id)]
+    (if (< n 3)
+      0
+      (if (< 16 n)
+        0
+        (if (= (fixture-byte id 0) 43)
+          (loop [i 1]
+            (if (>= i n)
+              1
+              (if (= (ascii-digit? (fixture-byte id i)) 1)
+                (recur (+ i 1))
+                0)))
+          0)))))
+
+(defn accept-us [] :i64
+  (e164-looking 0))
+
+(defn accept-gb [] :i64
+  (e164-looking 1))
+
+(defn reject-spaces [] :i64
+  (if (= (e164-looking 2) 0)
+    1
+    0))
+
+(defn reject-nsn [] :i64
+  (if (= (e164-looking 3) 0)
+    1
+    0))
+
+(defn main [] :i64
+  (if (= (accept-us) 1)
+    (if (= (accept-gb) 1)
+      (if (= (reject-spaces) 1)
+        (if (= (reject-nsn) 1)
+          1
+          0)
+        0)
+      0)
+    0))
