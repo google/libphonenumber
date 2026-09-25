@@ -4116,6 +4116,42 @@ TEST_F(PhoneNumberUtilTest, FailedParseOnInvalidNumbers) {
   EXPECT_EQ(PhoneNumber::default_instance(), test_number);
 }
 
+TEST_F(PhoneNumberUtilTest, ParseRejectsInputLongerThanMaxLength) {
+  // The C++ ParseHelper enforces a max input string length of 250 characters,
+  // matching the check in the Java and JavaScript implementations. Inputs
+  // exceeding this limit should return NOT_A_NUMBER immediately to prevent
+  // excessive CPU consumption in the regular-expression engine.
+  PhoneNumber test_number;
+
+  // A string of exactly 251 characters (over the 250-char limit).
+  string too_long_input(251, '1');
+  EXPECT_EQ(PhoneNumberUtil::NOT_A_NUMBER,
+            phone_util_.Parse(too_long_input, RegionCode::US(), &test_number));
+  EXPECT_EQ(PhoneNumber::default_instance(), test_number);
+
+  // A string with digits and spaces that exceeds 250 characters total.
+  string too_long_with_spaces = "+1 650 253 ";
+  too_long_with_spaces.append(245, '0');
+  EXPECT_EQ(PhoneNumberUtil::NOT_A_NUMBER,
+            phone_util_.Parse(too_long_with_spaces, RegionCode::US(),
+                              &test_number));
+  EXPECT_EQ(PhoneNumber::default_instance(), test_number);
+
+  // A string of exactly 250 characters should NOT be rejected by the length
+  // check (it may fail for other reasons, but not due to input length).
+  string at_limit_input(250, '1');
+  EXPECT_NE(PhoneNumberUtil::NOT_A_NUMBER,
+            phone_util_.Parse(at_limit_input, RegionCode::US(), &test_number));
+
+  // A normal phone number under 250 characters should parse successfully.
+  PhoneNumber nz_number;
+  nz_number.set_country_code(64);
+  nz_number.set_national_number(uint64{33316005});
+  EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
+            phone_util_.Parse("033316005", RegionCode::NZ(), &test_number));
+  EXPECT_EQ(nz_number, test_number);
+}
+
 TEST_F(PhoneNumberUtilTest, ParseNumbersWithPlusWithNoRegion) {
   PhoneNumber nz_number;
   nz_number.set_country_code(64);
