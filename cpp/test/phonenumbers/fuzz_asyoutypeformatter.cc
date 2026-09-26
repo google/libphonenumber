@@ -30,33 +30,54 @@ limitations under the License.
 #include "phonenumbers/shortnumberinfo.h"
 #include <fuzzer/FuzzedDataProvider.h>
 
+namespace {
+
+// A fixed set of valid ISO-3166-1 alpha-2 region codes spanning different
+// numbering plans (NANP, variable-length, leading-zero, etc.). Selecting from
+// this set guarantees that AsYouTypeFormatter is constructed with real
+// metadata instead of the empty metadata instance, so the formatting state
+// machine is actually exercised.
+const char* const kRegions[] = {
+    "US", "CA", "GB", "DE", "FR", "IN", "BR", "RU", "JP", "CN",
+    "AU", "MX", "IT", "ES", "NL", "KR",
+};
+
+// A phone-relevant alphabet. Feeding characters from this set (rather than
+// arbitrary char32_t code points) keeps InputDigit on the formatting path
+// instead of immediately setting able_to_format_ = false on the first
+// non-digit, while still letting the fuzzer control the exact sequence,
+// length, and position of '+' / '*' / '#' / '(' / ')' / '-' / ' '.
+const char kPhoneChars[] = "0123456789+*#() -";
+
+}  // namespace
+
 extern "C" int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size) {
-  // initial setup of all the structs we need
   FuzzedDataProvider fuzzed_data(data, size);
-  i18n::phonenumbers::PhoneNumberUtil* phone_util = 
+  i18n::phonenumbers::PhoneNumberUtil* phone_util =
       i18n::phonenumbers::PhoneNumberUtil::GetInstance();
-  bool region_is_2_bytes = fuzzed_data.ConsumeBool();
-  std::string region = fuzzed_data.ConsumeBytesAsString(region_is_2_bytes ? 2 : 3);
+
+  // Pick a valid region from the fixed set.
+  const char* region = kRegions[fuzzed_data.ConsumeIntegralInRange<uint8_t>(
+      0, (sizeof(kRegions) / sizeof(kRegions[0])) - 1)];
   std::unique_ptr<i18n::phonenumbers::AsYouTypeFormatter> formatter(
       phone_util->GetAsYouTypeFormatter(region));
 
-  // setup the data passed to the target methods
-  const int iterations = fuzzed_data.ConsumeIntegralInRange(0, 32);
+  const int iterations = fuzzed_data.ConsumeIntegralInRange(0, 64);
   std::string result;
 
-  // Random amount of iterations 
   for (int i = 0; i < iterations; ++i) {
-    const char32_t next_char = fuzzed_data.ConsumeIntegral<char32_t>();
+    // Feed a character from the phone alphabet so the digit state machine is
+    // actually exercised.
+    const char32_t next_char = kPhoneChars[fuzzed_data.ConsumeIntegralInRange<uint8_t>(
+        0, sizeof(kPhoneChars) - 2)];
     const bool remember = fuzzed_data.ConsumeBool();
-    
-    // Randomly trigger the remember method
+
     if (remember) {
       formatter->InputDigitAndRememberPosition(next_char, &result);
     } else {
       formatter->InputDigit(next_char, &result);
     }
 
-    // get the remembered position whether we remembered it or not
     formatter->GetRememberedPosition();
   }
 
