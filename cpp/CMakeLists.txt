@@ -95,6 +95,11 @@ option (BUILD_TOOLS_ONLY "Limit build to targets in ../tools/cpp" OFF)
 option (USE_STDMUTEX "Use C++ 2011 std::mutex for multi-threading" OFF)
 option (USE_POSIX_THREAD "Use Posix api for multi-threading" OFF)
 
+if (NOT DEFINED GENERATE_GEOCODING_DATA_BIN)
+  # transparently build target when not defined
+  set (GENERATE_GEOCODING_DATA_BIN generate_geocoding_data)
+endif ()
+
 if (USE_ALTERNATE_FORMATS)
   add_definitions ("-DI18N_PHONENUMBERS_USE_ALTERNATE_FORMATS")
 endif ()
@@ -251,7 +256,7 @@ if (BUILD_GEOCODER)
   )
 
   add_custom_command (
-    COMMAND generate_geocoding_data "${GEOCODING_DIR}"
+    COMMAND ${GENERATE_GEOCODING_DATA_BIN} "${GEOCODING_DIR}"
       "${GEOCODING_DATA_OUTPUT}"
 
     OUTPUT ${GEOCODING_DATA_OUTPUT}
@@ -526,7 +531,7 @@ if(BUILD_TESTING)
     set (GEOCODING_TEST_DATA_OUTPUT "${CMAKE_CURRENT_SOURCE_DIR}/test/phonenumbers/geocoding/geocoding_test_data.cc")
 
     add_custom_command (
-      COMMAND generate_geocoding_data "${GEOCODING_TEST_DIR}" "${GEOCODING_TEST_DATA_OUTPUT}" "_test"
+      COMMAND ${GENERATE_GEOCODING_DATA_BIN} "${GEOCODING_TEST_DIR}" "${GEOCODING_TEST_DATA_OUTPUT}" "_test"
       OUTPUT ${GEOCODING_TEST_DATA_OUTPUT}
       DEPENDS ${GEOCODING_TEST_SOURCES} generate_geocoding_data
       COMMENT "Generating geocoding test data code"
@@ -711,6 +716,11 @@ configure_package_config_file("cmake/config.cmake.in" "${project_config}" INSTAL
 
 install(FILES "${project_config}" "${version_config}" DESTINATION "${config_install_dir}")
 install(EXPORT "${targets_export_name}" NAMESPACE ${PROJECT_NAME}:: DESTINATION "${config_install_dir}")
+
+# tooling for cross compilation
+if (${BUILD_GEOCODER} STREQUAL "ON")
+  install (TARGETS generate_geocoding_data DESTINATION bin COMPONENT generate_geocoding_data)
+endif ()
 
 #----------------------------------------------------------------
 # Build an RPM
