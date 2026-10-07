@@ -3019,7 +3019,19 @@
     <!-- http://www.itu.int/oth/T020200002B/en -->
     <territory id="CN">
       <generalDesc>
-        <nationalNumberPattern>[19]\d{2,5}</nationalNumberPattern>
+        <nationalNumberPattern>
+          [19]\d\d(?:
+            \d(?:
+              \d(?:
+                \d(?:
+                  \d\d(?:
+                    \d{3,4}
+                  )?
+                )?
+              )?
+            )?
+          )?
+        </nationalNumberPattern>
       </generalDesc>
       <!-- 100xx numbers are mainly used for carrier services. They can be dialed nationwide and
            are always routed to the local provider.  Note they can also be used with area codes
@@ -3027,24 +3039,38 @@
            more like fixed-line and is covered under the fixed-line pattern in
            PhoneNumberMetadata.xml. -->
       <shortCode>
-        <possibleLengths national="[3-6]"/>
+        <possibleLengths national="[3-6],8,11,12"/>
         <exampleNumber>100</exampleNumber>
         <nationalNumberPattern>
           1(?:
-            00|
+            (?:
+              0(?:
+                [0-2]\d|
+                6(?:
+                  (?:
+                    [268]\d|
+                    [39](?:
+                      [0-49]|
+                      [5-8]\d{4}
+                    )
+                  )\d\d|
+                  5
+                )|
+                8
+              )|
+              2[13]\d
+            )\d|
             1[0249]|
-            2395|
             6[08]
           )|
           9[56]\d{3,4}|
-          12[023]|
           1(?:
             0(?:
-              [0-26]\d|
-              8
+              0|
+              690\d{6}
             )|
-            21\d
-          )\d
+            2[023]
+          )
         </nationalNumberPattern>
       </shortCode>
       <tollFree>
@@ -3069,22 +3095,37 @@
            specifically wants to reach an operator in a different region. That case is more like
            fixed-line and is covered under the fixed-line pattern in PhoneNumberMetadata.xml. -->
       <standardRate>
-        <possibleLengths national="[3-6]"/>
+        <possibleLengths national="[3-6],8,11,12"/>
         <exampleNumber>100</exampleNumber>
         <nationalNumberPattern>
           1(?:
             0(?:
-              [0-26]\d|
-              8
-            )\d|
+              (?:
+                [0-2]\d|
+                8
+              )\d|
+              6[3589]\d(?:
+                \d{3}(?:
+                  \d{3,4}
+                )?
+              )?
+            )|
             1[24]|
-            23|
+            23(?:
+              [0-8]\d|
+              9[0-46-9]
+            )?|
             6[08]
           )|
           9[56]\d{3,4}|
           100
         </nationalNumberPattern>
       </standardRate>
+      <premiumRate>
+        <possibleLengths national="8"/>
+        <exampleNumber>10620000</exampleNumber>
+        <nationalNumberPattern>106[26]\d{4}</nationalNumberPattern>
+      </premiumRate>
       <emergency>
         <possibleLengths national="3"/>
         <exampleNumber>110</exampleNumber>
@@ -3107,9 +3148,18 @@
         </nationalNumberPattern>
       </expandedEmergency>
       <smsServices>
-        <possibleLengths national="5"/>
-        <exampleNumber>12110</exampleNumber>
-        <nationalNumberPattern>12110</nationalNumberPattern>
+        <possibleLengths national="5,8,11,12"/>
+        <exampleNumber>10600</exampleNumber>
+        <nationalNumberPattern>
+          1(?:
+            06\d\d(?:
+              \d{3}(?:
+                \d{3,4}
+              )?
+            )?|
+            2110
+          )
+        </nationalNumberPattern>
       </smsServices>
     </territory>
 
