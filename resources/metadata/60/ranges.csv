@@ -1,16 +1,15 @@
 Prefix         ; Length ; Type       ; Tariff        ; Area Code Length ; Operator        ; Format            ; Regions ; Provenance ; Comment
 102            ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "digi"          ; "fmt_2/3/3-4"     ; "MY"    ; GOVERNMENT
 103[0-4]       ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "xox"           ; "fmt_2/3/3-4"     ; "MY"    ; GOVERNMENT
-10[35]5        ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "webe"          ; "fmt_2/3/3-4"     ; "MY"    ; GOVERNMENT
+10[356]5       ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "tm"            ; "fmt_2/3/3-4"     ; "MY"    ; IR21
 103[6-9]       ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "digi"          ; "fmt_2/3/3-4"     ; "MY"    ; GOVERNMENT
 104[01]        ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "celcom"        ; "fmt_2/3/3-4"     ; "MY"    ; GOVERNMENT
 104[23]        ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "maxis"         ; "fmt_2/3/3-4"     ; "MY"    ; GOVERNMENT
-104[45]        ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "webe"          ; "fmt_2/3/3-4"     ; "MY"    ; GOVERNMENT
+104[45]        ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "tm"            ; "fmt_2/3/3-4"     ; "MY"    ; IR21
 10[4-7]6       ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "digi"          ; "fmt_2/3/3-4"     ; "MY"    ; GOVERNMENT
 105[0-4]       ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "tune_talk"     ; "fmt_2/3/3-4"     ; "MY"    ; GOVERNMENT
 105[7-9]       ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "celcom"        ; "fmt_2/3/3-4"     ; "MY"    ; GOVERNMENT
 106[0-4]       ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "baraka"        ; "fmt_2/3/3-4"     ; "MY"
-1065           ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "packcet_one"   ; "fmt_2/3/3-4"     ; "MY"    ; GOVERNMENT
 106[7-9]       ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;                 ; "fmt_2/3/3-4"     ; "MY"
 107[01]        ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "maxis"         ; "fmt_2/3/3-4"     ; "MY"    ; GOVERNMENT
 107[7-9]       ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "tune_talk"     ; "fmt_2/3/3-4"     ; "MY"    ; GOVERNMENT
@@ -19,7 +18,7 @@ Prefix         ; Length ; Type       ; Tariff        ; Area Code Length ; Operat
 108[3-7]       ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "xox"           ; "fmt_2/3/3-4"     ; "MY"    ; GOVERNMENT
 1089           ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "maxis"         ; "fmt_2/3/3-4"     ; "MY"    ; GOVERNMENT
 109[0-8]       ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "digi"          ; "fmt_2/3/3-4"     ; "MY"    ; GOVERNMENT
-1110[0-4]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "webe"          ; "mobile_2/4/4"    ; "MY"    ; GOVERNMENT
+1110[0-4]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "tm"            ; "mobile_2/4/4"    ; "MY"    ; IR21
 1110[5-9]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "red_one"       ; "mobile_2/4/4"    ; "MY"    ; GOVERNMENT
 1111           ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "u_mobile"      ; "mobile_2/4/4"    ; "MY"    ; IR21
 1112           ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "maxis"         ; "mobile_2/4/4"    ; "MY"    ; IR21
@@ -64,17 +63,21 @@ Prefix         ; Length ; Type       ; Tariff        ; Area Code Length ; Operat
 115[6-9][5-9]  ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "xox"           ; "mobile_2/4/4"    ; "MY"    ; GOVERNMENT
 115[78][0-4]   ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "ytl"           ; "mobile_2/4/4"    ; "MY"    ; IR21
 11590          ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "digi"          ; "mobile_2/4/4"    ; "MY"    ; IR21
-1159[1-4]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "webe"          ; "mobile_2/4/4"    ; "MY"    ; IR21
+1159[1-4]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "tm"            ; "mobile_2/4/4"    ; "MY"    ; IR21
 1160[5-9]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "u_mobile"      ; "mobile_2/4/4"    ; "MY"    ; IR21
 1161           ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "u_mobile"      ; "mobile_2/4/4"    ; "MY"    ; IR21
 1162[0-4]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "u_mobile"      ; "mobile_2/4/4"    ; "MY"    ; IR21
-1162[5-9]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "webe"          ; "mobile_2/4/4"    ; "MY"    ; IR21
-1163[0-5]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "webe"          ; "mobile_2/4/4"    ; "MY"    ; IR21
+1162[5-9]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "tm"            ; "mobile_2/4/4"    ; "MY"    ; IR21
+1163[0-5]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "tm"            ; "mobile_2/4/4"    ; "MY"    ; IR21
 1163[6-9]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "u_mobile"      ; "mobile_2/4/4"    ; "MY"    ; IR21
 1164[0-5]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "u_mobile"      ; "mobile_2/4/4"    ; "MY"    ; IR21
 1164[6-8]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "digi"          ; "mobile_2/4/4"    ; "MY"    ; IR21
-11649          ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "webe"          ; "mobile_2/4/4"    ; "MY"    ; IR21
-116[5-7]       ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "ytl"           ; "mobile_2/4/4"    ; "MY"    ; IR21
+11649          ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "tm"            ; "mobile_2/4/4"    ; "MY"    ; IR21
+1165[0-7]      ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "tm"            ; "mobile_2/4/4"    ; "MY"    ; IR21
+1165[89]       ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "ytl"           ; "mobile_2/4/4"    ; "MY"    ; IR21
+1166           ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "ytl"           ; "mobile_2/4/4"    ; "MY"    ; IR21
+1167[0-35-9]   ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "ytl"           ; "mobile_2/4/4"    ; "MY"    ; IR21
+11674          ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "tm"            ; "mobile_2/4/4"    ; "MY"    ; IR21
 1168           ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "webe"          ; "mobile_2/4/4"    ; "MY"    ; IR21
 1169[01]       ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "webe"          ; "mobile_2/4/4"    ; "MY"    ; IR21
 11692          ; 10     ; MOBILE     ; STANDARD_RATE ;                  ; "digi"          ; "mobile_2/4/4"    ; "MY"    ; IR21

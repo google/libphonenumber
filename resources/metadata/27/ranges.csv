@@ -291,7 +291,9 @@ Prefix        ; Length ; Type                 ; Tariff        ; Operator        
 67[89]        ; 9      ; MOBILE               ; STANDARD_RATE ; "telkom_mobile" ; "all_types_2/3/4"  ; "ZA"    ;                                                                                                 ; IR21
 68[0-5]       ; 9      ; MOBILE               ; STANDARD_RATE ; "telkom_mobile" ; "all_types_2/3/4"  ; "ZA"    ;                                                                                                 ; IR21
 68[6-9]       ; 9      ; MOBILE               ; STANDARD_RATE ; "mtn"           ; "all_types_2/3/4"  ; "ZA"    ;                                                                                                 ; IR21
-69            ; 9      ; MOBILE               ; STANDARD_RATE ;                 ; "all_types_2/3/4"  ; "ZA"
+690           ; 9      ; MOBILE               ; STANDARD_RATE ; "mtn"           ; "all_types_2/3/4"  ; "ZA"    ;                                                                                                 ; IR21
+69[1-57-9]    ; 9      ; MOBILE               ; STANDARD_RATE ; "telkom_mobile" ; "all_types_2/3/4"  ; "ZA"    ;                                                                                                 ; IR21
+696           ; 9      ; MOBILE               ; STANDARD_RATE ; "rain"          ; "all_types_2/3/4"  ; "ZA"    ;                                                                                                 ; IR21
 7[07]         ; 9      ; MOBILE               ; STANDARD_RATE ;                 ; "all_types_2/3/4"  ; "ZA"
 71[07-9]      ; 9      ; MOBILE               ; STANDARD_RATE ; "mtn"           ; "all_types_2/3/4"  ; "ZA"    ;                                                                                                 ; IR21       ; "IR21 dated 12/14/2018"
 71[1-6]       ; 9      ; MOBILE               ; STANDARD_RATE ; "vodacom"       ; "all_types_2/3/4"  ; "ZA"    ;                                                                                                 ; IR21       ; "IR21 dated 12/11/2018"

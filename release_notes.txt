@@ -1,3 +1,11 @@
+Oct 07, 2026: v9.0.41
+Metadata changes:
+ - Updated phone metadata for region code(s): CN, IR, NG, US
+ - Updated short number metadata for region code(s): CN
+ - Updated carrier data for country calling code(s):
+   27 (en), 30 (en), 60 (en), 98 (en, fa), 234 (en), 852 (en, zh, zh_Hant)
+ - Updated / refreshed time zone meta data.
+
 Sep 23, 2026: v9.0.40
 Metadata changes:
  - Updated phone metadata for region code(s):
