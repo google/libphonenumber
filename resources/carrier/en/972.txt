@@ -17,6 +17,7 @@
 97254|Orange
 972550|Beezz
 972552|019mobile
+9725516|Paycall Technologies
 9725520|Paycall Technologies
 9725521|Paycall Technologies
 9725522|Home Cellular
