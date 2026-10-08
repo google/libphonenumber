@@ -14524,7 +14524,8 @@
               8[7-9]|
               9[1-9]
             )
-          )\d{5}
+          )\d{5}|
+          5516\d{5}
         </nationalNumberPattern>
       </mobile>
       <!-- Online 1-809 numbers now classify themselves as "toll-free". -->
