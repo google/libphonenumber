@@ -2797,7 +2797,44 @@ void PhoneNumberUtil::NormalizeDiallableCharsOnly(string* number) const {
                   true /* remove non matches */, number);
 }
 
+namespace {
+
+// Returns true if the string contains at least three ASCII letters. This is
+// the same linear scan the Java port has used since its regex in
+// isAlphaNumber() was replaced. C++ was still matching the whole number
+// against the anchored regex "(?i)(?:.*?[a-z]){3}", which also differs from
+// the Java and JavaScript pattern "(?:.*?[A-Za-z]){3}.*": it required the
+// number to end in a letter, so vanity numbers such as "800 FLOWER7" were not
+// recognized even though they contain three letters. A plain count removes
+// that dependency on how the regexp engine anchors and cannot backtrack.
+//
+// Only ASCII letters need to be counted. Input reaching this check has passed
+// IsViablePhoneNumber(), which accepts ASCII letters, digits, punctuation and
+// '*'. Multi-byte UTF-8 sequences are all >= 0x80, so they can never match an
+// ASCII letter and a byte scan is safe.
+bool HasAtLeastThreeAlphaChars(const string& number) {
+  int alpha_count = 0;
+  for (size_t i = 0; i < number.size(); ++i) {
+    const char c = number[i];
+    if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z')) {
+      if (++alpha_count >= 3) {
+        return true;
+      }
+    }
+  }
+  return false;
+}
+
+// Mirror of MAX_INPUT_STRING_LENGTH in the Java port: reject out-of-range
+// input up front so the viable-phone-number regex is not run on huge strings.
+const size_t kMaxAlphaNumberInputLength = 250;
+
+}  // namespace
+
 bool PhoneNumberUtil::IsAlphaNumber(const string& number) const {
+  if (number.length() > kMaxAlphaNumberInputLength) {
+    return false;
+  }
   if (!IsViablePhoneNumber(number)) {
     // Number is too short, or doesn't match the basic phone number pattern.
     return false;
@@ -2806,7 +2843,7 @@ bool PhoneNumberUtil::IsAlphaNumber(const string& number) const {
   string number_copy(number);
   string extension;
   MaybeStripExtension(&number_copy, &extension);
-  return reg_exps_->valid_alpha_phone_pattern_->FullMatch(number_copy);
+  return HasAtLeastThreeAlphaChars(number_copy);
 }
 
 void PhoneNumberUtil::ConvertAlphaCharactersInNumber(string* number) const {
