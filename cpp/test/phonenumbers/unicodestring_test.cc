@@ -170,6 +170,16 @@ TEST(UnicodeString, TempSubStringWithInvalidInputs) {
   EXPECT_EQ(UnicodeString(""), s.tempSubString(2, 6));
 }
 
+TEST(UnicodeString, TempSubStringWithSumOutOfRange) {
+	UnicodeString s("hello");
+	// start (3) and length (4) are each <= 5, but start + length > 5.
+	EXPECT_EQ(UnicodeString(""), s.tempSubString(3, 4));
+	EXPECT_EQ(UnicodeString(""), s.tempSubString(4, 5));
+	// Negative arguments must also be rejected.
+	EXPECT_EQ(UnicodeString(""), s.tempSubString(-1, 2));
+	EXPECT_EQ(UnicodeString(""), s.tempSubString(2, -1));
+}
+
 TEST(UnicodeString, TempSubString) {
   UnicodeString s("hello");
   EXPECT_EQ(UnicodeString(""), s.tempSubString(0, 0));
