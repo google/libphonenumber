@@ -837,6 +837,11 @@ bool PhoneNumberMatcher::AllNumberGroupsAreExactlyPresent(
     candidate_groups.push_back(digit_block);
   }
 
+  // Guard against size_t underflow when candidate_groups is empty.
+  if (candidate_groups.empty()) {
+    return false;
+  }
+
   // Set this to the last group, skipping it if the number has an extension.
   int candidate_number_group_index = static_cast<int>(
       phone_number.has_extension() ? candidate_groups.size() - 2
