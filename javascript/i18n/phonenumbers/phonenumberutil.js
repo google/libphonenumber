@@ -784,8 +784,8 @@ i18n.phonenumbers.PhoneNumberUtil.ALPHANUM_ =
  * @private
  */
 i18n.phonenumbers.PhoneNumberUtil.RFC3966_DOMAINLABEL_ = '['
-    + i18n.phonenumbers.PhoneNumberUtil.ALPHANUM_ + ']+((\\-)*['
-    + i18n.phonenumbers.PhoneNumberUtil.ALPHANUM_ + '])*';
+    + i18n.phonenumbers.PhoneNumberUtil.ALPHANUM_ + ']+(\\-+['
+    + i18n.phonenumbers.PhoneNumberUtil.ALPHANUM_ + ']+)*';
 
 /**
  * @const
@@ -793,8 +793,8 @@ i18n.phonenumbers.PhoneNumberUtil.RFC3966_DOMAINLABEL_ = '['
  * @private
  */
 i18n.phonenumbers.PhoneNumberUtil.RFC3966_TOPLABEL_ = '['
-    + i18n.phonenumbers.PhoneNumberUtil.VALID_ALPHA_ + ']+((\\-)*['
-    + i18n.phonenumbers.PhoneNumberUtil.ALPHANUM_ + '])*';
+    + i18n.phonenumbers.PhoneNumberUtil.VALID_ALPHA_ + ']+(\\-+['
+    + i18n.phonenumbers.PhoneNumberUtil.ALPHANUM_ + ']+)*';
 
 /**
  * @const

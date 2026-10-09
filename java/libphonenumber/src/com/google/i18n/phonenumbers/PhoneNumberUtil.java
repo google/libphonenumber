@@ -328,9 +328,9 @@ public class PhoneNumberUtil {
   // defined in RFC3966.
   private static final String ALPHANUM = VALID_ALPHA + DIGITS;
   private static final String RFC3966_DOMAINLABEL =
-      "[" + ALPHANUM + "]+((\\-)*[" + ALPHANUM + "])*";
+      "[" + ALPHANUM + "]+(\\-+[" + ALPHANUM + "]+)*";
   private static final String RFC3966_TOPLABEL =
-      "[" + VALID_ALPHA + "]+((\\-)*[" + ALPHANUM + "])*";
+      "[" + VALID_ALPHA + "]+(\\-+[" + ALPHANUM + "]+)*";
   private static final String RFC3966_DOMAINNAME =
       "^(" + RFC3966_DOMAINLABEL + "\\.)*" + RFC3966_TOPLABEL + "\\.?$";
   static final Pattern RFC3966_DOMAINNAME_PATTERN = Pattern.compile(RFC3966_DOMAINNAME);
