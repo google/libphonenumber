@@ -612,7 +612,7 @@ public class AsYouTypeFormatter {
     nationalNumber.append(numberWithoutCountryCallingCode);
     String newRegionCode = phoneUtil.getRegionCodeForCountryCode(countryCode);
     if (PhoneNumberUtil.REGION_CODE_FOR_NON_GEO_ENTITY.equals(newRegionCode)) {
-      currentMetadata = phoneUtil.getMetadataForNonGeographicalRegion(countryCode);
+      currentMetadata = phoneUtil.getMetadataForNonGeographicalEntity(countryCode);
     } else if (!newRegionCode.equals(defaultCountry)) {
       currentMetadata = getMetadataForRegion(newRegionCode);
     }
