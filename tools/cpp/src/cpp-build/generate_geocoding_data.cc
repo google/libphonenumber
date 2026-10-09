@@ -91,6 +91,7 @@ class DirEntry {
 
   const std::string& name() const { return name_; }
   DirEntryKinds kind() const { return kind_; }
+  bool operator<(const DirEntry& d) { return name_ < d.name(); }
 
  private:
   std::string name_;
@@ -118,6 +119,7 @@ bool ListDirectory(const string& path, vector<DirEntry>* entries) {
     errno = 0;
     entry = readdir(dir);
     if (entry == NULL) {
+      std::sort(entries->begin(), entries->end());
       return errno == 0;
     }
     if (strcmp(entry->d_name, ".") == 0 || strcmp(entry->d_name, "..") == 0) {
