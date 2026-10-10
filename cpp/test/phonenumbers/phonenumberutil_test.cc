@@ -1333,6 +1333,12 @@ TEST_F(PhoneNumberUtilTest, FormatByPattern) {
                               number_formats,
                               &formatted_number);
   EXPECT_EQ("tel:+1-650-253-0000", formatted_number);
+  PhoneNumber test_number_with_extension(test_number);
+  test_number_with_extension.set_extension("1234");
+  phone_util_.FormatByPattern(test_number_with_extension,
+                              PhoneNumberUtil::RFC3966, number_formats,
+                              &formatted_number);
+  EXPECT_EQ("tel:+1-650-253-0000;ext=1234", formatted_number);
 
   // $NP is set to '1' for the US. Here we check that for other NANPA countries
   // the US rules are followed.
