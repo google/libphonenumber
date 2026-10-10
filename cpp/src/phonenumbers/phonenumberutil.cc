@@ -1222,7 +1222,8 @@ void PhoneNumberUtil::FormatByPattern(
     FormatNsnUsingPattern(national_significant_number, num_format_copy,
                           number_format, formatted_number);
   }
-  MaybeAppendFormattedExtension(number, *metadata, NATIONAL, formatted_number);
+  MaybeAppendFormattedExtension(number, *metadata, number_format,
+                                formatted_number);
   PrefixNumberWithCountryCallingCode(country_calling_code, number_format,
                                      formatted_number);
 }
