@@ -83,6 +83,7 @@ Prefix        ; Length ; Type            ; Tariff        ; Operator     ; Format
 708[17]       ; 9      ; UAN             ; STANDARD_RATE ;              ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"
 760[1-57]     ; 9      ; FIXED_LINE      ; PREMIUM_RATE  ;              ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"
 761[2-47]     ; 9      ; FIXED_LINE      ; PREMIUM_RATE  ;              ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"
+7621          ; 9      ; FIXED_LINE      ; PREMIUM_RATE  ;              ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"    ;                       ;                       ; GOVERNMENT
 762[237]      ; 9      ; FIXED_LINE      ; PREMIUM_RATE  ;              ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"
 80[02]        ; 9      ; FIXED_LINE      ; TOLL_FREE     ;              ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"
 808           ; 9      ; FIXED_LINE      ; SHARED_COST   ;              ; "all_3/3/3"          ; "Atlantic/Azores&Europe/Lisbon" ; "PT"

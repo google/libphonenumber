@@ -6,6 +6,7 @@ Prefix     ; Length ; Type       ; Tariff        ; Operator                ; For
 224        ; 7      ; FIXED_LINE ; STANDARD_RATE ;                         ; "fmt_3/2/2"         ; "LI"    ; GOVERNMENT
 23         ; 7      ; FIXED_LINE ; STANDARD_RATE ;                         ; "fmt_3/2/2"         ; "LI"    ; GOVERNMENT ; "Regulator File dated 4/1/2019"
 26[02-578] ; 7      ; FIXED_LINE ; STANDARD_RATE ;                         ; "fmt_3/2/2"         ; "LI"    ; GOVERNMENT ; "Regulator File dated 4/1/2019"
+290        ; 7      ; FIXED_LINE ; STANDARD_RATE ;                         ; "fmt_3/2/2"         ; "LI"    ; GOVERNMENT
 296        ; 7      ; FIXED_LINE ; STANDARD_RATE ;                         ; "fmt_3/2/2"         ; "LI"    ; GOVERNMENT ; "Regulator File dated 4/1/2019"
 333        ; 7      ; FIXED_LINE ; STANDARD_RATE ;                         ; "fmt_3/2/2"         ; "LI"    ; GOVERNMENT ; "Regulator File dated 4/1/2019"
 340        ; 7      ; FIXED_LINE ; STANDARD_RATE ;                         ; "fmt_3/2/2"         ; "LI"    ; GOVERNMENT ; "Regulator File dated 4/1/2019"

@@ -6322,13 +6322,6 @@
 91794|Ahmedabad Local, Gujarat
 91795|Ahmedabad Local, Gujarat
 91796|Ahmedabad Local, Gujarat
-917971|Ahmedabad Local, Gujarat
-9179791|Ahmedabad Local, Gujarat
-9179792|Ahmedabad Local, Gujarat
-9179793|Ahmedabad Local, Gujarat
-9179794|Ahmedabad Local, Gujarat
-9179795|Ahmedabad Local, Gujarat
-9179796|Ahmedabad Local, Gujarat
 91802|Bangalore, Karnataka
 91803|Bangalore, Karnataka
 91804|Bangalore, Karnataka

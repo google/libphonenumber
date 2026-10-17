@@ -281,7 +281,7 @@ Prefix          ; Length ; Type            ; Tariff        ; Operator           
 690588          ; 10     ; MOBILE          ; STANDARD_RATE ; "bws"                       ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; GOVERNMENT
 69059[0-8]      ; 10     ; MOBILE          ; STANDARD_RATE ;                             ; "all_3/3/4"                 ; "GR"
 690599          ; 10     ; MOBILE          ; STANDARD_RATE ; "bws"                       ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; GOVERNMENT
-690[6-9]        ; 10     ; MOBILE          ; STANDARD_RATE ; "wind"                      ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; GOVERNMENT
+690[6-9]        ; 10     ; MOBILE          ; STANDARD_RATE ; "nova"                      ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; IR21
 691000          ; 10     ; MOBILE          ; STANDARD_RATE ; "bws"                       ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; GOVERNMENT
 691[0467]0[1-9] ; 10     ; MOBILE          ; STANDARD_RATE ;                             ; "all_3/3/4"                 ; "GR"
 691[0467][1-9]  ; 10     ; MOBILE          ; STANDARD_RATE ;                             ; "all_3/3/4"                 ; "GR"
@@ -306,7 +306,7 @@ Prefix          ; Length ; Type            ; Tariff        ; Operator           
 6924[013-9]     ; 10     ; MOBILE          ; STANDARD_RATE ;                             ; "all_3/3/4"                 ; "GR"
 69242[0-79]     ; 10     ; MOBILE          ; STANDARD_RATE ;                             ; "all_3/3/4"                 ; "GR"
 692428          ; 10     ; MOBILE          ; STANDARD_RATE ; "premium_net_international" ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; GOVERNMENT
-693             ; 10     ; MOBILE          ; STANDARD_RATE ; "wind"                      ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; GOVERNMENT
+693             ; 10     ; MOBILE          ; STANDARD_RATE ; "nova"                      ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; IR21
 694             ; 10     ; MOBILE          ; STANDARD_RATE ; "vodafone"                  ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; GOVERNMENT
 695[015-9]      ; 10     ; MOBILE          ; STANDARD_RATE ; "vodafone"                  ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; GOVERNMENT ; "goverment 1/12/2019"
 69520[0-3]      ; 10     ; MOBILE          ; STANDARD_RATE ; "vodafone"                  ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; IR21
@@ -337,19 +337,19 @@ Prefix          ; Length ; Type            ; Tariff        ; Operator           
 69601           ; 10     ; MOBILE          ; STANDARD_RATE ; "ote"                       ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; GOVERNMENT
 696[1-9]        ; 10     ; MOBILE          ; STANDARD_RATE ;                             ; "all_3/3/4"                 ; "GR"
 69[78]          ; 10     ; MOBILE          ; STANDARD_RATE ; "cosmote"                   ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; IR21       ; "IR21 10/24/2017"
-69900           ; 10     ; MOBILE          ; STANDARD_RATE ; "wind"                      ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; GOVERNMENT
+6990[05-7]      ; 10     ; MOBILE          ; STANDARD_RATE ; "nova"                      ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; IR21
 699010          ; 10     ; MOBILE          ; STANDARD_RATE ; "bws"                       ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; GOVERNMENT
 699011          ; 10     ; MOBILE          ; STANDARD_RATE ;                             ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; WEB
 69901[2-9]      ; 10     ; MOBILE          ; STANDARD_RATE ;                             ; "all_3/3/4"                 ; "GR"
 69902[013-9]    ; 10     ; MOBILE          ; STANDARD_RATE ;                             ; "all_3/3/4"                 ; "GR"
 699022          ; 10     ; MOBILE          ; STANDARD_RATE ; "yuboto"                    ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; GOVERNMENT
-6990[35-8]      ; 10     ; MOBILE          ; STANDARD_RATE ;                             ; "all_3/3/4"                 ; "GR"
+6990[38]        ; 10     ; MOBILE          ; STANDARD_RATE ;                             ; "all_3/3/4"                 ; "GR"
 69904[0-579]    ; 10     ; MOBILE          ; STANDARD_RATE ;                             ; "all_3/3/4"                 ; "GR"
 699046          ; 10     ; MOBILE          ; STANDARD_RATE ; "premium_net_international" ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; GOVERNMENT
 699048          ; 10     ; MOBILE          ; STANDARD_RATE ; "amd_telecom"               ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; GOVERNMENT
 69909[0-8]      ; 10     ; MOBILE          ; STANDARD_RATE ;                             ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; GOVERNMENT
 699099          ; 10     ; MOBILE          ; STANDARD_RATE ; "bws"                       ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; GOVERNMENT ; "goverment 1/12/2019"
-699[1-9]        ; 10     ; MOBILE          ; STANDARD_RATE ; "wind"                      ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; GOVERNMENT
+699[1-9]        ; 10     ; MOBILE          ; STANDARD_RATE ; "nova"                      ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; IR21
 70              ; 10     ; PERSONAL_NUMBER ; STANDARD_RATE ;                             ; "athens_and_personal_2/4/4" ; "GR"    ;                                   ;                               ; GOVERNMENT
 800             ; 10     ; FIXED_LINE      ; TOLL_FREE     ;                             ; "all_3/3/4"                 ; "GR"    ;                                   ;                               ; GOVERNMENT
 800             ; 11     ; FIXED_LINE      ; TOLL_FREE     ;                             ; "toll_free_3/3-4/5"         ; "GR"
