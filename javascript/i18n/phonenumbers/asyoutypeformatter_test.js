@@ -1222,3 +1222,87 @@ function testAYTFNumberPatternsBecomingInvalidShouldNotResultInDigitLoss() {
   assertEquals('+869881234', f.inputDigit('4'));
   assertEquals('+8698812345', f.inputDigit('5'));
 }
+
+// Tests for the AsYouTypeFormatter parens-from-rule fix
+// (https://issuetracker.google.com/issues/437456062): countries whose national
+// format derives parens from the nationalPrefixFormattingRule (e.g. "($FG)"
+// for BR fixed-line, "$NP ($FG)" for RU mobile) must render those parens as
+// the user types, matching what PhoneNumberUtil.format(num, NATIONAL) emits
+// for the same number.
+//
+// Regression coverage for the unaffected paths is provided by existing tests:
+//   testAYTFUS (no nationalPrefixFormattingRule),
+//   testAYTFAR (rule "$NP$FG" -- prefix at leading anchor, no parens),
+//   testAYTFGBFixedLine (rule "($NP$FG)" -- prefix wrapped inside literal
+//                        punctuation, which the fix's bail-out branch must
+//                        leave unchanged).
+//
+// BR test metadata only carries a fixed-line numberFormat; production BR
+// mobile uses an equivalent "($FG)" rule, so a fix verified on BR fixed-line
+// covers the reported BR mobile case.
+
+function testAYTF_BRFixedLineWithParens() {
+  /** @type {i18n.phonenumbers.AsYouTypeFormatter} */
+  var f = new i18n.phonenumbers.AsYouTypeFormatter(RegionCode.BR);
+  assertEquals('1', f.inputDigit('1'));
+  assertEquals('11', f.inputDigit('1'));
+  assertEquals('(11) 3', f.inputDigit('3'));
+  assertEquals('(11) 32', f.inputDigit('2'));
+  assertEquals('(11) 323', f.inputDigit('3'));
+  assertEquals('(11) 3234', f.inputDigit('4'));
+  assertEquals('(11) 3234-5', f.inputDigit('5'));
+  assertEquals('(11) 3234-56', f.inputDigit('6'));
+  assertEquals('(11) 3234-567', f.inputDigit('7'));
+  assertEquals('(11) 3234-5678', f.inputDigit('8'));
+}
+
+function testAYTF_RUMobileWithParens() {
+  // Trunk "8" stays attached via prefixBeforeNationalNumber_; the closing
+  // ')' renders only after a later digit fills past it.
+  /** @type {i18n.phonenumbers.AsYouTypeFormatter} */
+  var f = new i18n.phonenumbers.AsYouTypeFormatter(RegionCode.RU);
+  assertEquals('8', f.inputDigit('8'));
+  assertEquals('89', f.inputDigit('9'));
+  assertEquals('891', f.inputDigit('1'));
+  assertEquals('8 (912', f.inputDigit('2'));
+  assertEquals('8 (912) 3', f.inputDigit('3'));
+  assertEquals('8 (912) 34', f.inputDigit('4'));
+  assertEquals('8 (912) 345', f.inputDigit('5'));
+  assertEquals('8 (912) 345-6', f.inputDigit('6'));
+  assertEquals('8 (912) 345-67', f.inputDigit('7'));
+  assertEquals('8 (912) 345-67-8', f.inputDigit('8'));
+  assertEquals('8 (912) 345-67-89', f.inputDigit('9'));
+}
+
+function testAYTF_COWithParens() {
+  // 10-digit "$1 $2" pattern with the same "($FG)" rule shape.
+  /** @type {i18n.phonenumbers.AsYouTypeFormatter} */
+  var f = new i18n.phonenumbers.AsYouTypeFormatter(RegionCode.CO);
+  assertEquals('6', f.inputDigit('6'));
+  assertEquals('60', f.inputDigit('0'));
+  assertEquals('(601', f.inputDigit('1'));
+  assertEquals('(601) 1', f.inputDigit('1'));
+  assertEquals('(601) 12', f.inputDigit('2'));
+  assertEquals('(601) 123', f.inputDigit('3'));
+  assertEquals('(601) 1234', f.inputDigit('4'));
+  assertEquals('(601) 12345', f.inputDigit('5'));
+  assertEquals('(601) 123456', f.inputDigit('6'));
+  assertEquals('(601) 1234567', f.inputDigit('7'));
+}
+
+function testAYTF_InternationalFormatNoRuleApplication() {
+  // When the user types in international format (leading "+"), AYTF must NOT
+  // apply the nationalPrefixFormattingRule's parens, matching what
+  // format(num, INTERNATIONAL) emits. For BR: format(NATIONAL) yields
+  // "(11) 3234-5678" but format(INTERNATIONAL) yields "+55 11 3234-5678".
+  /** @type {i18n.phonenumbers.AsYouTypeFormatter} */
+  var f = new i18n.phonenumbers.AsYouTypeFormatter(RegionCode.ZZ);
+  /** @type {string} */
+  var output = '';
+  /** @type {string} */
+  var input = '+551132345678';
+  for (var i = 0; i < input.length; i++) {
+    output = f.inputDigit(input.charAt(i));
+  }
+  assertEquals('+55 11 3234-5678', output);
+}
