@@ -1,7 +1,13 @@
 # This workflow builds and unit tests both main C++ API and also build/data tools for metadata generation.
 
 name: Testing C++ API
-on: pull_request
+on:
+  pull_request:
+    # Skip kotoba-only PRs; those run .github/workflows/kotoba-v1.yml.
+    paths:
+      - 'cpp/**'
+      - 'tools/cpp/**'
+      - 'resources/**'
 permissions:
   contents: read
 
@@ -10,11 +16,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Harden Runner
-      uses: step-security/harden-runner@8ca2b8b2ece13480cda6dacd3511b49857a23c09 # v2.5.1
+      uses: step-security/harden-runner@bf7454d06d71f1098171f2acdf0cd4708d7b5920 # v2.20.0
       with:
         egress-policy: audit # TODO: change to 'egress-policy: block' after couple of runs
 
-    - uses: actions/checkout@ee0669bd1cc54295c223e0bb666b733df41de1c5 # v2.7.0
+    - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
     
     - name: Set up C++ environment
       run: |
