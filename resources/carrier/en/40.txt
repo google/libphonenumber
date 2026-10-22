@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-4060|Telekom
+4060|Vodafone
 4062|Vodafone
 4063|Digi Mobil
 407000|Enigma-System
@@ -32,16 +32,9 @@
 4073|Vodafone
 4074|Orange
 4075|Orange
-4076|Telekom
-40770|Digi Mobil
-40771|Digi Mobil
-40772|Digi Mobil
-40773|Digi Mobil
-40774|Digi Mobil
-40775|Digi Mobil
-40776|Digi Mobil
-40777|Digi Mobil
-4078|Telekom
+4076|Vodafone
+4077|Digi Mobil
+4078|Vodafone
 407830|Orange
 407831|Orange
 407832|Orange

@@ -2,7 +2,7 @@ Id                           ; National           ; Carrier           ; Internat
 fixed_2/4/4                  ; "#XX XXXX XXXX"    ; "@ XX XXXX XXXX"  ; "XX XXXX XXXX"    ; "XXXX XXXX" ; true                     ; "10 digit fixed line range"
 fixed_3/3/4                  ; "#XXX XXX XXXX"    ; "@ XXX XXX XXXX"  ; "XXX XXX XXXX"    ; "XXX XXXX"  ; true                     ; "10 digit fixed line range"
 fixed_3/4/4                  ; "#XXX XXXX XXXX"   ; "@ XXX XXXX XXXX" ; "XXX XXXX XXXX"   ; "XXXX XXXX" ; true                     ; "11 digit fixed line range"
-fixed_4/3/4                  ; "#XXXX XXX XXXX"   ; "@ XXXX XXX XXXX" ; "XXXX XXX XXXX"   ; "XXX XXXX"  ; true                     ; "11 digit fixed line range"
+fmt_4/4                      ; "XXXX XXXX"        ; "@XXXX XXXX"      ; "XXXX XXXX"       ;             ;                          ; "8 digit 1010 number"
 mobile_3/4/4                 ; "XXX XXXX XXXX"    ; "@ XXX XXXX XXXX" ; "XXX XXXX XXXX"   ;             ;                          ; "Mobile range"
 premium_rate_4/4             ; "XXXX XXXX"        ;                   ;                   ;             ;                          ; "8-digit premium rate numbers."
 sharedcost_3/7-8             ; "XXX XXXXXXX*"     ;                   ; "XXX XXXXXXX*"    ;             ;                          ; "10-11 digit shared cost range"

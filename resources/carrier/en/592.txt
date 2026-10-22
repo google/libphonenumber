@@ -71,5 +71,6 @@
 59276|E-Networks
 592770|E-Networks
 592780|GTT
+592781|E-Networks
 592786|Digicel Guyana
 592787|Digicel Guyana
