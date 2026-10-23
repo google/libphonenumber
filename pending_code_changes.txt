@@ -1,1 +1,2 @@
-
+Code changes:
+ - Fixed FormatByPattern in the C++ version to format the extension for the requested number format, so RFC3966 output uses ";ext=" as in the Java version.
