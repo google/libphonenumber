@@ -31,6 +31,7 @@ import com.google.i18n.phonenumbers.metadata.source.MetadataSource;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+import java.util.regex.Pattern;
 import org.junit.Assert;
 import org.junit.function.ThrowingRunnable;
 import org.mockito.Mockito;
@@ -2219,6 +2220,41 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
                    NumberParseException.ErrorType.TOO_LONG,
                    e.getErrorType());
     }
+  }
+
+  public void testParseRFC3966PhoneContextDomainname() throws Exception {
+    // Domain phone-contexts keep parsing, including labels with single or repeated hyphens.
+    assertEquals(US_LOCAL_NUMBER,
+        phoneUtil.parse("tel:253-0000;phone-context=www.google.com", RegionCode.US));
+    assertEquals(US_LOCAL_NUMBER,
+        phoneUtil.parse("tel:253-0000;phone-context=ex--ample.domain.com", RegionCode.US));
+
+    // A long ambiguous domain is rejected. The old label pattern ([alnum]+((\-)*[alnum])*) made
+    // backtracking engines in the JS and Python ports of this pattern spend minutes on this
+    // input; Java's own matcher prunes it, this pins the rejection and the accepted language.
+    StringBuilder evilContext = new StringBuilder(100);
+    for (int i = 0; i < 25; i++) {
+      evilContext.append("aa.");
+    }
+    evilContext.append("aa!");
+    try {
+      phoneUtil.parse("tel:253-0000;phone-context=" + evilContext, RegionCode.US);
+      fail("This should not parse without throwing an exception.");
+    } catch (NumberParseException e) {
+      // Expected this exception.
+    }
+
+    // The rewritten label matches alnum runs separated by one or more hyphens, but not labels
+    // with leading/trailing hyphens or empty labels.
+    Pattern domainname = PhoneNumberUtil.RFC3966_DOMAINNAME_PATTERN;
+    assertTrue(domainname.matcher("a.b.c").matches());
+    assertTrue(domainname.matcher("ab-cd.ef").matches());
+    assertTrue(domainname.matcher("a--b.c").matches());
+    assertTrue(domainname.matcher("example.com.").matches());
+    assertFalse(domainname.matcher("aa.bb-").matches());
+    assertFalse(domainname.matcher("aa..bb").matches());
+    assertFalse(domainname.matcher("-aa.bb").matches());
+    assertFalse(domainname.matcher("a-.b").matches());
   }
 
   public void testParseWithInternationalPrefixes() throws Exception {
