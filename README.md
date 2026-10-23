@@ -247,6 +247,7 @@ maintenance processes.
 *   R: https://github.com/socialresearchcentre/dialr/
 *   Elixir: https://github.com/socialpaymentsbv/ex_phone_number
 *   Salesforce: https://appexchange.salesforce.com/appxListingDetail?listingId=a0N3A00000G12oJUAR
+*   Salesforce: https://numberforge.net
 *   Dart: https://github.com/superakabo/dlibphonenumber
 *   Delphi / FreePascal: https://github.com/landrix/libphonenumber-pascal
   
