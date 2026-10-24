@@ -129,7 +129,7 @@ Prefix       ; Length ; Type            ; Tariff        ; Operator            ; 
 624          ; 8      ; MOBILE          ; STANDARD_RATE ; "china_telecom"     ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
 62[589]      ; 8      ; MOBILE          ; STANDARD_RATE ; "hkt"               ; "fmt1_4/4"     ; "HK"    ; IR21
 6260         ; 8      ; MOBILE          ; STANDARD_RATE ; "3"                 ; "fmt1_4/4"     ; "HK"    ; IR21
-6261         ; 8      ; MOBILE          ; STANDARD_RATE ; "webbing"           ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT
+6261         ; 8      ; MOBILE          ; STANDARD_RATE ; "hkt"               ; "fmt1_4/4"     ; "HK"    ; IR21
 626[3-8]     ; 8      ; MOBILE          ; STANDARD_RATE ; "china_mobile"      ; "fmt1_4/4"     ; "HK"    ; IR21
 63[07-9]     ; 8      ; MOBILE          ; STANDARD_RATE ; "hkt"               ; "fmt1_4/4"     ; "HK"    ; IR21
 63[134]      ; 8      ; MOBILE          ; STANDARD_RATE ; "3"                 ; "fmt1_4/4"     ; "HK"    ; GOVERNMENT

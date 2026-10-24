@@ -1,3 +1,26 @@
+Oct 22, 2026: v9.0.42
+Metadata changes:
+ - Updated alternate formatting data for country calling code(s): 91
+ - Updated phone metadata for region code(s):
+   AU, AX, BW, CC, CN, CO, CR, CV, CX, DK, ES, FI, GH, GY, IN, KE, KW, PG, PY,
+   RU, SH
+ - Updated short number metadata for region code(s): BW, CO
+ - Updated geocoding data for country calling code(s):
+   86 (en, zh), 91 (en), 233 (en), 267 (en)
+ - New carrier data for country calling code(s): 7 (kk)
+ - Updated carrier data for country calling code(s):
+   7 (en, ru), 33 (en), 34 (en), 40 (en), 57 (en), 91 (en), 238 (en), 254 (en),
+   267 (en), 290 (en), 358 (en), 501 (en), 592 (en), 595 (en), 965 (ar, en),
+   973 (en)
+
+Oct 07, 2026: v9.0.41
+Metadata changes:
+ - Updated phone metadata for region code(s): CN, IR, NG, US
+ - Updated short number metadata for region code(s): CN
+ - Updated carrier data for country calling code(s):
+   27 (en), 30 (en), 60 (en), 98 (en, fa), 234 (en), 852 (en, zh, zh_Hant)
+ - Updated / refreshed time zone meta data.
+
 Sep 23, 2026: v9.0.40
 Metadata changes:
  - Updated phone metadata for region code(s):

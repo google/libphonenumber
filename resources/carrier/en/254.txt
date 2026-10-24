@@ -22,7 +22,12 @@
 254120|Telkom
 254121|Infura
 254124|Finserve
-25413|NRG Media Limited
+254130|NRG Media Limited
+254135|Airtel
+254136|Airtel
+254137|Airtel
+254138|Airtel
+254139|Airtel
 25414|Safaricom
 25418|Safaricom
 25470|Safaricom

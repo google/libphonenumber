@@ -58,7 +58,6 @@ Prefix      ; Length ; Type       ; Tariff        ; National Only ; Operator    
 459         ; 6-10   ; MOBILE     ; STANDARD_RATE ; false         ;                                ; "fmt_2/4-8"  ; "Europe/Helsinki&Europe/Mariehamn" ; "AX,FI"
 46          ; 6-10   ; MOBILE     ; STANDARD_RATE ; false         ; "elisa"                        ; "fmt_2/4-8"  ; "Europe/Helsinki&Europe/Mariehamn" ; "AX,FI"
 4[78]       ; 6-10   ; MOBILE     ; STANDARD_RATE ; false         ;                                ; "fmt_2/4-8"  ; "Europe/Helsinki&Europe/Mariehamn" ; "AX,FI"
-4946        ; 6-10   ; MOBILE     ; STANDARD_RATE ; false         ; "elisa"                        ; "fmt_2/4-8"  ; "Europe/Helsinki&Europe/Mariehamn" ; "AX,FI" ;                   ;                   ;                     ; IR21
 50          ; 6-10   ; MOBILE     ; STANDARD_RATE ; false         ; "elisa"                        ; "fmt_2/4-8"  ; "Europe/Helsinki&Europe/Mariehamn" ; "AX,FI"
 5[1-8]      ; 5-9    ; FIXED_LINE ; STANDARD_RATE ; false         ;                                ; "fmt_1/4-9"  ; "Europe/Helsinki"                  ; "FI"    ; "Kymi"            ; "Kymi"            ; "Kymmene"
 [67]00      ; 8,9    ; FIXED_LINE ; PREMIUM_RATE  ; false         ;                                ; "fmt_3/3-7"  ; "Europe/Helsinki&Europe/Mariehamn" ; "AX,FI"

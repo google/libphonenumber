@@ -1423,6 +1423,7 @@
 917902|Idea
 917909|Idea
 9179313|Reliance Jio
+91796|Vodafone
 917970|Airtel
 9179700|Idea
 9179701|Idea

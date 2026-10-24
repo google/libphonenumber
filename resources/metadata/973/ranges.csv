@@ -4,15 +4,18 @@ Prefix     ; Length ; Type                 ; Tariff        ; Operator      ; For
 17         ; 8      ; FIXED_LINE           ; STANDARD_RATE ;               ; "fmt1_4/4" ; "BH"
 30         ; 8      ; MOBILE               ; STANDARD_RATE ; "tra"         ; "fmt1_4/4" ; "BH"    ; GOVERNMENT
 31         ; 8      ; MOBILE               ; STANDARD_RATE ; "royal_court" ; "fmt1_4/4" ; "BH"    ; IR21       ; "IR21 dated 11/26/2018"
-3[29]      ; 8      ; MOBILE               ; STANDARD_RATE ; "batelco"     ; "fmt1_4/4" ; "BH"    ; IR21       ; "IR21 dated 11/26/2018"
-3[3-5]     ; 8      ; MOBILE               ; STANDARD_RATE ; "viva"        ; "fmt1_4/4" ; "BH"    ; IR21       ; "Updated ranges per IR21 dated 11/29/2018"
+32[0-46-9] ; 8      ; MOBILE               ; STANDARD_RATE ; "batelco"     ; "fmt1_4/4" ; "BH"    ; IR21
+3250       ; 8      ; MOBILE               ; STANDARD_RATE ; "stc"         ; "fmt1_4/4" ; "BH"    ; IR21
+325[1-9]   ; 8      ; MOBILE               ; STANDARD_RATE ; "batelco"     ; "fmt1_4/4" ; "BH"    ; IR21
+3[3-5]     ; 8      ; MOBILE               ; STANDARD_RATE ; "stc"         ; "fmt1_4/4" ; "BH"    ; IR21
 3[67]      ; 8      ; MOBILE               ; STANDARD_RATE ; "zain_bh"     ; "fmt1_4/4" ; "BH"    ; IR21       ; "IR21 dated 8/26/2018"
 38[0-47-9] ; 8      ; MOBILE               ; STANDARD_RATE ; "batelco"     ; "fmt1_4/4" ; "BH"    ; IR21       ; "IR21 dated 11/26/2018"
 385        ; 8      ; MOBILE               ; STANDARD_RATE ; "tra"         ; "fmt1_4/4" ; "BH"    ; GOVERNMENT
+39         ; 8      ; MOBILE               ; STANDARD_RATE ; "batelco"     ; "fmt1_4/4" ; "BH"    ; IR21       ; "IR21 dated 11/26/2018"
 61[16]     ; 8      ; FIXED_LINE           ; STANDARD_RATE ;               ; "fmt1_4/4" ; "BH"
-6300       ; 8      ; MOBILE               ; STANDARD_RATE ; "viva"        ; "fmt1_4/4" ; "BH"    ; IR21       ; "IR21 dated 11/29/2018"
-6333       ; 8      ; MOBILE               ; STANDARD_RATE ; "viva"        ; "fmt1_4/4" ; "BH"    ; IR21       ; "IR21 dated 11/29/2018"
-636[16]    ; 8      ; MOBILE               ; STANDARD_RATE ; "viva"        ; "fmt1_4/4" ; "BH"    ; IR21       ; "IR21 dated 11/29/2018"
+6300       ; 8      ; MOBILE               ; STANDARD_RATE ; "stc"         ; "fmt1_4/4" ; "BH"    ; IR21
+6333       ; 8      ; MOBILE               ; STANDARD_RATE ; "stc"         ; "fmt1_4/4" ; "BH"    ; IR21
+636[16]    ; 8      ; MOBILE               ; STANDARD_RATE ; "stc"         ; "fmt1_4/4" ; "BH"    ; IR21
 6441       ; 8      ; MOBILE               ; STANDARD_RATE ; "batelco"     ; "fmt1_4/4" ; "BH"    ; ITU
 6500       ; 8      ; FIXED_LINE           ; STANDARD_RATE ;               ; "fmt1_4/4" ; "BH"
 660        ; 8      ; FIXED_LINE           ; STANDARD_RATE ;               ; "fmt1_4/4" ; "BH"
