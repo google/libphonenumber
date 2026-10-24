@@ -123,7 +123,10 @@ bool AllNumberGroupsRemainGrouped(
   if (number.country_code_source() != PhoneNumber::FROM_DEFAULT_COUNTRY) {
     // First skip the country code if the normalized candidate contained it.
     string country_code = SimpleItoa(number.country_code());
-    from_index = normalized_candidate.find(country_code) + country_code.size();
+    size_t country_code_index = normalized_candidate.find(country_code);
+    if (country_code_index != string::npos) {
+      from_index = country_code_index + country_code.size();
+    }
   }
   // Check each group of consecutive digits are not broken into separate
   // groupings in the normalized_candidate string.
