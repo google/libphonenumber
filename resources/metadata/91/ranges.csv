@@ -3187,10 +3187,11 @@ Prefix            ; Length ; Type                 ; Tariff        ; Area Code Le
 7909[189]         ; 10     ; MOBILE               ; STANDARD_RATE ;                  ; false         ; "idea"         ; "mobile_5/5"       ; "IN"    ;                                             ; IR21
 791[0189]         ; 10     ; FIXED_LINE           ; STANDARD_RATE ; 2                ; false         ;                ; "fixed_2/4/4"      ; "IN"
 791[2-7]          ; 10     ; FIXED_LINE           ; STANDARD_RATE ; 2                ; false         ;                ; "fixed_2/4/4"      ; "IN"    ; "Ahmedabad Local, Gujarat"
-79[24-6]          ; 10     ; FIXED_LINE           ; STANDARD_RATE ; 2                ; false         ;                ; "fixed_2/4/4"      ; "IN"    ; "Ahmedabad Local, Gujarat"
+79[245]           ; 10     ; FIXED_LINE           ; STANDARD_RATE ; 2                ; false         ;                ; "fixed_2/4/4"      ; "IN"    ; "Ahmedabad Local, Gujarat"
 793[02-9]         ; 10     ; FIXED_LINE           ; STANDARD_RATE ; 2                ; false         ;                ; "fixed_2/4/4"      ; "IN"    ; "Ahmedabad Local, Gujarat"
 7931[0-24-9]      ; 10     ; FIXED_LINE           ; STANDARD_RATE ; 2                ; false         ;                ; "fixed_2/4/4"      ; "IN"    ; "Ahmedabad Local, Gujarat"
 79313             ; 10     ; FIXED_LINE_OR_MOBILE ; STANDARD_RATE ;                  ; false         ; "reliance_jio" ; "mobile_5/5"       ; "IN"    ; "Ahmedabad Local, Gujarat"
+796               ; 10     ; MOBILE               ; STANDARD_RATE ;                  ; false         ; "vodafone"     ; "mobile_5/5"       ; "IN"
 7970[0-2]         ; 10     ; MOBILE               ; STANDARD_RATE ;                  ; false         ; "idea"         ; "mobile_5/5"       ; "IN"
 7970[3-9]         ; 10     ; MOBILE               ; STANDARD_RATE ;                  ; false         ; "airtel"       ; "mobile_5/5"       ; "IN"
 7971              ; 10     ; MOBILE               ; STANDARD_RATE ;                  ; false         ;                ; "mobile_5/5"       ; "IN"

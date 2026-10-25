@@ -14,5 +14,6 @@
 
 9654|Virgin mobile
 9655|VIVA
+96559|STC
 9656|Ooredoo
 9659|Zain
