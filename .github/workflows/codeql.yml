@@ -17,6 +17,14 @@ on:
   pull_request:
     # The branches below must be a subset of the branches above
     branches: ["master"]
+    # Skip kotoba-only PRs; those run .github/workflows/kotoba-v1.yml.
+    paths:
+      - 'java/**'
+      - 'javascript/**'
+      - 'cpp/**'
+      - 'resources/**'
+      - 'tools/**'
+      - 'pom.xml'
   schedule:
     - cron: "0 0 * * 1"
 
@@ -41,12 +49,12 @@ jobs:
 
     steps:
       - name: Harden Runner
-        uses: step-security/harden-runner@8ca2b8b2ece13480cda6dacd3511b49857a23c09 # v2.5.1
+        uses: step-security/harden-runner@bf7454d06d71f1098171f2acdf0cd4708d7b5920 # v2.20.0
         with:
           egress-policy: audit # TODO: change to 'egress-policy: block' after couple of runs
 
       - name: Checkout repository
-        uses: actions/checkout@8f4b7f84864484a7bf31766abe9204da3cbe65b3 # v3.5.0
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         
       - name: Install Protoc
         uses: arduino/setup-protoc@149f6c87b92550901b26acd1632e11c3662e381f # v1.3.0
