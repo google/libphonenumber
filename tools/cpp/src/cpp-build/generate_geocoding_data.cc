@@ -175,7 +175,7 @@ bool ParsePrefixes(const string& path,
   const int kMaxLineLength = 2*1024;
   vector<char> buffer(kMaxLineLength);
   vector<char>::iterator begin, end, sep;
-  string prefix, description;
+  string prefix;
   int32 prefix_code;
   while (fgets(&buffer[0], buffer.size(), input)) {
     begin = buffer.begin();
