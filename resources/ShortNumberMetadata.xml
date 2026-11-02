@@ -2079,54 +2079,85 @@
     <!-- http://www.itu.int/oth/T020200001C/en -->
     <territory id="BW">
       <generalDesc>
-        <nationalNumberPattern>
-          [19]\d\d(?:
-            \d{2}
-          )?
-        </nationalNumberPattern>
+        <nationalNumberPattern>[19]\d{2,4}</nationalNumberPattern>
       </generalDesc>
       <shortCode>
-        <possibleLengths national="3,5"/>
-        <exampleNumber>112</exampleNumber>
+        <possibleLengths national="[3-5]"/>
+        <exampleNumber>100</exampleNumber>
         <nationalNumberPattern>
           1(?:
-            1[26]|
+            (?:
+              [02]|
+              [6-9]\d\d
+            )\d|
+            1[0-2469]|
             3123
           )|
           9(?:
-            1[14]|
-            9[1-57-9]
-          )
+            1[0-4]|
+            2[02-69]|
+            9\d
+          )|
+          1[0-28]\d\d
         </nationalNumberPattern>
       </shortCode>
       <tollFree>
         <possibleLengths national="3"/>
-        <exampleNumber>911</exampleNumber>
+        <exampleNumber>110</exampleNumber>
         <nationalNumberPattern>
+          11[0-246]|
           9(?:
-            11|
-            9[7-9]
+            1[0-4]|
+            2[02-69]|
+            9[06-9]
           )
         </nationalNumberPattern>
       </tollFree>
       <!-- https://support.twitter.com/articles/20170024 -->
       <carrierSpecific>
-        <possibleLengths national="5"/>
-        <exampleNumber>13100</exampleNumber>
-        <nationalNumberPattern>131\d\d</nationalNumberPattern>
+        <possibleLengths national="[3-5]"/>
+        <exampleNumber>100</exampleNumber>
+        <nationalNumberPattern>
+          1(?:
+            [0-2]|
+            31
+          )\d\d|
+          9(?:
+            1[02-4]|
+            2[02-69]|
+            9[0-3]
+          )|
+          1(?:
+            [02]\d|
+            1[49]
+          )
+        </nationalNumberPattern>
       </carrierSpecific>
       <!-- http://www.gov.bw/en/Ministries%2D%2DAuthorities/Ministries/State-President/Botswana-Police-Service-/About-the-BPS/Toll-Free-Numbers/ -->
       <!-- http://travel.state.gov/travel/cis_pa_tw/cis/cis_1071.html -->
       <emergency>
         <possibleLengths national="3"/>
-        <exampleNumber>911</exampleNumber>
+        <exampleNumber>111</exampleNumber>
         <nationalNumberPattern>
+          11[12]|
           9(?:
             11|
             9[7-9]
           )
         </nationalNumberPattern>
       </emergency>
+      <expandedEmergency>
+        <possibleLengths national="3"/>
+        <exampleNumber>110</exampleNumber>
+        <nationalNumberPattern>
+          11[046]|
+          9(?:
+            1[02-4]|
+            2[02-69]|
+            9[06]
+          )
+        </nationalNumberPattern>
+      </expandedEmergency>
       <!-- https://support.twitter.com/articles/20170024 -->
       <smsServices>
         <possibleLengths national="5"/>
@@ -3220,14 +3251,8 @@
           )9|
           40404|
           5930\d\d|
-          85432|
-          (?:
-            [2359][57]|
-            8(?:
-              7|
-              9\d
-            )
-          )\d{3}
+          89\d{4}|
+          [23589][57]\d{3}
         </nationalNumberPattern>
       </shortCode>
       <tollFree>
@@ -3246,13 +3271,14 @@
       <!-- 85432 is used for customer complaints - found on mobile websites - and will go to your
            carrier specifically. -->
       <carrierSpecific>
-        <possibleLengths national="5"/>
+        <possibleLengths national="5,6"/>
         <exampleNumber>40400</exampleNumber>
         <nationalNumberPattern>
-          (?:
-            40|
-            85
-          )4\d\d
+          404\d\d|
+          8(?:
+            [57]|
+            9\d
+          )\d{3}
         </nationalNumberPattern>
       </carrierSpecific>
       <!-- Police, medical and fire plus general emergency numbers (112,123). -->
@@ -3284,13 +3310,14 @@
       </expandedEmergency>
       <!-- https://support.twitter.com/articles/20170024 -->
       <smsServices>
-        <possibleLengths national="5"/>
+        <possibleLengths national="5,6"/>
         <exampleNumber>40400</exampleNumber>
         <nationalNumberPattern>
-          (?:
-            40|
-            85
-          )4\d\d
+          404\d\d|
+          8(?:
+            [57]|
+            9\d
+          )\d{3}
         </nationalNumberPattern>
       </smsServices>
     </territory>

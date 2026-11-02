@@ -129840,7 +129840,11 @@
 8621|Shanghai
 8622|Tianjin
 8623|Chongqing
-8624|Shenyang/Tieling/Fushun, Liaoning
+8624|Shenyang/Tieling/Fushun/Benxi, Liaoning
+8624100|Shenyang/Tieling/Fushun, Liaoning
+8624123|Shenyang/Tieling/Fushun, Liaoning
+862495|Shenyang/Tieling/Fushun, Liaoning
+862496|Shenyang/Tieling/Fushun, Liaoning
 8625|Nanjing, Jiangsu
 8627|Wuhan, Hubei
 8628|Chengdu/Ziyang/Meishan, Sichuan
@@ -129861,11 +129865,11 @@
 86351|Taiyuan, Shanxi
 86352|Datong, Shanxi
 86353|Yangquan, Shanxi
-86354|Yuci, Shanxi
+86354|Jinzhong/Luliang, Shanxi
 86355|Changzhi, Shanxi
 86356|Jincheng, Shanxi
 86357|Linfen, Shanxi
-86358|Lishi, Shanxi
+86358|Jinzhong/Luliang, Shanxi
 86359|Yuncheng, Shanxi
 86370|Shangqiu, Henan
 86371|Zhengzhou, Henan
@@ -129875,7 +129879,6 @@
 86375|Pingdingshan, Henan
 86376|Xinyang, Henan
 86377|Nanyang, Henan
-86378|Kaifeng, Henan
 86379|Luoyang, Henan
 86391|Jiaozuo, Henan
 86392|Hebi, Henan
@@ -129884,11 +129887,8 @@
 86395|Luohe, Henan
 86396|Zhumadian, Henan
 86398|Sanmenxia, Henan
-86410|Tieling, Liaoning
 86411|Dalian, Liaoning
 86412|Anshan, Liaoning
-86413|Fushun, Liaoning
-86414|Benxi, Liaoning
 86415|Dandong, Liaoning
 86416|Jinzhou, Liaoning
 86417|Yingkou, Liaoning
@@ -129919,18 +129919,18 @@
 86467|Jixi, Heilongjiang
 86468|Hegang, Heilongjiang
 86469|Shuangyashan, Heilongjiang
-86470|Hailaer, Inner Mongolia
+86470|Hulunbuir, Inner Mongolia
 86471|Huhehaote, Inner Mongolia
 86472|Baotou, Inner Mongolia
 86473|Wuhai, Inner Mongolia
-86474|Jining, Inner Mongolia
+86474|Ulanqab, Inner Mongolia
 86475|Tongliao, Inner Mongolia
 86476|Chifeng, Inner Mongolia
-86477|Dongsheng, Inner Mongolia
-86478|Linhe, Inner Mongolia
-86479|Xilinhaote, Inner Mongolia
-86482|Wulanhaote, Inner Mongolia
-86483|Alashanzuoqi, Inner Mongolia
+86477|Ordos, Inner Mongolia
+86478|Bayan Nur, Inner Mongolia
+86479|Xilingol, Inner Mongolia
+86482|Hinggan, Inner Mongolia
+86483|Alxa, Inner Mongolia
 86510|Wuxi, Jiangsu
 86511|Zhenjiang, Jiangsu
 86512|Suzhou, Jiangsu
@@ -129951,12 +129951,16 @@
 86535|Yantai, Shandong
 86536|Weifang, Shandong
 86537|Jining, Shandong
-86538|TaiAn, Shandong
+86538|Taian, Shandong
 86539|Linyi, Shandong
 86543|Binzhou, Shandong
 86546|Dongying, Shandong
 86550|Chuzhou, Anhui
-86551|Hefei/Chaohu, Anhui
+86551|Hefei, Anhui
+86551100|Hefei/Chaohu, Anhui
+86551123|Hefei/Chaohu, Anhui
+8655195|Hefei/Chaohu, Anhui
+8655196|Hefei/Chaohu, Anhui
 86552|Bengbu, Anhui
 86553|Wuhu, Anhui
 86554|Huainan, Anhui
@@ -129968,7 +129972,7 @@
 86561|Huaibei, Anhui
 86562|Tongling, Anhui
 86563|Xuancheng, Anhui
-86564|LiuAn, Anhui
+86564|Lu'an, Anhui
 86566|Chizhou, Anhui
 86570|Quzhou, Zhejiang
 86571|Hangzhou, Zhejiang
@@ -129993,16 +129997,23 @@
 86631|Weihai, Shandong
 86632|Zaozhuang, Shandong
 86633|Rizhao, Shandong
-86634|Laiwu, Shandong
 86635|Liaocheng, Shandong
 86660|Shanwei, Guangdong
 86662|Yangjiang, Guangdong
 86663|Jieyang, Guangdong
 86668|Maoming, Guangdong
-86691|Jinghong, Yunnan
-86692|Luxi, Yunnan
+86691|Xishuangbanna, Yunnan
+86692|Mangshi, Yunnan
+86692100|Luxi, Yunnan
+86692123|Luxi, Yunnan
+8669295|Luxi, Yunnan
+8669296|Luxi, Yunnan
 8670|Yingtan, Jiangxi
-86710|Xiangyang/Xiangfan, Hubei
+86710|Xiangyang, Hubei
+86710100|Xiangyang/Xiangfan, Hubei
+86710123|Xiangyang/Xiangfan, Hubei
+8671095|Xiangyang/Xiangfan, Hubei
+8671096|Xiangyang/Xiangfan, Hubei
 86711|Ezhou, Hubei
 86712|Xiaogan, Hubei
 86713|Huanggang, Hubei
@@ -130014,7 +130025,11 @@
 86719|Shiyan, Hubei
 86722|Suizhou, Hubei
 86724|Jingmen, Hubei
-86728|Xiantao, Hubei
+86728|Xiantao/Qianjiang/Tianmen, Hubei
+86728100|Xiantao, Hubei
+86728123|Xiantao, Hubei
+8672895|Xiantao, Hubei
+8672896|Xiantao, Hubei
 86730|Yueyang, Hunan
 86731|Zhuzhou/Changsha/Xiangtan, Hunan
 86734|Hengyang, Hunan
@@ -130031,10 +130046,18 @@
 86751|Shaoguan, Guangdong
 86752|Huizhou, Guangdong
 86753|Meizhou, Guangdong
-86754|Shantou/Chaoyang, Guangdong
+86754|Shantou, Guangdong
+86754100|Shantou/Chaoyang, Guangdong
+86754123|Shantou/Chaoyang, Guangdong
+8675495|Shantou/Chaoyang, Guangdong
+8675496|Shantou/Chaoyang, Guangdong
 86755|Shenzhen, Guangdong
 86756|Zhuhai, Guangdong
-86757|Shunde/Foshan, Guangdong
+86757|Foshan, Guangdong
+86757100|Shunde/Foshan, Guangdong
+86757123|Shunde/Foshan, Guangdong
+8675795|Shunde/Foshan, Guangdong
+8675796|Shunde/Foshan, Guangdong
 86758|Zhaoqing, Guangdong
 86759|Zhanjiang, Guangdong
 86760|Zhongshan, Guangdong
@@ -130044,7 +130067,11 @@
 86768|Chaozhou, Guangdong
 86769|Dongguan, Guangdong
 86770|Fangchenggang, Guangxi
-86771|Nanning, Guangxi
+86771|Nanning/Chongzuo, Guangxi
+86771100|Nanning, Guangxi
+86771123|Nanning, Guangxi
+8677195|Nanning, Guangxi
+8677196|Nanning, Guangxi
 86772|Liuzhou, Guangxi
 86773|Guilin, Guangxi
 86774|Wuzhou, Guangxi
@@ -130059,34 +130086,35 @@
 86793|Shangrao, Jiangxi
 86794|Fuzhou, Jiangxi
 86795|Yichun, Jiangxi
-86796|JiAn, Jiangxi
+86796|Ji'an, Jiangxi
 86797|Ganzhou, Jiangxi
 86798|Jingdezhen, Jiangxi
 86799|Pingxiang, Jiangxi
-86807|Suoxian, Tibet
 86812|Panzhihua, Sichuan
 86813|Zigong, Sichuan
 86816|Mianyang, Sichuan
 86817|Nanchong, Sichuan
 86818|Dazhou, Sichuan
 86825|Suining, Sichuan
-86826|GuangAn, Sichuan
+86826|Guang'an, Sichuan
 86827|Bazhong, Sichuan
 86830|Luzhou, Sichuan
 86831|Yibin, Sichuan
-86832|Ziyang/Neijiang, Sichuan
+86832|Neijiang, Sichuan
+86832100|Ziyang/Neijiang, Sichuan
+86832123|Ziyang/Neijiang, Sichuan
+8683295|Ziyang/Neijiang, Sichuan
+8683296|Ziyang/Neijiang, Sichuan
 86833|Leshan, Sichuan
 86834|Xichang, Sichuan
-86835|YaAn, Sichuan
-86836|Kangding, Sichuan
-86837|MaErkang, Sichuan
+86835|Ya'an, Sichuan
+86836|Garze, Sichuan
+86837|Aba, Sichuan
 86838|Deyang, Sichuan
 86839|Guangyuan, Sichuan
 86851|Guiyang/Zunyi/Anshun, Guizhou
-86852|Zunyi, Guizhou
-86853|Anshun, Guizhou
-86854|Duyun, Guizhou
-86855|Kaili, Guizhou
+86854|Qiannan, Guizhou
+86855|Qiandongnan, Guizhou
 86856|Tongren, Guizhou
 86857|Bijie, Guizhou
 86858|Liupanshui, Guizhou
@@ -130094,25 +130122,37 @@
 86870|Zhaotong, Yunnan
 86871|Kunming, Yunnan
 86872|Dali, Yunnan
-86873|Gejiu, Yunnan
+86873|Honghe, Yunnan
 86874|Qujing, Yunnan
 86875|Baoshan, Yunnan
 86876|Wenshan, Yunnan
 86877|Yuxi, Yunnan
 86878|Chuxiong, Yunnan
-86879|Simao, Yunnan
+86879|Pu'er, Yunnan
+86879100|Simao, Yunnan
+86879123|Simao, Yunnan
+8687995|Simao, Yunnan
+8687996|Simao, Yunnan
 86883|Lincang, Yunnan
-86886|Liuku, Yunnan
-86887|Zhongdian, Yunnan
+86886|Nujiangm, Yunnan
+86887|Shangri-La, Yunnan
+86887100|Diqing, Yunnan
+86887123|Diqing, Yunnan
+8688795|Diqing, Yunnan
+8688796|Diqing, Yunnan
 86888|Lijiang, Yunnan
 86891|Lhasa, Tibet
 86892|Rikaze/Zhongba, Tibet
-86893|Naidong, Tibet
+86893|Shannan, Tibet
 86894|Linzhi, Tibet
 86895|Changdu, Tibet
 86896|Naqu/Jiali/Nierong/Shenzha/Shuanghu/Bange/Nima, Tibet
-86897|GeEr/Pulan/Zhada, Tibet
-86898|Haikou, Hainan
+86897|Ali/Pulan/Zhada, Tibet
+86898|Haikou/Sanya, Hainan
+86898100|Haikou, Hainan
+86898123|Haikou, Hainan
+8689895|Haikou, Hainan
+8689896|Haikou, Hainan
 86901|Tacheng, Xinjiang
 86902|Hami, Xinjiang
 86903|Hetian, Xinjiang
@@ -130137,7 +130177,7 @@
 86937|Jiuquan, Gansu
 86938|Tianshui, Gansu
 86939|Wudu, Gansu
-86941|Hezuo, Gansu
+86941|Gannan, Gansu
 86943|Baiyin, Gansu
 86951|Yinchuan, Ningxia
 86952|Shizuishan, Ningxia
@@ -130154,7 +130194,11 @@
 86977|Delingha, Qinghai
 86979|GeErmu, Qinghai
 86990|Kalamayi, Xinjiang
-86991|Urumchi, Xinjiang
+86991|Urumqi, Xinjiang
+86991100|Urumchi, Xinjiang
+86991123|Urumchi, Xinjiang
+8699195|Urumchi, Xinjiang
+8699196|Urumchi, Xinjiang
 86992|Kuitun, Xinjiang
 86993|Shihezi, Xinjiang
 86994|Changji, Xinjiang

@@ -36,7 +36,7 @@ Prefix    ; Length ; Type       ; Tariff        ; Operator  ; Format       ; Reg
 36        ; 7      ; MOBILE     ; STANDARD_RATE ; "cvmovel" ; "fmt1_3/2/2" ; "CV"
 4[356]    ; 7      ; VOIP       ; STANDARD_RATE ;           ; "fmt1_3/2/2" ; "CV"    ;                                                   ;                                                   ; ITU
 [59][1-3] ; 7      ; MOBILE     ; STANDARD_RATE ; "t"       ; "fmt1_3/2/2" ; "CV"
-5[89]     ; 7      ; MOBILE     ; STANDARD_RATE ; "cvmovel" ; "fmt1_3/2/2" ; "CV"
+5[7-9]    ; 7      ; MOBILE     ; STANDARD_RATE ; "cvmovel" ; "fmt1_3/2/2" ; "CV"    ;                                                   ;                                                   ; IR21
 800       ; 7      ; FIXED_LINE ; TOLL_FREE     ;           ; "fmt1_3/2/2" ; "CV"    ;                                                   ;                                                   ; WEB        ; "wiki"
 9[046]    ; 7      ; MOBILE     ; STANDARD_RATE ;           ; "fmt1_3/2/2" ; "CV"
 9[57-9]   ; 7      ; MOBILE     ; STANDARD_RATE ; "cvmovel" ; "fmt1_3/2/2" ; "CV"
