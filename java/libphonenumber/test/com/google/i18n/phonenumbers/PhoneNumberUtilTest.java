@@ -2255,6 +2255,38 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
     assertFalse(domainname.matcher("aa..bb").matches());
     assertFalse(domainname.matcher("-aa.bb").matches());
     assertFalse(domainname.matcher("a-.b").matches());
+    
+    // Valid top-level labels containing digits and hyphens (including Punycode TLDs).
+    assertEquals(
+        US_LOCAL_NUMBER, phoneUtil.parse("tel:253-0000;phone-context=example.c1", RegionCode.US));
+    assertEquals(
+        US_LOCAL_NUMBER, phoneUtil.parse("tel:253-0000;phone-context=example.b2b", RegionCode.US));
+    assertEquals(
+        US_LOCAL_NUMBER,
+        phoneUtil.parse("tel:253-0000;phone-context=sub.example.a1-b2", RegionCode.US));
+    assertEquals(
+        US_LOCAL_NUMBER,
+        phoneUtil.parse("tel:253-0000;phone-context=example.xn--p1ai", RegionCode.US));
+    assertEquals(
+        US_LOCAL_NUMBER, phoneUtil.parse("tel:253-0000;phone-context=a.b", RegionCode.US));
+    assertEquals(
+        US_LOCAL_NUMBER,
+        phoneUtil.parse("tel:253-0000;phone-context=www.google.com.", RegionCode.US));
+    // Top-level labels starting with or consisting solely of digits must be rejected.
+    String[] invalidTopLabels = {
+      "tel:253-0000;phone-context=example.123",
+      "tel:253-0000;phone-context=example.1a",
+      "tel:253-0000;phone-context=example.-c1",
+      "tel:253-0000;phone-context=example.c1-"
+    };
+    for (String input : invalidTopLabels) {
+      try {
+        phoneUtil.parse(input, RegionCode.US);
+        fail("Should have rejected invalid phone-context domain: " + input);
+      } catch (NumberParseException e) {
+        assertEquals(NumberParseException.ErrorType.NOT_A_NUMBER, e.getErrorType());
+      }
+    }
   }
 
   public void testParseWithInternationalPrefixes() throws Exception {

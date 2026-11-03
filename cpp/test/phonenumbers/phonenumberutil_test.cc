@@ -4116,6 +4116,68 @@ TEST_F(PhoneNumberUtilTest, FailedParseOnInvalidNumbers) {
   EXPECT_EQ(PhoneNumber::default_instance(), test_number);
 }
 
+TEST_F(PhoneNumberUtilTest, ParseRfc3966PhoneContextDomain) {
+  PhoneNumber us_local_number;
+  us_local_number.set_country_code(1);
+  us_local_number.set_national_number(2530000ULL);
+  const char* const kValidInputs[] = {
+      "tel:253-0000;phone-context=a-b.example.com",
+      "tel:253-0000;phone-context=a--b.example.com",
+      "tel:253-0000;phone-context=example.c1",
+      "tel:253-0000;phone-context=example.b2b",
+      "tel:253-0000;phone-context=sub.example.a1-b2",
+      "tel:253-0000;phone-context=example.xn--p1ai",
+      "tel:253-0000;phone-context=a.b",
+      "tel:253-0000;phone-context=www.google.com.",
+  };
+  for (const char* input : kValidInputs) {
+    PhoneNumber test_number;
+    EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
+              phone_util_.Parse(input, RegionCode::US(), &test_number))
+        << "Expected valid parse for: " << input;
+    EXPECT_EQ(us_local_number, test_number);
+  }
+  // Adversarial inputs that previously caused exponential backtracking under
+  // the ICU regex backend when matching failed at the trailing '!'.
+  std::string repeated_labels_trailing_dot = "tel:5;phone-context=";
+  std::string repeated_labels = "tel:253-0000;phone-context=";
+  std::string repeated_hyphens = "tel:253-0000;phone-context=";
+  std::string repeated_toplabel = "tel:253-0000;phone-context=example.";
+  for (int i = 0; i < 30; ++i) {
+    repeated_labels_trailing_dot += "aa.";
+    repeated_labels += "aa.";
+    repeated_hyphens += "a-";
+    repeated_toplabel += "a1";
+  }
+  repeated_labels_trailing_dot += "!";
+  repeated_labels += "aa!";
+  repeated_hyphens += "a!";
+  repeated_toplabel += "!";
+  const std::string invalid_inputs[] = {
+      "tel:253-0000;phone-context=-example.com",
+      "tel:253-0000;phone-context=example-.com",
+      "tel:253-0000;phone-context=example.-com",
+      "tel:253-0000;phone-context=example.com-",
+      "tel:253-0000;phone-context=.example.com",
+      "tel:253-0000;phone-context=example..com",
+      "tel:253-0000;phone-context=example.123",
+      "tel:253-0000;phone-context=example.1a",
+      "tel:253-0000;phone-context=example.-c1",
+      "tel:253-0000;phone-context=example.c1-",
+      repeated_labels_trailing_dot,
+      repeated_labels,
+      repeated_hyphens,
+      repeated_toplabel,
+  };
+  for (const std::string& input : invalid_inputs) {
+    PhoneNumber test_number;
+    EXPECT_EQ(PhoneNumberUtil::NOT_A_NUMBER,
+              phone_util_.Parse(input, RegionCode::US(), &test_number))
+        << "Expected NOT_A_NUMBER for: " << input;
+    EXPECT_EQ(PhoneNumber::default_instance(), test_number);
+  }
+}
+
 TEST_F(PhoneNumberUtilTest, ParseNumbersWithPlusWithNoRegion) {
   PhoneNumber nz_number;
   nz_number.set_country_code(64);

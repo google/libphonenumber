@@ -1,1 +1,3 @@
-
+Code changes:
+ - Fixed catastrophic backtracking in the RFC3966 phone-context domainname
+   check across Java, JavaScript, and C++.
