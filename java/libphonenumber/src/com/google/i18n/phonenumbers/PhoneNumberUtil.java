@@ -277,10 +277,6 @@ public class PhoneNumberUtil {
   private static final String UNWANTED_END_CHARS = "[[\\P{N}&&\\P{L}]&&[^#]]+$";
   static final Pattern UNWANTED_END_CHAR_PATTERN = Pattern.compile(UNWANTED_END_CHARS);
 
-  // We use this pattern to check if the phone number has at least three letters in it - if so, then
-  // we treat it as a number where some phone-number digits are represented by letters.
-  private static final Pattern VALID_ALPHA_PHONE_PATTERN = Pattern.compile("(?:.*?[A-Za-z]){3}.*");
-
   // Regular expression of viable phone numbers. This is location independent. Checks we have at
   // least three leading digits, and only valid punctuation, alpha characters and
   // digits in the phone number. Does not include extension data.
@@ -802,8 +798,7 @@ public class PhoneNumberUtil {
    *     normalized in place
    */
   static StringBuilder normalize(StringBuilder number) {
-    Matcher m = VALID_ALPHA_PHONE_PATTERN.matcher(number);
-    if (m.matches()) {
+    if (hasAtLeastThreeAlphaChars(number)) {
       number.replace(0, number.length(), normalizeHelper(number, ALPHA_PHONE_MAPPINGS, true));
     } else {
       number.replace(0, number.length(), normalizeDigitsOnly(number));

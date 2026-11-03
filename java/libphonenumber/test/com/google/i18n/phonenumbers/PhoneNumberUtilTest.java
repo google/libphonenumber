@@ -476,6 +476,15 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
                  expectedOutput, PhoneNumberUtil.normalize(inputNumber).toString());
   }
 
+  public void testNormaliseLongNumericInputDoesNotThrow() {
+    StringBuilder inputNumber = new StringBuilder("+");
+    for (int i = 0; i < 5000; i++) {
+      inputNumber.append('1');
+    }
+    // Should not throw StackOverflowError and correctly normalize digits.
+    assertEquals(5000, PhoneNumberUtil.normalize(inputNumber).length());
+  }
+
   public void testNormaliseStripAlphaCharacters() {
     String inputNumber = "034-56&+a#234";
     String expectedOutput = "03456234";

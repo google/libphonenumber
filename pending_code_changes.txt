@@ -1,1 +1,2 @@
-
+Code changes:
+ - Fixed PhoneNumberUtil.normalize(StringBuilder) in Java to use a linear character scan instead of the recursive VALID_ALPHA_PHONE_PATTERN regex, preventing StackOverflowError on long inputs.
