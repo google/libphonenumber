@@ -57,5 +57,3 @@ Prefix        ; Length ; Type                 ; Tariff        ; Operator  ; Form
 019[23]       ; 10     ; MOBILE               ; STANDARD_RATE ; "celtiis" ; "fmt_2/2/2/2/2" ; "BJ"    ;                                        ;                                        ; IR21
 019[45]       ; 10     ; MOBILE               ; STANDARD_RATE ; "moov"    ; "fmt_2/2/2/2/2" ; "BJ"    ;                                        ;                                        ; ITU
 019[89]       ; 10     ; MOBILE               ; STANDARD_RATE ; "moov"    ; "fmt_2/2/2/2/2" ; "BJ"
-81            ; 8      ; UAN                  ; STANDARD_RATE ;           ; "fmt1_2/2/2/2"  ; "BJ"    ;                                        ;                                        ; ITU
-857[58]       ; 8      ; VOIP                 ; STANDARD_RATE ;           ; "fmt1_2/2/2/2"  ; "BJ"    ;                                        ;                                        ; ITU
