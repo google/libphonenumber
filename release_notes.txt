@@ -1,3 +1,13 @@
+Nov 04, 2026: v9.0.43
+Metadata changes:
+ - Updated phone metadata for region code(s):
+   BJ, CN, DE, EC, ET, GE, LA, RO, ZW
+ - Updated geocoding data for country calling code(s):
+   61 (en), 86 (zh), 263 (en)
+ - Updated carrier data for country calling code(s):
+   7 (en, kk), 40 (en), 43 (en), 46 (en), 48 (en), 49 (en), 81 (en), 263 (en),
+   420 (en), 593 (en), 856 (en), 995 (en)
+
 Oct 22, 2026: v9.0.42
 Metadata changes:
  - Updated alternate formatting data for country calling code(s): 91
