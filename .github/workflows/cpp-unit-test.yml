@@ -21,6 +21,7 @@ jobs:
         sudo apt-get update && \
         sudo apt-get install -y --fix-missing libboost-all-dev \
         cmake cmake-curses-gui libprotobuf-dev libgtest-dev libre2-dev \
+        libicu-dev libboost-dev libboost-thread-dev libboost-system-dev \
         protobuf-compiler
       
     - name: Build C++
