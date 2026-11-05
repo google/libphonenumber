@@ -362,6 +362,19 @@ public class ShortNumberInfoTest extends TestMetadataTestCase {
             parse("+4640404", RegionCode.SE), RegionCode.US));
   }
 
+  public void testOutOfRangeNumberOfLeadingZeros() {
+    // The field has no bounds in the proto, so these values can come straight from the input.
+    PhoneNumber negative = new PhoneNumber().setCountryCode(33).setNationalNumber(1010L)
+        .setItalianLeadingZero(true).setNumberOfLeadingZeros(-1);
+    assertTrue(shortInfo.isPossibleShortNumber(negative));
+    assertTrue(shortInfo.isValidShortNumber(negative));
+
+    PhoneNumber huge = new PhoneNumber().setCountryCode(33).setNationalNumber(1010L)
+        .setItalianLeadingZero(true).setNumberOfLeadingZeros(Integer.MAX_VALUE);
+    assertFalse(shortInfo.isPossibleShortNumber(huge));
+    assertFalse(shortInfo.isValidShortNumber(huge));
+  }
+
   private PhoneNumber parse(String number, String regionCode) {
     try {
       return phoneUtil.parse(number, regionCode);

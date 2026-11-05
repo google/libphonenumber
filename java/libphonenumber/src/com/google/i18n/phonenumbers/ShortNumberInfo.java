@@ -546,9 +546,11 @@ public class ShortNumberInfo {
    */
   private static String getNationalSignificantNumber(PhoneNumber number) {
     // If leading zero(s) have been set, we prefix this now. Note this is not a national prefix.
+    // Defensively cap the number of leading zeros to avoid OOM from malicious input.
     StringBuilder nationalNumber = new StringBuilder();
-    if (number.isItalianLeadingZero()) {
-      char[] zeros = new char[number.getNumberOfLeadingZeros()];
+    if (number.isItalianLeadingZero() && number.getNumberOfLeadingZeros() > 0) {
+      int numberOfLeadingZeros = Math.min(number.getNumberOfLeadingZeros(), 10);
+      char[] zeros = new char[numberOfLeadingZeros];
       Arrays.fill(zeros, '0');
       nationalNumber.append(new String(zeros));
     }
