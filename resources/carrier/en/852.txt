@@ -258,7 +258,7 @@
 852625|HKT
 852626|China Mobile
 8526260|3
-8526261|Webbing
+8526261|HKT
 852627|3
 852628|HKT
 852629|HKT
@@ -358,6 +358,10 @@
 8527087|SmarTone
 8527088|SmarTone
 852709|Hutchison Telecom
+8527101|China Unicom
+8527102|China Unicom
+8527103|China Unicom
+8527104|China Unicom
 852840|China Mobile
 852841|Hutchison Telecom
 852842|HKT

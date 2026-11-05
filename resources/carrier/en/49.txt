@@ -29,6 +29,7 @@
 491529|Vodafone/Truphone
 491531|Mtel
 491533|Simsalasim
+491541|T-Mobile
 4915510|LEBARA
 4915511|LEBARA
 491555|1&1 Mobilfunk

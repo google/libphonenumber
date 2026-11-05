@@ -16,6 +16,7 @@
 3630|Magyar Telekom
 36312000|Netfone Telecom
 36312001|Netfone Telecom
+363121|One
 3631310|One
 3631311|One
 3631312|One

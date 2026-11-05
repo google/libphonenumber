@@ -1,7 +1,19 @@
-Region ; Prefix  ; Length ; Type       ; Tariff    ; Sms  ; Carrier Specific
-BW     ; 11[26]  ; 3      ; COMMERCIAL
-BW     ; 13123   ; 5      ; COMMERCIAL ;           ; true ; true
-BW     ; 911     ; 3      ; EMERGENCY  ; TOLL_FREE
-BW     ; 914     ; 3      ; COMMERCIAL
-BW     ; 99[1-5] ; 3      ; COMMERCIAL
-BW     ; 99[7-9] ; 3      ; EMERGENCY  ; TOLL_FREE
+Region ; Prefix    ; Length ; Type               ; Tariff    ; Sms  ; Carrier Specific ; Provenance
+BW     ; 1[02]     ; 3      ; COMMERCIAL         ;           ;      ; true             ; ITU
+BW     ; 1[0-2]    ; 4      ; COMMERCIAL         ;           ;      ; true             ; ITU
+BW     ; 110       ; 3      ; EXPANDED_EMERGENCY ; TOLL_FREE ;      ;                  ; ITU
+BW     ; 11[12]    ; 3      ; EMERGENCY          ; TOLL_FREE ;      ;                  ; ITU
+BW     ; 114       ; 3      ; EXPANDED_EMERGENCY ; TOLL_FREE ;      ; true             ; ITU
+BW     ; 116       ; 3      ; EXPANDED_EMERGENCY ; TOLL_FREE
+BW     ; 119       ; 3      ; COMMERCIAL         ;           ;      ; true             ; ITU
+BW     ; 13123     ; 5      ; COMMERCIAL         ;           ; true ; true
+BW     ; 1[6-9]    ; 5      ; COMMERCIAL         ;           ;      ;                  ; ITU
+BW     ; 18        ; 4      ; COMMERCIAL         ;           ;      ;                  ; ITU
+BW     ; 91[02-4]  ; 3      ; EXPANDED_EMERGENCY ; TOLL_FREE ;      ; true             ; ITU
+BW     ; 911       ; 3      ; EMERGENCY          ; TOLL_FREE
+BW     ; 92[02-69] ; 3      ; EXPANDED_EMERGENCY ; TOLL_FREE ;      ; true             ; ITU
+BW     ; 990       ; 3      ; EXPANDED_EMERGENCY ; TOLL_FREE ;      ; true             ; ITU
+BW     ; 99[1-3]   ; 3      ; COMMERCIAL         ;           ;      ; true
+BW     ; 99[45]    ; 3      ; COMMERCIAL
+BW     ; 996       ; 3      ; EXPANDED_EMERGENCY ; TOLL_FREE ;      ;                  ; ITU
+BW     ; 99[7-9]   ; 3      ; EMERGENCY          ; TOLL_FREE

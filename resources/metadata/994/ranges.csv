@@ -90,7 +90,7 @@ Prefix      ; Length ; Type       ; Tariff        ; Area Code Length ; Operator 
 46          ; 9      ; FIXED_LINE ; STANDARD_RATE ; 2                ;              ; "fixed_2/3/2/2"  ; "AZ"    ;                         ; ITU
 5[01]       ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "azercell"   ; "mobile_2/3/2/2" ; "AZ"    ;                         ; ITU
 55          ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "bakcell"    ; "mobile_2/3/2/2" ; "AZ"    ;                         ; ITU
-60          ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "naxtel"     ; "mobile_2/3/2/2" ; "AZ"    ;                         ; ITU
+60          ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "azercell"   ; "mobile_2/3/2/2" ; "AZ"    ;                         ; ITU
 7[07]       ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "nar_mobile" ; "mobile_2/3/2/2" ; "AZ"    ;                         ; ITU
 88          ; 9      ; FIXED_LINE ; TOLL_FREE     ;                  ;              ; "mobile_2/3/2/2" ; "AZ"    ;                         ; ITU
 900200      ; 9      ; FIXED_LINE ; PREMIUM_RATE  ;                  ;              ; "fmt_3/2/2/2"    ; "AZ"

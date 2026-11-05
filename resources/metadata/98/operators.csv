@@ -1,9 +1,8 @@
-Id            ; Name:en         ; Name:fa
-__samantel    ; "SamanTel"      ; "سامانتل"
-aptel         ; "Aptel"         ; "آپتل"
-ir_mci        ; "IR-MCI"        ; "همراه اول"
-irancell      ; "Irancell"      ; "ایرانسل"
-mtce          ; "MTCE"          ; "اسپادان"
-rightel       ; "Rightel"       ; "رایتل"
-shatel_mobile ; "Shatel Mobile" ; "شاتل موبایل"
-telekish      ; "TeleKish"      ; "تله‌کیش"
+Id         ; Name:en    ; Name:fa
+__samantel ; "SamanTel" ; "سامانتل"
+aptel      ; "Aptel"    ; "آپتل"
+ir_mci     ; "IR-MCI"   ; "همراه اول"
+irancell   ; "Irancell" ; "ایرانسل"
+mtce       ; "MTCE"     ; "اسپادان"
+rightel    ; "Rightel"  ; "رایتل"
+telekish   ; "TeleKish" ; "تله‌کیش"

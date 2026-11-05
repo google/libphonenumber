@@ -1633,8 +1633,7 @@ TEST_F(PhoneNumberUtilTest, ExtractPossibleNumber) {
   ExtractPossibleNumber("(650) 253-0000.", &extracted_number);
   EXPECT_EQ("650) 253-0000", extracted_number);
   // This case has a trailing RTL char.
-  ExtractPossibleNumber("(650) 253-0000\xE2\x80\x8F"
-                        /* "(650) 253-0000‏" */, &extracted_number);
+  ExtractPossibleNumber("(650) 253-0000\xE2\x80\x8F", &extracted_number);
   EXPECT_EQ("650) 253-0000", extracted_number);
 }
 
