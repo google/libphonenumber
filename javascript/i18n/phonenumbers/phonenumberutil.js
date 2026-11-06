@@ -2604,11 +2604,13 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.getNationalSignificantNumber =
   // leading zero is not the same as a national prefix; leading zeros should be
   // dialled no matter whether you are dialling from within or outside the
   // country, national prefixes are added when formatting nationally if
-  // applicable.
+  // applicable. Defensively cap the number of leading zeros to avoid running
+  // out of memory on malicious input.
   if (number.hasItalianLeadingZero() && number.getItalianLeadingZero() &&
       number.getNumberOfLeadingZerosOrDefault() > 0) {
-    return Array(number.getNumberOfLeadingZerosOrDefault() + 1).join('0') +
-        nationalNumber;
+    var numberOfLeadingZeros =
+        Math.min(number.getNumberOfLeadingZerosOrDefault(), 10);
+    return Array(numberOfLeadingZeros + 1).join('0') + nationalNumber;
   }
   return nationalNumber;
 };
