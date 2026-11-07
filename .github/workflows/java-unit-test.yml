@@ -1,7 +1,15 @@
 # This workflow builds and unit tests both main Java API and also build/data tools for metadata generation.
 
 name: Testing Java API
-on: pull_request
+on:
+  pull_request:
+    # Skip kotoba-only PRs; those run .github/workflows/kotoba-v1.yml.
+    paths:
+      - 'java/**'
+      - 'javascript/**'
+      - 'resources/**'
+      - 'tools/java/**'
+      - 'pom.xml'
 permissions:
   contents: read
 
@@ -10,11 +18,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Harden Runner
-      uses: step-security/harden-runner@8ca2b8b2ece13480cda6dacd3511b49857a23c09 # v2.5.1
+      uses: step-security/harden-runner@bf7454d06d71f1098171f2acdf0cd4708d7b5920 # v2.20.0
       with:
         egress-policy: audit # TODO: change to 'egress-policy: block' after couple of runs
 
-    - uses: actions/checkout@ee0669bd1cc54295c223e0bb666b733df41de1c5 # v2.7.0
+    - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
     - name: Set up JDK 8 and Maven
       uses: actions/setup-java@cd89f46ac9d01407894225f350157564c9c7cee2 # v3.12.0
       with:
@@ -39,11 +47,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Harden Runner
-      uses: step-security/harden-runner@8ca2b8b2ece13480cda6dacd3511b49857a23c09 # v2.5.1
+      uses: step-security/harden-runner@bf7454d06d71f1098171f2acdf0cd4708d7b5920 # v2.20.0
       with:
         egress-policy: audit # TODO: change to 'egress-policy: block' after couple of runs
 
-    - uses: actions/checkout@ee0669bd1cc54295c223e0bb666b733df41de1c5 # v2.7.0
+    - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
     - name: Install ascii-safe-cli
       run: npm install -g is-ascii-safe-cli
     - name: Check whether .js api files are ascii safe or not.
