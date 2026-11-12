@@ -713,6 +713,15 @@ install(FILES "${project_config}" "${version_config}" DESTINATION "${config_inst
 install(EXPORT "${targets_export_name}" NAMESPACE ${PROJECT_NAME}:: DESTINATION "${config_install_dir}")
 
 #----------------------------------------------------------------
+# Build and install pkg config file
+#----------------------------------------------------------------
+
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/cmake/${PROJECT_NAME}.pc.cmake
+               ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}.pc @ONLY)
+
+install(FILES "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}.pc" DESTINATION "${CMAKE_INSTALL_LIBDIR}/pkgconfig")
+
+#----------------------------------------------------------------
 # Build an RPM
 #----------------------------------------------------------------
 
