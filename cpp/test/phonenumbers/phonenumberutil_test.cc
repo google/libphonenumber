@@ -23,7 +23,9 @@
 #include "phonenumbers/phonenumberutil.h"
 
 #include <algorithm>
+#include <cstdint>
 #include <iostream>
+#include <limits>
 #include <list>
 #include <set>
 #include <string>
@@ -405,6 +407,26 @@ TEST_F(PhoneNumberUtilTest, GetNationalSignificantNumber_ManyLeadingZeros) {
   phone_util_.GetNationalSignificantNumber(number,
                                            &national_significant_number);
   EXPECT_EQ("650", national_significant_number);
+
+  // Up to 10 leading zeros are preserved.
+  number.set_number_of_leading_zeros(10);
+  national_significant_number.clear();
+  phone_util_.GetNationalSignificantNumber(number,
+                                           &national_significant_number);
+  EXPECT_EQ("0000000000650", national_significant_number);
+
+  // Larger values are capped at 10 leading zeros.
+  number.set_number_of_leading_zeros(20);
+  national_significant_number.clear();
+  phone_util_.GetNationalSignificantNumber(number,
+                                           &national_significant_number);
+  EXPECT_EQ("0000000000650", national_significant_number);
+
+  number.set_number_of_leading_zeros(std::numeric_limits<int32_t>::max());
+  national_significant_number.clear();
+  phone_util_.GetNationalSignificantNumber(number,
+                                           &national_significant_number);
+  EXPECT_EQ("0000000000650", national_significant_number);
 }
 
 TEST_F(PhoneNumberUtilTest, GetExampleNumber) {

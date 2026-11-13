@@ -63,6 +63,9 @@ public class PhoneNumberUtil {
   private static final int MIN_LENGTH_FOR_NSN = 2;
   // The ITU says the maximum length should be 15, but we have found longer numbers in Germany.
   static final int MAX_LENGTH_FOR_NSN = 17;
+  // The maximum number of leading zeros prepended for an Italian leading zero. Caps the allocation
+  // for malicious input.
+  static final int MAX_NUMBER_OF_LEADING_ZEROS = 10;
   // The maximum length of the country calling code.
   static final int MAX_LENGTH_COUNTRY_CODE = 3;
   // We don't allow input strings for parsing to be longer than 250 chars. This prevents malicious
@@ -1931,7 +1934,8 @@ public class PhoneNumberUtil {
     // Defensively cap the number of leading zeros to avoid OOM from malicious input.
     StringBuilder nationalNumber = new StringBuilder();
     if (number.isItalianLeadingZero() && number.getNumberOfLeadingZeros() > 0) {
-      int numberOfLeadingZeros = Math.min(number.getNumberOfLeadingZeros(), 10);
+      int numberOfLeadingZeros =
+          Math.min(number.getNumberOfLeadingZeros(), MAX_NUMBER_OF_LEADING_ZEROS);
       char[] zeros = new char[numberOfLeadingZeros];
       Arrays.fill(zeros, '0');
       nationalNumber.append(new String(zeros));

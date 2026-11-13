@@ -115,6 +115,17 @@ i18n.phonenumbers.PhoneNumberUtil.MAX_LENGTH_FOR_NSN_ = 17;
 
 
 /**
+ * The maximum number of leading zeros prepended for an Italian leading zero.
+ * Caps the allocation for malicious input.
+ *
+ * @const
+ * @type {number}
+ * @package
+ */
+i18n.phonenumbers.PhoneNumberUtil.MAX_NUMBER_OF_LEADING_ZEROS_ = 10;
+
+
+/**
  * The maximum length of the country calling code.
  *
  * @const
@@ -2607,7 +2618,13 @@ i18n.phonenumbers.PhoneNumberUtil.prototype.getNationalSignificantNumber =
   // applicable.
   if (number.hasItalianLeadingZero() && number.getItalianLeadingZero() &&
       number.getNumberOfLeadingZerosOrDefault() > 0) {
-    return Array(number.getNumberOfLeadingZerosOrDefault() + 1).join('0') +
+    return Array(
+               Math.min(
+                   number.getNumberOfLeadingZerosOrDefault(),
+                   i18n.phonenumbers.PhoneNumberUtil
+                       .MAX_NUMBER_OF_LEADING_ZEROS_) +
+               1)
+               .join('0') +
         nationalNumber;
   }
   return nationalNumber;

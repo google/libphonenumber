@@ -552,6 +552,20 @@ function testGetNationalSignificantNumber_ManyLeadingZeros() {
   // at all.
   number.setNumberOfLeadingZeros(-3);
   assertEquals('650', phoneUtil.getNationalSignificantNumber(number));
+
+  // Up to 10 leading zeros are preserved.
+  number.setNumberOfLeadingZeros(10);
+  assertEquals('0000000000650',
+               phoneUtil.getNationalSignificantNumber(number));
+
+  // Larger values are capped at 10 leading zeros.
+  number.setNumberOfLeadingZeros(20);
+  assertEquals('0000000000650',
+               phoneUtil.getNationalSignificantNumber(number));
+
+  number.setNumberOfLeadingZeros(2147483647);
+  assertEquals('0000000000650',
+               phoneUtil.getNationalSignificantNumber(number));
 }
 
 function testGetExampleNumber() {

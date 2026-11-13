@@ -400,6 +400,17 @@ public class PhoneNumberUtilTest extends TestMetadataTestCase {
     // Set a bad value; we shouldn't crash, we shouldn't output any leading zeros at all.
     number.setNumberOfLeadingZeros(-3);
     assertEquals("650", phoneUtil.getNationalSignificantNumber(number));
+
+    // Up to 10 leading zeros are preserved.
+    number.setNumberOfLeadingZeros(10);
+    assertEquals("0000000000650", phoneUtil.getNationalSignificantNumber(number));
+
+    // Larger values are capped at 10 leading zeros.
+    number.setNumberOfLeadingZeros(20);
+    assertEquals("0000000000650", phoneUtil.getNationalSignificantNumber(number));
+
+    number.setNumberOfLeadingZeros(Integer.MAX_VALUE);
+    assertEquals("0000000000650", phoneUtil.getNationalSignificantNumber(number));
   }
 
   public void testGetExampleNumber() {

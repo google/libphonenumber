@@ -681,7 +681,13 @@ i18n.phonenumbers.ShortNumberInfo.prototype.getNationalSignificantNumber_ =
   // applicable.
   if (number.hasItalianLeadingZero() && number.getItalianLeadingZero() &&
       number.getNumberOfLeadingZerosOrDefault() > 0) {
-    return Array(number.getNumberOfLeadingZerosOrDefault() + 1).join('0') +
+    return Array(
+               Math.min(
+                   number.getNumberOfLeadingZerosOrDefault(),
+                   i18n.phonenumbers.PhoneNumberUtil
+                       .MAX_NUMBER_OF_LEADING_ZEROS_) +
+               1)
+               .join('0') +
         nationalNumber;
   }
   return nationalNumber;
