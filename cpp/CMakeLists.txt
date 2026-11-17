@@ -713,6 +713,15 @@ install(FILES "${project_config}" "${version_config}" DESTINATION "${config_inst
 install(EXPORT "${targets_export_name}" NAMESPACE ${PROJECT_NAME}:: DESTINATION "${config_install_dir}")
 
 #----------------------------------------------------------------
+# Build and install pkg-config file
+#----------------------------------------------------------------
+if (BUILD_SHARED_LIBS AND UNIX)
+  configure_file(libphonenumber.pc.in libphonenumber.pc @ONLY)
+  install(FILES "${CMAKE_CURRENT_BINARY_DIR}/libphonenumber.pc"
+          DESTINATION "${CMAKE_INSTALL_LIBDIR}/pkgconfig")
+endif ()
+
+#----------------------------------------------------------------
 # Build an RPM
 #----------------------------------------------------------------
 
