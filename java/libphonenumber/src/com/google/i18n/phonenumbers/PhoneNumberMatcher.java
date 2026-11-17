@@ -326,8 +326,8 @@ final class PhoneNumberMatcher implements Iterator<PhoneNumberMatch> {
 
     // Skip potential time-stamps.
     if (TIME_STAMPS.matcher(candidate).find()) {
-      String followingText = text.toString().substring(offset + candidate.length());
-      if (TIME_STAMPS_SUFFIX.matcher(followingText).lookingAt()) {
+      int followingStart = offset + candidate.length();
+      if (TIME_STAMPS_SUFFIX.matcher(text).region(followingStart, text.length()).lookingAt()) {
         return null;
       }
     }
