@@ -3326,7 +3326,7 @@
     <!-- http://www.itu.int/oth/T0202000030/en -->
     <territory id="CR">
       <generalDesc>
-        <nationalNumberPattern>[1359]\d{2,3}</nationalNumberPattern>
+        <nationalNumberPattern>[19]\d{2,3}</nationalNumberPattern>
       </generalDesc>
       <!-- This pattern excludes 4-digit SMS content numbers for now. -->
       <shortCode>
@@ -3335,86 +3335,79 @@
         <nationalNumberPattern>
           1(?:
             0(?:
-              00|
-              15|
-              2[2-4679]
+              0[0-2]|
+              1[015]|
+              2[0-46-8]|
+              4[08]
             )|
             1(?:
-              1[0-35-9]|
-              2|
-              37|
-              [46]6|
-              7[57]|
-              8[79]|
-              9[0-379]
+              0[015]|
+              1[135-9]|
+              2[125]?|
+              3[2-4]|
+              4[6-9]|
+              55|
+              6[1569]|
+              7[67]|
+              8[07]|
+              9[0-49]
             )|
             2(?:
               00|
-              [12]2|
-              34|
-              55
+              1[235]|
+              2[12]|
+              34
             )|
             3(?:
-              21|
+              11|
+              2[12]|
               33
             )|
             4(?:
-              0[06]|
-              1[4-6]
+              1[14-6]|
+              21
             )|
             5(?:
               15|
-              5[15]
+              20|
+              5[05]
             )|
             693|
             7(?:
               00|
-              1[7-9]|
+              1[79]|
               2[02]|
-              [67]7
+              34|
+              67
             )|
+            818|
             975
-          )|
-          3855|
-          5(?:
-            0(?:
-              30|
-              49
-            )|
-            510
           )|
           911
         </nationalNumberPattern>
       </shortCode>
       <tollFree>
-        <possibleLengths national="3"/>
+        <possibleLengths national="3,4"/>
         <exampleNumber>112</exampleNumber>
         <nationalNumberPattern>
-          112|
+          1(?:
+            02|
+            1
+          )2|
           911
         </nationalNumberPattern>
       </tollFree>
       <emergency>
-        <possibleLengths national="3"/>
+        <possibleLengths national="3,4"/>
         <exampleNumber>112</exampleNumber>
         <nationalNumberPattern>
-          112|
+          1(?:
+            02|
+            1
+          )2|
           911
         </nationalNumberPattern>
       </emergency>
-      <smsServices>
-        <possibleLengths national="4"/>
-        <exampleNumber>3850</exampleNumber>
-        <nationalNumberPattern>
-          (?:
-            385|
-            5(?:
-              0[34]|
-              51
-            )
-          )\d
-        </nationalNumberPattern>
-      </smsServices>
     </territory>
 
     <!-- Cuba (CU) -->
@@ -8476,7 +8469,9 @@
         <exampleNumber>100</exampleNumber>
         <nationalNumberPattern>
           1(?:
-            [01679]114|
+            0[015]|
+            1\d|
+            2[01357-9]|
             3(?:
               0[01]|
               2|
@@ -8488,23 +8483,12 @@
               8[2589]|
               9[0189]
             )|
-            55[15]\d{4}|
-            8(?:
-              (?:
-                11|
-                44|
-                66
-              )\d{4}|
-              [28]
-            )
-          )|
-          1(?:
-            0[015]|
-            1\d|
-            2[01357-9]|
             41|
-            8114
-          )
+            [6-9]114
+          )|
+          18[28]|
+          1811\d{4}|
+          1[01]114
         </nationalNumberPattern>
       </shortCode>
       <tollFree>
@@ -8564,13 +8548,8 @@
       </expandedEmergency>
       <smsServices>
         <possibleLengths national="8"/>
-        <exampleNumber>15500000</exampleNumber>
-        <nationalNumberPattern>
-          1(?:
-            55|
-            8[146]
-          )\d{5}
-        </nationalNumberPattern>
+        <exampleNumber>18100000</exampleNumber>
+        <nationalNumberPattern>181\d{5}</nationalNumberPattern>
       </smsServices>
     </territory>
 
@@ -11043,14 +11022,12 @@
         <nationalNumberPattern>
           018|
           1(?:
-            (?:
-              1|
-              37
-            )1|
+            11|
             (?:
               23|
               94
             )4|
+            3\d\d|
             7[03]7
           )|
           [2-57-9]\d{2,3}|
@@ -11084,7 +11061,7 @@
           (?:
             1(?:
               23|
-              37|
+              3\d|
               7[03]|
               94
             )|
@@ -13895,8 +13872,8 @@
               11
             )|
             9(?:
-              19|
-              22|
+              1[019]|
+              2[25]|
               5[057]|
               68|
               8[05]|
@@ -13909,11 +13886,14 @@
         <possibleLengths national="3,4"/>
         <exampleNumber>110</exampleNumber>
         <nationalNumberPattern>
-          11[0289]|
           1(?:
-            81|
-            92
-          )\d
+            1[0289]|
+            81\d|
+            9(?:
+              1[01]|
+              2\d
+            )
+          )
         </nationalNumberPattern>
       </tollFree>
       <standardRate>
@@ -13923,7 +13903,7 @@
           1(?:
             65|
             9(?:
-              1\d|
+              19|
               50|
               85|
               98
@@ -13941,6 +13921,11 @@
         <exampleNumber>110</exampleNumber>
         <nationalNumberPattern>11[029]</nationalNumberPattern>
       </emergency>
+      <expandedEmergency>
+        <possibleLengths national="4"/>
+        <exampleNumber>1925</exampleNumber>
+        <nationalNumberPattern>1925</nationalNumberPattern>
+      </expandedEmergency>
     </territory>
 
     <!-- Tanzania (TZ) -->

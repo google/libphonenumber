@@ -1,8 +1,8 @@
-Region ; Prefix   ; Length ; Type       ; Tariff       ; Sms
+Region ; Prefix   ; Length ; Type       ; Tariff       ; Sms  ; Provenance
 NZ     ; 018      ; 3      ; COMMERCIAL ; PREMIUM_RATE ; true
 NZ     ; 111      ; 3      ; EMERGENCY  ; TOLL_FREE
 NZ     ; 1234     ; 4      ; COMMERCIAL ;              ; true
-NZ     ; 1371     ; 4      ; COMMERCIAL ;              ; true
+NZ     ; 13       ; 4      ; COMMERCIAL ;              ; true ; GOVERNMENT
 NZ     ; 17[03]7  ; 4      ; COMMERCIAL ;              ; true
 NZ     ; 1944     ; 4      ; COMMERCIAL ;              ; true
 NZ     ; [2-57-9] ; 3,4    ; COMMERCIAL ;              ; true
