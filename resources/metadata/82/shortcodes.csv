@@ -26,9 +26,6 @@ KR     ; 138[89]     ; 4      ; EXPANDED_EMERGENCY
 KR     ; 139[018]    ; 4      ; EXPANDED_EMERGENCY
 KR     ; 1399        ; 4      ; COMMERCIAL
 KR     ; 141         ; 3      ; COMMERCIAL         ;           ;      ; true
-KR     ; 155[15]     ; 8      ; COMMERCIAL         ;           ; true
 KR     ; 1811        ; 8      ; COMMERCIAL         ;           ; true
 KR     ; 182         ; 3      ; EXPANDED_EMERGENCY ; TOLL_FREE
-KR     ; 1844        ; 8      ; COMMERCIAL         ;           ; true
-KR     ; 1866        ; 8      ; COMMERCIAL         ;           ; true
 KR     ; 188         ; 3      ; COMMERCIAL

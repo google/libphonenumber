@@ -1,32 +1,38 @@
-Region ; Prefix      ; Length ; Type       ; Tariff    ; Sms
-CR     ; 1000        ; 4      ; COMMERCIAL
-CR     ; 1015        ; 4      ; COMMERCIAL
-CR     ; 102[2-4679] ; 4      ; COMMERCIAL
-CR     ; 111[0-35-9] ; 4      ; COMMERCIAL
-CR     ; 112         ; 3      ; EMERGENCY  ; TOLL_FREE
-CR     ; 1137        ; 4      ; COMMERCIAL
-CR     ; 11[46]6     ; 4      ; COMMERCIAL
-CR     ; 117[57]     ; 4      ; COMMERCIAL
-CR     ; 118[79]     ; 4      ; COMMERCIAL
-CR     ; 119[0-379]  ; 4      ; COMMERCIAL
-CR     ; 1200        ; 4      ; COMMERCIAL
-CR     ; 12[12]2     ; 4      ; COMMERCIAL
-CR     ; 1234        ; 4      ; COMMERCIAL
-CR     ; 1255        ; 4      ; COMMERCIAL
-CR     ; 1321        ; 4      ; COMMERCIAL
-CR     ; 1333        ; 4      ; COMMERCIAL
-CR     ; 140[06]     ; 4      ; COMMERCIAL
-CR     ; 141[4-6]    ; 4      ; COMMERCIAL
-CR     ; 1515        ; 4      ; COMMERCIAL
-CR     ; 155[15]     ; 4      ; COMMERCIAL
-CR     ; 1693        ; 4      ; COMMERCIAL
-CR     ; 1700        ; 4      ; COMMERCIAL
-CR     ; 171[7-9]    ; 4      ; COMMERCIAL
-CR     ; 172[02]     ; 4      ; COMMERCIAL
-CR     ; 17[67]7     ; 4      ; COMMERCIAL
-CR     ; 1975        ; 4      ; COMMERCIAL
-CR     ; 3855        ; 4      ; COMMERCIAL ;           ; true
-CR     ; 5030        ; 4      ; COMMERCIAL ;           ; true
-CR     ; 5049        ; 4      ; COMMERCIAL ;           ; true
-CR     ; 5510        ; 4      ; COMMERCIAL ;           ; true
-CR     ; 911         ; 3      ; EMERGENCY  ; TOLL_FREE
+Region ; Prefix       ; Length ; Type       ; Tariff
+CR     ; 100[0-2]     ; 4      ; COMMERCIAL
+CR     ; 101[015]     ; 4      ; COMMERCIAL
+CR     ; 102[01346-8] ; 4      ; COMMERCIAL
+CR     ; 1022         ; 4      ; EMERGENCY  ; TOLL_FREE
+CR     ; 104[08]      ; 4      ; COMMERCIAL
+CR     ; 110[015]     ; 4      ; COMMERCIAL
+CR     ; 111[135-9]   ; 4      ; COMMERCIAL
+CR     ; 112          ; 3      ; EMERGENCY  ; TOLL_FREE
+CR     ; 112[125]     ; 4      ; COMMERCIAL
+CR     ; 113[2-4]     ; 4      ; COMMERCIAL
+CR     ; 114[6-9]     ; 4      ; COMMERCIAL
+CR     ; 1155         ; 4      ; COMMERCIAL
+CR     ; 116[1569]    ; 4      ; COMMERCIAL
+CR     ; 117[67]      ; 4      ; COMMERCIAL
+CR     ; 118[07]      ; 4      ; COMMERCIAL
+CR     ; 119[0-49]    ; 4      ; COMMERCIAL
+CR     ; 1200         ; 4      ; COMMERCIAL
+CR     ; 121[235]     ; 4      ; COMMERCIAL
+CR     ; 122[12]      ; 4      ; COMMERCIAL
+CR     ; 1234         ; 4      ; COMMERCIAL
+CR     ; 1311         ; 4      ; COMMERCIAL
+CR     ; 132[12]      ; 4      ; COMMERCIAL
+CR     ; 1333         ; 4      ; COMMERCIAL
+CR     ; 141[14-6]    ; 4      ; COMMERCIAL
+CR     ; 1421         ; 4      ; COMMERCIAL
+CR     ; 1515         ; 4      ; COMMERCIAL
+CR     ; 1520         ; 4      ; COMMERCIAL
+CR     ; 155[05]      ; 4      ; COMMERCIAL
+CR     ; 1693         ; 4      ; COMMERCIAL
+CR     ; 1700         ; 4      ; COMMERCIAL
+CR     ; 171[79]      ; 4      ; COMMERCIAL
+CR     ; 172[02]      ; 4      ; COMMERCIAL
+CR     ; 1734         ; 4      ; COMMERCIAL
+CR     ; 1767         ; 4      ; COMMERCIAL
+CR     ; 1818         ; 4      ; COMMERCIAL
+CR     ; 1975         ; 4      ; COMMERCIAL
+CR     ; 911          ; 3      ; EMERGENCY  ; TOLL_FREE

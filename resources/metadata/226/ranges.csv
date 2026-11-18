@@ -1,35 +1,13 @@
-Prefix      ; Length ; Type       ; Tariff        ; Operator       ; Format         ; Regions ; Geocode:en              ; Provenance ; Comment
-0[1-3]      ; 8      ; MOBILE     ; STANDARD_RATE ; "moov_africa"  ; "fmt1_2/2/2/2" ; "BF"    ;                         ; IR21
-0[45]       ; 8      ; MOBILE     ; STANDARD_RATE ; "orange"       ; "fmt1_2/2/2/2" ; "BF"    ;                         ; IR21
-06          ; 8      ; MOBILE     ; STANDARD_RATE ; "orange"       ; "fmt1_2/2/2/2" ; "BF"    ;                         ; ITU
-07          ; 8      ; MOBILE     ; STANDARD_RATE ; "orange"       ; "fmt1_2/2/2/2" ; "BF"
-2049        ; 8      ; FIXED_LINE ; STANDARD_RATE ;                ; "fmt1_2/2/2/2" ; "BF"    ; "Kaya"
-2052        ; 8      ; FIXED_LINE ; STANDARD_RATE ;                ; "fmt1_2/2/2/2" ; "BF"    ; "Dédougou"
-2053        ; 8      ; FIXED_LINE ; STANDARD_RATE ;                ; "fmt1_2/2/2/2" ; "BF"    ; "Boromo/Djibasso/Nouna"
-2[04]6[5-7] ; 8      ; FIXED_LINE ; STANDARD_RATE ;                ; "fmt1_2/2/2/2" ; "BF"
-2090        ; 8      ; FIXED_LINE ; STANDARD_RATE ;                ; "fmt1_2/2/2/2" ; "BF"    ; "Gaoua"
-2091        ; 8      ; FIXED_LINE ; STANDARD_RATE ;                ; "fmt1_2/2/2/2" ; "BF"    ; "Banfora"
-2096        ; 8      ; FIXED_LINE ; STANDARD_RATE ;                ; "fmt1_2/2/2/2" ; "BF"    ; "Orodara"
-209[78]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;                ; "fmt1_2/2/2/2" ; "BF"    ; "Bobo-Dioulasso"
-2099        ; 8      ; FIXED_LINE ; STANDARD_RATE ;                ; "fmt1_2/2/2/2" ; "BF"    ; "Béréba/Fo/Houndé"
-2445        ; 8      ; FIXED_LINE ; STANDARD_RATE ;                ; "fmt1_2/2/2/2" ; "BF"    ; "Kaya"
-244[69]     ; 8      ; FIXED_LINE ; STANDARD_RATE ;                ; "fmt1_2/2/2/2" ; "BF"    ; "Falagountou/Dori"
-2454        ; 8      ; FIXED_LINE ; STANDARD_RATE ;                ; "fmt1_2/2/2/2" ; "BF"    ; "Yako"
-2455        ; 8      ; FIXED_LINE ; STANDARD_RATE ;                ; "fmt1_2/2/2/2" ; "BF"    ; "Ouahigouya"
-2456        ; 8      ; FIXED_LINE ; STANDARD_RATE ;                ; "fmt1_2/2/2/2" ; "BF"    ; "Djibo"
-2470        ; 8      ; FIXED_LINE ; STANDARD_RATE ;                ; "fmt1_2/2/2/2" ; "BF"    ; "Pouytenga/Koupéla"
-2471        ; 8      ; FIXED_LINE ; STANDARD_RATE ;                ; "fmt1_2/2/2/2" ; "BF"    ; "Tenkodogo"
-2477        ; 8      ; FIXED_LINE ; STANDARD_RATE ;                ; "fmt1_2/2/2/2" ; "BF"    ; "Fada/Diabo"
-2479        ; 8      ; FIXED_LINE ; STANDARD_RATE ;                ; "fmt1_2/2/2/2" ; "BF"    ; "Kantchari"
-253         ; 8      ; FIXED_LINE ; STANDARD_RATE ;                ; "fmt1_2/2/2/2" ; "BF"    ; "Ouagadougou"
-2540        ; 8      ; FIXED_LINE ; STANDARD_RATE ;                ; "fmt1_2/2/2/2" ; "BF"    ; "Pô/Kombissiri/Koubri"
-2541        ; 8      ; FIXED_LINE ; STANDARD_RATE ;                ; "fmt1_2/2/2/2" ; "BF"    ; "Léo/Sapouy"
-254[235-9]  ; 8      ; FIXED_LINE ; STANDARD_RATE ;                ; "fmt1_2/2/2/2" ; "BF"    ; "Ouagadougou"
-2544        ; 8      ; FIXED_LINE ; STANDARD_RATE ;                ; "fmt1_2/2/2/2" ; "BF"    ; "Koudougou"
-2550        ; 8      ; FIXED_LINE ; STANDARD_RATE ;                ; "fmt1_2/2/2/2" ; "BF"
-256[5-8]    ; 8      ; FIXED_LINE ; STANDARD_RATE ;                ; "fmt1_2/2/2/2" ; "BF"
-4[4-6]      ; 8      ; MOBILE     ; STANDARD_RATE ; "orange"       ; "fmt1_2/2/2/2" ; "BF"    ;                         ; IR21
-[5-7][0-3]  ; 8      ; MOBILE     ; STANDARD_RATE ; "moov_africa"  ; "fmt1_2/2/2/2" ; "BF"    ;                         ; IR21
-[5-7][4-7]  ; 8      ; MOBILE     ; STANDARD_RATE ; "orange"       ; "fmt1_2/2/2/2" ; "BF"    ;                         ; ITU        ; "ITU dated 2/17/2018 (Orange bought out Airtel)"
-58          ; 8      ; MOBILE     ; STANDARD_RATE ; "telecel_faso" ; "fmt1_2/2/2/2" ; "BF"    ;                         ; ITU        ; "ITU dated 2/17/2018"
-[67][89]    ; 8      ; MOBILE     ; STANDARD_RATE ; "telecel_faso" ; "fmt1_2/2/2/2" ; "BF"    ;                         ; ITU        ; "ITU dated 2/17/2018"
+Prefix     ; Length ; Type       ; Tariff        ; Operator       ; Format         ; Regions ; Geocode:en                                                                                                                                                           ; Provenance ; Comment
+0[1-3]     ; 8      ; MOBILE     ; STANDARD_RATE ; "moov_africa"  ; "fmt1_2/2/2/2" ; "BF"    ;                                                                                                                                                                      ; IR21
+0[45]      ; 8      ; MOBILE     ; STANDARD_RATE ; "orange"       ; "fmt1_2/2/2/2" ; "BF"    ;                                                                                                                                                                      ; IR21
+06         ; 8      ; MOBILE     ; STANDARD_RATE ; "orange"       ; "fmt1_2/2/2/2" ; "BF"    ;                                                                                                                                                                      ; ITU
+07         ; 8      ; MOBILE     ; STANDARD_RATE ; "orange"       ; "fmt1_2/2/2/2" ; "BF"
+20         ; 8      ; FIXED_LINE ; STANDARD_RATE ;                ; "fmt1_2/2/2/2" ; "BF"    ; "Balés,Banwa,Kossi,Mouhoun,Nayala,Sourou,Comoé,Léraba,Houet,Kénédougou,Tuy,Bougouriba,Loba,Noumbiel,Poni,Boulkiemdé,Sanguié,Sissili,Ziro"                            ; GOVERNMENT
+24         ; 8      ; FIXED_LINE ; STANDARD_RATE ;                ; "fmt1_2/2/2/2" ; "BF"    ; "Boulgou,Koulpélogo,Kouritenga,Gnagna,Gourma,Komandjari,Kompienga,Tapoa,Ganzourgou,Bam,Namentenga,Sanmatenga,Loroum,Passoré,Yatenga,Zondoma,Oudalan,Séno,Soum,Yagha" ; GOVERNMENT
+25         ; 8      ; FIXED_LINE ; STANDARD_RATE ;                ; "fmt1_2/2/2/2" ; "BF"    ; "Kadiogo,Bazèga,Nahouri,Zoundwéogo,Kourwéogo,Oubritenga"                                                                                                             ; GOVERNMENT
+4[4-6]     ; 8      ; MOBILE     ; STANDARD_RATE ; "orange"       ; "fmt1_2/2/2/2" ; "BF"    ;                                                                                                                                                                      ; IR21
+[5-7][0-3] ; 8      ; MOBILE     ; STANDARD_RATE ; "moov_africa"  ; "fmt1_2/2/2/2" ; "BF"    ;                                                                                                                                                                      ; IR21
+[5-7][4-7] ; 8      ; MOBILE     ; STANDARD_RATE ; "orange"       ; "fmt1_2/2/2/2" ; "BF"    ;                                                                                                                                                                      ; ITU        ; "ITU dated 2/17/2018 (Orange bought out Airtel)"
+58         ; 8      ; MOBILE     ; STANDARD_RATE ; "telecel_faso" ; "fmt1_2/2/2/2" ; "BF"    ;                                                                                                                                                                      ; ITU        ; "ITU dated 2/17/2018"
+[67][89]   ; 8      ; MOBILE     ; STANDARD_RATE ; "telecel_faso" ; "fmt1_2/2/2/2" ; "BF"    ;                                                                                                                                                                      ; ITU        ; "ITU dated 2/17/2018"
