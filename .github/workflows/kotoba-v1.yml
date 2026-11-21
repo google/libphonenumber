@@ -1,0 +1,45 @@
+name: Kotoba v1
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - 'kotoba/**'
+      - '.github/workflows/kotoba-v1.yml'
+  pull_request:
+    paths:
+      - 'kotoba/**'
+      - '.github/workflows/kotoba-v1.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  kotoba:
+    name: kotoba compile + fixture
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Install kotoba v0.7.2
+        shell: bash
+        run: |
+          set -euo pipefail
+          release_dir="$RUNNER_TEMP/kotoba-v0.7.2"
+          cli_dir="$RUNNER_TEMP/kotoba-cli"
+          mkdir -p "$release_dir" "$cli_dir"
+          curl -L --fail --silent --show-error \
+            -o "$release_dir/kotoba-linux-amd64.tar.gz" \
+            https://github.com/kotoba-lang/kotoba/releases/download/v0.7.2/kotoba-linux-amd64.tar.gz
+          # Pin the digest published by GitHub's v0.7.2 release metadata.
+          # The adjacent .sha256 asset comes from the same mutable release.
+          printf '%s  %s\n' \
+            '95e225461e1b8a21849b251e8c8b654693d2c8a516b258532771651e978e1977' \
+            "$release_dir/kotoba-linux-amd64.tar.gz" | sha256sum --check --strict -
+          tar -xzf "$release_dir/kotoba-linux-amd64.tar.gz" -C "$cli_dir"
+          echo "$cli_dir" >> "$GITHUB_PATH"
+
+      - name: Compile wasm and run fixture
+        run: kotoba/checks.sh
