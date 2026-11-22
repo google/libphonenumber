@@ -80,6 +80,10 @@ public class AsYouTypeFormatter {
   // us that we should separate the national prefix from the number when formatting.
   private static final Pattern NATIONAL_PREFIX_SEPARATORS_PATTERN = Pattern.compile("[- ]");
 
+  // Matches the first $N group reference in a format string. Kept private here as a local
+  // copy of PhoneNumberUtil.FIRST_GROUP_PATTERN rather than widening that one's visibility.
+  private static final Pattern FIRST_GROUP_PATTERN = Pattern.compile("(\\$\\d)");
+
   // This is the minimum length of national number accrued that is required to trigger the
   // formatter. The first element of the leadingDigitsPattern of each numberFormat contains a
   // regular expression that matches up to this number of digits.
@@ -223,12 +227,63 @@ public class AsYouTypeFormatter {
   private boolean createFormattingTemplate(NumberFormat format) {
     String numberPattern = format.getPattern();
     formattingTemplate.setLength(0);
-    String tempTemplate = getFormattingTemplate(numberPattern, format.getFormat());
+    String effectiveFormat = applyNationalPrefixFormattingRule(format);
+    String tempTemplate = getFormattingTemplate(numberPattern, effectiveFormat);
     if (tempTemplate.length() > 0) {
       formattingTemplate.append(tempTemplate);
       return true;
     }
     return false;
+  }
+
+  /**
+   * Returns an "effective" format string with the national-prefix formatting rule applied, so
+   * any punctuation supplied by the rule (e.g. parens around the area code) survives into the
+   * formatting template. Mirrors the rule application in
+   * {@link PhoneNumberUtil#formatNsnUsingPattern}, but limited to the NATIONAL-format path:
+   * when the user is typing in international format (the country calling code is rendered via
+   * {@code prefixBeforeNationalNumber}), the bare format is returned, matching what
+   * {@code format(num, INTERNATIONAL)} would emit.
+   *
+   * <p>Three branches:
+   * <ol>
+   *   <li>Rule is empty (or we are in international mode): return the bare format unchanged.
+   *   <li>The rule begins with the national prefix (e.g. {@code "$NP $FG"} after metadata-loader
+   *       substitution -&gt; {@code "8 $1"} for RU mobile): strip the leading prefix and any
+   *       adjacent separator, then splice the remainder into the format. The trunk prefix
+   *       continues to render separately via {@code prefixBeforeNationalNumber}, so this
+   *       avoids doubling it.
+   *   <li>The rule contains the prefix in a position we did not strip (e.g. GB fixed-line's
+   *       {@code "($NP$FG)"} -&gt; {@code "(0$1)"}, which wraps the prefix inside literal
+   *       punctuation): return the bare format. Splicing such a rule would duplicate the trunk
+   *       prefix that AYTF renders separately, and AYTF has no clean place to suppress that.
+   * </ol>
+   *
+   * <p>By the time this runs, {@code BuildMetadataFromXml} has already substituted {@code $NP}
+   * with the literal national prefix and {@code $FG} with {@code "$1"}, so the rule string is
+   * a regex-replacement string. Contents are trusted (built by metadata tooling) and are
+   * spliced via {@link Matcher#replaceFirst} without re-quoting.
+   */
+  private String applyNationalPrefixFormattingRule(NumberFormat format) {
+    String numberFormat = format.getFormat();
+    String rule = format.getNationalPrefixFormattingRule();
+    boolean isInternationalMode = isCompleteNumber && extractedNationalPrefix.length() == 0;
+    if (rule.length() == 0 || isInternationalMode) {
+      return numberFormat;
+    }
+    String nationalPrefix = currentMetadata.getNationalPrefix();
+    boolean strippedPrefix = false;
+    if (nationalPrefix.length() > 0 && rule.startsWith(nationalPrefix)) {
+      rule = rule.substring(nationalPrefix.length());
+      if (rule.length() > 0 && (rule.charAt(0) == ' ' || rule.charAt(0) == '-')) {
+        rule = rule.substring(1);
+      }
+      strippedPrefix = true;
+    }
+    if (!strippedPrefix && nationalPrefix.length() > 0 && rule.contains(nationalPrefix)) {
+      return numberFormat;
+    }
+    return FIRST_GROUP_PATTERN.matcher(numberFormat).replaceFirst(rule);
   }
 
   // Gets a formatting template which can be used to efficiently format a partial number where
@@ -427,7 +482,7 @@ public class AsYouTypeFormatter {
         shouldAddSpaceAfterNationalPrefix =
             NATIONAL_PREFIX_SEPARATORS_PATTERN.matcher(
                 numberFormat.getNationalPrefixFormattingRule()).find();
-        String formattedNumber = m.replaceAll(numberFormat.getFormat());
+        String formattedNumber = m.replaceAll(applyNationalPrefixFormattingRule(numberFormat));
         // Check that we did not remove nor add any extra digits when we matched
         // this formatting pattern. This usually happens after we entered the last
         // digit during AYTF. Eg: In case of MX, we swallow mobile token (1) when
@@ -612,7 +667,11 @@ public class AsYouTypeFormatter {
     nationalNumber.append(numberWithoutCountryCallingCode);
     String newRegionCode = phoneUtil.getRegionCodeForCountryCode(countryCode);
     if (PhoneNumberUtil.REGION_CODE_FOR_NON_GEO_ENTITY.equals(newRegionCode)) {
-      currentMetadata = phoneUtil.getMetadataForNonGeographicalRegion(countryCode);
+      // Non-geographical metadata can be missing for unrecognised calling codes (e.g. the user
+      // typing "+999"); fall back to EMPTY_METADATA so subsequent reads such as
+      // getNationalPrefix() don't NPE while we wait for further digits.
+      PhoneMetadata nonGeoMetadata = phoneUtil.getMetadataForNonGeographicalRegion(countryCode);
+      currentMetadata = nonGeoMetadata != null ? nonGeoMetadata : EMPTY_METADATA;
     } else if (!newRegionCode.equals(defaultCountry)) {
       currentMetadata = getMetadataForRegion(newRegionCode);
     }

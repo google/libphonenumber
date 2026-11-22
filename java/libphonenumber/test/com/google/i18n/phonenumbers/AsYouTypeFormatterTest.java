@@ -1184,4 +1184,83 @@ public class AsYouTypeFormatterTest extends TestMetadataTestCase {
     assertEquals("+869881234", formatter.inputDigit('4'));
     assertEquals("+8698812345", formatter.inputDigit('5'));
   }
+
+  // Tests for the AsYouTypeFormatter parens-from-rule fix
+  // (https://issuetracker.google.com/issues/437456062): countries whose national format derives
+  // parens from the nationalPrefixFormattingRule (e.g. "($FG)" for BR fixed-line, "$NP ($FG)"
+  // for RU mobile) must render those parens as the user types, matching what
+  // PhoneNumberUtil.format(num, NATIONAL) emits for the same number.
+  //
+  // Regression coverage for the unaffected paths is provided by existing tests:
+  //   testAYTFUS (no nationalPrefixFormattingRule),
+  //   testAYTFAR (rule "$NP$FG" -- prefix at leading anchor, no parens),
+  //   testAYTFGBFixedLine (rule "($NP$FG)" -- prefix wrapped inside literal punctuation,
+  //                        which the fix's bail-out branch must leave unchanged).
+  //
+  // BR test metadata only carries a fixed-line numberFormat -- the existing
+  // PhoneNumberUtilTest.testGetSupportedTypesForRegion deliberately asserts BR has no MOBILE
+  // entry. Production BR mobile uses an equivalent "($FG)" rule, so a fix verified on BR
+  // fixed-line covers the reported BR mobile case.
+
+  public void testAYTFBrazilianFormatsWithParens() {
+    AsYouTypeFormatter formatter = phoneUtil.getAsYouTypeFormatter(RegionCode.BR);
+    assertEquals("1", formatter.inputDigit('1'));
+    assertEquals("11", formatter.inputDigit('1'));
+    assertEquals("(11) 3", formatter.inputDigit('3'));
+    assertEquals("(11) 32", formatter.inputDigit('2'));
+    assertEquals("(11) 323", formatter.inputDigit('3'));
+    assertEquals("(11) 3234", formatter.inputDigit('4'));
+    assertEquals("(11) 3234-5", formatter.inputDigit('5'));
+    assertEquals("(11) 3234-56", formatter.inputDigit('6'));
+    assertEquals("(11) 3234-567", formatter.inputDigit('7'));
+    assertEquals("(11) 3234-5678", formatter.inputDigit('8'));
+  }
+
+  public void testAYTFRussianMobileFormatsWithParens() {
+    AsYouTypeFormatter formatter = phoneUtil.getAsYouTypeFormatter(RegionCode.RU);
+    // Trunk "8" is rendered via prefixBeforeNationalNumber; parens wrap the area code via the
+    // rule "$NP ($FG)". inputDigitHelper truncates the formatting template at lastMatchPosition
+    // + 1, so a literal that sits beyond the most recently filled digit (such as the closing
+    // ')') only appears once a later digit advances lastMatchPosition past it.
+    assertEquals("8", formatter.inputDigit('8'));
+    assertEquals("89", formatter.inputDigit('9'));
+    assertEquals("891", formatter.inputDigit('1'));
+    assertEquals("8 (912", formatter.inputDigit('2'));
+    assertEquals("8 (912) 3", formatter.inputDigit('3'));
+    assertEquals("8 (912) 34", formatter.inputDigit('4'));
+    assertEquals("8 (912) 345", formatter.inputDigit('5'));
+    assertEquals("8 (912) 345-6", formatter.inputDigit('6'));
+    assertEquals("8 (912) 345-67", formatter.inputDigit('7'));
+    assertEquals("8 (912) 345-67-8", formatter.inputDigit('8'));
+    assertEquals("8 (912) 345-67-89", formatter.inputDigit('9'));
+  }
+
+  public void testAYTFColombianFormatsWithParens() {
+    // Second territory exercising the same "($FG)" rule shape with a different pattern length
+    // (10 digits, "$1 $2"), so the fix is not narrowly tied to BR's specific format.
+    AsYouTypeFormatter formatter = phoneUtil.getAsYouTypeFormatter(RegionCode.CO);
+    assertEquals("6", formatter.inputDigit('6'));
+    assertEquals("60", formatter.inputDigit('0'));
+    assertEquals("(601", formatter.inputDigit('1'));
+    assertEquals("(601) 1", formatter.inputDigit('1'));
+    assertEquals("(601) 12", formatter.inputDigit('2'));
+    assertEquals("(601) 123", formatter.inputDigit('3'));
+    assertEquals("(601) 1234", formatter.inputDigit('4'));
+    assertEquals("(601) 12345", formatter.inputDigit('5'));
+    assertEquals("(601) 123456", formatter.inputDigit('6'));
+    assertEquals("(601) 1234567", formatter.inputDigit('7'));
+  }
+
+  public void testAYTFInternationalFormatNoRuleApplication() {
+    // When the user types in international format (leading "+"), AYTF must NOT apply the
+    // nationalPrefixFormattingRule's parens, matching what format(num, INTERNATIONAL) emits.
+    // For BR: format(NATIONAL) yields "(11) 3234-5678" but format(INTERNATIONAL) yields
+    // "+55 11 3234-5678" (no parens).
+    AsYouTypeFormatter formatter = phoneUtil.getAsYouTypeFormatter(RegionCode.ZZ);
+    String output = "";
+    for (char d : "+551132345678".toCharArray()) {
+      output = formatter.inputDigit(d);
+    }
+    assertEquals("+55 11 3234-5678", output);
+  }
 }

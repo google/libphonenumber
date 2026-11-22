@@ -58,6 +58,12 @@ const char kSeparatorBeforeNationalNumber = ' ';
 // number when formatting.
 const char kNationalPrefixSeparatorsPattern[] = "[- ]";
 
+// Matches the first $N group reference in a format string. Local copy of the
+// regex held by PhoneNumberUtil::PhoneNumberRegExpsAndMappings::
+// first_group_capturing_pattern_; duplicated to avoid widening that field's
+// visibility.
+const char kFirstGroupPattern[] = "(\\$\\d)";
+
 // Matches all the groups contained in 'input' against 'pattern'.
 void MatchAllGroups(const string& pattern,
                     const string& input,
@@ -239,7 +245,8 @@ void AsYouTypeFormatter::SetShouldAddSpaceAfterNationalPrefix(
 
 bool AsYouTypeFormatter::CreateFormattingTemplate(const NumberFormat& format) {
   string number_pattern = format.pattern();
-  string number_format = format.format();
+  string number_format;
+  ApplyNationalPrefixFormattingRule(format, &number_format);
   formatting_template_.remove();
   UnicodeString temp_template;
   GetFormattingTemplate(number_pattern, number_format, &temp_template);
@@ -249,6 +256,39 @@ bool AsYouTypeFormatter::CreateFormattingTemplate(const NumberFormat& format) {
     return true;
   }
   return false;
+}
+
+// See header for the three-branch contract and the BuildMetadataFromXml
+// substitution invariant; this implementation just mirrors that prose.
+void AsYouTypeFormatter::ApplyNationalPrefixFormattingRule(
+    const NumberFormat& format, string* number_format) const {
+  DCHECK(number_format);
+  number_format->assign(format.format());
+  string rule = format.national_prefix_formatting_rule();
+  bool is_international_mode =
+      is_complete_number_ && extracted_national_prefix_.empty();
+  if (rule.empty() || is_international_mode) {
+    return;
+  }
+  const string& national_prefix = current_metadata_->national_prefix();
+  bool stripped_prefix = false;
+  if (!national_prefix.empty() &&
+      rule.compare(0, national_prefix.size(), national_prefix) == 0) {
+    rule = rule.substr(national_prefix.size());
+    if (!rule.empty() && (rule[0] == ' ' || rule[0] == '-')) {
+      rule = rule.substr(1);
+    }
+    stripped_prefix = true;
+  }
+  if (!stripped_prefix && !national_prefix.empty() &&
+      rule.find(national_prefix) != string::npos) {
+    return;
+  }
+  static const scoped_ptr<const RegExp> first_group_pattern(
+      regexp_factory_->CreateRegExp(kFirstGroupPattern));
+  bool status = first_group_pattern->Replace(number_format, rule);
+  DCHECK(status);
+  IGNORE_UNUSED(status);
 }
 
 void AsYouTypeFormatter::GetFormattingTemplate(
@@ -477,8 +517,10 @@ void AsYouTypeFormatter::AttemptToFormatAccruedDigits(
       SetShouldAddSpaceAfterNationalPrefix(number_format);
 
       string formatted_number(national_number_);
+      string effective_format;
+      ApplyNationalPrefixFormattingRule(number_format, &effective_format);
       bool status = regexp_cache_.GetRegExp(pattern).GlobalReplace(
-          &formatted_number, number_format.format());
+          &formatted_number, effective_format);
       DCHECK(status);
       IGNORE_UNUSED(status);
 
@@ -687,8 +729,14 @@ bool AsYouTypeFormatter::AttemptToExtractCountryCode() {
   string new_region_code;
   phone_util_.GetRegionCodeForCountryCode(country_code, &new_region_code);
   if (PhoneNumberUtil::kRegionCodeForNonGeoEntity == new_region_code) {
-    current_metadata_ =
+    // Non-geographical metadata can be missing for unrecognised calling codes
+    // (e.g. the user typing "+999"); fall back to empty_metadata_ so subsequent
+    // reads such as national_prefix() don't dereference a null pointer while
+    // we wait for further digits.
+    const PhoneMetadata* non_geo_metadata =
         phone_util_.GetMetadataForNonGeographicalRegion(country_code);
+    current_metadata_ =
+        non_geo_metadata != NULL ? non_geo_metadata : &empty_metadata_;
   } else if (new_region_code != default_country_) {
     current_metadata_ = GetMetadataForRegion(new_region_code);
   }

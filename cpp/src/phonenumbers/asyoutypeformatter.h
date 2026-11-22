@@ -107,6 +107,37 @@ class AsYouTypeFormatter {
 
   bool CreateFormattingTemplate(const NumberFormat& format);
 
+  // Writes an "effective" format string into |number_format| with the
+  // national-prefix formatting rule applied, so any punctuation supplied by
+  // the rule (e.g. parens around the area code) survives into the formatting
+  // template. Mirrors the rule application in
+  // PhoneNumberUtil::FormatNsnUsingPattern, but limited to the NATIONAL-format
+  // path: when the formatter is in international mode (is_complete_number_
+  // with no extracted national prefix), the bare format is written, matching
+  // what Format(num, INTERNATIONAL) would emit.
+  //
+  // Three branches:
+  //   1. Rule is empty (or we are in international mode): write the bare
+  //      format unchanged.
+  //   2. The rule begins with the national prefix (e.g. "$NP $FG" after
+  //      metadata-loader substitution -> "8 $1" for RU mobile): strip the
+  //      leading prefix and any adjacent ' ' or '-' separator, then splice
+  //      the remainder into the format. The trunk prefix continues to render
+  //      separately via prefix_before_national_number_, so this avoids
+  //      doubling it.
+  //   3. The rule contains the prefix in a position we did not strip (e.g.
+  //      GB fixed-line's "($NP$FG)" -> "(0$1)", which wraps the prefix inside
+  //      literal punctuation): write the bare format. Splicing such a rule
+  //      would duplicate the trunk prefix that AYTF renders separately, and
+  //      AYTF has no clean place to suppress that.
+  //
+  // By the time this runs, BuildMetadataFromXml has already substituted "$NP"
+  // with the literal national prefix and "$FG" with "$1", so the rule string
+  // is a regex-replacement string. Contents are trusted (built by metadata
+  // tooling) and are spliced via RegExp::Replace without re-quoting.
+  void ApplyNationalPrefixFormattingRule(const NumberFormat& format,
+                                         string* number_format) const;
+
   // Gets a formatting template which could be used to efficiently format a
   // partial number where digits are added one by one.
   void GetFormattingTemplate(const string& number_pattern,
