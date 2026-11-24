@@ -12,8 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-592510|Digicel Guyana
-592511|Digicel Guyana
 592600|Digicel Guyana
 592601|Digicel Guyana
 592602|Digicel Guyana
@@ -74,3 +72,5 @@
 592781|E-Networks
 592786|Digicel Guyana
 592787|Digicel Guyana
+592788|Digicel Guyana
+592789|Digicel Guyana
