@@ -18,22 +18,30 @@ name: OSV-Scanner
 on:
   pull_request:
     branches: ["master"]
+    # Skip kotoba-only PRs; those run .github/workflows/kotoba-v1.yml.
+    paths-ignore:
+      - 'kotoba/**'
+      - '.github/workflows/kotoba-v1.yml'
+      - '.github/workflows/java-unit-test.yml'
+      - '.github/workflows/cpp-unit-test.yml'
+      - '.github/workflows/codeql.yml'
+      - '.github/workflows/dependency-review.yml'
+      - '.github/workflows/osv-scanner-unified.yml'
   schedule:
   - cron: "12 12 * * 1"
   push:
     branches: ["master"]
 
 permissions:
-  # Required to upload SARIF file to CodeQL. See: https://github.com/github/codeql-action/issues/2117
-  actions: read
-  # Require writing security events to upload SARIF file to security tab
-  security-events: write
-  # Read commit contents
   contents: read
 
 jobs:
   scan-scheduled:
     if: ${{ github.event_name == 'push' || github.event_name == 'schedule' }}
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
     # If you want to copy this config, highly suggest pinning this version to a release rather than tracking the main branch
     uses: "google/osv-scanner-action/.github/workflows/osv-scanner-reusable.yml@8bd1ce1c4be9d98053ffd9e6e14585276a36762c" # v1.9.1
     with:
@@ -44,6 +52,10 @@ jobs:
         ./
   scan-pr:
     if: ${{ github.event_name == 'pull_request' || github.event_name == 'merge_group' }}
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
     # If you want to copy this config, highly suggest pinning this version to a release rather than tracking the main branch
     uses: "google/osv-scanner-action/.github/workflows/osv-scanner-reusable-pr.yml@8bd1ce1c4be9d98053ffd9e6e14585276a36762c" # v1.9.1
     with:
