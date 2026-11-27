@@ -21,7 +21,14 @@
 233303|Tema
 2333035|Ada
 233307|Greater Accra Region
-233308|Greater Accra Region
+2333080|Greater Accra Region
+2333081|Greater Accra Region
+23330820|Greater Accra Region
+23330821|Greater Accra Region
+23330822|Greater Accra Region
+23330823|Greater Accra Region
+23330824|Greater Accra Region
+23330825|Greater Accra Region
 2333120|Takoradi
 2333121|Axim
 2333122|Elubo
@@ -30,7 +37,7 @@
 2333125|Samreboi
 2333126|Enchi
 233317|Western Region
-233318|Western Region
+2333180|Western Region
 2333220|Kumasi
 2333221|Konongo
 2333222|Ashanti Mampong
@@ -38,13 +45,13 @@
 2333224|Bekwai
 2333225|Obuasi
 233327|Ashanti Region
-233328|Ashanti Region
+2333280|Ashanti Region
 2333320|Swedru
 2333321|Cape Coast
 2333322|Dunkwa
 2333323|Winneba
 233337|Central Region
-233338|Central Region
+2333380|Central Region
 2333420|Koforidua
 2333421|Nsawam
 2333423|Mpraeso

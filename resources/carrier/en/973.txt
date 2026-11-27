@@ -18,15 +18,16 @@
 97330|Telecommunications Regulatory Authority
 97331|Royal Court
 97332|Batelco
-97333|VIVA
-97334|VIVA
-97335|VIVA
+9733250|STC
+97333|STC
+97334|STC
+97335|STC
 97336|zain BH
 97337|zain BH
 97338|Batelco
 973385|Telecommunications Regulatory Authority
 97339|Batelco
-97363|VIVA
+97363|STC
 97364|Batelco
 9736630|zain BH
 9736633|zain BH

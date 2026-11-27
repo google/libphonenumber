@@ -15,7 +15,6 @@
 # Data retrieved from ITU update (9.V.2014), found at:
 # http://www.itu.int/oth/T020200001C/en
 
-26732|Mascom
 26771|Mascom
 26772|Orange
 26773|BTC Mobile
@@ -55,5 +54,50 @@
 267778|Mascom
 267779|Orange
 26778|Orange
+267789|Mascom
 267790|Orange
+26779101|AFRITEL
+26779103|Business Solutions
+26779104|Dimemsion Data
+26779105|OPQ Net
+26779106|Mega Internet
+26779107|OpenVoice
+26779108|Tsagae Comms
+26779109|Microteck Enterprises
+26779110|Microla Botswana
+26779111|Internet Options
+26779112|FDI Fonewrx
+26779113|OpenVoice
+26779115|Abari Comms
+26779116|Mission Comms
+26779117|ConceroTel
+26779118|Paratus Africa
+26779119|ROI
+26779120|GC Sat
+26779121|Bantu Telecom
+26779122|Paratus
+26779123|Paratus
+26779124|Netway
+26779125|Netway
+26779126|Apicom
+26779127|Devaki
+26779128|Liquid
+26779129|Par Telecom
+26779130|Par Telecom
+26779131|Par Telecom
+26779132|Par Telecom
+26779133|Par Telecom
+26779134|Devaki
+26779135|Devaki
+26779136|Devaki
+26779137|Devaki
+26779138|Devaki
+2677920|Orange
+2677921|BTC Mobile
+2677922|Orange
+2677923|Mascom
+2677924|Mascom
+2677925|Mascom
+2677926|Mascom
+2677927|Mascom
 267793|Orange

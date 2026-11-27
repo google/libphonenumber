@@ -30,15 +30,12 @@
 98994|IR-MCI
 989955|Irancell
 98996|IR-MCI
-989981|Shatel Mobile
-989982|Shatel Mobile
+98998|Rightel
 989990|IR-MCI
 989991|Irancell
+989992|Rightel
 989993|Aptel
 989995|IR-MCI
 989996|IR-MCI
 989998|Rightel
-9899996|Rightel
-9899997|Rightel
-9899998|Rightel
-9899999|Rightel
+989999|Rightel

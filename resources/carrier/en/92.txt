@@ -22,3 +22,4 @@
 9235|Special Communications Organization
 9236|Instaphone
 9237|Zong
+9239|Jazz

@@ -67,6 +67,7 @@ Prefix      ; Length ; Type       ; Tariff        ; Area Code Length ; National 
 553[23]     ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "free_telecom"     ; "mobile_2/3/4"        ; "IL"
 5540[0-2]   ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "rami_levy"        ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; GOVERNMENT
 554[04]3    ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "yossi"            ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; GOVERNMENT
+55404       ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "merkaziya"        ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; GOVERNMENT
 554[14]0    ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "merkaziya"        ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; GOVERNMENT
 5543        ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "maskyoo"          ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; ITU
 5544[14-9]  ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; false         ; "cellran_cellular" ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; GOVERNMENT
@@ -96,7 +97,7 @@ Prefix      ; Length ; Type       ; Tariff        ; Area Code Length ; National 
 7280[01]    ; 9      ; VOIP       ; STANDARD_RATE ;                  ; false         ;                    ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; GOVERNMENT
 73[237]     ; 9      ; VOIP       ; STANDARD_RATE ;                  ; false         ;                    ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; GOVERNMENT
 738[05]     ; 9      ; VOIP       ; STANDARD_RATE ;                  ; false         ;                    ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; GOVERNMENT
-7388[01358] ; 9      ; VOIP       ; STANDARD_RATE ;                  ; false         ;                    ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; GOVERNMENT
+7388[0-358] ; 9      ; VOIP       ; STANDARD_RATE ;                  ; false         ;                    ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; GOVERNMENT
 747         ; 9      ; VOIP       ; STANDARD_RATE ;                  ; false         ;                    ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; GOVERNMENT
 76[258]     ; 9      ; VOIP       ; STANDARD_RATE ;                  ; false         ;                    ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; GOVERNMENT
 77          ; 9      ; VOIP       ; STANDARD_RATE ;                  ; false         ;                    ; "mobile_2/3/4"        ; "IL"    ;                              ;                      ; GOVERNMENT

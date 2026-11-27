@@ -539,6 +539,17 @@ function testGetNationalSignificantNumber() {
   assertEquals('', phoneUtil.getNationalSignificantNumber(emptyNumber));
 }
 
+function testGetNationalSignificantNumber_CapsLeadingZeros() {
+  /** @type {!i18n.phonenumbers.PhoneNumber} */
+  var number = new i18n.phonenumbers.PhoneNumber();
+  number.setCountryCode(1);
+  number.setNationalNumber(650);
+  number.setItalianLeadingZero(true);
+  number.setNumberOfLeadingZeros(2147483647);
+  assertEquals('0000000000650',
+               phoneUtil.getNationalSignificantNumber(number));
+}
+
 function testGetNationalSignificantNumber_ManyLeadingZeros() {
   /** @type {!i18n.phonenumbers.PhoneNumber} */
   var number = new i18n.phonenumbers.PhoneNumber();
@@ -2868,6 +2879,60 @@ function testParseNationalNumber() {
   shortNumber.setNationalNumber(123456);
   shortNumber.setItalianLeadingZero(true);
   assertTrue(shortNumber.equals(phoneUtil.parse('0123456', RegionCode.GB)));
+}
+
+function testParseRfc3966PhoneContextDomain() {
+  /** @type {!Array<string>} */
+  var validInputs = [
+    'tel:253-0000;phone-context=a-b.example.com',
+    'tel:253-0000;phone-context=a--b.example.com',
+    'tel:253-0000;phone-context=example.c1',
+    'tel:253-0000;phone-context=example.b2b',
+    'tel:253-0000;phone-context=sub.example.a1-b2',
+    'tel:253-0000;phone-context=example.xn--p1ai',
+    'tel:253-0000;phone-context=a.b',
+    'tel:253-0000;phone-context=www.google.com.'
+  ];
+  for (var i = 0; i < validInputs.length; i++) {
+    assertTrue(US_LOCAL_NUMBER.equals(
+        phoneUtil.parse(validInputs[i], RegionCode.US)));
+  }
+  /** @type {!goog.string.StringBuffer} */
+  var repeatedLabels = new goog.string.StringBuffer('tel:253-0000;phone-context=');
+  for (i = 0; i < 30; i++) {
+    repeatedLabels.append('aa.');
+  }
+  repeatedLabels.append('aa!');
+  /** @type {!goog.string.StringBuffer} */
+  var repeatedHyphens =
+      new goog.string.StringBuffer('tel:253-0000;phone-context=');
+  for (i = 0; i < 30; i++) {
+    repeatedHyphens.append('a-');
+  }
+  repeatedHyphens.append('a!');
+  /** @type {!Array<string>} */
+  var invalidInputs = [
+    'tel:253-0000;phone-context=-example.com',
+    'tel:253-0000;phone-context=example-.com',
+    'tel:253-0000;phone-context=example.-com',
+    'tel:253-0000;phone-context=example.com-',
+    'tel:253-0000;phone-context=.example.com',
+    'tel:253-0000;phone-context=example..com',
+    'tel:253-0000;phone-context=example.123',
+    'tel:253-0000;phone-context=example.1a',
+    repeatedLabels.toString(),
+    repeatedHyphens.toString()
+  ];
+  for (i = 0; i < invalidInputs.length; i++) {
+    try {
+      phoneUtil.parse(invalidInputs[i], RegionCode.US);
+      fail('Should have failed to parse: ' + invalidInputs[i]);
+    } catch (e) {
+      assertEquals(
+          'Wrong error type stored in exception.',
+          i18n.phonenumbers.Error.NOT_A_NUMBER, e.message);
+    }
+  }
 }
 
 function testParseNumberWithAlphaCharacters() {

@@ -15,7 +15,8 @@ Prefix        ; Length ; Type       ; Tariff        ; Area Code Length ; Nationa
 31200[01]     ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ; "netfone"        ; "fmt_2/3/3-4" ; "HU"    ;                     ;                     ; GOVERNMENT
 31200[2-9]    ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ;                  ; "fmt_2/3/3-4" ; "HU"    ;                     ;                     ; UNKNOWN
 3120[1-9]     ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ;                  ; "fmt_2/3/3-4" ; "HU"    ;                     ;                     ; UNKNOWN
-312[1-9]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ;                  ; "fmt_2/3/3-4" ; "HU"    ;                     ;                     ; UNKNOWN
+3121          ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ; "one"            ; "fmt_2/3/3-4" ; "HU"    ;                     ;                     ; GOVERNMENT
+312[2-9]      ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ;                  ; "fmt_2/3/3-4" ; "HU"    ;                     ;                     ; UNKNOWN
 313[0457-9]   ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ;                  ; "fmt_2/3/3-4" ; "HU"    ;                     ;                     ; UNKNOWN
 3131[0-8]     ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ; "one"            ; "fmt_2/3/3-4" ; "HU"    ;                     ;                     ; IR21
 31319[0-79]   ; 9      ; MOBILE     ; STANDARD_RATE ;                  ;               ; "one"            ; "fmt_2/3/3-4" ; "HU"    ;                     ;                     ; IR21

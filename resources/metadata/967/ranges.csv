@@ -48,6 +48,7 @@ Prefix      ; Length ; Type       ; Tariff        ; Area Code Length ; Operator 
 70          ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "y"            ; "mobile_3/3/3"  ; "YE"    ;              ; ITU
 71          ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "sabafon"      ; "mobile_3/3/3"  ; "YE"    ;              ; IR21
 72          ; 7      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                ; "fixed_1/3/3-4" ; "YE"    ; "Hajjah"     ; ITU
+72          ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "sabafon"      ; "mobile_3/3/3"  ; "YE"    ;              ; ITU
 73          ; 9      ; MOBILE     ; STANDARD_RATE ;                  ; "mtn"          ; "mobile_3/3/3"  ; "YE"    ;              ; ITU
 74          ; 7      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                ; "fixed_1/3/3-4" ; "YE"    ; "Al Mahweet" ; ITU
 75          ; 7      ; FIXED_LINE ; STANDARD_RATE ; 1                ;                ; "fixed_1/3/3-4" ; "YE"    ; "Saadah"     ; ITU

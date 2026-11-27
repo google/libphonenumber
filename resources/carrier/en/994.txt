@@ -19,6 +19,6 @@
 99450|Azercell
 99451|Azercell
 99455|Bakcell
-9946|Naxtel
+9946|Azercell
 9947|Nar Mobile
 99499|Bakcell

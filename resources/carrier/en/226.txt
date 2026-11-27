@@ -16,37 +16,37 @@
 # ITU doc has Telemob, but it is mentioned as Telmob in ONATEL's home page.
 # Telmob operates as a subsidiary of ONATEL (http://www.onatel.bf/)
 
-22601|Onatel
-22602|Onatel
-22603|Onatel
+22601|Moov Africa
+22602|Moov Africa
+22603|Moov Africa
 22604|Orange
 22605|Orange
 22606|Orange
 22607|Orange
 2264|Orange
-22650|Onatel
-22651|Onatel
-22652|Onatel
-22653|Onatel
+22650|Moov Africa
+22651|Moov Africa
+22652|Moov Africa
+22653|Moov Africa
 22654|Orange
 22655|Orange
 22656|Orange
 22657|Orange
 22658|Telecel Faso
-22660|Onatel
-22661|Onatel
-22662|Onatel
-22663|Onatel
+22660|Moov Africa
+22661|Moov Africa
+22662|Moov Africa
+22663|Moov Africa
 22664|Orange
 22665|Orange
 22666|Orange
 22667|Orange
 22668|Telecel Faso
 22669|Telecel Faso
-22670|Onatel
-22671|Onatel
-22672|Onatel
-22673|Onatel
+22670|Moov Africa
+22671|Moov Africa
+22672|Moov Africa
+22673|Moov Africa
 22674|Orange
 22675|Orange
 22676|Orange
