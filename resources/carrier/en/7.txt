@@ -489,13 +489,33 @@
 790899|Beeline
 7909|Beeline
 792|MegaFon
-79300|MegaFon
+793000|Sberbank-Telecom
+7930000|Multiregional Transit Telecom (MTT)
+7930005|MegaFon
+793002|MegaFon
+793003|MegaFon
 7930035|Miatel
 7930036|Miatel
+7930038|Multiregional Transit Telecom (MTT)
+7930039|Multiregional Transit Telecom (MTT)
+793004|MegaFon
+793005|MegaFon
 7930060|T2
 7930061|T2
 7930062|T2
+7930063|MegaFon
+7930065|Multiregional Transit Telecom (MTT)
+7930066|Multiregional Transit Telecom (MTT)
+7930067|Multiregional Transit Telecom (MTT)
+7930068|Multiregional Transit Telecom (MTT)
+7930069|MegaFon
+793007|MegaFon
+793008|MegaFon
 7930080|T2
+7930081|Alfa Mobile
+7930082|Alfa Mobile
+7930083|Alfa Mobile
+793009|MegaFon
 7930092|Beeline
 7930093|Beeline
 7930094|Beeline

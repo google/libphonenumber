@@ -1333,6 +1333,12 @@ TEST_F(PhoneNumberUtilTest, FormatByPattern) {
                               number_formats,
                               &formatted_number);
   EXPECT_EQ("tel:+1-650-253-0000", formatted_number);
+  PhoneNumber test_number_with_extension(test_number);
+  test_number_with_extension.set_extension("1234");
+  phone_util_.FormatByPattern(test_number_with_extension,
+                              PhoneNumberUtil::RFC3966, number_formats,
+                              &formatted_number);
+  EXPECT_EQ("tel:+1-650-253-0000;ext=1234", formatted_number);
 
   // $NP is set to '1' for the US. Here we check that for other NANPA countries
   // the US rules are followed.
@@ -4911,6 +4917,28 @@ TEST_F(PhoneNumberUtilTest, IsAlphaNumber) {
   EXPECT_FALSE(phone_util_.IsAlphaNumber("18 six-flags"));
   EXPECT_FALSE(phone_util_.IsAlphaNumber("1800 123-1234 extension: 1234"));
   EXPECT_FALSE(phone_util_.IsAlphaNumber("+800 1234-1234"));
+}
+
+TEST_F(PhoneNumberUtilTest, IsAlphaNumberEndsInDigit) {
+  // Vanity numbers that end in a digit still have at least three letters. The
+  // old anchored regex required the number to end in a letter, so these were
+  // rejected here while the Java and JavaScript ports accept them.
+  EXPECT_TRUE(phone_util_.IsAlphaNumber("1800FLOWERS7"));
+  EXPECT_TRUE(phone_util_.IsAlphaNumber("800 FLOWER7"));
+  EXPECT_TRUE(phone_util_.IsAlphaNumber("800 FLOWER7 ext. 1234"));
+}
+
+TEST_F(PhoneNumberUtilTest, IsAlphaNumberTooLong) {
+  // Over-long input is rejected up front, mirroring MAX_INPUT_STRING_LENGTH in
+  // the Java port. Without the bound, the number below would be accepted: it
+  // is viable and ends with letters.
+  string too_long;
+  too_long.append(251, '1');
+  too_long.append("FLOWERS");
+  EXPECT_FALSE(phone_util_.IsAlphaNumber(too_long));
+
+  // A long number with no letters is not an alpha number either.
+  EXPECT_FALSE(phone_util_.IsAlphaNumber(string(251, '1')));
 }
 
 }  // namespace phonenumbers

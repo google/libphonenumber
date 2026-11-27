@@ -539,6 +539,17 @@ function testGetNationalSignificantNumber() {
   assertEquals('', phoneUtil.getNationalSignificantNumber(emptyNumber));
 }
 
+function testGetNationalSignificantNumber_CapsLeadingZeros() {
+  /** @type {!i18n.phonenumbers.PhoneNumber} */
+  var number = new i18n.phonenumbers.PhoneNumber();
+  number.setCountryCode(1);
+  number.setNationalNumber(650);
+  number.setItalianLeadingZero(true);
+  number.setNumberOfLeadingZeros(2147483647);
+  assertEquals('0000000000650',
+               phoneUtil.getNationalSignificantNumber(number));
+}
+
 function testGetNationalSignificantNumber_ManyLeadingZeros() {
   /** @type {!i18n.phonenumbers.PhoneNumber} */
   var number = new i18n.phonenumbers.PhoneNumber();
