@@ -16,7 +16,10 @@
 # Conecel goes by the brand name of Claro.
 # Otecel goes by the brand name Movistar.
 
-59393|Claro
+593930|Tigo
+593931|Tigo
+593932|Tigo
+593939|Claro
 5939586|Tigo
 5939587|Tigo
 5939588|Tigo

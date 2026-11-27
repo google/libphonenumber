@@ -326,8 +326,8 @@ final class PhoneNumberMatcher implements Iterator<PhoneNumberMatch> {
 
     // Skip potential time-stamps.
     if (TIME_STAMPS.matcher(candidate).find()) {
-      String followingText = text.toString().substring(offset + candidate.length());
-      if (TIME_STAMPS_SUFFIX.matcher(followingText).lookingAt()) {
+      int followingStart = offset + candidate.length();
+      if (TIME_STAMPS_SUFFIX.matcher(text).region(followingStart, text.length()).lookingAt()) {
         return null;
       }
     }
@@ -463,7 +463,10 @@ final class PhoneNumberMatcher implements Iterator<PhoneNumberMatch> {
     if (number.getCountryCodeSource() != CountryCodeSource.FROM_DEFAULT_COUNTRY) {
       // First skip the country code if the normalized candidate contained it.
       String countryCode = Integer.toString(number.getCountryCode());
-      fromIndex = normalizedCandidate.indexOf(countryCode) + countryCode.length();
+      int countryCodeIndex = normalizedCandidate.indexOf(countryCode);
+      if (countryCodeIndex >= 0) {
+        fromIndex = countryCodeIndex + countryCode.length();
+      }
     }
     // Check each group of consecutive digits are not broken into separate groupings in the
     // {@code normalizedCandidate} string.

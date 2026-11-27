@@ -232,7 +232,7 @@
 3375433|SFR
 337544|Lebara France Limited
 337545|Lebara France Limited
-337546|Mobiquithings
+337546|Free Mobile
 337547|ACN Communications
 337548|Completel
 337549|Completel
@@ -294,8 +294,8 @@
 3375715|AIF
 3375717|Keyyo
 3375719|Orange France
-337572|Mobiquithings
-337573|Mobiquithings
+337572|Free Mobile
+337573|Free Mobile
 337574|Coriolis Telecom
 337575|Coriolis Telecom
 3375757|Euroinformation Telecom

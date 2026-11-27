@@ -1,8 +1,10 @@
 Prefix    ; Length ; Type       ; Tariff        ; Operator    ; Format       ; Regions ; Provenance
-2[024-7]  ; 8      ; FIXED_LINE ; STANDARD_RATE ;             ; "fmt1_4/4"   ; "CR"    ; GOVERNMENT
+200[0-3]  ; 8      ; VOIP       ; STANDARD_RATE ;             ; "fmt1_4/4"   ; "CR"    ; GOVERNMENT
+2010      ; 8      ; FIXED_LINE ; STANDARD_RATE ;             ; "fmt1_4/4"   ; "CR"    ; GOVERNMENT
 210[0-6]  ; 8      ; VOIP       ; STANDARD_RATE ;             ; "fmt1_4/4"   ; "CR"    ; GOVERNMENT
 210[7-9]  ; 8      ; FIXED_LINE ; STANDARD_RATE ;             ; "fmt1_4/4"   ; "CR"
 21[1-9]   ; 8      ; FIXED_LINE ; STANDARD_RATE ;             ; "fmt1_4/4"   ; "CR"
+2[24-7]   ; 8      ; FIXED_LINE ; STANDARD_RATE ;             ; "fmt1_4/4"   ; "CR"    ; GOVERNMENT
 3005      ; 8      ; MOBILE     ; STANDARD_RATE ; "kolbi_ice" ; "fmt1_4/4"   ; "CR"    ; GOVERNMENT
 4         ; 8      ; VOIP       ; STANDARD_RATE ;             ; "fmt1_4/4"   ; "CR"    ; GOVERNMENT
 5[07]     ; 8      ; MOBILE     ; STANDARD_RATE ; "kolbi_ice" ; "fmt1_4/4"   ; "CR"    ; IR21

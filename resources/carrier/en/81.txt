@@ -105,7 +105,13 @@
 817087|KDDI
 817088|KDDI
 817089|Rakuten Communications
-81709|Rakuten Communications
+817090|Rakuten Communications
+817091|Rakuten Communications
+817092|Rakuten Communications
+817093|Rakuten Communications
+817094|Rakuten Communications
+817095|Rakuten Communications
+817097|KDDI
 81801|NTT Docomo
 81802|NTT Docomo
 81803|Softbank

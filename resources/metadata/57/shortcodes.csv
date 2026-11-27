@@ -1,4 +1,4 @@
-Region ; Prefix  ; Length ; Type               ; Tariff    ; Sms  ; Carrier Specific
+Region ; Prefix  ; Length ; Type               ; Tariff    ; Sms  ; Carrier Specific ; Comment
 CO     ; 106     ; 3      ; EXPANDED_EMERGENCY
 CO     ; 11[29]  ; 3      ; EMERGENCY          ; TOLL_FREE
 CO     ; 11[358] ; 3      ; COMMERCIAL
@@ -21,7 +21,7 @@ CO     ; 390039  ; 6      ; COMMERCIAL
 CO     ; 40404   ; 5      ; COMMERCIAL         ;           ; true ; true
 CO     ; 5[57]   ; 5      ; COMMERCIAL
 CO     ; 5930    ; 6      ; COMMERCIAL
-CO     ; 85432   ; 5      ; COMMERCIAL         ;           ; true ; true
-CO     ; 87      ; 5      ; COMMERCIAL
-CO     ; 89      ; 6      ; COMMERCIAL
+CO     ; 85      ; 5      ; COMMERCIAL         ;           ; true ; true             ; "."
+CO     ; 87      ; 5      ; COMMERCIAL         ;           ; true ; true
+CO     ; 89      ; 6      ; COMMERCIAL         ;           ; true ; true
 CO     ; 9[57]   ; 5      ; COMMERCIAL

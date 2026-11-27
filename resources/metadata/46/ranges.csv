@@ -829,7 +829,7 @@ Prefix          ; Length ; Type            ; Tariff        ; Operator           
 76728           ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"
 76729[0-8]      ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"
 767299          ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
-7673            ; 9      ; MOBILE          ; STANDARD_RATE ;                             ; "mobile_etc_2/3/2/2"     ; "SE"
+7673            ; 9      ; MOBILE          ; STANDARD_RATE ; "soatso_ab"                 ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
 767[45]         ; 9      ; MOBILE          ; STANDARD_RATE ; "lycamobile"                ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
 767[6-9]        ; 9      ; MOBILE          ; STANDARD_RATE ; "telia"                     ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; GOVERNMENT
 768[5-9]        ; 9      ; MOBILE          ; STANDARD_RATE ; "telenor"                   ; "mobile_etc_2/3/2/2"     ; "SE"    ;                            ;                            ; IR21

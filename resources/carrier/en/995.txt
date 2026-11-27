@@ -51,6 +51,7 @@
 9955050|Silknet
 9955055|MagtiCom
 995507|Globalcell
+995508|Silknet
 995510|Silknet
 995511|MagtiCom
 99551101|Silknet
