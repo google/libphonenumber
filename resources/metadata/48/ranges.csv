@@ -163,10 +163,9 @@ Prefix       ; Length ; Type       ; Tariff        ; Operator                   
 728[1-9]     ; 9      ; MOBILE     ; STANDARD_RATE ; "t_mobile"                  ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; IR21
 729[01]      ; 9      ; MOBILE     ; STANDARD_RATE ; "play"                      ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; IR21
 729[2-6]     ; 9      ; MOBILE     ; STANDARD_RATE ; "plus"                      ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; IR21
-72970        ; 9      ; MOBILE     ; STANDARD_RATE ; "amd_telecom"               ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; GOVERNMENT
+7297[03489]  ; 9      ; MOBILE     ; STANDARD_RATE ; "play"                      ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; IR21
 7297[16]     ; 9      ; MOBILE     ; STANDARD_RATE ; "plus"                      ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; IR21
 72972        ; 9      ; MOBILE     ; STANDARD_RATE ; "compatel_limited"          ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; GOVERNMENT
-7297[3489]   ; 9      ; MOBILE     ; STANDARD_RATE ; "play"                      ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; IR21
 72975        ; 9      ; MOBILE     ; STANDARD_RATE ;                             ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; GOVERNMENT
 72977        ; 9      ; MOBILE     ; STANDARD_RATE ; "plus"                      ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; GOVERNMENT
 7298[03-5]   ; 9      ; MOBILE     ; STANDARD_RATE ; "plus"                      ; "mobile_3/3/3"      ; "PL"    ;                        ;                        ; IR21

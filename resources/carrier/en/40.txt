@@ -12,9 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-4060|Vodafone
-4062|Vodafone
-4063|Digi Mobil
 407000|Enigma-System
 407013|Lycamobile
 407014|Lycamobile

@@ -855,7 +855,8 @@ Prefix      ; Length ; Type       ; Tariff        ; Area Code Length ; Operator 
 686         ; 7-13   ; MOBILE     ; STANDARD_RATE ;                  ; "three"       ; "fixed_3/3-10" ; "AT"    ;                                     ;                                     ; IR21
 688         ; 7-13   ; MOBILE     ; STANDARD_RATE ;                  ; "a1_ta"       ; "fixed_3/3-10" ; "AT"    ;                                     ;                                     ; IR21
 69[06]      ; 7-13   ; MOBILE     ; STANDARD_RATE ;                  ; "three"       ; "fixed_3/3-10" ; "AT"    ;                                     ;                                     ; IR21
-69[1-578]   ; 7-13   ; MOBILE     ; STANDARD_RATE ;                  ;               ; "fixed_3/3-10" ; "AT"
+69[1-58]    ; 7-13   ; MOBILE     ; STANDARD_RATE ;                  ;               ; "fixed_3/3-10" ; "AT"
+697         ; 7-13   ; MOBILE     ; STANDARD_RATE ;                  ; "airalo"      ; "fixed_3/3-10" ; "AT"    ;                                     ;                                     ; IR21
 699[0-79]   ; 7-13   ; MOBILE     ; STANDARD_RATE ;                  ; "three"       ; "fixed_3/3-10" ; "AT"    ;                                     ;                                     ; IR21
 6998[03-7]  ; 7-13   ; MOBILE     ; STANDARD_RATE ;                  ; "three"       ; "fixed_3/3-10" ; "AT"    ;                                     ;                                     ; IR21
 6998[1289]  ; 7-13   ; MOBILE     ; STANDARD_RATE ;                  ; "a1_ta"       ; "fixed_3/3-10" ; "AT"    ;                                     ;                                     ; IR21

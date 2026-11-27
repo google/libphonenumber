@@ -926,6 +926,56 @@ public class PhoneNumberMatcherTest extends TestMetadataTestCase {
     assertFalse(iterator.hasNext());
   }
 
+  public void testTimeStampsSuffixAndLargeInput() throws Exception {
+    String textWithTimestampAndNumber = "2014-01-02 08:00 and 2014-01-02 08:59 Call 415-666-7777";
+    Iterator<PhoneNumberMatch> iterator =
+        phoneUtil.findNumbers(textWithTimestampAndNumber, RegionCode.US).iterator();
+    PhoneNumberMatch match = iterator.hasNext() ? iterator.next() : null;
+    assertMatchProperties(match, textWithTimestampAndNumber, "415-666-7777", RegionCode.US);
+    assertFalse(iterator.hasNext());
+
+    // Timestamp-like candidates at the end of the input, with fewer than 3 trailing chars, or
+    // with a non-matching suffix are still returned.
+    assertMatchProperties(
+        phoneUtil.findNumbers("2012-01-02 08", RegionCode.US).iterator().next(),
+        "2012-01-02 08",
+        "2012-01-02 08",
+        RegionCode.US);
+    assertMatchProperties(
+        phoneUtil.findNumbers("2012-01-02 08:", RegionCode.US).iterator().next(),
+        "2012-01-02 08:",
+        "2012-01-02 08",
+        RegionCode.US);
+    assertMatchProperties(
+        phoneUtil.findNumbers("2012-01-02 08:0", RegionCode.US).iterator().next(),
+        "2012-01-02 08:0",
+        "2012-01-02 08",
+        RegionCode.US);
+    assertMatchProperties(
+        phoneUtil.findNumbers("2012-01-02 08:60", RegionCode.US).iterator().next(),
+        "2012-01-02 08:60",
+        "2012-01-02 08",
+        RegionCode.US);
+    assertMatchProperties(
+        phoneUtil.findNumbers("2012-01-02 08 PM", RegionCode.US).iterator().next(),
+        "2012-01-02 08 PM",
+        "2012-01-02 08",
+        RegionCode.US);
+
+    // Many timestamp-like candidates in a large input.
+    StringBuilder repeatedTimestamps = new StringBuilder(20000 * 18 + 20);
+    for (int i = 0; i < 20000; i++) {
+      repeatedTimestamps.append("2014-01-02 08:00, ");
+    }
+    repeatedTimestamps.append("415-666-7777");
+    String largeText = repeatedTimestamps.toString();
+    Iterator<PhoneNumberMatch> largeTextIterator =
+        phoneUtil.findNumbers(largeText, RegionCode.US).iterator();
+    PhoneNumberMatch largeTextMatch = largeTextIterator.hasNext() ? largeTextIterator.next() : null;
+    assertMatchProperties(largeTextMatch, largeText, "415-666-7777", RegionCode.US);
+    assertFalse(largeTextIterator.hasNext());
+  }
+
   /**
    * Asserts that the expected match is non-null, and that the raw string and expected
    * proto buffer are set appropriately.
