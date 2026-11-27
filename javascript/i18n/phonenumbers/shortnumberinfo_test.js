@@ -65,6 +65,17 @@ function testIsPossibleShortNumber() {
   assertTrue(shortInfo.isPossibleShortNumber(impossibleUkNumber));
 }
 
+function testOutOfRangeNumberOfLeadingZeros() {
+  /** @type {!i18n.phonenumbers.PhoneNumber} */
+  var number = new i18n.phonenumbers.PhoneNumber();
+  number.setCountryCode(33);
+  number.setNationalNumber(1010);
+  number.setItalianLeadingZero(true);
+  number.setNumberOfLeadingZeros(2147483647);
+  assertFalse(shortInfo.isPossibleShortNumber(number));
+  assertFalse(shortInfo.isValidShortNumber(number));
+}
+
 function testIsValidShortNumber() {
   var shortNumber1 = new i18n.phonenumbers.PhoneNumber();
   shortNumber1.setCountryCode(33);

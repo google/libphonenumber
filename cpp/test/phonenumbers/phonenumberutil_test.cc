@@ -1633,8 +1633,7 @@ TEST_F(PhoneNumberUtilTest, ExtractPossibleNumber) {
   ExtractPossibleNumber("(650) 253-0000.", &extracted_number);
   EXPECT_EQ("650) 253-0000", extracted_number);
   // This case has a trailing RTL char.
-  ExtractPossibleNumber("(650) 253-0000\xE2\x80\x8F"
-                        /* "(650) 253-0000‏" */, &extracted_number);
+  ExtractPossibleNumber("(650) 253-0000\xE2\x80\x8F", &extracted_number);
   EXPECT_EQ("650) 253-0000", extracted_number);
 }
 
@@ -4116,6 +4115,68 @@ TEST_F(PhoneNumberUtilTest, FailedParseOnInvalidNumbers) {
   EXPECT_EQ(PhoneNumber::default_instance(), test_number);
 }
 
+TEST_F(PhoneNumberUtilTest, ParseRfc3966PhoneContextDomain) {
+  PhoneNumber us_local_number;
+  us_local_number.set_country_code(1);
+  us_local_number.set_national_number(2530000ULL);
+  const char* const kValidInputs[] = {
+      "tel:253-0000;phone-context=a-b.example.com",
+      "tel:253-0000;phone-context=a--b.example.com",
+      "tel:253-0000;phone-context=example.c1",
+      "tel:253-0000;phone-context=example.b2b",
+      "tel:253-0000;phone-context=sub.example.a1-b2",
+      "tel:253-0000;phone-context=example.xn--p1ai",
+      "tel:253-0000;phone-context=a.b",
+      "tel:253-0000;phone-context=www.google.com.",
+  };
+  for (const char* input : kValidInputs) {
+    PhoneNumber test_number;
+    EXPECT_EQ(PhoneNumberUtil::NO_PARSING_ERROR,
+              phone_util_.Parse(input, RegionCode::US(), &test_number))
+        << "Expected valid parse for: " << input;
+    EXPECT_EQ(us_local_number, test_number);
+  }
+  // Adversarial inputs that previously caused exponential backtracking under
+  // the ICU regex backend when matching failed at the trailing '!'.
+  std::string repeated_labels_trailing_dot = "tel:5;phone-context=";
+  std::string repeated_labels = "tel:253-0000;phone-context=";
+  std::string repeated_hyphens = "tel:253-0000;phone-context=";
+  std::string repeated_toplabel = "tel:253-0000;phone-context=example.";
+  for (int i = 0; i < 30; ++i) {
+    repeated_labels_trailing_dot += "aa.";
+    repeated_labels += "aa.";
+    repeated_hyphens += "a-";
+    repeated_toplabel += "a1";
+  }
+  repeated_labels_trailing_dot += "!";
+  repeated_labels += "aa!";
+  repeated_hyphens += "a!";
+  repeated_toplabel += "!";
+  const std::string invalid_inputs[] = {
+      "tel:253-0000;phone-context=-example.com",
+      "tel:253-0000;phone-context=example-.com",
+      "tel:253-0000;phone-context=example.-com",
+      "tel:253-0000;phone-context=example.com-",
+      "tel:253-0000;phone-context=.example.com",
+      "tel:253-0000;phone-context=example..com",
+      "tel:253-0000;phone-context=example.123",
+      "tel:253-0000;phone-context=example.1a",
+      "tel:253-0000;phone-context=example.-c1",
+      "tel:253-0000;phone-context=example.c1-",
+      repeated_labels_trailing_dot,
+      repeated_labels,
+      repeated_hyphens,
+      repeated_toplabel,
+  };
+  for (const std::string& input : invalid_inputs) {
+    PhoneNumber test_number;
+    EXPECT_EQ(PhoneNumberUtil::NOT_A_NUMBER,
+              phone_util_.Parse(input, RegionCode::US(), &test_number))
+        << "Expected NOT_A_NUMBER for: " << input;
+    EXPECT_EQ(PhoneNumber::default_instance(), test_number);
+  }
+}
+
 TEST_F(PhoneNumberUtilTest, ParseNumbersWithPlusWithNoRegion) {
   PhoneNumber nz_number;
   nz_number.set_country_code(64);
@@ -4850,6 +4911,28 @@ TEST_F(PhoneNumberUtilTest, IsAlphaNumber) {
   EXPECT_FALSE(phone_util_.IsAlphaNumber("18 six-flags"));
   EXPECT_FALSE(phone_util_.IsAlphaNumber("1800 123-1234 extension: 1234"));
   EXPECT_FALSE(phone_util_.IsAlphaNumber("+800 1234-1234"));
+}
+
+TEST_F(PhoneNumberUtilTest, IsAlphaNumberEndsInDigit) {
+  // Vanity numbers that end in a digit still have at least three letters. The
+  // old anchored regex required the number to end in a letter, so these were
+  // rejected here while the Java and JavaScript ports accept them.
+  EXPECT_TRUE(phone_util_.IsAlphaNumber("1800FLOWERS7"));
+  EXPECT_TRUE(phone_util_.IsAlphaNumber("800 FLOWER7"));
+  EXPECT_TRUE(phone_util_.IsAlphaNumber("800 FLOWER7 ext. 1234"));
+}
+
+TEST_F(PhoneNumberUtilTest, IsAlphaNumberTooLong) {
+  // Over-long input is rejected up front, mirroring MAX_INPUT_STRING_LENGTH in
+  // the Java port. Without the bound, the number below would be accepted: it
+  // is viable and ends with letters.
+  string too_long;
+  too_long.append(251, '1');
+  too_long.append("FLOWERS");
+  EXPECT_FALSE(phone_util_.IsAlphaNumber(too_long));
+
+  // A long number with no letters is not an alpha number either.
+  EXPECT_FALSE(phone_util_.IsAlphaNumber(string(251, '1')));
 }
 
 }  // namespace phonenumbers

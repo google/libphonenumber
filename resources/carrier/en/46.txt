@@ -715,6 +715,7 @@
 46767266|Beepsend
 46767268|Rebtel Networks
 4676727|Telenor Sverige
+467673|Soatso AB
 467674|Lycamobile Sweden
 467675|Lycamobile Sweden
 467676|TeliaSonera

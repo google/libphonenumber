@@ -77,6 +77,21 @@ public class PhoneNumberMatcherTest extends TestMetadataTestCase {
     assertTrue(PhoneNumberMatcher.containsMoreThanOneSlashInNationalNumber(number, candidate));
   }
 
+  public void testAllNumberGroupsRemainGroupedCountryCodeNotInCandidate() throws Exception {
+    // Constructed case: the country code source claims the candidate began with an explicit
+    // country calling code, but the literal digits of that code ("44") do not actually occur in
+    // the candidate text. Previously this desynced fromIndex (indexOf returns -1, and -1 plus the
+    // country code's length was used as a starting position instead of being treated as "not
+    // found"), which made a grouping match that should succeed incorrectly return false.
+    PhoneNumber number = new PhoneNumber();
+    number.setCountryCode(44);
+    number.setCountryCodeSource(CountryCodeSource.FROM_NUMBER_WITH_PLUS_SIGN);
+    StringBuilder candidate = new StringBuilder("020 7031 3000");
+    String[] formattedNumberGroups = {"020", "7031", "3000"};
+    assertTrue(PhoneNumberMatcher.allNumberGroupsRemainGrouped(
+        phoneUtil, number, candidate, formattedNumberGroups));
+  }
+
   /** See {@link PhoneNumberUtilTest#testParseNationalNumber()}. */
   public void testFindNationalNumber() throws Exception {
     // same cases as in testParseNationalNumber
@@ -909,6 +924,56 @@ public class PhoneNumberMatcherTest extends TestMetadataTestCase {
     } catch (UnsupportedOperationException e) { /* success */ }
 
     assertFalse(iterator.hasNext());
+  }
+
+  public void testTimeStampsSuffixAndLargeInput() throws Exception {
+    String textWithTimestampAndNumber = "2014-01-02 08:00 and 2014-01-02 08:59 Call 415-666-7777";
+    Iterator<PhoneNumberMatch> iterator =
+        phoneUtil.findNumbers(textWithTimestampAndNumber, RegionCode.US).iterator();
+    PhoneNumberMatch match = iterator.hasNext() ? iterator.next() : null;
+    assertMatchProperties(match, textWithTimestampAndNumber, "415-666-7777", RegionCode.US);
+    assertFalse(iterator.hasNext());
+
+    // Timestamp-like candidates at the end of the input, with fewer than 3 trailing chars, or
+    // with a non-matching suffix are still returned.
+    assertMatchProperties(
+        phoneUtil.findNumbers("2012-01-02 08", RegionCode.US).iterator().next(),
+        "2012-01-02 08",
+        "2012-01-02 08",
+        RegionCode.US);
+    assertMatchProperties(
+        phoneUtil.findNumbers("2012-01-02 08:", RegionCode.US).iterator().next(),
+        "2012-01-02 08:",
+        "2012-01-02 08",
+        RegionCode.US);
+    assertMatchProperties(
+        phoneUtil.findNumbers("2012-01-02 08:0", RegionCode.US).iterator().next(),
+        "2012-01-02 08:0",
+        "2012-01-02 08",
+        RegionCode.US);
+    assertMatchProperties(
+        phoneUtil.findNumbers("2012-01-02 08:60", RegionCode.US).iterator().next(),
+        "2012-01-02 08:60",
+        "2012-01-02 08",
+        RegionCode.US);
+    assertMatchProperties(
+        phoneUtil.findNumbers("2012-01-02 08 PM", RegionCode.US).iterator().next(),
+        "2012-01-02 08 PM",
+        "2012-01-02 08",
+        RegionCode.US);
+
+    // Many timestamp-like candidates in a large input.
+    StringBuilder repeatedTimestamps = new StringBuilder(20000 * 18 + 20);
+    for (int i = 0; i < 20000; i++) {
+      repeatedTimestamps.append("2014-01-02 08:00, ");
+    }
+    repeatedTimestamps.append("415-666-7777");
+    String largeText = repeatedTimestamps.toString();
+    Iterator<PhoneNumberMatch> largeTextIterator =
+        phoneUtil.findNumbers(largeText, RegionCode.US).iterator();
+    PhoneNumberMatch largeTextMatch = largeTextIterator.hasNext() ? largeTextIterator.next() : null;
+    assertMatchProperties(largeTextMatch, largeText, "415-666-7777", RegionCode.US);
+    assertFalse(largeTextIterator.hasNext());
   }
 
   /**
