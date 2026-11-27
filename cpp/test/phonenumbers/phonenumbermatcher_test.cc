@@ -316,7 +316,6 @@ class PhoneNumberMatcherTest : public testing::Test {
   void EnsureTermination(const string& text, const string& default_country,
                          PhoneNumberMatcher::Leniency leniency) {
     for (size_t index = 0; index <= text.length(); ++index) {
-      string sub = text.substr(index);
       // Iterates over all matches.
       PhoneNumberMatcher matcher(phone_util_, text, default_country, leniency,
                                  1000000 /* max_tries */);
