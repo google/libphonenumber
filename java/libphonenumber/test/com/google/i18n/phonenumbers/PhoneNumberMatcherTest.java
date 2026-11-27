@@ -77,6 +77,21 @@ public class PhoneNumberMatcherTest extends TestMetadataTestCase {
     assertTrue(PhoneNumberMatcher.containsMoreThanOneSlashInNationalNumber(number, candidate));
   }
 
+  public void testAllNumberGroupsRemainGroupedCountryCodeNotInCandidate() throws Exception {
+    // Constructed case: the country code source claims the candidate began with an explicit
+    // country calling code, but the literal digits of that code ("44") do not actually occur in
+    // the candidate text. Previously this desynced fromIndex (indexOf returns -1, and -1 plus the
+    // country code's length was used as a starting position instead of being treated as "not
+    // found"), which made a grouping match that should succeed incorrectly return false.
+    PhoneNumber number = new PhoneNumber();
+    number.setCountryCode(44);
+    number.setCountryCodeSource(CountryCodeSource.FROM_NUMBER_WITH_PLUS_SIGN);
+    StringBuilder candidate = new StringBuilder("020 7031 3000");
+    String[] formattedNumberGroups = {"020", "7031", "3000"};
+    assertTrue(PhoneNumberMatcher.allNumberGroupsRemainGrouped(
+        phoneUtil, number, candidate, formattedNumberGroups));
+  }
+
   /** See {@link PhoneNumberUtilTest#testParseNationalNumber()}. */
   public void testFindNationalNumber() throws Exception {
     // same cases as in testParseNationalNumber
