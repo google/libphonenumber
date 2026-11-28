@@ -30,14 +30,12 @@ class Singleton {
   virtual ~Singleton() {}
 
   static T* GetInstance() {
+    AcquireSRWLockExclusive(&singleton_lock_);
     if (once_init_) {
-      EnterCriticalSection(&critical_section_);
-      if (once_init_) {
-        Init();
-        once_init_ = false;
-      }
-      LeaveCriticalSection(&critical_section_);
+      Init();
+      once_init_ = false;
     }
+    ReleaseSRWLockExclusive(&singleton_lock_);
     return instance_;
   }
 
@@ -49,7 +47,7 @@ class Singleton {
   }
 
   static T* instance_;  // Leaky singleton.
-  static CRITICAL_SECTION critical_section_;
+  static SRWLOCK singleton_lock_;
   static bool once_init_;
 };
 
@@ -60,8 +58,8 @@ static bool perform_init_crit(CRITICAL_SECTION& cs)
 }
 
 template <class T> T* Singleton<T>::instance_;
-template <class T> CRITICAL_SECTION Singleton<T>::critical_section_;
-template <class T> bool Singleton<T>::once_init_=perform_init_crit(Singleton<T>::critical_section_);
+template <class T> SRWLOCK Singleton<T>::singleton_lock_ = SRWLOCK_INIT;
+template <class T> bool Singleton<T>::once_init_ = true;
 
 }  // namespace phonenumbers
 }  // namespace i18n
